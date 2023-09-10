@@ -1,0 +1,2961 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CI/CD＠技術的要素の知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/devops_cicd.html">
+      
+      
+        <link rel="prev" href="cicd/index.html">
+      
+      
+        <link rel="next" href="devops_cicd_deploy.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】CI/CD＠技術的要素 - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cicd" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】CI/CD＠技術的要素
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cicd/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_20">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            🔄 CI/CD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="devops_cicd.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cicd" class="md-nav__link">
+    01. CI/CDとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-cicd" class="md-nav__link">
+    02. CI/CDの必要性
+  </a>
+  
+    <nav class="md-nav" aria-label="02. CI/CDの必要性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自動化による高品質なシステムの維持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    自動化による工数削減
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-cicd" class="md-nav__link">
+    03. CI/CDパイプラインのステップについて
+  </a>
+  
+    <nav class="md-nav" aria-label="03. CI/CDパイプラインのステップについて">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd_1" class="md-nav__link">
+    CI/CDパイプラインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    CIパイプライン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    CDパイプライン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdprogressive-delivery" class="md-nav__link">
+    PD：Progressive Delivery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 要件定義事項
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 要件定義事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd_2" class="md-nav__link">
+    CI/CDパイプラインのステップをどこまで採用する必要があるかの質問
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アプリケーションが動いているインフラの技術スタックについての質問
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ドメインに応じた規定についての質問
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 要件回答に基づく技術選定フローチャート
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ciops" class="md-nav__link">
+    06. CIOps
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ciops" class="md-nav__link">
+    CIOpsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciopsci" class="md-nav__link">
+    CIOpsを採用する場合のCIツールの一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アンチパターンとなる場合
+  </a>
+  
+    <nav class="md-nav" aria-label="アンチパターンとなる場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ セキュリティ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 責務境界の分離
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-gitops" class="md-nav__link">
+    07. GitOps
+  </a>
+  
+    <nav class="md-nav" aria-label="07. GitOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitops" class="md-nav__link">
+    GitOpsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    技術ツール例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_1" class="md-nav__link">
+    相性の良いCIツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="devops_cicd_deploy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    デプロイ手法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="devops_cicd_ci_github_actions.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CIツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="devops_cicd_cd_argocd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CDツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="devops_cicd_auto_review_github_comment.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 自動レビューツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cicd" class="md-nav__link">
+    01. CI/CDとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-cicd" class="md-nav__link">
+    02. CI/CDの必要性
+  </a>
+  
+    <nav class="md-nav" aria-label="02. CI/CDの必要性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自動化による高品質なシステムの維持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    自動化による工数削減
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-cicd" class="md-nav__link">
+    03. CI/CDパイプラインのステップについて
+  </a>
+  
+    <nav class="md-nav" aria-label="03. CI/CDパイプラインのステップについて">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd_1" class="md-nav__link">
+    CI/CDパイプラインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    CIパイプライン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    CDパイプライン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdprogressive-delivery" class="md-nav__link">
+    PD：Progressive Delivery
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 要件定義事項
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 要件定義事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd_2" class="md-nav__link">
+    CI/CDパイプラインのステップをどこまで採用する必要があるかの質問
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アプリケーションが動いているインフラの技術スタックについての質問
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ドメインに応じた規定についての質問
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 要件回答に基づく技術選定フローチャート
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ciops" class="md-nav__link">
+    06. CIOps
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ciops" class="md-nav__link">
+    CIOpsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciopsci" class="md-nav__link">
+    CIOpsを採用する場合のCIツールの一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アンチパターンとなる場合
+  </a>
+  
+    <nav class="md-nav" aria-label="アンチパターンとなる場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ セキュリティ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 責務境界の分離
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-gitops" class="md-nav__link">
+    07. GitOps
+  </a>
+  
+    <nav class="md-nav" aria-label="07. GitOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitops" class="md-nav__link">
+    GitOpsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    技術ツール例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_1" class="md-nav__link">
+    相性の良いCIツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cicd">CI/CD＠技術的要素<a class="headerlink" href="#cicd" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-cicd">01. CI/CDとは<a class="headerlink" href="#01-cicd" title="Permanent link">&para;</a></h2>
+<p>CI/CDは、DevOpsを構成する『技術的要素』『組織文化的要素』のうち、技術的要素に相当する概念である。</p>
+<p><br></p>
+<h2 id="02-cicd">02. CI/CDの必要性<a class="headerlink" href="#02-cicd" title="Permanent link">&para;</a></h2>
+<h3 id="_2">自動化による高品質なシステムの維持<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>CI/CDの一連の流れ (パイプライン) の中でテストを自動化できるため、一定水準以上の品質を維持しやすくする。</p>
+<p>システム（ソフトウェアとハードウェア、があるがここでは特にソフトウェア）には、例えば以下の品質の特性がある（ISOの規格の場合）。</p>
+<ul>
+<li><strong>機能性</strong></li>
+<li>性能効率性</li>
+<li>互換性</li>
+<li>利便性（使いやすさ）</li>
+<li>信頼性</li>
+<li>安全性</li>
+<li>保守性</li>
+<li>移植性（汎用性）</li>
+</ul>
+<p>テストステップで特に機能性を検証し、一定水準以上の品質を維持するように設計する。</p>
+<p><br></p>
+<h3 id="_3">自動化による工数削減<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>開発からリリースには、以下のステップがある。</p>
+<p>CI/CDの一連の流れ (パイプライン) の中でこれらのステップを自動化できるため、工数を削減できる。</p>
+<ol>
+<li>アプリケーションのビルド</li>
+<li>テスト</li>
+<li>承認</li>
+<li>デプロイ</li>
+<li>DBマイグレーション</li>
+</ol>
+<p><br></p>
+<h2 id="03-cicd">03. CI/CDパイプラインのステップについて<a class="headerlink" href="#03-cicd" title="Permanent link">&para;</a></h2>
+<h3 id="cicd_1">CI/CDパイプラインとは<a class="headerlink" href="#cicd_1" title="Permanent link">&para;</a></h3>
+<p>CIパイプラインとCDパイプラインを組み合わせた手法のこと。</p>
+<p><img alt="CICDパイプライン" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.redhat.com/ja/topics/devops/what-cicd-pipeline">https://www.redhat.com/ja/topics/devops/what-cicd-pipeline</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ci">CIパイプライン<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
+<p>アプリケーションの機能追加/変更/削除からテストまでを『自動的』かつ『継続的に』行う。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ</th>
+<th>詳細</th>
+<th style="text-align: center;">自動化の可否</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ビルド</td>
+<td>アプリケーションのビルド</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CIツールとIaCツールで自動化できる。</td>
+</tr>
+<tr>
+<td>テスト</td>
+<td>ホワイトボックステスト (単体テスト、機能テスト、回帰テスト、など) の実施</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CIツールとテストフレームワークで自動化できる。</td>
+</tr>
+<tr>
+<td></td>
+<td>結合テスト</td>
+<td style="text-align: center;">△</td>
+<td>基本的にはブラックボックステストで、動作を確認する必要がある。ただし、自動的なE2Eテストを簡易的な結合テストの代わりにしてもよい。</td>
+</tr>
+<tr>
+<td></td>
+<td>コーディング規約に関するレビュー</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CIツールと静的解析ツールで自動化できる。</td>
+</tr>
+<tr>
+<td></td>
+<td>仕様に関するレビュー</td>
+<td style="text-align: center;">×</td>
+<td>GitHub上でレビューする必要がある。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://tracpath.com/works/devops/11_topics_for_devops/">https://tracpath.com/works/devops/11_topics_for_devops/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cd">CDパイプライン<a class="headerlink" href="#cd" title="Permanent link">&para;</a></h3>
+<p>変更内容を『自動的』かつ『継続的に』ステージング環境と本番環境にデプロイする。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ (ステージング環境の場合)</th>
+<th>詳細</th>
+<th style="text-align: center;">自動化の可否</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>デプロイ</td>
+<td>ステージング環境に対するデプロイ</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールで自動化できる。</td>
+</tr>
+<tr>
+<td>DBマイグレーション</td>
+<td>ステージング環境のDBに対するデプロイ</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールで自動化できる。</td>
+</tr>
+</tbody>
+</table>
+<p>本番環境へのデプロイ前に、承認ステップを設ける。</p>
+<p>承認ステップがある場合を、デプロイではなく特に『デリバリー』と呼ぶことがある。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ (本番環境の場合)</th>
+<th>詳細</th>
+<th style="text-align: center;">自動化の可否</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>承認</td>
+<td>本番環境に対するデプロイの承認</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールで自動化できる。</td>
+</tr>
+<tr>
+<td>デプロイ</td>
+<td>本番環境に対するデプロイ</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールで自動化できる。</td>
+</tr>
+<tr>
+<td>DBマイグレーション</td>
+<td>本番環境のDBに対するデプロイ</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールで自動化できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://blog.kyanny.me/entry/2014/12/24/145001">https://blog.kyanny.me/entry/2014/12/24/145001</a></li>
+<li><a href="https://aws.amazon.com/jp/devops/continuous-delivery/">https://aws.amazon.com/jp/devops/continuous-delivery/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="pdprogressive-delivery">PD：Progressive Delivery<a class="headerlink" href="#pdprogressive-delivery" title="Permanent link">&para;</a></h3>
+<p>特にカナリアリリースやブルー/グリーンデプロイメントでデプロイされたアプリケーションに関して、ユーザーのアクセスから収集されたテレメトリーを分析し、問題が起これば自動的にロールバックする。</p>
+<p>問題の判定基準としては、障害の有無やSLO閾値未満がある。</p>
+<table>
+<thead>
+<tr>
+<th>ステップ</th>
+<th>詳細</th>
+<th style="text-align: center;">自動化の可否</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析</td>
+<td>ステージング環境のテレメトリーを分析</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールとテレメトリー収集ツールを組み合わせて自動化できる。</td>
+</tr>
+<tr>
+<td></td>
+<td>本番環境のテレメトリーを分析</td>
+<td style="text-align: center;"><code>⭕️</code></td>
+<td>CDツールとテレメトリー収集ツールを組み合わせて自動化できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://r-kaga.com/blog/what-is-progressive-delivery">https://r-kaga.com/blog/what-is-progressive-delivery</a></li>
+<li><a href="https://codezine.jp/article/detail/14476">https://codezine.jp/article/detail/14476</a></li>
+<li><a href="https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25">https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. 要件定義事項<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="cicd_2">CI/CDパイプラインのステップをどこまで採用する必要があるかの質問<a class="headerlink" href="#cicd_2" title="Permanent link">&para;</a></h3>
+<p>CI/CDパイプラインには種々のステップがあり、どこまで採用するべきかを判断するために、以下をヒアリングする。</p>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリをリリースするまでに実施している手順は？</td>
+<td>現状、どのような方法でアプリをリリースしているのかを知りたい。</td>
+</tr>
+<tr>
+<td>本番環境にて、バグが混入のインシデントが “頻繁に起こることがある？</td>
+<td>品質を維持できているかどうかを聞きたい。CI/CDのビルドステップやテストステップを採用する必要があるか。もしテストコード自体も採用していない場合はこちらも採用してもらう必要があるが、テストコード設計はCI/CDと話が逸れるため言及しない。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_4">アプリケーションが動いているインフラの技術スタックについての質問<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>CI/CDの設計はアプリケーションが動いている既存のインフラの技術スタックで決まるため、以下をヒアリングする。</p>
+<ol>
+<li>まずはこちらをどうぞ。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリはコンテナ化しているか</td>
+<td>アプリをコンテナ化しているかどうかで適切なCIOpsが異なるため、聞いておきたい。</td>
+</tr>
+<tr>
+<td>アプリをコンテナ化している場合は、コンテナオーケストレーションツールを使用しているか</td>
+<td>コンテナオーケストレーションツールを使用しているかどうかで適切なCIOpsが異なるため、聞いておきたい。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>アプリをコンテナ化していない場合は、こちらをどうぞ。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オンプレでアプリが動いているか。</td>
+<td>オンプレ上で非コンテナ化のアプリを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダー (例：AWS) によっては、オンプレ上に専用エージェント (CodeDeployエージェント) を稼働させることにより、クラウドからオンプレサーバー上にアプリを安全にデプロイできる場合がある。</td>
+</tr>
+<tr>
+<td>IaaS (EC2、GCEなど) でアプリが動いているか。</td>
+<td>IaaS上で非コンテナ化のアプリを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダー (例：AWS) によっては、CI/CDツール (例：Code三兄弟) やクラウドロードバランサーを使用することにより、IaaS上にアプリを安全にデプロイできる可能性がある。</td>
+</tr>
+<tr>
+<td>非コンテナFaaS (Lambda、CloudFunction、など) でアプリが動いているか。</td>
+<td>FaaS上で非コンテナ化のアプリを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダーによっては、CI/CDツールを使用することにより、非コンテナFaaS上にアプリを安全にデプロイできる可能性がある。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>アプリをコンテナ化しつつ、オーケストレーションツールを使用していない場合は、こちらをどうぞ。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オンプレ上でdockerコマンドを使用しているか。</td>
+<td>オンプレ上でdockerコマンドを使用してアプリを動かしている場合、適切なCIOpsが異なるため、聞いておきたい。クラウドプロバイダーによっては、オンプレ上に専用エージェントを稼働させることにより、クラウドからオンプレサーバー上にアプリを安全にデプロイできる場合がある。もしクラウドプロバイダーを使用できないのであれば、オンプレのみで完結できるCI/CDツール (例：Capistrano) の検討が必要になる。</td>
+</tr>
+<tr>
+<td>コンテナ化Faas (Lamba、CloudFunction) を使用しているか。</td>
+<td>コンテナ化FaaSのアプリを動かしている場合、適切なCIOpsがあるため、聞いておきたい。CI/CDツールを使用することにより、コンテナ化FaaS上にアプリを安全にデプロイできる可能性がある。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>アプリをコンテナ化しつつ、Kubernetes系ではないオーケストレーションツールを使用している場合は、こちらをどうぞ。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オンプレ上でDocker Composeを使用しているか。</td>
+<td>Docker Composeでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。</td>
+</tr>
+<tr>
+<td>CaaS (ECS、CloudRun) を使用しているか。</td>
+<td>CaaSでオーケストレーションを実施している場合、適切なCIOpsがあるため、聞いておきたい。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>アプリをコンテナ化しつつ、Kubernetes系のオーケストレーションツールを使用している場合は、こちらをどうぞ。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オンプレ上でセルフマネージドなKuberbetesオーケストレーションツール (Kubeadm、Rancher) を使用しているか。</td>
+<td>セルフマネージドなKuberbetesオーケストレーションツールを使用している場合、適切なCIOpsがあるため、聞いておきたい。</td>
+</tr>
+<tr>
+<td>ベアメタル型IaaS上でクラウドプロバイダーのKuberbetesオーケストレーションツール (例：AWS EKS Anywhere、Google Anthos on Baremetal) を使用しているか。</td>
+<td>ベアメタル型IaaS上でクラウドプロバイダーのKuberbetesオーケストレーションツールを使用している場合、適切なCIOpsがあるため、聞いておきたい。</td>
+</tr>
+<tr>
+<td>CaaS (EKS、GKE) を使用しているか。</td>
+<td>CaaSを使用している場合、適切なCIOpsがあるため、聞いておきたい。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_5">ドメインに応じた規定についての質問<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>準拠しなければならない国の規定に関してヒアリングする。</p>
+<table>
+<thead>
+<tr>
+<th>質問</th>
+<th>質問の意図</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>システムを作るにあたって、準拠しなければならない規定はあるか</td>
+<td>システム化するドメイン (例：クレジットカード) によっては、国が用意した規定の要件 (例：PCI DSS) に準拠したシステムを設計しないといけない場合がある。</td>
+</tr>
+<tr>
+<td>過去に準拠したシステムは構築したことがあるか</td>
+<td>過去の設計を参考にすれば、要件をいずれの技術をして実装できるかがわかる。</td>
+</tr>
+<tr>
+<td>監査が入るタイミングはいつか。</td>
+<td>構築時点では完全に準拠できていなくても</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="05">05. 要件回答に基づく技術選定フローチャート<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<p>要件定義でヒアリングした回答に基づいて、要件にあったCI/CDを選択していく。</p>
+<pre class="mermaid"><code>graph TD;
+  A[はじめに] --&gt; B[Opsの種類]
+
+  B ---&gt; | アプリを&lt;br&gt;コンテナ化していない | C[そのまま進む]
+  B --&gt; | アプリを&lt;br&gt;コンテナ化している | D[コンテナオーケストレーションツールの種類]
+
+  C ---&gt; | オンプレ | E[オンプレのための&lt;br&gt;CIOps]
+  C ---&gt; | AWS EC2, Google GCE | F["IaaSのための&lt;br&gt;CIOps"]
+  C ---&gt; | AWS Lambda, Google Cloud Function | G[非コンテナFaaSのための&lt;br&gt;CIOps]
+
+  D ----&gt; | Docker compose on オンプレ | H[Docker composeのための&lt;br&gt;CIOps]
+  D ----&gt; | AWS ECS, Google CloudRun  | I[CaaSのための&lt;br&gt;CIOps]
+  D --&gt; | いずれも使っていない | J[そのまま進む]
+  D ----&gt; | Kubeadm, Rancher, on オンプレ | K[オンプレのための&lt;br&gt;GitOps]
+  D ----&gt; | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための&lt;br&gt;GitOps]
+  D ----&gt; | AWS EKS, GCP GKE | M[CaaSのための&lt;br&gt;GitOps]
+
+  J --&gt; | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための&lt;br&gt;CIOps]
+  J --&gt; | dockerコマンド on オンプレ| O[dockerコマンドのための&lt;br&gt;CIOps]
+
+  E ---&gt; P[CIOpsのための&lt;br&gt;ブランチ戦略]
+
+  F ---&gt; P
+
+  G ---&gt; P
+
+  H ---&gt; P
+
+  I ---&gt; P
+
+  K ---&gt; Q[GitOpsのための&lt;br&gt;ブランチ戦略]
+
+  L ---&gt; Q
+
+  M ---&gt; Q
+
+  N ---&gt; P
+
+  O ---&gt; P</code></pre>
+<p><br></p>
+<h2 id="06-ciops">06. CIOps<a class="headerlink" href="#06-ciops" title="Permanent link">&para;</a></h2>
+<h3 id="ciops">CIOpsとは<a class="headerlink" href="#ciops" title="Permanent link">&para;</a></h3>
+<p>DevOpsを実現する技術的要素の一つ。</p>
+<p>CIツール (例：GitHub Actions、CircleCI、など) を使用して、CIパイプラインとCDパイプラインの両方を行う手法のこと。</p>
+<p><img alt="devops_ciops" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html">https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html</a></li>
+<li><a href="https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9">https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ciopsci">CIOpsを採用する場合のCIツールの一覧<a class="headerlink" href="#ciopsci" title="Permanent link">&para;</a></h3>
+<p>CIOpsでは、全ての手順をCIツールで実施する。</p>
+<p>そのため、多機能かつユーザーフレンドリーなツールが良い。</p>
+<ul>
+<li>CircleCI</li>
+<li>GitHub Actions</li>
+<li>GitLab CI</li>
+<li>Jenkins</li>
+<li>CodePipeline</li>
+</ul>
+<p><br></p>
+<h3 id="_6">アンチパターンとなる場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ セキュリティ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリティ上の理由でCIOpsはアンチパターンとされている。</p>
+<p>リポジトリ側に<code>kubeconfig</code>ファイルを置く必要がある。</p>
+<p><code>kubeconfig</code>ファイルは機密性が高く、漏洩させたくない。</p>
+<p>ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) で<code>kubeconfig</code>ファイルを暗号化しておき、これをCIパイプライン内に出力する。</p>
+<blockquote>
+<ul>
+<li><a href="https://devops-blog.virtualtech.jp/entry/20220418/1650250499">https://devops-blog.virtualtech.jp/entry/20220418/1650250499</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ 責務境界の分離<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>KubernetesのCI/CDパイプラインにCIOpsを採用する場合、責務協会の分離上の理由でCIOpsはアンチパターンとされている。</p>
+<p>CIOpsの場合、CIとCDが強く結合しており、切り分けにくい。</p>
+<p>そのため、結果的にCIの構築/運用を担当するアプリエンジニアが、CDも構築/運用することになる。</p>
+<p>特に、CDはインフラに影響するため、アプリエンジニアチームが責任を持つべきではない。</p>
+<p>一方でGitOpsであれば、CIとCDを切り分けやすため、CIとCDの構築/運用をアプリチームとSREチームで分担できるようになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://news.mynavi.jp/techplus/article/techp5025/">https://news.mynavi.jp/techplus/article/techp5025/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07-gitops">07. GitOps<a class="headerlink" href="#07-gitops" title="Permanent link">&para;</a></h2>
+<h3 id="gitops">GitOpsとは<a class="headerlink" href="#gitops" title="Permanent link">&para;</a></h3>
+<p>DevOpsを実現する技術的要素の一つ。</p>
+<p>CIツール (例：GitHub Actions、CircleCI、など)を使用してCIパイプラインを、またはCDツール (例：ArgoCD、Flux、など) を使用してCDパイプラインを、実装する手法のこと。</p>
+<p><img alt="devops_gitops" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html">https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html</a></li>
+<li><a href="https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md">https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_9">技術ツール例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>GitOpsでは、CDツールで実施する手順が多いため、多機能かつユーザーフレンドリーなツールが良い。</p>
+<p>執筆時点 (2022/11/09) ではどのようなユースケースでも、OSSの開発が活発なArgoCDが良いかも。</p>
+<ul>
+<li>ArgoCD</li>
+<li>Flux</li>
+<li>Jenkins X</li>
+<li>PipeCD</li>
+<li>Harness</li>
+</ul>
+<p><br></p>
+<h3 id="ci_1">相性の良いCIツール<a class="headerlink" href="#ci_1" title="Permanent link">&para;</a></h3>
+<p>CIOpsでなくGitOpsを採用する場合、アプリケーションはマイクロサービスアーキテクチャを採用しているはずである。</p>
+<p>GitOpsでは、CIツールで実施する手順が少ないため、基本的にいずれのツールを使用しても問題ない。</p>
+<p>ただし、リポジトリの分割戦略にポリリポジトリ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分はは特定のリポジトリで中央集権的に管理し、他のリポジトリでこれを読み込むようにした方が楽である。</p>
+<p>外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール (例：GitLab CI) であれば、ポリリポジトリ戦略と相性が良い。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-28</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

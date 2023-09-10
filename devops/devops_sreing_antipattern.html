@@ -1,0 +1,3734 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="アンチパターン@SREingの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html">
+      
+      
+        <link rel="prev" href="devops_sreing.html">
+      
+      
+        <link rel="next" href="devops_documentation.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】アンチパターン@SREing - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sreing" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】アンチパターン@SREing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_19">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            ♾️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19_2" checked>
+        
+          <label class="md-nav__link" for="__nav_19_2" id="__nav_19_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ DevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_19_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_19_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="devops.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_19_2_2" id="__nav_19_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ SREing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_19_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_19_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ SREing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="devops_sreing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SREing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    アンチパターン
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="devops_sreing_antipattern.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    アンチパターン
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dropbox" class="md-nav__link">
+    01. アンチパターン集 (Dropbox)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. アンチパターン集 (Dropbox)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. サイトリライアビリティオペレーション
+  </a>
+  
+    <nav class="md-nav" aria-label="1. サイトリライアビリティオペレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 画面を見つめる人間
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 画面を見つめる人間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 群衆によるインシデント対応
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 群衆によるインシデント対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 根本原因 = ヒューマンエラー
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 根本原因 = ヒューマンエラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. ページャーの引き渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ページャーの引き渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. マジックスモークを消すのは私だ！
+  </a>
+  
+    <nav class="md-nav" aria-label="6. マジックスモークを消すのは私だ！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. アラートリライアビリティエンジニアリング
+  </a>
+  
+    <nav class="md-nav" aria-label="7. アラートリライアビリティエンジニアリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8. ペットを散歩させてくれるドッグウォーカーを雇う
+  </a>
+  
+    <nav class="md-nav" aria-label="8. ペットを散歩させてくれるドッグウォーカーを雇う">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. スピードバンプエンジニアリング
+  </a>
+  
+    <nav class="md-nav" aria-label="9. スピードバンプエンジニアリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. 設計の難所
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 設計の難所">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 棒が多すぎてニンジンが不足
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 棒が多すぎてニンジンが不足">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    12. プロダクションの延期
+  </a>
+  
+    <nav class="md-nav" aria-label="12. プロダクションの延期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-mttf-mttr" class="md-nav__link">
+    13. リカバリー時間ではなく障害回避の最適化 (MTTF &gt; MTTR)
+  </a>
+  
+    <nav class="md-nav" aria-label="13. リカバリー時間ではなく障害回避の最適化 (MTTF > MTTR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. 依存性地獄
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 依存性地獄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    15. 小回りの利かないガバナンス
+  </a>
+  
+    <nav class="md-nav" aria-label="15. 小回りの利かないガバナンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-slo" class="md-nav__link">
+    16. 不適切な「おやおや」のSLO
+  </a>
+  
+    <nav class="md-nav" aria-label="16. 不適切な「おやおや」のSLO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-api" class="md-nav__link">
+    17. ファイアウォール越しにAPIを投げ渡す
+  </a>
+  
+    <nav class="md-nav" aria-label="17. ファイアウォール越しにAPIを投げ渡す">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    18. 運用チームの修復
+  </a>
+  
+    <nav class="md-nav" aria-label="18. 運用チームの修復">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    19. 最後にもう一言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="devops_documentation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 技術的要素
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="devops_culture.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 技術的要素
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dropbox" class="md-nav__link">
+    01. アンチパターン集 (Dropbox)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. アンチパターン集 (Dropbox)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. サイトリライアビリティオペレーション
+  </a>
+  
+    <nav class="md-nav" aria-label="1. サイトリライアビリティオペレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 画面を見つめる人間
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 画面を見つめる人間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 群衆によるインシデント対応
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 群衆によるインシデント対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 根本原因 = ヒューマンエラー
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 根本原因 = ヒューマンエラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. ページャーの引き渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ページャーの引き渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. マジックスモークを消すのは私だ！
+  </a>
+  
+    <nav class="md-nav" aria-label="6. マジックスモークを消すのは私だ！">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. アラートリライアビリティエンジニアリング
+  </a>
+  
+    <nav class="md-nav" aria-label="7. アラートリライアビリティエンジニアリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    8. ペットを散歩させてくれるドッグウォーカーを雇う
+  </a>
+  
+    <nav class="md-nav" aria-label="8. ペットを散歩させてくれるドッグウォーカーを雇う">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    9. スピードバンプエンジニアリング
+  </a>
+  
+    <nav class="md-nav" aria-label="9. スピードバンプエンジニアリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. 設計の難所
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 設計の難所">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 棒が多すぎてニンジンが不足
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 棒が多すぎてニンジンが不足">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    12. プロダクションの延期
+  </a>
+  
+    <nav class="md-nav" aria-label="12. プロダクションの延期">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-mttf-mttr" class="md-nav__link">
+    13. リカバリー時間ではなく障害回避の最適化 (MTTF &gt; MTTR)
+  </a>
+  
+    <nav class="md-nav" aria-label="13. リカバリー時間ではなく障害回避の最適化 (MTTF > MTTR)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. 依存性地獄
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 依存性地獄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    15. 小回りの利かないガバナンス
+  </a>
+  
+    <nav class="md-nav" aria-label="15. 小回りの利かないガバナンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-slo" class="md-nav__link">
+    16. 不適切な「おやおや」のSLO
+  </a>
+  
+    <nav class="md-nav" aria-label="16. 不適切な「おやおや」のSLO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-api" class="md-nav__link">
+    17. ファイアウォール越しにAPIを投げ渡す
+  </a>
+  
+    <nav class="md-nav" aria-label="17. ファイアウォール越しにAPIを投げ渡す">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    18. 運用チームの修復
+  </a>
+  
+    <nav class="md-nav" aria-label="18. 運用チームの修復">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    ▼ パターンの概要
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    ▼ 問題点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    ▼ 解決策
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    19. 最後にもう一言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sreing">アンチパターン@SREing<a class="headerlink" href="#sreing" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-dropbox">01. アンチパターン集 (Dropbox)<a class="headerlink" href="#01-dropbox" title="Permanent link">&para;</a></h2>
+<h3 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4873119618">https://www.amazon.co.jp/dp/4873119618</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="1">1. サイトリライアビリティオペレーション<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ パターンの概要<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>今までのシステム運用 (例：NOC) をSREingと言い換えるだけの方法のこと。</p>
+<h4 id="_4">▼ 問題点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>SREerの作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。</li>
+<li>
+<p>NOCのような場所は、作業に集中できる環境ではない。</p>
+</li>
+<li>
+<blockquote>
+<ul>
+<li><a href="https://k-tai.watch.impress.co.jp/docs/news/1077992.html">https://k-tai.watch.impress.co.jp/docs/news/1077992.html</a></li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>ヒーローパターンはアンチパターン。</p>
+</li>
+<li>ヒーローパターンでは作業が属人化するため、チームが育たず、またドキュンメントが残らずに本人がいなくなってしまうことがある。</li>
+<li>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c">https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><img alt="noc_ntt-docomo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpeg" /></p>
+<h4 id="_5">▼ 解決策<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>作業時間の最適化</li>
+<li>SREerは、勤務時間の半分以上を、システム運用ではなく開発に割り当てる。</li>
+<li>作業場所の最適化</li>
+<li>NOCのように、24時間365日、システムのすぐそばでオンコール担当者がこれの面倒を見るのではなく、リモートでどこからでもすぐに対応可能にする。</li>
+<li>オンコール担当者がメトリクスの時系列データの共有リンクをインシデントに関心がある人に共有すれば、共通の視点でインシデントを見ることができる。</li>
+</ul>
+<p><br></p>
+<h3 id="2">2. 画面を見つめる人間<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ パターンの概要<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>自動検出されたエラーイベントからアラートを手動で作成すること。</li>
+<li>作成した全てのアラートを通知し、手動でインシデントか否かを判断してしまうこと。</li>
+</ul>
+<h4 id="_7">▼ 問題点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>インシデントの解決作業のせいで、それ以外の業務に集中できない。</p>
+<h4 id="_8">▼ 解決策<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>アラート通知前の自動解決</li>
+<li>エラーイベントのアラートが作成された時、すぐにオンコール担当者に通知するのでなく、システムに自動的に解決させるようにする。<ul>
+<li>KubernetesのlivenessProbe機能やNode停止時のPodの移動は、この自動的解決の<code>1</code>個である。</li>
+</ul>
+</li>
+<li>通知後の自動タスク化</li>
+<li>解決できなかったエラーイベントをインシデントか否か判断してタスク化する作業も自動化する。</li>
+</ul>
+<p><br></p>
+<h3 id="3">3. 群衆によるインシデント対応<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ パターンの概要<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>インシデントの担当者を無秩序に配置してしまうこと。</p>
+<h4 id="_10">▼ 問題点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li>様々な仮説が入り混じり、むしろ解決が長引く。</li>
+<li>インシデントの解決作業のせいで、それ以外の業務に集中できない。</li>
+</ul>
+<h4 id="_11">▼ 解決策<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li>インシデントが発生した時に、無秩序的ではなく、組織的に担当者を配置する。</li>
+<li>インシデントコマンドシステムを採用し、インシデントの対応の組織化する。</li>
+</ul>
+<p><br></p>
+<h3 id="4">4. 根本原因 = ヒューマンエラー<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ パターンの概要<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>ヒューマンエラーが、インシデントの根本原因 (ただ<code>1</code>個の原因) であると見なしてしまうこと。</p>
+<h4 id="_13">▼ 問題点<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>ヒューマンエラーが根本原因だったとしても、人間には様々な状況が背景にあり、不正確な原因しか突き止められない。</p>
+<h4 id="_14">▼ 解決策<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>インシデントの発生時には解決に注力する</li>
+<li>インシデントが発生した時に、ヒューマンエラーを原因と見なし、原因になった犯人を突き止めようとしない。</li>
+<li>犯人を突き止めて、インシデントを解決した気にならないようにする。</li>
+<li>あくまで、インシデントそのものを解決することだけに専念する。</li>
+<li>事後評価ではインシデントの原因が<code>1</code>個だと考えない</li>
+<li>インシデントの事後評価では、ヒューマンエラー、ソフトウェア、ハードウェア、といった特定の何か<code>1</code>個が根本の原因と判断しない。</li>
+<li>あらゆる側面から、複雑に絡み合う複数の原因や、寄与要因 (潜在的な原因) を突き止める。</li>
+</ul>
+<p><br></p>
+<h3 id="5">5. ページャーの引き渡し<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ パターンの概要<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>開発に携わっていない人にオンコールを任せてしまうこと。</p>
+<p>(ページャー：ポケベル)</p>
+<h4 id="_16">▼ 問題点<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<ul>
+<li>自分自身の開発したシステムが本番環境でどのように振る舞うのか、といったことを学ぶ機会を奪う。</li>
+<li>アプリ領域に関係するインシデントを迅速に解決できなくなる。</li>
+</ul>
+<h4 id="_17">▼ 解決策<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li>オンコールは全てのエンジニアの仕事であり、アプリ開発チームはSREerにオンコールを全て丸投げしないようにする。</li>
+<li>アプリ開発者もオンコールの担当になるようなルール (例：交代制、二次オンコール担当) を設ける。</li>
+</ul>
+<p><br></p>
+<h3 id="6">6. マジックスモークを消すのは私だ！<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ パターンの概要<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>インシデントの発生を予防するための様々な行動よりも、インシデントの解決を最も高く評価すること。</p>
+<h4 id="_19">▼ 問題点<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<ul>
+<li>現場のエンジニアが、忍耐的な作業にモチベーションを感じてしまう</li>
+<li>インシデントの担当者は適切に休めず、幸福度が下がる。</li>
+</ul>
+<h4 id="_20">▼ 解決策<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<ul>
+<li>インシデントを予防できる仕組みを作る。</li>
+<li>インシデントの解決よりも、予防する仕組みを作ることをより高く評価する文化を普及させる。</li>
+</ul>
+<p><br></p>
+<h3 id="7">7. アラートリライアビリティエンジニアリング<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<h4 id="_21">▼ パターンの概要<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>あらゆるものをエラーベントと見なし、アラートを通知してしまうこと。</p>
+<h4 id="_22">▼ 問題点<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>アラートが通知されるたびに、それ以外の作業が中断されてしまう。</p>
+<h4 id="_23">▼ 解決策<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>ユーザーの満足度に影響を与える問題 (例：UX、単一障害点の異常、レプリカ数の過剰な減少) が発生した場合は、アラートを通知する。</p>
+<p><br></p>
+<h3 id="8">8. ペットを散歩させてくれるドッグウォーカーを雇う<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ パターンの概要<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。</p>
+<p><img alt="infrastructure_mutable_immutable" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpeg" /></p>
+<blockquote>
+<ul>
+<li><a href="https://xtech.nikkei.com/it/atcl/ncd/14/082500015/">https://xtech.nikkei.com/it/atcl/ncd/14/082500015/</a></li>
+</ul>
+</blockquote>
+<h4 id="_25">▼ 問題点<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<ul>
+<li>プロビジョニングツールの使い方が間違っている。</li>
+<li>状態の管理が煩雑になるため、ミュータブルなインフラはやめよう (個人的見解)</li>
+</ul>
+<h4 id="_26">▼ 解決策<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>インフラのプロビジョニングツールは、イミュータブルなインフラを構築するために使用する。</p>
+<p><br></p>
+<h3 id="9">9. スピードバンプエンジニアリング<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
+<h4 id="_27">▼ パターンの概要<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>信頼性を高めようと慎重になり、機能変更からリリースまでの間に、関門になるステップを設けてしまうこと。</p>
+<h4 id="_28">▼ 問題点<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<ul>
+<li>関門となるステップ (例：変更管理委員会) が、必ずしも、機能変更のリリースに良い付加効果をもたらすわけでもなく、またユーザーからの評価を提供してくれるわけでもない。</li>
+<li>不要なステップがあると、変更、リリース、ユーザー評価のサイクルの速度が落ちるため、システムの信頼性が高まりにくくなる。</li>
+</ul>
+<h4 id="_29">▼ 解決策<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<ul>
+<li>最小限の関門ステップ</li>
+<li>関門ステップを設けるとしても、特定の状況下 (例：機能ではなくプロダクト全体のリリース) で、プロダクトの内容には無関係なステップ (例：キャパシティプランニングなど) のみにする。</li>
+<li>エラーバジェットの導入</li>
+<li>エラーバジェットを導入し、優先順位決めや承認のスピードを上げる。</li>
+</ul>
+<p><br></p>
+<h3 id="10">10. 設計の難所<a class="headerlink" href="#10" title="Permanent link">&para;</a></h3>
+<h4 id="_30">▼ パターンの概要<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>システム設計時のSREerのコンサルがボトルネックになってしまう。</p>
+<h4 id="_31">▼ 問題点<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>SREerの役割の<code>1</code>個として、システムの設計段階でレビュー (例：派遣型、窓口型) を行う必要がある。</p>
+<p>一方で、システムの数が多くなると、コンサルのステップがボトルネックになり、リリースの頻度が低くなる。</p>
+<blockquote>
+<ul>
+<li><a href="https://x-tech5.co.jp/2022/02/21/204/">https://x-tech5.co.jp/2022/02/21/204/</a></li>
+</ul>
+</blockquote>
+<h4 id="_32">▼ 解決策<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>コンサルをフレームワーク化 (例：チェックリスト) したり、ツールで自動的にコンサル可能にする。</p>
+<p><br></p>
+<h3 id="11">11. 棒が多すぎてニンジンが不足<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+<h4 id="_33">▼ パターンの概要<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>SREingの実現に必要なツールをアプリ開発チームに導入したい時に、まずは提案するのではなく、使用を強制してしまうこと。</p>
+<h4 id="_34">▼ 問題点<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<ul>
+<li>SREingはプッシュ型ではなくプル型であり、アプリ開発チームから課題を聞き出す必要がある。</li>
+<li>ツールをプッシュ型で強制的に導入した結果、エンジニアの開発がより非効率になることがある。</li>
+</ul>
+<h4 id="_35">▼ 解決策<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>アプリ開発者チームから、開発の効率性に関する課題を聞き出し、それに合ったツールを提案する。</p>
+<p><br></p>
+<h3 id="12">12. プロダクションの延期<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<h4 id="_36">▼ パターンの概要<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>リリース前にエラーイベントの原因になりそうなことを未然に全て解決しようとしてしまうこと。</p>
+<h4 id="_37">▼ 問題点<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>機能変更からリリースまでに必要以上に時間がかかると、ユーザーからの評価が遅くなる。</p>
+<h4 id="_38">▼ 解決策<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<ul>
+<li>テストの自動化</li>
+<li>あらゆるエラーイベントを予防するために、機能変更のリリース前にテストを実施することは重要であるが、リリースまでに必要以上に時間がかからないようにする。そのために、テストを自動化して時間を短縮する。</li>
+<li>ユーザーからの評価を素早く得る</li>
+<li>ユーザーからの評価を素早く得られるTesting in productionを含むデプロイ手法 (例：ダークローンチ、カナリアリリース) を採用する。</li>
+<li>ロールフォワード、ロールバックの自動化</li>
+<li>リリース前の予防を完璧にしない代わりとして、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動的に実行できるようにしておく。<ul>
+<li>Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。</li>
+<li>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25">https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25</a></li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h3 id="13-mttf-mttr">13. リカバリー時間ではなく障害回避の最適化 (<code>MTTF &gt; MTTR</code>)<a class="headerlink" href="#13-mttf-mttr" title="Permanent link">&para;</a></h3>
+<h4 id="_39">▼ パターンの概要<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<p>MTTFを重要視し、MTTRを軽視してしまうこと。</p>
+<p><img alt="mtxx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png" /></p>
+<h4 id="_40">▼ 問題点<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>障害は発生するものであり、MTTFを最適化することは現実的ではない。</p>
+<h4 id="_41">▼ 解決策<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<ul>
+<li>障害の範囲の縮小</li>
+<li>障害範囲 (あるいはblast-radius) が最小限になるようにする。</li>
+<li>復旧力の向上</li>
+<li>人間による修復は時間がかかるため、人間ができるだけ介入せずに修復可能にする。</li>
+<li>復旧力の維持</li>
+<li>Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を定期的に実行することにより、システムが劣化しないようにし、復旧力を維持する。</li>
+</ul>
+<p><br></p>
+<h3 id="14">14. 依存性地獄<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<h4 id="_42">▼ パターンの概要<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>システムが新旧様々なコンポーネントからなる場合、コンポーネント間の依存関係が闇になってしまっていること。</p>
+<h4 id="_43">▼ 問題点<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>新旧コンポーネント間の依存関係が闇になっており、とある機能変更の影響範囲を人間が予測することは不可能である。</p>
+<h4 id="_44">▼ 解決策<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p>機能変更によって、コンポーネント間にどのような依存関係が新しく追加されるかを自動的に検出し、記録可能にする。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/ortelius/ortelius">https://github.com/ortelius/ortelius</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="15">15. 小回りの利かないガバナンス<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
+<h4 id="_45">▼ パターンの概要<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>組織単位ではなく、プロジェクト単位で承認/予算策定/成果が設計されてしまうこと。</p>
+<h4 id="_46">▼ 問題点<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>プロジェクト単位で承認/予算割り当て/成果が求められると、種々の問題 (例：予算割り当てに時間がかる、不要な機能がそのまま、開閉が繰り返されるプロジェクト) が起こり、アジャイル開発を実現できない。</p>
+<h4 id="_47">▼ 解決策<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>組織単位で承認/予算割り当て/成果を設計する。</p>
+<p>また、各組織は、目標 (例：方針管理、Catchball、OKR) までのプロセスに対して、自由に承認/予算策定/成果を設計する。</p>
+<p><br></p>
+<h3 id="16-slo">16. 不適切な「おやおや」のSLO<a class="headerlink" href="#16-slo" title="Permanent link">&para;</a></h3>
+<h4 id="_48">▼ パターンの概要<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>ビジネスとは無関係にSLOを決めてしまっていること。</p>
+<p>また、一度決まったSLOが更新されないままになってしまうこと。</p>
+<h4 id="_49">▼ 問題点<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
+<p>ユーザーニーズに基づいたSLOではないため、いずれシステムの不備 (例：スループット不足、過負荷、ハードウェアキャパシティ不足) が浮き彫りになる。</p>
+<p>また、SLOが最新の状況に則していないと、ユーザーからの評価を下げることになる。</p>
+<h4 id="_50">▼ 解決策<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<p>ビジネス側と話し合い、ユーザーニーズ、ビジネスの収益、に基づいたSLOを設定する。</p>
+<p>ビジネスとSLOの双方向で、定期的に更新する (例：SLOに合わせて営業時間を更新する) 。</p>
+<p>またSLOは高過ぎれば良いということもなく、例えば<code>99.5</code>%と<code>99.9</code>%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて<code>99.99</code>%にする必要はない。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html">https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="17-api">17. ファイアウォール越しにAPIを投げ渡す<a class="headerlink" href="#17-api" title="Permanent link">&para;</a></h3>
+<h4 id="_51">▼ パターンの概要<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
+<p>パートナーに機能 (例：API) を提供するようなビジネスをしている場合、パートナーのSLOに無関心で、自社のSLOのみを守ろうとしてしまうこと。</p>
+<h4 id="_52">▼ 問題点<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
+<p>自社がパートナーの問題に無関心になることによって、チーム間の無関心で起こる問題と同じようなことが起こる。</p>
+<h4 id="_53">▼ 解決策<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
+<ul>
+<li>共通認識からなるSLIとSLOの設定</li>
+<li>自社とパートナーの間でSLIを共有し、自社とパートナーのシステムを合わせたSLOを設定する。</li>
+<li>インシデントを共通管理</li>
+<li>自社とパートナーの間でインシデントを共通管理する。インシデントを協働的に解決できるように、対処の権限をお互いに与える。</li>
+</ul>
+<p><br></p>
+<h3 id="18">18. 運用チームの修復<a class="headerlink" href="#18" title="Permanent link">&para;</a></h3>
+<h4 id="_54">▼ パターンの概要<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
+<p>運用手法のみを改善すればSREingを実践できる、と考えてしまうこと。</p>
+<h4 id="_55">▼ 問題点<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
+<p>SREingの実践のために、運用のみでなく、ビジネス (例：優先順位付け、計画と実行、意思決定) 、システム (例：設計、構築、トイル、ヒューマンエラー) 、チーム (コミュニケーション) も改善する必要がある。</p>
+<p>SREingの最終目標はシステムの信頼性を高めることであり、これらはその手段である。</p>
+<h4 id="_56">▼ 解決策<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
+<p>上層部から理解が得られず、SREingを十分に実践できなくとも、少なくともシステムとチームは改善できる。</p>
+<p><br></p>
+<h3 id="19">19. 最後にもう一言<a class="headerlink" href="#19" title="Permanent link">&para;</a></h3>
+<ul>
+<li>SREingのアンチパターンは、変化し続ける。</li>
+<li>筆者が集めたアンチパターンは、全体のほんの一部分でしかない。</li>
+<li>SREingの失敗事例を、自社内外問わず、共有していく必要がある。</li>
+<li>失敗事例があれば、Twitterアカウント<code>@BlakeBisset</code>宛に、 <code>#SREantipatterns</code>をつけて共有してほしい。</li>
+</ul>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

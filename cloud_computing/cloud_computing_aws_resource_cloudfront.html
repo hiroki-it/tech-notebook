@@ -1,0 +1,4257 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CloudFront＠AWSリソースの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudfront.html">
+      
+      
+        <link rel="prev" href="cloud_computing_aws_resource_cloudformation.html">
+      
+      
+        <link rel="next" href="cloud_computing_aws_resource_cloudtrail.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】CloudFront＠AWSリソース - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloudfrontaws" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】CloudFront＠AWSリソース
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_13">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            ⛅️ クラウド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3_2" id="__nav_13_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWSリソース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWSリソース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アカウント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ API Gateway
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AutoScaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_backup.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certificate Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFormation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CloudFront
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_resource_cloudfront.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CloudFront
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cloudfront" class="md-nav__link">
+    01. CloudFrontとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributions" class="md-nav__link">
+    Distributions
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributions_1" class="md-nav__link">
+    ▼ Distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    ▼ General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origin-and-origin-groups" class="md-nav__link">
+    ▼ Origin and Origin Groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior" class="md-nav__link">
+    ▼ Behavior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ オリジンに対するリクエストの構造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudfronthttps" class="md-nav__link">
+    ▼ CloudFrontとオリジン間のHTTPSプロトコル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reports-analytics" class="md-nav__link">
+    Reports &amp; analytics
+  </a>
+  
+    <nav class="md-nav" aria-label="Reports & analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-statistics" class="md-nav__link">
+    ▼ Cache statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popular-objects" class="md-nav__link">
+    ▼ Popular objects
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. キャッシュ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. キャッシュ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    オリジンリクエストの可否、キャッシュ作成の有無
+  </a>
+  
+    <nav class="md-nav" aria-label="オリジンリクエストの可否、キャッシュ作成の有無">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ヘッダー値に基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    ▼ Cookieに基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ クエリストリングに基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_1" class="md-nav__link">
+    ▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ヘッダーキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘッダーキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    Cookieキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookieキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    クエリストリングキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="クエリストリングキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ クエリストリングの順番を固定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ クエリストリングの大文字小文字表記を固定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    ▼ 署名付きURLと同じクエリストリングを使用しない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalidation" class="md-nav__link">
+    Invalidation (キャッシュの削除)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. エッジロケーションとエッジサーバー
+  </a>
+  
+    <nav class="md-nav" aria-label="04. エッジロケーションとエッジサーバー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-of-presence" class="md-nav__link">
+    Point Of Presence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    エッジロケーションにおける全エッジサーバーのIPアドレス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_1" class="md-nav__link">
+    エッジロケーションの使用中サーバーのIPアドレス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. カスタムエラーページ
+  </a>
+  
+    <nav class="md-nav" aria-label="05. カスタムエラーページ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    カスタムエラーページとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    設定方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudTrail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code兄弟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Tower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DirectConnect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ec2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_efs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ︎ElastiCache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EventBridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_firelens.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FireLens
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Accelerator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_glue.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_iam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kinesis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kms.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_lambda.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Lambda
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_lb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_rds.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_redshift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_route53.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_s3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ses.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sqs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_vpc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_waf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ GCP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cloudfront" class="md-nav__link">
+    01. CloudFrontとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributions" class="md-nav__link">
+    Distributions
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributions_1" class="md-nav__link">
+    ▼ Distributions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    ▼ General
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origin-and-origin-groups" class="md-nav__link">
+    ▼ Origin and Origin Groups
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#behavior" class="md-nav__link">
+    ▼ Behavior
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ オリジンに対するリクエストの構造
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudfronthttps" class="md-nav__link">
+    ▼ CloudFrontとオリジン間のHTTPSプロトコル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reports-analytics" class="md-nav__link">
+    Reports &amp; analytics
+  </a>
+  
+    <nav class="md-nav" aria-label="Reports & analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-statistics" class="md-nav__link">
+    ▼ Cache statistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#popular-objects" class="md-nav__link">
+    ▼ Popular objects
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. キャッシュ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. キャッシュ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    オリジンリクエストの可否、キャッシュ作成の有無
+  </a>
+  
+    <nav class="md-nav" aria-label="オリジンリクエストの可否、キャッシュ作成の有無">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ヘッダー値に基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie" class="md-nav__link">
+    ▼ Cookieに基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ クエリストリングに基づくキャッシュ作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_1" class="md-nav__link">
+    ▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ヘッダーキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="ヘッダーキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cookie_2" class="md-nav__link">
+    Cookieキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="Cookieキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    クエリストリングキャッシュのヒット率向上
+  </a>
+  
+    <nav class="md-nav" aria-label="クエリストリングキャッシュのヒット率向上">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ヒット率の向上について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ クエリストリングの順番を固定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ クエリストリングの大文字小文字表記を固定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    ▼ 署名付きURLと同じクエリストリングを使用しない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalidation" class="md-nav__link">
+    Invalidation (キャッシュの削除)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. エッジロケーションとエッジサーバー
+  </a>
+  
+    <nav class="md-nav" aria-label="04. エッジロケーションとエッジサーバー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-of-presence" class="md-nav__link">
+    Point Of Presence
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    エッジロケーションにおける全エッジサーバーのIPアドレス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_1" class="md-nav__link">
+    エッジロケーションの使用中サーバーのIPアドレス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. カスタムエラーページ
+  </a>
+  
+    <nav class="md-nav" aria-label="05. カスタムエラーページ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    カスタムエラーページとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    設定方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cloudfrontaws">CloudFront＠AWSリソース<a class="headerlink" href="#cloudfrontaws" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-cloudfront">01. CloudFrontとは<a class="headerlink" href="#01-cloudfront" title="Permanent link">&para;</a></h2>
+<p>CDN (グローバルなキャッシュサーバー) かつクラウドリバースプロキシサーバーとして働く。</p>
+<p>リバースプロキシでもあるため、CloudFrontの後段にアプリケーションをおけば、アプリケーションをそのまま公開できる。</p>
+<p>VPCの外側 (パブリックネットワーク) に配置されている。</p>
+<p>オリジンサーバー (コンテンツ提供元) をS3とした場合、動的コンテンツに対するリクエストをEC2に振り分ける。</p>
+<p>また、静的コンテンツに対するリクエストをキャッシュし、その上でS3へ振り分ける。</p>
+<p>次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。</p>
+<p><img alt="AWSのクラウドデザイン一例" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudFrontによるリクエストの振り分け.png" /></p>
+<p><br></p>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="distributions">Distributions<a class="headerlink" href="#distributions" title="Permanent link">&para;</a></h3>
+<h4 id="distributions_1">▼ Distributions<a class="headerlink" href="#distributions_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Origin and Origin Groups</td>
+<td>コンテンツを提供するAWSリソースを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>Behavior</td>
+<td>オリジンにリクエストが行われた時のCloudFrontの挙動を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>ErrorPage</td>
+<td>指定したオリジンから、指定したファイルを含むレスポンスを返信する。</td>
+<td></td>
+</tr>
+<tr>
+<td>Restriction</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Invalidation</td>
+<td>CloudFrontに保存されているキャッシュを削除できる。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/">https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/</a></li>
+</ul>
+</blockquote>
+<h4 id="general">▼ General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price Class</td>
+<td>使用するエッジロケーションを設定する。</td>
+<td>Asiaが含まれているものを選択。</td>
+</tr>
+<tr>
+<td>WAF</td>
+<td>CloudFrontに紐付けるWAFを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>CloudFrontのデフォルトドメイン名 (<code>*****.cloudfront.net.</code>) に紐付けるDNSレコード名を設定する。</td>
+<td>・Route53からルーティングする場合は必須。<br>・複数のレコード名を設定できる。</td>
+</tr>
+<tr>
+<td>SSL Certificate</td>
+<td>HTTPSプロトコルでオリジンにルーティングする場合に設定する。</td>
+<td>上述のCNAMEを設定した場合、SSL証明書が別途必要になる。また、Certificate Managerを使用する場合、この証明書は『バージニア北部』で申請する必要がある。</td>
+</tr>
+<tr>
+<td>Security Policy</td>
+<td>リクエストの送信者が使用するSSL/TLSプロトコルや暗号化方式のバージョンに合わせて、CloudFrontが受信できるこれらのバージョンを設定する。</td>
+<td>・リクエストの送信者には、ブラウザ、APIにリクエストを送信する外部サービス、ルーティング元のAWSリソース、などを含む。<br>・- <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/secure-connections-supported-viewer-protocols-ciphers.html</a></td>
+</tr>
+<tr>
+<td>Default Root Object</td>
+<td>オリジンのドキュメントルートを設定する。</td>
+<td>・何も設定しない場合、ドキュメントルートは指定されず、Behaviorで明示的にルーティングする必要がある。<br>・index.htmlを設定すると、『<code>/</code>』でリクエストした時に、オリジンのルートディレクトリ配下にある<code>index,html</code>ファイルがドキュメントルートになる。</td>
+</tr>
+<tr>
+<td>Standard Logging</td>
+<td>CloudFrontのアクセスログをS3に作成するか否かを設定する。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="origin-and-origin-groups">▼ Origin and Origin Groups<a class="headerlink" href="#origin-and-origin-groups" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origin Domain Name</td>
+<td>CloudFrontをリバースプロキシサーバーとして、AWSリソースのエンドポイントやDNSにルーティングする。</td>
+<td>・例えば、S3のエンドポイント、ALBのDNS名を設定する。<br>・別アカウントのAWSリソースのDNS名であっても良い。</td>
+</tr>
+<tr>
+<td>Origin Path</td>
+<td>オリジンのルートディレクトリを設定する。</td>
+<td>・何も設定しないと、デフォルトは『<code>/</code>』のなる。Behaviorでは、『<code>/</code>』の後にパスが追加される。<br>・『<code>/var/www/foo</code>』を設定すると、Behaviorで設定したパスが『<code>/var/www/foo/foo</code>』のように追加される。</td>
+</tr>
+<tr>
+<td>Origin Access Identity</td>
+<td>リクエストのルーティング先となるAWSリソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。</td>
+<td>CloudFrontがS3に対して読み出しを行うために必要。</td>
+</tr>
+<tr>
+<td>Origin Protocol Policy</td>
+<td>リクエストのルーティング先となるAWSリソースに対して、HTTPとHTTPSのいずれのプロトコルでルーティングするかを設定する。</td>
+<td>・ALBで必要。ALBのリスナーのプロトコルに合わせて設定する。<br>・<code>HTTP Only</code>：HTTPプロトコルでルーティング<br>・<code>HTTPS Only</code>：HTTPSプロトコルでルーティング<br>・<code>Match Viewer</code>：両方でルーティング</td>
+</tr>
+<tr>
+<td>HTTPポート</td>
+<td>ルーティング時に指定するオリジンのHTTPのポート番号</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTPSポート</td>
+<td>ルーティング時に指定するオリジンのHTTPSのポート番号</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="behavior">▼ Behavior<a class="headerlink" href="#behavior" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precedence</td>
+<td>処理の優先順位。</td>
+<td>最初に作成したBehaviorが『<code>Default (*)</code>』となり、これは後から変更できないため、主要なBehaviorをまず最初に設定する。</td>
+</tr>
+<tr>
+<td>Path pattern</td>
+<td>Behaviorを行うパスを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>Origin and Origin Group</td>
+<td>Behaviorを行うオリジンを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>Viewer Protocol Policy</td>
+<td>HTTP/HTTPSのどちらを受信するか、またどのように変換してルーティングするかを設定</td>
+<td>・<code>HTTP and HTTPS</code>：両方受信し、そのままルーティング<br>・<code>Redirect HTTP to HTTPS</code>：両方受信し、HTTPSプロトコルでルーティング<br>・<code>HTTPS Only</code>：HTTPSのみ受信し、HTTPSプロトコルでルーティング</td>
+</tr>
+<tr>
+<td>Allowed HTTP Methods</td>
+<td>リクエストのHTTPメソッドのうち、オリジンへのルーティングを許可するものを設定</td>
+<td>・パスパターンが静的ファイルに対するリクエストの場合、GETのみ許可。<br>・パスパターンが動的ファイルに対するリクエストの場合、全てのメソッドを許可。</td>
+</tr>
+<tr>
+<td>Object Caching</td>
+<td>CloudFrontにコンテンツのキャッシュを保存しておく秒数を設定する。</td>
+<td>・Origin Cacheヘッダーを選択した場合、アプリケーションからのレスポンスヘッダーのCache-Controlの値が適用される。<br>・カスタマイズを選択した場合、ブラウザのTTLとは別に設定できる。</td>
+</tr>
+<tr>
+<td>TTL</td>
+<td>CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。</td>
+<td>・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダーの値の組み合わせによって決まる。</td>
+</tr>
+<tr>
+<td>Whitelist Header</td>
+<td>Headers を参考にせよ。</td>
+<td>・<code>Accept-*****</code>：アプリケーションにレスポンスして欲しいデータの種類 (データ型など) を指定。<br>・ <code>CloudFront-Is-*****-Viewer</code>：デバイスタイプのboolean値が格納されている。<br>- <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html#ExpirationDownloadDist</a></td>
+</tr>
+<tr>
+<td>Restrict Viewer Access</td>
+<td>リクエストの送信元を制限するか否かを設定できる。</td>
+<td>セキュリティグループで制御できるため、ここでは設定しなくて良い。</td>
+</tr>
+<tr>
+<td>Compress Objects Automatically</td>
+<td>レスポンス時に<code>.gzip</code>ファイルとして圧縮するか否かを設定</td>
+<td>・クライアントからのリクエストヘッダーのAccept-Encodingにgzipが設定されている場合、レスポンス時に、gzip形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_2">▼ オリジンに対するリクエストの構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>CloudFrontからオリジンに送信されるリクエストの構造例を以下に示す。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET /foo/</span>
+<span class="nn">---</span>
+<span class="c1"># リクエストされたドメイン名</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.example.com</span>
+<span class="nt">User-Agent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1</span>
+<span class="nt">Authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;Bearerトークン&gt;</span>
+<span class="nt">X-Amz-Cf-Id</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="nt">Via</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0 77c20654dd474081d033f27ad1b56e1e.cloudfront.net (CloudFront)</span>
+<span class="c1"># 各Cookieの値 (二回目のリクエスト時に設定される)</span>
+<span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;; _gid=&lt;GoogleAnalytics値&gt;</span>
+<span class="c1"># 送信元IPアドレス</span>
+<span class="c1"># ※プロキシ (ALBやCloudFrontなども含む) を経由している場合、それら全てのIPアドレスが順に設定される</span>
+<span class="nt">X-Forwarded-For</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;</span>
+<span class="nt">Accept-Language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja,en;q=0.9</span>
+<span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span>
+<span class="nt">Accept-Encoding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gzip, deflate, br</span>
+<span class="nt">pragma</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-cache</span>
+<span class="nt">cache-control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-cache</span>
+<span class="nt">upgrade-insecure-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">sec-fetch-site</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+<span class="nt">sec-fetch-mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigate</span>
+<span class="nt">sec-fetch-user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">?1</span>
+<span class="nt">sec-fetch-dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">document</span>
+<span class="c1"># デバイスタイプ</span>
+<span class="nt">CloudFront-Is-Mobile-Viewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">CloudFront-Is-Tablet-Viewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">CloudFront-Is-SmartTV-Viewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">CloudFront-Is-Desktop-Viewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="c1"># リクエストの送信元の国名</span>
+<span class="nt">CloudFront-Viewer-Country</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JP</span>
+<span class="c1"># リクエストのプロトコル</span>
+<span class="nt">CloudFront-Forwarded-Proto</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+</code></pre></div>
+<h4 id="cloudfronthttps">▼ CloudFrontとオリジン間のHTTPSプロトコル<a class="headerlink" href="#cloudfronthttps" title="Permanent link">&para;</a></h4>
+<p>CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。</p>
+<p>割り当てたとしても、以下の条件を満たさないとHTTPSプロトコルを使用することはできない。</p>
+<p>CLoudFrontからオリジンに<code>Host</code>ヘッダーをルーティングしない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。</p>
+<p>一方で、<code>Host</code>ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、<code>Host</code>ヘッダーの値と一致するドメイン名が含まれている必要がある。</p>
+<p><br></p>
+<h3 id="reports-analytics">Reports &amp; analytics<a class="headerlink" href="#reports-analytics" title="Permanent link">&para;</a></h3>
+<h4 id="cache-statistics">▼ Cache statistics<a class="headerlink" href="#cache-statistics" title="Permanent link">&para;</a></h4>
+<p>リクエストに関連する様々なデータを、日付別に集計したものを確認できる。</p>
+<h4 id="popular-objects">▼ Popular objects<a class="headerlink" href="#popular-objects" title="Permanent link">&para;</a></h4>
+<p>リクエストに関連する様々なデータを、オブジェクト別に集計したものを確認できる。</p>
+<p><br></p>
+<h2 id="03">03. キャッシュ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_3">オリジンリクエストの可否、キャッシュ作成の有無<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ オリジンリクエストの可否、キャッシュ作成の有無、の決まり方<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>オリジンにルーティングする必要があるリクエストを、各種パラメーターのAll (全許可) /一部許可/None (全拒否) で設定できる。</p>
+<p>また、キャッシュ作成の有無にも関係している。</p>
+<p>CloudFrontではリクエストがJSONとして扱われており、JSONの値が過去のリクエストに合致した時のみ、そのリクエストと過去のものが同一であると見なす仕組みになっている。</p>
+<p>キャッシュ判定時のパターンを減らし、ヒット率を向上させるために、全ての項目で『None (全拒否) 』を選択した方が良い。</p>
+<p>最終的に、対象のファイルがCloudFrontのキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『<code>X-Cache:</code>』が『<code>Hit from cloudfront</code>』または『<code>Miss from cloudfront</code>』のどちらで判断できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ ヘッダー値に基づくキャッシュ作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>リクエストヘッダーのうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。</p>
+<p>Cookieとクエリストリングと比べて、同じ設定でもキャッシュ作成の有無が異なることに注意する。</p>
+<table>
+<thead>
+<tr>
+<th>機能名</th>
+<th>オリジンリクエストの可否</th>
+<th>キャッシュ作成の有無</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全許可</td>
+<td>全てのヘッダーのルーティングを許可する。</td>
+<td>キャッシュを作成しない。</td>
+</tr>
+<tr>
+<td>一部ルーティング</td>
+<td>一部のヘッダーのルーティングを拒否し、ヘッダーの無いリクエストをルーティングする。</td>
+<td>指定したヘッダーのみをキャッシュキーとみなす。日付に関するヘッダー (例：Accept-Datetime) などの動的な値をキャッシュキーとしてしまうと。同一と見なすリクエストがほとんどなくなり、ヒットしなくなる。そのため、ヘッダーをオリジンにルーティングしつつ、動的になりやすい値を持つヘッダーをキャッシュキーにしないようにする必要がある。ヒット率の向上のため、クエリストリングやCookieの静的な値をキャッシュキーに設定すると良い。</td>
+</tr>
+<tr>
+<td>全拒否</td>
+<td>全てのヘッダーのルーティングを拒否し、ヘッダーの無いリクエストをルーティングする。</td>
+<td>キャッシュを作成しない。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web</a></li>
+</ul>
+</blockquote>
+<h4 id="cookie">▼ Cookieに基づくキャッシュ作成<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
+<p>Cookie情報のキー名のうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。</p>
+<p>リクエストのヘッダーに含まれるCookie情報 (キー名/値) が変動していると、CloudFrontに保存されたキャッシュがヒットしない。</p>
+<p>CloudFrontはキー名/値を保持するため、変化しやすいキー名/値は、オリジンにルーティングしないように設定する。</p>
+<p>例えば、GoogleAnalyticsのキー名 (<code>_ga</code>) の値は、ブラウザによって異なるため、1ユーザーがブラウザを変えるたびに、異なるキャッシュが作成されることになる。</p>
+<p>そのため、ユーザーを一意に判定することが難しくなってしまう。</p>
+<p>GoogleAnalyticsのキーはブラウザからAjaxでGoogleに送信されるもので、オリジンにとっても基本的に不要である。</p>
+<p>セッションIDは<code>Cookie</code>ヘッダーに設定されているため、フォーム送信に関わるパスパターンでは、セッションIDのキー名を許可する必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>機能名</th>
+<th>オリジンリクエストの可否</th>
+<th>キャッシュ作成の有無</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全許可</td>
+<td>全てのCookieのルーティングを許可する。</td>
+<td>全てのCookieをキャッシュキーとみなす。</td>
+</tr>
+<tr>
+<td>一部ルーティング</td>
+<td>一部のCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。</td>
+<td>指定したCookieのみキャッシュキーとみなす。Cookieはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。</td>
+</tr>
+<tr>
+<td>全拒否</td>
+<td>全てのCookieのルーティングを拒否し、Cookieの無いリクエストをルーティングする。</td>
+<td>キャッシュを作成しない。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ クエリストリングに基づくキャッシュ作成<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>クエリストリングのうち、オリジンへのルーティングを許可し、加えてキャッシュキーと見なすパラメーターを設定する。</p>
+<p>異なるクエリパラメーターのキャッシュを別々に作成するか否かを設定できる。</p>
+<table>
+<thead>
+<tr>
+<th>機能名</th>
+<th>オリジンリクエストの可否</th>
+<th>キャッシュ作成の有無</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全許可</td>
+<td>全てのクエリストリングのルーティングを許可する。</td>
+<td>全てのクエリストリングをキャッシュキーとみなす。</td>
+</tr>
+<tr>
+<td>一部拒否</td>
+<td>一部のクエリストリングのルーティングを拒否し、クエリストリングの無いリクエストをオリジンにルーティングする。</td>
+<td>指定したクエリストリングのみをキャッシュキーとみなす。</td>
+</tr>
+<tr>
+<td>全拒否</td>
+<td>全てのクエリストリングのルーティングを拒否し、クエリストリングの無いリクエストをルーティングする。</td>
+<td>キャッシュを作成しない。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html</a></li>
+</ul>
+</blockquote>
+<h4 id="cookie_1">▼ Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しない場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
+<p>上記の設定では、Cookieやクエリストリングをオリジンにルーティングしつつ、キャッシュを作成しないようにできない。</p>
+<p>そこで、キャッシュの最大最小デフォルトの有効期間を<code>0</code>秒とすることにより、結果的にキャッシュを動作しないようにさせ、キャッシュが作成されていないかのように見せかけられる。</p>
+<p><br></p>
+<h3 id="_7">ヘッダーキャッシュのヒット率向上<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ ヒット率の向上について<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cookie_2">Cookieキャッシュのヒット率向上<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ ヒット率の向上について<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_10">クエリストリングキャッシュのヒット率向上<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ ヒット率の向上について<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>CloudFrontは、クエリストリングによってオリジンからレスポンスされるファイルのキャッシュを作成し、次回、同じクエリストリングであった場合、キャッシュをレスポンスとして返信する。</p>
+<p>キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching</a></li>
+</ul>
+</blockquote>
+<h4 id="_12">▼ クエリストリングの順番を固定する<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>リクエスト時のクエリストリングの順番が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
+<p>そのため、クエリストリングの順番を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?fooId=1&amp;barId=2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?barId=2&amp;fooId=1</span>
+</code></pre></div>
+<h4 id="_13">▼ クエリストリングの大文字小文字表記を固定する<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>リクエスト時のクエリストリングの大文字小文字表記が異なる場合、CloudFrontはそれぞれを異なるURLに対するリクエストと見なし、別々にキャッシュを作成する。</p>
+<p>そのため、クエリストリングの大文字小文字表記を固定するようにURLを設計すれば、キャッシュのヒット率を向上させられる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?fooId=1&amp;barId=2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com?FooId=1&amp;BarId=2</span>
+</code></pre></div>
+<h4 id="url">▼ 署名付きURLと同じクエリストリングを使用しない<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
+<p>S3には、署名付きURLを発行する機能がある。</p>
+<p>CloudFrontの仕様では、署名付きURLに含まれる<code>Expires</code>、<code>Key-Pair-Id</code>、<code>Policy</code>、<code>Signature</code>といったクエリストリングを削除したうえで、オリジンにリクエストをルーティングする。</p>
+<p>これらのパラメーターは、キャッシュヒットの判定要素として使用できない。</p>
+<p>そのため、URLの設計時にこれらを使用しないようにする。</p>
+<p><br></p>
+<h3 id="invalidation">Invalidation (キャッシュの削除)<a class="headerlink" href="#invalidation" title="Permanent link">&para;</a></h3>
+<p>TTL秒によるキャッシュの自動削除を待たずに、手動でキャッシュを削除できる。</p>
+<p>全てのファイルのキャッシュを削除したい場合は『<code>/*</code>』、特定のファイルのキャッシュを削除したい場合は『<code>/&lt;ファイルへのパス&gt;</code>』、を設定する。</p>
+<p>CloudFrontに関するエラーページが表示された場合、不具合を修正した後でもキャッシュが残っていると、エラーページが表示されてしまうため、作業後には必ずキャッシュを削除する。</p>
+<p><br></p>
+<h2 id="04">04. エッジロケーションとエッジサーバー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="point-of-presence">Point Of Presence<a class="headerlink" href="#point-of-presence" title="Permanent link">&para;</a></h3>
+<p>CloudFrontは世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&amp;whats-new-cloudfront.sort-order=desc">https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&amp;whats-new-cloudfront.sort-order=desc</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ip">エッジロケーションにおける全エッジサーバーのIPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<p>CloudFrontには、エッジロケーションの数だけエッジサーバーがあり、各サーバーにIPアドレスが割り当てられている。</p>
+<p>以下のコマンドで、全てのエッジサーバーのIPアドレスを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://ip-ranges.amazonaws.com/ip-ranges.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s2">&quot;.prefixes[]| select(.service==&quot;</span>CLOUDFRONT<span class="s2">&quot;) | .ip_prefix&quot;</span>
+</code></pre></div>
+<p>もしくは、以下のリンクを直接的に参考し、『<code>"service": "CLOUDFRONT"</code>』となっている部分を探す。</p>
+<blockquote>
+<ul>
+<li><a href="https://ip-ranges.amazonaws.com/ip-ranges.json">https://ip-ranges.amazonaws.com/ip-ranges.json</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ip_1">エッジロケーションの使用中サーバーのIPアドレス<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h3>
+<p>CloudFrontには、エッジロケーションがあり、各ロケーションにサーバーがある。</p>
+<p>以下のコマンドで、エッジロケーションにある使用中サーバーのIPアドレスを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nslookup<span class="w"> </span>&lt;割り当てられた文字列&gt;.cloudfront.net
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. カスタムエラーページ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_14">カスタムエラーページとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>オリジンに該当のファイルが存在しない場合、オリジンはCloudFrontに以下の<code>403</code>ステータスを含むレスポンスを返信する。</p>
+<p>カスタムエラーページを設定しない場合、CloudFrontはこの<code>403</code>ステータスをそのままレスポンスしてしまう。</p>
+<p>そのため、オリジンに配置したカスタムエラーページを<code>404</code>ステータスでレスポンスするように設定する。</p>
+<div class="highlight"><pre><span></span><code>This XML file does not appear to have any style information associated with it.
+The document tree is shown below.
+<span class="p">&lt;</span><span class="nt">Error</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span>AccessDenied<span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">Message</span><span class="p">&gt;</span>Access Denied<span class="p">&lt;/</span><span class="nt">Message</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">RequestId</span><span class="p">&gt;</span>*****<span class="p">&lt;/</span><span class="nt">RequestId</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">HostId</span><span class="p">&gt;</span>*****<span class="p">&lt;/</span><span class="nt">HostId</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">Error</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_15">設定方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>オリジンからカスタムエラーページをレスポンスするパスパターンを定義する。</p>
+<p>Lamnda@Edgeを使用したCloudFrontの場合は、Lambda@Edgeを経由して、カスタムエラーページをレスポンスする必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-11</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

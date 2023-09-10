@@ -1,0 +1,5962 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_method_data.html">
+      
+      
+        <link rel="prev" href="language_php_class_based.html">
+      
+      
+        <link rel="next" href="language_php_class_based_data_structure.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】メソッド/データ＠PHP - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#php" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】メソッド/データ＠PHP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_3" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_3" id="__nav_8_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ クラスベース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ クラスベース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_class_based.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラス
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    メソッド/データ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_php_class_based_method_data.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    メソッド/データ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. メソッド/データ (プロパティ)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. メソッド/データ (プロパティ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ メソッドとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データ (プロパティ)
+  </a>
+  
+    <nav class="md-nav" aria-label="データ (プロパティ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ データ (プロパティ) とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. メソッドとデータのカプセル化
+  </a>
+  
+    <nav class="md-nav" aria-label="02. メソッドとデータのカプセル化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public" class="md-nav__link">
+    public
+  </a>
+  
+    <nav class="md-nav" aria-label="public">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public_1" class="md-nav__link">
+    ▼ publicとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protected" class="md-nav__link">
+    protected
+  </a>
+  
+    <nav class="md-nav" aria-label="protected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private" class="md-nav__link">
+    private
+  </a>
+  
+    <nav class="md-nav" aria-label="private">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    ▼ Encapsulation (カプセル化)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    static
+  </a>
+  
+    <nav class="md-nav" aria-label="static">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static_1" class="md-nav__link">
+    ▼ staticとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self" class="md-nav__link">
+    ▼ self::
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static_2" class="md-nav__link">
+    ▼ static::
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    まず読むべき記事
+  </a>
+  
+    <nav class="md-nav" aria-label="まず読むべき記事">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ゲッターとセッターをメソッド名の接頭辞とすることは悪
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ セッターによる依存性注入は悪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    値を取得するアクセサメソッドの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="値を取得するアクセサメソッドの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getter" class="md-nav__link">
+    ▼ Getter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    値を設定するアクセサメソッドの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="値を設定するアクセサメソッドの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setter" class="md-nav__link">
+    ▼ Setter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__construct" class="md-nav__link">
+    ▼ マジックメソッドの__constructメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 『ミュータブル』と『イミュータブル』を実現できる理由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getter_1" class="md-nav__link">
+    マジックメソッド (Getter系)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (Getter系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__get" class="md-nav__link">
+    ▼ __getメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__call" class="md-nav__link">
+    ▼ __callメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__callstatic" class="md-nav__link">
+    ▼ __callStaticメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setter_1" class="md-nav__link">
+    マジックメソッド (Setter系)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (Setter系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__set" class="md-nav__link">
+    ▼ __setメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__construct_1" class="md-nav__link">
+    ▼ マジックメソッドの__constructメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 『ミュータブル』と『イミュータブル』を実現できる理由】
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    マジックメソッド (その他)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (その他)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__invoke" class="md-nav__link">
+    ▼ __invokeメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__clone" class="md-nav__link">
+    ▼ __cloneメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    インスタンスの作成メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="インスタンスの作成メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-self" class="md-nav__link">
+    ▼ staticメソッド と selfメソッドの違い
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    メソッドのコール
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッドのコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ メソッドチェーン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-call" class="md-nav__link">
+    ▼ Recursive call：再帰的プログラム
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    引数
+  </a>
+  
+    <nav class="md-nav" aria-label="引数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ オプション引数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    値を返却する前の途中終了
+  </a>
+  
+    <nav class="md-nav" aria-label="値を返却する前の途中終了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    ▼ return;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    ▼ exit;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    値の返却
+  </a>
+  
+    <nav class="md-nav" aria-label="値の返却">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return_1" class="md-nav__link">
+    ▼ return
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yield" class="md-nav__link">
+    ▼ yield
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher" class="md-nav__link">
+    Dispatcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Dispatcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher_1" class="md-nav__link">
+    ▼ Dispatcherとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ イベント名と関数の紐付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 計算処理の返却値を保持するオブジェクト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-closure" class="md-nav__link">
+    02-03. Closure (無名関数)
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. Closure (無名関数)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#closure" class="md-nav__link">
+    Closure (無名関数) の定義、変数格納後のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="Closure (無名関数) の定義、変数格納後のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    ▼ useメソッドのみに引数を渡す場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionuse" class="md-nav__link">
+    ▼ functionメソッドとuseメソッドに引数を渡す場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ データの値として、無名関数を格納しておく裏技
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure_1" class="md-nav__link">
+    Closure (無名関数) の定義と即コール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure_2" class="md-nav__link">
+    高階関数とClosure (無名関数) の組み合わせ
+  </a>
+  
+    <nav class="md-nav" aria-label="高階関数とClosure (無名関数) の組み合わせ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ 無名関数を使用しない場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 無名関数を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    高階関数を使いこなす！
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 定数
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 定数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    定数が役に立つ場面
+  </a>
+  
+    <nav class="md-nav" aria-label="定数が役に立つ場面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onoff" class="md-nav__link">
+    ▼ フラグON/OFF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 区分値
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ 数値計算、数値比較
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    ▼ URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    場面に応じた命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    マジカル定数
+  </a>
+  
+    <nav class="md-nav" aria-label="マジカル定数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__dir__" class="md-nav__link">
+    ▼ __DIR__
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__function__" class="md-nav__link">
+    ▼ __FUNCTION__
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__method__" class="md-nav__link">
+    ▼ __METHOD__
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 変数
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    変数展開
+  </a>
+  
+    <nav class="md-nav" aria-label="変数展開">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ シングルクオーテーションによる変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ シングルクオーテーションと波括弧による変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ ダブルクオーテーションによる変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ ダブルクオーテーションと波括弧による変数展開
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    参照渡しと値渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="参照渡しと値渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ 参照渡し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ 値渡し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. ビルトインラッパー関数
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ビルトインラッパー関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    入出力ストリームへのアクセス
+  </a>
+  
+    <nav class="md-nav" aria-label="入出力ストリームへのアクセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ 入出力ストリームとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstdin" class="md-nav__link">
+    ▼ php://stdin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstdout" class="md-nav__link">
+    ▼ php://stdout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstderr" class="md-nav__link">
+    ▼ php://stderr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. その他の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="06. その他の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    ファイルシステム関数
+  </a>
+  
+    <nav class="md-nav" aria-label="ファイルシステム関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_put_contents" class="md-nav__link">
+    ▼ file_put_contents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. 正規表現とパターン演算子
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 正規表現とパターン演算子">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    正規表現
+  </a>
+  
+    <nav class="md-nav" aria-label="正規表現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    ▼ 正規表現とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_match" class="md-nav__link">
+    preg_match関数
+  </a>
+  
+    <nav class="md-nav" aria-label="preg_match関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    ▼ 数字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    ▼ アルファベット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    ▼ メタ文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    ▼ ワイルドカード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    ▼ クエスチョン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    ▼ オプションとしてのパターン演算子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    ▼ グループ化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_class_based_data_structure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    データ構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. メソッド/データ (プロパティ)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. メソッド/データ (プロパティ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ メソッドとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    データ (プロパティ)
+  </a>
+  
+    <nav class="md-nav" aria-label="データ (プロパティ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ データ (プロパティ) とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. メソッドとデータのカプセル化
+  </a>
+  
+    <nav class="md-nav" aria-label="02. メソッドとデータのカプセル化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public" class="md-nav__link">
+    public
+  </a>
+  
+    <nav class="md-nav" aria-label="public">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public_1" class="md-nav__link">
+    ▼ publicとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protected" class="md-nav__link">
+    protected
+  </a>
+  
+    <nav class="md-nav" aria-label="protected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#private" class="md-nav__link">
+    private
+  </a>
+  
+    <nav class="md-nav" aria-label="private">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ オブジェクト指向の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ オブジェクト指向でない場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation" class="md-nav__link">
+    ▼ Encapsulation (カプセル化)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    static
+  </a>
+  
+    <nav class="md-nav" aria-label="static">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static_1" class="md-nav__link">
+    ▼ staticとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self" class="md-nav__link">
+    ▼ self::
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static_2" class="md-nav__link">
+    ▼ static::
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    まず読むべき記事
+  </a>
+  
+    <nav class="md-nav" aria-label="まず読むべき記事">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ゲッターとセッターをメソッド名の接頭辞とすることは悪
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ セッターによる依存性注入は悪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    値を取得するアクセサメソッドの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="値を取得するアクセサメソッドの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getter" class="md-nav__link">
+    ▼ Getter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    値を設定するアクセサメソッドの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="値を設定するアクセサメソッドの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setter" class="md-nav__link">
+    ▼ Setter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__construct" class="md-nav__link">
+    ▼ マジックメソッドの__constructメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 『ミュータブル』と『イミュータブル』を実現できる理由
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getter_1" class="md-nav__link">
+    マジックメソッド (Getter系)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (Getter系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__get" class="md-nav__link">
+    ▼ __getメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__call" class="md-nav__link">
+    ▼ __callメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__callstatic" class="md-nav__link">
+    ▼ __callStaticメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setter_1" class="md-nav__link">
+    マジックメソッド (Setter系)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (Setter系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__set" class="md-nav__link">
+    ▼ __setメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__construct_1" class="md-nav__link">
+    ▼ マジックメソッドの__constructメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 『ミュータブル』と『イミュータブル』を実現できる理由】
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    マジックメソッド (その他)
+  </a>
+  
+    <nav class="md-nav" aria-label="マジックメソッド (その他)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__invoke" class="md-nav__link">
+    ▼ __invokeメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__clone" class="md-nav__link">
+    ▼ __cloneメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    インスタンスの作成メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="インスタンスの作成メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#static-self" class="md-nav__link">
+    ▼ staticメソッド と selfメソッドの違い
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    メソッドのコール
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッドのコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ メソッドチェーン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recursive-call" class="md-nav__link">
+    ▼ Recursive call：再帰的プログラム
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    引数
+  </a>
+  
+    <nav class="md-nav" aria-label="引数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ オプション引数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    値を返却する前の途中終了
+  </a>
+  
+    <nav class="md-nav" aria-label="値を返却する前の途中終了">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    ▼ return;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    ▼ exit;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    値の返却
+  </a>
+  
+    <nav class="md-nav" aria-label="値の返却">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return_1" class="md-nav__link">
+    ▼ return
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yield" class="md-nav__link">
+    ▼ yield
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher" class="md-nav__link">
+    Dispatcher
+  </a>
+  
+    <nav class="md-nav" aria-label="Dispatcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispatcher_1" class="md-nav__link">
+    ▼ Dispatcherとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ イベント名と関数の紐付け
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 計算処理の返却値を保持するオブジェクト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-closure" class="md-nav__link">
+    02-03. Closure (無名関数)
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. Closure (無名関数)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#closure" class="md-nav__link">
+    Closure (無名関数) の定義、変数格納後のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="Closure (無名関数) の定義、変数格納後のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    ▼ useメソッドのみに引数を渡す場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionuse" class="md-nav__link">
+    ▼ functionメソッドとuseメソッドに引数を渡す場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ データの値として、無名関数を格納しておく裏技
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure_1" class="md-nav__link">
+    Closure (無名関数) の定義と即コール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closure_2" class="md-nav__link">
+    高階関数とClosure (無名関数) の組み合わせ
+  </a>
+  
+    <nav class="md-nav" aria-label="高階関数とClosure (無名関数) の組み合わせ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ 無名関数を使用しない場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 無名関数を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    高階関数を使いこなす！
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 定数
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 定数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    定数が役に立つ場面
+  </a>
+  
+    <nav class="md-nav" aria-label="定数が役に立つ場面">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onoff" class="md-nav__link">
+    ▼ フラグON/OFF
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 区分値
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ 数値計算、数値比較
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    ▼ URL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    場面に応じた命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    マジカル定数
+  </a>
+  
+    <nav class="md-nav" aria-label="マジカル定数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#__dir__" class="md-nav__link">
+    ▼ __DIR__
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__function__" class="md-nav__link">
+    ▼ __FUNCTION__
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#__method__" class="md-nav__link">
+    ▼ __METHOD__
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 変数
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    変数展開
+  </a>
+  
+    <nav class="md-nav" aria-label="変数展開">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ シングルクオーテーションによる変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ シングルクオーテーションと波括弧による変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ ダブルクオーテーションによる変数展開
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ ダブルクオーテーションと波括弧による変数展開
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    参照渡しと値渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="参照渡しと値渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ 参照渡し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ 値渡し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. ビルトインラッパー関数
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ビルトインラッパー関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    入出力ストリームへのアクセス
+  </a>
+  
+    <nav class="md-nav" aria-label="入出力ストリームへのアクセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ 入出力ストリームとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstdin" class="md-nav__link">
+    ▼ php://stdin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstdout" class="md-nav__link">
+    ▼ php://stdout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpstderr" class="md-nav__link">
+    ▼ php://stderr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. その他の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="06. その他の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    ファイルシステム関数
+  </a>
+  
+    <nav class="md-nav" aria-label="ファイルシステム関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file_put_contents" class="md-nav__link">
+    ▼ file_put_contents
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. 正規表現とパターン演算子
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 正規表現とパターン演算子">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    正規表現
+  </a>
+  
+    <nav class="md-nav" aria-label="正規表現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    ▼ 正規表現とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preg_match" class="md-nav__link">
+    preg_match関数
+  </a>
+  
+    <nav class="md-nav" aria-label="preg_match関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    ▼ 数字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    ▼ アルファベット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    ▼ メタ文字
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    ▼ ワイルドカード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    ▼ クエスチョン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    ▼ オプションとしてのパターン演算子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    ▼ グループ化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="php">メソッド/データ＠PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. メソッド/データ (プロパティ)<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>本資料の以降では、大きく、操作 (メソッド) とデータ (プロパティ) に分けて、説明していく。</p>
+<h3 id="_2">メソッド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ メソッドとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>クラスは、データを操作する。</p>
+<p>この操作するための処理をメソッドという。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// オブジェクトはデータを保持する。</span>
+    <span class="k">private</span> <span class="nv">$data</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">data</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">データ (プロパティ)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ データ (プロパティ) とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>クラスは、データを持つ。</p>
+<p>このデータはプロパティとも呼ばれる。</p>
+<p>本ノートでは、データであることを意識するために、プロパティという言葉を使用しないものとする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$data</span><span class="p">;</span>
+
+    <span class="c1">// 自信が持つデータを操作する.</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">data</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. メソッドとデータのカプセル化<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="public">public<a class="headerlink" href="#public" title="Permanent link">&para;</a></h3>
+<h4 id="public_1">▼ <code>public</code>とは<a class="headerlink" href="#public_1" title="Permanent link">&para;</a></h4>
+<p>どのオブジェクトでも呼び出せる。</p>
+<h4 id="_6">▼ オブジェクト指向の場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$data</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">data</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_7">▼ オブジェクト指向でない場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>オブジェクトの全てのデータが<code>public</code>であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="s2">&quot;データ&quot;</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="protected">protected<a class="headerlink" href="#protected" title="Permanent link">&para;</a></h3>
+<p>・<code>protected</code>とは</p>
+<p>同じクラス内と、その子クラス、その親クラスでのみ呼び出せる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/miyapei/items/6c43e8b38317afb5fdce">https://qiita.com/miyapei/items/6c43e8b38317afb5fdce</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ オブジェクト指向の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>親クラス次第ではあるが、処理で<code>$data</code>の中身を隠蔽できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">ParentFoo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// dataは親で定義されている</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_9">▼ オブジェクト指向でない場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>処理で、<code>$data</code>の中身を隠蔽できないため、危険である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="s2">&quot;データ&quot;</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="private">private<a class="headerlink" href="#private" title="Permanent link">&para;</a></h3>
+<p>・<code>private</code>とは</p>
+<p>同じオブジェクト内でのみ呼び出せる。</p>
+<p>オブジェクト指向のメリットを最大限に得られる機能である。</p>
+<h4 id="_10">▼ オブジェクト指向の場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>処理で、<code>$data</code>の中身を隠蔽できる。</p>
+<p>カプセル化を参照。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$data</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">data</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">Desu</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// クラス内からしかアクセスできない</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">Desu</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_11">▼ オブジェクト指向でない場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>処理で、<code>$data</code>の中身を隠蔽できないため、危険である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="s2">&quot;データ&quot;</span><span class="p">;</span>
+<span class="nx">foo</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="encapsulation">▼ Encapsulation (カプセル化)<a class="headerlink" href="#encapsulation" title="Permanent link">&para;</a></h4>
+<p>カプセル化とは、ソフトウェアの実装方法を外部から隠すこと。</p>
+<p>オブジェクト内のデータにアクセスするには、直接的にデータを処理する事はできず、オブジェクト内のメソッドをコールし、アクセスしなければならない。</p>
+<p><img alt="カプセル化" src="https://user-images.githubusercontent.com/42175286/59212717-160def00-8bee-11e9-856c-fae97786ae6c.gif" /></p>
+<p><br></p>
+<h3 id="static">static<a class="headerlink" href="#static" title="Permanent link">&para;</a></h3>
+<h4 id="static_1">▼ <code>static</code>とは<a class="headerlink" href="#static_1" title="Permanent link">&para;</a></h4>
+<p>別ファイルでのメソッドの呼び出しにはインスタンス化が必要である。</p>
+<p>しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
+<p>データ値は使用せず (静的) 、引数の値のみを使用して処理を行うメソッドに対して使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// 受け取ったOrderエンティティから値を取り出すのみで、データ値は呼び出していない。</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">computeFooFee</span><span class="p">(</span><span class="nx">Entity</span> <span class="nv">$order</span><span class="p">)</span><span class="o">:</span> <span class="nx">Money</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Money</span><span class="p">(</span><span class="nv">$order</span><span class="o">-&gt;</span><span class="na">fooFee</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="self">▼ <code>self::</code><a class="headerlink" href="#self" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+</code></pre></div>
+<h4 id="static_2">▼ <code>static::</code><a class="headerlink" href="#static_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-02">02-02. メソッド<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="_12">まず読むべき記事<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ ゲッターとセッターをメソッド名の接頭辞とすることは悪<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>和訳：<a href="https://www.kaitoy.xyz/2015/07/22/getters-setters-evil/">https://www.kaitoy.xyz/2015/07/22/getters-setters-evil/</a></p>
+<p>原典：<a href="https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html">https://www.yegor256.com/2014/09/16/getters-and-setters-are-evil.html</a></p>
+<h4 id="_14">▼ セッターによる依存性注入は悪<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>原典：<a href="https://www.yegor256.com/2014/10/03/di-containers-are-evil.html">https://www.yegor256.com/2014/10/03/di-containers-are-evil.html</a></p>
+<p><br></p>
+<h3 id="_15">値を取得するアクセサメソッドの実装<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="getter">▼ Getter<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h4>
+<p>Getterでは、データを取得するのみではなく、何かしらの処理を加えたうえで取得すること。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ABC</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$property</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">property</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 単なるGetterではなく、例外処理も加える。</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">)){</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">ErrorException</span><span class="p">(</span><span class="s2">&quot;データに値がセットされていません。&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_16">値を設定するアクセサメソッドの実装<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="setter">▼ Setter<a class="headerlink" href="#setter" title="Permanent link">&para;</a></h4>
+<p>『ミュータブル』なオブジェクトを実現できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Test01</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$property01</span><span class="p">;</span>
+
+    <span class="c1">// Setterで$property01に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setProperty</span><span class="p">(</span><span class="nv">$property01</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property01</span> <span class="o">=</span> <span class="nv">$property01</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="__construct">▼ マジックメソッドの<code>__construct</code>メソッド<a class="headerlink" href="#__construct" title="Permanent link">&para;</a></h4>
+<p>マジックメソッドの<code>__construct</code>メソッドを持たせることにより、このデータを持っていなければならないとい制約を明示できる。</p>
+<p>Setterを持たせずに、<code>__construct</code>メソッドのみを持たせれば、ValueObjectのような、『イミュータブル』なオブジェクトを実現できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Test02</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
+
+    <span class="c1">// コンストラクタで$property02に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_17">▼ 『ミュータブル』と『イミュータブル』を実現できる理由<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>Test01クラスインスタンスの<code>$property01</code>に値を設定するためには、インスタンスからSetterをコールする。</p>
+<p>Setterは何度でも呼び出せ、その度にデータの値を上書きできる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Test01</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
+
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;データ01の値&quot;</span><span class="p">);</span>
+
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>一方で、Test02クラスインスタンスの<code>$property02</code>に値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>つまり、以前に作ったインスタンスの<code>$property02</code>の値は上書きできない。</p>
+<p>Setterを持たせずに、<code>__construct</code>メソッドのみを持たせれば、『イミュータブル』なクラスとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Test02</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
+
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Entityは、ミュータブルであるため、Setterと<code>__construct</code>メソッドの両方を持てる。</p>
+<p>ValueObjectは、イミュータブルのため、<code>__construct</code>メソッドしか持てる。</p>
+<p><br></p>
+<h3 id="getter_1">マジックメソッド (Getter系)<a class="headerlink" href="#getter_1" title="Permanent link">&para;</a></h3>
+<p>オブジェクトに対して特定の操作が行われた時に自動的にコールされる特殊なメソッドのこと。</p>
+<p>自動的に呼び出される仕組みは謎。</p>
+<p>共通の処理を行うGetter (例：値を取得するだけのGetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。</p>
+<h4 id="__get">▼ <code>__get</code>メソッド<a class="headerlink" href="#__get" title="Permanent link">&para;</a></h4>
+<p>定義されていないデータや、アクセス権のないデータを取得しようとした時に、代わりに呼び出される。</p>
+<p>メソッドは定義しているが、データは定義していないような状況で使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// 引数と返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、データ値を取得できません。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// 存在しないデータを取得。</span>
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">;</span>
+
+<span class="c1">// 結果</span>
+<span class="c1">// fooデータは存在しないため、値を呼び出せません。</span>
+</code></pre></div>
+<h4 id="__call">▼ <code>__call</code>メソッド<a class="headerlink" href="#__call" title="Permanent link">&para;</a></h4>
+<p>定義されていないメソッドや、アクセス権のないメソッドを取得しようとした時に、代わりにコールされる。</p>
+<p>データは定義しているが、メソッドは定義していないような状況で使用する。</p>
+<h4 id="__callstatic">▼ <code>__callStatic</code>メソッド<a class="headerlink" href="#__callstatic" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="setter_1">マジックメソッド (Setter系)<a class="headerlink" href="#setter_1" title="Permanent link">&para;</a></h3>
+<p>定義されていない静的メソッドや、アクセス権のない静的メソッドを取得しようとした時に、代わりに呼び出される。</p>
+<p>自動的にコールされる仕組みは謎。</p>
+<p>共通の処理を行うSetter (例：値を設定するだけのSetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。</p>
+<h4 id="__set">▼ <code>__set</code>メソッド<a class="headerlink" href="#__set" title="Permanent link">&para;</a></h4>
+<p>定義されていないデータや、アクセス権のないデータに値を設定しようとした時に、代わりにコールされる。</p>
+<p>オブジェクトの不変性を実現するために使用される。</p>
+<p>オブジェクトの不変性は、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$foo</span> <span class="o">=</span> <span class="p">[];</span>
+
+    <span class="c1">// 引数と返り値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nx">String</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">String</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">String</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$name</span><span class="si">}</span><span class="s2">データは存在しないため、</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="s2">を設定できません。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">class Foo {</span>
+<span class="x">// 中身は省略</span>
+<span class="x">}</span>
+
+<span class="x">// 存在しないデータに値をセット。</span>
+<span class="x">$foo = new Foo();</span>
+<span class="x">$foo-&gt;bar = &quot;bar&quot;;</span>
+
+<span class="x">// 結果</span>
+<span class="x">// barデータは存在しないため、barを設定できません。</span>
+</code></pre></div>
+<h4 id="__construct_1">▼ マジックメソッドの<code>__construct</code>メソッド<a class="headerlink" href="#__construct_1" title="Permanent link">&para;</a></h4>
+<p>インスタンス化時に自動的に呼び出されるメソッド。</p>
+<p>インスタンス化時に実行したい処理を記述できる。</p>
+<p>Setterを持たせずに、<code>__construct</code>メソッドでのみ値の設定を行えば、ValueObjectのような、『イミュータブル』なオブジェクトを実現できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Test02</span>
+<span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$property02</span><span class="p">;</span>
+
+    <span class="c1">// コンストラクタで$property02に値を設定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$property02</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">property02</span> <span class="o">=</span> <span class="nv">$property02</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_18">▼ 『ミュータブル』と『イミュータブル』を実現できる理由】<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>Test01クラスインスタンスの<code>$property01</code>に値を設定するためには、インスタンスからSetterをコールする。</p>
+<p>Setterは何度でもコールでき、その度にデータの値を上書きできる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
+
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;データ01の値&quot;</span><span class="p">);</span>
+
+<span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>一方で、Test02クラスインスタンスの<code>$property02</code>に値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>つまり、以前に作ったインスタンスの<code>$property02</code>の値は上書きできない。</p>
+<p>Setterを持たせずに、<code>__construct</code>メソッドのみを持たせれば、『イミュータブル』なオブジェクトとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
+
+<span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_19">マジックメソッド (その他)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="__invoke">▼ <code>__invoke</code>メソッド<a class="headerlink" href="#__invoke" title="Permanent link">&para;</a></h4>
+<p>定義されたクラスを、関数のように扱える。</p>
+<p><code>__invoke</code>メソッド自体は無名関数として扱われる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__invoke</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">print_r</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+
+<span class="c1">// 結果</span>
+<span class="c1">// Array</span>
+<span class="c1">// (</span>
+<span class="c1">//    [0] =&gt; 1</span>
+<span class="c1">//    [1] =&gt; 2</span>
+<span class="c1">//    [2] =&gt; 3</span>
+<span class="c1">// )</span>
+</code></pre></div>
+<h4 id="__clone">▼ <code>__clone</code>メソッド<a class="headerlink" href="#__clone" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_20">インスタンスの作成メソッド<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="static-self">▼ <code>static</code>メソッド と <code>self</code>メソッドの違い<a class="headerlink" href="#static-self" title="Permanent link">&para;</a></h4>
+<p>どちらも、new演算子と組み合わせて、自身のインスタンスを返却するメソッドであるが、作成の対象になるクラスが異なる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">A</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return A</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_self</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">self</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">get_static</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">B</span> <span class="k">extends</span> <span class="nx">A</span> <span class="p">{}</span>
+</code></pre></div>
+<p>以下の通り、<code>self</code>メソッドは定義されたクラスをインスタンス化する。</p>
+<p>一方で、<code>static</code>メソッドはコールされたクラスをインスタンス化する。</p>
+<p>自身のインスタンス化処理が継承される場合は、<code>static</code>メソッドを使用した方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">B</span><span class="o">::</span><span class="na">get_self</span><span class="p">());</span>   <span class="c1">// 継承元のクラスA</span>
+
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">B</span><span class="o">::</span><span class="na">get_static</span><span class="p">());</span> <span class="c1">// 継承先のクラスB</span>
+
+<span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">A</span><span class="o">::</span><span class="na">get_static</span><span class="p">());</span> <span class="c1">// 継承元のクラスA</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_21">メソッドのコール<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ メソッドチェーン<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>以下のような、オブジェクトAを最外層とした関係が存在しているとする。</p>
+<p>【オブジェクトA (オブジェクトBをデータに持つ) 】</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Obj_A</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objB</span><span class="p">;</span>
+
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objB</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjB</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>【オブジェクトB (オブジェクトCをデータに持つ) 】</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Obj_B</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objC</span><span class="p">;</span>
+
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objC</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjC</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>【オブジェクトC (オブジェクトDをデータに持つ) 】</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Obj_C</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$objD</span><span class="p">;</span>
+
+    <span class="c1">// 返却値のデータ型を指定</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">objD</span><span class="p">()</span><span class="o">:</span> <span class="nx">ObjD</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>以下の様に、返却値のオブジェクトを使用して、より深い層に連続してアクセスしていく場合…</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$ObjA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Obj_A</span><span class="p">;</span>
+
+<span class="nv">$ObjB</span> <span class="o">=</span> <span class="nv">$ObjA</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">();</span>
+
+<span class="nv">$ObjC</span> <span class="o">=</span> <span class="nv">$ObjB</span><span class="o">-&gt;</span><span class="na">objB</span><span class="p">();</span>
+
+<span class="nv">$ObjD</span> <span class="o">=</span> <span class="nv">$ObjC</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
+</code></pre></div>
+<p>以下の様に、メソッドチェーンという書き方が可能。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$D</span> <span class="o">=</span> <span class="nx">objB</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">();</span>
+
+<span class="c1">// $D には ObjD が格納されている。</span>
+</code></pre></div>
+<h4 id="recursive-call">▼ Recursive call：再帰的プログラム<a class="headerlink" href="#recursive-call" title="Permanent link">&para;</a></h4>
+<p>自プログラムから自身自身をコールし、実行できるプログラムのこと。</p>
+<p><strong>＊例＊</strong></p>
+<p>ある関数 <code>f</code>の定義の中に <code>f</code>自身を呼び出している箇所がある。</p>
+<p><img alt="再帰的" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png" /></p>
+<p><strong>＊実装例＊</strong></p>
+<p>以下のリンクも参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html">https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>適当な値を基準値 (Pivot) とする (※できれば中央値が望ましい)</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>Pivotより小さい数を前方、大きい数を後方に分割する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>二分割された各々のデータを、それぞれ並び替える。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>ソートを繰り返し実行する。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param array $array</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">quickSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">count</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$array</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 一番最初の値をPivotとする。</span>
+        <span class="nv">$pivot</span> <span class="o">=</span> <span class="nb">array_shift</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+
+        <span class="c1">// グループを定義</span>
+        <span class="nv">$left</span> <span class="o">=</span> <span class="nv">$right</span> <span class="o">=</span> <span class="p">[];</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$array</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">&lt;</span> <span class="nv">$pivot</span><span class="p">)</span> <span class="p">{</span>
+
+                <span class="c1">// Pivotより小さい数は左グループに格納</span>
+                <span class="nv">$left</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+                <span class="c1">// Pivotより大きい数は右グループに格納</span>
+                <span class="nv">$right</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+
+        <span class="c1">// 処理の周回ごとに、結果の配列を結合。</span>
+        <span class="k">return</span> <span class="nb">array_merge</span>
+        <span class="p">(</span>
+        <span class="c1">// 左のグループを再帰的にクイックソート。</span>
+            <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$left</span><span class="p">),</span>
+
+            <span class="c1">// Pivotを結果に組み込む。</span>
+            <span class="p">[</span><span class="nv">$pivot</span><span class="p">],</span>
+
+            <span class="c1">// 左のグループを再帰的にクイックソート。</span>
+            <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$right</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 実際に使用してみる。</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+
+<span class="c1">// 昇順に並び替えられている。</span>
+<span class="c1">// 1, 2, 3, 4, 5, 6, 7, 8</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_23">引数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ オプション引数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>引数が与えられなければ、指定の値を渡す方法</p>
+<div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_25">値を返却する前の途中終了<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h4 id="return">▼ <code>return;</code><a class="headerlink" href="#return" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">returnMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s2">&quot;returnMethod()です。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">return</span><span class="p">;</span> <span class="c1">// 何も返さない。</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">returnMethod</span><span class="p">();</span> <span class="c1">// returnMethod()です。</span>
+<span class="c1">// 処理は続く。</span>
+</code></pre></div>
+<h4 id="exit">▼ <code>exit;</code><a class="headerlink" href="#exit" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="k">function</span> <span class="nf">exitMethod</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s2">&quot;exitMethod()です。</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">exit</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">exitMethod</span><span class="p">();</span> <span class="c1">// exitMethod()です。</span>
+<span class="c1">// ここで、ソフトウェア全体の処理が完了する。</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_26">値の返却<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<h4 id="return_1">▼ <code>return</code><a class="headerlink" href="#return_1" title="Permanent link">&para;</a></h4>
+<p>メソッドがコールされた場所に値を返却した後、その処理が終了する。</p>
+<h4 id="yield">▼ <code>yield</code><a class="headerlink" href="#yield" title="Permanent link">&para;</a></h4>
+<p>メソッドがコールされた場所に値を返却した後、そこで終了せず、<code>yield</code>の次の処理が続く。</p>
+<p>返却値は、array型である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return array|Generator</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">oneToThree</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// yield を返却した後、$i の値が維持される。</span>
+            <span class="k">yield</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$oneToThree</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">oneToThree</span><span class="p">();</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$oneToThree</span> <span class="k">as</span> <span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">{</span><span class="nv">$value</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 1</span>
+<span class="c1">// 2</span>
+<span class="c1">// 3</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="dispatcher">Dispatcher<a class="headerlink" href="#dispatcher" title="Permanent link">&para;</a></h3>
+<h4 id="dispatcher_1">▼ Dispatcherとは<a class="headerlink" href="#dispatcher_1" title="Permanent link">&para;</a></h4>
+<p>特定の名前と関数を紐付け、名前を渡すことにより、関数をコールするオブジェクトをDispatcherという。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Dispatcher</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$dispatcher</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">;</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+
+<span class="c1">// 名前に紐付ける関数を定義。</span>
+<span class="nv">$listener</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$param</span><span class="p">){</span>
+    <span class="c1">// 何らかの処理</span>
+<span class="p">};</span>
+
+<span class="c1">// 名前と関数の登録.</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$listener</span><span class="p">);</span>
+
+<span class="c1">// 文字列からメソッドをコール。ついでに、引数を渡す。</span>
+<span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_27">▼ イベント名と関数の紐付け<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>名前としてイベント名を定義し、これに関数を紐付ける。</p>
+<p>特定のイベント名が渡された時に、それに対応づけられた関数をコールする。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>フレームワークの<code>EventDispatcher</code>クラスが簡単である。</p>
+<p>以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html">https://hiroki-it.github.io/tech-notebook/language/language_php_framework_symfony_component.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Symfony\Component\EventDispatcher\EventDispatcher</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooEventDispatcher</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_28">▼ 計算処理の返却値を保持するオブジェクト<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>大サイズのデータを集計するは、その処理に時間がかかる。</p>
+<p>そこで、そのようなメソッドでは、一度コールされて集計を行った後、データに返却値を保持しておく。</p>
+<p>そして、再びコールされた時には、返却値をデータから取り出す。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ResultCacher</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$resultCollection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var array[]</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$funcCollection</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">funcCollection</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 集計メソッド</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">computeRevenue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 時間のかかる集計処理;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $funcName</span>
+<span class="sd">     * @return false|mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">funcNameListener</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 返却値が設定されていなかった場合、値を設定.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]))</span> <span class="p">{</span>
+
+            <span class="c1">// メソッドの返却値をCollectionに設定。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dispatch</span><span class="p">(</span><span class="nv">$funcName</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 返却値が設定されていた場合,そのまま使用する。</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">resultCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 返却値をキャッシュしたいメソッド名を登録しておく</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array[]</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">addListener</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;computeRevenue&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nv">$this</span><span class="p">,</span> <span class="s2">&quot;computeRevenue&quot;</span><span class="p">]</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $funcName</span>
+<span class="sd">     * @return false|mixed</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">dispatch</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$funcName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// call_user_funcでメソッドを実行</span>
+        <span class="k">return</span> <span class="nb">call_user_func</span><span class="p">(</span>
+        <span class="c1">// 登録されているメソッド名から、メソッドをDispatch.</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">funcCollection</span><span class="p">[</span><span class="nv">$funcName</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-03-closure">02-03. Closure (無名関数)<a class="headerlink" href="#02-03-closure" title="Permanent link">&para;</a></h2>
+<h3 id="closure">Closure (無名関数) の定義、変数格納後のコール<a class="headerlink" href="#closure" title="Permanent link">&para;</a></h3>
+<h4 id="use">▼ <code>use</code>メソッドのみに引数を渡す場合<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
+
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。</span>
+<span class="c1">// use()に、親メソッド ($optionName) のスコープの$itemを渡す。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// function()には引数が設定されていないため、コール時に引数は不要。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションA</span>
+</code></pre></div>
+<h4 id="functionuse">▼ <code>function</code>メソッドと<code>use</code>メソッドに引数を渡す場合<a class="headerlink" href="#functionuse" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
+
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。</span>
+<span class="c1">// 親メソッド ($optionName) のスコープの$itemを、use()に渡す。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// コール時に、$paramをfunction()に渡す。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">(</span><span class="s2">&quot;BC&quot;</span><span class="p">);</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
+</code></pre></div>
+<h4 id="_29">▼ データの値として、無名関数を格納しておく裏技<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Option</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
+
+<span class="c1">// 最初の括弧を使用しないことにより、普段よくやっている値渡しのメソッドを定義しているのと同じになる。</span>
+<span class="c1">// use()に、親メソッドのスコープの$itemを渡す。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$option</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Option</span><span class="p">;</span>
+
+<span class="c1">// データの値に無名関数を格納する。</span>
+<span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$para</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$para</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// コール時に、$paramをfunction()に渡す。</span>
+<span class="k">echo</span> <span class="nv">$option</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(</span><span class="s2">&quot;BC&quot;</span><span class="p">);</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="closure_1">Closure (無名関数) の定義と即コール<a class="headerlink" href="#closure_1" title="Permanent link">&para;</a></h3>
+<p>定義したその場でコールされる無名関数を『即時関数』と呼ぶ。</p>
+<p>無名関数をコールしたい時は、<code>call_user_func</code>メソッドを使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Item</span>
+<span class="p">{</span>
+    <span class="c1">// 中身は省略</span>
+<span class="p">}</span>
+
+<span class="nv">$item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">;</span>
+<span class="nv">$param</span> <span class="o">=</span> <span class="s2">&quot;BC&quot;</span><span class="p">;</span>
+
+<span class="c1">// use()に、親メソッドのスコープの$itemを渡す。</span>
+<span class="c1">// 無名関数を定義し、同時にcall_user_func()で即コールする。</span>
+<span class="c1">// $paramは、コール時に使用する変数。</span>
+<span class="nv">$optionName</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nv">$param</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$item</span><span class="o">-&gt;</span><span class="na">optionName</span><span class="p">()</span> <span class="o">.</span> <span class="nv">$param</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// $paramはすでに即コール時に渡されている。</span>
+<span class="c1">// これはコールではなく、即コール時に格納された返却値の出力。</span>
+<span class="k">echo</span> <span class="nv">$optionName</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// オプションABC</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="closure_2">高階関数とClosure (無名関数) の組み合わせ<a class="headerlink" href="#closure_2" title="Permanent link">&para;</a></h3>
+<p>関数を引数として受け取ったり、関数自体を返したりする関数を『高階関数』と呼ぶ。</p>
+<h4 id="_30">▼ 無名関数を使用しない場合<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 第一引数のみの場合</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">test</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$callback</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * コールバックを定義</span>
+<span class="sd">     * 関数の中でコールされるため、『後で呼び出される』という意味合いから、コールバック関数といえる。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;出力に成功しました。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="c1">// 高階関数の引数として、コールバック関数を渡す</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">test</span><span class="p">(</span><span class="s2">&quot;callbackMethod&quot;</span><span class="p">);</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// 出力に成功しました。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 第一引数と第二引数の場合</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $param</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$param</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$param</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * コールバック関数を定義</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param $param</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">callbackMethod</span><span class="p">(</span><span class="nv">$param</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$param</span><span class="o">.</span><span class="s2">&quot;の出力に成功しました。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+<span class="c1">// 高階関数の第一引数にコールバック関数の引数、第二引数にコールバック関数を渡す</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="s2">&quot;第一引数&quot;</span><span class="p">,</span> <span class="s2">&quot;callbackMethod&quot;</span><span class="p">);</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// 第一引数の出力に成功しました。</span>
+</code></pre></div>
+<h4 id="_31">▼ 無名関数を使用する場合<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 高階関数のように、関数を引数として渡す。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @param $parentVar</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$parentVar</span> <span class="o">=</span> <span class="s2">&quot;&amp;親メソッドのスコープの変数&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$callback</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+
+<span class="c1">// 第二引数の無名関数。関数の中でコールされるため、『後でコールされる』という意味合いから、コールバック関数といえる。</span>
+<span class="c1">// コールバック関数は再利用されないため、名前をつけずに無名関数とすることが多い。</span>
+<span class="c1">// 親メソッドのスコープで定義されている変数を引数として渡す。</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">higherOrder</span><span class="p">(</span><span class="nv">$parentVar</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$parentVar</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$parentVar</span> <span class="o">.</span> <span class="s2">&quot;の出力に成功しました。&quot;</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// 出力結果</span>
+<span class="c1">// 親メソッドのスコープの変数の出力に成功しました。</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_32">高階関数を使いこなす！<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$properties</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 非無名メソッドあるいは無名メソッドを引数で渡す。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @param $callback</span>
+<span class="sd">     * @return $this</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">Shiborikomi</span><span class="p">(</span><span class="nv">$callback</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">is_callable</span><span class="p">(</span><span class="nv">$callback</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">\LogicException</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 自身が持つ配列型のデータを加工し、再格納する。</span>
+        <span class="nv">$properties</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">properties</span> <span class="k">as</span> <span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="c1">// 引数の無名関数によって、データに対する加工方法が異なる。</span>
+            <span class="c1">// 例えば、判定でtrueのもののみを返すメソッドを渡すと、自データを絞り込むような処理を行える。</span>
+            <span class="nv">$returned</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="nv">$property</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$returned</span><span class="p">)</span> <span class="p">{</span>
+
+                <span class="c1">// 再格納。</span>
+                <span class="nv">$properties</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$returned</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 他のデータは静的に扱ったうえで、自身を返す。</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="k">static</span><span class="p">(</span><span class="nv">$properties</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. 定数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_33">定数が役に立つ場面<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="onoff">▼ フラグON/OFF<a class="headerlink" href="#onoff" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * フラグ定数クラス</span>
+<span class="sd"> */</span>
+<span class="k">final</span> <span class="k">class</span> <span class="nc">FlagConstant</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * フラグが立っている状態</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">IS_ON</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * フラグが立っていない状態</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">IS_OFF</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_34">▼ 区分値<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>区分値をinteger型の定数として扱う。</p>
+<p>区分値をデータとして持つオブジェクトについては、ドメイン駆動設計の値オブジェクトを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_35">▼ 数値計算、数値比較<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>計算処理や数値比較処理では、可読性の観点から、できるだけ数値を直書きしない。</p>
+<p>数値に意味合いを持たせ、定数として扱うと可読性が高くなる。</p>
+<p>ドメイン駆動設計の値オブジェクトを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html</a></li>
+</ul>
+</blockquote>
+<h4 id="url">▼ URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
+<p>URLを文字列を定数として扱う。</p>
+<p><br></p>
+<h3 id="_36">場面に応じた命名<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>意味づけ</th>
+<th>名前</th>
+<th>型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>個数、回数</td>
+<td><code>NUM_*****</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>最大数、最小数</td>
+<td><code>MAX_NUM_*****</code>、<code>MIN_NUM_*****</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>URL</td>
+<td><code>URL_*****</code></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_37">マジカル定数<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p>自動的に値が格納されている定数。</p>
+<h4 id="__dir__">▼ <code>__DIR__</code><a class="headerlink" href="#__dir__" title="Permanent link">&para;</a></h4>
+<p>この定数がコールされたファイルが配置されたディレクトリのパスが、ルートディレクトリ基準で格納されている。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>以下の実装を持つファイルを、<code>/var/www/foo</code>ディレクトリ下に置いておき、<code>/vendor/autoload.php</code>ファイルと結合してパスを通す。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1"># /var/www/foo/vendor/autoload.php</span>
+<span class="k">require_once</span> <span class="nb">realpath</span><span class="p">(</span><span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/vendor/autoload.php&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="__function__">▼ <code>__FUNCTION__</code><a class="headerlink" href="#__function__" title="Permanent link">&para;</a></h4>
+<p>この定数がコールされたメソッド名が格納されている。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="no">__FUNCTION__</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">(){}</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// foo が返却される。</span>
+</code></pre></div>
+<h4 id="__method__">▼ <code>__METHOD__</code><a class="headerlink" href="#__method__" title="Permanent link">&para;</a></h4>
+<p>この定数がコールされたクラス名とメソッド名が、<code>{クラス名}::{メソッド名}</code>の形式で格納されている。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="no">__METHOD__</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nx">foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">;</span>
+<span class="nx">foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Foo::foo が返却される。</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. 変数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_38">変数展開<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p>文字列の中で、変数の中身を取り出すことを『変数展開』と呼ぶ。</p>
+<p>※Paizaで検証済み。</p>
+<h4 id="_39">▼ シングルクオーテーションによる変数展開<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<p>シングルクオーテーションの中身は全て文字列として認識され、変数は展開されない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s1">&#39;これは$fruitです。&#39;</span><span class="p">;</span> <span class="c1">// これは、$fruitです。</span>
+</code></pre></div>
+<h4 id="_40">▼ シングルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>シングルクオーテーションの中身は全て文字列として認識され、変数は展開されない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s1">&#39;これは{$fruit}です。&#39;</span><span class="p">;</span> <span class="c1">// これは、{$fruit}です。</span>
+</code></pre></div>
+<h4 id="_41">▼ ダブルクオーテーションによる変数展開<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>変数の前後に半角スペースを置いた場合にのみ、変数は展開される。</p>
+<p>(※半角スペースがないとエラーになってしまう)</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s2">&quot;これは </span><span class="si">$fruit</span><span class="s2"> です。&quot;</span><span class="p">;</span> <span class="c1">// これは リンゴ です。</span>
+</code></pre></div>
+<h4 id="_42">▼ ダブルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>波括弧を使用すると、明示的に変数として扱える。</p>
+<p>これによって、変数の前後に半角スペースを配置しなくとも、変数は展開される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">&quot;リンゴ&quot;</span><span class="p">;</span>
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="s2">&quot;これは</span><span class="si">{</span><span class="nv">$fruit</span><span class="si">}</span><span class="s2">です。&quot;</span><span class="p">;</span> <span class="c1">// これは、リンゴです。</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_43">参照渡しと値渡し<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<h4 id="_44">▼ 参照渡し<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p>『参照渡し』とは、変数に代入した値の参照先 (メモリアドレス) を渡すこと。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$value</span><span class="p">;</span> <span class="c1">// 値の入れ物を参照先として代入</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>変数の<code>$b</code>には、<code>$a</code>の参照によって10が格納される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$a</span><span class="p">;</span>  <span class="c1">// 変数aを&amp;をつけて代入</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>    <span class="c1">// 変数aの値を変更</span>
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="c1">// 10</span>
+</code></pre></div>
+<h4 id="_45">▼ 値渡し<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>『値渡し』とは、変数に代入した値のコピーを渡すこと。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span> <span class="c1">// 1をコピーして代入</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>変数の<code>$b</code>には、<code>$a</code>の１行目の格納によって2が格納される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="nv">$a</span><span class="p">;</span>  <span class="c1">// 変数aを代入</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// 変数aの値を変更</span>
+
+
+<span class="c1">// 出力結果</span>
+<span class="k">echo</span> <span class="nv">$b</span><span class="p">;</span> <span class="c1">// 2</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. ビルトインラッパー関数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_46">入出力ストリームへのアクセス<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
+<h4 id="_47">▼ 入出力ストリームとは<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<p>一度に全てのデータを入出力するのではなく、少しずつ入出力する処理のこと。</p>
+<h4 id="phpstdin">▼ php://stdin<a class="headerlink" href="#phpstdin" title="Permanent link">&para;</a></h4>
+<p>stdin：standard in (標準入力) を意味する。</p>
+<p>PHPのプロセスが、標準入力に対して、読み出し処理を送信できるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ログを読み出す</span>
+<span class="nv">$stdin</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stdin&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="phpstdout">▼ php://stdout<a class="headerlink" href="#phpstdout" title="Permanent link">&para;</a></h4>
+<p>stdout：standard out (標準出力) を意味する。</p>
+<p>PHPのプロセスが、標準出力に対して、書き込み処理を送信できるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ログを書き込む</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stdout&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">&quot;ログです。&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="phpstderr">▼ php://stderr<a class="headerlink" href="#phpstderr" title="Permanent link">&para;</a></h4>
+<p>stderr：standard error (標準出力エラー) を意味する。</p>
+<p>PHPのプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// エラーログを書き込む</span>
+<span class="nv">$stderr</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;php://stderr&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
+<span class="nb">fwrite</span><span class="p">(</span><span class="nv">$stderr</span><span class="p">,</span> <span class="s2">&quot;エラーログです。&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06">06. その他の関数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="_48">ファイルシステム関数<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
+<h4 id="file_put_contents">▼ file_put_contents<a class="headerlink" href="#file_put_contents" title="Permanent link">&para;</a></h4>
+<p>ファイルに文字列を出力する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="c1">// array型をJSON型に変換</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
+
+<span class="c1">// fopen()、fwrite()、fclose()を実行できる。</span>
+<span class="nb">file_put_contents</span><span class="p">(</span>
+    <span class="s2">&quot;data.json&quot;</span><span class="p">,</span>
+    <span class="nv">$json</span>
+<span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="07">07. 正規表現とパターン演算子<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_49">正規表現<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
+<h4 id="_50">▼ 正規表現とは<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<p>数値、記号、文字列などの種類を簡単に表す文字列のこと。</p>
+<p><br></p>
+<h3 id="preg_match"><code>preg_match</code>関数<a class="headerlink" href="#preg_match" title="Permanent link">&para;</a></h3>
+<h4 id="_51">▼ 数字<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p>『<code>0</code>から<code>9</code>のいずれか』の数字を意味する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;0123456789&quot;</span><span class="p">;</span>
+
+<span class="c1">// OR条件と範囲指定</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[0-9]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div>
+<h4 id="_52">▼ アルファベット<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p>『<code>a</code>から<code>z</code>のいずれか』または『AからZのいずれか』のアルファベットを意味する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;aAbBcC&quot;</span><span class="p">;</span>
+
+<span class="c1">// OR条件と範囲指定</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[a-zA-Z]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div>
+<h4 id="_53">▼ メタ文字<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
+<p>エスケープのために、必ずバックスラッシュを付ける必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www-creators.com/archives/3102">https://www-creators.com/archives/3102</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>『<code>?</code>』『<code>.</code>』『<code>*</code>』『<code>$</code>』のいずれかのメタ文字を意味する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;?&quot;</span><span class="p">;</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/[\?.*$]/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">)</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<h4 id="_54">▼ ワイルドカード<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
+<p>ワイルドカードは『<code>.*</code>』または『<code>.+</code>』で意味する。</p>
+<p>ドットは任意の文字、アスタリスクは直前の文字が<code>0</code>回以上反復すること、プラスは<code>1</code>回以上反復することを意味する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1">https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+
+<span class="c1">// 前方の一致</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/Foo.*/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+
+<span class="c1">// 後方の一致</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/.*Baz/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<h4 id="_55">▼ クエスチョン<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
+<p>クエスチョンの前に記載された文字列に関して、あってもなくても問題ないことを意味する。</p>
+<blockquote>
+<ul>
+<li><a href="http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html">http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;FooBarBaz&quot;</span><span class="p">;</span>
+
+<span class="c1"># zはあってもなくてもも</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/FooBarBaz?/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<h4 id="_56">▼ オプションとしてのパターン演算子<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">;</span>
+
+<span class="c1">// jpegの大文字小文字</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/jpeg$/i&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;JPEG&quot;</span><span class="p">;</span>
+
+<span class="c1">// jpegの大文字小文字</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/jpeg$/i&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+<h4 id="_57">▼ グループ化<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h4>
+<p>文字列をグループ化する。</p>
+<p>正規表現に規則性がある場合に有効である。</p>
+<blockquote>
+<ul>
+<li><a href="http://www.turtle.gr.jp/techno/regular-expression.html">http://www.turtle.gr.jp/techno/regular-expression.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;abcabcabc&quot;</span><span class="p">;</span>
+
+<span class="c1"># abcが任意数だけ反復する</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s2">&quot;/(abc)*/&quot;</span><span class="p">,</span> <span class="nv">$var</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

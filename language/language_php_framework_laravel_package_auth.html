@@ -1,0 +1,4765 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="認証/認可系パッケージ＠Laravelの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html">
+      
+      
+        <link rel="prev" href="language_php_framework_laravel_package.html">
+      
+      
+        <link rel="next" href="language_php_framework_laravel_command.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】認証/認可系パッケージ＠Laravel - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#laravel" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】認証/認可系パッケージ＠Laravel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_class_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ クラスベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_5" id="__nav_8_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ フレームワーク
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_5_1" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_5_1" id="__nav_8_5_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_5_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ︎Eloquent ORM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_package.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    専用パッケージ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    認証/認可系パッケージ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_php_framework_laravel_package_auth.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    認証/認可系パッケージ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 認証
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ガード
+  </a>
+  
+    <nav class="md-nav" aria-label="ガード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ガードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ カスタムガード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ドライバー
+  </a>
+  
+    <nav class="md-nav" aria-label="ドライバー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ ドライバーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ ルーティングの保護
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    プロバイダ
+  </a>
+  
+    <nav class="md-nav" aria-label="プロバイダ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ プロバイダとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idform" class="md-nav__link">
+    セッションIDを使用したForm認証
+  </a>
+  
+    <nav class="md-nav" aria-label="セッションIDを使用したForm認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    ▼ sessionドライバー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 全てのユーザーが同一権限を持つ場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 一部のユーザーが異なる権限を持つ場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    認証済みか否かの判定
+  </a>
+  
+    <nav class="md-nav" aria-label="認証済みか否かの判定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    ▼ userメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    ▼ checkメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 認可
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 認可">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ゲート
+  </a>
+  
+    <nav class="md-nav" aria-label="ゲート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ゲートとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ポリシー
+  </a>
+  
+    <nav class="md-nav" aria-label="ポリシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ポリシーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizemiddleware" class="md-nav__link">
+    ▼ AuthorizeMiddlewareによる認可
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    ▼ authorizationメソッドによる認可
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can" class="md-nav__link">
+    ▼ canメソッドによる認可
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-passport" class="md-nav__link">
+    03. Passportパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Passportパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passport" class="md-nav__link">
+    Passportパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth" class="md-nav__link">
+    ▼ OAuthのトークン管理テーブルを作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ トークンを作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth_1" class="md-nav__link">
+    実装できるOAuthの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="実装できるOAuthの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth_2" class="md-nav__link">
+    ▼ OAuth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ その他
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-grant" class="md-nav__link">
+    Password Grant
+  </a>
+  
+    <nav class="md-nav" aria-label="Password Grant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ バックエンド側の実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ クライアントアプリ側の実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    ▼ APIガード用のテーブル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    パーソナルアクセストークン
+  </a>
+  
+    <nav class="md-nav" aria-label="パーソナルアクセストークン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ バックエンド側の実装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-sanctum" class="md-nav__link">
+    03-02. Sanctumパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. Sanctumパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sanctum" class="md-nav__link">
+    Sanctumパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    APIトークン認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spa" class="md-nav__link">
+    SPA認証
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-03-fortify" class="md-nav__link">
+    03-03. Fortifyパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-03. Fortifyパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify" class="md-nav__link">
+    Fortifyパッケージとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-breeze" class="md-nav__link">
+    03-04. Breezeパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. Breezeパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breeze" class="md-nav__link">
+    Breezeパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 認証処理ファイルの自動作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-05-ui-laravel-7" class="md-nav__link">
+    03-05. UIパッケージ (Laravel 7系以前)
+  </a>
+  
+    <nav class="md-nav" aria-label="03-05. UIパッケージ (Laravel 7系以前)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    UIパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 認証処理ファイルの自動作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_framework_symfony_component.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Symfony
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 認証
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ガード
+  </a>
+  
+    <nav class="md-nav" aria-label="ガード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ガードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ カスタムガード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ドライバー
+  </a>
+  
+    <nav class="md-nav" aria-label="ドライバー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ ドライバーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ ルーティングの保護
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    プロバイダ
+  </a>
+  
+    <nav class="md-nav" aria-label="プロバイダ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ プロバイダとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idform" class="md-nav__link">
+    セッションIDを使用したForm認証
+  </a>
+  
+    <nav class="md-nav" aria-label="セッションIDを使用したForm認証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    ▼ sessionドライバー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 全てのユーザーが同一権限を持つ場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 一部のユーザーが異なる権限を持つ場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    認証済みか否かの判定
+  </a>
+  
+    <nav class="md-nav" aria-label="認証済みか否かの判定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    ▼ userメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    ▼ checkメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 認可
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 認可">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ゲート
+  </a>
+  
+    <nav class="md-nav" aria-label="ゲート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ゲートとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ポリシー
+  </a>
+  
+    <nav class="md-nav" aria-label="ポリシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ポリシーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorizemiddleware" class="md-nav__link">
+    ▼ AuthorizeMiddlewareによる認可
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    ▼ authorizationメソッドによる認可
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#can" class="md-nav__link">
+    ▼ canメソッドによる認可
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-passport" class="md-nav__link">
+    03. Passportパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Passportパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passport" class="md-nav__link">
+    Passportパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth" class="md-nav__link">
+    ▼ OAuthのトークン管理テーブルを作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ トークンを作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth_1" class="md-nav__link">
+    実装できるOAuthの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="実装できるOAuthの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth_2" class="md-nav__link">
+    ▼ OAuth
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ その他
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-grant" class="md-nav__link">
+    Password Grant
+  </a>
+  
+    <nav class="md-nav" aria-label="Password Grant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ バックエンド側の実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ クライアントアプリ側の実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    ▼ APIガード用のテーブル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    パーソナルアクセストークン
+  </a>
+  
+    <nav class="md-nav" aria-label="パーソナルアクセストークン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ バックエンド側の実装
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-sanctum" class="md-nav__link">
+    03-02. Sanctumパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. Sanctumパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sanctum" class="md-nav__link">
+    Sanctumパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    APIトークン認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spa" class="md-nav__link">
+    SPA認証
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-03-fortify" class="md-nav__link">
+    03-03. Fortifyパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-03. Fortifyパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fortify" class="md-nav__link">
+    Fortifyパッケージとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-breeze" class="md-nav__link">
+    03-04. Breezeパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. Breezeパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#breeze" class="md-nav__link">
+    Breezeパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 認証処理ファイルの自動作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-05-ui-laravel-7" class="md-nav__link">
+    03-05. UIパッケージ (Laravel 7系以前)
+  </a>
+  
+    <nav class="md-nav" aria-label="03-05. UIパッケージ (Laravel 7系以前)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    UIパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ インストール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 認証処理ファイルの自動作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="laravel">認証/認可系パッケージ＠Laravel<a class="headerlink" href="#laravel" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. 認証<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">ガード<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ ガードとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>ドライバーとプロバイダーを定義する。</p>
+<table>
+<thead>
+<tr>
+<th>ガードの種類</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Webガード</td>
+<td>セッションIDを使用したForm認証のために使用する。</td>
+</tr>
+<tr>
+<td>APIガード</td>
+<td>Bearer認証、APIキー認証、OAuth、などのために使用する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#introduction">https://readouble.com/laravel/8.x/ja/authentication.html#introduction</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ カスタムガード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards">https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards</a></li>
+</ul>
+</blockquote>
+<p>APIガードの認証で使用するトークンをJWTに変更したい時には、以下のパッケージがおすすめ。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/tymondesigns/jwt-auth">https://github.com/tymondesigns/jwt-auth</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">ドライバー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ ドライバーとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>ドライバーの種類</th>
+<th>認証の種類</th>
+<th>実装クラス</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionドライバー</td>
+<td>セッションIDを使用したForm認証</td>
+<td>SessionGuardクラス</td>
+<td><a href="https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html">https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html</a></td>
+</tr>
+<tr>
+<td>tokenドライバー</td>
+<td>Bearer認証、APIキー認証、OAuth</td>
+<td>TokenGuardクラス</td>
+<td><a href="https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html">https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html</a></td>
+</tr>
+</tbody>
+</table>
+<p>ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。</p>
+<p><code>auth.php</code>ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+
+    <span class="c1">// ガード</span>
+    <span class="s1">&#39;guards&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;web&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="c1">// セッションドライバー</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+
+        <span class="s1">&#39;api&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="c1">// トークンドライー</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hash&#39;</span>     <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://teratail.com/questions/171582">https://teratail.com/questions/171582</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html">https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user">https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user">https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ ルーティングの保護<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>BeforeMiddlwareで認証済みのユーザーか否かを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。</p>
+<p>これにより、未認証のユーザーがコントローラーを実行することを防ぐ。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/yamotuki/items/b96978f8e379e285ecb6">https://qiita.com/yamotuki/items/b96978f8e379e285ecb6</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">プロバイダ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ プロバイダとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>認証データをDBから取得するオブジェクトを定義する。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#introduction">https://readouble.com/laravel/8.x/ja/authentication.html#introduction</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="idform">セッションIDを使用したForm認証<a class="headerlink" href="#idform" title="Permanent link">&para;</a></h3>
+<h4 id="session">▼ sessionドライバー<a class="headerlink" href="#session" title="Permanent link">&para;</a></h4>
+<p>sessionドライバーを選択する。</p>
+<h4 id="_10">▼ 全てのユーザーが同一権限を持つ場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>SessionGuardクラスの<code>attempt</code>メソッドをコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。</p>
+<p>認証が成功すると、認証セッションを開始する。</p>
+<p><code>redirect</code>メソッドで、認証後の初期ページにリダイレクトする。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users">https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers\Authentication</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Requests\Authentication\AuthenticationRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">AuthenticationController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return RedirectResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">authenticate</span><span class="p">(</span><span class="nx">AuthenticationRequest</span> <span class="nv">$authenticationRequest</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$validated</span> <span class="o">=</span> <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Auth</span><span class="o">::</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$validated</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// セッションID固定化を防ぐために、認証後にセッションを再作成します。</span>
+            <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
+
+            <span class="c1">// 認証後のWebページにリダイレクトします。</span>
+            <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 未認証のWebページにリダイレクトします。</span>
+        <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">UNAUTHORIZED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>認証後のページはRouteServiceProviderクラスで定義しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\RouteServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Route</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RouteServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">HOME</span> <span class="o">=</span> <span class="s2">&quot;/home&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_11">▼ 一部のユーザーが異なる権限を持つ場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ユーザーごとに認証方法を区別しつつ、同じ認証後のWebページにリダイレクトさせられる。</p>
+<blockquote>
+<ul>
+<li><a href="https://blog.capilano-fw.com/?p=8159">https://blog.capilano-fw.com/?p=8159</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>権限の異なるユーザーに応じたガード、またガードに紐付けるEloquentモデルをプロバイダを定義しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">return</span> <span class="p">[</span>
+
+    <span class="c1">// ガード</span>
+    <span class="s1">&#39;guards&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;web&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+
+        <span class="s1">&#39;api&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;token&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hash&#39;</span>     <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 一般ユーザー</span>
+        <span class="s1">&#39;users&#39;</span>          <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;users&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 管理者</span>
+        <span class="s1">&#39;administrators&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span>   <span class="o">=&gt;</span> <span class="s1">&#39;session&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;administrators&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">],</span>
+
+    <span class="c1">// プロバイダ</span>
+    <span class="s1">&#39;providers&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="c1">// 一般ユーザー</span>
+        <span class="s1">&#39;users&#39;</span>          <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;eloquent&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;model&#39;</span>  <span class="o">=&gt;</span> <span class="nx">App\Models\User</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="c1">// 管理者</span>
+        <span class="s1">&#39;administrators&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s1">&#39;driver&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;eloquent&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;model&#39;</span>  <span class="o">=&gt;</span> <span class="nx">App\Models\Administrator</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div>
+<p>Authファサードの<code>guard</code>メソッドを使用して、ガードに応じた認証を実行する。</p>
+<p>これにより、同じ認証後ページにリダイレクトした後に、ユーザーのEloquentモデルに応じた処理を実行できるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers\Authentication</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Requests\Authentication\AuthenticationRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\RedirectResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">AuthenticationController</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return RedirectResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">login</span><span class="p">(</span><span class="nx">AuthenticationRequest</span> <span class="nv">$authenticationRequest</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$validated</span> <span class="o">=</span> <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">();</span>
+
+        <span class="c1">// guardに応じた認証を行います。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">Auth</span><span class="o">::</span><span class="na">guard</span><span class="p">(</span><span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">guard</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">attempt</span><span class="p">(</span><span class="nv">$validated</span><span class="p">))</span> <span class="p">{</span>
+
+            <span class="c1">// セッションID固定化を防ぐために、認証後にセッションを再作成します。</span>
+            <span class="nv">$authenticationRequest</span><span class="o">-&gt;</span><span class="na">session</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">regenerate</span><span class="p">();</span>
+
+            <span class="c1">// ユーザー用認証後のWebページにリダイレクトします。</span>
+            <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 未認証のWebページにリダイレクトします。</span>
+        <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">UNAUTHORIZED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_12">認証済みか否かの判定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="user">▼ <code>user</code>メソッド<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
+<p>現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Illuminate\Contracts\Auth\Guard</span>
+<span class="c1">// ドライバーに応じて、リゾルブされるGuardの実装クラス決まる</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="check">▼ <code>check</code>メソッド<a class="headerlink" href="#check" title="Permanent link">&para;</a></h4>
+<p>現在のセッションにおけるユーザーが認証済みであれば、<code>true</code>を返却する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理を改めて実行する必要はない。</p>
+<p>そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Middleware\Auth</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Providers\RouteServiceProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Closure</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Auth</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">RedirectIfAuthenticated</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param Closure $next</span>
+<span class="sd">     * @param mixed   ...$guards</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$next</span><span class="p">,</span> <span class="o">...</span><span class="nv">$guards</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$guards</span> <span class="o">=</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$guards</span><span class="p">)</span> <span class="o">?</span> <span class="p">[</span><span class="k">null</span><span class="p">]</span> <span class="o">:</span> <span class="nv">$guards</span><span class="p">;</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$guards</span> <span class="k">as</span> <span class="nv">$guard</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">guard</span><span class="p">(</span><span class="nv">$guard</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">())</span> <span class="p">{</span>
+                <span class="c1">// ユーザーが認証済みの場合は、認証後のWebページにリダイレクトします。</span>
+                <span class="k">return</span> <span class="nx">redirect</span><span class="p">(</span><span class="nx">RouteServiceProvider</span><span class="o">::</span><span class="na">HOME</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$next</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. 認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_13">ゲート<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ ゲートとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>Eloquentモデルレベルの認可スコープを定義する。</p>
+<p>指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる。</p>
+<p><br></p>
+<h3 id="_15">ポリシー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">▼ ポリシーとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>DBレコードレベルの認可スコープを定義する。</p>
+<p>Eloquentモデルに紐付く特定のレコードにアクセスできなくなる。</p>
+<p>Policyクラスのメソッドによって、リクエスト中の認証済みユーザーが自動的にインジェクションされる。</p>
+<p>EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97">https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Policies</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\User</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Auth\Access\HandlesAuthorization</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">FooPolicy</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HandlesAuthorization</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="c1">// 認証中のユーザー</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">;</span> <span class="c1">// ルーターまたはコントローラーから渡されたインスタンス</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param User $user</span>
+<span class="sd">     * @param Foo  $foo</span>
+<span class="sd">     * @param int  $barId</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">,</span> <span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$barId</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">//</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Policies\FooPolicy</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\AuthServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$policies</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span> <span class="o">=&gt;</span> <span class="nx">FooPolicy</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerPolicies</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="authorizemiddleware">▼ AuthorizeMiddlewareによる認可<a class="headerlink" href="#authorizemiddleware" title="Permanent link">&para;</a></h4>
+<p>ルーティング時にDBレコードレベルの認可スコープを定義する。</p>
+<p>AuthorizeMiddlewareのエイリアスはデフォルトで<code>can</code>であり、Kernelクラスに定義されている。</p>
+<p>第一引数にPolicyクラスのメソッド名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。</p>
+<p>名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合する。</p>
+<p>インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。</p>
+<p>認可に失敗した場合、<code>403</code>ステータスを含むレスポンスを返信する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\FooController</span><span class="p">;</span>
+
+<span class="nx">Route</span><span class="o">::</span><span class="na">group</span><span class="p">([</span><span class="s1">&#39;middleware&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;auth:web&#39;</span><span class="p">]],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="nx">Route</span><span class="o">::</span><span class="na">group</span><span class="p">([</span><span class="s1">&#39;prefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;foos&#39;</span><span class="p">],</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/{id}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;showFoo&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">&#39;can:show,&#39;</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;indexFoo&#39;</span><span class="p">]);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">post</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;createFoo&#39;</span><span class="p">]);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">put</span><span class="p">(</span><span class="s1">&#39;/{id}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;updateFoo&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">&#39;can:update,&#39;</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nx">Route</span><span class="o">::</span><span class="na">delete</span><span class="p">(</span><span class="s1">&#39;/{id}&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nx">FooController</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="s1">&#39;deleteFoo&#39;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s1">&#39;can:delete,&#39;</span><span class="o">.</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware">https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware</a></li>
+</ul>
+</blockquote>
+<h4 id="authorization">▼ <code>authorization</code>メソッドによる認可<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
+<p>コントローラー実行時にDBレコードレベルの認可スコープを定義する。</p>
+<p>基底コントローラーを継承したコントローラーでは<code>authorization</code>メソッドをコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。</p>
+<p>第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。</p>
+<p>認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で<code>403</code>ステータスのレスポンスする。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ユーザーが該当IDのFooモデルを更新する権限があるか否かを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\JsonResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Throwable</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param int     $id</span>
+<span class="sd">     * @return JsonResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">JsonResponse</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+            <span class="c1">// 認可が失敗した場合、AuthorizationExceptionを投げる。</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">authorize</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">),</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">barId</span><span class="p">]);</span>
+
+            <span class="c1">// Eloquentモデルが不要な検証であれば名前空間</span>
+            <span class="c1">// $this-&gt;authorize(&#39;create&#39;, Foo::class);</span>
+
+            <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 自前で403ステータスを含むレスポンスを返信する。</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()],</span> <span class="mi">403</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 続きの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers">https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context">https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context</a></li>
+</ul>
+</blockquote>
+<h4 id="can">▼ <code>can</code>メソッドによる認可<a class="headerlink" href="#can" title="Permanent link">&para;</a></h4>
+<p>コントローラー実行時にDBレコードレベルの認可スコープを定義する。</p>
+<p>現在認証されているユーザーのインスタンスから<code>can</code>メソッドをコールできる。</p>
+<p>第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。</p>
+<p>DBアクセスが、そのユーザーの認可スコープの範囲内か否かを検証する。</p>
+<p>認可に失敗した場合に<code>false</code>を返却するため、その後は自前で<code>403</code>ステータスのレスポンスする。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ユーザーがFooモデルを作成する権限があるか否かを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\JsonResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @param int     $id</span>
+<span class="sd">     * @return JsonResponse</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">JsonResponse</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="c1">// 認可が失敗した場合、falseが返却される。</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">can</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">),</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">barId</span><span class="p">]))</span> <span class="p">{</span>
+            <span class="c1">// 自前で403ステータスを含むレスポンスを返信する。</span>
+            <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">json</span><span class="p">([</span><span class="s1">&#39;error&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;認可エラー&#39;</span><span class="p">],</span> <span class="mi">403</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Eloquentモデルが不要な検証であれば名前空間</span>
+        <span class="c1">// if (!auth()-&gt;user()-&gt;can(&#39;update&#39;, Foo::class) {}</span>
+
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model">https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context">https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-passport">03. Passportパッケージ<a class="headerlink" href="#03-passport" title="Permanent link">&para;</a></h2>
+<h3 id="passport">Passportパッケージとは<a class="headerlink" href="#passport" title="Permanent link">&para;</a></h3>
+<p>OAuthを実装できる。</p>
+<p><br></p>
+<h3 id="_17">セットアップ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ インストール<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>Composerでインストールする必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>laravel/passport
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/passport.html">https://readouble.com/laravel/8.x/ja/passport.html</a></li>
+</ul>
+</blockquote>
+<h4 id="oauth">▼ OAuthのトークン管理テーブルを作成<a class="headerlink" href="#oauth" title="Permanent link">&para;</a></h4>
+<p>事前に、Passportの管理テーブルを作成する必要があるため、DBマイグレーションを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+
+Migrating:<span class="w"> </span>2014_10_12_000000_create_users_table
+Migrated:<span class="w">  </span>2014_10_12_000000_create_users_table<span class="w"> </span><span class="o">(</span><span class="m">0</span>.02<span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2014_10_12_100000_create_password_resets_table
+Migrated:<span class="w">  </span>2014_10_12_100000_create_password_resets_table<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2016_06_01_000001_create_oauth_auth_codes_table
+Migrated:<span class="w">  </span>2016_06_01_000001_create_oauth_auth_codes_table<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2016_06_01_000002_create_oauth_access_tokens_table
+Migrated:<span class="w">  </span>2016_06_01_000002_create_oauth_access_tokens_table<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2016_06_01_000003_create_oauth_refresh_tokens_table
+Migrated:<span class="w">  </span>2016_06_01_000003_create_oauth_refresh_tokens_table<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2016_06_01_000004_create_oauth_clients_table
+Migrated:<span class="w">  </span>2016_06_01_000004_create_oauth_clients_table<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>seconds<span class="o">)</span>
+Migrating:<span class="w"> </span>2016_06_01_000005_create_oauth_personal_access_clients_table
+Migrated:<span class="w">  </span>2016_06_01_000005_create_oauth_personal_access_clients_table
+</code></pre></div>
+<p>DBマイグレーション後、以下のテーブルが作成される。</p>
+<table>
+<thead>
+<tr>
+<th>テーブル名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oauth_access_tokens</td>
+<td>全てのアクセストークンを管理する。</td>
+</tr>
+<tr>
+<td>oauth_auth_codes</td>
+<td>Authorization Code Grantタイプの情報を管理する。</td>
+</tr>
+<tr>
+<td>oauth_clients</td>
+<td>Passportで使用している付与タイプを管理する。</td>
+</tr>
+<tr>
+<td>oauth_personal_access_clients</td>
+<td>パーソナルアクセストークンタイプの情報を管理する。</td>
+</tr>
+<tr>
+<td>oauth_refresh_tokens</td>
+<td>リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>- <a href="https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/">https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_19">▼ トークンを作成<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>コマンド実行により、<code>/storage/oauth</code>キー、Personal Access Client、Password Grant Clientを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:install
+
+Personal<span class="w"> </span>access<span class="w"> </span>client<span class="w"> </span>created<span class="w"> </span>successfully.
+Client<span class="w"> </span>ID:<span class="w"> </span><span class="m">1</span>
+Client<span class="w"> </span>secret:<span class="w"> </span>*****
+Password<span class="w"> </span>grant<span class="w"> </span>client<span class="w"> </span>created<span class="w"> </span>successfully.
+Client<span class="w"> </span>ID:<span class="w"> </span><span class="m">2</span>
+Client<span class="w"> </span>secret:<span class="w"> </span>*****
+</code></pre></div>
+<p>これにより、例えばoauth_clientsテーブルでは以下が作成される。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>user_id</th>
+<th>name</th>
+<th>secret</th>
+<th>...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td><code>NULL</code></td>
+<td><code>Laravel Personal Access Client</code></td>
+<td><code>*****</code></td>
+<td>...</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>NULL</code></td>
+<td><code>Laravel Password Grant Client</code></td>
+<td><code>*****</code></td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>代わりとして、<code>/storage/oauth</code>キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># oauthキーを作成</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
+
+<span class="c1"># Persinal Access Tokenを作成する。</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--personal
+
+<span class="c1">## Password Grant Tokenの場合</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--password
+</code></pre></div>
+<p><br></p>
+<h3 id="oauth_1">実装できるOAuthの種類<a class="headerlink" href="#oauth_1" title="Permanent link">&para;</a></h3>
+<h4 id="oauth_2">▼ OAuth<a class="headerlink" href="#oauth_2" title="Permanent link">&para;</a></h4>
+<p>OAuthに関して、以下のトークン付与タイプを実装できる。</p>
+<table>
+<thead>
+<tr>
+<th>付与タイプ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authorization Code Grant</td>
+</tr>
+<tr>
+<td>Client Credentials Grant</td>
+</tr>
+<tr>
+<td>Implicit Grant</td>
+</tr>
+<tr>
+<td>Password Grant</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_20">▼ その他<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>認証方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パーソナルアクセストークン</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="password-grant">Password Grant<a class="headerlink" href="#password-grant" title="Permanent link">&para;</a></h3>
+<h4 id="_21">▼ バックエンド側の実装<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>guards</code>キーにて、認証方式を設定する。ここでは、<code>api</code>を設定する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="x">return [</span>
+
+<span class="x">    ...</span>
+
+<span class="x">    &quot;defaults&quot; =&gt; [</span>
+<span class="x">        &quot;guard&quot; =&gt; &quot;api&quot;,</span>
+<span class="x">        &quot;passwords&quot; =&gt; &quot;users&quot;,</span>
+<span class="x">    ],</span>
+
+<span class="x">    ...</span>
+<span class="x">];</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>OAuth (認証フェーズ + 認可フェーズ) を行うために、<code>auth.php</code>ファイルで、<code>driver</code>キーにpassportドライバを設定する。また、<code>provider</code>キーで、<code>users</code>を設定する。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">return [</span>
+
+<span class="x">    ...</span>
+
+<span class="x">    &quot;guards&quot; =&gt; [</span>
+<span class="x">        &quot;web&quot; =&gt; [</span>
+<span class="x">            &quot;driver&quot;   =&gt; &quot;session&quot;,</span>
+<span class="x">            &quot;provider&quot; =&gt; &quot;users&quot;,</span>
+<span class="x">        ],</span>
+
+<span class="x">        &quot;api&quot; =&gt; [</span>
+<span class="x">            &quot;driver&quot;   =&gt; &quot;passport&quot;,</span>
+<span class="x">            &quot;provider&quot; =&gt; &quot;users&quot;,</span>
+<span class="x">            &quot;hash&quot;     =&gt; false,</span>
+<span class="x">        ],</span>
+<span class="x">    ],</span>
+
+<span class="x">    ...</span>
+<span class="x">];</span>
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>auth.php</code>ファイルにて、<code>driver</code>キーにeloquentドライバを設定する。</p>
+<p>また、<code>model</code>キーで認証情報テーブルに対応するEloquentのEloquentモデルを設定する。</p>
+<p>ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに認証情報が格納されることになる。</p>
+<p>もしDBファサードのクエリビルダーを使用したい場合は、<code>database</code>ドライバを設定する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="x">return [</span>
+
+<span class="x">    ...</span>
+
+<span class="x">    &quot;providers&quot; =&gt; [</span>
+<span class="x">        &quot;users&quot; =&gt; [</span>
+<span class="x">            &quot;driver&quot; =&gt; &quot;eloquent&quot;,</span>
+<span class="x">            // Eloquentモデルは自由に指定できる。</span>
+<span class="x">            &quot;model&quot;  =&gt; App\Models\User::class,</span>
+<span class="x">        ],</span>
+
+<span class="x">        // &quot;users&quot; =&gt; [</span>
+<span class="x">        //     &quot;driver&quot; =&gt; &quot;database&quot;,</span>
+<span class="x">        //     &quot;table&quot; =&gt; &quot;users&quot;,</span>
+<span class="x">        // ],</span>
+<span class="x">    ],</span>
+
+<span class="x">    ...</span>
+<span class="x">];</span>
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>Userへのルーティング時に、<code>middleware</code>メソッドによる認証ガードを行う。</p>
+<p>これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">Route::get(&quot;user&quot;, &quot;UserController@index&quot;)-&gt;middleware(&quot;auth:api&quot;);</span>
+</code></pre></div>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールする。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Notifications\Notifiable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Foundation\Auth\User</span> <span class="k">as</span> <span class="nx">Authenticatable</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Laravel\Passport\HasApiTokens</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Authenticatable</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HasApiTokens</span><span class="p">,</span> <span class="nx">Notifiable</span><span class="p">;</span>
+
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>Passportの<code>routes</code>メソッドをコールする。</p>
+<p>これにより、Passportの認証フェーズに関わる全てのルーティング (<code>/oauth/xxx</code>) が有効になる。</p>
+<p>また、アクセストークンを発行できるよになる。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Laravel\Passport\Passport</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthServiceProvider</span> <span class="k">extends</span> <span class="nx">ServiceProvider</span>
+<span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">registerPolicies</span><span class="p">();</span>
+
+        <span class="nx">Passport</span><span class="o">::</span><span class="na">routes</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(7)</code></dt>
+<dd>
+<p>暗号キーとユーザーを作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
+
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--password
+</code></pre></div>
+<h4 id="_22">▼ クライアントアプリ側の実装<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>『認証』のために、アクセストークンのリクエストを送信する。</p>
+<p>ユーザー側のアプリケーションは、<code>/oauth/authorize</code>へリクエストを送信する必要がある。</p>
+<p>ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$http</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="s2">&quot;http://your-app.com/oauth/token&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">&quot;grant_type&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;client_id&quot;</span>     <span class="o">=&gt;</span> <span class="s2">&quot;client-id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;client_secret&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;client-secret&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;foo@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;password&quot;</span>      <span class="o">=&gt;</span> <span class="s2">&quot;my-password&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scope&quot;</span>         <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">]);</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>アクセストークンを含むJSON型データを受信する。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;token_type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Bearer&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;expires_in&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">31536000</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;access_token&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングに対して、リクエストを送信する。</p>
+<p>レスポンスのメッセージボディからデータを取得する。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/user&quot;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">&quot;headers&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s2">&quot;Accept&quot;</span>        <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Authorization&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bearer &lt;アクセストークン&gt;&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+
+<span class="k">return</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="api">▼ APIガード用のテーブル<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CreateUsersTable</span> <span class="k">extends</span> <span class="nx">Migration</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">bigIncrements</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">&quot;ユーザーID&quot;</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">&quot;ユーザー名&quot;</span><span class="p">);</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">string</span><span class="p">(</span><span class="s2">&quot;api_token&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">unique</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">comment</span><span class="p">(</span><span class="s2">&quot;APIトークン&quot;</span><span class="p">);</span>
+
+            <span class="c1">// MigrationMacroServiceProviderのメソッドを使用する。</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">systemColumns</span><span class="p">();</span>
+
+            <span class="c1">// deleted_atカラムを追加する。</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">&quot;users&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_23">パーソナルアクセストークン<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ バックエンド側の実装<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>暗号キーとユーザーを作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
+
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--personal
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>作成したユーザーに、クライアントIDを付与する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="x">/**</span>
+<span class="x"> * 全認証/認可の登録</span>
+<span class="x"> *</span>
+<span class="x"> * @return void</span>
+<span class="x"> */</span>
+<span class="x">public function boot()</span>
+<span class="x">{</span>
+<span class="x">    $this-&gt;registerPolicies();</span>
+
+<span class="x">    Passport::routes();</span>
+
+<span class="x">    Passport::personalAccessClientId(&quot;client-id&quot;);</span>
+<span class="x">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ユーザーからのリクエスト時、クライアントIDを元に『認証』を行い、アクセストークンをレスポンスする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// スコープ無しのトークンを作成する</span>
+<span class="nv">$token</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">createToken</span><span class="p">(</span><span class="s2">&quot;Token Name&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">accessToken</span><span class="p">;</span>
+
+<span class="c1">// スコープ付きのトークンを作成する</span>
+<span class="nv">$token</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">createToken</span><span class="p">(</span><span class="s2">&quot;My Token&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;place-orders&quot;</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">accessToken</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-02-sanctum">03-02. Sanctumパッケージ<a class="headerlink" href="#03-02-sanctum" title="Permanent link">&para;</a></h2>
+<h3 id="sanctum">Sanctumパッケージとは<a class="headerlink" href="#sanctum" title="Permanent link">&para;</a></h3>
+<p>APIキー認証とセッションIDを使用したForm認証機能の認証処理のみを提供する。</p>
+<p>ルーティングとDBアクセスに関する処理は提供しない。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html">https://readouble.com/laravel/8.x/ja/sanctum.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_25">セットアップ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h4 id="_26">▼ インストール<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>laravel/sanctum
+</code></pre></div>
+<p><br></p>
+<h3 id="api_1">APIトークン認証<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
+<p>フロントエンド (外部のアプリケーションを含む) は任意とし、APIのみを実装する場合、使用が適している。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication">https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication</a></li>
+<li><a href="https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security">https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security</a></li>
+<li><a href="https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa">https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="spa">SPA認証<a class="headerlink" href="#spa" title="Permanent link">&para;</a></h3>
+<p>フロントエンドにファーストパーティのSPA (自社のSPA) を使用して、バックエンドのAPIを実装する場合、使用が適している。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication">https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication</a></li>
+<li><a href="https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security">https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security</a></li>
+<li><a href="https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa">https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-03-fortify">03-03. Fortifyパッケージ<a class="headerlink" href="#03-03-fortify" title="Permanent link">&para;</a></h2>
+<h3 id="fortify">Fortifyパッケージとは<a class="headerlink" href="#fortify" title="Permanent link">&para;</a></h3>
+<p>Laravelが持つ全ての認証機能のバックエンド処理を提供する。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/fortify.html">https://readouble.com/laravel/8.x/ja/fortify.html</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum">https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-04-breeze">03-04. Breezeパッケージ<a class="headerlink" href="#03-04-breeze" title="Permanent link">&para;</a></h2>
+<h3 id="breeze">Breezeパッケージとは<a class="headerlink" href="#breeze" title="Permanent link">&para;</a></h3>
+<p>Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze">https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum">https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_27">セットアップ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://github.com/laravel/breeze">https://github.com/laravel/breeze</a></li>
+</ul>
+</blockquote>
+<h4 id="_28">▼ インストール<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>パッケージをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>laravel/breeze:^1.0<span class="w"> </span>--dev
+</code></pre></div>
+<h4 id="_29">▼ 認証処理ファイルの自動作成<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>認証処理に関連するクラスを自動作成できる。</p>
+<p>Bladeに組み合わせるJavaScriptを選択できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>breeze:install
+</code></pre></div>
+<p><br></p>
+<h2 id="03-05-ui-laravel-7">03-05. UIパッケージ (Laravel 7系以前)<a class="headerlink" href="#03-05-ui-laravel-7" title="Permanent link">&para;</a></h2>
+<h3 id="ui">UIパッケージとは<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<p>Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/7.x/ja/authentication.html">https://readouble.com/laravel/7.x/ja/authentication.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_30">セットアップ<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h4 id="_31">▼ インストール<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>パッケージをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>laravel/ui:^1.0<span class="w"> </span>--dev
+</code></pre></div>
+<h4 id="_32">▼ 認証処理ファイルの自動作成<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>認証処理に関連するクラスを自動作成できる。</p>
+<p>Bladeに組み合わせるJavaScriptを選択できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vue.jsを使用する場合。</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>ui<span class="w"> </span>vue<span class="w"> </span>--auth
+
+<span class="c1"># Reactを使用する場合</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>ui<span class="w"> </span>react<span class="w"> </span>--auth
+
+<span class="c1"># Bootstrapを使用する場合。</span>
+$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>ui<span class="w"> </span>bootstrap<span class="w"> </span>--auth
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

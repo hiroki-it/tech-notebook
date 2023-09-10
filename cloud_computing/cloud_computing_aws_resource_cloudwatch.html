@@ -1,0 +1,4716 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="CloudWatch＠AWSリソースの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudwatch.html">
+      
+      
+        <link rel="prev" href="cloud_computing_aws_resource_cloudtrail.html">
+      
+      
+        <link rel="next" href="cloud_computing_aws_resource_code.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】CloudWatch＠AWSリソース - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cloudwatchaws" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】CloudWatch＠AWSリソース
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_13">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            ⛅️ クラウド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3_2" id="__nav_13_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWSリソース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWSリソース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アカウント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ API Gateway
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AutoScaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_backup.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certificate Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFormation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudfront.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudTrail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CloudWatch
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cloudwatch" class="md-nav__link">
+    01. CloudWatchメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="01. CloudWatchメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch" class="md-nav__link">
+    CloudWatchメトリクスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メトリクスの集約
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの集約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ メトリクスの集約とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 集約の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 集約の確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    インサイトメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="インサイトメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ インサイトメトリクスは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ パフォーマンスインサイト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    ▼ Containerインサイト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    ▼ Lambdaインサイト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-cloudwatch" class="md-nav__link">
+    02. CloudWatchログ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. CloudWatchログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_1" class="md-nav__link">
+    CloudWatchログとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    フィルターパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="フィルターパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ フィルターパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    ▼ OR条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 除外条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_2" class="md-nav__link">
+    CloudWatchログエージェント (非推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="CloudWatchログエージェント (非推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_3" class="md-nav__link">
+    ▼ CloudWatchログエージェントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varawslogsetcawslogsconf" class="md-nav__link">
+    ▼ /var/awslogs/etc/awslogs.confファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    Logインサイト
+  </a>
+  
+    <nav class="md-nav" aria-label="Logインサイト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_1" class="md-nav__link">
+    ▼ Logインサイトとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ クエリ例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-cloudwatch" class="md-nav__link">
+    02-02. cloudwatchエージェント
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. cloudwatchエージェント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_4" class="md-nav__link">
+    cloudwatchエージェントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    設定ファイルの配置
+  </a>
+  
+    <nav class="md-nav" aria-label="設定ファイルの配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ ウィザードの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 手動の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentjson" class="md-nav__link">
+    amazon-cloudwatch-agent.jsonファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="amazon-cloudwatch-agent.jsonファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentjson_1" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent.jsonファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agent-ctl" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent-ctlコマンド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    ▼ agentセクション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    ▼ metricsセクション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    ▼ logsセクション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ログ
+  </a>
+  
+    <nav class="md-nav" aria-label="ログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentlog" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent.logファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-validationlog" class="md-nav__link">
+    ▼ configuration-validation.logファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iam" class="md-nav__link">
+    IAMロール
+  </a>
+  
+    <nav class="md-nav" aria-label="IAMロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    ▼ EC2インスタンスの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    ▼ AWS外のサーバーの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-cloudwatch" class="md-nav__link">
+    03. CloudWatchアラーム
+  </a>
+  
+    <nav class="md-nav" aria-label="03. CloudWatchアラーム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_5" class="md-nav__link">
+    CloudWatchアラームとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ ログが監視対象の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ メトリクスが監視対象の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-cloudwatch" class="md-nav__link">
+    04. CloudWatchシンセティック
+  </a>
+  
+    <nav class="md-nav" aria-label="04. CloudWatchシンセティック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_6" class="md-nav__link">
+    CloudWatchシンセティックとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code兄弟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Tower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DirectConnect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ec2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_efs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ︎ElastiCache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EventBridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_firelens.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FireLens
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Accelerator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_glue.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_iam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kinesis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kms.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_lambda.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Lambda
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_lb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_rds.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_redshift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_route53.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_s3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ses.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sqs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_vpc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_waf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ GCP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cloudwatch" class="md-nav__link">
+    01. CloudWatchメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="01. CloudWatchメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch" class="md-nav__link">
+    CloudWatchメトリクスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メトリクスの集約
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの集約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ メトリクスの集約とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 集約の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 集約の確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    インサイトメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="インサイトメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ インサイトメトリクスは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ パフォーマンスインサイト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    ▼ Containerインサイト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    ▼ Lambdaインサイト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-cloudwatch" class="md-nav__link">
+    02. CloudWatchログ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. CloudWatchログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_1" class="md-nav__link">
+    CloudWatchログとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    フィルターパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="フィルターパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ フィルターパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    ▼ OR条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 除外条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_2" class="md-nav__link">
+    CloudWatchログエージェント (非推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="CloudWatchログエージェント (非推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_3" class="md-nav__link">
+    ▼ CloudWatchログエージェントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#varawslogsetcawslogsconf" class="md-nav__link">
+    ▼ /var/awslogs/etc/awslogs.confファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    Logインサイト
+  </a>
+  
+    <nav class="md-nav" aria-label="Logインサイト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#log_1" class="md-nav__link">
+    ▼ Logインサイトとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ クエリ例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-cloudwatch" class="md-nav__link">
+    02-02. cloudwatchエージェント
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. cloudwatchエージェント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_4" class="md-nav__link">
+    cloudwatchエージェントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    設定ファイルの配置
+  </a>
+  
+    <nav class="md-nav" aria-label="設定ファイルの配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ ウィザードの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 手動の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentjson" class="md-nav__link">
+    amazon-cloudwatch-agent.jsonファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="amazon-cloudwatch-agent.jsonファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentjson_1" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent.jsonファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agent-ctl" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent-ctlコマンド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    ▼ agentセクション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    ▼ metricsセクション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    ▼ logsセクション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ログ
+  </a>
+  
+    <nav class="md-nav" aria-label="ログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-cloudwatch-agentlog" class="md-nav__link">
+    ▼ amazon-cloudwatch-agent.logファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-validationlog" class="md-nav__link">
+    ▼ configuration-validation.logファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iam" class="md-nav__link">
+    IAMロール
+  </a>
+  
+    <nav class="md-nav" aria-label="IAMロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    ▼ EC2インスタンスの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    ▼ AWS外のサーバーの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-cloudwatch" class="md-nav__link">
+    03. CloudWatchアラーム
+  </a>
+  
+    <nav class="md-nav" aria-label="03. CloudWatchアラーム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_5" class="md-nav__link">
+    CloudWatchアラームとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ ログが監視対象の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ メトリクスが監視対象の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-cloudwatch" class="md-nav__link">
+    04. CloudWatchシンセティック
+  </a>
+  
+    <nav class="md-nav" aria-label="04. CloudWatchシンセティック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_6" class="md-nav__link">
+    CloudWatchシンセティックとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="cloudwatchaws">CloudWatch＠AWSリソース<a class="headerlink" href="#cloudwatchaws" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-cloudwatch">01. CloudWatchメトリクス<a class="headerlink" href="#01-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="cloudwatch">CloudWatchメトリクスとは<a class="headerlink" href="#cloudwatch" title="Permanent link">&para;</a></h3>
+<p>AWSリソースで発生したメトリクスのデータポイントを収集する。</p>
+<p><br></p>
+<h3 id="_2">メトリクスの集約<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ メトリクスの集約とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>CloudWatchは、データポイントからメトリクスを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。</p>
+<p><img alt="metrics_namespace_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html</a></li>
+<li><a href="https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18">https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch/18</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 集約の種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>集約名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ディメンション</td>
+<td>インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZ、など) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、EC2のストレージで、<code>/var/lib/foo</code>パーティションのディスク使用率のデータポイントが <code>30</code>%だとする。EC2のインスタンスIDをディメンションにした場合に、<code>/var/lib/foo</code>以外のパーティションが <code>30</code>%より低いため、インスタンスIDのディメンション全体としては <code>10%</code>ほどのディスク使用率になる) 。CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集計する必要がある。</td>
+</tr>
+<tr>
+<td>名前空間</td>
+<td>AWSリソースをグループとした集約のこと (例：EC2、RDS、ALB、など) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスのデータポイントを収集すると、名前空間はCWAgentになる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ 集約の確認方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>CloudWatchメトリクス上では、各集約を以下の様に確認できる。</p>
+<p><img alt="cloudwatch_namespace_metric_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/">https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">インサイトメトリクス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ インサイトメトリクスは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>異なるメトリクスを再集計し、性能に関するメトリクスとして提供する。</p>
+<h4 id="_8">▼ パフォーマンスインサイト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>RDS (Aurora、非Aurora) の性能に関するメトリクスのデータポイントを収集する。</p>
+<p>特定の集約 (例：個別のクエリ) で監視できるようになる。</p>
+<p>パラメーターグループの <code>performance_schema</code>を有効化する必要がある。</p>
+<p>対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html</a></li>
+</ul>
+</blockquote>
+<h4 id="container">▼ Containerインサイト<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
+<p>コンテナに関するAWSリソース (例：ECSクラスター、ECSサービス、ECSタスク、ECSコンテナ、EKS Cluster) の性能に関するメトリクスのデータポイントを収集する。</p>
+<p>作成したメトリクスを特定の集約 (例：個別のコンテナ) で扱えるになる。</p>
+<p>また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。</p>
+<p>ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。</p>
+<p>Containerインサイトのメトリクスは、『<code>ContainerInsights</code>』という名前空間で一括でクエリでき、『<code>ClusterName</code>』などのディメンションでデータポイントをフィルタリングできる。</p>
+<h4 id="lambda">▼ Lambdaインサイト<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h4>
+<p>Lambdaの性能に関するメトリクスのデータポイントを収集する。</p>
+<p><br></p>
+<h2 id="02-cloudwatch">02. CloudWatchログ<a class="headerlink" href="#02-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="cloudwatch_1">CloudWatchログとは<a class="headerlink" href="#cloudwatch_1" title="Permanent link">&para;</a></h3>
+<p>クラウドログサーバーとして働く。</p>
+<p>AWSリソースで作成されたログを収集できる。</p>
+<p><br></p>
+<h2 id="02-02">02-02. セットアップ<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">コンソール画面の場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 設定項目と説明<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ロググループ</td>
+<td>ログストリームをグループ化して収集するか否かを設定する。</td>
+<td>基本的に、ログファイルはグループ化せずに、<code>1</code>個のロググループには <code>1</code>個のログストリームしか含まれないようにする。マイクロサービスアーキテクチャでは、全てのマイクロサービスを同じロググループで定義するとよい。</td>
+</tr>
+<tr>
+<td>メトリクスフィルター</td>
+<td>フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集計し、メトリクスとして使用できる。</td>
+<td></td>
+</tr>
+<tr>
+<td>サブスクリプションフィルター</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_11">フィルターパターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ フィルターパターンとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>ログ内で検知する文字列を設定する。</p>
+<p>大文字と小文字を区別するため、網羅的に設定する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html</a></li>
+<li><a href="https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb">https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb</a></li>
+</ul>
+</blockquote>
+<h4 id="or">▼ OR条件<a class="headerlink" href="#or" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>OR条件で大文字小文字を考慮し、『<code>&lt;ログレベル&gt;:</code>』が含まれるログを検出する。</p>
+<p>ここでコロンを含まているのは、ログに含まれるファイル名やメソッド名が誤って検知されないようするためである。</p>
+<div class="highlight"><pre><span></span><code>?<span class="s2">&quot;WARNING:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Warning:&quot;</span><span class="w"> </span>?<span class="s2">&quot;ERROR:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Error:&quot;</span><span class="w"> </span>?<span class="s2">&quot;CRITICAL:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Critical:&quot;</span><span class="w"> </span>?<span class="s2">&quot;EMERGENCY:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Emergency:&quot;</span><span class="w"> </span>?<span class="s2">&quot;ALERT:&quot;</span><span class="w"> </span>?<span class="s2">&quot;Alert:&quot;</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>OR条件で大文字小文字を考慮し、『<code>&lt;ログレベル&gt; message</code>』が含まれるログを検出する。</p>
+<div class="highlight"><pre><span></span><code>?<span class="s2">&quot;WARNING message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Warning message&quot;</span><span class="w"> </span>?<span class="s2">&quot;ERROR message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Error message&quot;</span><span class="w"> </span>?<span class="s2">&quot;CRITICAL message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Critical message&quot;</span><span class="w"> </span>?<span class="s2">&quot;EMERGENCY message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Emergency message&quot;</span><span class="w"> </span>?<span class="s2">&quot;ALERT message&quot;</span><span class="w"> </span>?<span class="s2">&quot;Alert message&quot;</span>
+</code></pre></div>
+<h4 id="_13">▼ 除外条件<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>『<code>ERROR:</code>』が含まれ、かつ『<code>MethodNotAllowedHttpException</code>』が含まれないログを検知する。</p>
+<p>OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。</p>
+<p>そのため、ここではOR条件を使用していない。</p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/">https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;ERROR:&quot;</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-MethodNotAllowedHttpException</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="cloudwatch_2">CloudWatchログエージェント (非推奨)<a class="headerlink" href="#cloudwatch_2" title="Permanent link">&para;</a></h3>
+<h4 id="cloudwatch_3">▼ CloudWatchログエージェントとは<a class="headerlink" href="#cloudwatch_3" title="Permanent link">&para;</a></h4>
+<p>インスタンス内で稼働するデーモンのこと。</p>
+<p>インスタンス内のデータを収集し、CloudWatchログに対して送信する。</p>
+<p>執筆時点 (2020/10/05) では非推奨で、cloudwatchエージェントへの設定の移行が推奨されている。</p>
+<h4 id="varawslogsetcawslogsconf">▼ <code>/var/awslogs/etc/awslogs.conf</code>ファイル<a class="headerlink" href="#varawslogsetcawslogsconf" title="Permanent link">&para;</a></h4>
+<p>CloudWatchログエージェントを設定する。</p>
+<p>OS、ミドルウェア、アプリケーションに分類して設定すると良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ------------------------------------------</span>
+<span class="c1"># CentOS CloudWatch Logs</span>
+<span class="c1"># ------------------------------------------</span>
+<span class="k">[/var/log/messages]</span>
+
+<span class="c1"># タイムスタンプ</span>
+<span class="c1"># (例) Jan 1 00:00:00</span>
+<span class="na">datetime_format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">%b %d %H:%M:%S</span>
+<span class="c1"># (例) 2020-01-01 00:00:00</span>
+<span class="c1"># datetime_format = %Y-%m-%d %H:%M:%S</span>
+
+<span class="c1"># 収集したいログファイル。ここでは、CentOSのログを設定する。</span>
+<span class="na">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/messages</span>
+
+<span class="c1"># 文字コードutf_8として送信する。文字コードが合わないと、CloudWatchログの画面上で文字化けする。</span>
+<span class="na">encoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">utf_8</span>
+
+<span class="c1"># バッファーに蓄える期間</span>
+<span class="na">buffer_duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+
+<span class="c1"># 記入中...</span>
+<span class="na">initial_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">start_of_file</span>
+
+<span class="c1"># インスタンスID</span>
+<span class="na">log_stream_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{instance_id}</span>
+
+<span class="c1"># AWS上で管理するロググループ名</span>
+<span class="na">log_group_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/messages</span>
+
+<span class="c1"># ------------------------------------------</span>
+<span class="c1"># Nginx CloudWatch Logs</span>
+<span class="c1"># ------------------------------------------</span>
+<span class="k">[/var/log/nginx/error.log]</span>
+<span class="na">file</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/nginx/error.log</span>
+<span class="na">buffer_duration</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+<span class="na">log_stream_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">{instance_id}</span>
+<span class="na">initial_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">start_of_file</span>
+<span class="na">log_group_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">/var/log/nginx/error_log.production</span>
+
+<span class="c1"># ------------------------------------------</span>
+<span class="c1"># Application CloudWatch Logs</span>
+<span class="c1"># ------------------------------------------</span>
+<span class="k">[/var/www/project/app/storage/logs/laravel.log]</span>
+<span class="na">file</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">/var/www/project/app/storage/logs/laravel.log</span>
+<span class="na">buffer_duration</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">5000</span>
+<span class="na">log_stream_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">{instance_id}</span>
+<span class="na">initial_position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">start_of_file</span>
+<span class="na">log_group_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">/var/www/project/app/storage/logs/laravel_log.production</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file</a></li>
+</ul>
+</blockquote>
+<h4 id="_14">▼ コマンド<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>設定後、<code>awslogs</code>コマンドでプロセスを起動する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># cloudwatchエージェントの再起動</span>
+<span class="c1"># 注意: restartだとCloudWatchに反映されない時がある。</span>
+$<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> </span>restart
+
+<span class="c1"># もしくは</span>
+$<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> </span>stop
+$<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> </span>start
+
+<span class="c1"># ログが新しく作成されないと変更が適用されないことがあるため、ログファイルに適当な文字列行を増やしてみる。</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="log">Logインサイト<a class="headerlink" href="#log" title="Permanent link">&para;</a></h3>
+<h4 id="log_1">▼ Logインサイトとは<a class="headerlink" href="#log_1" title="Permanent link">&para;</a></h4>
+<p>クエリを使用して、ロググループ単位でログを抽出する。</p>
+<h4 id="_15">▼ クエリ例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>汎用的なクエリを示す。</p>
+<p><strong>＊例＊</strong></p>
+<p>小文字と大文字を区別せずに、Errorを含むログを検索する。</p>
+<div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>小文字と大文字を区別せずに、WarningまたはErrorを含むログを検索する。</p>
+<div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Warning</span><span class="o">|</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-02-cloudwatch">02-02. cloudwatchエージェント<a class="headerlink" href="#02-02-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="cloudwatch_4">cloudwatchエージェントとは<a class="headerlink" href="#cloudwatch_4" title="Permanent link">&para;</a></h3>
+<p>インスタンス系AWSリソース (EC2、ECS、EKS、Lambda) 内で稼働するデーモンのこと。</p>
+<p>インスタンス内のメトリクスのデータポイントやログを収集し、CloudWatchに送信する。</p>
+<p>多くの場合、インスタンス系リソースは基本的なメトリクスのデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
+<p>cloudwatchエージェントを使用することにより、カスタムメトリクスやログを収集できるようにする。</p>
+<p>プロセスは、デーモン化しておくと良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>amazon-cloudwatch-agent
+
+$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>amazon-cloudwatch-agent
+
+●<span class="w"> </span>amazon-cloudwatch-agent.service<span class="w"> </span>-<span class="w"> </span>Amazon<span class="w"> </span>CloudWatch<span class="w"> </span>Agent
+<span class="w">   </span>Loaded:<span class="w"> </span>loaded<span class="w"> </span><span class="o">(</span>/etc/systemd/system/amazon-cloudwatch-agent.service<span class="p">;</span><span class="w"> </span>enabled<span class="p">;</span><span class="w"> </span>vendor<span class="w"> </span>preset:<span class="w"> </span>disabled<span class="o">)</span>
+<span class="w">   </span>Active:<span class="w"> </span>active<span class="w"> </span><span class="o">(</span>running<span class="o">)</span><span class="w"> </span>since<span class="w"> </span>Thu<span class="w"> </span><span class="m">2022</span>-06-13<span class="w"> </span><span class="m">19</span>:04:56<span class="w"> </span>JST<span class="p">;</span><span class="w"> </span>42min<span class="w"> </span>ago
+<span class="w"> </span>Main<span class="w"> </span>PID:<span class="w"> </span><span class="m">2959</span><span class="w"> </span><span class="o">(</span>amazon-cloudwat<span class="o">)</span>
+<span class="w">   </span>CGroup:<span class="w"> </span>/system.slice/amazon-cloudwatch-agent.service
+<span class="w">           </span>└─2959<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent<span class="w"> </span>-config<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.toml<span class="w"> </span>-envconfig<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/etc/env-config.json<span class="w"> </span>-pidfile<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/var/amazon-cloudwatch-agent.pid
+
+Oct<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">19</span>:04:56<span class="w"> </span>***<span class="w"> </span>systemd<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>Started<span class="w"> </span>Amazon<span class="w"> </span>CloudWatch<span class="w"> </span>Agent.
+Oct<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">19</span>:04:57<span class="w"> </span>***<span class="w"> </span>start-amazon-cloudwatch-agent<span class="o">[</span><span class="m">2959</span><span class="o">]</span>:<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist<span class="w"> </span>or<span class="w"> </span>cannot<span class="w"> </span>read.<span class="w"> </span>Skipping<span class="w"> </span>it.
+Oct<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">19</span>:04:57<span class="w"> </span>***<span class="w"> </span>start-amazon-cloudwatch-agent<span class="o">[</span><span class="m">2959</span><span class="o">]</span>:<span class="w"> </span>I!<span class="w"> </span>Detecting<span class="w"> </span>run_as_user...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html</a></li>
+<li><a href="https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/">https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/</a></li>
+<li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_16">インストール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="yum">▼ yumリポジトリから<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>amazon-cloudwatch-agent<span class="w"> </span>-y
+
+<span class="c1"># カスタムメトリクスの収集のために、collectdパッケージを使用する場合</span>
+$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>collectd<span class="w"> </span>-y
+</code></pre></div>
+<p><br></p>
+<h3 id="_17">設定ファイルの配置<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ ウィザードの場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>ウィザードを使用して設定ファイル (<code>amazon-cloudwatch-agent.json</code>ファイル) をセットアップする場合、ウィザードは <code>amazon-cloudwatch-agent.json</code>ファイルを <code>/opt/aws/amazon-cloudwatch-agent/bin</code>ディレクトリ配下に自動的に作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_19">▼ 手動の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>手動で設定ファイル (<code>amazon-cloudwatch-agent.json</code>ファイル) をセットアップする場合、<code>amazon-cloudwatch-agent.json</code>ファイルを指定されたディレクトリに配置する必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>配置先のパス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td><code>/opt/aws/amazon-cloudwatch-agent/etc</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td><code>$Env:ProgramData\Amazon\AmazonCloudWatchAgent</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="amazon-cloudwatch-agentjson"><code>amazon-cloudwatch-agent.json</code>ファイル<a class="headerlink" href="#amazon-cloudwatch-agentjson" title="Permanent link">&para;</a></h3>
+<h4 id="amazon-cloudwatch-agentjson_1">▼ <code>amazon-cloudwatch-agent.json</code>ファイルとは<a class="headerlink" href="#amazon-cloudwatch-agentjson_1" title="Permanent link">&para;</a></h4>
+<p>cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、<code>amazon-cloudwatch-agent-ctl</code>コマンドで設定ファイルを読み込ませる。</p>
+<p>全てのセクションを設定する必要はなく、<code>logs</code>セクションまたは <code>metrics</code>セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してCloudWatchにログファイルを送信するのみであれば、<code>log</code>セッションのみ) 。</p>
+<p>注意点として、cloudwatchエージェントは、起動後に <code>amazon-cloudwatch-agent.json</code>ファイルを <code>/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json</code>ファイルとして移動してしまい、元々の <code>amazon-cloudwatch-agent.json</code>ファイルは無くなってしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local">https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local</a></li>
+</ul>
+</blockquote>
+<h4 id="amazon-cloudwatch-agent-ctl">▼ <code>amazon-cloudwatch-agent-ctl</code>コマンド<a class="headerlink" href="#amazon-cloudwatch-agent-ctl" title="Permanent link">&para;</a></h4>
+<p><code>amazon-cloudwatch-agent-ctl</code>コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-commandline-fleet.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span>fetch-config<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>ec2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-s
+</code></pre></div>
+<p>cloudwatchエージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Amazon CloudWatch Agent</span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/opt/aws/amazon-cloudwatch-agent/bin/start-amazon-cloudwatch-agent</span>
+<span class="na">KillMode</span><span class="o">=</span><span class="s">process</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">on-failure</span>
+<span class="na">RestartSec</span><span class="o">=</span><span class="s">60s</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>プロセスのステータスを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span>ec2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-a<span class="w"> </span>status
+</code></pre></div>
+<h4 id="agent">▼ <code>agent</code>セクション<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h4>
+<p>cloudwatchエージェント全体を設定する。</p>
+<p>ウィザードを使用した場合、このセクションの設定はスキップされる。</p>
+<p>実装しなかった場合、デフォルト値が適用される。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Agentsection</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="err">`</span><span class="c1"># プロセスのユーザー名を設定する。`</span>
+<span class="w">      </span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="err">`</span><span class="c1"># 別のAWSアカウントにログを送信する場合に、必要な認可スコープを付与したIAMロール`</span>
+<span class="w">      </span><span class="s">&quot;credentials&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/&lt;IAMロール名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h4 id="metrics">▼ <code>metrics</code>セクション<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
+<p>AWSリソースが標準で収集しないカスタムメトリクスのデータポイントの収集について設定する。</p>
+<p>ウィザードを使用した場合、このセクションの設定はスキップされる。</p>
+<p>実装しなかった場合、何も設定されない。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="c1"># メトリクス</span>
+<span class="w">  </span><span class="s">&quot;metrics&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># メトリクスの集約とする名前空間のユーザー定義名</span>
+<span class="w">      </span><span class="c1"># デフォルトでCWAgentになる。</span>
+<span class="w">      </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;CWAgent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="c1"># メトリクスの集約とするディメンション</span>
+<span class="w">      </span><span class="s">&quot;aggregation_dimensions&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="c1"># インスタンスID</span>
+<span class="w">            </span><span class="s">&quot;InstanceId&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># パーティションに紐づくファイルシステムのパス</span>
+<span class="w">            </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="c1"># ディメンションのユーザー定義名</span>
+<span class="w">      </span><span class="s">&quot;append_dimensions&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="s">&quot;AutoScalingGroupName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:AutoScalingGroupName}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;ImageId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:ImageId}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;InstanceId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:InstanceId}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;InstanceType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;${aws:InstanceType}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="c1"># メモリ上のバッファーの保存時間</span>
+<span class="w">      </span><span class="s">&quot;force_flush_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="c1"># 収集対象のカスタムメトリクスの一覧 (collectdパッケージまたはStatsDパッケージを使用する場合)</span>
+<span class="w">      </span><span class="s">&quot;metrics_collected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">          </span><span class="c1"># collectdパッケージの使用を宣言する。必ず設定する必要がある。</span>
+<span class="w">          </span><span class="s">&quot;collectd&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;metrics_aggregation_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># ストレージ系</span>
+<span class="w">          </span><span class="s">&quot;disk&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="s">&quot;measurement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                  </span><span class="c1"># ディスク使用率メトリクス</span>
+<span class="w">                  </span><span class="s">&quot;used_percent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="c1"># マウントポイントを設定する。</span>
+<span class="w">              </span><span class="s">&quot;resources&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># メモリ系</span>
+<span class="w">          </span><span class="s">&quot;mem&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="c1"># 計測</span>
+<span class="w">              </span><span class="s">&quot;measurement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                  </span><span class="c1"># メモリ使用率メトリクス</span>
+<span class="w">                  </span><span class="s">&quot;mem_used_percent&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="c1"># 計測間隔</span>
+<span class="w">              </span><span class="s">&quot;metrics_collection_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Metricssection</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-CloudWatch-agent.html</a></li>
+</ul>
+</blockquote>
+<h4 id="logs">▼ <code>logs</code>セクション<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h4>
+<p>ログの収集について設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;agent&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;run_as_user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cwagent&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="c1"># ログ</span>
+<span class="w">  </span><span class="s">&quot;logs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># メモリ上のバッファーの保存時間</span>
+<span class="w">      </span><span class="s">&quot;force_flush_interval&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">60</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;logs_collected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;files&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="c1"># 収集対象のログの一覧</span>
+<span class="w">              </span><span class="s">&quot;collect_list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                  </span><span class="p p-Indicator">{</span>
+<span class="w">                    </span><span class="c1"># 収集対象のログのディレクトリ</span>
+<span class="w">                    </span><span class="s">&quot;file_path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/var/log/nginx/error.log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="c1"># CloudWatchログ上でのロググループ名</span>
+<span class="w">                    </span><span class="s">&quot;log_group_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo-www/var/log/nginx/error_log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="c1"># CloudWatchログ上でのログストリーム名</span>
+<span class="w">                    </span><span class="s">&quot;log_stream_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{instance_id}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                  </span><span class="p p-Indicator">},</span>
+<span class="w">                  </span><span class="p p-Indicator">{</span>
+<span class="w">                    </span><span class="s">&quot;file_path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/var/log/php-fpm/error.log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">&quot;log_group_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/foo-www/var/log/php-fpm/error_log&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">&quot;log_stream_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{instance_id}&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                  </span><span class="p p-Indicator">},</span>
+<span class="w">                </span><span class="p p-Indicator">],</span>
+<span class="w">            </span><span class="p p-Indicator">}},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#CloudWatch-Agent-Configuration-File-Logssection</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_20">ログ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="amazon-cloudwatch-agentlog">▼ <code>amazon-cloudwatch-agent.log</code>ファイル<a class="headerlink" href="#amazon-cloudwatch-agentlog" title="Permanent link">&para;</a></h4>
+<p>cloudwatchエージェントのプロセスに関するログを出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+</code></pre></div>
+<h4 id="configuration-validationlog">▼ <code>configuration-validation.log</code>ファイル<a class="headerlink" href="#configuration-validationlog" title="Permanent link">&para;</a></h4>
+<p>cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
+</code></pre></div>
+<p><br></p>
+<h3 id="iam">IAMロール<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
+<h4 id="ec2">▼ EC2インスタンスの場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
+</ul>
+</blockquote>
+<h4 id="aws">▼ AWS外のサーバーの場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
+<p>AWS外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをcloudwatchエージェント用のIAMユーザーに紐付ける必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-cloudwatch">03. CloudWatchアラーム<a class="headerlink" href="#03-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="cloudwatch_5">CloudWatchアラームとは<a class="headerlink" href="#cloudwatch_5" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="03-02">03-02. セットアップ<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
+<h3 id="_21">コンソール画面の場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ ログが監視対象の場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名前空間</td>
+<td>紐付くロググループが所属する名前空間を設定する。CloudWatchログが、設定した名前空間に対して、値を発行する。</td>
+<td></td>
+</tr>
+<tr>
+<td>メトリクス</td>
+<td>紐付くロググループが所属する名前空間内のメトリクスを設定する。CloudWatchログが、設定したメトリクスに対して、値を発行する。</td>
+<td></td>
+</tr>
+<tr>
+<td>メトリクス値</td>
+<td>フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。</td>
+<td>例えば『検出数』を発行する場合は、『<code>1</code>』を設定する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_23">▼ メトリクスが監視対象の場合<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<h4 id="_24">▼ 条件<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>閾値の種類</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>アラートを実行するデータポイント</td>
+<td>アラートを発生させるデータポイント数を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>欠落データの処理</td>
+<td>データポイントが発生しないことをどう判定するかを設定する。</td>
+<td>データポイントが何も発生しないことを正常とし、これが発生することを異常とする場合 (例：エラーイベント、など) は『<code>notBreaching</code>』とする。反対に、データポイントが継続的に発生することを正常とし、これが発生しないことを異常とする場合 (例：CPU使用率、メモリ使用率、など) は、『<code>breaching</code>』とする。<br>- <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarms-and-missing-data</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="04-cloudwatch">04. CloudWatchシンセティック<a class="headerlink" href="#04-cloudwatch" title="Permanent link">&para;</a></h2>
+<h3 id="cloudwatch_6">CloudWatchシンセティックとは<a class="headerlink" href="#cloudwatch_6" title="Permanent link">&para;</a></h3>
+<p>合成監視を行えるようになる。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

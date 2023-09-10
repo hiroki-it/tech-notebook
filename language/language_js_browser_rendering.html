@@ -1,0 +1,4069 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ブラウザレンダリングの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_browser_rendering.html">
+      
+      
+        <link rel="prev" href="language_js_package_management.html">
+      
+      
+        <link rel="next" href="language_go.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】ブラウザレンダリング - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】ブラウザレンダリング
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ JavaScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロトタイプベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6_5" id="__nav_8_6_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ブラウザ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ブラウザ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ブラウザレンダリング
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_js_browser_rendering.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ブラウザレンダリング
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ブラウザレンダリングの仕組み
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ブラウザレンダリングの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    構成する処理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. マークアップ言語
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マークアップ言語">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マークアップ言語とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ マークアップ言語の歴史
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlextensible-markup-language" class="md-nav__link">
+    XML形式：Extensible Markup Language
+  </a>
+  
+    <nav class="md-nav" aria-label="XML形式：Extensible Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    ▼ XML形式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ スキーマ言語とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlhypertext-markup-language" class="md-nav__link">
+    HTML形式：HyperText Markup Language
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式：HyperText Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    ▼ HTML形式とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-javascript" class="md-nav__link">
+    01-03. JavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    マークアップ言語へのJavaScriptの組み込み
+  </a>
+  
+    <nav class="md-nav" aria-label="マークアップ言語へのJavaScriptの組み込み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ インラインスクリプト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 外部スクリプト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    ▼ scriptタグが複数ある場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    01-04. ブラウザのバージョン
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. ブラウザのバージョン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill" class="md-nav__link">
+    Polyfill
+  </a>
+  
+    <nav class="md-nav" aria-label="Polyfill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill_1" class="md-nav__link">
+    ▼ Polyfillとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-downloading" class="md-nav__link">
+    02. Downloading処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Downloading処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading" class="md-nav__link">
+    Downloading処理とは
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloading処理とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 非同期的な読み出し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ リソースの優先順位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading" class="md-nav__link">
+    Pre-Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading_1" class="md-nav__link">
+    ▼ Pre-Loadingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    Lazy Loading (遅延読み出し)
+  </a>
+  
+    <nav class="md-nav" aria-label="Lazy Loading (遅延読み出し)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading_1" class="md-nav__link">
+    ▼ Lazy Loadingとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollresize" class="md-nav__link">
+    ▼ scrollイベントとresizeイベントに基づく読み出し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersection-observer" class="md-nav__link">
+    ▼ Intersection Observerによる要素の交差率に基づく読み出し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    Eager Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading_1" class="md-nav__link">
+    ▼ Eager Loadingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-parse" class="md-nav__link">
+    02-02. Parse処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. Parse処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    Parse処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    HTML形式テキストファイルの構造解析
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 構造解析の流れ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml_1" class="md-nav__link">
+    XML形式テキストファイルの構造解析
+  </a>
+  
+    <nav class="md-nav" aria-label="XML形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 構造解析の流れ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-scripting" class="md-nav__link">
+    03. Scripting処理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Scripting処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    Scripting処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    JavaScriptエンジン
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScriptエンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    ▼ JavaScriptエンジンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 機械語翻訳
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. イベント
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    イベント
+  </a>
+  
+    <nav class="md-nav" aria-label="イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ イベントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ イベントハンドラ関数とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    HTML形式におけるイベントハンドラ関数のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onload" class="md-nav__link">
+    ▼ onload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onclick" class="md-nav__link">
+    ▼ onclick
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    JS形式におけるイベントハンドラ関数のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="JS形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidonclick" class="md-nav__link">
+    ▼ document.getElementById.onclick関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentaddeventlistener" class="md-nav__link">
+    ▼ document.addEventListener関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-rendering" class="md-nav__link">
+    04. Rendering処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Rendering処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering" class="md-nav__link">
+    Rendering処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-calculatestyle" class="md-nav__link">
+    04-02. CalculateStyle処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. CalculateStyle処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculatestyle" class="md-nav__link">
+    CalculateStyle処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-layout" class="md-nav__link">
+    04-03. Layout処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. Layout処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-paint" class="md-nav__link">
+    05. Paint処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Paint処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paint" class="md-nav__link">
+    Paint処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02-rasterize" class="md-nav__link">
+    05-02. Rasterize処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. Rasterize処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasterize" class="md-nav__link">
+    Rasterize処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-compositelayers" class="md-nav__link">
+    05-03. CompositeLayers処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. CompositeLayers処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compositelaysers" class="md-nav__link">
+    CompositeLaysers処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ブラウザレンダリングの仕組み
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ブラウザレンダリングの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    構成する処理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. マークアップ言語
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. マークアップ言語">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マークアップ言語とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ マークアップ言語の歴史
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xmlextensible-markup-language" class="md-nav__link">
+    XML形式：Extensible Markup Language
+  </a>
+  
+    <nav class="md-nav" aria-label="XML形式：Extensible Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xml" class="md-nav__link">
+    ▼ XML形式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ スキーマ言語とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlhypertext-markup-language" class="md-nav__link">
+    HTML形式：HyperText Markup Language
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式：HyperText Markup Language">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    ▼ HTML形式とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03-javascript" class="md-nav__link">
+    01-03. JavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. JavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript" class="md-nav__link">
+    マークアップ言語へのJavaScriptの組み込み
+  </a>
+  
+    <nav class="md-nav" aria-label="マークアップ言語へのJavaScriptの組み込み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ インラインスクリプト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 外部スクリプト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script" class="md-nav__link">
+    ▼ scriptタグが複数ある場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-04" class="md-nav__link">
+    01-04. ブラウザのバージョン
+  </a>
+  
+    <nav class="md-nav" aria-label="01-04. ブラウザのバージョン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill" class="md-nav__link">
+    Polyfill
+  </a>
+  
+    <nav class="md-nav" aria-label="Polyfill">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyfill_1" class="md-nav__link">
+    ▼ Polyfillとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-downloading" class="md-nav__link">
+    02. Downloading処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Downloading処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading" class="md-nav__link">
+    Downloading処理とは
+  </a>
+  
+    <nav class="md-nav" aria-label="Downloading処理とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 非同期的な読み出し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ リソースの優先順位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading" class="md-nav__link">
+    Pre-Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-loading_1" class="md-nav__link">
+    ▼ Pre-Loadingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading" class="md-nav__link">
+    Lazy Loading (遅延読み出し)
+  </a>
+  
+    <nav class="md-nav" aria-label="Lazy Loading (遅延読み出し)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lazy-loading_1" class="md-nav__link">
+    ▼ Lazy Loadingとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollresize" class="md-nav__link">
+    ▼ scrollイベントとresizeイベントに基づく読み出し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersection-observer" class="md-nav__link">
+    ▼ Intersection Observerによる要素の交差率に基づく読み出し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading" class="md-nav__link">
+    Eager Loading
+  </a>
+  
+    <nav class="md-nav" aria-label="Eager Loading">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eager-loading_1" class="md-nav__link">
+    ▼ Eager Loadingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-parse" class="md-nav__link">
+    02-02. Parse処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. Parse処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    Parse処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    HTML形式テキストファイルの構造解析
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 構造解析の流れ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml_1" class="md-nav__link">
+    XML形式テキストファイルの構造解析
+  </a>
+  
+    <nav class="md-nav" aria-label="XML形式テキストファイルの構造解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 構造解析の流れ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-scripting" class="md-nav__link">
+    03. Scripting処理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Scripting処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scripting" class="md-nav__link">
+    Scripting処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript_1" class="md-nav__link">
+    JavaScriptエンジン
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScriptエンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#javascript_2" class="md-nav__link">
+    ▼ JavaScriptエンジンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 機械語翻訳
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. イベント
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    イベント
+  </a>
+  
+    <nav class="md-nav" aria-label="イベント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ イベントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ イベントハンドラ関数とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    HTML形式におけるイベントハンドラ関数のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="HTML形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onload" class="md-nav__link">
+    ▼ onload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onclick" class="md-nav__link">
+    ▼ onclick
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    JS形式におけるイベントハンドラ関数のコール
+  </a>
+  
+    <nav class="md-nav" aria-label="JS形式におけるイベントハンドラ関数のコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidonclick" class="md-nav__link">
+    ▼ document.getElementById.onclick関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentaddeventlistener" class="md-nav__link">
+    ▼ document.addEventListener関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-rendering" class="md-nav__link">
+    04. Rendering処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Rendering処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rendering" class="md-nav__link">
+    Rendering処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02-calculatestyle" class="md-nav__link">
+    04-02. CalculateStyle処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. CalculateStyle処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#calculatestyle" class="md-nav__link">
+    CalculateStyle処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-layout" class="md-nav__link">
+    04-03. Layout処理
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. Layout処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layout" class="md-nav__link">
+    Layout処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-paint" class="md-nav__link">
+    05. Paint処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Paint処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paint" class="md-nav__link">
+    Paint処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02-rasterize" class="md-nav__link">
+    05-02. Rasterize処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. Rasterize処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rasterize" class="md-nav__link">
+    Rasterize処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-compositelayers" class="md-nav__link">
+    05-03. CompositeLayers処理
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. CompositeLayers処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compositelaysers" class="md-nav__link">
+    CompositeLaysers処理とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">ブラウザレンダリング<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. ブラウザレンダリングの仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">構成する処理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>以下の8つの処理からなる。</p>
+<p>クライアントの操作のたびにイベントが発火し、Scriptingプロセスが繰り返し実行される。</p>
+<ul>
+<li>Downloading</li>
+<li>Parse</li>
+<li>Scripting</li>
+<li>Rendering</li>
+<li>CalculateStyle</li>
+<li>Paint</li>
+<li>Rasterize</li>
+<li>Composite</li>
+</ul>
+<p><img alt="browser-rendering" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering.png" /></p>
+<p><br></p>
+<h2 id="01-02">01-02. マークアップ言語<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h4 id="_4">▼ マークアップ言語とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ハードウェアが読み込むファイルには、バイナリファイルとテキストファイルがある。</p>
+<p>このうち、テキストファイルをタグとデータによって構造的に表現し、ハードウェアが読み込める状態する言語のこと。</p>
+<h4 id="_5">▼ マークアップ言語の歴史<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Webページをテキストによって構成するための言語をマークアップ言語という。</p>
+<p>1970年、IBMが、タグによって、テキスト文章に構造や意味を持たせるGML言語を発表した。</p>
+<p><img alt="markup-language-history" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png" /></p>
+<p><br></p>
+<h3 id="xmlextensible-markup-language">XML形式：Extensible Markup Language<a class="headerlink" href="#xmlextensible-markup-language" title="Permanent link">&para;</a></h3>
+<h4 id="xml">▼ XML形式とは<a class="headerlink" href="#xml" title="Permanent link">&para;</a></h4>
+<p>テキストファイルのうち、何らかのデータの構造を表すことに特化している。</p>
+<h4 id="_6">▼ スキーマ言語とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>マークアップ言語の特にXML形式で、タグの付け方は自由である。</p>
+<p>しかし、利用者間で共通のルールを設けた方が良い。</p>
+<p>ルールを定義するための言語をスキーマ言語という。</p>
+<p>スキーマ言語に、DTD：Document Type Definition (文書型定義) がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE Employee[</span>
+<span class="cp">    &lt;!ELEMENT Name (First, Last)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT First (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Last (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Email (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Organization (Name, Address, Country)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Name (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Address (#PCDATA)&gt;</span>
+<span class="w">    </span><span class="cp">&lt;!ELEMENT Country (#PCDATA)&gt;</span>
+<span class="w">    </span>]&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="htmlhypertext-markup-language">HTML形式：HyperText Markup Language<a class="headerlink" href="#htmlhypertext-markup-language" title="Permanent link">&para;</a></h3>
+<h4 id="html">▼ HTML形式とは<a class="headerlink" href="#html" title="Permanent link">&para;</a></h4>
+<p>テキストファイルのうち、Webページの構造を表すことに特化している。</p>
+<p><br></p>
+<h2 id="01-03-javascript">01-03. JavaScript<a class="headerlink" href="#01-03-javascript" title="Permanent link">&para;</a></h2>
+<h3 id="javascript">マークアップ言語へのJavaScriptの組み込み<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ インラインスクリプト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>JavaScriptファイルを直接的に組み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;JavaScriptを直接的に組み込んでいます。&quot;</span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="_8">▼ 外部スクリプト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>外部JavaScriptファイルを組み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;</span><span class="o">&lt;</span><span class="err">/sc</span>
+    ript&gt;
+</code></pre></div>
+<p>CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web上からリソースを取得もできる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span>
+  <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js&quot;</span>
+  <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=&quot;</span>
+  <span class="na">crossorigin</span><span class="o">=</span><span class="s">&quot;anonymous&quot;</span>
+<span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="script">▼ scriptタグが複数ある場合<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
+<p><code>1</code>個のWebページの<code>.html</code>ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。</p>
+<p>そのため、より上部のscriptタグの処理は、より下部のscriptに引き継がれる。</p>
+<p>1。</p>
+<p>例えば、以下のコードがある。</p>
+<div class="highlight"><pre><span></span><code>localNum
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し１<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し２<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>見出し３<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// sample.js</span>
+<span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に行う。</span>
+<span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">  </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="p">})();</span>
+</code></pre></div>
+<ol>
+<li>実行時には以下の様に、まとめて実行される。</li>
+</ol>
+<p>ここでは、<code>.html</code>ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
+<p><code>1</code>個のページを構成する<code>.html</code>ファイルを別ファイルとして分割していても、同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">globalNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に行う。</span>
+<span class="w">  </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;外部ファイルを読み出しました&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">localNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">20</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">localMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 外側の変数 (localNum) を参照できる。</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;localNum&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 定義したメソッドを実行</span>
+<span class="w">    </span><span class="nx">localMethod</span><span class="p">();</span>
+<span class="w">  </span><span class="p">})();</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="01-04">01-04. ブラウザのバージョン<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
+<h3 id="polyfill">Polyfill<a class="headerlink" href="#polyfill" title="Permanent link">&para;</a></h3>
+<h4 id="polyfill_1">▼ Polyfillとは<a class="headerlink" href="#polyfill_1" title="Permanent link">&para;</a></h4>
+<p>JavaScriptやHTMLの更新にブラウザが追いついていない場合、それを補完するように実装されたパッケージのこと。</p>
+<p>『Polyfilla』に由来している。</p>
+<p><br></p>
+<h2 id="02-downloading">02. Downloading処理<a class="headerlink" href="#02-downloading" title="Permanent link">&para;</a></h2>
+<h3 id="downloading">Downloading処理とは<a class="headerlink" href="#downloading" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 非同期的な読み出し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>まず、サーバーサイドからリソース (<code>.html</code>ファイル、<code>.css</code>ファイル、JavaScriptファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
+<p>これは、メッセージボディに含まれている。</p>
+<p>これを優先度を基に読み込む処理。</p>
+<p>分割でレスポンスされたリソースを、随時読み込んでいく。</p>
+<p>そのため、各リソースの読み出しは非同期的に行われる。</p>
+<p>Downloading処理が終了したリソースから、次のParse処理に進んでいく。</p>
+<h4 id="_10">▼ リソースの優先順位<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>HTML</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>CSS</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>JS</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>画像</p>
+</dd>
+</dl>
+<p><br></p>
+<h3 id="pre-loading">Pre-Loading<a class="headerlink" href="#pre-loading" title="Permanent link">&para;</a></h3>
+<h4 id="pre-loading_1">▼ Pre-Loadingとは<a class="headerlink" href="#pre-loading_1" title="Permanent link">&para;</a></h4>
+<p>Downloading処理の優先順位を上げるように宣言する。</p>
+<p>優先度の高い分割リソースは、次のParse処理、Scripting処理も行われる。</p>
+<p>そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- preloadしたいものを宣言 --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;style&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;preload&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">as</span><span class="o">=</span><span class="s">&quot;script&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hello World<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;main.js&quot;</span> <span class="na">defer</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="lazy-loading">Lazy Loading (遅延読み出し)<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
+<h4 id="lazy-loading_1">▼ Lazy Loadingとは<a class="headerlink" href="#lazy-loading_1" title="Permanent link">&para;</a></h4>
+<p>条件に合致した要素を随時読み込む。</p>
+<p>条件の指定方法には、<code>scroll</code>/<code>resize</code>イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。</p>
+<p>画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。</p>
+<h4 id="scrollresize">▼ scrollイベントとresizeイベントに基づく読み出し<a class="headerlink" href="#scrollresize" title="Permanent link">&para;</a></h4>
+<p>scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。</p>
+<h4 id="intersection-observer">▼ Intersection Observerによる要素の交差率に基づく読み出し<a class="headerlink" href="#intersection-observer" title="Permanent link">&para;</a></h4>
+<p>Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。</p>
+<p>例えば、交差率の閾値を『<code>0.5</code>』と設定すると、ターゲットエレメントの交差率が『<code>0.5</code>』を超えた要素を随時読み込む。</p>
+<p><img alt="intersection-observer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png" /></p>
+<p><br></p>
+<h3 id="eager-loading">Eager Loading<a class="headerlink" href="#eager-loading" title="Permanent link">&para;</a></h3>
+<h4 id="eager-loading_1">▼ Eager Loadingとは<a class="headerlink" href="#eager-loading_1" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h2 id="02-02-parse">02-02. Parse処理<a class="headerlink" href="#02-02-parse" title="Permanent link">&para;</a></h2>
+<h3 id="parse">Parse処理とは<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
+<p>Downloading処理によって読み込まれたリソースを翻訳するプロセス</p>
+<p><br></p>
+<h3 id="html_1">HTML形式テキストファイルの構造解析<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ 構造解析の流れ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>Downloading処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。</p>
+<p>ここでは、以下の<code>.html</code>ファイルと<code>.css</code>ファイル (<code>style.css</code>) に変換されたとする。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;style.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Critical Path<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hello <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>web performance<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span> students!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;awesome-photo.jpg&quot;</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width: 50%&quot;</span><span class="p">&gt;</span>Hello world!<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c">/* style.css */</span>
+<span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font-weight</span><span class="p">:</span><span class="w"> </span><span class="kc">bold</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">span</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">p</span><span class="w"> </span><span class="nt">span</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">img</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>リソースの文字列からHTMLタグが認識され、トークンに変換される。</p>
+<p>各トークンは、<code>1</code>個のオブジェクトに変換される。</p>
+<p><img alt="dom-tree_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png" /></p>
+<p>HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。</p>
+<p>DOMツリーを作成する途中でscriptタグに到達すると、一旦、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。</p>
+<p>DOMのインターフェースについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model">https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model</a></li>
+</ul>
+</blockquote>
+<p><img alt="dom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png" /></p>
+<p>同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを送信する。</p>
+<p>レスポンスされた<code>.css</code>ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。</p>
+<p><img alt="cssom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png" /></p>
+<p><br></p>
+<h3 id="xml_1">XML形式テキストファイルの構造解析<a class="headerlink" href="#xml_1" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 構造解析の流れ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>レンダリングエンジンは、最初に出現するルート要素を根 (ルート) 、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを作成する。</p>
+<p><strong>＊例＊</strong></p>
+<p><img alt="DOMによるツリー構造化" src="https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB">https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-scripting">03. Scripting処理<a class="headerlink" href="#03-scripting" title="Permanent link">&para;</a></h2>
+<h3 id="scripting">Scripting処理とは<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h3>
+<p>JavaScriptエンジンによって、JavaScriptコードが機械語に翻訳され、実行される。</p>
+<p>この処理は、初回アクセス時のみでなく、イベントが発火した時にも実行される。</p>
+<p><br></p>
+<h3 id="javascript_1">JavaScriptエンジン<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h3>
+<h4 id="javascript_2">▼ JavaScriptエンジンとは<a class="headerlink" href="#javascript_2" title="Permanent link">&para;</a></h4>
+<p>JavaScriptのインタプリタのこと。</p>
+<p>JavaScriptエンジンは、レンダリングエンジンから<code>.html</code>ファイルに組み込まれたJavaScriptのコードを受け取る。</p>
+<p>JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。</p>
+<p><img alt="JavascriptEngine" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png" /></p>
+<h4 id="_13">▼ 機械語翻訳<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード１行ずつに対し、繰り返し行う。</p>
+<h2 id="03-02">03-02. イベント<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
+<h3 id="_14">イベント<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ イベントとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>ブラウザの各操作はイベントとして<code>.js</code>ファイルまたは<code>.html</code>ファイルに紐付けられている。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/Events">https://developer.mozilla.org/ja/docs/Web/Events</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ イベントハンドラ関数とは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>イベントの発火に伴ってコールされる関数のこと。</p>
+<p>イベントハンドラ関数が実行されるたびにScripting処理が繰り返される。</p>
+<p><br></p>
+<h3 id="html_2">HTML形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#html_2" title="Permanent link">&para;</a></h3>
+<h4 id="onload">▼ <code>onload</code><a class="headerlink" href="#onload" title="Permanent link">&para;</a></h4>
+<p>『Webページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
+<h4 id="onclick">▼ <code>onclick</code><a class="headerlink" href="#onclick" title="Permanent link">&para;</a></h4>
+<p>『要素のクリック』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ボタン1&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;methodA()&quot;</span> <span class="p">/&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">methodA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="js">JS形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#js" title="Permanent link">&para;</a></h3>
+<h4 id="documentgetelementbyidonclick">▼ <code>document.getElementById.onclick</code>関数<a class="headerlink" href="#documentgetelementbyidonclick" title="Permanent link">&para;</a></h4>
+<p>指定したIDに対して、<code>1</code>個のイベントと<code>1</code>個のイベントハンドラ関数を紐付ける。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を行う。</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="documentaddeventlistener">▼ <code>document.addEventListener</code>関数<a class="headerlink" href="#documentaddeventlistener" title="Permanent link">&para;</a></h4>
+<p><code>1</code>個のイベントに対して、1つ以上のイベントハンドラ関数を紐付ける。</p>
+<p>第一引数で、<code>click</code>などのイベントを設定し、第二引数でメソッド (無名関数でも可) を渡す。</p>
+<p><code>false</code>を設定することにより、イベントバブリングを行わせない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;btn&quot;</span><span class="p">&gt;</span>表示<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">btn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">btn</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;click&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;クリックされました！&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を行う。</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 1つ目</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(1)`</span>
+
+<span class="s2">:    &quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+
+<span class="c1">// 2つ目</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました`(2)`&quot;</span><span class="p">);</span>
+<span class="p">},</span><span class="w"> </span><span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-rendering">04. Rendering処理<a class="headerlink" href="#04-rendering" title="Permanent link">&para;</a></h2>
+<h3 id="rendering">Rendering処理とは<a class="headerlink" href="#rendering" title="Permanent link">&para;</a></h3>
+<p>レンダリングツリーが作成され、ブラウザ上のどこに何を描画するのかを計算する。</p>
+<p>CalculateStyle処理とLayout処理に分けられる。</p>
+<p><br></p>
+<h2 id="04-02-calculatestyle">04-02. CalculateStyle処理<a class="headerlink" href="#04-02-calculatestyle" title="Permanent link">&para;</a></h2>
+<h3 id="calculatestyle">CalculateStyle処理とは<a class="headerlink" href="#calculatestyle" title="Permanent link">&para;</a></h3>
+<p>レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを作成する。</p>
+<p><img alt="Renderツリー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png" /></p>
+<p><br></p>
+<h2 id="04-03-layout">04-03. Layout処理<a class="headerlink" href="#04-03-layout" title="Permanent link">&para;</a></h2>
+<h3 id="layout">Layout処理とは<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
+<p>上記で読み込まれたHTML形式テキストファイルには、ネストされた 2 つの div がある。</p>
+<p>1 つ目 (親) の<code>div</code>より、ノードの表示サイズをビューポートの幅の 50% に設定する。</p>
+<p>この親に含まれている 2 つ目 (子) の<code>div</code>より、その幅を親の50%、つまりビューポートの幅の25%になるようにレイアウトされる。</p>
+<p><img alt="Layout処理" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png" /></p>
+<p><br></p>
+<h2 id="05-paint">05. Paint処理<a class="headerlink" href="#05-paint" title="Permanent link">&para;</a></h2>
+<h3 id="paint">Paint処理とは<a class="headerlink" href="#paint" title="Permanent link">&para;</a></h3>
+<p>DOMツリーの各ノードを、ブラウザ上に描画する。</p>
+<p><br></p>
+<h2 id="05-02-rasterize">05-02. Rasterize処理<a class="headerlink" href="#05-02-rasterize" title="Permanent link">&para;</a></h2>
+<h3 id="rasterize">Rasterize処理とは<a class="headerlink" href="#rasterize" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="05-03-compositelayers">05-03. CompositeLayers処理<a class="headerlink" href="#05-03-compositelayers" title="Permanent link">&para;</a></h2>
+<h3 id="compositelaysers">CompositeLaysers処理とは<a class="headerlink" href="#compositelaysers" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

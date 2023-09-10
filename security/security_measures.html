@@ -1,0 +1,3546 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="︎対策＠セキュリティの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_measures.html">
+      
+      
+        <link rel="prev" href="security_cyber_attacks_malware.html">
+      
+      
+        <link rel="next" href="security_measures_encryption_technology.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】︎対策＠セキュリティ - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】︎対策＠セキュリティ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_12">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            🔐 セキュリティ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="security_cyber_attacks.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ サイバー攻撃
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_3" checked>
+        
+          <label class="md-nav__link" for="__nav_12_3" id="__nav_12_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 対策
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 対策
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    対策
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="security_measures.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    対策
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-l2l4" class="md-nav__link">
+    01. 【L2～L4】ファイアウォール
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 【L2～L4】ファイアウォール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ファイアウォールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    パケットフィルタリング型ファイアウォール
+  </a>
+  
+    <nav class="md-nav" aria-label="パケットフィルタリング型ファイアウォール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ パケットフィルタリング型ファイアウォールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iptables-linuxubuntu" class="md-nav__link">
+    ▼ iptables (Linux/Ubuntu) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld-centos" class="md-nav__link">
+    ▼ firewalld (CentOS) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-windows" class="md-nav__link">
+    ▼ Windowsファイアウォール (Windows) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ゲートウェイ型ファイアウォール (プロキシサーバー型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    サーキットレベル型ファイアウォール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-l3l6ipsintrusion-prevention-system" class="md-nav__link">
+    02. 【L3～L6】IPS：Intrusion Prevention System
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 【L3～L6】IPS：Intrusion Prevention System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ips" class="md-nav__link">
+    IPSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-l3l6idsintrusion-detection-system" class="md-nav__link">
+    03. 【L3～L6】IDS：Intrusion Detection System
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 【L3～L6】IDS：Intrusion Detection System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    IDSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-l3l7" class="md-nav__link">
+    04. 【L3～L7】暗号化プロトコル
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-l7wafweb-application-firewall" class="md-nav__link">
+    05. 【L7】WAF：Web Application Firewall
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 【L7】WAF：Web Application Firewall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf" class="md-nav__link">
+    WAFとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waf_1" class="md-nav__link">
+    WAFの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-l7" class="md-nav__link">
+    06. 【L7】チェックサム
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 【L7】チェックサム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    チェックサムとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-l7" class="md-nav__link">
+    07. 【L7】ワンタイムトークン
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 【L7】ワンタイムトークン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ワンタイムトークンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ワンタイムトークンの仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-l7" class="md-nav__link">
+    08. 【L7】パラメーターの制限
+  </a>
+  
+    <nav class="md-nav" aria-label="08. 【L7】パラメーターの制限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    パラメーターの制限とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    特殊な文字列の無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    プレースホルダー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-l7corscross-origin-resource-sharing" class="md-nav__link">
+    09. 【L7】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)
+  </a>
+  
+    <nav class="md-nav" aria-label="09. 【L7】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    CORSとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cors_1" class="md-nav__link">
+    CORSの仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-l7set-cookie" class="md-nav__link">
+    10. 【L7】Set-Cookieヘッダー
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 【L7】Set-Cookieヘッダー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-cookie" class="md-nav__link">
+    Set-Cookieヘッダーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain" class="md-nav__link">
+    Domain属性
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain_1" class="md-nav__link">
+    ▼ Domain属性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain_2" class="md-nav__link">
+    ▼ Domain属性の仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httponly" class="md-nav__link">
+    HttpOnly属性
+  </a>
+  
+    <nav class="md-nav" aria-label="HttpOnly属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httponly_1" class="md-nav__link">
+    ▼ HttpOnly属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samesite" class="md-nav__link">
+    sameSite属性
+  </a>
+  
+    <nav class="md-nav" aria-label="sameSite属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#samesite_1" class="md-nav__link">
+    ▼ sameSite属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure" class="md-nav__link">
+    Secure属性
+  </a>
+  
+    <nav class="md-nav" aria-label="Secure属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure_1" class="md-nav__link">
+    ▼ Secure属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 認証/認可情報の複雑化
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 認証/認可情報の複雑化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    認証/認可情報の複雑化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bcrypt" class="md-nav__link">
+    BCryptによるハッシュ化
+  </a>
+  
+    <nav class="md-nav" aria-label="BCryptによるハッシュ化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bcrypt_1" class="md-nav__link">
+    ▼ BCryptによるハッシュ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 構造
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-l7" class="md-nav__link">
+    12. 【L7】アプリケーションのリクエスト数制限
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 【L7】アプリケーションのリクエスト数制限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    リクエスト数制限とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POSTリクエストのリクエスト制限
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    同一送信元のリクエスト制限
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="security_measures_encryption_technology.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 通信データの暗号化技術
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="security_auth_authentication.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 認証/認可
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-l2l4" class="md-nav__link">
+    01. 【L2～L4】ファイアウォール
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 【L2～L4】ファイアウォール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ファイアウォールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    パケットフィルタリング型ファイアウォール
+  </a>
+  
+    <nav class="md-nav" aria-label="パケットフィルタリング型ファイアウォール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ パケットフィルタリング型ファイアウォールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iptables-linuxubuntu" class="md-nav__link">
+    ▼ iptables (Linux/Ubuntu) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewalld-centos" class="md-nav__link">
+    ▼ firewalld (CentOS) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-windows" class="md-nav__link">
+    ▼ Windowsファイアウォール (Windows) による標準的ファイアウォール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ゲートウェイ型ファイアウォール (プロキシサーバー型)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    サーキットレベル型ファイアウォール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-l3l6ipsintrusion-prevention-system" class="md-nav__link">
+    02. 【L3～L6】IPS：Intrusion Prevention System
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 【L3～L6】IPS：Intrusion Prevention System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ips" class="md-nav__link">
+    IPSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-l3l6idsintrusion-detection-system" class="md-nav__link">
+    03. 【L3～L6】IDS：Intrusion Detection System
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 【L3～L6】IDS：Intrusion Detection System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ids" class="md-nav__link">
+    IDSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-l3l7" class="md-nav__link">
+    04. 【L3～L7】暗号化プロトコル
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-l7wafweb-application-firewall" class="md-nav__link">
+    05. 【L7】WAF：Web Application Firewall
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 【L7】WAF：Web Application Firewall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf" class="md-nav__link">
+    WAFとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waf_1" class="md-nav__link">
+    WAFの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-l7" class="md-nav__link">
+    06. 【L7】チェックサム
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 【L7】チェックサム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    チェックサムとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-l7" class="md-nav__link">
+    07. 【L7】ワンタイムトークン
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 【L7】ワンタイムトークン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ワンタイムトークンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ワンタイムトークンの仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-l7" class="md-nav__link">
+    08. 【L7】パラメーターの制限
+  </a>
+  
+    <nav class="md-nav" aria-label="08. 【L7】パラメーターの制限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    パラメーターの制限とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    特殊な文字列の無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    プレースホルダー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-l7corscross-origin-resource-sharing" class="md-nav__link">
+    09. 【L7】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)
+  </a>
+  
+    <nav class="md-nav" aria-label="09. 【L7】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    CORSとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cors_1" class="md-nav__link">
+    CORSの仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-l7set-cookie" class="md-nav__link">
+    10. 【L7】Set-Cookieヘッダー
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 【L7】Set-Cookieヘッダー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-cookie" class="md-nav__link">
+    Set-Cookieヘッダーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain" class="md-nav__link">
+    Domain属性
+  </a>
+  
+    <nav class="md-nav" aria-label="Domain属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#domain_1" class="md-nav__link">
+    ▼ Domain属性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain_2" class="md-nav__link">
+    ▼ Domain属性の仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#httponly" class="md-nav__link">
+    HttpOnly属性
+  </a>
+  
+    <nav class="md-nav" aria-label="HttpOnly属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#httponly_1" class="md-nav__link">
+    ▼ HttpOnly属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samesite" class="md-nav__link">
+    sameSite属性
+  </a>
+  
+    <nav class="md-nav" aria-label="sameSite属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#samesite_1" class="md-nav__link">
+    ▼ sameSite属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure" class="md-nav__link">
+    Secure属性
+  </a>
+  
+    <nav class="md-nav" aria-label="Secure属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure_1" class="md-nav__link">
+    ▼ Secure属性とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 認証/認可情報の複雑化
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 認証/認可情報の複雑化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    認証/認可情報の複雑化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bcrypt" class="md-nav__link">
+    BCryptによるハッシュ化
+  </a>
+  
+    <nav class="md-nav" aria-label="BCryptによるハッシュ化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bcrypt_1" class="md-nav__link">
+    ▼ BCryptによるハッシュ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 構造
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-l7" class="md-nav__link">
+    12. 【L7】アプリケーションのリクエスト数制限
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 【L7】アプリケーションのリクエスト数制限">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    リクエスト数制限とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    POSTリクエストのリクエスト制限
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    同一送信元のリクエスト制限
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">︎対策＠セキュリティ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-l2l4">01. 【<code>L2</code>～<code>L4</code>】ファイアウォール<a class="headerlink" href="#01-l2l4" title="Permanent link">&para;</a></h2>
+<h3 id="_3">ファイアウォールとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>L2</code> (データリンク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：そもそものネットワークへの侵入、ポートスキャン、など) を防御する。</p>
+<blockquote>
+<ul>
+<li><a href="https://digital-jyoshisu.com/archives/468">https://digital-jyoshisu.com/archives/468</a></li>
+</ul>
+</blockquote>
+<p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
+<p><br></p>
+<h3 id="_4">パケットフィルタリング型ファイアウォール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ パケットフィルタリング型ファイアウォールとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><img alt="パケットフィルタリング" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif" /></p>
+<p>パケットのヘッダー情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可する必要があるか否かを決める。</p>
+<p>パケットのデータは検査しない。</p>
+<p>ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.rworks.jp/system/system-column/sys-entry/21277/">https://www.rworks.jp/system/system-column/sys-entry/21277/</a></li>
+<li><a href="https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/">https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/</a></li>
+</ul>
+</blockquote>
+<h4 id="iptables-linuxubuntu">▼ iptables (Linux/Ubuntu) による標準的ファイアウォール<a class="headerlink" href="#iptables-linuxubuntu" title="Permanent link">&para;</a></h4>
+<p>Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ファイアウォールである。特に、パケットフィルタリングのルールは、<code>/etc/sysconfig/iptables</code>ファイルの<code>filter</code>テーブルで設定する。<code>iptables-save</code>コマンドでこのファイルを作成できる。</p>
+<table>
+<thead>
+<tr>
+<th><code>filter</code>テーブルに関するチェイン名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INPUT</td>
+<td>パケットの受信時に、その送信を許可/拒否する。</td>
+</tr>
+<tr>
+<td>FORWARD</td>
+<td>パケットの転送時に、その転送を許可/拒否する。</td>
+</tr>
+<tr>
+<td>OUTPUT</td>
+<td>パケットの送信時に、その送信を許可/拒否する。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/sysconfig/iptables
+
+...
+
+*filter
+:INPUT<span class="w"> </span>DROP<span class="w"> </span><span class="o">[</span><span class="m">5</span>:300<span class="o">]</span>
+:FORWARD<span class="w"> </span>DROP<span class="w"> </span><span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
+:OUTPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">32</span>:3205<span class="o">]</span>
+<span class="c1"># 22番ポートと80番ポート宛てのTCPプロトコルのインバウンド通信を許可する。</span>
+-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>-m<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>-m<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+COMMIT
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/iptables-outline-">https://christina04.hatenablog.com/entry/iptables-outline-</a></li>
+<li><a href="https://linuc.org/study/knowledge/540/">https://linuc.org/study/knowledge/540/</a></li>
+<li><a href="https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB">https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB</a></li>
+</ul>
+</blockquote>
+<h4 id="firewalld-centos">▼ firewalld (CentOS) による標準的ファイアウォール<a class="headerlink" href="#firewalld-centos" title="Permanent link">&para;</a></h4>
+<p>CentOSでのfirewalldは、標準的なパケットフィルタリング型ファイアウォールである。</p>
+<p>デフォルトでは、全てのインバウンド通信が拒否、全てのアウトバウンド通信が許可、となっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html">https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html</a></li>
+<li><a href="https://knowledge.sakura.ad.jp/22269/">https://knowledge.sakura.ad.jp/22269/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>アクセスが許可されているポート番号を確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-all
+
+public<span class="w"> </span><span class="o">(</span>active<span class="o">)</span>
+<span class="w">  </span>target:<span class="w"> </span>default
+<span class="w">  </span>icmp-block-inversion:<span class="w"> </span>no
+<span class="w">  </span>interfaces:<span class="w"> </span>eth0
+<span class="w">  </span>sources:
+<span class="w">  </span>services:<span class="w"> </span>ssh<span class="w"> </span>dhcpv6-client
+<span class="w">  </span>ports:<span class="w"> </span><span class="m">22</span>/tcp<span class="w"> </span><span class="m">80</span>/tcp<span class="w"> </span><span class="m">443</span>/tcp<span class="w"> </span><span class="c1"># アクセスを許可するポート番号</span>
+<span class="w">  </span>protocols:
+<span class="w">  </span>masquerade:<span class="w"> </span>no
+<span class="w">  </span>forward-ports:
+<span class="w">  </span>source-ports:
+<span class="w">  </span>icmp-blocks:
+<span class="w">  </span>rich<span class="w"> </span>rules:
+</code></pre></div>
+<p>アクセスが許可されている送信元IPアドレスを確認する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kaede.jp/2018/02/11022556/">https://kaede.jp/2018/02/11022556/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>firewall-cmd<span class="w"> </span>--get-active-zones
+
+foo-cidr
+<span class="w">  </span>sources:<span class="w"> </span><span class="m">192</span>.168.128.0/23
+public
+<span class="w">  </span>interfaces:<span class="w"> </span>ens192
+</code></pre></div>
+<h4 id="windows-windows">▼ Windowsファイアウォール (Windows) による標準的ファイアウォール<a class="headerlink" href="#windows-windows" title="Permanent link">&para;</a></h4>
+<p>Windowsファイアウォールは、Windowsにおけるファイアウォールである。</p>
+<p><img alt="パケットフィルタリングの設定" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif" /></p>
+<blockquote>
+<ul>
+<li><a href="https://pc-karuma.net/windows-10-firewall-open-port/">https://pc-karuma.net/windows-10-firewall-open-port/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p><br></p>
+<h3 id="_6">ゲートウェイ型ファイアウォール (プロキシサーバー型)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>パケットのデータに基づいて、パケットを許可する必要があるか否かを決める。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.rworks.jp/system/system-column/sys-entry/21277/">https://www.rworks.jp/system/system-column/sys-entry/21277/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">サーキットレベル型ファイアウォール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>L4</code> (トランスポート層) の段階でサイバー攻撃を遮断するファイアウォールのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.rworks.jp/system/system-column/sys-entry/21277/">https://www.rworks.jp/system/system-column/sys-entry/21277/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-l3l6ipsintrusion-prevention-system">02. 【<code>L3</code>～<code>L6</code>】IPS：Intrusion Prevention System<a class="headerlink" href="#02-l3l6ipsintrusion-prevention-system" title="Permanent link">&para;</a></h2>
+<h3 id="ips">IPSとは<a class="headerlink" href="#ips" title="Permanent link">&para;</a></h3>
+<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃 (Dos攻撃、Synフラッド攻撃、パケットフラグメンテーション攻撃、など) を遮断するセキュリティシステムのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://digital-jyoshisu.com/archives/468">https://digital-jyoshisu.com/archives/468</a></li>
+</ul>
+</blockquote>
+<p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
+<p><br></p>
+<h2 id="03-l3l6idsintrusion-detection-system">03. 【<code>L3</code>～<code>L6</code>】IDS：Intrusion Detection System<a class="headerlink" href="#03-l3l6idsintrusion-detection-system" title="Permanent link">&para;</a></h2>
+<h3 id="ids">IDSとは<a class="headerlink" href="#ids" title="Permanent link">&para;</a></h3>
+<p><code>L3</code> (ネットワーク層) から<code>L6</code> (プレゼンテーション層) までに対するサイバー攻撃を防御する。</p>
+<p>不正アクセスと思われるパケットを検出する。</p>
+<p>また、検出内容を管理者に通知する。</p>
+<p>あくまで通知するのみで、攻撃を防御することはしない。</p>
+<p><img alt="IDS" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IDS.png" /></p>
+<p><br></p>
+<h2 id="04-l3l7">04. 【<code>L3</code>～<code>L7</code>】暗号化プロトコル<a class="headerlink" href="#04-l3l7" title="Permanent link">&para;</a></h2>
+<p><code>L3</code> (ネットワーク層) から<code>L7</code> (アプリケーション層) までに対するサイバー攻撃を防御する。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html">https://hiroki-it.github.io/tech-notebook/security/security_measures_encryption_technology_encryption_protocol.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-l7wafweb-application-firewall">05. 【<code>L7</code>】WAF：Web Application Firewall<a class="headerlink" href="#05-l7wafweb-application-firewall" title="Permanent link">&para;</a></h2>
+<h3 id="waf">WAFとは<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (SQLインジェクション、XSS、OSコマンドインジェクション、など) を防御する。</p>
+<p><img alt="security_protection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://digital-jyoshisu.com/archives/468">https://digital-jyoshisu.com/archives/468</a></li>
+<li><a href="https://www.geeksforgeeks.org/difference-between-waf-and-firewall/">https://www.geeksforgeeks.org/difference-between-waf-and-firewall/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="waf_1">WAFの種類<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li>hhttps://liskul.com/waf-15products-35757</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>WAFの種類</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ソフトウェア型</td>
+<td>WAFの能力を持つソフトウェアを自社サーバーにセットアップし、これを配置する。</td>
+<td>SuiteGuard、SmartCloud、など</td>
+</tr>
+<tr>
+<td>アプライアンス型</td>
+<td>WAFのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。</td>
+<td>FortiWeb、Imperva SecureSphere、SiteGuard、など</td>
+</tr>
+<tr>
+<td>クラウド型</td>
+<td>クラウドプロバイダーが提供するWAFを配置する。</td>
+<td>AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike、など</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="06-l7">06. 【<code>L7</code>】チェックサム<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">チェックサムとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃を防御する。</p>
+<p>sha256によって作成された文字列をファイル情報として添付し、これを送受信の両方のアプリケーション側で照合することにより、通知途中でファイルが改竄されていないことを保証する。</p>
+<p>通信データを暗号化するわけではない。</p>
+<blockquote>
+<ul>
+<li><a href="https://academy.gmocloud.com/know/20200116/8627">https://academy.gmocloud.com/know/20200116/8627</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07-l7">07. 【<code>L7</code>】ワンタイムトークン<a class="headerlink" href="#07-l7" title="Permanent link">&para;</a></h2>
+<h3 id="_9">ワンタイムトークンとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：CSRF) を防御する。</p>
+<p>認証時に、セッションIDのみでなく、ワンタイムトークンも併用する。</p>
+<p>認証フォームがリクエストされた時、サーバー側では、ワンタイムトークンを発行し、これを<code>Set-Cookie</code>ヘッダーの<code>csrftoken</code>パラメーター (フレームワークによっては、これに相当するパラメーター) や独自ヘッダーに割り当てて、レスポンスを返信する。</p>
+<p><img alt="csrf-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf">https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_10">ワンタイムトークンの仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">csrftoken=&lt;トークン&gt;</span>
+<span class="c1"># 独自ヘッダー</span>
+<span class="nt">X-CSRF-TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;トークン&gt;</span>
+</code></pre></div>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームのinputタグのhidden属性に割り当てる。</p>
+<p>他に、metaタグにトークンを割り当てることもある。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;http://foo.com/bar-form.php&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;csrftoken&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&lt;csrfトークン&gt;&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;email&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;password&quot;</span> <span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit value=&quot;</span><span class="na">ログイン</span><span class="err">&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;csrftoken&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;&lt;ヘッダーから取り出したトークン&gt;&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>認証のためのPOSTリクエスト時に、リクエストボディや独自ヘッダーにトークンを割り当て、リクエストを送信する。</p>
+<p>どちらを使用するかは、バックエンド側の仕様によって異なる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/bar-form.php</span>
+<span class="nn">---</span>
+<span class="c1"># 独自ヘッダー</span>
+<span class="nt">x-csrf-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;トークン&gt;</span>
+<span class="nn">---</span>
+<span class="c1"># ボディ</span>
+<span class="p p-Indicator">{</span><span class="nv">_token=&lt;トークン&gt;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>サーバー側では、POSTリクエストによって送信されたトークンとワンタイムトークンを比較し、認証を実行する。</p>
+<p>以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。</p>
+<p>トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、<code>401</code>ステータスを返却する。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700">https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700</a></li>
+<li><a href="https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95">https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-l7">08. 【<code>L7</code>】パラメーターの制限<a class="headerlink" href="#08-l7" title="Permanent link">&para;</a></h2>
+<h3 id="_11">パラメーターの制限とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション) を防御する。</p>
+<p>アプリケーションで、任意のパラメーターを入力できないようにする。</p>
+<p><br></p>
+<h3 id="_12">特殊な文字列の無効化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>DBのSQLクエリのパラメーターとなる入力では、『シングルクオーテーション』や『バックスラッシュ』などはSQLで特別な意味を持つ。</p>
+<p>そのため、これらのパラメーターが割り当てられているリクエストを拒否する。</p>
+<p>例えば、WAFを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html">https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_13">プレースホルダー<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する。</p>
+<p>処理速度が速い。</p>
+<p>また、パラメーターに誤ってSQLが渡されても、型をチェックすることにより、実行できなくなるようにできるため、SQLインジェクションの対策になる。</p>
+<p>プレースホルダーについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html">https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="09-l7corscross-origin-resource-sharing">09. 【<code>L7</code>】CORS：Cross-Origin Resource Sharing (オリジン間リソース共有)<a class="headerlink" href="#09-l7corscross-origin-resource-sharing" title="Permanent link">&para;</a></h2>
+<h3 id="cors">CORSとは<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：CSRF、XSS) を防御する。</p>
+<p>異なるドメインで表示されるページからのリクエストを許可する仕組みのこと。</p>
+<p>デフォルトでは、異なるドメインで表示されるページからのリクエストは拒否されるようになっている。</p>
+<p>異なるドメインで表示されるページからのリクエストを許可したい場合は、ページからのリクエストとサーバーからのレスポンスの両方で対応が必要である。</p>
+<p><img alt="cors" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Glossary/Origin">https://developer.mozilla.org/ja/docs/Glossary/Origin</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cors_1">CORSの仕組み<a class="headerlink" href="#cors_1" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>リクエストの<code>Origin</code>ヘッダーに送信元オリジンを設定する。</p>
+<p>加えて、<code>Cookie</code>ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で<code>withCredentials</code>オプションに<code>true</code>を割り当てる。</p>
+<p>JavaScriptのパッケージによってオプション名が異なるため注意する。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88">https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://foo.com/bar</span>
+<span class="nn">---</span>
+<span class="c1"># 送信元オリジン</span>
+<span class="nt">Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">baseURL</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://foo.co.jp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">withCredentials</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// オプションの有効化</span>
+<span class="p">});</span>
+
+<span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">client</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/bar&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>次に、レスポンスの<code>Access-Control-Allow-Origin</code>ヘッダーに、許可された送信元オリジンを割り当てて返信する。</p>
+<p><code>Cookie</code>ヘッダーを持つリクエストを許可する場合、同じくレスポンスの<code>Access-Control-Allow-Credentials</code>ヘッダーに<code>true</code>を割り当てる。</p>
+<p>その他、許可するHTTPメソッドやHTTPヘッダーを定義できる。</p>
+<p>例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、<code>405</code>ステータスでエラーレスポンスが返信される。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials">https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials</a></li>
+<li><a href="https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do">https://stackoverflow.com/questions/24687313/what-exactly-does-the-access-control-allow-credentials-header-do</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="c1"># 許可された送信元オリジン</span>
+<span class="nt">Access-Control-Allow-Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+<span class="c1"># リクエストがCookieヘッダーを持つことを許可する場合</span>
+<span class="nt">Access-Control-Allow-Credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># 許可するHTTPメソッド</span>
+<span class="nt">Access-Control-Allow-Methods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET,POST,HEAD,OPTIONS</span>
+<span class="c1"># その他、許可するHTTPヘッダー</span>
+<span class="nt">Access-Control-Allow-Headers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
+</code></pre></div>
+<p>補足として、<code>Cookie</code>ヘッダーを持つリクエストを許可しない場合に限り、全てのオリジンやヘッダーを許可できる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="c1"># 全てのオリジンを許可</span>
+<span class="nt">Access-Control-Allow-Origin</span><span class="p">:</span><span class="w"> </span><span class="err">*</span>
+<span class="nt">Access-Control-Allow-Headers</span><span class="p">:</span><span class="w"> </span><span class="err">*</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="10-l7set-cookie">10. 【<code>L7</code>】<code>Set-Cookie</code>ヘッダー<a class="headerlink" href="#10-l7set-cookie" title="Permanent link">&para;</a></h2>
+<h3 id="set-cookie"><code>Set-Cookie</code>ヘッダーとは<a class="headerlink" href="#set-cookie" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：XSS) を防御する。</p>
+<p>属性を有効化することにより、リクエストヘッダーの作成を制限できる。</p>
+<p><br></p>
+<h3 id="domain">Domain属性<a class="headerlink" href="#domain" title="Permanent link">&para;</a></h3>
+<h4 id="domain_1">▼ Domain属性とは<a class="headerlink" href="#domain_1" title="Permanent link">&para;</a></h4>
+<p>リクエストが<code>Cookie</code>ヘッダーを持つことを許可した場合、サブドメイン名のオリジンにも<code>Cookie</code>ヘッダーの送信を許可するか否かを制御できる。</p>
+<p>サブドメイン名のレスポンスの<code>Set-Cookie</code>ヘッダーにて、Domain属性にドメインが割り当てなかった場合は、ページを表示するサーバーのドメインにのみ<code>Cookie</code>ヘッダーを持つリクエストを許可でき、サブドメイン名への送信を拒否できる。</p>
+<p>一方で、ドメインが割り当てた場合は、そのページからサブドメイン名に対しても、<code>Cookie</code>ヘッダーを持つリクエストを許可できる。</p>
+<p>ドメインではなく、オリジンであることに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/agektmr/articles/f8dcd345a88c97">https://zenn.dev/agektmr/articles/f8dcd345a88c97</a></li>
+<li><a href="https://azisava.sakura.ne.jp/programming/0017.html#sec4-1">https://azisava.sakura.ne.jp/programming/0017.html#sec4-1</a></li>
+</ul>
+</blockquote>
+<h4 id="domain_2">▼ Domain属性の仕組み<a class="headerlink" href="#domain_2" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p>Domain属性に<code>example.com</code>が割り当てられていたとする。</p>
+<p>最初にドットがついているドメイン (<code>.example.com</code>) でも、同じ値として認識される。</p>
+<p>この場合、<code>example.com</code>に加えて、サブドメイン名 (<code>foo.example.com</code>) に対しても、<code>Cookie</code>ヘッダーを持つリクエストを送信できる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">domain=example.com</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST http://foo.example.com/bar-form.php</span>
+<span class="nn">---</span>
+<span class="c1"># 送信元オリジン</span>
+<span class="nt">Origin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+<span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; csrftoken=&lt;トークン&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="httponly">HttpOnly属性<a class="headerlink" href="#httponly" title="Permanent link">&para;</a></h3>
+<h4 id="httponly_1">▼ HttpOnly属性とは<a class="headerlink" href="#httponly_1" title="Permanent link">&para;</a></h4>
+<p>これを有効化した場合、<code>Set-Cookie</code>ヘッダーに<code>HttpOnly</code>属性が割り当てられるようになる。JavaScriptから<code>Cookie</code>ヘッダーにアクセスできなくできる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HttpOnly</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="samesite">sameSite属性<a class="headerlink" href="#samesite" title="Permanent link">&para;</a></h3>
+<h4 id="samesite_1">▼ sameSite属性とは<a class="headerlink" href="#samesite_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>属性値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>異なるドメインから受信した全てのリクエストが<code>Cookie</code>ヘッダーを持つことを許可する。</td>
+</tr>
+<tr>
+<td>Lax</td>
+<td>異なるドメインから受信した一部のリクエストが<code>Cookie</code>ヘッダーを持つことを許可する。</td>
+</tr>
+<tr>
+<td>Strict</td>
+<td>異なるドメインから受信した全てのリクエストが<code>Cookie</code>ヘッダーを持つことを拒否する。</td>
+</tr>
+</tbody>
+</table>
+<p>異なるドメインからのリクエストが<code>Cookie</code>ヘッダーを持つことを許可/拒否する。</p>
+<p>ここでリクエストを制御しているのは、オリジンではなく、ドメインであることに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/agektmr/articles/f8dcd345a88c97">https://zenn.dev/agektmr/articles/f8dcd345a88c97</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SameSite=None</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="secure">Secure属性<a class="headerlink" href="#secure" title="Permanent link">&para;</a></h3>
+<h4 id="secure_1">▼ Secure属性とは<a class="headerlink" href="#secure_1" title="Permanent link">&para;</a></h4>
+<p>これを有効化した場合、<code>Set-Cookie</code>ヘッダーに<code>Secure</code>属性が割り当てられるようになる。HTTPSプロトコルを使用した場合のみ、リクエストに<code>Cookie</code>ヘッダーを割り当てられるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
+<span class="nn">---</span>
+<span class="nt">Set-Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secure</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="11">11. 認証/認可情報の複雑化<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="_14">認証/認可情報の複雑化とは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>L7</code> (アプリケーション層) に対するサイバー攻撃 (例：SQLインジェクション) を防御する。</p>
+<p>認証/認可で必要になる情報を簡単に特定できないようにする。</p>
+<p><br></p>
+<h3 id="bcrypt">BCryptによるハッシュ化<a class="headerlink" href="#bcrypt" title="Permanent link">&para;</a></h3>
+<h4 id="bcrypt_1">▼ BCryptによるハッシュ化<a class="headerlink" href="#bcrypt_1" title="Permanent link">&para;</a></h4>
+<p>BCryptを使用して、Blowfish方式に基づく暗号化を実行する。</p>
+<p>Blowfish方式では、同じパスワードの文字列であっても異なるハッシュ値が作成されるため、レインボー攻撃を防げる。</p>
+<p>Blowfish方式で作成されたハッシュ値は、異なるルールで作成された複数のハッシュ値の組み合わせである。</p>
+<blockquote>
+<ul>
+<li><a href="https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/">https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/</a></li>
+<li><a href="https://medium-company.com/bcrypt/">https://medium-company.com/bcrypt/</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ 構造<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># &lt;アルゴリズムバージョン&gt; + &lt;ストレッチング回数&gt; + &lt;ランダム文字列&gt; + &lt;パスワードハッシュ値&gt;</span>
+<span class="l l-Scalar l-Scalar-Plain">$2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>文字列</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$2y$</code> (4文字)</td>
+<td>暗号アルゴリズムのバージョンを表す。他に、<code>2</code>、<code>2a</code>、<code>2b</code>、<code>2x</code>がある。</td>
+</tr>
+<tr>
+<td><code>$10$</code> (4文字)</td>
+<td>ストレッチング (ハッシュ化の反復) の回数を表す。<code>10</code>とした場合は、2^10回反復でハッシュ化を実行する。</td>
+</tr>
+<tr>
+<td><code>1QVmWNzk.TsaZQLQ/zeI9O</code> (22文字)</td>
+<td>ソルト (ランダムな文字列) を表す。</td>
+</tr>
+<tr>
+<td><code>AZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG</code> (31文字)</td>
+<td>パスワードそのもののハッシュ値を表す。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="12-l7">12. 【<code>L7</code>】アプリケーションのリクエスト数制限<a class="headerlink" href="#12-l7" title="Permanent link">&para;</a></h2>
+<h3 id="_16">リクエスト数制限とは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><code>L3</code> (ネットワーク層) から<code>L4</code> (トランスポート層) までに対するサイバー攻撃 (例：Dos攻撃、DDos攻撃、など) を防御する。</p>
+<p><br></p>
+<h3 id="post">POSTリクエストのリクエスト制限<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<p><code>php.ini</code>ファイルにて、一度に受信できるPOSTリクエストの上限値を設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="na">max_input_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_17">同一送信元のリクエスト制限<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>同じ送信元からの<code>1</code>分間あたりのリクエスト数を制限する。</p>
+<p>例えば、WAF、API Gatewayを使用する。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

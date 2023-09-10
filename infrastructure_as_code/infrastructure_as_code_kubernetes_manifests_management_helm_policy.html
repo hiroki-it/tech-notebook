@@ -1,0 +1,3750 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="設計規約＠Helmの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】設計規約＠Helm - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#helm" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】設計規約＠Helm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="kubernetes/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_16">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            ☸️ K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetes
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetesリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ カスタムリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 開発
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_7" checked>
+        
+          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ マニフェスト管理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ マニフェスト管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_7_1" checked>
+        
+          <label class="md-nav__link" for="__nav_16_7_1" id="__nav_16_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Helm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Helm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コマンド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ チャート
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_policy.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    アプリとIaCを同じリポジトリで管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    アプリとIaCを異なるリポジトリで管理 (推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 各チャートを同じリポジトリで管理する (推奨)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 各チャートを異なるリポジトリで管理する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. ディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    通常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    実行環境別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    リソース別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コード規約
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コード規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    テンプレート
+  </a>
+  
+    <nav class="md-nav" aria-label="テンプレート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 命名規則
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ロジック
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 拡張子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ アクションの選定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 開発環境
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 開発環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_1" class="md-nav__link">
+    helmコマンドのセットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="helmコマンドのセットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ バージョンの固定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. チャートのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="05. チャートのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    チャートのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    チャートのアップグレード方法
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのアップグレード方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crd" class="md-nav__link">
+    ▼ 非CRDのみからなるチャート場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crd_1" class="md-nav__link">
+    ▼ CRDを含むチャートの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    新バージョンの自動検出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ci" class="md-nav__link">
+    06. CIパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    仕様書自動作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    チャートのホワイトボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのホワイトボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ ホワイトボックステストの実行環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ドライラン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 単体テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 回帰テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ホワイトボックステスト結果の通知
+  </a>
+  
+    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_2" class="md-nav__link">
+    ▼ Helmを採用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm_3" class="md-nav__link">
+    ▼ Helm以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    チャートのブラックボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのブラックボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ブラックボックステストの実行環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 総合テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-cd" class="md-nav__link">
+    06-02. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    デプロイ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ロールバック
+  </a>
+  
+    <nav class="md-nav" aria-label="ロールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_4" class="md-nav__link">
+    ▼ Helmを採用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm_5" class="md-nav__link">
+    ▼ Helm以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-03" class="md-nav__link">
+    06-03. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="06-03. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    デプロイの通知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Helmfile
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kustomize
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    アプリとIaCを同じリポジトリで管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    アプリとIaCを異なるリポジトリで管理 (推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 各チャートを同じリポジトリで管理する (推奨)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 各チャートを異なるリポジトリで管理する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. ディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    通常
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    実行環境別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    リソース別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コード規約
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コード規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    テンプレート
+  </a>
+  
+    <nav class="md-nav" aria-label="テンプレート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 命名規則
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ロジック
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 拡張子
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ アクションの選定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 開発環境
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 開発環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_1" class="md-nav__link">
+    helmコマンドのセットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="helmコマンドのセットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ バージョンの固定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. チャートのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="05. チャートのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    チャートのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    チャートのアップグレード方法
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのアップグレード方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crd" class="md-nav__link">
+    ▼ 非CRDのみからなるチャート場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crd_1" class="md-nav__link">
+    ▼ CRDを含むチャートの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    新バージョンの自動検出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ci" class="md-nav__link">
+    06. CIパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    仕様書自動作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    チャートのホワイトボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのホワイトボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ ホワイトボックステストの実行環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ドライラン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 単体テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 回帰テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ホワイトボックステスト結果の通知
+  </a>
+  
+    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_2" class="md-nav__link">
+    ▼ Helmを採用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm_3" class="md-nav__link">
+    ▼ Helm以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    チャートのブラックボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="チャートのブラックボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ブラックボックステストの実行環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 総合テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-cd" class="md-nav__link">
+    06-02. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    デプロイ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ロールバック
+  </a>
+  
+    <nav class="md-nav" aria-label="ロールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_4" class="md-nav__link">
+    ▼ Helmを採用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm_5" class="md-nav__link">
+    ▼ Helm以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-03" class="md-nav__link">
+    06-03. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="06-03. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    デプロイの通知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="helm">設計規約＠Helm<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. リポジトリ構成規約<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">リポジトリ分割のメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>リポジトリを分割することにより、以下のメリットがある。</p>
+<ul>
+<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
+</ul>
+<p><br></p>
+<h3 id="iac">アプリとIaCを同じリポジトリで管理<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── app/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── manifests/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── helm/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── foo-chart/</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="iac_1">アプリとIaCを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 各チャートを同じリポジトリで管理する (推奨)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>各チャートを同じリポジトリで管理する。</p>
+<p>各チャートの全てのバージョンをリポジトリ内で管理すると、<code>index.yaml</code>ファイルやチャートアーカイブ (<code>.tgz</code>形式ファイル) が必要になってしまう。</p>
+<p>そのため、<code>1</code>個のバージョンのみを管理するようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── helm/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar-chart/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを異なるリポジトリにする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar-chart/</span>
+</code></pre></div>
+<h4 id="_4">▼ 各チャートを異なるリポジトリで管理する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>各チャートを異なるリポジトリで管理する。</p>
+<p>この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理する方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── helm/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── foo-chart/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを異なるリポジトリにする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_5">通常<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>最も基本的な構成。</p>
+<p>実行環境別に<code>values</code>ファイルを作成する。</p>
+<p>また、実行環境の差は設定値だけとし、<code>templates</code>ディレクトリ配下にマニフェストを配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── config-map.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── service.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── values/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── tes.yaml</span><span class="w"> </span><span class="c1"># テスト環境へのapply時に出力する値</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg.yaml</span><span class="w"> </span><span class="c1"># ステージング環境へのapply時に出力する値</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── prd.yaml</span><span class="w"> </span><span class="c1"># 本番環境へのapply時に出力する値</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_6">実行環境別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>実行環境別に<code>values</code>ファイルを作成する。</p>
+<p>また、実行環境ごとにマニフェストの構造に差分があるとし、<code>templates</code>ディレクトリ配下に実行環境別のディレクトリを配置する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/codefresh-contrib/helm-promotion-sample-app">https://github.com/codefresh-contrib/helm-promotion-sample-app</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── shared/</span><span class="w"> </span><span class="c1"># 共通のマニフェストの部品</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── prd/</span><span class="w"> </span><span class="c1"># 本番環境のみで適用するマニフェストの部品</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── values/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── tes.yaml</span><span class="w"> </span><span class="c1"># テスト環境へのapply時に出力する値</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg.yaml</span><span class="w"> </span><span class="c1"># ステージング環境へのapply時に出力する値</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── prd.yaml</span><span class="w"> </span><span class="c1"># 本番環境へのapply時に出力する値</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">リソース別<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>リソース別にチャートを作成する。</p>
+<p>また、<code>values</code>ファイルを配置するディレクトリをルートに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── istio/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── argocd/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── values/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境へのインストール時に出力するvaluesファイル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── kubernetes/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── istio/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── istio/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境へのインストール時に出力するvaluesファイル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境へのインストール時に出力するvaluesファイル</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p>ルートに配置した<code>values</code>ディレクトリには<code>values</code>ファイルを置く。</p>
+<p><code>values</code>ファイルは、リソース別に管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 共通のvaluesファイル</span>
+<span class="c1">#============</span>
+<span class="c1"># Global</span>
+<span class="c1">#============</span>
+<span class="nt">labels</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+
+<span class="c1">#============</span>
+<span class="c1"># Deployment</span>
+<span class="c1">#============</span>
+<span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="c1">#============</span>
+<span class="c1"># Service</span>
+<span class="c1">#============</span>
+<span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. コード規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_8">テンプレート<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 命名規則<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>ファイル名はスネークケースとする。</p>
+<p>可能な限り、Kubernetesリソースの種類名 (例：Deployment、Service、ConfigMap) とする。</p>
+<p>ただし、同じKubernetesリソースのマニフェストを複数作成する場合は、識別できる名前をプレフィクスとしてつける。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_best_practices/templates/">https://helm.sh/docs/chart_best_practices/templates/</a></li>
+</ul>
+</blockquote>
+<h4 id="_10">▼ ロジック<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>可能な限り、Kubernetesリソースごとのテンプレートを使い回すようにする。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>このConfigMapのマニフェストが<code>1</code>個あれば、<code>values</code>ファイルによらずにConfigMapを作成できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config | fromYaml</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$key</span><span class="w"> </span><span class="p p-Indicator">}}:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h4 id="_11">▼ 拡張子<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>拡張子は<code>.yaml</code>とする。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_best_practices/templates/">https://helm.sh/docs/chart_best_practices/templates/</a></li>
+</ul>
+</blockquote>
+<h4 id="_12">▼ アクションの選定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><code>.yaml</code>ファイルを丸ごと出力するようなアクション (例：<code>include</code>関数など) はできるだけ避け、マニフェストの共有部分を増やす。</p>
+<p>差分があるところに関しては、<code>Values</code>関数を使用し、<code>values</code>ファイルからパラメーターを渡すだけになるように設計する。</p>
+<p>公式リポジトリの実装方法を見て学んだ方が早い。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts">https://github.com/istio/istio/blob/1.14.3/manifests/charts</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. 開発環境<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="helm_1">helmコマンドのセットアップ<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ バージョンの固定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>バージョンを統一するために、<code>.tool-versions</code>ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span><span class="nb">local</span><span class="w"> </span>helm<span class="w"> </span>&lt;バージョン&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
+helm<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<p>asdfパッケージを使用して、<code>helm</code>コマンドをインストールする。</p>
+<p><code>.tool-versions</code>ファイルに定義されたバージョンがインストールされる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>helm
+
+helm<span class="w">   </span>*https://github.com/Antiarchitect/asdf-helm.git
+...
+
+
+$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
+$<span class="w"> </span>asdf<span class="w"> </span>install
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. チャートのアップグレード<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_14">チャートのアップグレードとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>新バージョンのチャートを使用して、改めてHelmリリースを実行することにより、チャートをアップグレードする。</p>
+<p><br></p>
+<h3 id="_15">チャートのアップグレード方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="crd">▼ 非CRDのみからなるチャート場合<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
+<p>非CRDのみからなるチャートのアップグレードは以下の手順で行う。</p>
+<p>アップグレードが正常に完了したことがわかるように、<code>--wait</code>オプションを有効化すると良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>helm upgrade</code>コマンドを実行することにより、インストール済みのチャートをアップグレードする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>--wait
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>Helmリリースのリビジョン番号が新しくなっていることを確認する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>list
+</code></pre></div>
+<h4 id="crd_1">▼ CRDを含むチャートの場合<a class="headerlink" href="#crd_1" title="Permanent link">&para;</a></h4>
+<p>Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
+<p>そのため、アップグレードとアンインストールは<code>kubectl</code>コマンドで実行する必要がある。</p>
+<p>補足として、他のツール (例：ArgoCD、Flux) を介してHelmを実行する場合、<code>helm upgrade</code>コマンドではなく、<code>helm template</code>コマンドと<code>kubectl apply</code>コマンドを使用しているため、この問題は考慮しなくともよくなる。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>kube-apiserverにCRDのマニフェストを送信し、新バージョンのCRDを更新する。</p>
+<p>Helmは、CRDの更新に対応していない (作成には対応している) .</p>
+<p>そのため、<code>kubectl</code>コマンドを使用してこれを更新する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;新バージョンのCRDのマニフェストのURL&gt;
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>kube-apiserverにカスタムリソースのマニフェストを送信する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/foo-crd<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>補足として、もしCRDをインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになってしまう。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span><span class="o">[</span>unable<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span><span class="s2">&quot;&quot;</span>:<span class="w"> </span>no<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>kind<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソース名&gt;&gt;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソースのAPIグループ&gt;&quot;</span>
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>旧バージョンのCRDを削除する。</p>
+<p>Helmは、CRDの削除に対応していないため、<code>kubectl delete</code>コマンドを使用する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>&lt;旧バージョンのCRDのマニフェストのURL&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="_16">新バージョンの自動検出<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>外部のツール (例：renovate) を使用して、チャートの新バージョンを自動的に検出する。</p>
+<p><br></p>
+<h2 id="06-ci">06. CIパイプライン<a class="headerlink" href="#06-ci" title="Permanent link">&para;</a></h2>
+<h3 id="_17">仕様書自動作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>helm-docsを使用して、<code>values</code>ファイルの仕様書を作成する。</p>
+<p>作成した仕様書を自動コミットできるようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm-docs<span class="w"> </span>-f<span class="w"> </span>&lt;valuesファイル名&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># チャート名 ![Version:
+0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square)
+![Type:
+application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+... ## Maintainers | Name | Email | Url | | ---- | ----- | --- | --- | | ... |
+... | ... | ... | ## Source Code ... ## Requirements | Repository | Name |
+Version | | ---------- | ---- | ------- | --- | | ... | ... | ... | ... | ##
+Values | Key | Type | Default | Description | | --- | ---- | ------- |
+----------- | | ... | ... | ... | ... | --- Autogenerated from chart metadata
+using [helm-docs
+v1.11.0](https://github.com/norwoodj/helm-docs/releases/v1.11.0)
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/norwoodj/helm-docs">https://github.com/norwoodj/helm-docs</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_18">チャートのホワイトボックステスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="_19">▼ ホワイトボックステストの実行環境<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>Helmで作成したマニフェストをツールの標準入力に渡し、Helmを検証する。</p>
+<p>静的解析の実行環境は、実際のマニフェストデプロイ時の実行環境 (ArgoCDであればrepo-serverのコンテナ) と同じにする。</p>
+<h4 id="_20">▼ 静的解析<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>チャートの構造テスト</td>
+<td>Helmの静的解析コマンド (<code>helm lint</code>コマンド) を使用する。チャートの構造 (valuesファイルがあるか、Chart.yamlがあるか、など) を検証する。</td>
+<td></td>
+</tr>
+<tr>
+<td>チャートのベストプラクティス違反テスト</td>
+<td>外部のベストプラクティス違反テストツール (例：記入中...) を使用する。マニフェストではなく、チャートのベストプラクティス違反を検証する。</td>
+<td></td>
+</tr>
+<tr>
+<td>チャートの脆弱性テスト</td>
+<td>外部の脆弱性テストツール (例：記入中...) を使用する。マニフェストではなく、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
+<td>- <a href="https://blog.aquasec.com/trivy-v0.29.0-rbac-security">https://blog.aquasec.com/trivy-v0.29.0-rbac-security</a></td>
+</tr>
+</tbody>
+</table>
+<p>静的解析のコマンドセットを使用してよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/chart-testing">https://github.com/helm/chart-testing</a></li>
+</ul>
+</blockquote>
+<h4 id="_21">▼ ドライラン<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>helm diff</code>コマンドを実行することにより、ドライランを実施する。</p>
+<p><code>helm diff</code>コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。</p>
+<p>Helmリリースの粒度を小さくし、差分が少なくなるようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+</ul>
+</blockquote>
+<h4 id="_22">▼ 単体テスト<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>Helmの単体テストコマンド (<code>helm test</code>コマンド) を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。</p>
+<p>代わりに、外部のテストツール (例：Terratest) を使用しても良い。</p>
+<p><code>helm test</code>コマンドを使用する場合、チャートの<code>/templates/test</code>ディレクトリ以下にテストコードを配置する必要がある。</p>
+<p>そのため、<code>helm upgrade</code>コマンドでインストールされるHelmリリースにテストコードも含まれてしまうことに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
+</ul>
+</blockquote>
+<h4 id="_23">▼ 回帰テスト<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>事前に、既存のチャートでゴールデンファイルを作成しておき、回帰テストを実施する。</p>
+<blockquote>
+<ul>
+<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_24">ホワイトボックステスト結果の通知<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h4 id="helm_2">▼ Helmを採用する場合<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h4>
+<p>Helmには通知能力がなく、手動で知らせる必要がある。</p>
+<p>そこで、<code>helm diff</code>コマンドをGitOpsによるCDパイプライン上で実行していない (手動で実行している) 場合、<code>helm diff</code>コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff<span class="w"> </span>&lt;チャート名&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--no-color<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span>Comparing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
+</code></pre></div>
+<p>あるいは、Namespaceを指定すると、追加/変更/削除の箇所のみ取得できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff<span class="w"> </span>&lt;チャート名&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--no-color<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
+
+foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Deployment<span class="w"> </span><span class="o">(</span>apps<span class="o">)</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>added:
+...
+</code></pre></div>
+<h4 id="helm_3">▼ Helm以外を使用する場合<a class="headerlink" href="#helm_3" title="Permanent link">&para;</a></h4>
+<p>GitOpsツールの差分を使用して、差分画面のURLを共有する。またはCDツールの通知能力 (例：argocd-bot) を使用して、CDパイプラインの結果が通知されるようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj-labs/argocd-bot">https://github.com/argoproj-labs/argocd-bot</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_25">チャートのブラックボックステスト<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h4 id="_26">▼ ブラックボックステストの実行環境<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>Helmで作成したマニフェストをClusterにデプロイし、動作を検証する。</p>
+<p>実際のCluster上でマニフェストを検証してもよいし、本番のCluster (例：AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) に相当する実行環境 (例：Kind、K3sやK3d、Minikube、など) をCI上に作成してもよい。</p>
+<p>GitHub Actionsであれば、CI上にCluster構築するActionが提供されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/kind-action">https://github.com/helm/kind-action</a></li>
+<li><a href="https://github.com/medyagh/setup-minikube">https://github.com/medyagh/setup-minikube</a></li>
+<li><a href="https://github.com/debianmaster/actions-k3s">https://github.com/debianmaster/actions-k3s</a></li>
+<li><a href="https://github.com/AbsaOSS/k3d-action">https://github.com/AbsaOSS/k3d-action</a></li>
+</ul>
+</blockquote>
+<h4 id="_27">▼ 結合テスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。</p>
+<p>これは、CDパイプライン上で実施しても良いが、デメリットとして<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
+<li><a href="https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test">https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test</a></li>
+<li><a href="https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically">https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically</a></li>
+</ul>
+</blockquote>
+<h4 id="_28">▼ 総合テスト<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。</p>
+<p>これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
+</ul>
+</blockquote>
+<h2 id="06-02-cd">06-02. CDパイプライン<a class="headerlink" href="#06-02-cd" title="Permanent link">&para;</a></h2>
+<h3 id="_29">デプロイ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_30">ロールバック<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h4 id="helm_4">▼ Helmを採用する場合<a class="headerlink" href="#helm_4" title="Permanent link">&para;</a></h4>
+<p><code>helm history</code>コマンドで過去のHelmリリースタグ (リビジョン) を確認し、<code>helm rollback</code>コマンドでロールバックする。</p>
+<h4 id="helm_5">▼ Helm以外を使用する場合<a class="headerlink" href="#helm_5" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-03">06-03. 事後処理<a class="headerlink" href="#06-03" title="Permanent link">&para;</a></h2>
+<h3 id="_31">デプロイの通知<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4599 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Exporter＠Prometheus">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】Exporter＠Prometheus - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#exporterprometheus" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】Exporter＠Prometheus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_18">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            🌊 CNCFプロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ArgoCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CertManager
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ FluentBit/Fluentd
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Grafana
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kyverno
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Jaeger
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kiali
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ OpenPolicyAgent
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_11" checked>
+        
+          <label class="md-nav__link" for="__nav_18_11" id="__nav_18_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Prometheus
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_11">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Prometheus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prometheus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exporter
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Exporter
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-exporter" class="md-nav__link">
+    01. Exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exporter" class="md-nav__link">
+    Exporterとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporter_1" class="md-nav__link">
+    Exporterの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporterの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    ▼ DaemonSetパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    ▼ Deploymentパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod内サイドカーパターン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 埋め込み型パターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-blackbox-exporter" class="md-nav__link">
+    02. Blackbox exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Blackbox exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    module
+  </a>
+  
+    <nav class="md-nav" aria-label="module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    ▼ http
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    ▼ tcp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    ▼ dns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    ▼ icmp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    ▼ grpc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-probe" class="md-nav__link">
+    http probe
+  </a>
+  
+    <nav class="md-nav" aria-label="http probe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ GETリクエストの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ POSTリクエストの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-kube-state-metrics" class="md-nav__link">
+    03. kube-state-metrics
+  </a>
+  
+    <nav class="md-nav" aria-label="03. kube-state-metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    マニフェストの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェストの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
+    ▼ Deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ よく使うメトリクス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-mysql-exporter" class="md-nav__link">
+    04. MySQL exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="04. MySQL exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-node-exporter" class="md-nav__link">
+    05. Node exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Node exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql" class="md-nav__link">
+    PromQLを使用したメトリクス分析
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ メモリ使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ ディスク使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iocpu" class="md-nav__link">
+    ▼ ディスクのI/OによるCPU使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    ▼ ディスクのI/Oレイテンシー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ パケットの受信サイズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-postgresql-exporter" class="md-nav__link">
+    06. PostgreSQL exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="06. PostgreSQL exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql_1" class="md-nav__link">
+    PromQLを使用したメトリクス分析
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    ▼ PostgreSQLのプロセスのステータス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql_1" class="md-nav__link">
+    ▼ PostgreSQLの連続稼働時間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBインスタンス間のデータ同期の遅延
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 残骸タプルサイズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-process-exporter" class="md-nav__link">
+    06. Process exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Process exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-redis-exporter" class="md-nav__link">
+    07. Redis exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="07. Redis exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ メトリクス
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ VCluster
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-exporter" class="md-nav__link">
+    01. Exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exporter" class="md-nav__link">
+    Exporterとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporter_1" class="md-nav__link">
+    Exporterの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="Exporterの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    ▼ DaemonSetパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    ▼ Deploymentパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod内サイドカーパターン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 埋め込み型パターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-blackbox-exporter" class="md-nav__link">
+    02. Blackbox exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Blackbox exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    module
+  </a>
+  
+    <nav class="md-nav" aria-label="module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#http" class="md-nav__link">
+    ▼ http
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    ▼ tcp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns" class="md-nav__link">
+    ▼ dns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    ▼ icmp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grpc" class="md-nav__link">
+    ▼ grpc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-probe" class="md-nav__link">
+    http probe
+  </a>
+  
+    <nav class="md-nav" aria-label="http probe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ GETリクエストの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ POSTリクエストの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-kube-state-metrics" class="md-nav__link">
+    03. kube-state-metrics
+  </a>
+  
+    <nav class="md-nav" aria-label="03. kube-state-metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    マニフェストの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェストの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
+    ▼ Deployment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ よく使うメトリクス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-mysql-exporter" class="md-nav__link">
+    04. MySQL exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="04. MySQL exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-node-exporter" class="md-nav__link">
+    05. Node exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Node exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql" class="md-nav__link">
+    PromQLを使用したメトリクス分析
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ メモリ使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ ディスク使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iocpu" class="md-nav__link">
+    ▼ ディスクのI/OによるCPU使用率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    ▼ ディスクのI/Oレイテンシー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ パケットの受信サイズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-postgresql-exporter" class="md-nav__link">
+    06. PostgreSQL exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="06. PostgreSQL exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promql_1" class="md-nav__link">
+    PromQLを使用したメトリクス分析
+  </a>
+  
+    <nav class="md-nav" aria-label="PromQLを使用したメトリクス分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql" class="md-nav__link">
+    ▼ PostgreSQLのプロセスのステータス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql_1" class="md-nav__link">
+    ▼ PostgreSQLの連続稼働時間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBインスタンス間のデータ同期の遅延
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 残骸タプルサイズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-process-exporter" class="md-nav__link">
+    06. Process exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Process exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ チャートとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-redis-exporter" class="md-nav__link">
+    07. Redis exporter
+  </a>
+  
+    <nav class="md-nav" aria-label="07. Redis exporter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    メトリクスの一覧
+  </a>
+  
+    <nav class="md-nav" aria-label="メトリクスの一覧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ 確認方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="exporterprometheus">Exporter＠Prometheus<a class="headerlink" href="#exporterprometheus" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-exporter">01. Exporter<a class="headerlink" href="#01-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="exporter">Exporterとは<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
+<p>PrometheusがPull型通信でメトリクスのデータポイントを収集するためのエンドポイントとして動作する。</p>
+<p>基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。</p>
+<p>Pull型通信により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。</p>
+<p>また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterにリクエストを送信できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://openstandia.jp/oss_info/prometheus">https://openstandia.jp/oss_info/prometheus</a></li>
+<li><a href="https://danielfm.me/prometheus-for-developers/">https://danielfm.me/prometheus-for-developers/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_2">確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Nodeで動いているExporterを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>exporter
+</code></pre></div>
+<p><br></p>
+<h3 id="exporter_1">Exporterの種類<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ パターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>Exporterには、KubernetesのNode上でどう稼働させるかに応じて、配置パターンがある。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>配置方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DaemonSetパターン</td>
+<td>各Node上にDaemonSetとして配置する。</td>
+</tr>
+<tr>
+<td>Deploymentパターン</td>
+<td>各Node上にDeploymentとして配置する。</td>
+</tr>
+<tr>
+<td>Pod内サイドカーパターン</td>
+<td>Pod内にサイドカーとして配置する。</td>
+</tr>
+<tr>
+<td>埋め込み型パターン</td>
+<td>ライブラリとして、アプリケーション内に埋め込む。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072">https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072</a></li>
+<li><a href="https://prometheus.io/docs/instrumenting/exporters/">https://prometheus.io/docs/instrumenting/exporters/</a></li>
+<li><a href="https://grafana.com/oss/prometheus/exporters/">https://grafana.com/oss/prometheus/exporters/</a></li>
+</ul>
+</blockquote>
+<h4 id="daemonset">▼ DaemonSetパターン<a class="headerlink" href="#daemonset" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Exporter名</th>
+<th>説明</th>
+<th>待ち受けポート番号</th>
+<th>待ち受けエンドポイント</th>
+<th>メトリクス名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/prometheus/node_exporter">Node exporter</a></td>
+<td>Nodeに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9100</code></td>
+<td><code>/metrics</code></td>
+<td><code>node_*</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/ncabatoff/process-exporter">Process exporter</a></td>
+<td>任意のプロセスに関するメトリクスのデータポイントを収集する。収集対象のプロセス名は<code>config.yaml</code>ファイルで設定できる。 <br>- <a href="https://qiita.com/kkentaro/items/c01b8cf332da893791bb">https://qiita.com/kkentaro/items/c01b8cf332da893791bb</a></td>
+<td><code>9256</code></td>
+<td>同上</td>
+<td><code>namedprocess_*</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="deployment">▼ Deploymentパターン<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Exporter名</th>
+<th>説明</th>
+<th>待ち受けポート番号</th>
+<th>待ち受けエンドポイント</th>
+<th>メトリクス名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/kubernetes/kube-state-metrics">kube-state-metrics</a></td>
+<td>Kubernetesのリソース単位でメトリクスのデータポイントを収集する。似た名前のツールにmetrics-serverがあるが、こちらはNodeとPodのみを対象としており、またapiserverとして稼働する。<br>・<a href="https://tech-blog.abeja.asia/entry/2016/12/20/202631">https://tech-blog.abeja.asia/entry/2016/12/20/202631</a> <br>・<a href="https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/">https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/</a></td>
+<td><code>8080</code></td>
+<td>同上</td>
+<td><code>kube_*</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/prometheus/blackbox_exporter">Blackbox exporter</a></td>
+<td>指定したプロトコルで外形監視を実施する。外形監視のため、リクエストは一度Cluster外に出る。リクエストの成否以外にも、各種メトリクス (レスポンスタイム、HTTPステータス、など) を収集できる。<br>・<a href="https://handon.hatenablog.jp/entry/2019/01/29/005935">https://handon.hatenablog.jp/entry/2019/01/29/005935</a> <br>・<a href="https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5">https://medium.com/@lambdaEranga/monitor-kubernets-services-endpoints-with-prometheus-blackbox-exporter-a64e062c05d5</a></td>
+<td><code>9115</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/prometheus-community/elasticsearch_exporter">Elasticsearch exporter</a></td>
+<td>ElasticSearchに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9114</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="pod">▼ Pod内サイドカーパターン<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Exporter名</th>
+<th>説明</th>
+<th>待ち受けポート番号</th>
+<th>待ち受けエンドポイント</th>
+<th>メトリクス名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/hnlq715/nginx-vts-exporter">Nginx Vts exporter</a></td>
+<td>Nginxに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9113</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/Lusitaniae/apache_exporter">Apache exporter</a></td>
+<td>Apacheに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9117</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/prometheus/mysqld_exporter">Mysqld exporter</a></td>
+<td>MySQL/MariaDBに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9104</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/prometheus-community/postgres_exporter">Postgres exporter</a></td>
+<td>PostgreSQLに関するメトリクスのデータポイントを収集する。<br>- <a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage">https://grafana.com/oss/prometheus/exporters/postgres-exporter/#metrics-usage</a></td>
+<td><code>9187</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/iamseth/oracledb_exporter">Oracledb exporter</a></td>
+<td>Oracleに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9121</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="https://github.com/oliver006/redis_exporter">Redis exporter</a></td>
+<td>Redisに関するメトリクスのデータポイントを収集する。</td>
+<td><code>9121</code></td>
+<td>同上</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">▼ 埋め込み型パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Exporter名</th>
+<th>説明</th>
+<th>待ち受けポート番号</th>
+<th>待ち受けエンドポイント</th>
+<th>メトリクス名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">open-telemetryのSDK</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ チャートとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>チャートリポジトリから複数のチャートを一括でインストールし、Kubernetesリソースを作成する。</p>
+<p>kube-prometheus-stackは、いくつかのExporterをサブチャートとしてインストールしてくれる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-prometheus-stack<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-blackbox-exporter">02. Blackbox exporter<a class="headerlink" href="#02-blackbox-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ チャートとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus-blackbox-exporter<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="module">module<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
+<h4 id="http">▼ http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<p>外形監視でHTTPリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h4 id="tcp">▼ tcp<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
+<p>外形監視でTCPリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
+<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h4 id="dns">▼ dns<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
+<p>外形監視でHTTPリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h4 id="icmp">▼ icmp<a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h4>
+<p>外形監視でICMPリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">icmp</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<h4 id="grpc">▼ grpc<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
+<p>外形監視でgRPCリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;好きな名前&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="http-probe">http probe<a class="headerlink" href="#http-probe" title="Permanent link">&para;</a></h3>
+<h4 id="get">▼ GETリクエストの場合<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
+<p>外形監視でGETリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># GETの場合 (HTTPS)</span>
+<span class="w">  </span><span class="nt">https_2xx_get</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">    </span><span class="c1"># http probe</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
+<span class="w">      </span><span class="nt">valid_http_versions</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/2.0</span>
+<span class="w">      </span><span class="c1"># 優先するIPアドレスの種類</span>
+<span class="w">      </span><span class="nt">preferred_ip_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip4</span>
+<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">follow_redirects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">icmp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">recursion_desired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">  </span><span class="c1"># GETの場合 (HTTPS)</span>
+<span class="w">  </span><span class="nt">http_2xx_get</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">    </span><span class="c1"># http probe</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
+<span class="w">      </span><span class="nt">valid_http_versions</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1</span>
+<span class="w">      </span><span class="c1"># 優先するIPアドレスの種類</span>
+<span class="w">      </span><span class="nt">preferred_ip_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip4</span>
+<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">tls_config</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># SSL証明書を任意にする</span>
+<span class="w">        </span><span class="nt">insecure_skip_verify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe">https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe</a></li>
+<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/example.yml">https://github.com/prometheus/blackbox_exporter/blob/master/example.yml</a></li>
+</ul>
+</blockquote>
+<h4 id="post">▼ POSTリクエストの場合<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
+<p>外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># POSTの場合</span>
+<span class="w">  </span><span class="nt">http_2xx_post</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># HTTPプロトコルを使用する</span>
+<span class="w">    </span><span class="nt">prober</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">    </span><span class="c1"># http probe</span>
+<span class="w">    </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># レスポンスの期待ステータスコード</span>
+<span class="w">      </span><span class="nt">valid_status_codes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+<span class="w">      </span><span class="c1"># IPV6が使えない場合に、IPv4に切り替える</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
+<span class="w">      </span><span class="c1"># リクエストヘッダー</span>
+<span class="w">      </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># データ形式</span>
+<span class="w">        </span><span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/json</span>
+<span class="w">        </span><span class="c1"># 入力フォームへのデータ送信に必要</span>
+<span class="w">        </span><span class="nt">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application/x-www-form-urlencode</span>
+<span class="w">      </span><span class="c1"># メッセージボディ</span>
+<span class="w">      </span><span class="nt">body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{}&quot;</span>
+<span class="w">      </span><span class="nt">follow_redirects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">tcp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">icmp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">dns</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ip_protocol_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">recursion_desired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe">https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe</a></li>
+<li><a href="https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter">https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter</a></li>
+<li><a href="https://github.com/prometheus/blackbox_exporter/blob/master/example.yml">https://github.com/prometheus/blackbox_exporter/blob/master/example.yml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-kube-state-metrics">03. kube-state-metrics<a class="headerlink" href="#03-kube-state-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="_9">セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ チャートとして<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-state-metrics<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">マニフェストの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="deployment_1">▼ Deployment<a class="headerlink" href="#deployment_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
+<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
+<span class="w">        </span><span class="nt">runAsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
+<span class="w">        </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">65534</span>
+<span class="w">        </span><span class="nt">seccompProfile</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RuntimeDefault</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-state-metrics</span>
+<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--port=8080</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments</span>
+<span class="w">            </span><span class="c1"># Nodeのラベルをメトリクスに付与する。</span>
+<span class="w">            </span><span class="c1"># クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。            - --metric-labels-allowlist=nodes=[*]</span>
+<span class="w">            </span><span class="c1"># Nodeのアノテーションをメトリクスに付与する。</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-annotations-allowlist=nodes=[*]</span>
+<span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.9.2</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthz</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">drop</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ALL</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm">https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_12">メトリクスの一覧<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ 確認方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>Node exporterの場合は、Nodeの『<code>127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics
+
+...
+
+kube_node_info
+kube_pod_info
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics">https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics</a></li>
+<li><a href="https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/">https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/</a></li>
+</ul>
+</blockquote>
+<h4 id="_14">▼ よく使うメトリクス<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>メトリクス</th>
+<th>メトリクスの種類</th>
+<th>説明</th>
+<th>PromQL例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kube_node_status_condition</code></td>
+<td>記入中...</td>
+<td>Nodeの現在のライフサイクルフェーズを表す。</td>
+<td><code>kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}</code></td>
+</tr>
+<tr>
+<td><code>kube_pod_status_phase</code></td>
+<td>記入中...</td>
+<td>Podの現在ライフサイクルフェーズを表す。</td>
+<td><code>kube_pod_status_phase{job="kube-state-metrics",phase="Succeeded"}</code></td>
+</tr>
+<tr>
+<td><code>kube_pod_container_status_terminated</code></td>
+<td>Count</td>
+<td><code>Terminated</code>フェーズになったコンテナ数を表す。</td>
+<td><code>kube_pod_container_status_terminated{job="kube-state-metrics"}</code></td>
+</tr>
+<tr>
+<td><code>kube_pod_container_resource_limits</code></td>
+<td>Count</td>
+<td>Podのハードウェアリソースの<code>.spec.containers[].resources.limits</code>キーを表す。設定していなければ<code>null</code>になる。</td>
+<td><code>kube_pod_container_resource_limits{job="kube-state-metrics"}</code></td>
+</tr>
+<tr>
+<td><code>kube_deployment_spec_replicas</code></td>
+<td>Count</td>
+<td>Deploymentで指定しているPodのレプリカ数を表す。</td>
+<td><code>kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_deployment_status_replicas</code></td>
+<td>Count</td>
+<td>Deploymentで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
+<td><code>kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_deployment_status_replicas_available</code></td>
+<td>Count</td>
+<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
+<td><code>kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_deployment_status_replicas_unavailable</code></td>
+<td>Count</td>
+<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
+<td><code>kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_daemonset_status_desired_number_scheduled</code></td>
+<td>Count</td>
+<td>DaemonSetで指定しているPodのレプリカ数を表す。</td>
+<td><code>kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_daemonset_status_current_number_scheduled</code></td>
+<td>Count</td>
+<td>DaemonSetで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
+<td><code>kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_daemonset_status_number_available</code></td>
+<td>Count</td>
+<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
+<td><code>kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+<tr>
+<td><code>kube_daemonset_status_number_unavailable</code></td>
+<td>Count</td>
+<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
+<td><code>kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kube-state-metrics/tree/main/docs">https://github.com/kubernetes/kube-state-metrics/tree/main/docs</a></li>
+<li><a href="https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1">https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-mysql-exporter">04. MySQL exporter<a class="headerlink" href="#04-mysql-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_15">セットアップ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">▼ チャートとして<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus-mysql-exporter<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_17">メトリクスの一覧<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ 確認方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>PostgreSQL exporterの場合は、Nodeの『<code>127.0.0.1:9104/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9104/metrics
+
+...
+
+postgres_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">&quot;&quot;</span>,goversion<span class="o">=</span><span class="s2">&quot;go1.15.8&quot;</span>,revision<span class="o">=</span><span class="s2">&quot;&quot;</span>,version<span class="o">=</span><span class="s2">&quot;0.0.1&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/">https://grafana.com/oss/prometheus/exporters/postgres-exporter/</a></li>
+<li><a href="https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt">https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-node-exporter">05. Node exporter<a class="headerlink" href="#05-node-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_19">セットアップ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ バイナリとして<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>バイナリファイルをインストールする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。</span>
+<span class="c1"># tmpディレクトリ配下にダウンロードする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/prometheus/node_exporter/releases/download/v1.0.0/node_exporter-1.0.0.linux-amd64.tar.gz<span class="w"> </span>-o<span class="w"> </span>/tmp/node_exporter-1.0.0.linux-amd64.tar.gz
+$<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>/tmp/node_exporter-1.0.0.linux-amd64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
+
+<span class="c1"># バイナリファイルだけを移動する。</span>
+$<span class="w"> </span>mv<span class="w"> </span>/tmp/node_exporter/node_exporter-1.0.0.linux-amd64<span class="w"> </span>/usr/local/bin/node_exporter
+</code></pre></div>
+<p>バイナリに直接的にパラメーターを渡せる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/usr/local/bin/node_exporter<span class="w"> </span>--web.listen-address<span class="o">=</span><span class="s2">&quot;:9100&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88">https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
+</ul>
+</blockquote>
+<h4 id="_21">▼ チャートとして<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus-node-exporter<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter</a></li>
+</ul>
+</blockquote>
+<p>複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-prometheus-stack<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_22">メトリクスの一覧<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="_23">▼ 確認方法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>Node exporterの場合は、Nodeの『<code>127.0.0.1:9100/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9100/metrics
+
+...
+
+node_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">&quot;HEAD&quot;</span>,goversion<span class="o">=</span><span class="s2">&quot;go1.15.8&quot;</span>,revision<span class="o">=</span><span class="s2">&quot;4e837d4da79cc59ee3ed1471ba9a0d9547e95540&quot;</span>,version<span class="o">=</span><span class="s2">&quot;1.1.1&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics">https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics</a></li>
+<li><a href="https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt">https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="promql">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql" title="Permanent link">&para;</a></h3>
+<h4 id="cpu">▼ CPU使用率<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<p>NodeのCPU使用率を取得する。</p>
+<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>node_cpu_seconds_total<span class="o">[</span>1m<span class="o">])</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87">https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87</a></li>
+</ul>
+</blockquote>
+<h4 id="_24">▼ メモリ使用率<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>Nodeのメモリ使用率を取得する。</p>
+<div class="highlight"><pre><span></span><code>node_memory_MemTotal_bytes<span class="w"> </span>-<span class="w"> </span>node_memory_MemAvailable_bytes
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87">https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87</a></li>
+</ul>
+</blockquote>
+<h4 id="_25">▼ ディスク使用率<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>Nodeのディスク使用率を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<p><code>mountpoint</code>ディメンションを使用して、マウントポイント別のディスク使用率を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">mountpoint</span><span class="o">=</span><span class="s2">&quot;/var/lib/data&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<p><code>job</code>ディメンションを使用して、収集対象別にのディスク使用率を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="m">100</span><span class="w"> </span>-<span class="w"> </span><span class="o">(</span>node_filesystem_avail_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span>/<span class="w"> </span>node_filesystem_size_bytes<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;foo-node&quot;</span><span class="o">}</span><span class="w"> </span><span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F">https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F</a></li>
+</ul>
+</blockquote>
+<h4 id="iocpu">▼ ディスクのI/OによるCPU使用率<a class="headerlink" href="#iocpu" title="Permanent link">&para;</a></h4>
+<p>ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。</p>
+<p><code>iostat</code>コマンドの<code>%util</code>指標と同じである。</p>
+<div class="highlight"><pre><span></span><code>rate<span class="o">(</span>node_disk_io_time_seconds_total<span class="o">[</span>1m<span class="o">])</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc">https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/prometheus-node-monitoring">https://christina04.hatenablog.com/entry/prometheus-node-monitoring</a></li>
+<li><a href="https://www.qoosky.io/techs/42affa2c4b">https://www.qoosky.io/techs/42affa2c4b</a></li>
+</ul>
+</blockquote>
+<h4 id="io">▼ ディスクのI/Oレイテンシー<a class="headerlink" href="#io" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 読み出しレイテンシー</span>
+rate<span class="o">(</span>node_disk_read_time_seconds_total<span class="o">[</span>1m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_disk_reads_completed_total<span class="o">[</span>1m<span class="o">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 書き込みレイテンシー</span>
+rate<span class="o">(</span>node_disk_write_time_seconds_total<span class="o">[</span>1m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_disk_writes_completed_total<span class="o">[</span>1m<span class="o">])</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/prometheus-node-monitoring">https://christina04.hatenablog.com/entry/prometheus-node-monitoring</a></li>
+</ul>
+</blockquote>
+<h4 id="_26">▼ パケットの受信サイズ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>Nodeのパケットの受信サイズを取得する。</p>
+<div class="highlight"><pre><span></span><code>node_network_receive_packets_total
+</code></pre></div>
+<p>これを使用して、DDOS攻撃のアラートを作成することもできる。</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>rate<span class="o">(</span>node_network_receive_packets_total<span class="o">[</span>5m<span class="o">])</span><span class="w"> </span>/<span class="w"> </span>rate<span class="o">(</span>node_network_receive_packets_total<span class="o">[</span>5m<span class="o">]</span><span class="w"> </span>offset<span class="w"> </span>5m<span class="o">))</span><span class="w"> </span>&gt;<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus">https://stackoverflow.com/questions/72947434/how-to-alert-anomalies-on-network-traffic-jump-with-prometheus</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-postgresql-exporter">06. PostgreSQL exporter<a class="headerlink" href="#06-postgresql-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_27">メトリクスの一覧<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="_28">▼ 確認方法<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>PostgreSQL exporterの場合は、Nodeの『<code>127.0.0.1:9187/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9187/metrics
+
+...
+
+mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span><span class="o">=</span><span class="s2">&quot;HEAD&quot;</span>,goversion<span class="o">=</span><span class="s2">&quot;go1.12.7&quot;</span>,revision<span class="o">=</span><span class="s2">&quot;48667bf7c3b438b5e93b259f3d17b70a7c9aff96&quot;</span>,version<span class="o">=</span><span class="s2">&quot;0.12.1&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/oss/prometheus/exporters/mysql-exporter/">https://grafana.com/oss/prometheus/exporters/mysql-exporter/</a></li>
+<li><a href="https://grafana.com/oss/prometheus/exporters/mysql-exporter/assets/mysql_metrics_scrape.txt">https://grafana.com/oss/prometheus/exporters/mysql-exporter/assets/mysql_metrics_scrape.txt</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="promql_1">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql_1" title="Permanent link">&para;</a></h3>
+<h4 id="postgresql">▼ PostgreSQLのプロセスのステータス<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
+<p>PostgreSQLのプロセスのステータスを表す。</p>
+<p><code>pg_up</code>は、PostgreSQLのプロセスのステータスを表す。</p>
+<p>正常な場合に<code>1</code>、異常な場合に<code>0</code>となる。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">pg_up</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html">https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html</a></li>
+</ul>
+</blockquote>
+<h4 id="postgresql_1">▼ PostgreSQLの連続稼働時間<a class="headerlink" href="#postgresql_1" title="Permanent link">&para;</a></h4>
+<p><code>pg_postmaster_start_time_seconds</code>は、PostgreSQLのマスタープロセス (postmasterプロセス) の連続稼働時間を表す。</p>
+<div class="highlight"><pre><span></span><code>time<span class="o">()</span><span class="w"> </span>-<span class="w"> </span>pg_postmaster_start_time_seconds
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html">https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html</a></li>
+<li><a href="https://www.oreilly.com/library/view/postgresql-9-administration/9781849519069/ch02s03.html">https://www.oreilly.com/library/view/postgresql-9-administration/9781849519069/ch02s03.html</a></li>
+<li><a href="https://www.ashisuto.co.jp/db_blog/article/20151221_pg_monitoring.html">https://www.ashisuto.co.jp/db_blog/article/20151221_pg_monitoring.html</a></li>
+</ul>
+</blockquote>
+<h4 id="db">▼ DBインスタンス間のデータ同期の遅延<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>PostgreSQLで、RepmgrによるDBクラスターを採用している場合に、DBインスタンス間のデータ同期の遅延を表す。</p>
+<p><code>pg_replication_lag</code>は、DBインスタンス間のデータ同期にかかる時間を表す。</p>
+<div class="highlight"><pre><span></span><code>pg_replication_lag<span class="w"> </span>&gt;<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html">https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_29">▼ 残骸タプルサイズ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>DBにたまっている残骸タプルのデータサイズを表す。</p>
+<div class="highlight"><pre><span></span><code>pg_stat_user_tables_n_dead_tup<span class="o">{</span><span class="nv">datname</span><span class="o">=</span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.adyen.com/blog/postgresql-hot-updates-part2">https://www.adyen.com/blog/postgresql-hot-updates-part2</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-process-exporter">06. Process exporter<a class="headerlink" href="#06-process-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_30">セットアップ<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h4 id="_31">▼ バイナリとして<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>バイナリファイルをインストールする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。</span>
+<span class="c1"># tmpディレクトリ配下にダウンロードする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/ncabatoff/process-exporter/releases/download/v0.7.10/process-exporter-0.7.10.linux-amd64.tar.gz<span class="w"> </span>-o<span class="w"> </span>/tmp/process-exporter-0.7.10.linux-amd64.tar.gz
+
+$<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>/tmp/process-exporter-0.7.10.linux-amd64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
+</code></pre></div>
+<h4 id="_32">▼ チャートとして<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2023/03/26) 時点で、Process exporterのチャートはない。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/ncabatoff/process-exporter">https://github.com/ncabatoff/process-exporter</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_33">メトリクスの一覧<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="_34">▼ 確認方法<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>Process exporterの場合は、Nodeの『<code>127.0.0.1:9256/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9256/metrics
+
+...
+
+process_exporter_build_info<span class="o">{</span><span class="nv">build_date</span><span class="o">=</span><span class="s2">&quot;2021-03-11-03:26:58&quot;</span>,commit_sha<span class="o">=</span><span class="s2">&quot;d0597c841d2c9fa30ce8b6ded6251d1994822e27&quot;</span>,golang_version<span class="o">=</span><span class="s2">&quot;go1.16.1&quot;</span>,version<span class="o">=</span><span class="s2">&quot;v1.18.0&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https">https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07-redis-exporter">07. Redis exporter<a class="headerlink" href="#07-redis-exporter" title="Permanent link">&para;</a></h2>
+<h3 id="_35">メトリクスの一覧<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h4 id="_36">▼ 確認方法<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>Redis exporterの場合は、Nodeの『<code>127.0.0.1:9121/metrics</code>』をコールすると、PromQLで使用できるメトリクスを取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9121/metrics
+
+...
+
+redis_exporter_build_info<span class="o">{</span><span class="nv">build_date</span><span class="o">=</span><span class="s2">&quot;2021-03-11-03:26:58&quot;</span>,commit_sha<span class="o">=</span><span class="s2">&quot;d0597c841d2c9fa30ce8b6ded6251d1994822e27&quot;</span>,golang_version<span class="o">=</span><span class="s2">&quot;go1.16.1&quot;</span>,version<span class="o">=</span><span class="s2">&quot;v1.18.0&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1</span>
+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/oss/prometheus/exporters/redis-exporter/">https://grafana.com/oss/prometheus/exporters/redis-exporter/</a></li>
+<li><a href="https://grafana.com/oss/prometheus/exporters/redis-exporter/assets/sample_scrape.out.txt">https://grafana.com/oss/prometheus/exporters/redis-exporter/assets/sample_scrape.out.txt</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-06</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

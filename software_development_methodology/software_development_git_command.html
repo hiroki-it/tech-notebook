@@ -1,0 +1,4393 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="コマンド@Gitの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_command.html">
+      
+      
+        <link rel="prev" href="software_development_project_management.html">
+      
+      
+        <link rel="next" href="software_development_git_github.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】コマンド@Git - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】コマンド@Git
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_22">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            👥 開発手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_development_methodology.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    開発手法論
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_development_organization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    組織論
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_development_project_management.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    プロジェクト管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_5" checked>
+        
+          <label class="md-nav__link" for="__nav_22_5" id="__nav_22_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ バージョン管理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_22_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_22_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ バージョン管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22_5_1" checked>
+        
+          <label class="md-nav__link" for="__nav_22_5_1" id="__nav_22_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_22_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_22_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_development_git_command.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. セットアップ系コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ系コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    clone
+  </a>
+  
+    <nav class="md-nav" aria-label="clone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    ▼ HTTPS接続
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    ▼ SSH公開鍵認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 名前指定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-recursive" class="md-nav__link">
+    ▼ --recursive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-depth" class="md-nav__link">
+    ▼ --depth
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 設定の影響範囲の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-list" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; --list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-username" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; user.name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-useremail" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; user.email
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-coreautocrlf" class="md-nav__link">
+    ▼ --global core.autocrlf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-coreeditor" class="md-nav__link">
+    ▼ --global core.editor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignore" class="md-nav__link">
+    ignore
+  </a>
+  
+    <nav class="md-nav" aria-label="ignore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-ignore" class="md-nav__link">
+    ▼ global ignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    remote
+  </a>
+  
+    <nav class="md-nav" aria-label="remote">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-origin" class="md-nav__link">
+    ▼ add origin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-url-origin" class="md-nav__link">
+    ▼ set-url origin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submodule" class="md-nav__link">
+    submodule
+  </a>
+  
+    <nav class="md-nav" aria-label="submodule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ サブモジュールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    ▼ add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    ▼ update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHubへの公開鍵の登録方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 開発系コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 開発系コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_1" class="md-nav__link">
+    add
+  </a>
+  
+    <nav class="md-nav" aria-label="add">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-all" class="md-nav__link">
+    ▼ --all
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    branch
+  </a>
+  
+    <nav class="md-nav" aria-label="branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-all" class="md-nav__link">
+    ▼ branch --all
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-contains" class="md-nav__link">
+    ▼ --contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-force" class="md-nav__link">
+    ▼ --delete --force
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-move" class="md-nav__link">
+    ▼ --move
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-remote" class="md-nav__link">
+    ▼ --delete --remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkout-b" class="md-nav__link">
+    ▼ checkout -b
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cherry-pick" class="md-nav__link">
+    cherry-pick
+  </a>
+  
+    <nav class="md-nav" aria-label="cherry-pick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cherry-pick_1" class="md-nav__link">
+    ▼ cherry-pickとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stash" class="md-nav__link">
+    stash
+  </a>
+  
+    <nav class="md-nav" aria-label="stash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stash_1" class="md-nav__link">
+    ▼ stashとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-include-untracked" class="md-nav__link">
+    ▼ --include-untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ▼ -- &lt;パス&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pop" class="md-nav__link">
+    ▼ pop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    ▼ drop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear" class="md-nav__link">
+    ▼ clear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+    <nav class="md-nav" aria-label="status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_1" class="md-nav__link">
+    ▼ statusとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-porcelain" class="md-nav__link">
+    ▼ --porcelain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revert" class="md-nav__link">
+    revert
+  </a>
+  
+    <nav class="md-nav" aria-label="revert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revert_1" class="md-nav__link">
+    ▼ revertとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-no-edit" class="md-nav__link">
+    ▼ &lt;コミットID&gt; --no-edit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-edit" class="md-nav__link">
+    ▼ &lt;コミットID&gt; --edit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-m-id" class="md-nav__link">
+    ▼ -m &lt;マージナンバー&gt; &lt;マージコミットID&gt;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    reset
+  </a>
+  
+    <nav class="md-nav" aria-label="reset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset_1" class="md-nav__link">
+    ▼ resetとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    ▼ HEAD &lt;ファイル名/パス&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-soft-id" class="md-nav__link">
+    ▼ --soft &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-mixed-id" class="md-nav__link">
+    ▼ --mixed &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hard-id" class="md-nav__link">
+    ▼ --hard &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_2" class="md-nav__link">
+    ▼ resetの使用例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase" class="md-nav__link">
+    rebase
+  </a>
+  
+    <nav class="md-nav" aria-label="rebase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebase_1" class="md-nav__link">
+    ▼ rebaseとは (注意点あり)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-interactive-id" class="md-nav__link">
+    ▼ --interactive &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-onto" class="md-nav__link">
+    ▼ --onto &lt;派生元にしたいローカルブランチ名&gt; &lt;誤って派生元にしたローカルブランチ名&gt; &lt;派生元を変更したいローカルブランチ名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-interactive-root" class="md-nav__link">
+    ▼ --interactive --root
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-abort" class="md-nav__link">
+    ▼ --abort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    pull
+  </a>
+  
+    <nav class="md-nav" aria-label="pull">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コマンド組み合わせ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    push
+  </a>
+  
+    <nav class="md-nav" aria-label="push">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-u-origin" class="md-nav__link">
+    ▼ -u origin &lt;作成したブランチ名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origin-idmain" class="md-nav__link">
+    ▼ origin &lt;コミットID&gt;:main
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-origin" class="md-nav__link">
+    ▼ --delete origin &lt;バージョンタグ&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-tags" class="md-nav__link">
+    ▼ --tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-branch" class="md-nav__link">
+    show-branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-branch" class="md-nav__link">
+    filter-branch
+  </a>
+  
+    <nav class="md-nav" aria-label="filter-branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f-env-filter" class="md-nav__link">
+    ▼ -f --env-filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f-tree-filter" class="md-nav__link">
+    ▼ -f --tree-filter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_development_git_github.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. セットアップ系コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ系コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone" class="md-nav__link">
+    clone
+  </a>
+  
+    <nav class="md-nav" aria-label="clone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#https" class="md-nav__link">
+    ▼ HTTPS接続
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    ▼ SSH公開鍵認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 名前指定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-recursive" class="md-nav__link">
+    ▼ --recursive
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-depth" class="md-nav__link">
+    ▼ --depth
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 設定の影響範囲の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-list" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; --list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-username" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; user.name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-useremail" class="md-nav__link">
+    ▼ --&lt;影響範囲&gt; user.email
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-coreautocrlf" class="md-nav__link">
+    ▼ --global core.autocrlf
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-global-coreeditor" class="md-nav__link">
+    ▼ --global core.editor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignore" class="md-nav__link">
+    ignore
+  </a>
+  
+    <nav class="md-nav" aria-label="ignore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-ignore" class="md-nav__link">
+    ▼ global ignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote" class="md-nav__link">
+    remote
+  </a>
+  
+    <nav class="md-nav" aria-label="remote">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-origin" class="md-nav__link">
+    ▼ add origin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-url-origin" class="md-nav__link">
+    ▼ set-url origin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submodule" class="md-nav__link">
+    submodule
+  </a>
+  
+    <nav class="md-nav" aria-label="submodule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ サブモジュールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    ▼ add
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    ▼ update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHubへの公開鍵の登録方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 開発系コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 開発系コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_1" class="md-nav__link">
+    add
+  </a>
+  
+    <nav class="md-nav" aria-label="add">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-all" class="md-nav__link">
+    ▼ --all
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branch" class="md-nav__link">
+    branch
+  </a>
+  
+    <nav class="md-nav" aria-label="branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#branch-all" class="md-nav__link">
+    ▼ branch --all
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-contains" class="md-nav__link">
+    ▼ --contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-force" class="md-nav__link">
+    ▼ --delete --force
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-move" class="md-nav__link">
+    ▼ --move
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-remote" class="md-nav__link">
+    ▼ --delete --remote
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkout-b" class="md-nav__link">
+    ▼ checkout -b
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cherry-pick" class="md-nav__link">
+    cherry-pick
+  </a>
+  
+    <nav class="md-nav" aria-label="cherry-pick">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cherry-pick_1" class="md-nav__link">
+    ▼ cherry-pickとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stash" class="md-nav__link">
+    stash
+  </a>
+  
+    <nav class="md-nav" aria-label="stash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stash_1" class="md-nav__link">
+    ▼ stashとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-include-untracked" class="md-nav__link">
+    ▼ --include-untracked
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ▼ -- &lt;パス&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pop" class="md-nav__link">
+    ▼ pop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop" class="md-nav__link">
+    ▼ drop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear" class="md-nav__link">
+    ▼ clear
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    status
+  </a>
+  
+    <nav class="md-nav" aria-label="status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_1" class="md-nav__link">
+    ▼ statusとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-porcelain" class="md-nav__link">
+    ▼ --porcelain
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revert" class="md-nav__link">
+    revert
+  </a>
+  
+    <nav class="md-nav" aria-label="revert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revert_1" class="md-nav__link">
+    ▼ revertとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-no-edit" class="md-nav__link">
+    ▼ &lt;コミットID&gt; --no-edit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id-edit" class="md-nav__link">
+    ▼ &lt;コミットID&gt; --edit
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-m-id" class="md-nav__link">
+    ▼ -m &lt;マージナンバー&gt; &lt;マージコミットID&gt;
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset" class="md-nav__link">
+    reset
+  </a>
+  
+    <nav class="md-nav" aria-label="reset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reset_1" class="md-nav__link">
+    ▼ resetとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    ▼ HEAD &lt;ファイル名/パス&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-soft-id" class="md-nav__link">
+    ▼ --soft &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-mixed-id" class="md-nav__link">
+    ▼ --mixed &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-hard-id" class="md-nav__link">
+    ▼ --hard &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_2" class="md-nav__link">
+    ▼ resetの使用例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebase" class="md-nav__link">
+    rebase
+  </a>
+  
+    <nav class="md-nav" aria-label="rebase">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rebase_1" class="md-nav__link">
+    ▼ rebaseとは (注意点あり)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-interactive-id" class="md-nav__link">
+    ▼ --interactive &lt;コミットID&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-onto" class="md-nav__link">
+    ▼ --onto &lt;派生元にしたいローカルブランチ名&gt; &lt;誤って派生元にしたローカルブランチ名&gt; &lt;派生元を変更したいローカルブランチ名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-interactive-root" class="md-nav__link">
+    ▼ --interactive --root
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-abort" class="md-nav__link">
+    ▼ --abort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    pull
+  </a>
+  
+    <nav class="md-nav" aria-label="pull">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コマンド組み合わせ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push" class="md-nav__link">
+    push
+  </a>
+  
+    <nav class="md-nav" aria-label="push">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-u-origin" class="md-nav__link">
+    ▼ -u origin &lt;作成したブランチ名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origin-idmain" class="md-nav__link">
+    ▼ origin &lt;コミットID&gt;:main
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-delete-origin" class="md-nav__link">
+    ▼ --delete origin &lt;バージョンタグ&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-tags" class="md-nav__link">
+    ▼ --tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-branch" class="md-nav__link">
+    show-branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter-branch" class="md-nav__link">
+    filter-branch
+  </a>
+  
+    <nav class="md-nav" aria-label="filter-branch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f-env-filter" class="md-nav__link">
+    ▼ -f --env-filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f-tree-filter" class="md-nav__link">
+    ▼ -f --tree-filter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="git">コマンド@Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. セットアップ系コマンド<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="clone">clone<a class="headerlink" href="#clone" title="Permanent link">&para;</a></h3>
+<h4 id="https">▼ HTTPS接続<a class="headerlink" href="#https" title="Permanent link">&para;</a></h4>
+<p>Basic認証でGitHubにログインし、クローンする。</p>
+<p>GitHubのユーザー名とパスワードが必要になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
+</code></pre></div>
+<p>ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。</p>
+<p>後者の場合、<code>1</code>個目にURLに設定する方法がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://&lt;ユーザー名&gt;:&lt;パスワード&gt;@github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
+</code></pre></div>
+<p>もう<code>1</code>個の方法として、<code>.netrc</code>ファイルに定義しておく。</p>
+<div class="highlight"><pre><span></span><code>machine<span class="w"> </span>github.com
+login<span class="w"> </span>&lt;ユーザー名&gt;
+password<span class="w"> </span>&lt;パスワード&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95">https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95</a></li>
+<li><a href="https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d">https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d</a></li>
+</ul>
+</blockquote>
+<h4 id="ssh">▼ SSH公開鍵認証<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
+<p>SSH公開鍵認証でGitHubにログインし、クローンする。</p>
+<p>GitHubの自身の公開鍵を登録する必要がある。</p>
+<p>サーバー接続名は、SSH公開鍵認証の設定ファイル (<code>~/.ssh/config</code>) に記載されている。</p>
+<p>デフォルトでは、GitHubの接続名は、『<code>github.com</code>』になっている。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git@&lt;ssh-configファイルでのサーバー接続名&gt;:&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
+</code></pre></div>
+<h4 id="_2">▼ 名前指定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>リポジトリのクローンを別名でクローンする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooという名前でクローン</span>
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository.git<span class="w"> </span>foo
+</code></pre></div>
+<h4 id="-recursive">▼ --recursive<a class="headerlink" href="#-recursive" title="Permanent link">&para;</a></h4>
+<p>リポジトリがサブモジュールを含む場合、サブモジュールも合わせてクローンする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository.git
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.kyanny.me/entry/2020/07/04/172905">https://blog.kyanny.me/entry/2020/07/04/172905</a></li>
+</ul>
+</blockquote>
+<h4 id="-depth">▼ --depth<a class="headerlink" href="#-depth" title="Permanent link">&para;</a></h4>
+<p>最近コミットのみをクローンする。</p>
+<p>速度が求められる場合 (例：CIの実行コンテナなど) に役立つ。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository.git
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kakakakakku.hatenablog.com/entry/2017/03/22/195640">https://kakakakakku.hatenablog.com/entry/2017/03/22/195640</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 設定の影響範囲の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">影響範囲</th>
+<th style="text-align: left;">意味</th>
+<th>上書き順</th>
+<th style="text-align: left;">設定ファイルの場所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">system</td>
+<td style="text-align: left;">全PCユーザーの全リポジトリ</td>
+<td>1</td>
+<td style="text-align: left;"><code>/etc/gitconfig</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">global</td>
+<td style="text-align: left;">現在のPCユーザーの全リポジトリ</td>
+<td>2</td>
+<td style="text-align: left;"><code>~/.gitconfig</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">local</td>
+<td style="text-align: left;">現在のリポジトリ</td>
+<td>3</td>
+<td style="text-align: left;"><code>&lt;GitHubリポジトリ名&gt;/.git/config</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="-list">▼ --&lt;影響範囲&gt; --list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h4>
+<p>指定した影響範囲で適用されている設定値を取得する。<code>--local</code>で設定されていない項目は、<code>--global</code>の設定値が適用される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>--list
+</code></pre></div>
+<p>Macでは、<code>1</code>個のマシンで<code>2</code>個のGutHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。</p>
+<blockquote>
+<ul>
+<li><a href="https://sy-base.com/myrobotics/others/git-push_403error/">https://sy-base.com/myrobotics/others/git-push_403error/</a></li>
+</ul>
+</blockquote>
+<h4 id="-username">▼ --&lt;影響範囲&gt; user.name<a class="headerlink" href="#-username" title="Permanent link">&para;</a></h4>
+<p>AuthorとCommitterの名前を設定する。</p>
+<p><code>local</code>が一番最後に上書きされ、適用される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;hiroki.hasegawa&quot;</span>
+</code></pre></div>
+<h4 id="-useremail">▼ --&lt;影響範囲&gt; user.email<a class="headerlink" href="#-useremail" title="Permanent link">&para;</a></h4>
+<p>AuthorとCommitterのメールアドレスを設定する。</p>
+<p><code>local</code>が一番最後に上書きされ、適用される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;example@gmail.com&quot;</span>
+</code></pre></div>
+<p>Authorの情報は、コミット時に反映される (Committerは表示されない) 。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
+
+commit<span class="w"> </span>ee299250a4741555eb5027ad3e56ce782fe90ccb
+Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Sat<span class="w"> </span>Sep<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="m">00</span>:00:00<span class="w"> </span><span class="m">2020</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span>◯◯を実装した。
+</code></pre></div>
+<h4 id="-global-coreautocrlf">▼ --global core.autocrlf<a class="headerlink" href="#-global-coreautocrlf" title="Permanent link">&para;</a></h4>
+<p>改行コードを、特定のタイミングで自動変換するように設定する。</p>
+<p><code>input</code>としておくのが良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.autocrlf<span class="w"> </span>&lt;値&gt;
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>設定値</th>
+<th>チェックアウト時</th>
+<th>コミット時</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>input</td>
+<td>変換しない</td>
+<td>CRLF ➡︎ LF</td>
+</tr>
+<tr>
+<td>true</td>
+<td>LF ➡︎ CRLF</td>
+<td>CRLF ➡︎ LF</td>
+</tr>
+<tr>
+<td>false</td>
+<td>変換しない</td>
+<td>変換しない</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-global-coreeditor">▼ --global core.editor<a class="headerlink" href="#-global-coreeditor" title="Permanent link">&para;</a></h4>
+<p>gitのデフォルトエディタを設定する。</p>
+<p>ここでは、Vimをデフォルトとする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span><span class="s2">&quot;vim -c &quot;</span><span class="nb">set</span><span class="w"> </span><span class="nv">fenc</span><span class="o">=</span>utf-8<span class="s2">&quot;&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<p>ローカルマシンのディレクトリとGitHubリポジトリを紐付ける。</p>
+<p>エディタにGitHubリポジトリを再反映するためにも使用できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init
+</code></pre></div>
+<p><br></p>
+<h3 id="ignore">ignore<a class="headerlink" href="#ignore" title="Permanent link">&para;</a></h3>
+<h4 id="global-ignore">▼ global ignore<a class="headerlink" href="#global-ignore" title="Permanent link">&para;</a></h4>
+<p><code>~/.config/git/ignore</code>ファイルに設定されたファイルは、グローバルに無視される。</p>
+<div class="highlight"><pre><span></span><code>.DS_Store
+.idea/
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/phi/articles/gitignore-global-ds-store">https://zenn.dev/phi/articles/gitignore-global-ds-store</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="remote">remote<a class="headerlink" href="#remote" title="Permanent link">&para;</a></h3>
+<h4 id="add-origin">▼ add origin<a class="headerlink" href="#add-origin" title="Permanent link">&para;</a></h4>
+<p>プライベートリポジトリのURLを登録し、プッシュ/プル可能にする。</p>
+<p><strong>＊実行例＊</strong></p>
+<p>Basic認証の場合、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init
+
+<span class="c1"># Basic認証</span>
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/hiroki-hasegawa/example.git
+
+<span class="c1"># 登録されたGitHubリポジトリ</span>
+remote.origin.url<span class="o">=</span>https://github.com/hiroki-hasegawa/example.git
+</code></pre></div>
+<p><strong>＊実行例＊</strong></p>
+<p>SSH公開鍵認証の場合、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>init
+
+<span class="c1"># SSH公開鍵認証</span>
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;GitHubリポジトリ名&gt;.git
+
+<span class="c1"># 登録されたGitHubリポジトリ</span>
+remote.origin.url<span class="o">=</span>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;GitHubリポジトリ名&gt;.git
+</code></pre></div>
+<h4 id="set-url-origin">▼ set-url origin<a class="headerlink" href="#set-url-origin" title="Permanent link">&para;</a></h4>
+<p>プライベートリポジトリのURLを変更し、プッシュ/プル可能にする。</p>
+<p><code>config</code>ファイルに記述されたユーザー名と接続名を設定する。</p>
+<p><code>1</code>個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。</p>
+<p>プロジェクトをクローンした時、SSH URLはデフォルトで『<code>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;プロジェクト名&gt;.git</code>』となっている。</p>
+<p>使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『<code>github.com</code>』としておく。</p>
+<p>一方で、使用頻度の低いアカウントで所有するリポジトリでは、標準のSSH URLを異なる接続名で再設定する。</p>
+<p><strong>＊実行例＊</strong></p>
+<p>Basic認証の場合、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic認証</span>
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/hiroki-hasegawa/example.git
+
+<span class="c1"># 登録されたGitHubリポジトリ</span>
+remote.origin.url<span class="o">=</span>https://github.com/hiroki-hasegawa/example.git
+
+$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>--list
+
+<span class="c1"># 変更されたURL</span>
+remote.origin.url<span class="o">=</span>https://github.com/hiroki-hasegawa/example.git
+</code></pre></div>
+<p><strong>＊実行例＊</strong></p>
+<p>SSH公開鍵認証の場合、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># SSH公開鍵認証</span>
+<span class="c1"># 使用頻度の高いアカウントで所有するリポジトリ</span>
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>git@github.com:&lt;組織名またはgitユーザー名&gt;/&lt;GitHubリポジトリ名&gt;.git
+
+<span class="c1"># 使用頻度の低いアカウントで所有するリポジトリ</span>
+$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>git@&lt;任意の接続名&gt;:&lt;組織名またはgitユーザー名&gt;/&lt;GitHubリポジトリ名&gt;.git
+
+$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--local<span class="w"> </span>--list
+
+<span class="c1"># 変更されたURL</span>
+remote.origin.url<span class="o">=</span>git@&lt;任意の接続名&gt;:&lt;組織名またはgitユーザー名&gt;/&lt;GitHubリポジトリ名&gt;.git
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 使用頻度の高いアカウント</span>
+Host<span class="w"> </span>github.com
+<span class="w">    </span>User<span class="w"> </span>git
+<span class="w">    </span>Port<span class="w"> </span><span class="m">22</span>
+<span class="w">    </span>HostName<span class="w"> </span>github.com
+<span class="w">    </span>IdentityFile<span class="w"> </span>&lt;秘密鍵へのパス&gt;
+
+<span class="c1"># 使用頻度の低いアカウント</span>
+Host<span class="w"> </span>&lt;任意の接続名&gt;
+<span class="w">    </span>User<span class="w"> </span>git
+<span class="w">    </span>Port<span class="w"> </span><span class="m">22</span>
+<span class="w">    </span>HostName<span class="w"> </span>github.com
+<span class="w">    </span>IdentityFile<span class="w"> </span>&lt;秘密へのパス&gt;
+
+<span class="c1"># その他Gitlabなど</span>
+Host<span class="w"> </span>gitlab.com
+<span class="w">    </span>User<span class="w"> </span>git
+<span class="w">    </span>Port<span class="w"> </span><span class="m">22</span>
+<span class="w">    </span>HostName<span class="w"> </span>gitlab.com
+<span class="w">    </span>IdentityFile<span class="w"> </span>&lt;秘密へのパス&gt;<span class="w"> </span><span class="c1"># GitHabとは別の鍵を作成した方が良い。</span>
+</code></pre></div>
+<p>リポジトリに対してコミットをプッシュし、エラーが出た場合、異なる接続名が選択されている場合は、URLの『接続名』の部分が正しく設定されているか否かを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push
+
+ERROR:<span class="w"> </span>Permission<span class="w"> </span>to<span class="w"> </span>hiroki-hasegawa/*****.git<span class="w"> </span>denied<span class="w"> </span>to<span class="w"> </span>Foo.
+fatal:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span><span class="nb">read</span><span class="w"> </span>from<span class="w"> </span>remote<span class="w"> </span>repository.
+
+Please<span class="w"> </span>make<span class="w"> </span>sure<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>the<span class="w"> </span>correct<span class="w"> </span>access<span class="w"> </span>rights
+and<span class="w"> </span>the<span class="w"> </span>repository<span class="w"> </span>exists.
+</code></pre></div>
+<p><br></p>
+<h3 id="submodule">submodule<a class="headerlink" href="#submodule" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ サブモジュールとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>リポジトリ内の特定のディレクトリで他のリポジトリをリモート参照可能にする。</p>
+<p>フォークと似た仕組みであり、<code>git submodule update</code>コマンドを実行しないと、サブモジュールの更新を取り込めない。</p>
+<p>また、<code>git clone</code>コマンドの実行時には<code>--recursive</code>オプションを有効化しないと、サブモジュールも合わせてクローンできない。</p>
+<p>そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/kohashi/items/f4a50c5436b326e9475b">https://qiita.com/kohashi/items/f4a50c5436b326e9475b</a></li>
+<li><a href="https://blog.kyanny.me/entry/2020/07/04/172905">https://blog.kyanny.me/entry/2020/07/04/172905</a></li>
+</ul>
+</blockquote>
+<h4 id="add">▼ add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h4>
+<p>カレントディレクトリにサブモジュールを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>add<span class="w"> </span>--branch<span class="w"> </span>main<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-sub-module.git<span class="w"> </span>./modules/foo-sub-module
+</code></pre></div>
+<p>コマンドを実行すると、<code>.gitmodules</code>ファイルが作成される。</p>
+<div class="highlight"><pre><span></span><code>[submodule &quot;modules/foo-sub-module&quot;]
+    path = modules/foo-sub-module
+    url = https://github.com/hiroki-hasegawa/foo-sub-module.git
+    branch = main
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93">https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93</a></li>
+</ul>
+</blockquote>
+<h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
+<p>参照先のリポジトリで更新があった場合、それを取り込む。</p>
+<p>参照先の更新を自動的に取り込むことはできないため、以下のコマンドを必要なタイミングで実行する必要がある。</p>
+<p>上記を実行すると、サブモジュールのコミット情報が更新されて差分が生じるため、それをプッシュする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>submodule<span class="w"> </span>update<span class="w"> </span>--remote<span class="w"> </span>&lt;.gitmodulesに定義されたサブモジュール名&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="github">GitHubへの公開鍵の登録方法<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
+<p>GitHubとSSH公開鍵認証を行うために、秘密鍵と公開鍵は次の方法で作成し、GitHubアカウント設定画面のSSHの項目に登録する。</p>
+<blockquote>
+<ul>
+<li><a href="https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0">https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>ssh-keygen</code>コマンドで、秘密鍵と効果鍵のセットを作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># 鍵を保管するディレクトリに移動</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.ssh/github
+
+$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa
+
+<span class="c1"># 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい</span>
+Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>which<span class="w"> </span>to<span class="w"> </span>save<span class="w"> </span>the<span class="w"> </span>key:<span class="w"> </span>hiroki-it
+<span class="c1"># 鍵の使用時にパスワードの入力を要求するか否かは任意である。</span>
+Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
+Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>このうち、公開鍵をクリップボードにコピーする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># Mac</span>
+$<span class="w"> </span>pbcopy<span class="w"> </span>&lt;<span class="w"> </span>~/.ssh/github/&lt;鍵名&gt;.pub
+
+<span class="c1"># Windows</span>
+$<span class="w"> </span>clip<span class="w"> </span>&lt;<span class="w"> </span>~/.ssh/github/&lt;鍵名&gt;.pub
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( <a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a> ) にペーストする。<code>ssh</code>コマンドで接続を確認する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>&lt;接続名&gt;
+
+Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class="err">&#39;</span>ve<span class="w"> </span>successfully<span class="w"> </span>authenticated,<span class="w"> </span>but<span class="w"> </span>GitHub<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>provide<span class="w"> </span>shell<span class="w"> </span>access.
+</code></pre></div>
+<p><br></p>
+<h2 id="02">02. 開発系コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="add_1">add<a class="headerlink" href="#add_1" title="Permanent link">&para;</a></h3>
+<h4 id="-all">▼ --all<a class="headerlink" href="#-all" title="Permanent link">&para;</a></h4>
+<p>変更した全てのファイルをaddする。</p>
+<p><br></p>
+<h3 id="branch">branch<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h3>
+<h4 id="branch-all">▼ branch --all<a class="headerlink" href="#branch-all" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチとリモート追跡ブランチを取得する。</p>
+<h4 id="-contains">▼ --contains<a class="headerlink" href="#-contains" title="Permanent link">&para;</a></h4>
+<p>現在にいるブランチを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--contains
+
+*<span class="w"> </span>main
+</code></pre></div>
+<h4 id="-delete-force">▼ --delete --force<a class="headerlink" href="#-delete-force" title="Permanent link">&para;</a></h4>
+<p>プッシュとマージの状態に関係なく、ローカルブランチを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--delete<span class="w"> </span>--force<span class="w"> </span>&lt;ローカルブランチ名&gt;
+</code></pre></div>
+<h4 id="-move">▼ --move<a class="headerlink" href="#-move" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチの名前を変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--move<span class="w"> </span>&lt;ローカルブランチ名&gt;
+</code></pre></div>
+<h4 id="-delete-remote">▼ --delete --remote<a class="headerlink" href="#-delete-remote" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--delete<span class="w"> </span>--remote<span class="w"> </span>origin/&lt;ローカルブランチ名&gt;
+</code></pre></div>
+<p>リモート追跡ブランチを削除する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>まず、<code>branch --all</code>で作業中のローカルブランチとリモート追跡ブランチを取得する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
+
+*<span class="w"> </span>main
+<span class="w">  </span>remotes/origin/2019/Symfony_Nyumon/main
+<span class="w">  </span>remotes/origin/main
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>remotes/origin/2019/Symfony_Nyumon/main</code>を削除する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>-r<span class="w"> </span>origin/2019/Symfony_Nyumon/main
+
+Deleted<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span>origin/2019/Symfony_Nyumon/main<span class="w"> </span><span class="o">(</span>was<span class="w"> </span>18a31b5<span class="o">)</span>.
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>再び、<code>branch --all</code>で削除されたことを確認。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
+*<span class="w"> </span>main
+<span class="w">  </span>remotes/origin/main
+</code></pre></div>
+<h4 id="checkout-b">▼ checkout -b<a class="headerlink" href="#checkout-b" title="Permanent link">&para;</a></h4>
+<p>指定のコミットから新しいブランチを生やせる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>&lt;新しいローカルブランチ名&gt;<span class="w"> </span>&lt;コミット番号&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>feature/3<span class="w"> </span>d7e49b04
+</code></pre></div>
+<p><br></p>
+<h3 id="cherry-pick">cherry-pick<a class="headerlink" href="#cherry-pick" title="Permanent link">&para;</a></h3>
+<h4 id="cherry-pick_1">▼ cherry-pickとは<a class="headerlink" href="#cherry-pick_1" title="Permanent link">&para;</a></h4>
+<p>現在のブランチに対して、指定したコミットそれ単体をマージする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;コミットID&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>1d0ddeb9e52
+</code></pre></div>
+<p>プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。</p>
+<p>これにより、<code>develop</code>ブランチ上の必要な変更のみをリリースできる。</p>
+<p>ただし、マージコミットを指定する時は<code>-m</code>オプションを有効化しないとエラーになってしまうことに注意する。</p>
+<p>また、マージコミットには<code>2</code>個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。</p>
+<p>前者は1番、また後者は2番となっており、1番を選択すること。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># mainブランチ上でreleaseブランチを作成し、チェックアウトする</span>
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>release
+
+<span class="c1"># mオプションがないとエラー</span>
+$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>d7e49b04
+error:<span class="w"> </span>commit<span class="w"> </span>d7e49b04<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>merge<span class="w"> </span>but<span class="w"> </span>no<span class="w"> </span>-m<span class="w"> </span>option<span class="w"> </span>was<span class="w"> </span>given.
+fatal:<span class="w"> </span>cherry-pick<span class="w"> </span>failed
+
+<span class="c1"># mオプションを有効化する</span>
+$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>-m<span class="w"> </span><span class="m">1</span><span class="w"> </span>d7e49b04
+
+<span class="o">[</span>main<span class="w"> </span>a9ebcb4<span class="o">]</span><span class="w"> </span>Merge<span class="w"> </span>pull<span class="w"> </span>request<span class="w"> </span><span class="c1">#276 from feature/123</span>
+<span class="w"> </span>Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;*****@users.noreply.github.com&gt;
+<span class="w"> </span>Date:<span class="w"> </span>Wed<span class="w"> </span>Sep<span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="m">00</span>:00:00<span class="w"> </span><span class="m">2021</span><span class="w"> </span>+0900
+<span class="w"> </span><span class="m">1</span><span class="w"> </span>file<span class="w"> </span>changed,<span class="w"> </span><span class="m">7</span><span class="w"> </span>insertions<span class="o">(</span>+<span class="o">)</span>
+
+<span class="c1"># 指定したコミットのみがマージされているか否かを確認する。</span>
+$<span class="w"> </span>git<span class="w"> </span>log
+
+<span class="c1"># releaseブランチをmainブランチにマージする。</span>
+$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>main
+$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>release
+</code></pre></div>
+<p><br></p>
+<h3 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
+<p>結果に応じた終了コードをを出力する。</p>
+<p>空文字を<code>false</code>として判定可能にする。</p>
+<div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="k">)</span>
+
+<span class="c1"># 差分があるかどうかを検証する</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$DIFF</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span>
+<span class="k">else</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/74817537">https://stackoverflow.com/a/74817537</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nv">DIFF</span><span class="o">=</span><span class="k">$(</span>git<span class="w"> </span>diff<span class="w"> </span>origin/main<span class="w"> </span>--quiet<span class="k">)</span>
+
+<span class="c1"># 差分があるかどうかを検証する</span>
+<span class="k">case</span><span class="w"> </span><span class="nv">$DIFF</span><span class="w"> </span><span class="k">in</span>
+<span class="w">  </span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分なし&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">1</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;差分あり&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span><span class="m">128</span><span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;パラーメーターが誤っている&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">  </span>*<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;予期せぬエラー&quot;</span><span class="w"> </span><span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/74817582">https://stackoverflow.com/a/74817582</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="stash">stash<a class="headerlink" href="#stash" title="Permanent link">&para;</a></h3>
+<h4 id="stash_1">▼ stashとは<a class="headerlink" href="#stash_1" title="Permanent link">&para;</a></h4>
+<p>ファイルが、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを<code>checkout</code>しようとすると、以下のエラーが出る。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">2019</span>/Symfony2_Ny
+
+umon/main
+error:<span class="w"> </span>Your<span class="w"> </span><span class="nb">local</span><span class="w"> </span>changes<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>files<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>overwritten<span class="w"> </span>by<span class="w"> </span>checkout:
+<span class="w">        </span>app/config/config.yml
+<span class="w">        </span>src/AppBundle/Entity/Inquiry.php
+Please<span class="w"> </span>commit<span class="w"> </span>your<span class="w"> </span>changes<span class="w"> </span>or<span class="w"> </span>stash<span class="w"> </span>them<span class="w"> </span>before<span class="w"> </span>you<span class="w"> </span>switch<span class="w"> </span>branches.
+Aborting
+</code></pre></div>
+<p>この場合、一度<code>stash</code>を行い、『インデックス』 (=<code>add</code>) あるいは『HEAD』 (=コミット) を横に置いておく必要がある。</p>
+<h4 id="-include-untracked">▼ --include-untracked<a class="headerlink" href="#-include-untracked" title="Permanent link">&para;</a></h4>
+<p>トラッキングされていないファイルも含めて、全てのファイルを退避。</p>
+<p><code>git status</code>をしたところ、修正ファイルが<code>3</code>個、トラックされていないファイルが1つある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>status
+
+On<span class="w"> </span>branch<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6
+Your<span class="w"> </span>branch<span class="w"> </span>is<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span>date<span class="w"> </span>with<span class="w"> </span><span class="s2">&quot;origin/2019/foo-repository/feature/6&quot;</span>.
+
+Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+
+<span class="w">        </span>modified:<span class="w">   </span>app/Resources/views/Inquiry/index.html.twig
+<span class="w">        </span>modified:<span class="w">   </span>app/config/config.yml
+<span class="w">        </span>modified:<span class="w">   </span>src/AppBundle/Entity/Inquiry.php
+
+Untracked<span class="w"> </span>files:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+
+<span class="w">        </span>app/Resources/views/Toppage/menu.html.twig
+
+no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</code></pre></div>
+<p>これを、<code>stash -u</code>する</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>-u
+
+Saved<span class="w"> </span>working<span class="w"> </span>directory<span class="w"> </span>and<span class="w"> </span>index<span class="w"> </span>state<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6:<span class="w"> </span>649995e<span class="w"> </span>update<span class="w"> </span><span class="c1">#6 *****</span>
+</code></pre></div>
+<p>これらのファイルの変更点を一時的に退避できる。</p>
+<h4 id="-">▼ -- &lt;パス&gt;<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
+<p>特定のディレクトリやファイルのみ<code>stash</code>できる。</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>stash<span class="w"> </span>--<span class="w"> </span>./
+</code></pre></div>
+<h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
+<p>退避している『ファイル番号ブランチ親コミットとコミットメッセージ』の一覧を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>list
+
+stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>:<span class="w"> </span>WIP<span class="w"> </span>on<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/6:<span class="w"> </span>649995e<span class="w"> </span>update<span class="w"> </span><span class="c1">#6 *****</span>
+</code></pre></div>
+<h4 id="pop">▼ pop<a class="headerlink" href="#pop" title="Permanent link">&para;</a></h4>
+<p>退避している指定のファイルを復元する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w"> </span>stash@<span class="o">{</span>&lt;番号&gt;<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>pop<span class="w"> </span>stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>
+
+On<span class="w"> </span>branch<span class="w"> </span><span class="m">2019</span>/foo-repository/feature/8
+Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>discard<span class="w"> </span>changes<span class="w"> </span><span class="k">in</span><span class="w"> </span>working<span class="w"> </span>directory<span class="o">)</span>
+
+<span class="w">        </span>modified:<span class="w">   </span>app/Resources/views/Inquiry/index.html.twig
+<span class="w">        </span>modified:<span class="w">   </span>app/config/config.yml
+<span class="w">        </span>modified:<span class="w">   </span>src/AppBundle/Entity/Inquiry.php
+
+Untracked<span class="w"> </span>files:
+<span class="w">  </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add &lt;file&gt;...&quot;</span><span class="w"> </span>to<span class="w"> </span>include<span class="w"> </span><span class="k">in</span><span class="w"> </span>what<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>committed<span class="o">)</span>
+
+<span class="w">        </span>app/Resources/views/Toppage/menu.html.twig
+
+no<span class="w"> </span>changes<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>commit<span class="w"> </span><span class="o">(</span>use<span class="w"> </span><span class="s2">&quot;git add&quot;</span><span class="w"> </span>and/or<span class="w"> </span><span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</code></pre></div>
+<h4 id="drop">▼ drop<a class="headerlink" href="#drop" title="Permanent link">&para;</a></h4>
+<p>退避している指定のファイルを復元せずに削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w"> </span>stash@<span class="o">{</span>&lt;番号&gt;<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>drop<span class="w"> </span>stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span>
+
+Dropped<span class="w"> </span>refs/stash@<span class="o">{</span><span class="m">0</span><span class="o">}</span><span class="w"> </span><span class="o">(</span>1d0ddeb9e52a737dcdbff7296272080e9ff71815<span class="o">)</span>
+</code></pre></div>
+<h4 id="clear">▼ clear<a class="headerlink" href="#clear" title="Permanent link">&para;</a></h4>
+<p>退避している全てのファイルを復元せずに削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>stash<span class="w"> </span>clear
+</code></pre></div>
+<p><br></p>
+<h3 id="status">status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h3>
+<h4 id="status_1">▼ statusとは<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h4>
+<p>addステージやcommitステージにファイルが存在しているか否かを取得する。</p>
+<h4 id="-porcelain">▼ --porcelain<a class="headerlink" href="#-porcelain" title="Permanent link">&para;</a></h4>
+<p>コマンドに入力できる形式で出力する。</p>
+<p>CIの自動化で使うことが多い。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/">https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>$<span class="w"> </span>git<span class="w"> </span>status<span class="w"> </span>--porcelain
+
+<span class="w"> </span>M<span class="w"> </span>foo
+<span class="w"> </span>M<span class="w"> </span>bar
+<span class="w"> </span>M<span class="w"> </span>baz
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+git<span class="w"> </span>add<span class="w"> </span>.
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>status<span class="w"> </span>--porcelain<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;変更点がないため、終了しました。&quot;</span>
+<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="k">fi</span>
+
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;CIツールが自動的にプッシュしました。&quot;</span>
+
+git<span class="w"> </span>pull
+
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>HEAD
+</code></pre></div>
+<p><br></p>
+<h3 id="revert">revert<a class="headerlink" href="#revert" title="Permanent link">&para;</a></h3>
+<h4 id="revert_1">▼ revertとは<a class="headerlink" href="#revert_1" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチで、指定の履歴を削除する。</p>
+<p><img alt="revert.png" src="https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png" /></p>
+<h4 id="id-no-edit">▼ <code>&lt;コミットID&gt;</code> --no-edit<a class="headerlink" href="#id-no-edit" title="Permanent link">&para;</a></h4>
+<p>指定したコミットのみを打ち消す新しいコミットを作成する。</p>
+<p>コミットメッセージは、打ち消すコミットと同じものになる。</p>
+<p>リリース後に元に戻したい時に役立つ。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>&lt;コミットID&gt;<span class="w"> </span>--no-edit
+</code></pre></div>
+<h4 id="id-edit">▼ <code>&lt;コミットID&gt;</code> --edit<a class="headerlink" href="#id-edit" title="Permanent link">&para;</a></h4>
+<p>指定したコミットのみを打ち消す新しいコミットを作成する。</p>
+<p>vimが起動するため、コミットメッセージを新しいものに変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>&lt;コミットID&gt;<span class="w"> </span>--edit
+</code></pre></div>
+<h4 id="-m-id">▼ -m &lt;マージナンバー&gt; &lt;マージコミットID&gt;<a class="headerlink" href="#-m-id" title="Permanent link">&para;</a></h4>
+<p>指定したマージコミットのみを打ち消す新しいコミットを作成する。</p>
+<p>コミットメッセージは、打ち消すコミットと同じものになる。</p>
+<p>マージナンバーを事前に確認しておく必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>show
+
+commit<span class="w"> </span>xyz
+Merge:<span class="w"> </span>1a1a1a<span class="w"> </span>2b2b2b<span class="w">    </span><span class="c1">#ここに注目</span>
+Author:<span class="w"> </span>xxxx<span class="w"> </span>xxxx
+Date:<span class="w">   </span>Thu<span class="w"> </span>Jul<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">09</span>:00:00<span class="w"> </span><span class="m">2017</span><span class="w"> </span>+0000
+
+<span class="w">    </span>Merge<span class="w"> </span>commit
+
+$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>-m<span class="w"> </span><span class="m">1</span><span class="w"> </span>xyz
+</code></pre></div>
+<p><br></p>
+<h3 id="reset">reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h3>
+<h4 id="reset_1">▼ resetとは<a class="headerlink" href="#reset_1" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチで、指定の履歴まで戻し、それ以降を削除する。</p>
+<p><img alt="reset.png" src="https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png" /></p>
+<h4 id="head">▼ HEAD &lt;ファイル名/パス&gt;<a class="headerlink" href="#head" title="Permanent link">&para;</a></h4>
+<p>インデックスから、指定したファイルを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>HEAD<span class="w"> </span>&lt;ファイル名/パス&gt;
+</code></pre></div>
+<h4 id="-soft-id">▼ --soft &lt;コミットID&gt;<a class="headerlink" href="#-soft-id" title="Permanent link">&para;</a></h4>
+<p>作業中のブランチで、最新のHEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p>コミットのみを取り消したい場合はこれ。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>&lt;コミットID&gt;
+</code></pre></div>
+<h4 id="-mixed-id">▼ --mixed &lt;コミットID&gt;<a class="headerlink" href="#-mixed-id" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチで、インデックス (=<code>add</code>後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p><code>add</code>とコミットを取り消したい場合はこれ。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--mixed<span class="w"> </span>&lt;コミットID&gt;
+</code></pre></div>
+<h4 id="-hard-id">▼ --hard &lt;コミットID&gt;<a class="headerlink" href="#-hard-id" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=<code>add</code>後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p><font color="red"><strong>ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！</strong></font></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;コミットID&gt;
+</code></pre></div>
+<h4 id="reset_2">▼ resetの使用例<a class="headerlink" href="#reset_2" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>まず、<code>log</code>コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
+
+commit<span class="w"> </span>f17f68e287b7d84318b4c49e133b2d1819f6c3db<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main,<span class="w"> </span><span class="m">2019</span>/foo-repository/main<span class="o">)</span>
+Merge:<span class="w"> </span>41cc21b<span class="w"> </span>f81c813
+Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:56:32<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;refs/remotes/origin/main&quot;</span>
+
+commit<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
+Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:54:34<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_2を追加</span>
+
+commit<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e
+Author:<span class="w"> </span>hiroki.hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:54:34<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_1を追加</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>指定のコミットまで履歴を戻す。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>log</code>コマンドで、正しく変更されているか確認。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
+
+commit<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="o">)</span>
+Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:54:34<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span>新しいREADMEを追加
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p><code>push --force</code>でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
+<font color="red"><strong>『強制的にプッシュした』というログも、リモート側には残らない。</strong></font></p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--force
+
+Total<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
+To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
+<span class="w"> </span>+<span class="w"> </span>f0d8b1a...f81c813<span class="w"> </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="w"> </span><span class="o">(</span>forced<span class="w"> </span>update<span class="o">)</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="rebase">rebase<a class="headerlink" href="#rebase" title="Permanent link">&para;</a></h3>
+<h4 id="rebase_1">▼ rebaseとは (注意点あり)<a class="headerlink" href="#rebase_1" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチで、ブランチの派生元を変更する。</p>
+<p>リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。</p>
+<h4 id="-interactive-id">▼ --interactive &lt;コミットID&gt;<a class="headerlink" href="#-interactive-id" title="Permanent link">&para;</a></h4>
+<p>派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを行う。</p>
+<p><strong>＊例 (コミットメッセージの変更) ＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>まず、<code>log</code>コマンドで、作業中のローカルブランチにおけるコミットIDを確認。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
+
+commit<span class="w"> </span>f17f68e287b7d84318b4c49e133b2d1819f6c3db<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main,<span class="w"> </span><span class="m">2019</span>/foo-repository/main<span class="o">)</span>
+Merge:<span class="w"> </span>41cc21b<span class="w"> </span>f81c813
+Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">22</span>:56:32<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>Merge<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;refs/remotes/origin/main&quot;</span>
+
+commit<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
+Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:54:34<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_2を追加</span>
+
+commit<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e
+Author:<span class="w"> </span>Hiroki<span class="w"> </span>Hasegawa<span class="w"> </span>&lt;example@gmail.com&gt;
+Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>:54:34<span class="w"> </span><span class="m">2019</span><span class="w"> </span>+0900
+
+<span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_1を追加</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>指定した履歴の削除</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
+</code></pre></div>
+<p>とすると、タブが表示され、指定のコミットIDの履歴が表示される</p>
+<div class="highlight"><pre><span></span><code>pick<span class="w"> </span>b1b5c0f<span class="w"> </span>add<span class="w"> </span><span class="c1">#0 *****</span>
+</code></pre></div>
+<p>『挿入モード』に変更し、この１行の<code>pick</code>を<code>edit</code>に変更。</p>
+<p>その後、</p>
+<div class="highlight"><pre><span></span><code>:w
+</code></pre></div>
+<p>として保存。</p>
+<p>その後、エディタ上で『Ctrl+C』を押し、</p>
+<div class="highlight"><pre><span></span><code>:qa!
+</code></pre></div>
+<p>で終了。</p>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>git commit --amend</code>に<code>-m</code>オプションを付けて、メッセージを変更する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="o">=</span><span class="s2">&quot;&lt;変更後のメッセージ&gt;&quot;</span>
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p><code>git rebase --continue</code>コマンドを実行することにより、変更を反映させる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+
+Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span class="w"> </span>updated<span class="w"> </span>refs/heads/develop.
+</code></pre></div>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>プッシュしようとすると、<code>![rejected] develop -&gt; develop (non-fast-forward)</code>とエラーが出るため、</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>&lt;ブランチ名&gt;<span class="w"> </span>--allow-unrelated-histories
+</code></pre></div>
+<p>で解決し、プッシュする。</p>
+<p><strong>＊例 (Author名とCommiter名の変更) ＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>ハッシュ値を指定して、<code>git rebase</code>コマンドを実行する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>git commit --amend</code>コマンドに<code>--reset-author</code>オプションを付けて、configで設定した名前をAuthor名とComitter名に適用する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--reset-author
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>git rebase --continue</code>コマンドを実行し、変更を反映させる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
+Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span class="w"> </span>updated<span class="w"> </span>refs/heads/develop.
+</code></pre></div>
+<p>過去の全てのコミットに対して、Author名とCommitter名を適用するコマンドもある。</p>
+<p>しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにする必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--env-filter<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">    # Author名かCommitter名のいずれかが誤っていれば適用します。</span>
+<span class="s2">    if [ </span><span class="si">${</span><span class="nv">GIT_AUTHOR_NAME</span><span class="si">}</span><span class="s2">=&quot;</span>hiroki.hasegawa<span class="s2">&quot; -o </span><span class="si">${</span><span class="nv">GIT_COMMITTER_NAME</span><span class="si">}</span><span class="s2">=&quot;</span>hiroki.hasegawa<span class="s2">&quot; ] ; then</span>
+<span class="s2">    export GIT_AUTHOR_NAME=&quot;</span>hiroki.hasegawa<span class="s2">&quot;</span>
+<span class="s2">    export GIT_AUTHOR_EMAIL=&quot;</span>example@gmail.com<span class="s2">&quot;</span>
+<span class="s2">    export GIT_COMMITTER_NAME=&quot;</span>hiroki.hasegawa<span class="s2">&quot;</span>
+<span class="s2">    export GIT_COMMITTER_EMAIL=&quot;</span>example@gmail.com<span class="s2">&quot;</span>
+<span class="s2">fi&quot;</span>
+</code></pre></div>
+<h4 id="-onto">▼ --onto &lt;派生元にしたいローカルブランチ名&gt; &lt;誤って派生元にしたローカルブランチ名&gt; &lt;派生元を変更したいローカルブランチ名&gt;<a class="headerlink" href="#-onto" title="Permanent link">&para;</a></h4>
+<p>作業中のローカルブランチの派生元を変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--onto<span class="w"> </span>&lt;派生元にしたいローカルブランチ名&gt;<span class="w"> </span>&lt;誤って派生元にしたローカルブランチ名&gt;<span class="w"> </span>&lt;派生元を変更したいローカルブランチ名&gt;
+</code></pre></div>
+<h4 id="-interactive-root">▼ --interactive --root<a class="headerlink" href="#-interactive-root" title="Permanent link">&para;</a></h4>
+<p>一番古い、最初の履歴を削除する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>変更タブの表示</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>--root
+</code></pre></div>
+<p>とすると、最初の履歴が記述されたタブが表示される</p>
+<div class="highlight"><pre><span></span><code>pick<span class="w"> </span>b1b5c0f<span class="w"> </span>add<span class="w"> </span><span class="c1">#0 *****</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>pick b1b5c0f add #0 *****</code>の行を削除して保存し、タブを閉じ、エディタ上で『Ctrl+C』を押す。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>:qa!
+</code></pre></div>
+<p>ここで未知のエラー</p>
+<div class="highlight"><pre><span></span><code>CONFLICT<span class="w"> </span><span class="o">(</span>modify/delete<span class="o">)</span>:<span class="w"> </span>README.md<span class="w"> </span>deleted<span class="w"> </span><span class="k">in</span><span class="w"> </span>HEAD<span class="w"> </span>and<span class="w"> </span>modified<span class="w"> </span><span class="k">in</span><span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
+した.<span class="w"> </span>Version<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した of README.md left in tree.</span>
+error:<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>apply<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
+
+Resolve<span class="w"> </span>all<span class="w"> </span>conflicts<span class="w"> </span>manually,<span class="w"> </span>mark<span class="w"> </span>them<span class="w"> </span>as<span class="w"> </span>resolved<span class="w"> </span>with
+<span class="s2">&quot;git add/rm &lt;conflicted_files&gt;&quot;</span>,<span class="w"> </span><span class="k">then</span><span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --continue&quot;</span>.
+You<span class="w"> </span>can<span class="w"> </span>instead<span class="w"> </span>skip<span class="w"> </span>this<span class="w"> </span>commit:<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --skip&quot;</span>.
+To<span class="w"> </span>abort<span class="w"> </span>and<span class="w"> </span>get<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>state<span class="w"> </span>before<span class="w"> </span><span class="s2">&quot;git rebase&quot;</span>,<span class="w"> </span>run<span class="w"> </span><span class="s2">&quot;git rebase --abort&quot;</span>.
+
+Could<span class="w"> </span>not<span class="w"> </span>apply<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
+</code></pre></div>
+<h4 id="-abort">▼ --abort<a class="headerlink" href="#-abort" title="Permanent link">&para;</a></h4>
+<p>やりかけの<code>rebase</code>を取り消し。</p>
+<p>作業中のローカルブランチにおける<code>(main|REBASE-i)</code>が、<code>(main)</code>に変更されていることからも確認可能。</p>
+<div class="highlight"><pre><span></span><code>hiroki.hasegawa@PC<span class="w"> </span>/var/www/foo<span class="w"> </span><span class="o">(</span>main<span class="o">)</span>
+$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive
+
+hiroki.hasegawa@PC<span class="w"> </span>/var/www/foo<span class="w"> </span><span class="o">(</span>main<span class="p">|</span>REBASE-i<span class="o">)</span>
+$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--abort
+
+hiroki.hasegawa@PC<span class="w"> </span>/var/www/foo<span class="w"> </span><span class="o">(</span>main<span class="o">)</span>
+$
+</code></pre></div>
+<p><br></p>
+<h3 id="pull">pull<a class="headerlink" href="#pull" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ コマンド組み合わせ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>全てのリモートブランチをpullする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-r<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;\-&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>main<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>remote<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--track<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">remote</span><span class="p">#origin/</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$remote</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+
+$<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>--all
+
+$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>--all
+</code></pre></div>
+<p><br></p>
+<h3 id="push">push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h3>
+<h4 id="-u-origin">▼ -u origin &lt;作成したブランチ名&gt;<a class="headerlink" href="#-u-origin" title="Permanent link">&para;</a></h4>
+<p>ローカルで作成したブランチを、リモートにプッシュする。</p>
+<p>コミットは無くても良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>&lt;作成したブランチ名&gt;
+</code></pre></div>
+<h4 id="origin-idmain">▼ origin &lt;コミットID&gt;:main<a class="headerlink" href="#origin-idmain" title="Permanent link">&para;</a></h4>
+<p>トラウマコマンド。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;コミットID&gt;:main
+</code></pre></div>
+<h4 id="-delete-origin">▼ --delete origin &lt;バージョンタグ&gt;<a class="headerlink" href="#-delete-origin" title="Permanent link">&para;</a></h4>
+<p>リモートブランチのタグを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--delete<span class="w"> </span>origin<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--delete<span class="w"> </span>origin<span class="w"> </span>v1.0.0
+</code></pre></div>
+<p>注意点として、ローカルマシンのタグは別に削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>tag<span class="w"> </span>-d<span class="w"> </span>v1.0.0
+</code></pre></div>
+<h4 id="-tags">▼ --tags<a class="headerlink" href="#-tags" title="Permanent link">&para;</a></h4>
+<p>ローカルマシンのコミットに付与したタグをリモートにプッシュする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--tags
+</code></pre></div>
+<p><br></p>
+<h3 id="show-branch">show-branch<a class="headerlink" href="#show-branch" title="Permanent link">&para;</a></h3>
+<p>作業ブランチの派生元になっているブランチを確認。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>show-branch<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>git<span class="w"> </span>rev-parse<span class="w"> </span>--abbrev-ref<span class="w"> </span>HEAD<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="s2">&quot;[]~^[]&quot;</span><span class="w"> </span><span class="s2">&quot;{print </span><span class="nv">$2</span><span class="s2">}&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="filter-branch">filter-branch<a class="headerlink" href="#filter-branch" title="Permanent link">&para;</a></h3>
+<h4 id="-f-env-filter">▼ -f --env-filter<a class="headerlink" href="#-f-env-filter" title="Permanent link">&para;</a></h4>
+<p>指定した名前とメールアドレスを上書きする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>--force<span class="w"> </span>--env-filter<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">    # GIT_AUTHOR_NAMEの書き換え</span>
+<span class="s1">    if [ &quot;$GIT_AUTHOR_NAME&quot;=&quot;&lt;変更前のコミッター名&gt;&quot; ];</span>
+<span class="s1">    then</span>
+<span class="s1">      GIT_AUTHOR_NAME=&quot;&lt;変更後のコミッター名&gt;&quot;;</span>
+<span class="s1">    fi</span>
+
+<span class="s1">    # GIT_AUTHOR_EMAILの書き換え</span>
+<span class="s1">    if [ &quot;$GIT_AUTHOR_EMAIL&quot;=&quot;&lt;変更前のコミッターメールアドレス&gt;&quot; ];</span>
+<span class="s1">    then</span>
+<span class="s1">      GIT_AUTHOR_EMAIL=&quot;&lt;変更後のコミッターメールアドレス&gt;&quot;;</span>
+<span class="s1">    fi</span>
+
+<span class="s1">    # GIT_COMMITTER_NAMEの書き換え</span>
+<span class="s1">    if [ &quot;$GIT_COMMITTER_NAME&quot;=&quot;&quot; ];</span>
+<span class="s1">    then</span>
+<span class="s1">      GIT_COMMITTER_NAME=&quot;&lt;変更後のコミッター名&gt;&quot;;</span>
+<span class="s1">    fi</span>
+
+<span class="s1">    # GIT_COMMITTER_EMAILの書き換え</span>
+<span class="s1">    if [ &quot;$GIT_COMMITTER_EMAIL&quot;=&quot;&lt;変更前のコミッターメールアドレス&gt;&quot; ];</span>
+<span class="s1">    then</span>
+<span class="s1">      GIT_COMMITTER_EMAIL=&quot;&lt;変更後のコミッターメールアドレス&gt;&quot;;</span>
+<span class="s1">    fi</span>
+<span class="s1">    &#39;</span><span class="w"> </span>--<span class="w"> </span>--all
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/flyingbarbarian/articles/241627cae5988a">https://zenn.dev/flyingbarbarian/articles/241627cae5988a</a></li>
+</ul>
+</blockquote>
+<h4 id="-f-tree-filter">▼ -f --tree-filter<a class="headerlink" href="#-f-tree-filter" title="Permanent link">&para;</a></h4>
+<p>全てのコミットに対して、指定した処理を実行する。</p>
+<p><strong>＊例＊</strong></p>
+<p>全てのコミットに対して、特定のファイルを削除する処理を実行する。</p>
+<p>加えて、ローカルリポジトリに対してガーベジコレクションを実行すると、ローカルリポジトリから完全に削除できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--tree-filter<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;rm -f &lt;パス&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>HEAD
+
+<span class="c1"># ガベージコレクションを実行する</span>
+$<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--aggressive<span class="w"> </span>--prune<span class="o">=</span>now
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-09</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

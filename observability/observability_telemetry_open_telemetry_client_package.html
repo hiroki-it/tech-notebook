@@ -1,0 +1,3888 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クライアントパッケージ＠OpenTelemetryの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_open_telemetry_client_package.html">
+      
+      
+        <link rel="prev" href="observability_telemetry_open_telemetry.html">
+      
+      
+        <link rel="next" href="observability_telemetry_datadog_agent_conf.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】クライアントパッケージ＠OpenTelemetry - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#opentelemetry" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】クライアントパッケージ＠OpenTelemetry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_21">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            🔎 可観測性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可観測性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_monitoring.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 監視
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4" checked>
+        
+          <label class="md-nav__link" for="__nav_21_4" id="__nav_21_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ テレメトリー収集ツール
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ テレメトリー収集ツール
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    テレメトリー収集ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_fluentbit_fluentd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FluentBit/Fluentd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_grafana.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grafana
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_jaeger.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jaeger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_prometheus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prometheus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_4_6" checked>
+        
+          <label class="md-nav__link" for="__nav_21_4_6" id="__nav_21_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ OpenTelemetry
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_21_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ OpenTelemetry
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_telemetry_open_telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OpenTelemetry
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クライアントパッケージ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="observability_telemetry_open_telemetry_client_package.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クライアントパッケージ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-traceprovider" class="md-nav__link">
+    01. TraceProvider
+  </a>
+  
+    <nav class="md-nav" aria-label="01. TraceProvider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traceprovider" class="md-nav__link">
+    TraceProviderとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traceprovider_1" class="md-nav__link">
+    TraceProviderの関数の要素
+  </a>
+  
+    <nav class="md-nav" aria-label="TraceProviderの関数の要素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource" class="md-nav__link">
+    ▼ Resource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanprocessor" class="md-nav__link">
+    ▼ SpanProcessor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporter" class="md-nav__link">
+    ▼ Exporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagator" class="md-nav__link">
+    ▼ Propagator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampler" class="md-nav__link">
+    ▼ Sampler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-go" class="md-nav__link">
+    02. Goの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Goの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    宛先が標準出力の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先が標準出力の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel" class="md-nav__link">
+    宛先がotelコレクターの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-ray" class="md-nav__link">
+    宛先がX-rayの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloudtrace" class="md-nav__link">
+    宛先がGoogle CloudTraceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-python" class="md-nav__link">
+    03. Pythonの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Pythonの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloudtrace_1" class="md-nav__link">
+    宛先がGoogle CloudTraceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-grpc" class="md-nav__link">
+    04. 任意の言語とgRPCの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 任意の言語とgRPCの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    Goの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="Goの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 親スパンの作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_telemetry_datadog_agent_conf.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Datadog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_telemetry_google_analytics.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Googleアプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_incident_management_pagerduty.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ インシデント管理ツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-traceprovider" class="md-nav__link">
+    01. TraceProvider
+  </a>
+  
+    <nav class="md-nav" aria-label="01. TraceProvider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traceprovider" class="md-nav__link">
+    TraceProviderとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traceprovider_1" class="md-nav__link">
+    TraceProviderの関数の要素
+  </a>
+  
+    <nav class="md-nav" aria-label="TraceProviderの関数の要素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource" class="md-nav__link">
+    ▼ Resource
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanprocessor" class="md-nav__link">
+    ▼ SpanProcessor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exporter" class="md-nav__link">
+    ▼ Exporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagator" class="md-nav__link">
+    ▼ Propagator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sampler" class="md-nav__link">
+    ▼ Sampler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-go" class="md-nav__link">
+    02. Goの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Goの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    宛先が標準出力の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先が標準出力の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel" class="md-nav__link">
+    宛先がotelコレクターの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x-ray" class="md-nav__link">
+    宛先がX-rayの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-cloudtrace" class="md-nav__link">
+    宛先がGoogle CloudTraceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-python" class="md-nav__link">
+    03. Pythonの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Pythonの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-cloudtrace_1" class="md-nav__link">
+    宛先がGoogle CloudTraceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="宛先がGoogle CloudTraceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 親スパン作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-grpc" class="md-nav__link">
+    04. 任意の言語とgRPCの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 任意の言語とgRPCの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    Goの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="Goの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 親スパンの作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ コンテキスト注入と子スパン作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="opentelemetry">クライアントパッケージ＠OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-traceprovider">01. TraceProvider<a class="headerlink" href="#01-traceprovider" title="Permanent link">&para;</a></h2>
+<h3 id="traceprovider">TraceProviderとは<a class="headerlink" href="#traceprovider" title="Permanent link">&para;</a></h3>
+<p>OpenTelemetryをセットアップし、スパンを作成する機能を提供する。</p>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/opentelemetry-in-go">https://christina04.hatenablog.com/entry/opentelemetry-in-go</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="traceprovider_1">TraceProviderの関数の要素<a class="headerlink" href="#traceprovider_1" title="Permanent link">&para;</a></h3>
+<h4 id="resource">▼ Resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
+<p>スパンにコンテキストを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;service.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-service&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.instance.id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Pod名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;telemetry.sdk.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;otel&quot;</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
+</ul>
+</blockquote>
+<h4 id="spanprocessor">▼ SpanProcessor<a class="headerlink" href="#spanprocessor" title="Permanent link">&para;</a></h4>
+<p>スパンを処理する。</p>
+<p>具体的には、<code>BatchSpanProcessor</code>関数を使用して、スパンをExporterで決めた宛先に送信できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17</a></li>
+</ul>
+</blockquote>
+<h4 id="exporter">▼ Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h4>
+<p>スパンの宛先とするスパン収集ツール (例：AWS X-ray、Google CloudTrace、otelコレクター、など) を決める。</p>
+<p>具体的には、<code>WithEndpoint</code>関数を使用して、宛先 (例：<code>localhost:4317</code>、<code>opentelemetry-collector.tracing.svc.cluster.local</code>、など) を設定できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18</a></li>
+</ul>
+</blockquote>
+<h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
+<p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
+<p>コンテキストを下流マイクロサービスに伝播させる。</p>
+<p>伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。</p>
+<p>Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 上流マイクロサービス</span>
+<span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 下流マイクロサービス</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
+<span class="w">                        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">                        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/openzipkin/b3-propagation#overall-process">https://github.com/openzipkin/b3-propagation#overall-process</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
+</ul>
+</blockquote>
+<h4 id="sampler">▼ Sampler<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
+<p>スパンのサンプリング率を設定する。</p>
+<p>具体的には、<code>AlwaysOn</code> (<code>100</code>%) や<code>TraceIdRationBased</code> (任意の割合) でサンプリング率を設定できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-go">02. Goの場合<a class="headerlink" href="#02-go" title="Permanent link">&para;</a></h2>
+<h3 id="_2">宛先が標準出力の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ パッケージの初期化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
+<p>otelクライアントパッケージを初期化する。</p>
+<p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="c1">// スパンの宛先として、標準出力を設定する。</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/stdout/stdouttrace&quot;</span>
+
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">initTracer</span><span class="p">(</span><span class="nx">shutdownTimeout</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 標準出力を宛先に設定する。</span>
+<span class="w">    </span><span class="nx">exporter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithPrettyPrint</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// マイクロサービスの属性情報を設定する。</span>
+<span class="w">    </span><span class="nx">attributes</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">NewWithAttributes</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">SchemaURL</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceVersionKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;1.0.0&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// パッケージを定義する。</span>
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">attributes</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 前段のマイクロサービスへのリクエストからコンテキストを抽出する。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="c1">// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。</span>
+<span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">shutdownTimeout</span><span class="p">)</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to shutdown tracer provider: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 親スパン作成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>親スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;syscall&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+
+<span class="w">    </span><span class="c1">// 定義したtracerパッケージ</span>
+<span class="w">    </span><span class="s">&quot;github.com/hiroki-hasegawa/infrastructure/tracer&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">httpRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span>
+<span class="w">    </span><span class="c1">// 現在の処理からコンテキストを取得する。</span>
+<span class="w">    </span><span class="c1">// 変数にすでにコンテキストが注入されていないので、親スパンが作成される</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;example.com/foo-service&quot;</span><span class="p">).</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequestWithContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">MethodGet</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">NoBody</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// リクエストの送信元マイクロサービスがわかるようにする。</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;User-Agent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo-service/1.0.0&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">initTracer</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">httpRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/instrumentation/go/manual/">https://opentelemetry.io/docs/instrumentation/go/manual/</a></li>
+<li><a href="https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85">https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85</a></li>
+<li><a href="https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown">https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91">https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L42-L91</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;syscall&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+
+<span class="w">    </span><span class="c1">// 定義したtracerパッケージ</span>
+<span class="w">    </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/infrastructure/tracer&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">httpRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span>
+<span class="w">    </span><span class="c1">// 現在の処理にコンテキストを注入する。</span>
+<span class="w">    </span><span class="c1">// 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;example.com/bar-service&quot;</span><span class="p">).</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewRequestWithContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">MethodGet</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">NoBody</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// リクエストの送信元マイクロサービスがわかるようにする。</span>
+<span class="w">    </span><span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;User-Agent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bar-service/1.0.0&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">syscall</span><span class="p">.</span><span class="nx">SIGTERM</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">cleanUp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">initTracer</span><span class="p">(</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">cleanUp</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">httpRequest</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nb">panic</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans">https://opentelemetry.io/docs/instrumentation/go/manual/#create-nested-spans</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101">https://github.com/open-telemetry/opentelemetry-go/blob/e8023fab22dc1cf95b47dafcc8ac8110c6e72da1/example/jaeger/main.go#L93-L101</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="otel">宛先がotelコレクターの場合<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ パッケージの初期化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
+<p>otelクライアントパッケージを初期化する。</p>
+<p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.4.0&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/credentials/insecure&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">initProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">)),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create resource: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
+
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample-collector.observability.svc.cluster.local:4317&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create gRPC connection to collector: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// スパンの宛先として、otelコレクターを設定する。</span>
+<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
+
+<span class="w">    </span><span class="nx">bsp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">traceExporter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">res</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">bsp</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go</a></li>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go</a></li>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ 親スパン作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>親スパンを作成する</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;regexp&quot;</span>
+<span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<span class="w">    </span><span class="s">&quot;text/template&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="w">    </span><span class="s">&quot;todobff/app/SessionInfo&quot;</span>
+<span class="w">    </span><span class="s">&quot;todobff/config&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions/cookie&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 現在の処理にコンテキストを注入する。</span>
+<span class="w">    </span><span class="c1">// 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">SpanId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">SpanID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">TraceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">TraceID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nx">Status</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;method&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Method</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;client_ip&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">ClientIP</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;span_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">SpanId</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;trace_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">start</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// 分散トレースとログを紐づける。</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// スパンID</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;span_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">SpanId</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// トレースID</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;trace_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// 実行時間</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="s">&quot;elapsed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)),</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">span</span>
+<span class="p">}</span>
+
+<span class="c1">// ログイン画面を返却する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">getLogin</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ログイン画面取得&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+<span class="w">    </span><span class="nx">generateHTML</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;layout&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;public_navbar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;footer&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">StartMainServer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">shutdown</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">initProvider</span><span class="p">()</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="s">&quot;failed to shutdown TracerProvider: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}()</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="w">    </span><span class="nx">rTodos</span><span class="p">.</span><span class="nx">Use</span><span class="p">(</span><span class="nx">checkSession</span><span class="p">())</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">checkSession</span><span class="p">()</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック開始&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// イベントごとに同階層スパンを作成する</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;セッションチェック終了&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go</a></li>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;regexp&quot;</span>
+<span class="w">    </span><span class="s">&quot;strconv&quot;</span>
+<span class="w">    </span><span class="s">&quot;text/template&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
+<span class="w">    </span><span class="s">&quot;todobff/app/SessionInfo&quot;</span>
+<span class="w">    </span><span class="s">&quot;todobff/config&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions/cookie&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.uber.org/zap&quot;</span>
+<span class="p">)</span>
+
+<span class="c1">// 子スパンを作成し、スパンとログにイベント名を記載する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 現在の処理にコンテキストを注入する。</span>
+<span class="w">    </span><span class="c1">// 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">SpanId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">SpanID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">TraceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">TraceID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">Int</span><span class="p">(</span><span class="s">&quot;status&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Writer</span><span class="p">.</span><span class="nx">Status</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;method&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Method</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;client_ip&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">ClientIP</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;span_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">SpanId</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;trace_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">start</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">logger</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">zap</span><span class="p">.</span><span class="nx">NewProduction</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Sync</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// 分散トレースとログを紐づける。</span>
+<span class="w">    </span><span class="nx">logger</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;Logger&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// スパンID</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;span_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">SpanId</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// トレースId</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;trace_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">TraceId</span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// 実行時間</span>
+<span class="w">        </span><span class="nx">zap</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="s">&quot;elapsed&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Since</span><span class="p">(</span><span class="nx">start</span><span class="p">)),</span>
+<span class="w">        </span><span class="o">...</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">span</span>
+<span class="p">}</span>
+
+<span class="c1">// ユーザーを作成する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">utils</span><span class="p">.</span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ユーザ登録&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="nx">signupRequest</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">BindJSON</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">json</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()})</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">utils</span><span class="p">.</span><span class="nx">LoggerAndCreateSpan</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="o">+</span><span class="s">&quot; のユーザ情報の取得&quot;</span><span class="p">).</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">models</span><span class="p">.</span><span class="nx">GetUserByEmail</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
+<span class="w">      </span><span class="s">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;その Email はすでに存在しております&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
+<span class="w">            </span><span class="nx">Name</span><span class="p">:</span><span class="w">     </span><span class="nx">json</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">Email</span><span class="p">:</span><span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">PassWord</span><span class="p">:</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">PassWord</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">CreateUser</span><span class="p">(</span><span class="nx">c</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
+<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="w">  </span><span class="nx">json</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Email&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/route.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/route.go</a></li>
+<li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="x-ray">宛先がX-rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="google-cloudtrace">宛先がGoogle CloudTraceの場合<a class="headerlink" href="#google-cloudtrace" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ パッケージの初期化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+
+<span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;GOOGLE_CLOUD_PROJECT&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">texporter</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">texporter</span><span class="p">.</span><span class="nx">WithProjectID</span><span class="p">(</span><span class="nx">projectID</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;texporter.New: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithDetectors</span><span class="p">(</span><span class="nx">gcp</span><span class="p">.</span><span class="nx">NewDetector</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithTelemetrySDK</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;my-application&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;resource.New: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">tp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">exporter</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">res</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tp</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="c1">// 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71">https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71</a></li>
+</ul>
+</blockquote>
+<h4 id="_10">▼ 親スパン作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="w">  </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTracerProvider</span><span class="p">().</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;example.com/trace&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 現在の処理にコンテキストを注入する。</span>
+<span class="w">        </span><span class="c1">// 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="p">}(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84">https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<h4 id="_11">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
+
+<span class="w">  </span><span class="o">...</span>
+
+<span class="w">  </span><span class="nx">tracer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">GetTracerProvider</span><span class="p">().</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;example.com/trace&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 現在の処理にコンテキストを注入する。</span>
+<span class="w">        </span><span class="c1">// 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
+
+<span class="w">        </span><span class="o">...</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="p">}(</span><span class="nx">ctx</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-python">03. Pythonの場合<a class="headerlink" href="#03-python" title="Permanent link">&para;</a></h2>
+<h3 id="google-cloudtrace_1">宛先がGoogle CloudTraceの場合<a class="headerlink" href="#google-cloudtrace_1" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ パッケージの初期化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。</p>
+<p>otelクライアントパッケージを初期化する。</p>
+<p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">opentelemetry</span> <span class="kn">import</span> <span class="n">trace</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.propagate</span> <span class="kn">import</span> <span class="n">set_global_textmap</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace</span> <span class="kn">import</span> <span class="n">TracerProvider</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.resources</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace.export</span> <span class="kn">import</span> <span class="n">BatchSpanProcessor</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.exporter.cloud_trace</span> <span class="kn">import</span> <span class="n">CloudTraceSpanExporter</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.propagators.cloud_trace_propagator</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">,)</span>
+
+<span class="c1"># 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="n">set_global_textmap</span><span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">())</span>
+
+<span class="c1"># 任意のコンテキストを設定する</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">Resource</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+        <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;flask_e2e_client&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;service.namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;service.instance.id&quot;</span><span class="p">:</span> <span class="s2">&quot;instance554&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
+
+<span class="n">tracer_provider</span> <span class="o">=</span> <span class="n">TracerProvider</span><span class="p">()</span>
+
+<span class="c1"># スパンの宛先として、Google CloudTraceを設定する。</span>
+<span class="n">cloud_trace_exporter</span> <span class="o">=</span> <span class="n">CloudTraceSpanExporter</span><span class="p">()</span>
+
+<span class="n">tracer_provider</span><span class="o">.</span><span class="n">add_span_processor</span><span class="p">(</span><span class="n">BatchSpanProcessor</span><span class="p">(</span><span class="n">cloud_trace_exporter</span><span class="p">))</span>
+
+<span class="n">trace</span><span class="o">.</span><span class="n">set_tracer_provider</span><span class="p">(</span><span class="n">tracer_provider</span><span class="p">)</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/instrumentation/python/manual/">https://opentelemetry.io/docs/instrumentation/python/manual/</a></li>
+<li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65</a></li>
+<li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
+</ul>
+</blockquote>
+<p>ここでは、<code>requests</code>パッケージでリクエストを送信するため、<code>RequestsInstrumentor</code>関数による初期化も必要である。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.requests</span> <span class="kn">import</span> <span class="n">RequestsInstrumentor</span>
+
+<span class="n">RequestsInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument</span><span class="p">()</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://flask-app:6000&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/instrumentation/python/manual/">https://opentelemetry.io/docs/instrumentation/python/manual/</a></li>
+<li><a href="https://opentelemetry-python-kinvolk.readthedocs.io/en/latest/instrumentation/requests/requests.html">https://opentelemetry-python-kinvolk.readthedocs.io/en/latest/instrumentation/requests/requests.html</a></li>
+<li><a href="https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export">https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export</a></li>
+<li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69</a></li>
+</ul>
+</blockquote>
+<h4 id="_13">▼ 親スパン作成<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>親スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<p>ここでは、Flaskでリクエストを受信するため、<code>FlaskInstrumentor</code>関数でスパンを処理している。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+
+    <span class="o">...</span>
+
+    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
+    <span class="c1"># 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="o">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry.io/docs/instrumentation/python/manual/">https://opentelemetry.io/docs/instrumentation/python/manual/</a></li>
+<li><a href="https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/flask/flask.html">https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/flask/flask.html</a></li>
+<li><a href="https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export">https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export</a></li>
+<li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97</a></li>
+</ul>
+</blockquote>
+<h4 id="_14">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
+<p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+
+    <span class="o">...</span>
+
+    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
+    <span class="c1"># 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="o">...</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-grpc">04. 任意の言語とgRPCの場合<a class="headerlink" href="#04-grpc" title="Permanent link">&para;</a></h2>
+<h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ 親スパンの作成<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
+<span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nx">alive</span><span class="p">))</span>
+<span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nx">hello</span><span class="p">))</span>
+<span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8000&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">NewHTTPMiddleware</span><span class="p">()(</span><span class="nx">mux</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span><span class="nx">addr</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
+<span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewGreeterClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">NewUnaryServerInterceptor</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="nx">pb</span><span class="p">.</span><span class="nx">RegisterGreeterServer</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">server</span><span class="p">{})</span>
+
+<span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">lis</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nx">opts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">opts</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// ヘルスチェックのスパンは作成しないようにする</span>
+<span class="w">    </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">())),</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
+<li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

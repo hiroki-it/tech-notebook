@@ -1,0 +1,3801 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="単体テスト＠PHPのテストツールの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit.html">
+      
+      
+        <link rel="prev" href="testing_whitebox_application_php_lint.html">
+      
+      
+        <link rel="next" href="testing_whitebox_application_go.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】単体テスト＠PHPのテストツール - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#php" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】単体テスト＠PHPのテストツール
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_9">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 テスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
+        
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ホワイトボックステスト
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ホワイトボックステスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ホワイトボックステスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_microservices_test.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービスのテスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
+        
+          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ アプリ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アプリ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
+        
+          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHPのテストツール
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHPのテストツール
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHPのテストツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_application_php_lint.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    静的解析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    単体テスト
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="testing_whitebox_application_php_unit.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    単体テスト
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-phpunit" class="md-nav__link">
+    01. PHPUnit
+  </a>
+  
+    <nav class="md-nav" aria-label="01. PHPUnit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phpunit" class="md-nav__link">
+    PHPUnitとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-filter" class="md-nav__link">
+    ▼ --filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-list-tests" class="md-nav__link">
+    ▼ --list-tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml" class="md-nav__link">
+    phpunit.xmlファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="phpunit.xmlファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml_1" class="md-nav__link">
+    ▼ phpunit.xmlファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsuites" class="md-nav__link">
+    ▼ testsuitesタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_1" class="md-nav__link">
+    ▼ phpタグ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アサーションメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="アサーションメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アサーションメソッドとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserttrue" class="md-nav__link">
+    ▼ assertTrue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertequals" class="md-nav__link">
+    ▼ assertEquals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsame" class="md-nav__link">
+    ▼ assertSame
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    テストデータ
+  </a>
+  
+    <nav class="md-nav" aria-label="テストデータ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-provider" class="md-nav__link">
+    ▼ Data Provider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    前処理と後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="前処理と後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    ▼ setUpメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    ▼ tearDownメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    テストダブル
+  </a>
+  
+    <nav class="md-nav" aria-label="テストダブル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createmock" class="md-nav__link">
+    ▼ createMockメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    ▼ methodメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. テストケース
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. テストケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    単体テストの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="単体テストの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 正常系テストの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 異常系テストの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    機能テストの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="機能テストの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ テストケース
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ 正常系GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ 正常系POST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post_1" class="md-nav__link">
+    ▼ 異常系POST
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-phake" class="md-nav__link">
+    02. Phake
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Phake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phake" class="md-nav__link">
+    Phakeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    テストダブル
+  </a>
+  
+    <nav class="md-nav" aria-label="テストダブル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mock" class="md-nav__link">
+    ▼ mockメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    ▼ whenメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    ▼ verifyメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_application_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Goのテストツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ インフラ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_blackbox.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ブラックボックステスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-phpunit" class="md-nav__link">
+    01. PHPUnit
+  </a>
+  
+    <nav class="md-nav" aria-label="01. PHPUnit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phpunit" class="md-nav__link">
+    PHPUnitとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-filter" class="md-nav__link">
+    ▼ --filter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-list-tests" class="md-nav__link">
+    ▼ --list-tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml" class="md-nav__link">
+    phpunit.xmlファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="phpunit.xmlファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phpunitxml_1" class="md-nav__link">
+    ▼ phpunit.xmlファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsuites" class="md-nav__link">
+    ▼ testsuitesタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php_1" class="md-nav__link">
+    ▼ phpタグ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    アサーションメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="アサーションメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アサーションメソッドとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asserttrue" class="md-nav__link">
+    ▼ assertTrue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertequals" class="md-nav__link">
+    ▼ assertEquals
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assertsame" class="md-nav__link">
+    ▼ assertSame
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    テストデータ
+  </a>
+  
+    <nav class="md-nav" aria-label="テストデータ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-provider" class="md-nav__link">
+    ▼ Data Provider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    前処理と後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="前処理と後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    ▼ setUpメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teardown" class="md-nav__link">
+    ▼ tearDownメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    テストダブル
+  </a>
+  
+    <nav class="md-nav" aria-label="テストダブル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createmock" class="md-nav__link">
+    ▼ createMockメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" class="md-nav__link">
+    ▼ methodメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. テストケース
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. テストケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    単体テストの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="単体テストの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 正常系テストの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 異常系テストの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    機能テストの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="機能テストの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ テストケース
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ 正常系GET
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ 正常系POST
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post_1" class="md-nav__link">
+    ▼ 異常系POST
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-phake" class="md-nav__link">
+    02. Phake
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Phake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phake" class="md-nav__link">
+    Phakeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    テストダブル
+  </a>
+  
+    <nav class="md-nav" aria-label="テストダブル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mock" class="md-nav__link">
+    ▼ mockメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when" class="md-nav__link">
+    ▼ whenメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    ▼ verifyメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="php">単体テスト＠PHPのテストツール<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-phpunit">01. PHPUnit<a class="headerlink" href="#01-phpunit" title="Permanent link">&para;</a></h2>
+<h3 id="phpunit">PHPUnitとは<a class="headerlink" href="#phpunit" title="Permanent link">&para;</a></h3>
+<p>単体テストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。</p>
+<p><br></p>
+<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>全てのテストファイルを対象として、定義されたメソッドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit
+PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
+
+...<span class="w">                                                   </span><span class="m">3</span><span class="w"> </span>/<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+
+Time:<span class="w"> </span><span class="m">621</span><span class="w"> </span>ms,<span class="w"> </span>Memory:<span class="w"> </span><span class="m">24</span>.00<span class="w"> </span>MB
+
+OK<span class="w"> </span><span class="o">(</span><span class="m">3</span><span class="w"> </span>tests,<span class="w"> </span><span class="m">3</span><span class="w"> </span>assertions<span class="o">)</span>
+</code></pre></div>
+<h4 id="-filter">▼ --filter<a class="headerlink" href="#-filter" title="Permanent link">&para;</a></h4>
+<p>特定のテストファイルを対象として、定義されたメソッドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit<span class="w"> </span>--filter<span class="w"> </span>Foo
+PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
+
+...<span class="w">                                                   </span><span class="m">1</span><span class="w"> </span>/<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+
+Time:<span class="w"> </span><span class="m">207</span><span class="w"> </span>ms,<span class="w"> </span>Memory:<span class="w"> </span><span class="m">8</span>.00<span class="w"> </span>MB
+
+OK<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>tests,<span class="w"> </span><span class="m">1</span><span class="w"> </span>assertions<span class="o">)</span>
+</code></pre></div>
+<h4 id="-list-tests">▼ --list-tests<a class="headerlink" href="#-list-tests" title="Permanent link">&para;</a></h4>
+<p>テストファイルの一覧を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit<span class="w"> </span>--list-tests
+PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
+
+Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)</span>:
+<span class="w"> </span>-<span class="w"> </span>Tests<span class="se">\U</span>nit<span class="se">\F</span>ooTest::testFooMethod
+<span class="w"> </span>-<span class="w"> </span>Tests<span class="se">\F</span>eature<span class="se">\F</span>ooTest::testFooMethod
+</code></pre></div>
+<p><br></p>
+<h3 id="phpunitxml">phpunit.xmlファイル<a class="headerlink" href="#phpunitxml" title="Permanent link">&para;</a></h3>
+<h4 id="phpunitxml_1">▼ <code>phpunit.xml</code>ファイルとは<a class="headerlink" href="#phpunitxml_1" title="Permanent link">&para;</a></h4>
+<p>PHPUnitの設定を行う。</p>
+<p>デフォルトの設定では、あらかじめルートディレクトリに<code>tests</code>ディレクトリを配置し、これを<code>Units</code>ディレクトリまたは<code>Feature</code>ディレクトリに分割しておく。</p>
+<p>また、<code>Test</code>で終了するphpファイルを作成しておく必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="http://phpunit.readthedocs.io/ja/latest/configuration.html">http://phpunit.readthedocs.io/ja/latest/configuration.html</a></li>
+</ul>
+</blockquote>
+<h4 id="testsuites">▼ <code>testsuites</code>タグ<a class="headerlink" href="#testsuites" title="Permanent link">&para;</a></h4>
+<p>テストスイートを定義できる。</p>
+<p><code>testsuites</code>タグ内の<code>testsuites</code>タグを追加変更すると、検証対象のディレクトリを増やし、加えて対象のディレクトリ名を変更できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;phpunit&gt;</span>
+
+...
+
+<span class="w">    </span><span class="nt">&lt;testsuites&gt;</span>
+<span class="w">        </span><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Unit&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">suffix=</span><span class="s">&quot;Test.php&quot;</span><span class="nt">&gt;</span>./tests/Unit<span class="nt">&lt;/directory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/testsuite&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;testsuite</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Feature&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span><span class="nt">&lt;directory</span><span class="w"> </span><span class="na">suffix=</span><span class="s">&quot;Test.php&quot;</span><span class="nt">&gt;</span>./tests/Feature<span class="nt">&lt;/directory&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/testsuite&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/testsuites&gt;</span>
+
+...
+
+<span class="nt">&lt;/phpunit&gt;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites">https://phpunit.readthedocs.io/ja/latest/configuration.html#appendixes-configuration-testsuites</a></li>
+</ul>
+</blockquote>
+<h4 id="php_1">▼ <code>php</code>タグ<a class="headerlink" href="#php_1" title="Permanent link">&para;</a></h4>
+<p>PHPUnitの実行前に設定する<code>ini_set</code>関数、<code>define</code>関数、グローバル変数、を定義できる。</p>
+<p>タグ名との対応関係については、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini">https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>Composerの実行時にメモリ不足にならないようにメモリを拡張する。</p>
+<p>また、テスト用のDBに通信できるよう、DBに関する環境変数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;phpunit&gt;</span>
+
+...
+
+<span class="w">    </span><span class="nt">&lt;php&gt;</span>
+<span class="w">        </span><span class="cm">&lt;!-- &lt;グローバル変数名 name=&quot;キー名&quot; value=&quot;値&quot;/&gt; --&gt;</span>
+
+<span class="w">        </span><span class="cm">&lt;!-- Composerの実行時にメモリ不足にならないようにする --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;ini</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;memory_limit&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;512M&quot;</span><span class="nt">/&gt;</span>
+
+<span class="w">        </span><span class="cm">&lt;!-- DBの接続情報 --&gt;</span>
+<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_CONNECTION&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;mysql&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_DATABASE&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_USERNAME&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;server</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;DB_PASSWORD&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;test&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/php&gt;</span>
+
+...
+
+<span class="nt">&lt;/phpunit&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">アサーションメソッド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ アサーションメソッドとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>実際の値と期待値を比較し、結果に応じて<code>SUCCESS</code>または<code>FAILURES</code>を返却する。</p>
+<p>非staticまたはstaticとしてコールできる。</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="x">self::assertTrue()</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://phpunit.readthedocs.io/ja/latest/assertions.html">https://phpunit.readthedocs.io/ja/latest/assertions.html</a></li>
+</ul>
+</blockquote>
+<h4 id="asserttrue">▼ assertTrue<a class="headerlink" href="#asserttrue" title="Permanent link">&para;</a></h4>
+<p>実際値が<code>true</code>か否かを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue($response-&gt;isOk());</span>
+</code></pre></div>
+<h4 id="assertequals">▼ assertEquals<a class="headerlink" href="#assertequals" title="Permanent link">&para;</a></h4>
+<p>『<code>==</code>』を使用して、期待値と実際値の整合性を検証する。</p>
+<p>データ型を検証できないため、<code>assertSame</code>メソッドを使用する方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
+</code></pre></div>
+<h4 id="assertsame">▼ assertSame<a class="headerlink" href="#assertsame" title="Permanent link">&para;</a></h4>
+<p>『<code>===</code>』を使用して、期待値と実際値の整合性を検証する。</p>
+<p>値のみでなく、データ型も検証できる。</p>
+<div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_6">テストデータ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="data-provider">▼ Data Provider<a class="headerlink" href="#data-provider" title="Permanent link">&para;</a></h4>
+<p>テスト対象のメソッドの引数を事前に用意する。</p>
+<p>メソッドのアノテーションで、<code>@test</code>と<code>@dataProvider データプロバイダ名</code>を宣言する。</p>
+<p>データプロバイダの返却値として配列を設定し、配列の値の順番で、引数に値を渡せる。</p>
+<blockquote>
+<ul>
+<li><a href="https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers">https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * findメソッドをテストします。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @test</span>
+<span class="sd">     * @dataProvider methodDataProvider</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFind_Bar_Baz</span><span class="p">(</span><span class="nv">$paramA</span><span class="p">,</span> <span class="nv">$paramB</span><span class="p">,</span> <span class="nv">$paramC</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * findメソッドを引数を用意します。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodDataProvider</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="c1">// 配列データは複数あっても良い、</span>
+            <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">]</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">前処理と後処理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="setup">▼ <code>setUp</code>メソッド<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h4>
+<p>前処理として、全てのテスト関数の前にコールされるメソッドである。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>DIコンテナを事前に作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+
+    <span class="c1">// 全てのテスト関数の前に実行される。</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// DIコンテナにデータを格納する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>単体テストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。</p>
+<p>そのため、これと同様に依存先のクラスのモックを事前に作成しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$foo</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 基本的には、一番最初に記述する。</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+
+        <span class="c1">// 事前にモックを作成しておく。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Bar</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 実際の処理では、インスタンス化時に、FooクラスはBarクラスに依存している。</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">bar</span><span class="p">)</span>
+
+        <span class="c1">// 何らかのテストコード</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="teardown">▼ <code>tearDown</code>メソッド<a class="headerlink" href="#teardown" title="Permanent link">&para;</a></h4>
+<p>後処理として、全てのテスト関数の後にコールされるメソッドである。</p>
+<p>グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$container</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 全てのテスト関数の後に実行される。</span>
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">tearDown</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// DIコンテナにnullを格納する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_8">テストダブル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="createmock">▼ <code>createMock</code>メソッド<a class="headerlink" href="#createmock" title="Permanent link">&para;</a></h4>
+<p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
+<p>以降の処理での用途によって、呼び名が異なることに注意する。</p>
+<p>補足として、PHPUnitの場合、モックのメソッドは<code>null</code>を返却する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
+        <span class="nv">$mock</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="c1">// null</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$mock</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">    * @param  int</span>
+<span class="sd">    * @return array</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 参照する処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="method">▼ <code>method</code>メソッド<a class="headerlink" href="#method" title="Permanent link">&para;</a></h4>
+<p>モックまたはスタブのメソッドに対して、処理の内容を定義する。</p>
+<p>特定の変数が渡された時に、特定の値を返却させられる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Xxx_Xxx</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
+        <span class="nv">$stub</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">createMock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="c1">// スタブのメソッドに処理内容を定義する。</span>
+        <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s2">&quot;find&quot;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">willReturn</span><span class="p">([]);</span>
+
+        <span class="c1">// [] (空配列)</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$stub</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="01-02">01-02. テストケース<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">単体テストの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<p>以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">CouldNotSendMessageException</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooNotification</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$httpClient</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$token</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Client</span> <span class="nv">$httpClient</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$token</span><span class="p">,</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span> <span class="o">=</span> <span class="nv">$httpClient</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span> <span class="o">=</span> <span class="nv">$token</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sendMessage</span><span class="p">(</span><span class="nx">FooMessage</span> <span class="nv">$fooMessage</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">&quot;API requests is required.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">channel_id</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="s2">&quot;Channel ID is required.&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span><span class="p">);</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">httpClient</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+                <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+                <span class="p">[</span>
+                    <span class="s2">&quot;headers&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s2">&quot;Authorization&quot;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
+                        <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
+                        <span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                        <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span>  <span class="nv">$fooMessage</span><span class="o">-&gt;</span><span class="na">message</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">);</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ClientException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
+
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">&quot;ERROR: %s at %s line %s&quot;</span><span class="p">,</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getFile</span><span class="p">(),</span>
+                <span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getLine</span><span class="p">()</span>
+            <span class="p">));</span>
+
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">CouldNotSendMessageException</span><span class="p">(</span><span class="nv">$exception</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">FooMessage</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$channel_id</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$message</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$channel_id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">channel_id</span> <span class="o">=</span> <span class="nv">$channel_id</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">message</span> <span class="o">=</span> <span class="nv">$message</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_10">▼ 正常系テストの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>メソッドのアノテーションで、<code>@test</code>を宣言する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>リクエストにて、チャンネルとメッセージを送信した時に、レスポンスとして<code>TRUE</code>が返信されるかを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 検証対象外のクラスはモックとする。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_FooMessage_ReturnTrue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
+            <span class="s2">&quot;xxxxxxx&quot;</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
+        <span class="p">);</span>
+
+        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;X-CHANNEL&quot;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertTrue</span><span class="p">(</span>
+            <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
+<span class="c1"># OK</span>
+</code></pre></div>
+<h4 id="_11">▼ 異常系テストの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>メソッドのアノテーションで、<code>@test</code>と<code>@expectedException</code>を宣言する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>リクエストにて、メッセージのみを送信しようとした時に、例外を発生させられるかを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">FooMessage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">FooNotifiation</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooNotificationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$logger</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="nv">$client</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 検証対象外のクラスはモックとする。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Client</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nx">\Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    * @expectedException</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testSendMessage_EmptyMessage_ExceptionThrown</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$fooNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">(</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">client</span><span class="p">,</span>
+            <span class="s2">&quot;xxxxxxx&quot;</span><span class="p">,</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>
+        <span class="p">);</span>
+
+        <span class="nv">$fooMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FooMessage</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+
+        <span class="nv">$fooNotification</span><span class="o">-&gt;</span><span class="na">sendMessage</span><span class="p">(</span><span class="nv">$fooMessage</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Time: x seconds</span>
+<span class="c1"># OK</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_12">機能テストの場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<p>メソッドのアノテーションで、<code>@test</code>を宣言する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @test</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// アプリケーション自身のControllerクラスにリクエストを送信する処理。</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;query&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                    <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+                <span class="p">]</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="c1">// レスポンスの実際値と期待値の整合性を検証する。</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_13">▼ テストケース<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>外部Webサイトが正常であることを前提として、外部Webサービスとの連携が含まれていることに注意する。</p>
+<table>
+<thead>
+<tr>
+<th>HTTPメソッド</th>
+<th>分類</th>
+<th>検証方法</th>
+<th>期待値 (<code>assert</code>メソッド)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST、PUT</td>
+<td>正常系</td>
+<td>リクエストのボディにて、必須パラメーターにデータを割り当てる。</td>
+<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>リクエストのボディにて、任意パラメーターにデータを割り当てない。</td>
+<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>リクエストのボディにて、空文字やnullが許可されたパラメーターに、データを割り当てない。</td>
+<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・更新されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td>異常系</td>
+<td>リクエストのボディにて、必須パラメーターにデータを割り当てない。</td>
+<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>リクエストのボディにて、空文字やnullが許可されたパラメーターに、空文字やnullを割り当てる。</td>
+<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>リクエストのボディにて、パラメーターのデータ型が誤っている。</td>
+<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>正常系</td>
+<td>リクエストにて、パラメーターにデータを割り当てる。</td>
+<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
+</tr>
+<tr>
+<td></td>
+<td>異常系</td>
+<td>リクエストのボディにて、パラメーターに参照禁止のデータを割り当てる。 (認可の失敗)</td>
+<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>正常系</td>
+<td>リクエストのボディにて、パラメーターにデータを割り当てる。</td>
+<td>・Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。<br>・削除されたデータのIDが期待通りであること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td></td>
+<td>異常系</td>
+<td>リクエストのボディにて、パラメーターに削除禁止のデータを割り当てる。 (認可の失敗)</td>
+<td>・Controllerが<code>400</code>ステータスを含むレスポンスを返信すること。<br>・レスポンスされたデータが期待通りであること。</td>
+</tr>
+<tr>
+<td>認証/認可</td>
+<td>正常系</td>
+<td>リクエストのヘッダーにて、認証されているトークンを割り当てる。 (認証の成功)</td>
+<td>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること。</td>
+</tr>
+<tr>
+<td></td>
+<td>異常系</td>
+<td>リクエストのヘッダーにて、認証されていないトークンを割り当てる。 (認証の失敗)</td>
+<td>Controllerが<code>401</code>ステータスを含むレスポンスを返信すること。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>リクエストのボディにて、パラメーターにアクセス禁止のデータを割り当てる。 (認可の失敗)</td>
+<td>Controllerが<code>403</code>ステータスを含むレスポンスを返信すること。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="get">▼ 正常系GET<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
+<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信することを検証する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testGetPage_GetRequest_Return200</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 外部サービスがクライアントの場合はモックを使用する。</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+        <span class="c1">// GETリクエスト</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+            <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/xxx/yyy/&quot;</span>
+        <span class="p">);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+
+        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="post">▼ 正常系POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
+<p>Controllerが<code>200</code>ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @test</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_GetRequest_Return200NormalMessage</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+        <span class="c1">// APIにPOSTリクエスト</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/xxx/yyy/&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;HTTP_X_API_Token&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bearer &lt;APIキー&gt;&quot;</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+
+        <span class="c1">// 200ステータスが返却されるかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="c1">// レスポンスデータを抽出する。</span>
+        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
+
+        <span class="c1">// 更新されたデータのIDが正しいかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]);</span>
+
+        <span class="c1">// レスポンスされたメッセージが正しいかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;データを変更しました。&quot;</span>
+            <span class="p">],</span>
+            <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="post_1">▼ 異常系POST<a class="headerlink" href="#post_1" title="Permanent link">&para;</a></h4>
+<p>Controllerが<code>400</code>ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであること、を検証する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooControllerTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @test</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testPostMessage_EmptyMessage_Return400ErrorMessage</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+        <span class="c1">// APIにPOSTリクエスト</span>
+        <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+            <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;/xxx/yyy/&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;id&quot;</span>      <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+                <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;HTTP_X_API_Token&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Bearer &lt;APIキー&gt;&quot;</span>
+            <span class="p">]</span>
+        <span class="p">);</span>
+
+        <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+
+        <span class="c1">// 400ステータスが返却されるかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getStatusCode</span><span class="p">());</span>
+
+        <span class="c1">// レスポンスデータのエラーを抽出する。</span>
+        <span class="nv">$actual</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
+
+        <span class="c1">// レスポンスされたエラーメッセージが正しいかを検証する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertSame</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;IDは必ず入力してください。&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;メッセージは必ず入力してください。&quot;</span>
+            <span class="p">],</span>
+            <span class="nv">$actual</span><span class="p">[</span><span class="s2">&quot;errors&quot;</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-phake">02. Phake<a class="headerlink" href="#02-phake" title="Permanent link">&para;</a></h2>
+<h3 id="phake">Phakeとは<a class="headerlink" href="#phake" title="Permanent link">&para;</a></h3>
+<p>単体テストに必要なテストダブルを提供する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/mlively/Phake#phake">https://github.com/mlively/Phake#phake</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_14">テストダブル<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="mock">▼ <code>mock</code>メソッド<a class="headerlink" href="#mock" title="Permanent link">&para;</a></h4>
+<p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
+<p>以降の処理での用途によって、呼び名が異なることに注意する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$mock</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="when">▼ <code>when</code>メソッド<a class="headerlink" href="#when" title="Permanent link">&para;</a></h4>
+<p>モックまたはスタブのメソッドに対して、処理の内容を定義する。</p>
+<p>また、特定の変数が渡された時に、特定の値を返却させられる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>モックの<code>find</code>メソッドは、<code>1</code>が渡された時に、空配列を返却する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// スタブとして使用する擬似オブジェクトを作成する。</span>
+<span class="nv">$stub</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">Foo</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="c1">// スタブのメソッドに処理内容を定義する。</span>
+<span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$stub</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">([]);</span>
+</code></pre></div>
+<h4 id="verify">▼ <code>verify</code>メソッド<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h4>
+<p>上層オブジェクトが下層オブジェクトをコールできることを確認するために、モックのメソッドが<code>n</code>回実行できたことを検証する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooTest</span> <span class="k">extends</span> <span class="nx">TestCase</span>
+<span class="p">{</span>
+   <span class="sd">/**</span>
+<span class="sd">    * @test</span>
+<span class="sd">    */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFoo_Bar_Baz</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// モックとして使用する擬似オブジェクトを作成する。</span>
+        <span class="nv">$mockFooRepository</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooRepository</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+        <span class="nv">$fooId</span> <span class="o">=</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">mock</span><span class="p">(</span><span class="nx">FooId</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="c1">// モックのメソッドに処理内容を定義する。</span>
+        <span class="nx">\Phake</span><span class="o">::</span><span class="na">when</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+
+        <span class="c1">// 上層クラスに対して、下層クラスのモックのインジェクションを行う</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">);</span>
+
+        <span class="c1">// 上層クラスの内部にある下層モックのfindメソッドをコールする</span>
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">getUser</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">)</span>
+
+        <span class="c1">// 上層のクラスが、下層モックにパラメーターを渡し、メソッドを実行したことを検証する。</span>
+        <span class="nx">Phake</span><span class="o">::</span><span class="na">verify</span><span class="p">(</span><span class="nv">$mockFooRepository</span><span class="p">,</span> <span class="nx">Phake</span><span class="o">::</span><span class="na">times</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

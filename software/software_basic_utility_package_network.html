@@ -1,0 +1,3711 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ネットワーク系＠パッケージの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_network.html">
+      
+      
+        <link rel="prev" href="software_basic_utility_package_memory.html">
+      
+      
+        <link rel="next" href="software_basic_utility_package_security.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】ネットワーク系＠パッケージ - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】ネットワーク系＠パッケージ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="basic/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_7">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🐧 OS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_basic_linux_kernel.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Linuxカーネル
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ユーティリティ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ユーティリティ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ユーティリティ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_unix.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unix系標準ユーティリティ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_shell.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    シェル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_script.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    スクリプト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_5" checked>
+        
+          <label class="md-nav__link" for="__nav_7_3_5" id="__nav_7_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ パッケージ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_package_memory.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    メモリ系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ネットワーク系
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_basic_utility_package_network.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ネットワーク系
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dig" class="md-nav__link">
+    01. dig
+  </a>
+  
+    <nav class="md-nav" aria-label="01. dig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    digとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-x" class="md-nav__link">
+    -x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-dnsutilsbind-utils" class="md-nav__link">
+    02. dnsutils/bind-utils
+  </a>
+  
+    <nav class="md-nav" aria-label="02. dnsutils/bind-utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nslookup" class="md-nav__link">
+    nslookup
+  </a>
+  
+    <nav class="md-nav" aria-label="nslookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nslookup_1" class="md-nav__link">
+    ▼ nslookupとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-type" class="md-nav__link">
+    ▼ -type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-net-tools" class="md-nav__link">
+    03. net-tools
+  </a>
+  
+    <nav class="md-nav" aria-label="03. net-tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_1" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum_1" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    接続状態の一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstat" class="md-nav__link">
+    netstat
+  </a>
+  
+    <nav class="md-nav" aria-label="netstat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-plunt" class="md-nav__link">
+    ▼ -plunt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-speedtest-cli" class="md-nav__link">
+    04. speedtest-cli
+  </a>
+  
+    <nav class="md-nav" aria-label="04. speedtest-cli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_2" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brew" class="md-nav__link">
+    ▼ brewリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speedtest-cli" class="md-nav__link">
+    speedtest-cliとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-tcpdump" class="md-nav__link">
+    05. tcpdump
+  </a>
+  
+    <nav class="md-nav" aria-label="05. tcpdump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_3" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum_2" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    tcpdumpとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-i" class="md-nav__link">
+    -i &lt;ネットワークインターフェース名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-nn" class="md-nav__link">
+    -nn &lt;プロトコル名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-nn_1" class="md-nav__link">
+    -nn
+  </a>
+  
+    <nav class="md-nav" aria-label="-nn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dst" class="md-nav__link">
+    dst
+  </a>
+  
+    <nav class="md-nav" aria-label="dst">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dst_1" class="md-nav__link">
+    ▼ dst
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_1" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    src
+  </a>
+  
+    <nav class="md-nav" aria-label="src">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src_1" class="md-nav__link">
+    ▼ src
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_2" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-traceroute" class="md-nav__link">
+    06. traceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="06. traceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traceroute" class="md-nav__link">
+    tracerouteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-i_1" class="md-nav__link">
+    -I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-n" class="md-nav__link">
+    -n
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-p" class="md-nav__link">
+    -p
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-t" class="md-nav__link">
+    -T
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-traceroute" class="md-nav__link">
+    06-02. tracerouteの代わり
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. tracerouteの代わり">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracepath" class="md-nav__link">
+    tracepath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcptraceroute" class="md-nav__link">
+    tcptraceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="tcptraceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcptraceroute_1" class="md-nav__link">
+    ▼ tcptracerouteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-s-p" class="md-nav__link">
+    ▼ -s、-p
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_package_security.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    セキュリティ系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_basic_utility_package_storage.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ストレージ系
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_basic_utility_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ管理ユーティリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_basic_language_processor.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 言語プロセッサ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dig" class="md-nav__link">
+    01. dig
+  </a>
+  
+    <nav class="md-nav" aria-label="01. dig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dig" class="md-nav__link">
+    digとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-x" class="md-nav__link">
+    -x
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-dnsutilsbind-utils" class="md-nav__link">
+    02. dnsutils/bind-utils
+  </a>
+  
+    <nav class="md-nav" aria-label="02. dnsutils/bind-utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nslookup" class="md-nav__link">
+    nslookup
+  </a>
+  
+    <nav class="md-nav" aria-label="nslookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nslookup_1" class="md-nav__link">
+    ▼ nslookupとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-type" class="md-nav__link">
+    ▼ -type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-net-tools" class="md-nav__link">
+    03. net-tools
+  </a>
+  
+    <nav class="md-nav" aria-label="03. net-tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_1" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum_1" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    接続状態の一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#netstat" class="md-nav__link">
+    netstat
+  </a>
+  
+    <nav class="md-nav" aria-label="netstat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-plunt" class="md-nav__link">
+    ▼ -plunt
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-speedtest-cli" class="md-nav__link">
+    04. speedtest-cli
+  </a>
+  
+    <nav class="md-nav" aria-label="04. speedtest-cli">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_2" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#brew" class="md-nav__link">
+    ▼ brewリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speedtest-cli" class="md-nav__link">
+    speedtest-cliとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-tcpdump" class="md-nav__link">
+    05. tcpdump
+  </a>
+  
+    <nav class="md-nav" aria-label="05. tcpdump">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apt_3" class="md-nav__link">
+    ▼ aptリポジトリから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yum_2" class="md-nav__link">
+    ▼ yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpdump" class="md-nav__link">
+    tcpdumpとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-i" class="md-nav__link">
+    -i &lt;ネットワークインターフェース名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-nn" class="md-nav__link">
+    -nn &lt;プロトコル名&gt;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-nn_1" class="md-nav__link">
+    -nn
+  </a>
+  
+    <nav class="md-nav" aria-label="-nn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dst" class="md-nav__link">
+    dst
+  </a>
+  
+    <nav class="md-nav" aria-label="dst">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dst_1" class="md-nav__link">
+    ▼ dst
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_1" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#src" class="md-nav__link">
+    src
+  </a>
+  
+    <nav class="md-nav" aria-label="src">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#src_1" class="md-nav__link">
+    ▼ src
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port_2" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-traceroute" class="md-nav__link">
+    06. traceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="06. traceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traceroute" class="md-nav__link">
+    tracerouteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-i_1" class="md-nav__link">
+    -I
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-n" class="md-nav__link">
+    -n
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-p" class="md-nav__link">
+    -p
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-t" class="md-nav__link">
+    -T
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-traceroute" class="md-nav__link">
+    06-02. tracerouteの代わり
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. tracerouteの代わり">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tracepath" class="md-nav__link">
+    tracepath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcptraceroute" class="md-nav__link">
+    tcptraceroute
+  </a>
+  
+    <nav class="md-nav" aria-label="tcptraceroute">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcptraceroute_1" class="md-nav__link">
+    ▼ tcptracerouteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-s-p" class="md-nav__link">
+    ▼ -s、-p
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">ネットワーク系＠パッケージ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-dig">01. dig<a class="headerlink" href="#01-dig" title="Permanent link">&para;</a></h2>
+<h3 id="dig">digとは<a class="headerlink" href="#dig" title="Permanent link">&para;</a></h3>
+<p>正引きの名前解決を実行する</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC">https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC</a></li>
+<li><a href="https://dev.classmethod.jp/articles/dig-route53-begginer/">https://dev.classmethod.jp/articles/dig-route53-begginer/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dig<span class="w"> </span>yahoo.co.jp
+
+<span class="c1"># Header</span>
+<span class="c1"># 各セクションのステータスやフラグが表示される。</span>
+<span class="p">;</span><span class="w"> </span>&lt;&lt;&gt;&gt;<span class="w"> </span>DiG<span class="w"> </span><span class="m">9</span>.10.6<span class="w"> </span>&lt;&lt;&gt;&gt;<span class="w"> </span>yahoo.co.jp
+<span class="p">;;</span><span class="w"> </span>global<span class="w"> </span>options:<span class="w"> </span>+cmd
+<span class="p">;;</span><span class="w"> </span>Got<span class="w"> </span>answer:
+<span class="p">;;</span><span class="w"> </span>-&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de:<span class="w"> </span>QUERY,<span class="w"> </span>status:<span class="w"> </span>NOERROR,<span class="w"> </span>id:<span class="w"> </span><span class="m">23877</span><span class="w"> </span><span class="c1"># 『NOERROR』は、正引きが成功したことを表す。</span>
+<span class="p">;;</span><span class="w"> </span>flags:<span class="w"> </span>qr<span class="w"> </span>rd<span class="w"> </span>ra<span class="p">;</span><span class="w"> </span>QUERY:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>ANSWER:<span class="w"> </span><span class="m">8</span>,<span class="w"> </span>AUTHORITY:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>ADDITIONAL:<span class="w"> </span><span class="m">1</span>
+
+<span class="p">;;</span><span class="w"> </span>OPT<span class="w"> </span>PSEUDOSECTION:
+<span class="p">;</span><span class="w"> </span>EDNS:<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>flags:<span class="p">;</span><span class="w"> </span>udp:<span class="w"> </span><span class="m">512</span>
+
+<span class="c1"># Questionセクション</span>
+<span class="p">;;</span><span class="w"> </span>QUESTION<span class="w"> </span>SECTION:
+<span class="p">;</span>yahoo.co.jp.<span class="w">                   </span>IN<span class="w">      </span>A<span class="w"> </span><span class="c1"># Aレコードを問い合わせたことを表す。</span>
+
+<span class="c1"># Answerセクション</span>
+<span class="c1"># DNSレコード</span>
+<span class="p">;;</span><span class="w"> </span>ANSWER<span class="w"> </span>SECTION:
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">182</span>.22.28.252<span class="w"> </span><span class="c1"># 正引きで返却されたIPアドレスを表す。</span>
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">182</span>.22.16.251
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">183</span>.79.217.124
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">183</span>.79.219.252
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">183</span>.79.250.123
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">182</span>.22.25.124
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">183</span>.79.250.251
+yahoo.co.jp.<span class="w">            </span><span class="m">35</span><span class="w">      </span>IN<span class="w">      </span>A<span class="w">       </span><span class="m">182</span>.22.25.252
+
+<span class="c1"># 正引きにかかった時間を表す。</span>
+<span class="p">;;</span><span class="w"> </span>Query<span class="w"> </span>time:<span class="w"> </span><span class="m">7</span><span class="w"> </span>msec
+<span class="c1"># 正引きに利用したDNSサーバーを表す。</span>
+<span class="c1"># digコマンドのパラメーターでDNSサーバーを指定しない場合、digコマンドの実行元によって、異なるDNSサーバーが利用される。</span>
+<span class="p">;;</span><span class="w"> </span>SERVER:<span class="w"> </span><span class="m">8</span>.8.8.8#53<span class="o">(</span><span class="m">8</span>.8.8.8<span class="o">)</span>
+<span class="p">;;</span><span class="w"> </span>WHEN:<span class="w"> </span>Mon<span class="w"> </span>May<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">22</span>:33:44<span class="w"> </span>JST<span class="w"> </span><span class="m">2022</span>
+<span class="p">;;</span><span class="w"> </span>MSG<span class="w"> </span>SIZE<span class="w">  </span>rcvd:<span class="w"> </span><span class="m">168</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="-x">-x<a class="headerlink" href="#-x" title="Permanent link">&para;</a></h3>
+<p>逆引きの名前解決を実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html">https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dig<span class="w"> </span>-x<span class="w"> </span><span class="m">182</span>.22.28.252
+
+<span class="p">;</span><span class="w"> </span>&lt;&lt;&gt;&gt;<span class="w"> </span>DiG<span class="w"> </span><span class="m">9</span>.10.6<span class="w"> </span>&lt;&lt;&gt;&gt;<span class="w"> </span>-x<span class="w"> </span><span class="m">182</span>.22.28.252
+<span class="p">;;</span><span class="w"> </span>global<span class="w"> </span>options:<span class="w"> </span>+cmd
+<span class="p">;;</span><span class="w"> </span>Got<span class="w"> </span>answer:
+<span class="p">;;</span><span class="w"> </span>-&gt;&gt;HEADER<span class="s">&lt;&lt;- opco</span>de:<span class="w"> </span>QUERY,<span class="w"> </span>status:<span class="w"> </span>NXDOMAIN,<span class="w"> </span>id:<span class="w"> </span><span class="m">9847</span>
+<span class="p">;;</span><span class="w"> </span>flags:<span class="w"> </span>qr<span class="w"> </span>rd<span class="w"> </span>ra<span class="p">;</span><span class="w"> </span>QUERY:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>ANSWER:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>AUTHORITY:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>ADDITIONAL:<span class="w"> </span><span class="m">1</span>
+
+<span class="p">;;</span><span class="w"> </span>OPT<span class="w"> </span>PSEUDOSECTION:
+<span class="p">;</span><span class="w"> </span>EDNS:<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>flags:<span class="p">;</span><span class="w"> </span>udp:<span class="w"> </span><span class="m">512</span>
+<span class="p">;;</span><span class="w"> </span>QUESTION<span class="w"> </span>SECTION:
+<span class="p">;</span><span class="m">252</span>.28.22.182.in-addr.arpa.<span class="w">    </span>IN<span class="w">      </span>PTR
+
+<span class="c1"># AUTHORITYセクション</span>
+<span class="c1"># 権威DNSサーバーを表す。ドメイン名がわかる。</span>
+<span class="p">;;</span><span class="w"> </span>AUTHORITY<span class="w"> </span>SECTION:
+<span class="m">28</span>.22.182.in-addr.arpa.<span class="w"> </span><span class="m">663</span><span class="w">     </span>IN<span class="w">      </span>SOA<span class="w">     </span>yahoo.co.jp.<span class="w"> </span>postmaster.yahoo.co.jp.<span class="w"> </span><span class="m">2202070000</span><span class="w"> </span><span class="m">1800</span><span class="w"> </span><span class="m">900</span><span class="w"> </span><span class="m">1209600</span><span class="w"> </span><span class="m">900</span>
+
+<span class="p">;;</span><span class="w"> </span>Query<span class="w"> </span>time:<span class="w"> </span><span class="m">7</span><span class="w"> </span>msec
+<span class="p">;;</span><span class="w"> </span>SERVER:<span class="w"> </span><span class="m">8</span>.8.8.8#53<span class="o">(</span><span class="m">8</span>.8.8.8<span class="o">)</span>
+<span class="p">;;</span><span class="w"> </span>WHEN:<span class="w"> </span>Mon<span class="w"> </span>May<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">22</span>:47:07<span class="w"> </span>JST<span class="w"> </span><span class="m">2022</span>
+<span class="p">;;</span><span class="w"> </span>MSG<span class="w"> </span>SIZE<span class="w">  </span>rcvd:<span class="w"> </span><span class="m">113</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-dnsutilsbind-utils">02. dnsutils/bind-utils<a class="headerlink" href="#02-dnsutilsbind-utils" title="Permanent link">&para;</a></h2>
+<h3 id="_3">インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="apt">▼ aptリポジトリから<a class="headerlink" href="#apt" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dnsutils
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>dnsutils
+</code></pre></div>
+<h4 id="yum">▼ yumリポジトリから<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>bind-utils
+</code></pre></div>
+<p><br></p>
+<h3 id="nslookup">nslookup<a class="headerlink" href="#nslookup" title="Permanent link">&para;</a></h3>
+<h4 id="nslookup_1">▼ nslookupとは<a class="headerlink" href="#nslookup_1" title="Permanent link">&para;</a></h4>
+<p>正引き/逆引きによる名前解決を行う。</p>
+<p>もしドメイン名に複数のIPアドレスが割り当てられている場合、正引きを行うと、全てのIPアドレスが返却される。</p>
+<h4 id="_4">▼ オプション無し<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59">https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 正引き</span>
+$<span class="w"> </span>nslookup<span class="w"> </span>google.co.jp
+
+<span class="c1"># 非権威DNSサーバー (キャッシュDNSサーバー) からの返信</span>
+Non-authoritative<span class="w"> </span>answer:
+Server:<span class="w">  </span>UnKnown
+Address:<span class="w">  </span><span class="m">2400</span>:2650:7e1:5a00:1111:1111:1111:1111
+
+Name:<span class="w">  </span>google.co.jp
+Addresses:<span class="w">  </span><span class="m">2404</span>:6800:4004:80f::2003<span class="w"> </span><span class="c1"># IPv6アドレス</span>
+<span class="w">            </span><span class="m">172</span>.217.175.3<span class="w">            </span><span class="c1"># IPv4アドレス</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 逆引き</span>
+$<span class="w"> </span>nslookup<span class="w"> </span><span class="m">172</span>.217.175.3
+
+Server:<span class="w">  </span>UnKnown
+Address:<span class="w">  </span><span class="m">2400</span>:2650:7e1:5a00:1111:1111:1111:1111
+
+Name:<span class="w">  </span>nrt20s18-in-f3.1e100.net<span class="w"> </span><span class="c1"># IPv4アドレスにマッピングされたドメイン名</span>
+Address:<span class="w">  </span><span class="m">172</span>.217.175.3<span class="w"> </span><span class="c1"># IPv4アドレス</span>
+</code></pre></div>
+<p>権威DNSサーバーを使用して名前解決する場合、引数なしで<code>nslookup</code>コマンドを実行する。</p>
+<blockquote>
+<ul>
+<li><a href="http://linux.kororo.jp/cont/server/nslookup_dns.php">http://linux.kororo.jp/cont/server/nslookup_dns.php</a></li>
+<li><a href="https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59">https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nslookup
+
+<span class="c1"># 入力を求められるため、権威DNSサーバーを指定する。</span>
+&gt;<span class="w">  </span>server<span class="w"> </span>ns1.google.com
+Default<span class="w"> </span>server:<span class="w"> </span>ns1.google.com
+Address:<span class="w"> </span><span class="m">216</span>.239.32.10#53
+Default<span class="w"> </span>server:<span class="w"> </span>ns1.google.com
+Address:<span class="w"> </span><span class="m">2001</span>:4860:4802:32::a#53
+
+<span class="c1"># 入力を求められるため、権威DNSサーバーにドメインを問い合わせる。</span>
+&gt;<span class="w"> </span>google.co.jp
+Server:<span class="w">         </span>ns1.google.com
+Address:<span class="w">        </span><span class="m">216</span>.239.32.10#53
+
+Name:<span class="w">   </span>google.co.jp
+Address:<span class="w"> </span><span class="m">142</span>.251.42.131
+</code></pre></div>
+<h4 id="-type">▼ -type<a class="headerlink" href="#-type" title="Permanent link">&para;</a></h4>
+<p>正引き/逆引きによる名前解決を行い、この時に指定したDNSレコードタイプのレコード値を返却させる。</p>
+<p><strong>＊例＊</strong></p>
+<p>名前解決を行い、NSレコード値を返却させる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nslookup<span class="w"> </span>-type<span class="o">=</span>NS<span class="w"> </span>google.co.jp
+
+Non-authoritative<span class="w"> </span>answer:
+Server:<span class="w">  </span>UnKnown
+Address:<span class="w">  </span><span class="m">2400</span>:2650:7e1:5a00:1111:1111:1111:1111
+
+google.co.jp<span class="w">    </span><span class="nv">nameserver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ns3.google.com
+google.co.jp<span class="w">    </span><span class="nv">nameserver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ns4.google.com
+google.co.jp<span class="w">    </span><span class="nv">nameserver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ns2.google.com
+google.co.jp<span class="w">    </span><span class="nv">nameserver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ns1.google.com
+
+ns1.google.com<span class="w">  </span>AAAA<span class="w"> </span>IPv6<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2001</span>:4860:4802:32::a
+ns2.google.com<span class="w">  </span>AAAA<span class="w"> </span>IPv6<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2001</span>:4860:4802:34::a
+ns3.google.com<span class="w">  </span>AAAA<span class="w"> </span>IPv6<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2001</span>:4860:4802:36::a
+ns4.google.com<span class="w">  </span>AAAA<span class="w"> </span>IPv6<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2001</span>:4860:4802:38::a
+ns1.google.com<span class="w">  </span>internet<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">216</span>.239.32.10
+ns2.google.com<span class="w">  </span>internet<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">216</span>.239.34.10
+ns3.google.com<span class="w">  </span>internet<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">216</span>.239.36.10
+ns4.google.com<span class="w">  </span>internet<span class="w"> </span><span class="nv">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">216</span>.239.38.10
+<span class="o">(</span>root<span class="o">)</span><span class="w">  </span>???<span class="w"> </span>unknown<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="m">41</span><span class="w"> </span>???
+</code></pre></div>
+<p><br></p>
+<h2 id="03-net-tools">03. net-tools<a class="headerlink" href="#03-net-tools" title="Permanent link">&para;</a></h2>
+<h3 id="_5">インストール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="apt_1">▼ aptリポジトリから<a class="headerlink" href="#apt_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>net-tools
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>net-tools
+</code></pre></div>
+<h4 id="yum_1">▼ yumリポジトリから<a class="headerlink" href="#yum_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>net-tools
+</code></pre></div>
+<p><br></p>
+<h3 id="_6">接続状態の一覧<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html">https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="netstat">netstat<a class="headerlink" href="#netstat" title="Permanent link">&para;</a></h3>
+<h4 id="-plunt">▼ -plunt<a class="headerlink" href="#-plunt" title="Permanent link">&para;</a></h4>
+<p>オプション (<code>-p</code>、<code>-l</code>、<code>-u</code>、<code>-n</code>、<code>-t</code>) の組み合わせ。各プロセスが開放しているポート番号、ポート番号で受信するプロトコル、接続状態、などの一覧を取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application">https://askubuntu.com/questions/721306/how-many-ports-opened-by-a-single-application</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>netstat<span class="w"> </span>-plunt
+
+Active<span class="w"> </span>Internet<span class="w"> </span>connections<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>servers<span class="o">)</span>
+Proto<span class="w"> </span>Recv-Q<span class="w"> </span>Send-Q<span class="w"> </span>Local<span class="w"> </span>Address<span class="w">           </span>Foreign<span class="w"> </span>Address<span class="w">         </span>State<span class="w">       </span>PID/Program<span class="w"> </span>name
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15090<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15090<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">127</span>.0.0.1:15000<span class="w">         </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15001<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15001<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">127</span>.0.0.1:15004<span class="w">         </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15006<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15006<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15021<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp<span class="w">        </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0.0.0:15021<span class="w">           </span><span class="m">0</span>.0.0.0:*<span class="w">               </span>LISTEN<span class="w">      </span>-
+tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::9000<span class="w">                 </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/php-fpm:<span class="w"> </span>master<span class="w"> </span>p
+tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15020<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span>-
+</code></pre></div>
+<p><br></p>
+<h2 id="04-speedtest-cli">04. speedtest-cli<a class="headerlink" href="#04-speedtest-cli" title="Permanent link">&para;</a></h2>
+<h3 id="_7">インストール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="apt_2">▼ aptリポジトリから<a class="headerlink" href="#apt_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>speedtest-cli
+</code></pre></div>
+<h4 id="brew">▼ brewリポジトリから<a class="headerlink" href="#brew" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>speedtest-cli
+</code></pre></div>
+<p><br></p>
+<h3 id="speedtest-cli">speedtest-cliとは<a class="headerlink" href="#speedtest-cli" title="Permanent link">&para;</a></h3>
+<p>SPEEDTESTのAPIを使用して、ダウンロード (下り) とアップロード (上り) の通信速度を解析する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>speedtest-cli
+
+Testing<span class="w"> </span>download
+Download:<span class="w"> </span><span class="m">168</span>.61<span class="w"> </span>Mbit/s<span class="w"> </span><span class="c1"># ダウンロード速度</span>
+
+Testing<span class="w"> </span>upload
+Upload:<span class="w"> </span><span class="m">182</span>.00<span class="w"> </span>Mbit/s<span class="w"> </span><span class="c1"># アップロード速度</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.speedtest.net/ja">https://www.speedtest.net/ja</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-tcpdump">05. tcpdump<a class="headerlink" href="#05-tcpdump" title="Permanent link">&para;</a></h2>
+<h3 id="_8">インストール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="apt_3">▼ aptリポジトリから<a class="headerlink" href="#apt_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>tcpdump
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tcpdump
+</code></pre></div>
+<h4 id="yum_2">▼ yumリポジトリから<a class="headerlink" href="#yum_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>tcpdump
+</code></pre></div>
+<p><br></p>
+<h3 id="tcpdump">tcpdumpとは<a class="headerlink" href="#tcpdump" title="Permanent link">&para;</a></h3>
+<p>今現在処理されているパケット (インバウンド通信とアウトバウンド通信) の情報を取得する。</p>
+<p>パケットの送信元と宛先から、送信元からの通信 (<code>ping</code>、<code>nc</code>、<code>curl</code>、など) が届いているかを確認する。</p>
+<p>最初の<code>3</code>行はスリーウェイハンドシェイクを表す。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump
+
+<span class="o">[</span>時間<span class="o">]</span><span class="w"> </span>IP<span class="w"> </span><span class="o">[</span>送信元IPアドレス<span class="o">]</span>.<span class="o">[</span>シーケンス番号<span class="o">]</span><span class="w"> </span>&gt;<span class="w"> </span><span class="o">[</span>宛先サーバー<span class="o">]</span>.<span class="o">[</span>ポート番号<span class="o">]</span>:<span class="w"> </span><span class="o">[</span>パケットの説明<span class="o">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="http://blog.livedoor.jp/sonots/archives/18239717.html">http://blog.livedoor.jp/sonots/archives/18239717.html</a></li>
+<li><a href="https://please-sleep.cou929.nu/tcpdump-study-pt1.html">https://please-sleep.cou929.nu/tcpdump-study-pt1.html</a></li>
+<li><a href="https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html">https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html</a></li>
+</ul>
+</blockquote>
+<p>インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump">https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>スリーウェイハンドシェイクのパケットの例。</p>
+<blockquote>
+<ul>
+<li><a href="https://please-sleep.cou929.nu/tcpdump-study-pt1.html">https://please-sleep.cou929.nu/tcpdump-study-pt1.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># クライアントからサーバーへのSYNCリクエスト</span>
+<span class="m">09</span>:36:20.760358<span class="w"> </span>IP<span class="w"> </span><span class="m">10</span>.0.1.23.65428<span class="w"> </span>&gt;<span class="w"> </span><span class="m">93</span>.184.216.119.http:<span class="w"> </span>Flags<span class="w"> </span><span class="o">[</span>S<span class="o">]</span>,<span class="w"> </span>seq<span class="w"> </span><span class="m">2250708012</span>,<span class="w"> </span>win<span class="w"> </span><span class="m">65535</span>,<span class="w"> </span>options<span class="w"> </span><span class="o">[</span>mss<span class="w"> </span><span class="m">1460</span>,nop,wscale<span class="w"> </span><span class="m">4</span>,nop,nop,TS<span class="w"> </span>val<span class="w"> </span><span class="m">938288017</span><span class="w"> </span>ecr<span class="w"> </span><span class="m">0</span>,sackOK,eol<span class="o">]</span>,<span class="w"> </span>length<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># サーバーからクライアントへのACKリクエストとSYNリクエスト</span>
+<span class="m">09</span>:36:20.885412<span class="w"> </span>IP<span class="w"> </span><span class="m">93</span>.184.216.119.http<span class="w"> </span>&gt;<span class="w"> </span><span class="m">10</span>.0.1.23.65428:<span class="w"> </span>Flags<span class="w"> </span><span class="o">[</span>S.<span class="o">]</span>,<span class="w"> </span>seq<span class="w"> </span><span class="m">1676582138</span>,<span class="w"> </span>ack<span class="w"> </span><span class="m">2250708013</span>,<span class="w"> </span>win<span class="w"> </span><span class="m">14600</span>,<span class="w"> </span>options<span class="w"> </span><span class="o">[</span>mss<span class="w"> </span><span class="m">1400</span>,nop,nop,sackOK,nop,wscale<span class="w"> </span><span class="m">6</span><span class="o">]</span>,<span class="w"> </span>length<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># クライアントからサーバーへのACKリクエスト</span>
+<span class="m">09</span>:36:20.885482<span class="w"> </span>IP<span class="w"> </span><span class="m">10</span>.0.1.23.65428<span class="w"> </span>&gt;<span class="w"> </span><span class="m">93</span>.184.216.119.http:<span class="w"> </span>Flags<span class="w"> </span><span class="o">[</span>.<span class="o">]</span>,<span class="w"> </span>ack<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>win<span class="w"> </span><span class="m">16384</span>,<span class="w"> </span>length<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<p><br></p>
+<p><code>awk</code>コマンドや<code>grep</code>コマンドと組み合わせると、特定のIPアドレスを送信元/宛先としたパケットがあるか否かを検出できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>&lt;コマンド/オプション&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="s1">&#39;{print $3}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;特定のIPアドレス&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>ping</code>コマンドの宛先で、通信を受信できていることを確認する。</p>
+<blockquote>
+<ul>
+<li><a href="https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/">https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># デフォルトでは、eth0のパケットを確認する。</span>
+$<span class="w"> </span>tcpdump<span class="w"> </span>icmp<span class="w"> </span>-i<span class="w"> </span>eth0
+</code></pre></div>
+<p><br></p>
+<h3 id="-i">-i &lt;ネットワークインターフェース名&gt;<a class="headerlink" href="#-i" title="Permanent link">&para;</a></h3>
+<p>指定したネットワークインターフェースにて、パケットの内容を取得する。<code>-i</code>オプションを使用しない場合、全てのネットワークインターフェースが扱うパケットを取得することになる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>-i<span class="w"> </span>eth0
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tossh/items/4cd33693965ef231bd2a">https://qiita.com/tossh/items/4cd33693965ef231bd2a</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-nn">-nn &lt;プロトコル名&gt;<a class="headerlink" href="#-nn" title="Permanent link">&para;</a></h3>
+<p>全てのネットワークインターフェースにて、指定したプロトコルを使用したパケットの内容を取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://go-journey.club/archives/1472">https://go-journey.club/archives/1472</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>-nn<span class="w"> </span>ip
+</code></pre></div>
+<p><br></p>
+<h3 id="-nn_1">-nn<a class="headerlink" href="#-nn_1" title="Permanent link">&para;</a></h3>
+<h4 id="port">▼ port<a class="headerlink" href="#port" title="Permanent link">&para;</a></h4>
+<p>全てのネットワークインターフェースにて、指定したポート番号に対するパケットの内容を取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://go-journey.club/archives/1472">https://go-journey.club/archives/1472</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>-nn<span class="w"> </span>port<span class="w"> </span><span class="m">80</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="dst">dst<a class="headerlink" href="#dst" title="Permanent link">&para;</a></h3>
+<h4 id="dst_1">▼ dst<a class="headerlink" href="#dst_1" title="Permanent link">&para;</a></h4>
+<p>パケットを宛先情報でフィルタリングし、パケットを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://orebibou.com/ja/home/201505/20150525_001/">https://orebibou.com/ja/home/201505/20150525_001/</a></li>
+</ul>
+</blockquote>
+<h4 id="port_1">▼ port<a class="headerlink" href="#port_1" title="Permanent link">&para;</a></h4>
+<p>指定したポート番号を宛先とするパケットのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>dst<span class="w"> </span>port<span class="w"> </span><span class="m">80</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="src">src<a class="headerlink" href="#src" title="Permanent link">&para;</a></h3>
+<h4 id="src_1">▼ src<a class="headerlink" href="#src_1" title="Permanent link">&para;</a></h4>
+<p>パケットを送信元情報でフィルタリングし、パケットを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://orebibou.com/ja/home/201505/20150525_001/">https://orebibou.com/ja/home/201505/20150525_001/</a></li>
+</ul>
+</blockquote>
+<h4 id="port_2">▼ port<a class="headerlink" href="#port_2" title="Permanent link">&para;</a></h4>
+<p>指定したポート番号を送信元とするパケットのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcpdump<span class="w"> </span>src<span class="w"> </span>port<span class="w"> </span><span class="m">80</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-traceroute">06. traceroute<a class="headerlink" href="#06-traceroute" title="Permanent link">&para;</a></h2>
+<h3 id="traceroute">tracerouteとは<a class="headerlink" href="#traceroute" title="Permanent link">&para;</a></h3>
+<p>宛先にUDPプロトコル/ICMPプロトコル (デフォルトはUDPプロトコル) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。</p>
+<p><img alt="traceroute" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://webkaru.net/linux/traceroute-command/">https://webkaru.net/linux/traceroute-command/</a></li>
+<li><a href="https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&amp;receptionId=2760&amp;receptionNum=1607536654139&amp;page=1&amp;inquiryWord=&amp;categoryPath=102&amp;selectedDataSourceId=&amp;sort=_score&amp;order=desc&amp;attachedFile=false">https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&amp;receptionId=2760&amp;receptionNum=1607536654139&amp;page=1&amp;inquiryWord=&amp;categoryPath=102&amp;selectedDataSourceId=&amp;sort=_score&amp;order=desc&amp;attachedFile=false</a></li>
+<li><a href="https://beginners-network.com/tracert_traceroute.html">https://beginners-network.com/tracert_traceroute.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>UDPプロトコルを使用して、パケットを送信する。</p>
+<p>もし、<code>traceroute</code>コマンドが終了すれば、全てのルーターを経由できていることを表す。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com
+
+traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">60</span><span class="w"> </span>byte<span class="w"> </span>packets<span class="w"> </span><span class="c1"># 最大30ホップ数 (ルーター数)</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>example.com<span class="w"> </span><span class="o">(</span>aaa.bbb.ccc.ddd<span class="o">)</span><span class="w">  </span><span class="m">1</span>.016<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.414<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.408<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最初のルーターの送信元IPアドレス</span>
+
+<span class="w"> </span>...
+
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">209</span>.85.251.239<span class="w"> </span><span class="o">(</span><span class="m">209</span>.85.251.239<span class="o">)</span><span class="w">  </span><span class="m">2</span>.357<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.595<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.475<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最後のルーターの送信元IPアドレス</span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span>nrt19s18-in-f2.1e100.net<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span><span class="w">  </span><span class="m">1</span>.812<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.849<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.955<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 宛先のサーバー</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span><span class="m">173</span>.194.38.98
+
+traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">173</span>.194.38.98<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">60</span><span class="w"> </span>byte<span class="w"> </span>packets<span class="w"> </span><span class="c1"># 最大30ホップ数 (ルーター数)</span>
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>example.com<span class="w"> </span><span class="o">(</span>aaa.bbb.ccc.ddd<span class="o">)</span><span class="w">  </span><span class="m">1</span>.016<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.414<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.408<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最初のルーターの送信元IPアドレス</span>
+
+<span class="w"> </span>...
+
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">209</span>.85.251.239<span class="w"> </span><span class="o">(</span><span class="m">209</span>.85.251.239<span class="o">)</span><span class="w">  </span><span class="m">2</span>.357<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.595<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.475<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最後のルーターの送信元IPアドレス</span>
+<span class="w"> </span><span class="m">9</span><span class="w">  </span>nrt19s18-in-f2.1e100.net<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span><span class="w">  </span><span class="m">1</span>.812<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.849<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.955<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 宛先のサーバー</span>
+</code></pre></div>
+<p>アスタリスクは検証が実行中であることを表し、アスタリスクのまま変わらない場合は、それ以降のルーターに通信が届いていない可能性がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com
+
+traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.98<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">60</span><span class="w"> </span>byte<span class="w"> </span>packets
+<span class="w"> </span><span class="m">1</span><span class="w">  </span>example.com<span class="w"> </span><span class="o">(</span>aaa.bbb.ccc.ddd<span class="o">)</span><span class="w">  </span><span class="m">1</span>.016<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.414<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.408<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最初のルーターの送信元IPアドレス</span>
+
+...
+
+<span class="w"> </span><span class="m">4</span><span class="w">  </span>b-4ea-b13-1-e-0-1-0.interq.or.jp<span class="w"> </span><span class="o">(</span><span class="m">210</span>.172.131.149<span class="o">)</span><span class="w">  </span><span class="m">2</span>.227<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.218<span class="w"> </span>ms<span class="w">  </span><span class="c1"># このルーターまでは届く</span>
+<span class="w"> </span><span class="m">5</span><span class="w">  </span>*<span class="w">  </span>*<span class="w">  </span>*<span class="w">                                                                 </span><span class="c1"># その後失敗</span>
+<span class="w"> </span><span class="m">6</span><span class="w">  </span>*<span class="w">  </span>*<span class="w">  </span>*
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/">https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-i_1">-I<a class="headerlink" href="#-i_1" title="Permanent link">&para;</a></h3>
+<p>ICMPプロトコルを使用して、パケットを送信する。</p>
+<p>TCPプロトコルの一種である。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>-I<span class="w"> </span>-n<span class="w"> </span>google.com<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
+
+$<span class="w"> </span>traceroute<span class="w"> </span>-I<span class="w"> </span>-n<span class="w"> </span>*.*.*.*<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="-n">-n<a class="headerlink" href="#-n" title="Permanent link">&para;</a></h3>
+<p>IPアドレスの名前解決を実行せずに、ルーターの送信元IPアドレスをそのまま取得する。</p>
+<p>ネットワークの境目がわかりやすくなる。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>-n<span class="w"> </span>google.com
+
+traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">173</span>.194.38.105<span class="o">)</span>,<span class="w"> </span><span class="m">30</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">60</span><span class="w"> </span>byte<span class="w"> </span>packets
+<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="m">157</span>.7.140.2<span class="w">  </span><span class="m">0</span>.916<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.370<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.663<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最初のルーターの送信元IPアドレス</span>
+<span class="w"> </span><span class="m">2</span><span class="w">  </span><span class="m">210</span>.157.9.233<span class="w">  </span><span class="m">0</span>.633<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.735<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.740<span class="w"> </span>ms<span class="w"> </span><span class="c1"># ここで、異なるネットワーク領域に入った可能性</span>
+<span class="w"> </span><span class="m">3</span><span class="w">  </span><span class="m">210</span>.157.9.209<span class="w">  </span><span class="m">0</span>.718<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.722<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.761<span class="w"> </span>ms
+<span class="w"> </span><span class="m">4</span><span class="w">  </span><span class="m">210</span>.172.131.149<span class="w">  </span><span class="m">1</span>.520<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.894<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.892<span class="w"> </span>ms
+<span class="w"> </span><span class="m">5</span><span class="w">  </span><span class="m">210</span>.172.131.118<span class="w">  </span><span class="m">0</span>.652<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.645<span class="w"> </span>ms<span class="w">  </span><span class="m">0</span>.619<span class="w"> </span>ms
+<span class="w"> </span><span class="m">6</span><span class="w">  </span><span class="m">210</span>.171.224.96<span class="w">  </span><span class="m">1</span>.499<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.705<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.587<span class="w"> </span>ms
+<span class="w"> </span><span class="m">7</span><span class="w">  </span><span class="m">209</span>.85.243.58<span class="w">  </span><span class="m">1</span>.575<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.558<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.557<span class="w"> </span>ms<span class="w"> </span><span class="c1"># ここで、異なるネットワーク領域に入った可能性</span>
+<span class="w"> </span><span class="m">8</span><span class="w">  </span><span class="m">209</span>.85.251.239<span class="w">  </span><span class="m">2</span>.383<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.740<span class="w"> </span>ms<span class="w">  </span><span class="m">2</span>.400<span class="w"> </span>ms
+<span class="w"> </span><span class="m">9</span><span class="w">  </span><span class="m">173</span>.194.38.105<span class="w">  </span><span class="m">2</span>.165<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.719<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.840<span class="w"> </span>ms<span class="w"> </span><span class="c1"># 最後のルーター</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://webkaru.net/linux/traceroute-command/">https://webkaru.net/linux/traceroute-command/</a></li>
+<li><a href="https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&amp;receptionId=2760&amp;receptionNum=1607536654139&amp;page=1&amp;inquiryWord=&amp;categoryPath=102&amp;selectedDataSourceId=&amp;sort=_score&amp;order=desc&amp;attachedFile=false">https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&amp;receptionId=2760&amp;receptionNum=1607536654139&amp;page=1&amp;inquiryWord=&amp;categoryPath=102&amp;selectedDataSourceId=&amp;sort=_score&amp;order=desc&amp;attachedFile=false</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-p">-p<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h3>
+<p>ポート番号を指定する。</p>
+<p>デフォルト値は、<code>33434</code>番ポートである。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="-t">-T<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
+<p>宛先にTCPプロトコル (例：HTTP、HTTPS) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。</p>
+<p><code>traceroute</code>コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com<span class="w"> </span>-T<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
+
+$<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w"> </span>-T<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-02-traceroute">06-02. tracerouteの代わり<a class="headerlink" href="#06-02-traceroute" title="Permanent link">&para;</a></h2>
+<h3 id="tracepath">tracepath<a class="headerlink" href="#tracepath" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath">https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tracepath<span class="w"> </span>-n<span class="w"> </span>google.com
+
+<span class="m">1</span>:<span class="w"> </span><span class="o">[</span>LOCALHOST<span class="o">]</span><span class="w">                                       </span>pmtu<span class="w"> </span><span class="m">9001</span>
+<span class="m">1</span>:<span class="w">  </span>*.*.*.*<span class="w">                                           </span><span class="m">0</span>.200ms<span class="w"> </span>pmtu<span class="w"> </span><span class="m">1500</span>
+<span class="m">1</span>:<span class="w">  </span>no<span class="w"> </span>reply
+<span class="m">2</span>:<span class="w">  </span>no<span class="w"> </span>reply
+<span class="m">3</span>:<span class="w">  </span>no<span class="w"> </span>reply
+<span class="m">4</span>:<span class="w">  </span>no<span class="w"> </span>reply
+<span class="m">5</span>:<span class="w">  </span>no<span class="w"> </span>reply
+</code></pre></div>
+<p><br></p>
+<h3 id="tcptraceroute">tcptraceroute<a class="headerlink" href="#tcptraceroute" title="Permanent link">&para;</a></h3>
+<h4 id="tcptraceroute_1">▼ tcptracerouteとは<a class="headerlink" href="#tcptraceroute_1" title="Permanent link">&para;</a></h4>
+<p><code>traceroute</code>コマンドのバージョンによっては、<code>-T</code>オプションがない場合があり、代わりとして<code>tcptraceroute</code>コマンドを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://succzero.hatenablog.com/entry/2013/09/01/181615">https://succzero.hatenablog.com/entry/2013/09/01/181615</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcptraceroute<span class="w"> </span>google.com<span class="w"> </span><span class="m">443</span>
+</code></pre></div>
+<h4 id="-s-p">▼ -s、-p<a class="headerlink" href="#-s-p" title="Permanent link">&para;</a></h4>
+<p>送信元のIPアドレスやポート番号を指定する。</p>
+<p>宛先ではないことに注意する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tcptraceroute<span class="w"> </span>*.*.*.*<span class="w"> </span>-p<span class="w"> </span><span class="m">80</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-17</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

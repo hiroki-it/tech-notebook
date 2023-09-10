@@ -1,0 +1,4389 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="設計規約＠ArgoCDの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_argocd_command.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_argocd_architecture_characteristics.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】設計規約＠ArgoCD - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#argocd" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】設計規約＠ArgoCD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_18">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            🌊 CNCFプロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_2" checked>
+        
+          <label class="md-nav__link" for="__nav_18_2" id="__nav_18_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ArgoCD
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ArgoCD
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ArgoCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_argocd_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cluster" class="md-nav__link">
+    01. ポーリング対象のClusterのデザインパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ポーリング対象のClusterのデザインパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    内部Clusterパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_1" class="md-nav__link">
+    外部Clusterパターン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="02. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    マニフェストリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェストリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マニフェストリポジトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アプリ領域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ インフラ領域
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    アプリリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-application" class="md-nav__link">
+    03. Applicationのデザインパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Applicationのデザインパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    Appパターン (通常パターン)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-of-apps" class="md-nav__link">
+    App-Of-Appsパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="App-Of-Appsパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-of-apps_1" class="md-nav__link">
+    ▼ App-Of-Appsパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-application-1application" class="md-nav__link">
+    ▼ root-application (第１階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parent-application-2application" class="md-nav__link">
+    ▼ parent-application (第２階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#child-application-3application" class="md-nav__link">
+    ▼ child-application (第３階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grand-parent-application" class="md-nav__link">
+    ▼ grand-parent-application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    実行環境別 (必須)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 命名規則
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 命名規則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appproject" class="md-nav__link">
+    AppProject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    Namespace
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-cd" class="md-nav__link">
+    06. CDツールに関するテスト
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CDツールに関するテスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    脆弱性対策
+  </a>
+  
+    <nav class="md-nav" aria-label="脆弱性対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 公式側
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    認証/認可
+  </a>
+  
+    <nav class="md-nav" aria-label="認証/認可">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_1" class="md-nav__link">
+    ▼ ArgoCDの操作ユーザーの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd_2" class="md-nav__link">
+    ▼ ArgoCD自体の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    機密な変数やファイルの管理
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    通知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    08. エラー解決
+  </a>
+  
+    <nav class="md-nav" aria-label="08. エラー解決">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appproject_1" class="md-nav__link">
+    AppProjectが見つからない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    削除できない系
+  </a>
+  
+    <nav class="md-nav" aria-label="削除できない系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application_1" class="md-nav__link">
+    ▼ Applicationを削除できない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace_1" class="md-nav__link">
+    ▼ Namespaceを削除できない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helmargocd" class="md-nav__link">
+    Helmチャートが大きすぎるとArgoCDがフリーズする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configmapsecret" class="md-nav__link">
+    ConfigMapやSecretの設定変更が反映されない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    すでに削除されたPodがポーリングされ続ける
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressing" class="md-nav__link">
+    Progressing状態でスタックする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncoutofsync" class="md-nav__link">
+    SyncしてもOutOfSyncステータスが解消されない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. アーキテクチャ特性の担保
+  </a>
+  
+    <nav class="md-nav" aria-label="09. アーキテクチャ特性の担保">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    可用性の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. アップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="10. アップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_3" class="md-nav__link">
+    ArgoCD自体のアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="ArgoCD自体のアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 対応バージョンについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crd" class="md-nav__link">
+    ▼ CRDについて
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd_4" class="md-nav__link">
+    ArgoCDを使用したツールのアップグレード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 権限設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-prometheus" class="md-nav__link">
+    12. Prometheusによる監視
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Prometheusによる監視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    メトリクスの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    必要なKubernetesリソース
+  </a>
+  
+    <nav class="md-nav" aria-label="必要なKubernetesリソース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicemonitor" class="md-nav__link">
+    ▼ ServiceMonitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    ▼ Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-cd" class="md-nav__link">
+    13. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="13. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    デプロイ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. マルチテナント
+  </a>
+  
+    <nav class="md-nav" aria-label="14. マルチテナント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_5" class="md-nav__link">
+    ArgoCDでテナント分割が必要な理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appproject_2" class="md-nav__link">
+    AppProjectを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_2" class="md-nav__link">
+    仮想Cluster単位の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_3" class="md-nav__link">
+    実Cluster単位の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_argocd_architecture_characteristics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アーキテクチャ特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ リソース定義
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CertManager
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ FluentBit/Fluentd
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Grafana
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kyverno
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Jaeger
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kiali
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ OpenPolicyAgent
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Prometheus
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ VCluster
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-cluster" class="md-nav__link">
+    01. ポーリング対象のClusterのデザインパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ポーリング対象のClusterのデザインパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    内部Clusterパターン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_1" class="md-nav__link">
+    外部Clusterパターン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="02. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    マニフェストリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェストリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マニフェストリポジトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アプリ領域
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ インフラ領域
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    アプリリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-application" class="md-nav__link">
+    03. Applicationのデザインパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Applicationのデザインパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app" class="md-nav__link">
+    Appパターン (通常パターン)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#app-of-apps" class="md-nav__link">
+    App-Of-Appsパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="App-Of-Appsパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-of-apps_1" class="md-nav__link">
+    ▼ App-Of-Appsパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-application-1application" class="md-nav__link">
+    ▼ root-application (第１階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parent-application-2application" class="md-nav__link">
+    ▼ parent-application (第２階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#child-application-3application" class="md-nav__link">
+    ▼ child-application (第３階層のApplication)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grand-parent-application" class="md-nav__link">
+    ▼ grand-parent-application
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    実行環境別 (必須)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 命名規則
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 命名規則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    Application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appproject" class="md-nav__link">
+    AppProject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    Namespace
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-cd" class="md-nav__link">
+    06. CDツールに関するテスト
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CDツールに関するテスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    脆弱性対策
+  </a>
+  
+    <nav class="md-nav" aria-label="脆弱性対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 公式側
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    認証/認可
+  </a>
+  
+    <nav class="md-nav" aria-label="認証/認可">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_1" class="md-nav__link">
+    ▼ ArgoCDの操作ユーザーの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd_2" class="md-nav__link">
+    ▼ ArgoCD自体の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    機密な変数やファイルの管理
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="07. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    通知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    08. エラー解決
+  </a>
+  
+    <nav class="md-nav" aria-label="08. エラー解決">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appproject_1" class="md-nav__link">
+    AppProjectが見つからない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    削除できない系
+  </a>
+  
+    <nav class="md-nav" aria-label="削除できない系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application_1" class="md-nav__link">
+    ▼ Applicationを削除できない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace_1" class="md-nav__link">
+    ▼ Namespaceを削除できない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helmargocd" class="md-nav__link">
+    Helmチャートが大きすぎるとArgoCDがフリーズする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configmapsecret" class="md-nav__link">
+    ConfigMapやSecretの設定変更が反映されない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    すでに削除されたPodがポーリングされ続ける
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressing" class="md-nav__link">
+    Progressing状態でスタックする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syncoutofsync" class="md-nav__link">
+    SyncしてもOutOfSyncステータスが解消されない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. アーキテクチャ特性の担保
+  </a>
+  
+    <nav class="md-nav" aria-label="09. アーキテクチャ特性の担保">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    可用性の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. アップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="10. アップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_3" class="md-nav__link">
+    ArgoCD自体のアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="ArgoCD自体のアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 対応バージョンについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crd" class="md-nav__link">
+    ▼ CRDについて
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd_4" class="md-nav__link">
+    ArgoCDを使用したツールのアップグレード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 権限設定
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-prometheus" class="md-nav__link">
+    12. Prometheusによる監視
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Prometheusによる監視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    メトリクスの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    必要なKubernetesリソース
+  </a>
+  
+    <nav class="md-nav" aria-label="必要なKubernetesリソース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicemonitor" class="md-nav__link">
+    ▼ ServiceMonitor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    ▼ Service
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-cd" class="md-nav__link">
+    13. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="13. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    デプロイ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. マルチテナント
+  </a>
+  
+    <nav class="md-nav" aria-label="14. マルチテナント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_5" class="md-nav__link">
+    ArgoCDでテナント分割が必要な理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appproject_2" class="md-nav__link">
+    AppProjectを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_2" class="md-nav__link">
+    仮想Cluster単位の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster_3" class="md-nav__link">
+    実Cluster単位の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="argocd">設計規約＠ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-cluster">01. ポーリング対象のClusterのデザインパターン<a class="headerlink" href="#01-cluster" title="Permanent link">&para;</a></h2>
+<h3 id="cluster">内部Clusterパターン<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
+<p>ArgoCDのApplicationと、ポーリング対象のClusterを同じClusterで管理する。</p>
+<p>ApplicationとClusterを一括で管理できる。</p>
+<p><br></p>
+<h3 id="cluster_1">外部Clusterパターン<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h3>
+<p>ArgoCDのApplicationと、ポーリング対象のClusterを別々のClusterで管理する。</p>
+<p>複数のClusterにデプロイするApplicationを管理しやすい。</p>
+<blockquote>
+<ul>
+<li><a href="https://twitter.com/yaml_villager/status/1625857205928075267">https://twitter.com/yaml_villager/status/1625857205928075267</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. リポジトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">リポジトリ分割のメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>リポジトリを分割することにより、以下のメリットがある。</p>
+<ul>
+<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
+</ul>
+<p><br></p>
+<h3 id="_3">マニフェストリポジトリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ マニフェストリポジトリとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>マニフェストやチャートを管理する。</p>
+<p>GitOpsのベストプラクティスに則って、アプリケーションリポジトリとマニフェストリポジトリに分割する。</p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices">https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ アプリ領域<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>アプリ領域のマニフェストやチャートは、ArgoCDとは別に管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># アプリ領域のマニフェスト</span>
+<span class="l l-Scalar l-Scalar-Plain">app-manifest-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<h4 id="_6">▼ インフラ領域<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>インフラ領域のマニフェストやチャートは、ArgoCDとは別に管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># インフラ領域のマニフェスト</span>
+<span class="l l-Scalar l-Scalar-Plain">infra-manifest-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">アプリリポジトリ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>アプリケーションのソースコードを管理する。</p>
+<p>説明は省略する。</p>
+<p><br></p>
+<h2 id="03-application">03. Applicationのデザインパターン<a class="headerlink" href="#03-application" title="Permanent link">&para;</a></h2>
+<h3 id="app">Appパターン (通常パターン)<a class="headerlink" href="#app" title="Permanent link">&para;</a></h3>
+<p>ポーリング対象リポジトリごとにApplicationを作成し、これらを同じリポジトリで管理する。</p>
+<p>この時、全てのApplicationには親Applicationが存在しない。</p>
+<p>ポーリング対象リポジトリにはKubernetesリソースのマニフェストやhelmチャートが管理されている。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">argocd-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── app-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── infra-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app-manifest-repository/</span><span class="w"> </span><span class="c1"># マニフェストリポジトリまたはチャートリポジトリ</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ....</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">infra-manifest-repository/</span><span class="w"> </span><span class="c1"># マニフェストリポジトリまたはチャートリポジトリ</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04">https://atmarkit.itmedia.co.jp/ait/articles/2107/30/news018.html#04</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="app-of-apps">App-Of-Appsパターン<a class="headerlink" href="#app-of-apps" title="Permanent link">&para;</a></h3>
+<h4 id="app-of-apps_1">▼ App-Of-Appsパターンとは<a class="headerlink" href="#app-of-apps_1" title="Permanent link">&para;</a></h4>
+<p>親Applicationで子Applicationをグループ化したように構成する。</p>
+<p>Applicationの<code>.resource</code>キー配下で、紐づく子Applicationを管理している。</p>
+<p><img alt="root-application" src="https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern">https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern</a></li>
+<li><a href="https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c">https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c</a></li>
+<li><a href="https://www.arthurkoziel.com/setting-up-argocd-with-helm/">https://www.arthurkoziel.com/setting-up-argocd-with-helm/</a></li>
+</ul>
+</blockquote>
+<h4 id="root-application-1application">▼ root-application (第１階層のApplication)<a class="headerlink" href="#root-application-1application" title="Permanent link">&para;</a></h4>
+<p>全てのApplicationをポーリングする最上位Applicationのこと。</p>
+<p>root-applicationとAppProjectは同じNamespaceに所属する必要がある。</p>
+<p>状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。</p>
+<p>root-applicationは、<code>default</code>や<code>root</code>のAppProjectに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 最上位Application</span>
+<span class="l l-Scalar l-Scalar-Plain">root-argocd-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── root-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<h4 id="parent-application-2application">▼ parent-application (第２階層のApplication)<a class="headerlink" href="#parent-application-2application" title="Permanent link">&para;</a></h4>
+<p>各AppProjectの子Applicationをポーリングする親Applicationのこと。</p>
+<p>管理チームごとにApplication (app-parent-application、infra-parent-application) を作成すると良い。</p>
+<p>parent-applicationは、実行環境名 (dev、stg、prd) のAppProjectに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 親Application</span>
+<span class="l l-Scalar l-Scalar-Plain">parent-argocd-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── app-parent-application.yaml</span><span class="w"> </span><span class="c1"># appのAppProjectをポーリングするapplication</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── infra-parent-application.yaml</span><span class="w"> </span><span class="c1"># infraのAppProjectをポーリングするapplication</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<h4 id="child-application-3application">▼ child-application (第３階層のApplication)<a class="headerlink" href="#child-application-3application" title="Permanent link">&para;</a></h4>
+<p>各AppProjectで、マニフェストリポジトリやチャートリポジトリをポーリングするApplicationのこと。</p>
+<p>マイクロサービス単位のマニフェストやチャートごとに作成すると良い。</p>
+<p>child-applicationは、そのマイクロサービスをデプロイする権限を持つチーム名のAppProjectに配置する。</p>
+<p>child-applicationは、実行環境名 (dev、stg、prd) のAppProjectに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 子Application</span>
+<span class="l l-Scalar l-Scalar-Plain">child-argocd-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── app</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── account-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── customer-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── orchestrator-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── order-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── shared-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── infra</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── fluentd-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── grafana-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── istio-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── kiali-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── prometheus-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── shared-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── victoria-metrics-application.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<h4 id="grand-parent-application">▼ grand-parent-application<a class="headerlink" href="#grand-parent-application" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B">https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. ディレクトリ構成規約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_8">実行環境別 (必須)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>必須の構成である。</p>
+<p>実行環境別に、Applicationを異なるディレクトリで管理する。</p>
+<p>Applicationでは、実行環境に対応するブランチのみをポーリングする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. 命名規則<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="application">Application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h3>
+<p>同じCluster内ではApplication名を一意にする必要がある。</p>
+<p>また、GUI上での実行環境の選択ミスを予防するために、実行環境名をつける。</p>
+<p>例えば、Application名にサービス名と実行環境名 (例：<code>&lt;サービス名&gt;-&lt;実行環境名&gt;</code>) で命名する。</p>
+<p>執筆時点 (2023/03/08) で、ArgoCDのConfigMapに、親Applicationを指定するためのラベル名を設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cm</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">application.instanceLabelKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd.argoproj.io/instance</span>
+</code></pre></div>
+<p>ArgoCDは、Kubernetesリソースの<code>.metadata.labels</code>キーにこのラベル (ここでは<code>argocd.argoproj.io/instance</code>キー) を自動的に設定する。</p>
+<p>AppProjectが異なる限り、同じCluster内にある同じ<code>argocd.argoproj.io/instance</code>キー値を持つApplicationは区別される。</p>
+<p>一方で、同じAppProjectにあるApplicationは、たとえNamespaceが異なっていても区別できない。</p>
+<p>そのため、Kubernetesリソースが複数のApplicationに紐づいてしまう。</p>
+<p>これらの理由から、同じCluster内ではApplication名を一意にする必要がある。</p>
+<p><br></p>
+<h3 id="appproject">AppProject<a class="headerlink" href="#appproject" title="Permanent link">&para;</a></h3>
+<p>実行環境名 (dev、stg、prd) とする。</p>
+<p>ArgoCDでは、認可スコープ (argocd-rbac-cm) とAppProjectを紐付けられるため、特定の実行環境のAppProjectに所属するArgoCD系リソースのみを操作できるようになる。</p>
+<p><br></p>
+<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
+<p>プロダクト名とする。</p>
+<p>同じCluster内に、複数のプロダクト用のArgoCDを配置できるようになる。</p>
+<p><br></p>
+<h2 id="06-cd">06. CDツールに関するテスト<a class="headerlink" href="#06-cd" title="Permanent link">&para;</a></h2>
+<h3 id="_9">脆弱性対策<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 公式側<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>対象のソースコードの脆弱性ではなく、CDツールに関するそれに対処する。</p>
+<p>CDツール (例：ArgoCD、Flux) によっては、公式リポジトリで脆弱性テストを実施してくれている。</p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/">https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md">https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">認証/認可<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="argocd_1">▼ ArgoCDの操作ユーザーの場合<a class="headerlink" href="#argocd_1" title="Permanent link">&para;</a></h4>
+<p>ArgoCDのデフォルトの認証方法は、Bearer認証である。</p>
+<p>利便性のためSSOを採用しつつ、二要素認証を組み合わせて強度を高める。</p>
+<p>そのために、認証フェーズを信頼性の高い外部サービス (Auth0、GitHub、GitLab、など) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。</p>
+<p>さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求するようにする。</p>
+<table>
+<thead>
+<tr>
+<th>認証/認可方法</th>
+<th style="text-align: center;">二要素認証</th>
+<th style="text-align: center;">推奨/非推奨</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bearer認証 (デフォルト)</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">非推奨</td>
+</tr>
+<tr>
+<td>OAuth</td>
+<td style="text-align: center;">あり</td>
+<td style="text-align: center;">推奨</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;">なし</td>
+<td style="text-align: center;">非推奨</td>
+</tr>
+<tr>
+<td>OIDC</td>
+<td style="text-align: center;">あり</td>
+<td style="text-align: center;">推奨</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;">なし</td>
+<td style="text-align: center;">非推奨</td>
+</tr>
+<tr>
+<td>SAML</td>
+<td style="text-align: center;">あり</td>
+<td style="text-align: center;">推奨</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center;">なし</td>
+<td style="text-align: center;">非推奨</td>
+</tr>
+</tbody>
+</table>
+<h4 id="argocd_2">▼ ArgoCD自体の場合<a class="headerlink" href="#argocd_2" title="Permanent link">&para;</a></h4>
+<p>ArgoCDをServiceAccountで認証し、またClusterRoleで認可する。</p>
+<table>
+<thead>
+<tr>
+<th>期限</th>
+<th>説明</th>
+<th>方法</th>
+<th style="text-align: center;">推奨/非推奨</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>恒久的</td>
+<td>CDツールを恒久的に認証し、また同様に認可スコープを恒久的に付与する。</td>
+<td>Kubernetes <code>v1.21</code> 以前では、ServiceAccountの認証用のトークンに期限がない。</td>
+<td style="text-align: center;">非推奨</td>
+</tr>
+<tr>
+<td>一時的</td>
+<td>CDツールを一時的に認証し、また同様に認可スコープを一時的に付与する。</td>
+<td>Kubernetes <code>v1.22</code> 以降では、BoundServiceAccountTokenVolumeにより、ServiceAccountのトークンに<code>1</code>時間の有効期限がある。kube-apiserverのクライアント側が特定のバージョンのclientパッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・<a href="https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782">https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782</a> <br>・<a href="https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume">https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume</a></td>
+<td style="text-align: center;">推奨</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_12">機密な変数やファイルの管理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="secret">▼ Secretの変数の場合<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07">07. 事後処理<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_13">通知<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>CDパイプライン上で実行しているステップ (例：デプロイ、ロールバック、など) の結果が通知されるようにする。</p>
+<p>通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。</p>
+<p><br></p>
+<h2 id="08">08. エラー解決<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<h3 id="appproject_1">AppProjectが見つからない<a class="headerlink" href="#appproject_1" title="Permanent link">&para;</a></h3>
+<p>argocd-serverまたはapplication-controllerが、Applicationで指定されたAppProjectを見つけられず、以下のエラーを返すことがある。</p>
+<div class="highlight"><pre><span></span><code>Application<span class="w"> </span>referencing<span class="w"> </span>project<span class="w"> </span>foo-project<span class="w"> </span>which<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist
+</code></pre></div>
+<p><br></p>
+<h3 id="_14">削除できない系<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="application_1">▼ Applicationを削除できない<a class="headerlink" href="#application_1" title="Permanent link">&para;</a></h4>
+<p>PruneによるKubernetesリソースの削除を有効化し、フォアグラウンドで削除した場合、Applicationが配下にリソースを持たないことにより、Applicationを削除できないことがある。</p>
+<p>これらの場合には、以下の手順でApplicationを削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted">https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>Applicationの<code>.spec.syncPolicy.allowEmpty</code>キーを有効化する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>フォアグラウンドで削除すると、Applicationの<code>.metadata.finalizers</code>キーの値に削除中のリソースが設定される。</p>
+<p>この配列を空配列に変更する。ArgoCDのUIからは変更できず、<code>kubectl patch</code>コマンドを使用する必要がある。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>crd<span class="w"> </span>applications.argoproj.io<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;metadata&quot;:{&quot;finalizers&quot;:[]}}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="o">=</span>merge
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>1つ目の<code>.spec.syncPolicy.allowEmpty</code>キーの変更を元に戻す。</p>
+</dd>
+</dl>
+<h4 id="namespace_1">▼ Namespaceを削除できない<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>ns<span class="w"> </span>argocd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;metadata&quot;:{&quot;finalizers&quot;:[]}}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="o">=</span>merge
+</code></pre></div>
+<p><br></p>
+<h3 id="helmargocd">Helmチャートが大きすぎるとArgoCDがフリーズする<a class="headerlink" href="#helmargocd" title="Permanent link">&para;</a></h3>
+<p>今現在、Helmにはインストールしたチャートのキャッシュを作成する機能がない。</p>
+<p>そのため、大きすぎるチャートをArgoCDで使用すると、毎回大きなチャートをインストールすることになり、ArgoCDが高負荷でフリーズすることがある。</p>
+<p>Helmで、チャートのキャッシュ機能が実装されれば、ArgoCDのフリーズも解消できるはずである。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/community/pull/185">https://github.com/helm/community/pull/185</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="configmapsecret">ConfigMapやSecretの設定変更が反映されない<a class="headerlink" href="#configmapsecret" title="Permanent link">&para;</a></h3>
+<p>ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定変更を反映する場合、Deployment/StatefulSet/DaemonSetを再起動する必要がある。</p>
+<p><br></p>
+<h3 id="pod">すでに削除されたPodがポーリングされ続ける<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<p>すでに削除したPodをポーリングし続けてしまうことがあり、この場合Podが存在しないため、Podの削除すらできなくなってしまう。</p>
+<p>この問題が起こった場合、以下のいずれかで解決する。</p>
+<ul>
+<li>argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。</li>
+<li>親になるリソース (Deployment、DaemonSet、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。</li>
+</ul>
+<p><br></p>
+<h3 id="progressing"><code>Progressing</code>状態でスタックする<a class="headerlink" href="#progressing" title="Permanent link">&para;</a></h3>
+<p>Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの<code>Progressing</code>状態でスタックすることがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state">https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="syncoutofsync">SyncしてもOutOfSyncステータスが解消されない<a class="headerlink" href="#syncoutofsync" title="Permanent link">&para;</a></h3>
+<p>Sync後にKubernetesリソースの状態が変更されるような場合、SyncしてもSyncedステータスではなくOutOfSyncステータスになってしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/">https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync">https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="09">09. アーキテクチャ特性の担保<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
+<h3 id="_15">可用性の場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>可用性を高めるために、ArgoCDの各コンポーネントを冗長化する。</p>
+<p><br></p>
+<h2 id="10">10. アップグレード<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="argocd_3">ArgoCD自体のアップグレード<a class="headerlink" href="#argocd_3" title="Permanent link">&para;</a></h3>
+<h4 id="_16">▼ 対応バージョンについて<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>ArgoCDのアップグレードでは、ArgoCD自身が動くClusterと、デプロイ先Clusterの両方のバージョンを考慮する必要がある。</p>
+<p>ArgoCDのコンポーネントのうちで、argocd-serverはclient-goパッケージを使用して、自身が動くClusterのkube-apiserverと通信する。</p>
+<p>一方で、application-controllerも同様にclient-goパッケージ (gitops-engineがこれを持つ) を使用して通信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/go.mod#L94">https://github.com/argoproj/argo-cd/blob/v2.6.0/go.mod#L94</a></li>
+<li><a href="https://github.com/argoproj/gitops-engine/blob/v0.6.2/go.mod#L17">https://github.com/argoproj/gitops-engine/blob/v0.6.2/go.mod#L17</a></li>
+</ul>
+</blockquote>
+<p>ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの実行環境 (K3sやK3dを使用している) のバージョンから、テスト済みのClusterのバージョンを確認できる。</p>
+<p>例えば、ArgoCDの<code>v2.7.3</code>は、K3sの<code>v1.26.0</code>/<code>v1.25.4</code>/<code>v1.24.3</code>/<code>v1.23.3</code>に対応しているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/ci-build.yaml#L359-L462">https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/ci-build.yaml#L359-L462</a></li>
+<li><a href="https://github.com/argoproj/argo-cd/tree/master/test/e2e">https://github.com/argoproj/argo-cd/tree/master/test/e2e</a></li>
+</ul>
+</blockquote>
+<h4 id="crd">▼ CRDについて<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
+<p>ArgoCD自体をArgoCDで管理することはできないため、手動やマニフェスト管理ツール (Helm、Kustomize) でArgoCDをアップグレードする必要がある。</p>
+<p>特にCRDは、マニフェスト管理ツールで更新できない (作成はできる) 場合がある。</p>
+<p>そのため、チャートリポジトリにある該当のディレクトリ配下のCRDのマニフェストを指定し、直接的に更新するようにする。</p>
+<p><br></p>
+<h3 id="argocd_4">ArgoCDを使用したツールのアップグレード<a class="headerlink" href="#argocd_4" title="Permanent link">&para;</a></h3>
+<p>マニフェストリポジトリやチャートリポジトリの設計によっては、新バージョンのKubernetesリソース名にリビジョン番号がつくようになっていることがある (例：Istioのチャート) 。</p>
+<p>この場合、Pruneを無効化した上で、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。</p>
+<p>新バージョンの動作が問題なければ、旧バージョンのKubernetesリソースをPruneで削除する。</p>
+<p><br></p>
+<h2 id="11">11. 権限設定<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>ArgoCDには、ダッシュボード上から特定の<code>kubectl</code>コマンド (<code>kubectl logs</code>コマンド、<code>kubectl exec</code>コマンド) を実行できる機能がある。</p>
+<p>ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。</p>
+<p><br></p>
+<h2 id="12-prometheus">12. Prometheusによる監視<a class="headerlink" href="#12-prometheus" title="Permanent link">&para;</a></h2>
+<h3 id="_17">メトリクスの種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。</p>
+<table>
+<thead>
+<tr>
+<th>Prometheusのメトリクス</th>
+<th style="text-align: center;">メトリクスの種類</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>argocd_app_info</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>Applicationの状態を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_app_k8s_request_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>差分の検出時に、Applicationからポーリング対象Clusterに送信されたリクエスト数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_app_labels</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>記入中...</td>
+</tr>
+<tr>
+<td><code>argocd_app_reconcile</code></td>
+<td style="text-align: center;">Histogram</td>
+<td>Applicationの性能を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_app_sync_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>ApplicationのSync数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_api_resource_objects</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ポーリング対象Clusterに関して、キャッシュしているKubernetesリソースのマニフェスト数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_api_resources</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ポーリング対象Clusterに関して、検知しているKubernetesリソースのマニフェスト数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_cache_age_seconds</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ポーリング対象Clusterに関して、キャッシュの有効期間を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_connection_status</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ポーリング対象Clusterに関して、現在の接続状態を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_events_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>ポーリング対象Clusterに関して、イベントの合計数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_cluster_info</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ポーリング対象Clusterの状態を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_kubectl_exec_pending</code></td>
+<td style="text-align: center;">Gauge</td>
+<td>ArgoCDのexecのPending数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_kubectl_exec_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>ArgoCDのexecの合計数を表す。</td>
+</tr>
+<tr>
+<td><code>argocd_redis_request_duration</code></td>
+<td style="text-align: center;">Histogram</td>
+<td>Redisへのリクエストのレイテンシーを表す。</td>
+</tr>
+<tr>
+<td><code>argocd_redis_request_total</code></td>
+<td style="text-align: center;">Counter</td>
+<td>Redisへのリクエスト数を表す。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting">https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/">https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kubernetes">必要なKubernetesリソース<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
+<h4 id="servicemonitor">▼ ServiceMonitor<a class="headerlink" href="#servicemonitor" title="Permanent link">&para;</a></h4>
+<p>ServiceMonitorを作成し、ArgoCDのコンポーネントのPodを監視する。ServiceMonitorは、ArgoCDのコンポーネントがテナントごとにあっても、1つ作成すれば良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># application-controllerのPodを監視する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-application-controller</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-metrics</span>
+<span class="nn">---</span>
+<span class="c1"># redisのPodを監視する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
+<span class="nn">---</span>
+<span class="c1"># repo-serverのPodを監視する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server-metrics</span>
+<span class="nn">---</span>
+<span class="c1"># argocd-serverのPodを監視する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-server</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-server-metrics</span>
+</code></pre></div>
+<h4 id="service">▼ Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
+<p>スクレイピング専用のServiceを作成し、ServiceMonitorからリクエストを受信できるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># application-controller用のServiceMonitorからリクエストを受信する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-argocd-application-controller-metrics</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8082</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-application-controller</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nn">---</span>
+<span class="c1"># redis用のServiceMonitorからリクエストを受信する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-argocd-redis-metrics</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9121</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-redis</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="nn">---</span>
+<span class="c1"># repo-server用のServiceMonitorからリクエストを受信する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-argocd-repo-server-metrics</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8084</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-server</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nn">---</span>
+<span class="c1"># argocd-server用のServiceMonitorからリクエストを受信する</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-argocd-server-metrics</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-metrics</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8083</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-server</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="13-cd">13. CDパイプライン<a class="headerlink" href="#13-cd" title="Permanent link">&para;</a></h2>
+<h3 id="_18">デプロイ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>ArgoCD自体はArgoCD以外でデプロイする必要がある。</p>
+<p>GitOpsを採用できないため、CIOpsになる。</p>
+<p>本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mamezou-tech.com/oss-intro/setup-helmfile/">https://developer.mamezou-tech.com/oss-intro/setup-helmfile/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="14">14. マルチテナント<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<h3 id="argocd_5">ArgoCDでテナント分割が必要な理由<a class="headerlink" href="#argocd_5" title="Permanent link">&para;</a></h3>
+<p>異なるClusterをデプロイ先とするArgoCDを同じClusterで管理する場合、ArgoCDはNamespace単位でテナント分割できない。</p>
+<p>ArgoCDのコンポーネント (特に、application-controller、argocd-server) には、ClusterスコープなKubernetesリソース (例：ClusterRoleの認可スコープを紐づける) が必要である。</p>
+<p>そのため、NamespaceごとにArgoCDのコンポーネントを分割したとしても、argocd-serverが異なるNamespaceのapplication-controllerの処理結果を取得してしまい、想定外のエラーが起こる。</p>
+<p>そこで、異なるCluster用のArgoCDを単一のClusterで管理する場合、以下方法でマルチテナントを実現する。</p>
+<blockquote>
+<ul>
+<li><a href="https://akuity.io/blog/argo-cd-architectures-explained/">https://akuity.io/blog/argo-cd-architectures-explained/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="appproject_2">AppProjectを使用する場合<a class="headerlink" href="#appproject_2" title="Permanent link">&para;</a></h3>
+<p>単一Cluster上に複数のAppProjectを作成し、これを単位としてArgoCDを作成する。</p>
+<p>各テナントは、ArgoCDを共有する。</p>
+<p>この場合、レプリカ数やCPU数を増やすことにより、並列処理数を増やす必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/issues/11116">https://github.com/argoproj/argo-cd/issues/11116</a></li>
+<li><a href="https://techblog.zozo.com/entry/measure-argocd-introduction">https://techblog.zozo.com/entry/measure-argocd-introduction</a></li>
+<li><a href="https://zenn.dev/hodagi/articles/2bc3fa10df186c">https://zenn.dev/hodagi/articles/2bc3fa10df186c</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cluster_2">仮想Cluster単位の場合<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h3>
+<p>単一Cluster内に仮想Cluster (例：vcluster) を構築し、これを単位としてArgoCDを作成する。</p>
+<p>各テナントは、ArgoCDを共有しない。</p>
+<blockquote>
+<ul>
+<li><a href="https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/">https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cluster_3">実Cluster単位の場合<a class="headerlink" href="#cluster_3" title="Permanent link">&para;</a></h3>
+<p>テナントごとに異なる実Clusterを作成し、これを単位としてArgoCDを作成する。</p>
+<p>各テナントは、ArgoCDを共有しない。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-06</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

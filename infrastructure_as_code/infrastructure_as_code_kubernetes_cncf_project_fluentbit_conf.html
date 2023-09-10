@@ -1,0 +1,5021 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="設定ファイル＠FluentBitの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】設定ファイル＠FluentBit - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fluentbit" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】設定ファイル＠FluentBit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_18">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            🌊 CNCFプロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ArgoCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CertManager
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_4" checked>
+        
+          <label class="md-nav__link" for="__nav_18_4" id="__nav_18_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ FluentBit/Fluentd
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ FluentBit/Fluentd
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FluentBit/Fluentd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_4_2" checked>
+        
+          <label class="md-nav__link" for="__nav_18_4_2" id="__nav_18_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ FluentBit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ FluentBit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_conf.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-service" class="md-nav__link">
+    01. SERVICEセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="01. SERVICEセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    SERVICEとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    実行ログの確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-input" class="md-nav__link">
+    02. INPUT
+  </a>
+  
+    <nav class="md-nav" aria-label="02. INPUT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    INPUTとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dummy" class="md-nav__link">
+    dummyプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="dummyプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dummy_1" class="md-nav__link">
+    ▼ dummyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward" class="md-nav__link">
+    forwardプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="forwardプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward_1" class="md-nav__link">
+    ▼ forwardプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    tailプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="tailプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tail_1" class="md-nav__link">
+    ▼ tailプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-parser" class="md-nav__link">
+    03. PARSER
+  </a>
+  
+    <nav class="md-nav" aria-label="03. PARSER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parser" class="md-nav__link">
+    PARSERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cri" class="md-nav__link">
+    独自criプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="独自criプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cri_1" class="md-nav__link">
+    ▼ 独自criプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-filter" class="md-nav__link">
+    04. FILTER
+  </a>
+  
+    <nav class="md-nav" aria-label="04. FILTER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    FILTERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    grepプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="grepプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grep_1" class="md-nav__link">
+    ▼ grepプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify" class="md-nav__link">
+    modify
+  </a>
+  
+    <nav class="md-nav" aria-label="modify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify_1" class="md-nav__link">
+    ▼ modifyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify_2" class="md-nav__link">
+    modifyプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="modifyプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify_3" class="md-nav__link">
+    ▼ modifyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline" class="md-nav__link">
+    multilineプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="multilineプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiline_1" class="md-nav__link">
+    ▼ multilineプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline_parser" class="md-nav__link">
+    ▼ MULTILINE_PARSER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parser_1" class="md-nav__link">
+    parserプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="parserプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parser_2" class="md-nav__link">
+    ▼ parserプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ バリデーション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout" class="md-nav__link">
+    stdoutプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stdoutプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdout_1" class="md-nav__link">
+    ▼ stdoutプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-stream_task" class="md-nav__link">
+    05. STREAM_TASK
+  </a>
+  
+    <nav class="md-nav" aria-label="05. STREAM_TASK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stream_task" class="md-nav__link">
+    STREAM_TASKとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQLステートメント
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLステートメント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    ▼ SQLステートメントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-stream" class="md-nav__link">
+    ▼ CREATE STREAM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    ▼ SELECT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-buffer" class="md-nav__link">
+    06. BUFFER
+  </a>
+  
+    <nav class="md-nav" aria-label="06. BUFFER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buffer" class="md-nav__link">
+    BUFFERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service_1" class="md-nav__link">
+    SERVICEから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input_1" class="md-nav__link">
+    INPUTから
+  </a>
+  
+    <nav class="md-nav" aria-label="INPUTから">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storagetype" class="md-nav__link">
+    ▼ storage.type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    OUTPUTから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-routingoutput" class="md-nav__link">
+    07. ROUTING、OUTPUT
+  </a>
+  
+    <nav class="md-nav" aria-label="07. ROUTING、OUTPUT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routingoutput" class="md-nav__link">
+    ROUTING、OUTPUTとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS全部入り
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS全部入り">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    ▼ AWS全部入り
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_log-cloudwatch" class="md-nav__link">
+    cloudwatch_logプラグイン (新cloudwatchプラグイン)
+  </a>
+  
+    <nav class="md-nav" aria-label="cloudwatch_logプラグイン (新cloudwatchプラグイン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_log" class="md-nav__link">
+    ▼ cloudwatch_logプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datadog" class="md-nav__link">
+    datadogプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="datadogプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datadog_1" class="md-nav__link">
+    ▼ datadogプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_firehose" class="md-nav__link">
+    kinesis_firehoseプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="kinesis_firehoseプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_firehose_1" class="md-nav__link">
+    ▼ kinesis_firehoseプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_streams" class="md-nav__link">
+    kinesis_streamsプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="kinesis_streamsプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_streams_1" class="md-nav__link">
+    ▼ kinesis_streamsプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newrelic" class="md-nav__link">
+    newRelicプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="newRelicプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newrelic_1" class="md-nav__link">
+    ▼ newRelicプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackdriver" class="md-nav__link">
+    stackdriverプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stackdriverプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stackdriver_1" class="md-nav__link">
+    ▼ stackdriverプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout_2" class="md-nav__link">
+    stdoutプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stdoutプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdout_3" class="md-nav__link">
+    ▼ stdoutプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    nullプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="nullプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#null_1" class="md-nav__link">
+    ▼ nullプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Grafana
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kyverno
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Jaeger
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kiali
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ OpenPolicyAgent
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Prometheus
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ VCluster
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-service" class="md-nav__link">
+    01. SERVICEセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="01. SERVICEセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    SERVICEとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    実行ログの確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-input" class="md-nav__link">
+    02. INPUT
+  </a>
+  
+    <nav class="md-nav" aria-label="02. INPUT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input" class="md-nav__link">
+    INPUTとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dummy" class="md-nav__link">
+    dummyプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="dummyプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dummy_1" class="md-nav__link">
+    ▼ dummyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward" class="md-nav__link">
+    forwardプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="forwardプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward_1" class="md-nav__link">
+    ▼ forwardプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tail" class="md-nav__link">
+    tailプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="tailプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tail_1" class="md-nav__link">
+    ▼ tailプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-parser" class="md-nav__link">
+    03. PARSER
+  </a>
+  
+    <nav class="md-nav" aria-label="03. PARSER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parser" class="md-nav__link">
+    PARSERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cri" class="md-nav__link">
+    独自criプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="独自criプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cri_1" class="md-nav__link">
+    ▼ 独自criプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-filter" class="md-nav__link">
+    04. FILTER
+  </a>
+  
+    <nav class="md-nav" aria-label="04. FILTER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    FILTERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    grepプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="grepプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grep_1" class="md-nav__link">
+    ▼ grepプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify" class="md-nav__link">
+    modify
+  </a>
+  
+    <nav class="md-nav" aria-label="modify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify_1" class="md-nav__link">
+    ▼ modifyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modify_2" class="md-nav__link">
+    modifyプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="modifyプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modify_3" class="md-nav__link">
+    ▼ modifyプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline" class="md-nav__link">
+    multilineプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="multilineプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiline_1" class="md-nav__link">
+    ▼ multilineプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiline_parser" class="md-nav__link">
+    ▼ MULTILINE_PARSER
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parser_1" class="md-nav__link">
+    parserプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="parserプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parser_2" class="md-nav__link">
+    ▼ parserプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ バリデーション
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout" class="md-nav__link">
+    stdoutプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stdoutプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdout_1" class="md-nav__link">
+    ▼ stdoutプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-stream_task" class="md-nav__link">
+    05. STREAM_TASK
+  </a>
+  
+    <nav class="md-nav" aria-label="05. STREAM_TASK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stream_task" class="md-nav__link">
+    STREAM_TASKとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    SQLステートメント
+  </a>
+  
+    <nav class="md-nav" aria-label="SQLステートメント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    ▼ SQLステートメントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-stream" class="md-nav__link">
+    ▼ CREATE STREAM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    ▼ SELECT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-buffer" class="md-nav__link">
+    06. BUFFER
+  </a>
+  
+    <nav class="md-nav" aria-label="06. BUFFER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buffer" class="md-nav__link">
+    BUFFERとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service_1" class="md-nav__link">
+    SERVICEから
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input_1" class="md-nav__link">
+    INPUTから
+  </a>
+  
+    <nav class="md-nav" aria-label="INPUTから">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storagetype" class="md-nav__link">
+    ▼ storage.type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    OUTPUTから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-routingoutput" class="md-nav__link">
+    07. ROUTING、OUTPUT
+  </a>
+  
+    <nav class="md-nav" aria-label="07. ROUTING、OUTPUT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#routingoutput" class="md-nav__link">
+    ROUTING、OUTPUTとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ビルトインのプラグイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS全部入り
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS全部入り">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    ▼ AWS全部入り
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_log-cloudwatch" class="md-nav__link">
+    cloudwatch_logプラグイン (新cloudwatchプラグイン)
+  </a>
+  
+    <nav class="md-nav" aria-label="cloudwatch_logプラグイン (新cloudwatchプラグイン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch_log" class="md-nav__link">
+    ▼ cloudwatch_logプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datadog" class="md-nav__link">
+    datadogプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="datadogプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datadog_1" class="md-nav__link">
+    ▼ datadogプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_firehose" class="md-nav__link">
+    kinesis_firehoseプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="kinesis_firehoseプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_firehose_1" class="md-nav__link">
+    ▼ kinesis_firehoseプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_streams" class="md-nav__link">
+    kinesis_streamsプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="kinesis_streamsプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kinesis_streams_1" class="md-nav__link">
+    ▼ kinesis_streamsプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newrelic" class="md-nav__link">
+    newRelicプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="newRelicプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#newrelic_1" class="md-nav__link">
+    ▼ newRelicプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stackdriver" class="md-nav__link">
+    stackdriverプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stackdriverプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stackdriver_1" class="md-nav__link">
+    ▼ stackdriverプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdout_2" class="md-nav__link">
+    stdoutプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="stdoutプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdout_3" class="md-nav__link">
+    ▼ stdoutプラグインとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#null" class="md-nav__link">
+    nullプラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="nullプラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#null_1" class="md-nav__link">
+    ▼ nullプラグインとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ コマンド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="fluentbit">設定ファイル＠FluentBit<a class="headerlink" href="#fluentbit" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-service">01. SERVICEセクション<a class="headerlink" href="#01-service" title="Permanent link">&para;</a></h2>
+<h3 id="service">SERVICEとは<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
+<p>パイプライン全体の設定やファイルの読み出しを設定する。</p>
+<p>各設定の頭文字は大文字とする。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section">https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>フラッシュについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/47735850/what-exactly-is-flushing">https://stackoverflow.com/questions/47735850/what-exactly-is-flushing</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
+<span class="w">    </span><span class="c1"># バッファに蓄えられた全てのログを宛先にアウトプットする間隔</span>
+<span class="w">    </span>Flush<span class="w"> </span><span class="m">1</span>
+<span class="w">    </span><span class="c1"># FluentBitのプロセスを終了する待機時間</span>
+<span class="w">    </span>Grace<span class="w"> </span><span class="m">30</span>
+<span class="w">    </span><span class="c1"># FluentBit自体のログレベル</span>
+<span class="w">    </span>Log_Level<span class="w"> </span>info
+<span class="w">    </span><span class="c1"># 読み込まれるParsers Multilineファイルの名前</span>
+<span class="w">    </span>Parsers_File<span class="w"> </span>parsers_multiline.conf
+<span class="w">    </span><span class="c1"># 読み込まれるStream Processorファイルの名前</span>
+<span class="w">    </span>Streams_File<span class="w"> </span>stream_processor.conf
+<span class="w">    </span><span class="c1"># 監視ツール (Prometheys) で監視する場合は、有効化する</span>
+<span class="w">    </span>Http_Server<span class="w"> </span>On
+</code></pre></div>
+<p><br></p>
+<h3 id="_2">実行ログの確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Log_Level値でFluentBitのログレベルを制御できる。</p>
+<p><code>debug</code>を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。</p>
+<p><strong>＊実行ログ例＊</strong></p>
+<div class="highlight"><pre><span></span><code>Fluent<span class="w"> </span>Bit<span class="w"> </span>v1.8.6
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2015</span>-2018<span class="w"> </span>Treasure<span class="w"> </span>Data
+*<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>CNCF<span class="w"> </span>sub-project<span class="w"> </span>under<span class="w"> </span>the<span class="w"> </span>umbrella<span class="w"> </span>of<span class="w"> </span>Fluentd
+*<span class="w"> </span>https://fluentbit.io
+
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span>Configuration:
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>flush<span class="w"> </span><span class="nb">time</span><span class="w">     </span><span class="p">|</span><span class="w"> </span><span class="m">1</span>.000000<span class="w"> </span>seconds
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>grace<span class="w">          </span><span class="p">|</span><span class="w"> </span><span class="m">30</span><span class="w"> </span>seconds
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>daemon<span class="w">         </span><span class="p">|</span><span class="w"> </span><span class="m">0</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span>___________
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>inputs:
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">      </span>forward
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span>___________
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>filters:
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">      </span>stdout.0
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span>___________
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>outputs:
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">      </span>null.0
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span>___________
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w">  </span>collectors:
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>started<span class="w"> </span><span class="o">(</span><span class="nv">pid</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>coroutine<span class="w"> </span>stack<span class="w"> </span>size:<span class="w"> </span><span class="m">24576</span><span class="w"> </span>bytes<span class="w"> </span><span class="o">(</span><span class="m">24</span>.0K<span class="o">)</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="o">[</span>cio<span class="w"> </span>stream<span class="o">]</span><span class="w"> </span>new<span class="w"> </span>stream<span class="w"> </span>registered:<span class="w"> </span>forward.0
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">1</span>.1.1,<span class="w"> </span>initializing...
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="k">in</span>-memory
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span>normal<span class="w"> </span>synchronization<span class="w"> </span>mode,<span class="w"> </span>checksum<span class="w"> </span>disabled,<span class="w"> </span><span class="nv">max_chunks_up</span><span class="o">=</span><span class="m">128</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>cmetrics<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">0</span>.2.1
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>in_fw<span class="o">]</span><span class="w"> </span><span class="nv">Listen</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="w"> </span><span class="nv">TCP_Port</span><span class="o">=</span><span class="m">24224</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>input:forward:forward.0<span class="o">]</span><span class="w"> </span>listening<span class="w"> </span>on<span class="w"> </span><span class="m">0</span>.0.0.0:24224
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>null:null.0<span class="o">]</span><span class="w"> </span>created<span class="w"> </span>event<span class="w"> </span>channels:<span class="w"> </span><span class="nv">read</span><span class="o">=</span><span class="m">21</span><span class="w"> </span><span class="nv">write</span><span class="o">=</span><span class="m">22</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span>debug<span class="o">]</span><span class="w"> </span><span class="o">[</span>router<span class="o">]</span><span class="w"> </span>match<span class="w"> </span>rule<span class="w"> </span>forward.0:null.0
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>sp<span class="o">]</span><span class="w"> </span>stream<span class="w"> </span>processor<span class="w"> </span>started
+</code></pre></div>
+<p><br></p>
+<h2 id="02-input">02. INPUT<a class="headerlink" href="#02-input" title="Permanent link">&para;</a></h2>
+<h3 id="input">INPUTとは<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
+<p>ログのパイプラインへのインプット方法を設定する。</p>
+<p><img alt="fluent-bit_input" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/input">https://docs.fluentbit.io/manual/concepts/data-pipeline/input</a></li>
+</ul>
+</blockquote>
+<p>プラグインを使用して、ログのインプット方法を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/inputs">https://docs.fluentbit.io/manual/pipeline/inputs</a></li>
+</ul>
+</blockquote>
+<p>コマンドの<code>-i</code>オプションでINPUT名を指定し、実行もできる。</p>
+<div class="highlight"><pre><span></span><code>Inputs
+<span class="w">  </span>cpu<span class="w">                     </span>CPU<span class="w"> </span>Usage
+<span class="w">  </span>mem<span class="w">                     </span>Memory<span class="w"> </span>Usage
+<span class="w">  </span>thermal<span class="w">                 </span>Thermal
+<span class="w">  </span>kmsg<span class="w">                    </span>Kernel<span class="w"> </span>Log<span class="w"> </span>Buffer
+<span class="w">  </span>proc<span class="w">                    </span>Check<span class="w"> </span>Process<span class="w"> </span>health
+<span class="w">  </span>disk<span class="w">                    </span>Diskstats
+<span class="w">  </span>systemd<span class="w">                 </span>Systemd<span class="w"> </span><span class="o">(</span>Journal<span class="o">)</span><span class="w"> </span>reader
+<span class="w">  </span>netif<span class="w">                   </span>Network<span class="w"> </span>Interface<span class="w"> </span>Usage
+<span class="w">  </span>docker<span class="w">                  </span>Docker<span class="w"> </span>containers<span class="w"> </span>metrics
+<span class="w">  </span>docker_events<span class="w">           </span>Docker<span class="w"> </span>events
+<span class="w">  </span>node_exporter_metrics<span class="w">   </span>Node<span class="w"> </span>Exporter<span class="w"> </span>Metrics<span class="w"> </span><span class="o">(</span>Prometheus<span class="w"> </span>Compatible<span class="o">)</span>
+<span class="w">  </span>fluentbit_metrics<span class="w">       </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>internal<span class="w"> </span>metrics
+<span class="w">  </span>tail<span class="w">                    </span>Tail<span class="w"> </span>files
+<span class="w">  </span>dummy<span class="w">                   </span>Generate<span class="w"> </span>dummy<span class="w"> </span>data
+<span class="w">  </span>head<span class="w">                    </span>Head<span class="w"> </span>Input
+<span class="w">  </span>health<span class="w">                  </span>Check<span class="w"> </span>TCP<span class="w"> </span>server<span class="w"> </span>health
+<span class="w">  </span>http<span class="w">                    </span>HTTP
+<span class="w">  </span>collectd<span class="w">                </span>collectd<span class="w"> </span>input<span class="w"> </span>plugin
+<span class="w">  </span>statsd<span class="w">                  </span>StatsD<span class="w"> </span>input<span class="w"> </span>plugin
+<span class="w">  </span>serial<span class="w">                  </span>Serial<span class="w"> </span>input
+<span class="w">  </span>stdin<span class="w">                   </span>Standard<span class="w"> </span>Input
+<span class="w">  </span>syslog<span class="w">                  </span>Syslog
+<span class="w">  </span><span class="nb">exec</span><span class="w">                    </span>Exec<span class="w"> </span>Input
+<span class="w">  </span>tcp<span class="w">                     </span>TCP
+<span class="w">  </span>mqtt<span class="w">                    </span>MQTT,<span class="w"> </span>listen<span class="w"> </span><span class="k">for</span><span class="w"> </span>Publish<span class="w"> </span>messages
+<span class="w">  </span>forward<span class="w">                 </span>Fluentd<span class="w"> </span><span class="k">in</span>-forward
+<span class="w">  </span>random<span class="w">                  </span>Random
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">ビルトインのプラグイン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275">https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="dummy">dummyプラグイン<a class="headerlink" href="#dummy" title="Permanent link">&para;</a></h3>
+<h4 id="dummy_1">▼ dummyプラグインとは<a class="headerlink" href="#dummy_1" title="Permanent link">&para;</a></h4>
+<p>ダミーの構造化ログをパイプラインにインプットする。</p>
+<p>非構造化ログはインプットデータとして使用できない。</p>
+<p>開発環境でパイプラインの動作を確認するために役立つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/inputs/dummy">https://docs.fluentbit.io/manual/pipeline/inputs/dummy</a></li>
+<li><a href="https://docs.fluentbit.io/manual/local-testing/logging-pipeline">https://docs.fluentbit.io/manual/local-testing/logging-pipeline</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dummy&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h4 id="_4">▼ セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">   </span>dummy
+<span class="w">    </span><span class="c1"># ダミーJSON型データ</span>
+<span class="w">    </span>Dummy<span class="w">  </span><span class="o">{</span><span class="s2">&quot;message&quot;</span>:<span class="s2">&quot;dummy&quot;</span><span class="o">}</span>
+</code></pre></div>
+<h4 id="_5">▼ コマンド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/fluent-bit/bin/fluent-bit<span class="w"> </span>-i<span class="w"> </span>dummy<span class="w"> </span>-o<span class="w"> </span>stdout
+</code></pre></div>
+<p><br></p>
+<h3 id="forward">forwardプラグイン<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h3>
+<h4 id="forward_1">▼ forwardプラグインとは<a class="headerlink" href="#forward_1" title="Permanent link">&para;</a></h4>
+<p>受信したログを指定されたポートで受信し、パイプラインにインプットする。</p>
+<h4 id="_6">▼ セットアップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/inputs/forward">https://docs.fluentbit.io/manual/pipeline/inputs/forward</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>Name<span class="w">        </span>forward
+<span class="w">    </span>Listen<span class="w">      </span><span class="m">0</span>.0.0.0
+<span class="w">    </span><span class="c1"># プロセスの受信ポート</span>
+</code></pre></div>
+<p><strong>＊実行ログ例＊</strong></p>
+<div class="highlight"><pre><span></span><code>Fluent<span class="w"> </span>Bit<span class="w"> </span>v1.8.6
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2015</span>-2018<span class="w"> </span>Treasure<span class="w"> </span>Data
+*<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>CNCF<span class="w"> </span>sub-project<span class="w"> </span>under<span class="w"> </span>the<span class="w"> </span>umbrella<span class="w"> </span>of<span class="w"> </span>Fluentd
+*<span class="w"> </span>https://fluentbit.io
+
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>started<span class="w"> </span><span class="o">(</span><span class="nv">pid</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">1</span>.1.1,<span class="w"> </span>initializing...
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="k">in</span>-memory
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span>normal<span class="w"> </span>synchronization<span class="w"> </span>mode,<span class="w"> </span>checksum<span class="w"> </span>disabled,<span class="w"> </span><span class="nv">max_chunks_up</span><span class="o">=</span><span class="m">128</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>cmetrics<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">0</span>.2.1
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>input:forward:forward.0<span class="o">]</span><span class="w"> </span>listening<span class="w"> </span>on<span class="w"> </span><span class="m">0</span>.0.0.0:24224
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>sp<span class="o">]</span><span class="w"> </span>stream<span class="w"> </span>processor<span class="w"> </span>started
+</code></pre></div>
+<h4 id="_7">▼ コマンド<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/fluent-bit/bin/fluent-bit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>forward<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>stdout
+</code></pre></div>
+<p><br></p>
+<h3 id="tail">tailプラグイン<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
+<h4 id="tail_1">▼ tailプラグインとは<a class="headerlink" href="#tail_1" title="Permanent link">&para;</a></h4>
+<p>指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。</p>
+<p>あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、<code>Path</code>でこれを指定する。</p>
+<p><code>v1.8</code>を境にオプションが変わっていることに注意する。</p>
+<h4 id="_8">▼ セットアップ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/inputs/tail">https://docs.fluentbit.io/manual/pipeline/inputs/tail</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>Name<span class="w">              </span>tail
+<span class="w">    </span><span class="c1"># FluentBitコンテナ内のログファイルの場所。ワイルドカードを使用できる。</span>
+<span class="w">    </span>Path<span class="w">              </span>/var/www/foo/storage/logs/*.log
+<span class="w">    </span><span class="c1"># 使用するパーサー名</span>
+<span class="w">    </span>multiline.parser<span class="w">  </span>laravel-multiline-parser
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">log_router</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fluent-bit</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./docker/fluent-bit/Dockerfile</span>
+<span class="w">    </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># アプリケーションのログファイルのボリュームマウント</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./storage/logs:/var/www/foo/storage/logs</span>
+</code></pre></div>
+<h4 id="_9">▼ コマンド<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line">https://docs.fluentbit.io/manual/pipeline/inputs/tail#command-line</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fluent-bit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>tail<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="nv">path</span><span class="o">=</span>/var/www/foo/storage/logs/*.log<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>stdout
+</code></pre></div>
+<p><strong>＊実行ログ例＊</strong></p>
+<div class="highlight"><pre><span></span><code>*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2015</span>-2018<span class="w"> </span>Treasure<span class="w"> </span>Data
+*<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>CNCF<span class="w"> </span>sub-project<span class="w"> </span>under<span class="w"> </span>the<span class="w"> </span>umbrella<span class="w"> </span>of<span class="w"> </span>Fluentd
+*<span class="w"> </span>https://fluentbit.io
+
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>started<span class="w"> </span><span class="o">(</span><span class="nv">pid</span><span class="o">=</span><span class="m">1</span><span class="o">)</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">1</span>.1.1,<span class="w"> </span>initializing...
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="k">in</span>-memory
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span>normal<span class="w"> </span>synchronization<span class="w"> </span>mode,<span class="w"> </span>checksum<span class="w"> </span>disabled,<span class="w"> </span><span class="nv">max_chunks_up</span><span class="o">=</span><span class="m">128</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>cmetrics<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">0</span>.2.1
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>sp<span class="o">]</span><span class="w"> </span>stream<span class="w"> </span>processor<span class="w"> </span>started
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">12</span>:00:00<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>input:tail:tail.0<span class="o">]</span><span class="w"> </span>inotify_fs_add<span class="o">()</span>:<span class="w"> </span><span class="nv">inode</span><span class="o">=</span><span class="m">31621169</span><span class="w"> </span><span class="nv">watch_fd</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">name</span><span class="o">=</span>/var/www/foo/storage/logs/laravel.log
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>tail.0:<span class="w"> </span><span class="o">[</span><span class="m">1634640932</span>.010306200,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;log&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;[2021-01-01 12:00:00] local.INFO: メッセージ&quot;</span><span class="o">}]</span>
+<span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>tail.0:<span class="w"> </span><span class="o">[</span><span class="m">1634640932</span>.013139300,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;log&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;[2021-01-01 12:00:00] local.INFO: メッセージ&quot;</span><span class="o">}]</span>
+<span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>tail.0:<span class="w"> </span><span class="o">[</span><span class="m">1634640932</span>.013147300,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;log&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;[2021-01-01 12:00:00] local.INFO: メッセージ&quot;</span><span class="o">}]</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-parser">03. PARSER<a class="headerlink" href="#03-parser" title="Permanent link">&para;</a></h2>
+<h3 id="parser">PARSERとは<a class="headerlink" href="#parser" title="Permanent link">&para;</a></h3>
+<p>非構造化ログを構造化ログに変換する。</p>
+<p><img alt="fluent-bit_parser" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/parser">https://docs.fluentbit.io/manual/concepts/data-pipeline/parser</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cri">独自criプラグイン<a class="headerlink" href="#cri" title="Permanent link">&para;</a></h3>
+<h4 id="cri_1">▼ 独自criプラグインとは<a class="headerlink" href="#cri_1" title="Permanent link">&para;</a></h4>
+<p>執筆時点 (2023/04/04) では、公式がcriプラグインを提供していない。</p>
+<p>そこで、独自のcriプラグインを定義する。</p>
+<p>独自criプラグインでは、Containerdのテキスト形式ログにマッチできるような正規表現を設定する。</p>
+<p>Containerdのコンテナが作成する非構造化ログを構造化ログに変換する。</p>
+<h4 id="_10">▼ セットアップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p>PARSERセクションで、criプラグインを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>PARSER<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">        </span>cri
+<span class="w">    </span>Format<span class="w">      </span>regex
+<span class="w">    </span><span class="c1"># Containerdのテキスト形式ログにマッチできるような正規表現</span>
+<span class="w">    </span>Regex<span class="w">       </span>^<span class="o">(</span>?&lt;time&gt;<span class="o">[</span>^<span class="w"> </span><span class="o">]</span>+<span class="o">)</span><span class="w"> </span><span class="o">(</span>?&lt;stream&gt;stdout<span class="p">|</span>stderr<span class="o">)</span><span class="w"> </span><span class="o">(</span>?&lt;logtag&gt;<span class="o">[</span>^<span class="w"> </span><span class="o">]</span>*<span class="o">)</span><span class="w"> </span><span class="o">(</span>?&lt;message&gt;.*<span class="o">)</span>$
+<span class="w">    </span>Time_Key<span class="w">    </span><span class="nb">time</span>
+<span class="w">    </span>Time_Format<span class="w"> </span>%Y-%m-%dT%H:%M:%S.%L%z
+</code></pre></div>
+<p>INPUTセクションでcriプラグインを読み込む。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">            </span>tail
+<span class="w">    </span>Path<span class="w">            </span>/var/log/containers/*.log
+<span class="w">    </span>Parser<span class="w">          </span>cri
+<span class="w">    </span>Tag<span class="w">             </span>kube.*
+<span class="w">    </span>Mem_Buf_Limit<span class="w">   </span>5MB
+<span class="w">    </span>Skip_Long_Lines<span class="w"> </span>On
+</code></pre></div>
+<p>例えば、以下のような非構造化ログがあったとする。</p>
+<p>criプラグインは、<code>&lt;timeキー&gt; &lt;streamキー&gt; &lt;logtagキー&gt; &lt;messageキー&gt;</code>を認識する。</p>
+<div class="highlight"><pre><span></span><code>2021-12-17T08:03:23.918838346+09:00 stderr F 2021/12/17 08:03:23 [INFO] start worker processes
+</code></pre></div>
+<p>その場合、構造化されて以下のようなログとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2021-12-17T08:03:23.918838346+09:00&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;record&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;stream&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stderr&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;logtag&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2021/12/17</span><span class="nv"> </span><span class="s">08:03:23</span><span class="nv"> </span><span class="s">[INFO]</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">worker</span><span class="nv"> </span><span class="s">processes&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2021-12-17T08:03:23.918838346+09:00&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/installation/kubernetes#container-runtime-interface-cri-parser">https://docs.fluentbit.io/manual/installation/kubernetes#container-runtime-interface-cri-parser</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-filter">04. FILTER<a class="headerlink" href="#04-filter" title="Permanent link">&para;</a></h2>
+<h3 id="filter">FILTERとは<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
+<p>ログのキーや値を加工する。</p>
+<p><img alt="fluent-bit_filter" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/filter">https://docs.fluentbit.io/manual/concepts/data-pipeline/filter</a></li>
+<li><a href="https://docs.fluentbit.io/manual/concepts/key-concepts#filtering">https://docs.fluentbit.io/manual/concepts/key-concepts#filtering</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">ビルトインのプラグイン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275">https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="grep">grepプラグイン<a class="headerlink" href="#grep" title="Permanent link">&para;</a></h3>
+<h4 id="grep_1">▼ grepプラグインとは<a class="headerlink" href="#grep_1" title="Permanent link">&para;</a></h4>
+<p>ログが構造化ログの場合、条件にマッチしたログのみを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/grep">https://docs.fluentbit.io/manual/pipeline/filters/grep</a></li>
+</ul>
+</blockquote>
+<h4 id="_12">▼ セットアップ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span>name<span class="w">   </span>grep
+<span class="w">    </span>match<span class="w">  </span>*
+<span class="w">    </span>regex<span class="w">  </span>log<span class="w"> </span>foo
+</code></pre></div>
+<p><br></p>
+<h3 id="modify">modify<a class="headerlink" href="#modify" title="Permanent link">&para;</a></h3>
+<h4 id="modify_1">▼ modifyプラグインとは<a class="headerlink" href="#modify_1" title="Permanent link">&para;</a></h4>
+<p>ログが構造化ログの場合、ログの構造を変更する。</p>
+<h4 id="_13">▼ セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>変更前の構造化ログが以下だとする。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>memory:<span class="w"> </span><span class="o">[</span><span class="m">1488543156</span>,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;Mem.total&quot;</span><span class="o">=</span>&gt;1016044,<span class="w"> </span><span class="s2">&quot;Mem.used&quot;</span><span class="o">=</span>&gt;841388,<span class="w"> </span><span class="s2">&quot;Mem.free&quot;</span><span class="o">=</span>&gt;174656,<span class="w"> </span><span class="s2">&quot;Swap.total&quot;</span><span class="o">=</span>&gt;2064380,<span class="w"> </span><span class="s2">&quot;Swap.used&quot;</span><span class="o">=</span>&gt;139888,<span class="w"> </span><span class="s2">&quot;Swap.free&quot;</span><span class="o">=</span>&gt;1924492<span class="o">}]</span>
+...
+</code></pre></div>
+<p>FILTERセクションで、modifyプラグインを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>mem
+<span class="w">    </span>Tag<span class="w">  </span>mem.local
+
+<span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">  </span>stdout
+<span class="w">    </span>Match<span class="w"> </span>*
+
+<span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>modify
+<span class="w">    </span>Match<span class="w"> </span>*
+
+<span class="w">    </span><span class="c1"># キーとその値を構造化ログに追加する。</span>
+<span class="w">    </span>Add<span class="w"> </span>Service1<span class="w"> </span>SOMEVALUE
+<span class="w">    </span>Add<span class="w"> </span>Service3<span class="w"> </span>SOMEVALUE3
+<span class="w">    </span>Add<span class="w"> </span>Mem.total2<span class="w"> </span>TOTALMEM2
+<span class="w">    </span>Add<span class="w"> </span>Mem.total<span class="w"> </span>TOTALMEM
+
+<span class="w">    </span><span class="c1"># マッチしたキー名を変更する。</span>
+<span class="w">    </span>Rename<span class="w"> </span>Mem.free<span class="w"> </span>MEMFREE
+<span class="w">    </span>Rename<span class="w"> </span>Mem.used<span class="w"> </span>MEMUSED
+<span class="w">    </span>Rename<span class="w"> </span>Swap.total<span class="w"> </span>SWAPTOTAL
+</code></pre></div>
+<p>以下の構造化ログに変更される。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2018</span>/04/06<span class="w"> </span><span class="m">01</span>:35:13<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>started
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>mem.local:<span class="w"> </span><span class="o">[</span><span class="m">1522980610</span>.006892802,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;Mem.total&quot;</span><span class="o">=</span>&gt;4050908,<span class="w"> </span><span class="s2">&quot;MEMUSED&quot;</span><span class="o">=</span>&gt;738100,<span class="w"> </span><span class="s2">&quot;MEMFREE&quot;</span><span class="o">=</span>&gt;3312808,<span class="w"> </span><span class="s2">&quot;SWAPTOTAL&quot;</span><span class="o">=</span>&gt;1046524,<span class="w"> </span><span class="s2">&quot;Swap.used&quot;</span><span class="o">=</span>&gt;0,<span class="w"> </span><span class="s2">&quot;Swap.free&quot;</span><span class="o">=</span>&gt;1046524,<span class="w"> </span><span class="s2">&quot;Service1&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;SOMEVALUE&quot;</span>,<span class="w"> </span><span class="s2">&quot;Service3&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;SOMEVALUE3&quot;</span>,<span class="w"> </span><span class="s2">&quot;Mem.total2&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;TOTALMEM2&quot;</span><span class="o">}]</span>
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/modify#configuration-file">https://docs.fluentbit.io/manual/pipeline/filters/modify#configuration-file</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="modify_2">modifyプラグイン<a class="headerlink" href="#modify_2" title="Permanent link">&para;</a></h3>
+<h4 id="modify_3">▼ modifyプラグインとは<a class="headerlink" href="#modify_3" title="Permanent link">&para;</a></h4>
+<p>ログが構造化ログの場合、キーや値の追加/コピー/変更/削除を実行する。</p>
+<h4 id="_14">▼ セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">            </span>modify
+<span class="w">    </span>Match<span class="w">           </span>*
+<span class="w">    </span><span class="c1"># 追加するキーと値</span>
+<span class="w">    </span>Add<span class="w">             </span>filter_type<span class="w"> </span>modify
+<span class="w">    </span><span class="c1"># コピーするキーと値</span>
+<span class="w">    </span>Copy<span class="w">            </span>copied_key<span class="w"> </span>copied_value
+<span class="w">    </span><span class="c1"># 変更するキーと値</span>
+<span class="w">    </span>Set<span class="w">             </span>updated_key<span class="w"> </span>updated_value
+<span class="w">    </span><span class="c1"># 削除するキー</span>
+<span class="w">    </span>Remove<span class="w">          </span>deleted_key
+<span class="w">    </span><span class="c1"># 削除対象キーの最初の文字 (前方一致) 。</span>
+<span class="w">    </span><span class="c1"># もしこれ以外の文字列で始まる場合は、削除の非対象とする。</span>
+<span class="w">    </span>Remove_wildcard<span class="w"> </span>ignored_key
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/modify">https://docs.fluentbit.io/manual/pipeline/filters/modify</a></li>
+<li><a href="https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251">https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="multiline">multilineプラグイン<a class="headerlink" href="#multiline" title="Permanent link">&para;</a></h3>
+<h4 id="multiline_1">▼ multilineプラグインとは<a class="headerlink" href="#multiline_1" title="Permanent link">&para;</a></h4>
+<p>マッチした複数行のログを結合する。</p>
+<p>結合ルールは、MULTILINE_PARSERの設定ファイルに定義し、これをSERVICEで読み込む必要がある。</p>
+<p>ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装を行い、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/roundrop@github/items/8989b7f29d70f618e503">https://qiita.com/roundrop@github/items/8989b7f29d70f618e503</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ セットアップ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
+<span class="w">    </span><span class="c1"># 読み込むファイル</span>
+<span class="w">    </span>Parsers_File<span class="w"> </span>parsers_multiline.conf
+
+<span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>name<span class="w">                  </span>multiline
+<span class="w">    </span><span class="c1"># マッチさせるログ</span>
+<span class="w">    </span>match<span class="w">                 </span>*
+<span class="w">    </span>multiline.key_content<span class="w"> </span>log
+<span class="w">    </span><span class="c1"># 使用するパーサー名</span>
+<span class="w">    </span>multiline.parser<span class="w">      </span>laravel
+</code></pre></div>
+<p>コマンドの<code>-f</code>オプションでFILTER名を指定し、実行もできる。</p>
+<div class="highlight"><pre><span></span><code>Filters
+<span class="w">  </span>alter_size<span class="w">              </span>Alter<span class="w"> </span>incoming<span class="w"> </span>chunk<span class="w"> </span>size
+<span class="w">  </span>aws<span class="w">                     </span>Add<span class="w"> </span>AWS<span class="w"> </span>Metadata
+<span class="w">  </span>checklist<span class="w">               </span>Check<span class="w"> </span>records<span class="w"> </span>and<span class="w"> </span>flag<span class="w"> </span>them
+<span class="w">  </span>record_modifier<span class="w">         </span>modify<span class="w"> </span>record
+<span class="w">  </span>throttle<span class="w">                </span>Throttle<span class="w"> </span>messages<span class="w"> </span>using<span class="w"> </span>sliding<span class="w"> </span>window<span class="w"> </span>algorithm
+<span class="w">  </span>kubernetes<span class="w">              </span>Filter<span class="w"> </span>to<span class="w"> </span>append<span class="w"> </span>Kubernetes<span class="w"> </span>metadata
+<span class="w">  </span>modify<span class="w">                  </span>modify<span class="w"> </span>records<span class="w"> </span>by<span class="w"> </span>applying<span class="w"> </span>rules
+<span class="w">  </span>multiline<span class="w">               </span>Concatenate<span class="w"> </span>multiline<span class="w"> </span>messages
+<span class="w">  </span>nest<span class="w">                    </span>nest<span class="w"> </span>events<span class="w"> </span>by<span class="w"> </span>specified<span class="w"> </span>field<span class="w"> </span>values
+<span class="w">  </span>parser<span class="w">                  </span>Parse<span class="w"> </span>events
+<span class="w">  </span>expect<span class="w">                  </span>Validate<span class="w"> </span>expected<span class="w"> </span>keys<span class="w"> </span>and<span class="w"> </span>values
+<span class="w">  </span>grep<span class="w">                    </span>grep<span class="w"> </span>events<span class="w"> </span>by<span class="w"> </span>specified<span class="w"> </span>field<span class="w"> </span>values
+<span class="w">  </span>rewrite_tag<span class="w">             </span>Rewrite<span class="w"> </span>records<span class="w"> </span>tags
+<span class="w">  </span>lua<span class="w">                     </span>Lua<span class="w"> </span>Scripting<span class="w"> </span>Filter
+<span class="w">  </span>stdout<span class="w">                  </span>Filter<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>STDOUT
+<span class="w">  </span>geoip2<span class="w">                  </span>add<span class="w"> </span>geoip<span class="w"> </span>information<span class="w"> </span>to<span class="w"> </span>records
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace">https://docs.fluentbit.io/manual/pipeline/filters/multiline-stacktrace</a></li>
+</ul>
+</blockquote>
+<h4 id="multiline_parser">▼ MULTILINE_PARSER<a class="headerlink" href="#multiline_parser" title="Permanent link">&para;</a></h4>
+<p>複数行のログを結合するためのルールを設定する。</p>
+<p>ここで定義したパーサー名を、multilineプラグインで指定する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Laravelのスタックトレースを結合する。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>MULTILINE_PARSER<span class="o">]</span>
+<span class="w">    </span><span class="c1"># パーサー名</span>
+<span class="w">    </span>name<span class="w">          </span>laravel
+<span class="w">    </span><span class="c1"># パーサータイプ</span>
+<span class="w">    </span><span class="nb">type</span><span class="w">          </span>regex
+<span class="w">    </span><span class="c1"># フラッシュ時間</span>
+<span class="w">    </span>flush_timeout<span class="w"> </span><span class="m">1000</span>
+
+<span class="w">    </span><span class="c1"># パーサールール。スタックトレースの文頭をstart_state、また以降に結合する文字列をcontで指定する。</span>
+<span class="w">    </span><span class="c1"># 開始地点</span>
+<span class="w">    </span><span class="c1"># [%Y-%m-%d %H:%M:%S] をスタックトレースの開始地点とする。</span>
+<span class="w">    </span>rule<span class="w">          </span><span class="s2">&quot;start_state&quot;</span><span class="w"> </span><span class="s2">&quot;/\[[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])\s+([01]?\d|2[0-3]):([0-5]\d):([0-5]\d)\].*/&quot;</span><span class="w"> </span><span class="s2">&quot;cont&quot;</span>
+
+<span class="w">    </span><span class="c1"># スタックトレース</span>
+<span class="w">    </span><span class="c1"># [stacktrace]、[previous exception]、#、行間、&quot;} 、で始まる文字列の場合に結合する。</span>
+<span class="w">    </span>rule<span class="w">          </span><span class="s2">&quot;cont&quot;</span><span class="w"> </span><span class="s2">&quot;/(\[(stacktrace|previous exception)\]|#|\n\n|&quot;</span><span class="se">\}</span><span class="o">)</span>.*/<span class="s2">&quot; &quot;</span>cont<span class="s2">&quot;</span>
+
+<span class="s2">    # アプリケーション独自仕様のログ</span>
+<span class="s2">    rule          &quot;</span>cont<span class="s2">&quot; &quot;</span>/・.*/<span class="s2">&quot; &quot;</span>cont<span class="s2">&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing">https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/multiline-parsing</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="parser_1">parserプラグイン<a class="headerlink" href="#parser_1" title="Permanent link">&para;</a></h3>
+<h4 id="parser_2">▼ parserプラグインとは<a class="headerlink" href="#parser_2" title="Permanent link">&para;</a></h4>
+<p>マッチしたログを解析し、正規表現の名前付きキャプチャ機能 (<code>?&lt;foo&gt;</code>) を使用して新しいキーに文字列を抽出する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/parser">https://docs.fluentbit.io/manual/pipeline/filters/parser</a></li>
+<li><a href="https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression">https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression</a></li>
+</ul>
+</blockquote>
+<p>FluentBitでの名前付きキャプチャについては、Fluentdのドキュメントを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentd.org/parser/regexp">https://docs.fluentd.org/parser/regexp</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ バリデーション<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>FluentBitは、内部的にはruby製関数を使用して正規表現を検証している。</p>
+<p>そのため、これを確認できるバリデーションツールを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="http://rubular.com/">http://rubular.com/</a></li>
+</ul>
+</blockquote>
+<p>代わりに、Fluentdの正規表現チェッカーでも良い。</p>
+<blockquote>
+<ul>
+<li><a href="http://fluentular.herokuapp.com/">http://fluentular.herokuapp.com/</a></li>
+</ul>
+</blockquote>
+<h4 id="_17">▼ セットアップ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/parser">https://docs.fluentbit.io/manual/pipeline/filters/parser</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="stdout">stdoutプラグイン<a class="headerlink" href="#stdout" title="Permanent link">&para;</a></h3>
+<h4 id="stdout_1">▼ stdoutプラグインとは<a class="headerlink" href="#stdout_1" title="Permanent link">&para;</a></h4>
+<p>マッチしたログを、OUTPUTを経ずにそのまま標準出力に出力する。</p>
+<p>FILTERまでのパイプラインが正しく動作しているかのデバッグとして役立つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/filters/standard-output">https://docs.fluentbit.io/manual/pipeline/filters/standard-output</a></li>
+</ul>
+</blockquote>
+<h4 id="_18">▼ セットアップ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>FILTER<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>Name<span class="w">  </span>stdout
+<span class="w">    </span>Match<span class="w"> </span>*
+</code></pre></div>
+<h4 id="_19">▼ コマンド<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/fluent-bit/bin/fluent-bit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>&lt;インプット名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-F<span class="w"> </span>stdout<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>null
+</code></pre></div>
+<p><strong>＊実行ログ例＊</strong></p>
+<div class="highlight"><pre><span></span><code>Fluent<span class="w"> </span>Bit<span class="w"> </span>v1.8.6
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
+*<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2015</span>-2018<span class="w"> </span>Treasure<span class="w"> </span>Data
+*<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>CNCF<span class="w"> </span>sub-project<span class="w"> </span>under<span class="w"> </span>the<span class="w"> </span>umbrella<span class="w"> </span>of<span class="w"> </span>Fluentd
+*<span class="w"> </span>https://fluentbit.io
+
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>engine<span class="o">]</span><span class="w"> </span>started<span class="w"> </span><span class="o">(</span><span class="nv">pid</span><span class="o">=</span><span class="m">40</span><span class="o">)</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">1</span>.1.1,<span class="w"> </span>initializing...
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span><span class="k">in</span>-memory
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>storage<span class="o">]</span><span class="w"> </span>normal<span class="w"> </span>synchronization<span class="w"> </span>mode,<span class="w"> </span>checksum<span class="w"> </span>disabled,<span class="w"> </span><span class="nv">max_chunks_up</span><span class="o">=</span><span class="m">128</span>
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>cmetrics<span class="o">]</span><span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="m">0</span>.2.1
+<span class="o">[</span><span class="m">2021</span>/01/01<span class="w"> </span><span class="m">06</span>:18:52<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>info<span class="o">]</span><span class="w"> </span><span class="o">[</span>sp<span class="o">]</span><span class="w"> </span>stream<span class="w"> </span>processor<span class="w"> </span>started
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>cpu.0:<span class="w"> </span><span class="o">[</span><span class="m">1634710733</span>.114477665,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;cpu_p&quot;</span><span class="o">=</span>&gt;0.166667,<span class="w"> </span><span class="s2">&quot;user_p&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;system_p&quot;</span><span class="o">=</span>&gt;0.166667,<span class="w"> </span><span class="s2">&quot;cpu0.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_cpu&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_system&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_system&quot;</span><span class="o">=</span>&gt;0.000000<span class="o">}]</span>
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>cpu.0:<span class="w"> </span><span class="o">[</span><span class="m">1634710734</span>.115201385,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;cpu_p&quot;</span><span class="o">=</span>&gt;0.333333,<span class="w"> </span><span class="s2">&quot;user_p&quot;</span><span class="o">=</span>&gt;0.166667,<span class="w"> </span><span class="s2">&quot;system_p&quot;</span><span class="o">=</span>&gt;0.166667,<span class="w"> </span><span class="s2">&quot;cpu0.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_system&quot;</span><span class="o">=</span>&gt;0.000000<span class="o">}]</span>
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>cpu.0:<span class="w"> </span><span class="o">[</span><span class="m">1634710735</span>.114646610,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;cpu_p&quot;</span><span class="o">=</span>&gt;1.500000,<span class="w"> </span><span class="s2">&quot;user_p&quot;</span><span class="o">=</span>&gt;0.666667,<span class="w"> </span><span class="s2">&quot;system_p&quot;</span><span class="o">=</span>&gt;0.833333,<span class="w"> </span><span class="s2">&quot;cpu0.p_cpu&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu0.p_system&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_cpu&quot;</span><span class="o">=</span>&gt;3.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_user&quot;</span><span class="o">=</span>&gt;2.000000,<span class="w"> </span><span class="s2">&quot;cpu1.p_system&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_cpu&quot;</span><span class="o">=</span>&gt;2.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_user&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu2.p_system&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_cpu&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu3.p_system&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_cpu&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_user&quot;</span><span class="o">=</span>&gt;0.000000,<span class="w"> </span><span class="s2">&quot;cpu4.p_system&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_cpu&quot;</span><span class="o">=</span>&gt;2.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_user&quot;</span><span class="o">=</span>&gt;1.000000,<span class="w"> </span><span class="s2">&quot;cpu5.p_system&quot;</span><span class="o">=</span>&gt;1.000000<span class="o">}]</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05-stream_task">05. STREAM_TASK<a class="headerlink" href="#05-stream_task" title="Permanent link">&para;</a></h2>
+<h3 id="stream_task">STREAM_TASKとは<a class="headerlink" href="#stream_task" title="Permanent link">&para;</a></h3>
+<p>現在のデータストリームからログを抽出し、新しいストリームを作成する。</p>
+<p>このストリームは、パイプラインのINPUTに再び取り込まれ、処理し直される。</p>
+<p>同時に、SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
+<span class="w">    </span>Streams_File<span class="w"> </span>stream_processor.conf
+</code></pre></div>
+<p><img alt="fluent-bit_stream-task" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor">https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="sql">SQLステートメント<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
+<h4 id="sql_1">▼ SQLステートメントとは<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h4>
+<p>STREAM_TASKセッションは、ユーザー定義のSQLステートメントで定義される。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/fluent/fluent-bit/tree/master/src/stream_processor">https://github.com/fluent/fluent-bit/tree/master/src/stream_processor</a></li>
+</ul>
+</blockquote>
+<h4 id="create-stream">▼ CREATE STREAM<a class="headerlink" href="#create-stream" title="Permanent link">&para;</a></h4>
+<p>SELECTステートメントの結果を使用して、データストリームを作成する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>STREAM_TASK<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>foo-stream-task
+<span class="w">    </span><span class="c1"># SELECT句の結果からfooデータストリームを作成する。</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>foo<span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;foo&#39;</span><span class="p">;</span>
+
+<span class="o">[</span>STREAM_TASK<span class="o">]</span>
+<span class="w">    </span>Name<span class="w"> </span>bar-stream-task
+<span class="w">    </span><span class="c1"># SELECT句の結果に、WITH句でbarタグを付与し、barデータストリームを作成する。</span>
+<span class="w">    </span>Exec<span class="w"> </span>CREATE<span class="w"> </span>STREAM<span class="w"> </span>bar<span class="w"> </span>WITH<span class="w"> </span><span class="o">(</span><span class="nv">tag</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="o">)</span><span class="w"> </span>AS<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement">https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#create-stream-statement</a></li>
+<li><a href="https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example">https://docs.fluentbit.io/manual/v/1.3/configuration/stream_processor#configuration-example</a></li>
+</ul>
+</blockquote>
+<h4 id="select">▼ SELECT<a class="headerlink" href="#select" title="Permanent link">&para;</a></h4>
+<p>マッチしたログから、指定したキーを抽出する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>タグが<code>*-bar-*</code> (ワイルドカード指定) であるログのうち、<code>container_name</code>キーの値が<code>qux</code>であるもののみをフィルタリングし、これの<code>log</code>キーを抽出する。</p>
+<div class="highlight"><pre><span></span><code>SELECT<span class="w"> </span>log<span class="w"> </span>FROM<span class="w"> </span>TAG:<span class="s1">&#39;*-foo-*&#39;</span><span class="w"> </span>WHERE<span class="w"> </span><span class="nv">container_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;qux&#39;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 本来、改行はないが、わかりやすいように改行している。</span>
+<span class="c1"># &lt;コンテナ名&gt;-foo-&lt;AWS ECSタスクID&gt;</span>
+<span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>foo-bar-baz:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;log&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;127.0.0.1 -  01/01/2022:0:00:00 +0000 &quot;</span>GET<span class="w"> </span>/index.php<span class="s2">&quot; 200&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;container_name&quot;</span><span class="o">=</span>&gt;<span class="s2">&quot;qux&quot;</span>,
+<span class="w">    </span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement">https://docs.fluentbit.io/manual/stream-processing/getting-started/fluent-bit-sql#select-statement</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-buffer">06. BUFFER<a class="headerlink" href="#06-buffer" title="Permanent link">&para;</a></h2>
+<h3 id="buffer">BUFFERとは<a class="headerlink" href="#buffer" title="Permanent link">&para;</a></h3>
+<p>ログを蓄え、またこれを順番にROUTINGに渡す。</p>
+<p><img alt="fluent-bit_buffer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer">https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer</a></li>
+<li><a href="https://docs.fluentbit.io/manual/administration/buffering-and-storage">https://docs.fluentbit.io/manual/administration/buffering-and-storage</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="service_1">SERVICEから<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="input_1">INPUTから<a class="headerlink" href="#input_1" title="Permanent link">&para;</a></h3>
+<h4 id="storagetype">▼ storage.type<a class="headerlink" href="#storagetype" title="Permanent link">&para;</a></h4>
+<p>バッファーとして使用する媒体を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>メモリ上でバッファリングを実行する。</p>
+<p>デフォルト値である。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration">https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
+<span class="w">    </span>flush<span class="w">         </span><span class="m">1</span>
+<span class="w">    </span>log_Level<span class="w">     </span>info
+
+<span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>name<span class="w">          </span>cpu
+<span class="w">    </span><span class="c1"># メモリ上でバッファリングが実行される (デフォルト値) 。</span>
+<span class="w">    </span>storage.type<span class="w">  </span>memory
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>ファイル上でバッファリングを実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration">https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
+<span class="w">    </span>flush<span class="w">         </span><span class="m">1</span>
+<span class="w">    </span>log_Level<span class="w">     </span>info
+<span class="w">    </span><span class="c1"># ファイルの場所</span>
+<span class="w">    </span>storage.path<span class="w">  </span>/var/log/fluent-bit/
+
+<span class="o">[</span>INPUT<span class="o">]</span>
+<span class="w">    </span>name<span class="w">          </span>cpu
+<span class="w">    </span><span class="c1"># ファイル上でバッファリングが実行される。</span>
+<span class="w">    </span>storage.type<span class="w">  </span>filesystem
+</code></pre></div>
+<p>指定した場所に<code>cpu.0</code>ディレクトリや<code>tail.0</code>ディレクトリが作成され、<code>.flb</code>ファイルとしてバッファリングが実行される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-ls<span class="w"> </span>/var/log/fluent-bit/cpu.0
+
+drwxr-xr-x.<span class="w">  </span><span class="m">2</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">     </span><span class="m">107</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:45<span class="w"> </span>.
+drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">     </span><span class="m">150</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:42<span class="w"> </span>..
+-rw-------.<span class="w">  </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">1492587</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:44<span class="w"> </span>*-*.*.flb
+-rw-------.<span class="w">  </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">819079</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:44<span class="w"> </span>*-*.*.flb
+-rw-------.<span class="w">  </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">    </span><span class="m">4096</span><span class="w">  </span>9月<span class="w"> </span><span class="m">13</span><span class="w"> </span><span class="m">20</span>:45<span class="w"> </span>*-*.*.flb
+...
+</code></pre></div>
+<p><br></p>
+<h3 id="output">OUTPUTから<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="07-routingoutput">07. ROUTING、OUTPUT<a class="headerlink" href="#07-routingoutput" title="Permanent link">&para;</a></h2>
+<h3 id="routingoutput">ROUTING、OUTPUTとは<a class="headerlink" href="#routingoutput" title="Permanent link">&para;</a></h3>
+<p>ログのアウトプット先を設定する。</p>
+<p>設定できるアウトプット先の種類については、以下のリンクを参考にせよ。</p>
+<p>コマンドの<code>-o</code>オプションでOUTPUT名を指定し、実行もできる。</p>
+<p><img alt="fluent-bit_output" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png" /></p>
+<div class="highlight"><pre><span></span><code>Outputs
+<span class="w">  </span>azure<span class="w">                   </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Azure<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
+<span class="w">  </span>azure_blob<span class="w">              </span>Azure<span class="w"> </span>Blob<span class="w"> </span>Storage
+<span class="w">  </span>bigquery<span class="w">                </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>BigQuery<span class="w"> </span>via<span class="w"> </span>streaming<span class="w"> </span>insert
+<span class="w">  </span>counter<span class="w">                 </span>Records<span class="w"> </span>counter
+<span class="w">  </span>datadog<span class="w">                 </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>DataDog<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
+<span class="w">  </span>es<span class="w">                      </span>Elasticsearch
+<span class="w">  </span><span class="nb">exit</span><span class="w">                    </span>Exit<span class="w"> </span>after<span class="w"> </span>a<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>flushes<span class="w"> </span><span class="o">(</span><span class="nb">test</span><span class="w"> </span>purposes<span class="o">)</span>
+<span class="w">  </span>file<span class="w">                    </span>Generate<span class="w"> </span>log<span class="w"> </span>file
+<span class="w">  </span>forward<span class="w">                 </span>Forward<span class="w"> </span><span class="o">(</span>Fluentd<span class="w"> </span>protocol<span class="o">)</span>
+<span class="w">  </span>http<span class="w">                    </span>HTTP<span class="w"> </span>Output
+<span class="w">  </span>influxdb<span class="w">                </span>InfluxDB<span class="w"> </span>Time<span class="w"> </span>Series
+<span class="w">  </span>logdna<span class="w">                  </span>LogDNA
+<span class="w">  </span>loki<span class="w">                    </span>Loki
+<span class="w">  </span>kafka<span class="w">                   </span>Kafka
+<span class="w">  </span>kafka-rest<span class="w">              </span>Kafka<span class="w"> </span>REST<span class="w"> </span>Proxy
+<span class="w">  </span>nats<span class="w">                    </span>NATS<span class="w"> </span>Server
+<span class="w">  </span>nrlogs<span class="w">                  </span>New<span class="w"> </span>Relic
+<span class="w">  </span>null<span class="w">                    </span>Throws<span class="w"> </span>away<span class="w"> </span>events
+<span class="w">  </span>plot<span class="w">                    </span>Generate<span class="w"> </span>data<span class="w"> </span>file<span class="w"> </span><span class="k">for</span><span class="w"> </span>GNU<span class="w"> </span>Plot
+<span class="w">  </span>slack<span class="w">                   </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>a<span class="w"> </span>Slack<span class="w"> </span>channel
+<span class="w">  </span>splunk<span class="w">                  </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Splunk<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
+<span class="w">  </span>stackdriver<span class="w">             </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Google<span class="w"> </span>Stackdriver<span class="w"> </span>Logging<span class="w"> </span><span class="c1"># 現在は、Google CloudLoggingに改名</span>
+<span class="w">  </span>stdout<span class="w">                  </span>Prints<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>STDOUT
+<span class="w">  </span>syslog<span class="w">                  </span>Syslog
+<span class="w">  </span>tcp<span class="w">                     </span>TCP<span class="w"> </span>Output
+<span class="w">  </span>td<span class="w">                      </span>Treasure<span class="w"> </span>Data
+<span class="w">  </span>flowcounter<span class="w">             </span>FlowCounter
+<span class="w">  </span>gelf<span class="w">                    </span>GELF<span class="w"> </span>Output
+<span class="w">  </span>websocket<span class="w">               </span>Websocket
+<span class="w">  </span>cloudwatch_logs<span class="w">         </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>CloudWatch
+<span class="w">  </span>kinesis_firehose<span class="w">        </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>Kinesis<span class="w"> </span>Firehose
+<span class="w">  </span>kinesis_streams<span class="w">         </span>Send<span class="w"> </span>logs<span class="w"> </span>to<span class="w"> </span>Amazon<span class="w"> </span>Kinesis<span class="w"> </span>Streams
+<span class="w">  </span>prometheus_exporter<span class="w">     </span>Prometheus<span class="w"> </span>Exporter
+<span class="w">  </span>prometheus_remote_write<span class="w"> </span>Prometheus<span class="w"> </span>remote<span class="w"> </span>write
+<span class="w">  </span>s3<span class="w">                      </span>Send<span class="w"> </span>to<span class="w"> </span>S3
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/output">https://docs.fluentbit.io/manual/concepts/data-pipeline/output</a></li>
+<li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/router">https://docs.fluentbit.io/manual/concepts/data-pipeline/router</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_20">ビルトインのプラグイン<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>デフォルトで組み込まれているビルトンのプラグインは、ソースコードから確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275">https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="aws">AWS全部入り<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h4 id="aws_1">▼ AWS全部入り<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
+<p>全てのAWS系プラグインを含んでいる</p>
+<h4 id="_21">▼ セットアップ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/aws-for-fluent-bit">https://github.com/aws/aws-for-fluent-bit</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cloudwatch_log-cloudwatch">cloudwatch_logプラグイン (新cloudwatchプラグイン)<a class="headerlink" href="#cloudwatch_log-cloudwatch" title="Permanent link">&para;</a></h3>
+<h4 id="cloudwatch_log">▼ cloudwatch_logプラグインとは<a class="headerlink" href="#cloudwatch_log" title="Permanent link">&para;</a></h4>
+<p>ログをCloudWatchログにルーティングする。</p>
+<p>元々、『cloudwatchプラグイン』という名前だった。</p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4">https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4</a></li>
+</ul>
+</blockquote>
+<h4 id="_22">▼ セットアップ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>cloudwatch_logsプラグインがプリインストールされているベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit</a></li>
+</ul>
+</blockquote>
+<p>設定ファイルに予約されたAWS変数については、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># CloudWatchログへのルーティング</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>Name<span class="w">              </span>cloudwatch_logs
+<span class="w">    </span><span class="c1"># ルーティング先のログのタグ</span>
+<span class="w">    </span>Match<span class="w">             </span>laravel
+<span class="w">    </span><span class="c1"># アウトプットJSONのうち、宛先にルーティングするキー名</span>
+<span class="w">    </span>log_key<span class="w">           </span>log
+<span class="w">    </span>region<span class="w">            </span>ap-northeast-1
+<span class="w">    </span><span class="c1"># 予約変数あり。</span>
+<span class="w">    </span>log_group_name<span class="w">    </span>/prd-foo-ecs-container/laravel/log
+<span class="w">    </span><span class="c1"># ログストリーム名。予約変数あり。AWS ECSタスクIDなどアウトプットできる。</span>
+<span class="w">    </span>log_stream_name<span class="w">   </span>container/laravel/<span class="k">$(</span>ecs_task_id<span class="k">)</span>
+<span class="w">    </span><span class="c1"># ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。</span>
+<span class="w">    </span>role_arn<span class="w">          </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/prd-foo-flunetbit-role
+
+<span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">              </span>cloudwatch_logs
+<span class="w">    </span>Match<span class="w">             </span>nginx
+<span class="w">    </span>log_key<span class="w">           </span>log
+<span class="w">    </span>region<span class="w">            </span>ap-northeast-1
+<span class="w">    </span>log_group_name<span class="w">    </span>/prd-foo-ecs-container/nginx/log
+<span class="w">    </span>log_stream_name<span class="w">   </span>container/nginx/<span class="k">$(</span>ecs_task_id<span class="k">)</span>
+<span class="w">    </span><span class="c1"># ログを特定のAWSアカウントで中央集権的に管理する場合に、IAMロールを設定する。</span>
+<span class="w">    </span>role_arn<span class="w">          </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/prd-foo-flunetbit-role
+</code></pre></div>
+<p>CloudWatchログに送信されるデータはJSON型である。</p>
+<p><code>log</code>キーにログが割り当てられている。</p>
+<p>特定のキーの値のみをCloudWatchログに送信する場合、log_keyオプションでキー名を設定する。</p>
+<p>例えば、<code>log</code>キーのみを送信する場合、『<code>log</code>』と設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;container_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;container_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;ecs_cluster&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo-ecs-cluster&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;ecs_task_arn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:ecs:ap-northeast-1:&lt;AWSアカウントID&gt;:task/cluster-name/*****&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;ecs_task_definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo-ecs-task-definition:1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;log&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;ログ&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;stdout&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;ver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.5&quot;</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html">https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="datadog">datadogプラグイン<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h3>
+<h4 id="datadog_1">▼ datadogプラグインとは<a class="headerlink" href="#datadog_1" title="Permanent link">&para;</a></h4>
+<p>ログをdatadogプラグインにルーティングする。</p>
+<h4 id="_23">▼ セットアップ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>全てのベースイメージにdatadogプラグインがプリインストールされているため、datadogプラグインのインストールは不要である。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Datadogへのルーティング</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span><span class="c1"># プラグイン名</span>
+<span class="w">    </span>Name<span class="w">              </span>datadog
+<span class="w">    </span><span class="c1"># ルーティング先のログのタグ</span>
+<span class="w">    </span>Match<span class="w">             </span>laravel
+<span class="w">    </span><span class="c1"># ルーティング先ホスト</span>
+<span class="w">    </span>Host<span class="w">              </span>http-intake.logs.datadoghq.com
+<span class="w">    </span>TLS<span class="w">               </span>on
+<span class="w">    </span>compress<span class="w">          </span>gzip
+<span class="w">    </span><span class="c1"># DatadogのAPIキー。</span>
+<span class="w">    </span>apikey<span class="w">            </span>*****
+<span class="w">    </span><span class="c1"># DatadogログエクスプローラーにおけるService名</span>
+<span class="w">    </span>dd_service<span class="w">        </span>prd-foo
+<span class="w">    </span><span class="c1"># DatadogログエクスプローラーにおけるSource名</span>
+<span class="w">    </span>dd_source<span class="w">         </span>prd-foo
+<span class="w">    </span>dd_message_key<span class="w">    </span>log
+<span class="w">    </span><span class="c1"># 追加タグ</span>
+<span class="w">    </span>dd_tags<span class="w">           </span>env:prd-foo
+
+<span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">              </span>datadog
+<span class="w">    </span>Match<span class="w">             </span>nginx
+<span class="w">    </span>Host<span class="w">              </span>http-intake.logs.datadoghq.com
+<span class="w">    </span>TLS<span class="w">               </span>on
+<span class="w">    </span>compress<span class="w">          </span>gzip
+<span class="w">    </span>apikey<span class="w">            </span>*****
+<span class="w">    </span>dd_service<span class="w">        </span>prd-foo
+<span class="w">    </span>dd_source<span class="w">         </span>prd-foo
+<span class="w">    </span>dd_message_key<span class="w">    </span>log
+<span class="w">    </span>dd_tags<span class="w">           </span>env:prd-foo
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/DataDog/fluent-plugin-datadog">https://github.com/DataDog/fluent-plugin-datadog</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kinesis_firehose">kinesis_firehoseプラグイン<a class="headerlink" href="#kinesis_firehose" title="Permanent link">&para;</a></h3>
+<h4 id="kinesis_firehose_1">▼ kinesis_firehoseプラグインとは<a class="headerlink" href="#kinesis_firehose_1" title="Permanent link">&para;</a></h4>
+<p>ログをKinesisFirehoseにルーティングする。</p>
+<p>kinesis_firehoseプラグインがプリインストールされているベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit">https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kinesis_streams">kinesis_streamsプラグイン<a class="headerlink" href="#kinesis_streams" title="Permanent link">&para;</a></h3>
+<h4 id="kinesis_streams_1">▼ kinesis_streamsプラグインとは<a class="headerlink" href="#kinesis_streams_1" title="Permanent link">&para;</a></h4>
+<p>ログをKinesisStreamsにルーティングする。</p>
+<p>kinesis_streamsプラグインがプリインストールされているベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-kinesis-streams-for-fluent-bit">https://github.com/aws/amazon-kinesis-streams-for-fluent-bit</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="newrelic">newRelicプラグイン<a class="headerlink" href="#newrelic" title="Permanent link">&para;</a></h3>
+<h4 id="newrelic_1">▼ newRelicプラグインとは<a class="headerlink" href="#newrelic_1" title="Permanent link">&para;</a></h4>
+<p>ログをNewRelicにルーティングする。</p>
+<h4 id="_24">▼ セットアップ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>newRelicプラグインがプリインストールされているベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/newrelic/newrelic-fluent-bit-output">https://github.com/newrelic/newrelic-fluent-bit-output</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="stackdriver">stackdriverプラグイン<a class="headerlink" href="#stackdriver" title="Permanent link">&para;</a></h3>
+<h4 id="stackdriver_1">▼ stackdriverプラグインとは<a class="headerlink" href="#stackdriver_1" title="Permanent link">&para;</a></h4>
+<p>ログをCloudLoggingにルーティングする。</p>
+<h4 id="_25">▼ セットアップ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>FluentBitはデフォルトでstackdriverプラグインを持つ。</p>
+<p>つまり、特に追加のセットアップなくCloudLoggingにログをルーティングできる。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">   </span>stackdriver
+<span class="w">    </span>match<span class="w">  </span>*
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/outputs/stackdriver">https://docs.fluentbit.io/manual/pipeline/outputs/stackdriver</a></li>
+<li><a href="https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin">https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="stdout_2">stdoutプラグイン<a class="headerlink" href="#stdout_2" title="Permanent link">&para;</a></h3>
+<h4 id="stdout_3">▼ stdoutプラグインとは<a class="headerlink" href="#stdout_3" title="Permanent link">&para;</a></h4>
+<p>標準出力にアウトプットする、FluentBitの実行ログに混じって、対象のログがアウトプットされることになる。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">   </span>stdout
+<span class="w">    </span>match<span class="w">  </span>*
+</code></pre></div>
+<p><br></p>
+<h3 id="null">nullプラグイン<a class="headerlink" href="#null" title="Permanent link">&para;</a></h3>
+<h4 id="null_1">▼ nullプラグインとは<a class="headerlink" href="#null_1" title="Permanent link">&para;</a></h4>
+<p>アウトプットを破棄する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
+<span class="w">    </span>Name<span class="w">   </span>null
+<span class="w">    </span>match<span class="w">  </span>*
+</code></pre></div>
+<h4 id="_26">▼ コマンド<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/fluent-bit/bin/fluent-bit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-i<span class="w"> </span>&lt;インプット名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-F<span class="w"> </span>stdout<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-m<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>null
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.fluentbit.io/manual/pipeline/outputs/null">https://docs.fluentbit.io/manual/pipeline/outputs/null</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-28</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

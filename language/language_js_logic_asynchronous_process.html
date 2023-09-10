@@ -1,0 +1,3489 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_logic_asynchronous_process.html">
+      
+      
+        <link rel="prev" href="language_js_logic_validation.html">
+      
+      
+        <link rel="next" href="language_js_logic_debug.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】非同期処理ロジック＠JavaScript - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#javascript" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】非同期処理ロジック＠JavaScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ JavaScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロトタイプベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_2" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6_2" id="__nav_8_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ロジック
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_js_logic_validation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    検証ロジック
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    非同期処理ロジック
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_js_logic_asynchronous_process.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    非同期処理ロジック
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 非同期処理
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 非同期処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    非同期処理
+  </a>
+  
+    <nav class="md-nav" aria-label="非同期処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 非同期処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 非同期処理化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+    <nav class="md-nav" aria-label="Promiseオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_1" class="md-nav__link">
+    ▼ Promiseオブジェクトとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise_2" class="md-nav__link">
+    ▼ Promiseオブジェクトの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-javascript" class="md-nav__link">
+    02. ネイティブなJavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ネイティブなJavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_3" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolvereject" class="md-nav__link">
+    resolveメソッド、rejectメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="resolveメソッド、rejectメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コンストラクタを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ コンストラクタを使用しない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thencatchfinally" class="md-nav__link">
+    thenメソッド、catchメソッド、finallyメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="thenメソッド、catchメソッド、finallyメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コンストラクタを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-asyncawait" class="md-nav__link">
+    02-02. async/await宣言
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. async/await宣言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    async宣言
+  </a>
+  
+    <nav class="md-nav" aria-label="async宣言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async_1" class="md-nav__link">
+    ▼ async宣言とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#await" class="md-nav__link">
+    await宣言とは
+  </a>
+  
+    <nav class="md-nav" aria-label="await宣言とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#await_1" class="md-nav__link">
+    ▼ await宣言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    エラーハンドリング
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-catch" class="md-nav__link">
+    ▼ try-catch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    スリープ
+  </a>
+  
+    <nav class="md-nav" aria-label="スリープ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settimeout" class="md-nav__link">
+    ▼ setTimeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-jquery" class="md-nav__link">
+    03. JQuery
+  </a>
+  
+    <nav class="md-nav" aria-label="03. JQuery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_4" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+    <nav class="md-nav" aria-label="Promiseオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#donefailalways" class="md-nav__link">
+    ▼ doneメソッド、failメソッド、alwaysメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#then" class="md-nav__link">
+    ▼ thenメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_js_logic_debug.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    デバッグ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_framework_vuejs.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_browser_rendering.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ブラウザ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 非同期処理
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 非同期処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    非同期処理
+  </a>
+  
+    <nav class="md-nav" aria-label="非同期処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 非同期処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 非同期処理化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+    <nav class="md-nav" aria-label="Promiseオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_1" class="md-nav__link">
+    ▼ Promiseオブジェクトとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise_2" class="md-nav__link">
+    ▼ Promiseオブジェクトの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-javascript" class="md-nav__link">
+    02. ネイティブなJavaScript
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ネイティブなJavaScript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_3" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolvereject" class="md-nav__link">
+    resolveメソッド、rejectメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="resolveメソッド、rejectメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コンストラクタを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ コンストラクタを使用しない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thencatchfinally" class="md-nav__link">
+    thenメソッド、catchメソッド、finallyメソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="thenメソッド、catchメソッド、finallyメソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コンストラクタを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-asyncawait" class="md-nav__link">
+    02-02. async/await宣言
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. async/await宣言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async" class="md-nav__link">
+    async宣言
+  </a>
+  
+    <nav class="md-nav" aria-label="async宣言">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#async_1" class="md-nav__link">
+    ▼ async宣言とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#await" class="md-nav__link">
+    await宣言とは
+  </a>
+  
+    <nav class="md-nav" aria-label="await宣言とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#await_1" class="md-nav__link">
+    ▼ await宣言
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    エラーハンドリング
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-catch" class="md-nav__link">
+    ▼ try-catch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    スリープ
+  </a>
+  
+    <nav class="md-nav" aria-label="スリープ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#settimeout" class="md-nav__link">
+    ▼ setTimeout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-jquery" class="md-nav__link">
+    03. JQuery
+  </a>
+  
+    <nav class="md-nav" aria-label="03. JQuery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_4" class="md-nav__link">
+    Promiseオブジェクト
+  </a>
+  
+    <nav class="md-nav" aria-label="Promiseオブジェクト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#donefailalways" class="md-nav__link">
+    ▼ doneメソッド、failメソッド、alwaysメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#then" class="md-nav__link">
+    ▼ thenメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="javascript">非同期処理ロジック＠JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. 非同期処理<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">非同期処理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 非同期処理とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_process_mode.html">https://hiroki-it.github.io/tech-notebook/language/language_process_mode.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 非同期処理化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>処理の実行を部分的に遅らせると、後続する処理が先に実行される。</p>
+<p>これは非同期処理である。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>非同期化する処理を<code>setTimeout</code>関数に渡し、処理を遅らせる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">asyncMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 1秒だけ実行を遅らせる</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">asyncMethod</span><span class="p">();</span>
+
+<span class="c1">// 先にbarが実行される</span>
+<span class="c1">// bar</span>
+<span class="c1">// foo</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="promise">Promiseオブジェクト<a class="headerlink" href="#promise" title="Permanent link">&para;</a></h3>
+<h4 id="promise_1">▼ Promiseオブジェクトとは<a class="headerlink" href="#promise_1" title="Permanent link">&para;</a></h4>
+<p>JavaScriptで、非同期処理の成否を管理し、後続する処理を定義できるオブジェクトのこと。</p>
+<p>Promiseオブジェクトの実装の仕様は取り決められており、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://promisesaplus.com/">https://promisesaplus.com/</a></li>
+</ul>
+</blockquote>
+<h4 id="promise_2">▼ Promiseオブジェクトの種類<a class="headerlink" href="#promise_2" title="Permanent link">&para;</a></h4>
+<p>ネイティブなJavaScriptのPromiseオブジェクト、JQueryのPromiseオブジェクト、がある。</p>
+<p>ネイティブの方が、Promiseオブジェクトの仕様により則った機能を持つ。</p>
+<table>
+<thead>
+<tr>
+<th>リリース日</th>
+<th>提供</th>
+<th>種類</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2012</td>
+<td>JQueryパッケージのDeferredモジュール</td>
+<td>Promiseオブジェクト</td>
+<td>バージョン1.5でPromiseオブジェクトが導入された。<br>- <a href="https://api.jquery.com/category/version/1.5/">https://api.jquery.com/category/version/1.5/</a></td>
+<td>- <a href="https://api.jquery.com/category/deferred-object/">https://api.jquery.com/category/deferred-object/</a></td>
+</tr>
+<tr>
+<td>2015</td>
+<td>ビルトインオブジェクト</td>
+<td>Promiseオブジェクト</td>
+<td>JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。</td>
+<td>- <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></td>
+</tr>
+<tr>
+<td>2017</td>
+<td>ビルトインオブジェクト</td>
+<td>async/await宣言</td>
+<td>ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。</td>
+<td>- <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred">https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-javascript">02. ネイティブなJavaScript<a class="headerlink" href="#02-javascript" title="Permanent link">&para;</a></h2>
+<h3 id="promise_3">Promiseオブジェクト<a class="headerlink" href="#promise_3" title="Permanent link">&para;</a></h3>
+<p>Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 非同期処理を持つ関数を渡す</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 関数内の非同期処理の成否が管理される</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="resolvereject"><code>resolve</code>メソッド、<code>reject</code>メソッド<a class="headerlink" href="#resolvereject" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ コンストラクタを使用する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Promiseオブジェクトのコンストラクタ内では、暗黙的に<code>try-catch</code>が実行されている。</p>
+<p>そのため、結果のステータスが成功であれば<code>resolve</code>メソッドの結果を返却し、反対に失敗であれば<code>reject</code>メソッドを返却する。</p>
+<p>両方を実装すると良しなに実行してくれる。</p>
+<p><code>resolve</code>メソッドと<code>resolve</code>メソッドのコール時に<code>return</code>を使用しないと、後続する処理も実行される。</p>
+<p>1つ目の書き方として、Promiseインスタンスのコールバック関数に渡す方法がある。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ステータスが成功の場合に選択される。</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+
+<span class="w">    </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span>
+<span class="c1">// 後続する処理も実行され、resolveメソッドの結果が返却される。</span>
+<span class="c1">// test</span>
+<span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
+</code></pre></div>
+<p>一方で、<code>resolve</code>メソッドと<code>resolve</code>メソッドのコール時に<code>return</code>を使用すると、後続する処理は実行されない。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span>
+<span class="c1">// 後続する処理も実行されない。</span>
+<span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
+</code></pre></div>
+<h4 id="_6">▼ コンストラクタを使用しない場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>別の書き方として、Promiseオブジェクトから直接的に<code>resolve</code>メソッドや<code>reject</code>メソッドをコールしても良い。</p>
+<p>この場合、必ず<code>return</code>で返却する必要がある。</p>
+<p><code>return</code>を使用しないと、何も返却されない。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ステータスが成功の場合に選択される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="p">};</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ステータスが失敗の場合に選択される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;FAILED&quot; }</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">asyncFunc</span><span class="p">()</span>
+<span class="w">  </span><span class="c1">// 失敗時に返却されたrejectをハンドリング</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// rejectメソッドを実行</span>
+<span class="w">    </span><span class="nx">reject</span><span class="p">;</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// resolveメソッドを実行</span>
+<span class="w">    </span><span class="nx">resolve</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &#39;SUCCESS&#39; }</span>
+</code></pre></div>
+<p>非同期処理内で両方をコールするとエラーになってしまう。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">reject</span><span class="p">(</span><span class="s2">&quot;FAILED&quot;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// エラーになってしまう</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">UnhandledPromiseRejectionWarning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FAILED</span>
+<span class="l l-Scalar l-Scalar-Plain">(Use `node --trace-warnings ...` to show where the warning was created)</span>
+<span class="nt">UnhandledPromiseRejectionWarning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1)</span>
+<span class="p p-Indicator">[</span><span class="nv">DEP0018</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="nt">DeprecationWarning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.</span>
+</code></pre></div>
+<p>補足として、NodeのHTTPパッケージの関数は、Promiseインスタンスのコールバック関数として使用しないと、正しく挙動しない。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times">https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="thencatchfinally"><code>then</code>メソッド、<code>catch</code>メソッド、<code>finally</code>メソッド<a class="headerlink" href="#thencatchfinally" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ コンストラクタを使用する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resolveFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;resolve!!&quot;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">resolveFunc</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// resolveFuncがPromiseを返し、resolve!!がresolveされるため</span>
+<span class="w">  </span><span class="c1">// thenメソッドが実行されコンソールにresolve!!が表示される</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span><span class="w"> </span><span class="c1">// resolve!!</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">resolveFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// resolveFuncはasync functionではないため、Promiseを返さない</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;resolve!!&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">resolveFunc</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// resolveFuncはPromiseを返さないため、エラーが発生して動かない</span>
+<span class="w">  </span><span class="c1">// Uncaught TypeError: resolveError(...).then is not a function</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">rejectFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reject</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;reject!!&quot;</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nx">rejectFunc</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// rejectFuncがPromiseを返し、reject!!がrejectされるため</span>
+<span class="w">  </span><span class="c1">// catchメソッドが実行されコンソールにreject!!が表示される</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span><span class="w"> </span><span class="c1">// reject!!</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-02-asyncawait">02-02. async/await宣言<a class="headerlink" href="#02-02-asyncawait" title="Permanent link">&para;</a></h2>
+<h3 id="async">async宣言<a class="headerlink" href="#async" title="Permanent link">&para;</a></h3>
+<h4 id="async_1">▼ async宣言とは<a class="headerlink" href="#async_1" title="Permanent link">&para;</a></h4>
+<p>Promiseオブジェクトを明示的に使用する場合、Promiseオブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある。</p>
+<p>一方で、async宣言された関数内の非同期処理は、Promiseオブジェクトに渡すための関数内に暗黙的に定義される。</p>
+<p>Promiseや、これのコントラクタに渡す関数を実装する必要が無いため、可読性が高まる。</p>
+<p>また、仮にPromiseオブジェクトをコールし、PromiseオブジェクトがPromiseオブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>以下の全ては、同じ処理を定義している。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Promiseオブジェクトに渡すための関数内に暗黙的に定義される。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 単にreturnとしてもPromiseオブジェクトが返却される。</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="nx">reject</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// Promiseオブジェクトを返却するようにしても、入れ子にはならない。</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+<span class="p">};</span>
+
+<span class="c1">// Promiseオブジェクトを返却するようにしても、入れ子にはならない。</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">asyncFunc</span><span class="p">());</span><span class="w"> </span><span class="c1">// Promise { &quot;SUCCESS&quot; }</span>
+</code></pre></div>
+<p>また、axiosオブジェクトのようにPromiseオブジェクトをデフォルトで返却するメソッドを使用しても良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>非道処理としてGETでリクエストを送信している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// axiosオブジェクトのメソッドはPromiseオブジェクトを返却する。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="await">await宣言とは<a class="headerlink" href="#await" title="Permanent link">&para;</a></h3>
+<h4 id="await_1">▼ await宣言<a class="headerlink" href="#await_1" title="Permanent link">&para;</a></h4>
+<p>以降の全処理を<code>then</code>メソッドに渡す。</p>
+<p>Promiseオブジェクトの<code>then</code>メソッドに相当するが、<code>then</code>メソッドのようにメソッドチェーンする必要はなくなるため、可読性が高い。</p>
+<p>時間のかかる非同期処理でこれを宣言すると、予期せず処理が流れてしまうことを防げる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Promiseオブジェクトのthenメソッドを使用した場合</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// awaitを使用した場合</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 以降の全処理がthenメソッドに渡される。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>await宣言により、コールバック地獄のコードが分かりやすくなる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Promiseオブジェクトのthenメソッドを使用した場合</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// コールバック関数地獄になっている。</span>
+<span class="w">  </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// awaitを使用した場合</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">res2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path2&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res1</span><span class="p">.</span><span class="nx">data</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">res2</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// &quot;some data&quot;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_8">エラーハンドリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="try-catch">▼ try-catch<a class="headerlink" href="#try-catch" title="Permanent link">&para;</a></h4>
+<p>Promiseオブジェクトの<code>then</code>メソッド、<code>catch</code>メソッド、<code>finally</code>メソッドを使用してエラーハンドリングを実装できるが、try-catch文とawait宣言を組み合わせて、より可読性高く実装できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods">https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">axios</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">asyncFunc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 初期化</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">axios</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/some/path1&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_9">スリープ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="settimeout">▼ setTimeout<a class="headerlink" href="#settimeout" title="Permanent link">&para;</a></h4>
+<p>指定した秒数だけ処理を待機する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 5秒待機する。</span>
+<span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-jquery">03. JQuery<a class="headerlink" href="#03-jquery" title="Permanent link">&para;</a></h2>
+<h3 id="promise_4">Promiseオブジェクト<a class="headerlink" href="#promise_4" title="Permanent link">&para;</a></h3>
+<h4 id="donefailalways">▼ <code>done</code>メソッド、<code>fail</code>メソッド、<code>always</code>メソッド<a class="headerlink" href="#donefailalways" title="Permanent link">&para;</a></h4>
+<p>Promiseオブジェクトが持つメソッド。</p>
+<p><code>ajax</code>メソッドによってレスポンスを受信した後、その結果を<code>done</code>、<code>fail</code>、<code>always</code>の<code>3</code>個に分類し、これに応じたコールバック処理を実行する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>JQueryパッケージの<code>get</code>メソッドや<code>post</code>メソッドを使用した場合。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://www.google.co.jp/&quot;</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://www.google.co.jp/&quot;</span><span class="p">;</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">)</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+</code></pre></div>
+<p>JQueryパッケージの<code>ajax</code>メソッドを使用した場合。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">})</span>
+<span class="w">  </span><span class="c1">// 非同期通信の成功時のコールバック処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="c1">// 非同期通信の失敗時のコールバック処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">fail</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">toastr</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;エラーが発生しました。&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">})</span>
+
+<span class="w">  </span><span class="c1">// 非同期通信の成功失敗に関わらず常に実行する処理</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">always</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">isLoaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">  </span><span class="p">});</span>
+</code></pre></div>
+<h4 id="then">▼ <code>then</code>メソッド<a class="headerlink" href="#then" title="Permanent link">&para;</a></h4>
+<p>Promiseオブジェクトが持つメソッド。</p>
+<p><code>ajax</code>メソッドによってレスポンスを受信した後、その結果を<code>then</code>メソッドの引数の順番で分類し、これに応じたコールバック処理を実行する。</p>
+<p>非同期処理の後に同期処理を行いたい場合に使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>JQueryパッケージの<code>ajax</code>メソッドを使用した場合。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/xxx/xxx/&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">contentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">param1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;AAA&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">param2</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;BBB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">})</span>
+<span class="w">  </span><span class="c1">// 最初のthen</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="c1">// 引数2つめは通信失敗時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span><span class="c1">// 次のthen</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// 引数1つめは通信成功時のコールバック処理</span>
+<span class="w">    </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

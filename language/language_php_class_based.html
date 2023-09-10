@@ -1,0 +1,5107 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クラス＠PHPの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html">
+      
+      
+        <link rel="prev" href="language_php_command.html">
+      
+      
+        <link rel="next" href="language_php_class_based_method_data.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】クラス＠PHP - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#php" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】クラス＠PHP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_3" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_3" id="__nav_8_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ クラスベース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ クラスベース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クラス
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_php_class_based.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クラス
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-has-onehas-many" class="md-nav__link">
+    01. has-one、has-many (データとして保持する関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. has-one、has-many (データとして保持する関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#has-onehas-many" class="md-nav__link">
+    has-one、has-manyな関係性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association" class="md-nav__link">
+    Association (関連)
+  </a>
+  
+    <nav class="md-nav" aria-label="Association (関連)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#association_1" class="md-nav__link">
+    ▼ Associationとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association_2" class="md-nav__link">
+    ▼ Associationの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    Aggregation (集約)
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregation (集約)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregation_1" class="md-nav__link">
+    ▼ Aggregationとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition" class="md-nav__link">
+    Composition (合成)
+  </a>
+  
+    <nav class="md-nav" aria-label="Composition (合成)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composition_1" class="md-nav__link">
+    ▼ Compositionとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-is-a-kind-of" class="md-nav__link">
+    02. is-a-kind-of (グループとメンバーの関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="02. is-a-kind-of (グループとメンバーの関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-a-kind-of" class="md-nav__link">
+    is-a-kind-ofな関係性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalization" class="md-nav__link">
+    Generalization (汎化)
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalization (汎化)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#override" class="md-nav__link">
+    ▼ 汎化におけるOverride
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 抽象クラス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realization" class="md-nav__link">
+    Realization (実現)
+  </a>
+  
+    <nav class="md-nav" aria-label="Realization (実現)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realization_1" class="md-nav__link">
+    ▼ Realizationとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    通常クラス、抽象クラス、インターフェースの違い
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. 継承
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. 継承">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    継承によるクラスチェーン
+  </a>
+  
+    <nav class="md-nav" aria-label="継承によるクラスチェーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ クラスチェーンとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    継承元のメソッドを参照
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trait" class="md-nav__link">
+    Trait
+  </a>
+  
+    <nav class="md-nav" aria-label="Trait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trait_1" class="md-nav__link">
+    ▼ Traitとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trait_2" class="md-nav__link">
+    ▼ マジックメソッドを禁止するTrait
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03" class="md-nav__link">
+    02-03. 委譲
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. 委譲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    委譲によるメソッドコール
+  </a>
+  
+    <nav class="md-nav" aria-label="委譲によるメソッドコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 委譲とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 継承よりも優れた点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-04" class="md-nav__link">
+    02-04. 外部ファイルの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="02-04. 外部ファイルの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once" class="md-nav__link">
+    require_onceメソッドによる、クラス、非クラスのメソッドの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="require_onceメソッドによる、クラス、非クラスのメソッドの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once_1" class="md-nav__link">
+    ▼ require_onceメソッドとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ クラスからメソッドをコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ クラスから定数をコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ 非クラスからメソッドをコール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    useによるクラスの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="useによるクラスの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_1" class="md-nav__link">
+    ▼ useとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 外部ファイルのクラスからメソッドをコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 外部ファイルのクラスから定数をコール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-use" class="md-nav__link">
+    03. use (引数型/返却値型として使用する関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="03. use (引数型/返却値型として使用する関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_2" class="md-nav__link">
+    useな関係とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency" class="md-nav__link">
+    Dependency (依存)
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency (依存)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency_1" class="md-nav__link">
+    ▼ Dependencyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#didependency-injection" class="md-nav__link">
+    DI：Dependency Injection (依存オブジェクト注入)
+  </a>
+  
+    <nav class="md-nav" aria-label="DI：Dependency Injection (依存オブジェクト注入)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#di" class="md-nav__link">
+    ▼ DIとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンストラクタインジェクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ セッターインジェクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ メソッドインジェクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#di-container-service-container" class="md-nav__link">
+    DI Container (依存オブジェクト注入コンテナ) 、Service Container
+  </a>
+  
+    <nav class="md-nav" aria-label="DI Container (依存オブジェクト注入コンテナ) 、Service Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#di-container-service-container_1" class="md-nav__link">
+    ▼ DI Container (依存オブジェクト注入コンテナ) 、Service Containerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-locater-pattern" class="md-nav__link">
+    ▼ アンチパターンのService Locater Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-dependency-inversion-principle" class="md-nav__link">
+    03-02. Dependency Inversion Principle (依存性逆転の原則)
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. Dependency Inversion Principle (依存性逆転の原則)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip" class="md-nav__link">
+    DIP
+  </a>
+  
+    <nav class="md-nav" aria-label="DIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip_1" class="md-nav__link">
+    ▼ DIPとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    ▼ 原則1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    ▼ 原則2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_2" class="md-nav__link">
+    DIPを満たす実装
+  </a>
+  
+    <nav class="md-nav" aria-label="DIPを満たす実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip_3" class="md-nav__link">
+    ▼ DIPを満たさない実装の場合 (従来)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_4" class="md-nav__link">
+    ▼ DIPを満たす実装の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_5" class="md-nav__link">
+    ▼ DIPに基づくドメイン駆動設計の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_6" class="md-nav__link">
+    DIPのメリット
+  </a>
+  
+    <nav class="md-nav" aria-label="DIPのメリット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ 実装リポジトリの差し替えが簡単
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ リポジトリが対象とする集約の単位がわかりやすい
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. モジュール性
+  </a>
+  
+    <nav class="md-nav" aria-label="04. モジュール性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    結合度
+  </a>
+  
+    <nav class="md-nav" aria-label="結合度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 結合度とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ データ結合とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ スタンプ結合とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    凝集度
+  </a>
+  
+    <nav class="md-nav" aria-label="凝集度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 凝集度とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 機能的強度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcomlack-of-conhension-of-methods" class="md-nav__link">
+    ▼ LCOM：Lack Of Conhension of Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    コナーセンス
+  </a>
+  
+    <nav class="md-nav" aria-label="コナーセンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 静的コナーセンス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 動的コナーセンス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    低結合と高凝集
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_class_based_method_data.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    メソッド/データ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_class_based_data_structure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    データ構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-has-onehas-many" class="md-nav__link">
+    01. has-one、has-many (データとして保持する関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="01. has-one、has-many (データとして保持する関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#has-onehas-many" class="md-nav__link">
+    has-one、has-manyな関係性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association" class="md-nav__link">
+    Association (関連)
+  </a>
+  
+    <nav class="md-nav" aria-label="Association (関連)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#association_1" class="md-nav__link">
+    ▼ Associationとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#association_2" class="md-nav__link">
+    ▼ Associationの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregation" class="md-nav__link">
+    Aggregation (集約)
+  </a>
+  
+    <nav class="md-nav" aria-label="Aggregation (集約)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregation_1" class="md-nav__link">
+    ▼ Aggregationとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#composition" class="md-nav__link">
+    Composition (合成)
+  </a>
+  
+    <nav class="md-nav" aria-label="Composition (合成)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#composition_1" class="md-nav__link">
+    ▼ Compositionとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-is-a-kind-of" class="md-nav__link">
+    02. is-a-kind-of (グループとメンバーの関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="02. is-a-kind-of (グループとメンバーの関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-a-kind-of" class="md-nav__link">
+    is-a-kind-ofな関係性とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generalization" class="md-nav__link">
+    Generalization (汎化)
+  </a>
+  
+    <nav class="md-nav" aria-label="Generalization (汎化)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#override" class="md-nav__link">
+    ▼ 汎化におけるOverride
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 抽象クラス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#realization" class="md-nav__link">
+    Realization (実現)
+  </a>
+  
+    <nav class="md-nav" aria-label="Realization (実現)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realization_1" class="md-nav__link">
+    ▼ Realizationとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    通常クラス、抽象クラス、インターフェースの違い
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. 継承
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. 継承">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    継承によるクラスチェーン
+  </a>
+  
+    <nav class="md-nav" aria-label="継承によるクラスチェーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ クラスチェーンとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    継承元のメソッドを参照
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trait" class="md-nav__link">
+    Trait
+  </a>
+  
+    <nav class="md-nav" aria-label="Trait">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trait_1" class="md-nav__link">
+    ▼ Traitとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trait_2" class="md-nav__link">
+    ▼ マジックメソッドを禁止するTrait
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03" class="md-nav__link">
+    02-03. 委譲
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. 委譲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    委譲によるメソッドコール
+  </a>
+  
+    <nav class="md-nav" aria-label="委譲によるメソッドコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 委譲とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 継承よりも優れた点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-04" class="md-nav__link">
+    02-04. 外部ファイルの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="02-04. 外部ファイルの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once" class="md-nav__link">
+    require_onceメソッドによる、クラス、非クラスのメソッドの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="require_onceメソッドによる、クラス、非クラスのメソッドの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#require_once_1" class="md-nav__link">
+    ▼ require_onceメソッドとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ クラスからメソッドをコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ クラスから定数をコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ 非クラスからメソッドをコール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    useによるクラスの読み出し
+  </a>
+  
+    <nav class="md-nav" aria-label="useによるクラスの読み出し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_1" class="md-nav__link">
+    ▼ useとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 外部ファイルのクラスからメソッドをコール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 外部ファイルのクラスから定数をコール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-use" class="md-nav__link">
+    03. use (引数型/返却値型として使用する関係性)
+  </a>
+  
+    <nav class="md-nav" aria-label="03. use (引数型/返却値型として使用する関係性)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use_2" class="md-nav__link">
+    useな関係とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency" class="md-nav__link">
+    Dependency (依存)
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency (依存)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependency_1" class="md-nav__link">
+    ▼ Dependencyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#didependency-injection" class="md-nav__link">
+    DI：Dependency Injection (依存オブジェクト注入)
+  </a>
+  
+    <nav class="md-nav" aria-label="DI：Dependency Injection (依存オブジェクト注入)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#di" class="md-nav__link">
+    ▼ DIとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンストラクタインジェクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ セッターインジェクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ メソッドインジェクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#di-container-service-container" class="md-nav__link">
+    DI Container (依存オブジェクト注入コンテナ) 、Service Container
+  </a>
+  
+    <nav class="md-nav" aria-label="DI Container (依存オブジェクト注入コンテナ) 、Service Container">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#di-container-service-container_1" class="md-nav__link">
+    ▼ DI Container (依存オブジェクト注入コンテナ) 、Service Containerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-locater-pattern" class="md-nav__link">
+    ▼ アンチパターンのService Locater Pattern
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-dependency-inversion-principle" class="md-nav__link">
+    03-02. Dependency Inversion Principle (依存性逆転の原則)
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. Dependency Inversion Principle (依存性逆転の原則)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip" class="md-nav__link">
+    DIP
+  </a>
+  
+    <nav class="md-nav" aria-label="DIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip_1" class="md-nav__link">
+    ▼ DIPとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    ▼ 原則1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    ▼ 原則2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_2" class="md-nav__link">
+    DIPを満たす実装
+  </a>
+  
+    <nav class="md-nav" aria-label="DIPを満たす実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dip_3" class="md-nav__link">
+    ▼ DIPを満たさない実装の場合 (従来)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_4" class="md-nav__link">
+    ▼ DIPを満たす実装の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_5" class="md-nav__link">
+    ▼ DIPに基づくドメイン駆動設計の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dip_6" class="md-nav__link">
+    DIPのメリット
+  </a>
+  
+    <nav class="md-nav" aria-label="DIPのメリット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ 実装リポジトリの差し替えが簡単
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ リポジトリが対象とする集約の単位がわかりやすい
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. モジュール性
+  </a>
+  
+    <nav class="md-nav" aria-label="04. モジュール性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    結合度
+  </a>
+  
+    <nav class="md-nav" aria-label="結合度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 結合度とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ データ結合とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ スタンプ結合とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    凝集度
+  </a>
+  
+    <nav class="md-nav" aria-label="凝集度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 凝集度とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 機能的強度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcomlack-of-conhension-of-methods" class="md-nav__link">
+    ▼ LCOM：Lack Of Conhension of Methods
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    コナーセンス
+  </a>
+  
+    <nav class="md-nav" aria-label="コナーセンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ 静的コナーセンス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ 動的コナーセンス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    低結合と高凝集
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="php">クラス＠PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-has-onehas-many">01. has-one、has-many (データとして保持する関係性)<a class="headerlink" href="#01-has-onehas-many" title="Permanent link">&para;</a></h2>
+<h3 id="has-onehas-many">has-one、has-manyな関係性とは<a class="headerlink" href="#has-onehas-many" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html</a></li>
+</ul>
+</blockquote>
+<p><img alt="データとして保持する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png" /></p>
+<p><br></p>
+<h3 id="association">Association (関連)<a class="headerlink" href="#association" title="Permanent link">&para;</a></h3>
+<h4 id="association_1">▼ Associationとは<a class="headerlink" href="#association_1" title="Permanent link">&para;</a></h4>
+<p>クラスＡがクラスＢをデータとして保持する関係性のこと。</p>
+<p>引数型/返却値型として使用する『依存』とは区別する。</p>
+<h4 id="association_2">▼ Associationの種類<a class="headerlink" href="#association_2" title="Permanent link">&para;</a></h4>
+<p>保持される側のクラスのインスタンスが、データとして保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。</p>
+<p><br></p>
+<h3 id="aggregation">Aggregation (集約)<a class="headerlink" href="#aggregation" title="Permanent link">&para;</a></h3>
+<h4 id="aggregation_1">▼ Aggregationとは<a class="headerlink" href="#aggregation_1" title="Permanent link">&para;</a></h4>
+<p>保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成されずに外側から渡される時、クラス間が『Aggregation』の関係にある。</p>
+<h4 id="_2">▼ 例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><img alt="aggregation_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png" /></p>
+<p>UserはUserNameをデータとして保持する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// データとして保持</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、UserNameクラスのインスタンスは、Userクラスによって作成されずに外側から渡される。</p>
+<p>そのため、UserクラスとUserNameクラスは『Aggregation』の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// 集約の関係</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire1</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire2</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire3</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire4</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Car</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire1</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire1</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire2</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire2</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire3</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire3</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var Tire4</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$tire4</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param Tire1 $t1</span>
+<span class="sd">     * @param Tire2 $t2</span>
+<span class="sd">     * @param Tire3 $t3</span>
+<span class="sd">     * @param Tire4 $t4</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Tire1</span> <span class="nv">$t1</span><span class="p">,</span> <span class="nx">Tire2</span> <span class="nv">$t2</span><span class="p">,</span> <span class="nx">Tire3</span> <span class="nv">$t3</span><span class="p">,</span> <span class="nx">Tire4</span> <span class="nv">$t4</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Tireクラスのインスタンスをデータとして保持</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire1</span> <span class="o">=</span> <span class="nv">$t1</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire2</span> <span class="o">=</span> <span class="nv">$t2</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire3</span> <span class="o">=</span> <span class="nv">$t3</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">tire4</span> <span class="o">=</span> <span class="nv">$t4</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、Tireクラスのインスタンスは、Carクラスによって作成されずに外側から渡される。</p>
+<p>そのため、CarクラスとTireクラスは『Aggregation』の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Tireクラスをインスタンス化</span>
+<span class="nv">$tire1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire1</span><span class="p">();</span>
+<span class="nv">$tire2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire2</span><span class="p">();</span>
+<span class="nv">$tire3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire3</span><span class="p">();</span>
+<span class="nv">$tire4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tire4</span><span class="p">();</span>
+
+<span class="c1">// Tireクラスのインスタンスの作成、Carによって制限されない。</span>
+<span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="nv">$tire1</span><span class="p">,</span> <span class="nv">$tire2</span><span class="p">,</span> <span class="nv">$tire3</span><span class="p">,</span> <span class="nv">$tire4</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="composition">Composition (合成)<a class="headerlink" href="#composition" title="Permanent link">&para;</a></h3>
+<h4 id="composition_1">▼ Compositionとは<a class="headerlink" href="#composition_1" title="Permanent link">&para;</a></h4>
+<p>保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成される時、クラス間が『Composition』の関係にある。</p>
+<h4 id="_3">▼ 例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p><img alt="composition_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png" /></p>
+<p>UserクラスはUserNameクラスをデータとして保持する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span> <span class="c1">// データとして保持</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span> <span class="c1">// 合成の関係</span>
+
+        <span class="k">return</span> <span class="s2">&quot;Hello! &quot;</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、UserNameインスタンスは、Userクラスによって作成される。</p>
+<p>そのため、UserクラスとUserNameクラスは『Composition』の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>CarクラスはLockクラスをデータとして保持する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Car</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var Lock</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nv">$lock</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Lockクラスのインスタンスをデータとして保持。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Lock</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、Lockクラスのインスタンスは、Carクラスによって作成される。</p>
+<p>そのため、CarクラスとLockクラスは『Composition』の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
+<span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">();</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-is-a-kind-of">02. is-a-kind-of (グループとメンバーの関係性)<a class="headerlink" href="#02-is-a-kind-of" title="Permanent link">&para;</a></h2>
+<h3 id="is-a-kind-of">is-a-kind-ofな関係性とは<a class="headerlink" href="#is-a-kind-of" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html</a></li>
+</ul>
+</blockquote>
+<p><img alt="グループとメンバーの関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png" /></p>
+<h3 id="generalization">Generalization (汎化)<a class="headerlink" href="#generalization" title="Permanent link">&para;</a></h3>
+<h4 id="override">▼ 汎化におけるOverride<a class="headerlink" href="#override" title="Permanent link">&para;</a></h4>
+<p>汎化の時、子クラスでメソッドの処理内容を再び実装すると、処理内容は上書きされる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 親クラス</span>
+<span class="k">class</span> <span class="nc">Goods</span>
+<span class="p">{</span>
+    <span class="c1">// 商品名データ</span>
+    <span class="k">private</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+    <span class="c1">// 商品価格データ</span>
+    <span class="k">private</span> <span class="nv">$price</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// コンストラクタ。商品名と商品価格を設定する</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$price</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span> <span class="o">=</span> <span class="nv">$price</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ★★★★★★注目★★★★★★</span>
+    <span class="c1">// 商品名と価格を表示するメソッド</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">printPrice</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">.</span><span class="s2">&quot;の価格: ￥&quot;</span><span class="o">.</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="o">.</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 商品名のゲッター</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 商品価格のゲッター</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getPrice</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">price</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 子クラス</span>
+<span class="k">class</span> <span class="nc">GoodsWithTax</span> <span class="k">extends</span> <span class="nx">Goods</span>
+<span class="p">{</span>
+    <span class="c1">// ★★★★★★注目★★★★★★</span>
+    <span class="c1">// printPriceメソッドをOverride</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">printPrice</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 商品価格の税込み価格を計算し、表示</span>
+        <span class="nv">$priceWithTax</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getPrice</span><span class="p">()</span> <span class="o">*</span> <span class="mf">1.08</span><span class="p">);</span>  <span class="c1">// (1)</span>
+        <span class="k">print</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span><span class="o">.</span><span class="s2">&quot;の税込み価格: ￥&quot;</span><span class="o">.</span><span class="nv">$priceWithTax</span><span class="o">.</span><span class="s2">&quot;&lt;br&gt;&quot;</span><span class="p">);</span>  <span class="c1">// (2)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_4">▼ 抽象クラス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ビジネスロジックとして使用する。</p>
+<p>多重継承できない。</p>
+<p><strong>＊例＊</strong></p>
+<p>以下の条件の社員オブジェクトを実装したいとする。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>午前９時に出社</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>営業部・開発部・総務部があり、それぞれが異なる仕事を行う</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>午後６時に退社</p>
+</dd>
+</dl>
+<p>この時、『働くメソッド』は部署ごとに異なってしまうが、どう実装したら良いのか…</p>
+<p><img alt="抽象クラスと抽象メソッド-1" src="https://user-images.githubusercontent.com/42175286/59590447-12ff8b00-9127-11e9-802e-126279fcb0b1.PNG" /></p>
+<p>これを解決するために、例えば、次の2つが実装方法が考えられる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>営業部社員オブジェクト、開発部社員オブジェクト、総務部社員オブジェクトを別々に実装</p>
+</dd>
+</dl>
+<p>⇒ メリット：同じ部署の他のオブジェクトに影響を与えられる。</p>
+<p>⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。</p>
+<p>共通の処理が同じコードで書かれる保証がない。</p>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>1</code>個の社員オブジェクトの中で、働くメソッドに部署ごとで変化する引数を設定</p>
+</dd>
+</dl>
+<p>⇒ メリット：全部署の社員を<code>1</code>個のオブジェクトで呼び出せる。</p>
+<p>⇒ デメリット：<code>1</code>個の修正が、全部署の社員の処理に影響を与えてしまう。</p>
+<p>抽象オブジェクトと抽象メソッドを使用すると、<code>2</code>個のメリットを生かしつつ、デメリットを解決可能。</p>
+<p><img alt="抽象クラスと抽象メソッド-2" src="https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG" /></p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">ShainManagement</span>
+<span class="p">{</span>
+    <span class="c1">// 定数の定義</span>
+    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">&quot;10:00:00&quot;</span><span class="p">);</span>
+    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span><span class="s2">&quot;19:00:00&quot;</span><span class="p">);</span>
+
+    <span class="c1">// 抽象メソッド。</span>
+    <span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
+    <span class="k">abstract</span> <span class="k">function</span> <span class="nf">toWork</span><span class="p">();</span>
+
+    <span class="c1">// 具象メソッド。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。</span>
+    <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toArrive</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H:i:s&quot;</span><span class="p">)</span> <span class="p">);</span>
+
+        <span class="c1">// 出社時間より遅かった場合、遅刻と表示する。</span>
+        <span class="k">if</span><span class="p">(</span><span class="nv">$nowTime</span> <span class="o">&gt;</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">){</span>
+
+            <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+                <span class="s2">&quot;%s の遅刻です。&quot;</span><span class="p">,</span>
+                <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_ARRIVE</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">&quot;%s に出勤しました。&quot;</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">)</span>
+        <span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="c1">// 具象メソッド。退社時間と残業時間を表示。</span>
+    <span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toLeave</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$nowTime</span> <span class="o">=</span> <span class="nb">strtotime</span><span class="p">(</span> <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H:i:s&quot;</span><span class="p">)</span> <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span>
+            <span class="s2">&quot;%sに退社しました。%s の残業です。&quot;</span><span class="p">,</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span><span class="p">),</span>
+            <span class="nb">date</span><span class="p">(</span><span class="s2">&quot;H時i分s秒&quot;</span><span class="p">,</span> <span class="nv">$nowTime</span> <span class="o">-</span> <span class="nx">self</span><span class="o">::</span><span class="na">TIME_TO_LEAVE</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 子クラス</span>
+<span class="k">class</span> <span class="nc">EnginnerShainManagement</span> <span class="k">extends</span> <span class="nx">ShainManagement</span>
+<span class="p">{</span>
+    <span class="c1">// 鋳型となった抽象クラスの抽象メソッドはOverrideしなければならない。</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toWork</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 処理内容</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。</p>
+<p><img alt="抽象クラス" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/抽象クラス.png" /></p>
+<p><br></p>
+<h3 id="realization">Realization (実現)<a class="headerlink" href="#realization" title="Permanent link">&para;</a></h3>
+<h4 id="realization_1">▼ Realizationとは<a class="headerlink" href="#realization_1" title="Permanent link">&para;</a></h4>
+<p>実装クラスが正常に動作するために最低限必要なメソッドの実装を強制する。</p>
+<p>これによって、必ず実装クラスを正常に働かせられる。</p>
+<p><strong>＊例＊</strong></p>
+<p>オープンソースのパッケージは、ユーザーが実装クラスを自身で追加実装することも考慮して、Realizationを使用している。</p>
+<p><strong>＊例＊</strong></p>
+<p>各車は、モーター機能を必ず持っていなければ、正常に働けない。</p>
+<p>そこで、モータ機能に最低限必要なメソッドの実装を強制する。</p>
+<p><img alt="インターフェースとは" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png" /></p>
+<p>実装クラスに処理内容を記述しなければならない。</p>
+<p>すなわち、抽象クラスにメソッドの型のみ定義した場合と同じである。</p>
+<p>多重継承できる。</p>
+<p><img alt="子インターフェースの多重継承_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png" /></p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">interface</span> <span class="nx">Animal</span>
+<span class="p">{</span>
+     <span class="c1">// インターフェイスでは、実装を伴うメソッドやデータの宣言はできない</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">();</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">();</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Mammal</span> <span class="k">implements</span> <span class="nx">Animal</span>
+<span class="p">{</span>
+    <span class="c1">// 実装クラスが正常に動作するために最低限必要なメソッドの実装を強制する。</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 食べる</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 眠る</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span>
+     <span class="p">{</span>
+          <span class="c1">// 交尾する</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_5">通常クラス、抽象クラス、インターフェースの違い<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: left;">通常クラス</th>
+<th style="text-align: left;">抽象クラス</th>
+<th style="text-align: left;">インターフェース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>役割</strong></td>
+<td style="text-align: left;">専用処理の部品化</td>
+<td style="text-align: left;">通常クラスの共通処理の部品化</td>
+<td style="text-align: left;">・通常クラスのクラス型を定義する。<br>・実装クラスが正常に動作するために最低限必要なメソッドの実装を強制する。</td>
+</tr>
+<tr>
+<td><strong>子クラスでの継承先数</strong></td>
+<td style="text-align: left;">単一継承</td>
+<td style="text-align: left;">単一継承</td>
+<td style="text-align: left;">単一継承｜多重継承</td>
+</tr>
+<tr>
+<td><strong>メンバ変数のコール</strong></td>
+<td style="text-align: left;">自身と継承先</td>
+<td style="text-align: left;">継承先のみ</td>
+<td style="text-align: left;">実装先のみ</td>
+</tr>
+<tr>
+<td><strong>定数の定義</strong></td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">〇</td>
+</tr>
+<tr>
+<td><strong>抽象メソッドの定義</strong></td>
+<td style="text-align: left;">✕</td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">〇 (abstractは省略)</td>
+</tr>
+<tr>
+<td><strong>具象メソッドの定義</strong></td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">✕</td>
+</tr>
+<tr>
+<td><strong><code>construct</code>メソッド の定義</strong></td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">〇</td>
+<td style="text-align: left;">✕</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊例＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>種々の車クラスの共通処理のを持つ抽象クラスとして、Carクラスを作成。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>各車は、エンジン機能を必ず持っていなければ、正常に働けない。</p>
+<p>そこで、抽象メソッドによって、エンジン機能に最低限必要なメソッドの実装を強制する。</p>
+</dd>
+</dl>
+<p><img alt="インターフェースと抽象クラスの使い分け" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースと抽象クラスの使い分け.png" /></p>
+<p><br></p>
+<h2 id="02-02">02-02. 継承<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="_6">継承によるクラスチェーン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ クラスチェーンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>クラスからデータやメソッドをコールした時、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。</p>
+<p>類似するものとして、プロトタイプチェーンは以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html">https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based.html</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html">https://hiroki-it.github.io/tech-notebook/language/language_js_prototype_based_method_data.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 継承元クラス</span>
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$value1</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 継承先クラス</span>
+<span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$subValue</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSubValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">subValue</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$subFoo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SubFoo</span><span class="p">;</span>
+
+<span class="c1">// SubFooクラスにはgetValue()は無い。</span>
+<span class="c1">// 継承元まで辿り、Fooクラスからメソッドがコールされる (クラスチェーン) 。</span>
+<span class="k">echo</span> <span class="nv">$subFoo</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">();</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_8">継承元のメソッドを参照<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">abstract</span> <span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 処理内容;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">SubFoo</span> <span class="k">extends</span> <span class="nx">Foo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">subFoo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// 継承元のメソッドを参照。</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">foo</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="trait">Trait<a class="headerlink" href="#trait" title="Permanent link">&para;</a></h3>
+<h4 id="trait_1">▼ Traitとは<a class="headerlink" href="#trait_1" title="Permanent link">&para;</a></h4>
+<p><img alt="Trait" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png" /></p>
+<p>再利用したいメソッドやデータを部品化し、利用したい時にクラスに取り込む。</p>
+<p>Traitを使用する時は、クラス内でTraitをuse宣言する。</p>
+<p>Trait自体は不完全なクラスであり、インスタンス化できない。</p>
+<p>また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">trait</span> <span class="nx">FooTrait</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">foo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;Hello World&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">FooTrait</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+<span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Hello World</span>
+
+<span class="k">class</span> <span class="nc">Bar</span> <span class="k">extends</span> <span class="nx">Foo</span> <span class="p">{}</span>
+
+<span class="nv">$bar</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Bar</span><span class="p">();</span>
+<span class="nv">$bar</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">();</span> <span class="c1">// Hello World</span>
+</code></pre></div>
+<h4 id="trait_2">▼ マジックメソッドを禁止するTrait<a class="headerlink" href="#trait_2" title="Permanent link">&para;</a></h4>
+<p>マジックメソッドを使用すると、処理が多くなるため、性能が悪くなる。</p>
+<p>そこで、各クラスでtraitを使用して、マジックメソッドをコールした時に、開発者向けにエラーが発生させる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>マジックゲッターメソッドとマジックセッターメソッドがコールされることを禁止する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">App\Traits</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * 使用制限マジックメソッドトレイト</span>
+<span class="sd"> */</span>
+<span class="k">trait</span> <span class="nx">UnsupportedMagicMethodTrait</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 性能の観点から、マジックゲッターメソッドの使用を制限します。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @param $name</span>
+<span class="sd">     * @throws \Exception</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__get</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;This method is not supported&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 性能の観点から、マジックセッターメソッドの使用を制限します。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @param $name</span>
+<span class="sd">     * @param $value</span>
+<span class="sd">     * @throws \Exception</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__set</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span><span class="s2">&quot;This method is not supported&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-03">02-03. 委譲<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
+<h3 id="_9">委譲によるメソッドコール<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 委譲とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>処理の一部または全てを他のクラスに託すこと。</p>
+<p>PHPでは、集約や合成の関係性を作り、委譲先クラスのメソッドでは委譲元のコールして、処理を追加実装することに相当する。</p>
+<p>他に、インターフェースによるRealizationの関係性でも実現できる。</p>
+<h4 id="_11">▼ 継承よりも優れた点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B">https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-04">02-04. 外部ファイルの読み出し<a class="headerlink" href="#02-04" title="Permanent link">&para;</a></h2>
+<h3 id="require_once"><code>require_once</code>メソッドによる、クラス、非クラスのメソッドの読み出し<a class="headerlink" href="#require_once" title="Permanent link">&para;</a></h3>
+<h4 id="require_once_1">▼ <code>require_once</code>メソッドとは<a class="headerlink" href="#require_once_1" title="Permanent link">&para;</a></h4>
+<p>外部ファイルとして定義された、クラス、非クラスのメソッド、を一度だけ読み込める。</p>
+<p>動的な値は持たず、静的に読み込むことに注意。</p>
+<p>ただし、チームの各エンジニアが好きな物を読み込んでいたら、スパゲッティコードになりかねない。</p>
+<p>そこで、チームでの開発では、記述ルールを設けて、<code>require_once</code>メソッドで読み込んで良いものを決めておくと良い。</p>
+<h4 id="_12">▼ クラスからメソッドをコール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">&quot;これは定数です。&quot;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">className</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;fooメソッドです。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">&quot;Foo.php&quot;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$e1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="o">:</span>
+        <span class="nv">$e1</span><span class="o">-&gt;</span><span class="na">className</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_13">▼ クラスから定数をコール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 外部ファイル名を指定して、クラスを読み込む。</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s2">&quot;Foo.php&quot;</span><span class="p">);</span>
+
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Fooクラスの定数を出力。</span>
+        <span class="k">return</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">VALUE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_14">▼ 非クラスからメソッドをコール<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">printTest</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span>  <span class="s2">&quot;test&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 外部ファイル名を指定して読み込む。</span>
+<span class="k">require_once</span> <span class="p">(</span><span class="s2">&quot;printTestFunction.php&quot;</span><span class="p">);</span>
+
+<span class="nx">printTest</span><span class="p">();</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="use"><code>use</code>によるクラスの読み出し<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
+<h4 id="use_1">▼ <code>use</code>とは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
+<p>Composerのオートロード機能を有効化した上で、外部ファイルのクラスの<code>namespace</code>を<code>use</code>で指定するのみで、そのクラスのみを読み込める。</p>
+<p>非クラスを読み込むことはできない。</p>
+<p>動的な値は持たず、静的に読み込むことに注意。</p>
+<p>ただし、チームの各エンジニアが好きな物を読み込んでいたら、スパゲッティコードになりかねない。</p>
+<p>そこで、チームでの開発では、記述ルールを設けて、<code>use</code>で読み込んで良いものを決めておくと良い。</p>
+<p>注意点として、composerのオートロードを使用しない場合、<code>require</code>関数と<code>use</code>の両方が必要である。</p>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html">https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ 外部ファイルのクラスからメソッドをコール<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>クラスの<code>namespace</code>を<code>use</code>文で指定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 名前空間を定義。</span>
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+    <span class="c1">// 定数を定義。</span>
+    <span class="k">const</span> <span class="no">VALUE</span> <span class="o">=</span> <span class="s2">&quot;これは定数です。&quot;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method1</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;fooメソッドです。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
+
+<span class="c1">// namespaceを指定して、外部ファイルのクラスを読み込む。</span>
+<span class="k">use</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method2</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$e1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="o">:</span>
+        <span class="nv">$e1</span><span class="o">-&gt;</span><span class="na">method1</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_16">▼ 外部ファイルのクラスから定数をコール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
+
+<span class="c1">// namespaceを指定して、外部ファイルのクラスを読み込む。</span>
+<span class="k">use</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Bar</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// Fooクラスの定数を出力。</span>
+        <span class="k">echo</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">VALUE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-use">03. use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#03-use" title="Permanent link">&para;</a></h2>
+<h3 id="use_2">useな関係とは<a class="headerlink" href="#use_2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="dependency">Dependency (依存)<a class="headerlink" href="#dependency" title="Permanent link">&para;</a></h3>
+<h4 id="dependency_1">▼ Dependencyとは<a class="headerlink" href="#dependency_1" title="Permanent link">&para;</a></h4>
+<p><img alt="引数型または返却値型として使用する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png" /></p>
+<p>クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency">https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency</a></li>
+<li><a href="https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection">https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection</a></li>
+</ul>
+</blockquote>
+<h4 id="_17">▼ 例<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p><img alt="dependency_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png" /></p>
+<p>UserはUserNameを引数として使用する。</p>
+<p>UserはUserNameに依存している。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span> <span class="c1">// 依存の関係</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;Hello! &quot;</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="didependency-injection">DI：Dependency Injection (依存オブジェクト注入)<a class="headerlink" href="#didependency-injection" title="Permanent link">&para;</a></h3>
+<h4 id="di">▼ DIとは<a class="headerlink" href="#di" title="Permanent link">&para;</a></h4>
+<p>サプライヤー側 (依存先) の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。</p>
+<p>『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection">https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection</a></li>
+<li><a href="https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection">https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection</a></li>
+</ul>
+</blockquote>
+<h4 id="_18">▼ コンストラクタインジェクションとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>メソッドの特に、<code>construct</code>メソッド の引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。</p>
+<p>コンストラクタインジェクションのみが、<code>construct</code>メソッド によって、インスタンス作成のために依存関係の要件を強制できる。</p>
+<p>また、セッターを完全になくした場合、インスタンス作成後にオブジェクトの状態を変更できなくなる。</p>
+<p>そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションの中で、ソフトウェアの安全性の観点で最も優れている。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>依存先のSupplierクラスを、<code>construct</code>メソッドの引数として、Clientクラスに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
+
+<span class="c1">// 依存されるSupplierクラスをClientクラス</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>依存先のUserNameクラスを、<code>construct</code>メソッドの引数として、Userクラスに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
+</code></pre></div>
+<h4 id="_19">▼ セッターインジェクションとは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>メソッドの特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>サプライヤー側をデータとして保持させ、Aggregationの関係性を作られる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>依存先のSupplierクラスを、セッターの引数として、Clientクラスに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setSupplier</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>依存先のUserNameクラスを、セッターの引数として、Userクラスに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var UserName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">UserName</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUserName</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setUserName</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
+</code></pre></div>
+<h4 id="_20">▼ メソッドインジェクションとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>上記2つ以外のメソッドの引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>サプライヤー側をデータとして保持せず、読み込んでメソッドを使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>依存先のUserNameクラスを、メソッドの引数として、Userクラスに注入する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param UserName $name</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+
+        <span class="c1">// 何らかの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
+<span class="nv">$user</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// インジェクション</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="di-container-service-container">DI Container (依存オブジェクト注入コンテナ) 、Service Container<a class="headerlink" href="#di-container-service-container" title="Permanent link">&para;</a></h3>
+<h4 id="di-container-service-container_1">▼ DI Container (依存オブジェクト注入コンテナ) 、Service Containerとは<a class="headerlink" href="#di-container-service-container_1" title="Permanent link">&para;</a></h4>
+<p>依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。</p>
+<p>あらかじめクラスを登録 (バインド) しておき、必要な時にインスタンスを作成 (リゾルブ) してくれる。</p>
+<p>注意点として、</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Pimpleパッケージを使用した場合</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Pimple\Container</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\User\Entity\User</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\User\ValueObject\UserName</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Container</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// UserNameクラスの準備</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;Hiroki&quot;</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="c1">// UserクラスにUserNameクラスを注入</span>
+        <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$container</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;user_name&quot;</span><span class="p">]);</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// autoload.php で、DIコンテナ自体のインスタンスを事前に作成。</span>
+<span class="nv">$container</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Container</span><span class="p">();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// DIコンテナの読み出し</span>
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">&quot;/autoload.php&quot;</span><span class="p">;</span>
+
+<span class="c1">// クラス名を宣言してインスタンスを作成。</span>
+<span class="nv">$sample</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;sample&quot;</span><span class="p">];</span>
+</code></pre></div>
+<h4 id="service-locater-pattern">▼ アンチパターンのService Locater Pattern<a class="headerlink" href="#service-locater-pattern" title="Permanent link">&para;</a></h4>
+<p>インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Sample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$container</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span>            <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;foo.logger&quot;</span><span class="p">];</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">notification</span>      <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">&quot;bar.notification&quot;</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// DIコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。</span>
+<span class="nv">$sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sample</span><span class="p">(</span><span class="nv">$container</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-02-dependency-inversion-principle">03-02. Dependency Inversion Principle (依存性逆転の原則)<a class="headerlink" href="#03-02-dependency-inversion-principle" title="Permanent link">&para;</a></h2>
+<h3 id="dip">DIP<a class="headerlink" href="#dip" title="Permanent link">&para;</a></h3>
+<h4 id="dip_1">▼ DIPとは<a class="headerlink" href="#dip_1" title="Permanent link">&para;</a></h4>
+<p>インターフェースに依存するように実装する。</p>
+<p>『逆転』とは、インターフェースを使用した場合、より下位層の実装クラスが上位層のインターフェイスに依存していることを指して言う。</p>
+<p><code>2</code>個の原則からなる。</p>
+<h4 id="1">▼ 原則1<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>上位レイヤーは下位レイヤーに依存してはならない。</p>
+<p>どちらのレイヤーも『抽象』に依存すべきである。</p>
+<h4 id="2">▼ 原則2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>『抽象』は『実装』に依存してはならない。</p>
+<p>『実装』が『抽象』に依存すべきである。</p>
+<p><br></p>
+<h3 id="dip_2">DIPを満たす実装<a class="headerlink" href="#dip_2" title="Permanent link">&para;</a></h3>
+<h4 id="dip_3">▼ DIPを満たさない実装の場合 (従来)<a class="headerlink" href="#dip_3" title="Permanent link">&para;</a></h4>
+<p>より上位レイヤーのコール処理を配置し、より下位レイヤーでコールされる側の定義を行う。</p>
+<p>これによって、上位レイヤーのクラスが、下位レイヤーのクラスに依存する関係性になる。</p>
+<p><img alt="DIPに基づかない設計の場合" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png" /></p>
+<h4 id="dip_4">▼ DIPを満たす実装の場合<a class="headerlink" href="#dip_4" title="Permanent link">&para;</a></h4>
+<p>インターフェース (または抽象クラス) で抽象メソッドを記述することによって、実装クラスでの実装が強制される。</p>
+<p>つまり、実装クラスは抽象クラスに依存している。</p>
+<p>より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる (原則２)。</p>
+<p>原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。</p>
+<p>また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。</p>
+<p>よって、全てのレイヤーがインターフェースに依存するようになる (原則１)。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze">https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze</a></li>
+</ul>
+</blockquote>
+<p><img alt="DIPに基づく設計の場合" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づく設計の場合.png" /></p>
+<h4 id="dip_5">▼ DIPに基づくドメイン駆動設計の場合<a class="headerlink" href="#dip_5" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>Repositoryクラスにインターフェースと実装クラスを用意する。これにより、原則２を満たす。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>Repositoryのインターフェース (抽象クラス) を、より上位のドメイン層に配置する。また、Repositoryの実装クラスを、より下位のインフラストラクチャ層に配置する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>両方のクラスに対して、バインディング (紐付け) を行い、インターフェース (抽象クラス) をコールした時に、実際には実装クラスがコールされるようにする。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース (抽象クラス) に依存することになる。これは、原則１を満たす。</p>
+</dd>
+</dl>
+<p><img alt="ドメイン駆動設計_逆転依存性の原則" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg" /></p>
+<p><br></p>
+<h3 id="dip_6">DIPのメリット<a class="headerlink" href="#dip_6" title="Permanent link">&para;</a></h3>
+<h4 id="_21">▼ 実装リポジトリの差し替えが簡単<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>実装リポジトリはインターフェースに依存し、特定のメソッドの実装が強制されている。</p>
+<p>ここで実装リポジトリを異なるものに差し替えたとしても、もう一方でインターフェースに依存するユースケースは、インターフェースのメソッドのコール方法を変える必要がない。</p>
+<p>つまり、ユースケース層に影響を与えることなく、実装リポジトリのリファクタリングや新しい実装リポジトリへの移行が行える。</p>
+<h4 id="_22">▼ リポジトリが対象とする集約の単位がわかりやすい<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>ドメイン層にインターフェースリポジトリを配置する例を考える。</p>
+<p>インターフェースリポジトリは、実装リポジトリよりも定義が簡潔である。</p>
+<p>そのため、実装リポジトリではなくインターフェースリポジトリを確認することにより、そのリポジトリがどの集約に対してCRUD処理を行うのかを認識しやすい。</p>
+<p><br></p>
+<h2 id="04">04. モジュール性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_23">結合度<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ 結合度とは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>依存には、引数の渡し方によって、程度がある。</p>
+<p>それによって、処理を、どのクラスのデータと操作に振り分けていくかが決まる。</p>
+<p>結合度はモジュール間の依存度合いについて使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。</p>
+<h4 id="_25">▼ データ結合とは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>最も理想的な結合。</p>
+<p>スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ModuleAとModuleBは、データ結合の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ModuleA</span> <span class="c1">// コールされる側</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodA</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$a</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$b</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$c</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">$a</span><span class="s2"> + </span><span class="si">$b</span><span class="s2">&quot;</span><span class="o">.</span><span class="nv">$c</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ModuleB</span> <span class="c1">// コールする側</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodB</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$moduleA</span><span class="o">=</span> <span class="k">new</span> <span class="nx">ModuleA</span><span class="p">();</span>
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$moduleA</span><span class="o">-&gt;</span><span class="na">methodA</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;です.&quot;</span><span class="p">);</span> <span class="c1">// スカラ型データを渡すだけ</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>デザインパターンのFactoryクラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。</p>
+<p>Factoryクラスのインスタンスと、これをコールする他インスタンス は、データ結合の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * コールされる側</span>
+<span class="sd"> *</span>
+<span class="sd"> * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TransportationMethodsFactory</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">createInstance</span><span class="p">(</span><span class="nv">$distance</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$walking</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Walking</span><span class="p">(</span><span class="nv">$distance</span><span class="p">);</span>
+        <span class="nv">$car</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Car</span><span class="p">(</span><span class="nv">$distance</span><span class="p">);</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nv">$walking</span><span class="o">-&gt;</span><span class="na">needsWalking</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$walking</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$car</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_26">▼ スタンプ結合とは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>object型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ModuleAとModuleBは、スタンプ結合の関係にある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">Shared</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nv">$value</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getValue</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ModuleA</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodA</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$shared</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Shared</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+        <span class="nv">$moduleB</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ModuleB</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nv">$moduleB</span><span class="o">-&gt;</span><span class="na">methodB</span><span class="p">(</span><span class="nv">$shared</span><span class="p">);</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">class</span> <span class="nc">ModuleB</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">methodB</span><span class="p">(</span><span class="nx">Shared</span> <span class="nv">$shared</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$shared</span><span class="o">-&gt;</span><span class="na">getValue</span><span class="p">();</span> <span class="c1">// 1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_27">凝集度<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="_28">▼ 凝集度とは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>凝集度は、『モジュール内の責務の統一度合い』について使用される用語であるが、より理解しやすくするために、特にクラスを使用して説明する。</p>
+<h4 id="_29">▼ 機能的強度<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>最も理想的な凝集。</p>
+<p>クラスの責務が機能単位になるように、ロジックを振り分ける。</p>
+<h4 id="lcomlack-of-conhension-of-methods">▼ LCOM：Lack Of Conhension of Methods<a class="headerlink" href="#lcomlack-of-conhension-of-methods" title="Permanent link">&para;</a></h4>
+<p>凝集度の程度を表す指標のこと。</p>
+<p>LCOMの計測方法にはいくつか種類がある。</p>
+<p>LCOM4は、クラスの各メソッド内で、保持する全てのデータにアクセスしているほど、凝集度が高いと見なす方法である。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/B082WXZVPC">https://www.amazon.co.jp/dp/B082WXZVPC</a></li>
+<li><a href="https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d">https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_30">コナーセンス<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h4 id="_31">▼ 静的コナーセンス<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>コードの実行前の結合度のこと。</p>
+<h4 id="_32">▼ 動的コナーセンス<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>コードの実行時の結合度のこと。</p>
+<p><br></p>
+<h3 id="_33">低結合と高凝集<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p>各モジュールは、結合度が低く、凝集度が高いほど良い。</p>
+<p>例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している。</p>
+<p><img alt="低結合度高凝集度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png" /></p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

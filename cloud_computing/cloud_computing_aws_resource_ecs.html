@@ -1,0 +1,5259 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ECS＠AWSリソースの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_ecs.html">
+      
+      
+        <link rel="prev" href="cloud_computing_aws_resource_ecr.html">
+      
+      
+        <link rel="next" href="cloud_computing_aws_resource_efs.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】ECS＠AWSリソース - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ecsaws" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】ECS＠AWSリソース
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_13">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            ⛅️ クラウド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3_2" id="__nav_13_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWSリソース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWSリソース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アカウント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ API Gateway
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AutoScaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_backup.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certificate Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFormation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudfront.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudTrail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code兄弟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Tower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DirectConnect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ec2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_resource_ecs.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-ecselastic-container-service" class="md-nav__link">
+    01. ECS：Elastic Container Service
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ECS：Elastic Container Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コントロールプレーン
+  </a>
+  
+    <nav class="md-nav" aria-label="コントロールプレーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ コントロールプレーンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    データプレーン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. コントロールプレーンのコンポーネント
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. データプレーンのコンポーネント
+  </a>
+  
+    <nav class="md-nav" aria-label="03. データプレーンのコンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    ECSクラスター
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_1" class="md-nav__link">
+    ECSサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_2" class="md-nav__link">
+    ECSタスク
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_3" class="md-nav__link">
+    ▼ ECSタスク
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_4" class="md-nav__link">
+    ▼ ECSコンテナエージェント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_5" class="md-nav__link">
+    ▼ ECSタスク定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_6" class="md-nav__link">
+    ▼ ECSタスクのライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_7" class="md-nav__link">
+    マルチECSサービス
+  </a>
+  
+    <nav class="md-nav" aria-label="マルチECSサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_8" class="md-nav__link">
+    ▼ マルチECSサービスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_9" class="md-nav__link">
+    ▼ ECSサービスディスカバリー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. ネットワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. ネットワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ネットワークモードとコンテナ間通信
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークモードとコンテナ間通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    ▼ noneモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    ▼ hostモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bridge" class="md-nav__link">
+    ▼ bridgeモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awsvpc" class="md-nav__link">
+    ▼ awsvpcモード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    プライベートサブネット内からのアウトバウンド通信
+  </a>
+  
+    <nav class="md-nav" aria-label="プライベートサブネット内からのアウトバウンド通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ プライベートサブネット内へのデータプレーンの配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パブリックネットワークに対する通信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpcaws" class="md-nav__link">
+    ▼ VPC外のAWSリソースに対する通信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-03" class="md-nav__link">
+    03-03. セキュリティ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-03. セキュリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ロール
+  </a>
+  
+    <nav class="md-nav" aria-label="ロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ サービスロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ コンテナインスタンスロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ タスクロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ タスク実行ロール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04" class="md-nav__link">
+    03-04. 監視
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. 監視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ログ
+  </a>
+  
+    <nav class="md-nav" aria-label="ログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awslogs" class="md-nav__link">
+    ▼ awslogsドライバー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-on-ec2" class="md-nav__link">
+    04. on-EC2
+  </a>
+  
+    <nav class="md-nav" aria-label="04. on-EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-ec2" class="md-nav__link">
+    on-EC2とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2ami" class="md-nav__link">
+    EC2インスタンスの最適化AMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    タスク配置戦略
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-on-fargate" class="md-nav__link">
+    05. on-Fargate
+  </a>
+  
+    <nav class="md-nav" aria-label="05. on-Fargate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-fargate" class="md-nav__link">
+    on-Fargateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02" class="md-nav__link">
+    05-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_10" class="md-nav__link">
+    ▼ ECSサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_11" class="md-nav__link">
+    ▼ ECSタスク定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンテナ定義
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-ecs" class="md-nav__link">
+    05-03. ECSタスク
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. ECSタスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    サイドカー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    IPアドレス
+  </a>
+  
+    <nav class="md-nav" aria-label="IPアドレス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecsip" class="md-nav__link">
+    ▼ ECSタスクのIPアドレス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargateip" class="md-nav__link">
+    ▼ FargateのIPアドレス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_12" class="md-nav__link">
+    ECSタスクの一時起動
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスクの一時起動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBマイグレーション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_13" class="md-nav__link">
+    ECSタスクのデプロイ手法
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスクのデプロイ手法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ ローリングアップデート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ブルー/グリーンデプロイメント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargatevpcaws" class="md-nav__link">
+    プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargate" class="md-nav__link">
+    Fargate上のコンテナへの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="Fargate上のコンテナへの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs-exec" class="md-nav__link">
+    ▼ セッションマネージャーを使用したECS Exec
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_efs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ︎ElastiCache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EventBridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_firelens.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FireLens
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Accelerator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_glue.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_iam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kinesis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kms.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_lambda.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Lambda
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_lb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_rds.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_redshift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_route53.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_s3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ses.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sqs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_vpc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_waf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ GCP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-ecselastic-container-service" class="md-nav__link">
+    01. ECS：Elastic Container Service
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ECS：Elastic Container Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コントロールプレーン
+  </a>
+  
+    <nav class="md-nav" aria-label="コントロールプレーン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ コントロールプレーンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 仕組み
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    データプレーン
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. コントロールプレーンのコンポーネント
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. データプレーンのコンポーネント
+  </a>
+  
+    <nav class="md-nav" aria-label="03. データプレーンのコンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    ECSクラスター
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_1" class="md-nav__link">
+    ECSサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_2" class="md-nav__link">
+    ECSタスク
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_3" class="md-nav__link">
+    ▼ ECSタスク
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_4" class="md-nav__link">
+    ▼ ECSコンテナエージェント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_5" class="md-nav__link">
+    ▼ ECSタスク定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_6" class="md-nav__link">
+    ▼ ECSタスクのライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_7" class="md-nav__link">
+    マルチECSサービス
+  </a>
+  
+    <nav class="md-nav" aria-label="マルチECSサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_8" class="md-nav__link">
+    ▼ マルチECSサービスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_9" class="md-nav__link">
+    ▼ ECSサービスディスカバリー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. ネットワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. ネットワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ネットワークモードとコンテナ間通信
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークモードとコンテナ間通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    ▼ noneモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host" class="md-nav__link">
+    ▼ hostモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bridge" class="md-nav__link">
+    ▼ bridgeモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#awsvpc" class="md-nav__link">
+    ▼ awsvpcモード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    プライベートサブネット内からのアウトバウンド通信
+  </a>
+  
+    <nav class="md-nav" aria-label="プライベートサブネット内からのアウトバウンド通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ プライベートサブネット内へのデータプレーンの配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ パブリックネットワークに対する通信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpcaws" class="md-nav__link">
+    ▼ VPC外のAWSリソースに対する通信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-03" class="md-nav__link">
+    03-03. セキュリティ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-03. セキュリティ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ロール
+  </a>
+  
+    <nav class="md-nav" aria-label="ロール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ サービスロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ コンテナインスタンスロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ タスクロール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ タスク実行ロール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04" class="md-nav__link">
+    03-04. 監視
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. 監視">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ログ
+  </a>
+  
+    <nav class="md-nav" aria-label="ログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awslogs" class="md-nav__link">
+    ▼ awslogsドライバー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-on-ec2" class="md-nav__link">
+    04. on-EC2
+  </a>
+  
+    <nav class="md-nav" aria-label="04. on-EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-ec2" class="md-nav__link">
+    on-EC2とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2ami" class="md-nav__link">
+    EC2インスタンスの最適化AMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    タスク配置戦略
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-on-fargate" class="md-nav__link">
+    05. on-Fargate
+  </a>
+  
+    <nav class="md-nav" aria-label="05. on-Fargate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-fargate" class="md-nav__link">
+    on-Fargateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-02" class="md-nav__link">
+    05-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="05-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs_10" class="md-nav__link">
+    ▼ ECSサービス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_11" class="md-nav__link">
+    ▼ ECSタスク定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンテナ定義
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-03-ecs" class="md-nav__link">
+    05-03. ECSタスク
+  </a>
+  
+    <nav class="md-nav" aria-label="05-03. ECSタスク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    サイドカー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    IPアドレス
+  </a>
+  
+    <nav class="md-nav" aria-label="IPアドレス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecsip" class="md-nav__link">
+    ▼ ECSタスクのIPアドレス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargateip" class="md-nav__link">
+    ▼ FargateのIPアドレス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_12" class="md-nav__link">
+    ECSタスクの一時起動
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスクの一時起動">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBマイグレーション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs_13" class="md-nav__link">
+    ECSタスクのデプロイ手法
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSタスクのデプロイ手法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ ローリングアップデート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ブルー/グリーンデプロイメント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargatevpcaws" class="md-nav__link">
+    プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fargate" class="md-nav__link">
+    Fargate上のコンテナへの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="Fargate上のコンテナへの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs-exec" class="md-nav__link">
+    ▼ セッションマネージャーを使用したECS Exec
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="ecsaws">ECS＠AWSリソース<a class="headerlink" href="#ecsaws" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-ecselastic-container-service">01. ECS：Elastic Container Service<a class="headerlink" href="#01-ecselastic-container-service" title="Permanent link">&para;</a></h2>
+<h3 id="_2">コントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ コントロールプレーンとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>コンテナオーケストレーションを実行する環境を提供する。</p>
+<p>データプレーンのVPC外に存在している。</p>
+<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ECSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。</p>
+<p><img alt="ecs_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/">https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">データプレーン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>単一のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。</p>
+<p>『<code>on-EC2</code>』『<code>on-Fargate</code>』という呼び方は、データプレーンがECSの実行環境 (<code>on environment</code>) の意味合いを持つからである。</p>
+<p><br></p>
+<h2 id="02">02. コントロールプレーンのコンポーネント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="03">03. データプレーンのコンポーネント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="ecs">ECSクラスター<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h3>
+<p>ECSサービスの管理グループ単位のこと。</p>
+<p><img alt="ecs_cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_cluster.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ecs_1">ECSサービス<a class="headerlink" href="#ecs_1" title="Permanent link">&para;</a></h3>
+<p>ECSタスクの管理グループ単位のこと。</p>
+<p>ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。</p>
+<p>マイクロサービスは、ECSサービスを単位として作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ecs_2">ECSタスク<a class="headerlink" href="#ecs_2" title="Permanent link">&para;</a></h3>
+<h4 id="ecs_3">▼ ECSタスク<a class="headerlink" href="#ecs_3" title="Permanent link">&para;</a></h4>
+<p>コンテナインスタンスの管理グループ単位のこと。</p>
+<p>ECSタスク定義を基に作成される。</p>
+<p><img alt="ecs_task" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task.png" /></p>
+<h4 id="ecs_4">▼ ECSコンテナエージェント<a class="headerlink" href="#ecs_4" title="Permanent link">&para;</a></h4>
+<p>ECSタスク実行ロールを使用して、ECSタスクのライフサイクルを管理する。</p>
+<p>Fargateの場合、ECSコンテナエージェントがプリインストールされている。</p>
+<p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ecs_ec2_iamrole/">https://dev.classmethod.jp/articles/ecs_ec2_iamrole/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/">https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/</a></li>
+</ul>
+</blockquote>
+<h4 id="ecs_5">▼ ECSタスク定義<a class="headerlink" href="#ecs_5" title="Permanent link">&para;</a></h4>
+<p>ECSタスクをどのような設定値を基に作成するかを設定できる。</p>
+<p>ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。</p>
+<p>ECSタスク定義を削除するには、全てのリビジョン番号のECSタスク定義を登録解除する必要がある。</p>
+<h4 id="ecs_6">▼ ECSタスクのライフサイクルフェーズ<a class="headerlink" href="#ecs_6" title="Permanent link">&para;</a></h4>
+<p><img alt="ecs_task_lifecycle_phase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task_lifecycle_phase.png" /></p>
+<p>ECSタスクのライフサイクルにはフェーズがある。</p>
+<p>ECSタスクは、必須コンテナ異常停止時、デプロイ、自動スケーリング、手動操作、の時にフェーズを持つ。</p>
+<table>
+<thead>
+<tr>
+<th>フェーズ名</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Provisioning</td>
+<td>ECSタスクの起動前に必要な準備 (例：ENIの紐付け) があり、これが完了していない。</td>
+<td></td>
+</tr>
+<tr>
+<td>Pending</td>
+<td>ECSタスク内のコンテナの起動がまだ完了していない。</td>
+<td></td>
+</tr>
+<tr>
+<td>Activating</td>
+<td>ECSタスク内の全てのコンテナの起動が完了したが、ECSタスク全体のセットアップは完了していない。</td>
+<td></td>
+</tr>
+<tr>
+<td>Running</td>
+<td>ECSタスク内の全てのコンテナの起動とECSタスク全体の準備が完了し、実行中である。</td>
+<td>コンテナの起動が完了すれば<code>Running</code>フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code>フェーズであっても使用できないことに注意する。</td>
+</tr>
+<tr>
+<td>De-activating</td>
+<td>ECSタスク内のコンテナを停止する前に必要な処理があり、これが完了していない。</td>
+<td></td>
+</tr>
+<tr>
+<td>Stopping</td>
+<td>ECSタスク内のコンテナが正常/異常に停止しようとしている途中である。</td>
+<td></td>
+</tr>
+<tr>
+<td>De-provisioning</td>
+<td>ECSタスク全体を停止する前に必要な準備 (例：ENIの解除) があり、これが完了していない。</td>
+<td></td>
+</tr>
+<tr>
+<td>Stopped</td>
+<td>ECSタスク全体が停止した。</td>
+<td>正常停止と異常停止に関わらず、停止理由を確認できる。<br>- <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stopped-task-errors.html</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html#lifecycle-states</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ecs_7">マルチECSサービス<a class="headerlink" href="#ecs_7" title="Permanent link">&para;</a></h3>
+<h4 id="ecs_8">▼ マルチECSサービスとは<a class="headerlink" href="#ecs_8" title="Permanent link">&para;</a></h4>
+<p>ECSクラスターが複数のECSサービスから構成される。</p>
+<p>マイクロサービスアーキテクチャのアプリケーション群を稼働させる時、Kubernetesを使用するのが基本である。</p>
+<p>ただし、ECSクラスター内に複数のECSサービスを作成することにより、Kubernetesのような構成を実現できる。</p>
+<p><img alt="ecs-fargate_microservices" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/">https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/</a></li>
+</ul>
+</blockquote>
+<h4 id="ecs_9">▼ ECSサービスディスカバリー<a class="headerlink" href="#ecs_9" title="Permanent link">&para;</a></h4>
+<p>Route53にECSタスクの宛先情報を動的に追加削除することにより、ECSタスクが他のECSタスクと通信可能にする。</p>
+<p><img alt="ecs_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_service-discovery.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://practical-aws.dev/p/ecs-service-discovery/">https://practical-aws.dev/p/ecs-service-discovery/</a></li>
+<li><a href="https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6">https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ecs-service-discovery/">https://dev.classmethod.jp/articles/ecs-service-discovery/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-02">03-02. ネットワーク<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
+<h3 id="_6">ネットワークモードとコンテナ間通信<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="none">▼ noneモード<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
+<p>外部ネットワークが無く、タスクと外と通信できない。</p>
+<h4 id="host">▼ hostモード<a class="headerlink" href="#host" title="Permanent link">&para;</a></h4>
+<p>EC2でのみ使用できる。</p>
+<p>Dockerのhostネットワークに相当する。</p>
+<p><img alt="network-mode_host-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host">https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host</a></li>
+</ul>
+</blockquote>
+<h4 id="bridge">▼ bridgeモード<a class="headerlink" href="#bridge" title="Permanent link">&para;</a></h4>
+<p>EC2でのみ使用できる。</p>
+<p>Dockerのbridgeネットワークに相当する。</p>
+<p><img alt="network-mode_host-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge">https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge</a></li>
+</ul>
+</blockquote>
+<h4 id="awsvpc">▼ awsvpcモード<a class="headerlink" href="#awsvpc" title="Permanent link">&para;</a></h4>
+<p>FargateとEC2の両方で使用できるawsの独自ネットワークモード。</p>
+<p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
+<p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる) 。</p>
+<p>これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
+<p>また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
+<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが<code>9000</code>番ポートでインバウンド通信を受信し、加えてコンテナが<code>9000</code>番ポートを開放する必要がある。</p>
+<p>しかし、awsvpcモードではコンテナポートを開放する必要はない。</p>
+<p><img alt="network-mode_awsvpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc">https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">プライベートサブネット内からのアウトバウンド通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ プライベートサブネット内へのデータプレーンの配置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにアクセスするために、NAT GatewayやVPCエンドポイントが必要になる。</p>
+<p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置する方が望ましい。</p>
+<h4 id="_9">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してアウトバウンド通信を送信するためには、NAT Gatewayを配置する必要がある。</p>
+<h4 id="vpcaws">▼ VPC外のAWSリソースに対する通信<a class="headerlink" href="#vpcaws" title="Permanent link">&para;</a></h4>
+<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
+<p>もしNAT Gatewayを配置したとする。</p>
+<p>この場合、VPCエンドポイントよりもNAT Gatewayの方が高く、AWSリソースに対する通信でもNAT Gatewayを通過するため、高額料金を請求されてしまう。</p>
+<p><img alt="ecs_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint">https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint</a></li>
+</ul>
+</blockquote>
+<p>代わりとして、VPCエンドポイントを配置する。</p>
+<p>より低額でデータプレーンがVPC外のAWSリソースのアクセスできるようになる。</p>
+<p><img alt="ecs_control-plane_vpc-endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane_vpc-endpoint.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink">https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-03">03-03. セキュリティ<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
+<h3 id="_10">ロール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ サービスロール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ECSサービスがECSタスクを操作するために必要なロールである。</p>
+<p>サービスリンクロールに含まれ、ECSの作成時に自動的に紐付けられる。</p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ecs_fargate_iamrole/">https://dev.classmethod.jp/articles/ecs_fargate_iamrole/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ecs_ec2_iamrole/">https://dev.classmethod.jp/articles/ecs_ec2_iamrole/</a></li>
+</ul>
+</blockquote>
+<h4 id="_12">▼ コンテナインスタンスロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>コンテナのホストが他のAWSリソースにアクセスするために必要なロールである。</p>
+<p>Fargateの場合、不要である。</p>
+<p><img alt="ecs_container-instance-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ecs_fargate_iamrole/">https://dev.classmethod.jp/articles/ecs_fargate_iamrole/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ecs_ec2_iamrole/">https://dev.classmethod.jp/articles/ecs_ec2_iamrole/</a></li>
+</ul>
+</blockquote>
+<h4 id="_13">▼ タスクロール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールである。</p>
+<p>アプリケーションにS3やSystems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
+<p><img alt="ecs_task-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ecs_fargate_iamrole/">https://dev.classmethod.jp/articles/ecs_fargate_iamrole/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ecs_ec2_iamrole/">https://dev.classmethod.jp/articles/ecs_ec2_iamrole/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>アプリケーションからCloudWatchログにログを送信するために、ECSタスクロールにカスタマー管理ポリシーを紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;logs:CreateLogStream&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;logs:PutLogEvents&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;arn:aws:logs:*:*:*&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>パラメーターストアから変数を取得するために、ECSタスクロールにインラインポリシーを紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ssm:GetParameters&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">}],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<h4 id="_14">▼ タスク実行ロール<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
+<p>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールのこと。</p>
+<p>AWS管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
+<p>このポリシーには、ECRへの認可スコープの他、CloudWatchログにログを作成するための認可スコープが設定されている。</p>
+<p>ECSタスク内のコンテナがリソースにアクセスするために必要なタスクロールとは区別すること。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;ecr:GetAuthorizationToken&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:BatchCheckLayerAvailability&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:GetDownloadUrlForLayer&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecr:BatchGetImage&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;logs:CreateLogStream&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;logs:PutLogEvents&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>datadogエージェントがECSクラスターやコンテナにアクセスできるように、ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;ecs:ListClusters&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecs:ListContainerInstances&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecs:DescribeContainerInstances&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ecs_fargate_iamrole/">https://dev.classmethod.jp/articles/ecs_fargate_iamrole/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ecs_ec2_iamrole/">https://dev.classmethod.jp/articles/ecs_ec2_iamrole/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-04">03-04. 監視<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
+<h3 id="_15">ログ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="awslogs">▼ awslogsドライバー<a class="headerlink" href="#awslogs" title="Permanent link">&para;</a></h4>
+<p>標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。</p>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>awslogs-group</code></td>
+<td>ログ宛先のCloudWatchログのロググループを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>awslogs-datetime-format</code></td>
+<td>日時フォーマットを定義し、加えてこれをログの区切り単位としてログストリームに出力する。</td>
+<td>正規表現で設定する必要があり、加えてJSONでは『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。例えば『<code>\\[%Y-%m-%d %H:%M:%S\\]</code>』となる。<br>- <a href="https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format">https://docs.docker.com/config/containers/logging/awslogs/#awslogs-datetime-format</a></td>
+</tr>
+<tr>
+<td><code>awslogs-region</code></td>
+<td>ログ宛先のCloudWatchログのリージョンを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>awslogs-stream-prefix</code></td>
+<td>ログ宛先のCloudWatchログのログストリームのプレフィックス名を設定する。</td>
+<td>ログストリームには、『<code>&lt;プレフィックス名&gt;/&lt;コンテナ名&gt;/&lt;タスクID&gt;</code>』の形式で送信される。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/config/containers/logging/awslogs/">https://docs.docker.com/config/containers/logging/awslogs/</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-on-ec2">04. on-EC2<a class="headerlink" href="#04-on-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="on-ec2">on-EC2とは<a class="headerlink" href="#on-ec2" title="Permanent link">&para;</a></h3>
+<p>EC2インスタンスをホストとして、コンテナを作成する。</p>
+<p><br></p>
+<h3 id="ec2ami">EC2インスタンスの最適化AMI<a class="headerlink" href="#ec2ami" title="Permanent link">&para;</a></h3>
+<p>任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
+<p>このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。</p>
+<table>
+<thead>
+<tr>
+<th>AMI名</th>
+<th>説明</th>
+<th>特に相性の良いアプリ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECS最適化 Amazon Linux 2</td>
+<td>ECSのための標準的なEC2インスタンスを作成できる。最も推奨。</td>
+<td></td>
+</tr>
+<tr>
+<td>ECS最適化 Amazon Linux 2022</td>
+<td>Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>- <a href="https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html">https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ECS最適化 Amazon Linux</td>
+<td>ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。</td>
+<td></td>
+</tr>
+<tr>
+<td>ECS最適化 Amazon Linux 2 arm64</td>
+<td>arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。</td>
+<td></td>
+</tr>
+<tr>
+<td>ECS最適化 Amazon Linux 2 GPU</td>
+<td>GPUが搭載されたEC2インスタンスを作成できる。</td>
+<td>GPUが必要なアプリケーション (計算処理系、機械学習系のアプリケーション)</td>
+</tr>
+<tr>
+<td>ECS最適化 Amazon Linux 2 推定</td>
+<td>Amazon EC2 Inf1インスタンスを作成できる。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_16">タスク配置戦略<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>ECSタスクをECSクラスターに配置する時のアルゴリズムを選択できる。</p>
+<table>
+<thead>
+<tr>
+<th>戦略</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spread</td>
+<td>ECSタスクを各場所にバランスよく配置する</td>
+</tr>
+<tr>
+<td>Binpack</td>
+<td>ECSタスクを<code>1</code>個の場所にできるだけ多く配置する。</td>
+</tr>
+<tr>
+<td>Random</td>
+<td>ECSタスクをランダムに配置する。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="05-on-fargate">05. on-Fargate<a class="headerlink" href="#05-on-fargate" title="Permanent link">&para;</a></h2>
+<h3 id="on-fargate">on-Fargateとは<a class="headerlink" href="#on-fargate" title="Permanent link">&para;</a></h3>
+<p>Fargateをホストとして、コンテナを作成する。</p>
+<p>Fargateの実体はEC2インスタンスである (ドキュメントに記載がないが、AWSサポートに確認済み) 。</p>
+<p><img alt="fargate_data-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/">https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-02">05-02. セットアップ<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
+<h3 id="_17">コンソール画面の場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="ecs_10">▼ ECSサービス<a class="headerlink" href="#ecs_10" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECSタスク定義</td>
+<td>ECSサービスで維持管理するタスクの定義ファミリー名とリビジョン番号を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>起動タイプ</td>
+<td>ECSタスク内のコンテナの起動タイプを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>プラットフォームのバージョン</td>
+<td>ECSコントロールプレーンのバージョンを設定する。</td>
+<td>バージョンによって、連携できるAWSリソースが異なる。</td>
+</tr>
+<tr>
+<td>サービスタイプ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ECSタスクの必要数</td>
+<td>非スケーリング時またはデプロイ時のタスク数を設定する。</td>
+<td>最小ヘルス率と最大率の設定値に影響する。</td>
+</tr>
+<tr>
+<td>最小ヘルス率</td>
+<td>ECSタスクの必要数の設定を<code>100</code>%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。</td>
+<td>例として、タスク必要数が4個だと仮定する。タスクヘルス最小率を50%とすれば、稼働中タスクの最低合計数は2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br>- <a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+</tr>
+<tr>
+<td>最大率</td>
+<td>ECSタスクの必要数の設定を<code>100</code>%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。</td>
+<td>例として、タスク必要数が4個だと仮定する。タスク最大率を200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br>- <a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+</tr>
+<tr>
+<td>ヘルスチェックの待機期間</td>
+<td>デプロイ時のALB/NLBのヘルスチェックを開始するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLBのヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。</td>
+<td>ALB/NLBではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特にNLBでは、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLBのヘルスチェックが完了する前に、ECSサービスがNLBのヘルスチェックの結果を確認してしまうことがある。例えば、NLBとLaravelを使用する場合は、ターゲット登録とLaravelコンテナの築の時間を加味して、<code>330</code>秒以上を目安とする。例えば、ALBとNuxt.js (SSRモード) を使用する場合は、<code>600</code>秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
+</tr>
+<tr>
+<td>タスクの最小数</td>
+<td>スケーリング時のタスク数の最小数を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>タスクの最大数</td>
+<td>スケーリング時のタスク数の最大数を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>ロードバランシング</td>
+<td>ALBでルーティングするコンテナを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>タスク数</td>
+<td>ECSタスクの作成数をいくつに維持するかを設定する。</td>
+<td>タスクが何らかの原因で停止した場合、タスクを自動的に作成する。</td>
+</tr>
+<tr>
+<td>デプロイメント</td>
+<td>ローリングアップデート、ブルー/グリーンデプロイがある。</td>
+<td></td>
+</tr>
+<tr>
+<td>サービスロール</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ecs_11">▼ ECSタスク定義<a class="headerlink" href="#ecs_11" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ECSタスク定義名</td>
+<td>ECSタスク定義の名前を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>ネットワークモード</td>
+<td>ホストとコンテナ間を接続するネットワーク様式を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>互換性</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>オペレーティングシステムファミリー</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>タスクロール</td>
+<td>ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにアクセスするために必要なロールを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>タスク実行ロール</td>
+<td>ECSタスク内のECSコンテナエージェントが、他のAWSリソースにアクセスするために必要なロールを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>タスクメモリ</td>
+<td>ECSタスク当たりのコンテナの合計メモリサイズを設定する。</td>
+<td>ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。</td>
+</tr>
+<tr>
+<td>タスクCPU</td>
+<td>ECSタスク当たりのコンテナの合計CPUサイズを設定する。</td>
+<td>・ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定した方が良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。</td>
+</tr>
+<tr>
+<td>コンテナ定義</td>
+<td>ECSタスク内のコンテナを設定する。</td>
+<td>JSONをインポートしても設定できる。</td>
+</tr>
+<tr>
+<td>サービス統合</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>プロキシ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>FireLens統合</td>
+<td>FireLensコンテナを使用する場合に有効化する。</td>
+<td></td>
+</tr>
+<tr>
+<td>ボリューム</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_18">▼ コンテナ定義<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>ECSタスク内のコンテナ1つに対して、環境を設定する。</p>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>対応する<code>docker</code>コマンドオプション</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cpu</td>
+<td><code>--cpus</code></td>
+<td>タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるCPUユニット数を設定する。cpuReservationという名前になっていないことに注意する。 CPUユニット数の比率に基づいて、タスク全体のCPUが各コンテナに割り当てられる。『ソフト制限』ともいう。</td>
+<td>・<a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_environment</a> <br>・<a href="https://qiita.com/_akiyama_/items/e9760dd61d94b8031247">https://qiita.com/_akiyama_/items/e9760dd61d94b8031247</a></td>
+</tr>
+<tr>
+<td>dnsServers</td>
+<td><code>--dns</code></td>
+<td>コンテナが名前解決に使用するDNSサーバーのIPアドレスを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>essential</td>
+<td></td>
+<td>コンテナが必須か否かを設定する。</td>
+<td>・<code>true</code>の場合、コンテナが停止すると、タスクに含まれる全コンテナが停止する。<br><code>false</code>の場合、コンテナが停止しても、その他のコンテナは停止しない。</td>
+</tr>
+<tr>
+<td>healthCheck<br>(command)</td>
+<td><code>--health-cmd</code></td>
+<td>ホストからFargateに対して、<code>curl</code>コマンドによるリクエストを送信し、レスポンス内容を確認。</td>
+<td></td>
+</tr>
+<tr>
+<td>healthCheck<br>(interval)</td>
+<td><code>--health-interval</code></td>
+<td>ヘルスチェックの間隔を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>healthCheck<br>(retries)</td>
+<td><code>--health-retries</code></td>
+<td>ヘルスチェックを成功と見なす回数を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>hostName</td>
+<td><code>--hostname</code></td>
+<td>コンテナにホスト名を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>image</td>
+<td></td>
+<td>ECRのURLを設定する。</td>
+<td>指定できるURLの記法は、Dockerfileの<code>FROM</code>と同じである。<br>- <a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
+</tr>
+<tr>
+<td>logConfiguration<br>(logDriver)</td>
+<td><code>--log-driver</code></td>
+<td>ログドライバーを指定することにより、ログの出力先を設定する。</td>
+<td>Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。</td>
+</tr>
+<tr>
+<td>logConfiguration<br>(options)</td>
+<td><code>--log-opt</code></td>
+<td>各ログドライバーのオプションを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>portMapping</td>
+<td><code>--publish</code><br><code>--expose</code></td>
+<td>ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。</td>
+<td><code>containerPort</code>のみを設定し、<code>hostPort</code>は設定しなければ、EXPOSEとして定義できる。<br>- <a href="https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html">https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html</a></td>
+</tr>
+<tr>
+<td>secrets<br>(volumesFrom)</td>
+<td></td>
+<td>パラメーターストアから出力する変数を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>memory</td>
+<td><code>--memory</code></td>
+<td>コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。</td>
+<td>- <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory</a></td>
+</tr>
+<tr>
+<td>memoryReservation</td>
+<td><code>--memory-reservation</code></td>
+<td>タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。</td>
+<td>- <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory</a></td>
+</tr>
+<tr>
+<td>mountPoints</td>
+<td></td>
+<td>隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargateは、脆弱性と性能の観点で、バインドマウントに対応していない。</td>
+<td>- <a href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html">https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html</a></td>
+</tr>
+<tr>
+<td>ulimit</td>
+<td>Linuxコマンドの<br><code>--ulimit</code>に相当</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/task_definition_parameters.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-03-ecs">05-03. ECSタスク<a class="headerlink" href="#05-03-ecs" title="Permanent link">&para;</a></h2>
+<h3 id="_19">サイドカー<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>マイクロサービスのコンテナからログを収集する場合に、AWS以外 (Google CloudLogging) に送信するのであればサイドカーパターンでログルーター (EC2ならFluentBit、FargateならFireLens) を採用しないといけない。</p>
+<p>ECSサービスを増えるたびにサイドカーの横展開していく。</p>
+<p><br></p>
+<h3 id="ip">IPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<h4 id="ecsip">▼ ECSタスクのIPアドレス<a class="headerlink" href="#ecsip" title="Permanent link">&para;</a></h4>
+<p>ECSタスクごとに異なるプライベートIPが割り当てられる。</p>
+<p>このIPアドレスに対して、ALBはルーティングを行う。</p>
+<h4 id="fargateip">▼ FargateのIPアドレス<a class="headerlink" href="#fargateip" title="Permanent link">&para;</a></h4>
+<p>Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。</p>
+<p>アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信 (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。</p>
+<p>そこで、Fargateのアウトバウンド通信が、Elastic IPアドレスを持つNAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに置いても良い) 。</p>
+<p>これによって、NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。</p>
+<p><img alt="NatGatewayを介したFargateから外部サービスへのアウトバウンド通信" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを介したFargateから外部サービスへのアウトバウンド通信.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ecs_12">ECSタスクの一時起動<a class="headerlink" href="#ecs_12" title="Permanent link">&para;</a></h3>
+<h4 id="db">▼ DBマイグレーション<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>現在起動中のECSタスクとは別に、新しいタスクを一時的に起動する。</p>
+<p>CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。</p>
+<p>起動時に、<code>overrides</code>オプションを使用して、指定したECSタスク定義のコンテナ設定を上書きできる。</p>
+<p>正規表現で設定する必要があり、加えてJSONでは『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。</p>
+<p>コマンドが実行された後に、タスクは自動的にStopped状態になる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>LaravelのSeederコマンドやロールバックコマンドを、ローカルマシンから実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">set</span><span class="w"> </span>-x
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Set Variables&quot;</span>
+<span class="nv">SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;prd-foo-ecs-service&quot;</span>
+<span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&quot;prd-foo-ecs-cluster&quot;</span>
+<span class="nv">TASK_NAME</span><span class="o">=</span><span class="s2">&quot;prd-foo-ecs-task-definition&quot;</span>
+<span class="nv">SUBNETS_CONFIG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-services<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--services<span class="w"> </span><span class="si">${</span><span class="nv">SERVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;services[].deployments[].networkConfiguration[].awsvpcConfiguration[].subnets[]&quot;</span><span class="k">)</span>
+<span class="nv">SGS_CONFIG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-services<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--services<span class="w"> </span><span class="si">${</span><span class="nv">SERVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;services[].deployments[].networkConfiguration[].awsvpcConfiguration[].securityGroups[]&quot;</span><span class="k">)</span>
+
+<span class="c1"># 実行したいコマンドをoverridesに設定する。</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Run Task&quot;</span>
+<span class="nv">TASK_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>run-task<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--platform-version<span class="w"> </span><span class="s2">&quot;1.4.0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">&quot;awsvpcConfiguration={subnets=</span><span class="si">${</span><span class="nv">SUBNETS_CONFIG</span><span class="si">}</span><span class="s2">,securityGroups=</span><span class="si">${</span><span class="nv">SGS_CONFIG</span><span class="si">}</span><span class="s2">}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--task-definition<span class="w"> </span><span class="si">${</span><span class="nv">TASK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--overrides<span class="w"> </span><span class="s1">&#39;{\&quot;containerOverrides\&quot;: [{\&quot;name\&quot;: \&quot;laravel-container\&quot;,\&quot;command\&quot;: [\&quot;php\&quot;, \&quot;artisan\&quot;, \&quot;db:seed\&quot;, \&quot;--class=DummySeeder\&quot;, \&quot;--force\&quot;]}]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;tasks[0].taskArn&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;&quot;&quot;)</span>
+
+<span class="s2">echo &quot;</span>Wait<span class="w"> </span><span class="k">until</span><span class="w"> </span>task<span class="w"> </span>stopped<span class="s2">&quot;</span>
+<span class="s2">aws ecs wait tasks-stopped \</span>
+<span class="s2">  --cluster </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2"> \</span>
+<span class="s2">  --tasks </span><span class="si">${</span><span class="nv">TASK_ARN</span><span class="si">}</span>
+
+<span class="s2">echo &quot;</span>Get<span class="w"> </span>task<span class="w"> </span>result<span class="s2">&quot;</span>
+<span class="s2">RESULT=</span><span class="k">$(</span>aws<span class="w"> </span>ecs<span class="w"> </span>describe-tasks<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--tasks<span class="w"> </span><span class="si">${</span><span class="nv">TASK_ARN</span><span class="si">}</span><span class="k">)</span>
+<span class="s2">echo </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span>
+
+<span class="s2">EXIT_STATUS=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RESULT</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.tasks<span class="o">[</span><span class="m">0</span><span class="o">]</span>.containers<span class="o">[</span><span class="m">0</span><span class="o">]</span>.exitStatus<span class="k">)</span>
+<span class="s2">echo exitStatus </span><span class="si">${</span><span class="nv">EXIT_STATUS</span><span class="si">}</span>
+<span class="s2">exit </span><span class="si">${</span><span class="nv">EXIT_STATUS</span><span class="si">}</span>
+</code></pre></div>
+<p>注意点として、実行IAMユーザーを作成し、ECSタスクを起動できる必要最低限の認可スコープを紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;iam:PassRole&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecs:RunTask&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecs:DescribeServices&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ecs:DescribeTasks&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:service/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task-definition/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:role/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="ecs_13">ECSタスクのデプロイ手法<a class="headerlink" href="#ecs_13" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ ローリングアップデート<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>最大率の設定値を基に、ローリングアップデート時の稼働中/停止中タスクの最高合計数が決まる</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>ECSは、待機時間後にALB/NLBによる新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。</p>
+</dd>
+<dt><code>(6)</code></dt>
+<dd>
+<p>全ての既存タスクが新タスクに置き換わる。</p>
+</dd>
+</dl>
+<p><img alt="rolling-update" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/</a></li>
+</ul>
+</blockquote>
+<h4 id="_21">▼ ブルー/グリーンデプロイメント<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>CodeDeployを使用してデプロイする。</p>
+<p><br></p>
+<h3 id="fargatevpcaws">プライベートサブネット内のFargateからVPC外のAWSリソースへのアクセス<a class="headerlink" href="#fargatevpcaws" title="Permanent link">&para;</a></h3>
+<p><img alt="ecs_vpc-endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png" /></p>
+<table>
+<thead>
+<tr>
+<th>VPCエンドポイントの接続先</th>
+<th>プライベートDNS名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CloudWatchログ</td>
+<td><code>logs.ap-northeast-1.amazonaws.com</code></td>
+<td>ECSコンテナのログをPOSTリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>ECR</td>
+<td><code>api.ecr.ap-northeast-1.amazonaws.com</code><br><code>*.dkr.ecr.ap-northeast-1.amazonaws.com</code></td>
+<td>イメージのGETリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>なし</td>
+<td>イメージのレイヤーをPOSTリクエストを送信するため</td>
+</tr>
+<tr>
+<td>Systems Manager</td>
+<td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>Secrets Manager</td>
+<td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+<td>Secrets Managerを使用するため。</td>
+</tr>
+</tbody>
+</table>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。</p>
+<p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。</p>
+<p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
+<p>注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec">https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec</a></li>
+<li><a href="https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint">https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint</a></li>
+<li><a href="https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/">https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="fargate">Fargate上のコンテナへの接続<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h3>
+<h4 id="ecs-exec">▼ セッションマネージャーを使用したECS Exec<a class="headerlink" href="#ecs-exec" title="Permanent link">&para;</a></h4>
+<p><img alt="fargate_ecs-exec" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png" /></p>
+<p>セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。</p>
+<p>Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。</p>
+<p>ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>ECSサービスで、ECS-Execオプションを有効化する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ECSタスク実行ロールにIAMポリシーを付与する。</p>
+<p>これにより、ECSタスクがセッションマネージャーにアクセスできるようになる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;ssmmessages:CreateControlChannel&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ssmmessages:CreateDataChannel&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ssmmessages:OpenControlChannel&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;ssmmessages:OpenDataChannel&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>ECS Execの実行ユーザーに、IAMポリシーを付与する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ecs:ExecuteCommand&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:cluster/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>事前の設定がなされているか否かをecs-exec-checkerスクリプトを実行して確認する。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws-containers/amazon-ecs-exec-checker">https://github.com/aws-containers/amazon-ecs-exec-checker</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">ECS_CLUSTER_NAME</span><span class="o">=</span>prd-foo-ecs-cluster
+<span class="nv">ECS_TASK_ID</span><span class="o">=</span>bar
+
+bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </span>-Ls<span class="w"> </span>https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh<span class="o">)</span><span class="w"> </span><span class="nv">$ECS_CLUSTER_NAME</span><span class="w"> </span><span class="nv">$ECS_TASK_ID</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行する時に、『<code>/bin/bash</code>』や『<code>/bin/sh</code>』で指定すると、binより上のパスもECSに送信されてしまう。</p>
+<p>例えば、Windowsなら『<code>C:/Program Files/Git/usr/bin/bash</code>』を送信する。</p>
+<p>これはCloudTrailでExecuteCommandイベントとして確認できる。</p>
+<p>ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">set</span><span class="w"> </span>-xe
+
+<span class="nv">ECS_CLUSTER_NAME</span><span class="o">=</span>prd-foo-ecs-cluster
+<span class="nv">ECS_TASK_ID</span><span class="o">=</span>bar
+<span class="nv">ECS_CONTAINER_NAME</span><span class="o">=</span>laravel
+
+aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cluster<span class="w"> </span><span class="nv">$ECS_CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--task<span class="w"> </span><span class="nv">$ECS_TASK_ID</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--container<span class="w"> </span><span class="nv">$ECS_CONTAINER_NAME</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--interactive<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--debug<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--command<span class="w"> </span><span class="s2">&quot;bash&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html</a></li>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html</a></li>
+<li><a href="https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e">https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5047 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="EC2＠AWSリソースの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_ec2.html">
+      
+      
+        <link rel="prev" href="cloud_computing_aws_resource_direct_connect.html">
+      
+      
+        <link rel="next" href="cloud_computing_aws_resource_ecr.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】EC2＠AWSリソース - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ec2aws" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】EC2＠AWSリソース
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_13">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            ⛅️ クラウド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_13_3_2" id="__nav_13_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWSリソース
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWSリソース
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アカウント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_api_gateway.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ API Gateway
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_autoscaling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AutoScaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_backup.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_certificate_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Certificate Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_chatbot.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudformation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFormation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudfront.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudFront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudtrail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudTrail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_cloudwatch.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CloudWatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code兄弟
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_control_tower.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Control Tower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_direct_connect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DirectConnect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_resource_ec2.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-ec2elastic-computer-cloud" class="md-nav__link">
+    01. EC2：Elastic Computer Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="01. EC2：Elastic Computer Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ダウンタイム
+  </a>
+  
+    <nav class="md-nav" aria-label="ダウンタイム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ダウンタイムの発生条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    インスタンスタイプ
+  </a>
+  
+    <nav class="md-nav" aria-label="インスタンスタイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 要素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPUバーストモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ アプリケーションのドメインに合わせたインスタンスタイプ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ルートデバイスボリューム
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートデバイスボリューム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ルートデバイスボリュームとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs" class="md-nav__link">
+    ▼ EBSボリューム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ インスタンスストアボリューム
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_1" class="md-nav__link">
+    EC2インスタンスのライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    キーペア
+  </a>
+  
+    <nav class="md-nav" aria-label="キーペア">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ フィンガープリント値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-ec2-based-on-amiamazon-machine-image" class="md-nav__link">
+    02. EC2 based on AMI：Amazon Machine Image
+  </a>
+  
+    <nav class="md-nav" aria-label="02. EC2 based on AMI：Amazon Machine Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ami" class="md-nav__link">
+    AMIとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami_1" class="md-nav__link">
+    AMIタイプ
+  </a>
+  
+    <nav class="md-nav" aria-label="AMIタイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs-backed-ami" class="md-nav__link">
+    ▼ EBS-backed AMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-store-backed-ami" class="md-nav__link">
+    ▼ instance store-backed AMI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami_2" class="md-nav__link">
+    AMIの共有
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami-os" class="md-nav__link">
+    AMI OS
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI OS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ami-os_1" class="md-nav__link">
+    ▼ AMI OSとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-linux" class="md-nav__link">
+    ▼ Amazon Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos" class="md-nav__link">
+    ▼ CentOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ec2-with-ebselastic-block-storage" class="md-nav__link">
+    03. EC2 with EBS：Elastic Block Storage
+  </a>
+  
+    <nav class="md-nav" aria-label="03. EC2 with EBS：Elastic Block Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_1" class="md-nav__link">
+    EBSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_2" class="md-nav__link">
+    EBSボリュームタイプとサイズ
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームタイプとサイズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_3" class="md-nav__link">
+    ▼ EBSボリュームの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 下限のサイズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 現在の空き容量の確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_4" class="md-nav__link">
+    EBSボリュームの拡張
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームの拡張">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ サイズの拡張
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_5" class="md-nav__link">
+    ▼ EBSボリュームが複数のパーティションで区切られている場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ext4" class="md-nav__link">
+    ▼ ext4タイプの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xfs" class="md-nav__link">
+    ▼ xfsタイプの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_6" class="md-nav__link">
+    EBSボリュームの永続化
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームの永続化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_7" class="md-nav__link">
+    ▼ EBSボリュームの永続化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_2" class="md-nav__link">
+    ▼ EC2インスタンスの作成後に永続化する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 注意点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    スナップショット
+  </a>
+  
+    <nav class="md-nav" aria-label="スナップショット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ スナップショットとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-ec2" class="md-nav__link">
+    04. EC2インスタンスへの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="04. EC2インスタンスへの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    キーペアを使用したSSH公開鍵認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    セッションマネージャーを使用したログインシェル
+  </a>
+  
+    <nav class="md-nav" aria-label="セッションマネージャーを使用したログインシェル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ セッションマネージャーを使用したログインシェル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems-manager" class="md-nav__link">
+    ▼ systems-managerエージェント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    ▼ VPCエンドポイントの作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ecs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_efs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EFS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_elasticache.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ︎ElastiCache
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_eventbridge.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EventBridge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_firelens.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FireLens
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_global_accelerator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Accelerator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_glue.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glue
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_iam.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kinesis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kinesis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_kms.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_resource_lambda.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Lambda
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_lb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_rds.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_redshift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_route53.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_s3.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    S3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_secrets_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secrets Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_ses.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SES
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sqs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_step_functions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_sts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_systems_manager.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Systems Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_vpc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VPC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_waf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WAF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_work_mail.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WorkMail
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ GCP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-ec2elastic-computer-cloud" class="md-nav__link">
+    01. EC2：Elastic Computer Cloud
+  </a>
+  
+    <nav class="md-nav" aria-label="01. EC2：Elastic Computer Cloud">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ダウンタイム
+  </a>
+  
+    <nav class="md-nav" aria-label="ダウンタイム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ダウンタイムの発生条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    インスタンスタイプ
+  </a>
+  
+    <nav class="md-nav" aria-label="インスタンスタイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 要素
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPUバーストモード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ アプリケーションのドメインに合わせたインスタンスタイプ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ルートデバイスボリューム
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートデバイスボリューム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ルートデバイスボリュームとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs" class="md-nav__link">
+    ▼ EBSボリューム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ インスタンスストアボリューム
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_1" class="md-nav__link">
+    EC2インスタンスのライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    キーペア
+  </a>
+  
+    <nav class="md-nav" aria-label="キーペア">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ フィンガープリント値
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-ec2-based-on-amiamazon-machine-image" class="md-nav__link">
+    02. EC2 based on AMI：Amazon Machine Image
+  </a>
+  
+    <nav class="md-nav" aria-label="02. EC2 based on AMI：Amazon Machine Image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ami" class="md-nav__link">
+    AMIとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami_1" class="md-nav__link">
+    AMIタイプ
+  </a>
+  
+    <nav class="md-nav" aria-label="AMIタイプ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs-backed-ami" class="md-nav__link">
+    ▼ EBS-backed AMI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-store-backed-ami" class="md-nav__link">
+    ▼ instance store-backed AMI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami_2" class="md-nav__link">
+    AMIの共有
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ami-os" class="md-nav__link">
+    AMI OS
+  </a>
+  
+    <nav class="md-nav" aria-label="AMI OS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ami-os_1" class="md-nav__link">
+    ▼ AMI OSとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-linux" class="md-nav__link">
+    ▼ Amazon Linux
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos" class="md-nav__link">
+    ▼ CentOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ec2-with-ebselastic-block-storage" class="md-nav__link">
+    03. EC2 with EBS：Elastic Block Storage
+  </a>
+  
+    <nav class="md-nav" aria-label="03. EC2 with EBS：Elastic Block Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_1" class="md-nav__link">
+    EBSとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    コンソール画面の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソール画面の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 設定項目と説明
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_2" class="md-nav__link">
+    EBSボリュームタイプとサイズ
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームタイプとサイズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_3" class="md-nav__link">
+    ▼ EBSボリュームの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 下限のサイズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 現在の空き容量の確認
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_4" class="md-nav__link">
+    EBSボリュームの拡張
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームの拡張">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ サイズの拡張
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_5" class="md-nav__link">
+    ▼ EBSボリュームが複数のパーティションで区切られている場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ext4" class="md-nav__link">
+    ▼ ext4タイプの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xfs" class="md-nav__link">
+    ▼ xfsタイプの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ebs_6" class="md-nav__link">
+    EBSボリュームの永続化
+  </a>
+  
+    <nav class="md-nav" aria-label="EBSボリュームの永続化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebs_7" class="md-nav__link">
+    ▼ EBSボリュームの永続化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_2" class="md-nav__link">
+    ▼ EC2インスタンスの作成後に永続化する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 注意点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    スナップショット
+  </a>
+  
+    <nav class="md-nav" aria-label="スナップショット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ スナップショットとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-ec2" class="md-nav__link">
+    04. EC2インスタンスへの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="04. EC2インスタンスへの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    キーペアを使用したSSH公開鍵認証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    セッションマネージャーを使用したログインシェル
+  </a>
+  
+    <nav class="md-nav" aria-label="セッションマネージャーを使用したログインシェル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ セッションマネージャーを使用したログインシェル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systems-manager" class="md-nav__link">
+    ▼ systems-managerエージェント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    ▼ VPCエンドポイントの作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="ec2aws">EC2＠AWSリソース<a class="headerlink" href="#ec2aws" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-ec2elastic-computer-cloud">01. EC2：Elastic Computer Cloud<a class="headerlink" href="#01-ec2elastic-computer-cloud" title="Permanent link">&para;</a></h2>
+<h3 id="ec2">EC2とは<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<p>クラウドサーバーとして働く。</p>
+<p>注意点があるものだけまとめる。</p>
+<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02">01-02. セットアップ<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 設定項目と説明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMI：Amazonマシンイメージ</td>
+<td>AMIを選択する。</td>
+<td></td>
+</tr>
+<tr>
+<td>インスタンスタイプ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EC2インスタンス数</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ネットワーク</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>サブネット</td>
+<td>EC2を配置するサブネットを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>自動割り当てIPアドレス</td>
+<td>EC2へのパブリックIPアドレスの割り当てを有効化する。</td>
+<td>EC2インスタンス作成後に有効にできない。</td>
+</tr>
+<tr>
+<td>キャパシティの予約</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ドメイン結合ディレクトリ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>IAMロール</td>
+<td>EC2に付与するIAMロールを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>シャットダウン動作</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>終了保護</td>
+<td>EC2インスタンスの削除を防ぐ。</td>
+<td>必ず有効にすること。</td>
+</tr>
+<tr>
+<td>モニタリング</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>テナンシー</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Elastic Inference</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>クレジット仕様</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ストレージ</td>
+<td>EC2インスタンスのストレージを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>キーペア</td>
+<td>SSH公開鍵認証のため、EC2インスタンスの秘密鍵に対応した公開鍵をインストールできる。</td>
+<td>・セッションマネージャーを使用してEC2インスタンスに接続する場合は、キーペアの作成は不要である。<br>・キーペアは、EC2の最初の作成時しか作成できず、後から作成できない。<br>・キーペアに割り当てられるフィンガープリント値を調べることにより、公開鍵と秘密鍵の対応関係を調べられる。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_4">ダウンタイム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ ダウンタイムの発生条件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>以下の条件の時にEC2にダウンタイムが発生する。</p>
+<p>EC2を冗長化している場合は、ユーザーに影響を与えずに対処できる。</p>
+<p>ダウンタイムが発生する方のインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
+<table>
+<thead>
+<tr>
+<th>変更する項目</th>
+<th>ダウンタイムの有無</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>インスタンスタイプ</td>
+<td>あり</td>
+<td>インスタンスタイプを変更するためにはEC2を停止する必要がある。そのため、ダウンタイムが発生する。</td>
+</tr>
+<tr>
+<td>ホスト物理サーバーのリタイアメント</td>
+<td>あり</td>
+<td>AWSから定期的にリタイアメントに関する警告メールが届く。ルートデバイスタイプが『EBS』の場合、ホスト物理サーバーの引っ越しを行うためにEC2の停止と起動が必要である。そのため、ダウンタイムが発生する。注意点として、再起動では引っ越しできない。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_6">インスタンスタイプ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 要素<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>インスタンス世代の数字が上がるにつれて、より小さなインスタンス世代と同じ大きさであっても、性能が上がり、金銭的コストが下がる。</p>
+<p>AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。</p>
+<p>例えば、CentOS 6系のAMIでは、<code>t3.small</code>を選択できない。</p>
+<table>
+<thead>
+<tr>
+<th><nobr><code>&lt;ファミリー&gt;&lt;世代&gt;&lt;追加機能&gt;.&lt;サイズ&gt;</code></nobr><br>(例: <code>c5d.xlarge</code>)</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>インスタンスファミリー</td>
+<td>適するアプリケーションのドメインやハードウェアの種類を表す。</td>
+<td><code>t</code>,<code>a</code>、など</td>
+</tr>
+<tr>
+<td>インスタンス世代</td>
+<td>インスタンスの新しさを表す。</td>
+<td><code>2</code>、<code>3</code>、<code>4</code>、など</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>標準ではインスタンスタイプに備わっていない機能を表す。</td>
+<td><code>a</code> (AMD CPU)、<code>g</code> (Graviton CPU) 、<code>i</code>(インテルCPU) など</td>
+</tr>
+<tr>
+<td>インスタンスサイズ</td>
+<td>インスタンスのハードウェアリソースの大きさを表す。</td>
+<td><code>nano</code>、<code>small</code>、<code>medium</code>、<code>large</code>、<code>xlarge</code>、<code>2xlarge</code>、など</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow">https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow</a></li>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24">https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24</a></li>
+</ul>
+</blockquote>
+<h4 id="cpu">▼ CPUバーストモード<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<p>バーストモードのインスタンスタイプの場合、一定水準のベースラインCPU使用率を提供しつつ、これを超過できる。</p>
+<p>CPU使用率がベースラインを超えたとき、超過した分だけEC2はCPUクレジットを消費する。</p>
+<p>CPUクレジットは一定の割合で復旧する。</p>
+<p>蓄積できる最大CPUクレジット、クレジットの復旧率、ベースラインCPU使用率は、インスタンスタイプによって異なる。</p>
+<p>詳しくは以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ アプリケーションのドメインに合わせたインスタンスタイプ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>アプリケーションのドメイン例</th>
+<th>ドメインの特長</th>
+<th>ファミリー</th>
+<th>世代</th>
+<th>インスタンスサイズ</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ほとんどのアプリケーションサーバー</td>
+<td>いろいろ</td>
+<td><code>M</code>系</td>
+<td>世代数は大きいほど高性能で値段も安い。そのため、その時点で一番新しい世代を選ぶ。</td>
+<td>サイズが一つ大きくなると、ハードウェアリソーススペックと料金が<code>2</code>倍になる。ネットワーク帯域はあまり変わらない。アプリケーションが必要とするサイズを選ぶ。</td>
+<td>★</td>
+</tr>
+<tr>
+<td>ハードウェアリソース要求がスパイクするような、ほとんどのアプリケーションサーバー</td>
+<td>スパイク系</td>
+<td><code>T</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td>★★</td>
+</tr>
+<tr>
+<td>Webサーバー、HPC、バッチ処理、広告配信、動画エンコーディング、ゲームサーバー、モデリング、分散分析</td>
+<td>CPU消費系</td>
+<td><code>C</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>NoSQL DB、インメモリDB、データウェアハウス</td>
+<td>ストレージI/O消費系</td>
+<td><code>H</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>NoSQL DB、インメモリDB、データウェアハウス</td>
+<td>ストレージI/O消費系</td>
+<td><code>I</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
+<td>メモリ消費系</td>
+<td><code>R</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
+<td>メモリ消費系</td>
+<td><code>X</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
+<td>メモリ消費系</td>
+<td>ハイメモリ</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>高性能DBサーバー、キャッシュサーバー、ビッグデータ処理</td>
+<td>メモリ消費系</td>
+<td><code>Z</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>3Dレンダリング、動画、ゲーム</td>
+<td>GPU消費系</td>
+<td><code>G</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>機械学習、深層学習、HPC</td>
+<td>GPU消費系</td>
+<td><code>P</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+<tr>
+<td>ゲノム分析、リスク計算、リアルタイムビデオ処理</td>
+<td>FPGA消費系</td>
+<td><code>F</code>系</td>
+<td>同上</td>
+<td>同上</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/20210603-Instance_Choice_and_Graviton2.pdf#page=12">https://pages.awscloud.com/rs/112-TZM-766/images/20210603-Instance_Choice_and_Graviton2.pdf#page=12</a></li>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=16">https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=16</a></li>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=22">https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=22</a></li>
+<li><a href="https://aws.amazon.com/jp/ec2/instance-types/">https://aws.amazon.com/jp/ec2/instance-types/</a></li>
+<li><a href="https://techblog.forgevision.com/entry/aws-ec2-instance-bgr">https://techblog.forgevision.com/entry/aws-ec2-instance-bgr</a></li>
+<li><a href="https://biz.nuro.jp/column/aws-mama-022/">https://biz.nuro.jp/column/aws-mama-022/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_9">ルートデバイスボリューム<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ ルートデバイスボリュームとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスでは、ブロックデバイスにルートデバイスボリュームが紐づいている。</p>
+<p>複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐付けることもできる。</p>
+<p>加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。</p>
+<p>つまりEC2インスタンスが作成されると、ボリューム内に保管されたファイルは、ブロックデバイスを介して、マウントポイントのディレクトリ内に作成される。</p>
+<p>また反対に、マウント先ディレクトリ内に保存されたファイルは、ルートデバイスボリューム内に保管される。</p>
+<p>複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html">https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html</a></li>
+</ul>
+</blockquote>
+<h4 id="ebs">▼ EBSボリューム<a class="headerlink" href="#ebs" title="Permanent link">&para;</a></h4>
+<p><img alt="ec2_ebs-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png" /></p>
+<p>名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
+<p>EBSで保管されているルートデバイスボリュームで、推奨の方法である。</p>
+<p>インスタンスストアボリュームとは異なり、コンピューティングとして動作するEC2インスタンスと、ストレージとして動作するルートデバイスボリュームが分離されている。</p>
+<p>そのため、EC2インスタンスが誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。</p>
+<p>また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage</a></li>
+</ul>
+</blockquote>
+<h4 id="_11">▼ インスタンスストアボリューム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p><img alt="ec2_instance-store-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png" /></p>
+<p>名前がややこしいが、EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
+<p>インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。</p>
+<p>EBSボリュームとは異なり、コンピューティングとして動作するEC2インスタンス内にルートデバイスボリュームが存在している。</p>
+<p>そのため、インスタンスストアボリュームは、EC2インスタンスを削除すると一緒に削除されてしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ec2_1">EC2インスタンスのライフサイクルフェーズ<a class="headerlink" href="#ec2_1" title="Permanent link">&para;</a></h3>
+<p><img alt="aws_ec2_lifecycle_phase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png" /></p>
+<p>EC2インスタンスのライフサイクルにはフェーズがある。</p>
+<table>
+<thead>
+<tr>
+<th>フェーズ名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pending</td>
+<td>インスタンスを開始する前に必要な準備があり、これが完了していない。</td>
+</tr>
+<tr>
+<td>running</td>
+<td>インスタンスの起動が完了し、実行中である。</td>
+</tr>
+<tr>
+<td>stopping</td>
+<td>インスタンスを停止している途中である。</td>
+</tr>
+<tr>
+<td>stopped</td>
+<td>インスタンスの停止が完了した。</td>
+</tr>
+<tr>
+<td>shutting-down</td>
+<td>インスタンスを削除している途中である。</td>
+</tr>
+<tr>
+<td>terminated</td>
+<td>インスタンスの削除が完了した。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_12">キーペア<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ フィンガープリント値<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>ローカルマシンに配置されている秘密鍵が、該当するEC2に配置されている公開鍵とペアなのか否か、フィンガープリント値を照合して確認する方法</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>pkcs8<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-in<span class="w"> </span>&lt;秘密鍵名&gt;.pem<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-inform<span class="w"> </span>PEM<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-outform<span class="w"> </span>DER<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-topk8<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-nocrypt<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="p">|</span><span class="w"> </span>openssl<span class="w"> </span>sha1<span class="w"> </span>-c
+</code></pre></div>
+<p><br></p>
+<h2 id="02-ec2-based-on-amiamazon-machine-image">02. EC2 based on AMI：Amazon Machine Image<a class="headerlink" href="#02-ec2-based-on-amiamazon-machine-image" title="Permanent link">&para;</a></h2>
+<h3 id="ami">AMIとは<a class="headerlink" href="#ami" title="Permanent link">&para;</a></h3>
+<p>EC2インスタンスのマシンイメージであり、EC2インスタンス上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とEBSボリュームの両方が内蔵されたコピーのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html</a></li>
+<li><a href="https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html">https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ami_1">AMIタイプ<a class="headerlink" href="#ami_1" title="Permanent link">&para;</a></h3>
+<h4 id="ebs-backed-ami">▼ EBS-backed AMI<a class="headerlink" href="#ebs-backed-ami" title="Permanent link">&para;</a></h4>
+<p>EBSボリュームを持つEC2インスタンスを作成するAMIのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
+</ul>
+</blockquote>
+<h4 id="instance-store-backed-ami">▼ instance store-backed AMI<a class="headerlink" href="#instance-store-backed-ami" title="Permanent link">&para;</a></h4>
+<p>インスタンスストアボリュームを持つEC2インスタンスを作成するAMIのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ami_2">AMIの共有<a class="headerlink" href="#ami_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>共有先</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>特定のリージョン間</td>
+<td><code>⭕️</code></td>
+</tr>
+<tr>
+<td>特定のアカウント間</td>
+<td><code>⭕️</code></td>
+</tr>
+<tr>
+<td>全てのアカウント間 (パブリック)</td>
+<td><code>⭕️</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ami-os">AMI OS<a class="headerlink" href="#ami-os" title="Permanent link">&para;</a></h3>
+<h4 id="ami-os_1">▼ AMI OSとは<a class="headerlink" href="#ami-os_1" title="Permanent link">&para;</a></h4>
+<p>Linuxディストリビューション別にAMI OSを配布している。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/mp/linux/">https://aws.amazon.com/jp/mp/linux/</a></li>
+</ul>
+</blockquote>
+<h4 id="amazon-linux">▼ Amazon Linux<a class="headerlink" href="#amazon-linux" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスを作成するために最適化されたLinuxのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.acrovision.jp/service/aws/?p=609">https://www.acrovision.jp/service/aws/?p=609</a></li>
+</ul>
+</blockquote>
+<h4 id="centos">▼ CentOS<a class="headerlink" href="#centos" title="Permanent link">&para;</a></h4>
+<p>ベンダー公式あるいは非公式が提供しているAMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。</p>
+<blockquote>
+<ul>
+<li><a href="https://wiki.centos.org/Cloud/AWS">https://wiki.centos.org/Cloud/AWS</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-ec2-with-ebselastic-block-storage">03. EC2 with EBS：Elastic Block Storage<a class="headerlink" href="#03-ec2-with-ebselastic-block-storage" title="Permanent link">&para;</a></h2>
+<h3 id="ebs_1">EBSとは<a class="headerlink" href="#ebs_1" title="Permanent link">&para;</a></h3>
+<p>EC2インスタンスのクラウド内蔵ストレージとして働く。</p>
+<p><br></p>
+<h2 id="03-02">03-02. セットアップ<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
+<h3 id="_14">コンソール画面の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ 設定項目と説明<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ボリュームタイプ</td>
+<td>EBSボリュームの種類を設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>サイズ</td>
+<td>選択したボリュームタイプでのサイズを設定する。</td>
+<td></td>
+</tr>
+<tr>
+<td>IOPS (I/O per second)</td>
+<td>EC2インスタンスとEBSボリューム間のI/O処理のリクエスト数 (個/秒) を設定する。</td>
+<td>ストレージのI/O処理は、読み書き処理に相当する。そのため、IOPSの数値が高いほど、高速で読み書きできることを表す。<br>- <a href="https://www.idcf.jp/words/io.html">https://www.idcf.jp/words/io.html</a></td>
+</tr>
+<tr>
+<td>AZ</td>
+<td>EBSボリュームを作成するAZ。</td>
+<td>EC2インスタンスは、同じAZにあるEBSボリュームしか選択できないので注意する。</td>
+</tr>
+<tr>
+<td>暗号化</td>
+<td>EC2インスタンスとEBSボリューム間のI/O処理を暗号化するか否かを設定する。</td>
+<td>- <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="ebs_2">EBSボリュームタイプとサイズ<a class="headerlink" href="#ebs_2" title="Permanent link">&para;</a></h3>
+<h4 id="ebs_3">▼ EBSボリュームの種類<a class="headerlink" href="#ebs_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>EBSボリュームタイプ</th>
+<th>対応する物理ストレージ</th>
+<th>IOPS (読み書き処理の毎秒リクエスト数)</th>
+<th>スループット</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>汎用SSD (<code>gp2</code>)</td>
+<td>SSD</td>
+<td>サイズに応じて、自動的に設定される。</td>
+<td>設定できない。</td>
+</tr>
+<tr>
+<td>汎用SSD (<code>gp3</code>)</td>
+<td>同上</td>
+<td>サイズに関係なく、設定できる。</td>
+<td>サイズに関係なく、設定できる。</td>
+</tr>
+<tr>
+<td>プロビジョンド IOPS SSD (<code>io1</code>)</td>
+<td>同上</td>
+<td>サイズに関係なく、設定できる。</td>
+<td>設定できない。</td>
+</tr>
+<tr>
+<td>プロビジョンド IOPS SSD (<code>io2</code>)</td>
+<td>同上</td>
+<td>サイズに関係なく、設定できる。</td>
+<td>設定できない。</td>
+</tr>
+<tr>
+<td>Cold HDD</td>
+<td>HDD</td>
+<td>サイズに応じて、自動的に設定される。</td>
+<td>サイズに応じて、自動的に設定される。</td>
+</tr>
+<tr>
+<td>スループット最適化 HDD</td>
+<td>同上</td>
+<td>設定できない。</td>
+<td>サイズに応じて、自動的に設定される。</td>
+</tr>
+<tr>
+<td>マグネティック</td>
+<td>同上</td>
+<td>設定できない。</td>
+<td>設定できない。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_16">▼ 下限のサイズ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>一般的なアプリケーションであれば、最低限<code>20</code>～<code>30</code>GiBのサイズがあると良い。</p>
+<p>しかし、踏み台サーバーの場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなサイズのEBSボリュームを組み込む必要がない。</p>
+<p>そこでできるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。</p>
+<p>OSによって下限ボリュームサイズが異なることに注意する。</p>
+<table>
+<thead>
+<tr>
+<th>OS</th>
+<th>仮想メモリ</th>
+<th>下限EBSボリュームサイズ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Amazon Linux</td>
+<td><code>t2.micro</code></td>
+<td><code>8</code></td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td><code>t2.micro</code></td>
+<td><code>10</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_17">▼ 現在の空き容量の確認<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>EBSボリュームの現在の空き容量を確認するためには、<code>df</code>コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>df<span class="w"> </span>-hT<span class="w"> </span>/dev/xvda1
+
+<span class="c1"># パーティションの使用率が15%であることから、EBSボリュームの使用率がわかる。</span>
+Filesystem<span class="w">     </span>Type<span class="w">      </span>Size<span class="w">  </span>Used<span class="w"> </span>Avail<span class="w"> </span>Use%<span class="w"> </span>Mounted<span class="w"> </span>on
+/dev/xvda1<span class="w">     </span>xfs<span class="w">       </span><span class="m">8</span>.0G<span class="w">  </span><span class="m">1</span>.2G<span class="w">  </span><span class="m">6</span>.9G<span class="w">  </span><span class="m">15</span>%<span class="w"> </span>/
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ebs_4">EBSボリュームの拡張<a class="headerlink" href="#ebs_4" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ サイズの拡張<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>サイズを拡張するためには、実際のストレージ (EBSボリューム) 、EBSボリューム内のパーティション、EC2内のファイルシステム、に関して作業が必要にある。</p>
+<p><strong>＊例＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>任意で、バックアップのために拡張対象のEC2インスタンスのAMIを作成しておく。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>EC2インスタンスのEBSボリュームを<code>8</code>GiBから<code>16</code>GiBに拡張する例を考える。</p>
+<p><code>lsblk</code>コマンドで現在のボリュームのサイズを確認すると、EBSボリュームが<code>8</code>GiBである。</p>
+<p>この時、EBSボリューム内にパーティションがある。</p>
+<p><code>df</code>コマンドでパーティションのサイズを確認すると、同じく<code>8</code>GiBである。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+
+NAME<span class="w">    </span>MAJ:MIN<span class="w">   </span>RM<span class="w">   </span>SIZE<span class="w">   </span>RO<span class="w">   </span>TYPE<span class="w">   </span>MOUNTPOINT
+xvda<span class="w">      </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">     </span>8G<span class="w">    </span><span class="m">0</span><span class="w">   </span>disk<span class="w">              </span><span class="c1"># ストレージ (EBSボリューム)</span>
+└─xvda1<span class="w">   </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">     </span>8G<span class="w">    </span><span class="m">0</span><span class="w">   </span>part<span class="w">   </span>/<span class="w">          </span><span class="c1"># パーティション</span>
+nvme1n1<span class="w">   </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>200G<span class="w">    </span><span class="m">0</span><span class="w">   </span>disk<span class="w">   </span>/var/lib
+...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h
+
+Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">   </span>Mounted<span class="w"> </span>on
+/dev/xvda1<span class="w">       </span>8G<span class="w">   </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">   </span>/<span class="w">           </span><span class="c1"># パーティション</span>
+/dev/nvme1n1<span class="w">   </span>200G<span class="w">   </span>161G<span class="w">    </span>40G<span class="w">   </span><span class="m">81</span>%<span class="w">   </span>/var/lib
+...
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>コンソール画面から、EBSボリュームを<code>16</code>GiBに拡張する。</p>
+<p>この時、ダウンタイムは発生しない。</p>
+<p>改めて<code>lsblk</code>コマンドを実行することにより、該当のEBSボリュームが拡張されたことを確認できる。</p>
+<p>ただ<code>df</code>コマンドで確認すると、パーティションはまだ拡張されていない。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+
+NAME<span class="w">          </span>MAJ:MIN<span class="w"> </span>RM<span class="w">   </span>SIZE<span class="w">  </span>RO<span class="w">  </span>TYPE<span class="w">  </span>MOUNTPOINT
+xvda<span class="w">          </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">    </span>16G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">             </span><span class="c1"># ストレージ (EBSボリューム)</span>
+└─xvda1<span class="w">       </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">     </span>8G<span class="w">   </span><span class="m">0</span><span class="w">  </span>part<span class="w">  </span>/<span class="w">          </span><span class="c1"># パーティション</span>
+nvme1n1<span class="w">       </span><span class="m">259</span>:1<span class="w">    </span><span class="m">0</span><span class="w">   </span>200G<span class="w">   </span><span class="m">0</span><span class="w">  </span>disk<span class="w">  </span>/var/lib
+...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h
+
+Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">   </span>Mounted<span class="w"> </span>on
+/dev/xvda1<span class="w">       </span>8G<span class="w">   </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">   </span>/<span class="w">           </span><span class="c1"># パーティション</span>
+/dev/nvme1n1<span class="w">   </span>200G<span class="w">   </span>161G<span class="w">    </span>40G<span class="w">   </span><span class="m">81</span>%<span class="w">   </span>/var/lib
+...
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>パーティションに紐づくファイルシステムのタイプを確認する。今回は<code>ext4</code>タイプである。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
+
+Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span class="w">  </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">  </span>Mounted<span class="w"> </span>on
+/dev/xvda1<span class="w">     </span>ext4<span class="w">    </span>8G<span class="w">  </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">  </span>/<span class="w">           </span><span class="c1"># ext4タイプ</span>
+/dev/nvme1n1<span class="w">   </span>xfs<span class="w">    </span>20G<span class="w">  </span><span class="m">8</span>.0G<span class="w">    </span>13G<span class="w">   </span><span class="m">40</span>%<span class="w">  </span>/var/lib
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html#extend-file-system</a></li>
+</ul>
+</blockquote>
+<h4 id="ebs_5">▼ EBSボリュームが複数のパーティションで区切られている場合<a class="headerlink" href="#ebs_5" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p><code>lsblk</code>コマンドの結果、EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。</p>
+<p>今回、EBSボリュームがパーティションに区切られている。</p>
+<p>そのため、<code>growpart</code>コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># growpart &lt;パーティションのデバイスファイル名&gt; &lt;パーティションの番号&gt;</span>
+$<span class="w"> </span>growpart<span class="w"> </span>/dev/xvda<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>改めて<code>lsblk</code>コマンドを実行することにより、パーティションのサイズが拡張されていることを確認できる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+
+NAME<span class="w">    </span>MAJ:MIN<span class="w"> </span>RM<span class="w"> </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
+xvda<span class="w">    </span><span class="m">202</span>:0<span class="w">    </span><span class="m">0</span><span class="w">  </span>16G<span class="w">  </span><span class="m">0</span><span class="w"> </span>disk<span class="w">            </span><span class="c1"># ストレージ (EBSボリューム)</span>
+└─xvda1<span class="w"> </span><span class="m">202</span>:1<span class="w">    </span><span class="m">0</span><span class="w">  </span>16G<span class="w">  </span><span class="m">0</span><span class="w"> </span>part<span class="w"> </span>/<span class="w">          </span><span class="c1"># パーティション</span>
+...
+</code></pre></div>
+<h4 id="ext4">▼ <code>ext4</code>タイプの場合<a class="headerlink" href="#ext4" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>ファイルシステムのサイズを拡張していく。</p>
+<p>もし、パーティションに紐づくファイルシステムのタイプが<code>ext4</code>タイプであった場合、<code>resize2fs</code>コマンドでパーティションのデバイスファイル名を指定し、これに紐づくファイルシステムのサイズを拡張する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># 空きサイズの100%を使用して拡張する。</span>
+<span class="c1"># sudo resize2fs &lt;パーティションのデバイスファイル名&gt;</span>
+$<span class="w"> </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span>/dev/xvda1
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>改めて<code>df</code>コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
+
+Filesystem<span class="w">  </span>Type<span class="w">  </span>Size<span class="w">  </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">  </span>Mounted<span class="w"> </span>on
+/dev/xvda1<span class="w">  </span>ext4<span class="w">   </span>16G<span class="w">  </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">  </span>/var/lib<span class="w">     </span><span class="c1"># パーティション</span>
+...
+</code></pre></div>
+<h4 id="xfs">▼ <code>xfs</code>タイプの場合<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>ファイルシステムのサイズを拡張していく。</p>
+<p>もし、パーティションに紐づくファイルシステムのタイプが<code>xfs</code>タイプであった場合、<code>xfs_growfs</code>コマンドでファイルシステムのマウントポイントを指定し、ファイルシステムのサイズを拡張する。</p>
+<p>もし、<code>xfs_growfs</code>コマンドがない場合は、インストールする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># xfs_growfs -d &lt;ファイルシステムのマウントポイント名&gt;</span>
+$<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/var/lib
+
+<span class="c1"># もし、xfs_growfsコマンドがない場合は、インストールする。</span>
+<span class="c1"># yum install xfsprogs</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>改めて<code>df</code>コマンドを実行することにより、パーティションに紐づくファイルシステムを拡張できたことを確認できる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
+
+Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span class="w">  </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">  </span>Mounted<span class="w"> </span>on
+/dev/nvme1n1<span class="w">   </span>xfs<span class="w">    </span>20G<span class="w">  </span><span class="m">8</span>.0G<span class="w">    </span>13G<span class="w">   </span><span class="m">40</span>%<span class="w">  </span>/var/lib<span class="w">      </span><span class="c1"># パーティション</span>
+...
+</code></pre></div>
+<p><br></p>
+<h3 id="ebs_6">EBSボリュームの永続化<a class="headerlink" href="#ebs_6" title="Permanent link">&para;</a></h3>
+<h4 id="ebs_7">▼ EBSボリュームの永続化とは<a class="headerlink" href="#ebs_7" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスの初期作成時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。</p>
+<p>これにより、EC2インスタンスが削除されても、EBSボリュームを削除しないようにできる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage</a></li>
+</ul>
+</blockquote>
+<h4 id="ec2_2">▼ EC2インスタンスの作成後に永続化する<a class="headerlink" href="#ec2_2" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスの作成後に、EBSボリュームを永続化したい場合は、CLIを実行する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-attribute<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-id<span class="w"> </span>&lt;インスタンスID&gt;
+<span class="w">    </span>--block-device-mappings<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>file://example.json
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># example.jsonファイル</span>
+<span class="o">[</span>
+<span class="w">  </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;DeviceName&quot;</span>:<span class="w"> </span><span class="s2">&quot;/dev/sda1&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;Ebs&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;DeleteOnTermination&quot;</span>:<span class="w"> </span><span class="nb">false</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">]</span>
+</code></pre></div>
+<h4 id="_19">▼ 注意点<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>EC2インスタンスにAutoScalingを適用している場合は、EBSボリュームを永続化しない方が良いかもしれない。</p>
+<p>AutoScalingのスケールイン時に、削除されたEC2インスタンスのEBSボリュームが削除されないため、未使用のEBSボリュームがどんどん溜まっていく問題が起こる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2">https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_20">スナップショット<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="_21">▼ スナップショットとは<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>EBSボリュームのコピーのこと。</p>
+<p>ソフトウェアとEBSボリュームのコピーの両方が内蔵されたAMIとは区別すること。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html">https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_22">▼ セットアップ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>リソースタイプ</td>
+<td>単一のボリュームのスナップショット、複数のボリュームを含むスナップショット、のいずれを作成するか、を設定する。</td>
+</tr>
+<tr>
+<td>ボリュームID/インスタンスID</td>
+<td>スナップショットの元になるボリューム/EC2インスタンスを設定する。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="04-ec2">04. EC2インスタンスへの接続<a class="headerlink" href="#04-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="ssh">キーペアを使用したSSH公開鍵認証<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
+<p>キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つEC2インスタンスにSSH公開鍵認証でアクセスできる。</p>
+<p>クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。</p>
+<p>その後、Route53、ALBを経由せず、そのままEC2へ向かう。</p>
+<p><img alt="ssh-port-forward" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png" /></p>
+<p><br></p>
+<h3 id="_23">セッションマネージャーを使用したログインシェル<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ セッションマネージャーを使用したログインシェル<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>セッションマネージャーを使用してEC2インスタンスに接続し、ログインシェルを起動する。</p>
+<p><img alt="ec2_session-manager" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html">https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html</a></li>
+<li><a href="https://dev.classmethod.jp/articles/ssh-through-session-manager/">https://dev.classmethod.jp/articles/ssh-through-session-manager/</a></li>
+</ul>
+</blockquote>
+<h4 id="systems-manager">▼ systems-managerエージェント<a class="headerlink" href="#systems-manager" title="Permanent link">&para;</a></h4>
+<p>Systems Managerを使用してEC2インスタンスに接続する場合、EC2インスタンス自体にsystems-managerエージェントをインストールしておく必要がある。</p>
+<p>カスタムAMIであれば自身でインストールし、最適化されたAMIであれば事前にインストールされている。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html</a></li>
+</ul>
+</blockquote>
+<h4 id="vpc">▼ VPCエンドポイントの作成<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>VPCエンドポイントの接続先</th>
+<th>プライベートDNS名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC2</td>
+<td><code>ec2messages.ap-northeast-1.amazonaws.com</code></td>
+<td>ローカルマシンからEC2インスタンスにコマンドを送信するため。</td>
+</tr>
+<tr>
+<td>Systems Manager</td>
+<td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+<td>Systems ManagerのパラメーターストアにGETリクエストを送信するため。</td>
+</tr>
+<tr>
+<td>Secrets Manager</td>
+<td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+<td>Secrets Managerを使用するため。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-05</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

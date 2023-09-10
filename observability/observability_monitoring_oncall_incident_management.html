@@ -1,0 +1,3772 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="オンコールとインシデント管理＠監視の知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_oncall_incident_management.html">
+      
+      
+        <link rel="prev" href="observability_monitoring.html">
+      
+      
+        <link rel="next" href="observability_monitoring_service_level.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】オンコールとインシデント管理＠監視 - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】オンコールとインシデント管理＠監視
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_21">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            🔎 可観測性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可観測性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21_3" checked>
+        
+          <label class="md-nav__link" for="__nav_21_3" id="__nav_21_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 監視
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_21_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_21_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 監視
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_monitoring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    監視
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    オンコールとインシデント管理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="observability_monitoring_oncall_incident_management.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    オンコールとインシデント管理
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. オンコール
+  </a>
+  
+    <nav class="md-nav" aria-label="01. オンコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    オンコールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    オンコール対応時間
+  </a>
+  
+    <nav class="md-nav" aria-label="オンコール対応時間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ グローバル企業の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. アラートの設定
+  </a>
+  
+    <nav class="md-nav" aria-label="02. アラートの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アラート発火の事前検証
+  </a>
+  
+    <nav class="md-nav" aria-label="アラート発火の事前検証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ システムの実際値の変更
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 閾値の変更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    アラートの付加情報
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの付加情報">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ イベントの内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ラベル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-severity" class="md-nav__link">
+    02-02. エラーイベント重要度 (severity) レベル
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. エラーイベント重要度 (severity) レベル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    エラーイベント重要度レベルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    カウントする必要があるステータスの判断
+  </a>
+  
+    <nav class="md-nav" aria-label="カウントする必要があるステータスの判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ステータスの重要度レベルへの変換
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ ログステータスの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ステータスコードの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. インシデント管理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. インシデント管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    インシデントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    インシデント管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    インシデントの解決フェーズ
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの解決フェーズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 解決フェーズとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ 解決フェーズの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    インシデント重要度レベル (severityレベル)
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデント重要度レベル (severityレベル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ インシデント重要度レベルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    一次オンコール担当者の作業
+  </a>
+  
+    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slack" class="md-nav__link">
+    ▼ Slackの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. インシデント管理の組織化
+  </a>
+  
+    <nav class="md-nav" aria-label="04. インシデント管理の組織化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    インシデントコマンドシステムに基づく役割分離
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントコマンドシステムに基づく役割分離">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ インシデントコマンドシステムとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 指揮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 計画
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 後方支援
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. アラート、インシデントの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="05. アラート、インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    アラートの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ アラートの抑制とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ エラーイベントの重要度レベルの調節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ アラートの一時無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ アラートのグループ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ アラートの条件の調節
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    インシデントの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ インシデントの抑制とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ 特定のシステムを無視
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ インシデントの一時無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ エラーイベントの重要度レベルの調節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ インシデントのグループ化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. インシデント管理の事後評価
+  </a>
+  
+    <nav class="md-nav" aria-label="06. インシデント管理の事後評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx" class="md-nav__link">
+    MTxxメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="MTxxメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_1" class="md-nav__link">
+    ▼ MTxxメトリクスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ 稼働率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_2" class="md-nav__link">
+    ▼ MTxxメトリクスのインシデント管理への適用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ ダッシュボード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ポストモーテム
+  </a>
+  
+    <nav class="md-nav" aria-label="ポストモーテム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ ポストモーテムとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 独自テンプレート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty" class="md-nav__link">
+    ▼ PagerDutyの事例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ その他の会社事例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="observability_monitoring_service_level.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    サービスレベル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_telemetry.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ テレメトリー収集ツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="observability_incident_management_pagerduty.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ インシデント管理ツール
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. オンコール
+  </a>
+  
+    <nav class="md-nav" aria-label="01. オンコール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    オンコールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    オンコール対応時間
+  </a>
+  
+    <nav class="md-nav" aria-label="オンコール対応時間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ グローバル企業の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. アラートの設定
+  </a>
+  
+    <nav class="md-nav" aria-label="02. アラートの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    アラート発火の事前検証
+  </a>
+  
+    <nav class="md-nav" aria-label="アラート発火の事前検証">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ システムの実際値の変更
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 閾値の変更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    アラートの付加情報
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの付加情報">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ イベントの内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ラベル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-severity" class="md-nav__link">
+    02-02. エラーイベント重要度 (severity) レベル
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. エラーイベント重要度 (severity) レベル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    エラーイベント重要度レベルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    カウントする必要があるステータスの判断
+  </a>
+  
+    <nav class="md-nav" aria-label="カウントする必要があるステータスの判断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ステータスの重要度レベルへの変換
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ ログステータスの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ステータスコードの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. インシデント管理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. インシデント管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    インシデントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    インシデント管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    インシデントの解決フェーズ
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの解決フェーズ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 解決フェーズとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ 解決フェーズの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    インシデント重要度レベル (severityレベル)
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデント重要度レベル (severityレベル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ インシデント重要度レベルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    一次オンコール担当者の作業
+  </a>
+  
+    <nav class="md-nav" aria-label="一次オンコール担当者の作業">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slack" class="md-nav__link">
+    ▼ Slackの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. インシデント管理の組織化
+  </a>
+  
+    <nav class="md-nav" aria-label="04. インシデント管理の組織化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    インシデントコマンドシステムに基づく役割分離
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントコマンドシステムに基づく役割分離">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ インシデントコマンドシステムとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 指揮
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    ▼ 計画
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    ▼ 後方支援
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. アラート、インシデントの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="05. アラート、インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    アラートの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="アラートの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    ▼ アラートの抑制とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    ▼ エラーイベントの重要度レベルの調節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ アラートの一時無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ アラートのグループ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ アラートの条件の調節
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    インシデントの通知抑制
+  </a>
+  
+    <nav class="md-nav" aria-label="インシデントの通知抑制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ インシデントの抑制とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ 特定のシステムを無視
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    ▼ インシデントの一時無効化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ エラーイベントの重要度レベルの調節
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ インシデントのグループ化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. インシデント管理の事後評価
+  </a>
+  
+    <nav class="md-nav" aria-label="06. インシデント管理の事後評価">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx" class="md-nav__link">
+    MTxxメトリクス
+  </a>
+  
+    <nav class="md-nav" aria-label="MTxxメトリクス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_1" class="md-nav__link">
+    ▼ MTxxメトリクスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    ▼ 稼働率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mtxx_2" class="md-nav__link">
+    ▼ MTxxメトリクスのインシデント管理への適用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ ダッシュボード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ポストモーテム
+  </a>
+  
+    <nav class="md-nav" aria-label="ポストモーテム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    ▼ ポストモーテムとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 独自テンプレート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagerduty" class="md-nav__link">
+    ▼ PagerDutyの事例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ▼ その他の会社事例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">オンコールとインシデント管理＠監視<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. オンコール<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">オンコールとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>アラートが通知された時に、エラー修正の担当者に連絡できる状態 (メールアドレス、電話番号、SMS、など) にあること。</p>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/oncall/being_oncall/">https://response.pagerduty.com/oncall/being_oncall/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">オンコール対応時間<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ グローバル企業の場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>グローバル企業の場合、世界各地にオンコールセンターを配置している。</p>
+<p>各オンコールセンターには時差があるため、特定の時間に、どこかの国でオンコールセンターが必ず営業している。</p>
+<p>アラートのタイミングで営業しているオンコールセンターに通知を送信するため、『24時間365日対応可能』といったサービスを提供できる。</p>
+<p><br></p>
+<h2 id="02">02. アラートの設定<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_6">アラート発火の事前検証<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ システムの実際値の変更<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>アラートが発火するように、システムの実際値を調節 (例：負荷を高める) し、アラートが発火するかを検証する。</p>
+<h4 id="_8">▼ 閾値の変更<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>必ずアラートが発火するような閾値 (例：ゼロ) に変更し、アラートが発火するかを検証する。</p>
+<p><br></p>
+<h3 id="_9">アラートの付加情報<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ イベントの内容<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li>タイムスタンプ</li>
+<li>ログステータス</li>
+<li>ログメッセージ</li>
+</ul>
+<h4 id="_11">▼ ラベル<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li>実行環境名</li>
+<li>リージョン名</li>
+<li>Cluster名</li>
+<li>Node名</li>
+<li>Namespace名</li>
+<li>Pod名</li>
+<li>マイクロサービス名</li>
+<li>コンテナ名</li>
+</ul>
+<p><br></p>
+<h2 id="02-02-severity">02-02. エラーイベント重要度 (severity) レベル<a class="headerlink" href="#02-02-severity" title="Permanent link">&para;</a></h2>
+<h3 id="_12">エラーイベント重要度レベルとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>全ての事象をエラーイベントとして見なしてしまうと、アラート疲れしてしまう。</p>
+<p>そのため、どのようなイベントをエラーイベントと見なしてアラートを通知するか否かを確認するか、を決めておく必要がある。</p>
+<p>また、レベルに応じてアラート先のチャンネルを区別すると良い。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクスの単位</th>
+<th>エラーイベントと見なす閾値例</th>
+<th>閾値とするメトリクス例</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>パーセント</td>
+<td><code>60</code>%</td>
+<td>CPU使用率、メモリ使用率、など</td>
+<td>平常時は<code>30</code>%である仮定し、エラーイベントと見なす閾値を<code>60</code>%に設定することが多い。</td>
+</tr>
+<tr>
+<td>カウント</td>
+<td><code>1</code>〜<code>3</code>個</td>
+<td>ログステータス、ステータスコード、など</td>
+<td>どのログステータスやステータスコードをカウントするかを決める必要がある。</td>
+</tr>
+<tr>
+<td>バイト数</td>
+<td>メトリクスによる</td>
+<td>メモリの空きサイズ、ストレージのスワップ領域の使用サイズ、など</td>
+<td>メトリクスによって、エラーイベントと見なせるバイト数が異なる。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_13">カウントする必要があるステータスの判断<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ ステータスの重要度レベルへの変換<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>ステータスは、重要度を判断しやすいように、重要度レベルに変換して考える。</p>
+<p>該当の重要度レベルに当てはまるステータスのみを、エラーイベントとしてカウントする。</p>
+<table>
+<thead>
+<tr>
+<th>重要度レベルの例</th>
+<th>エラーイベントと見なし、アラートを通知するか否かの判断例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>critical</td>
+<td>する</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>しない</td>
+</tr>
+<tr>
+<td>information</td>
+<td>しない</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_15">▼ ログステータスの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>エラーイベントと見なすログステータスの目安は以下の通りである。</p>
+<blockquote>
+<ul>
+<li><a href="https://engineering.otobank.co.jp/entry/2016/09/20/181756">https://engineering.otobank.co.jp/entry/2016/09/20/181756</a></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>ログステータス</th>
+<th>説明</th>
+<th>重要度レベルへの変換例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emergency</td>
+<td>システムが使用できない状態にある緊急事態</td>
+<td>critical</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>早急に対応すべき事態</td>
+<td>critical</td>
+</tr>
+<tr>
+<td>critical</td>
+<td>対処すべき重要な問題</td>
+<td>critical</td>
+</tr>
+<tr>
+<td>fatal</td>
+<td>対処すべき重要な問題</td>
+<td>critical</td>
+</tr>
+<tr>
+<td>error</td>
+<td>何かが失敗している</td>
+<td>criticalまたはwarning</td>
+</tr>
+<tr>
+<td>warn</td>
+<td>普通ではないことが発生したが、心配する必要はない</td>
+<td>criticalまたはwarning</td>
+</tr>
+<tr>
+<td>notice</td>
+<td>いたって普通だが、注意すべきことが起こっている</td>
+<td>information</td>
+</tr>
+<tr>
+<td>info</td>
+<td>知っておくといいかもしれない情報</td>
+<td>information</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>問題が起こっている場所を知るのに有効な情報</td>
+<td>information</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_16">▼ ステータスコードの場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>エラーイベントと見なすステータスコードの目安は以下の通りである。</p>
+<p>各ステータスコードをバラバラに扱うことは大変なため、系ごとにまとめて扱えるように、レベルを割り当てる。</p>
+<table>
+<thead>
+<tr>
+<th>ステータスコード</th>
+<th>本番環境のアラートの目安</th>
+<th>重要度レベルへの変換例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>500</code>系</td>
+<td>する</td>
+<td>critical</td>
+</tr>
+<tr>
+<td><code>400</code>系</td>
+<td>どちらでも</td>
+<td>warning</td>
+</tr>
+<tr>
+<td><code>300</code>系</td>
+<td>しない</td>
+<td>information</td>
+</tr>
+<tr>
+<td><code>200</code>系</td>
+<td>しない</td>
+<td>information</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="03">03. インシデント管理<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_17">インシデントとは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>サービスの停止を起こし得る想定外のイベントのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management">https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management</a></li>
+<li><a href="https://response.pagerduty.com/before/what_is_an_incident/">https://response.pagerduty.com/before/what_is_an_incident/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_18">インシデント管理<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><img alt="incident_management" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png" /></p>
+<p>一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。</p>
+<p>エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。</p>
+<p>また、二次担当者に通知をエスカレーションさせる。</p>
+<p>これらを自動化するためのツールがいくつかある。</p>
+<blockquote>
+<ul>
+<li><a href="https://smart-stage.jp/topics/itsm_keyword_relate/p3/">https://smart-stage.jp/topics/itsm_keyword_relate/p3/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊技術ツール例＊</strong></p>
+<ul>
+<li>PagerDuty</li>
+<li>Splunk</li>
+<li>On-call</li>
+</ul>
+<p><br></p>
+<h3 id="_19">インシデントの解決フェーズ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ 解決フェーズとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>インシデントとして見なされたアラートが、どの程度解決できたのかを可視化する必要がある。</p>
+<h4 id="_21">▼ 解決フェーズの種類<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>解決フェーズ</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>発火</td>
+<td>アラートがインシデントとして見なされ、タスクが作成された。</td>
+</tr>
+<tr>
+<td>認知</td>
+<td>インシデントのタスクに対応中であるが、まだ解決できていない。</td>
+</tr>
+<tr>
+<td>解決済み</td>
+<td>インシデントのタスクを解決した。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="severity">インシデント重要度レベル (severityレベル)<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ インシデント重要度レベルとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>そのため、インシデントの優先度付けが必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>エラーイベントの重要度レベル</th>
+<th>優先度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>high</td>
+<td>即時に解決する必要がある。</td>
+</tr>
+<tr>
+<td>medium</td>
+<td><code>24</code>時間以内に解決する必要がある。</td>
+</tr>
+<tr>
+<td>low</td>
+<td>いつかは解決する必要がある。</td>
+</tr>
+<tr>
+<td>notification</td>
+<td>解決する必要はない。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/oncall/alerting_principles/">https://response.pagerduty.com/oncall/alerting_principles/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_23">一次オンコール担当者の作業<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="slack">▼ Slackの場合<a class="headerlink" href="#slack" title="Permanent link">&para;</a></h4>
+<p>ここでは、Slackをインシデント管理ツールとして、Slackに通知されたアラートをオンコール担当者が作業する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>CloudWactchアラームからSlackのチャンネルに、アラートが通知される。ただし、Slackからオンコール担当者に電話をかけることはできない。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>オンコール担当者は、Slackに通知されたアラートを確認する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>アラート名 (例：prd-foo-ecs-container-laravel-log-alarm) から、CloudWatchアラームを探す。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>アラートがどのロググループに紐づいているかを探す。執筆時点 (2021/12/09) では、AWSの仕様ではこれがわかりにくくなっている。メトリクスフィルターが設定されているロググループは、アラームに紐づいている可能性があり、メトリクスフィルターで作成されているメトリクス名 (例：ErrorCount) がアラームに記載されたものであれば、紐づいているとわかる。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>Log Insightsを使用して、ロググループの直近のエラーログを抽出する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 小文字と大文字を区別せずに、Errorを含むログを検索する。</span>
+<span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
+<span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
+<span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
+<span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>クエリの結果から、アラートの原因になっているエラーを見つける。CloudWatchのタイムスタンプとSlackのアラートの通知時刻には若干のタイムラグがある。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p>クエリの結果をコピーし、アラートのThreadに貼り付ける。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code> [2021-12-01 00:00:00] request.ERROR: Uncaught PHP Exception *****
+</code></pre></div>
+<dl>
+<dt><code>(8)</code></dt>
+<dd>
+<p>ログイベントが許容できるものあれば、保留として、その旨をエスカレーションする。</p>
+</dd>
+<dt><code>(9)</code></dt>
+<dd>
+<p>ログイベントがインシデントであれば、その旨をエスカレーションする。また、タスク化し、迅速に対応する。</p>
+</dd>
+<dt><code>(10)</code></dt>
+<dd>
+<p>ログイベントがインシデントでないエラーイベントであれば、その旨をエスカレーションする。タスク化し、時間のある時に対応する。</p>
+</dd>
+</dl>
+<p><br></p>
+<h2 id="04">04. インシデント管理の組織化<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_24">インシデントコマンドシステムに基づく役割分離<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h4 id="_25">▼ インシデントコマンドシステムとは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>インシデントの発生時に、組織が混乱せずに問題に対処できるようにするためのマネージメント手法のこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://fastalert.jp/column/disaster-prevention/incident-command-system">https://fastalert.jp/column/disaster-prevention/incident-command-system</a></li>
+</ul>
+</blockquote>
+<h4 id="_26">▼ 指揮<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>インシデントの状況把握を担当する。</p>
+<p>また、インシデント担当チームを組織し、各担当者にタスクを割り振る。</p>
+<h4 id="_27">▼ 実行<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>インシデントの解決を担当する。</p>
+<h4 id="_28">▼ 計画<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>ステークホルダーへの状況報告やドキュメントの作成を担当する。</p>
+<h4 id="_29">▼ 後方支援<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>作業者のサポートを担当する。</p>
+<p>作業者間引継ぎの調整、夕食の発注、などがある。</p>
+<p><br></p>
+<h2 id="05">05. アラート、インシデントの通知抑制<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_30">アラートの通知抑制<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h4 id="_31">▼ アラートの抑制とは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>通知不要なアラートや、実際には重要度の高くないアラートの通知が頻発する場合、アラート疲れしてしまう。</p>
+<p>そういった場合は、アラートの通知を抑制する。</p>
+<h4 id="_32">▼ エラーイベントの重要度レベルの調節<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>アラートの重要度レベルを調節し、通知する必要があるアラートを選別する。</p>
+<h4 id="_33">▼ アラートの一時無効化<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>特定の期間に発生したアラートを無視するようにし、アラートが一定期間だけ通知されないようにする。</p>
+<h4 id="_34">▼ アラートのグループ化<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。</p>
+<blockquote>
+<ul>
+<li><a href="https://knowledge.sakura.ad.jp/11635/">https://knowledge.sakura.ad.jp/11635/</a></li>
+</ul>
+</blockquote>
+<h4 id="_35">▼ アラートの条件の調節<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>アラートの条件となる期間を拡大し、加えてエラーイベントの閾値を緩和するようにし、アラートの通知数を減らす。</p>
+<p><br></p>
+<h3 id="_36">インシデントの通知抑制<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="_37">▼ インシデントの抑制とは<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>そういった場合は、インシデントの通知を抑制する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pagerduty.digitalstacks.net/blog/suppress-your-data/">https://pagerduty.digitalstacks.net/blog/suppress-your-data/</a></li>
+</ul>
+</blockquote>
+<h4 id="_38">▼ 特定のシステムを無視<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_39">▼ インシデントの一時無効化<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、指定した期間に発生したインシデントを無視し、インシデントが一定期間だけ通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_40">▼ エラーイベントの重要度レベルの調節<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、インシデントごとに重要度レベルを調節し、インシデントの優先度付けする。</p>
+<p>特定のインシデント以外は通知されないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
+</ul>
+</blockquote>
+<h4 id="_41">▼ インシデントのグループ化<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>特定のシステムにて、いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。</p>
+<blockquote>
+<ul>
+<li><a href="https://knowledge.sakura.ad.jp/11635/">https://knowledge.sakura.ad.jp/11635/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06">06. インシデント管理の事後評価<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="mtxx">MTxxメトリクス<a class="headerlink" href="#mtxx" title="Permanent link">&para;</a></h3>
+<h4 id="mtxx_1">▼ MTxxメトリクスとは<a class="headerlink" href="#mtxx_1" title="Permanent link">&para;</a></h4>
+<p><img alt="mtxx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png" /></p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th></th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTTF：Mean Time To Failure</td>
+<td>稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。</td>
+<td>- <a href="https://e-words.jp/w/MTTF.html">https://e-words.jp/w/MTTF.html</a></td>
+</tr>
+<tr>
+<td>MTBF：Mean Time Between Failure</td>
+<td>特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。</td>
+<td>- <a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+</tr>
+<tr>
+<td>MTTD：Mean Time To Diagnose</td>
+<td>障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTR：Mean Time To Repair</td>
+<td>障害の復旧開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、復旧せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。</td>
+<td>- <a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf">https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf</a></li>
+<li><a href="https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633">https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633</a></li>
+</ul>
+</blockquote>
+<h4 id="_42">▼ 稼働率<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>システムの実際の稼働時間割合を表す。</p>
+<p>以下の計算式で算出できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="err">動作した時間</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="err">全体の時間</span><span class="p">)</span>
+</code></pre></div>
+<p>この数式は、以下ように書き換えられる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MTTR</span><span class="p">)</span>
+</code></pre></div>
+<p>システムが冗長化されている場合、全てのインスタンスの非稼働率をかけて、全体から引くことにより、稼働率を算出できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
+<span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>システムが冗長化されている例を示す。</p>
+<p>すでに稼働率は算出されているものとする。</p>
+<p>全てのインスタンスの非稼働率をかけて、全体から引く。</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.81</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.64</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.9316</span>
+</code></pre></div>
+<p><img alt="稼働率の計算" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg" /></p>
+<h4 id="mtxx_2">▼ MTxxメトリクスのインシデント管理への適用<a class="headerlink" href="#mtxx_2" title="Permanent link">&para;</a></h4>
+<p><img alt="mttx-metrics" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png" /></p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>説明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MTTD</td>
+<td>インシデントが起こってから、これがオンコール担当にアラートされるまで。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTE</td>
+<td>インシデントがオンコール担当にアラートされ、オンコール担当本人/アサインされたエンジニアがタスクとして着手するまで。</td>
+<td></td>
+</tr>
+<tr>
+<td>MTTF</td>
+<td>オンコール担当がタスクに着手してから、これを完了するまで。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4873119618">https://www.amazon.co.jp/dp/4873119618</a></li>
+<li><a href="https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262">https://medium.com/@yoannutc/setting-objectives-for-incident-response-634fff2d8262</a></li>
+</ul>
+</blockquote>
+<h4 id="_43">▼ ダッシュボード<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>MTxxメトリクスをダッシュボード化する。</p>
+<p>実際に時間と目標時間を比較すれば、今回のインシデント管理の良し悪しを判断できるため、インシデント管理自体をソフトウェア開発と同様に反復的に改善しやすくになる。</p>
+<p>DRI Hops (インシデントの直接的に責任者) の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。</p>
+<p><img alt="mttx-metrics_dash-board" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4873119618">https://www.amazon.co.jp/dp/4873119618</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_44">ポストモーテム<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<h4 id="_45">▼ ポストモーテムとは<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>アラートで通知されたインシデントがビジネスに大きな影響を与えた場合、振り返りとして、ポストモーテムを作成する。</p>
+<p>ポストモーテムは、障害報告書とは異なり、原因特定とシステム改善に重きを置いた報告書である。</p>
+<p>障害報告書は、責任の報告の意味合いが強くなってしまう。</p>
+<h4 id="_46">▼ 独自テンプレート<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code># ポストモーテム ## タイトル ## 日付 ## 担当者
+\*\*※担当者を絶対に責めず、障害は誰のせいでもないという意識を強く持つ。 \*\* ##
+原因と対応 **※原因特定とシステム改善を最優先にすること** ##
+システム的/収益的な影響範囲 ## 幸運だったこと ## 仕組みの改善策
+\*\*※『以後は注意する』ではなく、再発しない仕組み作りになるようにする。 \*\* ##
+障害発生から対応までのタイムライン
+</code></pre></div>
+<h4 id="pagerduty">▼ PagerDutyの事例<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
+<p>PagerDuty社が公開しているテンプレートがある。</p>
+<div class="highlight"><pre><span></span><code># ポストモーテム ## 全体の要約 ## 何が発生したか ## 原因 ## 解決方法 ## 影響 -
+問題の発生期間 - 影響を受けたユーザー数 - 発生した技術サポートのチケット数 -
+未解決のエラーイベント数 ## 担当者 - 担当者名 - 担当補佐名 ## タイムライン -
+原因が発生した時刻 - ## 対応結果 - うまくいったこと - うまくいかなかったこと ##
+インシデントのタスク ## メッセージ - 社内への周知内容 - 社外への周知内容
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/after/post_mortem_template/">https://response.pagerduty.com/after/post_mortem_template/</a></li>
+</ul>
+</blockquote>
+<h4 id="_47">▼ その他の会社事例<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>リンク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AWS</td>
+<td><a href="https://aws.amazon.com/jp/message/5467D2/">https://aws.amazon.com/jp/message/5467D2/</a></td>
+</tr>
+<tr>
+<td>Heroku</td>
+<td><a href="https://status.heroku.com/incidents/151">https://status.heroku.com/incidents/151</a></td>
+</tr>
+<tr>
+<td>Twilio</td>
+<td><a href="https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html">https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://response.pagerduty.com/after/effective_post_mortems/#examples">https://response.pagerduty.com/after/effective_post_mortems/#examples</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

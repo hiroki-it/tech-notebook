@@ -1,0 +1,4548 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="ダッシュボード＠Grafanaの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】ダッシュボード＠Grafana - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#grafana" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】ダッシュボード＠Grafana
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_18">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            🌊 CNCFプロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ArgoCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CertManager
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ FluentBit/Fluentd
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_5" checked>
+        
+          <label class="md-nav__link" for="__nav_18_5" id="__nav_18_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Grafana
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Grafana
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grafana
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_5_2" checked>
+        
+          <label class="md-nav__link" for="__nav_18_5_2" id="__nav_18_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ リソース定義
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_18_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ リソース定義
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_configmap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ConfigMap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_grafana_resource_definition_dashboard.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ユーザー定義のダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ユーザー定義のダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ユーザー定義のダッシュボードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    管理方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    エスケープ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helmconfigmap" class="md-nav__link">
+    HelmテンプレートによるConfigMap作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ホームダッシュボード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. コミュニティダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コミュニティダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コミュニティダッシュボードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    管理方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    エスケープ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コミュニティダッシュボードの採用
+  </a>
+  
+    <nav class="md-nav" aria-label="コミュニティダッシュボードの採用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1) ダッシュボードの検索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) ダッシュボードのバージョンの選択
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) 整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    (4) 貼り付け
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コミュニティダッシュボードの共通仕様
+  </a>
+  
+    <nav class="md-nav" aria-label="コミュニティダッシュボードの共通仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    ▼ USEメトリクス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red" class="md-nav__link">
+    ▼ REDメトリクス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-mixinsgrafana" class="md-nav__link">
+    kubernetes-mixinsのGrafanaダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="kubernetes-mixinsのGrafanaダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager" class="md-nav__link">
+    ▼ Alertmanager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd" class="md-nav__link">
+    ▼ ArgoCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coredns" class="md-nav__link">
+    ▼ CoreDNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    ▼ Kubernetesコンポーネント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    ▼ Workload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perisisitentvolume" class="md-nav__link">
+    ▼ PerisisitentVolume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    ▼ Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio" class="md-nav__link">
+    ▼ Istio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. セクション
+  </a>
+  
+    <nav class="md-nav" aria-label="03. セクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    セクション一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uid" class="md-nav__link">
+    uid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style" class="md-nav__link">
+    style
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnetid" class="md-nav__link">
+    gnetId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    timezone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editable" class="md-nav__link">
+    editable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphtooltip" class="md-nav__link">
+    graphTooltip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panels" class="md-nav__link">
+    panels
+  </a>
+  
+    <nav class="md-nav" aria-label="panels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panels_1" class="md-nav__link">
+    ▼ panelsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expr" class="md-nav__link">
+    ▼ expr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time" class="md-nav__link">
+    time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timepicker" class="md-nav__link">
+    timepicker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templating" class="md-nav__link">
+    templating
+  </a>
+  
+    <nav class="md-nav" aria-label="templating">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#templating_1" class="md-nav__link">
+    ▼ templating
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable" class="md-nav__link">
+    ▼ enable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh" class="md-nav__link">
+    refresh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemaversion" class="md-nav__link">
+    schemaVersion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kyverno
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Jaeger
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kiali
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ OpenPolicyAgent
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Prometheus
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ VCluster
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ユーザー定義のダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ユーザー定義のダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ユーザー定義のダッシュボードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    管理方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    エスケープ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helmconfigmap" class="md-nav__link">
+    HelmテンプレートによるConfigMap作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ホームダッシュボード
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. コミュニティダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="02. コミュニティダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    コミュニティダッシュボードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    管理方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    エスケープ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    コミュニティダッシュボードの採用
+  </a>
+  
+    <nav class="md-nav" aria-label="コミュニティダッシュボードの採用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1) ダッシュボードの検索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) ダッシュボードのバージョンの選択
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) 整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    (4) 貼り付け
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    コミュニティダッシュボードの共通仕様
+  </a>
+  
+    <nav class="md-nav" aria-label="コミュニティダッシュボードの共通仕様">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    ▼ USEメトリクス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#red" class="md-nav__link">
+    ▼ REDメトリクス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-mixinsgrafana" class="md-nav__link">
+    kubernetes-mixinsのGrafanaダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="kubernetes-mixinsのGrafanaダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager" class="md-nav__link">
+    ▼ Alertmanager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd" class="md-nav__link">
+    ▼ ArgoCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coredns" class="md-nav__link">
+    ▼ CoreDNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    ▼ Kubernetesコンポーネント
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#workload" class="md-nav__link">
+    ▼ Workload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perisisitentvolume" class="md-nav__link">
+    ▼ PerisisitentVolume
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ Node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    ▼ Prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio" class="md-nav__link">
+    ▼ Istio
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. セクション
+  </a>
+  
+    <nav class="md-nav" aria-label="03. セクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    セクション一覧
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uid" class="md-nav__link">
+    uid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#style" class="md-nav__link">
+    style
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gnetid" class="md-nav__link">
+    gnetId
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    timezone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editable" class="md-nav__link">
+    editable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphtooltip" class="md-nav__link">
+    graphTooltip
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#panels" class="md-nav__link">
+    panels
+  </a>
+  
+    <nav class="md-nav" aria-label="panels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#panels_1" class="md-nav__link">
+    ▼ panelsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expr" class="md-nav__link">
+    ▼ expr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    type
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time" class="md-nav__link">
+    time
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timepicker" class="md-nav__link">
+    timepicker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templating" class="md-nav__link">
+    templating
+  </a>
+  
+    <nav class="md-nav" aria-label="templating">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#templating_1" class="md-nav__link">
+    ▼ templating
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable" class="md-nav__link">
+    ▼ enable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh" class="md-nav__link">
+    refresh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schemaversion" class="md-nav__link">
+    schemaVersion
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="grafana">ダッシュボード＠Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. ユーザー定義のダッシュボード<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">ユーザー定義のダッシュボードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>ConfigMapの<code>.data</code>キーにJSONを設定すると、ダッシュボードを作成できる。</p>
+<p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-grafana-dashboard</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;labelValueに設定した値&gt;&quot;</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">    </span><span class="no">{{ `</span>
+<span class="w">    </span><span class="no">ダッシュボードのJSON</span>
+<span class="w">    </span><span class="no">` }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_3">管理方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>ユーザー定義のダッシュボードを専用のディレクトリで管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
+<span class="l l-Scalar l-Scalar-Plain">├── templates</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── custom-dashboards</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── slo-1.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── slo-2.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">エスケープ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>Goのテンプレートでは、『<code>{{</code>』と『<code>}}</code>』の記号がロジックで使用される。</p>
+<p>ダッシュボードのJSONではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。</p>
+<p>エスケープの方法は数種があるが、一番簡単な方法を採用する。</p>
+<p>記号を含む文字ごと<code>{{ `&lt;記号を含む文字列全体&gt;` }}</code>のように挟み、エスケープする。</p>
+<p>多くの場合にこの方法で対処できるが、文字列内にバックスラッシュがある場合は対処できない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-grafana-dashboard</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">    </span><span class="no">{{ `</span>
+<span class="w">    </span><span class="no">ダッシュボードのJSON</span>
+<span class="w">    </span><span class="no">` }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/38941123">https://stackoverflow.com/a/38941123</a></li>
+</ul>
+</blockquote>
+<h3 id="helmconfigmap">HelmテンプレートによるConfigMap作成<a class="headerlink" href="#helmconfigmap" title="Permanent link">&para;</a></h3>
+<p>ダッシュボードはJSONファイルとして管理し、これをConfigMapのテンプレートに出力するようにすると、管理しやすい。</p>
+<p>ただ出力時にHelm起因のエラーが多発するため、自分はこれを不採用とした。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14</a></li>
+<li><a href="https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm">https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">ホームダッシュボード<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>ホームダッシュボードとして、ダッシュボードの一覧を表示すると、検索する手間が省ける。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># grafana.iniファイル</span>
+<span class="k">[dashboard]</span>
+<span class="c1"># Grafanaコンテナでホームダッシュボードのあるパス</span>
+<span class="na">default_home_dashboard_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/lib/grafana/dashboards/local/home.json</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;annotations&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;builtIn&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;--</span><span class="nv"> </span><span class="s">Grafana</span><span class="nv"> </span><span class="s">--&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;enable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;iconColor&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;rgba(0,</span><span class="nv"> </span><span class="s">211,</span><span class="nv"> </span><span class="s">255,</span><span class="nv"> </span><span class="s">1)&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Annotations</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Alerts&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dashboard&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">],</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;editable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;graphTooltip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;links&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;gridPos&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;h&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">36</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;w&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">24</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;links&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;folderId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;maxItems&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">100</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;showHeadings&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;showRecentlyViewed&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;showSearch&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;showStarred&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="s">&quot;pluginVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;8.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">        </span><span class="s">&quot;title&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Dashboards&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dashlist&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;schemaVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">30</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;style&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dark&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># リポジトリ名やリポジトリURLをタグにつける</span>
+<span class="w">  </span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リポジトリ名&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;github.com/example&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]},</span>
+<span class="w">  </span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;from&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;now-6h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;to&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;now&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;timepicker&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;hidden&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;refresh_intervals&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span><span class="s">&quot;5s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;10s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;30s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;5m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;15m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;30m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1d&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">&quot;time_options&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span><span class="s">&quot;5m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;15m&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;1h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;6h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;12h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;24h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;2d&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;7d&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;30d&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;timepicker&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;timezone&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;browser&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;title&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Home&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#the-home-dashboards">https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#the-home-dashboards</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. コミュニティダッシュボード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_6">コミュニティダッシュボードとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用した方が良い。</p>
+<p>その場合、GitHubなどで公開されているJSONを、ConfigMapの<code>.data</code>キーに貼り付ける。</p>
+<p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
+<p><br></p>
+<h3 id="_7">管理方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>コミュニティダッシュボードを専用のディレクトリで管理する。</p>
+<p>ツールのいずれのバージョンに対応するダッシュボードなのかを、ケバブケースでファイル名に記載すると管理しやすい。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Istio関連のコミュニティダッシュボードを使用する場合は、以下の通りとする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
+<span class="l l-Scalar l-Scalar-Plain">├── templates</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── community-dashboards</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── istio-control-plane-1-15-3.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── istio-mesh-1-15-3.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── istio-performance-1-15-3.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── istio-service-1-15-3.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── istio-workload-1-15-3.json</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
+<li><a href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">エスケープ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>注意点として、ユーザー定義のダッシュボードと同様にして、記号をエスケープする必要がある。</p>
+<p><br></p>
+<h3 id="_9">コミュニティダッシュボードの採用<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="1"><code>(1)</code> ダッシュボードの検索<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>コミュニティダッシュボードのJSONは、<a href="https://grafana.com/grafana/dashboards/">Grafana Labs</a> からダウンロードできる。</p>
+<p>コミュニティダッシュボードのIDはJSONの<code>gnetId</code>セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。</p>
+<p>反対に、<code>gnetId</code>セクションが<code>null</code>になっているものは、ユーザー定義のダッシュボードである。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>また、コミュニティダッシュボードのバージョンは、<code>description</code>セクションから確認できる (コミュニティダッシュボードによってはバージョンの記載がないものがある)。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Foo</span><span class="nv"> </span><span class="s">Dashboard</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">1.0.0&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h4 id="2"><code>(2)</code> ダッシュボードのバージョンの選択<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>ダッシュボードの<code>__requires</code>セクションで、PrometheusとGrafanaの最低バージョンを確認する。</p>
+<p>Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。</p>
+<p>他には、ツールとダッシュボードの両方のバージョンが対応関係にある場合がある (例：Istioとダッシュボードの両方のバージョンは対応する)。</p>
+<p>ただし、Prometheusの方のバージョンは気にしなくて良さそう (よくあるPrometheusの<code>5.0.0</code>なんてバージョンは存在しない)。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;__requires&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;grafana&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;grafana&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Grafana&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;最低バージョン&gt;&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+
+<span class="w">    </span><span class="nv">...</span>
+
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prometheus&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;最低バージョン&gt;&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+
+<span class="w">    </span><span class="nv">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<h4 id="3"><code>(3)</code> 整形<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p><a href="https://r37r0m0d3l.github.io/json_sort/">任意のサイト</a> で、アルファベット順かつスペース<code>2</code>個で整形する。</p>
+<p>これは、運用方針による。</p>
+<h4 id="4"><code>(4)</code> 貼り付け<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>ConfigMapのJSONファイルのデータとして貼り付ける。</p>
+<p>エスケープするのを忘れない。</p>
+<p>なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらない方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-dashboard</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">grafana_dashboard</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|-</span>
+<span class="w">    </span><span class="no">{{ `</span>
+<span class="w">    </span><span class="no">ダッシュボードのJSON</span>
+<span class="w">    </span><span class="no">` }}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_10">コミュニティダッシュボードの共通仕様<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="use">▼ USEメトリクス<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
+<p>『<code>USE</code>』という名前を含むコミュニティダッシュボードがある。</p>
+<p>ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーション、など) を表示できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method</a></li>
+<li><a href="https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#usereds-dashboards">https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#usereds-dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="red">▼ REDメトリクス<a class="headerlink" href="#red" title="Permanent link">&para;</a></h4>
+<p>『<code>RED</code>』という名前を含むコミュニティダッシュボードがある。</p>
+<p>ダッシュボードは、REDメトリクスを表示できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method</a></li>
+<li><a href="https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#usereds-dashboards">https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&amp;plcmt=related-content-1#usereds-dashboards</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kubernetes-mixinsgrafana">kubernetes-mixinsのGrafanaダッシュボード<a class="headerlink" href="#kubernetes-mixinsgrafana" title="Permanent link">&para;</a></h3>
+<p>kubernetes-mixinsはGrafanaダッシュボードを公開している。</p>
+<p>kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets">https://github.com/monitoring-mixins/website/tree/master/assets</a></li>
+<li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
+</ul>
+</blockquote>
+<h4 id="alertmanager">▼ Alertmanager<a class="headerlink" href="#alertmanager" title="Permanent link">&para;</a></h4>
+<p>AlertmanagerのPodからデータポイントを収集する。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Alertmanager / Overview</code></td>
+<td>AlertmanagerのPod</td>
+<td>Alertmanager固有のメトリクスを分析できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards">https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="argocd">▼ ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
+<p>ArgoCDのPodからデータポイントを収集する。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ArgoCD</code></td>
+<td>ArgoCDのPod</td>
+<td>ArgoCD固有のメトリクスを分析できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json">https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json</a></li>
+</ul>
+</blockquote>
+<h4 id="coredns">▼ CoreDNS<a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h4>
+<p>CoreDNSのPodからデータポイントを収集する。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CoreDNS</code></td>
+<td>CoreDNSのPod</td>
+<td>CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards">https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="kubernetes">▼ Kubernetesコンポーネント<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
+<p>Kubernetesコンポーネントからデータポイントを収集する。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Kubernetes / API server</code></td>
+<td>kube-apiserver</td>
+<td>kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を分析できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Kubelet</code></td>
+<td>kubelet</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Proxy</code></td>
+<td>kube-proxy</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Controller Manager</code></td>
+<td>kube-controller-manager</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Scheduler</code></td>
+<td>kube-scheduler</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards">https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="pod">▼ Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>Podからデータポイントを収集する。</p>
+<p>kubeletからデータポイントを収集できるようにしておく必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>メトリクス</th>
+<th>説明</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Kubernetes / Compute Resources / Cluster</code></td>
+<td>Pod</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) の合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。</td>
+<td>★</td>
+</tr>
+<tr>
+<td><code>Kubernetes / Compute Resources / Namespace (Pods)</code></td>
+<td>Pod</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Compute Resources / Node (Pods)</code></td>
+<td>Pod</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNode単位で分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Compute Resources / Pod</code></td>
+<td>Pod</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をPod単位で分析できる。個別のPodや特定のPodの状況を確認したい場合に役立つ。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Networking / Cluster</code></td>
+<td>Pod</td>
+<td>ネットワークの性能指標</td>
+<td>Podのネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster全体のネットワークの分析に役立つ。</td>
+<td>★</td>
+</tr>
+<tr>
+<td><code>Kubernetes / Networking / Namespace (Pods)</code></td>
+<td>Pod</td>
+<td>ネットワークの性能指標</td>
+<td>Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Networking / Pod</code></td>
+<td>Pod</td>
+<td>ネットワークの性能指標</td>
+<td>Podのネットワーク性能指標メトリクスをPod単位で分析できる。Podを個別に確認したい場合に役立つ。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L23</a></li>
+</ul>
+</blockquote>
+<h4 id="workload">▼ Workload<a class="headerlink" href="#workload" title="Permanent link">&para;</a></h4>
+<p>Nodeからデータポイントを収集する。</p>
+<p>kubeletからデータポイントを収集できるようにしておく必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>メトリクス</th>
+<th>説明</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Kubernetes / Compute Resources / Namespace (Workloads)</code></td>
+<td>Deployment、StatefulSet</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をNamespace単位で分析できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Compute Resources / Workload</code></td>
+<td>Deployment、StatefulSet</td>
+<td>ハードウェアリソース使用率メトリクス</td>
+<td>Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率、など) をWorkload 単位で分析できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Networking / Namespace (Workload)</code></td>
+<td>Deployment、StatefulSet</td>
+<td>ネットワーク性能指標メトリクス</td>
+<td>Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Kubernetes / Networking / Workload</code></td>
+<td>Deployment、StatefulSet</td>
+<td>ネットワーク性能指標メトリクス</td>
+<td>Podのネットワーク性能指標メトリクスをWorkload単位で分析できる。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards">https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="perisisitentvolume">▼ PerisisitentVolume<a class="headerlink" href="#perisisitentvolume" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Kubernetes / Persistent Volumes</code></td>
+<td>PerisisitentVolume</td>
+<td>Persistent Volumeの使用率に関するメトリクスを分析できる。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="node">▼ Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
+<p>Nodeからデータポイントを収集する。</p>
+<p>node-exporterからデータポイントを収集できるようにしておく必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>メトリクス</th>
+<th>説明</th>
+<th>おすすめ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Node Exporter / USE Method / Cluster</code></td>
+<td>Node</td>
+<td>USEメトリクス</td>
+<td>NodeのUSEメトリクスの合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。</td>
+<td>★</td>
+</tr>
+<tr>
+<td><code>Node Exporter / USE Method / Node</code></td>
+<td>Node</td>
+<td>USEメトリクス</td>
+<td>NodeのUSEメトリクスをNode単位で分析できる。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Node Exporter / Nodes</code></td>
+<td>Node</td>
+<td>ハードウェア</td>
+<td>Nodeのハードウェアリソース使用率メトリクスをNode単位で分析できる。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23</a></li>
+<li><a href="https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23">https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23</a></li>
+</ul>
+</blockquote>
+<h4 id="prometheus">▼ Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
+<p>PrometheusのPodからデータポイントを収集する。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Prometheus / Remote Write</code></td>
+<td>PrometheusのPod</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Prometheus / Overview</code></td>
+<td>PrometheusのPod</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards">https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards</a></li>
+</ul>
+</blockquote>
+<h4 id="istio">▼ Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
+<p>IstioのPodからデータポイントを収集する。</p>
+<p><code>istioctl dashboard grafana</code>コマンドでもインストールできる。</p>
+<table>
+<thead>
+<tr>
+<th>ダッシュボード名</th>
+<th>監視対象</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Istio Wasm Extension Dashboard</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Istio Mesh Dashboard</code></td>
+<td></td>
+<td>HTTPとTCPのメトリクスを確認したい場合に役立つ。</td>
+</tr>
+<tr>
+<td><code>Istio Control Plane Dashboard</code></td>
+<td>IstiodのPod</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Istio Performance Dashboard</code></td>
+<td>IngressGateway、<code>istio-proxy</code>コンテナ</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Istio Workload Dashboard</code></td>
+<td>Istioのカスタムリソース</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Istio Service Dashboard</code></td>
+<td>IstioのVirtualService</td>
+<td>IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards">https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard">https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards">https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. セクション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_11">セクション一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="id">id<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="uid">uid<a class="headerlink" href="#uid" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cLV5GDCkz&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="title">title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;title&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;New</span><span class="nv"> </span><span class="s">dashboard&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p>他の何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。</p>
+<p>これと区別できるように、本リポジトリのダッシュボードには<code>&lt;リポジトリ名&gt;.git</code>やリポジトリURLというタグをつけると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リポジトリ名&gt;.git&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;github.com/example&quot;</span><span class="p p-Indicator">]}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="style">style<a class="headerlink" href="#style" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;style&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;dark&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="description">description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>ダッシュボード名とそのバージョンを設定する。</p>
+<p>コミュニティダッシュボードによってはバージョンの記載がないものがある。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Foo</span><span class="nv"> </span><span class="s">Dashboard</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">1.0.0&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="gnetid">gnetId<a class="headerlink" href="#gnetid" title="Permanent link">&para;</a></h3>
+<p>コミュニティダッシュボードを使用している場合、ダッシュボードIDを設定する。</p>
+<p>反対に、nullであればユーザー定義のダッシュボードである。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="timezone">timezone<a class="headerlink" href="#timezone" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;timezone&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;browser&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="editable">editable<a class="headerlink" href="#editable" title="Permanent link">&para;</a></h3>
+<p>ダッシュボードをGUIから編集可能かを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;editable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="graphtooltip">graphTooltip<a class="headerlink" href="#graphtooltip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;graphTooltip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="panels">panels<a class="headerlink" href="#panels" title="Permanent link">&para;</a></h3>
+<h4 id="panels_1">▼ panelsとは<a class="headerlink" href="#panels_1" title="Permanent link">&para;</a></h4>
+<p>メトリクスをPromQLでクエリして表示するパネルを定義する。</p>
+<p>一番最初にGUIでパネルを作成し、これのJSONを取得する方が実装しやすい。</p>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels</a></li>
+</ul>
+</blockquote>
+<h4 id="expr">▼ expr<a class="headerlink" href="#expr" title="Permanent link">&para;</a></h4>
+<p>PromQLを定義する。</p>
+<p>複数のラベルをOR条件で表示するようなパネルの場合、GrafanaがPromQL上にOR条件の正規表現を生成する。</p>
+<p>そのため、<code>=~</code>演算子を使用するようにする。</p>
+<p>ラベル変数を使用する場合は、<code>templating</code>セクションでその定義が必要である。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="c1"># panelsセクション</span>
+<span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="c1"># stylesセクション</span>
+<span class="w">        </span><span class="s">&quot;styles&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="c1"># 表の列名</span>
+<span class="w">              </span><span class="s">&quot;alias&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Namespace&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colorMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colors&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;dateFormat&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;YYYY-MM-DD</span><span class="nv"> </span><span class="s">HH:mm:ss&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;decimals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;link&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTargetBlank&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTooltip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Drill</span><span class="nv"> </span><span class="s">down</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pods&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="c1"># 他のダッシュボードへのリンク</span>
+<span class="w">              </span><span class="s">&quot;linkUrl&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/d/*****/k8s-resources-namespace?var-datasource=$datasource&amp;var-cluster=$cluster&amp;var-namespace=$__cell&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;pattern&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;thresholds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;number&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;unit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="c1"># 表の列名</span>
+<span class="w">              </span><span class="s">&quot;alias&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Workloads&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colorMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colors&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;dateFormat&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;YYYY-MM-DD</span><span class="nv"> </span><span class="s">HH:mm:ss&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;decimals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;link&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTargetBlank&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTooltip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Drill</span><span class="nv"> </span><span class="s">down</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">workloads&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="c1"># 他のダッシュボードへのリンク</span>
+<span class="w">              </span><span class="s">&quot;linkUrl&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&amp;var-cluster=$cluster&amp;var-namespace=$__cell_1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;pattern&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Value</span><span class="nv"> </span><span class="s">#B&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;thresholds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;number&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;unit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="c1"># 表の列名</span>
+<span class="w">              </span><span class="s">&quot;alias&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Pods&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colorMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;colors&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;dateFormat&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;YYYY-MM-DD</span><span class="nv"> </span><span class="s">HH:mm:ss&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;decimals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;link&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTargetBlank&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;linkTooltip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Drill</span><span class="nv"> </span><span class="s">down</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">pods&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="c1"># 他のダッシュボードへのリンク</span>
+<span class="w">              </span><span class="s">&quot;linkUrl&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/d/*****/k8s-resources-namespace?var-datasource=$datasource&amp;var-cluster=$cluster&amp;var-namespace=$__cell_1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;pattern&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Value</span><span class="nv"> </span><span class="s">#A&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;thresholds&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">              </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;number&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="s">&quot;unit&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;short&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">        </span><span class="s">&quot;targets&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="p p-Indicator">[</span>
+<span class="w">            </span><span class="p p-Indicator">{</span>
+<span class="w">              </span><span class="s">&quot;expr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;&lt;メトリクス名&gt;{cluster=&quot;$cluster&quot;,</span><span class="nv"> </span><span class="s">namespace=&quot;$namespace&quot;,</span><span class="nv"> </span><span class="s">pod=&quot;$pod&quot;,</span><span class="nv"> </span><span class="s">instance=~&quot;$instance&quot;}&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;expr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="p p-Indicator">{</span><span class="s">&quot;expr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;...&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<h4 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
+<p>パネルのタイプを設定する。</p>
+<p><br></p>
+<h3 id="time">time<a class="headerlink" href="#time" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;time&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;from&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;now-6h&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;to&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;now&quot;</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="timepicker">timepicker<a class="headerlink" href="#timepicker" title="Permanent link">&para;</a></h3>
+<p>ダッシュボードのデフォルトの時間間隔を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;timepicker&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;time_options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span><span class="w"> </span><span class="s">&quot;refresh_intervals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]}}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="templating">templating<a class="headerlink" href="#templating" title="Permanent link">&para;</a></h3>
+<h4 id="templating_1">▼ templating<a class="headerlink" href="#templating_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#templating">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#templating</a></li>
+</ul>
+</blockquote>
+<h4 id="enable">▼ enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h4>
+<p>templatingセクションを有効化する。</p>
+<p>デフォルトで<code>true</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
+<p>PromQLのラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。</p>
+<p>ラベル変数でフィルタリングする場合、指定したデータソースでクエリした時のメトリクスがそのラベルを持っている必要がある。</p>
+<p>例えば、<code>kube_pod_info</code>メトリクスをラベル参照のために使用する場合、これがプルダウンのラベルを持っていなければならない。</p>
+<p>加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。</p>
+<p>例えば、<code>cluster</code>ラベル値でフィルタリングする場合、パネル上のPromQLでも<code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code>と定義しなければならない。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="c1"># templatingセクション</span>
+<span class="w">  </span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># listセクション</span>
+<span class="w">      </span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="c1"># データソース値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="c1"># デフォルトのフィルタリング値</span>
+<span class="w">            </span><span class="c1"># プルダウンの値を変更すれば、current値も動的に変わる</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 固定できるように true としておく</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="c1"># デフォルトのデータソースのフィルタリング値をPrometheusとする</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンを常に表示できるように 0 (false) とする</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを無効化しているため、Allのチェックボックスは無効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># データソース名。変数名としても使用できるようになる。</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="c1"># 最初のデータソースはPrometheusとする。</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prometheus&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 変数タイプを設定する。</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># clusterラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトのclusterラベルのフィルタリング値を null とする</span>
+<span class="w">                </span><span class="s">&quot;isNone&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="c1"># ラベルが選ばれない限り表示されないため、 false としておく</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;None&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを無効化しているため、Allのチェックボックスは無効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># clusterは1つだけ選ぶようにする</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># ラベル名。変数名としても使用できるようになる。</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cluster&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># メトリクスと、それから取得するラベルを設定する。</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスがclusterラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;label_values(kube_pod_info,</span><span class="nv"> </span><span class="s">cluster)&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="c1"># query&lt;小文字から始まる任意の識別子&gt;で事前定義しておくこともできる。</span>
+<span class="w">                </span><span class="c1"># queryを採用する場合、query以降の文字列は、&quot;^[a-z][a-zA-Z0-9_]*$&quot;の正規表現内の文字列にする必要がある。</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-cluster-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># アルファベットの昇順にする。</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># namespaceラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトでは全てのラベル値を選択する</span>
+<span class="w">                </span><span class="c1"># multiラベルの場合は、配列とする</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;All&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;$__all&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_pod_info{cluster=\&quot;$cluster\&quot;},</span><span class="nv"> </span><span class="s">namespace)&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-namespace-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># podラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトでは全てのラベル値を選択する</span>
+<span class="w">                </span><span class="c1"># multiラベルの場合は、配列とする</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;All&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;$__all&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数のラベル値を選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;pod&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_pod_info{cluster=\&quot;$cluster\&quot;,</span><span class="nv"> </span><span class="s">namespace=\&quot;$namespace\&quot;},</span><span class="nv"> </span><span class="s">pod)&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-pod-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># label_eks_amazonaws_com_nodegroupラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{},</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定する</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;label_values(kube_node_labels,</span><span class="nv"> </span><span class="s">label_eks_amazonaws_com_nodegroup)&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数のラベル値を選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;nodegroup&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;label_values(kube_node_labels,</span><span class="nv"> </span><span class="s">label_eks_amazonaws_com_nodegroup)&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># nodeラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトでは全てのラベルを表示する</span>
+<span class="w">                </span><span class="c1"># multiラベルの場合は、配列とする</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;All&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;$__all&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数のラベル値を選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;namespace&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="c1"># label_eks_amazonaws_com_nodegroupラベルの値は前段のプルダウンですでに取得しており、変数として使用する。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\&quot;$nodegroup\&quot;},</span><span class="nv"> </span><span class="s">node)&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-node-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="c1"># containerラベル値のプルダウン</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;allValue&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># プルダウンが選ばれていない時のデフォルト値を設定する</span>
+<span class="w">            </span><span class="s">&quot;current&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># デフォルトでは全てのラベルを表示する</span>
+<span class="w">                </span><span class="c1"># multiラベルの場合は、配列とする</span>
+<span class="w">                </span><span class="s">&quot;selected&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;All&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">                </span><span class="s">&quot;value&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;$__all&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="c1"># データソースの指定時に、それを変数として取得する</span>
+<span class="w">            </span><span class="s">&quot;datasource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$datasource&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;definition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;error&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;hide&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># multiオプションを無効化しているため、Allのチェックボックスは無効化する</span>
+<span class="w">            </span><span class="s">&quot;includeAll&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># 全ての値の中から複数のラベル値を選択して選べるようにする。</span>
+<span class="w">            </span><span class="s">&quot;multi&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;container&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
+<span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。</span>
+<span class="w">                </span><span class="c1"># nodeラベルの値は前段のプルダウンですでに取得しており、変数として使用する。</span>
+<span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_pod_container_info{cluster=\&quot;$cluster\&quot;,instance=\&quot;$node\&quot;,pod=\&quot;$pod\&quot;},</span><span class="nv"> </span><span class="s">container)&#39;</span><span class="p p-Indicator">,</span>
+<span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-container-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
+<span class="w">            </span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">2</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="c1"># もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。</span>
+<span class="w">            </span><span class="c1"># ただ、label_values内で『=~』を使った方が良いかもしれない。</span>
+<span class="w">            </span><span class="s">&quot;regex&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;skipUrlSync&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;sort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagValuesQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;tagsQuery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;useTags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
+<span class="w">        </span><span class="p p-Indicator">],</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top">https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top</a></li>
+<li><a href="https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p">https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p</a></li>
+<li><a href="https://qiita.com/prodigy413/items/c0c2304e1bc28f644526">https://qiita.com/prodigy413/items/c0c2304e1bc28f644526</a></li>
+</ul>
+</blockquote>
+<p>その上で<code>panel</code>セクションで<code>cluser</code>ラベルを定義すると、 メトリクスを<code>cluster</code>ラベルでフィルタリングできるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="c1"># panelsセクション</span>
+<span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;targets&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="s">&quot;expr&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sum(rate(sidecar_injection_success_total{cluster=\&quot;$cluster\&quot;}[1m]))&quot;</span>
+<span class="w">          </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="p p-Indicator">}</span>
+<span class="w">  </span><span class="p p-Indicator">]</span>
+<span class="p p-Indicator">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="annotations">annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;annotations&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;list&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]}}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="refresh">refresh<a class="headerlink" href="#refresh" title="Permanent link">&para;</a></h3>
+<p>自動更新間隔を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;refresh&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;5s&quot;</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="schemaversion">schemaVersion<a class="headerlink" href="#schemaversion" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;schemaVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">17</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="links">links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;links&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[]}</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-06</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

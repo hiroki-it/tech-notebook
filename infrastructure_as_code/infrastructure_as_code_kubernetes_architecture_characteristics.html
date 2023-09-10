@@ -1,0 +1,3229 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Kubernetes＠アーキテクチャ特性の知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_policy.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_resource.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】Kubernetes＠アーキテクチャ特性 - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】Kubernetes＠アーキテクチャ特性
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="kubernetes/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_16">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            ☸️ K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_2" checked>
+        
+          <label class="md-nav__link" for="__nav_16_2" id="__nav_16_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コントロールプレーンコンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nodeコンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ネットワーク
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_policy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    アーキテクチャ特性
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_architecture_characteristics.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    アーキテクチャ特性
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    認証/認可の実施
+  </a>
+  
+    <nav class="md-nav" aria-label="認証/認可の実施">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_1" class="md-nav__link">
+    ▼ Kubernetesリソースの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ コンテナの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    機密な変数やファイルの扱い
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの扱い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数の暗号化と管理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    Pod
+  </a>
+  
+    <nav class="md-nav" aria-label="Pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicaset" class="md-nav__link">
+    ▼ ReplicaSet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler" class="md-nav__link">
+    ▼ HorizontalPodAutoscaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+    <nav class="md-nav" aria-label="Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler_1" class="md-nav__link">
+    ▼ HorizontalPodAutoscaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 保守性
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 保守性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コントロールプレーンコンポーネントでダウンタイムを発生させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コントロールプレーンコンポーネントのデータを損失させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    ▼ 廃止されるAPIグループのバージョンを確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 変更されるメトリクス名やクエリロジックを確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podpod" class="md-nav__link">
+    ▼ 動作確認では、Podだけでなく、Podの管理リソースも確認する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    コントロールプレーンNodeのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="コントロールプレーンNodeのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    ▼ コントロールプレーンNodeのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ インプレース方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_3" class="md-nav__link">
+    ワーカーNodeのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="ワーカーNodeのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_4" class="md-nav__link">
+    ▼ ワーカーNodeのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ インプレース方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ ローリング方式 (サージ方式、ライブ方式)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ブルー/グリーン方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ツール別
+  </a>
+  
+    <nav class="md-nav" aria-label="ツール別">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd" class="md-nav__link">
+    ▼ ArgoCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-loadbalancer-controller" class="md-nav__link">
+    ▼ aws-loadbalancer-controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descheduler" class="md-nav__link">
+    ▼ descheduler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns" class="md-nav__link">
+    ▼ external-dns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetesリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ カスタムリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 開発
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ マニフェスト管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    認証/認可の実施
+  </a>
+  
+    <nav class="md-nav" aria-label="認証/認可の実施">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes_1" class="md-nav__link">
+    ▼ Kubernetesリソースの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ コンテナの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    機密な変数やファイルの扱い
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの扱い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数の暗号化と管理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    Pod
+  </a>
+  
+    <nav class="md-nav" aria-label="Pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replicaset" class="md-nav__link">
+    ▼ ReplicaSet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler" class="md-nav__link">
+    ▼ HorizontalPodAutoscaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    Node
+  </a>
+  
+    <nav class="md-nav" aria-label="Node">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontalpodautoscaler_1" class="md-nav__link">
+    ▼ HorizontalPodAutoscaler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 保守性
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 保守性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コントロールプレーンコンポーネントでダウンタイムを発生させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コントロールプレーンコンポーネントのデータを損失させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    ▼ 廃止されるAPIグループのバージョンを確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 変更されるメトリクス名やクエリロジックを確認する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podpod" class="md-nav__link">
+    ▼ 動作確認では、Podだけでなく、Podの管理リソースも確認する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    コントロールプレーンNodeのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="コントロールプレーンNodeのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    ▼ コントロールプレーンNodeのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ インプレース方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_3" class="md-nav__link">
+    ワーカーNodeのアップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="ワーカーNodeのアップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_4" class="md-nav__link">
+    ▼ ワーカーNodeのアップグレードとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ インプレース方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ ローリング方式 (サージ方式、ライブ方式)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ブルー/グリーン方式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ツール別
+  </a>
+  
+    <nav class="md-nav" aria-label="ツール別">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd" class="md-nav__link">
+    ▼ ArgoCD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-loadbalancer-controller" class="md-nav__link">
+    ▼ aws-loadbalancer-controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#descheduler" class="md-nav__link">
+    ▼ descheduler
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-dns" class="md-nav__link">
+    ▼ external-dns
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="kubernetes">Kubernetes＠アーキテクチャ特性<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. 安全性<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">認証/認可の実施<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="kubernetes_1">▼ Kubernetesリソースの場合<a class="headerlink" href="#kubernetes_1" title="Permanent link">&para;</a></h4>
+<p>RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sheepland/items/67a5bb9b19d8686f389d">https://qiita.com/sheepland/items/67a5bb9b19d8686f389d</a></li>
+<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ コンテナの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>Podの <code>.spec.securityContext</code>キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</a></li>
+<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">機密な変数やファイルの扱い<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="secret">▼ Secretの変数の暗号化と管理<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
+<p>Secretの <code>.data</code>キーには、<code>base64</code>方式でエンコードされた値を設定する必要がある。</p>
+<p>この <code>base64</code>方式エンコード値をどのように管理するかには選択肢がある。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align: center;">バージョン管理</th>
+<th>暗号化とSecretストア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHubリポジトリ</td>
+<td style="text-align: center;">⭕️</td>
+<td><code>base64</code>方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。</td>
+</tr>
+<tr>
+<td>GitHubリポジトリ + キーバリュー型バックエンド</td>
+<td style="text-align: center;">⭕️</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) で暗号化した上で、リポジトリ上やCluster内でキーバリュー型バックエンド (例：SOPS、Hashicorp Vault、Secrets Store CSI Driver、External Secrets、External Secrets Operator) で管理する。kube-apiserverへの送信前に <code>base64</code>方式エンコード値に復号化する。</td>
+</tr>
+<tr>
+<td>GitHubリポジトリ + クラウドキーバリュー型バックエンド</td>
+<td style="text-align: center;">×</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GPG、PGP、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型バックエンド (例：AWS パラメーターストア、Google SecretManager、など) で管理する。kube-apiserverへの送信前に <code>base64</code>方式エンコード値に復号化する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/">https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/</a></li>
+<li><a href="https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/">https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/</a></li>
+<li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 可用性<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="replicaset">▼ ReplicaSet<a class="headerlink" href="#replicaset" title="Permanent link">&para;</a></h4>
+<p>Podの冗長化で、可用性を担保する。</p>
+<h4 id="horizontalpodautoscaler">▼ HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h4>
+<p>Podの水平スケーリングで、可用性を担保する。</p>
+<p><br></p>
+<h3 id="node">Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
+<h4 id="horizontalpodautoscaler_1">▼ HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler_1" title="Permanent link">&para;</a></h4>
+<p>Nodeのオートスケーラー (例：cluster autoscaler、Karpenter) による水平スケーリングで、可用性を担保する。</p>
+<p><br></p>
+<h2 id="03">03. 保守性<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_5">設計規約<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>アップグレード時、新旧バージョンのコントロールプレーンコンポーネントが並行的に稼働する。</p>
+<p>基本的にはいずれのコントロールプレーンコンポーネントも、並行的に稼働するコンポーネントのバージョンを前方/後方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
+<p>そのため、Kubernetesのアップグレードもこれに合わせて、後方の <code>1</code>個のマイナーバージョンにアップグレードしていくことになる。</p>
+<p>マイナーバージョンを <code>2</code>個以上跨いだアップグレードは非推奨である。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/releases/version-skew-policy/">https://kubernetes.io/releases/version-skew-policy/</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ コントロールプレーンコンポーネントでダウンタイムを発生させない<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンコンポーネントでダウンタイムが発生すると、Nodeコンポーネントが正常に稼働しなくなる。</p>
+<p>これにより、システム全体でダウンタイムが発生する可能性がある。</p>
+<p>ただし、コントロールプレーンコンポーネントの、kube-controller-manager、kube-scheduler、ではダウンタイムが発生することは許容する。</p>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ コントロールプレーンコンポーネントのデータを損失させない<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンコンポーネントやNodeコンポーネントのデータを損失させないようにする。</p>
+<p>ただし、コンテナ内のローカルストレージの損失は許容する。</p>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
+</ul>
+</blockquote>
+<h4 id="api">▼ 廃止されるAPIグループのバージョンを確認する<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
+<p>アップグレードに伴い、kube-apiserverでAPIグループのバージョンが廃止されることがある。</p>
+<p>これにより、マニフェストでAPIグループのバージョンを宣言できなくなってしまうため、確認が必要である。</p>
+<p>静的解析ツール (例：pluto) を使用すると検出しやすい。</p>
+<blockquote>
+<ul>
+<li><a href="https://eng-blog.iij.ad.jp/archives/17944">https://eng-blog.iij.ad.jp/archives/17944</a></li>
+</ul>
+</blockquote>
+<h4 id="_9">▼ 変更されるメトリクス名やクエリロジックを確認する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>アップグレードに伴い、監視系リソース (例：Prometheus、Grafana) でメトリクス名やクエリロジックが廃止されることがある。</p>
+<p>これにより、メトリクスのデータポイントを収集できなくなってgしまうため、確認が必要である。</p>
+<blockquote>
+<ul>
+<li><a href="https://eng-blog.iij.ad.jp/archives/17944">https://eng-blog.iij.ad.jp/archives/17944</a></li>
+</ul>
+</blockquote>
+<h4 id="podpod">▼ 動作確認では、Podだけでなく、Podの管理リソースも確認する<a class="headerlink" href="#podpod" title="Permanent link">&para;</a></h4>
+<p>動作確認として、<code>Ready</code>コンディションと <code>Running</code>ステータスを <code>kubectl get pod</code>で確認する。</p>
+<p>また加えて、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
+<p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが <code>Ready</code>コンディションかどうかを確認しておく。</p>
+<p><br></p>
+<h3 id="node_1">コントロールプレーンNodeのアップグレード<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
+<h4 id="node_2">▼ コントロールプレーンNodeのアップグレードとは<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
+<p>まず最初に、コントロールプレーンNodeをアップグレードする。</p>
+<p>必要であれば、コントロールプレーンNodeのアドオン (例：aws-eks-corednsアドオン、aws-eks-kubeproxyアドオン、aws-vpc-cniアドオン) を別々にアップグレードする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/</a></li>
+<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/</a></li>
+</ul>
+</blockquote>
+<h4 id="_10">▼ インプレース方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンNodeのkube-apiserverのアップグレード時間がダウンタイムに相当する。</p>
+<p>ただし、コントロールプレーンNodeがマネージドなクラウドプロバイダーのいくつか (例：AWS) では、kube-apiserverでダウンタイムの発生しないアップグレードを手法を採用している。</p>
+<p>このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されている (ワーカーNodeではダウンタイムが発生してしまう) 。</p>
+<p>そのため、コントロールプレーンNodeのみ、インプレース方式でアップグレードする。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="node_3">ワーカーNodeのアップグレード<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h3>
+<h4 id="node_4">▼ ワーカーNodeのアップグレードとは<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンNodeのアップグレードが終了したら、ワーカーNodeをアップグレードする。</p>
+<p>クラウドプロバイダーのマネージドNodeグループを採用している場合、ワーカーNodeが新しいマシンイメージに基づいてオートスケーリングされるように設定しておく。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作業時間</th>
+<th>手順の煩雑さ</th>
+<th>ダウンタイム</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>インプレース方式</td>
+<td>より短い</td>
+<td>より簡単</td>
+<td>より長い</td>
+<td>ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。</td>
+</tr>
+<tr>
+<td>ローリング方式 (サージ方式、ライブ方式)</td>
+<td>^</td>
+<td>^</td>
+<td>v</td>
+<td></td>
+</tr>
+<tr>
+<td>ブルー/グリーン方式</td>
+<td>より長い</td>
+<td>より難しい</td>
+<td>なし</td>
+<td>Clusterの作成の労力が、もう <code>1</code>個実行環境を作成することに相当する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/</a></li>
+</ul>
+</blockquote>
+<h4 id="_11">▼ インプレース方式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>既存のNodeグループ内のワーカーNodeをそのままアップグレードする。</p>
+<p>ワーカーNodeのアップグレード時間がそのままダウンタイムになるため、メンテナンス時間を設けられる場合にのみ使用できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/323033">https://logmi.jp/tech/articles/323033</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>ワーカーNodeを削除する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ワーカーNodeを再作成する。</p>
+</dd>
+</dl>
+<h4 id="_12">▼ ローリング方式 (サージ方式、ライブ方式)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><img alt="kubernetes_live-upgrade" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png" /></p>
+<p>『サージ方式』『ライブ方式』ともいう。</p>
+<p>新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。</p>
+<p>一度にアップグレードするワーカーNode数 (Surge数) を増やすことにより、アップグレードの速さを調整できる。</p>
+<p>デメリットとして、新バージョンを1つずつしかアップグレードできない。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>旧Nodeグループ (Prodブルー) を残したまま、新Nodeグループ (Testグリーン) を作成する。</p>
+</dd>
+<dt>この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。</dt>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>kubectl drain</code>コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。</p>
+</dd>
+</dl>
+<p>この時、DaemonSetのPodを退避させられるように、<code>--ignore-daemonsets</code>オプションを有効化する。</p>
+<p>また、emptyDirボリュームを持つPodを退避できるように <code>--delete-emptydir-data</code>オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。</p>
+<p>その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。</p>
+<p>この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;旧Nodeグループ内のワーカーNode名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ignore-daemonsets<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--delete-emptydir-data
+</code></pre></div>
+<p><img alt="kubernetes_node_scheduling-pod-status" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://dunkshoot.hatenablog.com/">https://dunkshoot.hatenablog.com/</a></li>
+<li><a href="https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>ドレイン処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>動作が問題なければ、旧Nodeグループを削除する。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely">https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely</a></li>
+<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/">https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge</a></li>
+<li><a href="https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44">https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44</a></li>
+</ul>
+</blockquote>
+<h4 id="_13">▼ ブルー/グリーン方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><img alt="kubernetes_cluster-migration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png" /></p>
+<p>『マイグレーション方式』ともいう。</p>
+<p>新しいClusterを作成することにより、ワーカーNodeをアップグレードする。</p>
+<p>いずれ (例：ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。</p>
+<p>メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>旧Cluster (Prodブルー) を残したまま、新Cluster (Testグリーン) を作成する。新Clusterには、全てのKubernetesリソースが揃っている。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
+<li><a href="https://logmi.jp/tech/articles/323033">https://logmi.jp/tech/articles/323033</a></li>
+<li><a href="https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely">https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_14">ツール別<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="argocd">▼ ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
+<p>ArgoCDの場合、チャート (ArgoCDのコンテナイメージ) とCRDの両方のアップグレードする。</p>
+<p>ArgoCDをNamespacedスコープで分割している場合、カスタムリソースがCluster内に1つしかないCRDを共有しているため、CRDをアップグレードすると全サービスのカスタムリソースに影響が出る。</p>
+<p>この場合、カスタムリソースへの影響を考えて、CRDの差分がないバージョンまではArgoCDをアップグレードできる。</p>
+<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;アップグレード先のArgoCDのバージョン&gt;&quot;</span>
+</code></pre></div>
+<p>もしCRDに差分がある大きなアップグレードの場合、別のClusterを新しく構築し、その上で新ArgoCDも構築することとする。</p>
+<h4 id="aws-loadbalancer-controller">▼ aws-loadbalancer-controller<a class="headerlink" href="#aws-loadbalancer-controller" title="Permanent link">&para;</a></h4>
+<p>aws-loadbalancer-controllerの場合、チャートをアップグレードする。</p>
+<p>各サービスのALBへの影響を考えて、CRDの差分がないバージョンまではaws-loadbalancer-controllerをアップグレードできる。</p>
+<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=&lt;アップグレード先のaws-loadbalancer-controllerのバージョン&gt;&quot;</span>
+</code></pre></div>
+<h4 id="descheduler">▼ descheduler<a class="headerlink" href="#descheduler" title="Permanent link">&para;</a></h4>
+<p>deschedulerの場合、チャートをアップグレードする。</p>
+<p>ArgoCDのリソースに影響がないため、アップグレードは問題ない。</p>
+<h4 id="external-dns">▼ external-dns<a class="headerlink" href="#external-dns" title="Permanent link">&para;</a></h4>
+<p>external-dnsの場合、チャートをアップグレードする。</p>
+<p>ArgoCDのリソースに影響がないため、アップグレードは問題ない。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

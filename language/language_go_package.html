@@ -1,0 +1,3953 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_go_package.html">
+      
+      
+        <link rel="prev" href="language_go_framework_gin.html">
+      
+      
+        <link rel="next" href="language_python.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】パッケージ@Go - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#go" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】パッケージ@Go
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7" checked>
+        
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_go.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_go_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go_logic_method_data.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go_framework_gin.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_7_5" id="__nav_8_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_7_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ パッケージ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    パッケージ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_go_package.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    パッケージ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ビルトインパッケージ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 外部パッケージの管理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 外部パッケージの管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-mod-tidy" class="md-nav__link">
+    ▼ go mod tidy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gomod" class="md-nav__link">
+    go.modファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="go.modファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gomod_1" class="md-nav__link">
+    ▼ go.modファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ インターネットからインポート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ ローカルマシンからインポート
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gosum" class="md-nav__link">
+    go.sumファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="go.sumファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gosum_1" class="md-nav__link">
+    ▼ go.sumファイルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-aws-sdk-go-v2" class="md-nav__link">
+    03. aws-sdk-go-v2
+  </a>
+  
+    <nav class="md-nav" aria-label="03. aws-sdk-go-v2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-sdk-go-v2" class="md-nav__link">
+    aws-sdk-go-v2とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    awsとは
+  </a>
+  
+    <nav class="md-nav" aria-label="awsとは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    ▼ serviceパッケージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-aws-lambda-go" class="md-nav__link">
+    04. aws-lambda-go
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-gorm" class="md-nav__link">
+    05. gorm
+  </a>
+  
+    <nav class="md-nav" aria-label="05. gorm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gorm" class="md-nav__link">
+    gormとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBとの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="DBとの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    ▼ MySQLの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gorm_1" class="md-nav__link">
+    Gormモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="Gormモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gorm_2" class="md-nav__link">
+    ▼ Gormモデル埋め込み
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ プライマリーキー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdelete" class="md-nav__link">
+    ▼ SoftDelete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    DBマイグレーション
+  </a>
+  
+    <nav class="md-nav" aria-label="DBマイグレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tablename" class="md-nav__link">
+    ▼ TableNameメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    Create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    Read
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 全カラム取得
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 単一/複数カラム取得
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    Update
+  </a>
+  
+    <nav class="md-nav" aria-label="Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 単一カラム更新 (暗黙的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 複数カラム更新 (暗黙的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 複数カラム更新 (明示的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 全カラム更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-testify" class="md-nav__link">
+    06. testify
+  </a>
+  
+    <nav class="md-nav" aria-label="06. testify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testify" class="md-nav__link">
+    testifyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mockassert" class="md-nav__link">
+    mock、assert
+  </a>
+  
+    <nav class="md-nav" aria-label="mock、assert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ モック化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ スタブ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ アサーションメソッドによる検証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 前処理と後処理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-validator" class="md-nav__link">
+    07. validator
+  </a>
+  
+    <nav class="md-nav" aria-label="07. validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validator" class="md-nav__link">
+    validatorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    バリデーションとエラーメッセージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ビルトインパッケージ
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 外部パッケージの管理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 外部パッケージの管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-mod-tidy" class="md-nav__link">
+    ▼ go mod tidy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gomod" class="md-nav__link">
+    go.modファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="go.modファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gomod_1" class="md-nav__link">
+    ▼ go.modファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ インターネットからインポート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ ローカルマシンからインポート
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gosum" class="md-nav__link">
+    go.sumファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="go.sumファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gosum_1" class="md-nav__link">
+    ▼ go.sumファイルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-aws-sdk-go-v2" class="md-nav__link">
+    03. aws-sdk-go-v2
+  </a>
+  
+    <nav class="md-nav" aria-label="03. aws-sdk-go-v2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-sdk-go-v2" class="md-nav__link">
+    aws-sdk-go-v2とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    awsとは
+  </a>
+  
+    <nav class="md-nav" aria-label="awsとは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    ▼ serviceパッケージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-aws-lambda-go" class="md-nav__link">
+    04. aws-lambda-go
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-gorm" class="md-nav__link">
+    05. gorm
+  </a>
+  
+    <nav class="md-nav" aria-label="05. gorm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gorm" class="md-nav__link">
+    gormとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBとの接続
+  </a>
+  
+    <nav class="md-nav" aria-label="DBとの接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    ▼ MySQLの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gorm_1" class="md-nav__link">
+    Gormモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="Gormモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gorm_2" class="md-nav__link">
+    ▼ Gormモデル埋め込み
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ プライマリーキー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdelete" class="md-nav__link">
+    ▼ SoftDelete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    DBマイグレーション
+  </a>
+  
+    <nav class="md-nav" aria-label="DBマイグレーション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tablename" class="md-nav__link">
+    ▼ TableNameメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    Create
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    Read
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 全カラム取得
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 単一/複数カラム取得
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    Update
+  </a>
+  
+    <nav class="md-nav" aria-label="Update">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 単一カラム更新 (暗黙的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 複数カラム更新 (暗黙的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 複数カラム更新 (明示的)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 全カラム更新
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-testify" class="md-nav__link">
+    06. testify
+  </a>
+  
+    <nav class="md-nav" aria-label="06. testify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testify" class="md-nav__link">
+    testifyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mockassert" class="md-nav__link">
+    mock、assert
+  </a>
+  
+    <nav class="md-nav" aria-label="mock、assert">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ モック化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ スタブ化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ アサーションメソッドによる検証
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 前処理と後処理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-validator" class="md-nav__link">
+    07. validator
+  </a>
+  
+    <nav class="md-nav" aria-label="07. validator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validator" class="md-nav__link">
+    validatorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    バリデーションとエラーメッセージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="go">パッケージ@Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. ビルトインパッケージ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html">https://hiroki-it.github.io/tech-notebook/language/language_go_logic_method_data.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 外部パッケージの管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="go-mod-tidy">▼ <code>go mod tidy</code><a class="headerlink" href="#go-mod-tidy" title="Permanent link">&para;</a></h4>
+<p>インポートされているパッケージに合わせて、<code>go.mod</code>ファイルと<code>go.sum</code>ファイルを更新する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy
+</code></pre></div>
+<p>もし<code>go.sum</code>ファイルがあるのにも関わらず、以下のようなエラーが出る時は、<code>go mod tidy</code>コマンドを実行して<code>go.sum</code>ファイルを更新する必要がある。</p>
+<div class="highlight"><pre><span></span><code>cmd/main.go:4:5:<span class="w"> </span>missing<span class="w"> </span>go.sum<span class="w"> </span>entry<span class="w"> </span><span class="k">for</span><span class="w"> </span>module<span class="w"> </span>providing<span class="w"> </span>package<span class="w"> </span>github.com/foo/foo-package<span class="w"> </span><span class="o">(</span>imported<span class="w"> </span>by<span class="w"> </span>github.com/hiroki-it/bar/cmd<span class="o">)</span><span class="p">;</span><span class="w"> </span>to<span class="w"> </span>add:
+<span class="w">        </span>go<span class="w"> </span>get<span class="w"> </span>github.com/hiroki-hasegawa/bar/cmd
+</code></pre></div>
+<p><br></p>
+<h3 id="gomod">go.modファイル<a class="headerlink" href="#gomod" title="Permanent link">&para;</a></h3>
+<h4 id="gomod_1">▼ <code>go.mod</code>ファイルとは<a class="headerlink" href="#gomod_1" title="Permanent link">&para;</a></h4>
+<p>PHPにおける<code>composer.json</code>ファイルに相当する。</p>
+<p>インターネット上における自身のパッケージ名とGoバージョンを定義するために、全てのGoアプリケーションで必ず必要である。</p>
+<p>インストールしたい外部パッケージも定義できる。</p>
+<div class="highlight"><pre><span></span><code>module github.com/hiroki-hasegawa/foo-repository
+
+go 1.16
+</code></pre></div>
+<h4 id="_3">▼ インターネットからインポート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>パッケージ名とバージョンタグを使用して、インターネットからパッケージをインポートする。</p>
+<p><code>go mod tidy</code>コマンドによって<code>indirect</code>コメントのついたパッケージが実装される。</p>
+<p>これは、使用しているパッケージではなく、インポートしているパッケージが依存しているパッケージである。</p>
+<p>注意点として、パッケージ名は、使用したいパッケージの<code>go.mod</code>ファイルを参照すること。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file">https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>module github.com/hiroki-hasegawa/repository
+
+go 1.16
+
+require (
+    &lt;パッケージ名&gt; &lt;バージョンタグ&gt;
+    github.com/foo v1.3.0
+    github.com/bar v1.0.0
+    github.com/baz // indirect
+)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;github.com/bar&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 何らかの処理</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_4">▼ ローカルマシンからインポート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ローカルマシンでのみ使用する独自共有パッケージは、インターネット上での自身のリポジトリからインポートせずに、<code>replace</code>関数を使用してインポートする必要がある。</p>
+<p>独自共有の全パッケージでパッケージ名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。</p>
+<p>パス実際、<code>unknown revision</code>のエラーで、バージョンを見つけられない。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hnishi/items/a9217249d7832ed2c035">https://qiita.com/hnishi/items/a9217249d7832ed2c035</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>module foo.com/hiroki-it/repository
+
+go 1.16
+
+replace github.com/hiroki-hasegawa/foo-repository =&gt; /
+</code></pre></div>
+<p>また、ルートディレクトリのみでなく、各パッケージにも<code>go.mod</code>ファイルを配置する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── cmd/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── hello.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── go.mod</span>
+<span class="l l-Scalar l-Scalar-Plain">├── go.sum</span>
+<span class="l l-Scalar l-Scalar-Plain">└── local-pkg/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── go.mod</span><span class="w"> </span><span class="c1"># 各パッケージにgo.modを配置する。</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── module.go</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>module foo.com/hiroki-it/foo-repository/local-pkg
+
+go 1.16
+</code></pre></div>
+<p>これらにより、ローカルマシンのパッケージをインポートできるようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">&quot;local.packages/local-pkg&quot;</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 何らかの処理</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="gosum">go.sumファイル<a class="headerlink" href="#gosum" title="Permanent link">&para;</a></h3>
+<h4 id="gosum_1">▼ <code>go.sum</code>ファイルとは<a class="headerlink" href="#gosum_1" title="Permanent link">&para;</a></h4>
+<p>PHPにおける<code>composer.lock</code>ファイルに相当する。</p>
+<p><code>go.mod</code>ファイルによって実際にインストールされたパッケージが自動的に実装される。</p>
+<p>パッケージごとのチェックサムが記録されるため、前回のインストール時と比較して、パッケージに変更があるか否かを検知できる。</p>
+<p><br></p>
+<h2 id="03-aws-sdk-go-v2">03. aws-sdk-go-v2<a class="headerlink" href="#03-aws-sdk-go-v2" title="Permanent link">&para;</a></h2>
+<h3 id="aws-sdk-go-v2">aws-sdk-go-v2とは<a class="headerlink" href="#aws-sdk-go-v2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="aws">awsとは<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<p>汎用的な関数が同梱されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions</a></li>
+</ul>
+</blockquote>
+<p>ポインタ型からstring型に変換する<code>ToString</code>関数や、反対にstring型からポインタ型に変換する<code>String</code>関数をよく使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String</a></li>
+<li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString</a></li>
+</ul>
+</blockquote>
+<h4 id="service">▼ serviceパッケージ<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-aws-lambda-go">04. aws-lambda-go<a class="headerlink" href="#04-aws-lambda-go" title="Permanent link">&para;</a></h2>
+<p>以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html">https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-gorm">05. gorm<a class="headerlink" href="#05-gorm" title="Permanent link">&para;</a></h2>
+<h3 id="gorm">gormとは<a class="headerlink" href="#gorm" title="Permanent link">&para;</a></h3>
+<p>Go製のORMである。</p>
+<p>その他のORMについては、以下のリポジトリが参考になる。</p>
+<p>執筆時点 (2022/01/31) では、GormとBeegoが接戦している。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/d-tsuji/awesome-go-orms">https://github.com/d-tsuji/awesome-go-orms</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="db">DBとの接続<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<h4 id="mysql">▼ MySQLの場合<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/connecting_to_the_database.html#MySQL">https://gorm.io/docs/connecting_to_the_database.html#MySQL</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">NewDB</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// 接続情報。sprintfメソッドを使用すると、可読性が高い。</span>
+<span class="w">    </span><span class="nx">dsn</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;%s:%s@tcp(%s:%s)/%s?charset=utf8&amp;parseTime=True&amp;loc=Local&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_USER&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_PASSWORD&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_HOST&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_PORT&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;DB_DATABASE&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// DBに接続します。</span>
+<span class="w">    </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">mysql</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">dsn</span><span class="p">),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Config</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">Close</span><span class="p">(</span><span class="nx">db</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">sqlDb</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">DB</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// DBとの接続を切断します。</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sqlDb</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="gorm_1">Gormモデル<a class="headerlink" href="#gorm_1" title="Permanent link">&para;</a></h3>
+<h4 id="gorm_2">▼ Gormモデル埋め込み<a class="headerlink" href="#gorm_2" title="Permanent link">&para;</a></h4>
+<p>構造体にGormモデルを埋め込むと、IDやタイムスタンプレコードがフィールドとして追加される。</p>
+<p>構造体をマッピングしたテーブルに、<code>id</code>カラム、<code>created_at</code>カラム、<code>updated_at</code>カラム、<code>deleted_at</code>カラムが追加される。</p>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/models.html#embedded_struct">https://gorm.io/docs/models.html#embedded_struct</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">Model</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// 以下と同じ</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="s">`gorm:&quot;primaryKey&quot;`</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">      </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">CreatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="w">    </span><span class="nx">UpdatedAt</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Time</span>
+<span class="w">    </span><span class="nx">DeletedAt</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeleteAt</span><span class="w"> </span><span class="s">`gorm:&quot;index&quot;`</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_5">▼ プライマリーキー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>『ID』という名前のフィールドを認識して、これをプライマリーキーとしてデータをマッピングする。もし、他の名前のフィールドをIDとして使用したい場合は、<code>gorm:"primaryKey"</code>タグをつける。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="c1">// プライマリーキーとして使用される。</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">UserID</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`gorm:&quot;primaryKey&quot;`</span><span class="w"> </span><span class="c1">// プライマリーキーとして使用される。</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">   </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/conventions.html#ID-as-Primary-Key">https://gorm.io/docs/conventions.html#ID-as-Primary-Key</a></li>
+</ul>
+</blockquote>
+<h4 id="softdelete">▼ SoftDelete<a class="headerlink" href="#softdelete" title="Permanent link">&para;</a></h4>
+<p>構造体が、<code>gorm.DeleteAt</code>をデータ型とするフィールドを持っていると、その構造体を使用したDELETE処理では論理削除が実行される。</p>
+<p>Gormモデルを埋め込むことによりこのフィールドを持たせるか、または独自定義することにより、SoftDeleteを有効化できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">      </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">Deleted</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeletedAt</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">    </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="w"> </span><span class="mi">111</span><span class="p">}</span>
+
+<span class="c1">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE id = 111;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+
+<span class="c1">// UPDATE users SET deleted_at=&quot;2013-10-29 10:23&quot; WHERE age = 20;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;age = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">).</span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{})</span>
+
+<span class="c1">// SELECT * FROM users WHERE age = 20 AND deleted_at IS NULL;</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;age = 20&quot;</span><span class="p">).</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/delete.html#Soft-Delete">https://gorm.io/docs/delete.html#Soft-Delete</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="db_1">DBマイグレーション<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
+<h4 id="tablename">▼ <code>TableName</code>メソッド<a class="headerlink" href="#tablename" title="Permanent link">&para;</a></h4>
+<p>デフォルトではGormモデルの名前をスネークケースに変更し、加えて複数形とした名前のテーブルが作成される。</p>
+<p><code>TableName</code>メソッドにより、ユーザー定義のテーブル名をつけられる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// テーブル名はデフォルトでは『users』になる。</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ID</span><span class="w">      </span><span class="kt">int</span>
+<span class="w">    </span><span class="nx">Deleted</span><span class="w"> </span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DeletedAt</span>
+<span class="w">    </span><span class="nx">Name</span><span class="w">    </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="c1">// テーブル名を『foo』になる。</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">TableName</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;foo&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/conventions.html#TableName">https://gorm.io/docs/conventions.html#TableName</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<p>Gormモデルのフィールドに設定された値を元に、カラムを作成する。</p>
+<p>作成したカラムのプライマリーキーを、構造体から取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Birthday</span><span class="p">:</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()}</span>
+
+<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="c1">// pass pointer of data to Create</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="w">             </span><span class="c1">// returns inserted data&#39;s primary key</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span><span class="w">        </span><span class="c1">// returns error</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="c1">// returns inserted records count</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/create.html#Create-Record">https://gorm.io/docs/create.html#Create-Record</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="read">Read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 全カラム取得<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
+
+<span class="c1">// Get all records</span>
+<span class="nx">result</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">)</span>
+<span class="c1">// SELECT * FROM users;</span>
+
+<span class="nx">result</span><span class="p">.</span><span class="nx">RowsAffected</span><span class="w"> </span><span class="c1">// returns found records count, equals `len(users)`</span>
+<span class="nx">result</span><span class="p">.</span><span class="nx">Error</span><span class="w">        </span><span class="c1">// returns error</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/query.html#Retrieving-all-objects">https://gorm.io/docs/query.html#Retrieving-all-objects</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ 単一/複数カラム取得<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Gormモデルとプライマリーキーを指定して、プライマリーキーのモデルに紐付けられたカラムを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{}</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10&quot;</span><span class="p">)</span>
+<span class="c1">// SELECT * FROM users WHERE id = 10;</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">})</span>
+<span class="c1">// SELECT * FROM users WHERE id IN (1,2,3);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key">https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ 単一カラム更新 (暗黙的)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>フィールドとは無関係に、渡された値を元にUPDATE分を実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/update.html#Update-single-column">https://gorm.io/docs/update.html#Update-single-column</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1">// Update with conditions</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">User</span><span class="p">{}).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE active=true;</span>
+
+<span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
+
+<span class="c1">// User&#39;s ID is `111`:</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+
+<span class="c1">// Update with conditions and model value</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Where</span><span class="p">(</span><span class="s">&quot;active = ?&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">).</span><span class="nx">Update</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name=&#39;hello&#39;, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111 AND active=true;</span>
+</code></pre></div>
+<h4 id="_9">▼ 複数カラム更新 (暗黙的)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>Gormモデルのフィールドを暗黙的に指定して、複数のカラム値を更新する。</p>
+<p>または、フィールドとは無関係に、マップデータを元にUPDATE文を実行する。</p>
+<p>Gormモデルを使用した場合、フィールド値がゼロ値であると、これに紐付けられたカラム値の更新はスキップされてしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/update.html#Updates-multiple-columns">https://gorm.io/docs/update.html#Updates-multiple-columns</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
+
+<span class="c1">// Update attributes with `struct`, will only update non-zero fields</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="nx">Active</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id = 111;</span>
+
+<span class="c1">// Update attributes with `map`</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name=&#39;hello&#39;, age=18, active=false, updated_at=&#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+</code></pre></div>
+<h4 id="_10">▼ 複数カラム更新 (明示的)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>Gormモデルのフィールドを明示的に指定して、複数のカラム値を更新する。</p>
+<p>フィールド値がゼロ値であっても、スキップされない。</p>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/update.html#Update-Selected-Fields">https://gorm.io/docs/update.html#Update-Selected-Fields</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
+
+<span class="c1">// Select with Struct (select zero value fields)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Age&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;new_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
+
+<span class="c1">// Select all fields (select all fields include zero value fields)</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">).</span><span class="nx">Select</span><span class="p">(</span><span class="s">&quot;*&quot;</span><span class="p">).</span><span class="nx">Updates</span><span class="p">(</span><span class="nx">User</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;jinzhu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">Age</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">})</span>
+<span class="c1">// UPDATE users SET name=&#39;new_name&#39;, age=0 WHERE id=111;</span>
+</code></pre></div>
+<h4 id="_11">▼ 全カラム更新<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>Gormモデルのフィールドを暗黙的に全て指定して、全てのカラム値を強制的に更新する。</p>
+<blockquote>
+<ul>
+<li><a href="https://gorm.io/docs/update.html#Save-All-Fields">https://gorm.io/docs/update.html#Save-All-Fields</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">User</span><span class="p">{</span><span class="nx">Id</span><span class="p">:</span><span class="mi">111</span><span class="p">}</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">First</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+
+<span class="nx">user</span><span class="p">.</span><span class="nx">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;jinzhu 2&quot;</span>
+<span class="nx">user</span><span class="p">.</span><span class="nx">Age</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">user</span><span class="p">)</span>
+<span class="c1">// UPDATE users SET name=&#39;jinzhu 2&#39;, age=100, birthday=&#39;2016-01-01&#39;, updated_at = &#39;2013-11-17 21:34:10&#39; WHERE id=111;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-testify">06. testify<a class="headerlink" href="#06-testify" title="Permanent link">&para;</a></h2>
+<h3 id="testify">testifyとは<a class="headerlink" href="#testify" title="Permanent link">&para;</a></h3>
+<p>モック、スタブ、アサーションメソッドを提供するパッケージ。</p>
+<p>Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。</p>
+<p>モックとスタブについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html">https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="mockassert">mock、assert<a class="headerlink" href="#mockassert" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ モック化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>よく使用するメソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>なし</td>
+<td>データとして、構造体に<code>Mock</code>を設定すれば、その構造体はモック化される。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊実装例＊</strong></p>
+<p>AWSクライアントをモック化する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * AWSクライアントをモック化します。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedAwsClient</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_13">▼ スタブ化<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>よく使用するメソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.Called</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。関数に値が渡されたことをモックに伝える。</td>
+</tr>
+<tr>
+<td><code>Arguments.Get</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。ユーザー定義のデータ型を返却する処理を定義する。</td>
+</tr>
+<tr>
+<td><code>Arguments.Error</code>メソッド</td>
+<td>関数の一部の処理をスタブ化する時に使用する。引数として、返却値の順番を渡す。エラーを返却する処理を定義する。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊実装例＊</strong></p>
+<p>関数の一部の処理をスタブ化し、これをAWSクライアントのモックに紐付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">amplify</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">aws_amplify</span><span class="w"> </span><span class="s">&quot;github.com/aws/aws-sdk-go-v2/service/amplify&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/mock&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">MockedAmplifyAPI</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Mock</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * AmplifyのGetBranch関数の処理をスタブ化します。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">mock</span><span class="w"> </span><span class="o">*</span><span class="nx">MockedAmplifyAPI</span><span class="p">)</span><span class="w"> </span><span class="nx">GetBranch</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="w"> </span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchInput</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="w"> </span><span class="o">...</span><span class="kd">func</span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">Options</span><span class="p">))</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">arguments</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">mock</span><span class="p">.</span><span class="nx">Called</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">optFns</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="mi">0</span><span class="p">).(</span><span class="o">*</span><span class="nx">aws_amplify</span><span class="p">.</span><span class="nx">GetBranchOutput</span><span class="p">),</span><span class="w"> </span><span class="nx">arguments</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_14">▼ アサーションメソッドによる検証<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>よく使用するメソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Mock.On</code>メソッド</td>
+<td>関数の検証時に使用する。関数内部のスタブに引数として渡される値と、その時の返却値を定義する。</td>
+</tr>
+<tr>
+<td><code>Mock.AssertExpectations</code>メソッド</td>
+<td>関数の検証時に使用する。関数内部のスタブが正しく実行されたか否かを検証する。</td>
+</tr>
+<tr>
+<td><code>assert.Exactly</code>メソッド</td>
+<td>関数の検証時に使用する。期待値と実際値の整合性を検証する。値のみでなく、データ型も検証できる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/mock?tab=versions</a></li>
+<li><a href="https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ 前処理と後処理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>テスト関数を実行する直前に、前処理を実行する。</p>
+<p>モックの作成のために使用すると良い。</p>
+<p>PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html">https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html</a></li>
+</ul>
+</blockquote>
+<p>前処理と後処理については、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66">https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66</a></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>よく使用する関数</th>
+<th>実行タイミング</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SetupSuite</code></td>
+<td>1</td>
+<td>テストスイート内の全てのテストの前処理として、一回だけ実行する。</td>
+</tr>
+<tr>
+<td><code>SetupTest</code></td>
+<td>2</td>
+<td>テストスイート内の各テストの前処理として、テストの度に事前に実行する。<code>BeforeTest</code>関数よりも前に実行されることに注意する。</td>
+</tr>
+<tr>
+<td><code>BeforeTest</code></td>
+<td>3</td>
+<td>テストスイート内の各テストの直前の前処理として、テストの度に事前に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+</tr>
+<tr>
+<td><code>AfterTest</code></td>
+<td>4</td>
+<td>テストスイート内の各テストの直後の後処理として、テストの度に事後に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+</tr>
+<tr>
+<td><code>TearDownTest</code></td>
+<td>5</td>
+<td>テストスイート内の各テストの後処理として、テストの度に事後に実行する。<code>BeforeTest</code>関数よりも後に実行されることに注意する。</td>
+</tr>
+<tr>
+<td><code>TearDownSuite</code></td>
+<td>6</td>
+<td>テストスイート内の全てのテストの後処理として、一回だけ実行する。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊実装例＊</strong></p>
+<p>事前にモックを作成するために、<code>BeforeTest</code>関数を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;testing&quot;</span>
+<span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストのテストスイートを構成する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooSuite</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Suite</span>
+<span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">*</span><span class="nx">FooMock</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストの直前の前処理を実行する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">BeforeTest</span><span class="p">(</span><span class="nx">suiteName</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">testName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// モックを作成する。</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooMock</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * 単体テストのテストスイートを実行する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestFooSuite</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooSuite</span><span class="p">{})</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;github.com/stretchr/testify/assert&quot;</span>
+<span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Methodメソッドが成功することを検証する。</span>
+
+
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">suite</span><span class="w"> </span><span class="o">*</span><span class="nx">FooSuite</span><span class="p">)</span><span class="w"> </span><span class="nx">TestMethod</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">T</span><span class="p">().</span><span class="nx">Helper</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// 前処理で作成したモックを使用する。</span>
+<span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span>
+
+<span class="w">    </span><span class="c1">// 以降にテスト処理</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="07-validator">07. validator<a class="headerlink" href="#07-validator" title="Permanent link">&para;</a></h2>
+<h3 id="validator">validatorとは<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h3>
+<p><br></p>
+<h3 id="_16">バリデーションとエラーメッセージ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">validators</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/go-playground/validator&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span><span class="w"> </span><span class="nx">FoobarbazValidator</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">Foo</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;foo&quot; validate:&quot;required&quot;`</span>
+<span class="w">    </span><span class="nx">Bar</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;bar&quot; validate:&quot;required&quot;`</span>
+<span class="w">    </span><span class="nx">Baz</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&quot;baz&quot; validate:&quot;required&quot;`</span>
+<span class="p">}</span>
+
+<span class="c1">// NewValidator コンストラクタ</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewValidator</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">Validator</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Validator</span><span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="c1">// Validate バリデーションを実行します。</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="nx">FoobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">Validate</span><span class="p">()</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">New</span><span class="p">().</span><span class="nx">Struct</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">errorMessages</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">err</span><span class="p">.(</span><span class="nx">validator</span><span class="p">.</span><span class="nx">ValidationErrors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// フィールドごとにマップ形式でバリデーションメッセージを構成します。</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;bar&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p">:</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;baz&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">                </span><span class="nx">errorMessages</span><span class="p">[</span><span class="s">&quot;baz&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">errorMessages</span>
+<span class="p">}</span>
+
+<span class="c1">// stringValidation string型指定のメッセージを返却します。</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="nx">FoobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">stringValidation</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">FieldError</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s は文字列のみ有効です&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
+<span class="p">}</span>
+
+<span class="c1">// requiredValidation 必須メッセージを返却します。</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="o">*</span><span class="nx">FoobarbazValidator</span><span class="p">)</span><span class="w"> </span><span class="nx">requiredValidation</span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="nx">validator</span><span class="p">.</span><span class="nx">FieldError</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s は必須です&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Field</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/foobarbaz-repository/validators&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">v</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewFoobarbazValidator</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c1">// JSONを構造体にマッピングします。</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">`{&quot;foo&quot;: &quot;test&quot;, &quot;bar&quot;: &quot;test&quot;, &quot;baz&quot;: &quot;test&quot;}`</span><span class="p">),</span><span class="w"> </span><span class="nx">v</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;JSONエンコードに失敗しました。&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// バリデーションを実行します。</span>
+<span class="w">    </span><span class="nx">errorMessages</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">v</span><span class="p">.</span><span class="nx">Validate</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// マップをJSONに変換します。</span>
+<span class="w">        </span><span class="nx">byteJson</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">errorMessages</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">byteJson</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// エンコード結果を出力します。</span>
+<span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;データに問題はありません。&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5161 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="設計規約＠Terraformの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_terraform_ci_cd_pipeline.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_terraform_policy_tfstate.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】設計規約＠Terraform - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#terraform" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】設計規約＠Terraform
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_15">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ IaC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 手続き型
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4" id="__nav_15_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 宣言型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 宣言型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Docker Compose
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_packer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Packer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Serverless Framework
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4_4" id="__nav_15_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ tfファイル
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロバイダー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CDパイプライン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4_6" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4_4_6" id="__nav_15_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_15_4_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 設計規約
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_terraform_policy.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    アプリとIaCを同じリポジトリで管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    アプリとIaCを異なるリポジトリで管理 (推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ローカルモジュールを使用する (推奨)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ リモートモジュールを使用する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ローカルモジュール / リモートモジュールの両方を使用する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ローカルモジュールのディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ローカルモジュールのディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ルートディレクトリ構成方法の種類
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートディレクトリ構成方法の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 対象リソース別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    サブディレクトリ構成方法の種類
+  </a>
+  
+    <nav class="md-nav" aria-label="サブディレクトリ構成方法の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 実行環境別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ リージョン別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 共通セット別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ リソースのセットアップ別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    その他
+  </a>
+  
+    <nav class="md-nav" aria-label="その他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    ▼ policiesディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ops" class="md-nav__link">
+    ▼ opsディレクトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 命名規則と並び順
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 命名規則と並び順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    環境変数 (通常変数も同じ)
+  </a>
+  
+    <nav class="md-nav" aria-label="環境変数 (通常変数も同じ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 対象リソースに合わせる命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listmap" class="md-nav__link">
+    ▼ list型、map型の命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    ▼ boolean型の命名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    moduleブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="moduleブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 命名規則
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcedata" class="md-nav__link">
+    resourceブロック、dataブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="resourceブロック、dataブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ リソースに種類がある場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ リソースに種類が無い場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 接頭辞、接尾辞の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    outputブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="outputブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ リソースに種類がある場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ リソースに種類が無い場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 冗長な場合 (アンチパターン)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    descriptionオプション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02" class="md-nav__link">
+    04-02. 並び順
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. 並び順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    環境変数
+  </a>
+  
+    <nav class="md-nav" aria-label="環境変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 並び順
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_1" class="md-nav__link">
+    moduleブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="moduleブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ 並び順
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcedata_1" class="md-nav__link">
+    resourceブロック、dataブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="resourceブロック、dataブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 設定の並び順、行間
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 開発環境
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 開発環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_1" class="md-nav__link">
+    terraformコマンドのセットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="terraformコマンドのセットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    ▼ docker-compose.ymlファイルを用いる場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asdf" class="md-nav__link">
+    ▼ asdfパッケージを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    開発方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore" class="md-nav__link">
+    .gitignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ci" class="md-nav__link">
+    06. CIツールに関する脆弱性対策
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIツールに関する脆弱性対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    機密な変数やファイルの扱い
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの扱い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ パラメーターの暗号化とSecretストア
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate" class="md-nav__link">
+    ▼ tfstateファイルへの書き込みを防ぐ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_1" class="md-nav__link">
+    ▼ tfstateファイルへの平文を妥協する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_2" class="md-nav__link">
+    tfstateファイルの暗号化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    outputブロックの暗号化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. アップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="07. アップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-terraformterraform-apply" class="md-nav__link">
+    (1) 現在のTerraformのバージョンでterraform applyコマンドを実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) アップグレード以外の作業を済ませておく
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-terraform-plan" class="md-nav__link">
+    (4) terraform planコマンドの警告/エラーを解決
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-terraform" class="md-nav__link">
+    (5) プロバイダーをアップグレードしたい場合はTerraformもアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-terraform" class="md-nav__link">
+    (6) Terraformとプロバイダーのアップグレードは別々にリリース
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    新バージョンの自動検出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ci" class="md-nav__link">
+    08. CIパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="08. CIパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    仕様書自動作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    各ブロックのホワイトボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="各ブロックのホワイトボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ 整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ ドライラン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ 単体テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ホワイトボックステスト結果の通知
+  </a>
+  
+    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_2" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_3" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    各ブロックのブラックボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="各ブロックのブラックボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ 総合テスト (擬似的総合テストも含む)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-02-cd" class="md-nav__link">
+    08-02. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="08-02. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    レビュー
+  </a>
+  
+    <nav class="md-nav" aria-label="レビュー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ コンソール画面にログイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ クラウドプロバイダーのドキュメントや技術記事を確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_4" class="md-nav__link">
+    ▼ Terraformのドキュメントや技術記事を確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#develop" class="md-nav__link">
+    ▼ developブランチへのマージは問題ないか
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    デプロイ
+  </a>
+  
+    <nav class="md-nav" aria-label="デプロイ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    ▼ 大原則：プルリクエストを1個ずつリリース
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 既存のリソースに対して、新しいリソースを紐付ける場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_5" class="md-nav__link">
+    ▼ Terraformとプロバイダーの両方をアップグレードする場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBインスタンスの設定変更でダウンタイムが発生する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ロールバック
+  </a>
+  
+    <nav class="md-nav" aria-label="ロールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_6" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_7" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-03" class="md-nav__link">
+    08-03. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="08-03. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    デプロイの通知
+  </a>
+  
+    <nav class="md-nav" aria-label="デプロイの通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_8" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_9" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_policy_tfstate.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    tfstateファイル分割
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Vagrant
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. リポジトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    アプリとIaCを同じリポジトリで管理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    アプリとIaCを異なるリポジトリで管理 (推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ローカルモジュールを使用する (推奨)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ リモートモジュールを使用する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ローカルモジュール / リモートモジュールの両方を使用する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ローカルモジュールのディレクトリ構成規約
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ローカルモジュールのディレクトリ構成規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ルートディレクトリ構成方法の種類
+  </a>
+  
+    <nav class="md-nav" aria-label="ルートディレクトリ構成方法の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 対象リソース別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    サブディレクトリ構成方法の種類
+  </a>
+  
+    <nav class="md-nav" aria-label="サブディレクトリ構成方法の種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 実行環境別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ リージョン別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 共通セット別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ リソースのセットアップ別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    その他
+  </a>
+  
+    <nav class="md-nav" aria-label="その他">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#policies" class="md-nav__link">
+    ▼ policiesディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ops" class="md-nav__link">
+    ▼ opsディレクトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. 命名規則と並び順
+  </a>
+  
+    <nav class="md-nav" aria-label="04. 命名規則と並び順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    環境変数 (通常変数も同じ)
+  </a>
+  
+    <nav class="md-nav" aria-label="環境変数 (通常変数も同じ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 対象リソースに合わせる命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listmap" class="md-nav__link">
+    ▼ list型、map型の命名
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolean" class="md-nav__link">
+    ▼ boolean型の命名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    moduleブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="moduleブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 命名規則
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcedata" class="md-nav__link">
+    resourceブロック、dataブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="resourceブロック、dataブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ リソースに種類がある場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ リソースに種類が無い場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ 接頭辞、接尾辞の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    outputブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="outputブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ リソースに種類がある場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ リソースに種類が無い場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ 冗長な場合 (アンチパターン)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    descriptionオプション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-02" class="md-nav__link">
+    04-02. 並び順
+  </a>
+  
+    <nav class="md-nav" aria-label="04-02. 並び順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    環境変数
+  </a>
+  
+    <nav class="md-nav" aria-label="環境変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ 並び順
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_1" class="md-nav__link">
+    moduleブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="moduleブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ 並び順
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resourcedata_1" class="md-nav__link">
+    resourceブロック、dataブロック
+  </a>
+  
+    <nav class="md-nav" aria-label="resourceブロック、dataブロック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ 設定の並び順、行間
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. 開発環境
+  </a>
+  
+    <nav class="md-nav" aria-label="05. 開発環境">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_1" class="md-nav__link">
+    terraformコマンドのセットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="terraformコマンドのセットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml" class="md-nav__link">
+    ▼ docker-compose.ymlファイルを用いる場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asdf" class="md-nav__link">
+    ▼ asdfパッケージを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    開発方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gitignore" class="md-nav__link">
+    .gitignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ci" class="md-nav__link">
+    06. CIツールに関する脆弱性対策
+  </a>
+  
+    <nav class="md-nav" aria-label="06. CIツールに関する脆弱性対策">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    機密な変数やファイルの扱い
+  </a>
+  
+    <nav class="md-nav" aria-label="機密な変数やファイルの扱い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ パラメーターの暗号化とSecretストア
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate" class="md-nav__link">
+    ▼ tfstateファイルへの書き込みを防ぐ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_1" class="md-nav__link">
+    ▼ tfstateファイルへの平文を妥協する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_2" class="md-nav__link">
+    tfstateファイルの暗号化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output_1" class="md-nav__link">
+    outputブロックの暗号化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. アップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="07. アップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-terraformterraform-apply" class="md-nav__link">
+    (1) 現在のTerraformのバージョンでterraform applyコマンドを実行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) アップグレード以外の作業を済ませておく
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-terraform-plan" class="md-nav__link">
+    (4) terraform planコマンドの警告/エラーを解決
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-terraform" class="md-nav__link">
+    (5) プロバイダーをアップグレードしたい場合はTerraformもアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-terraform" class="md-nav__link">
+    (6) Terraformとプロバイダーのアップグレードは別々にリリース
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    新バージョンの自動検出
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ci" class="md-nav__link">
+    08. CIパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="08. CIパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    仕様書自動作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    各ブロックのホワイトボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="各ブロックのホワイトボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    ▼ 整形
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ ドライラン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    ▼ 単体テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ホワイトボックステスト結果の通知
+  </a>
+  
+    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_2" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_3" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    各ブロックのブラックボックステスト
+  </a>
+  
+    <nav class="md-nav" aria-label="各ブロックのブラックボックステスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    ▼ 結合テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    ▼ 総合テスト (擬似的総合テストも含む)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-02-cd" class="md-nav__link">
+    08-02. CDパイプライン
+  </a>
+  
+    <nav class="md-nav" aria-label="08-02. CDパイプライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    レビュー
+  </a>
+  
+    <nav class="md-nav" aria-label="レビュー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    ▼ コンソール画面にログイン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    ▼ クラウドプロバイダーのドキュメントや技術記事を確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_4" class="md-nav__link">
+    ▼ Terraformのドキュメントや技術記事を確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#develop" class="md-nav__link">
+    ▼ developブランチへのマージは問題ないか
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    デプロイ
+  </a>
+  
+    <nav class="md-nav" aria-label="デプロイ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    ▼ 大原則：プルリクエストを1個ずつリリース
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    ▼ 既存のリソースに対して、新しいリソースを紐付ける場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_5" class="md-nav__link">
+    ▼ Terraformとプロバイダーの両方をアップグレードする場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBインスタンスの設定変更でダウンタイムが発生する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    ロールバック
+  </a>
+  
+    <nav class="md-nav" aria-label="ロールバック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_6" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_7" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-03" class="md-nav__link">
+    08-03. 事後処理
+  </a>
+  
+    <nav class="md-nav" aria-label="08-03. 事後処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    デプロイの通知
+  </a>
+  
+    <nav class="md-nav" aria-label="デプロイの通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform_8" class="md-nav__link">
+    ▼ Terraformを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_9" class="md-nav__link">
+    ▼ Terraform以外を使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="terraform">設計規約＠Terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. リポジトリ構成規約<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">リポジトリ分割のメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>リポジトリを分割することにより、以下のメリットがある。</p>
+<ul>
+<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries">https://cloud.google.com/docs/terraform/best-practices-for-terraform#team-boundaries</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="iac">アプリとIaCを同じリポジトリで管理<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
+<p>アプリケーションと同じリポジトリにて、<code>terraform</code>ディレクトリを作成し、ここに<code>.tf</code>ファイルを配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── app/</span><span class="w"> </span><span class="c1"># アプリケーション</span>
+<span class="l l-Scalar l-Scalar-Plain">├── infra/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="iac_1">アプリとIaCを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ ローカルモジュールを使用する (推奨)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>アプリケーションとは異なるリポジトリにて、<code>.tf</code>ファイルを配置しつつ、ルートモジュールとモジュールは同じリポジトリ内で管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo-module/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># ルートモジュール</span>
+<span class="l l-Scalar l-Scalar-Plain">├── variables.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<h4 id="_4">▼ リモートモジュールを使用する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>アプリケーションとは異なるリポジトリにて、<code>.tf</code>ファイルを配置しつつ、ルートモジュールとモジュールは異なるリポジトリ内で管理する。</p>
+<p>ルートモジュールでリモートモジュールのリポジトリのURLを指定し、参照する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># ルートモジュール (リポジトリのURLを指定し、リモートモジュールを読み込む)</span>
+<span class="l l-Scalar l-Scalar-Plain">├── variables.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># リモートモジュール</span>
+<span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── variables.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<h4 id="_5">▼ ローカルモジュール / リモートモジュールの両方を使用する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>ルートモジュールでは、ローカルモジュールとリモートモジュールのコールを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-system</span><span class="w"> </span><span class="c1"># 今後新しく作る他のシステム</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar-system</span>
+<span class="l l-Scalar l-Scalar-Plain">└── baz-system</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── module/</span><span class="w"> </span><span class="c1"># まとめられるresourceブロックはローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── acm.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── eks.tf</span><span class="w"> </span><span class="c1"># eksのリモートモジュールをコール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── locals.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── nonprd</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfvars</span><span class="w"> </span><span class="c1"># baz-system/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── remote_state.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── sts.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── variable.tf</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. ローカルモジュールのディレクトリ構成規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_6">ルートディレクトリ構成方法の種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 対象リソース別<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>特定のリソースの設定が対象のリソースごとに異なる場合、冗長性よりも保守性を重視して、リソースに応じたディレクトリに分割する。</p>
+<p>またスクリプトを使用するリソース (例：Lambda) では、そのソースコードをモジュール下で管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── cloudwatch/</span><span class="w"> </span><span class="c1"># CloudWatch</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── alb/</span><span class="w">        </span><span class="c1"># ALB</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront/</span><span class="w"> </span><span class="c1"># CloudFront</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── ecs/</span><span class="w">        </span><span class="c1"># ECS</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── lambda/</span><span class="w">     </span><span class="c1"># Lambda</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   │   └── functions/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   │       └── foo_function/</span><span class="w"> </span><span class="c1"># スクリプト</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── rds/</span><span class="w">        </span><span class="c1"># RDS</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w">         </span><span class="c1"># ALB</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── api_gateway/</span><span class="w"> </span><span class="c1"># API Gateway</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── cloudfront/</span><span class="w">  </span><span class="c1"># CloudFront</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_8">サブディレクトリ構成方法の種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 実行環境別<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>特定のリソースの設定が実行環境ごとに異なる場合、冗長性よりも保守性を重視して、実行環境に応じたディレクトリに分割する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
+</code></pre></div>
+<h4 id="_10">▼ リージョン別<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>特定のリソースの設定がリージョンごとに異なる場合、冗長性よりも保守性を重視して、リージョンに応じたディレクトリに分割する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
+</code></pre></div>
+<h4 id="_11">▼ 共通セット別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>WAFで使用するIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。</p>
+<p>Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共有できるため、共通セットとしてディレクトリ分割を行う。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── alb/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── api_gateway/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── cloudfront/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── regional_sets/</span><span class="w"> </span><span class="c1"># Regionalタイプのセット</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── ip_sets/</span><span class="w">   </span><span class="c1"># IPセット</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── regex_pattern_sets/</span><span class="w"> </span><span class="c1"># 正規表現パターンセット</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
+</code></pre></div>
+<h4 id="_12">▼ リソースのセットアップ別<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>リソースをセットアップする上で異なる種類のリソースが必要になる場合に、それらの<code>resource</code>ブロックを一つにまとめて管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># AWS EKS</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース (例：RoleBinding、StorageClass、など)</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_13">その他<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="policies">▼ policiesディレクトリ<a class="headerlink" href="#policies" title="Permanent link">&para;</a></h4>
+<p>ポリシーのために<code>.json</code>形式を定義する場合、Terraformのコードにハードコーディングせずに、切り分けるようにする。</p>
+<p>また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。</p>
+<p>注意点として、<code>templatefile</code>関数でこれを読みこむ時、<code>bash</code>ファイルではなく、tplファイルとして定義しておく必要あるため、注意する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ecr/</span><span class="w"> </span><span class="c1"># ECR</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── ecr_lifecycle_policy.tpl</span><span class="w"> </span><span class="c1"># ECRライフサイクル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ecs/</span><span class="w"> </span><span class="c1"># ECS</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── container_definitions.tpl</span><span class="w"> </span><span class="c1"># コンテナ定義</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAM</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── policies/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       ├── customer_managed_policies/</span><span class="w"> </span><span class="c1"># カスタム管理ポリシー</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   ├── aws_cli_executor_access_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   ├── aws_cli_executor_access_address_restriction_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   ├── cloudwatch_logs_access_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   └── lambda_edge_execution_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       ├── inline_policies/</span><span class="w"> </span><span class="c1"># インラインポリシー</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   └── ecs_task_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── trust_policies/</span><span class="w"> </span><span class="c1"># 信頼ポリシー</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── cloudwatch_events_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── ecs_task_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── lambda_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           └── rds_policy.tpl</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── s3/</span><span class="w"> </span><span class="c1"># S3</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── policies/</span><span class="w"> </span><span class="c1"># バケットポリシー</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── alb_bucket_policy.tpl</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files">https://cloud.google.com/docs/terraform/best-practices-for-terraform#static-files</a></li>
+</ul>
+</blockquote>
+<h4 id="ops">▼ opsディレクトリ<a class="headerlink" href="#ops" title="Permanent link">&para;</a></h4>
+<p>CI/CDパイプライン上の<code>terraform</code>コマンドの実行で必要なシェルスクリプトは、<code>ops</code>ディレクトリで管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── .circleci/</span><span class="w"> </span><span class="c1"># CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) の設定ファイル</span>
+<span class="l l-Scalar l-Scalar-Plain">└── ops/</span><span class="w"> </span><span class="c1"># TerraformのCI/CDの自動化シェルスクリプト</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. 命名規則と並び順<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_14">環境変数 (通常変数も同じ)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ 対象リソースに合わせる命名<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>複数のリソースで共有する場合 (将来的にそうなる可能性も含めて) は、Globalに配置し、グローバルな名前を付ける。</p>
+<p>クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Global</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="na">camel_case_prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Bar&quot;</span>
+<span class="na">region</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="na">environment</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;stg&quot;</span>
+<span class="na">service</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span>
+</code></pre></div>
+<p>一方で、特定のリソースのみで使用する環境変数/通常変数の場合は、対象のリソース、種類名、オプション名、がわかるように命名する。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention">https://cloud.google.com/docs/terraform/best-practices-for-terraform#naming-convention</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 種類が無い時 (thisの時)</span>
+<span class="c1"># 例：ecs_service_desired_count = 2</span>
+<span class="err">&lt;使用するクラウドプロバイダーのリソースの名前&gt;_&lt;オプション名&gt;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">****</span>
+
+
+<span class="c1"># 種類がある時</span>
+<span class="c1"># 例：ecs_task_cpu = 1024</span>
+<span class="err">&lt;使用するクラウドプロバイダーのリソースの名前&gt;_&lt;種類名&gt;_&lt;オプション名&gt;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">****</span>
+</code></pre></div>
+<h4 id="listmap">▼ list型、map型の命名<a class="headerlink" href="#listmap" title="Permanent link">&para;</a></h4>
+<p>複数の値を持つlist型やmap型の環境変数であれば複数形で命名する。</p>
+<p>一方で、string型など値が<code>1</code>個しかなければ単数形とする。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables">https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、VPCを示す。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Variables VPC</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="nb">vpc_availability_zones</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="na">vpc_cidr</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/23&quot;</span>
+<span class="nb">vpc_subnet_private_datastore_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_private_app_cidrs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/25&quot;, c = &quot;*.*.*.*/25&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<h4 id="boolean">▼ boolean型の命名<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h4>
+<p><code>count</code>引数による条件分岐でリソースの作成の有無を切り替えている場合、<code>enable_***</code>という名前のboolean型環境変数を用意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables">https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="na">enable_foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="module"><code>module</code>ブロック<a class="headerlink" href="#module" title="Permanent link">&para;</a></h3>
+<h4 id="_16">▼ 命名規則<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><code>source</code>オプションで指定するディレクトリ名で命名する。</p>
+<p>スネークケースによる命名を採用する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># ALB</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # ローカルモジュール</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/alb&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
+
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # リモートモジュールを参照する。</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="resourcedata"><code>resource</code>ブロック、<code>data</code>ブロック<a class="headerlink" href="#resourcedata" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ リソースに種類がある場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>リソース名で、リソースタイプを繰り返さないようにする。</p>
+<p>もし種類がある場合、リソース名でその種類を表す。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、VPCを示す。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Resource VPC ルートテーブル</span>
+<span class="c1"># ---------------------------------------------</span>
+
+<span class="c1"># 良い例</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;public&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;private&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Resource VPC ルートテーブル</span>
+<span class="c1"># ---------------------------------------------</span>
+
+<span class="c1"># 悪い例</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;route_table_public&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_route_table&quot;</span><span class="w"> </span><span class="nv">&quot;route_table_private&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_18">▼ リソースに種類が無い場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>リソースタイプに、<code>1</code>個のリソースしか種類が存在しない場合、<code>this</code>で命名する。</p>
+<p><code>this</code>と命名されたresourceで、後から種類が増える場合は、既存の<code>this</code>は後からリファクタリングするとして、新規リソースには種類名を名付ける。</p>
+<p>ただし、リファクタリングすることが大変なため、非推奨である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Resource Internet Gateway</span>
+<span class="c1"># ---------------------------------------------</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_internet_gateway&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_19">▼ 接頭辞、接尾辞の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>Lambda以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。</p>
+<ul>
+<li>ケバブケース</li>
+<li><code>&lt;接頭辞&gt;-&lt;種類&gt;-&lt;接尾辞&gt;</code>とする。</li>
+<li>接頭辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code>とする。</li>
+<li>接尾辞は、クラウドプロバイダーのリソース名とする。</li>
+</ul>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、CloudWatchを示す。</p>
+<ul>
+<li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
+<li>種類は、alb-httpcode-4xx-count</li>
+<li>クラウドプロバイダーのリソース名は、CloudWatchAlarmを省略してAlarm</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudwatch_metric_alarm&quot;</span><span class="w"> </span><span class="nv">&quot;alb_httpcode_target_4xx_count&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">alarm_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-alb-httpcode-target-4xx-count-alarm&quot;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>LambdaではLambda関数が稼働する。</p>
+<p>接尾辞にfunctionとつけることは冗長と判断したため、関数名のみで命名する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、Lambdaをしめす。</p>
+<ul>
+<li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
+<li>種類は、echo-helloworld</li>
+<li>クラウドプロバイダーのリソース名のlambdaは省略する。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lambda_function&quot;</span><span class="w"> </span><span class="nv">&quot;echo_helloworld&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">function_name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd-foo-echo-helloworld&quot;</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="output"><code>output</code>ブロック<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ リソースに種類がある場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>『<code>&lt;リソース名&gt;_&lt;リソースタイプ&gt;_&lt;attribute名&gt;</code>』で命名する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、CloudWatchを示す。</p>
+<p>リソース名は<code>ecs_container_nginx</code>、リソースタイプは<code>aws_cloudwatch_log_group</code>、attributeは<code>name</code>オプションである。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ecs_container_nginx_cloudwatch_log_group_name&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_cloudwatch_log_group.ecs_container_nginx.name</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、IAM Roleを示す。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Output IAM Role</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ecs_task_execution_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.ecs_task_execution.arn</span>
+<span class="p">}</span>
+
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;lambda_execute_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.lambda_execute.arn</span>
+<span class="p">}</span>
+
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;rds_enhanced_monitoring_iam_role_arn&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.rds_enhanced_monitoring.arn</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_21">▼ リソースに種類が無い場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>リソース名が<code>this</code>である場合、<code>output</code>ブロック名ではこれを省略しても良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例として、ALBを示す。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Output ALB</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;alb_zone_id&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_lb.this.zone_id</span>
+<span class="p">}</span>
+
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;alb_dns_name&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_lb.this.dns_name</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_22">▼ 冗長な場合 (アンチパターン)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>ルール通りに命名すると、一部のクラウドプロバイダーのリソースで冗長な名前になってしまうことがある。</p>
+<p>この場合は、省略を許容する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ルール通りに名付けると、『<code>laravel_ecr_repository_repository_url</code>』という<code>output</code>ブロック名になってしまう。</p>
+<p>repositoryが二回繰り返されることになるため、<code>1</code>個省略している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Output ECR</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;laravel_ecr_repository_url&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ecr_repository.laravel.repository_url</span>
+<span class="p">}</span>
+
+<span class="kr">output</span><span class="w"> </span><span class="nv">&quot;nginx_ecr_repository_url&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ecr_repository.nginx.repository_url</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="description"><code>description</code>オプション<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
+<p>一部のクラウドプロバイダーのリソースでは、<code>description</code>オプションで説明文を設定できる。</p>
+<p>基本的には英語で説明する。</p>
+<p>また、文章ではなく、『関係代名詞/形容詞/副詞/前置詞 + 単語』を使用して、『<code>〇〇</code> な <code>△△</code>』『<code>〇〇</code> の <code>△△</code>』といった説明になるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;説明文です&quot;</span>
+<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>ヒアドキュメントを使用して、複数行で定義することもできる。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="dl">EOF</span>
+<span class="sh">  説明文です。</span>
+<span class="dl">EOF</span>
+<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-02">04-02. 並び順<a class="headerlink" href="#04-02" title="Permanent link">&para;</a></h2>
+<h3 id="_23">環境変数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="_24">▼ 並び順<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>Globalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。</p>
+<p><br></p>
+<h3 id="module_1"><code>module</code>ブロック<a class="headerlink" href="#module_1" title="Permanent link">&para;</a></h3>
+<h4 id="_25">▼ 並び順<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>環境変数を並べる<code># Variables</code>コメントと、モジュール間の値を受け渡しを並べる<code># Output values</code>コメントに分ける。</p>
+<p><code># Variables</code>コメントの部分では、<code>terraform.tfvars</code>ファイルと同じ並び順になるようにする。</p>
+<p>また、<code># Output values</code>コメントの部分では、<code>output</code>ブロックをモジュールに渡す時にクラウドプロバイダーのリソースのアルファベット順で並べる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># ALB</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../modules/alb&quot;</span>
+
+<span class="c1">  # Variables</span>
+<span class="w">  </span><span class="na">environment</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.environment</span><span class="c1">                   # Global</span>
+<span class="w">  </span><span class="na">region</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.region</span>
+<span class="w">  </span><span class="na">service</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="nv">var.service</span>
+<span class="w">  </span><span class="na">alb_listener_port_http</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.alb_listener_port_http</span><span class="c1">        # ALB</span>
+<span class="w">  </span><span class="na">alb_listener_port_https</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">var.alb_listener_port_https</span>
+<span class="w">  </span><span class="na">ecs_container_nginx_port_http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ecs_container_nginx_port_http</span><span class="c1"> # ECS</span>
+
+<span class="c1">  # Output values</span>
+<span class="w">  </span><span class="na">api_acm_certificate_arn</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm_an1.api_acm_certificate_arn</span>
+<span class="w">  </span><span class="na">global_accelerator_acm_certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm_an1.global_accelerator_acm_certificate_arn</span>
+<span class="w">  </span><span class="na">alb_s3_bucket_id</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="nv">module.s3.alb_s3_bucket_id</span>
+<span class="w">  </span><span class="na">alb_security_group_id</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nv">module.security_group.alb_security_group_id</span>
+<span class="w">  </span><span class="na">public_a_subnet_id</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nv">module.vpc.public_a_subnet_id</span>
+<span class="w">  </span><span class="na">public_c_subnet_id</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="nv">module.vpc.public_c_subnet_id</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">                                 </span><span class="o">=</span><span class="w"> </span><span class="nv">module.vpc.vpc_id</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="resourcedata_1"><code>resource</code>ブロック、<code>data</code>ブロック<a class="headerlink" href="#resourcedata_1" title="Permanent link">&para;</a></h3>
+<h4 id="_26">▼ 設定の並び順、行間<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>最初に<code>count</code>引数や<code>for_each</code>引数を設定し改行する。</p>
+<p>その後、各リソース別の設定を行間を空けずに記述する (この順番にルールはなし) 。</p>
+<p>最後に共通の設定として、<code>tags</code>、<code>depends_on</code>、<code>lifecycle</code>、の順で配置する。</p>
+<p>ただし実際、これらの全ての設定が必要なリソースはない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
+<span class="c1"># EXAMPLE</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_baz&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.vpc_availability_zones</span><span class="c1"> # 最初にfor_each</span>
+<span class="c1">  # スペース</span>
+<span class="w">  </span><span class="na">subnet_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.public</span><span class="p">[</span><span class="err">*</span><span class="p">].</span><span class="err">id</span><span class="c1"> # 各設定 (順番にルールなし)</span>
+<span class="c1">  # スペース</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">format</span><span class="p">(</span>
+<span class="w">      </span><span class="s2">&quot;prd-foo-%d-baz&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">each.value</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="c1">  # スペース</span>
+<span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span>
+<span class="c1">  # スペース</span>
+<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">create_before_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. 開発環境<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="terraform_1">terraformコマンドのセットアップ<a class="headerlink" href="#terraform_1" title="Permanent link">&para;</a></h3>
+<h4 id="docker-composeyml">▼ docker-compose.ymlファイルを用いる場合<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h4>
+<p>作業者間で<code>terraform</code>コマンドのバージョンを統一するために、<code>docker-compose.yml</code>ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">terraform</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-terraform</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hashicorp/terraform:1.0.0</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/var/infra</span>
+<span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/infra</span>
+</code></pre></div>
+<p>goのバイナリファイルを実行するためには、<code>docker-compose run</code>コマンドの実行する必要がある。</p>
+<p>ただし、実行のたびにコンテナが増えてしまうため、<code>--rm</code>を使用するようにする。</p>
+<p>また、毎度コマンドを実行することが面倒なため、Makefileでまとめてしまう。</p>
+<div class="highlight"><pre><span></span><code><span class="c"># NOTE:</span>
+<span class="c"># ローカル環境にて、以下の形式でコマンドを実行できます。</span>
+<span class="c"># make &lt;ターゲット名&gt; env=&lt;環境ディレクトリ名&gt;</span>
+
+<span class="nv">env</span><span class="o">=</span>
+
+<span class="nf">init</span><span class="o">:</span>
+<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>init<span class="w"> </span>-reconfigure
+
+<span class="nf">fmt</span><span class="o">:</span>
+<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>fmt<span class="w"> </span>-recursive
+
+<span class="nf">validate</span><span class="o">:</span><span class="w"> </span><span class="n">init</span> <span class="n">fmt</span>
+<span class="w">    </span>docker-compose<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2">&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>validate
+</code></pre></div>
+<h4 id="asdf">▼ asdfパッケージを使用する場合<a class="headerlink" href="#asdf" title="Permanent link">&para;</a></h4>
+<p>バージョンを統一するために、<code>.tool-versions</code>ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span><span class="nb">local</span><span class="w"> </span>terraform<span class="w"> </span>&lt;バージョン&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
+terraform<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<p>asdfパッケージを使用して、<code>terraform</code>コマンドをインストールする。</p>
+<p><code>.tool-versions</code>ファイルに定義されたバージョンがインストールされる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>terraform
+
+terraform<span class="w">   </span>*https://github.com/asdf-community/asdf-hashicorp.git
+...
+
+
+$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>terraform<span class="w"> </span>https://github.com/asdf-community/asdf-hashicorp.git
+$<span class="w"> </span>asdf<span class="w"> </span>install
+</code></pre></div>
+<p><br></p>
+<h3 id="_27">開発方法<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>前提として、バックエンドにS3を使用しているものとする。</p>
+<p>Makefileのコマンドを実行する前に、<code>provider.tf</code>ファイルの<code>backend</code>オプションを、『s3』から『local』に変更する。</p>
+<blockquote>
+<ul>
+<li><a href="https://repl.info/archives/1435/">https://repl.info/archives/1435/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>GitHubリポジトリにこの変更をプッシュしないように気を付ける必要がある。</p>
+<p>ただし、バックエンドに<code>s3</code>を指定する<code>terraform init</code>コマンドをCIのステップを設けておけば、<code>provider.tf</code>ファイルで<code>local</code>の指定していことがエラーになってしまうような仕組みを作れる。</p>
+<p>もし間違えてコミットしてしまった場合は、元に戻すように再コミットすればよい。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+terraform<span class="w"> </span>-chdir<span class="o">=</span>./prd<span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-upgrade<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-reconfigure<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;bucket=prd-foo-tfstate-bucket&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;key=terraform.tfstate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>Invalid<span class="w"> </span>backend<span class="w"> </span>configuration<span class="w"> </span>argument
+
+The<span class="w"> </span>backend<span class="w"> </span>configuration<span class="w"> </span>argument<span class="w"> </span><span class="s2">&quot;bucket&quot;</span><span class="w"> </span>given<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>expected<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>backend<span class="w"> </span>type.
+</code></pre></div>
+<p><br></p>
+<h3 id="gitignore"><code>.gitignore</code><a class="headerlink" href="#gitignore" title="Permanent link">&para;</a></h3>
+<p>Terraformを開発する上でバージョン管理するべきではないファイルを<code>.gitignore</code>ファイルに記載する。</p>
+<div class="highlight"><pre><span></span><code>**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/github/gitignore/blob/main/Terraform.gitignore">https://github.com/github/gitignore/blob/main/Terraform.gitignore</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-ci">06. CIツールに関する脆弱性対策<a class="headerlink" href="#06-ci" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials">https://cloud.google.com/docs/terraform/best-practices-for-terraform#credentials</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_28">機密な変数やファイルの扱い<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="secret">▼ パラメーターの暗号化とSecretストア<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>バージョン管理</th>
+<th>暗号化とSecretストア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHubリポジトリ</td>
+<td>⭕️</td>
+<td><code>base64</code>方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。</td>
+</tr>
+<tr>
+<td>GitHubリポジトリ + キーバリュー型バックエンド</td>
+<td>⭕</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、リポジトリ上でキーバリュー型バックエンド (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
+</tr>
+<tr>
+<td>GitHubリポジトリ + クラウドキーバリュー型バックエンド</td>
+<td>×</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、Google CKM、GnuPG、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型バックエンド (例：AWS パラメーターストア、Google SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tfstate">▼ <code>tfstate</code>ファイルへの書き込みを防ぐ<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
+<p>機密な変数を<code>ignore_changes</code>引数を使用して、<code>tfstate</code>ファイルへの書き込みを防ぐ。</p>
+<p>その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを<code>data</code>ブロックで参照する。</p>
+<p>ただし、リソースによっては<code>ignore_changes</code>引数を使えないものがある (例：SSMパラメーターストア) 。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets">https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets</a></li>
+<li><a href="https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9">https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>初期構築時にダミー値を割り当ててプロビジョニングする。</p>
+<p>この時点で、<code>tfstate</code>ファイルにはダミー値が書き込まれる。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>実際の値をSecretManagerやAWS RDSのコンソール画面から設定する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>ignore_changes</code>引数を設定する。</p>
+<p>以降のプロビジョニングで、<code>tfstate</code>ファイル上はダミー値のままになる。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWS RDSの場合</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">  # 実際の値はSecrets Managerから参照する。</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.rds_db_master_username_ssm_parameter_value</span>
+<span class="w">  </span><span class="na">master_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.rds_db_master_password_ssm_parameter_value</span>
+
+<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">ignore_changes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="c1">      # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。</span>
+<span class="w">      </span><span class="err">master_username</span><span class="p">,</span>
+<span class="w">      </span><span class="err">master_password</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="tfstate_1">▼ <code>tfstate</code>ファイルへの平文を妥協する<a class="headerlink" href="#tfstate_1" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルへ平文で定義されてしまうことを妥協する。</p>
+<p>その代わりに、クライアントとバックエンド間の通信時に盗まれたり、バックエンド管理時に参照されることを防げるように、バックエンドの暗号化機能やアクセスポリシーを使用する。</p>
+<p><br></p>
+<h3 id="tfstate_2"><code>tfstate</code>ファイルの暗号化<a class="headerlink" href="#tfstate_2" title="Permanent link">&para;</a></h3>
+<p>バックエンドのファイル暗号化を使用する。</p>
+<p>バックエンド内の<code>tfstate</code>ファイルを暗号化しておき、ダウンロード時だけ復号化するようにしておく。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state">https://cloud.google.com/docs/terraform/best-practices-for-terraform#encrypt-state</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="output_1"><code>output</code>ブロックの暗号化<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h3>
+<p><code>output</code>ブロックに機密な変数を含む場合は、<code>sensitive</code>オプションを有効化する。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs">https://cloud.google.com/docs/terraform/best-practices-for-terraform#sensitive-outputs</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07">07. アップグレード<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_29">設計規約<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h4 id="1-terraformterraform-apply"><code>(1)</code> 現在のTerraformのバージョンで<code>terraform apply</code>コマンドを実行<a class="headerlink" href="#1-terraformterraform-apply" title="Permanent link">&para;</a></h4>
+<p>アップグレードと同時に新しいクラウドプロバイダーのリソースをデプロイせずに、アップグレードのみに専念する。</p>
+<p>そのために、現在のTerraformのバージョンで<code>terraform apply</code>コマンドを実行することにより、差分が無いようにしておく。</p>
+<h4 id="2"><code>(2)</code> アップグレード以外の作業を済ませておく<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>低いバージョンのTerraformに対して、より高いバージョンはデプロイできる。</p>
+<p>しかし、高いバージョンのTerraformに対して、より低いバージョンをデプロイできない。</p>
+<p>そのため、アップグレードしてしまうと、それ以外のTerraformバージョンの異なる作業に影響が出る。</p>
+<h4 id="3"><code>(3)</code> マイナーバージョン単位でアップグレード<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>Terraformでは、マイナーバージョン単位でアップグレードを行うことが推奨されている。</p>
+<p>そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず<code>1</code>個ずつマイナーバージョンをアップグレードするように気をつける。</p>
+<p>この時、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが<code>v0.13.0</code>であれば、<code>0.14</code>系の最新にアップグレード) 。</p>
+<p>また、アップグレードの都度、リリースを行う。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/upgrade-guides/1-0.html">https://www.terraform.io/upgrade-guides/1-0.html</a></li>
+</ul>
+</blockquote>
+<h4 id="4-terraform-plan"><code>(4)</code> terraform planコマンドの警告/エラーを解決<a class="headerlink" href="#4-terraform-plan" title="Permanent link">&para;</a></h4>
+<p>アップグレードに伴って、非推奨/廃止の機能がリリースされ、警告/エラーが出力される場合がある。</p>
+<p>警告/エラーを解決できるように、記法やオプション値を修正する。</p>
+<p>場合によっては<code>tfstate</code>ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、<code>terraform plan</code>コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。</p>
+<h4 id="5-terraform"><code>(5)</code> プロバイダーをアップグレードしたい場合はTerraformもアップグレード<a class="headerlink" href="#5-terraform" title="Permanent link">&para;</a></h4>
+<p>Terraformとプロバイダーのバージョンは独立して管理されている。</p>
+<p>プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。</p>
+<p>一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。</p>
+<p>アップグレードガイドについては、以下のリンクを参考せよ。</p>
+<blockquote>
+<ul>
+<li>Terraform：<a href="https://www.terraform.io/language/upgrade-guides">https://www.terraform.io/language/upgrade-guides</a></li>
+<li>AWSプロバイダー：<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/version-4-upgrade</a></li>
+</ul>
+</blockquote>
+<h4 id="6-terraform"><code>(6)</code> Terraformとプロバイダーのアップグレードは別々にリリース<a class="headerlink" href="#6-terraform" title="Permanent link">&para;</a></h4>
+<p>プロバイダーをアップグレードしたい場合はTerraformもアップグレードすることになる。</p>
+<p>この場合、できるだけリリースは分けた方が良い。</p>
+<p>Terraformまたはプロバイダーのアップグレードを別々にリリースするようにすれば、リリース時にインシデントが発生した時に、どちらが原因なのかを明確化できる。</p>
+<p>反対に、一緒にリリースしてしまうとどちらが原因なのかわかりにくくなってしまう。</p>
+<p><br></p>
+<h3 id="_30">新バージョンの自動検出<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p>外部のツール (例：renovate) を使用して、プロバイダーやTerraformの新バージョンを自動的に検出する。</p>
+<p><br></p>
+<h2 id="08-ci">08. CIパイプライン<a class="headerlink" href="#08-ci" title="Permanent link">&para;</a></h2>
+<h3 id="_31">仕様書自動作成<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p>terraform-docsを使用して、<code>variable</code>ブロック、<code>output</code>ブロック、<code>module</code>ブロック、などの仕様書を作成する。</p>
+<p>作成した仕様書を自動コミットできるようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform-docs<span class="w"> </span>markdown<span class="w"> </span>.<span class="w"> </span>--output-file<span class="o">=</span>README.md
+</code></pre></div>
+<p><code>TF_DOCS</code>タグで囲われた場所のみを自動的に追記/更新してくれる。</p>
+<div class="highlight"><pre><span></span><code># foo-terraformリポジトリ
+
+<span class="cm">&lt;!-- BEGIN_TF_DOCS --&gt;</span>
+
+## Requirements ... ## Providers ... ## Modules ... ## Resources ... ## Inputs
+... ## Outputs ...
+
+<span class="cm">&lt;!-- END_TF_DOCS --&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_32">各ブロックのホワイトボックステスト<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<h4 id="_33">▼ 整形<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>Terraformの整形コマンド (<code>terraform fmt</code>コマンド) を使用して、ソースコードを整形する。</p>
+<h4 id="_34">▼ 静的解析<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terraformの文法の誤りテスト</td>
+<td>Terraformの静的解析コマンド (<code>terraform validate</code>コマンド) を使用する。機能追加/変更を含むブロックの文法の誤りを検証する。代わりとして、外部の静的解析ツール (例：tflint) を使用しても良い。</td>
+<td></td>
+</tr>
+<tr>
+<td>ベストプラクティス違反テスト</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Terraformの脆弱性テスト</td>
+<td>外部の脆弱性テストツール (例：tfsec) を使用する。報告されたCVEに基づいて、Terraformの実装方法に起因する脆弱性を検証する。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="_35">▼ ドライラン<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>terraform plan</code>コマンドを実行することにより、ドライランを実施する。</p>
+<p><code>terraform plan</code>コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。</p>
+<p>リリースの粒度を小さくし、差分が少なくなるようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+</ul>
+</blockquote>
+<h4 id="_36">▼ 単体テスト<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>terraform apply</code>コマンドを実行することにより、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。</p>
+<p>代わりとして、外部のテストツール (例：Terratest) を使用しても良い。</p>
+<p>この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。</p>
+<p>また、確認後にリソースを<code>terraform destroy</code>コマンドで削除する。</p>
+<p>残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール (例：cloud-nuke) で削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+<li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test">https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test</a></li>
+</ul>
+</blockquote>
+<h4 id="_37">▼ 結合テスト<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>テスト環境に対して<code>terraform apply</code>コマンドを実行することにより、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。</p>
+<p>代わりとして、外部のテストツール (例：Terratest) を使用しても良い。</p>
+<p>この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。</p>
+<p>また、確認後にリソースを<code>terraform destroy</code>コマンドで削除する。</p>
+<p>残骸のリソースが残ることがあるため、合わせてテスト環境の全てのリソースをツール (例：cloud-nuke) で削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_38">ホワイトボックステスト結果の通知<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<h4 id="terraform_2">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_2" title="Permanent link">&para;</a></h4>
+<p>Terraformには通知能力がなく、手動で知らせる必要がある。</p>
+<p>そこで、<code>terraform plan</code>コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
+<p><code>grep</code>コマンドを使用して、差分の表記部分のみを取得すると良い。</p>
+<p>これを確認し、差分が正しいかをレビューする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span>-no-color<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="s1">&#39;Terraform will perform the following actions&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
+</code></pre></div>
+<h4 id="terraform_3">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_3" title="Permanent link">&para;</a></h4>
+<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に<code>terraform plan</code>コマンドの結果が通知されるようにする。</p>
+<p>これを確認し、差分が正しいかをレビューする。</p>
+<p><br></p>
+<h3 id="_39">各ブロックのブラックボックステスト<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<h4 id="_40">▼ 結合テスト<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>ステージング環境に対して<code>terraform apply</code>コマンドを実行することにより、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infracloud.io/blogs/testing-iac-terratest/">https://www.infracloud.io/blogs/testing-iac-terratest/</a></li>
+</ul>
+</blockquote>
+<h4 id="_41">▼ 総合テスト (擬似的総合テストも含む)<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>ステージング環境に対して<code>terraform apply</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのブロックを組み合わせた総合テストを実施する。</p>
+<p>クラウドプロバイダーのモックを使用して、擬似的な総合テストを実施しても良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.localstack.cloud/ci/">https://docs.localstack.cloud/ci/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-02-cd">08-02. CDパイプライン<a class="headerlink" href="#08-02-cd" title="Permanent link">&para;</a></h2>
+<h3 id="_42">レビュー<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
+<h4 id="_43">▼ コンソール画面にログイン<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<p>ただコードを眺めているより、レビュー対象がコンソール画面のどこに相当するのかも並行して確認した方が、Terraformを理解しやすい。</p>
+<p>コンソール画面にログインする。</p>
+<h4 id="_44">▼ クラウドプロバイダーのドキュメントや技術記事を確認<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
+<p>コンソール画面の相当する設定箇所がわかったところで、設定値が正しいか否かを確認する。</p>
+<p>以下を確認する。</p>
+<ul>
+<li>クラウドプロバイダーのドキュメント</li>
+<li>技術記事</li>
+</ul>
+<h4 id="terraform_4">▼ Terraformのドキュメントや技術記事を確認<a class="headerlink" href="#terraform_4" title="Permanent link">&para;</a></h4>
+<p>AWSを作成する場合、TerraformのAWSプロバイダーを使用している。</p>
+<p>以下を確認する。</p>
+<ul>
+<li>TerraformのAWSプロバイダーのドキュメント：<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">https://registry.terraform.io/providers/hashicorp/aws/latest/docs</a></li>
+<li>技術記事</li>
+</ul>
+<p>注意点として、AWSプロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。</p>
+<p>以下の点でレビューする。</p>
+<ul>
+<li>プロジェクトの設計規約に即しているか</li>
+<li>リファレンスに非推奨と注意書きされた方法で実装していないか</li>
+<li>リリースの粒度は適切か</li>
+</ul>
+<h4 id="develop">▼ <code>develop</code>ブランチへのマージは問題ないか<a class="headerlink" href="#develop" title="Permanent link">&para;</a></h4>
+<p><code>develop</code>ブランチにマージするコミット = 次にリリースするコミット である。</p>
+<p>他にリリースの優先度が高い対応がある場合、またリリースの粒度が大きすぎる場合、同時にリリースしないように、<code>develop</code>ブランチへのマージに『待った！』をかけること。</p>
+<p><br></p>
+<h3 id="_45">デプロイ<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h3>
+<h4 id="1">▼ 大原則：プルリクエストを<code>1</code>個ずつリリース<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>基本的には、プルリクエストを<code>1</code>個ずつリリースする。</p>
+<p>ただし、軽微なupdate処理が実行されるプルリクエストであれば、まとめてリリースしても良い。</p>
+<p>もしリリース時に問題が発生した場合、インフラのバージョンのロールバックする必要がある。</p>
+<p>経験則で、create処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。</p>
+<p>プルリクエストを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。</p>
+<h4 id="_46">▼ 既存のリソースに対して、新しいリソースを紐付ける場合<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>既存のリソースに対して、新しいリソースを紐付ける場合、新しいリソースの作成と紐付けを別々にリリースする。</p>
+<p>ロールバックでもたつきにくく、またTerraformで問題が発生したとしても変更点が紐付けだけなため、原因を追究しやすい。</p>
+<h4 id="terraform_5">▼ Terraformとプロバイダーの両方をアップグレードする場合<a class="headerlink" href="#terraform_5" title="Permanent link">&para;</a></h4>
+<p>Terraformとプロバイダーを別々にリリースする。</p>
+<h4 id="db">▼ DBインスタンスの設定変更でダウンタイムが発生する場合<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>DBインスタンスの設定変更でダウンタイムが発生する場合、それぞれのDBインスタンスに対する変更を別々にリリースする。</p>
+<p>また、リリース順序は以下の通りとする。</p>
+<p>プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>リードレプリカの変更をリリースする。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。</p>
+</dd>
+</dl>
+<p>ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。</p>
+<p>RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_47">ロールバック<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
+<h4 id="terraform_6">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_6" title="Permanent link">&para;</a></h4>
+<p>Terraformには、クラウドインフラのバージョンのロールバック機能がなく、手動でロールバックする必要がある。</p>
+<p>そこで、過去のリリースタグを<code>terraform apply</code>コマンドでデプロイすることにより、バージョンをロールバックする。</p>
+<p>今回のリリースのcreate処理が少ないほど<code>terraform apply</code>コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。</p>
+<p>もしリリース時に問題が発生した場合、インフラのバージョンのロールバックする必要があるが、経験則でcreate処理やdestroy処理よりもupdate処理の方がエラーが少ないため、ロールバックにもたつきにくい。</p>
+<p>そのため、Rerun時にどのくらいのcreate処理やdestroy処理が実行されるかと考慮し、過去のリリースタグを<code>terraform apply</code>コマンドを実行するか否かを判断する。</p>
+<h4 id="terraform_7">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_7" title="Permanent link">&para;</a></h4>
+<p>CDパイプラインがない場合と同じである。</p>
+<p><br></p>
+<h2 id="08-03">08-03. 事後処理<a class="headerlink" href="#08-03" title="Permanent link">&para;</a></h2>
+<h3 id="_48">デプロイの通知<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
+<h4 id="terraform_8">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_8" title="Permanent link">&para;</a></h4>
+<p>Terraformには通知能力がなく、手動で知らせる必要がある。</p>
+<p><code>terraform apply</code>コマンドの結果をクリップボードに出力し、これをリリースチケットに貼り付ける。</p>
+<h4 id="terraform_9">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_9" title="Permanent link">&para;</a></h4>
+<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に<code>terraform apply</code>コマンドの結果が通知されるようにする。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

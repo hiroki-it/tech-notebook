@@ -1,0 +1,5177 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="コマンド＠Kubernetesの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_component_node.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_network.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】コマンド＠Kubernetes - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#kubernetes" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】コマンド＠Kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="kubernetes/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_16">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            ☸️ K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_2" checked>
+        
+          <label class="md-nav__link" for="__nav_16_2" id="__nav_16_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コントロールプレーンコンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nodeコンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_command.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-kubectl" class="md-nav__link">
+    01. kubectlコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. kubectlコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubeconfig" class="md-nav__link">
+    ▼ kubeconfigファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-kubeconfig" class="md-nav__link">
+    ▼ configシンボリックリンク、--kubeconfig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotate" class="md-nav__link">
+    annotate
+  </a>
+  
+    <nav class="md-nav" aria-label="annotate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotate_1" class="md-nav__link">
+    ▼ annotateとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-overwrite" class="md-nav__link">
+    ▼ --overwrite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    apply
+  </a>
+  
+    <nav class="md-nav" aria-label="apply">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply_1" class="md-nav__link">
+    ▼ applyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f-r" class="md-nav__link">
+    ▼ -f -R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-server-side" class="md-nav__link">
+    ▼ --server-side
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-info" class="md-nav__link">
+    cluster-info
+  </a>
+  
+    <nav class="md-nav" aria-label="cluster-info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-info_1" class="md-nav__link">
+    ▼ cluster-infoとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    ▼ configとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-context" class="md-nav__link">
+    ▼ current-context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-contexts" class="md-nav__link">
+    ▼ get-contexts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-context" class="md-nav__link">
+    ▼ use-context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    ▼ view
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    cp
+  </a>
+  
+    <nav class="md-nav" aria-label="cp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cp_1" class="md-nav__link">
+    ▼ cpとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    create
+  </a>
+  
+    <nav class="md-nav" aria-label="create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    ▼ createとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    ▼ deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-docker-registry" class="md-nav__link">
+    ▼ secret docker-registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-generic" class="md-nav__link">
+    ▼ secret generic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-tls" class="md-nav__link">
+    ▼ secret tls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    delete
+  </a>
+  
+    <nav class="md-nav" aria-label="delete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    ▼ deleteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-force" class="md-nav__link">
+    ▼ --force
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe" class="md-nav__link">
+    describe
+  </a>
+  
+    <nav class="md-nav" aria-label="describe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describe_1" class="md-nav__link">
+    ▼ describeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-a" class="md-nav__link">
+    ▼ -A
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    diff
+  </a>
+  
+    <nav class="md-nav" aria-label="diff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diff_1" class="md-nav__link">
+    ▼ diffとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -f
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drain" class="md-nav__link">
+    drain
+  </a>
+  
+    <nav class="md-nav" aria-label="drain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drain_1" class="md-nav__link">
+    ▼ drainとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit" class="md-nav__link">
+    edit
+  </a>
+  
+    <nav class="md-nav" aria-label="edit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit_1" class="md-nav__link">
+    ▼ editとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    exec
+  </a>
+  
+    <nav class="md-nav" aria-label="exec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exec_1" class="md-nav__link">
+    ▼ execとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-it" class="md-nav__link">
+    ▼ -it
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose" class="md-nav__link">
+    expose
+  </a>
+  
+    <nav class="md-nav" aria-label="expose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expose_1" class="md-nav__link">
+    ▼ exposeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-type-port-target-port" class="md-nav__link">
+    ▼ --type、--port、--target-port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get &lt;リソース&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="get <リソース>">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    ▼ getとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-a_1" class="md-nav__link">
+    ▼ -A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-custom-columns" class="md-nav__link">
+    ▼ -o custom-columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-custom-columns-file" class="md-nav__link">
+    ▼ -o custom-columns-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-jsonpath" class="md-nav__link">
+    ▼ -o jsonpath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-wide" class="md-nav__link">
+    ▼ -o wide
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-yaml" class="md-nav__link">
+    ▼ -o yaml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-l" class="md-nav__link">
+    ▼ -l
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-l_1" class="md-nav__link">
+    ▼ -L
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-selector" class="md-nav__link">
+    ▼ --selector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-show-labels" class="md-nav__link">
+    ▼ --show-labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-watch-w" class="md-nav__link">
+    ▼ --watch (-w)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    label
+  </a>
+  
+    <nav class="md-nav" aria-label="label">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#label_1" class="md-nav__link">
+    ▼ labelとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オプション無し (キーの追加)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ オプション無し (キーの削除)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-overwrite_1" class="md-nav__link">
+    ▼ --overwrite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    logs
+  </a>
+  
+    <nav class="md-nav" aria-label="logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs_1" class="md-nav__link">
+    ▼ logsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-c" class="md-nav__link">
+    ▼ -c
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f_1" class="md-nav__link">
+    ▼ -f
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-timestamps" class="md-nav__link">
+    ▼ --timestamps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+    <nav class="md-nav" aria-label="replace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replace_1" class="md-nav__link">
+    ▼ replaceとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-force_1" class="md-nav__link">
+    ▼ --force
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollout" class="md-nav__link">
+    rollout
+  </a>
+  
+    <nav class="md-nav" aria-label="rollout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rollout_1" class="md-nav__link">
+    ▼ rolloutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart" class="md-nav__link">
+    ▼ restart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch" class="md-nav__link">
+    patch
+  </a>
+  
+    <nav class="md-nav" aria-label="patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patch_1" class="md-nav__link">
+    ▼ patchとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pv" class="md-nav__link">
+    ▼ pv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-forward" class="md-nav__link">
+    port-forward
+  </a>
+  
+    <nav class="md-nav" aria-label="port-forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-forward_1" class="md-nav__link">
+    ▼ port-forwardとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    proxy
+  </a>
+  
+    <nav class="md-nav" aria-label="proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy_1" class="md-nav__link">
+    ▼ proxyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-address-accept-hosts" class="md-nav__link">
+    ▼ --address、--accept-hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+    <nav class="md-nav" aria-label="run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run_1" class="md-nav__link">
+    ▼ runとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-restart-image-port" class="md-nav__link">
+    ▼ --restart、--image、--port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Podのアウトバウンド通信のデバッグ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taint" class="md-nav__link">
+    taint
+  </a>
+  
+    <nav class="md-nav" aria-label="taint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taint_1" class="md-nav__link">
+    ▼ taintとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ▼ - (ラベル値のハイフン)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ネットワーク
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_policy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_architecture_characteristics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アーキテクチャ特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetesリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ カスタムリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 開発
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ マニフェスト管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-kubectl" class="md-nav__link">
+    01. kubectlコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. kubectlコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubeconfig" class="md-nav__link">
+    ▼ kubeconfigファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-kubeconfig" class="md-nav__link">
+    ▼ configシンボリックリンク、--kubeconfig
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#annotate" class="md-nav__link">
+    annotate
+  </a>
+  
+    <nav class="md-nav" aria-label="annotate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotate_1" class="md-nav__link">
+    ▼ annotateとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-overwrite" class="md-nav__link">
+    ▼ --overwrite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    apply
+  </a>
+  
+    <nav class="md-nav" aria-label="apply">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply_1" class="md-nav__link">
+    ▼ applyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f-r" class="md-nav__link">
+    ▼ -f -R
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-server-side" class="md-nav__link">
+    ▼ --server-side
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cluster-info" class="md-nav__link">
+    cluster-info
+  </a>
+  
+    <nav class="md-nav" aria-label="cluster-info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-info_1" class="md-nav__link">
+    ▼ cluster-infoとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    ▼ configとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#current-context" class="md-nav__link">
+    ▼ current-context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-contexts" class="md-nav__link">
+    ▼ get-contexts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-context" class="md-nav__link">
+    ▼ use-context
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    ▼ view
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    cp
+  </a>
+  
+    <nav class="md-nav" aria-label="cp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cp_1" class="md-nav__link">
+    ▼ cpとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ オプション無し
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    create
+  </a>
+  
+    <nav class="md-nav" aria-label="create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    ▼ createとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    ▼ deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-docker-registry" class="md-nav__link">
+    ▼ secret docker-registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-generic" class="md-nav__link">
+    ▼ secret generic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret-tls" class="md-nav__link">
+    ▼ secret tls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    delete
+  </a>
+  
+    <nav class="md-nav" aria-label="delete">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    ▼ deleteとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-force" class="md-nav__link">
+    ▼ --force
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe" class="md-nav__link">
+    describe
+  </a>
+  
+    <nav class="md-nav" aria-label="describe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describe_1" class="md-nav__link">
+    ▼ describeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-a" class="md-nav__link">
+    ▼ -A
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" class="md-nav__link">
+    diff
+  </a>
+  
+    <nav class="md-nav" aria-label="diff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diff_1" class="md-nav__link">
+    ▼ diffとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -f
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drain" class="md-nav__link">
+    drain
+  </a>
+  
+    <nav class="md-nav" aria-label="drain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drain_1" class="md-nav__link">
+    ▼ drainとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit" class="md-nav__link">
+    edit
+  </a>
+  
+    <nav class="md-nav" aria-label="edit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edit_1" class="md-nav__link">
+    ▼ editとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    exec
+  </a>
+  
+    <nav class="md-nav" aria-label="exec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exec_1" class="md-nav__link">
+    ▼ execとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-it" class="md-nav__link">
+    ▼ -it
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expose" class="md-nav__link">
+    expose
+  </a>
+  
+    <nav class="md-nav" aria-label="expose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#expose_1" class="md-nav__link">
+    ▼ exposeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-type-port-target-port" class="md-nav__link">
+    ▼ --type、--port、--target-port
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get &lt;リソース&gt;
+  </a>
+  
+    <nav class="md-nav" aria-label="get <リソース>">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    ▼ getとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-a_1" class="md-nav__link">
+    ▼ -A
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-custom-columns" class="md-nav__link">
+    ▼ -o custom-columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-custom-columns-file" class="md-nav__link">
+    ▼ -o custom-columns-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-jsonpath" class="md-nav__link">
+    ▼ -o jsonpath
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-wide" class="md-nav__link">
+    ▼ -o wide
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o-yaml" class="md-nav__link">
+    ▼ -o yaml
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-l" class="md-nav__link">
+    ▼ -l
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-l_1" class="md-nav__link">
+    ▼ -L
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-selector" class="md-nav__link">
+    ▼ --selector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-show-labels" class="md-nav__link">
+    ▼ --show-labels
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-watch-w" class="md-nav__link">
+    ▼ --watch (-w)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#label" class="md-nav__link">
+    label
+  </a>
+  
+    <nav class="md-nav" aria-label="label">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#label_1" class="md-nav__link">
+    ▼ labelとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ オプション無し (キーの追加)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ オプション無し (キーの削除)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-overwrite_1" class="md-nav__link">
+    ▼ --overwrite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs" class="md-nav__link">
+    logs
+  </a>
+  
+    <nav class="md-nav" aria-label="logs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs_1" class="md-nav__link">
+    ▼ logsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-c" class="md-nav__link">
+    ▼ -c
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f_1" class="md-nav__link">
+    ▼ -f
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-timestamps" class="md-nav__link">
+    ▼ --timestamps
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replace" class="md-nav__link">
+    replace
+  </a>
+  
+    <nav class="md-nav" aria-label="replace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replace_1" class="md-nav__link">
+    ▼ replaceとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-force_1" class="md-nav__link">
+    ▼ --force
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollout" class="md-nav__link">
+    rollout
+  </a>
+  
+    <nav class="md-nav" aria-label="rollout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rollout_1" class="md-nav__link">
+    ▼ rolloutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restart" class="md-nav__link">
+    ▼ restart
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patch" class="md-nav__link">
+    patch
+  </a>
+  
+    <nav class="md-nav" aria-label="patch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#patch_1" class="md-nav__link">
+    ▼ patchとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pv" class="md-nav__link">
+    ▼ pv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port-forward" class="md-nav__link">
+    port-forward
+  </a>
+  
+    <nav class="md-nav" aria-label="port-forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port-forward_1" class="md-nav__link">
+    ▼ port-forwardとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    proxy
+  </a>
+  
+    <nav class="md-nav" aria-label="proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy_1" class="md-nav__link">
+    ▼ proxyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-address-accept-hosts" class="md-nav__link">
+    ▼ --address、--accept-hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    run
+  </a>
+  
+    <nav class="md-nav" aria-label="run">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run_1" class="md-nav__link">
+    ▼ runとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-restart-image-port" class="md-nav__link">
+    ▼ --restart、--image、--port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Podのアウトバウンド通信のデバッグ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taint" class="md-nav__link">
+    taint
+  </a>
+  
+    <nav class="md-nav" aria-label="taint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#taint_1" class="md-nav__link">
+    ▼ taintとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    ▼ - (ラベル値のハイフン)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    version
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="kubernetes">コマンド＠Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-kubectl">01. kubectlコマンド<a class="headerlink" href="#01-kubectl" title="Permanent link">&para;</a></h2>
+<h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="kubeconfig">▼ <code>kubeconfig</code>ファイル<a class="headerlink" href="#kubeconfig" title="Permanent link">&para;</a></h4>
+<p><code>~/.kube/config</code>配下にあり、Clusterの認証情報が定義されている。</p>
+<p><code>kubectl</code>コマンドは、<code>kubeconfig</code>ファイル上のClusterの認証情報を基に、kube-apiserverにアクセスする。</p>
+<h4 id="config-kubeconfig">▼ configシンボリックリンク、--kubeconfig<a class="headerlink" href="#config-kubeconfig" title="Permanent link">&para;</a></h4>
+<p>ユーザーが、<code>config</code>ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成する。</p>
+<p>または、コマンドの実行時に<code>config</code>ファイルを明示的に指定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.kube
+
+<span class="c1"># 現在のディレクトリに、configシンボリックリンクを作成する。</span>
+$<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/kubernetes/kubeconfig<span class="w"> </span>config
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--kubeconfig<span class="o">=</span>/etc/kubernetes/kubeconfig
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.inductor.me/entry/2021/03/13/205452">https://blog.inductor.me/entry/2021/03/13/205452</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="annotate">annotate<a class="headerlink" href="#annotate" title="Permanent link">&para;</a></h3>
+<h4 id="annotate_1">▼ annotateとは<a class="headerlink" href="#annotate_1" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースのアノテーションを操作する。</p>
+<h4 id="-overwrite">▼ --overwrite<a class="headerlink" href="#-overwrite" title="Permanent link">&para;</a></h4>
+<p>指定したアノテーションを書き換える。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span>&lt;キー名&gt;<span class="o">=</span>&lt;値&gt;<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<p><code>kubectl apply</code>コマンドではアノテーションを変更できず、また<code>kubectl diff</code>コマンドでも差分として認識されない仕様になっている。</p>
+<p>そのため、<code>kubectl annotate</code>コマンドが必要になる。</p>
+<p>キー名の後に<code>-</code> (ハイフン) をつけるのアノテーションを削除できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span>&lt;キー名&gt;-<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<p><br></p>
+<h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
+<h4 id="apply_1">▼ applyとは<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
+<p>同じ識別子 (名前) のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。</p>
+<p>全ての項目を更新できるわけでない。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply</a></li>
+</ul>
+</blockquote>
+<h4 id="-f-r">▼ -f -R<a class="headerlink" href="#-f-r" title="Permanent link">&para;</a></h4>
+<p>kube-apiserverに送信するマニフェストを指定する。<code>-R</code>オプションでディレクトリ内のファイルを再帰的に指定もできる。</p>
+<p><strong>＊例＊</strong></p>
+<p>マニフェストを指定し、<code>kubectl apply</code>コマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># リソースを作成する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;マニフェストへのパス&gt;
+
+pod/foo-pod<span class="w"> </span>created
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 設定値を変更する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;マニフェストへのパス&gt;
+
+pod/foo-pod<span class="w"> </span>configured
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ディレクトリ内のファイルを再起的に指定する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;マニフェストのあるディレクトリ&gt;<span class="w"> </span>-R
+
+pod/foo-pod<span class="w"> </span>configured
+</code></pre></div>
+<h4 id="-server-side">▼ --server-side<a class="headerlink" href="#-server-side" title="Permanent link">&para;</a></h4>
+<p>ServerSideApplyを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests.yaml
+</code></pre></div>
+<p>ServerSideApplyではない通常のApplyは、ClientSideApplyという。</p>
+<p>ClientSideApplyでは、クライアント側がkube-apiserverからマニフェストの実体を取得し、これを変更してからkube-apiserverに送信する。</p>
+<p>一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。</p>
+<p>ClientSideApplyでは、クライアント側の制約により<code>metadata.annotations</code>キーのサイズ制限でエラーになる。</p>
+<p>そういった場合は、ServerSideApplyで解決できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller">https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller</a></li>
+<li><a href="https://zenn.dev/ap_com/articles/63d61765d43983">https://zenn.dev/ap_com/articles/63d61765d43983</a></li>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator/issues/4439">https://github.com/prometheus-operator/prometheus-operator/issues/4439</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cluster-info">cluster-info<a class="headerlink" href="#cluster-info" title="Permanent link">&para;</a></h3>
+<h4 id="cluster-info_1">▼ cluster-infoとは<a class="headerlink" href="#cluster-info_1" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンNodeの情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cluster-info
+
+Kubernetes<span class="w"> </span>control<span class="w"> </span>plane<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>https://*.*.*.*:443
+CoreDNS<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>https://*.*.*.*:443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+Metrics-server<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info">https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<h4 id="config_1">▼ configとは<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
+<p><code>kubeconfig</code>ファイルのパラメーターを操作する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config</a></li>
+</ul>
+</blockquote>
+<h4 id="current-context">▼ current-context<a class="headerlink" href="#current-context" title="Permanent link">&para;</a></h4>
+<p><code>kubectl</code>コマンドの宛先になっているkube-apiserverを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>current-context
+
+minikube
+</code></pre></div>
+<h4 id="get-contexts">▼ get-contexts<a class="headerlink" href="#get-contexts" title="Permanent link">&para;</a></h4>
+<p>適用できるコンテキストの一覧と現在のコンテキストを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts
+
+CURRENT<span class="w">   </span>NAME<span class="w">             </span>CLUSTER<span class="w">          </span>AUTHINFO<span class="w">         </span>NAMESPACE
+*<span class="w">         </span>minikube<span class="w">         </span>minikube<span class="w">         </span>minikube<span class="w">         </span>default
+<span class="w">          </span>docker-desktop<span class="w">   </span>docker-desktop<span class="w">   </span>docker-desktop
+...
+</code></pre></div>
+<h4 id="use-context">▼ use-context<a class="headerlink" href="#use-context" title="Permanent link">&para;</a></h4>
+<p><code>kubectl</code>コマンドの向き先を、指定したKubernetesの実行環境のkube-apiserverに変更する。</p>
+<p><strong>＊例＊</strong></p>
+<p>宛先をMinikubeのkube-apiserverに変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>minikube
+</code></pre></div>
+<p>宛先をDocker for Desktopのkube-apiserverに変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>docker-desktop
+</code></pre></div>
+<p>宛先をAWS EKS Clusterのkube-apiserverに変更する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
+</code></pre></div>
+<h4 id="view">▼ view<a class="headerlink" href="#view" title="Permanent link">&para;</a></h4>
+<p>パラメーターのデフォルト値が設定された<code>kubeconfig</code>ファイルを取得する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>view
+
+apiVersion:<span class="w"> </span>v1
+clusters:
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Docker for Desktopの認証情報</span>
+<span class="c1"># ---------------------------------------------</span>
+-<span class="w"> </span>cluster:
+<span class="w">    </span>certificate-authority-data:<span class="w"> </span>DATA+OMITTED
+<span class="w">    </span>server:<span class="w"> </span>https://kubernetes.docker.internal:6443<span class="w"> </span><span class="c1"># kube-apiserverのIPアドレス</span>
+<span class="w">  </span>name:<span class="w"> </span>docker-desktop
+contexts:
+-<span class="w"> </span>context:
+<span class="w">    </span>cluster:<span class="w"> </span>docker-desktop
+<span class="w">    </span>user:<span class="w"> </span>docker-desktop
+<span class="w">  </span>name:<span class="w"> </span>docker-desktop
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># Minikubeの認証情報</span>
+<span class="c1"># ---------------------------------------------</span>
+-<span class="w"> </span>cluster:
+<span class="w">    </span>certificate-authority:<span class="w"> </span>/Users/h.hasegawa/.minikube/ca.crt
+<span class="w">    </span>extensions:
+<span class="w">    </span>-<span class="w"> </span>extension:
+<span class="w">        </span>last-update:<span class="w"> </span>Mon,<span class="w"> </span><span class="m">21</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">20</span>:47:56<span class="w"> </span>JST
+<span class="w">        </span>provider:<span class="w"> </span>minikube.sigs.k8s.io
+<span class="w">        </span>version:<span class="w"> </span>v1.25.2
+<span class="w">      </span>name:<span class="w"> </span>cluster_info
+<span class="w">    </span>server:<span class="w"> </span>https://*.*.*.*:8443<span class="w"> </span><span class="c1"># kube-apiserverのIPアドレス</span>
+<span class="w">  </span>name:<span class="w"> </span>minikube
+-<span class="w"> </span>context:
+<span class="w">    </span>cluster:<span class="w"> </span>minikube
+<span class="w">    </span>extensions:
+<span class="w">    </span>-<span class="w"> </span>extension:
+<span class="w">        </span>last-update:<span class="w"> </span>Mon,<span class="w"> </span><span class="m">21</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="m">20</span>:47:56<span class="w"> </span>JST
+<span class="w">        </span>provider:<span class="w"> </span>minikube.sigs.k8s.io
+<span class="w">        </span>version:<span class="w"> </span>v1.25.2
+<span class="w">      </span>name:<span class="w"> </span>context_info
+<span class="w">    </span>namespace:<span class="w"> </span>default
+<span class="w">    </span>user:<span class="w"> </span>minikube
+<span class="w">  </span>name:<span class="w"> </span>minikube
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># 現在のコンテキスト</span>
+<span class="c1"># ---------------------------------------------</span>
+current-context:<span class="w"> </span>docker-desktop
+kind:<span class="w"> </span>Config
+preferences:<span class="w"> </span><span class="o">{}</span>
+users:
+-<span class="w"> </span>name:<span class="w"> </span>docker-desktop
+<span class="w">  </span>user:
+<span class="w">    </span>client-certificate-data:<span class="w"> </span>REDACTED<span class="w"> </span><span class="c1"># クライアント証明書</span>
+<span class="w">    </span>client-key-data:<span class="w"> </span>REDACTED<span class="w"> </span><span class="c1"># 秘密鍵</span>
+-<span class="w"> </span>name:<span class="w"> </span>minikube
+<span class="w">  </span>user:
+<span class="w">    </span>client-certificate:<span class="w"> </span>/Users/h.hasegawa/.minikube/profiles/minikube/client.crt
+<span class="w">    </span>client-key:<span class="w"> </span>/Users/h.hasegawa/.minikube/profiles/minikube/client.key
+</code></pre></div>
+<p><br></p>
+<h3 id="cp">cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
+<h4 id="cp_1">▼ cpとは<a class="headerlink" href="#cp_1" title="Permanent link">&para;</a></h4>
+<p>ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cp<span class="w"> </span>&lt;ホストPCのパス&gt;<span class="w"> </span>&lt;Namespace名&gt;/&lt;PodID&gt;:&lt;コンテナのパス&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cp<span class="w"> </span>&lt;ホストPCのパス&gt;<span class="w"> </span>&lt;Namespace名&gt;/&lt;PodID&gt;:&lt;コンテナのディレクトリパス&gt;/
+</code></pre></div>
+<p><br></p>
+<h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<h4 id="create_1">▼ createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
+<p>様々なリソースを作成する。</p>
+<p><code>kubectl expose</code>コマンドと<code>kubectl run</code>コマンドで作成できるリソースを含む様々なものを作成できるが、オプションが少ない。</p>
+<p>そのため、<code>-f</code>オプションで、マニフェストを指定した方が良い。</p>
+<p>同じ識別子 (リソース名) のKubernetesリソースが存在する場合は重複エラーになってしまう。</p>
+<p><strong>＊例＊</strong></p>
+<p>マニフェストを指定し、<code>kubectl create</code>コマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>./kubernetes/foo-pod.yaml
+
+pod/foo-pod<span class="w"> </span>created
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>./kubernetes/foo-service.yaml
+
+service/foo-service<span class="w"> </span>created
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create</a></li>
+</ul>
+</blockquote>
+<h4 id="deployment">▼ deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
+<p>Pod数を維持管理するReplicaSetを作成する。</p>
+<p>Podを削除するためには、Deployment自体を削除しなければならない。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>-f<span class="w"> </span>./kubernetes/foo-deployment.yaml
+</code></pre></div>
+<h4 id="secret-docker-registry">▼ secret docker-registry<a class="headerlink" href="#secret-docker-registry" title="Permanent link">&para;</a></h4>
+<p>イメージレジストリの認証情報を持つSecretを作成する。</p>
+<p>Podと同じNamespaceに所属するする必要があるため、作成時にNamespaceの指定を忘れないようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># DockerHubの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>docker-registry<span class="w"> </span>foo-secret<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--docker-server<span class="o">=</span>http://bar.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--docker-username<span class="o">=</span>bar<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--docker-password<span class="o">=</span>baz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--docker-email<span class="o">=</span>http://baz.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-</a></li>
+<li><a href="https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces">https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces</a></li>
+</ul>
+</blockquote>
+<h4 id="secret-generic">▼ secret generic<a class="headerlink" href="#secret-generic" title="Permanent link">&para;</a></h4>
+<p>Secretを作成する。</p>
+<p><strong>＊例＊</strong></p>
+<p>指定した<code>.env</code>ファイルからSecretを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-env-file<span class="o">=</span>./foo/.env
+
+secret/foo-secret<span class="w"> </span>created
+</code></pre></div>
+<p>指定した<code>.env</code>ファイル以外からSecretを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-file<span class="o">=</span>./foo/values.txt
+
+secret/foo-secret<span class="w"> </span>created
+</code></pre></div>
+<p>キー名と値からSecretを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&quot;baz&quot;</span>
+
+secret/foo-secret<span class="w"> </span>created
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-</a></li>
+<li><a href="https://qiita.com/toshihirock/items/38d09b2822a347c3f958">https://qiita.com/toshihirock/items/38d09b2822a347c3f958</a></li>
+</ul>
+</blockquote>
+<h4 id="secret-tls">▼ secret tls<a class="headerlink" href="#secret-tls" title="Permanent link">&para;</a></h4>
+<p>SSL証明書を持つSecretを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>tls-secret<span class="w"> </span>--cert<span class="o">=</span>./foo.cert<span class="w"> </span>--key<span class="o">=</span>./foo.key
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="delete">delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
+<h4 id="delete_1">▼ deleteとは<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h4>
+<p>Kubernetesリソースを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>&lt;Kubernetesリソース&gt;<span class="w"> </span>&lt;Kubernetesリソース名&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Podを削除する。</p>
+<p>Podの場合、オプションの無い<code>kubectl delete</code>コマンドが安全な削除となる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>foo-pod
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods">https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>指定した名前のPodを全て削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--no-headers<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;:metadata.name&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;&lt;指定した名前&gt;&#39;</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="k">)</span>
+</code></pre></div>
+<h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
+<p>Podを強制的に削除する。</p>
+<p>特に、<code>Terminating</code>フェーズのまま削除されないPodに対して有効である。</p>
+<p>合わせて<code>--grace-period</code>オプションを有効化することにより、即時に削除できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;TerminatingステータスのままのPod名&gt;<span class="w"> </span>--force<span class="w"> </span>--grace-period<span class="o">=</span><span class="m">0</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.opensourcetech.tokyo/entry/20211207/1638879696">https://www.opensourcetech.tokyo/entry/20211207/1638879696</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion">https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="describe">describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h3>
+<h4 id="describe_1">▼ describeとは<a class="headerlink" href="#describe_1" title="Permanent link">&para;</a></h4>
+<p>リソースの詳細な情報を参照する。</p>
+<p>簡易的な情報を参照する時は、<code>kubectl get</code>コマンドを使用する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node
+</code></pre></div>
+<p><code>grep</code>コマンドを使用して、PodがスケジューリングされているNodeを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Node:
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>clusterrole<span class="w"> </span>foo-cluster-role
+
+Name:<span class="w">         </span>anthos-baremetal-operator
+Labels:<span class="w">       </span>&lt;none&gt;
+Annotations:<span class="w">  </span>&lt;none&gt;
+PolicyRule:
+<span class="w">  </span>Resources<span class="w">               </span>Non-Resource<span class="w"> </span>URLs<span class="w">  </span>Resource<span class="w"> </span>Names<span class="w">  </span>Verbs
+<span class="w">  </span>---------<span class="w">               </span>-----------------<span class="w">  </span>--------------<span class="w">  </span>-----
+<span class="w">  </span>pods<span class="w">                    </span><span class="o">[]</span><span class="w">                 </span><span class="o">[]</span><span class="w">              </span><span class="o">[</span>get<span class="w"> </span>list<span class="w"> </span>watch<span class="o">]</span>
+<span class="w">  </span>deployments.apps<span class="w">        </span><span class="o">[]</span><span class="w">                 </span><span class="o">[]</span><span class="w">              </span><span class="o">[</span>create<span class="w"> </span>delete<span class="w"> </span>get<span class="w"> </span>list<span class="w"> </span>patch<span class="w"> </span>update<span class="w"> </span>watch<span class="o">]</span>
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe</a></li>
+</ul>
+</blockquote>
+<h4 id="-a">▼ -A<a class="headerlink" href="#-a" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>全てのNodeの詳細な情報を取得する。</p>
+<p><code>grep</code>コマンドを使用し、必要な情報のみを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>Name<span class="w"> </span>-e<span class="w"> </span>cpu
+
+Name:<span class="w">               </span>foo-node
+<span class="w">  </span>cpu:<span class="w">                </span><span class="m">8</span>
+<span class="w">  </span>cpu:<span class="w">                </span>7510m
+<span class="w">  </span>cpu<span class="w">                </span>1050m<span class="w"> </span><span class="o">(</span><span class="m">13</span>%<span class="o">)</span><span class="w">  </span>4850m<span class="w"> </span><span class="o">(</span><span class="m">64</span>%<span class="o">)</span><span class="w"> </span><span class="c1"># &lt;--- Node全体の使用率</span>
+Name:<span class="w">               </span>bar-node
+<span class="w">  </span>cpu:<span class="w">                </span><span class="m">4</span>
+<span class="w">  </span>cpu:<span class="w">                </span>3520m
+<span class="w">  </span>cpu<span class="w">                </span>2183m<span class="w"> </span><span class="o">(</span><span class="m">62</span>%<span class="o">)</span><span class="w">  </span>4950m<span class="w"> </span><span class="o">(</span><span class="m">140</span>%<span class="o">)</span><span class="w"> </span><span class="c1"># &lt;--- Node全体の使用率</span>
+Name:<span class="w">               </span>baz-node
+<span class="w">  </span>cpu:<span class="w">                </span><span class="m">8</span>
+<span class="w">  </span>cpu:<span class="w">                </span>7510m
+<span class="w">  </span>cpu<span class="w">                </span>1937m<span class="w"> </span><span class="o">(</span><span class="m">25</span>%<span class="o">)</span><span class="w">  </span>10245m<span class="w"> </span><span class="o">(</span><span class="m">136</span>%<span class="o">)</span><span class="w"> </span><span class="c1"># &lt;--- Node全体の使用率</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
+<h4 id="diff_1">▼ diffとは<a class="headerlink" href="#diff_1" title="Permanent link">&para;</a></h4>
+<p>既存のマニフェストと、指定したマニフェストの差分を表示する。</p>
+<h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
+<p>ファイルを指定して、差分を表示する。</p>
+<p>CRDをHelmの管理外で作成する場合に役立つ。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
+</code></pre></div>
+<p><br></p>
+<h3 id="drain">drain<a class="headerlink" href="#drain" title="Permanent link">&para;</a></h3>
+<h4 id="drain_1">▼ drainとは<a class="headerlink" href="#drain_1" title="Permanent link">&para;</a></h4>
+<p>Nodeへの新しいPodのスケジューリングを無効化 (<code>kubectl cordon</code>コマンドを実行) し、加えて既存のPodをEvictさせる。</p>
+<p>Nodeが他に存在すれば、そのNode上でPodが再作成される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;Node名&gt;
+</code></pre></div>
+<p><img alt="kubernetes_drain_node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service">https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service</a></li>
+<li><a href="https://amazon.co.jp/dp/1491979682">https://amazon.co.jp/dp/1491979682</a></li>
+<li><a href="https://cstoku.dev/posts/2018/k8sdojo-21/">https://cstoku.dev/posts/2018/k8sdojo-21/</a></li>
+<li><a href="https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe">https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="edit">edit<a class="headerlink" href="#edit" title="Permanent link">&para;</a></h3>
+<h4 id="edit_1">▼ editとは<a class="headerlink" href="#edit_1" title="Permanent link">&para;</a></h4>
+<p>マニフェストの設定値を直接的に変更する。</p>
+<p>ただし、Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>&lt;リソースの種類&gt;<span class="w"> </span>&lt;Pod以外のKubernetesリソース名&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>deployment<span class="w"> </span>foo-deployment
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>statefulset<span class="w"> </span>foo-statefulset
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/24913">https://github.com/kubernetes/kubernetes/issues/24913</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
+<h4 id="exec_1">▼ execとは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
+<p>指定したPod内のコンテナのシェルを実行し、コンテナにログインする。</p>
+<p>注意点として、シェルのないコンテナ (distroless型など) はそもそもシェルを実行できないため、ログインもできない。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec</a></li>
+</ul>
+</blockquote>
+<h4 id="-it">▼ -it<a class="headerlink" href="#-it" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>コンテナを指定して、デタッチモードで <code>kubectl exec</code>コマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
+
+<span class="o">[</span>root@&lt;Pod名&gt;<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
+</code></pre></div>
+<p>コンテナを指定しない場合は、デフォルトのコンテナが選択される。</p>
+<p>Podの<code>.metadata.labels</code>キーではなく、Pod名であることに注意する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
+
+Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s2">&quot;foo-container&quot;</span><span class="w"> </span>out<span class="w"> </span>of:<span class="w"> </span>foo-container,<span class="w"> </span>bar-container
+</code></pre></div>
+<p><br></p>
+<h3 id="expose">expose<a class="headerlink" href="#expose" title="Permanent link">&para;</a></h3>
+<h4 id="expose_1">▼ exposeとは<a class="headerlink" href="#expose_1" title="Permanent link">&para;</a></h4>
+<p>Serviceを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose</a></li>
+<li><a href="https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908">https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908</a></li>
+</ul>
+</blockquote>
+<h4 id="-type-port-target-port">▼ --type、--port、--target-port<a class="headerlink" href="#-type-port-target-port" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>ClusterIP Serviceを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="o">=</span>ClusterIP<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--target-port<span class="o">=</span>&lt;転送先ポート番号&gt;
+</code></pre></div>
+<p>NodePort Serviceを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="o">=</span>NodePort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--target-port<span class="o">=</span>&lt;転送先ポート番号&gt;
+</code></pre></div>
+<p>LoadBalancer Serviceを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--type<span class="o">=</span>LoadBalancer<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--target-port<span class="o">=</span>&lt;転送先ポート番号&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="get">get &lt;リソース&gt;<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<h4 id="get_1">▼ getとは<a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h4>
+<p>リソースの簡易的な情報を参照する。</p>
+<p>詳細な情報を参照する時は、<code>kubectl describe</code>コマンドを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>特定のNamespaceの全てのKubernetesリソースを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/">https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>api-resources<span class="w"> </span>--namespaced<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--verbs<span class="o">=</span>list<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>全てのNodeの情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node
+
+NAME<span class="w">      </span>STATUS<span class="w">   </span>ROLES<span class="w">                  </span>AGE<span class="w">   </span>VERSION
+foo-node<span class="w">  </span>Ready<span class="w">    </span>worker<span class="w">                 </span>12h<span class="w">   </span>v1.22.0<span class="w"> </span><span class="c1"># ワーカーNode</span>
+bar-node<span class="w">  </span>Ready<span class="w">    </span>worker<span class="w">                 </span>12h<span class="w">   </span>v1.22.0<span class="w"> </span><span class="c1"># 同上</span>
+baz-node<span class="w">  </span>Ready<span class="w">    </span>worker<span class="w">                 </span>12h<span class="w">   </span>v1.22.0<span class="w"> </span><span class="c1"># 同上</span>
+<span class="c1"># qux-node  Ready    control-plane,master   12h   v1.22.0 # セルフマネージドなコントロールプレーンNodeを使用する場合はこれも表示される</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>指定したPodの情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod
+
+NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">   </span>AGE
+foo-pod<span class="w">    </span><span class="m">0</span>/2<span class="w">     </span>ImagePullBackOff<span class="w">   </span><span class="m">0</span><span class="w">          </span>7m52s
+bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">          </span>5m01s
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>指定したServiceの情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service
+
+NAME<span class="w">           </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
+foo-service<span class="w">    </span>ClusterIP<span class="w">   </span>*.*.*.*<span class="w">        </span>&lt;none&gt;<span class="w">        </span><span class="m">80</span>/TCP<span class="w">    </span>10s
+kubernetes<span class="w">     </span>ClusterIP<span class="w">   </span>*.*.*.*<span class="w">        </span>&lt;none&gt;<span class="w">        </span><span class="m">443</span>/TCP<span class="w">   </span>12h
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>grep</code>コマンドを使用して、<code>Running</code>フェーズのPodのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAME<span class="w"> </span>-e<span class="w"> </span>Running
+
+NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">   </span>AGE
+bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">          </span>5m01s
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>wc</code>コマンドで出力内容の行数を数える。</p>
+<p>これにより、Podの個数を確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/61634879">https://stackoverflow.com/a/61634879</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--no-headers<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+
+<span class="m">20</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>各Nodeで作成できるPodの上限数を確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="o">=</span>custom-columns<span class="o">=</span>NODE:.metadata.name,MAX_PODS:.status.allocatable.pods,CAPACITY_PODS:.status.capacity.pods,INSTANCE_TYPE:.metadata.labels.<span class="s2">&quot;node\.kubernetes\.io/instance-type&quot;</span>
+</code></pre></div>
+<p>さらに、各Nodeで稼働中のPod数を確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>node<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if (NR!=1) {print $1}}&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span>echo<span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Non-terminated&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>ArgoCDのApplicationから、<code>argocd app diff</code>コマンドで反復的に差分を確認する。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">application</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>foo<span class="w"> </span><span class="k">)</span>
+
+<span class="c1"># 一列目の実を取得する。</span>
+<span class="nv">application_names</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$application</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if(NR&gt;1) print $1}&#39;</span><span class="k">)</span>
+
+<span class="c1"># 差分を取得する。</span>
+<span class="k">for</span><span class="w"> </span>application_name<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">application_names</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>argocd<span class="w"> </span>app<span class="w"> </span>diff<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$application_name</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>特定の値を持つマニフェストのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>applications<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s1">&#39;.items[] | select(.spec.destination.namespace == &quot;foo&quot;)&#39;</span>
+</code></pre></div>
+<h4 id="-a_1">▼ -A<a class="headerlink" href="#-a_1" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースをNamespaceに関係なく取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A
+</code></pre></div>
+<p><code>grep</code>コマンドを使用して、特定のNodeのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>&lt;Node名&gt;
+</code></pre></div>
+<p>全てのPodのイメージをアルファベット順で取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].image}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;[[:space:]]&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+<h4 id="-o-custom-columns">▼ -o custom-columns<a class="headerlink" href="#-o-custom-columns" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。</p>
+<p>カスタムリソースの情報をいい感じに取得する時に役立つ。</p>
+<p><strong>＊例＊</strong></p>
+<p>Serviceの指定した情報をユーザー定義のカラムで取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort&#39;</span>
+
+NAME<span class="w">                   </span>IP<span class="w">           </span>PORT
+kube-dns<span class="w">               </span><span class="m">10</span>.0.0.10<span class="w">    </span><span class="m">53</span>,53
+kubernetes-dashboard<span class="w">   </span><span class="m">10</span>.0.0.250<span class="w">   </span><span class="m">9090</span>
+</code></pre></div>
+<p>なお、さらにJSON形式で出力することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>json
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/43521302">https://stackoverflow.com/a/43521302</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>Applicationの指定した情報をユーザー定義のカラムを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status&quot;</span>
+
+NAME<span class="w">               </span>PROJECT<span class="w">        </span>STATUS
+foo-application<span class="w">    </span>foo-project<span class="w">    </span>Synced
+bar-application<span class="w">    </span>bar-project<span class="w">    </span>OutOfSync
+baz-application<span class="w">    </span>baz-project<span class="w">    </span>Unknown
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>kubectl</code>コマンドの結果をマークダウンの表にして出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">      BEGIN {</span>
+<span class="s1">        FS=&quot;  *&quot;</span>
+<span class="s1">        OFS=&quot; | &quot;</span>
+<span class="s1">      }</span>
+<span class="s1">      {</span>
+<span class="s1">        if (NR==1) {</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            gsub(/ */, &quot;&quot;, $i)</span>
+<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            gsub(/./, &quot;-&quot;, $i)</span>
+<span class="s1">            printf &quot;|-%s-&quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">        } else {</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      }&#39;</span>
+</code></pre></div>
+<p>複数の結果をマージして、マークダウンの表にして出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># 各Applicationを全て抽出する。</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>foo.txt
+
+kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-n<span class="w"> </span>bar<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>bar.txt
+
+kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-n<span class="w"> </span>baz<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:metadata.name,PROJECT:spec.project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>baz.txt
+
+<span class="c1"># ヘッダーを削除する。</span>
+<span class="c1"># https://akiniwa.hatenablog.jp/entry/2014/05/01/123126</span>
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>foo.txt<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>foo-without-header.txt
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>bar.txt<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>bar-without-header.txt
+tail<span class="w"> </span>-n<span class="w"> </span>+2<span class="w"> </span>baz.txt<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>baz-without-header.txt
+
+<span class="c1"># 並び替える。</span>
+<span class="c1"># 後述のuniqコマンドでは、隣り合う重複しか削除できないため、ここでソートしておく。</span>
+cat<span class="w"> </span>foo-without-header.txt<span class="w"> </span>bar-without-header.txt<span class="w"> </span>baz-without-header.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>sorted.txt
+
+<span class="c1"># 行の重複を削除する。</span>
+cat<span class="w"> </span>sorted.txt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>uniq.txt
+
+<span class="c1"># ヘッダーをつけ直す。</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Application Project&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.txt
+
+<span class="c1"># ヘッダーとそれ移行を接続する</span>
+cat<span class="w"> </span>uniq.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>merged.txt
+
+<span class="c1"># マークダウン表として出力する。</span>
+cat<span class="w"> </span>merged.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;</span>
+<span class="s1">      BEGIN {</span>
+<span class="s1">        FS=&quot;  *&quot;</span>
+<span class="s1">        OFS=&quot; | &quot;</span>
+<span class="s1">      }</span>
+<span class="s1">      {</span>
+<span class="s1">        if (NR==1) {</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            gsub(/ */, &quot;&quot;, $i)</span>
+<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            gsub(/./, &quot;-&quot;, $i)</span>
+<span class="s1">            printf &quot;|-%s-&quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">        } else {</span>
+<span class="s1">          for(i=1; i&lt;=NF; i++) {</span>
+<span class="s1">            printf &quot;| %s &quot;, $i</span>
+<span class="s1">          }</span>
+<span class="s1">          print &quot;|&quot;</span>
+<span class="s1">        }</span>
+<span class="s1">      }&#39;</span><span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.md
+
+
+<span class="c1"># 場合によっては、他のフォーマットに変換する</span>
+<span class="c1"># 例えばWiki記法の表に変換する</span>
+md2confl<span class="w"> </span>merged.md<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>merged.wiki
+</code></pre></div>
+<h4 id="-o-custom-columns-file">▼ -o custom-columns-file<a class="headerlink" href="#-o-custom-columns-file" title="Permanent link">&para;</a></h4>
+<p>事前に定義したユーザー定義のカラムに基づいて、Kubernetesリソースを取得する。</p>
+<p><strong>＊例＊</strong></p>
+<p>Applicationの指定した情報をユーザー定義のカラムを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>columns-file
+NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status
+
+
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span>custom-columns-file<span class="o">=</span>columns-file
+
+NAME<span class="w">               </span>PROJECT<span class="w">        </span>STATUS
+foo-application<span class="w">    </span>foo-project<span class="w">    </span>Synced
+bar-application<span class="w">    </span>bar-project<span class="w">    </span>OutOfSync
+baz-application<span class="w">    </span>baz-project<span class="w">    </span>Unknown
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/kubectl/#formatting-output">https://kubernetes.io/docs/reference/kubectl/#formatting-output</a></li>
+</ul>
+</blockquote>
+<h4 id="-o-jsonpath">▼ -o jsonpath<a class="headerlink" href="#-o-jsonpath" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースの特定の設定を出力する。</p>
+<p><strong>＊例＊</strong></p>
+<p>ロードバランサーのIPアドレスを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>istio-ingressgateway<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Pod内のコンテナを取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 特定のPodを対象とする。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.spec.containers[*].name}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+
+<span class="c1"># 全てのPodを対象とする。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].name}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Podの現在のIPアドレスを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.podIP}&quot;</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>IstioOperatorに定義されたIstioのバージョンを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>istiooperator<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.metadata.labels.operator\.istio\.io\/version}&quot;</span>
+</code></pre></div>
+<h4 id="-o-wide">▼ -o wide<a class="headerlink" href="#-o-wide" title="Permanent link">&para;</a></h4>
+<p>指定したリソースの詳細な情報を取得する。</p>
+<p>Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。</p>
+<p><strong>＊例＊</strong></p>
+<p>Podの詳細な情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
+
+NAMESPACE<span class="w">   </span>NAME<span class="w">        </span>READY<span class="w">   </span>STATUS<span class="w">        </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">          </span>NODE<span class="w">       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+foo<span class="w">         </span>foo-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>foo-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+bar<span class="w">         </span>bar-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>bar-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+baz<span class="w">         </span>baz-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>bar-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>grep</code>コマンドを使用して、特定のPodのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>foo
+
+NAMESPACE<span class="w">   </span>NAME<span class="w">        </span>READY<span class="w">   </span>STATUS<span class="w">        </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">          </span>NODE<span class="w">       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+foo<span class="w">         </span>foo-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>foo-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+</code></pre></div>
+<p><code>grep</code>コマンドを使用して、特定のServiceのみを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>foo
+
+NAMESPACE<span class="w">   </span>NAME<span class="w">         </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">   </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">       </span>AGE<span class="w">   </span>SELECTOR
+foo<span class="w">         </span>foo-service<span class="w">  </span>NodePort<span class="w">    </span>*.*.*.*<span class="w">      </span>&lt;none&gt;<span class="w">        </span><span class="m">443</span>:443/TCP<span class="w">   </span>2d<span class="w">    </span>app.kubernetes.io/instance<span class="o">=</span>prd-foo-app
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Nodeの詳細な情報を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-o<span class="w"> </span>wide
+
+NAME<span class="w">       </span>STATUS<span class="w">   </span>ROLES<span class="w">                  </span>AGE<span class="w">   </span>VERSION<span class="w">   </span>INTERNAL-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>OS-IMAGE<span class="w">         </span>KERNEL-VERSION<span class="w">       </span>CONTAINER-RUNTIME
+foo-node<span class="w">   </span>Ready<span class="w">    </span>worker<span class="w">                 </span>17h<span class="w">   </span>v1.22.0<span class="w">   </span>*.*.*.*<span class="w">         </span>&lt;none&gt;<span class="w">        </span>Amazon<span class="w"> </span>Linux<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="m">1</span>.0.0.amzn2.x86_64<span class="w">   </span>containerd://1.0.0
+bar-node<span class="w">   </span>Ready<span class="w">    </span>worker<span class="w">                 </span>17h<span class="w">   </span>v1.22.0<span class="w">   </span>*.*.*.*<span class="w">         </span>&lt;none&gt;<span class="w">        </span>Amazon<span class="w"> </span>Linux<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="m">1</span>.0.0.amzn2.x86_64<span class="w">   </span>containerd://1.0.0
+baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span class="w">                 </span>17h<span class="w">   </span>v1.22.0<span class="w">   </span>*.*.*.*<span class="w">         </span>&lt;none&gt;<span class="w">        </span>Amazon<span class="w"> </span>Linux<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="m">1</span>.0.0.amzn2.x86_64<span class="w">   </span>containerd://1.0.0
+<span class="c1"># qux-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         &lt;none&gt;        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合</span>
+</code></pre></div>
+<h4 id="-o-yaml">▼ -o yaml<a class="headerlink" href="#-o-yaml" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースの設定を取得し、<code>yaml</code>形式で出力する。</p>
+<p><strong>＊例＊</strong></p>
+<p>指定したSecretを<code>yaml</code>形式で取得する。</p>
+<p>正規表現と同様に、一部の文字列ではエスケープする必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;Secret名&gt;<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2021-12-00T00:00:00Z&quot;</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">swp-secret</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;18329&quot;</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span><span class="w"> </span><span class="c1"># base64方式のエンコード値</span>
+<span class="w">  </span><span class="nt">BAR</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+<span class="w">  </span><span class="nt">BAZ</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
+</code></pre></div>
+<h4 id="-l">▼ -l<a class="headerlink" href="#-l" title="Permanent link">&para;</a></h4>
+<p>特定の<code>.metadata.labels</code>キーと値を持つKubernetesリソースを取得する。</p>
+<p>大文字の<code>-L</code>オプションとは異なり、特定のラベルの値をもつKubernetesリソースを絞り込める。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
+</code></pre></div>
+<p>複数の<code>.metadata.labels</code>キーをAND条件で指定することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;,&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
+</code></pre></div>
+<p><code>.metadata.labels</code>キーの値をOR条件で指定することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;,&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="s1">&#39;&lt;キー&gt; in (&lt;値&gt;,&lt;値&gt;)&#39;</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>.metadata.labels.topology.kubernetes.io/zone</code>キーの値が<code>ap-northeast-1a</code>であるNodeを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-l<span class="w"> </span>topology.kubernetes.io/zone<span class="o">=</span>ap-northeast-1a
+</code></pre></div>
+<h4 id="-l_1">▼ -L<a class="headerlink" href="#-l_1" title="Permanent link">&para;</a></h4>
+<p>特定の<code>.metadata.labels</code>キーを持つKubernetesリソースを取得する。</p>
+<p>小文字の<code>-l</code>オプションとは異なり、特定のラベルを持つKubernetesリソースを一覧で表示する。</p>
+<p>該当のキーがない場合は、空欄で表示される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>&lt;Kubernetesリソースの種類&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;metadata.labelsキー&gt;
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>AWS EKSにて、Nodeグループの種類を確認するため、<code>eks.amazonaws.com/nodegroup</code>キーを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-L<span class="w"> </span>eks.amazonaws.com/nodegroup
+
+NAME<span class="w">        </span>STATUS<span class="w">   </span>ROLES<span class="w">    </span>AGE<span class="w">    </span>VERSION<span class="w">       </span>NODEGROUP
+foo-node<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>31d<span class="w">    </span>v1.22.0-eks<span class="w">   </span>service
+bar-node<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>41d<span class="w">    </span>v1.22.0-eks<span class="w">   </span>ingress
+baz-node<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>6d8h<span class="w">   </span>v1.22.0-eks<span class="w">   </span>collector
+qux-node<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>6d8h<span class="w">   </span>v1.22.0-eks<span class="w">   </span>mesh
+...
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Nodeが作成されたAWSリージョンを確認するため、<code>topology.kubernetes.io/zone</code>キーを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-L<span class="w"> </span>topology.kubernetes.io/zone
+
+NAME<span class="w">       </span>STATUS<span class="w">   </span>ROLES<span class="w">    </span>AGE<span class="w">     </span>VERSION<span class="w">   </span>ZONE
+foo-node<span class="w">   </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>18h<span class="w">     </span>v1.22.0<span class="w">   </span>ap-northeast-1a
+bar-node<span class="w">   </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>18h<span class="w">     </span>v1.22.0<span class="w">   </span>ap-northeast-1c
+baz-node<span class="w">   </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>18h<span class="w">     </span>v1.22.0<span class="w">   </span>ap-northeast-1d
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>istioのコンテナインジェクションが有効されているNamespaceを確認するため、<code>.metadata.labels.istio.io/rev</code>キーを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-L<span class="w"> </span>istio.io/rev
+
+NAME<span class="w">                   </span>STATUS<span class="w">   </span>AGE<span class="w">     </span>REV
+foo-namespace<span class="w">          </span>Active<span class="w">   </span>145d<span class="w">    </span><span class="m">1</span>-0-0
+bar-namespace<span class="w">          </span>Active<span class="w">   </span>145d<span class="w">           </span><span class="c1"># キーが設定されていないNamespace</span>
+baz-namespace<span class="w">          </span>Active<span class="w">   </span>145d<span class="w">           </span><span class="c1"># 同上</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>特定のKubernetesリソースがどのように管理されているかを取得する。</p>
+<p>公式のHelmチャートでは、Deployment、Daemonset、StatefulSet、がタグを持つことが多い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># argocd.argoproj.io/instance：ArgoCDのApplication名</span>
+<span class="c1"># app.kubernetes.io/managed-by：テンプレート管理のツール名</span>
+<span class="c1"># helm.sh/chart：テンプレート管理ツールがHelmの場合に、チャート名</span>
+<span class="c1"># release：Helmチャートのリリース名</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>-A<span class="w"> </span>&lt;Kubernetesリソース&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span>argocd.argoproj.io/instance<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span>app.kubernetes.io/managed-by<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span>helm.sh/chart<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-L<span class="w"> </span>release
+</code></pre></div>
+<h4 id="-selector">▼ --selector<a class="headerlink" href="#-selector" title="Permanent link">&para;</a></h4>
+<p>指定した<code>.spec.selector</code>キーを持つDeploymentを取得する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>--selector&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
+</code></pre></div>
+<h4 id="-show-labels">▼ --show-labels<a class="headerlink" href="#-show-labels" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesリソースの<code>.metadata.labels</code>キーの値を表示する。</p>
+<p><strong>＊例＊</strong></p>
+<p>全てのKubernetesリソースの<code>.metadata.labels</code>キーの値を表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>全てのKubernetesリソースの中から、ArgoCDで管理していないものの<code>.metadata.labels</code>キーの値を表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;argocd.argoproj.io/instance&quot;</span>
+</code></pre></div>
+<h4 id="-watch-w">▼ --watch (-w)<a class="headerlink" href="#-watch-w" title="Permanent link">&para;</a></h4>
+<p>指定したPodの情報 (フェーズ、ステータス、など) を継続的に取得し、情報に変更があれば出力を追記していく。</p>
+<p>別ツールで時間のかかるKubernetesリソースを作成しながら、<code>--watch</code>オプションを使用すると、作成状況を確認できる。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-w
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/kyontra/items/b435ab6e33ffbed51f10">https://qiita.com/kyontra/items/b435ab6e33ffbed51f10</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="label">label<a class="headerlink" href="#label" title="Permanent link">&para;</a></h3>
+<h4 id="label_1">▼ labelとは<a class="headerlink" href="#label_1" title="Permanent link">&para;</a></h4>
+<p>指定したリソースの<code>.metadata.labels</code>キーを操作する。</p>
+<h4 id="_4">▼ オプション無し (キーの追加)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>指定したリソースに<code>.metadata.labels</code>キーを作成する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>&lt;リソースの種類&gt;<span class="w"> </span>&lt;リソース名&gt;<span class="w"> </span><span class="nv">foo</span><span class="o">=</span>bar
+</code></pre></div>
+<h4 id="_5">▼ オプション無し (キーの削除)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>指定したリソースの<code>.metadata.labels</code>キーを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>&lt;リソースの種類&gt;<span class="w"> </span>&lt;リソース名&gt;<span class="w"> </span>foo-
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class="w"> </span>default<span class="w"> </span>istio.io/rev-
+</code></pre></div>
+<h4 id="-overwrite_1">▼ --overwrite<a class="headerlink" href="#-overwrite_1" title="Permanent link">&para;</a></h4>
+<p>指定したリソースに<code>.metadata.labels</code>キーを上書きする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>--overwrite<span class="w"> </span>&lt;リソースの種類&gt;<span class="w"> </span>&lt;リソース名&gt;<span class="w"> </span><span class="nv">foo</span><span class="o">=</span>bar
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p><code>.metadata.labels.istio-injection</code>キーを<code>.metadata.labels.istio.io/rev</code>キー (値は<code>1-0-0</code>) に上書きする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>--overwrite<span class="w"> </span>namespace<span class="w"> </span>foo<span class="w"> </span>istio.io/rev<span class="o">=</span><span class="m">1</span>-0-0<span class="w"> </span>istio-injection-
+</code></pre></div>
+<p><br></p>
+<h3 id="logs">logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h3>
+<h4 id="logs_1">▼ logsとは<a class="headerlink" href="#logs_1" title="Permanent link">&para;</a></h4>
+<p>指定したリソースのログを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs</a></li>
+</ul>
+</blockquote>
+<h4 id="-c">▼ -c<a class="headerlink" href="#-c" title="Permanent link">&para;</a></h4>
+<p>Pod名とコンテナ名を指定し、コンテナのログを取得する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
+
+<span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>*****
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>Namespace名、Pod名、コンテナ名、を指定し、kube-proxyのログを確認する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>kube-proxy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
+</code></pre></div>
+<h4 id="-f_1">▼ -f<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h4>
+<p>ログを継続的に取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
+</code></pre></div>
+<h4 id="-timestamps">▼ --timestamps<a class="headerlink" href="#-timestamps" title="Permanent link">&para;</a></h4>
+<p>タイムスタンプを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w">  </span>--timestamps<span class="o">=</span><span class="nb">true</span><span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
+
+<span class="m">2021</span>/11/27<span class="w"> </span><span class="m">08</span>:34:01<span class="w"> </span><span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>*****
+</code></pre></div>
+<p><br></p>
+<h3 id="replace">replace<a class="headerlink" href="#replace" title="Permanent link">&para;</a></h3>
+<h4 id="replace_1">▼ replaceとは<a class="headerlink" href="#replace_1" title="Permanent link">&para;</a></h4>
+<p>Kubernetesリソースを安全に削除し、別のマニフェストで再作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>replace<span class="w"> </span>-f<span class="w"> </span>foo.yaml
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace">https://stackoverflow.com/questions/47241626/what-is-the-difference-between-kubectl-apply-and-kubectl-replace</a></li>
+</ul>
+</blockquote>
+<h4 id="-force_1">▼ --force<a class="headerlink" href="#-force_1" title="Permanent link">&para;</a></h4>
+<p>Kubernetesリソースを強制的に削除し、別のマニフェストで再作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>replace<span class="w"> </span>--force<span class="w"> </span>-f<span class="w"> </span>foo.yaml
+</code></pre></div>
+<p><br></p>
+<h3 id="rollout">rollout<a class="headerlink" href="#rollout" title="Permanent link">&para;</a></h3>
+<h4 id="rollout_1">▼ rolloutとは<a class="headerlink" href="#rollout_1" title="Permanent link">&para;</a></h4>
+<p>Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout</a></li>
+<li><a href="https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848">https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848</a></li>
+</ul>
+</blockquote>
+<h4 id="restart">▼ restart<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
+<p>レプリカのPodを再作成する。</p>
+<p>PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deployment配下のPodを再作成する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># DaemonSet配下のPodを再作成する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>daemonset<span class="w"> </span>foo-daemonset<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># StatefulSet配下のPodを再作成する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>statefulset<span class="w"> </span>foo-statefulset<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000">https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000</a></li>
+<li><a href="https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16">https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="patch">patch<a class="headerlink" href="#patch" title="Permanent link">&para;</a></h3>
+<h4 id="patch_1">▼ patchとは<a class="headerlink" href="#patch_1" title="Permanent link">&para;</a></h4>
+<p>JSON/<code>yaml</code>形式を入力値として、リソースの設定値を変更する。</p>
+<p>ただし、マニフェストは変更されない。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch</a></li>
+</ul>
+</blockquote>
+<h4 id="pv">▼ pv<a class="headerlink" href="#pv" title="Permanent link">&para;</a></h4>
+<p>PersistentVolumeの設定値を変更する。</p>
+<p><strong>＊例＊</strong></p>
+<p>削除されないボリュームを削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465">https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w">  </span>tail<span class="w"> </span>-n+2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w">  </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w">  </span>xargs<span class="w"> </span>-I<span class="o">{}</span><span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>pv<span class="w"> </span><span class="o">{}</span><span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;metadata&quot;:{&quot;finalizers&quot;: null}}&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="port-forward">port-forward<a class="headerlink" href="#port-forward" title="Permanent link">&para;</a></h3>
+<h4 id="port-forward_1">▼ port-forwardとは<a class="headerlink" href="#port-forward_1" title="Permanent link">&para;</a></h4>
+<p>ポートフォワーディングを実行し、ホストのポートからPodにアクセスできるようにする。</p>
+<p>Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。</p>
+<p>この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する。</p>
+<p>開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Podを直接的に指定する場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
+
+<span class="c1"># Serviceの情報を使用して、Podを指定する場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Serviceのポート番号&gt;
+
+<span class="c1"># ホストポートを介してPodのポートにアクセスする。</span>
+$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;ホストポート番号&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod">https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod</a></li>
+<li><a href="https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod">https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod</a></li>
+<li><a href="https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B">https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="proxy">proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
+<h4 id="proxy_1">▼ proxyとは<a class="headerlink" href="#proxy_1" title="Permanent link">&para;</a></h4>
+<p>kube-apiserverの前段にフォワード/リバースプロキシサーバーとして動作するリソースを作成する。</p>
+<p>kube-proxyとは異なるリソースであることに注意する。</p>
+<h4 id="-address-accept-hosts">▼ --address、--accept-hosts<a class="headerlink" href="#-address-accept-hosts" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy<span class="w"> </span>--address<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--accept-hosts<span class="o">=</span><span class="s1">&#39;.*&#39;</span>
+
+Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> </span>on<span class="w"> </span><span class="o">[</span>::<span class="o">]</span>:8001
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
+<h4 id="run_1">▼ runとは<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
+<p>Deployment、Pod、Jobを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908">https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908</a></li>
+</ul>
+</blockquote>
+<h4 id="-restart-image-port">▼ --restart、--image、--port<a class="headerlink" href="#-restart-image-port" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>もし<code>--restart</code>オプションが<code>Always</code>なら、Deploymentを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Deployment名&gt;<span class="w"> </span>--restart<span class="o">=</span>Always<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
+</code></pre></div>
+<p>もし<code>--restart</code>オプションが<code>Never</code>なら、Podを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
+</code></pre></div>
+<p>もし<code>--restart</code>オプションが<code>OnFailure</code>なら、Jobを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Job名&gt;<span class="w"> </span>--restart<span class="o">=</span>OnFailure<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
+</code></pre></div>
+<h4 id="pod">▼ Podのアウトバウンド通信のデバッグ<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p><code>kubectl exec</code>コマンドが運用的に禁止されているような状況がある。</p>
+<p>そのような状況下で、シングルNodeの場合は、<code>kubectl run</code>コマンドで、<code>--rm</code>オプションを有効化しつつ、Clusterネットワーク内に<code>curl</code>コマンドによる検証用のPodを一時的に新規作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># シングルNodeの場合</span>
+
+<span class="c1"># curl送信用のコンテナを作成する。</span>
+<span class="c1"># rmオプションを指定し、使用後に自動的に削除されるようにする。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span>multitool<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="o">=</span>praqma/network-multitool<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rm<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--restart<span class="o">=</span>Never<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--<span class="w"> </span>/bin/bash
+
+<span class="c1"># curlコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+
+<span class="c1"># tcptracerouteコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>tcptraceroute<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+
+<span class="c1"># mtrコマンドでデバッグする。</span>
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>mtr<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
+</code></pre></div>
+<p>マルチNodeの場合は、 (たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。</p>
+<p>そのため、代わりに<code>kubectl debug</code>コマンドを使用する。</p>
+<p>ただし、<code>kubectl debug</code>コマンドで作成されたPodは、使用後に手動で削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># マルチNodeの場合</span>
+
+<span class="c1"># Podが稼働するNodeを確認する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-o<span class="w"> </span>wide
+
+<span class="c1"># 指定したNode上で、curl送信用のコンテナを作成する。</span>
+<span class="c1"># rmオプションはない。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>debug<span class="w"> </span>node/&lt;Node名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="o">=</span>praqma/network-multitool
+
+<span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span><span class="nv">$exit</span>
+
+<span class="c1"># 使用後は手動で削除する。</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>-n<span class="w"> </span>default<span class="w"> </span>node-debugger-*****
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tkusumi/items/a62c209972bd0d4913fc">https://qiita.com/tkusumi/items/a62c209972bd0d4913fc</a></li>
+<li><a href="https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="taint">taint<a class="headerlink" href="#taint" title="Permanent link">&para;</a></h3>
+<h4 id="taint_1">▼ taintとは<a class="headerlink" href="#taint_1" title="Permanent link">&para;</a></h4>
+<p>NodeにTaintを付与する。</p>
+<p>エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。</p>
+<table>
+<thead>
+<tr>
+<th>エフェクト</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NoExecute</td>
+<td>Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングする。</td>
+</tr>
+<tr>
+<td>NoSchedule</td>
+<td>Tolerationが付与されたPodしかスケジューリングできない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングしない。</td>
+</tr>
+<tr>
+<td>PreferNoSchedule</td>
+<td>Tolerationが付与されたPodをスケジューリングするが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングする。付与したPodがすでにスケジューリングされている場合、そのPodは再スケジューリングしない。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>＊例＊</strong></p>
+<p>NodeにTaint (<code>app=batch:NoSchedule</code>) を付与する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">app</span><span class="o">=</span>batch:NoSchedule
+</code></pre></div>
+<p>これにより、以下の<code>.spec.tolerations</code>キーが付与されたPodしかスケジューリングできない。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B">https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equal</span>
+<span class="w">      </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>コントロールプレーンNodeとして扱うTaintを付与する。</p>
+<p>キー名のみ指定し、値は指定していない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span>node-role.kubernetes.io/master:NoSchedule
+</code></pre></div>
+<p>これにより、以下の<code>.spec.tolerations</code>キーが付与されたPodしかスケジューリングできない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">  </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/master</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">      </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B">https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B</a></li>
+</ul>
+</blockquote>
+<h4 id="-">▼ <code>-</code> (ラベル値のハイフン)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
+<p>指定したNodeからTaintを削除する。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">app</span><span class="o">=</span>batch:NoSchedule-
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel">https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
+<p>kubectlとKubernetesのバージョンをそれぞれ取得する。</p>
+<p>両方のバージョンに差があっても、1つ以内のマイナーバージョンであれば許容範囲である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>version
+
+<span class="c1"># kubectlコマンドのバージョン</span>
+Client<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
+<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
+<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
+<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.4&quot;</span>,
+<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
+<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-11-17T15:41:42Z&quot;</span>,
+<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.10&quot;</span>,
+<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
+<span class="w">  </span>Platform:<span class="s2">&quot;darwin/amd64&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># kube-apiserverのバージョン</span>
+Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span class="o">{</span>
+<span class="w">  </span>Major:<span class="s2">&quot;1&quot;</span>,
+<span class="w">  </span>Minor:<span class="s2">&quot;22&quot;</span>,
+<span class="w">  </span>GitVersion:<span class="s2">&quot;v1.22.3&quot;</span>,
+<span class="w">  </span>GitCommit:<span class="s2">&quot;*****&quot;</span>,
+<span class="w">  </span>GitTreeState:<span class="s2">&quot;clean&quot;</span>,
+<span class="w">  </span>BuildDate:<span class="s2">&quot;2021-10-27T18:35:25Z&quot;</span>,
+<span class="w">  </span>GoVersion:<span class="s2">&quot;go1.16.9&quot;</span>,
+<span class="w">  </span>Compiler:<span class="s2">&quot;gc&quot;</span>,
+<span class="w">  </span>Platform:<span class="s2">&quot;linux/amd64&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server">https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194">https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

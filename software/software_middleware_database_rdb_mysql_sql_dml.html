@@ -1,0 +1,4046 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DML＠SQLの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html">
+      
+      
+        <link rel="prev" href="software_middleware_database_rdb_mysql_conf.html">
+      
+      
+        <link rel="next" href="software_middleware_database_rdb_mysql_sql_dcl.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】DML＠SQL - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dmlsql" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】DML＠SQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="middleware/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_6">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            🤝🏻 ミドルウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="software_middleware_web_nginx.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Web系
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ アプリケーション系
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ データベース系
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ データベース系
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" checked>
+        
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RDB
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RDB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ RDBMS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1_2" checked>
+        
+          <label class="md-nav__link" for="__nav_6_4_1_2" id="__nav_6_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ My︎SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_4_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ My︎SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MySQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1_2_3" checked>
+        
+          <label class="md-nav__link" for="__nav_6_4_1_2_3" id="__nav_6_4_1_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_6_4_1_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_1_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DML
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DML
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dml" class="md-nav__link">
+    01. DMLとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-select" class="md-nav__link">
+    02. SELECT
+  </a>
+  
+    <nav class="md-nav" aria-label="02. SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 句の処理の順番
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    SELECT句
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECT句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ なし
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" class="md-nav__link">
+    ▼ SUM関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg" class="md-nav__link">
+    ▼ AVG関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min" class="md-nav__link">
+    ▼ MIN関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" class="md-nav__link">
+    ▼ MAX関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    ▼ COUNT関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last_insert_id" class="md-nav__link">
+    ▼ LAST_INSERT_ID関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5" class="md-nav__link">
+    ▼ MD5関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    CASE句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    FROM句
+  </a>
+  
+    <nav class="md-nav" aria-label="FROM句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    ▼ JOIN句の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join" class="md-nav__link">
+    ▼ LEFT JOIN (左外部結合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    ▼ INNER JOIN (内部結合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    ▼ 内部結合にWHEREを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-join-on" class="md-nav__link">
+    ▼ 内部結合にINNER JOIN ONを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-by" class="md-nav__link">
+    ORDER BY句
+  </a>
+  
+    <nav class="md-nav" aria-label="ORDER BY句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inany" class="md-nav__link">
+    IN句、ANY句の違い
+  </a>
+  
+    <nav class="md-nav" aria-label="IN句、ANY句の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    ▼ IN句の使い方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    ▼ ANY句の使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    GROUP BY句
+  </a>
+  
+    <nav class="md-nav" aria-label="GROUP BY句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having" class="md-nav__link">
+    HAVING句
+  </a>
+  
+    <nav class="md-nav" aria-label="HAVING句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcard" class="md-nav__link">
+    WILDCARD句
+  </a>
+  
+    <nav class="md-nav" aria-label="WILDCARD句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#between" class="md-nav__link">
+    BETWEEN句
+  </a>
+  
+    <nav class="md-nav" aria-label="BETWEEN句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    SET句
+  </a>
+  
+    <nav class="md-nav" aria-label="SET句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    サブクエリ
+  </a>
+  
+    <nav class="md-nav" aria-label="サブクエリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ 各DBサイズの確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ カラムの検索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-explain" class="md-nav__link">
+    03. EXPLAIN
+  </a>
+  
+    <nav class="md-nav" aria-label="03. EXPLAIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    実行計画
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    読み方
+  </a>
+  
+    <nav class="md-nav" aria-label="読み方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select_type" class="md-nav__link">
+    ▼ select_type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    ▼ table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    ▼ type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible_keys" class="md-nav__link">
+    ▼ possible_keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-insert" class="md-nav__link">
+    05. INSERT
+  </a>
+  
+    <nav class="md-nav" aria-label="05. INSERT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    バルクインサート
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-exec" class="md-nav__link">
+    06. EXEC
+  </a>
+  
+    <nav class="md-nav" aria-label="06. EXEC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stored-procedure" class="md-nav__link">
+    stored procedure
+  </a>
+  
+    <nav class="md-nav" aria-label="stored procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stored-procedure_1" class="md-nav__link">
+    ▼ stored procedureとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DCL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DDL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PostgreSQL
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_database_tsdb.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ TSDB
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コネクションプールプロキシー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_security_linux.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ セキュリティ系
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_service_mesh.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ サービスメッシュ系
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dml" class="md-nav__link">
+    01. DMLとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-select" class="md-nav__link">
+    02. SELECT
+  </a>
+  
+    <nav class="md-nav" aria-label="02. SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 句の処理の順番
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    SELECT句
+  </a>
+  
+    <nav class="md-nav" aria-label="SELECT句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ なし
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sum" class="md-nav__link">
+    ▼ SUM関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avg" class="md-nav__link">
+    ▼ AVG関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#min" class="md-nav__link">
+    ▼ MIN関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max" class="md-nav__link">
+    ▼ MAX関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    ▼ COUNT関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#last_insert_id" class="md-nav__link">
+    ▼ LAST_INSERT_ID関数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#md5" class="md-nav__link">
+    ▼ MD5関数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    CASE句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from" class="md-nav__link">
+    FROM句
+  </a>
+  
+    <nav class="md-nav" aria-label="FROM句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    ▼ JOIN句の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join" class="md-nav__link">
+    ▼ LEFT JOIN (左外部結合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    ▼ INNER JOIN (内部結合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where" class="md-nav__link">
+    ▼ 内部結合にWHEREを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inner-join-on" class="md-nav__link">
+    ▼ 内部結合にINNER JOIN ONを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#order-by" class="md-nav__link">
+    ORDER BY句
+  </a>
+  
+    <nav class="md-nav" aria-label="ORDER BY句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inany" class="md-nav__link">
+    IN句、ANY句の違い
+  </a>
+  
+    <nav class="md-nav" aria-label="IN句、ANY句の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in" class="md-nav__link">
+    ▼ IN句の使い方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    ▼ ANY句の使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-by" class="md-nav__link">
+    GROUP BY句
+  </a>
+  
+    <nav class="md-nav" aria-label="GROUP BY句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#having" class="md-nav__link">
+    HAVING句
+  </a>
+  
+    <nav class="md-nav" aria-label="HAVING句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wildcard" class="md-nav__link">
+    WILDCARD句
+  </a>
+  
+    <nav class="md-nav" aria-label="WILDCARD句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#between" class="md-nav__link">
+    BETWEEN句
+  </a>
+  
+    <nav class="md-nav" aria-label="BETWEEN句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    SET句
+  </a>
+  
+    <nav class="md-nav" aria-label="SET句">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    サブクエリ
+  </a>
+  
+    <nav class="md-nav" aria-label="サブクエリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ 各DBサイズの確認
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ カラムの検索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-explain" class="md-nav__link">
+    03. EXPLAIN
+  </a>
+  
+    <nav class="md-nav" aria-label="03. EXPLAIN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    実行計画
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    読み方
+  </a>
+  
+    <nav class="md-nav" aria-label="読み方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select_type" class="md-nav__link">
+    ▼ select_type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    ▼ table
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type" class="md-nav__link">
+    ▼ type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#possible_keys" class="md-nav__link">
+    ▼ possible_keys
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-insert" class="md-nav__link">
+    05. INSERT
+  </a>
+  
+    <nav class="md-nav" aria-label="05. INSERT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    バルクインサート
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-exec" class="md-nav__link">
+    06. EXEC
+  </a>
+  
+    <nav class="md-nav" aria-label="06. EXEC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stored-procedure" class="md-nav__link">
+    stored procedure
+  </a>
+  
+    <nav class="md-nav" aria-label="stored procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stored-procedure_1" class="md-nav__link">
+    ▼ stored procedureとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 使い方
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="dmlsql">DML＠SQL<a class="headerlink" href="#dmlsql" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-dml">01. DMLとは<a class="headerlink" href="#01-dml" title="Permanent link">&para;</a></h2>
+<p>テーブル上のレコードを操作するクエリのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DML-Data-Manipulation-Language">https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DML-Data-Manipulation-Language</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-select">02. SELECT<a class="headerlink" href="#02-select" title="Permanent link">&para;</a></h2>
+<h3 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 句の処理の順番<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>FROM ---&gt; JOIN ---&gt; WHERE ---&gt; GROUP BY ---&gt; HAVING ---&gt; SELECT ---&gt; ORDER BY
+</code></pre></div>
+<p><br></p>
+<h3 id="select"><code>SELECT</code>句<a class="headerlink" href="#select" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ なし<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>指定したカラムを取得する。</p>
+<p>MySQLでは、取得結果の並び順が毎回異なるため、プライマリーキーの昇順で取得したい場合は、<code>ORDER BY</code>句を使用して、明示的に並び替えるようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL">https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="sum">▼ <code>SUM</code>関数<a class="headerlink" href="#sum" title="Permanent link">&para;</a></h4>
+<p>指定したカラムで、『フィールド』の合計を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">SUM</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="avg">▼ <code>AVG</code>関数<a class="headerlink" href="#avg" title="Permanent link">&para;</a></h4>
+<p>指定したカラムで、『フィールド』の平均値を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="min">▼ <code>MIN</code>関数<a class="headerlink" href="#min" title="Permanent link">&para;</a></h4>
+<p>指定したカラムで、『フィールド』の最小値を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="max">▼ <code>MAX</code>関数<a class="headerlink" href="#max" title="Permanent link">&para;</a></h4>
+<p>指定したカラムで、『フィールド』の最大値を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="count">▼ <code>COUNT</code>関数<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
+<p>指定したカラムで、『フィールド』の個数を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>※消去法の小技：集合関数を入れ子状にはできない</strong></p>
+<p><strong>＊実装例＊</strong></p>
+<p>集合関数を集合関数の中に入れ子状にできない。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">--</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="k">SUM</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">))</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p>指定したカラムで、値無しも含む『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p>指定したカラムで、値無しを除いた『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="last_insert_id">▼ <code>LAST_INSERT_ID</code>関数<a class="headerlink" href="#last_insert_id" title="Permanent link">&para;</a></h4>
+<p>任意のテーブルに最後に挿入されたIDを読み出す。</p>
+<p>テーブル名を指定する必要はない。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="md5">▼ <code>MD5</code>関数<a class="headerlink" href="#md5" title="Permanent link">&para;</a></h4>
+<p>文字列をハッシュ化</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">MD5</span><span class="p">(</span><span class="ss">&quot;foo&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="case"><code>CASE</code>句<a class="headerlink" href="#case" title="Permanent link">&para;</a></h3>
+<p>カラム1が<code>true</code>だったら、カラム2を取得する。</p>
+<p><code>false</code>であったら、カラム3を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">CASE</span>
+<span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
+<span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">name</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">エイリアス</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="from"><code>FROM</code>句<a class="headerlink" href="#from" title="Permanent link">&para;</a></h3>
+<h4 id="join">▼ <code>JOIN</code>句の種類<a class="headerlink" href="#join" title="Permanent link">&para;</a></h4>
+<p><img alt="内部結合のベン図" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/内部結合のベン図.jpg" /></p>
+<h4 id="left-join">▼ <code>LEFT JOIN</code> (左外部結合)<a class="headerlink" href="#left-join" title="Permanent link">&para;</a></h4>
+<p>『users』テーブルと『items』テーブルの商品IDが一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。</p>
+<p><img alt="LEFT_JOIN" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEFT_JOIN.png" /></p>
+<h4 id="inner-join">▼ <code>INNER JOIN</code> (内部結合)<a class="headerlink" href="#inner-join" title="Permanent link">&para;</a></h4>
+<p>基本情報技術者試験では、内部結合 (A∩B) しか出題されない。</p>
+<h4 id="where">▼ 内部結合に<code>WHERE</code>を使用する場合<a class="headerlink" href="#where" title="Permanent link">&para;</a></h4>
+<p><code>2</code>個の<code>WHERE</code>文が、<code>AND</code>で結びつけられている時、まず1つ目の<code>WHERE</code>を満たすレコードを取得した後、取得したレコードの中から、2つ目の<code>WHERE</code>を満たすレコードを取得する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 『カラム』のみでなく、どの『表』なの物なのかも指定</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">-- 複数の表を指定</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">-- まず、1つ目のフィールドと2つ目のフィールドが同じレコードを取得する。</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="c1">-- 次に、上記で取得したレコードのうち、次の条件も満たすレコードのみを取得する。</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+</code></pre></div>
+<h4 id="inner-join-on">▼ 内部結合に<code>INNER JOIN ON</code>を使用する場合<a class="headerlink" href="#inner-join-on" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- 『カラム』のみでなく、どの『表』なの物なのかも指定</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">-- 複数の表を指定</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="c1">-- 2つ目の表の『レコード』と照合</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="c1">-- 3個目の表の『レコード』と照合</span>
+<span class="w">    </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span><span class="p">.</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">3</span><span class="w"> </span><span class="err">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="order-by"><code>ORDER BY</code>句<a class="headerlink" href="#order-by" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 使い方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+<span class="nv">$joinedIdList</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="nv">$idList</span><span class="p">);</span>
+
+<span class="c1">// 並び替え条件を設定</span>
+<span class="nv">$expression</span> <span class="o">=</span> <span class="nb">call_user_func</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$orders</span><span class="p">,</span> <span class="nv">$joinedIdList</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$orders</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$orders</span> <span class="k">as</span> <span class="nv">$key</span> <span class="o">=&gt;</span> <span class="nv">$order</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span>
+                    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;ss.id %s&quot;</span><span class="p">,</span> <span class="nv">$order</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// IN句順の場合</span>
+    <span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;FIELD(ss.id, %s)&quot;</span><span class="p">,</span> <span class="nv">$idList</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s">&lt;&lt;&lt;</span><span class="dl">SQL</span>
+<span class="s">            SELECT</span>
+<span class="s">                name</span>
+<span class="s">            FROM</span>
+<span class="s">                table</span>
+<span class="s">            ORDER BY {$expression}</span>
+<span class="s">        </span><span class="dl">SQL</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="inany"><code>IN</code>句、<code>ANY</code>句の違い<a class="headerlink" href="#inany" title="Permanent link">&para;</a></h3>
+<h4 id="in">▼ <code>IN</code>句の使い方<a class="headerlink" href="#in" title="Permanent link">&para;</a></h4>
+<p>指定した値と同じ『フィールド』を取得する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>指定したカラムで、指定した値の『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,...);</span>
+</code></pre></div>
+<p>指定したカラムで、指定した値以外の『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">,...);</span>
+</code></pre></div>
+<p>指定したカラムで、<code>SELECT</code>で読み出した値以外の『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">--</span>
+<span class="w">        </span><span class="k">SELECT</span>
+<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">        </span><span class="k">FROM</span>
+<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">        </span><span class="k">WHERE</span>
+<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p><strong>【IN句を使用しなかった場合】</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">fruit</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;みかん&quot;</span>
+<span class="w">    </span><span class="k">OR</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>【IN句を使用した場合】</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">fruit</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="ss">&quot;みかん&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;りんご&quot;</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="any">▼ <code>ANY</code>句の使い方<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
+<p>書き方が異なるのみで、<code>in</code>と同じ出力</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">ANY</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">,</span><span class="w"> </span><span class="n">baz</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="group-by"><code>GROUP BY</code>句<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ 使い方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>カラムをグループ化し、集合関数を使用して、フィールドの値を算出する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>指定したカラムをグループ化し、フィールドの値の平均値を算出する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="having"><code>HAVING</code>句<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 使い方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>各句の処理の順番から考慮して、<code>GROUP BY</code>でグループ化した結果から、<code>HAVING</code>で『フィールド』を取得する。</p>
+<p><code>SELECT</code>における集計関数が、<code>HAVING</code>における集計関数の結果を指定していることに注意せよ。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- HAVINGによる集計結果を指定して出力。</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">2</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="c1">-- グループ化した結果を集計し、2個以上の『フィールド』を取得する。</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="mi">1</span><span class="w"> </span><span class="err">}</span>
+<span class="k">HAVING</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+<p>以下の場合、<code>GROUP BY + HAVING</code>や<code>WHERE</code>を使用しても、同じ出力結果になる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">HAVING</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">レコード名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="wildcard"><code>WILDCARD</code>句<a class="headerlink" href="#wildcard" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ 使い方<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%営業&quot;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_営業&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="between"><code>BETWEEN</code>句<a class="headerlink" href="#between" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 使い方<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p>指定したカラムで、1以上10以下の『フィールド』を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="set"><code>SET</code>句<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 使い方<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">SET</span>
+<span class="w">    </span><span class="o">@</span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">パラメーター値</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+
+<span class="k">SET</span>
+<span class="w">    </span><span class="o">@</span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">パラメーター値</span><span class="w"> </span><span class="err">}</span><span class="p">;</span>
+
+<span class="k">UPDATE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">SET</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">A</span><span class="p">,</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">B</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_11">サブクエリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 使い方<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>掛け算と同様に、括弧内から先に処理を行う。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Main-query</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="c1">-- Sub-query</span>
+<span class="w">        </span><span class="k">SELECT</span>
+<span class="w">            </span><span class="k">max</span><span class="p">(</span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span><span class="p">)</span>
+<span class="w">        </span><span class="k">FROM</span>
+<span class="w">            </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
+<h4 id="db">▼ 各DBサイズの確認<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="n">table_schema</span><span class="p">,</span>
+<span class="w">    </span><span class="k">sum</span><span class="p">(</span><span class="n">data_length</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mb</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">information_schema</span><span class="p">.</span><span class="n">tables</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">    </span><span class="n">table_schema</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span>
+<span class="w">    </span><span class="k">sum</span><span class="p">(</span><span class="n">data_length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index_length</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="_13">▼ カラムの検索<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
+<span class="w">    </span><span class="k">table_name</span><span class="p">,</span>
+<span class="w">    </span><span class="k">column_name</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="k">column_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">検索したいカラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">table_schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">検索対象の</span><span class="n">DB名</span><span class="w"> </span><span class="err">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-explain">03. EXPLAIN<a class="headerlink" href="#03-explain" title="Permanent link">&para;</a></h2>
+<h3 id="_14">実行計画<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>設定した<code>SELECT</code>句が仮に実行された場合、いずれのテーブルのいずれのカラムを取得することになるか (実行計画) を取得する。</p>
+<p>また、想定実行時間も検出できるため、スロークエリの検出に役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">SELECT</span>
+<span class="w">    </span><span class="o">*</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="n">t1</span><span class="p">,</span>
+<span class="w">    </span><span class="n">t2</span>
+<span class="k">WHERE</span>
+<span class="w">    </span><span class="n">t1</span><span class="p">.</span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">c3</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>***************************<span class="w"> </span><span class="m">1</span>.<span class="w"> </span>row<span class="w"> </span>***************************
+<span class="w">           </span>id:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>select_type:<span class="w"> </span>SIMPLE
+<span class="w">        </span>table:<span class="w"> </span>t1
+<span class="w">         </span>type:<span class="w"> </span>ref
+possible_keys:<span class="w"> </span>index_t1_on_c1_and_c2
+<span class="w">          </span>key:<span class="w"> </span>index_t1_on_c1_and_c2
+<span class="w">      </span>key_len:<span class="w"> </span><span class="m">5</span>
+<span class="w">          </span>ref:<span class="w"> </span>const
+<span class="w">         </span>rows:<span class="w"> </span><span class="m">10</span>
+<span class="w">        </span>Extra:<span class="w"> </span>Using<span class="w"> </span>where<span class="p">;</span><span class="w"> </span>Using<span class="w"> </span>index
+***************************<span class="w"> </span><span class="m">2</span>.<span class="w"> </span>row<span class="w"> </span>***************************
+<span class="w">           </span>id:<span class="w"> </span><span class="m">1</span>
+<span class="w">  </span>select_type:<span class="w"> </span>SIMPLE
+<span class="w">        </span>table:<span class="w"> </span>t2
+<span class="w">         </span>type:<span class="w"> </span>ref
+possible_keys:<span class="w"> </span>index_t2_on_c3
+<span class="w">          </span>key:<span class="w"> </span>index_t2_on_c3
+<span class="w">      </span>key_len:<span class="w"> </span><span class="m">5</span>
+<span class="w">          </span>ref:<span class="w"> </span>sample.t1.c2
+<span class="w">         </span>rows:<span class="w"> </span><span class="m">1</span>
+<span class="w">        </span>Extra:<span class="w"> </span>Using<span class="w"> </span>index
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.7/en/explain-output.html">https://dev.mysql.com/doc/refman/5.7/en/explain-output.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_15">読み方<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="select_type">▼ <code>select_type</code><a class="headerlink" href="#select_type" title="Permanent link">&para;</a></h4>
+<p>SQLの種類が表示される。</p>
+<p>サブクエリを含まないSQLは<code>SIMPLE</code>となり、サブクエリを含むと、サブクエリの種類に応じて、<code>PRIMARY</code>、<code>SUBQUERY</code>、<code>DEPENDENT SUBQUERY</code>、<code>UNCACHEABLE SUBQUERY</code>、<code>DERIVED</code>、のいずれかが表示される。</p>
+<h4 id="table">▼ <code>table</code><a class="headerlink" href="#table" title="Permanent link">&para;</a></h4>
+<p>設定した<code>SELECT</code>句がアクセスするテーブル名が表示される。</p>
+<h4 id="type">▼ <code>type</code><a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
+<p>設定した<code>SELECT</code>句がテーブルにアクセスする時に、どの程度の数のカラムを検索するのかが表示される。</p>
+<p>検索するカラムが多いSQLほど、想定実行時間が長くなる。</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>条件</th>
+<th>検索するカラム数</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALL</td>
+<td>・DBインデックスを使用していない。</td>
+<td>全てのカラム</td>
+<td>全てのカラムを検索するため、実行時間が最も長く、改善する必要がある。</td>
+</tr>
+<tr>
+<td>index</td>
+<td>・DBインデックスを使用していない。</td>
+<td>全てのインデックスのカラム</td>
+<td></td>
+</tr>
+<tr>
+<td>range</td>
+<td>・セカンダリーDBインデックスを使用している。<br>・<code>WHERE</code>句に重複したレコード値、<code>IN</code>句、<code>BETWEEN</code>句を使用している。</td>
+<td>特定の複数カラム</td>
+<td></td>
+</tr>
+<tr>
+<td>ref</td>
+<td>・セカンダリーDBインデックスを使用している。<br>・<code>WHERE</code>句に重複しないレコード値</td>
+<td>特定の複数カラム</td>
+<td></td>
+</tr>
+<tr>
+<td>eq_ref</td>
+<td>・クラスタDBインデックスを使用している。</td>
+<td><code>1</code>個のカラム</td>
+<td><code>1</code>個のカラムしか<code>fetch</code>しないため、<code>JOIN</code>句を使用したアクセスの中で、実行時間が最も短い。</td>
+</tr>
+<tr>
+<td>const</td>
+<td>・クラスタDBインデックスを使用している。<br>・<code>JOIN</code>句を使用していない。</td>
+<td><code>1</code>個のカラム</td>
+<td><code>1</code>個のカラムしか<code>fetch</code>しないため、実行時間が最も短い。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="possible_keys">▼ <code>possible_keys</code><a class="headerlink" href="#possible_keys" title="Permanent link">&para;</a></h4>
+<p>DBインデックスとして設定されたカラムのうちで、実際に利用できるものの一覧が表示される。</p>
+<p><br></p>
+<h2 id="05-insert">05. INSERT<a class="headerlink" href="#05-insert" title="Permanent link">&para;</a></h2>
+<h3 id="_16">バルクインサート<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>一度のINSERT文で複数の値を挿入する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-exec">06. EXEC<a class="headerlink" href="#06-exec" title="Permanent link">&para;</a></h2>
+<h3 id="stored-procedure">stored procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">&para;</a></h3>
+<h4 id="stored-procedure_1">▼ stored procedureとは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
+<p>あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。</p>
+<p><img alt="p325" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
+</ul>
+</blockquote>
+<h4 id="_17">▼ 使い方<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<p><code>SELECT</code>文のstored procedureを作成する例を考える。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを作成し、DBへ格納しておく。</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">SelectContact</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">カラム名</span><span class="w"> </span><span class="err">}</span>
+<span class="k">FROM</span>
+<span class="w">    </span><span class="err">{</span><span class="w"> </span><span class="err">テーブル名</span><span class="w"> </span><span class="err">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを実行</span>
+<span class="k">EXEC</span><span class="w"> </span><span class="n">SelectContact</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

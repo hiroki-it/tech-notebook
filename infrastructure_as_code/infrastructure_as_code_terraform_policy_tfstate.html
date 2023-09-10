@@ -1,0 +1,4481 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="tfstateファイルの分割＠設計規約の知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_terraform_policy.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_vagrant_vagrantfile.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】tfstateファイルの分割＠設計規約 - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tfstate" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】tfstateファイルの分割＠設計規約
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_15">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ IaC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 手続き型
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4" id="__nav_15_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 宣言型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 宣言型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Docker Compose
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_packer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Packer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Serverless Framework
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4_4" id="__nav_15_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ tfファイル
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロバイダー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CDパイプライン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4_6" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4_4_6" id="__nav_15_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_15_4_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 設計規約
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_policy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    tfstateファイル分割
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_terraform_policy_tfstate.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    tfstateファイル分割
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-tfstate" class="md-nav__link">
+    01. tfstateファイルの分割について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tfstate" class="md-nav__link">
+    02. tfstateファイル分割を含むディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="02. tfstateファイル分割を含むディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    手順
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    中間層について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_1" class="md-nav__link">
+    ほかのtfstateファイルから状態を参照する方法
+  </a>
+  
+    <nav class="md-nav" aria-label="ほかのtfstateファイルから状態を参照する方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 観点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_remote_state" class="md-nav__link">
+    ▼ terraform_remote_stateブロックを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    ▼ dataブロックを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最上層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="最上層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ クラウドプロバイダーのアカウント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    最下層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="最下層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 実行環境別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    中間層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="中間層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 同じテナントのプロダクト別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 運用チーム責務範囲別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ プロダクトのサブコンポーネント別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    ▼ AWSリソースの種類別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    ▼ AWSリソースの状態の変更頻度別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blast-radius" class="md-nav__link">
+    ▼ blast radius別：障害範囲、影響範囲
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 運用チーム別 × プロダクトサブコンポーネント別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ローカル/リモートモジュールのディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ローカル/リモートモジュールのディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_2" class="md-nav__link">
+    依存先AWSリソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    リソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    リージョン別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    実行環境別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-tfstate" class="md-nav__link">
+    04. モノリスなtfstateファイルを分割する
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Vagrant
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-tfstate" class="md-nav__link">
+    01. tfstateファイルの分割について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tfstate" class="md-nav__link">
+    02. tfstateファイル分割を含むディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="02. tfstateファイル分割を含むディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    手順
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    中間層について
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate_1" class="md-nav__link">
+    ほかのtfstateファイルから状態を参照する方法
+  </a>
+  
+    <nav class="md-nav" aria-label="ほかのtfstateファイルから状態を参照する方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 観点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform_remote_state" class="md-nav__link">
+    ▼ terraform_remote_stateブロックを使用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    ▼ dataブロックを使用する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最上層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="最上層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ クラウドプロバイダーのアカウント
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    最下層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="最下層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 実行環境別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    中間層ディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="中間層ディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 同じテナントのプロダクト別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 運用チーム責務範囲別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ プロダクトのサブコンポーネント別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    ▼ AWSリソースの種類別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws_1" class="md-nav__link">
+    ▼ AWSリソースの状態の変更頻度別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blast-radius" class="md-nav__link">
+    ▼ blast radius別：障害範囲、影響範囲
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 運用チーム別 × プロダクトサブコンポーネント別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ローカル/リモートモジュールのディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ローカル/リモートモジュールのディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws_2" class="md-nav__link">
+    依存先AWSリソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    リソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    リージョン別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    実行環境別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-tfstate" class="md-nav__link">
+    04. モノリスなtfstateファイルを分割する
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tfstate"><code>tfstate</code>ファイルの分割＠設計規約<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-tfstate">01. <code>tfstate</code>ファイルの分割について<a class="headerlink" href="#01-tfstate" title="Permanent link">&para;</a></h2>
+<p>一つのバケット内でtfstateファイルをいい感じに分割し、適切な依存関係にしたい…？</p>
+<p>その夢、叶えます。</p>
+<p>ディレクトリをゼロから設計する場合や、既存のディレクトリの設計規約を察する場合に使っている見方を整理した。</p>
+<p>Terraformのディレクトリ構成は新興宗教で、あくまで以下は私の宗派である (他の人にとっては邪教かも) 。</p>
+<p><strong>本資料で “依存” という言葉を使っていますが、これはその対象 ”使用すること” を意味している。</strong></p>
+<p>アプリケーション開発の文脈で対象を “使用すること” を “依存” と表現するため、それに合わせている。</p>
+<p>Terraformに限らずアプリケーションでも注意が必要ですが、例えば循環参照エラーは相互依存が原因である。</p>
+<p><br></p>
+<h2 id="02-tfstate">02. <code>tfstate</code>ファイル分割を含むディレクトリ構成<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
+<p>まず、Terraformのディレクトリ構成は<code>tfstate</code>ファイルの粒度に合わせること。</p>
+<p>ディレクトリを分割しているのに、各ディレクトリ配下で使う<code>tfstate</code>ファイルが同じであると、ディレクトリを分割する旨みがなさそう。</p>
+<p>そしてTerraformの<code>tfstate</code>ファイルの分割の境目を見つけるコツは、</p>
+<p>“<strong>他の状態にできるだけ依存しない (<code>terraform_remote_state</code>ブロックや<code>data</code>ブロックで他の<code>tfstate</code>ファイルを参照しない) リソースの関係”</strong></p>
+<p>に注目することである。</p>
+<p>ここでは、観測範囲内で境目の例を挙げているだけで、実際の現場では依存せざるを得ない状況があるかもしれない。</p>
+<p><code>tfstate</code>ファイルを分割するだけではダメで、<code>tfstate</code>ファイル間の依存方向図を書きながら設計することをお勧めする。</p>
+<p><br></p>
+<h3 id="_2">手順<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>前提として、<code>terraform</code>ブロックから<code>backend</code>オプションを切り分け、<code>backend.tfvars</code>ファイルを作成する。</p>
+<p><code>backend.tfvars</code>ファイルでは、<code>tfstate</code>ファイルのあるバックエンドを定義するとする。</p>
+<p>1と2は必須であるが、3は状況（例：プロダクトのフェーズ、システムの規模）によって読み手が選ぶようにする。</p>
+<ol>
+<li>最上層をクラウドプロバイダーのアカウントで分割する。</li>
+<li>最下層を実行環境別で分割する。</li>
+<li>中間層を以下のいずれか / 組み合わせで分割する。</li>
+</ol>
+<p><br></p>
+<h3 id="_3">中間層について<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>中間層の分割方法が一番難しい。</p>
+<ul>
+<li>同じテナント内のプロダクト別</li>
+<li>運用チーム責務範囲別</li>
+<li>プロダクトのサブコンポーネント別</li>
+<li>AWSリソースの種類別</li>
+<li>AWSリソースの状態の変更頻度別</li>
+<li>blast radius（影響範囲、障害範囲）</li>
+<li>上記の組み合わせ</li>
+</ul>
+<p>プロジェクトによっては、特に中間層ディレクトリで複数の設計規約を組み合わせている場合があり、一つだけ採用されているとは限らないことに注意する。</p>
+<p>中間層の切り方でおそらく一番現実的なのが、以下のいずれかである。</p>
+<ul>
+<li>運用チーム責務範囲別</li>
+<li>プロダクトのサブコンポーネント別</li>
+<li>上記の組み合わせ</li>
+</ul>
+<p><br></p>
+<h3 id="tfstate_1">ほかの<code>tfstate</code>ファイルから状態を参照する方法<a class="headerlink" href="#tfstate_1" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 観点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルを分割するということは、互いのAWSリソース値に依存しない想定である (<strong>はじめにの項目に記載がある通り</strong>) 。</p>
+<p>例えば、AWSリソースのブロックがGoogleCloudリソースのブロックに依存することはない。</p>
+<p>しかし<code>tfstate</code>ファイルを分割したとしても、一方の<code>tfstate</code>ファイルがもう一方に依存せざるを得ない場合がある。</p>
+<p><code>tfstate</code>ファイルが他から独立している想定で分割しているので、あまり望ましくないが、依存先の<code>tfstate</code>ファイルから状態を参照するような定義が必要になる。</p>
+<h4 id="terraform_remote_state">▼ <code>terraform_remote_state</code>ブロックを使用する場合<a class="headerlink" href="#terraform_remote_state" title="Permanent link">&para;</a></h4>
+<p><code>terraform_remote_state</code>ブロックを使用する場合、以下のメリットがある。</p>
+<ul>
+<li>依存先のAWSリソースに関わらず、同じ<code>terraform_remote_state</code>ブロックを使い回すことができる</li>
+</ul>
+<p>一方で、以下のデメリットがある。</p>
+<ul>
+<li>別途<code>output</code>ブロックの定義が必要になり、可読性が低くなる。</li>
+<li>依存先と依存元の間でTerraformのバージョンに差がありすぎると、<code>tfstate</code>ファイル間で互換性がなくなり、<code>terraform_remote_state</code>ブロックで状態を参照できない場合がある。</li>
+</ul>
+<p>今回は、状態参照の一般的な方法であるこちらで話を進める。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># VPCの状態は、fooのtfstateファイルで管理している</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;terraform_remote_state&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span>
+
+<span class="w">  </span><span class="nb">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo/terraform.tfstate&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># barリソースは、fooのtfstateとは異なるbarのtfstateで管理している</span>
+<span class="c1"># barのtfstateは、fooのtfstateに依存していると考えることができる</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;example&quot;</span><span class="w"> </span><span class="nv">&quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">vpc_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.terraform_remote_state.foo.outputs.vpc_id</span>
+<span class="w">  </span><span class="na">subnet_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.terraform_remote_state.foo.outputs.vpc_private_subnet_ids</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他の他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/bar/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── resource.tf</span><span class="w"> </span><span class="c1"># fooのtfstateファイルから参照した状態を使用する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<h4 id="data">▼ <code>data</code>ブロックを使用する場合<a class="headerlink" href="#data" title="Permanent link">&para;</a></h4>
+<p><code>data</code>ブロックを使用する場合、以下のメリットがある。</p>
+<ul>
+<li><code>output</code>ブロックが不要で可読性が高い。</li>
+<li><code>data</code>ブロックは、<code>tfstate</code>ファイルが自身以外 (例：コンソール画面) で作成されたAWSリソースの状態を参照するために使用でき、異なる<code>tfstate</code>ファイルから状態を参照することにも使用できる。</li>
+</ul>
+<p>一方で以下のデメリットがある。</p>
+<ul>
+<li>依存先のAWSリソースごとにdataブロックを定義する必要がある。</li>
+</ul>
+<p>今回は<code>data</code>ブロックでは話を進めないが、こちらの方法で採用しても “他の<code>tfstate</code>ファイルに依存する” という考え方は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># VPCの状態は、fooのtfstateファイルで管理している</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_vpc&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="nb">filter</span><span class="w"> </span><span class="p">{</span>
+<span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tag:Name&quot;</span>
+<span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;異なるtfstateファイルで管理しているVPCの名前&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_subnet&quot;</span><span class="w"> </span><span class="nv">&quot;foo_private&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="nb">filter</span><span class="w"> </span><span class="p">{</span>
+<span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-id&quot;</span>
+<span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">data.aws_vpc.foo.id</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="nb">filter</span><span class="w"> </span><span class="p">{</span>
+<span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tag:Name&quot;</span>
+<span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;異なるtfstateファイルで管理しているVPCのプライベートサブネットの名前&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># barリソースは、fooのtfstateとは異なるbarのtfstateで管理している</span>
+<span class="c1"># barのtfstateは、fooのtfstateに依存していると考えることができる</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;example&quot;</span><span class="w"> </span><span class="nv">&quot;bar&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="na">vpc_id</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_vpc.foo.id</span>
+<span class="w">   </span><span class="na">subnet_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_subnet.foo_private.ids</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/bar/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── data.tf</span><span class="w"> </span><span class="c1"># dataブロックを使用し、fooのtfstateファイルから状態を参照する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── resource.tf</span><span class="w"> </span><span class="c1"># fooのtfstateファイルから参照した状態を使用する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_5">最上層ディレクトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ クラウドプロバイダーのアカウント<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>最上層ディレクトリはプロバイダーのアカウント別で<code>tfstate</code>ファイルを含むディレクトリを分割する。</p>
+<p>この場合は、ディレクトリではなくリポジトリ自体を別にしてしまっても良い。</p>
+<p><strong>プロバイダーが他プロバイダーの<code>tfstate</code>ファイルに依存することはない想定なので、<code>terraform_remote_state</code>ブロックを使用せずに完全に分割できるはずである。</strong></p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        PagerDuty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        Aws[tfstate]
+    end</code></pre>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>(例)</p>
+<p>分割した<code>tfstate</code>ファイルを同じリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── aws/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># aws用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── datadog/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># datadog用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── healthchecks/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># healthchecks用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── pagerduty/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tf</span><span class="w"> </span><span class="c1"># pagerduty用バックエンド内のterraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>(例)</p>
+<p>分割した<code>tfstate</code>ファイルを異なるリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend.tf</span><span class="w"> </span><span class="c1"># aws用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">datadog-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend.tf</span><span class="w"> </span><span class="c1"># datadog用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">healthchecks-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend.tf</span><span class="w"> </span><span class="c1"># healthchecks用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">pagerduty-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend.tf</span><span class="w"> </span><span class="c1"># pagerduty用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="nn">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">最下層ディレクトリ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ 実行環境別<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>実行環境別で<code>tfstate</code>ファイルを含むディレクトリを分割する。</p>
+<p>この場合は、リポジトリ自体は分割しない。</p>
+<p><strong>実行環境が他実行環境の<code>tfstate</code>ファイルに依存することはない想定なので、<code>terraform_remote_state</code>ブロックを使用せずに完全に分割できるはずである。</strong></p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        PagerDuty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            Tes[tfstate]
+        end
+        subgraph stg-bucket
+            Stg[tfstate]
+        end
+        subgraph prd-bucket
+            Prd[tfstate]
+        end
+    end</code></pre>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># aws用バックエンド内のterraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">datadog-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">healthchecks-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">pagerduty-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_9">中間層ディレクトリ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 同じテナントのプロダクト別<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>この場合は、ディレクトリではなくリポジトリ自体を別にしてしまっても良い。</p>
+<p>同じテナント (例：同じAWSアカウントの同じVPC) 内に複数のプロダクトがある場合に、プロダクト別でディレクトリを分割する。</p>
+<p>ここでいうプロダクトの粒度は、アプリを動かす EKS/ECS/AppRunner/EC2 とそれを取り巻くAWSリソースである。</p>
+<p>そもそも、プロダクトごとにVPCを分けるべきとは思っているが、実際にそういう構成に遭遇したので…😭</p>
+<p><strong>各プロダクトのtfstateファイルが共有コンポーネント (例：VPC) のそれに依存し、前者が<code>terraform_remote_state</code>ブロックを使用する可能性がある</strong></p>
+<p>(例)</p>
+<ul>
+<li>共有のnetwork系コンポーネント (例：VPC、Route53)</li>
+<li>foo-product</li>
+<li>bar-product</li>
+</ul>
+<p>があるとする。</p>
+<p>依存方向は矢印の通り。</p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            Foo[foo-product-tfstate]-..-&gt;Network
+            Bar[bar-product-tfstate]-..-&gt;Network
+            Network[network-tfstate]
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
+    end
+    subgraph prd-bucket
+        Prd[tfstate]
+    end
+    end</code></pre>
+<p>この場合のディレクトリ構成例は以下の通りである。</p>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<p>(例)</p>
+<p>分割した各<code>tfstate</code>ファイルを同じリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-product/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar-product/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>(例)</p>
+<p>分割した各<code>tfstate</code>ファイルを異なるリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-foo-product-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/foo-product/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-bar-product-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/bar-product/terraform.tfstate</span>
+<span class="w">       </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-network-repository</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/network/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/network/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo-product</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar-product</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<h4 id="_11">▼ 運用チーム責務範囲別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>運用チームのAWSリソースの責務範囲別でディレクトリを分割する。</p>
+<p>これは、インフラ寄りのチームに依頼することなく、アプリ寄りのチームが自律的にAWSリソースを変更できるようにするため分割する。</p>
+<p>この場合は、ディレクトリではなくリポジトリ自体を別にしてしまっても良い。</p>
+<p>この時、バックエンド（例：AWS S3、GCP GCS、など）のポリシー（例：IAM、バケットポリシー、など）で認可スコープを制御する。</p>
+<p><strong>それぞれの他のtfstateファイルを相互依存し、各運用チームが<code>terraform_remote_state</code>ブロックを使用する可能性がある</strong></p>
+<p>(例)</p>
+<p>以下のコンポーネントがあるとする。</p>
+<ul>
+<li>frontendチーム</li>
+<li>backendチーム</li>
+<li>sreチーム</li>
+</ul>
+<p>依存方向は矢印の通り。</p>
+<p>各チームがいずれのAWSリソースを管理するかによるが、依存関係が一方向にならない可能性がある。</p>
+<p><strong>これは、後述の “プロダクトのサブコンポーネント別との組み合わせ” で解消できる可能性がある。</strong></p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            Frontend["frontend-team-tfstate&lt;br&gt;(CloudFront, S3, など)"]
+            Backend["backend-team-tfstate&lt;br&gt;(API Gateway, ElastiCache, RDS, SES, SNS, など)"]
+            Sre["sre-team-tfstate&lt;br&gt;(ALB, CloudWatch, EC2, ECS, EKS, IAM, VPC, など)"]
+            Frontend-..-&gt;Sre
+            Backend-..-&gt;Sre
+            Sre-..-&gt;Frontend
+            Sre-..-&gt;Backend
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
+    end
+    subgraph prd-bucket
+        Prd[tfstate]
+    end
+    end</code></pre>
+<p>この場合のディレクトリ構成例は以下の通りである。</p>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<p>(例)</p>
+<p>分割した各<code>tfstate</code>ファイルを同じリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── frontend-team</span><span class="w"> </span><span class="c1"># frontendチーム</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── s3.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend-team</span><span class="w"> </span><span class="c1"># backendチーム</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── elasticache.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── sns.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── rds.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── sre-team</span><span class="w"> </span><span class="c1"># sreチーム</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── alb.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── cloudwatch.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ec2.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ecs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── eks.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>(例)</p>
+<p>分割した各<code>tfstate</code>ファイルを異なるリポジトリで管理する場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-frontend-team-repository/</span><span class="w"> </span><span class="c1"># frontendチーム</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── s3.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/frontend-team/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、backend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-backend-team-repository/</span><span class="w"> </span><span class="c1"># backendチーム</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">├── elasticache.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── sns.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── rds.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/backend-team/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、frontend-teamとsre-teamのtfstateファイルに依存している</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-sre-team-repository/</span><span class="w"> </span><span class="c1"># sreチーム</span>
+<span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">├── alb.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── cloudwatch.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── ec2.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── ecs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── eks.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── iam.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">├── tes</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── prd</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/sre-team/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── frontend-team</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend-team</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── sre-team</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<p>このプラクティスは、CloudFormationの<code>tfstate</code>ファイルの分割プラクティスにも記載がある。</p>
+<p><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#organizingstacks">AWS CloudFormation best practices - AWS CloudFormation</a></p>
+<h4 id="_12">▼ プロダクトのサブコンポーネント別<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>プロダクトのサブコンポーネント（アプリ、ネットワーク、認証認可、監視、など）別でディレクトリを分割する。</p>
+<p>この場合は、リポジトリ自体を別にすると管理が大変になるので、同じリポジトリで管理した方が良い。</p>
+<p>ディレクトリ名に番号をつけて、番号の小さい方から大きい方に依存関係の方向があることを明示するなどもあり。</p>
+<p>多くのAWSリソースを要する上位のコンポーネント (例：EKS、EC2) の<code>tfstate</code>ファイルが、いずれにも依存しない共有コンポーネント tfstateに依存し、前者が<code>terraform_remote_state</code>ブロックを使用する可能性がある</p>
+<p>(例)</p>
+<p>以下のコンポーネントがあるとする。</p>
+<ul>
+<li>application</li>
+<li>auth</li>
+<li>monitor</li>
+<li>network</li>
+</ul>
+<p>依存方向は矢印の通り。</p>
+<p><strong>依存関係が一方向になるなら、異なるコンポーネントに分けなくてもよい場合がある (applicationとmonitorは同じ<code>tfstate</code>ファイルで管理するなど) 。</strong></p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+    subgraph tes-bucket
+        Application["application-tfstate&lt;br&gt;Web3層と周辺AWSリソース&lt;br&gt;(ALB, APIGateway, CloudFront, EC2, ECS, EKS, RDS, S3, SNS, など)&lt;br&gt;"]
+        Auth["auth-tfstate&lt;br&gt;(IAMなど)"]
+        Monitor["monitor-tfstate&lt;br&gt;(CloudWatch, など)"]
+        Network["network-tfstate&lt;br&gt;(Route53, VPC, など)"]
+        Application-..-&gt;Network
+        Application-..-&gt;Auth
+        Monitor-..-&gt;Application
+    end
+    subgraph stg-bucket
+        Stg[tfstate]
+    end
+    subgraph prd-bucket
+        Prd[tfstate]
+    end
+    end</code></pre>
+<p>この場合のディレクトリ構成例は以下の通りである。</p>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── alb.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ec2.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ecs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── eks.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── sns.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── iam.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudwatch.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://charotamine.medium.com/terraform-organization-part-i-what-if-you-split-your-components-2fa3e8bf34b1">https://charotamine.medium.com/terraform-organization-part-i-what-if-you-split-your-components-2fa3e8bf34b1</a></li>
+<li><a href="https://www.endava.com/en/blog/Engineering/2019/11-Things-I-wish-I-knew-before-working-with-Terraform-I">https://www.endava.com/en/blog/Engineering/2019/11-Things-I-wish-I-knew-before-working-with-Terraform-I</a></li>
+</ul>
+</blockquote>
+<h4 id="aws">▼ AWSリソースの種類別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
+<p>AWSリソースの種類別にディレクトリを分割する。</p>
+<p>プロダクトのサブコンポーネントよりもさらに細かい。</p>
+<p><code>tfstate</code>ファイルの分割が細かすぎて、<code>terraform_remote_state</code>ブロックがたくさん必要になる可能性がある。</p>
+<p>実用性は度外視して、”同じ特徴のものをグループ化する” という作業自体が超楽しいし性癖に刺さるので、この分割方法は好きです！！！</p>
+<p>(例)</p>
+<p>以下のコンポーネントがあるとする。</p>
+<ul>
+<li>application</li>
+<li>auth</li>
+<li>datastore</li>
+<li>cicd</li>
+<li>monitor</li>
+<li>network</li>
+</ul>
+<p>依存方向は矢印の通り。</p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            Application[application-tfstate&lt;br&gt;例: ALB, API Gateway, CloudFront, EC2, ECS, EKS, SNS, など]
+            Auth[auth-tfstate&lt;br&gt;例: IAM, など]
+            Cicd[cicd-tfstate&lt;br&gt;例: Code3兄弟, など]
+            Monitor[monitor-tfstate&lt;br&gt;例: CloudWatch, など]
+            Network[network-tfstate&lt;br&gt;例: Route53, VPC, など]
+            Datastore[datastore-tfstate&lt;br&gt;例: ElastiCache, RDS, S3, など]
+            Application-....-&gt;Auth
+            Application-..-&gt;Datastore
+            Application-...-&gt;Network
+            Cicd-..-&gt;Application
+            Datastore-..-&gt;Network
+            Monitor-..-&gt;Application
+            Monitor-..-&gt;Datastore
+       end
+    subgraph stg-bucket
+        Stgtfstate[tfstate]
+    end
+    subgraph prd-bucket
+        Prdtfstate[tfstate]
+    end
+    end</code></pre>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── alb.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── api_gateway.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ec2.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ecs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── eks.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── sns.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── iam.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/auth/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── cicd/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── codebuild.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── codecommit.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── codedeploy.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/cicd/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/cicd/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/cicd/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── datastore/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── elasticache.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── rds.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── s3.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/datastore/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/datastore/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/datastore/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudwatch.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/network/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── cicd</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── datastore</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<h4 id="aws_1">▼ AWSリソースの状態の変更頻度別<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
+<p>AWSリソースの状態をどの程度の頻度で変更するか別にディレクトリを分割する。</p>
+<p>この場合は、リポジトリ自体を別にすると管理が大変になるので、同じリポジトリで管理した方が良い。</p>
+<p>変更頻度の大きい方がそれの小さい方に依存し、変更頻度の大きい方が<code>terraform_remote_state</code>ブロックを使用する可能性がある。</p>
+<p>(例)</p>
+<p>以下のコンポーネントがあるとする。</p>
+<ul>
+<li>変更高頻度</li>
+<li>中頻度</li>
+<li>低頻度</li>
+</ul>
+<p>依存方向は矢印の通り。</p>
+<pre class="mermaid"><code>
+%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            High[high-freq-tfstate&lt;br&gt;例: API Gateway, CloudFront, CloudWatch, IAM]-..-&gt;Low
+            Middle[middle-freq-tfstate&lt;br&gt;例: ALB, EC2, ECS, EKS, ElastiCache, RDS, S3, SES, SNS]-..-&gt;Low
+            Low[low-freq-tfstate&lt;br&gt;例: Route53, VPC]
+        end
+    subgraph stg-bucket
+        Stg[tfstate]
+    end
+    subgraph prd-bucket
+        Prd[tfstate]
+    end
+    end
+</code></pre>
+<p>この場合のディレクトリ構成例は以下の通りである。</p>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── high-freq</span><span class="w"> </span><span class="c1"># 高頻度変更リソース</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── api_gateway.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudwatch.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ec2.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ecs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── eks.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── iam.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/high-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/high-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/high-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── low-freq</span><span class="w"> </span><span class="c1"># 低頻度変更リソース</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── route53.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── vpc.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/low-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/low-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/low-freq/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── middle-freq</span><span class="w"> </span><span class="c1"># 中頻度変更リソース（高頻度とも低頻度とも言えないリソース）</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── elasticache.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── rds.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── s3.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ses.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/middle-freq/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/middle-freq/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/middle-freq/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── remote_state.tf</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、low-freqのtfstateファイルに依存してもよい</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットのディレクトリ構成</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── high-freq</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── middle-freq</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── low-freq</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<h4 id="blast-radius">▼ blast radius別：障害範囲、影響範囲<a class="headerlink" href="#blast-radius" title="Permanent link">&para;</a></h4>
+<p>記入中…</p>
+<p>(というか書いてもそういうユースケースの場面がないような…)</p>
+<h4 id="_13">▼ 運用チーム別 × プロダクトサブコンポーネント別<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>運用チーム責務範囲別とプロダクトサブコンポーネント別を組み合わせる。</p>
+<p>なお、Terraformの運用チームが一つだけしかなければ、プロダクトサブコンポーネントのみになる。</p>
+<p>組み合わせる場合は、まず大きく運用チームでディレクトリを切って、その下に各運用チームでサブコンポーネントを分割していく。</p>
+<p>(例)</p>
+<p>以下のコンポーネントがあるとする。</p>
+<ul>
+<li>frontendチーム</li>
+<li>application</li>
+<li>monitor</li>
+<li>backendチーム</li>
+<li>application</li>
+<li>monitor</li>
+<li>sreチーム</li>
+<li>application</li>
+<li>auth</li>
+<li>monitor</li>
+<li>network</li>
+</ul>
+<p><strong>依存関係が一方向になるなら、異なるコンポーネントに分けなくてもよい場合がある (applicationとmonitorは同じ<code>tfstate</code>ファイルで管理するなど) 。</strong></p>
+<p>運用チーム責務範囲別であると依存関係が一方向にならなかったが、プロダクトサブコンポーネントと組み合わせることにより、依存方向を一方向にする。</p>
+<p>backendチームとfrontendチームがいずれのAWSリソースを運用できるかは状況による。</p>
+<p>ただ、backendチームとfrontendチームがAWSリソースに詳しくなければ、sreチームがAWSリソースを構築し、以降はbackendチームとfrontendチームに運用を任せるような方法でもよい。</p>
+<p>依存方向は矢印の通り。</p>
+<pre class="mermaid"><code>%%{init:{'theme':'natural'}}%%
+flowchart TB
+    subgraph pagerduty
+        Pagerduty[tfstate]
+    end
+    subgraph healthchecks
+        Healthchecks[tfstate]
+    end
+    subgraph datadog
+        Datadog[tfstate]
+    end
+    subgraph aws
+        subgraph tes-bucket
+            subgraph frontend-team
+                 FrontendApplication["application-tfstate&lt;br&gt;(CloudFront, S3, など)&lt;br&gt;"]
+                 FrontendMonitor["monitor-tfstate&lt;br&gt;(CloudWatch, など)"]
+            end
+            subgraph backend-team
+                BackendApplication["application-tfstate&lt;br&gt;(API Gateway, ElastiCache, RDS, SES, SNS, など)&lt;br&gt;"]
+                BackendMonitor["monitor-tfstate&lt;br&gt;(CloudWatch, など)"]
+            end
+            subgraph sre-team
+                SreApplication["application-tfstate&lt;br&gt;Web3層と周辺AWSリソース&lt;br&gt;(ALB, EC2, ECS, EKS, SNS, など)&lt;br&gt;"]
+                Auth["auth-tfstate&lt;br&gt;(IAM, など)"]
+                SreMonitor["monitor-tfstate&lt;br&gt;(CloudWatch, など)"]
+                Network["network-tfstate&lt;br&gt;(Route53, VPC, など)"]
+            end
+            FrontendApplication-...-&gt;Network
+            SreApplication-...-&gt;Auth
+            SreApplication-...-&gt;Network
+            BackendApplication-...-&gt;Auth
+            BackendApplication-...-&gt;Network
+            FrontendMonitor-...-&gt;FrontendApplication
+            SreMonitor-...-&gt;SreApplication
+            BackendMonitor-...-&gt;BackendApplication
+       end
+    subgraph stg-bucket
+        Stgtfstate[tfstate]
+    end
+    subgraph prd-bucket
+        Prdtfstate[tfstate]
+    end
+    end</code></pre>
+<p>この場合のディレクトリ構成例は以下の通りである。</p>
+<p><code>tfstate</code>ファイルのコメントアウトは、バックエンド内のディレクトリ構成を示している。</p>
+<p>なお、クラウドプロバイダーはリポジトリで分割した前提とする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-frontend-team-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudfront.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/frontend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/frontend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/frontend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── monitor/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── cloudwatch.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/frontend-team/monitor/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/frontend-team/monitor/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/frontend-team/monitor/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-backend-team-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── api_gateway.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── elasticache.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── rds.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ses.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── sns.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/backend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/backend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/backend-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── monitor/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── cloudwatch.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/backend-team/monitor/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/backend-team/monitor/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/backend-team/monitor/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-sre-team-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── alb.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ec2.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── ecs.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── eks.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── iam.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/application/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── cloudwatch.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># tes用バックエンド内の/sre-team/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># stg用バックエンド内の/sre-team/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ├── backend.tfvars</span><span class="w"> </span><span class="c1"># prd用バックエンド内の/sre-team/monitor/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│       ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── provider.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── output.tf</span><span class="w"> </span><span class="c1"># 他のtfstateファイルを参照できるように、outputブロックを定義する</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── vpc.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/network/terraform.tfstate</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── backend.tfvars</span><span class="w"> </span><span class="c1"># バックエンド内の/sre-team/network/terraform.tfstate</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>また、S3バケット内のディレクトリ構成は以下の通りになるはずである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWSのtes用バケットの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">tes-bucket/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── frontend-team</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── application</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── monitor</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend-team</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── application</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── monitor</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── sre-team</span>
+<span class="l l-Scalar l-Scalar-Plain">├── application</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── auth</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── monitor</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── network</span>
+<span class="l l-Scalar l-Scalar-Plain">└── terraform.tfstate</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. ローカル/リモートモジュールのディレクトリ構成<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<p>ここから先の話は遊びみたいなもんです👶🏻</p>
+<p>ローカルモジュールとリモートモジュールは、”汎用的に使用できる<code>resource</code>ブロックや<code>data</code>ブロックのセット” である。</p>
+<p>これらは、モジュールがローカルリポジトリまたはリモートリポジトリのいずれにあるかの違いしかない。</p>
+<p>そのため、このディレクトリ構成はローカル / リモートモジュールの両方に適用できる。</p>
+<p>ローカルモジュールに関して、これをリポジトリ内で汎用的に使い回すユースケースのみ作成するべきである。</p>
+<p>そのためローカルモジュールに関しては、</p>
+<ul>
+<li>そもそもローカルモジュールを制限使用にする</li>
+<li>ローカルモジュールは自前リモートモジュール化する</li>
+<li>公式リモートモジュールを使用する</li>
+</ul>
+<p>のほうが良い。</p>
+<p>ローカル/リモートモジュールのディレクトリ構成に関して、<strong><code>tfstate</code>ファイルは粒度に関係ないので、これといった目安はない</strong>が、参考までに今までに観測したことのある例をあげた。</p>
+<p><br></p>
+<h3 id="aws_2">依存先AWSリソース別<a class="headerlink" href="#aws_2" title="Permanent link">&para;</a></h3>
+<p>依存先の多いAWSリソースに関して、依存先のAWSリソース別にローカルモジュールを分割する。</p>
+<p>依存先AWSリソース別の分割方法は、Terraformの公式リモートモジュールに一番多い構成である。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClass、など）</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClass、など）</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_14">リソース別<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>最上層は、AWSリソースで分割する。</p>
+<p>またスクリプトを使用するAWSリソース（例：Lambda）では、そのソースコードをモジュール下で管理する。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function/</span><span class="w"> </span><span class="c1"># とある関数</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function/</span><span class="w"> </span><span class="c1"># とある関数</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_15">リージョン別<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>AWSリソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。</p>
+<p>例えば、ACMは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_16">実行環境別<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>環境ごとに差分が大きいAWSリソースに関して、実行環境別にローカルモジュールを分割する。</p>
+<p>なおcountで条件分岐しても良い</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-tfstate">04. モノリスな<code>tfstate</code>ファイルを分割する<a class="headerlink" href="#04-tfstate" title="Permanent link">&para;</a></h2>
+<p>モノリスな<code>tfstate</code>ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの<code>tfstate</code>ファイルで管理している場合である。</p>
+<p>AWSリソース値を参照しない関係であれば、これらは別の<code>tfstate</code>ファイルに分割できる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>既存のバックエンド内に新しいディレクトリを作成し、その配下に<code>tfstate</code>ファイルを新しく作成する。</p>
+<p>ここでは、サブシステムを分割するとする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/bar/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tfvars</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── resource.tf</span><span class="w"> </span><span class="c1"># fooのtfstateファイルから参照した状態を使用する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-sub-system/terraform.tfstate&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>bar側では、foo側の<code>tfstate</code>ファイルからリソース値を取得しつつ、</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># 分割した異なるfooというtfstateファイルから取得する</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;terraform_remote_state&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span>
+
+<span class="w">  </span><span class="nb">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo/terraform.tfstate&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>新しい<code>tfstate</code>ファイルに、既存のサブシステムの状態をインポートする。</p>
+<p>事前に、バックエンドを新しいサブシステムの<code>tfstate</code>ファイルに切り替える。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>import
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>サブシステムの<code>tfstate</code>ファイルで差分がないことを確認する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>plan
+</code></pre></div>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>モノリスな<code>tfstate</code>ファイルから、サブシステムの状態を削除する。</p>
+<p>事前に、バックエンドをモノリスな<code>tfstate</code>ファイルに切り替える。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>&lt;サブシステムの状態&gt;
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

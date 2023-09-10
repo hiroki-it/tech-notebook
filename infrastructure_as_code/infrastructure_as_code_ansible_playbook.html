@@ -1,0 +1,4220 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Playbook＠Ansibleの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_ansible_command.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_ansible_cfg.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】 Playbook＠Ansible - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#playbookansible" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】 Playbook＠Ansible
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_15">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ IaC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3" checked>
+        
+          <label class="md-nav__link" for="__nav_15_3" id="__nav_15_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 手続き型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 手続き型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3_1" checked>
+        
+          <label class="md-nav__link" for="__nav_15_3_1" id="__nav_15_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Ansible
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Ansible
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_ansible_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Playbook
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_ansible_playbook.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Playbook
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-playbook" class="md-nav__link">
+    01. playbookファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="01. playbookファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#playbook" class="md-nav__link">
+    playbookファイルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-playbook" class="md-nav__link">
+    01-02. playbookファイルの切り分け
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. playbookファイルの切り分け">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    rolesディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="rolesディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roles_1" class="md-nav__link">
+    ▼ rolesディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handlers" class="md-nav__link">
+    ▼ handlersディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    ▼ taskディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    ▼ templateディレクトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_vars" class="md-nav__link">
+    group_varsディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="group_varsディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group_vars_1" class="md-nav__link">
+    ▼ group_varsディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_var" class="md-nav__link">
+    ▼ group_varファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host_vars" class="md-nav__link">
+    host_varsディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="host_varsディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host_vars_1" class="md-nav__link">
+    ▼ host_varsディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host_var" class="md-nav__link">
+    ▼ host_varファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventories" class="md-nav__link">
+    inventoriesディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="inventoriesディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventories_1" class="md-nav__link">
+    ▼ inventoriesディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    ▼ inventoryファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-roleshandlers" class="md-nav__link">
+    02. /roles/handlersセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02. /roles/handlersセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handlers_1" class="md-nav__link">
+    handlersセクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-rolestargets" class="md-nav__link">
+    02-02. /roles/targetsセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. /roles/targetsセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    targetsセクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    name
+  </a>
+  
+    <nav class="md-nav" aria-label="name">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_1" class="md-nav__link">
+    ▼ nameとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    hosts
+  </a>
+  
+    <nav class="md-nav" aria-label="hosts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hosts_1" class="md-nav__link">
+    ▼ hostsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#become" class="md-nav__link">
+    become
+  </a>
+  
+    <nav class="md-nav" aria-label="become">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#become_1" class="md-nav__link">
+    ▼ becomeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gather_facts" class="md-nav__link">
+    gather_facts
+  </a>
+  
+    <nav class="md-nav" aria-label="gather_facts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gather_facts_1" class="md-nav__link">
+    ▼ gather_factsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-rolestasks" class="md-nav__link">
+    02-03. /roles/tasksセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. /roles/tasksセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    tasksセクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinapt" class="md-nav__link">
+    ansible.builtin.apt
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.apt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinapt_1" class="md-nav__link">
+    ▼ ansible.builtin.aptとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinlineinfile" class="md-nav__link">
+    ansible.builtin.lineinfile
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.lineinfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinlineinfile_1" class="md-nav__link">
+    ▼ ansible.builtin.lineinfileとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile" class="md-nav__link">
+    ansible.builtin.file
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
+    ▼ ansible.builtin.fileとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltincopy" class="md-nav__link">
+    ansible.builtin.copy
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.copy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltincopy_1" class="md-nav__link">
+    ▼ ansible.builtin.copyとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinget_url" class="md-nav__link">
+    ansible.builtin.get_url
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.get_url">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinget_url_1" class="md-nav__link">
+    ▼ ansible.builtin.get_urlとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinservice" class="md-nav__link">
+    ansible.builtin.service
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinservice_1" class="md-nav__link">
+    ▼ ansible.builtin.serviceとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinshell" class="md-nav__link">
+    ansible.builtin.shell
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinshell_1" class="md-nav__link">
+    ▼ ansible.builtin.shellとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinsystemd" class="md-nav__link">
+    ansible.builtin.systemd
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinsystemd_1" class="md-nav__link">
+    ▼ ansible.builtin.systemdとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    ▼ state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltintemplate" class="md-nav__link">
+    ansible.builtin.template
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltintemplate_1" class="md-nav__link">
+    ▼ ansible.builtin.templateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinunarchive" class="md-nav__link">
+    ansible.builtin.unarchive
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.unarchive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinunarchive_1" class="md-nav__link">
+    ▼ ansible.builtin.unarchiveとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinuser" class="md-nav__link">
+    ansible.builtin.user
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinuser_1" class="md-nav__link">
+    ▼ ansible.builtin.userとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinyum" class="md-nav__link">
+    ansible.builtin.yum
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.yum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinyum_1" class="md-nav__link">
+    ▼ ansible.builtin.yumとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansible_env" class="md-nav__link">
+    ansible_env
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible_env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansible_env_1" class="md-nav__link">
+    ▼ ansible_envとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    environment
+  </a>
+  
+    <nav class="md-nav" aria-label="environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment_1" class="md-nav__link">
+    ▼ environmentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-04-rolesvars" class="md-nav__link">
+    02-04. /roles/varsセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-04. /roles/varsセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vars" class="md-nav__link">
+    varsセクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-05" class="md-nav__link">
+    02-05. プラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="02-05. プラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    lookup
+  </a>
+  
+    <nav class="md-nav" aria-label="lookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    ▼ env
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_ansible_cfg.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_ansible_galaxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible Galaxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Docker
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 宣言型
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-playbook" class="md-nav__link">
+    01. playbookファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="01. playbookファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#playbook" class="md-nav__link">
+    playbookファイルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-playbook" class="md-nav__link">
+    01-02. playbookファイルの切り分け
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. playbookファイルの切り分け">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    rolesディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="rolesディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roles_1" class="md-nav__link">
+    ▼ rolesディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handlers" class="md-nav__link">
+    ▼ handlersディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    ▼ taskディレクトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    ▼ templateディレクトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_vars" class="md-nav__link">
+    group_varsディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="group_varsディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#group_vars_1" class="md-nav__link">
+    ▼ group_varsディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group_var" class="md-nav__link">
+    ▼ group_varファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host_vars" class="md-nav__link">
+    host_varsディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="host_varsディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host_vars_1" class="md-nav__link">
+    ▼ host_varsディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host_var" class="md-nav__link">
+    ▼ host_varファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventories" class="md-nav__link">
+    inventoriesディレクトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="inventoriesディレクトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inventories_1" class="md-nav__link">
+    ▼ inventoriesディレクトリとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inventory" class="md-nav__link">
+    ▼ inventoryファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-roleshandlers" class="md-nav__link">
+    02. /roles/handlersセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02. /roles/handlersセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#handlers_1" class="md-nav__link">
+    handlersセクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-rolestargets" class="md-nav__link">
+    02-02. /roles/targetsセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. /roles/targetsセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#targets" class="md-nav__link">
+    targetsセクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    name
+  </a>
+  
+    <nav class="md-nav" aria-label="name">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#name_1" class="md-nav__link">
+    ▼ nameとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    hosts
+  </a>
+  
+    <nav class="md-nav" aria-label="hosts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hosts_1" class="md-nav__link">
+    ▼ hostsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#become" class="md-nav__link">
+    become
+  </a>
+  
+    <nav class="md-nav" aria-label="become">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#become_1" class="md-nav__link">
+    ▼ becomeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gather_facts" class="md-nav__link">
+    gather_facts
+  </a>
+  
+    <nav class="md-nav" aria-label="gather_facts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gather_facts_1" class="md-nav__link">
+    ▼ gather_factsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-rolestasks" class="md-nav__link">
+    02-03. /roles/tasksセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. /roles/tasksセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tasks" class="md-nav__link">
+    tasksセクションとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinapt" class="md-nav__link">
+    ansible.builtin.apt
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.apt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinapt_1" class="md-nav__link">
+    ▼ ansible.builtin.aptとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinlineinfile" class="md-nav__link">
+    ansible.builtin.lineinfile
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.lineinfile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinlineinfile_1" class="md-nav__link">
+    ▼ ansible.builtin.lineinfileとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile" class="md-nav__link">
+    ansible.builtin.file
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinfile_1" class="md-nav__link">
+    ▼ ansible.builtin.fileとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltincopy" class="md-nav__link">
+    ansible.builtin.copy
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.copy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltincopy_1" class="md-nav__link">
+    ▼ ansible.builtin.copyとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinget_url" class="md-nav__link">
+    ansible.builtin.get_url
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.get_url">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinget_url_1" class="md-nav__link">
+    ▼ ansible.builtin.get_urlとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinservice" class="md-nav__link">
+    ansible.builtin.service
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinservice_1" class="md-nav__link">
+    ▼ ansible.builtin.serviceとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinshell" class="md-nav__link">
+    ansible.builtin.shell
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.shell">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinshell_1" class="md-nav__link">
+    ▼ ansible.builtin.shellとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinsystemd" class="md-nav__link">
+    ansible.builtin.systemd
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinsystemd_1" class="md-nav__link">
+    ▼ ansible.builtin.systemdとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    ▼ state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltintemplate" class="md-nav__link">
+    ansible.builtin.template
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltintemplate_1" class="md-nav__link">
+    ▼ ansible.builtin.templateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinunarchive" class="md-nav__link">
+    ansible.builtin.unarchive
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.unarchive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinunarchive_1" class="md-nav__link">
+    ▼ ansible.builtin.unarchiveとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinuser" class="md-nav__link">
+    ansible.builtin.user
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinuser_1" class="md-nav__link">
+    ▼ ansible.builtin.userとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinyum" class="md-nav__link">
+    ansible.builtin.yum
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible.builtin.yum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansiblebuiltinyum_1" class="md-nav__link">
+    ▼ ansible.builtin.yumとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ansible_env" class="md-nav__link">
+    ansible_env
+  </a>
+  
+    <nav class="md-nav" aria-label="ansible_env">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ansible_env_1" class="md-nav__link">
+    ▼ ansible_envとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    environment
+  </a>
+  
+    <nav class="md-nav" aria-label="environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment_1" class="md-nav__link">
+    ▼ environmentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-04-rolesvars" class="md-nav__link">
+    02-04. /roles/varsセクション
+  </a>
+  
+    <nav class="md-nav" aria-label="02-04. /roles/varsセクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vars" class="md-nav__link">
+    varsセクションとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-05" class="md-nav__link">
+    02-05. プラグイン
+  </a>
+  
+    <nav class="md-nav" aria-label="02-05. プラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    lookup
+  </a>
+  
+    <nav class="md-nav" aria-label="lookup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    ▼ env
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="playbookansible">Playbook＠Ansible<a class="headerlink" href="#playbookansible" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<h2 id="01-playbook">01. playbookファイル<a class="headerlink" href="#01-playbook" title="Permanent link">&para;</a></h2>
+<h3 id="playbook">playbookファイルとは<a class="headerlink" href="#playbook" title="Permanent link">&para;</a></h3>
+<p>サーバーのセットアップ処理を設定する。</p>
+<p>処理を<code>roles</code>ディレクトリに切り分けても良い。</p>
+<p>切り分ける場合、<code>roles</code>ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>appサーバー、dbサーバー、webサーバーをセットアップする。</p>
+<p>各コンポーネントは<code>roles</code>ディレクトリに切り分けている。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># roleファイル</span>
+<span class="c1"># appサーバー</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">force_handlers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="c1"># rolesディレクトリ以下に処理を切り分ける。上から順にrolesを実行する。</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+
+<span class="c1"># dbサーバー</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">force_handlers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+
+<span class="c1"># webサーバー</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">force_handlers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── playbook.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">├── roles/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── shared/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── tasks/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── main.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── app/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── tasks/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── main.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── db/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── tasks/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── main.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── web/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── tasks/</span>
+<span class="l l-Scalar l-Scalar-Plain">│           └── main.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF</a></li>
+</ul>
+</blockquote>
+<h2 id="01-02-playbook">01-02. playbookファイルの切り分け<a class="headerlink" href="#01-02-playbook" title="Permanent link">&para;</a></h2>
+<h3 id="roles">rolesディレクトリ<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
+<h4 id="roles_1">▼ rolesディレクトリとは<a class="headerlink" href="#roles_1" title="Permanent link">&para;</a></h4>
+<p>特定の機能に関するタスクが設定されたファイルを配置する。</p>
+<p><code>playbook.yml</code>ファイルを切り分けるために使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://ansible-workbook.readthedocs.io/ja/latest/role/role.html">https://ansible-workbook.readthedocs.io/ja/latest/role/role.html</a></li>
+</ul>
+</blockquote>
+<h4 id="handlers">▼ handlersディレクトリ<a class="headerlink" href="#handlers" title="Permanent link">&para;</a></h4>
+<p>taskファイルの後続処理が設定されたhandlerファイルを配置する。</p>
+<p>taskファイルの<code>notify</code>オプションで指定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># handlerファイル</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restart php-fpm</span>
+<span class="w">  </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php-fpm</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restarted</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># taskファイル</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload www.conf</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php-fpm/www.conf.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/php-fpm.d/www.conf</span>
+<span class="w">  </span><span class="nt">notify</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># handlerの名前を指定する。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restart_php-fpm</span>
+</code></pre></div>
+<h4 id="task">▼ taskディレクトリ<a class="headerlink" href="#task" title="Permanent link">&para;</a></h4>
+<p>playbookファイルから切り分けたセットアップ処理が設定されたtaskファイルを配置する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>PHP製のアプリケーションが稼働するappサーバーをセットアップする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># taskファイル</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install software-properties-common</span>
+<span class="w">  </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">software-properties-common</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install packages</span>
+<span class="w">  </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pkg</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php-fpm</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php-pdo</span>
+<span class="w">  </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+<span class="w">  </span><span class="nt">notify</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restart_php-fpm</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload php.ini</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php.ini.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/php.ini</span>
+<span class="w">  </span><span class="nt">notify</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restart_php-fpm</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload www.conf</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php-fpm/www.conf.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/php-fpm.d/www.conf</span>
+<span class="w">  </span><span class="nt">notify</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restart_php-fpm</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup composer</span>
+<span class="w">  </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">    </span><span class="no"># Composerのセットアップ処理</span>
+
+<span class="w">    </span><span class="no">...</span>
+</code></pre></div>
+<h4 id="template">▼ templateディレクトリ<a class="headerlink" href="#template" title="Permanent link">&para;</a></h4>
+<p>アップロードファイルの鋳型となる<code>j2</code>ファイルを配置する。</p>
+<p>鋳型に変数を出力できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p><code>php.ini</code>ファイルの鋳型として、<code>php.ini.j2</code>ファイルを配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">; Start a new pool named &#39;www&#39;.</span>
+<span class="c1">; the variable $pool can we used in any directive and will be replaced by the</span>
+<span class="c1">; pool name (&#39;www&#39; here)</span>
+<span class="k">[www]</span>
+
+<span class="na">...</span>
+</code></pre></div>
+<h3 id="group_vars">group_varsディレクトリ<a class="headerlink" href="#group_vars" title="Permanent link">&para;</a></h3>
+<h4 id="group_vars_1">▼ group_varsディレクトリとは<a class="headerlink" href="#group_vars_1" title="Permanent link">&para;</a></h4>
+<p>複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。</p>
+<p><code>inventories</code>ディレクトリと同じ階層に配置し、加えて<code>inventory</code>ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。</p>
+<p>自動的に読み込まれ、<code>playbook</code>ファイルや<code>inventory</code>ファイルで出力できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97">https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97</a></li>
+</ul>
+</blockquote>
+<h4 id="group_var">▼ group_varファイル<a class="headerlink" href="#group_var" title="Permanent link">&para;</a></h4>
+<p>複数の管理対象ノードで使用する変数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># group_varファイル</span>
+<span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
+<span class="nt">ip_addresses</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.2</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.3</span>
+<span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22/tcp</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80/tcp</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443/tcp</span>
+</code></pre></div>
+<p>ポート番号のリストを<code>playbook</code>ファイルで出力する</p>
+<blockquote>
+<ul>
+<li><a href="https://bftnagoya.hateblo.jp/entry/2021/03/12/101207">https://bftnagoya.hateblo.jp/entry/2021/03/12/101207</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Add port</span>
+<span class="w">  </span><span class="nt">firewalld</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">item</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">permanent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">    </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public</span>
+<span class="w">  </span><span class="nt">with_items</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">ports</span><span class="nv"> </span><span class="s">}}&quot;</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restart firewalld</span>
+<span class="w">  </span><span class="nt">systemd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firewalld</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reloaded</span>
+</code></pre></div>
+<h3 id="host_vars">host_varsディレクトリ<a class="headerlink" href="#host_vars" title="Permanent link">&para;</a></h3>
+<h4 id="host_vars_1">▼ host_varsディレクトリとは<a class="headerlink" href="#host_vars_1" title="Permanent link">&para;</a></h4>
+<p>特定の管理対象ノードで使用する変数に関するファイルを配置する。</p>
+<h4 id="host_var">▼ host_varファイル<a class="headerlink" href="#host_var" title="Permanent link">&para;</a></h4>
+<p>特定の管理対象ノードで使用する変数を設定する。</p>
+<p><br></p>
+<h3 id="inventories">inventoriesディレクトリ<a class="headerlink" href="#inventories" title="Permanent link">&para;</a></h3>
+<h4 id="inventories_1">▼ inventoriesディレクトリとは<a class="headerlink" href="#inventories_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードの情報を設定する。</p>
+<p>Ansibleの実行時に、<code>-i</code>オプションでディレクトリを指定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge">https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ansible-playbook<span class="w"> </span>&lt;playbookファイル&gt;<span class="w"> </span>-i<span class="w"> </span>&lt;inventoriesディレクトリ&gt;
+</code></pre></div>
+<h4 id="inventory">▼ inventoryファイル<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードを設定する。</p>
+<p>複数の拡張子 (<code>ini</code>形式、<code>yml</code>形式、<code>json</code>形式) で定義でき、<code>ansible-inventory</code>コマンドで<code>ini</code>形式から他の形式に変換できる。</p>
+<p>ただし、<code>ini</code>形式の場合は拡張子をつけない方が良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。</p>
+<p>また、サーバーを冗長化している場合は、これも別々に定義しておく。</p>
+<p>プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat">https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat</a></li>
+<li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5</a></li>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini">https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>もし<code>yml</code>形式の場合は以下の通りとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
+<span class="c1"># テスト環境</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">all</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># 管理対象ノードのIPアドレス</span>
+<span class="w">        </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="w">        </span><span class="c1"># 管理対象ノードにログインするためのユーザー名</span>
+<span class="w">        </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+<span class="w">        </span><span class="c1"># 管理対象ノードにログインするためのパスワード</span>
+<span class="w">        </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+<span class="w">      </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="w">        </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+<span class="w">        </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+<span class="w">      </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+<span class="w">        </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+<span class="w">        </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vagrant</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
+<span class="c1"># 本番環境</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">all</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">children</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># 冗長化サーバーa</span>
+<span class="w">      </span><span class="nt">server_a</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># appサーバー</span>
+<span class="w">          </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># 管理対象ノードのIPアドレス</span>
+<span class="w">            </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.101</span>
+<span class="w">            </span><span class="c1"># 管理対象ノードにログインするためのユーザー名</span>
+<span class="w">            </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="c1"># 管理対象ノードにログインするためのパスワード</span>
+<span class="w">            </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="c1"># 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵</span>
+<span class="w">            </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ansible/ssh_keys/prd-foo.pem</span>
+<span class="w">          </span><span class="c1"># webサーバー</span>
+<span class="w">          </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.10</span>
+<span class="w">            </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ansible/ssh_keys/prd-foo.pem</span>
+<span class="w">      </span><span class="c1"># 冗長化サーバーc</span>
+<span class="w">      </span><span class="nt">server_c</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># appサーバー</span>
+<span class="w">          </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.102</span>
+<span class="w">            </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ansible/ssh_keys/prd-foo.pem</span>
+<span class="w">          </span><span class="c1"># webサーバー</span>
+<span class="w">          </span><span class="nt">web</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">ansible_host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.11</span>
+<span class="w">            </span><span class="nt">ansible_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu</span>
+<span class="w">            </span><span class="nt">ansible_ssh_private_key_file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ansible/ssh_keys/prd-foo.pem</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>もし<code>ini</code>形式の場合は以下の通りとなる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
+<span class="c1"># テスト環境</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1"># 冗長化サーバーa</span>
+<span class="c1"># -------------------</span>
+
+<span class="c1"># appサーバー</span>
+<span class="k">[server_a.hosts.app]</span>
+<span class="c1"># 管理対象ノードのIPアドレス</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.101</span>
+<span class="c1"># 管理対象ノードにログインするためのユーザー名</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="c1"># 管理対象ノードにログインするためのパスワード</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="c1"># 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># webサーバー</span>
+<span class="k">[server_a.hosts.web]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.10</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1"># 冗長化サーバーc</span>
+<span class="c1"># -------------------</span>
+
+<span class="c1"># appサーバー</span>
+<span class="k">[server_c.hosts.app]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.102</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># webサーバー</span>
+<span class="k">[server_c.hosts.web]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.11</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># inventoryファイル</span>
+<span class="c1"># 本番環境</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1"># 冗長化サーバーa</span>
+<span class="c1"># -------------------</span>
+
+<span class="c1"># appサーバー</span>
+<span class="k">[server_a.hosts.app]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.101</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># webサーバー</span>
+<span class="k">[server_a.hosts.web]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.10</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1"># 冗長化サーバーc</span>
+<span class="c1"># -------------------</span>
+
+<span class="c1"># appサーバー</span>
+<span class="k">[server_c.hosts.app]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.102</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+
+<span class="c1"># webサーバー</span>
+<span class="k">[server_c.hosts.web]</span>
+<span class="na">ansible_host</span><span class="o">=</span><span class="s">192.168.100.11</span>
+<span class="na">ansible_user</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_password</span><span class="o">=</span><span class="s">ubuntu</span>
+<span class="na">ansible_ssh_private_key_file</span><span class="o">=</span><span class="s">/etc/ansible/ssh_keys/prd-foo.pem</span>
+</code></pre></div>
+<h2 id="02-roleshandlers">02. /roles/handlersセクション<a class="headerlink" href="#02-roleshandlers" title="Permanent link">&para;</a></h2>
+<h3 id="handlers_1">handlersセクションとは<a class="headerlink" href="#handlers_1" title="Permanent link">&para;</a></h3>
+<p>taskセクションの後に実行するセットアップ処理を設定する。</p>
+<p><br></p>
+<h2 id="02-02-rolestargets">02-02. /roles/targetsセクション<a class="headerlink" href="#02-02-rolestargets" title="Permanent link">&para;</a></h2>
+<h3 id="targets">targetsセクションとは<a class="headerlink" href="#targets" title="Permanent link">&para;</a></h3>
+<p>プレイの実行先のノードを設定する。</p>
+<p>必須である。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
+</ul>
+</blockquote>
+<h3 id="name">name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h3>
+<h4 id="name_1">▼ nameとは<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
+<p>プレイの名前を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup nginx</span>
+</code></pre></div>
+<h3 id="hosts">hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h3>
+<h4 id="hosts_1">▼ hostsとは<a class="headerlink" href="#hosts_1" title="Permanent link">&para;</a></h4>
+<p>プレイの実行先のノードを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">all</span>
+</code></pre></div>
+<h3 id="become">become<a class="headerlink" href="#become" title="Permanent link">&para;</a></h3>
+<h4 id="become_1">▼ becomeとは<a class="headerlink" href="#become_1" title="Permanent link">&para;</a></h4>
+<p>プレイをroot権限で実行するか否かを設定する。</p>
+<p>root以外であれば、<code>become_user</code>キーを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">  </span><span class="nt">become_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-user</span>
+</code></pre></div>
+<h3 id="gather_facts">gather_facts<a class="headerlink" href="#gather_facts" title="Permanent link">&para;</a></h3>
+<h4 id="gather_facts_1">▼ gather_factsとは<a class="headerlink" href="#gather_facts_1" title="Permanent link">&para;</a></h4>
+<p>ファクト変数を収集するか否かを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no</span>
+</code></pre></div>
+<h2 id="02-03-rolestasks">02-03. /roles/tasksセクション<a class="headerlink" href="#02-03-rolestasks" title="Permanent link">&para;</a></h2>
+<h3 id="tasks">tasksセクションとは<a class="headerlink" href="#tasks" title="Permanent link">&para;</a></h3>
+<p>管理対象ノードで実行するセットアップ処理を手続き的に設定する。</p>
+<p>必須である。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
+</ul>
+</blockquote>
+<h3 id="ansiblebuiltinapt">ansible.builtin.apt<a class="headerlink" href="#ansiblebuiltinapt" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinapt_1">▼ ansible.builtin.aptとは<a class="headerlink" href="#ansiblebuiltinapt_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで、パッケージをaptリポジトリからインストールする。</p>
+<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html</a></li>
+<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
+<span class="w">  </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinlineinfile">ansible.builtin.lineinfile<a class="headerlink" href="#ansiblebuiltinlineinfile" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinlineinfile_1">▼ ansible.builtin.lineinfileとは<a class="headerlink" href="#ansiblebuiltinlineinfile_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードにあるファイルを行単位で編集する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>SELinuxを無効化する。</p>
+<blockquote>
+<ul>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook">https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># SELinuxを無効化します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Disable SELinux</span>
+<span class="w">  </span><span class="nt">ansible.builtin.lineinfile</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/selinux/config</span>
+<span class="w">    </span><span class="nt">regexp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^SELINUX=&quot;</span>
+<span class="w">    </span><span class="nt">line</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SELINUX=disabled&quot;</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinfile">ansible.builtin.file<a class="headerlink" href="#ansiblebuiltinfile" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinfile_1">▼ ansible.builtin.fileとは<a class="headerlink" href="#ansiblebuiltinfile_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードでファイルを操作する。</p>
+<blockquote>
+<ul>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro">https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>管理対象ノードで<code>chown</code>コマンドを実行することにより、ファイルの所有権を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update foo-binary permission</span>
+<span class="w">  </span><span class="nt">ansible.builtin.file</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/foo-binary</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+</code></pre></div>
+<h3 id="ansiblebuiltincopy">ansible.builtin.copy<a class="headerlink" href="#ansiblebuiltincopy" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltincopy_1">▼ ansible.builtin.copyとは<a class="headerlink" href="#ansiblebuiltincopy_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードのディレクトリにファイルをコピーする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 設定ファイルを配置します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy foo.json</span>
+<span class="w">  </span><span class="nt">ansible.builtin.copy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.json</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo.json</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0644</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinget_url">ansible.builtin.get_url<a class="headerlink" href="#ansiblebuiltinget_url" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinget_url_1">▼ ansible.builtin.get_urlとは<a class="headerlink" href="#ansiblebuiltinget_url_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで<code>curl</code>コマンドを実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url">https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Download tool</span>
+<span class="w">  </span><span class="nt">ansible.builtin.get_url</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-tool.tar.gz</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinservice">ansible.builtin.service<a class="headerlink" href="#ansiblebuiltinservice" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinservice_1">▼ ansible.builtin.serviceとは<a class="headerlink" href="#ansiblebuiltinservice_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで<code>service</code>コマンドの実行を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/2.9/modules/service_module.html">https://docs.ansible.com/ansible/2.9/modules/service_module.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># serviceコマンドを使用して、nginxを起動します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start nginx service</span>
+<span class="w">  </span><span class="nt">ansible.builtin.service</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start nginx</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinshell">ansible.builtin.shell<a class="headerlink" href="#ansiblebuiltinshell" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinshell_1">▼ ansible.builtin.shellとは<a class="headerlink" href="#ansiblebuiltinshell_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードでシェルを実行する。複数行に渡る場合は、『<code>|</code>』を使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html</a></li>
+<li><a href="https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/">https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo foo</span>
+<span class="w">  </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">echo foo</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fetch-config amazon-cloudwatch-agent.json</span>
+<span class="w">  </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \</span>
+<span class="w">      </span><span class="no">-a fetch-config \</span>
+<span class="w">      </span><span class="no">-m ec2 \</span>
+<span class="w">      </span><span class="no">-c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \</span>
+<span class="w">      </span><span class="no">-s</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinsystemd">ansible.builtin.systemd<a class="headerlink" href="#ansiblebuiltinsystemd" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinsystemd_1">▼ ansible.builtin.systemdとは<a class="headerlink" href="#ansiblebuiltinsystemd_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで<code>systemctl</code>コマンドの実行を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemdでnginxのプロセスを管理します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start nginx systemd</span>
+<span class="w">  </span><span class="nt">ansible.builtin.systemd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start nginx</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemdでcloudwatchエージェントのプロセスを管理します。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start cloudwatch-agent systemd</span>
+<span class="w">  </span><span class="nt">ansible.builtin.systemd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon-cloudwatch-agent</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">started</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+<span class="w">    </span><span class="nt">daemon_reload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+</code></pre></div>
+<h4 id="state">▼ state<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
+<p>ユニットの最終的な状態を設定する。</p>
+<table>
+<thead>
+<tr>
+<th>設定値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reloaded</code></td>
+<td>最終的な状態としてdeamon_reloadするように、ユニットを再読み込みする。</td>
+</tr>
+<tr>
+<td><code>restarted</code></td>
+<td>最終的な状態として再起動するように、ユニットを再起動する。</td>
+</tr>
+<tr>
+<td><code>started</code></td>
+<td>最終的な状態として停止しているように、ユニットを起動する。</td>
+</tr>
+<tr>
+<td><code>stopped</code></td>
+<td>最終的な状態として停止しているさうに、ユニットを停止する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://dekitakotono.blogspot.com/2019/05/systemd.html">https://dekitakotono.blogspot.com/2019/05/systemd.html</a></li>
+</ul>
+</blockquote>
+<h3 id="ansiblebuiltintemplate">ansible.builtin.template<a class="headerlink" href="#ansiblebuiltintemplate" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltintemplate_1">▼ ansible.builtin.templateとは<a class="headerlink" href="#ansiblebuiltintemplate_1" title="Permanent link">&para;</a></h4>
+<p>テンプレート (<code>.j2</code>ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload foo.conf</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.conf.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo/foo.conf</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinunarchive">ansible.builtin.unarchive<a class="headerlink" href="#ansiblebuiltinunarchive" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinunarchive_1">▼ ansible.builtin.unarchiveとは<a class="headerlink" href="#ansiblebuiltinunarchive_1" title="Permanent link">&para;</a></h4>
+<p>コントロールノードまたは管理対象ノードで<code>tar</code>コマンドを実行することにより、圧縮ファイルを解凍する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unarchive file</span>
+<span class="w">  </span><span class="nt">ansible.builtin.unarchive</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/foo-tool.tar.gz</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin</span>
+<span class="w">    </span><span class="nt">remote_src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span><span class="w"> </span><span class="c1"># 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinuser">ansible.builtin.user<a class="headerlink" href="#ansiblebuiltinuser" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinuser_1">▼ ansible.builtin.userとは<a class="headerlink" href="#ansiblebuiltinuser_1" title="Permanent link">&para;</a></h4>
+<p>シェルのユーザーを操作する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>ユーザーを作成する。</p>
+<p>無効なシェルを設定し、ログインできないようにしておく。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">add user</span>
+<span class="w">  </span><span class="nt">ansible.builtin.user</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">shell</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/false</span>
+</code></pre></div>
+<h3 id="ansiblebuiltinyum">ansible.builtin.yum<a class="headerlink" href="#ansiblebuiltinyum" title="Permanent link">&para;</a></h3>
+<h4 id="ansiblebuiltinyum_1">▼ ansible.builtin.yumとは<a class="headerlink" href="#ansiblebuiltinyum_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードで、パッケージをyumリポジトリからインストールする。</p>
+<p>任意のバージョンのパッケージをインストールする場合は、<code>name</code>キーにそれを指定し、<code>state</code>キーの値は<code>present</code>とする。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html">https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html</a></li>
+<li><a href="https://qiita.com/tkit/items/7ad3e93070e97033f604">https://qiita.com/tkit/items/7ad3e93070e97033f604</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Nginx</span>
+<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx=1.0.0</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># epelリポジトリをインストールします。</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install epel-release</span>
+<span class="w">  </span><span class="nt">ansible.builtin.yum</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+</code></pre></div>
+<h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
+<h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
+<p>管理対象ノードに設定された環境変数を出力する。</p>
+<p><code>gather_facts</code>オプションを有効化する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell">https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell</a></li>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env">https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>管理対象ノードの環境変数の<code>FOO</code>を出力する。</p>
+<p><code>gather_facts</code>オプションを有効化しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ansible_env.FOO</span>
+</code></pre></div>
+<h3 id="environment">environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h3>
+<h4 id="environment_1">▼ environmentとは<a class="headerlink" href="#environment_1" title="Permanent link">&para;</a></h4>
+<p>task内で出力できる環境変数を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html">https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Echo foo</span>
+<span class="w">  </span><span class="nt">ansible.builtin.shell</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">echo foo</span>
+<span class="w">    </span><span class="no">echo &quot;${FOO}&quot;</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+</code></pre></div>
+<h2 id="02-04-rolesvars">02-04. /roles/varsセクション<a class="headerlink" href="#02-04-rolesvars" title="Permanent link">&para;</a></h2>
+<h3 id="vars">varsセクションとは<a class="headerlink" href="#vars" title="Permanent link">&para;</a></h3>
+<p>プレイで使用する設定値を変数として設定する。</p>
+<p>設定した変数は、<code>ansible.builtin.template</code>オプションを使用して<code>j2</code>ファイルに出力できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://blog.katsubemakito.net/ansible/ansible-1st-4">https://blog.katsubemakito.net/ansible/ansible-1st-4</a></li>
+<li><a href="https://ksaito11.hatenablog.com/entry/2018/10/24/232929">https://ksaito11.hatenablog.com/entry/2018/10/24/232929</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload foo.conf</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.conf.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo/foo.conf</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># foo.conf.j2ファイル</span>
+<span class="p p-Indicator">{{</span><span class="nv">foo</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h2 id="02-05">02-05. プラグイン<a class="headerlink" href="#02-05" title="Permanent link">&para;</a></h2>
+<h3 id="lookup">lookup<a class="headerlink" href="#lookup" title="Permanent link">&para;</a></h3>
+<h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
+<p>コントロールノードに設定された環境変数を出力する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell">https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell</a></li>
+<li><a href="https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env">https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>コントロールノードの環境変数の<code>FOO</code>を出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload foo.conf</span>
+<span class="w">  </span><span class="nt">ansible.builtin.template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.conf.j2</span>
+<span class="w">    </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/foo/foo.conf</span>
+<span class="w">  </span><span class="nt">vars</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lookup(&quot;env&quot;,</span><span class="nv"> </span><span class="s">&quot;FOO&quot;)&#39;</span>
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-04</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,5051 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="アクション＠チャートの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_manifests_management_helm_policy.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】関数＠チャート - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】関数＠チャート
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="kubernetes/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_16">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            ☸️ K8s
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetes
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kubernetesリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ カスタムリソース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ハードウェアリソース管理
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 開発
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_7" checked>
+        
+          <label class="md-nav__link" for="__nav_16_7" id="__nav_16_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ マニフェスト管理
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ マニフェスト管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_7_1" checked>
+        
+          <label class="md-nav__link" for="__nav_16_7_1" id="__nav_16_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Helm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Helm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コマンド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_7_1_3" checked>
+        
+          <label class="md-nav__link" for="__nav_16_7_1_3" id="__nav_16_7_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ チャート
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_7_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_7_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ チャート
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    チャート
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    共通項目
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    関数
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    関数
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 変数
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    予約された変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ローカルスコープの変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    条件内スコープの変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    グローバルスコープの変数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-helm" class="md-nav__link">
+    02. Helmのコメントアウト
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. テンプレート作成の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="03. テンプレート作成の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    テンプレート作成の関数とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    include
+  </a>
+  
+    <nav class="md-nav" aria-label="include">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#include_1" class="md-nav__link">
+    ▼ includeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    template
+  </a>
+  
+    <nav class="md-nav" aria-label="template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template_1" class="md-nav__link">
+    ▼ templateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-values" class="md-nav__link">
+    04. valuesファイルの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="04. valuesファイルの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values_1" class="md-nav__link">
+    ▼ Valuesとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    ▼ metadataキーで使用する場合の注意点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default
+  </a>
+  
+    <nav class="md-nav" aria-label="default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_1" class="md-nav__link">
+    ▼ defaultとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ キーが存在しなくてもデフォルト値を表現
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toyaml" class="md-nav__link">
+    toYaml
+  </a>
+  
+    <nav class="md-nav" aria-label="toYaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toyaml_1" class="md-nav__link">
+    ▼ toYamlとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    ▼ map型の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list型の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. キーパスの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="05. キーパスの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    キーパスの関数とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    . (ドット)
+  </a>
+  
+    <nav class="md-nav" aria-label=". (ドット)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ドットとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    $ (ドル)
+  </a>
+  
+    <nav class="md-nav" aria-label="$ (ドル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ドルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. ループの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="06. ループの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+    <nav class="md-nav" aria-label="range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range_1" class="md-nav__link">
+    ▼ rangeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ マップ型を扱う場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 配列型を扱う場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    with
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    required
+  </a>
+  
+    <nav class="md-nav" aria-label="required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required_1" class="md-nav__link">
+    ▼ requiredとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. データ型変換の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="07. データ型変換の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fromyaml" class="md-nav__link">
+    fromYaml
+  </a>
+  
+    <nav class="md-nav" aria-label="fromYaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fromyaml_1" class="md-nav__link">
+    ▼ fromYamlとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitlist" class="md-nav__link">
+    splitList
+  </a>
+  
+    <nav class="md-nav" aria-label="splitList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#splitlist_1" class="md-nav__link">
+    ▼ splitListとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-string" class="md-nav__link">
+    08. string型の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="08. string型の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    printf
+  </a>
+  
+    <nav class="md-nav" aria-label="printf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#printf_1" class="md-nav__link">
+    ▼ printfとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ エスケープ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trimsuffix" class="md-nav__link">
+    trimSuffix
+  </a>
+  
+    <nav class="md-nav" aria-label="trimSuffix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trimsuffix_1" class="md-nav__link">
+    ▼ trimSuffixとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-02-list" class="md-nav__link">
+    08-02. list型の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="08-02. list型の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+    <nav class="md-nav" aria-label="last">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last_1" class="md-nav__link">
+    ▼ lastとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. セキュリティに関する機能
+  </a>
+  
+    <nav class="md-nav" aria-label="09. セキュリティに関する機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b64enc" class="md-nav__link">
+    b64enc
+  </a>
+  
+    <nav class="md-nav" aria-label="b64enc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b64enc_1" class="md-nav__link">
+    ▼ b64encとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 変化しない一意な名前
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genca" class="md-nav__link">
+    genCA
+  </a>
+  
+    <nav class="md-nav" aria-label="genCA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genca_1" class="md-nav__link">
+    ▼ genCA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sha256sum" class="md-nav__link">
+    sha256sum
+  </a>
+  
+    <nav class="md-nav" aria-label="sha256sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha256sum_1" class="md-nav__link">
+    ▼ sha256sumとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. インデントの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="10. インデントの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    - (ハイフン)
+  </a>
+  
+    <nav class="md-nav" aria-label="- (ハイフン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    ▼ {{-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    ▼ -}}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indent" class="md-nav__link">
+    indent
+  </a>
+  
+    <nav class="md-nav" aria-label="indent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indent_1" class="md-nav__link">
+    ▼ indentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nindent" class="md-nav__link">
+    nindent
+  </a>
+  
+    <nav class="md-nav" aria-label="nindent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nindent_1" class="md-nav__link">
+    ▼ nindentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 検証の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 検証の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#haskey" class="md-nav__link">
+    hasKey
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    12. 条件分岐の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 条件分岐の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    単一条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    AND条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    OR条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    NOT条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    13. ファイル系
+  </a>
+  
+    <nav class="md-nav" aria-label="13. ファイル系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. 例外処理系
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 例外処理系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fail" class="md-nav__link">
+    fail
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_policy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設計規約
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Helmfile
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kustomize
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. 変数
+  </a>
+  
+    <nav class="md-nav" aria-label="01. 変数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    予約された変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ローカルスコープの変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    条件内スコープの変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    グローバルスコープの変数
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-helm" class="md-nav__link">
+    02. Helmのコメントアウト
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. テンプレート作成の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="03. テンプレート作成の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    テンプレート作成の関数とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#include" class="md-nav__link">
+    include
+  </a>
+  
+    <nav class="md-nav" aria-label="include">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#include_1" class="md-nav__link">
+    ▼ includeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template" class="md-nav__link">
+    template
+  </a>
+  
+    <nav class="md-nav" aria-label="template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#template_1" class="md-nav__link">
+    ▼ templateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-values" class="md-nav__link">
+    04. valuesファイルの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="04. valuesファイルの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values" class="md-nav__link">
+    Values
+  </a>
+  
+    <nav class="md-nav" aria-label="Values">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#values_1" class="md-nav__link">
+    ▼ Valuesとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    ▼ metadataキーで使用する場合の注意点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    default
+  </a>
+  
+    <nav class="md-nav" aria-label="default">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default_1" class="md-nav__link">
+    ▼ defaultとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ キーが存在しなくてもデフォルト値を表現
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toyaml" class="md-nav__link">
+    toYaml
+  </a>
+  
+    <nav class="md-nav" aria-label="toYaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#toyaml_1" class="md-nav__link">
+    ▼ toYamlとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    ▼ map型の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list型の場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. キーパスの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="05. キーパスの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    キーパスの関数とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    . (ドット)
+  </a>
+  
+    <nav class="md-nav" aria-label=". (ドット)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ドットとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    $ (ドル)
+  </a>
+  
+    <nav class="md-nav" aria-label="$ (ドル)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ドルとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. ループの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="06. ループの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range" class="md-nav__link">
+    range
+  </a>
+  
+    <nav class="md-nav" aria-label="range">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#range_1" class="md-nav__link">
+    ▼ rangeとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ マップ型を扱う場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 配列型を扱う場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    with
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#required" class="md-nav__link">
+    required
+  </a>
+  
+    <nav class="md-nav" aria-label="required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required_1" class="md-nav__link">
+    ▼ requiredとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    07. データ型変換の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="07. データ型変換の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fromyaml" class="md-nav__link">
+    fromYaml
+  </a>
+  
+    <nav class="md-nav" aria-label="fromYaml">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fromyaml_1" class="md-nav__link">
+    ▼ fromYamlとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splitlist" class="md-nav__link">
+    splitList
+  </a>
+  
+    <nav class="md-nav" aria-label="splitList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#splitlist_1" class="md-nav__link">
+    ▼ splitListとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-string" class="md-nav__link">
+    08. string型の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="08. string型の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contains" class="md-nav__link">
+    contains
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf" class="md-nav__link">
+    printf
+  </a>
+  
+    <nav class="md-nav" aria-label="printf">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#printf_1" class="md-nav__link">
+    ▼ printfとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ エスケープ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trimsuffix" class="md-nav__link">
+    trimSuffix
+  </a>
+  
+    <nav class="md-nav" aria-label="trimSuffix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trimsuffix_1" class="md-nav__link">
+    ▼ trimSuffixとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-02-list" class="md-nav__link">
+    08-02. list型の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="08-02. list型の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last" class="md-nav__link">
+    last
+  </a>
+  
+    <nav class="md-nav" aria-label="last">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#last_1" class="md-nav__link">
+    ▼ lastとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. セキュリティに関する機能
+  </a>
+  
+    <nav class="md-nav" aria-label="09. セキュリティに関する機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b64enc" class="md-nav__link">
+    b64enc
+  </a>
+  
+    <nav class="md-nav" aria-label="b64enc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b64enc_1" class="md-nav__link">
+    ▼ b64encとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 変化しない一意な名前
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genca" class="md-nav__link">
+    genCA
+  </a>
+  
+    <nav class="md-nav" aria-label="genCA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genca_1" class="md-nav__link">
+    ▼ genCA
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sha256sum" class="md-nav__link">
+    sha256sum
+  </a>
+  
+    <nav class="md-nav" aria-label="sha256sum">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sha256sum_1" class="md-nav__link">
+    ▼ sha256sumとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    10. インデントの関数
+  </a>
+  
+    <nav class="md-nav" aria-label="10. インデントの関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    - (ハイフン)
+  </a>
+  
+    <nav class="md-nav" aria-label="- (ハイフン)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-_1" class="md-nav__link">
+    ▼ {{-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-_2" class="md-nav__link">
+    ▼ -}}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indent" class="md-nav__link">
+    indent
+  </a>
+  
+    <nav class="md-nav" aria-label="indent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#indent_1" class="md-nav__link">
+    ▼ indentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nindent" class="md-nav__link">
+    nindent
+  </a>
+  
+    <nav class="md-nav" aria-label="nindent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nindent_1" class="md-nav__link">
+    ▼ nindentとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    11. 検証の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 検証の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#haskey" class="md-nav__link">
+    hasKey
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    12. 条件分岐の関数
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 条件分岐の関数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    単一条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    AND条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    OR条件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    NOT条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    13. ファイル系
+  </a>
+  
+    <nav class="md-nav" aria-label="13. ファイル系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#files" class="md-nav__link">
+    Files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    14. 例外処理系
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 例外処理系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fail" class="md-nav__link">
+    fail
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">関数＠チャート<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. 変数<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">予約された変数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>デプロイツール内 (例：ArgoCD、Flux) でHelmを使用する場合、そのツールの実行環境に応じたバージョン値になる。</p>
+<table>
+<thead>
+<tr>
+<th>変数名</th>
+<th>デフォルト値</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.Release.Name</code></td>
+<td></td>
+<td>リリース名</td>
+</tr>
+<tr>
+<td><code>.Release.Time</code></td>
+<td></td>
+<td>リリースした時間</td>
+</tr>
+<tr>
+<td><code>.Release.Namespace</code></td>
+<td></td>
+<td>リリースされる名前空間</td>
+</tr>
+<tr>
+<td><code>.Release.Service</code></td>
+<td><code>v3</code>の場合<code>Helm</code>、<code>v2</code></td>
+<td>リリースに使用したツール名</td>
+</tr>
+<tr>
+<td><code>.Release.Revision</code></td>
+<td></td>
+<td>リリースのリビジョン番号</td>
+</tr>
+<tr>
+<td><code>.Release.IsUpgrade</code></td>
+<td></td>
+<td>upgradeかrollback操作の場合、trueがセットされる</td>
+</tr>
+<tr>
+<td><code>.Release.IsInstall</code></td>
+<td></td>
+<td>install操作の場合、trueがセットされる</td>
+</tr>
+<tr>
+<td><code>.Values</code></td>
+<td></td>
+<td>values.yamlもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
+</tr>
+<tr>
+<td><code>.Chart.ApiVersion</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャートAPIのバージョン</td>
+</tr>
+<tr>
+<td><code>.Chart.Name</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャートの名前</td>
+</tr>
+<tr>
+<td><code>.Chart.Version</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャート自体のバージョン</td>
+</tr>
+<tr>
+<td><code>.Chart.KubeVersion</code></td>
+<td></td>
+<td>Chart.yamlに記載される互換性のあるKubernetesバージョン</td>
+</tr>
+<tr>
+<td><code>.Chart.Description</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャートの概要一文</td>
+</tr>
+<tr>
+<td><code>.Chart.Home</code></td>
+<td></td>
+<td>Chart.yamlに記載されるサイトのURL</td>
+</tr>
+<tr>
+<td><code>.Chart.Sources</code></td>
+<td></td>
+<td>Chart.yamlに記載されるソースコードのURL</td>
+</tr>
+<tr>
+<td><code>.Chart.Maintainers</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャートのメンテナーの名前とEmail（配列）</td>
+</tr>
+<tr>
+<td><code>.Chart.engine</code></td>
+<td></td>
+<td>Chart.yamlに記載されるテンプレートエンジン</td>
+</tr>
+<tr>
+<td><code>.Chart.Icon</code></td>
+<td></td>
+<td>Chart.yamlに記載されるアイコンのURL</td>
+</tr>
+<tr>
+<td><code>.Chart.AppVersion</code></td>
+<td></td>
+<td>Chart.yamlに記載されるコンテナアプリのバージョン</td>
+</tr>
+<tr>
+<td><code>.Chart.Deprecated</code></td>
+<td></td>
+<td>Chart.yamlに記載されるチャートの推奨／非推奨（boolean値）</td>
+</tr>
+<tr>
+<td><code>.Capabilities.APIVersions</code></td>
+<td></td>
+<td>Kubernetesリソースのバージョン</td>
+</tr>
+<tr>
+<td><code>.Capabilities.APIVersions.Has</code></td>
+<td></td>
+<td>そのkube-apiserverのバージョンで、そのAPIバージョンを使用可能かどうか。例えば、EndpointSliceは特定のバージョン以降でしか使用できない。<br>- <a href="https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91">https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91</a></td>
+</tr>
+<tr>
+<td><code>.Capabilities.KubeVersion</code></td>
+<td></td>
+<td>コンテキストのKubernetesバージョン</td>
+</tr>
+<tr>
+<td><code>.Template.Name</code></td>
+<td></td>
+<td>カレントパスの相対ファイルパス</td>
+</tr>
+<tr>
+<td><code>.Template.BasePath</code></td>
+<td></td>
+<td>チャートのtemplatesディレクトリの相対パス</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/builtin_objects/">https://helm.sh/docs/chart_template_guide/builtin_objects/</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042">https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">ローカルスコープの変数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>同じファイル内で使用できる変数を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $domain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//</span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.serviceName</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="nv">.argocd.com&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042">https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042</a></li>
+<li><a href="https://kb.novaordis.com/index.php/Helm_Variables">https://kb.novaordis.com/index.php/Helm_Variables</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">条件内スコープの変数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>条件分岐で定義した変数は、<code>{{- if }}</code>から<code>{{- end }}</code>までしか使用できない。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if .Values.isProduction</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- $prefix</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= &quot;nonprd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"> </span><span class="c1"># 変数を使用する。</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p>条件数が2`個しかない場合であれば、三項演算子の結果を変数に格納できる。</p>
+<p>そのため、<code>{{- if }}</code>から<code>{{- end }}</code>の外側でも変数を使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 実行環境はdevかprdしかないものとする。</span>
+<span class="c1"># .values.environmentが &quot;prd&quot; の場合はprintf関数でサブドメインを作成し、それではない場合は空文字とする</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $subDomain</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ternary (printf &quot;%s.&quot; .values.environment ) &quot;&quot; .values.environment &quot;prd&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://{{ $subDomain }}{{.Values.serviceName }}.com</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/57600807">https://stackoverflow.com/a/57600807</a></li>
+<li><a href="https://stackoverflow.com/a/67886552">https://stackoverflow.com/a/67886552</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">グローバルスコープの変数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>テンプレートの関数 (例：<code>include</code>、<code>template</code>) 、<code>_helpers.tpl</code>ファイルで定義する。</p>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042">https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-helm">02. Helmのコメントアウト<a class="headerlink" href="#02-helm" title="Permanent link">&para;</a></h2>
+<p>Helmのテンプレート内にコメントアウトを定義する。</p>
+<p><code>*/}}</code>にはスペースを含めずに、一繋ぎで定義する。</p>
+<p>YAMLのコメントアウト (例：<code>#</code>) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。</p>
+<p>Helmのコメントの前に不要な改行が挿入されないように、<code>{{-</code>とする方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- /* コメント */</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p>もしコメントの後にも改行が挿入されてしまう場合は、<code>-}}</code>も付ける。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- /* コメント */-</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments">https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments</a></li>
+</ul>
+</blockquote>
+<p><code>*/}}</code>にはスペースを含めずに、一繋ぎで定義する。</p>
+<p><br></p>
+<h2 id="03">03. テンプレート作成の関数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_7">テンプレート作成の関数とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>template</code>ディレクトリ配下のテンプレートを出力する。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/control_structures/">https://helm.sh/docs/chart_template_guide/control_structures/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="include">include<a class="headerlink" href="#include" title="Permanent link">&para;</a></h3>
+<h4 id="include_1">▼ includeとは<a class="headerlink" href="#include_1" title="Permanent link">&para;</a></h4>
+<p><code>define</code>関数で定義したテンプレートを加工して出力する。</p>
+<p>加工内容はパラメーターで設定できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function">https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function</a></li>
+<li><a href="https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function">https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
+<h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
+<p><code>define</code>関数で定義したテンプレートをそのまま出力する。</p>
+<p><code>template</code>関数では出力内容を変数に格納できないため、これが可能な<code>include</code>関数が推奨されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function">https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function</a></li>
+<li><a href="https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da">https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-values">04. <code>values</code>ファイルの関数<a class="headerlink" href="#04-values" title="Permanent link">&para;</a></h2>
+<h3 id="values">Values<a class="headerlink" href="#values" title="Permanent link">&para;</a></h3>
+<h4 id="values_1">▼ Valuesとは<a class="headerlink" href="#values_1" title="Permanent link">&para;</a></h4>
+<p><code>values</code>ファイルの特定のキー値を出力する。</p>
+<p>特定の条件下で、<code>values</code>ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="w">  </span><span class="nt">appName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.global.env</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-{{ .Values.global.appName }}-pod</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Values.global.appName</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/helm/issues/8026">https://github.com/helm/helm/issues/8026</a></li>
+</ul>
+</blockquote>
+<h4 id="metadata">▼ metadataキーで使用する場合の注意点<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h4>
+<p>マニフェストの<code>`.metadata.</code>キーの値には文字列しか設定できない。</p>
+<p><code>values</code>ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。</p>
+<p>そのため、metadataキーの値にint型を出力しようとしてエラーになってしまう。</p>
+<p>int型にならないように、<code>values</code>ファイルの出力先をダブルクオーテーションで囲うと良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># マニフェストで、int型で出力しようとする。</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># int型にならないように、ダブルクオーテーションで囲う。</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">.Values.metadata.labels.id</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields">https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/#required-fields</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="default">default<a class="headerlink" href="#default" title="Permanent link">&para;</a></h3>
+<h4 id="default_1">▼ defaultとは<a class="headerlink" href="#default_1" title="Permanent link">&para;</a></h4>
+<p>出力された値が空文字 (<code>""</code>) や<code>false</code>の場合に、それを上書きしてデフォルト値として出力する。</p>
+<p>キー自体は存在しなければならず、省略することはできないことに注意する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | default &quot;foo&quot;</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm-playground.com/cheatsheet.html#variables">https://helm-playground.com/cheatsheet.html#variables</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ キーが存在しなくてもデフォルト値を表現<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><code>isFoo</code>キーが存在し、また<code>true</code>だった場合にマニフェストを出力する。</p>
+<p>これにより、キーが存在しなくとも<code>false</code>が設定されているように振る舞える。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">isFoo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="nt">bar</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">params</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo &quot;isFoo&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if eq .Values.foo.isFoo true</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- else }}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+</code></pre></div>
+<p><br></p>
+<p><br></p>
+<h3 id="toyaml">toYaml<a class="headerlink" href="#toyaml" title="Permanent link">&para;</a></h3>
+<h4 id="toyaml_1">▼ toYamlとは<a class="headerlink" href="#toyaml_1" title="Permanent link">&para;</a></h4>
+<p>出力されたデータをそのままの形で出力する。</p>
+<p><code>values</code>ファイルにmap型やlist型をそのまま出力する場合に使用する。</p>
+<h4 id="map">▼ map型の場合<a class="headerlink" href="#map" title="Permanent link">&para;</a></h4>
+<p>map型を出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">- toYaml .Values.parameters | nindent 2</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0">https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0</a></li>
+</ul>
+</blockquote>
+<h4 id="list">▼ list型の場合<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
+<p>list型を出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">containers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:latest</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">- toYaml .Values.containers | nindent 4</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05">05. キーパスの関数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_9">キーパスの関数とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>テンプレートや<code>values</code>ファイルを出力する時に、特定のキーパスにアクセスする。</p>
+<p><br></p>
+<h3 id="_10"><code>.</code> (ドット)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ ドットとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>テンプレートの内容をルートから出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">baz</span><span class="p">:</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; .</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_12"><code>$</code> (ドル)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ ドルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>出力時に、<code>.yaml</code>ファイルのルートを明示的に出力する。</p>
+<p>アクションの中でアクションで、<code>.yaml</code>ファイルのルートにアクセスしたい場合に役立つ。</p>
+<p><strong>＊実装例＊</strong></p>
+<p><code>range</code>関数を使用すると、<code>.yaml</code>ファイルへのアクセスのルートが変わってしまう。</p>
+<p>ルートを明示することにより、<code>range</code>関数内でも<code>.yaml</code>ファイルの正しいルートにアクセスできるようなる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range $.Values.foo.namespaces</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$.Values.global.env</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-foo-secret</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/control_structures/">https://helm.sh/docs/chart_template_guide/control_structures/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06">06. ループの関数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="range">range<a class="headerlink" href="#range" title="Permanent link">&para;</a></h3>
+<h4 id="range_1">▼ rangeとは<a class="headerlink" href="#range_1" title="Permanent link">&para;</a></h4>
+<p>同じ階層にある他の<code>.yaml</code>ファイルのキーとその値を格納し、foreach関数のように出力する。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/control_structures/">https://helm.sh/docs/chart_template_guide/control_structures/</a></li>
+</ul>
+</blockquote>
+<h4 id="_14">▼ マップ型を扱う場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>マップ型を入力値として使用できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>もし、以下のような平文ファイルがあるとする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># plane.yamlファイル</span>
+<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</code></pre></div>
+<p>これを<code>base64</code>方式で変換し、<code>values</code>ファイルの<code>config</code>キー配下に定義したとする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
+<span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eHh4OiB5eXkKenp6OiBxcXEK</span>
+</code></pre></div>
+<p><code>fromYaml</code>関数を使用して、string型をmap型に変換する。</p>
+<p>その後、<code>range</code>関数でキーと値を取得し、Secretのデータとして割り当てる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $decoded</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config | b64dec | fromYaml</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ($decoded)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$key</span><span class="w"> </span><span class="p p-Indicator">}}:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm-playground.com/cheatsheet.html#loops">https://helm-playground.com/cheatsheet.html#loops</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>マップ型の一番上層のキー名を反復的に取得する場合に役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">foo-sub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO-SUB</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bar-sub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR-SUB</span>
+<span class="w">  </span><span class="nt">baz</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">baz-sub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAZ-SUB</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if or (eq $key &quot;foo&quot;) (eq $key &quot;baz&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># foo-map、baz-map、を作成できる。</span>
+<span class="w">  </span><span class="c1"># bar-mapは作成されない。</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$key</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">-map</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h4 id="_15">▼ 配列型を扱う場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>配列型を入力値として使用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
+<span class="nt">ipAddresses</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.1/32</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.2/32</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.0.3/32</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blocked-ip-addresses-config-map</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 『.』を指定し、反復的に出力する。</span>
+<span class="w">  </span><span class="nt">ip-addresses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{{- range .Values.ipAddresses }}</span>
+<span class="w">    </span><span class="no">- {{ . }}</span>
+<span class="w">    </span><span class="no">{{- end }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/control_structures/">https://helm.sh/docs/chart_template_guide/control_structures/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="with">with<a class="headerlink" href="#with" title="Permanent link">&para;</a></h3>
+<p>YAMLの現在のパスを変更する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">foo1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO1</span>
+<span class="w">  </span><span class="nt">foo2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 現在のパスをfooに変更する。</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- with .Values.foo</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">foo1</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.foo1</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">foo2</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.foo2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with">https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="required">required<a class="headerlink" href="#required" title="Permanent link">&para;</a></h3>
+<h4 id="required_1">▼ requiredとは<a class="headerlink" href="#required_1" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function">https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="07">07. データ型変換の関数<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="fromyaml">fromYaml<a class="headerlink" href="#fromyaml" title="Permanent link">&para;</a></h3>
+<h4 id="fromyaml_1">▼ fromYamlとは<a class="headerlink" href="#fromyaml_1" title="Permanent link">&para;</a></h4>
+<p>string型をmap型に変換する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>もし、以下のような平文ファイルあるとする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># plane.yamlファイル</span>
+<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</code></pre></div>
+<p>これを<code>base64</code>方式で変換し、<code>values</code>ファイルの<code>config</code>キー配下に定義したとする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
+<span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eHh4OiB5eXkKenp6OiBxcXEK</span>
+</code></pre></div>
+<p><code>fromYaml</code>関数を使用して、string型をmap型に変換する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $decoded</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config | b64dec | fromYaml</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= ($decoded)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$key</span><span class="w"> </span><span class="p p-Indicator">}}:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#fromyaml">https://helm.sh/docs/chart_template_guide/function_list/#fromyaml</a></li>
+<li><a href="https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4">https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4</a></li>
+<li><a href="https://stackoverflow.com/a/62832814">https://stackoverflow.com/a/62832814</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="splitlist">splitList<a class="headerlink" href="#splitlist" title="Permanent link">&para;</a></h3>
+<h4 id="splitlist_1">▼ splitListとは<a class="headerlink" href="#splitlist_1" title="Permanent link">&para;</a></h4>
+<p>string型を指定した文字で分割し、list型に変換する</p>
+<div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># printf関数を使用して、一度strig型に変換している。</span>
+<span class="p p-Indicator">{{</span><span class="nv">- printf &quot;%s&quot; .Values.url | splitList &quot;/&quot;</span><span class="p p-Indicator">}}</span>
+<span class="c1"># [https:  github.com hiroki-hasegawa foo-repository.git]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&amp;v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA">https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&amp;v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-string">08. string型の関数<a class="headerlink" href="#08-string" title="Permanent link">&para;</a></h2>
+<h3 id="contains">contains<a class="headerlink" href="#contains" title="Permanent link">&para;</a></h3>
+<p>指定した文字列が含まれているかを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if contains .Values.env &quot;prd&quot;</span><span class="p p-Indicator">}}</span>
+<span class="nn">...</span><span class="w"> </span><span class="c1"># prd という文字が含まれている場合</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="p p-Indicator">}}</span>
+<span class="nn">...</span><span class="w"> </span><span class="c1"># prd という文字が含まれていない場合</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h3 id="printf">printf<a class="headerlink" href="#printf" title="Permanent link">&para;</a></h3>
+<h4 id="printf_1">▼ printfとは<a class="headerlink" href="#printf_1" title="Permanent link">&para;</a></h4>
+<p>様々なデータ型をstring型で出力する。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#printf">https://helm.sh/docs/chart_template_guide/function_list/#printf</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ エスケープ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>Helmのテンプレート内に、アクションや変数以外の理由で<code>{}</code>を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。</p>
+<p>また、エスケープする場合は必ず改行 (<code>|</code>、<code>|-</code>、<code>|+</code>) で出力する必要がある。エスケープのために<code>printf</code>関数を使用することもできる。</p>
+<p>一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：<code>{{`&lt;記号を含む文字列全体&gt;`}}</code>、<code>{{"&lt;記号&gt;"}}</code>) を使用できる。</p>
+<p>エスケープしたい文字列にバッククオートが含まれる場合、『<code>{{`&lt;記号を含む文字列&gt;`}}</code>』を使用できず、他のエスケープ方法 (<code>{{"&lt;記号&gt;"}}</code>、<code>printf</code>関数) が必要になる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Helmのテンプレート</span>
+
+<span class="c1"># Alertmanagerの通知内容の定義は以下を参考にした。</span>
+<span class="c1"># https://www.infinityworks.com/insights/slack-prometheus-alertmanager/</span>
+
+<span class="nn">---</span>
+<span class="nt">receivers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slack_webhook</span>
+<span class="w">    </span><span class="nt">slack_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">channel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="w">        </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">api_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hooks.slack.com/services/*****</span>
+<span class="w">        </span><span class="c1"># 波括弧 ({}) をエスケープするために、『{{``}}』とprintfを使用している。</span>
+<span class="w">        </span><span class="c1"># エスケープする場合は、必ず改行で出力する必要がある。</span>
+<span class="w">        </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">{{`{{ range .Alerts }}`}}</span>
+<span class="w">          </span><span class="no">{{`*Summary:* {{ .Annotations.summary }}`}}</span>
+<span class="w">          </span><span class="no">{{ printf &quot;*Severity:* `{{ .Labels.severity }}`&quot; }}</span>
+<span class="w">          </span><span class="no">{{`*Description:* {{ .Annotations.description }}`}}</span>
+<span class="w">          </span><span class="no">*Details:*</span>
+<span class="w">          </span><span class="no">{{ printf &quot;{{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`&quot; }}</span>
+<span class="w">          </span><span class="no">{{`{{ end }}`}}</span>
+<span class="w">          </span><span class="no">{{`{{ end }}`}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/helm/issues/2798#issuecomment-890478869">https://github.com/helm/helm/issues/2798#issuecomment-890478869</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="trimsuffix">trimSuffix<a class="headerlink" href="#trimsuffix" title="Permanent link">&para;</a></h3>
+<h4 id="trimsuffix_1">▼ trimSuffixとは<a class="headerlink" href="#trimsuffix_1" title="Permanent link">&para;</a></h4>
+<p>string型から指定した文字を削除し、再取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository.git</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># printf関数を使用して、一度strig型に変換している。</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $list</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf &quot;%s&quot; .Values.url | splitList &quot;/&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="c1"># [https:  github.com hiroki-hasegawa foo-repository.git]</span>
+
+
+<span class="c1"># リポジトリ名のみを取得する。</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= last $list | trimSuffix &quot;.git&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="c1"># foo-repository</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&amp;v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA">https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&amp;v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-02-list">08-02. list型の関数<a class="headerlink" href="#08-02-list" title="Permanent link">&para;</a></h2>
+<h3 id="last">last<a class="headerlink" href="#last" title="Permanent link">&para;</a></h3>
+<h4 id="last_1">▼ lastとは<a class="headerlink" href="#last_1" title="Permanent link">&para;</a></h4>
+<p>list型の最後を取得する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">lists</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span><span class="w"> </span><span class="c1"># これのみを取得する</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.lists | last</span><span class="p p-Indicator">}}</span>
+<span class="c1"># baz</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast">https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="09">09. セキュリティに関する機能<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
+<h3 id="b64enc">b64enc<a class="headerlink" href="#b64enc" title="Permanent link">&para;</a></h3>
+<h4 id="b64enc_1">▼ b64encとは<a class="headerlink" href="#b64enc_1" title="Permanent link">&para;</a></h4>
+<p><code>base64</code>方式でエンコードする。</p>
+<p>Secretの<code>.data</code>キーでは、他のKubernetesリソースへの出力時に自動的に<code>base64</code>方式でデコードするようになっており、相性が良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hiroki-it</span>
+<span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pass</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># base64方式でエンコードする。</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.username | b64enc</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.password | b64enc</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>リポジトリの認証情報を管理するSecretを繰り返し作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range .Values.github.repositories</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- /*</span>
+<span class="w">  </span><span class="nv">URLからリポジトリ名を抽出する</span>
+<span class="w">  </span><span class="nv">Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する</span>
+<span class="w">  </span><span class="nv">(例) &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; から &quot;argo-cd&quot; のみを取得する</span>
+<span class="nv">*/</span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $repositoryName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= printf &quot;%s&quot; . | splitList &quot;/&quot; | last | trimSuffix &quot;.git&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $name</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral &quot;_&quot; $repositoryName &quot;-&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+
+<span class="p p-Indicator">{{</span><span class="nv">- /*</span>
+<span class="w">  </span><span class="nv">URLのbase64方式エンコード値を取得する</span>
+<span class="w">  </span><span class="nv">Kubernetesのリソース名では一部の文字や記号を使用できないため、これに対処する</span>
+<span class="w">  </span><span class="nv">(例) &quot;https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; から &quot;ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0&quot; を取得する</span>
+<span class="nv">*/</span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $lowerbase64EncodedUrl</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= . | b64enc | lower</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $id</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAllLiteral &quot;</span><span class="p p-Indicator">[</span><span class="nv">^a-z0-9</span><span class="p p-Indicator">]</span><span class="s">&quot;</span><span class="nv"> </span><span class="s">$lowerbase64EncodedUrl</span><span class="nv"> </span><span class="s">&quot;&quot;</span><span class="nv"> </span><span class="s">}}</span>
+
+
+<span class="s">{{-</span><span class="nv"> </span><span class="s">/*</span>
+<span class="w">  </span><span class="s">Secretの名前が必ず一意になるように、リポジトリ名とURLエンコード値で命名する</span>
+<span class="w">  </span><span class="s">(例)</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv">https</span><span class="p p-Indicator">:</span><span class="nv">//github.com/argoproj/argo-cd.git&quot; のSecretの名前は &quot;argo-cd-ahr0chm6ly9naxrodwiuy29tl2fyz29wcm9ql2fyz28ty2quz2l0&quot; になる</span>
+<span class="nv">*/</span><span class="p p-Indicator">}}</span>
+
+
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-{{ $name }}-{{ $id }}</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># base64方式でエンコードする。</span>
+<span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.github.username | b64enc</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.github.password | b64enc</span><span class="p p-Indicator">}}</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<h4 id="_17">▼ 変化しない一意な名前<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<span class="nt">repositoryUrls</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/argoproj/argo-cd</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range .Values.repositoryUrls | b64enc</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 名前が一意になるようにする。</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map-{{ . | b64enc }}</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="genca">genCA<a class="headerlink" href="#genca" title="Permanent link">&para;</a></h3>
+<h4 id="genca_1">▼ genCA<a class="headerlink" href="#genca_1" title="Permanent link">&para;</a></h4>
+<p>SSL証明書と対応する秘密鍵を作成する。</p>
+<p>SSL証明書は<code>.Cert</code>、秘密鍵は<code>.Key</code>でアクセスできる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- $ca</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= genCA &quot;foo-ca&quot; 3650</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-webhook</span>
+<span class="nt">webhooks</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">clientConfig</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># SSL証明書を出力する</span>
+<span class="w">      </span><span class="nt">caBundle</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$ca.Cert | b64enc</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="nn">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#genca">https://helm.sh/docs/chart_template_guide/function_list/#genca</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="sha256sum">sha256sum<a class="headerlink" href="#sha256sum" title="Permanent link">&para;</a></h3>
+<h4 id="sha256sum_1">▼ sha256sumとは<a class="headerlink" href="#sha256sum_1" title="Permanent link">&para;</a></h4>
+<p>入力内容をハッシュ値に変換する。</p>
+<p>SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース (例：Deployment、StatefulSet、DaemonSet) では、Podを再作成する必要がある。</p>
+<p>これらのKubernetesリソースのPodTemplateの<code>.metadata.annotations</code>キーにて、テンプレートの出力を<code>sha256sum</code>に入力する。</p>
+<p>これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。</p>
+<p>そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">checksum/secret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">&#39;/foo-secret.yaml&#39;)</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">        </span><span class="nt">checksum/configmap</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">include</span><span class="nv"> </span><span class="s">(print</span><span class="nv"> </span><span class="s">$.Template.BasePath</span><span class="nv"> </span><span class="s">&#39;/foo-configmap.yaml&#39;)</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">sha256sum</span><span class="nv"> </span><span class="s">}}&quot;</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments">https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments</a></li>
+<li><a href="https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017">https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="10">10. インデントの関数<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="-"><code>-</code> (ハイフン)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
+<h4 id="-_1">▼ <code>{{-</code><a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h4>
+<p><code>{{-</code>であると、テンプレートの出力時にこれより前のインデントを削除する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
+
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">baz</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; .</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="c1"># 『{{-』の前にあるインデントは削除される。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87">https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87</a></li>
+</ul>
+</blockquote>
+<h4 id="-_2">▼ <code>-}}</code><a class="headerlink" href="#-_2" title="Permanent link">&para;</a></h4>
+<p><code>-}}</code>であると改行コードを削除し、不要な改行が挿入されないようにする。</p>
+<p>ただし基本的には、<code>-}}</code>は使用しない方が良いらしい。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/helm/helm/issues/4191#issuecomment-539149037">https://github.com/helm/helm/issues/4191#issuecomment-539149037</a></li>
+<li><a href="https://racchai.hatenablog.com/entry/2016/05/24/070000">https://racchai.hatenablog.com/entry/2016/05/24/070000</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="indent">indent<a class="headerlink" href="#indent" title="Permanent link">&para;</a></h3>
+<h4 id="indent_1">▼ indentとは<a class="headerlink" href="#indent_1" title="Permanent link">&para;</a></h4>
+<p>改行せずに、そのままスペースを挿入した上で、内容を出力する。</p>
+<p><code>nindent</code>関数とは、改行しない点で異なる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2つ分のスペースを挿入した上で、出力する。</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; . | indent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#indent">https://helm.sh/docs/chart_template_guide/function_list/#indent</a></li>
+<li><a href="https://www.skyarch.net/blog/?p=16660#28">https://www.skyarch.net/blog/?p=16660#28</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="nindent">nindent<a class="headerlink" href="#nindent" title="Permanent link">&para;</a></h3>
+<h4 id="nindent_1">▼ nindentとは<a class="headerlink" href="#nindent_1" title="Permanent link">&para;</a></h4>
+<p>改行しつつ、スペースを挿入した上で、内容を出力する。</p>
+<p><code>indent</code>関数とは、改行する点で異なる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- define &quot;foo-template&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 改行しつつ、2つ分のスペースを挿入した上で、出力する。</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="p p-Indicator">{{</span><span class="nv">- include &quot;foo-template&quot; . | nindent 2</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="nt">baz</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ここで改行が入る</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.skyarch.net/blog/?p=16660#29">https://www.skyarch.net/blog/?p=16660#29</a></li>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#nindent">https://helm.sh/docs/chart_template_guide/function_list/#nindent</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="11">11. 検証の関数<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="haskey">hasKey<a class="headerlink" href="#haskey" title="Permanent link">&para;</a></h3>
+<p>キーが存在する場合、<code>true</code>を返却する。</p>
+<p>キーが存在する場合にのみ、そのキー配下の構造を使用するような場面で役立つ。</p>
+<p>一方で、別途<code>enabled</code>キーを用意するのもありである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">baz</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">foo</span><span class="p">:</span>
+<span class="p p-Indicator">{{</span><span class="nv">- if hasKey .Values.foo &quot;baz&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">baz</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- range baz</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lzone.de/blog/Helm-template-check-if-key-exists">https://lzone.de/blog/Helm-template-check-if-key-exists</a></li>
+<li><a href="https://helm.sh/docs/chart_template_guide/function_list/#haskey">https://helm.sh/docs/chart_template_guide/function_list/#haskey</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="12">12. 条件分岐の関数<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<h3 id="_18">単一条件<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><code>eq</code>演算子を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if eq .Values.enableFoo true</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="and">AND条件<a class="headerlink" href="#and" title="Permanent link">&para;</a></h3>
+<p><code>and</code>演算子と<code>()</code>記号を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if and (eq .Values.enableFoo true) (eq .Values.enableBar true)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/49819239">https://stackoverflow.com/a/49819239</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="or">OR条件<a class="headerlink" href="#or" title="Permanent link">&para;</a></h3>
+<p><code>or</code>演算子と<code>()</code>記号を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if or (eq .Values.global.env &quot;dev&quot;) (eq .Values.global.env &quot;tes&quot;)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/49819239">https://stackoverflow.com/a/49819239</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="not">NOT条件<a class="headerlink" href="#not" title="Permanent link">&para;</a></h3>
+<p><code>ne</code>演算子 (not equalの略) を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if ne .Values.global.env &quot;dev&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="l l-Scalar l-Scalar-Plain">{{- end }}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helm-playground.com/cheatsheet.html#conditionals">https://helm-playground.com/cheatsheet.html#conditionals</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="13">13. ファイル系<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
+<p>ファイルから内容を取得する。</p>
+<p><code>.Files.Glob</code>関数で複数のファイルをmap型で取得できる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range $filePath</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob &quot;dashboards/*.json&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- $dashboardName</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= regexReplaceAll &quot;(^.*/)(.*)\\.json$&quot; $path &quot;$</span><span class="p p-Indicator">{</span><span class="nv">2</span><span class="p p-Indicator">}</span><span class="s">&quot;</span><span class="nv"> </span><span class="s">}}</span>
+<span class="s">apiVersion:</span><span class="nv"> </span><span class="s">v1</span>
+<span class="s">kind:</span><span class="nv"> </span><span class="s">ConfigMap</span>
+<span class="s">metadata:</span>
+<span class="w">  </span><span class="s">name:</span><span class="nv"> </span><span class="s">grafana-dashboard-{{</span><span class="nv"> </span><span class="s">$dashboardName</span><span class="nv"> </span><span class="s">}}</span>
+<span class="w">  </span><span class="s">namespace:</span><span class="nv"> </span><span class="s">prometheus</span>
+<span class="w">  </span><span class="s">labels:</span>
+<span class="w">    </span><span class="s">grafana_dashboard:</span><span class="nv"> </span><span class="s">&quot;</span><span class="nv">1&quot;</span>
+<span class="nv">data</span><span class="p p-Indicator">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$dashboardName</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="nt">.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$.Files.Get $filePath</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<p>-
+- <a href="https://helm.sh/docs/chart_template_guide/function_list/#file-functions">https://helm.sh/docs/chart_template_guide/function_list/#file-functions</a>
+- <a href="https://helm.sh/docs/chart_template_guide/accessing_files/">https://helm.sh/docs/chart_template_guide/accessing_files/</a>
+- <a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14</a>
+- <a href="https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm">https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm</a>
+- <a href="https://github.com/helm/helm/issues/4515#issuecomment-415303665">https://github.com/helm/helm/issues/4515#issuecomment-415303665</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="14">14. 例外処理系<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<h3 id="fail">fail<a class="headerlink" href="#fail" title="Permanent link">&para;</a></h3>
+<p>エラーメッセージを含む例外をスローし、意図的に処理を失敗させる。</p>
+<p>他のメンバーに設計方針を強制したり、問題が起こりうる設定を予防するために、使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- if not (contains .Values.foo $bar)</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- fail &quot;〇〇であると△△のため、barにはfooを含むようにしてください&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="p p-Indicator">{{</span><span class="nv">- else</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+<span class="nn">...</span>
+<span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/">https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-30</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

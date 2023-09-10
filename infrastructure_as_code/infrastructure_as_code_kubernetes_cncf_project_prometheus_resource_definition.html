@@ -1,0 +1,4745 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="リソース定義＠Prometheusの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】リソース定義＠Prometheus - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prometheus" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】リソース定義＠Prometheus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_18">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18">
+            <span class="md-nav__icon md-icon"></span>
+            🌊 CNCFプロジェクト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ArgoCD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ CertManager
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ FluentBit/Fluentd
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Grafana
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kyverno
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Jaeger
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Kiali
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ OpenPolicyAgent
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_11" checked>
+        
+          <label class="md-nav__link" for="__nav_18_11" id="__nav_18_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Prometheus
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_11">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Prometheus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prometheus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_resource_definition.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    リソース定義
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-operator" class="md-nav__link">
+    ▼ 非チャートとして (prometheus-operator)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-prometheus" class="md-nav__link">
+    ▼ 非チャートとして (kube-prometheus)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-prometheus-stack" class="md-nav__link">
+    ▼ チャートとして (kube-prometheus-stack)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_1" class="md-nav__link">
+    ▼ チャートとして (prometheus)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. ダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. ダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ネットワークに公開しない場合
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークに公開しない場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_2" class="md-nav__link">
+    ▼ Prometheusの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager" class="md-nav__link">
+    ▼ Alertmanagerの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ネットワークに公開する場合
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークに公開する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_3" class="md-nav__link">
+    ▼ Prometheusの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager_1" class="md-nav__link">
+    ▼ Alertmanagerの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-alertmanager" class="md-nav__link">
+    02. Alertmanager
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Alertmanager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager_2" class="md-nav__link">
+    Alertmanagerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specversion" class="md-nav__link">
+    .spec.version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specserviceaccountname" class="md-nav__link">
+    .spec.serviceAccountName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specbaseimage" class="md-nav__link">
+    .spec.baseImage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specexternalurl" class="md-nav__link">
+    .spec.externalUrl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specreplicas" class="md-nav__link">
+    .spec.replicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specloglevel" class="md-nav__link">
+    .spec.logLevel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specresources" class="md-nav__link">
+    .spec.resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-alertmanagerconfig" class="md-nav__link">
+    03. AlertmanagerConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="03. AlertmanagerConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanagerconfig" class="md-nav__link">
+    AlertmanagerConfigとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-podmonitor" class="md-nav__link">
+    04. PodMonitor
+  </a>
+  
+    <nav class="md-nav" aria-label="04. PodMonitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podmonitor" class="md-nav__link">
+    PodMonitorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specnamespaceselector" class="md-nav__link">
+    .spec.namespaceSelector
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-probe" class="md-nav__link">
+    05. Probe
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Probe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probe" class="md-nav__link">
+    Probeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-prometheus" class="md-nav__link">
+    06. Prometheus
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Prometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_4" class="md-nav__link">
+    Prometheusとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specalerting" class="md-nav__link">
+    .spec.alerting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specexternalurl_1" class="md-nav__link">
+    .spec.externalUrl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specimage" class="md-nav__link">
+    .spec.image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specretention" class="md-nav__link">
+    .spec.retention
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specremotewrite" class="md-nav__link">
+    .spec.remoteWrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstorage" class="md-nav__link">
+    .spec.storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-prometheusrule" class="md-nav__link">
+    07. PrometheusRule
+  </a>
+  
+    <nav class="md-nav" aria-label="07. PrometheusRule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheusrule" class="md-nav__link">
+    PrometheusRuleとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ルールの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="ルールの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ アラートルール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ レコーディングルール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    公開ルールレシピ
+  </a>
+  
+    <nav class="md-nav" aria-label="公開ルールレシピ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 公開ルールレシピとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-mixinsprometheusrule" class="md-nav__link">
+    ▼ kubernetes-mixinsのPrometheusRule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    アラート内で使用できる予約変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specgroups" class="md-nav__link">
+    .spec.groups
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    ▼ groupsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    ▼ name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    ▼ rules (アラートルールの場合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules_1" class="md-nav__link">
+    ▼ rules (レコーディングルールの場合)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-servicemonitor" class="md-nav__link">
+    08. ServiceMonitor
+  </a>
+  
+    <nav class="md-nav" aria-label="08. ServiceMonitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicemonitor" class="md-nav__link">
+    ServiceMonitorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specendpoints" class="md-nav__link">
+    .spec.endpoints
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    ▼ endpointsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interval" class="md-nav__link">
+    ▼ interval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relabelings" class="md-nav__link">
+    ▼ relabelings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    ▼ path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    ▼ scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targetport" class="md-nav__link">
+    ▼ targetPort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specnamespaceselector_1" class="md-nav__link">
+    .spec.namespaceSelector
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.namespaceSelector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaceselector" class="md-nav__link">
+    ▼ namespaceSelector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    ▼ any
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchnames" class="md-nav__link">
+    ▼ matchNames
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specselector" class="md-nav__link">
+    .spec.selector
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.selector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matchlabels" class="md-nav__link">
+    ▼ matchLabels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-thanosruler" class="md-nav__link">
+    09. ThanosRuler
+  </a>
+  
+    <nav class="md-nav" aria-label="09. ThanosRuler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thanosruler" class="md-nav__link">
+    ThanosRuler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_exporter.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exporter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus_metrics.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ メトリクス
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ VCluster
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-operator" class="md-nav__link">
+    ▼ 非チャートとして (prometheus-operator)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-prometheus" class="md-nav__link">
+    ▼ 非チャートとして (kube-prometheus)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-prometheus-stack" class="md-nav__link">
+    ▼ チャートとして (kube-prometheus-stack)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_1" class="md-nav__link">
+    ▼ チャートとして (prometheus)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02" class="md-nav__link">
+    01-02. ダッシュボード
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. ダッシュボード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ネットワークに公開しない場合
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークに公開しない場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_2" class="md-nav__link">
+    ▼ Prometheusの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager" class="md-nav__link">
+    ▼ Alertmanagerの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ネットワークに公開する場合
+  </a>
+  
+    <nav class="md-nav" aria-label="ネットワークに公開する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_3" class="md-nav__link">
+    ▼ Prometheusの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager_1" class="md-nav__link">
+    ▼ Alertmanagerの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-alertmanager" class="md-nav__link">
+    02. Alertmanager
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Alertmanager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager_2" class="md-nav__link">
+    Alertmanagerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specversion" class="md-nav__link">
+    .spec.version
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specserviceaccountname" class="md-nav__link">
+    .spec.serviceAccountName
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specbaseimage" class="md-nav__link">
+    .spec.baseImage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specexternalurl" class="md-nav__link">
+    .spec.externalUrl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specreplicas" class="md-nav__link">
+    .spec.replicas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specloglevel" class="md-nav__link">
+    .spec.logLevel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specresources" class="md-nav__link">
+    .spec.resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-alertmanagerconfig" class="md-nav__link">
+    03. AlertmanagerConfig
+  </a>
+  
+    <nav class="md-nav" aria-label="03. AlertmanagerConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanagerconfig" class="md-nav__link">
+    AlertmanagerConfigとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-podmonitor" class="md-nav__link">
+    04. PodMonitor
+  </a>
+  
+    <nav class="md-nav" aria-label="04. PodMonitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#podmonitor" class="md-nav__link">
+    PodMonitorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specnamespaceselector" class="md-nav__link">
+    .spec.namespaceSelector
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-probe" class="md-nav__link">
+    05. Probe
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Probe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#probe" class="md-nav__link">
+    Probeとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-prometheus" class="md-nav__link">
+    06. Prometheus
+  </a>
+  
+    <nav class="md-nav" aria-label="06. Prometheus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus_4" class="md-nav__link">
+    Prometheusとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specalerting" class="md-nav__link">
+    .spec.alerting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specexternalurl_1" class="md-nav__link">
+    .spec.externalUrl
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specimage" class="md-nav__link">
+    .spec.image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specretention" class="md-nav__link">
+    .spec.retention
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specremotewrite" class="md-nav__link">
+    .spec.remoteWrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstorage" class="md-nav__link">
+    .spec.storage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-prometheusrule" class="md-nav__link">
+    07. PrometheusRule
+  </a>
+  
+    <nav class="md-nav" aria-label="07. PrometheusRule">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheusrule" class="md-nav__link">
+    PrometheusRuleとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ルールの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="ルールの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ アラートルール
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ レコーディングルール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    公開ルールレシピ
+  </a>
+  
+    <nav class="md-nav" aria-label="公開ルールレシピ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 公開ルールレシピとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-mixinsprometheusrule" class="md-nav__link">
+    ▼ kubernetes-mixinsのPrometheusRule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    アラート内で使用できる予約変数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specgroups" class="md-nav__link">
+    .spec.groups
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    ▼ groupsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    ▼ name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    ▼ rules (アラートルールの場合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rules_1" class="md-nav__link">
+    ▼ rules (レコーディングルールの場合)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-servicemonitor" class="md-nav__link">
+    08. ServiceMonitor
+  </a>
+  
+    <nav class="md-nav" aria-label="08. ServiceMonitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#servicemonitor" class="md-nav__link">
+    ServiceMonitorとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specendpoints" class="md-nav__link">
+    .spec.endpoints
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    ▼ endpointsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interval" class="md-nav__link">
+    ▼ interval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relabelings" class="md-nav__link">
+    ▼ relabelings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path" class="md-nav__link">
+    ▼ path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#port" class="md-nav__link">
+    ▼ port
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    ▼ scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#targetport" class="md-nav__link">
+    ▼ targetPort
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specnamespaceselector_1" class="md-nav__link">
+    .spec.namespaceSelector
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.namespaceSelector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaceselector" class="md-nav__link">
+    ▼ namespaceSelector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#any" class="md-nav__link">
+    ▼ any
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matchnames" class="md-nav__link">
+    ▼ matchNames
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specselector" class="md-nav__link">
+    .spec.selector
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.selector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matchlabels" class="md-nav__link">
+    ▼ matchLabels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09-thanosruler" class="md-nav__link">
+    09. ThanosRuler
+  </a>
+  
+    <nav class="md-nav" aria-label="09. ThanosRuler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thanosruler" class="md-nav__link">
+    ThanosRuler
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="prometheus">リソース定義＠Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus-operator">▼ 非チャートとして (prometheus-operator)<a class="headerlink" href="#prometheus-operator" title="Permanent link">&para;</a></h4>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/prometheus-operator.git
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bundle.yaml
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator#kube-prometheus">https://github.com/prometheus-operator/prometheus-operator#kube-prometheus</a></li>
+</ul>
+</blockquote>
+<h4 id="kube-prometheus">▼ 非チャートとして (kube-prometheus)<a class="headerlink" href="#kube-prometheus" title="Permanent link">&para;</a></h4>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/kube-prometheus.git
+
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests/setup
+
+$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="w"> </span><span class="nv">condition</span><span class="o">=</span>Established<span class="w"> </span>--all<span class="w"> </span>CustomResourceDefinition<span class="w"> </span>--namespace<span class="o">=</span>monitoring
+
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>manifests/
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-operator/kube-prometheus">https://github.com/prometheus-operator/kube-prometheus</a></li>
+</ul>
+</blockquote>
+<h4 id="kube-prometheus-stack">▼ チャートとして (kube-prometheus-stack)<a class="headerlink" href="#kube-prometheus-stack" title="Permanent link">&para;</a></h4>
+<p>Node内で監視系ツール (Prometheus、Alertmanager、Node exporter、Grafana、など) をコンテナとして稼働させる場合、チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/kube-prometheus-stack<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack</a></li>
+<li><a href="https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/">https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/</a></li>
+<li><a href="https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542">https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542</a></li>
+</ul>
+</blockquote>
+<p>他のインストール方法と名前が似ていることに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart">https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart</a></li>
+<li><a href="https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe">https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe</a></li>
+</ul>
+</blockquote>
+<h4 id="prometheus_1">▼ チャートとして (prometheus)<a class="headerlink" href="#prometheus_1" title="Permanent link">&para;</a></h4>
+<p>チャートとしてPrometheusをインストールし、リソースを作成する。</p>
+<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node exporter、など) のKubernetesリソースも合わせて作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/prometheus<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus">https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ バイナリとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>バイナリとして監視系ツール (Prometheus、Alertmanager、など) をインストールし、サーバー上でPrometheusを稼働させる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/prometheus/prometheus<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--config.file<span class="o">=</span>/opt/prometheus/prometheus.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.console.templates<span class="o">=</span>/opt/prometheus/consoles<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.console.libraries<span class="o">=</span>/opt/prometheus/console_libraries<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">&quot;https://prometheus.example.com/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.route-prefix<span class="o">=</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--storage.tsdb.retention.time<span class="o">=</span>3d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--storage.tsdb.path<span class="o">=</span>/var/lib/prometheus
+</code></pre></div>
+<p>Alertmanagerをクラスター化する場合、インスタンス間で相互TLS認証を実施できるように、</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/alertmanager/alertmanager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--config.file<span class="o">=</span>/opt/alertmanager/alertmanager.yml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.listen-address<span class="o">=</span>:9093<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.external-url<span class="o">=</span><span class="s2">&quot;https://alertmanager.example.com/&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--web.route-prefix<span class="o">=</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--log.format<span class="o">=</span>json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--data.retention<span class="o">=</span>120h<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--storage.path<span class="o">=</span>/var/lib/alertmanager<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cluster.listen-address<span class="o">=</span><span class="m">0</span>.0.0.0:9094<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cluster.peer<span class="o">=</span>&lt;サーバーのIPアドレス&gt;:9094<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cluster.reconnect-timeout<span class="o">=</span>5m
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/nis_nagaid_1984/items/81f4b3575ee5ce1fe892">https://qiita.com/nis_nagaid_1984/items/81f4b3575ee5ce1fe892</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02">01-02. ダッシュボード<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
+<h3 id="_4">ネットワークに公開しない場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus_2">▼ Prometheusの場合<a class="headerlink" href="#prometheus_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/prometheus<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span><span class="m">9090</span>:9090
+</code></pre></div>
+<h4 id="alertmanager">▼ Alertmanagerの場合<a class="headerlink" href="#alertmanager" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/alertmanager<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span><span class="m">9093</span>:9093
+</code></pre></div>
+<p><br></p>
+<h3 id="_5">ネットワークに公開する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus_3">▼ Prometheusの場合<a class="headerlink" href="#prometheus_3" title="Permanent link">&para;</a></h4>
+<p>Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Ingressを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus-ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingressClassname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress-class</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.prometheus.com</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus-service</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
+</code></pre></div>
+<p>IngressClassを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># AWSの場合、ingress.k8s.aws/alb</span>
+<span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/ingress-nginx</span>
+</code></pre></div>
+<p>ClusterIP Serviceを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">clusterIPs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">internalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="w">  </span><span class="nt">ipFamilies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPv4</span>
+<span class="w">  </span><span class="nt">ipFamilyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleStack</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp-foo</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus</span>
+<span class="w">  </span><span class="nt">sessionAffinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+</code></pre></div>
+<h4 id="alertmanager_1">▼ Alertmanagerの場合<a class="headerlink" href="#alertmanager_1" title="Permanent link">&para;</a></h4>
+<p>Nodeの外からAlertmanagerのダッシュボードをネットワークに公開する場合、Node外からAlertmanagerにインバウンド通信が届くようにする必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Ingressを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager-ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingressClassname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress-class</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo.alertmanager.com</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">backend</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">service</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager-service</span>
+<span class="w">                </span><span class="nt">port</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9093</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
+</code></pre></div>
+<p>IngressClassを作成する。</p>
+<p>開発環境では、IngressClassとしてNginxを使用する。</p>
+<p>本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google CLB) を使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># AWSの場合、ingress.k8s.aws/alb</span>
+<span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/ingress-nginx</span>
+</code></pre></div>
+<p>ClusterIP Serviceを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">clusterIPs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">internalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="w">  </span><span class="nt">ipFamilies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPv4</span>
+<span class="w">  </span><span class="nt">ipFamilyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleStack</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp-foo</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9093</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9093</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">sessionAffinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-alertmanager">02. Alertmanager<a class="headerlink" href="#02-alertmanager" title="Permanent link">&para;</a></h2>
+<h3 id="alertmanager_2">Alertmanagerとは<a class="headerlink" href="#alertmanager_2" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのセットアップ方法を決める。</p>
+<blockquote>
+<ul>
+<li><a href="https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager">https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager</a></li>
+</ul>
+</blockquote>
+<h3 id="specversion">.spec.version<a class="headerlink" href="#specversion" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのコンテナイメージのバージョンを設定する。</p>
+<p>使用するコンテナイメージは、<code>.spec.baseImage</code>キーに設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.0.0</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specserviceaccountname">.spec.serviceAccountName<a class="headerlink" href="#specserviceaccountname" title="Permanent link">&para;</a></h3>
+<p>AlertmanagerのPodに紐付けるServiceAccountの名前を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-serviceaccount</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specbaseimage">.spec.baseImage<a class="headerlink" href="#specbaseimage" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのコンテナイメージを設定する。</p>
+<p>コンテナイメージのバージョンは、<code>.spec.version</code>キーに設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">baseImage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quay.io/prometheus/alertmanager</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specexternalurl">.spec.externalUrl<a class="headerlink" href="#specexternalurl" title="Permanent link">&para;</a></h3>
+<p>AlertmanagerのダッシュボードのURLを設定する。</p>
+<p>注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">externalUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://alertmanager.example.com</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specreplicas">.spec.replicas<a class="headerlink" href="#specreplicas" title="Permanent link">&para;</a></h3>
+<p>AlertmanagerのPodの冗長化数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specloglevel">.spec.logLevel<a class="headerlink" href="#specloglevel" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのログレベルを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">logLevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specresources">.spec.resources<a class="headerlink" href="#specresources" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのハードウェアリソースの要求量を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec">https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">volumeClaimTemplate</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
+<span class="w">        </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
+<span class="w">        </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;ReadWriteOnce&quot;</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50m</span>
+<span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400Mi</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-alertmanagerconfig">03. AlertmanagerConfig<a class="headerlink" href="#03-alertmanagerconfig" title="Permanent link">&para;</a></h2>
+<h3 id="alertmanagerconfig">AlertmanagerConfigとは<a class="headerlink" href="#alertmanagerconfig" title="Permanent link">&para;</a></h3>
+<p>Alertmanagerのアラートグループや通知先ルールを決める。</p>
+<p><br></p>
+<h2 id="04-podmonitor">04. PodMonitor<a class="headerlink" href="#04-podmonitor" title="Permanent link">&para;</a></h2>
+<h3 id="podmonitor">PodMonitorとは<a class="headerlink" href="#podmonitor" title="Permanent link">&para;</a></h3>
+<p>Podに対してPull型通信を送信し、これのデータポイントを収集する。</p>
+<p>Serviceを持つPodではServiceMonitorを使用し、これを持たないPodをPodMonitorで監視する。</p>
+<p><br></p>
+<h3 id="specnamespaceselector">.spec.namespaceSelector<a class="headerlink" href="#specnamespaceselector" title="Permanent link">&para;</a></h3>
+<p>PodMonitorを有効化する時の任意の<code>metadata.labels</code>キー設定する。</p>
+<p>Prometheusは、<code>metadata.labels</code>キー有効化したNamespace内のPodを監視する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-monitor</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># 任意のmetadata.labelsキーを設定する。</span>
+<span class="w">    </span><span class="nt">prometheus-pod-monitor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># PodMonitorを有効化したいNamespaceに付与する</span>
+<span class="w">    </span><span class="nt">prometheus-pod-monitor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus-operator.dev/docs/operator/design/#podmonitor">https://prometheus-operator.dev/docs/operator/design/#podmonitor</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-probe">05. Probe<a class="headerlink" href="#05-probe" title="Permanent link">&para;</a></h2>
+<h3 id="probe">Probeとは<a class="headerlink" href="#probe" title="Permanent link">&para;</a></h3>
+<p>Ingressや静的IPアドレスのメトリクスに対してPull型通信を送信し、これらのデータポイントを収集する。</p>
+<p><br></p>
+<h2 id="06-prometheus">06. Prometheus<a class="headerlink" href="#06-prometheus" title="Permanent link">&para;</a></h2>
+<h3 id="prometheus_4">Prometheusとは<a class="headerlink" href="#prometheus_4" title="Permanent link">&para;</a></h3>
+<p>Prometheusのセットアップ方法を決める。</p>
+<p><br></p>
+<h3 id="specalerting">.spec.alerting<a class="headerlink" href="#specalerting" title="Permanent link">&para;</a></h3>
+<p>アラートの宛先を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">alerting</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">alertmanagers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alertmanager</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">        </span><span class="nt">pathPrefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specexternalurl_1">.spec.externalUrl<a class="headerlink" href="#specexternalurl_1" title="Permanent link">&para;</a></h3>
+<p>PrometheusのダッシュボードのURLを設定する。</p>
+<p>注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">externalUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://prometheus.example.com</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specimage">.spec.image<a class="headerlink" href="#specimage" title="Permanent link">&para;</a></h3>
+<p>prometheusコンテナのベースイメージを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quay.io/prometheus/prometheus:v1.0.0&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specretention">.spec.retention<a class="headerlink" href="#specretention" title="Permanent link">&para;</a></h3>
+<p>Prometheusのローカルストレージの保持期間を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">retention</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14d</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282">https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specremotewrite">.spec.remoteWrite<a class="headerlink" href="#specremotewrite" title="Permanent link">&para;</a></h3>
+<p>リモート書き込み先を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">remoteWrite</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">victoria-metrics</span>
+<span class="w">      </span><span class="nt">tlsConfig</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*.*.*.*:8248/api/v1/write&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specstorage">.spec.storage<a class="headerlink" href="#specstorage" title="Permanent link">&para;</a></h3>
+<p>ローカルストレージを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod-prometheus</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">volumeClaimTemplate</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Gi</span>
+<span class="w">        </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="07-prometheusrule">07. PrometheusRule<a class="headerlink" href="#07-prometheusrule" title="Permanent link">&para;</a></h2>
+<h3 id="prometheusrule">PrometheusRuleとは<a class="headerlink" href="#prometheusrule" title="Permanent link">&para;</a></h3>
+<p>ルール (アラートルール、レコーディングルール) を設定する。</p>
+<p>PrometheusRuleの定義に応じて、prometheusコンテナの<code>/etc/prometheus/rules</code>ディレクトリ配下にルールの設定ファイルが配置される。</p>
+<p>有効になっているPrometheusRuleは、Prometheusダッシュボードの Status &gt; Rule タブで確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/">https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">ルールの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ アラートルール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>アラートの条件とするために、メトリクスを一時的に分析する。</p>
+<h4 id="_8">▼ レコーディングルール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>メトリクスを分析し、分析結果を名前をつけて保管しておく。</p>
+<p>保管したメトリクスは、レコーディング名を使用して、Prometheusのダッシュボードで新しいメトリクスのように取得できる。</p>
+<p>公開されているレコーディングルール (例：kubernetes-mixinのレコーディングルール) を使用すると良い。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 分析結果をnode_namespace_pod_container:container_cpu_usage_seconds_total:sum_irateというレコーディング名で保管しておく</span>
+<span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">sum by (cluster, namespace, pod, container) (</span>
+<span class="w">    </span><span class="no">irate(container_cpu_usage_seconds_total{job=&quot;cadvisor&quot;, image!=&quot;&quot;}[5m])</span>
+<span class="w">  </span><span class="no">) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (</span>
+<span class="w">    </span><span class="no">1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=&quot;&quot;})</span>
+<span class="w">  </span><span class="no">)</span>
+<span class="nt">record</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://monitoring.mixins.dev/kubernetes/#k8srules">https://monitoring.mixins.dev/kubernetes/#k8srules</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_9">公開ルールレシピ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 公開ルールレシピとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins) を使用した方が良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
+</ul>
+</blockquote>
+<h4 id="kubernetes-mixinsprometheusrule">▼ kubernetes-mixinsのPrometheusRule<a class="headerlink" href="#kubernetes-mixinsprometheusrule" title="Permanent link">&para;</a></h4>
+<p>kubernetes-mixinsでは、アラートルールとレコーディングルールのレシピが公開されている。</p>
+<p>kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/monitoring-mixins/website/tree/master/assets">https://github.com/monitoring-mixins/website/tree/master/assets</a></li>
+<li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">アラート内で使用できる予約変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>変数名</th>
+<th>データ型</th>
+<th>デフォルトラベル例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Receiver</td>
+<td>string型</td>
+<td><code>.Receiver</code></td>
+<td>アラートの受信者が割り当てられている。</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>string型</td>
+<td><code>.Status</code></td>
+<td>アラートがFiring状態/Resolved状態が割り当てられている。</td>
+</tr>
+<tr>
+<td>Alerts</td>
+<td>map型</td>
+<td><code>.Alerts.Labels.SortedPairs</code></td>
+<td>アラートの情報が割り当てられている。<br>- <a href="https://prometheus.io/docs/alerting/latest/notifications/#alert">https://prometheus.io/docs/alerting/latest/notifications/#alert</a></td>
+</tr>
+<tr>
+<td>GroupLabels</td>
+<td>map型</td>
+<td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
+<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[].rules[].labels</code>キー配下で設定したユーザー定義のラベルも含む。<br>- <a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
+</tr>
+<tr>
+<td>CommonLabels</td>
+<td>map型</td>
+<td><code>.CommonLabels.alertname</code></td>
+<td>全てのアラートに共通するラベルが割り当てられている。</td>
+</tr>
+<tr>
+<td>CommonAnnotations</td>
+<td>map型</td>
+<td><code>.CommonAnnotations.summary</code></td>
+<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[].rules[].labels</code>キー配下で設定したユーザー定義のアノテーションも含む。</td>
+</tr>
+<tr>
+<td>ExternalURL</td>
+<td>string型</td>
+<td><code>.ExternalURL</code></td>
+<td>AlertmangerのURLが割り当てられている。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/4910313001">https://www.amazon.co.jp/dp/4910313001</a></li>
+<li><a href="https://prometheus.io/docs/alerting/latest/notifications/">https://prometheus.io/docs/alerting/latest/notifications/</a></li>
+<li><a href="https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/">https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specgroups">.spec.groups<a class="headerlink" href="#specgroups" title="Permanent link">&para;</a></h3>
+<h4 id="groups">▼ groupsとは<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h4>
+<p>アラートグループを設定する。</p>
+<p>アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/alerting/latest/alertmanager/#grouping">https://prometheus.io/docs/alerting/latest/alertmanager/#grouping</a></li>
+</ul>
+</blockquote>
+<h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
+<p>ルールのグループ名を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrometheusRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-rules</span>
+
+<span class="w">  </span><span class="c1"># グループは複数設定できる。</span>
+<span class="w">  </span><span class="c1"># - name:</span>
+<span class="w">  </span><span class="c1">#   - foo</span>
+<span class="w">  </span><span class="c1">#   - bar</span>
+</code></pre></div>
+<h4 id="rules">▼ rules (アラートルールの場合)<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
+<p><code>alert</code>キーを宣言し、アラートルールを設定する。</p>
+<p>アラートルールは、『アッパーキャメルケース』で命名する。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alert</code></td>
+<td>アラートルール名を設定する</td>
+</tr>
+<tr>
+<td><code>annotations</code></td>
+<td>アラートルールによるアラートの通知内容を設定する。<code>.metadata.labels</code>キーや発火値 (<code>$value</code>) を通知内容に変数で出力できる。</td>
+</tr>
+<tr>
+<td><code>expr</code></td>
+<td>アラートルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+</tr>
+<tr>
+<td><code>for</code></td>
+<td>アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。</td>
+</tr>
+<tr>
+<td><code>labels</code></td>
+<td>アラートの通知内容に付与するラベルを設定する</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrometheusRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus-rule</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-alert-rules</span>
+<span class="w">       </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">         </span><span class="c1"># アッパーキャメルケース</span>
+<span class="w">         </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FooPodCpuUtilization</span>
+<span class="w">           </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">【{{ {{&quot;{{&quot;}} $labels.app {{&quot;}}&quot;}} }}】Pod内のコンテナのCPU使用率の上昇しました。</span>
+<span class="w">             </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;{{&quot;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="nv">$labels.source</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="s">&quot;}}&quot;</span><span class="p p-Indicator">}}</span><span class="w"> </span><span class="p p-Indicator">}}</span><span class="l l-Scalar l-Scalar-Plain">コンテナのCPU使用率が{{ {{&quot;{{&quot;}} $value {{&quot;}}&quot;}} }}になりました。</span>
+<span class="w">           </span><span class="c1"># PromQL</span>
+<span class="w">           </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">           </span><span class="c1"># 受信したアラートの通知のクールダウン期間</span>
+<span class="w">           </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+<span class="w">           </span><span class="c1"># アラートの通知内容に付与するラベル</span>
+<span class="w">           </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">             </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="w">             </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">             </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+<span class="w">             </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gin</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/">https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/</a></li>
+</ul>
+</blockquote>
+<h4 id="rules_1">▼ rules (レコーディングルールの場合)<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
+<p><code>record</code>キーを宣言し、レコーディングルールを設定する。</p>
+<p>アラートルールは、『スネークケース』『コロン区切り』で命名する。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>record</code></td>
+<td>レコーディングルール名を設定する</td>
+</tr>
+<tr>
+<td><code>expr</code></td>
+<td>レコーディングルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PrometheusRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-prometheus-rule</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-recording-rules</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Prometheusのレコーディングルールを定義する。</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">record</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate</span>
+<span class="w">          </span><span class="c1"># PromQL</span>
+<span class="w">          </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/">https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="08-servicemonitor">08. ServiceMonitor<a class="headerlink" href="#08-servicemonitor" title="Permanent link">&para;</a></h2>
+<h3 id="servicemonitor">ServiceMonitorとは<a class="headerlink" href="#servicemonitor" title="Permanent link">&para;</a></h3>
+<p>指定したServiceに対してPull型通信を送信し、これに紐づくPodのメトリクスのデータポイントを収集する。</p>
+<p>有効になっているServiceMonitorは、Prometheusダッシュボードの Status &gt; ServiceDiscoveryタブや、Status &gt; Targets タブで確認できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-foo</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-servive</span>
+</code></pre></div>
+<p>公開しないPodであるとServiceがないため、メトリクス収集用のServiceを作成することになる。</p>
+<p>Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。</p>
+<p>そのため、Podからメトリクスを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。</p>
+<p>注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。</p>
+<ul>
+<li>Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisor、など)</li>
+<li>PrometheusのExporter (例：node-exporter、kube-state-metrics、など)</li>
+</ul>
+<p><img alt="prometheus-operator_service-monitor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bearerTokenFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount/token</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">      </span><span class="nt">metricRelabelings</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drop</span>
+<span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiserver_request_duration_seconds_bucket;(0.15|0.2|0.3|0.35|0.4|0.45|0.6|0.7|0.8|0.9|1.25|1.5|1.75|2|3|3.5|4|4.5|6|7|8|9|15|25|40|50)</span>
+<span class="w">          </span><span class="nt">sourceLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__name__</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">le</span>
+<span class="w">      </span><span class="nt">tlsConfig</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">caFile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount/ca.crt</span>
+<span class="w">        </span><span class="nt">serverName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">        </span><span class="nt">insecureSkipVerify</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">jobLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">component</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchNames</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiserver</span>
+<span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># kube-apiserverに転送するService</span>
+<span class="c1"># デフォルトで作成されている</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">clusterIPs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">  </span><span class="nt">internalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
+<span class="w">  </span><span class="nt">ipFamilies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IPv4</span>
+<span class="w">  </span><span class="nt">ipFamilyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SingleStack</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">  </span><span class="nt">sessionAffinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://prometheus-operator.dev/docs/operator/design/#servicemonitor">https://prometheus-operator.dev/docs/operator/design/#servicemonitor</a></li>
+<li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html">https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html</a></li>
+<li><a href="https://observability.thomasriley.co.uk/monitoring-kubernetes/metrics/kubelet-cadvisor/">https://observability.thomasriley.co.uk/monitoring-kubernetes/metrics/kubelet-cadvisor/</a></li>
+<li><a href="https://qiita.com/ryysud/items/23eab7110de7337a8bf3">https://qiita.com/ryysud/items/23eab7110de7337a8bf3</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specendpoints">.spec.endpoints<a class="headerlink" href="#specendpoints" title="Permanent link">&para;</a></h3>
+<h4 id="endpoints">▼ endpointsとは<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h4>
+<p>収集の対象とするServiceで待ち受けるエンドポイントを設定する。</p>
+<h4 id="interval">▼ interval<a class="headerlink" href="#interval" title="Permanent link">&para;</a></h4>
+<p>収集の間隔を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+</code></pre></div>
+<h4 id="relabelings">▼ relabelings<a class="headerlink" href="#relabelings" title="Permanent link">&para;</a></h4>
+<p>作成したメトリクスのラベルやその値を変換する。</p>
+<p>ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code>のラベルを変換できる。</p>
+<p><strong>＊例＊</strong></p>
+<p>node-exporterが作成したメトリクスでは、<code>instance</code>ラベルが<code>*.*.*.*:&lt;ポート番号&gt;</code>になっている。</p>
+<p>これだとわかりにくいので、Podの<code>__meta_kubernetes_pod_node_name</code>ラベルの値 (Nodeのホスト名) に変換する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># __meta_kubernetes_pod_node_nameラベルの値をinstanceラベルの値として挿入する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">relabelings</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
+<span class="w">          </span><span class="c1"># 変換のために使用する値を持つラベル名を設定する</span>
+<span class="w">          </span><span class="nt">sourceLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_node_name</span>
+<span class="w">          </span><span class="c1"># 値の変換対象とするラベル名を設定する</span>
+<span class="w">          </span><span class="nt">targetLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">instance</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-exporter-service</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/">https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/</a></li>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336">https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336</a></li>
+<li><a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config">https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config</a></li>
+</ul>
+</blockquote>
+<h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
+<p>Serviceの待ち受けるパスを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/">https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/</a></li>
+</ul>
+</blockquote>
+<h4 id="port">▼ port<a class="headerlink" href="#port" title="Permanent link">&para;</a></h4>
+<p>Serviceの待ち受けるポート名を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-foo</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/">https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/</a></li>
+</ul>
+</blockquote>
+<h4 id="scheme">▼ scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h4>
+<p>Serviceの待ち受けるプロトコルを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+</code></pre></div>
+<h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
+<p>Serviceの待ち受けるポート番号を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9100</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="specnamespaceselector_1">.spec.namespaceSelector<a class="headerlink" href="#specnamespaceselector_1" title="Permanent link">&para;</a></h3>
+<h4 id="namespaceselector">▼ namespaceSelector<a class="headerlink" href="#namespaceselector" title="Permanent link">&para;</a></h4>
+<p>収集の対象とするServiceが所属するNamespaceを設定する。</p>
+<h4 id="any">▼ any<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
+<p>全てNamespaceを収集対象として設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h4 id="matchnames">▼ matchNames<a class="headerlink" href="#matchnames" title="Permanent link">&para;</a></h4>
+<p>特定のNamespaceを収集対象として設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchNames</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 収集対象のService</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/">https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specselector">.spec.selector<a class="headerlink" href="#specselector" title="Permanent link">&para;</a></h3>
+<h4 id="matchlabels">▼ matchLabels<a class="headerlink" href="#matchlabels" title="Permanent link">&para;</a></h4>
+<p><img alt="prometheus-operator_service-monitor_match-labels" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png" /></p>
+<p>収集の対象とするServiceに付与された<code>.metadata.labels</code>キーを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 収集対象のService</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/">https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/</a></li>
+<li><a href="https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md">https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md</a></li>
+</ul>
+</blockquote>
+<p><strong>＊例＊</strong></p>
+<p>node-exporterのPodからメトリクスを収集する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-monitor</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-exporter-service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 収集対象のService</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-exporter-service</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="09-thanosruler">09. ThanosRuler<a class="headerlink" href="#09-thanosruler" title="Permanent link">&para;</a></h2>
+<h3 id="thanosruler">ThanosRuler<a class="headerlink" href="#thanosruler" title="Permanent link">&para;</a></h3>
+<p>リモートストレージとしてThanosを使用する場合、これをセットアップ方法を決める。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-06</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4615 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="コマンド＠Terraformの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_command.html">
+      
+      
+        <link rel="prev" href="infrastructure_as_code_serverless_framework_serverless_command.html">
+      
+      
+        <link rel="next" href="infrastructure_as_code_terraform_conf.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】コマンド＠Terraform - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#terraform" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】コマンド＠Terraform
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_15">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ IaC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IaC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 手続き型
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4" id="__nav_15_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 宣言型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 宣言型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Docker Compose
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_packer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Packer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Serverless Framework
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4" checked>
+        
+          <label class="md-nav__link" for="__nav_15_4_4" id="__nav_15_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_terraform_command.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-terraform" class="md-nav__link">
+    01. terraformコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. terraformコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-option" class="md-nav__link">
+    global option
+  </a>
+  
+    <nav class="md-nav" aria-label="global option">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-chdir" class="md-nav__link">
+    ▼ -chdir
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    apply
+  </a>
+  
+    <nav class="md-nav" aria-label="apply">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply_1" class="md-nav__link">
+    ▼ applyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-destroy" class="md-nav__link">
+    ▼ -destroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-parallelism" class="md-nav__link">
+    ▼ -parallelism
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-refresh-only" class="md-nav__link">
+    ▼ -refresh-only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-target" class="md-nav__link">
+    ▼ -target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfplan" class="md-nav__link">
+    ▼ .tfplanファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+    <nav class="md-nav" aria-label="init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init_1" class="md-nav__link">
+    ▼ initとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-backendfalse" class="md-nav__link">
+    ▼ -backend=false
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-backendtrue-backend-config" class="md-nav__link">
+    ▼ -backend=true, -backend-config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-reconfigure" class="md-nav__link">
+    ▼ -reconfigure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-migrate-state" class="md-nav__link">
+    ▼ --migrate-state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-upgrade" class="md-nav__link">
+    ▼ -upgrade
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 問題が起こる場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmt" class="md-nav__link">
+    fmt
+  </a>
+  
+    <nav class="md-nav" aria-label="fmt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fmt_1" class="md-nav__link">
+    ▼ fmtとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-check" class="md-nav__link">
+    ▼ -check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-diff" class="md-nav__link">
+    ▼ -diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-recursive" class="md-nav__link">
+    ▼ -recursive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph" class="md-nav__link">
+    graph
+  </a>
+  
+    <nav class="md-nav" aria-label="graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph_1" class="md-nav__link">
+    ▼ graphとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-draw-cycles" class="md-nav__link">
+    ▼ -draw-cycles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 図形の見方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 他のツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    import
+  </a>
+  
+    <nav class="md-nav" aria-label="import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import_1" class="md-nav__link">
+    ▼ importとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_1" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    plan
+  </a>
+  
+    <nav class="md-nav" aria-label="plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan_1" class="md-nav__link">
+    ▼ planとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-destroy_1" class="md-nav__link">
+    ▼ -destroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_2" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-target_1" class="md-nav__link">
+    ▼ -target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-refresh" class="md-nav__link">
+    ▼ -refresh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-parallelism_1" class="md-nav__link">
+    ▼ -parallelism
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-out" class="md-nav__link">
+    ▼ -out
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_2" class="md-nav__link">
+    planのプラクティス
+  </a>
+  
+    <nav class="md-nav" aria-label="planのプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 出力内容の読み方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 差分認識される/されない変更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider" class="md-nav__link">
+    provider
+  </a>
+  
+    <nav class="md-nav" aria-label="provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider_1" class="md-nav__link">
+    ▼ providerとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh" class="md-nav__link">
+    refresh (非推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="refresh (非推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_3" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    state
+  </a>
+  
+    <nav class="md-nav" aria-label="state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state_1" class="md-nav__link">
+    ▼ stateとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    ▼ pull
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    ▼ rm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-list" class="md-nav__link">
+    ▼ show list
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taint" class="md-nav__link">
+    taint
+  </a>
+  
+    <nav class="md-nav" aria-label="taint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_4" class="md-nav__link">
+    ▼ -var-file 
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    validate
+  </a>
+  
+    <nav class="md-nav" aria-label="validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validate_1" class="md-nav__link">
+    ▼ validateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tfstate" class="md-nav__link">
+    02. 実インフラの全ての設定値をtfstateファイルに取り込む
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 実インフラの全ての設定値をtfstateファイルに取り込む">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import_2" class="md-nav__link">
+    なぜimportコマンドが必要なのか
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    手順
+  </a>
+  
+    <nav class="md-nav" aria-label="手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ はじめに
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate" class="md-nav__link">
+    ▼ 実インフラの設定値をtfstateファイルに取り込む
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tf" class="md-nav__link">
+    ▼ .tfファイルに実インフラの設定値を取り込む
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ さいごに
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importresource" class="md-nav__link">
+    ▼ importできないresourceタイプ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_3" class="md-nav__link">
+    ▼ importを行わなかった場合のエラー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-tfstate" class="md-nav__link">
+    03. 実インフラの一部の設定値をtfstateファイルに取り込む
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ tfファイル
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロバイダー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CDパイプライン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_policy.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 設計規約
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Vagrant
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-terraform" class="md-nav__link">
+    01. terraformコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="01. terraformコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-option" class="md-nav__link">
+    global option
+  </a>
+  
+    <nav class="md-nav" aria-label="global option">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-chdir" class="md-nav__link">
+    ▼ -chdir
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply" class="md-nav__link">
+    apply
+  </a>
+  
+    <nav class="md-nav" aria-label="apply">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apply_1" class="md-nav__link">
+    ▼ applyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-destroy" class="md-nav__link">
+    ▼ -destroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-parallelism" class="md-nav__link">
+    ▼ -parallelism
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-refresh-only" class="md-nav__link">
+    ▼ -refresh-only
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-target" class="md-nav__link">
+    ▼ -target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfplan" class="md-nav__link">
+    ▼ .tfplanファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#init" class="md-nav__link">
+    init
+  </a>
+  
+    <nav class="md-nav" aria-label="init">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#init_1" class="md-nav__link">
+    ▼ initとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-backendfalse" class="md-nav__link">
+    ▼ -backend=false
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-backendtrue-backend-config" class="md-nav__link">
+    ▼ -backend=true, -backend-config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-reconfigure" class="md-nav__link">
+    ▼ -reconfigure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-migrate-state" class="md-nav__link">
+    ▼ --migrate-state
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-upgrade" class="md-nav__link">
+    ▼ -upgrade
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 問題が起こる場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmt" class="md-nav__link">
+    fmt
+  </a>
+  
+    <nav class="md-nav" aria-label="fmt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fmt_1" class="md-nav__link">
+    ▼ fmtとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-check" class="md-nav__link">
+    ▼ -check
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-diff" class="md-nav__link">
+    ▼ -diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-recursive" class="md-nav__link">
+    ▼ -recursive
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    get
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graph" class="md-nav__link">
+    graph
+  </a>
+  
+    <nav class="md-nav" aria-label="graph">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#graph_1" class="md-nav__link">
+    ▼ graphとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-draw-cycles" class="md-nav__link">
+    ▼ -draw-cycles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 図形の見方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 他のツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    import
+  </a>
+  
+    <nav class="md-nav" aria-label="import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import_1" class="md-nav__link">
+    ▼ importとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_1" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan" class="md-nav__link">
+    plan
+  </a>
+  
+    <nav class="md-nav" aria-label="plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan_1" class="md-nav__link">
+    ▼ planとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-destroy_1" class="md-nav__link">
+    ▼ -destroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_2" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-target_1" class="md-nav__link">
+    ▼ -target
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-refresh" class="md-nav__link">
+    ▼ -refresh
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-parallelism_1" class="md-nav__link">
+    ▼ -parallelism
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-out" class="md-nav__link">
+    ▼ -out
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plan_2" class="md-nav__link">
+    planのプラクティス
+  </a>
+  
+    <nav class="md-nav" aria-label="planのプラクティス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 出力内容の読み方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 差分認識される/されない変更
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#provider" class="md-nav__link">
+    provider
+  </a>
+  
+    <nav class="md-nav" aria-label="provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provider_1" class="md-nav__link">
+    ▼ providerとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refresh" class="md-nav__link">
+    refresh (非推奨)
+  </a>
+  
+    <nav class="md-nav" aria-label="refresh (非推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_3" class="md-nav__link">
+    ▼ -var-file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    state
+  </a>
+  
+    <nav class="md-nav" aria-label="state">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state_1" class="md-nav__link">
+    ▼ stateとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    ▼ list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pull" class="md-nav__link">
+    ▼ pull
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    ▼ rm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-list" class="md-nav__link">
+    ▼ show list
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#taint" class="md-nav__link">
+    taint
+  </a>
+  
+    <nav class="md-nav" aria-label="taint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var-file_4" class="md-nav__link">
+    ▼ -var-file 
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate" class="md-nav__link">
+    validate
+  </a>
+  
+    <nav class="md-nav" aria-label="validate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validate_1" class="md-nav__link">
+    ▼ validateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tfstate" class="md-nav__link">
+    02. 実インフラの全ての設定値をtfstateファイルに取り込む
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 実インフラの全ての設定値をtfstateファイルに取り込む">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import_2" class="md-nav__link">
+    なぜimportコマンドが必要なのか
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    手順
+  </a>
+  
+    <nav class="md-nav" aria-label="手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ はじめに
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 初期化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfstate" class="md-nav__link">
+    ▼ 実インフラの設定値をtfstateファイルに取り込む
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tf" class="md-nav__link">
+    ▼ .tfファイルに実インフラの設定値を取り込む
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ さいごに
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    Tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importresource" class="md-nav__link">
+    ▼ importできないresourceタイプ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_3" class="md-nav__link">
+    ▼ importを行わなかった場合のエラー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-tfstate" class="md-nav__link">
+    03. 実インフラの一部の設定値をtfstateファイルに取り込む
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="terraform">コマンド＠Terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-terraform">01. terraformコマンド<a class="headerlink" href="#01-terraform" title="Permanent link">&para;</a></h2>
+<h3 id="global-option">global option<a class="headerlink" href="#global-option" title="Permanent link">&para;</a></h3>
+<h4 id="-chdir">▼ -chdir<a class="headerlink" href="#-chdir" title="Permanent link">&para;</a></h4>
+<p>コマンドを実行する作業ディレクトリを指定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands#switching-working-directory-with-chdir">https://www.terraform.io/cli/commands#switching-working-directory-with-chdir</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
+<h4 id="apply_1">▼ applyとは<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
+<p>インフラリソースをプロビジョニングする。</p>
+<h4 id="-destroy">▼ -destroy<a class="headerlink" href="#-destroy" title="Permanent link">&para;</a></h4>
+<p>指定したバックエンドで管理するリソースを削除する。</p>
+<p>削除後に、パラメーターとして使用した<code>tfvars</code>ファイル自体を削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 削除するまでに以下の手順が必要である。</span>
+
+<span class="c1"># 初期化</span>
+$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>backend.tfvars
+
+<span class="c1"># 現状のtfstateファイルと実インフラの間に、差分がないことを確認する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>terraform.tfvars
+
+No<span class="w"> </span>changes.<span class="w"> </span>Your<span class="w"> </span>infrastructure<span class="w"> </span>matches<span class="w"> </span>the<span class="w"> </span>configuration.
+
+
+<span class="c1"># 実行計画</span>
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-destroy<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+
+<span class="c1"># 削除</span>
+$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-destroy<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+</code></pre></div>
+<h4 id="-parallelism">▼ -parallelism<a class="headerlink" href="#-parallelism" title="Permanent link">&para;</a></h4>
+<p>並列処理数を設定できる。</p>
+<p>デフォルト値は<code>10</code>である。</p>
+<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を<code>5</code>ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-parallelism<span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+<p>オプションで毎回設定するのが大変なため、環境変数で設定しても良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_plan</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_apply</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n">https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n</a></li>
+</ul>
+</blockquote>
+<h4 id="-refresh-only">▼ -refresh-only<a class="headerlink" href="#-refresh-only" title="Permanent link">&para;</a></h4>
+<p>すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、<code>tfstate</code>ファイルにその状態を書き込む。</p>
+<p>具体的は、<code>terraform plan</code>コマンドで出力される<code>Note: Objects have changed outside of Terraform</code>の内容を指す。</p>
+<p>ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに<code>terraform import</code>コマンドの実行が必要になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-refresh-only
+
+Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">0</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.<span class="w"> </span><span class="c1"># 実インフラは変更しない。</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://learn.hashicorp.com/tutorials/terraform/refresh">https://learn.hashicorp.com/tutorials/terraform/refresh</a></li>
+<li><a href="https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do">https://stackoverflow.com/questions/71327232/what-does-terraform-apply-plan-refresh-only-do</a></li>
+<li><a href="https://rurukblog.com/post/terraform-refresh-onlyt/">https://rurukblog.com/post/terraform-refresh-onlyt/</a></li>
+</ul>
+</blockquote>
+<h4 id="-target">▼ -target<a class="headerlink" href="#-target" title="Permanent link">&para;</a></h4>
+<p>特定の<code>resource</code>ブロックを使用して、<code>terraform apply</code>コマンドを実行する。</p>
+<p>リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合、特定の差分のみをプロビジョニングできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<p><code>module</code>ブロックを採用している場合、指定の方法が異なる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;aws_instance.bastion&#39;</span>
+</code></pre></div>
+<h4 id="-var-file">▼ -var-file<a class="headerlink" href="#-var-file" title="Permanent link">&para;</a></h4>
+<p>クラウドプロバイダー上にクラウドインフラストラクチャを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="w"> </span>foo.tfvars
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ディレクトリを指定することも可能</span>
+$<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;/foo.tfvars
+</code></pre></div>
+<p>成功すると、以下のメッセージが表示される。</p>
+<div class="highlight"><pre><span></span><code>Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">1</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.
+</code></pre></div>
+<h4 id="tfplan">▼ <code>.tfplan</code>ファイル<a class="headerlink" href="#tfplan" title="Permanent link">&para;</a></h4>
+<p>事前に、<code>terraform plan</code>コマンドによって作成された実行プランファイルを元に、<code>terraform apply</code>コマンドを実行する。</p>
+<p>実行プランを渡す場合は、環境変数をオプションに設定する必要はない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>foo.tfplan
+</code></pre></div>
+<p><br></p>
+<h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
+<h4 id="init_1">▼ initとは<a class="headerlink" href="#init_1" title="Permanent link">&para;</a></h4>
+<p><code>terraform</code>コマンドを実行しているローカルマシンの<code>.terraform</code>ディレクトリを初期化 (<code>terraform.lock.hcl</code>ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど) を実行する。</p>
+<p><code>tfstate</code>ファイルを書き換えることはしないため、基本的には安全である。</p>
+<p>もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。</p>
+<div class="highlight"><pre><span></span><code>Initializing<span class="w"> </span>provider<span class="w"> </span>plugins...
+-<span class="w"> </span>Reusing<span class="w"> </span>previous<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>hashicorp/aws<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>dependency<span class="w"> </span>lock<span class="w"> </span>file
+-<span class="w"> </span>Reusing<span class="w"> </span>previous<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>pagerduty/pagerduty<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>dependency<span class="w"> </span>lock<span class="w"> </span>file
+<span class="c1"># AWSプロバイダーのバージョン</span>
+-<span class="w"> </span>Installing<span class="w"> </span>hashicorp/aws<span class="w"> </span>v4.3.0...
+-<span class="w"> </span>Installed<span class="w"> </span>hashicorp/aws<span class="w"> </span>v4.3.0<span class="w"> </span><span class="o">(</span>signed<span class="w"> </span>by<span class="w"> </span>HashiCorp<span class="o">)</span>
+<span class="c1"># 使用しているその他のプロバイダーのバージョン</span>
+-<span class="w"> </span>Installing<span class="w"> </span>foo/bar<span class="w"> </span>v2.3.0...
+-<span class="w"> </span>Installed<span class="w"> </span>foo/bar<span class="w"> </span>v2.3.0<span class="w"> </span><span class="o">(</span>signed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>HashiCorp<span class="w"> </span>partner,<span class="w"> </span>key<span class="w"> </span>ID<span class="w"> </span>*****<span class="o">)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://spacelift.io/blog/terraform-init">https://spacelift.io/blog/terraform-init</a></li>
+<li><a href="https://reboooot.net/post/what-is-terraform/">https://reboooot.net/post/what-is-terraform/</a></li>
+<li><a href="https://www.terraform.io/cli/commands/init#usage">https://www.terraform.io/cli/commands/init#usage</a></li>
+</ul>
+</blockquote>
+<h4 id="-backendfalse">▼ -backend=false<a class="headerlink" href="#-backendfalse" title="Permanent link">&para;</a></h4>
+<p>指定したバックエンドの初期化をスキップする。</p>
+<p>一度でもバックエンドを初期化している場合は、改めて初期化することは不要なため、このオプションを使用する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-backend<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ディレクトリを指定することも可能</span>
+$<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;<span class="w"> </span>init<span class="w"> </span>-backend<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands/init#backend-initialization">https://www.terraform.io/cli/commands/init#backend-initialization</a></li>
+</ul>
+</blockquote>
+<h4 id="-backendtrue-backend-config">▼ -backend=true, -backend-config<a class="headerlink" href="#-backendtrue-backend-config" title="Permanent link">&para;</a></h4>
+<p>指定したバックエンドにある<code>tfstate</code>ファイルを使用して、ローカルマシンの<code>.terraform</code>ディレクトリを初期化する。</p>
+<p>また、<code>terraform plan</code>コマンドや<code>terraform apply</code>コマンドの向き先を別のバックエンドに切り替える。</p>
+<p>バックエンドの代わりに、<code>terraform</code>ブロック内の<code>backend</code>オプションで指定しても良い。</p>
+<p>ただし、<code>terraform setting</code>ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-reconfigure<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="sb">`</span><span class="c1"># バケット名` \</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;bucket=prd-foo-tfstate-bucket&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="sb">`</span><span class="c1"># tfstateファイル名` \</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;key=terraform.tfstate&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="sb">`</span><span class="c1"># credentialsファイルのプロファイル名` \</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;profile=bar&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
+</code></pre></div>
+<h4 id="-reconfigure">▼ -reconfigure<a class="headerlink" href="#-reconfigure" title="Permanent link">&para;</a></h4>
+<p>初期化のための<code>terraform init</code>コマンドの時、今現在で設定しているバックエンドにある<code>tfstate</code>ファイルをそのまま使用する。</p>
+<p><code>--migrate-state</code>オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの<code>tfstate</code>ファイルはそのまま保持される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>./foo/backend.tfvars
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands/init#backend-initialization">https://www.terraform.io/cli/commands/init#backend-initialization</a></li>
+<li><a href="https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/">https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/</a></li>
+</ul>
+</blockquote>
+<p>また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://repl.info/archives/1435/">https://repl.info/archives/1435/</a></li>
+</ul>
+</blockquote>
+<h4 id="-migrate-state">▼ --migrate-state<a class="headerlink" href="#-migrate-state" title="Permanent link">&para;</a></h4>
+<p>初期化のための<code>terraform init</code>コマンドの時、この時、元のバックエンドにある<code>tfstate</code>ファイルをコピーし、指定したバックエンドに移行する。</p>
+<p>元のバックエンドの<code>tfstate</code>ファイルを削除するか否かを選択できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>--migrate-state<span class="w"> </span>-backend-config<span class="o">=</span>./foo/backend.tfvars
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands/init#backend-initialization">https://www.terraform.io/cli/commands/init#backend-initialization</a></li>
+</ul>
+</blockquote>
+<h4 id="-upgrade">▼ -upgrade<a class="headerlink" href="#-upgrade" title="Permanent link">&para;</a></h4>
+<p>現在のバージョンを基に、<code>.terraform.lock.hcl</code>ファイル、モジュール、プラグインのアップグレード/ダウングレードを行う。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-upgrade
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands/init#upgrade">https://www.terraform.io/cli/commands/init#upgrade</a></li>
+</ul>
+</blockquote>
+<h4 id="_2">▼ 問題が起こる場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><code>terraform init</code>コマンドで以下のようなエラーが起こる場合がある。</p>
+<div class="highlight"><pre><span></span><code>│<span class="w"> </span>Error:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>query<span class="w"> </span>available<span class="w"> </span>provider<span class="w"> </span>packages
+│
+│<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>retrieve<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>available<span class="w"> </span>versions<span class="w"> </span><span class="k">for</span><span class="w"> </span>provider<span class="w"> </span>hashicorp/aws:<span class="w"> </span>the<span class="w"> </span>previously-selected<span class="w"> </span>version<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>longer<span class="w"> </span>available
+╵
+</code></pre></div>
+<p>その場合、以下のいずれかで解決できることがある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># プロバイダーの削除</span>
+$<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/aws/
+
+<span class="c1"># 再インストール</span>
+$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>--reconfigure
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># プロバイダーの置き換え</span>
+$<span class="w"> </span><span class="nv">PROVIDER_VER</span><span class="o">=</span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+$<span class="w"> </span><span class="nv">PROVIDER_NAME</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
+$<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span><span class="k">$(if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="sb">`</span>uname<span class="w"> </span>-m<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;arm64&#39;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;darwin_arm64&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;darwin_amd64&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">fi)</span>
+
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/<span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span><span class="s2">&quot;https://releases.hashicorp.com/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">/terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span><span class="s2">&quot;terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$HOME</span>/.terraform.d/plugins/registry.terraform.io/hashicorp/<span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span>/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;terraform-provider-</span><span class="si">${</span><span class="nv">PROVIDER_NAME</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">PROVIDER_VER</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.zip&quot;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="fmt">fmt<a class="headerlink" href="#fmt" title="Permanent link">&para;</a></h3>
+<h4 id="fmt_1">▼ fmtとは<a class="headerlink" href="#fmt_1" title="Permanent link">&para;</a></h4>
+<p><code>.tf</code>ファイルのコードを整形する。</p>
+<h4 id="-check">▼ -check<a class="headerlink" href="#-check" title="Permanent link">&para;</a></h4>
+<p>インデントを揃えるべき箇所が存在するか否かを判定する。</p>
+<p>もし存在する場合『<code>1</code>』、存在しない場合は『<code>0</code>』を返却する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>fmt<span class="w"> </span>-check
+</code></pre></div>
+<h4 id="-diff">▼ -diff<a class="headerlink" href="#-diff" title="Permanent link">&para;</a></h4>
+<p>インデントを揃えるべき箇所が存在する場合、これを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>fmt<span class="w"> </span>-diff
+</code></pre></div>
+<h4 id="-recursive">▼ -recursive<a class="headerlink" href="#-recursive" title="Permanent link">&para;</a></h4>
+<p>設定ファイルのインデントを揃える。</p>
+<p>処理を行ったファイルが表示される。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># -recursive: サブディレクトリを含む全ファイルをフォーマット</span>
+$<span class="w"> </span>terraform<span class="w"> </span>fmt<span class="w"> </span>-recursive
+
+main.tf
+</code></pre></div>
+<p><br></p>
+<h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<p><code>terraform</code>コマンドを実行しているローカルマシンの<code>.terraform</code>ディレクトリに、ローカル/リモートモジュールをインストールする。</p>
+<p>ただし、<code>terraform init</code>コマンドに同じ機能が含まれている。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>get
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ozashu.hatenablog.com/entry/2019/05/07/000541">https://ozashu.hatenablog.com/entry/2019/05/07/000541</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="graph">graph<a class="headerlink" href="#graph" title="Permanent link">&para;</a></h3>
+<h4 id="graph_1">▼ graphとは<a class="headerlink" href="#graph_1" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルに基づいて、リソース間の依存関係をグラフ化する。</p>
+<p>これにより、どの<code>resource</code>ブロックが他のどの<code>resource</code>ブロックを使用しているかがわかる。</p>
+<p>Graphvizのダウンロードが必要である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>graphviz
+
+$<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span>-Tpng<span class="w"> </span>&gt;<span class="w"> </span>graph.png
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://graphviz.org/download/">https://graphviz.org/download/</a></li>
+</ul>
+</blockquote>
+<h4 id="-draw-cycles">▼ -draw-cycles<a class="headerlink" href="#-draw-cycles" title="Permanent link">&para;</a></h4>
+<p>グラフの中で循環参照の矢印を色付きで表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> </span>-draw-cycles<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span>-Tpng<span class="w"> </span>&gt;<span class="w"> </span>graph.png
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/ringo/items/d06d936209d7abd9dcff">https://qiita.com/ringo/items/d06d936209d7abd9dcff</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ 図形の見方<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>図形</th>
+<th>種類</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>楕円</td>
+<td>ルートモジュール</td>
+</tr>
+<tr>
+<td>菱形</td>
+<td><code>provider</code>ブロック</td>
+</tr>
+<tr>
+<td>四角</td>
+<td><code>resource</code>ブロック、<code>data</code>ブロック</td>
+</tr>
+<tr>
+<td>ノート</td>
+<td><code>variable</code>ブロック、<code>output</code>ブロック、<code>local</code>ブロック</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355">https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ 他のツール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>terraform graph</code>コマンドを使用する以外に、リソース間の依存関係をグラフ化する。</p>
+<ul>
+<li>Terraform graph beautifie</li>
+<li>Rover</li>
+<li>Terraform Visual</li>
+<li>Inframap</li>
+<li>Pluralith</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://gkzz.dev/posts/alternative-terraform-graph/">https://gkzz.dev/posts/alternative-terraform-graph/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/terraform-visualise-pluralith/">https://dev.classmethod.jp/articles/terraform-visualise-pluralith/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="import">import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
+<h4 id="import_1">▼ importとは<a class="headerlink" href="#import_1" title="Permanent link">&para;</a></h4>
+<p>実インフラの状態を読み込み、<code>tfstate</code>ファイルに反映する。</p>
+<h4 id="-var-file_1">▼ -var-file<a class="headerlink" href="#-var-file_1" title="Permanent link">&para;</a></h4>
+<p><code>.tfvars</code>ファイルを指定して、<code>terraform import</code>コマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;<span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+Import<span class="w"> </span>successful!
+
+The<span class="w"> </span>resources<span class="w"> </span>that<span class="w"> </span>were<span class="w"> </span>imported<span class="w"> </span>are<span class="w"> </span>shown<span class="w"> </span>above.<span class="w"> </span>These<span class="w"> </span>resources<span class="w"> </span>are<span class="w"> </span>now<span class="w"> </span><span class="k">in</span>
+your<span class="w"> </span>Terraform<span class="w"> </span>state<span class="w"> </span>and<span class="w"> </span>will<span class="w"> </span>henceforth<span class="w"> </span>be<span class="w"> </span>managed<span class="w"> </span>by<span class="w"> </span>Terraform.
+</code></pre></div>
+<p><br></p>
+<h3 id="output">output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
+<p><code>tfstate</code>ファイルの<code>output</code>ブロックを表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>output<span class="w"> </span>-json
+
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;vpc_id&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;sensitive&quot;</span>:<span class="w"> </span>false,
+<span class="w">    </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;string&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;vpc-004c2d1ba7394b3d6&quot;</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.terraform.io/cli/commands/output">https://www.terraform.io/cli/commands/output</a></li>
+<li><a href="https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e">https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="plan">plan<a class="headerlink" href="#plan" title="Permanent link">&para;</a></h3>
+<h4 id="plan_1">▼ planとは<a class="headerlink" href="#plan_1" title="Permanent link">&para;</a></h4>
+<p>実行計画を取得する。</p>
+<h4 id="-destroy_1">▼ -destroy<a class="headerlink" href="#-destroy_1" title="Permanent link">&para;</a></h4>
+<p>指定したバックエンドで管理するリソースを削除する場合の実行計画を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-destroy<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+
+Terraform<span class="w"> </span>will<span class="w"> </span>perform<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>actions:
+
+...
+
+Plan:<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>add,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>change,<span class="w"> </span><span class="m">10</span><span class="w"> </span>to<span class="w"> </span>destroy.
+</code></pre></div>
+<h4 id="-var-file_2">▼ -var-file<a class="headerlink" href="#-var-file_2" title="Permanent link">&para;</a></h4>
+<p>クラウドに対してリクエストを行い、現在のインフラリソースの状態を<code>tfstate</code>ファイルには反映せずに、設定ファイルの記述との差分を検証する。</p>
+<p>スクリプト実行時に、環境変数が定義されたファイルを実行すると、<code>variable</code>ブロックで宣言した変数に、値が格納される。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ディレクトリを指定することも可能</span>
+<span class="c1"># 第一引数で環境変数ファイルの相対パス、第二引数でをルートモジュールの相対パス</span>
+$<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;/foo.tfvars
+</code></pre></div>
+<p>差分がなければ、以下の通りになる。</p>
+<div class="highlight"><pre><span></span><code>No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span class="w"> </span>is<span class="w"> </span>up-to-date.
+
+This<span class="w"> </span>means<span class="w"> </span>that<span class="w"> </span>Terraform<span class="w"> </span>did<span class="w"> </span>not<span class="w"> </span>detect<span class="w"> </span>any<span class="w"> </span>differences<span class="w"> </span>between<span class="w"> </span>your
+configuration<span class="w"> </span>and<span class="w"> </span>real<span class="w"> </span>physical<span class="w"> </span>resources<span class="w"> </span>that<span class="w"> </span>exist.<span class="w"> </span>As<span class="w"> </span>a<span class="w"> </span>result,<span class="w"> </span>no
+actions<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>performed.
+</code></pre></div>
+<h4 id="-target_1">▼ -target<a class="headerlink" href="#-target_1" title="Permanent link">&para;</a></h4>
+<p>特定の<code>resource</code>ブロックを使用して、<code>terraform plan</code>コマンドを実行する。<code>terraform plan</code>コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。<code>-target</code>オプションで指定するアドレスは、<code>terraform plan</code>コマンド自身の出力結果や、<code>terraform state list</code>コマンドで確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/">https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<p><code>module</code>ブロックを使用している場合、指定の方法が異なる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<p>指定方法は、全てのブロックを対象とした<code>terraform plan</code>コマンドが参考になる。</p>
+<p><code>grep</code>コマンドを使用してresourceタイプ名や<code>module</code>ブロック名で抽出すると、指定方法がわかる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># resourceブロックの指定方法を調べる。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;resourceタイプ&gt;
+
+<span class="c1"># foo.bar will be created</span>
+<span class="c1"># foo.baz will be changed</span>
+
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;foo.bar&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;foo.baz&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックの指定方法を調べる。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;moduleブロック名&gt;
+
+<span class="c1"># module.qux.quux will be changed</span>
+<span class="c1"># module.qux.corge will be changed</span>
+<span class="c1"># module.grault will be destroyed</span>
+
+$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.qux.quux&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.qux.corge&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.grault&#39;</span>
+</code></pre></div>
+<h4 id="-refresh">▼ -refresh<a class="headerlink" href="#-refresh" title="Permanent link">&para;</a></h4>
+<p>このオプションをつければ、<code>terraform refresh</code>コマンドを同時に実行してくれる。</p>
+<p>ただし、デフォルトで<code>true</code>なため、不要である。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-refresh<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform/issues/17311">https://github.com/hashicorp/terraform/issues/17311</a></li>
+</ul>
+</blockquote>
+<h4 id="-parallelism_1">▼ -parallelism<a class="headerlink" href="#-parallelism_1" title="Permanent link">&para;</a></h4>
+<p>並列処理数を設定できる。</p>
+<p>デフォルト値は<code>10</code>である。</p>
+<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-parallelism<span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+<h4 id="-out">▼ -out<a class="headerlink" href="#-out" title="Permanent link">&para;</a></h4>
+<p>実行プランファイルを作成する。</p>
+<p><code>terraform apply</code>コマンドのために使用できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="sb">`</span><span class="c1"># 実行プランファイル名` \</span>
+<span class="w">    </span>-out<span class="o">=</span>foo.tfplan
+</code></pre></div>
+<p><br></p>
+<h3 id="plan_2">planのプラクティス<a class="headerlink" href="#plan_2" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 出力内容の読み方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>リソースの作成 (<code>+</code>) 、更新 (<code>~</code>) 、削除 (<code>-</code>) 、再作成 (<code>-/+</code>) で表す。</p>
+<div class="highlight"><pre><span></span><code><span class="o">+</span><span class="w"> </span><span class="n">create</span>
+<span class="err">~</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">in</span><span class="o">-</span><span class="n">place</span>
+<span class="o">-</span><span class="w"> </span><span class="n">destroy</span>
+<span class="o">-/+</span><span class="w"> </span><span class="n">destroy</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">replacement</span>
+</code></pre></div>
+<p>前半部分と後半部分に区別されている。</p>
+<p>前半部分は、Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。</p>
+<p>また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。</p>
+<p>検出のため、applyによって変更される実インフラを表しているわけではない。</p>
+<p>そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるか、を表している。</p>
+<p>結果の最後に表示される対象の<code>resource</code>ブロックの数を確認しても、前半部分の<code>resource</code>ブロックは含まれていないことがわかる。</p>
+<div class="highlight"><pre><span></span><code>Note:<span class="w"> </span>Objects<span class="w"> </span>have<span class="w"> </span>changed<span class="w"> </span>outside<span class="w"> </span>of<span class="w"> </span>Terraform
+
+Terraform<span class="w"> </span>detected<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>changes<span class="w"> </span>made<span class="w"> </span>outside<span class="w"> </span>of<span class="w"> </span>Terraform<span class="w"> </span>since<span class="w"> </span>the
+last<span class="w"> </span><span class="s2">&quot;terraform apply&quot;</span>:
+
+<span class="w">  </span><span class="c1"># Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出。</span>
+
+Unless<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>made<span class="w"> </span>equivalent<span class="w"> </span>changes<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>configuration,<span class="w"> </span>or<span class="w"> </span>ignored<span class="w"> </span>the
+relevant<span class="w"> </span>attributes<span class="w"> </span>using<span class="w"> </span>ignore_changes,<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>plan<span class="w"> </span>may<span class="w"> </span>include
+actions<span class="w"> </span>to<span class="w"> </span>undo<span class="w"> </span>or<span class="w"> </span>respond<span class="w"> </span>to<span class="w"> </span>these<span class="w"> </span>changes.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Terraform<span class="w"> </span>used<span class="w"> </span>the<span class="w"> </span>selected<span class="w"> </span>providers<span class="w"> </span>to<span class="w"> </span>generate<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>execution
+plan.<span class="w"> </span>Resource<span class="w"> </span>actions<span class="w"> </span>are<span class="w"> </span>indicated<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>symbols:
+<span class="w">  </span>~<span class="w"> </span>update<span class="w"> </span><span class="k">in</span>-place
+
+Terraform<span class="w"> </span>will<span class="w"> </span>perform<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>actions:
+
+<span class="w">  </span><span class="c1"># Terraformのコードの変更によって、実インフラがどのように変更されるか。</span>
+
+Plan:<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>add,<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>change,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>destroy.
+</code></pre></div>
+<h4 id="_6">▼ 差分認識される/されない変更<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>値を変更した場合に差分として認識されるものを示した。</p>
+<p>ただし、差分として認識されるものの<code>moved</code>ブロックを使用すれば、差分を回避できる。</p>
+<table>
+<thead>
+<tr>
+<th>変更内容</th>
+<th>される/されない</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resource</code>ブロック名の変更</td>
+<td>される</td>
+</tr>
+<tr>
+<td><code>module</code>ブロック名の変更</td>
+<td>される</td>
+</tr>
+<tr>
+<td>ファイルやディレクトリを指定するパスの変更</td>
+<td>されない</td>
+</tr>
+<tr>
+<td><code>resource</code>ブロックにハードコーディングされた値を環境変数に変更 (<code>.tfvars</code>ファイルに移行)</td>
+<td>されない</td>
+</tr>
+<tr>
+<td><code>variables</code>ブロック名の変更</td>
+<td>されない</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/">https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="provider">provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
+<h4 id="provider_1">▼ providerとは<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
+<p><code>terraform.lock.hcl</code>ファイルを作成する。</p>
+<p><strong>＊例＊</strong></p>
+<p>CPUアーキテクチャ (例：インテル、AMD、ARM) を設定しつつ、<code>terraform.lock.hcl</code>ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>providers<span class="w"> </span>lock<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-platform<span class="o">=</span>darwin_amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-platform<span class="o">=</span>darwin_arm64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-platform<span class="o">=</span>linux_amd64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-platform<span class="o">=</span>linux_arm64<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-platform<span class="o">=</span>windows_amd64
+</code></pre></div>
+<p>事前に、<code>terraform.lock.hcl</code>ファイルを削除する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rm<span class="w"> </span>.terraform.lock.hcl
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform/cli/commands/providers/lock">https://developer.hashicorp.com/terraform/cli/commands/providers/lock</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="refresh">refresh (非推奨)<a class="headerlink" href="#refresh" title="Permanent link">&para;</a></h3>
+<h4 id="-var-file_3">▼ -var-file<a class="headerlink" href="#-var-file_3" title="Permanent link">&para;</a></h4>
+<p>クラウドに対してリクエストを行い、現在のインフラリソースの状態を<code>tfstate</code>ファイルに反映する。非推奨であり、代わりに、<code>terraform apply -refresh-only</code>コマンドを使用する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>refresh<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+</code></pre></div>
+<p><br></p>
+<h3 id="state">state<a class="headerlink" href="#state" title="Permanent link">&para;</a></h3>
+<h4 id="state_1">▼ stateとは<a class="headerlink" href="#state_1" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルを操作する。</p>
+<h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルで定義されている<code>resource</code>ブロック (<code>tfstate</code>ファイル上では<code>managed</code>モード) の一覧を取得する。<code>terraform apply</code>コマンドで<code>-target</code>オプションを使用する前にアドレスを確認したい場合や、<code>terraform apply</code>コマンドの実行に失敗した時に<code>tfstate</code>ファイルと実インフラにどのような差分があるかを確認する場合に使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/">https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>list
+</code></pre></div>
+<p>以下の通り、<code>module</code>ブロックも含めて、<code>resource</code>ブロックが表示される。</p>
+<div class="highlight"><pre><span></span><code>aws_instance.www-1a
+aws_instance.www-1c
+aws_key_pair.key_pair
+module.alb_module.aws_alb.alb
+module.ami_module.data.aws_ami.amazon_linux_2
+module.route53_module.aws_route53_record.r53_record
+module.route53_module.aws_route53_zone.r53_zone
+module.security_group_module.aws_security_group.security_group_alb
+module.security_group_module.aws_security_group.security_group_ecs
+module.security_group_module.aws_security_group.security_group_instance
+module.vpc_module.aws_internet_gateway.internet_gateway
+module.vpc_module.aws_route_table.route_table_public
+module.vpc_module.aws_route_table_association.route_table_association_public_1a
+module.vpc_module.aws_route_table_association.route_table_association_public_1c
+module.vpc_module.aws_subnet.subnet_public_1a
+module.vpc_module.aws_subnet.subnet_public_1c
+module.vpc_module.aws_vpc.vpc
+</code></pre></div>
+<h4 id="pull">▼ pull<a class="headerlink" href="#pull" title="Permanent link">&para;</a></h4>
+<p>リモートにある<code>tfstate</code>ファイルをローカルマシンにダウンロードする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>pull<span class="w"> </span>&gt;<span class="w"> </span>&lt;tfstateファイル名&gt;
+</code></pre></div>
+<h4 id="rm">▼ rm<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h4>
+<p><code>terraform import</code>コマンドで<code>tfstate</code>ファイルに反映した設定値を削除する。</p>
+<p><code>count</code>引数や<code>for_each</code>引数を使用している場合は、シングルクオーテーションで囲う必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span>aws_instance.bastion
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>aws_instance.bastion
+
+Removed<span class="w"> </span>aws_instance.bastion
+Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span>module.ec2.aws_instance.bastion
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>module.ec2.aws_instance.bastion
+
+Removed<span class="w"> </span>module.ec2.aws_instance.bastion
+Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># for_each関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+
+Removed<span class="w"> </span>aws_instance.bastion<span class="o">[</span><span class="s2">&quot;&lt;キー名1&gt;&quot;</span><span class="o">]</span>
+Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
+
+
+<span class="c1"># その他のキー名も削除が必要になる。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># count関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[0]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[0]&#39;</span>
+
+Removed<span class="w"> </span>aws_instance.bastion<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
+
+
+<span class="c1"># その他のインデックス番号も削除が必要になる。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[1]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;aws_instance.bastion[1]&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して、for_each関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+
+Removed<span class="w"> </span>module.ec2.aws_instance.bastion<span class="o">[</span><span class="s2">&quot;&lt;キー名1&gt;&quot;</span><span class="o">]</span>
+Successfully<span class="w"> </span>removed<span class="w"> </span><span class="m">1</span><span class="w"> </span>resource<span class="w"> </span>instance<span class="o">(</span>s<span class="o">)</span>.
+
+
+<span class="c1"># その他のキー名も削除が必要になる。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.ec2.aws_instance.bastion[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6">https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6</a></li>
+<li><a href="https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471">https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471</a></li>
+<li><a href="https://dev.classmethod.jp/articles/terraform_import_for_each/">https://dev.classmethod.jp/articles/terraform_import_for_each/</a></li>
+</ul>
+</blockquote>
+<h4 id="show-list">▼ show list<a class="headerlink" href="#show-list" title="Permanent link">&para;</a></h4>
+<p><code>tfstate</code>ファイルを表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state
+
+<span class="o">{</span>
+<span class="w">  </span><span class="s2">&quot;version&quot;</span>:<span class="w"> </span><span class="m">4</span>,
+<span class="w">  </span><span class="s2">&quot;terraform_version&quot;</span>:<span class="w"> </span><span class="s2">&quot;1.0.0&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;serial&quot;</span>:<span class="w"> </span><span class="m">3</span>,
+<span class="w">  </span><span class="s2">&quot;lineage&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****-*****-*****-*****-*****&quot;</span>,
+<span class="w">  </span><span class="s2">&quot;outputs&quot;</span>:<span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="c1"># outputブロックのapplyで追加される。</span>
+<span class="w">    </span><span class="s2">&quot;foo_ids&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;value&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;string&quot;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;resources&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;mode&quot;</span>:<span class="w"> </span><span class="s2">&quot;data&quot;</span>,<span class="w"> </span><span class="c1"># dataブロックのapplyで追加される。</span>
+<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;aws_caller_identity&quot;</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
+<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;current&quot;</span>,<span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s2">&quot;provider&quot;</span>:<span class="w"> </span><span class="s2">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;instances&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">        </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">&quot;schema_version&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;attributes&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;account_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;&lt;AWSアカウントID&gt;&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;arn&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;user_id&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>
+<span class="w">            </span>...
+<span class="w">          </span><span class="o">}</span>,
+<span class="w">          </span><span class="s2">&quot;sensitive_attributes&quot;</span>:<span class="w"> </span><span class="o">[]</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">      </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>,
+<span class="w">    </span><span class="o">{</span>
+<span class="w">      </span><span class="s2">&quot;module&quot;</span>:<span class="w"> </span><span class="s2">&quot;module.ec2&quot;</span>,<span class="w"> </span><span class="c1"># moduleブロックの場合に追加される。</span>
+<span class="w">      </span><span class="s2">&quot;mode&quot;</span>:<span class="w"> </span><span class="s2">&quot;managed&quot;</span>,<span class="w"> </span><span class="c1"># importや、resourceブロックのapplyで追加される。</span>
+<span class="w">      </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;aws_instance&quot;</span>,<span class="w"> </span><span class="c1"># resourceタイプ</span>
+<span class="w">      </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;bastion&quot;</span>,<span class="w"> </span><span class="c1"># リソース名</span>
+<span class="w">      </span><span class="s2">&quot;provider&quot;</span>:<span class="w"> </span><span class="s2">&quot;provider[\&quot;registry.terraform.io/hashicorp/aws\&quot;]&quot;</span>,
+<span class="w">      </span><span class="s2">&quot;instances&quot;</span>:<span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="c1"># 設定値</span>
+<span class="w">        </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">&quot;schema_version&quot;</span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;attributes&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;arn&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd-foo-instance&quot;</span>
+<span class="w">            </span><span class="s2">&quot;tags&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">              </span><span class="s2">&quot;Env&quot;</span>:<span class="w"> </span><span class="s2">&quot;prd&quot;</span>,
+<span class="w">              </span><span class="s2">&quot;ManagedBy&quot;</span>:<span class="w"> </span><span class="s2">&quot;terraform&quot;</span>
+<span class="w">              </span><span class="s2">&quot;Repository&quot;</span>:<span class="w"> </span><span class="s2">&quot;https://github.com/*****&quot;</span>
+<span class="w">            </span><span class="o">}</span>,
+<span class="w">            </span><span class="s2">&quot;description&quot;</span>:<span class="w"> </span><span class="s2">&quot;*****&quot;</span>,
+<span class="w">            </span>...
+<span class="w">          </span><span class="o">}</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">      </span><span class="o">]</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="w">  </span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>特定の<code>resource</code>ブロックのみを表示することもできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>show<span class="w"> </span><span class="s1">&#39;aws_instance.bastion&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="taint">taint<a class="headerlink" href="#taint" title="Permanent link">&para;</a></h3>
+<h4 id="-var-file_4">▼ -var-file <resourceブロック><a class="headerlink" href="#-var-file_4" title="Permanent link">&para;</a></h4>
+<p>バックエンドにある<code>tfstate</code>ファイルにて、指定された<code>resource</code>ブロックの<code>tainted</code>フラグを立てる。</p>
+<p>例えば、<code>apply</code>したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。</p>
+<p>ここで、<code>tainted</code>を立てておくと、実インフラの<code>resource</code>ブロックを削除したと想定した<code>terraform plan</code>コマンドを実行できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>taint<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;
+</code></pre></div>
+<p>この後の<code>terraform plan</code>コマンドのログからも、<code>-/+</code>で削除が行われる想定で、差分を比較していることがわかる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+
+An<span class="w"> </span>execution<span class="w"> </span>plan<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>generated<span class="w"> </span>and<span class="w"> </span>is<span class="w"> </span>shown<span class="w"> </span>below.
+Resource<span class="w"> </span>actions<span class="w"> </span>are<span class="w"> </span>indicated<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>symbols:
+-/+<span class="w"> </span>destroy<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>create<span class="w"> </span>replacement
+
+Terraform<span class="w"> </span>will<span class="w"> </span>perform<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>actions:
+
+-/+<span class="w"> </span>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;<span class="w"> </span><span class="o">(</span>tainted<span class="o">)</span><span class="w"> </span><span class="o">(</span>new<span class="w"> </span>resource<span class="w"> </span>required<span class="o">)</span>
+<span class="w">      </span>id:<span class="w"> </span><span class="s1">&#39;1492336661259070634&#39;</span><span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>&lt;computed&gt;<span class="w"> </span><span class="o">(</span>forces<span class="w"> </span>new<span class="w"> </span>resource<span class="o">)</span>
+
+
+Plan:<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>add,<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<span class="w"> </span>change,<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span>destroy.
+</code></pre></div>
+<p><br></p>
+<h3 id="validate">validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h3>
+<h4 id="validate_1">▼ validateとは<a class="headerlink" href="#validate_1" title="Permanent link">&para;</a></h4>
+<p>設定ファイルの検証を行う。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>validate
+
+Success!<span class="w"> </span>The<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>valid.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># ディレクトリを指定することも可能</span>
+$<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;<span class="w"> </span>validate
+</code></pre></div>
+<p><br></p>
+<h2 id="02-tfstate">02. 実インフラの全ての設定値を<code>tfstate</code>ファイルに取り込む<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
+<h3 id="import_2">なぜ<code>import</code>コマンドが必要なのか<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h3>
+<p>実インフラの全ての設定値を<code>tfstate</code>ファイルに取り込む場合、これの設定値を<code>resource</code>ブロックの設定値として<code>tfstate</code>ファイルに書き込み、Terraformの管理下におく必要がある (<code>tfstate</code>ファイル上では、<code>resource</code>ブロックは<code>managed</code>モードという表記になる) 。</p>
+<p>この時、<code>terraform import</code>コマンドを実行するか、コンソール画面から一度削除した上で<code>terraform apply</code>コマンドを実行する方法がある (前者が推奨) 。</p>
+<p>執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを<code>1</code>個ずつ指定して、<code>tfstate</code>ファイルに書き込んでいく必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://dtan4.hatenablog.com/entry/2016/08/18/010652">https://dtan4.hatenablog.com/entry/2016/08/18/010652</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">手順<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ はじめに<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>バックエンドがリモートの場合、ローカルマシンに<code>tfstate</code>ファイルをダウンロードする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># バックエンドがS3バケットの場合</span>
+$<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://&lt;S3バケット名&gt;/&lt;tfstateファイルへのパス&gt;<span class="w"> </span>&lt;ローカルマシンのパス&gt;
+
+<span class="c1"># バックエンドがGCSの場合</span>
+$<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://&lt;GCS名&gt;/&lt;tfstateファイルへのパス&gt;<span class="w"> </span>&lt;ローカルマシンのパス&gt;
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ダウンロードした<code>tfstate</code>ファイルを<code>local</code>バックエンドで指定する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">  # ローカルマシンで管理するように設定</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform.tfstate&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_9">▼ 初期化<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>local</code>バックエンドで初期化する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure
+</code></pre></div>
+<h4 id="tfstate">▼ 実インフラの設定値を<code>tfstate</code>ファイルに取り込む<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p><code>resource</code>タイプと<code>resource</code>ブロック名を指定し、<code>tfstate</code>ファイルに実インフラの状態を書き込む。</p>
+<p>パラメーターの『<code>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;</code>』は、<code>terraform plan</code>コマンドの結果が参考になる。</p>
+<p>また『ARN、ID、名前、など』は、<code>resource</code>タイプによって異なるため、リファレンスの『Import』の項目を確認すること。</p>
+<p>何らかの理由で<code>terraform import</code>コマンドを実行し直したい場合は、<code>terraform state rm</code>コマンドで<code>resource</code>ブロックを削除し、改めて書き込む。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># for_each関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># その他のキー名もimportが必要になる</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># count関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># その他のインデックス番号もimportが必要になる</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[0]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[1]&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># moduleブロックを使用して、for_each関数で定義されている場合</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># その他のキー名もimportが必要になる</span>
+$<span class="w"> </span>terraform<span class="w"> </span>import<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span><span class="w"> </span>&lt;ARN、ID、名前、など&gt;
+
+
+<span class="c1"># もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名1&gt;&quot;]&#39;</span>
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[&quot;&lt;キー名2&gt;&quot;]&#39;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471">https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471</a></li>
+<li><a href="https://dev.classmethod.jp/articles/terraform_import_for_each/">https://dev.classmethod.jp/articles/terraform_import_for_each/</a></li>
+<li><a href="https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6">https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6</a></li>
+</ul>
+</blockquote>
+<h4 id="tf">▼ <code>.tf</code>ファイルに実インフラの設定値を取り込む<a class="headerlink" href="#tf" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p><code>terraform import</code>コマンドの実行と<code>.tf</code>ファイルの変更を繰り返す。</p>
+<p>この時、<code>tfstate</code>ファイルの差分表記と反対に (例：<code>+</code>の場合は削除、<code>-</code>は追加、<code>→</code>は逆向き変更) になるように、tfファイルを修正する。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import">https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import</a></li>
+</ul>
+</blockquote>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p><code>tfstate</code>ファイルと実インフラの差分が無くなったら完了である。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars
+
+No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span class="w"> </span>is<span class="w"> </span>up-to-date.
+</code></pre></div>
+<h4 id="_10">▼ さいごに<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(7)</code></dt>
+<dd>
+<p>ローカルマシンの<code>tfstate</code>ファイルをリモートバックエンドにアップロードし、上書きする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="c1"># バックエンドがS3バケットの場合</span>
+$<span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>&lt;ローカルマシンのパス&gt;<span class="w"> </span>s3://&lt;S3バケット名&gt;/&lt;tfstateファイルへのパス&gt;
+
+<span class="c1"># バックエンドがGCSの場合</span>
+$<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span>&lt;ローカルマシンのパス&gt;<span class="w"> </span>gs://&lt;GCS名&gt;/&lt;tfstateファイルへのパス&gt;
+</code></pre></div>
+<dl>
+<dt><code>(8)</code></dt>
+<dd>
+<p>ローカルマシンの<code>tfstate</code>ファイルを削除する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rm<span class="w"> </span>terraform.tfstate
+$<span class="w"> </span>rm<span class="w"> </span>terraform.tfstate.backup
+</code></pre></div>
+<p><br></p>
+<h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
+<h4 id="importresource">▼ importできない<code>resource</code>タイプ<a class="headerlink" href="#importresource" title="Permanent link">&para;</a></h4>
+<p><code>resource</code>ブロック間の紐付けに特化したような<code>resource</code>ブロックは、<code>terraform import</code>コマンドに対応していないものが多い (AWSであれば、<code>aws_acm_certificate_validation</code>、<code>aws_lb_target_group_attachment</code>、など) 。</p>
+<p>その場合、<code>tfstate</code>ファイルと実インフラの差分を解消できない。</p>
+<p>ただし、こういった非対応の<code>resource</code>ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の<code>resource</code>ブロックであることが多い。</p>
+<p>そのため、実際に<code>terraform apply</code>コマンドを実行してみても、実インフラに影響が起こらない可能性がある。</p>
+<h4 id="import_3">▼ importを行わなかった場合のエラー<a class="headerlink" href="#import_3" title="Permanent link">&para;</a></h4>
+<p>もし<code>terraform import</code>コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。</p>
+<p>(エラー例1)</p>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>InvalidParameterException:<span class="w"> </span>Creation<span class="w"> </span>of<span class="w"> </span>service<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>idempotent.
+</code></pre></div>
+<p>(エラー例2)</p>
+<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>error<span class="w"> </span>creating<span class="w"> </span>ECR<span class="w"> </span>repository:<span class="w"> </span>RepositoryAlreadyExistsException:<span class="w"> </span>The<span class="w"> </span>repository<span class="w"> </span>with<span class="w"> </span>name<span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span><span class="s1">&#39;*****&#39;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-tfstate">03. 実インフラの一部の設定値を<code>tfstate</code>ファイルに取り込む<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
+<p>実インフラから実インフラの一部の設定値を<code>tfstate</code>ファイルに取り込む場合、以下の方法が便利である。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>先にコンソール画面に設定値を変更する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>terraform apply -refresh-only</code>コマンドまたは<code>terraform apply</code>コマンドを実行する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>実インフラは変更されず、<code>tfstate</code>ファイルに状態が書き込まれる。</p>
+</dd>
+</dl>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55">https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-04</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

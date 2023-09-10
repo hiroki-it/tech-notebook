@@ -1,0 +1,3738 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="マイクロサービスアーキテクチャ＠アーキテクチャの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices.html">
+      
+      
+        <link rel="prev" href="software_application_architecture_frontend.html">
+      
+      
+        <link rel="next" href="software_application_architecture_microservices_auth.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】マイクロサービスアーキテクチャ＠アーキテクチャ - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】マイクロサービスアーキテクチャ＠アーキテクチャ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="application/index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_5">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            🚀 アプリ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ アーキテクチャ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アーキテクチャ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アーキテクチャ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_analysis_and_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オブジェクト指向分析設計
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ バックエンド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_application_architecture_frontend.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フロントエンド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" checked>
+        
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ マイクロサービスアーキテクチャ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ マイクロサービスアーキテクチャ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    マイクロサービスアーキテクチャ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_architecture_microservices.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    マイクロサービスアーキテクチャ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. イントロダクション
+  </a>
+  
+    <nav class="md-nav" aria-label="01. イントロダクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    バックエンドのアーキテクチャの歴史
+  </a>
+  
+    <nav class="md-nav" aria-label="バックエンドのアーキテクチャの歴史">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マイクロサービスアーキテクチャを取り巻く環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ モジュール/マイクロサービスの粒度の比較
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    マイクロサービスアーキテクチャの特徴
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスアーキテクチャの特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ ビジネスのスケーリングに強い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コンウェイの法則が働く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 高頻度でリリース可能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 障害の影響が部分的
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 複数の開発言語を使用可能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    マイクロサービスアーキテクチャのフレームワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスアーキテクチャのフレームワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dapr" class="md-nav__link">
+    ▼ dapr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. リポジトリや開発プロジェクトの粒度
+  </a>
+  
+    <nav class="md-nav" aria-label="02. リポジトリや開発プロジェクトの粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    リポジトリの分割
+  </a>
+  
+    <nav class="md-nav" aria-label="リポジトリの分割">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ モノリポジトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ポリリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    アプリケーションリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリケーションリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 開発環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ エディタ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    コンテナIaCツールリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナIaCツールリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 開発環境
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    クラウドインフラIaCツールリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 各マイクロサービスの粒度
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 各マイクロサービスの粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    マイクロサービス
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ マイクロサービスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 各マイクロサービスのアーキテクチャ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    マイクロサービスの分割手法
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスの分割手法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ サブドメイン、境界付けられたコンテキストを単位とした分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ルートエンティティを単位とした分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 詳細機能を単位とした分割
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    分割例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    粒度のアンチパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="粒度のアンチパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ 分散モノリス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. プレゼンテーションドメイン分離
+  </a>
+  
+    <nav class="md-nav" aria-label="04. プレゼンテーションドメイン分離">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    プレゼンテーションドメイン分離とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    API Gateway
+  </a>
+  
+    <nav class="md-nav" aria-label="API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway_1" class="md-nav__link">
+    ▼ API Gatewayとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    設計パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="設計パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restful-api" class="md-nav__link">
+    ▼ RESTful-API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql-api" class="md-nav__link">
+    ▼ GraphQL-API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    実装パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="実装パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 自前で実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oss" class="md-nav__link">
+    ▼ OSSを使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ クラウドプロバイダーのマネージドサービスを使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    配置パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="配置パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-api" class="md-nav__link">
+    ▼ Public API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bffbackends-for-frontends" class="md-nav__link">
+    ▼ BFF：Backends For Frontends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#federated-gateway" class="md-nav__link">
+    ▼ Federated Gateway
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. マイクロサービスのアーキテクチャ特性を高める方法
+  </a>
+  
+    <nav class="md-nav" aria-label="05. マイクロサービスのアーキテクチャ特性を高める方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    可用性の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ サーキットブレイカー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_auth.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    認証/認可
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_database.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_microservices_network.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ネットワーク
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_application_collaboration_communication.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ アプリケーション間連携
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../language/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. イントロダクション
+  </a>
+  
+    <nav class="md-nav" aria-label="01. イントロダクション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    バックエンドのアーキテクチャの歴史
+  </a>
+  
+    <nav class="md-nav" aria-label="バックエンドのアーキテクチャの歴史">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ マイクロサービスアーキテクチャを取り巻く環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ モジュール/マイクロサービスの粒度の比較
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    マイクロサービスアーキテクチャの特徴
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスアーキテクチャの特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ ビジネスのスケーリングに強い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コンウェイの法則が働く
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 高頻度でリリース可能
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 障害の影響が部分的
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 複数の開発言語を使用可能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    マイクロサービスアーキテクチャのフレームワーク
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスアーキテクチャのフレームワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dapr" class="md-nav__link">
+    ▼ dapr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. リポジトリや開発プロジェクトの粒度
+  </a>
+  
+    <nav class="md-nav" aria-label="02. リポジトリや開発プロジェクトの粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    リポジトリの分割
+  </a>
+  
+    <nav class="md-nav" aria-label="リポジトリの分割">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ リポジトリ分割のメリット
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ モノリポジトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ ポリリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    アプリケーションリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="アプリケーションリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ 開発環境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ エディタ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    コンテナIaCツールリポジトリ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナIaCツールリポジトリ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 開発環境
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac_1" class="md-nav__link">
+    クラウドインフラIaCツールリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 各マイクロサービスの粒度
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 各マイクロサービスの粒度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    マイクロサービス
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ マイクロサービスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 各マイクロサービスのアーキテクチャ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    マイクロサービスの分割手法
+  </a>
+  
+    <nav class="md-nav" aria-label="マイクロサービスの分割手法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ サブドメイン、境界付けられたコンテキストを単位とした分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ルートエンティティを単位とした分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    ▼ 詳細機能を単位とした分割
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    分割例
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    粒度のアンチパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="粒度のアンチパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ 分散モノリス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. プレゼンテーションドメイン分離
+  </a>
+  
+    <nav class="md-nav" aria-label="04. プレゼンテーションドメイン分離">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    プレゼンテーションドメイン分離とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    API Gateway
+  </a>
+  
+    <nav class="md-nav" aria-label="API Gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway_1" class="md-nav__link">
+    ▼ API Gatewayとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    設計パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="設計パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restful-api" class="md-nav__link">
+    ▼ RESTful-API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphql-api" class="md-nav__link">
+    ▼ GraphQL-API
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    実装パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="実装パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    ▼ 自前で実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oss" class="md-nav__link">
+    ▼ OSSを使用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    ▼ クラウドプロバイダーのマネージドサービスを使用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    配置パターン
+  </a>
+  
+    <nav class="md-nav" aria-label="配置パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-api" class="md-nav__link">
+    ▼ Public API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bffbackends-for-frontends" class="md-nav__link">
+    ▼ BFF：Backends For Frontends
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#federated-gateway" class="md-nav__link">
+    ▼ Federated Gateway
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. マイクロサービスのアーキテクチャ特性を高める方法
+  </a>
+  
+    <nav class="md-nav" aria-label="05. マイクロサービスのアーキテクチャ特性を高める方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    可用性の場合
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性の場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    ▼ サーキットブレイカー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">マイクロサービスアーキテクチャ＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01">01. イントロダクション<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">バックエンドのアーキテクチャの歴史<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ マイクロサービスアーキテクチャを取り巻く環境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><img alt="architecture_history" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_history.png" /></p>
+<table>
+<thead>
+<tr>
+<th>年代</th>
+<th>アーキテクチャ</th>
+<th>説明</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1999</td>
+<td>モノリシックアーキテクチャ</td>
+<td>1999年台、バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。しかし、モノリシックアーキテクチャは無秩序でつぎはぎだらけのアプリケーションになることが論文 (『大きな泥だんご』) で指摘された。</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Big_ball_of_mud">https://en.wikipedia.org/wiki/Big_ball_of_mud</a></td>
+</tr>
+<tr>
+<td>2000 〜 2004</td>
+<td>サービス指向アーキテクチャ</td>
+<td>モノリシックアーキテクチャの批判を受け、〇〇 (考案者が見つからず) がアプリケーションを機能の粒度で分割するアーキテクチャを考案した。ただ『機能』という粒度が抽象的で、概念としては提唱されていても、実装方法の確立にまでは至らなかった。</td>
+<td>- <a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">https://en.wikipedia.org/wiki/Service-oriented_architecture</a></td>
+</tr>
+<tr>
+<td>2014</td>
+<td>マイクロサービスアーキテクチャ</td>
+<td>2014年にThoughtWorks社は、サービス指向アーキテクチャとドメイン駆動設計を統合し、アプリケーションを独立したマイクロサービスの集まりに分割するアーキテクチャを考案した。</td>
+<td>・<a href="https://martinfowler.com/articles/microservices.html">https://martinfowler.com/articles/microservices.html</a> <br>・<a href="https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html">https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html</a></td>
+</tr>
+<tr>
+<td>2017</td>
+<td>ミニマイクロサービスアーキテクチャ</td>
+<td>マイクロサービスアーキテクチャのマイクロサービス自体を独立したモノリスなアプリケーションと捉えると、その分だけ開発チーム (マネージャーとエンジニア) が必要になってしまう。2017年にCloud Elements社は、これに対処するためにミニマイクロサービスアーキテクチャを考案した。このアーキテクチャでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを複数のマイクロサービスに分割する。この粒度を、マイクロサービスに対抗して『ミニマイクロサービス』または『MASA』とよぶ。</td>
+<td>・<a href="https://blog.cloud-elements.com/pragmatic-microservices-architecture">https://blog.cloud-elements.com/pragmatic-microservices-architecture</a> <br>・<a href="https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html">https://atmarkit.itmedia.co.jp/ait/articles/2110/22/news006.html</a></td>
+</tr>
+<tr>
+<td>2018</td>
+<td>モジュラーモノリス</td>
+<td>ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの、複数のマイクロサービスが必要になることは変わらず、その分だけ開発チームが必要になる問題は解決されなかった。そこで、Root Insurance社はモジュラモノリスを考案した。モジュラモノリスでは、マイクロサービスの概念を取り入れずに、アプリケーションを細かいモジュールに分割する。反対に、最初モジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。</td>
+<td>・<a href="https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4">https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4</a> <br>・<a href="https://creators-note.chatwork.com/entry/2020/12/02/090000">https://creators-note.chatwork.com/entry/2020/12/02/090000</a> <br>・<a href="https://eh-career.com/engineerhub/entry/2022/07/25/093000">https://eh-career.com/engineerhub/entry/2022/07/25/093000</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://tech-blog.rakus.co.jp/entry/20201218/architecture">https://tech-blog.rakus.co.jp/entry/20201218/architecture</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ モジュール/マイクロサービスの粒度の比較<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><img alt="architecture_deployment_comparison" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_deployment_comparison.png" /></p>
+<table>
+<thead>
+<tr>
+<th>モジュールの大きさ</th>
+<th>粒度名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一番大きい</td>
+<td>モノリシック</td>
+<td>アプリケーションのモジュールが分割されておらず、アプリケーションをデプロイの単位とする。</td>
+</tr>
+<tr>
+<td></td>
+<td>モジュラー</td>
+<td>アプリケーションがモジュールに分割されており、アプリケーションをデプロイの単位とする。モジュール間のデータのやり取りに通信を使うか否かや、モジュール間でDBを共有するか否かの選択によって、作成パターンがいくつかある。<br>- <a href="https://scrapbox.io/tsuwatch/%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%81%82%E3%81%84%E3%81%A0">https://scrapbox.io/tsuwatch/%E3%83%A2%E3%83%8E%E3%83%AA%E3%82%B9%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%81%82%E3%81%84%E3%81%A0</a></td>
+</tr>
+<tr>
+<td></td>
+<td>ミニマイクロサービス</td>
+<td>アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスに分割されており、アプリケーションを構成するマイクロサービスのある程度のまとまりをデプロイの単位とする。また、DBを各マイクロサービスで共有する。</td>
+</tr>
+<tr>
+<td>一番小さい</td>
+<td>マイクロ</td>
+<td>アプリケーションがサブドメイン (または境界付けられたコンテキスト) を単位としたマイクロサービスまたはルートエンティティに分割されており、アプリケーションを構成するマイクロサービスそれぞれをデプロイの単位とする。また、DBを各マイクロサービスで共有せずに、マイクロサービスごとに配置する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://tech-blog.rakus.co.jp/entry/20201218/architecture">https://tech-blog.rakus.co.jp/entry/20201218/architecture</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">マイクロサービスアーキテクチャの特徴<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ ビジネスのスケーリングに強い<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>ビジネスがスケーリングする時、マイクロサービスの新規実装または削除を行えば良いため、ドメイン層の激しい変化に強い。</p>
+<h4 id="_8">▼ コンウェイの法則が働く<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスアーキテクチャにより、組織構造が小さなチームの集まりに変化することを期待できる。</p>
+<h4 id="_9">▼ 高頻度でリリース可能<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービスを独立してデプロイできるため、高頻度でリリースできる。</p>
+<h4 id="_10">▼ 障害の影響が部分的<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>いずれかのマイクロサービスに障害が発生したとして、サーキットブレイカーを使用することにより、上流マイクロサービスへの障害の波及を食い止められる。</p>
+<p>そのため、障害の影響が部分的となり、アプリケーション全体が落ちてしまうことがない。</p>
+<h4 id="_11">▼ 複数の開発言語を使用可能<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>マイクロサービス間で、共通のデータ記述言語を使用してデータ通信を行えば、各マイクロサービスの開発言語が異なっていても問題ない。</p>
+<p><br></p>
+<h3 id="_12">マイクロサービスアーキテクチャのフレームワーク<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="dapr">▼ dapr<a class="headerlink" href="#dapr" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://www.publickey1.jp/blog/19/dapr.html">https://www.publickey1.jp/blog/19/dapr.html</a></li>
+<li><a href="https://github.com/dapr/dapr">https://github.com/dapr/dapr</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. リポジトリや開発プロジェクトの粒度<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_13">リポジトリの分割<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ リポジトリ分割のメリット<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>リポジトリを分割することにより、以下のメリットがある。</p>
+<ul>
+<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
+</ul>
+<p>ただし、バージョン管理システム (例：GitHub) によっては、リポジトリのディレクトリ単位で認可スコープを設定できるものがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners">https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners</a></li>
+<li><a href="https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f">https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ モノリポジトリ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) 、を<code>1</code>個のリポジトリでディレクトリで分割して管理する。</p>
+<p>ただし、バックエンド/フロントエンド/IaCツールは異なるモノリポジトリとしても良い。</p>
+<p>Googleではモノリポジトリによるマイクロサービスアーキテクチャが採用されており、独自のバージョン管理システム (Piper/CitC) を使用している。</p>
+<p>その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter、など) でもモノリポを採用している。</p>
+<p><img alt="monorepo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/w/index.php?title=Monorepo">https://en.wikipedia.org/w/index.php?title=Monorepo</a></li>
+<li><a href="https://www.fourtheorem.com/blog/monorepo">https://www.fourtheorem.com/blog/monorepo</a></li>
+<li><a href="https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html">https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_16">▼ ポリリポジトリ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) 、をそれぞれ異なるリポジトリで管理する。</p>
+<p><img alt="polyrepo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.fourtheorem.com/blog/monorepo">https://www.fourtheorem.com/blog/monorepo</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_17">アプリケーションリポジトリ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ 開発環境<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>アプリエンジニアとインフラエンジニアの責務を完全に分離する場合、アプリエンジニアはIaCツールの存在を知る必要がない。</p>
+<p>ただし便宜上、アプリエンジニアはDocker compose使用して開発すると良い。</p>
+<p>各マイクロサービスに<code>docker-compose.yml</code>ファイルを置き、基本的には他のマイクロサービスには依存せずに開発可能にする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。</p>
+<p>ただし、マイクロサービス間のネットワークを繋げないと、マイクロサービス間でパケットを送受信できない。そのため、Docker composeの<code>external</code>オプションを使用して、マイクロサービス間のネットワークを接続する。</p>
+<p>この時に、開発環境でサービスメッシュを使用している場合、マイクロサービス間の通信で名前解決しやすい。</p>
+<p>一方で、これを使用していない場合、開発環境でのみコンテナのホスト名を指定するようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># モノリポジトリの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">backend_mono_repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── docker-compose.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── Dockerfile</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># モノリポジトリの場合</span>
+<span class="l l-Scalar l-Scalar-Plain">frontend_mono_repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── qux/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── docker-compose.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── Dockerfile</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── quux/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── corge/</span>
+</code></pre></div>
+<h4 id="_19">▼ エディタ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>多くのエディタでは、専用の設定ファイルがプロジェクトのルートディレクトリに置かれる。</p>
+<p>基本的には、他のマイクロサービスには依存せずに開発可能にする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。</p>
+<p>そこで、各マイクロサービスにエディタの設定ファイルを置くようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># バックエンドモノリポジトリの場合</span>
+<span class="c1"># JetBrains製品をエディタとする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">backend_mono_repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── .idea/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># フロントエンドモノリポジトリの場合</span>
+<span class="c1"># JetBrains製品をエディタとする場合</span>
+<span class="l l-Scalar l-Scalar-Plain">frontend_mono_repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── qux/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── .idea/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── quux/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── corge/</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="iac">コンテナIaCツールリポジトリ<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ 開発環境<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>IaCツールにKubernetesを使用した場合を示す。</p>
+<p>開発環境でKubernetesを稼働させる場合、Skaffoldなどのコンテナイメージビルドツールを使うと良い。</p>
+<p>この時、コンテナイメージのビルドのために、アプリケーションリポジトリにあるDockerfileを指定する必要がある。</p>
+<p>開発環境では同じ階層にリポジトリを置いておき、ビルドツールで相対パスを指定することにより、同階層のアプリケーションリポジトリを参照可能にする。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">project/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── backend_mono_repository</span>
+<span class="l l-Scalar l-Scalar-Plain">├── frontend_mono_repository</span>
+<span class="l l-Scalar l-Scalar-Plain">└── manifests_repository</span><span class="w"> </span><span class="c1"># コンテナのIaCツールを管理するリポジトリ</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── skaffold.yaml</span><span class="w"> </span><span class="c1"># 相対パスを設定し、mono_repositoryを参照可能にする。</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── argocd/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── istio/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="iac_1">クラウドインフラIaCツールリポジトリ<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
+<p>IaCツールにTerraformを使用した場合を示す。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># クラウドインフラのIaCツールを管理するリポジトリ</span>
+<span class="l l-Scalar l-Scalar-Plain">infrastructure_repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── modules/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── stg/</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. 各マイクロサービスの粒度<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_21">マイクロサービス<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ マイクロサービスとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p><img alt="anti-corruption-layer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png" /></p>
+<p>マイクロサービスアーキテクチャにおける分散システム状のバックエンドのコンポーネントのこと。</p>
+<p>特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするために、ACL：Anti Corruption Layer (腐食防止レイヤー) を設ける必要がある。</p>
+<p>腐食防止レイヤーは、異なるコンテキストから受信したデータを、そのマイクロサービスのコンテキストにあったデータ形式に変換する責務を持つ。</p>
+<p>CQRSでは、これはプロセスマネージャパターンとして知られている。</p>
+<p>一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/czeslavo/process-manager">https://github.com/czeslavo/process-manager</a></li>
+<li><a href="https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html">https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html</a></li>
+<li><a href="https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN">https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN</a></li>
+</ul>
+</blockquote>
+<h4 id="_23">▼ 各マイクロサービスのアーキテクチャ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>各マイクロサービスのアーキテクチャは自由である。</p>
+<p>この時、ドメイン駆動設計のアーキテクチャを基に実装できる。</p>
+<p><strong>＊例＊</strong></p>
+<p>ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。</p>
+<p>この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を行う。</p>
+<p><img alt="microservices-architecture_onion-architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation">https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_24">マイクロサービスの分割手法<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h4 id="_25">▼ サブドメイン、境界付けられたコンテキストを単位とした分割<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>サブドメインまたは境界付けられたコンテキストをマイクロサービスの粒度とする。</p>
+<table>
+<thead>
+<tr>
+<th>現状のモノリスの分割段階</th>
+<th style="text-align: center;">境界付けられたコンテキスト</th>
+<th style="text-align: center;">サブドメイン</th>
+<th style="text-align: center;">機能単位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>すでにサブドメインに分割されている</td>
+<td style="text-align: center;">不可</td>
+<td style="text-align: center;">不可</td>
+<td style="text-align: center;">記入中...</td>
+</tr>
+<tr>
+<td>すでに複数のサブドメインを含む境界付けられたコンテキストに分割されている</td>
+<td style="text-align: center;">不可</td>
+<td style="text-align: center;">可</td>
+<td style="text-align: center;">記入中...</td>
+</tr>
+<tr>
+<td>すでに単一のサブドメインを含む境界付けられたコンテキストに分割されている</td>
+<td style="text-align: center;">可</td>
+<td style="text-align: center;">可</td>
+<td style="text-align: center;">記入中...</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F">https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F</a></li>
+</ul>
+</blockquote>
+<p>解決領域となる境界付けられたコンテキストがサブドメインの中に<code>1</code>個しか含まれていない場合は、境界付けられたコンテキストをマイクロサービスの粒度して考えることになる。</p>
+<p>図にて、境界付けられたコンテキスト間で、『利用者』という単語に対する定義づけ/意味合いが異なっていることに留意する。</p>
+<p>ドメイン駆動設計では境界付けられたコンテキストが<code>1</code>個のアプリケーションに相当するため、境界付けられたコンテキストで分割した場合、マイクロサービスアーキテクチャは複数のアプリケーションから構成されるアーキテクチャと捉えられる。</p>
+<p>加えて小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。</p>
+<p><img alt="service_bounded-context" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries">https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries</a></li>
+<li><a href="https://microservices.io/patterns/decomposition/decompose-by-subdomain.html">https://microservices.io/patterns/decomposition/decompose-by-subdomain.html</a></li>
+<li><a href="https://www.amazon.co.jp/dp/4873119316/">https://www.amazon.co.jp/dp/4873119316/</a></li>
+<li><a href="https://booth.pm/ja/items/1835632">https://booth.pm/ja/items/1835632</a></li>
+</ul>
+</blockquote>
+<h4 id="_26">▼ ルートエンティティを単位とした分割<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>ドメイン層のルートエンティティをマイクロサービスの単位とする。</p>
+<p>この場合、境界付けられたコンテキストよりもマイクロサービスの粒度が小さいため、複数のマイクロサービスで1つの境界付けられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類のデータを持つオブジェクトを処理する。</p>
+<p>ドメイン層にはマイクロサービス (例：〇〇ドメインサービス) があり、ドメイン層以外のレイヤー (インターフェース層、ユースケース層、リポジトリ層) はマイクロサービスではない。</p>
+<p>ただし、データに着目した従来のステートソーシングのルートエンティティを使用することはアンチパターンである。</p>
+<p>最良な解決策として、振舞に着目したイベントソーシングを使用する必要がある。</p>
+<p>また、各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名すると良い。</p>
+<p>その他、各マイクロサービスでDBを完全に独立させることや、SAGAパターンを使用すること、がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.koslib.com/posts/entity-services-anti-pattern/">https://www.koslib.com/posts/entity-services-anti-pattern/</a></li>
+<li><a href="https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/">https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/</a></li>
+<li><a href="https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b">https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b</a></li>
+</ul>
+</blockquote>
+<h4 id="_27">▼ 詳細機能を単位とした分割<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>全てのレイヤー (インターフェース層、ユースケース層、ドメイン層、リポジトリ層) で詳細機能をマイクロサービスの単位とする。</p>
+<p>この場合、境界付けられたコンテキストよりもマイクロサービスの粒度が小さいため、複数のマイクロサービスで1つの境界付けられたコンテキストを構成することになり、異なるマイクロサービスが同じ種類のデータを持つオブジェクトを処理する。</p>
+<p>各レイヤーにマイクロサービスがいる (例：〇〇インターフェースサービス、〇〇ユースケースサービス、〇〇ドメインサービス、〇〇リポジトリサービス) ため、数が非常に多くなってしまうデメリットがある。</p>
+<p>また、各レイヤーのマイクロサービス自体もレイヤーを持つ (〇〇リポジトリサービスが、インターフェース層からリポジトリ層までを持つ) 。</p>
+<p>各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名すると良い。</p>
+<p><br></p>
+<h3 id="_28">分割例<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ユースケース</th>
+<th>分割方法</th>
+<th>マイクロサービスの種類</th>
+<th>ディレクトリ構成規約</th>
+<th>リンク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eコマース</td>
+<td>境界付けられたコンテキスト</td>
+<td>・カート<br>・商品検索とインデックス<br>・通貨の変換<br>・クレジットカード<br>・送料と発送<br>・注文確認メール<br>・注文フロー<br>・レコメンド<br>・広告<br>・合成監視</td>
+<td><code>src</code>ディレクトリに各マイクロサービスのディレクトリを配置する。</td>
+<td><img alt="service_google" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png" /><br> - <a href="https://github.com/GoogleCloudPlatform/microservices-demo">https://github.com/GoogleCloudPlatform/microservices-demo</a></td>
+</tr>
+<tr>
+<td>Eコマース</td>
+<td>境界付けられたコンテキスト</td>
+<td>・認証<br>・カタログ<br>・顧客<br>・商品</td>
+<td><code>services</code>ディレクトリに各マイクロサービスのディレクトリを配置する。</td>
+<td><img alt="service_mercari" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png" /><br> - <a href="https://github.com/mercari/mercari-microservices-example">https://github.com/mercari/mercari-microservices-example</a></td>
+</tr>
+<tr>
+<td>Eコマース</td>
+<td>境界付けられたコンテキスト</td>
+<td>・広告<br>・割引</td>
+<td>ルートに各マイクロサービスのディレクトリを配置する。</td>
+<td>- <a href="https://github.com/DataDog/ecommerce-workshop">https://github.com/DataDog/ecommerce-workshop</a></td>
+</tr>
+<tr>
+<td>SNS (Twitter)</td>
+<td>境界付けられたコンテキスト</td>
+<td>いっぱい</td>
+<td>実装方法は不明</td>
+<td><img alt="service_twitter" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png" /><br> - <a href="https://www.codekarle.com/system-design/Twitter-system-design.html">https://www.codekarle.com/system-design/Twitter-system-design.html</a></td>
+</tr>
+<tr>
+<td>地図 (GoogleMap)</td>
+<td>境界付けられたコンテキスト</td>
+<td>いっぱい</td>
+<td>実装方法は不明</td>
+<td><img alt="service_google-map" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png" /><br> - <a href="https://www.codekarle.com/system-design/Twitter-system-design.html">https://www.codekarle.com/system-design/Twitter-system-design.html</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_29">粒度のアンチパターン<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h4 id="_30">▼ 分散モノリス<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>複数のマイクロサービスをセットでデプロイしなければならず、マイクロサービス間のデプロイが独立していないような粒度のパターン。</p>
+<p>例えば、マイクロサービス間で重複するロギングライブラリをマイクロサービスとして分離した結果、複数のマイクロサービスがこのロギングマイクロサービスに依存してしまうような場合がある。</p>
+<p>分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/">https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/</a></li>
+<li><a href="https://r-kaga.com/blog/what-is-distributed-monolith">https://r-kaga.com/blog/what-is-distributed-monolith</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04">04. プレゼンテーションドメイン分離<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_31">プレゼンテーションドメイン分離とは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p><img alt="presentation_domain_separation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png" /></p>
+<p>モノリシックなアプリケーションには二つの段階 (v1、v2) がある。</p>
+<p>v2では、アプリケーションがプレゼンテーション層、アプリケーション層、ドメイン層、インフラ層、を持っており、このうちプレゼンテーション層がフロントエンドアプリケーションとして分離されている。</p>
+<p>続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/architecture/devops/devops-tech-architecture">https://cloud.google.com/architecture/devops/devops-tech-architecture</a></li>
+<li><a href="https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith">https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith</a></li>
+<li><a href="https://bliki-ja.github.io/PresentationDomainSeparation/">https://bliki-ja.github.io/PresentationDomainSeparation/</a></li>
+<li><a href="https://tech.mti.co.jp/entry/2021/04/12/112833">https://tech.mti.co.jp/entry/2021/04/12/112833</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="api-gateway">API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
+<h4 id="api-gateway_1">▼ API Gatewayとは<a class="headerlink" href="#api-gateway_1" title="Permanent link">&para;</a></h4>
+<p><img alt="microservices_api-gateway-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png" /></p>
+<p>クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。</p>
+<ul>
+<li>受信したインバウンド通信を適切なマイクロサービスのAPIにルーティング</li>
+<li>認証</li>
+<li>トレースIDの付与</li>
+<li>キャッシュの作成</li>
+<li>リクエスト制限</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern">https://banzaicloud.com/blog/backyards-api-gateway/#api-gateway-pattern</a></li>
+<li><a href="https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/">https://www.getambassador.io/resources/challenges-api-gateway-kubernetes/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_32">設計パターン<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<h4 id="restful-api">▼ RESTful-API<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html</a></li>
+</ul>
+</blockquote>
+<h4 id="graphql-api">▼ GraphQL-API<a class="headerlink" href="#graphql-api" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html">https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_33">実装パターン<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="_34">▼ 自前で実装<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>API Gatewayを自前 (例：フルスクラッチ、Nginx、など) で実装する。</p>
+<p>Kubernetes内で管理できるメリットがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy">https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy</a></li>
+</ul>
+</blockquote>
+<h4 id="oss">▼ OSSを使用<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h4>
+<p>API GatewayのOSS (Kong、Tyk、Apigee) を使用する。</p>
+<p>Kubernetes内で管理できるメリットがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/">https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/</a></li>
+</ul>
+</blockquote>
+<h4 id="_35">▼ クラウドプロバイダーのマネージドサービスを使用<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>クラウドプロバイダー (例：AWS、GCP) が提供するAPI Gatewayを使用する。</p>
+<p>クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。</p>
+<p>その場合、フロントエンドアプリケーションがAPI Gatewayに通信を送信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/">https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_36">配置パターン<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="public-api">▼ Public API<a class="headerlink" href="#public-api" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API Gatewayを<code>1</code>個だけ作成する。</p>
+<p><img alt="apigateway_public-api-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
+</ul>
+</blockquote>
+<h4 id="bffbackends-for-frontends">▼ BFF：Backends For Frontends<a class="headerlink" href="#bffbackends-for-frontends" title="Permanent link">&para;</a></h4>
+<p>マイクロサービスにリクエストを送信するアプリケーションの種類 (Webアプリケーション、Mobileアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。</p>
+<p>ただし、複数のクライアントをWebアプリとして開発することもできるため、同じWebからのアクセスであっても、異なるAPI Gatewayを作成する場合がある。</p>
+<p><img alt="apigateway_bff-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/">https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/</a></li>
+<li><a href="https://codezine.jp/article/detail/11305?p=4">https://codezine.jp/article/detail/11305?p=4</a></li>
+</ul>
+</blockquote>
+<h4 id="federated-gateway">▼ Federated Gateway<a class="headerlink" href="#federated-gateway" title="Permanent link">&para;</a></h4>
+<p>BFFではアプリケーションの種類ごとにAPI　Gatewayを作成したが、Federated Gatewayでは各API Gatewayのエンドポイントを統合する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/">https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/</a></li>
+<li><a href="https://tech.smartshopping.co.jp/backend-development-with-graphql">https://tech.smartshopping.co.jp/backend-development-with-graphql</a></li>
+<li><a href="https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32">https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05">05. マイクロサービスのアーキテクチャ特性を高める方法<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_37">可用性の場合<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<h4 id="_38">▼ サーキットブレイカー<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>マイクロサービス間に配置され、他のマイクロサービスに連鎖的に起こる障害 (カスケード障害) を吸収する仕組みのこと。</p>
+<p>blast-radiusを最小限にできる。</p>
+<p>下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。</p>
+<p><img alt="circuit-breaker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://digitalvarys.com/what-is-circuit-breaker-design-pattern/">https://digitalvarys.com/what-is-circuit-breaker-design-pattern/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-07</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

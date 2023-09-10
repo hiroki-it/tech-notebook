@@ -1,0 +1,3313 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="その他パッケージ＠PHPの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_php_package_others.html">
+      
+      
+        <link rel="prev" href="language_php_package_sql.html">
+      
+      
+        <link rel="next" href="language_js_prototype_based.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】その他パッケージ＠PHP - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#php" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】その他パッケージ＠PHP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_class_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ クラスベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_6" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_6" id="__nav_8_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ パッケージ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_package_management.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    パッケージ管理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_package_sql.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLパッケージ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    その他パッケージ
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_php_package_others.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    その他パッケージ
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-carbon" class="md-nav__link">
+    01. Carbonパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Carbonパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carbon" class="md-nav__link">
+    Carbonとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データ型
+  </a>
+  
+    <nav class="md-nav" aria-label="データ型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    ▼ Date型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    ▼ instanceメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createfromxxx" class="md-nav__link">
+    ▼ createFromXXXメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    ▼ parseメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-pinqphp-integrated-query" class="md-nav__link">
+    02. Pinqパッケージ：Php Integrated Query
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Pinqパッケージ：Php Integrated Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pinq" class="md-nav__link">
+    Pinqとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traversablefrom" class="md-nav__link">
+    Traversable::fromメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-guzzle" class="md-nav__link">
+    03. Guzzleパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Guzzleパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guzzle" class="md-nav__link">
+    Guzzleパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    リクエスト
+  </a>
+  
+    <nav class="md-nav" aria-label="リクエスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ GET送信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ POST送信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    レスポンス
+  </a>
+  
+    <nav class="md-nav" aria-label="レスポンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ レスポンスからボディを取得
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-knplabssnappy" class="md-nav__link">
+    04. KnpLabs/Snappyパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="04. KnpLabs/Snappyパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knplabssnappy" class="md-nav__link">
+    KnpLabs/Snappyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generatefromhtml" class="md-nav__link">
+    ▼ generateFromHtmlメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-respectvalidation" class="md-nav__link">
+    05. Respect/Validationパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Respect/Validationパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respectvalidation" class="md-nav__link">
+    Respect/Validationとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-linecorpline-bot-sdk" class="md-nav__link">
+    06. linecorp/line-bot-sdk
+  </a>
+  
+    <nav class="md-nav" aria-label="06. linecorp/line-bot-sdk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linecorpline-bot-sdk" class="md-nav__link">
+    linecorp/line-bot-sdkとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-carbon" class="md-nav__link">
+    01. Carbonパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Carbonパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carbon" class="md-nav__link">
+    Carbonとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    データ型
+  </a>
+  
+    <nav class="md-nav" aria-label="データ型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    ▼ Date型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    ▼ instanceメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createfromxxx" class="md-nav__link">
+    ▼ createFromXXXメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parse" class="md-nav__link">
+    ▼ parseメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-pinqphp-integrated-query" class="md-nav__link">
+    02. Pinqパッケージ：Php Integrated Query
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Pinqパッケージ：Php Integrated Query">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pinq" class="md-nav__link">
+    Pinqとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traversablefrom" class="md-nav__link">
+    Traversable::fromメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-guzzle" class="md-nav__link">
+    03. Guzzleパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Guzzleパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guzzle" class="md-nav__link">
+    Guzzleパッケージとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    リクエスト
+  </a>
+  
+    <nav class="md-nav" aria-label="リクエスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    ▼ GET送信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    ▼ POST送信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    レスポンス
+  </a>
+  
+    <nav class="md-nav" aria-label="レスポンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ レスポンスからボディを取得
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-knplabssnappy" class="md-nav__link">
+    04. KnpLabs/Snappyパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="04. KnpLabs/Snappyパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knplabssnappy" class="md-nav__link">
+    KnpLabs/Snappyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    メソッド
+  </a>
+  
+    <nav class="md-nav" aria-label="メソッド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generatefromhtml" class="md-nav__link">
+    ▼ generateFromHtmlメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-respectvalidation" class="md-nav__link">
+    05. Respect/Validationパッケージ
+  </a>
+  
+    <nav class="md-nav" aria-label="05. Respect/Validationパッケージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#respectvalidation" class="md-nav__link">
+    Respect/Validationとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-linecorpline-bot-sdk" class="md-nav__link">
+    06. linecorp/line-bot-sdk
+  </a>
+  
+    <nav class="md-nav" aria-label="06. linecorp/line-bot-sdk">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linecorpline-bot-sdk" class="md-nav__link">
+    linecorp/line-bot-sdkとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="php">その他パッケージ＠PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-carbon">01. Carbonパッケージ<a class="headerlink" href="#01-carbon" title="Permanent link">&para;</a></h2>
+<h3 id="carbon">Carbonとは<a class="headerlink" href="#carbon" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://github.com/briannesbitt/Carbon">https://github.com/briannesbitt/Carbon</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_2">データ型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="date">▼ Date型<a class="headerlink" href="#date" title="Permanent link">&para;</a></h4>
+<p>厳密にはデータ型ではないが、便宜上、データ型とする。</p>
+<p>タイムスタンプとは、協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの。</p>
+<table>
+<thead>
+<tr>
+<th>フォーマット</th>
+<th>実装方法</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日付</td>
+<td>2019-07-07</td>
+<td>区切り記号なし、ドット、スラッシュなども可能</td>
+</tr>
+<tr>
+<td>時間</td>
+<td>19:07:07</td>
+<td>区切り記号なし、も可能</td>
+</tr>
+<tr>
+<td>日時</td>
+<td>2019-07-07 19:07:07</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>タイムスタンプ (秒)</td>
+<td>1562494027</td>
+<td>1970年1月1日の0時0分0秒から2019-07-07 19:07:07 までの経過秒数</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_3">メソッド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="instance">▼ <code>instance</code>メソッド<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h4>
+<p>DateTimeインスタンスを引数として、Carbonインスタンスを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$datetime</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">);</span>
+<span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">instance</span><span class="p">(</span><span class="nv">$datetime</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbon</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
+</code></pre></div>
+<h4 id="create">▼ <code>create</code>メソッド<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
+<p>日時の文字列からCarbonインスタンスを作成する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mo">07</span><span class="p">,</span> <span class="mo">07</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mo">07</span><span class="p">,</span> <span class="mo">07</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbon</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
+</code></pre></div>
+<h4 id="createfromxxx">▼ <code>createFromXXX</code>メソッド<a class="headerlink" href="#createfromxxx" title="Permanent link">&para;</a></h4>
+<p>指定の文字列から、Carbonインスタンスを作成する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>日時数字からCarbonインスタンスを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 日時数字から、Carbonインスタンスを作成する。</span>
+<span class="nv">$carbonFromeDate</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromDate</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mo">07</span><span class="p">,</span> <span class="mo">07</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbonFromeDate</span><span class="p">;</span> <span class="c1">// 2019-07-07</span>
+</code></pre></div>
+<p>時間数字からCarbonインスタンスを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 時間数字から、Carbonインスタンスを作成する。</span>
+<span class="nv">$carbonFromTime</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromTime</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="mo">07</span><span class="p">,</span> <span class="mo">07</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbonFromTime</span><span class="p">;</span> <span class="c1">// 19:07:07</span>
+</code></pre></div>
+<p>日付、時間、日時フォーマットからCarbonインスタンスを作成する。</p>
+<p>第一引数でフォーマットを指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// 日付、時間、日時フォーマットから、Carbonインスタンスを作成する。</span>
+<span class="c1">// 第一引数でフォーマットを指定する必要がある。</span>
+<span class="nv">$carbonFromFormat</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromFormat</span><span class="p">(</span><span class="s2">&quot;Y-m-d H:m:s&quot;</span><span class="p">,</span> <span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbonFromFormat</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
+</code></pre></div>
+<p>タイムスタンプフォーマットからCarbonインスタンスを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// タイムスタンプフォーマットから、Carbonインスタンスを作成する。</span>
+<span class="nv">$carbonFromTimestamp</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">createFromTimestamp</span><span class="p">(</span><span class="mi">1562494027</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$carbonFromTimestamp</span><span class="p">;</span> <span class="c1">// 2019-07-07 19:07:07</span>
+</code></pre></div>
+<h4 id="parse">▼ <code>parse</code>メソッド<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h4>
+<p>日付、時間、日時フォーマットから、Carbonインスタンスを作成する。</p>
+<p><code>createFromFormat</code>メソッドとは異なり、フォーマットを指定する必要がない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$carbon</span> <span class="o">=</span> <span class="nx">Carbon</span><span class="o">::</span><span class="na">parse</span><span class="p">(</span><span class="s2">&quot;2019-07-07 19:07:07&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-pinqphp-integrated-query">02. Pinqパッケージ：Php Integrated Query<a class="headerlink" href="#02-pinqphp-integrated-query" title="Permanent link">&para;</a></h2>
+<h3 id="pinq">Pinqとは<a class="headerlink" href="#pinq" title="Permanent link">&para;</a></h3>
+<p>配列データやオブジェクトデータに対して、クエリを実行できるようになる。</p>
+<p>他の同様パッケージとして、Linqがある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/TimeToogo/Pinq/">https://github.com/TimeToogo/Pinq/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="traversablefrom"><code>Traversable::from</code>メソッド<a class="headerlink" href="#traversablefrom" title="Permanent link">&para;</a></h3>
+<p>SQLの<code>SELECT</code>や<code>WHERE</code>といった単語を使用して、<code>foreach</code>のように、配列データやオブジェクトデータの各要素に対して、処理を行える。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Pinq\Traversable</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span>
+<span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getData</span><span class="p">(</span><span class="k">array</span> <span class="nv">$entities</span><span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="k">return</span> <span class="p">[</span>
+          <span class="s2">&quot;data&quot;</span> <span class="o">=&gt;</span> <span class="nx">Traversable</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$entities</span><span class="p">)</span>
+            <span class="c1">// 1つずつ要素を取り出し、関数に渡す。</span>
+            <span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span>
+              <span class="k">function</span> <span class="p">(</span><span class="nv">$entity</span><span class="p">)</span> <span class="p">{</span>
+                  <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">convertToArray</span><span class="p">(</span><span class="nv">$entity</span><span class="p">);</span>
+              <span class="p">})</span>
+            <span class="c1">// indexからなる配列として返却。</span>
+            <span class="o">-&gt;</span><span class="na">asArray</span><span class="p">(),</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-guzzle">03. Guzzleパッケージ<a class="headerlink" href="#03-guzzle" title="Permanent link">&para;</a></h2>
+<h3 id="guzzle">Guzzleパッケージとは<a class="headerlink" href="#guzzle" title="Permanent link">&para;</a></h3>
+<p>通常、リクエストの送受信は、クライアントからサーバに対して、Postmanやcurl関数などを使用して行う。</p>
+<p>しかし、GuzzleパッケージのClientを使えば、サーバから他サーバ (例：外部のAPIなど) に対して、リクエストの送受信できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/guzzle/guzzle">https://github.com/guzzle/guzzle</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">リクエスト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="get">▼ GET送信<a class="headerlink" href="#get" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="c1">// GET送信</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;query&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters">https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters</a></li>
+</ul>
+</blockquote>
+<h4 id="post">▼ POST送信<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
+    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="p">]);</span>
+
+<span class="c1">// POST送信</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;headers&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;Authorization&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
+            <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
+            <span class="s2">&quot;Content-Type&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests">https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">レスポンス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ レスポンスからボディを取得<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
+    <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="p">]);</span>
+
+<span class="c1">// POST送信</span>
+<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span>
+    <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;headers&quot;</span>     <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;Authorization&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">token</span><span class="p">,</span>
+            <span class="s2">&quot;Content-Length&quot;</span> <span class="o">=&gt;</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$json</span><span class="p">),</span>
+            <span class="s2">&quot;Content-Type&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;form_params&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+            <span class="s2">&quot;body&quot;</span> <span class="o">=&gt;</span> <span class="nv">$message</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">);</span>
+
+<span class="nv">$body</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">(),</span> <span class="k">true</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-knplabssnappy">04. KnpLabs/Snappyパッケージ<a class="headerlink" href="#04-knplabssnappy" title="Permanent link">&para;</a></h2>
+<h3 id="knplabssnappy">KnpLabs/Snappyとは<a class="headerlink" href="#knplabssnappy" title="Permanent link">&para;</a></h3>
+<p>ローカルまたは指定したURLの<code>.html</code>ファイルから、PDFや画像のファイルを作成するパッケージ。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/KnpLabs/snappy">https://github.com/KnpLabs/snappy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">メソッド<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="generatefromhtml">▼ <code>generateFromHtml</code>メソッド<a class="headerlink" href="#generatefromhtml" title="Permanent link">&para;</a></h4>
+<p>ローカルディレクトリ配下に、<code>.html</code>ファイルを基にしたPDFファイルを作成する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$snappy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Pdf</span><span class="p">(</span><span class="s2">&quot;/usr/local/bin/wkhtmltopdf&quot;</span><span class="p">);</span>
+
+<span class="nv">$snappy</span><span class="o">-&gt;</span><span class="na">generateFromHtml</span><span class="p">(</span><span class="s2">&quot;foo.html&quot;</span><span class="p">,</span> <span class="s2">&quot;.../foo.pdf&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="05-respectvalidation">05. Respect/Validationパッケージ<a class="headerlink" href="#05-respectvalidation" title="Permanent link">&para;</a></h2>
+<h3 id="respectvalidation">Respect/Validationとは<a class="headerlink" href="#respectvalidation" title="Permanent link">&para;</a></h3>
+<p>リクエストされたデータが正しいかを、サーバサイド側で検証する。</p>
+<p>フロントエンドからリクエストされるデータに関しては、JavaScriptとPHPの両方によるバリデーションが必要である。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/Respect/Validation">https://github.com/Respect/Validation</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// ここに実装例</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="06-linecorpline-bot-sdk">06. linecorp/line-bot-sdk<a class="headerlink" href="#06-linecorpline-bot-sdk" title="Permanent link">&para;</a></h2>
+<h3 id="linecorpline-bot-sdk">linecorp/line-bot-sdkとは<a class="headerlink" href="#linecorpline-bot-sdk" title="Permanent link">&para;</a></h3>
+<p>ボットサーバーにて、LINEプラットフォームに返信するためのレスポンスを作成する。</p>
+<p><img alt="line_messaging-api" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/line_messaging-api.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/line/line-bot-sdk-php">https://github.com/line/line-bot-sdk-php</a></li>
+<li><a href="https://developers.line.biz/ja/docs/messaging-api/overview/">https://developers.line.biz/ja/docs/messaging-api/overview/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-08</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

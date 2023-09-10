@@ -1,0 +1,4649 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Vue.jsの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html">
+      
+      
+        <link rel="prev" href="language_js_logic_debug.html">
+      
+      
+        <link rel="next" href="language_js_framework_nuxtjs.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】Vue.js - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vuejs" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】Vue.js
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ JavaScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロトタイプベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6_3" checked>
+        
+          <label class="md-nav__link" for="__nav_8_6_3" id="__nav_8_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ フレームワーク
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Vue.js
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_js_framework_vuejs.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Vue.js
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-vuejsmvvm" class="md-nav__link">
+    01. Vue.jsを使用したMVVMアーキテクチャ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Vue.jsを使用したMVVMアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvvm" class="md-nav__link">
+    MVVMアーキテクチャ、双方向データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="MVVMアーキテクチャ、双方向データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_1" class="md-nav__link">
+    ▼ MVVMアーキテクチャとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_2" class="md-nav__link">
+    ▼ MVVMアーキテクチャにおける各層の責務
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuemvvm" class="md-nav__link">
+    ▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    親子コンポーネント間のデータ渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="親子コンポーネント間のデータ渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#props-down-events-up" class="md-nav__link">
+    ▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_3" class="md-nav__link">
+    MVVMアーキテクチャの実装例
+  </a>
+  
+    <nav class="md-nav" aria-label="MVVMアーキテクチャの実装例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-foohtmlfootwig" class="md-nav__link">
+    (1) 【View層】テンプレート (foo.html、foo.twig)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-2-viewmodelvue-indexjs" class="md-nav__link">
+    (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (index.js)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-view-viewmodel-foo-componentvue" class="md-nav__link">
+    (2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント (foo-component.vue)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-modelvuex-storejs" class="md-nav__link">
+    (3) 【Model層】オブジェクトに相当するVuex (store.js)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-modeljavascript-foojs" class="md-nav__link">
+    (3-2) 【Model層】オブジェクトに相当するJavaScript (foo.js)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-viewviewmodel" class="md-nav__link">
+    01-02. View層とViewModel層の間での双方向データバインディングの方法
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. View層とViewModel層の間での双方向データバインディングの方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    イベントハンドリング
+  </a>
+  
+    <nav class="md-nav" aria-label="イベントハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-on" class="md-nav__link">
+    ▼ v-on:とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onsubmitbutton" class="md-nav__link">
+    ▼ v-on:submit="&lt;イベントハンドラ関数&gt;"、buttonタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onclick" class="md-nav__link">
+    ▼ v-on:click="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onchange" class="md-nav__link">
+    ▼ v-on:change="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-oninput" class="md-nav__link">
+    ▼ v-on:input="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    条件付きレンダリング
+  </a>
+  
+    <nav class="md-nav" aria-label="条件付きレンダリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-showv-if" class="md-nav__link">
+    ▼ v-show/v-ifとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    属性データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="属性データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-bind" class="md-nav__link">
+    ▼ v-bindとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    フォーム入力データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="フォーム入力データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-model" class="md-nav__link">
+    ▼ v-modelとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    その他のディレクティブ
+  </a>
+  
+    <nav class="md-nav" aria-label="その他のディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-cloak" class="md-nav__link">
+    ▼ v-cloakとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03" class="md-nav__link">
+    01-03. コンポーネント
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. コンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    コンポーネントの登録方法
+  </a>
+  
+    <nav class="md-nav" aria-label="コンポーネントの登録方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ グローバル登録
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ローカル登録
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-vue-router" class="md-nav__link">
+    02. vue-routerパッケージによるルーティング
+  </a>
+  
+    <nav class="md-nav" aria-label="02. vue-routerパッケージによるルーティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue-router" class="md-nav__link">
+    vue-router
+  </a>
+  
+    <nav class="md-nav" aria-label="vue-router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue-router_1" class="md-nav__link">
+    ▼ vue-routerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router-router" class="md-nav__link">
+    ▼ $router (Routerインスタンス)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route-route" class="md-nav__link">
+    ▼ $route (Routeオブジェクト)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    その他のRouterパッケージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-vuex" class="md-nav__link">
+    03. Vuexパッケージによるデータの状態変化の管理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Vuexパッケージによるデータの状態変化の管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vuex" class="md-nav__link">
+    Vuex
+  </a>
+  
+    <nav class="md-nav" aria-label="Vuex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vuex_1" class="md-nav__link">
+    ▼ Vuexとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuexstorevuex" class="md-nav__link">
+    Vuex.StoreメソッドによるVuexストアの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="Vuex.StoreメソッドによるVuexストアの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getters" class="md-nav__link">
+    ▼ getters:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    ▼ state:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutations" class="md-nav__link">
+    ▼ mutations:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    ▼ actions:{}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuex_2" class="md-nav__link">
+    コンポーネントからVuexに対するアクセス
+  </a>
+  
+    <nav class="md-nav" aria-label="コンポーネントからVuexに対するアクセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#computed" class="md-nav__link">
+    ▼ computed: {}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    ▼ methods: {}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapgetters" class="md-nav__link">
+    ▼ mapGettersヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapstate" class="md-nav__link">
+    ▼ mapStateヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapmutations" class="md-nav__link">
+    ▼ mapMutationsヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapactions" class="md-nav__link">
+    ▼ mapActionsヘルパー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ライフサイクル
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ライフサイクル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ライフサイクルフック
+  </a>
+  
+    <nav class="md-nav" aria-label="ライフサイクルフック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ ライフサイクルフックとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ マウントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforecreate" class="md-nav__link">
+    ▼ beforeCreate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#created" class="md-nav__link">
+    ▼ created
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforemount" class="md-nav__link">
+    ▼ beforeMount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounted" class="md-nav__link">
+    ▼ mounted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforeupdate" class="md-nav__link">
+    ▼ beforeUpdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updated" class="md-nav__link">
+    ▼ updated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforedestroy" class="md-nav__link">
+    ▼ beforeDestroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destroyed" class="md-nav__link">
+    ▼ destroyed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_js_framework_nuxtjs.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nuxt.js
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_js_browser_rendering.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ブラウザ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-vuejsmvvm" class="md-nav__link">
+    01. Vue.jsを使用したMVVMアーキテクチャ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Vue.jsを使用したMVVMアーキテクチャ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvvm" class="md-nav__link">
+    MVVMアーキテクチャ、双方向データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="MVVMアーキテクチャ、双方向データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_1" class="md-nav__link">
+    ▼ MVVMアーキテクチャとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_2" class="md-nav__link">
+    ▼ MVVMアーキテクチャにおける各層の責務
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuemvvm" class="md-nav__link">
+    ▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    親子コンポーネント間のデータ渡し
+  </a>
+  
+    <nav class="md-nav" aria-label="親子コンポーネント間のデータ渡し">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#props-down-events-up" class="md-nav__link">
+    ▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mvvm_3" class="md-nav__link">
+    MVVMアーキテクチャの実装例
+  </a>
+  
+    <nav class="md-nav" aria-label="MVVMアーキテクチャの実装例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-foohtmlfootwig" class="md-nav__link">
+    (1) 【View層】テンプレート (foo.html、foo.twig)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-2-viewmodelvue-indexjs" class="md-nav__link">
+    (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (index.js)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-view-viewmodel-foo-componentvue" class="md-nav__link">
+    (2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント (foo-component.vue)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-modelvuex-storejs" class="md-nav__link">
+    (3) 【Model層】オブジェクトに相当するVuex (store.js)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-2-modeljavascript-foojs" class="md-nav__link">
+    (3-2) 【Model層】オブジェクトに相当するJavaScript (foo.js)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-viewviewmodel" class="md-nav__link">
+    01-02. View層とViewModel層の間での双方向データバインディングの方法
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. View層とViewModel層の間での双方向データバインディングの方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    イベントハンドリング
+  </a>
+  
+    <nav class="md-nav" aria-label="イベントハンドリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-on" class="md-nav__link">
+    ▼ v-on:とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onsubmitbutton" class="md-nav__link">
+    ▼ v-on:submit="&lt;イベントハンドラ関数&gt;"、buttonタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onclick" class="md-nav__link">
+    ▼ v-on:click="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-onchange" class="md-nav__link">
+    ▼ v-on:change="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v-oninput" class="md-nav__link">
+    ▼ v-on:input="&lt;イベントハンドラ関数&gt;"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    条件付きレンダリング
+  </a>
+  
+    <nav class="md-nav" aria-label="条件付きレンダリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-showv-if" class="md-nav__link">
+    ▼ v-show/v-ifとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    属性データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="属性データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-bind" class="md-nav__link">
+    ▼ v-bindとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    フォーム入力データバインディング
+  </a>
+  
+    <nav class="md-nav" aria-label="フォーム入力データバインディング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-model" class="md-nav__link">
+    ▼ v-modelとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    その他のディレクティブ
+  </a>
+  
+    <nav class="md-nav" aria-label="その他のディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v-cloak" class="md-nav__link">
+    ▼ v-cloakとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-03" class="md-nav__link">
+    01-03. コンポーネント
+  </a>
+  
+    <nav class="md-nav" aria-label="01-03. コンポーネント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    コンポーネントの登録方法
+  </a>
+  
+    <nav class="md-nav" aria-label="コンポーネントの登録方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ グローバル登録
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ローカル登録
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-vue-router" class="md-nav__link">
+    02. vue-routerパッケージによるルーティング
+  </a>
+  
+    <nav class="md-nav" aria-label="02. vue-routerパッケージによるルーティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue-router" class="md-nav__link">
+    vue-router
+  </a>
+  
+    <nav class="md-nav" aria-label="vue-router">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vue-router_1" class="md-nav__link">
+    ▼ vue-routerとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router-router" class="md-nav__link">
+    ▼ $router (Routerインスタンス)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route-route" class="md-nav__link">
+    ▼ $route (Routeオブジェクト)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router" class="md-nav__link">
+    その他のRouterパッケージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-vuex" class="md-nav__link">
+    03. Vuexパッケージによるデータの状態変化の管理
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Vuexパッケージによるデータの状態変化の管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vuex" class="md-nav__link">
+    Vuex
+  </a>
+  
+    <nav class="md-nav" aria-label="Vuex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vuex_1" class="md-nav__link">
+    ▼ Vuexとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuexstorevuex" class="md-nav__link">
+    Vuex.StoreメソッドによるVuexストアの実装
+  </a>
+  
+    <nav class="md-nav" aria-label="Vuex.StoreメソッドによるVuexストアの実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getters" class="md-nav__link">
+    ▼ getters:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#state" class="md-nav__link">
+    ▼ state:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutations" class="md-nav__link">
+    ▼ mutations:{}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    ▼ actions:{}
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vuex_2" class="md-nav__link">
+    コンポーネントからVuexに対するアクセス
+  </a>
+  
+    <nav class="md-nav" aria-label="コンポーネントからVuexに対するアクセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#computed" class="md-nav__link">
+    ▼ computed: {}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    ▼ methods: {}
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapgetters" class="md-nav__link">
+    ▼ mapGettersヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapstate" class="md-nav__link">
+    ▼ mapStateヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapmutations" class="md-nav__link">
+    ▼ mapMutationsヘルパー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapactions" class="md-nav__link">
+    ▼ mapActionsヘルパー
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ライフサイクル
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ライフサイクル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ライフサイクルフック
+  </a>
+  
+    <nav class="md-nav" aria-label="ライフサイクルフック">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ ライフサイクルフックとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ マウントとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforecreate" class="md-nav__link">
+    ▼ beforeCreate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#created" class="md-nav__link">
+    ▼ created
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforemount" class="md-nav__link">
+    ▼ beforeMount
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounted" class="md-nav__link">
+    ▼ mounted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforeupdate" class="md-nav__link">
+    ▼ beforeUpdate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updated" class="md-nav__link">
+    ▼ updated
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beforedestroy" class="md-nav__link">
+    ▼ beforeDestroy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destroyed" class="md-nav__link">
+    ▼ destroyed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="vuejs">Vue.js<a class="headerlink" href="#vuejs" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-vuejsmvvm">01. Vue.jsを使用したMVVMアーキテクチャ<a class="headerlink" href="#01-vuejsmvvm" title="Permanent link">&para;</a></h2>
+<h3 id="mvvm">MVVMアーキテクチャ、双方向データバインディング<a class="headerlink" href="#mvvm" title="Permanent link">&para;</a></h3>
+<h4 id="mvvm_1">▼ MVVMアーキテクチャとは<a class="headerlink" href="#mvvm_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html</a></li>
+</ul>
+</blockquote>
+<h4 id="mvvm_2">▼ MVVMアーキテクチャにおける各層の責務<a class="headerlink" href="#mvvm_2" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>View層 (<code>foo.html</code>、<code>/foo.twig</code>、<code>foo-component.vue</code>の<code>template</code>タグ部分)</p>
+<p>ViewModel層から渡されたデータを出力するだけ。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ViewModel層 (<code>index.js</code>、<code>foo-component.vue</code>の<code>script</code>タグ部分)</p>
+<p>プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。</p>
+<p>scriptタグによって、JavaScriptが組み込まれている。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>Model層 (<code>store.js</code>または<code>foo.js</code>)</p>
+<p>ビジネスロジックや、ajaxメソッドによるデータ送受信、を記述する。</p>
+</dd>
+</dl>
+<h4 id="vuemvvm">▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング<a class="headerlink" href="#vuemvvm" title="Permanent link">&para;</a></h4>
+<p>Vueは、アプリケーションの設計にMVVMアーキテクチャを使用することを前提として、双方向データバインディングを実現できるような機能を提供する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>View層では、<code>foo.html</code>、<code>/foo.twig</code>、<code>foo-component.vue</code>の<code>template</code>タグ部分)</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ViewModel層では、<code>index.js</code>、<code>foo-component.vue</code>の<code>script</code>タグ部分</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>Model層では、Vuex (<code>store.js</code>)やJavaScriptからなるモデル (<code>foo.js</code>) を配置する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>これの元、双方向データバインディングが実現される仕組みとして、View層でイベントが起こると、ViewModel層でこれにバインディングされたイベントハンドラ関数がコールされる。</p>
+</dd>
+</dl>
+<p><img alt="Vueコンポーネントツリーにおけるコンポーネント間の通信" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png" /></p>
+<h3 id="_2">親子コンポーネント間のデータ渡し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="props-down-events-up">▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up)<a class="headerlink" href="#props-down-events-up" title="Permanent link">&para;</a></h4>
+<p>まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。</p>
+<p>コンポーネント (<code>foo-component.vue</code>) の<code>script</code>タグ部分 (ViewModel層) の親子間では、<code>props</code>と<code>$emit</code>メソッドを使用して、データを渡す。</p>
+<p>この仕組みを、Props Down, Events Upという。</p>
+<p><img alt="親子コンポーネント間の双方向データバインディング" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/親子コンポーネント間の双方向データバインディング.png" /></p>
+<p><img alt="component-tree_communication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/component-tree_communication.png" /></p>
+<p><br></p>
+<h3 id="mvvm_3">MVVMアーキテクチャの実装例<a class="headerlink" href="#mvvm_3" title="Permanent link">&para;</a></h3>
+<h4 id="1-view-foohtmlfootwig">(1) 【View層】テンプレート (<code>foo.html</code>、<code>foo.twig</code>)<a class="headerlink" href="#1-view-foohtmlfootwig" title="Permanent link">&para;</a></h4>
+<p>データが、テンプレートからJavaScriptファイルに渡される仕組みは、フレークワークを使用しない場合と同じである。</p>
+<p>データがJavaScriptファイルに渡される状況としては、イベント発火時である。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例えば、テンプレートの親コンポーネントタグでクリックイベントが発火した時、親コンポーネントから、イベントに紐付いたイベントハンドラ関数がコールされる。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- divタグのidは『app』とする --&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!--</span>
+<span class="cm">    ・親コンポーネントタグを記述。</span>
+
+
+<span class="cm">    ・dataオプションの値をpropsに渡すように設定。</span>
+
+
+<span class="cm">    ・イベントとイベントハンドラ関数を対応づける。</span>
+
+
+<span class="cm">    --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-foo-component-1</span>
+        <span class="na">:criteria</span><span class="o">=</span><span class="s">&quot;criteria&quot;</span>
+        <span class="na">v-on</span> <span class="na">change</span><span class="o">=</span><span class="s">&quot;changeQuery&quot;</span>
+    <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-1</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 親コンポーネントタグを記述 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-foo-component-2</span>
+
+    <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-2</span><span class="p">&gt;</span>
+
+    <span class="cm">&lt;!-- 親コンポーネントタグを記述 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-foo-component-3</span>
+
+    <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-3</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- ルートVueインスタンスの作成は外部スクリプトで行う。 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span>
+    <span class="err">&lt;</span><span class="na">src</span><span class="o">=</span><span class="s">{{</span> <span class="na">asset</span><span class="err">(&quot;.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="1-2-viewmodelvue-indexjs">(1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (<code>index.js</code>)<a class="headerlink" href="#1-2-viewmodelvue-indexjs" title="Permanent link">&para;</a></h4>
+<p><img alt="vue-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png" /></p>
+<p>Vueコンストラクタ関数を使用して、インスタンス化することによって、ルートVueインスタンスが作成される。</p>
+<p>インスタンスの変数名<code>vm</code>はVIewModelの意味である。</p>
+<p>インスタンス化時、全てのコンポーネントのデータが初期化される。</p>
+<p>各コンポーネントで個別に状態を変化させたいものは、<code>props</code>オプションではなく、<code>data</code>オプションとして扱う。</p>
+<blockquote>
+<ul>
+<li><a href="https://v1-jp.vuejs.org/guide/instance.html">https://v1-jp.vuejs.org/guide/instance.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// ルートVueインスタンス</span>
+<span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="cm">/* dataオプション</span>
+<span class="cm">    ・Vueインスタンスのデータを保持する</span>
+<span class="cm">    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
+
+
+<span class="cm">    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">isLoading</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">staffData</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="cm">/* methodオプション</span>
+<span class="cm">    ・Vueインスタンスのアクセサメソッドや状態変化メソッド</span>
+<span class="cm">    ・イベントハンドラ関数、dataオプションのセッターを定義</span>
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// イベントハンドラ関数</span>
+<span class="w">    </span><span class="nx">changeQuery</span><span class="p">(</span><span class="nx">criteriaObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;criteria&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">];</span>
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">key</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">keys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">criteriaObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="k">this</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">criteriaObj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// dataオプションのセッター</span>
+<span class="w">    </span><span class="nx">load</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// ここでのthisはdataオプションを指す。</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">isLoading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">staffData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">      </span><span class="c1">// ajaxメソッドをラッピングしたメソッドをコール</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="nx">Staff</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">query</span><span class="p">)</span>
+
+<span class="w">          </span><span class="cm">/* done()</span>
+<span class="cm">                ajaxメソッドによって返却されたJSONが引数になる。</span>
+
+
+<span class="cm">                */</span>
+<span class="w">          </span><span class="p">.</span><span class="nx">done</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="cm">/*</span>
+<span class="cm">                    サーバーサイドからのJSONをデシリアライズ。</span>
+
+
+<span class="cm">                    dataオプションに設定。</span>
+
+
+<span class="cm">                    */</span>
+<span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">staffData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">staffData</span><span class="p">,</span><span class="w"> </span><span class="nx">Staff</span><span class="p">.</span><span class="nx">deserializeStaff</span><span class="p">);</span>
+<span class="w">          </span><span class="p">})</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="cm">/* watchオプション</span>
+<span class="cm">    ・Vueインスタンス内の値の変化を監視する関数を定義。</span>
+
+
+<span class="cm">    ・vue-routerも参考にせよ。</span>
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">watch</span><span class="o">:</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応になるようにする。</span>
+<span class="w">  </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//『HTMLでのコンポーネントのタグ名：子コンポーネント』</span>
+<span class="w">    </span><span class="s2">&quot;v-foo-component-1&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-1.vue&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">&quot;v-foo-component-2&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-2.vue&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="s2">&quot;v-foo-component-3&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;.../component/foo-3.vue&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="2-view-viewmodel-foo-componentvue">(2) 【View + ViewModel層】単一ファイルコンポーネントに相当するコンポーネント (<code>foo-component.vue</code>)<a class="headerlink" href="#2-view-viewmodel-foo-componentvue" title="Permanent link">&para;</a></h4>
+<p>コンポーネントは、View層に相当する<code>template</code>タグ、ViewModel層に相当する<code>script</code>タグと<code>style</code>タグを使用して、単一ファイルコンポーネントとする。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>例えば、親コンポーネントの子コンポーネントタグでクリックイベントが発火した時、子コンポーネントから、イベントに紐付いたイベントハンドラ関数がコールされる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!----------------------------------------</span>
+<span class="cm">  // View層</span>
+<span class="cm">  // ・親コンポーネント</span>
+<span class="cm">  // ・ここに、出力したいHTMLやTWIGを記述する。 </span>
+<span class="cm">  ------------------------------------------&gt;</span>
+
+  <span class="cm">&lt;!-- </span>
+<span class="cm">  ・子コンポーネントタグを記述 </span>
+<span class="cm">  ・下方のdataオプションの値をpropsに渡すように設定。</span>
+
+
+<span class="cm">  --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">v-foo-component-4</span> <span class="na">:aaa</span><span class="o">=</span><span class="s">&quot;a&quot;</span> <span class="na">:bbb</span><span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-4</span><span class="p">&gt;</span>
+
+  <span class="cm">&lt;!-- 条件付きレンダリングを行うディレクション --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;foo.isOk()&quot;</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- 孫コンポーネントタグを記述 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">v-foo-component-5</span> <span class="na">:ccc</span><span class="o">=</span><span class="s">&quot;c&quot;</span> <span class="na">:ddd</span><span class="o">=</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-5</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">//=============</span>
+<span class="w">  </span><span class="c1">// ViewModel層</span>
+<span class="w">  </span><span class="c1">//=============</span>
+
+<span class="w">  </span><span class="c1">// 親コンポーネント以降では、Vueインスタンスを作成しないようにする。</span>
+<span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* propsオプション</span>
+<span class="cm">    ・親コンポーネントまたはajaxメソッドからpropsオブジェクトのプロパティに値が格納される。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">    </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+
+<span class="w">      </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="nb">Object</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">required</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="cm">/* dataオプション</span>
+<span class="cm">    ・異なる場所にある同じコンポーネントは異なるVueインスタンスからなる。</span>
+
+
+<span class="cm">    ・異なるVueインスタンスは異なる値を持つ必要があるため、メソッドとして定義する。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">c</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">d</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// イベントハンドラ関数、dataオプションのセッター</span>
+<span class="w">    </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">updateCriteria</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="cm">/*</span>
+<span class="cm">        ・コンポーネント (v-foo-component-1) と紐付く処理</span>
+<span class="cm">        ・changeイベントの発火と、これのイベントハンドラ関数に引数を渡す。</span>
+
+
+<span class="cm">        */</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="nx">localCriteria</span><span class="p">});</span>
+<span class="w">      </span><span class="p">},</span>
+
+<span class="w">      </span><span class="c1">// ajaxメソッドから受信したデータを使用して、propsを更新</span>
+<span class="w">      </span><span class="nx">updateProps</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{},</span>
+
+<span class="w">      </span><span class="c1">// 『HTMLでのコンポーネントのタグ名： JSでのコンポーネントのオブジェクト名』</span>
+<span class="w">      </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 子コンポーネントと孫コンポーネントの対応関係</span>
+<span class="w">        </span><span class="s2">&quot;v-foo-component-4&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo-4&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="s2">&quot;v-foo-component-5&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo-5&quot;</span><span class="p">),</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="3-modelvuex-storejs">(3) 【Model層】オブジェクトに相当するVuex (<code>store.js</code>)<a class="headerlink" href="#3-modelvuex-storejs" title="Permanent link">&para;</a></h4>
+<p>ノート内の『Vuex』の項目を参照せよ。</p>
+<h4 id="3-2-modeljavascript-foojs">(3-2) 【Model層】オブジェクトに相当するJavaScript (<code>foo.js</code>)<a class="headerlink" href="#3-2-modeljavascript-foojs" title="Permanent link">&para;</a></h4>
+<p>クラス宣言で実装する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/*</span>
+<span class="cm">    ・コンポーネントからパケットを受信。</span>
+
+
+<span class="cm">    ・プロパティの宣言と、同時に格納。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">properties</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">isOk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">properties</span><span class="p">.</span><span class="nx">isOk</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// コンストラクタによって宣言されているため、アクセスできる。</span>
+<span class="w">  </span><span class="nx">isOk</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// bool値を返却する例を考える。</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">isOk</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="01-02-viewviewmodel">01-02. View層とViewModel層の間での双方向データバインディングの方法<a class="headerlink" href="#01-02-viewviewmodel" title="Permanent link">&para;</a></h2>
+<h3 id="_3">イベントハンドリング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="v-on">▼ <code>v-on:</code>とは<a class="headerlink" href="#v-on" title="Permanent link">&para;</a></h4>
+<p><img alt="Vueにおけるemitとv-onの連携" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png" /></p>
+<p>View層 (<code>template</code>タグ部分) のイベントを、ViewModel層 (<code>script</code>タグ部分) のイベントハンドラ関数 (<code>methods:</code>内にあるメソッド) やインラインJSステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。</p>
+<p>コンポーネントの<code>script</code>タグ部分 (ViewModel層) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。</p>
+<div class="highlight"><pre><span></span><code>v-on:{イベント名}=&quot;{イベントハンドラ関数 (methods: 内にあるメソッド) }&quot;
+</code></pre></div>
+<p>または、省略して、</p>
+<div class="highlight"><pre><span></span><code>@:{イベント名}=&quot;&lt;イベントハンドラ関数&gt;&quot;
+</code></pre></div>
+<p>で記述する。</p>
+<h4 id="v-onsubmitbutton">▼ <code>v-on:submit="&lt;イベントハンドラ関数&gt;"</code>、<code>button</code>タグ<a class="headerlink" href="#v-onsubmitbutton" title="Permanent link">&para;</a></h4>
+<p>View層のフォーム送信イベントが起きた時点で、ViewModel層にバインディングされたイベントハンドラ関数をコールする。</p>
+<p>例えば、親コンポーネントでは、子コンポーネントによって発火させられる<code>search</code>イベントに対して、<code>result</code>メソッドというイベントハンドラ関数を紐付けておく。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">v-foo-component</span>
+          <span class="na">v-on:search</span><span class="o">=</span><span class="s">&quot;result()&quot;</span>
+  <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Vueインスタンスの作成は外部スクリプトで行う。 --&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ asset(&quot;</span><span class="err">.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>index.jsの<code>methods:</code>内には、イベントハンドラ関数として<code>result</code>メソッドを定義する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// Vueインスタンスを使用するdivタグを設定.</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">// イベントハンドラ関数</span>
+<span class="w">  </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 何らかの処理</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>『検索ボタンを押す』という<code>submit</code>イベントの発火によって、<code>form</code>タグでイベントに紐付けられているイベントハンドラ関数 (<code>search</code>メソッド) がコールされる。
+<code>(2)</code></p>
+</dd>
+<dd>
+<p>イベントハンドラ関数内の<code>emit</code>メソッドが、親コンポーネントの<code>search</code>イベントを発火させる。これに紐付くイベントハンドラ関数 (<code>result</code>メソッド) がコールされる。</p>
+</dd>
+</dl>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="cm">&lt;!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる --&gt;</span>
+  <span class="p">&lt;</span><span class="nt">form</span> <span class="na">v-on:submit</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">&quot;search()&quot;</span><span class="p">&gt;</span>
+    <span class="cm">&lt;!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span><span class="p">&gt;</span>検索する<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="c1">// イベントハンドラ関数を定義</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">search</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 親コンポーネントのsearchイベントを発火させる。</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;search&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="v-onclick">▼ <code>v-on:click="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-onclick" title="Permanent link">&para;</a></h4>
+<p>View層でクリックイベントが起きた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする。</p>
+<h4 id="v-onchange">▼ <code>v-on:change="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-onchange" title="Permanent link">&para;</a></h4>
+<p>View層で<code>input</code>タグや<code>select</code>タグで、値の入力後にマウスフォーカスがタグから外れた時点で発火し、ViewModel層でバインディングされたイベントハンドラ関数をコールする</p>
+<h4 id="v-oninput">▼ <code>v-on:input="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-oninput" title="Permanent link">&para;</a></h4>
+<p>View層で<code>input</code>タグで、一文字でも値が入力された時点で発火し、ViewModel層バインディングされたイベントハンドラ関数をコールする。<code>v-on:change</code>とは、イベントが発火するタイミングが異なるため、共存できる。</p>
+<p><br></p>
+<h3 id="_4">条件付きレンダリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="v-showv-if">▼ <code>v-show</code>/<code>v-if</code>とは<a class="headerlink" href="#v-showv-if" title="Permanent link">&para;</a></h4>
+<p>条件分岐を行うタグであり、<code>v-show</code>または<code>v-if</code>を使用して、プロパティ名を指定する。親テンプレートから渡された<code>props</code>内のプロパティ名が持つ値が<code>TRUE</code>の時に表示し、<code>FALSE</code>の時に非表示にする。もし頻繁に表示と非表示の切り替えを行うようなら、<code>v-if</code>の方が、描画コストが重たくなるリスクが高くなる為、<code>v-show</code>推奨である。</p>
+<table>
+<thead>
+<tr>
+<th>タグ</th>
+<th style="text-align: left;">使い分け</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v-if</td>
+<td style="text-align: left;">単発の切り替えがメインの場合</td>
+</tr>
+<tr>
+<td>v-show</td>
+<td style="text-align: left;">表示/非表示の切替回数が多い場合</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="_5">属性データバインディング<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="v-bind">▼ <code>v-bind</code>とは<a class="headerlink" href="#v-bind" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="_6">フォーム入力データバインディング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="v-model">▼ <code>v-model</code>とは<a class="headerlink" href="#v-model" title="Permanent link">&para;</a></h4>
+<p>実装方法は、<code>v-on:input="&lt;イベントハンドラ関数&gt;"</code>と同じである。例えば、以下の2つは同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
+    <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span>
+    <span class="na">v-model</span><span class="o">=</span><span class="s">&quot;foo&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span>
+    <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span>
+    <span class="na">:value</span><span class="o">=</span><span class="s">&quot;foo&quot;</span>
+    <span class="err">@</span><span class="na">input</span><span class="o">=</span><span class="s">&quot;eventHandler&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_7">その他のディレクティブ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="v-cloak">▼ <code>v-cloak</code>とは<a class="headerlink" href="#v-cloak" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="01-03">01-03. コンポーネント<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
+<h3 id="_8">コンポーネントの登録方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ グローバル登録<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s2">&quot;v-foo-component&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="p">});</span>
+
+<span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="_10">▼ ローカル登録<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="p">};</span>
+
+<span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 親コンポーネントにオブジェクト名をつける。</span>
+<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">vFooComponent</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>ただし、コンポーネントのオブジェクト名の定義は、以下の様に省略できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#app&quot;</span><span class="p">,</span>
+
+<span class="w">  </span><span class="nx">components</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// テンプレートと親コンポーネントの対応関係</span>
+<span class="w">    </span><span class="s2">&quot;v-foo-component&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./xxx/xxx/foo&quot;</span><span class="p">),</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="02-vue-router">02. vue-routerパッケージによるルーティング<a class="headerlink" href="#02-vue-router" title="Permanent link">&para;</a></h2>
+<h3 id="vue-router">vue-router<a class="headerlink" href="#vue-router" title="Permanent link">&para;</a></h3>
+<h4 id="vue-router_1">▼ vue-routerとは<a class="headerlink" href="#vue-router_1" title="Permanent link">&para;</a></h4>
+<p><img alt="vue-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-router.png" /></p>
+<p>ルーティングパッケージの一種。コンポーネントに対してルーティングを行い、<code>/&lt;ルート&gt;/&lt;パラメータ&gt;</code>に応じて、コールするコンポーネントを動的に切り替えられる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:80/&lt;ルート&gt;/&lt;パスパラメータ&gt;?text1=a&amp;text2=b</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// vue-routerパッケージを読み込む。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vueRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vue-router&quot;</span><span class="p">).</span><span class="k">default</span><span class="p">;</span>
+
+<span class="c1">// VueRouterインスタンスを作成する。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">VueRouter</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">routes</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="nx">Home</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">component</span><span class="o">:</span><span class="w"> </span><span class="nx">Foo</span><span class="p">},</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="p">});</span>
+
+<span class="c1">// 外部ファイルが、VueRouterインスタンスを読み込めるようにしておく。</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+</code></pre></div>
+<p>また、vue-routerの能力を利用するために、<code>router</code>オプションをルートコンポーネントに注入する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./router&quot;</span><span class="p">;</span>
+
+<span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// routerオプション</span>
+<span class="w">  </span><span class="nx">router</span><span class="p">,</span>
+
+<span class="w">  </span><span class="c1">// watchオプション</span>
+<span class="w">  </span><span class="nx">watch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// スタック内で履歴の移動が発生した時に、対応付けた無名関数を実行。</span>
+<span class="w">    </span><span class="nx">$route</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">to</span><span class="p">,</span><span class="w"> </span><span class="kr">from</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">to</span><span class="p">.</span><span class="nx">fullPath</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kr">from</span><span class="p">.</span><span class="nx">fullPath</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 何らかの処理。</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="router-router">▼ <code>$router</code> (Routerインスタンス)<a class="headerlink" href="#router-router" title="Permanent link">&para;</a></h4>
+<p>Webアプリケーション全体に1つ存在し、全体的なRouter機能を管理しているインスタンス。</p>
+<p>スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移を行う。</p>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>push</code></td>
+<td><code>query</code>オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の1つ前の履歴に移動する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://router.vuejs.org/guide/essentials/navigation.html">https://router.vuejs.org/guide/essentials/navigation.html</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// users/?foo=xyz が履歴スタックに追加される。</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/users&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xyz&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="route-route">▼ <code>$route</code> (Routeオブジェクト)<a class="headerlink" href="#route-route" title="Permanent link">&para;</a></h4>
+<p>現在のアクティブなルートを持つオブジェクト</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">プロパティ</th>
+<th>データ型</th>
+<th style="text-align: left;">説明</th>
+<th>注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>path</code></td>
+<td><code>string</code></td>
+<td style="text-align: left;">現在のルートの文字列。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>query</code></td>
+<td><code>Object</code></td>
+<td style="text-align: left;">クエリパラメーターのキー名と値を保持するオブジェクト。<code>/foo?user=1</code>というクエリパラメーターの場合、<code>$route.query.user==1</code>となる。</td>
+<td>もしクエリーがない場合は、空オブジェクト</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fullPath</code></td>
+<td><code>string</code></td>
+<td style="text-align: left;">URL全体の文字列。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h3 id="router">その他のRouterパッケージ<a class="headerlink" href="#router" title="Permanent link">&para;</a></h3>
+<p>JQueryにはJQueryRouter、ReactにはReact-Routerがある。</p>
+<p><br></p>
+<h2 id="03-vuex">03. Vuexパッケージによるデータの状態変化の管理<a class="headerlink" href="#03-vuex" title="Permanent link">&para;</a></h2>
+<h3 id="vuex">Vuex<a class="headerlink" href="#vuex" title="Permanent link">&para;</a></h3>
+<h4 id="vuex_1">▼ Vuexとは<a class="headerlink" href="#vuex_1" title="Permanent link">&para;</a></h4>
+<p>Vue.jsでパッケージの1つで、MVVMアーキテクチャのモデルに相当する機能を提供し、グローバルで参照できる。</p>
+<p>異なるコンポーネントで共通したデータを扱いたくとも、双方向データバインディングでは、親子コンポーネント間でしか、データを受け渡しできない。</p>
+<p>しかし、Vuexストア内で、データの状態の変化を管理することによって、親子関係なく、全てのコンポーネント間でデータを受け渡しできるようになる。</p>
+<p>※Vuexからなるモデルはどうあるべきか、について記入中...</p>
+<p><img alt="VueコンポーネントツリーとVuexの関係" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueコンポーネントツリーとVuexの関係.png" /></p>
+<p><br></p>
+<h3 id="vuexstorevuex"><code>Vuex.Store</code>メソッドによるVuexストアの実装<a class="headerlink" href="#vuexstorevuex" title="Permanent link">&para;</a></h3>
+<p>外部のコンポーネントは、各オプションにアクセスできる。</p>
+<h4 id="getters">▼ <code>getters:{}</code><a class="headerlink" href="#getters" title="Permanent link">&para;</a></h4>
+<p>データから状態を取得するメソッドをいくつか持つ。</p>
+<p>クラスベースオブジェクト指向でいうところの、Getterメソッドに相当する。</p>
+<p>※ MVVMで、モデルにゲッターを持たせてはいけないというルールについては、記入中...</p>
+<h4 id="state">▼ <code>state:{}</code><a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
+<p>データの状態の変化をいくつか管理する。</p>
+<p>クラスベースオブジェクト指向でいうところの、データ (プロパティ) に相当する。</p>
+<h4 id="mutations">▼ <code>mutations:{}</code><a class="headerlink" href="#mutations" title="Permanent link">&para;</a></h4>
+<p>データに状態 (<code>state</code>) を設定するメソッドをいくつか持つ。</p>
+<p>保守性の観点から、<code>mutations:{}</code>におくメソッド間は同期的に実行されるようにしておかなければならない。</p>
+<p>クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。</p>
+<h4 id="actions">▼ <code>actions:{}</code><a class="headerlink" href="#actions" title="Permanent link">&para;</a></h4>
+<p>定義された<code>mutations{}</code>のメソッドを間接的にコールするためのメソッドをいくつか持つ。</p>
+<p>また、JQueryの<code>ajax</code>メソッド をコールし、サーバー側からレスポンスされたデータを<code>mutations:{}</code>へ渡す。</p>
+<p>クラスベースオブジェクト指向でいうところの、Setterメソッドに相当する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Vuexパッケージを読み込む。</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">vuex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">);</span>
+
+<span class="c1">// 外部ファイルが、このStoreインスタンスを読み込めるようにする。</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+<span class="w">  </span><span class="cm">/* getters</span>
+<span class="cm">    ・データから状態を取得するメソッドをいくつか持つ</span>
+<span class="cm">    ・クラスベースオブジェクト指向のGetterメソッドに相当.</span>
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">getters</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">staffData</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">staffData</span><span class="p">;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="cm">/* state</span>
+<span class="cm">    ・状態の変化を管理したいデータを持つ。</span>
+
+
+<span class="cm">    ・クラスベースオブジェクト指向のプロパティに相当。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// stateには多くを設定せず、Vueインスタンスのdataオプションに設定しておく。</span>
+<span class="w">    </span><span class="nx">staffData</span><span class="o">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="cm">/* mutations</span>
+<span class="cm">    ・データの状態 (state) を変化させるメソッドを持つ。</span>
+
+
+<span class="cm">    ・クラスベースオブジェクト指向のSetterメソッドに相当。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">mutations</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Vuexのstateを第一引数、外部からセットしたい値を第二引数</span>
+<span class="w">    </span><span class="nx">mutate</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">staffData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">exArray</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span>
+<span class="w">        </span><span class="cm">/*</span>
+<span class="cm">                ・矢印はアロー関数を表し、無名関数の即コールを省略できる。</span>
+
+
+<span class="cm">                ・引数で渡されたexArrayの要素を、stateのexArrayに格納する。</span>
+
+
+<span class="cm">                */</span>
+<span class="w">        </span><span class="p">(</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">state</span><span class="p">.</span><span class="nx">exArray</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="cm">/* </span>
+<span class="cm">                ※アロー関数を使用しなければ、以下の様に記述できる。</span>
+
+
+<span class="cm">                function(element) { state.exArray.push(element); }</span>
+<span class="cm">                */</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+
+<span class="w">  </span><span class="cm">/* actions</span>
+<span class="cm">    ・mutations{}のメソッドを間接的にコールするためのメソッドをいくつか持つ。</span>
+
+
+<span class="cm">    ・contextオブジェクトからcommit機能を取り出す必要がある。</span>
+
+<span class="cm"> (※省略記法あり) </span>
+<span class="cm">    ・クラスベースオブジェクト指向のSetterメソッドに相当。</span>
+
+
+<span class="cm">    */</span>
+<span class="w">  </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 省略記法 (Argument destructuring)</span>
+<span class="w">    </span><span class="nx">mutate</span><span class="p">({</span><span class="nx">commit</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">commit</span><span class="p">(</span><span class="s2">&quot;mutate&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="vuex_2">コンポーネントからVuexに対するアクセス<a class="headerlink" href="#vuex_2" title="Permanent link">&para;</a></h3>
+<p>例えば、子コンポーネントのファイル (<code>template</code>タグを持つファイル) の下部に、以下を記述することにより、<code>Vuex.Store</code>メソッドとデータを受け渡しできるようになる。</p>
+<h4 id="computed">▼ <code>computed: {}</code><a class="headerlink" href="#computed" title="Permanent link">&para;</a></h4>
+<p>イベントハンドラ関数として、<code>mapGetters</code>ヘルパーと<code>mapState</code>ヘルパーを設定する。</p>
+<h4 id="methods">▼ <code>methods: {}</code><a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<p>イベントハンドラ関数として、<code>mapMutations</code>ヘルパーと<code>mapActions</code>ヘルパーを設定する。</p>
+<h4 id="mapgetters">▼ <code>mapGetters</code>ヘルパー<a class="headerlink" href="#mapgetters" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの<code>computed:{}</code>に、<code>Vuex.Store</code>メソッドの<code>getters: {}</code>をマッピングし、コール可能にする。</p>
+<h4 id="mapstate">▼ <code>mapState</code>ヘルパー<a class="headerlink" href="#mapstate" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの<code>computed:{}</code>に、<code>Vuex.Store</code>メソッドの<code>state: {}</code>をマッピングし、コール可能にする。</p>
+<h4 id="mapmutations">▼ <code>mapMutations</code>ヘルパー<a class="headerlink" href="#mapmutations" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの<code>methods: {}</code>に、Vuex.Store<code>メソッドの</code>mutations: {}```をマッピングし、コール可能にする。</p>
+<h4 id="mapactions">▼ <code>mapActions</code>ヘルパー<a class="headerlink" href="#mapactions" title="Permanent link">&para;</a></h4>
+<p>コンポーネントの<code>methods: {}</code>に、<code>Vuex.Store</code>メソッドの<code>actions:{}</code>をマッピングし、コール可能にする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 子コンポーネント --&gt;</span>
+<span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span> ... <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// Vuex.Store()を読み込む。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./_store&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Vuex.Store()のgetters、mutations、actionsをマッピングできるように読み込む。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapGetters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapGetters</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapActions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapActions</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">mapMutaions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;vuex&quot;</span><span class="p">).</span><span class="nx">mapMutaions</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// イベントハンドラ関数を定義 (※データを状態の変更を保持したくないもの)</span>
+<span class="w">    </span><span class="nx">computed</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="cm">/* mapGettersヘルパー。</span>
+
+
+<span class="cm">      StoreのGetterをローカルマシンのcomputed:{}にマッピングし、コールできるように。</span>
+
+
+<span class="cm">      */</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapGetters</span><span class="p">([</span><span class="s2">&quot;x-Function&quot;</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="c1">// イベントハンドラ関数を定義 (※データを状態の変更を保持したいもの)</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// mapMutationsヘルパー</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapMutations</span><span class="p">([</span><span class="s2">&quot;y-Function&quot;</span><span class="p">]),</span>
+
+<span class="w">      </span><span class="c1">// mapActionsヘルパー</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">mapActions</span><span class="p">([</span><span class="s2">&quot;z-Function&quot;</span><span class="p">]),</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. ライフサイクル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_11">ライフサイクルフック<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ ライフサイクルフックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>Vueインスタンスの作成から破棄までの間に実行される関数のこと。</p>
+<p>全ての関数を使用する必要はない。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">順番</th>
+<th style="text-align: left;">フック名</th>
+<th style="text-align: left;">タイミング</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">beforeCreate</td>
+<td style="text-align: left;">Vueインスタンスの作成前</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">created</td>
+<td style="text-align: left;">Vueインスタンスの作成後</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">beforeMount</td>
+<td style="text-align: left;">Vueインスタンスがマウントされる前</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">mounted</td>
+<td style="text-align: left;">Vueインスタンスがマウントされた後</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">beforeUpdate</td>
+<td style="text-align: left;">データ更新時の再レンダリング前</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">updated</td>
+<td style="text-align: left;">データ更新時の再レンダリング後</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">beforeDestroy</td>
+<td style="text-align: left;">Vueインスタンスが削除される前 (<code>$destroy</code>メソッド実行前)</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">destroyed</td>
+<td style="text-align: left;">Vueインスタンスが削除された後 (<code>$destroy</code>メソッド実行後)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF">https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF</a></li>
+</ul>
+</blockquote>
+<h4 id="_13">▼ マウントとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>ブラウザ上のリアルDOMの要素を、Vue.jsの処理によって作成される仮想DOMの要素で置き換えること。</p>
+<blockquote>
+<ul>
+<li><a href="https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM">https://jp.vuejs.org/v2/guide/render-function.html#%E3%83%8E%E3%83%BC%E3%83%89%E3%80%81%E3%83%84%E3%83%AA%E3%83%BC%E3%80%81%E3%81%8A%E3%82%88%E3%81%B3%E4%BB%AE%E6%83%B3-DOM</a></li>
+</ul>
+</blockquote>
+<h4 id="beforecreate">▼ beforeCreate<a class="headerlink" href="#beforecreate" title="Permanent link">&para;</a></h4>
+<p>Vueインスタンスの作成前に実行される。</p>
+<p><strong>＊検証例＊</strong></p>
+<p>beforeCreateフックの動作を検証する。</p>
+<p><code>data</code>オプションは、Vueインスタンス作成後に有効になるため、beforeCreateフックでコールできず、<code>undefined</code>になる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">foo</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">beforeCreate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+undefined
+</code></pre></div>
+<h4 id="created">▼ created<a class="headerlink" href="#created" title="Permanent link">&para;</a></h4>
+<p>フックの中で特によく使用する。</p>
+<p>Vueインスタンスの作成後に実行される。</p>
+<p>マウント前に必要な処理を実装する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>非同期通信によるデータを取得、マウント時に必要なデータの準備、など</p>
+<p><strong>＊検証例＊</strong></p>
+<p>createdフックの動作を検証する。</p>
+<p><code>data</code>オプションは、Vueインスタンス作成後に設定されるため、createdフックでコールでき、処理結果が表示される。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">created</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="s2">&quot;Hiroki&quot;</span>
+</code></pre></div>
+<h4 id="beforemount">▼ beforeMount<a class="headerlink" href="#beforemount" title="Permanent link">&para;</a></h4>
+<p>Vueインスタンスがマウントされる前に実行される。</p>
+<p><strong>＊検証例＊</strong></p>
+<p>beforeMountフックの動作を検証する。</p>
+<p><code>data</code>オプションから<code>name</code>変数に対する展開は、マウントによって実行される。</p>
+<p>そのため、beforeMountフックの段階では要素自体が作成されておらず、何も表示されない。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">beforeMount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="c1"># 要素が作成されていないため、何も表示されない。</span>
+</code></pre></div>
+<h4 id="mounted">▼ mounted<a class="headerlink" href="#mounted" title="Permanent link">&para;</a></h4>
+<p>フックの中で特によく使用する。</p>
+<p>Vueインスタンスがマウントされた後に実行される。</p>
+<p>要素を操作する処理を実装する。</p>
+<p>まず、Vueインスタンスに<code>el</code>オプションが設定されているかを識別し、これに応じて処理の流れが分岐する。</p>
+<p>SSRの場合には使用できない。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Vue.js以外の外部パッケージの読み出し、検索実行時のイベントハンドラ関数、ページング実行時のイベントハンドラ関数、など</p>
+<p><strong>＊検証例＊</strong></p>
+<p>beforeMountフックの動作を検証する。</p>
+<p><code>data</code>オプションから<code>name</code>変数に対する展開は、elementに対するマウント中に実行される。</p>
+<p>そのため、<code>mounted</code>メソッドが実行され、空文字が上書きされる。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="s2">&quot;Hiroki&quot;</span>
+</code></pre></div>
+<p>ただし、全ての子コンポーネントでマウントが完了したことを待つために、<code>nextTick</code>メソッドを使用する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="beforeupdate">▼ beforeUpdate<a class="headerlink" href="#beforeupdate" title="Permanent link">&para;</a></h4>
+<p>データが更新される時の再レンダリング前に実行される。</p>
+<p>再レンダリング前に要素を操作する処理を実装する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>WindowオブジェクトやDocumentオブジェクトのメソッドによる要素の取得、など</p>
+<p><strong>＊検証例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">beforeUpdate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="s2">&quot;Hiroki&quot;</span>
+</code></pre></div>
+<h4 id="updated">▼ updated<a class="headerlink" href="#updated" title="Permanent link">&para;</a></h4>
+<p>データが更新される時の再レンダリング後に実行される。</p>
+<p>再レンダリング後に要素を操作する処理を実装する。</p>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">  </span><span class="c1">// 変数に対する格納を省略しても良い</span>
+<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">vm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">$nextTick</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hiroki&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nx">beforeUpdate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果</span>
+<span class="s2">&quot;Hiroki&quot;</span>
+</code></pre></div>
+<h4 id="beforedestroy">▼ beforeDestroy<a class="headerlink" href="#beforedestroy" title="Permanent link">&para;</a></h4>
+<p>Vueインスタンスが削除される前に実行する。</p>
+<p>インスタンスを削除する前に無効化しておく必要のある処理を実装する。</p>
+<p>SSRの場合には使用できない。</p>
+<h4 id="destroyed">▼ destroyed<a class="headerlink" href="#destroyed" title="Permanent link">&para;</a></h4>
+<p>Vueインスタンスが削除された後に実行する。</p>
+<p>インスタンスを削除した後のTearDown処理を実装する。</p>
+<p>SSRの場合には使用できない。</p>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

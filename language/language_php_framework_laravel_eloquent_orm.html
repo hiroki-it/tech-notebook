@@ -1,0 +1,5239 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Eloquent ORM＠Laravelの知見を記録しています。">
+      
+      
+        <meta name="author" content="Hiroki Hasegawa">
+      
+      
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_eloquent_orm.html">
+      
+      
+        <link rel="prev" href="language_php_framework_laravel_component.html">
+      
+      
+        <link rel="next" href="language_php_framework_laravel_package.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo_v2.png">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+    
+    
+      
+        <title>【IT技術の知見】Eloquent ORM＠Laravel - 俺の技術ノート</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Japanese:300,300i,400,400i,700,700i%7CNoto+Sans+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans Japanese";--md-code-font:"Noto Sans Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/css/custom.css">
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-HPJGWKTH9W"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-HPJGWKTH9W",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-HPJGWKTH9W",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="dark" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#eloquent-ormlaravel" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            俺の技術ノート
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              【IT技術の知見】Eloquent ORM＠Laravel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../index.html" class="md-tabs__link">
+        
+  
+    
+  
+  当サイトについて
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about.html" class="md-tabs__link">
+        
+  
+    
+  
+  『俺』
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../system/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌳 システム
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧬 ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/application/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🚀 アプリ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🤝🏻 ミドルウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software/basic/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🐧 OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔠 言語
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🧪 テスト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  💻 ハードウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../network/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌏 ネットワーク
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔐 セキュリティ
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⛅️ クラウド
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  📦 仮想化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⚙️ IaC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ☸️ K8s
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ⏬ K8sアドオン
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🌊 CNCFプロジェクト
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  ♾️ DevOps
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../devops/cicd/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔄 CI/CD
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../observability/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  🔎 可観測性
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+          
+  
+    
+  
+  👥 開発手法
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
+      
+  <img src="../assets/images/logo_v2.png" alt="logo">
+
+    </a>
+    俺の技術ノート
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/hiroki-it/" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHubアカウントはこちら
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    当サイトについて
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    『俺』
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../system/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌳 システム
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧬 ソフトウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/application/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🚀 アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/middleware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🤝🏻 ミドルウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software/basic/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🐧 OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    🔠 言語
+  </span>
+  
+
+            </a>
+            
+              <label class="md-nav__link " for="__nav_8">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            🔠 言語
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語の種類
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_process_mode.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    言語別の処理方式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_data_description_language_json.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ データ記述言語
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ PHP
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ PHP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PHP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_class_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ クラスベース
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_logic_validation.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ロジック
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_5" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_5" id="__nav_8_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ フレームワーク
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ フレームワーク
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_5_1" checked>
+        
+          <label class="md-nav__link" for="__nav_8_5_5_1" id="__nav_8_5_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Laravel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_5_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_5_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Laravel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    ︎Eloquent ORM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="language_php_framework_laravel_eloquent_orm.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    ︎Eloquent ORM
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-eloquent-orm" class="md-nav__link">
+    01. Eloquent ORMとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-active-record" class="md-nav__link">
+    01-02. Active Recordパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. Active Recordパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-record" class="md-nav__link">
+    Active Recordパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メリット/デメリット
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-eloquent" class="md-nav__link">
+    03. Eloquentモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Eloquentモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent" class="md-nav__link">
+    テーブル設計に基づくEloquentモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="テーブル設計に基づくEloquentモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_1" class="md-nav__link">
+    ▼ Eloquentモデルの継承
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ テーブルの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ テーブル間リレーションシップの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 主キーカラムの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp" class="md-nav__link">
+    ▼ TIMESTAMP型カラムの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp_1" class="md-nav__link">
+    ▼ TIMESTAMP型カラム読み出し時のデータ型変換
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ カラムデフォルト値の定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 変更できる/できないカラムの定義
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    使用に注意する機能
+  </a>
+  
+    <nav class="md-nav" aria-label="使用に注意する機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ セッター
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ゲッター
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    データ型変換
+  </a>
+  
+    <nav class="md-nav" aria-label="データ型変換">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ シリアライズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ デシリアライズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    フィルタリング
+  </a>
+  
+    <nav class="md-nav" aria-label="フィルタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    ▼ filterメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first" class="md-nav__link">
+    ▼ firstメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-eloquentcrud" class="md-nav__link">
+    03-02. EloquentモデルとビルダーによるCRUD
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. EloquentモデルとビルダーによるCRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    CRUDメソッドの返却値型と返却値
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUDメソッドの返却値型と返却値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    ▼ CRUDメソッドを持つクラス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_2" class="md-nav__link">
+    ▼ Eloquentビルダー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_3" class="md-nav__link">
+    ▼ Eloquentモデル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    CREATE
+  </a>
+  
+    <nav class="md-nav" aria-label="CREATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    READ
+  </a>
+  
+    <nav class="md-nav" aria-label="READ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    ▼ allメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    ▼ findメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first_1" class="md-nav__link">
+    ▼ firstメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitoffset" class="md-nav__link">
+    ▼ limitメソッド、offsetメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderby" class="md-nav__link">
+    ▼ orderByメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby" class="md-nav__link">
+    ▼ sortByメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortbydesc" class="md-nav__link">
+    ▼ sortByDescメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    ▼ withメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    ▼ saveメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    DELETE
+  </a>
+  
+    <nav class="md-nav" aria-label="DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destroydelete" class="md-nav__link">
+    ▼ destroy/deleteメソッド (物理削除)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletes" class="md-nav__link">
+    ▼ SoftDeletesの有効化 (論理削除)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n1" class="md-nav__link">
+    N+1問題の解決
+  </a>
+  
+    <nav class="md-nav" aria-label="N+1問題の解決">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#n1_1" class="md-nav__link">
+    ▼ N+1問題とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 問題が起こる実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 解決方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-laravel" class="md-nav__link">
+    04. Laravelへのリポジトリパターン導入
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Laravelへのリポジトリパターン導入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    工夫
+  </a>
+  
+    <nav class="md-nav" aria-label="工夫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dto" class="md-nav__link">
+    ▼ DTOクラスの導入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
+    CREATE
+  </a>
+  
+    <nav class="md-nav" aria-label="CREATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_3" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    READ
+  </a>
+  
+    <nav class="md-nav" aria-label="READ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find_1" class="md-nav__link">
+    ▼ findメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all_1" class="md-nav__link">
+    ▼ allメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with_1" class="md-nav__link">
+    ▼ withメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save_1" class="md-nav__link">
+    ▼ saveメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    DELETE
+  </a>
+  
+    <nav class="md-nav" aria-label="DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destroydelete_1" class="md-nav__link">
+    ▼ destroy/deleteメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_package.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    専用パッケージ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_package_auth.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    認証/認可系パッケージ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_php_framework_laravel_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_framework_symfony_component.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Symfony
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_php_package_management.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ パッケージ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="language_js_prototype_based.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ JavaScript
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_go.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Go
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="language_python.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Python
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="language_r.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    R
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../testing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🧪 テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../hardware/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    💻 ハードウェア
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../network/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌏 ネットワーク
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../security/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔐 セキュリティ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../cloud_computing/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⛅️ クラウド
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../virtualization/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📦 仮想化
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⚙️ IaC
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ☸️ K8s
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ⏬ K8sアドオン
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🌊 CNCFプロジェクト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ♾️ DevOps
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../devops/cicd/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔄 CI/CD
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../observability/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    🔎 可観測性
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../software_development_methodology/index.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    👥 開発手法
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-eloquent-orm" class="md-nav__link">
+    01. Eloquent ORMとは
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-02-active-record" class="md-nav__link">
+    01-02. Active Recordパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="01-02. Active Recordパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-record" class="md-nav__link">
+    Active Recordパターンとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    メリット/デメリット
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-eloquent" class="md-nav__link">
+    03. Eloquentモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Eloquentモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent" class="md-nav__link">
+    テーブル設計に基づくEloquentモデル
+  </a>
+  
+    <nav class="md-nav" aria-label="テーブル設計に基づくEloquentモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_1" class="md-nav__link">
+    ▼ Eloquentモデルの継承
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ テーブルの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ テーブル間リレーションシップの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 主キーカラムの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp" class="md-nav__link">
+    ▼ TIMESTAMP型カラムの定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timestamp_1" class="md-nav__link">
+    ▼ TIMESTAMP型カラム読み出し時のデータ型変換
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ カラムデフォルト値の定義
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 変更できる/できないカラムの定義
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    使用に注意する機能
+  </a>
+  
+    <nav class="md-nav" aria-label="使用に注意する機能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ セッター
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ゲッター
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    データ型変換
+  </a>
+  
+    <nav class="md-nav" aria-label="データ型変換">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ シリアライズ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ デシリアライズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    フィルタリング
+  </a>
+  
+    <nav class="md-nav" aria-label="フィルタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filter" class="md-nav__link">
+    ▼ filterメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first" class="md-nav__link">
+    ▼ firstメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02-eloquentcrud" class="md-nav__link">
+    03-02. EloquentモデルとビルダーによるCRUD
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. EloquentモデルとビルダーによるCRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    CRUDメソッドの返却値型と返却値
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUDメソッドの返却値型と返却値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    ▼ CRUDメソッドを持つクラス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_2" class="md-nav__link">
+    ▼ Eloquentビルダー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eloquent_3" class="md-nav__link">
+    ▼ Eloquentモデル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    CREATE
+  </a>
+  
+    <nav class="md-nav" aria-label="CREATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    READ
+  </a>
+  
+    <nav class="md-nav" aria-label="READ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#all" class="md-nav__link">
+    ▼ allメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    ▼ findメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first_1" class="md-nav__link">
+    ▼ firstメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitoffset" class="md-nav__link">
+    ▼ limitメソッド、offsetメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orderby" class="md-nav__link">
+    ▼ orderByメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortby" class="md-nav__link">
+    ▼ sortByメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sortbydesc" class="md-nav__link">
+    ▼ sortByDescメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with" class="md-nav__link">
+    ▼ withメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    ▼ saveメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    DELETE
+  </a>
+  
+    <nav class="md-nav" aria-label="DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destroydelete" class="md-nav__link">
+    ▼ destroy/deleteメソッド (物理削除)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#softdeletes" class="md-nav__link">
+    ▼ SoftDeletesの有効化 (論理削除)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#n1" class="md-nav__link">
+    N+1問題の解決
+  </a>
+  
+    <nav class="md-nav" aria-label="N+1問題の解決">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#n1_1" class="md-nav__link">
+    ▼ N+1問題とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 問題が起こる実装
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ 解決方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-laravel" class="md-nav__link">
+    04. Laravelへのリポジトリパターン導入
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Laravelへのリポジトリパターン導入">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    工夫
+  </a>
+  
+    <nav class="md-nav" aria-label="工夫">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dto" class="md-nav__link">
+    ▼ DTOクラスの導入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
+    CREATE
+  </a>
+  
+    <nav class="md-nav" aria-label="CREATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_3" class="md-nav__link">
+    ▼ createメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    READ
+  </a>
+  
+    <nav class="md-nav" aria-label="READ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find_1" class="md-nav__link">
+    ▼ findメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#all_1" class="md-nav__link">
+    ▼ allメソッド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with_1" class="md-nav__link">
+    ▼ withメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    UPDATE
+  </a>
+  
+    <nav class="md-nav" aria-label="UPDATE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save_1" class="md-nav__link">
+    ▼ saveメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    DELETE
+  </a>
+  
+    <nav class="md-nav" aria-label="DELETE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#destroydelete_1" class="md-nav__link">
+    ▼ destroy/deleteメソッド
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="eloquent-ormlaravel">Eloquent ORM＠Laravel<a class="headerlink" href="#eloquent-ormlaravel" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-eloquent-orm">01. Eloquent ORMとは<a class="headerlink" href="#01-eloquent-orm" title="Permanent link">&para;</a></h2>
+<p>Laravelに組み込まれているORM。</p>
+<p>Active Recordパターンで実装されている。</p>
+<p>内部にはPDOが使用されており、Laravelクエリビルダーよりも抽象度が高い。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html">https://readouble.com/laravel/8.x/ja/eloquent.html</a></li>
+<li><a href="https://codezine.jp/article/detail/12805">https://codezine.jp/article/detail/12805</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-02-active-record">01-02. Active Recordパターン<a class="headerlink" href="#01-02-active-record" title="Permanent link">&para;</a></h2>
+<h3 id="active-record">Active Recordパターンとは<a class="headerlink" href="#active-record" title="Permanent link">&para;</a></h3>
+<p>テーブルとモデルが一対一の関係になるデザインパターンのこと。</p>
+<p>加えて、テーブル間のリレーションシップがそのままモデル間の依存関係にも反映される。</p>
+<p>ビジネスロジックが複雑でないアプリケーションの開発に適している。</p>
+<p><img alt="ActiveRecord" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ActiveRecord.png" /></p>
+<p><br></p>
+<h3 id="_2">メリット/デメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>メリット</th>
+<th>デメリット</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保守性</td>
+<td>テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。</td>
+<td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、全てのカラムから取得するため、アプリケーションに余分な負荷がかかる。</td>
+</tr>
+<tr>
+<td>拡張性</td>
+<td>テーブル間のリレーションがモデル間の依存関係によって定義されており、JOIN句を使用せずに、各テーブルから必要なレコードを取得できる。そのため、テーブルを増やすやすい。</td>
+<td></td>
+</tr>
+<tr>
+<td>可読性</td>
+<td>・モデルとこれのプロパティがそのままテーブルになるため、モデルを作成するためにどのテーブルからレコードを取得するのかを推測しやすい (Userモデル ⇄ usersテーブル) 。<br>・リレーションを理解する必要がなく、複数のテーブルに対して無秩序にSQLを発行するような設計実装になりにくい。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="03-eloquent">03. Eloquentモデル<a class="headerlink" href="#03-eloquent" title="Permanent link">&para;</a></h2>
+<h3 id="eloquent">テーブル設計に基づくEloquentモデル<a class="headerlink" href="#eloquent" title="Permanent link">&para;</a></h3>
+<h4 id="eloquent_1">▼ Eloquentモデルの継承<a class="headerlink" href="#eloquent_1" title="Permanent link">&para;</a></h4>
+<p>Eloquentモデルを継承したクラスは、<code>INSERT</code>文や<code>UPDATE</code>文などのデータアクセスロジックを使用できるようになる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">// クラスチェーンによって、データアクセスロジックをコール</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_3">▼ テーブルの定義<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>テーブルを定義するため、<code>table</code>プロパティにテーブル名を割り当てる。</p>
+<p>ただし、<code>table</code>プロパティにテーブル名を代入する必要はない。</p>
+<p>Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を<code>table</code>プロパティに自動的に代入する。</p>
+<p>また、テーブル名を独自で命名したい場合は、代入によるOverrideを行っても良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$table</span> <span class="o">=</span> <span class="s2">&quot;foos&quot;</span><span class="p">;</span> <span class="c1">// Eloquentモデルと関連しているテーブル</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_4">▼ テーブル間リレーションシップの定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。</p>
+<p><code>hasOne</code>メソッド、<code>hasMany</code>メソッド、<code>belongsTo</code>メソッドを使用して表す。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>Departmentモデルで、<code>hasMany</code>メソッドを使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\HasMany</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Department</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;department_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+
+     <span class="sd">/**</span>
+<span class="sd">     * @return HasMany</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">employees</span><span class="p">()</span><span class="o">:</span> <span class="nx">HasMany</span>
+    <span class="p">{</span>
+        <span class="c1">// 一対多の関係を定義します。</span>
+        <span class="c1">// デフォルトではemployee_idに紐付けます。</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Employee</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、Employeesモデルでは、<code>belongsTo</code>メソッドを使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\BelongsTo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;employee_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return BelongsTo</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">department</span><span class="p">()</span><span class="o">:</span> <span class="nx">BelongsTo</span>
+    <span class="p">{</span>
+        <span class="c1">// 多対一の関係を定義します。</span>
+        <span class="c1">// デフォルトではdepartment_idに紐付けます。</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">Department</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>リレーションを基にJOIN句のSQLを発行するために、Departmentモデル (親) の<code>hasMany</code>メソッドを実行する。</p>
+<p>これにより、DepartmentモデルのIDに紐付くEmployeesモデル (子) を配列で参照できる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Departmentオブジェクトを取得</span>
+<span class="nv">$department</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// 部署ID=1に紐付く全てのemployeeオブジェクトをarray型で取得</span>
+<span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one">https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many">https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse">https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ 主キーカラムの定義<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Eloquentは、<code>primaryKey</code>プロパティの値を主キーのカラム名と見なす。</p>
+<p><code>keyType</code>プロパティで主キーのデータ型、また<code>incrementing</code>プロパティで主キーの自動増分を有効化するか否か、を設定できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;foo_id&quot;</span><span class="p">;</span> <span class="c1">// 主キーとするカラム (デフォルトではidが主キー)</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$keyType</span> <span class="o">=</span> <span class="s2">&quot;int&quot;</span><span class="p">;</span> <span class="c1">// 主キーのデータ型</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="nv">$incrementing</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// 主キーの自動増分の有効化します。</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="timestamp">▼ TIMESTAMP型カラムの定義<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h4>
+<p>Eloquentは、<code>timestamps</code>プロパティの値が<code>true</code>の時に、Eloquentモデルに紐付くテーブルの<code>created_at</code>カラムと<code>updated_at</code>カラムを自動的に更新する。</p>
+<p>また、TIMESTAMP型カラム名を独自で命名したい場合は、代入によるOverideを行っても良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="no">CREATED_AT</span> <span class="o">=</span> <span class="s2">&quot;created_date_time&quot;</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">UPDATED_AT</span> <span class="o">=</span> <span class="s2">&quot;updated_data_time&quot;</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var bool</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$timestamps</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// Eloquentモデルのタイムスタンプを更新するかの指示します。</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="timestamp_1">▼ TIMESTAMP型カラム読み出し時のデータ型変換<a class="headerlink" href="#timestamp_1" title="Permanent link">&para;</a></h4>
+<p>DBからタイムスタンプ型カラムを読み出すと同時に、CarbonのDateTimeクラスに変換したい場合、<code>data</code>プロパティにて、カラム名を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">User</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * CarbonのDateTimeクラスに自動変換したいカラム名</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;created_at&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;updated_at&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;deleted_at&quot;</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_6">▼ カラムデフォルト値の定義<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>特定のカラムのデフォルト値を設定したい場合、<code>attributes</code>プロパティにて、カラム名と値を定義する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * カラム名とデフォルト値</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$attributes</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;is_deleted&quot;</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_7">▼ 変更できる/できないカラムの定義<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>変更できるカラム名を<code>fillable</code>プロパティを使用して定義する。</p>
+<p>カラムが増えるたびに、実装する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * カラム名</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>もしくは、変更できないカラム名を<code>guarded</code>プロパティで定義する。</p>
+<p>これらのいずれかの設定は、Eloquentモデルで必須である。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * カラム名</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$guarded</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_8">使用に注意する機能<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ セッター<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。</p>
+<p>しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。</p>
+<p>そのため、こを使用せずに、<code>constructor</code>メソッドを使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 名前を取得します。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">=</span> <span class="nv">$fooName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_10">▼ ゲッター<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>Laravelでは、<code>getFooBarAttribute</code>という名前のメソッドを、<code>foo_bar</code>という名前でコールできる。</p>
+<p>一見、プロパティをコールしているように見えるため、注意が必要である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooName</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooName</span> <span class="nv">$fooName</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 名前を取得します。</span>
+
+
+<span class="sd">     *</span>
+<span class="sd">     * @return string</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getNameAttribute</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooName</span> <span class="o">.</span> <span class="s2">&quot;です。&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$foo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// nameプロパティを取得しているわけでなく、getNameAttributeメソッドを実行している。</span>
+<span class="nv">$fooName</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_11">データ型変換<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ シリアライズ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>フロントエンドとバックエンド間、またバックエンドとDB間のデータ送信のために、配列型オブジェクトをJSONに変換する処理はシリアライズである。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$collection</span> <span class="o">=</span> <span class="nx">collect</span><span class="p">([</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;user_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;佐藤太郎&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;user_id&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span>    <span class="o">=&gt;</span> <span class="s2">&quot;山田次郎&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">]);</span>
+
+<span class="c1">// Array型に変換する</span>
+<span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$users</span> <span class="o">=</span> <span class="nx">App\User</span><span class="o">::</span><span class="na">all</span><span class="p">();</span>
+
+<span class="c1">// Array型に変換する</span>
+<span class="k">return</span> <span class="nv">$users</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="_13">▼ デシリアライズ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>フロントエンドとバックエンド間、またバックエンドとDB間のデータ送信のために、JSONを配列型オブジェクトに変換する処理はデシリアライズである。</p>
+<p><br></p>
+<h3 id="_14">フィルタリング<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="filter">▼ <code>filter</code>メソッド<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
+<p>コールバック関数の返却値が<code>true</code>であった要素を全て抽出する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4]);</span>
+
+<span class="x">// trueを返却した要素を全て抽出する</span>
+<span class="x">$filtered = $collection-&gt;filter(function ($value, $key) {</span>
+<span class="x">    return $value &gt; 2;</span>
+<span class="x">});</span>
+
+<span class="x">$filtered-&gt;all();</span>
+
+<span class="x">// [3, 4]</span>
+</code></pre></div>
+<p>補足として、複数の条件を設定したい時は、早期リターンを使用する必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4, &quot;yes&quot;]);</span>
+
+<span class="x">// 複数の条件で抽出する。</span>
+<span class="x">$filtered = $collection-&gt;filter(function ($value, $key) {</span>
+
+<span class="x">    // まずはyesを検証する。</span>
+<span class="x">    if($value == &quot;yes&quot;) {</span>
+<span class="x">        return true;</span>
+<span class="x">    }</span>
+
+<span class="x">    return $value &gt; 2;</span>
+<span class="x">});</span>
+
+<span class="x">$filtered-&gt;all();</span>
+
+<span class="x">// [3, 4, &quot;yes&quot;]</span>
+</code></pre></div>
+<h4 id="first">▼ <code>first</code>メソッド<a class="headerlink" href="#first" title="Permanent link">&para;</a></h4>
+<p>コールバック関数の返却値が<code>true</code>であった最初の要素のみを抽出する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4]);</span>
+
+<span class="x">// trueを返却した要素のみ抽出する</span>
+<span class="x">$filtered = $collection-&gt;first(function ($value, $key) {</span>
+<span class="x">    return $value &gt; 2;</span>
+<span class="x">});</span>
+
+<span class="x">// 3</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-02-eloquentcrud">03-02. EloquentモデルとビルダーによるCRUD<a class="headerlink" href="#03-02-eloquentcrud" title="Permanent link">&para;</a></h2>
+<h3 id="crud">CRUDメソッドの返却値型と返却値<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
+<h4 id="crud_1">▼ CRUDメソッドを持つクラス<a class="headerlink" href="#crud_1" title="Permanent link">&para;</a></h4>
+<p>Eloquentモデルを継承すると、以下のクラスからメソッドをコールできるようになる。</p>
+<p>Eloquentモデルにはより上位のメソッドが定義されていないことがあり、もし定義されていないものがコールされた場合、<code>__callStatic</code>メソッド (静的コールによる) や<code>__call</code>メソッド (非静的コールによる) が代わりにコールされ、より上位クラスのメソッドをコールできる。</p>
+<p>どちらの方法でコールしても同じである。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">クラス</th>
+<th style="text-align: left;">名前空間</th>
+<th style="text-align: left;"><code>__call</code>メソッドを経由してコールできるクラス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Queryビルダー</td>
+<td style="text-align: left;"><code>Illuminate\Database\Query\Builder</code></td>
+<td style="text-align: left;">なし</td>
+</tr>
+<tr>
+<td style="text-align: left;">Eloquentビルダー</td>
+<td style="text-align: left;"><code>Illuminate\Database\Eloquent\Builder</code></td>
+<td style="text-align: left;">Queryビルダー、</td>
+</tr>
+<tr>
+<td style="text-align: left;">Eloquentリレーション</td>
+<td style="text-align: left;"><code>Illuminate\Database\Eloquent\Relations\Relation</code></td>
+<td style="text-align: left;">Queryビルダー、Eloquentビルダー、</td>
+</tr>
+<tr>
+<td style="text-align: left;">Eloquentモデル</td>
+<td style="text-align: left;"><code>Illuminate\Database\Eloquent\Model</code></td>
+<td style="text-align: left;">Queryビルダー、Eloquentビルダー、Eloquentリレーション</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.php.net/manual/ja/language.oop5.overloading.php#object.call">https://www.php.net/manual/ja/language.oop5.overloading.php#object.call</a></li>
+<li><a href="https://qiita.com/mpyw/items/7c7e8dc665584122a275">https://qiita.com/mpyw/items/7c7e8dc665584122a275</a></li>
+</ul>
+</blockquote>
+<h4 id="eloquent_2">▼ Eloquentビルダー<a class="headerlink" href="#eloquent_2" title="Permanent link">&para;</a></h4>
+<p>Eloquentビルダーが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。</p>
+<p>その他のメソッドについては、以下のリンクを参考にせよ。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">CRUDメソッドの種類</th>
+<th style="text-align: center;">返却値型</th>
+<th style="text-align: center;">返却値</th>
+<th style="text-align: left;">返却値の説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">create</td>
+<td style="text-align: center;">collection/$this</td>
+<td style="text-align: center;"><code>{id:1, name: テスト}</code></td>
+<td style="text-align: left;">作成したオブジェクト</td>
+</tr>
+<tr>
+<td style="text-align: center;">find</td>
+<td style="text-align: center;">collection/Builder/Model</td>
+<td style="text-align: center;"><code>{id:1, name:テスト}</code></td>
+<td style="text-align: left;">取得したオブジェクト</td>
+</tr>
+<tr>
+<td style="text-align: center;">update</td>
+<td style="text-align: center;">mixed</td>
+<td style="text-align: center;"><code>0</code>、<code>1</code>、<code>2</code>、<code>3</code></td>
+<td style="text-align: left;">変更したレコード数</td>
+</tr>
+<tr>
+<td style="text-align: center;">delete</td>
+<td style="text-align: center;">mixed</td>
+<td style="text-align: center;"><code>0</code>、<code>1</code>、<code>2</code>、<code>3</code></td>
+<td style="text-align: left;">変更したレコード数</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html">https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Builder.html</a></li>
+</ul>
+</blockquote>
+<h4 id="eloquent_3">▼ Eloquentモデル<a class="headerlink" href="#eloquent_3" title="Permanent link">&para;</a></h4>
+<p>Eloquentモデルが持つcrudを実行するメソッドの返却値型と返却値は以下の通りである。</p>
+<p>その他のメソッドについては、以下のリンクを参考にせよ。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">CRUDメソッドの種類</th>
+<th style="text-align: center;">返却値型</th>
+<th style="text-align: center;">返却値</th>
+<th style="text-align: left;">返却値の説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">update</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;"><code>true</code>、<code>false</code></td>
+<td style="text-align: left;">結果のbool値</td>
+</tr>
+<tr>
+<td style="text-align: center;">save</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;"><code>true</code>、<code>false</code></td>
+<td style="text-align: left;">結果のbool値</td>
+</tr>
+<tr>
+<td style="text-align: center;">delete</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;"><code>true</code>、<code>false</code></td>
+<td style="text-align: left;">結果のbool値</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html">https://laravel.com/api/8.x/Illuminate/Database/Eloquent/Model.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="create">CREATE<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<h4 id="create_1">▼ <code>create</code>メソッド<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
+<p>INSERT文を実行する。</p>
+<p>Eloquentモデルには<code>create</code>メソッドがないため、代わりにEloquentビルダーが持つ<code>create</code>メソッドがコールされる。</p>
+<p><code>create</code>メソッドに挿入先のカラムと値を渡し、これを実行する。</p>
+<p>別の方法として、Eloquentビルダーの<code>fill</code>メソッドで挿入先のカラムと値を設定し、<code>save</code>メソッドを実行しても良い。</p>
+<p><code>save</code>メソッドはUPDATE処理も実行できるが、<code>fill</code>メソッドでID値を割り当てない場合は、CREATE処理が実行される。</p>
+<p><code>create</code>メソッドまたは<code>save</code>メソッドによるCREATE処理では、レコードの挿入後に、<code>lastInsertId</code>メソッドに相当する処理が実行される。</p>
+<p>これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">createFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="c1">// INSERT文を実行する。また同時にIDを取得する。</span>
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">());</span>
+
+        <span class="c1">// 以下の実装でもよい</span>
+        <span class="c1">// $foo-&gt;fill($request-&gt;all())-&gt;save();</span>
+
+        <span class="c1">// 処理後にはEloquentモデルにID値が保持されている。</span>
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">();</span>
+
+        <span class="c1">// 続きの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Eloquentモデルには<code>fillable</code>プロパティを設定しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">// 更新できるカラム</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://codelikes.com/laravel-eloquent-basic/#toc9">https://codelikes.com/laravel-eloquent-basic/#toc9</a></li>
+<li><a href="https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9">https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="read">READ<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
+<h4 id="all">▼ <code>all</code>メソッド<a class="headerlink" href="#all" title="Permanent link">&para;</a></h4>
+<p>レコードを全て取得するSELECT句を発行する。</p>
+<p>MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、<code>orderBy</code>メソッドを使用して、明示的に並び替えるようにする。</p>
+<p>Eloquentモデルには<code>all</code>メソッドがないため、代わりにEloquentビルダーが持つ<code>all</code>メソッドがコールされる。</p>
+<p>全てのプライマリーキーのCollection型を配列型として返却する。</p>
+<p><code>toArray</code>メソッドで配列型に再帰的に変換できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function">https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function</a></li>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all">https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models">https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models</a></li>
+</ul>
+</blockquote>
+<h4 id="find">▼ <code>find</code>メソッド<a class="headerlink" href="#find" title="Permanent link">&para;</a></h4>
+<p>レコードを1つ取得するSELECT句を発行する。</p>
+<p>Eloquentモデルには<code>find</code>メソッドがないため、代わりにEloquentビルダーが持つ<code>find</code>メソッドがコールされる。</p>
+<p>引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。</p>
+<p><code>toArray</code>メソッドで配列型に変換できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find">https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find</a></li>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models">https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models</a></li>
+</ul>
+</blockquote>
+<h4 id="first_1">▼ <code>first</code>メソッド<a class="headerlink" href="#first_1" title="Permanent link">&para;</a></h4>
+<p>取得されたコレクション型データの1つ目の要素の値を取得する。</p>
+<p>ユニーク制約の課せられたカラムを<code>where</code>メソッドの対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。</p>
+<p>foreachを使用してコレクションからEloquentモデルを取り出しても良いが、無駄が多い。</p>
+<p>そこで、<code>first</code>メソッドを使用して、Eloquentモデルを直接的に取得する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param string $emailAddress</span>
+<span class="sd">     * @return Foo</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findByEmail</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">:</span> <span class="nx">Foo</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;foo_email&#39;</span><span class="p">,</span> <span class="nv">$emailAddress</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">first</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="limitoffset">▼ <code>limit</code>メソッド、<code>offset</code>メソッド<a class="headerlink" href="#limitoffset" title="Permanent link">&para;</a></h4>
+<p>開始地点から指定した件数のレコードを全て取得するSELECT句を発行する。</p>
+<p>これにより、ページネーションで、1ページ当たりのレコード数 (<code>limit</code>) と、次のページの開始レコード (<code>offset</code>) を定義できる。</p>
+<p>これらのパラメーターはクエリパラメーターとして渡すと良い。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByPagination</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">offset</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">offset</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">limit</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">limit</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset">https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset</a></li>
+</ul>
+</blockquote>
+<h4 id="orderby">▼ <code>orderBy</code>メソッド<a class="headerlink" href="#orderby" title="Permanent link">&para;</a></h4>
+<p>指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。</p>
+<p>並び替えた結果を取得するためには、<code>get</code>メソッドを使用する。</p>
+<p>プライマリーキーの昇順で取得する場合、<code>all</code>メソッドではなく、<code>orderBy</code>メソッドを使用して、プライマリーキーの昇順を明示的に設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByAsc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="c1">// 昇順</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">,</span> <span class="s1">&#39;asc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByDesc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="c1">// 降順</span>
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">orderBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">,</span> <span class="s1">&#39;desc&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset">https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset</a></li>
+</ul>
+</blockquote>
+<h4 id="sortby">▼ <code>sortBy</code>メソッド<a class="headerlink" href="#sortby" title="Permanent link">&para;</a></h4>
+<p>指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByAsc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortBy</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/collections.html#method-sortby">https://readouble.com/laravel/8.x/ja/collections.html#method-sortby</a></li>
+</ul>
+</blockquote>
+<h4 id="sortbydesc">▼ <code>sortByDesc</code>メソッド<a class="headerlink" href="#sortbydesc" title="Permanent link">&para;</a></h4>
+<p>指定したカラムの降順でレコードを並び替えるSELECT句を発行する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Collection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return Collection</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAllByDesc</span><span class="p">()</span><span class="o">:</span> <span class="nx">Collection</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">sortByDesc</span><span class="p">(</span><span class="s1">&#39;foo_id&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc">https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc</a></li>
+</ul>
+</blockquote>
+<h4 id="with">▼ <code>with</code>メソッド<a class="headerlink" href="#with" title="Permanent link">&para;</a></h4>
+<p>親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。</p>
+<p>この仕組みをEagerロードという。</p>
+<p>Eloquentモデルには<code>with</code>メソッドがないため、代わりにEloquentビルダーが持つ<code>with</code>メソッドがコールされる。</p>
+<p>テーブル間に一対多 (親子) のリレーションシップがある場合に使用する。</p>
+<p>N+1問題を防げる。</p>
+<blockquote>
+<ul>
+<li><a href="https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading">https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading</a></li>
+</ul>
+</blockquote>
+<p>ただし、<code>with</code>メソッドに他のメソッドをチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F">https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>コントローラーにて、Department (親) と、これに紐付くEmployee (子) を読み出す。</p>
+<p>これらのモデルの間では、<code>hasMany</code>メソッドと<code>belongsTo</code>メソッドを使用して、テーブルにおける一対多のリレーションを定義しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">EmployeeController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getEmployeesByDepartment</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$department</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Department</span><span class="p">();</span>
+
+        <span class="c1">// Departmentに属するEmployeesを全て読み出します。</span>
+        <span class="c1">// (departments : employees = 1 : 多)</span>
+        <span class="nv">$employees</span> <span class="o">=</span> <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s2">&quot;employees&quot;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$employees</span> <span class="k">as</span> <span class="nv">$employee</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ここではDBアクセスはせずに、プロパティに保持された値を取得するだけ。</span>
+            <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$employee</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">;</span>
+
+        <span class="p">}</span>
+
+        <span class="c1">// 続きの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Department (親) に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\HasMany</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Department</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 主キーとするカラム</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;department_id&quot;</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 一対多の関係を定義します。</span>
+
+
+<span class="sd">     * (デフォルトではemployee_idに紐付けます)</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return HasMany</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">employees</span><span class="p">()</span><span class="o">:</span> <span class="nx">HasMany</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">hasMany</span><span class="p">(</span><span class="nx">Employee</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>また、Employee (子) に、反対の多対一の関係を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Relations\BelongsTo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Employee</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * 主キーとするカラム</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$primaryKey</span> <span class="o">=</span> <span class="s2">&quot;employee_id&quot;</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 多対一の関係を定義します。</span>
+
+
+<span class="sd">     * (デフォルトではdepartment_idに紐付けます)</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return BelongsTo</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">department</span><span class="p">()</span><span class="o">:</span> <span class="nx">BelongsTo</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">belongsTo</span><span class="p">(</span><span class="nx">Department</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<h4 id="save">▼ <code>save</code>メソッド<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
+<p>UPDATE文を実行する。</p>
+<p>Eloquentビルダーの<code>fill</code>メソッドで挿入先のカラムと値を設定し、<code>save</code>メソッドを実行する。</p>
+<p><code>save</code>メソッドはCREATE処理も実行できるが、<code>fill</code>メソッドでID値を割り当てた場合は、UPDATE処理が実行される。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Http\Controllers\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @param Request $request</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">updateFoo</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">();</span>
+
+        <span class="c1">// UPDATE文を実行する。</span>
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">fill</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">())</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+        <span class="c1">// 続きの処理</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Eloquentモデルには<code>fillable</code>プロパティを設定しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">// 更新できるカラム</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://codelikes.com/laravel-eloquent-basic/#toc9">https://codelikes.com/laravel-eloquent-basic/#toc9</a></li>
+<li><a href="https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9">https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="delete">DELETE<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
+<h4 id="destroydelete">▼ <code>destroy</code>/<code>delete</code>メソッド (物理削除)<a class="headerlink" href="#destroydelete" title="Permanent link">&para;</a></h4>
+<p>DELETE文を実行する。</p>
+<p>Eloquentモデルの<code>destroy</code>/<code>delete</code>メソッドを使用する。</p>
+<p>手順として、Eloquentビルダーの<code>find</code>メソッドで削除先のModelを検索する。</p>
+<p>返却されたEloquentビルダーの<code>destroy</code>/<code>delete</code>メソッドをコールし、自身を削除する。</p>
+<h4 id="softdeletes">▼ SoftDeletesの有効化 (論理削除)<a class="headerlink" href="#softdeletes" title="Permanent link">&para;</a></h4>
+<p>削除フラグを更新するUPDATE文を実行する。</p>
+<p>Eloquentモデルの<code>destroy</code>/<code>delete</code>メソッドを使用する。</p>
+<p>手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。</p>
+<p>DBマイグレーション時に追加される<code>delete_at</code>カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\SoftDeletes</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">    * Traitの読み出し</span>
+<span class="sd">    */</span>
+    <span class="k">use</span> <span class="nx">SoftDeletes</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * 読み出し時にCarbonのDateTimeクラスへ自動変換するカラム</span>
+<span class="sd">     *</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;deleted_at&quot;</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>DBマイグレーションファイルにて<code>softDeletes</code>メソッドを使用すると、削除フラグとして<code>deleted_at</code>カラムが追加されるようになる。</p>
+<p><code>deleted_at</code>カラムのデフォルト値は<code>NULL</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">CreateFooTable</span> <span class="k">extends</span> <span class="nx">Migration</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * マイグレート</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">up</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nx">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+
+            <span class="o">...</span>
+
+            <span class="c1">// deleted_atカラムを追加する。</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">softDeletes</span><span class="p">();</span>
+
+            <span class="o">...</span>
+
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * ロールバック</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">down</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nx">Schema</span><span class="o">::</span><span class="na">drop</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>上記の状態で、同様に<code>destroy</code>/<code>delete</code>メソッドを使用して、自身を削除する。</p>
+<p>物理削除ではなく、<code>deleled_at</code>カラムが更新されるようになる。</p>
+<p><code>find</code>メソッドは、<code>deleled_at</code>カラムが<code>NULL</code>でないレコードを読み出さないため、論理削除を実現できる。</p>
+<p><br></p>
+<h3 id="n1">N+1問題の解決<a class="headerlink" href="#n1" title="Permanent link">&para;</a></h3>
+<h4 id="n1_1">▼ N+1問題とは<a class="headerlink" href="#n1_1" title="Permanent link">&para;</a></h4>
+<p>親テーブルを経由して子テーブルにアクセスする時に、親テーブルのレコード数分のSQLを発行してしまうアンチパターンのこと。</p>
+<h4 id="_15">▼ 問題が起こる実装<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>反復処理の中で子テーブルのレコードにアクセスしてしまう場合、N+1問題が起こる。</p>
+<p>内部的には、親テーブルへのSQLと、Where句を持つSQLが親テーブルのレコード数分だけ発行される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">all</span><span class="p">();</span> <span class="c1">// 親テーブルにSQLを発行 (1回)</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span> <span class="c1">// 親テーブルのレコード数分のWhere句SQLが発行される (N回)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1回</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>
+
+<span class="c1"># N回</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+...
+</code></pre></div>
+<h4 id="_16">▼ 解決方法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>反復処理の前に小テーブルにアクセスしておく。</p>
+<p>データアクセス時に<code>with</code>メソッドを使用すると、親テーブルへのアクセスに加えて、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持するように処理する。</p>
+<p>そのため、反復処理ではプロパティからデータを取り出すだけになる。</p>
+<p>内部的には、親テーブルへのSQLと、In句を使用したSQLが発行される。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$departments</span> <span class="o">=</span> <span class="nx">Department</span><span class="o">::</span><span class="na">with</span><span class="p">(</span><span class="s1">&#39;employees&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span> <span class="c1">// SQL発行 (2回)</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="nv">$departments</span> <span class="k">as</span> <span class="nv">$department</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$department</span><span class="o">-&gt;</span><span class="na">employees</span><span class="p">;</span> <span class="c1">// キャッシュを使用するのでSQLの発行はされない (0回)</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># 2回</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>departments<span class="sb">`</span>
+<span class="k">select</span><span class="w"> </span>*<span class="w"> </span>from<span class="w"> </span><span class="sb">`</span>employees<span class="sb">`</span><span class="w"> </span>where<span class="w"> </span><span class="sb">`</span>department_id<span class="sb">`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">4</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">6</span>,<span class="w"> </span><span class="m">7</span>,<span class="w"> </span><span class="m">8</span>,<span class="w"> </span><span class="m">9</span>,<span class="w"> </span><span class="m">10</span>,<span class="w"> </span><span class="m">11</span><span class="w"> </span>...<span class="w"> </span><span class="m">100</span><span class="o">)</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="04-laravel">04. Laravelへのリポジトリパターン導入<a class="headerlink" href="#04-laravel" title="Permanent link">&para;</a></h2>
+<h3 id="_17">背景<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリケーションに適している。</p>
+<p>ただし、ビジネスロジックが複雑なアプリケーションに対しても、Laravelを使用したい場面がある。</p>
+<p>その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。</p>
+<p>リポジトリパターンについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html">https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_18">工夫<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="dto">▼ DTOクラスの導入<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h4>
+<p>ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル (例：DTOクラス) を用意する。</p>
+<p>詰め替えモデルをドメインモデルに変換する処理をメソッドとして切り分けておくと便利である。</p>
+<p>ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを仲介し、これらを疎結合にしてくれる。</p>
+<p>そのため、Repositoryパターンを実現できる。</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\DTOs</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">final</span> <span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="k">use</span> <span class="nx">HasFactory</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$dates</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;created_at&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;updated_at&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;deleted_at&#39;</span><span class="p">,</span>
+    <span class="p">];</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var array</span>
+<span class="sd">     */</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;age&#39;</span><span class="p">,</span>
+    <span class="p">];</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var int</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$id</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var int</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$age</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @var string</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return Foo</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">toFoo</span><span class="p">()</span><span class="o">:</span> <span class="nx">Foo</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">FooId</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">),</span>
+            <span class="k">new</span> <span class="nx">FooAge</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="create_2">CREATE<a class="headerlink" href="#create_2" title="Permanent link">&para;</a></h3>
+<h4 id="create_3">▼ <code>create</code>メソッド<a class="headerlink" href="#create_3" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTO\FooDTO</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooDTO</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param Foo $foo</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
+            <span class="c1">// INSERT文を実行する。</span>
+            <span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span>
+                <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
+                <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+                <span class="s2">&quot;age&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+            <span class="p">]);</span>
+
+<span class="c1">//        以下の実装でも良い。</span>
+<span class="c1">//        $this-&gt;fooDTO</span>
+<span class="c1">//            -&gt;fill([</span>
+<span class="c1">//                &quot;name&quot;  =&gt; $foo-&gt;name(),</span>
+<span class="c1">//                &quot;age&quot;   =&gt; $foo-&gt;age(),</span>
+<span class="c1">//            ])</span>
+<span class="c1">//            -&gt;save();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">// 更新できるカラム</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="read_1">READ<a class="headerlink" href="#read_1" title="Permanent link">&para;</a></h3>
+<h4 id="find_1">▼ <code>find</code>メソッド<a class="headerlink" href="#find_1" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Ids\FooId</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooDTO</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param FooId $fooId</span>
+<span class="sd">     * @return Foo</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findById</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span><span class="o">:</span> <span class="nx">Foo</span>
+    <span class="p">{</span>
+        <span class="nv">$fooDTO</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
+            <span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$fooId</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">());</span>
+
+        <span class="c1">// DBアクセス処理後のDTOをドメインモデルに変換する。</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
+            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
+            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+            <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">()</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="all_1">▼ <code>all</code>メソッド<a class="headerlink" href="#all_1" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooDTO</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="nv">$fooDTOs</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
+            <span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+
+        <span class="nv">$foos</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$fooDTOs</span> <span class="k">as</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+            <span class="c1">// DBアクセス後のDTOをドメインモデルに変換する。</span>
+            <span class="nv">$foos</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span>
+                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">(),</span>
+                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+                <span class="nv">$fooDTO</span><span class="o">-&gt;</span><span class="na">email</span><span class="p">(),</span>
+            <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$foos</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="with_1">▼ <code>with</code>メソッド<a class="headerlink" href="#with_1" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="update_1">UPDATE<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h3>
+<h4 id="save_1">▼ <code>save</code>メソッド<a class="headerlink" href="#save_1" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooDTO</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param Foo $foo</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">Foo</span> <span class="nv">$foo</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span>
+            <span class="c1">// ドメインモデルのデータをDTOに詰め替える。</span>
+            <span class="o">-&gt;</span><span class="na">fill</span><span class="p">([</span>
+                <span class="s2">&quot;name&quot;</span>  <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+                <span class="s2">&quot;age&quot;</span>   <span class="o">=&gt;</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">age</span><span class="p">(),</span>
+            <span class="p">])</span>
+            <span class="c1">// UPDATE文を実行する。</span>
+            <span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooDTO</span> <span class="k">extends</span> <span class="nx">Model</span>
+<span class="p">{</span>
+    <span class="c1">// 更新できるカラム</span>
+    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;age&quot;</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="delete_1">DELETE<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h3>
+<h4 id="destroydelete_1">▼ <code>destroy</code>/<code>delete</code>メソッド<a class="headerlink" href="#destroydelete_1" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Infrastructure\Repositories</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Entities\Foo</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Ids\FooId</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Domain\Foo\Repositories\FooRepository</span> <span class="k">as</span> <span class="nx">DomainFooRepository</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Infrastructure\Foo\DTOs\FooDTO</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooRepository</span> <span class="k">extends</span> <span class="nx">Repository</span> <span class="k">implements</span> <span class="nx">DomainFooRepository</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @var FooDTO</span>
+<span class="sd">     */</span>
+    <span class="k">private</span> <span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooDTO</span> <span class="nv">$fooDTO</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span> <span class="o">=</span> <span class="nv">$fooDTO</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param FooId $fooId</span>
+<span class="sd">     * @return void</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// destroyメソッドでレコードを削除する。</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooDTO</span><span class="o">-&gt;</span><span class="na">destroy</span><span class="p">(</span><span class="nv">$fooId</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">());</span>
+
+        <span class="c1">// deleteメソッドを使用しても良い。</span>
+        <span class="c1">// $this-&gt;fooDTO-&gt;find($fooId-&gt;id())-&gt;delete();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">FooController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span> <span class="o">=</span> <span class="nv">$fooRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @param FooId $fooId</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">FooId</span> <span class="nv">$fooId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span>
+            <span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$fooId</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">response</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">view</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><br></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最終更新日:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            ページトップへ戻る
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/hiroki-it" target="_blank" rel="noopener" title="GitHubアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/Hiroki__IT" target="_blank" rel="noopener" title="Twitterアカウント" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
