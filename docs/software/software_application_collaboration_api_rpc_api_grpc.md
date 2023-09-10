@@ -321,7 +321,7 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 
 ### サーバー側
 
-#### ▼ gRPCサーバー
+#### ▼ gRPCサーバー (単一のInterceptorの場合)
 
 gRPCサーバーを実装する。
 
@@ -375,7 +375,7 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
-#### ▼ gRPCサーバー
+#### ▼ gRPCサーバー (複数のInterceptorの場合)
 
 `go-grpc-middleware`パッケージを使用すると、複数のInterceptorを設定できる。
 

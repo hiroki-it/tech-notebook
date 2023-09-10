@@ -71,7 +71,7 @@
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_minikube_command.html)
   > * ##### <u>Kind</u>
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_kind_command.html)
-  > * ##### <u>K3d</u>
+  > * ##### <u>K3D</u>
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_development_environment_k3d_command.html)
 
 <br>

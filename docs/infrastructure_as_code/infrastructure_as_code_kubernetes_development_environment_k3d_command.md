@@ -3,7 +3,7 @@ title: 【IT技術の知見】コマンド＠K3d
 description: コマンド＠K3dの知見を記録しています。
 ---
 
-# コマンド＠K3d
+# コマンド＠K3D
 
 ## はじめに
 
@@ -62,7 +62,7 @@ $ kubectl label node k3d-foo-cluster-agent-2 node-type=app
 
 #### ▼ --config
 
-`config.yaml`ファイルを使用して、K3d Clusterを作成する。
+`config.yaml`ファイルを使用して、K3D Clusterを作成する。
 
 ```bash
 $ k3d cluster create --config config.yaml
@@ -72,7 +72,7 @@ $ k3d cluster create --config config.yaml
 
 #### ▼ --image
 
-Kubernetesのバージョンを指定して、K3d Clusterを作成する。
+Kubernetesのバージョンを指定して、K3D Clusterを作成する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
@@ -113,7 +113,7 @@ $ k3d cluster delete foo-cluster
 
 ### list
 
-K3d Clusterの情報を取得する。
+K3D Clusterの情報を取得する。
 
 ```bash
 $ k3d cluster list

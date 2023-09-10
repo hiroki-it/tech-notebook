@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】設定ファイル＠K3S
-description: K3S＠開発環境の知見を記録しています。
+description: 設定ファイル＠K3Sの知見を記録しています。
 ---
 
 # 設定ファイル＠K3S
@@ -15,7 +15,7 @@ description: K3S＠開発環境の知見を記録しています。
 
 ## 01. `registries.yaml`ファイル
 
-K3s Cluster内のPodが使用するイメージレジストリ情報を設定する。
+K3S Cluster内のPodが使用するイメージレジストリ情報を設定する。
 
 `/etc/rancher/k3s`ディレクトリ配下に配置する。
 
@@ -23,8 +23,14 @@ K3s Cluster内のPodが使用するイメージレジストリ情報を設定す
 configs:
   "<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com":
     auth:
-      username: <ユーザー名>
+      username: AWS
       password: <パスワード>
+```
+
+パスワードは以下のコマンドで取得する。
+
+```bash
+$ aws ecr get-login-password --region ap-northeast-1
 ```
 
 > - https://docs.k3s.io/installation/private-registry#configs
