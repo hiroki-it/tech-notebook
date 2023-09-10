@@ -32,7 +32,7 @@ Regoのユーザー定義のポリシーに基づいて、様々なツールの�
 
 ### インストール
 
-#### ▼ Brew
+#### ▼ brewリポジトリから
 
 ```bash
 $ brew install conftest

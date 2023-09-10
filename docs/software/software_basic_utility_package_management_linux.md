@@ -155,7 +155,7 @@ sops <バージョン>
 
 ### セットアップ
 
-#### ▼ brew
+#### ▼ brewリポジトリから
 
 `brew`コマンドを使用してインストールする場合、`~/.zshrc`ファイルを編集する必要がある。
 
@@ -163,7 +163,7 @@ sops <バージョン>
 $ brew install asdf
 ```
 
-#### ▼ linux
+#### ▼ GitHubリポジトリから
 
 > - https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 

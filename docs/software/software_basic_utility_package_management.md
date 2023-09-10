@@ -51,9 +51,17 @@ Linux系のOS全てで使える。
 
 ### phpenv (PHP)
 
+#### ▼ phpenvとは
+
+複数のバージョンのPHPを管理し、切り替えられる。
+
 <br>
 
 ### pyenv (Python)
+
+#### ▼ pyenvとは
+
+複数のバージョンのPythonを管理し、切り替えられる。
 
 #### ▼ which
 
@@ -67,6 +75,8 @@ $ pyenv which python
 
 ### rbenv (Ruby)
 
-記入中...
+#### ▼ rbenvとは
+
+複数のバージョンのRubyを管理し、切り替えられる。
 
 <br>

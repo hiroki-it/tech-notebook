@@ -32,12 +32,6 @@
 
 * #### [︎Unix系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
 
-* #### <u>︎パッケージ管理ユーティリティ</u>
-  > * ##### [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)
-  > * ##### [Linux系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html)
-  > * ##### [RediHat系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html)
-  > * ##### [Debian系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
-
 * #### [︎シェル](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)
 
 * #### [︎スクリプト](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_script.html)
@@ -47,6 +41,12 @@
   > * ##### [︎ネットワーク系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_network.html)
   > * ##### [︎セキュリティ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_security.html)
   > * ##### [︎ストレージ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_storage.html)
+
+* #### <u>︎パッケージ管理ユーティリティ</u>
+  > * ##### [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)
+  > * ##### [Linux系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html)
+  > * ##### [RediHat系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html)
+  > * ##### [Debian系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
 
  <br>
 
