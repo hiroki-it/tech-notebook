@@ -13,7 +13,7 @@ description: Kaniko＠CNCFプロジェクトの知見を記録しています。
 
 <br>
 
-## 01. セットアップ
+## 01. Kanikoとは
 
 コンテナ内でコンテナイメージをビルドする。
 
@@ -27,22 +27,32 @@ Docker in Dockerを回避できる。
 
 Kanikoのオプションを設定する。
 
-イメージレジストリごとに、認証処理ヘルパーがある。
+`/kaniko/.docker`ディレクトリに配置する。
+
+<br>
+
+### credHelpers
+
+#### ▼ credHelpersとは
+
+イメージレジストリごとに、認証ヘルパーがある。
 
 ```yaml
 {
-  "credHelpers":
-    {"<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login"},
+  # 使用する認証ヘルパーを設定する
+  "credHelpers": {
+      # amazon-ecr-credential-helperに設定を渡す
+      "<AWSアカウントID (1つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
+      "<AWSアカウントID (2つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
+    },
 }
 ```
 
 > - https://github.com/awslabs/amazon-ecr-credential-helper#configuration
 
-<br>
+#### ▼ 機密情報の設定
 
-### 機密情報の設定
-
-機密情報は、動的に設定できるようにする。
+CIの実行コンテナでは、機密情報を動的に設定できるようにする。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1 \
@@ -60,11 +70,9 @@ $ cat > /kaniko/.docker/config.json << EOF
 
 <br>
 
-## 03. コマンド
+## 03. Podの場合
 
-### Podの場合
-
-#### ▼ AWS ECR
+### AWS ECR
 
 ```yaml
 apiVersion: v1
@@ -94,5 +102,79 @@ spec:
 
 > - https://github.com/GoogleContainerTools/kaniko#running-kaniko
 > - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr
+
+<br>
+
+## 04. GitLab
+
+### DockerHub
+
+DockerHubの認証情報は、エンコードした上で、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
+
+```bash
+$ echo -n USER:PASSWORD | base64
+
+*****
+```
+
+```yaml
+stages:
+  - build
+
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  script:
+    - echo "{\"auths\":{\"https://index.docker.io/v2/\":{\"auth\":\"${DOCKERHUB_TOKEN}\"}}}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG
+```
+
+> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub
+
+<br>
+
+### AWS ECR
+
+AWSの認証情報は、あらかじめGitLab CIの変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
+
+```yaml
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  variables:
+    ECR_URL: ****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
+  script:
+    - echo "{\"credsStore\":\"ecr-login\"}" > /kaniko/.docker/config.json
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG
+```
+
+> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr
+
+<br>
+
+### GCP GCR
+
+GCPのクレデンシャルファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+
+```yaml
+build:
+  stage: build
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
+  variables:
+    GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcloud-service-key.json
+  before_script:
+    - mkdir /tmp
+    - echo ${GCP_TOKEN} > /tmp/gcloud-service-key.json
+  script:
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination "asia.gcr.io/${PROJECT_ID}/image_name:TAG"
+```
+
+> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr
 
 <br>
