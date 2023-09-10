@@ -1574,6 +1574,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-tag-t" class="md-nav__link">
+    ▼ --tag (-t)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-target" class="md-nav__link">
     ▼ --target
   </a>
@@ -2638,6 +2645,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#-tag-t" class="md-nav__link">
+    ▼ --tag (-t)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-target" class="md-nav__link">
     ▼ --target
   </a>
@@ -3180,6 +3194,15 @@
 <p>キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、<code>--force-rm</code>オプションを有効化するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--force-rm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--no-cache<span class="w"> </span>.
 </code></pre></div>
+<h4 id="-tag-t">▼ --tag (-t)<a class="headerlink" href="#-tag-t" title="Permanent link">&para;</a></h4>
+<p>ビルドしたコンテナイメージに、イメージ名とタグを付与する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/engine/reference/commandline/build/#tag">https://docs.docker.com/engine/reference/commandline/build/#tag</a></li>
+</ul>
+</blockquote>
 <h4 id="-target">▼ --target<a class="headerlink" href="#-target" title="Permanent link">&para;</a></h4>
 <p>ビルドするステージ名を設定する。</p>
 <p>マルチステージビルドの時に使用する。</p>

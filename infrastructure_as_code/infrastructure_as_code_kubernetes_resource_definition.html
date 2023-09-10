@@ -10573,6 +10573,23 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </code></pre></div>
+<p>AWS ECRからコンテナイメージをプルする場合は、以下の通りである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository/app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D">https://developer.mamezou-tech.com/containers/k8s/tutorial/app/container-registry/#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D</a></li>
+</ul>
+</blockquote>
 <h4 id="envfrom">▼ envFrom<a class="headerlink" href="#envfrom" title="Permanent link">&para;</a></h4>
 <p><code>.spec.volumes.secret</code>キーとは異なり、環境変数としてコンテナに出力するSecretやConfigMapを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -12924,7 +12941,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>
