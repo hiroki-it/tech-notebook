@@ -1370,15 +1370,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    ▼ gRPCサーバー
+  <a href="#grpc-interceptor" class="md-nav__link">
+    ▼ gRPCサーバー (単一のInterceptorの場合)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    ▼ gRPCサーバー
+  <a href="#grpc-interceptor_1" class="md-nav__link">
+    ▼ gRPCサーバー (複数のInterceptorの場合)
   </a>
   
 </li>
@@ -1397,7 +1397,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_6" class="md-nav__link">
+  <a href="#grpc_4" class="md-nav__link">
     ▼ gRPCクライアント
   </a>
   
@@ -2639,15 +2639,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
-    ▼ gRPCサーバー
+  <a href="#grpc-interceptor" class="md-nav__link">
+    ▼ gRPCサーバー (単一のInterceptorの場合)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
-    ▼ gRPCサーバー
+  <a href="#grpc-interceptor_1" class="md-nav__link">
+    ▼ gRPCサーバー (複数のInterceptorの場合)
   </a>
   
 </li>
@@ -2666,7 +2666,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_6" class="md-nav__link">
+  <a href="#grpc_4" class="md-nav__link">
     ▼ gRPCクライアント
   </a>
   
@@ -2976,7 +2976,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <p><br></p>
 <h2 id="03-go">03. Goの場合<a class="headerlink" href="#03-go" title="Permanent link">&para;</a></h2>
 <h3 id="_6">サーバー側<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_4">▼ gRPCサーバー<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
+<h4 id="grpc-interceptor">▼ gRPCサーバー (単一のInterceptorの場合)<a class="headerlink" href="#grpc-interceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCサーバーを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3029,7 +3029,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <li><a href="https://entgo.io/ja/docs/grpc-server-and-client/">https://entgo.io/ja/docs/grpc-server-and-client/</a></li>
 </ul>
 </blockquote>
-<h4 id="grpc_5">▼ gRPCサーバー<a class="headerlink" href="#grpc_5" title="Permanent link">&para;</a></h4>
+<h4 id="grpc-interceptor_1">▼ gRPCサーバー (複数のInterceptorの場合)<a class="headerlink" href="#grpc-interceptor_1" title="Permanent link">&para;</a></h4>
 <p><code>go-grpc-middleware</code>パッケージを使用すると、複数のInterceptorを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3085,7 +3085,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </blockquote>
 <p><br></p>
 <h3 id="_7">クライアント側<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_6">▼ gRPCクライアント<a class="headerlink" href="#grpc_6" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_4">▼ gRPCクライアント<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 

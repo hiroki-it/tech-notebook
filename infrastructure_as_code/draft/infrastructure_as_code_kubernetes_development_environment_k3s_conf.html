@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="K3S＠開発環境の知見を記録しています。">
+        <meta name="description" content="設定ファイル＠K3Sの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -1765,13 +1765,16 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-registriesyaml">01. <code>registries.yaml</code>ファイル<a class="headerlink" href="#01-registriesyaml" title="Permanent link">&para;</a></h2>
-<p>K3s Cluster内のPodが使用するイメージレジストリ情報を設定する。</p>
+<p>K3S Cluster内のPodが使用するイメージレジストリ情報を設定する。</p>
 <p><code>/etc/rancher/k3s</code>ディレクトリ配下に配置する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">configs</span><span class="p">:</span>
 <span class="w">  </span><span class="s">&quot;&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="nt">auth</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ユーザー名&gt;</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS</span>
 <span class="w">      </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;パスワード&gt;</span>
+</code></pre></div>
+<p>パスワードは以下のコマンドで取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1
 </code></pre></div>
 <blockquote>
 <ul>
