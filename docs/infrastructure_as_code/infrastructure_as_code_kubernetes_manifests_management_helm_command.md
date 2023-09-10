@@ -216,12 +216,12 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 
 ```bash
 # Minikubeの場合
-$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context minikube
+$ helm install <Helmリリース名> <チャートリポジトリ名>/<チャート名> --kube-context minikube
 ```
 
 ```bash
 # AWSの場合
-$ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
+$ helm install <Helmリリース名> <チャートリポジトリ名>/<チャート名> --kube-context <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 ```
 
 #### ▼ --generate-name
@@ -231,11 +231,27 @@ $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-con
 代わりに、ランダム値がリリース名になる。
 
 ```bash
-$ helm install <チャートリポジトリ名> --generate-name
+$ helm install <チャートリポジトリ名>/<チャート名> --generate-name
 ```
 
 > - https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 > - https://stackoverflow.com/a/57347077
+
+#### ▼ --wait
+
+作成したPodがReady状態になるまで、`helm install`コマンドの完了を待機する。
+
+```bash
+$ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait
+```
+
+**＊例＊**
+
+```bash
+$ helm install foo-release ./foo-chart -f ./values.yaml --wait
+```
+
+> - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
 <br>
 
@@ -806,13 +822,15 @@ $ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >|
 作成したPodがReady状態になるまで、`helm upgrade`コマンドの完了を待機する。
 
 ```bash
-$ helm upgrade --wait <Helmリリース名> <チャートへのパス> -f foo-values.yaml
+$ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait
 ```
 
 **＊例＊**
 
 ```bash
-$ helm upgrade --wait foo-release ./foo-chart -f ./values.yaml
+$ helm upgrade foo-release ./foo-chart -f ./values.yaml --wait
 ```
+
+> - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
 
 <br>
