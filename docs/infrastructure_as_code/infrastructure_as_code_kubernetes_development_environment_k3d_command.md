@@ -120,7 +120,7 @@ foo-cluster   1/1       4/4      true
 `config.yaml`ファイルを作成する。
 
 ```bash
-$ k3d config init                                                                                                         
+$ k3d config init
 
 INFO[0000] COMING SOON: print a basic k3d config with default pre-filled.
 ```
