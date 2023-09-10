@@ -120,6 +120,16 @@ CRDの作成をスキップする。
 $ helmfile -e dev apply --skip-crds
 ```
 
+#### ▼ --skip-diff-on-install
+
+`helmfile apply`コマンド時に`helmfile diff`コマンドを実行しない。
+
+```bash
+$ helmfile -e dev apply --skip-diff-on-install
+```
+
+> - https://github.com/roboll/helmfile/issues/1840
+
 <br>
 
 ### destroy

@@ -1063,6 +1063,7 @@ foo         foo-pod     2/2     Running       0          16d   *.*.*.*     foo-n
 
 ```bash
 $ kubectl get service -o wide | grep -e NAMESPACE -e foo
+
 NAMESPACE   NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)       AGE   SELECTOR
 foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d    app.kubernetes.io/instance=prd-foo-app
 ```
@@ -1112,7 +1113,9 @@ data:
 
 #### ▼ -l
 
-特定の`.metadata.labels`キーの値を持つKubernetesリソースを取得する。
+特定の`.metadata.labels`キーと値を持つKubernetesリソースを取得する。
+
+大文字の`-L`オプションとは異なり、特定のラベルの値をもつKubernetesリソースを絞り込める。
 
 **＊例＊**
 
@@ -1148,7 +1151,7 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 
 特定の`.metadata.labels`キーを持つKubernetesリソースを取得する。
 
-小文字の`-l`オプションもあるが、こちらは値まで絞り込みたい時に使用する。
+小文字の`-l`オプションとは異なり、特定のラベルを持つKubernetesリソースを一覧で表示する。
 
 該当のキーがない場合は、空欄で表示される。
 
