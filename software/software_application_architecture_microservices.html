@@ -3544,9 +3544,10 @@
 <h2 id="04">04. プレゼンテーションドメイン分離<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_31">プレゼンテーションドメイン分離とは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p><img alt="presentation_domain_separation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png" /></p>
-<p>モノリシックなアプリケーションには二つの段階 (v1、v2) がある。</p>
-<p>v2では、アプリケーションがプレゼンテーション層、アプリケーション層、ドメイン層、インフラ層、を持っており、このうちプレゼンテーション層がフロントエンドアプリケーションとして分離されている。</p>
-<p>続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。</p>
+<p>アプリケーションには3つの段階がある。</p>
+<p>モノリスの段階では、フロントエンドとバックエンドが1つのアプリケーションで密結合になっている。</p>
+<p>フロントエンドとバックエンドを分離した段階では、フロントエンドとバックエンドが異なるアプリケーションとして分離される。</p>
+<p>マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションに分離される。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/architecture/devops/devops-tech-architecture">https://cloud.google.com/architecture/devops/devops-tech-architecture</a></li>
@@ -3663,7 +3664,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

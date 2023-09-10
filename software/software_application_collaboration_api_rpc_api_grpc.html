@@ -1376,6 +1376,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grpc_5" class="md-nav__link">
+    ▼ gRPCサーバー
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1390,7 +1397,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#grpc_6" class="md-nav__link">
     ▼ gRPCクライアント
   </a>
   
@@ -2638,6 +2645,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grpc_5" class="md-nav__link">
+    ▼ gRPCサーバー
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2652,7 +2666,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_5" class="md-nav__link">
+  <a href="#grpc_6" class="md-nav__link">
     ▼ gRPCクライアント
   </a>
   
@@ -3015,9 +3029,63 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <li><a href="https://entgo.io/ja/docs/grpc-server-and-client/">https://entgo.io/ja/docs/grpc-server-and-client/</a></li>
 </ul>
 </blockquote>
+<h4 id="grpc_5">▼ gRPCサーバー<a class="headerlink" href="#grpc_5" title="Permanent link">&para;</a></h4>
+<p><code>go-grpc-middleware</code>パッケージを使用すると、複数のInterceptorを設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;net&quot;</span>
+
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
+<span class="w">    </span><span class="nx">grpc_middleware</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware&quot;</span>
+<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+
+
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/tags&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
+<span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="c1">// Order matters e.g. tracing interceptor have to create span first for the later exemplars to work.</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
+
+<span class="w">            </span><span class="o">...</span>
+
+<span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">recovery</span><span class="p">.</span><span class="nx">WithRecoveryHandler</span><span class="p">(</span><span class="nx">grpcPanicRecoveryHandler</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
+
+<span class="w">            </span><span class="o">...</span>
+
+<span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">recovery</span><span class="p">.</span><span class="nx">WithRecoveryHandler</span><span class="p">(</span><span class="nx">grpcPanicRecoveryHandler</span><span class="p">)),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware#middleware">https://github.com/grpc-ecosystem/go-grpc-middleware#middleware</a></li>
+<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152">https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order">https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_7">クライアント側<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_5">▼ gRPCクライアント<a class="headerlink" href="#grpc_5" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_6">▼ gRPCクライアント<a class="headerlink" href="#grpc_6" title="Permanent link">&para;</a></h4>
 <p>gRPCクライアントを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3122,7 +3190,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

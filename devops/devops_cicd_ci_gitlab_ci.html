@@ -3069,7 +3069,8 @@
 </blockquote>
 <h4 id="ci">▼ 親リポジトリ側のCIテンプレート<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
 <p>子リポジトリでは、Jobを定義する。</p>
-<p><code>.</code> (ドット) をつけることで、明示的に指定しない限り実行できない『隠しジョブ』として定義できる。</p>
+<p>GitLab CIでは、定義したJobは自動的に実行される。</p>
+<p>一方で<code>.</code> (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しジョブ』として定義できる。</p>
 <p>また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo-job.yaml</span>
 
@@ -3706,7 +3707,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>
