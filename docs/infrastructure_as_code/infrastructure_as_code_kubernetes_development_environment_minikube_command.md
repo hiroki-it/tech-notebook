@@ -323,10 +323,13 @@ $ minikube node add --worker
 
 ```bash
 # ArgoCDを作成するワーカーNodeの場合
-$ kubectl label node minikube-m02 node-type=deploy
+$ kubectl label node minikube-m01 node-type=deploy
 
 # IngressやIngressGatewayを作成するワーカーNodeの場合
 $ kubectl label node minikube-m02 node-type=ingress
+
+# アプリケーションを作成するワーカーNodeの場合
+$ kubectl label node minikube-m03 node-type=app
 ```
 
 > - https://qiita.com/zaburo/items/efd7315161281d9822ed

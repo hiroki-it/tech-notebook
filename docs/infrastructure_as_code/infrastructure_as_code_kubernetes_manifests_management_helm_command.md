@@ -224,6 +224,19 @@ $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-con
 $ helm install <Helmリリース名> <チャートリポジトリ名> --kube-context <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/prd-foo-eks-cluster
 ```
 
+#### ▼ --generate-name
+
+リリース名を省略して、`helm install`コマンドを実行する。
+
+代わりに、ランダム値がリリース名になる。
+
+```bash
+$ helm install <チャートリポジトリ名> --generate-name
+```
+
+> - https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
+> - https://stackoverflow.com/a/57347077
+
 <br>
 
 ### lint

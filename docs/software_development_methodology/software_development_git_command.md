@@ -13,9 +13,9 @@ description: コマンド@Gitの知見を記録しています。
 
 <br>
 
-## 01. セットアップ系コマンド
+## clone
 
-### clone
+### 認証
 
 #### ▼ HTTPS接続
 
@@ -60,6 +60,21 @@ GitHubの自身の公開鍵を登録する必要がある。
 $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/<GitHubリポジトリ名>.git
 ```
 
+#### ▼ アクセストークン
+
+アクセストークンを使用して、クローンする。
+
+```bash
+$ git clone https://<ユーザー名>:<トークン>@github.com/<GitHubリポジトリ名>.git
+```
+
+> - https://blog.stu345.com/github-clone_using_token/
+> - https://qiita.com/reflet/items/b7ed9979828819b2b42c
+
+<br>
+
+### オプション
+
 #### ▼ 名前指定
 
 リポジトリのクローンを別名でクローンする。
@@ -90,6 +105,10 @@ $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
 > - https://kakakakakku.hatenablog.com/entry/2017/03/22/195640
+
+<br>
+
+## 02. セットアップ系コマンド
 
 <br>
 
@@ -419,7 +438,7 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 <br>
 
-## 02. 開発系コマンド
+## 03. 開発系コマンド
 
 ### add
 

@@ -2725,7 +2725,7 @@ class DogComboFactory
 
 gRPCの`.proto`ファイルはインフラ層に配置すると良い。
 
-> - https://stackoverflow.com/questions/62563785/grpc-and-domain-driven-design-where-to-place-proto-files-domain-layer-vs-else
+> - https://stackoverflow.com/a/62703733
 
 <br>
 

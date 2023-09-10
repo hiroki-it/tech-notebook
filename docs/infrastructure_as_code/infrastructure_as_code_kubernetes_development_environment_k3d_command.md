@@ -47,6 +47,17 @@ k3d-foo-cluster-agent-1    Ready    <none>                 16s   v1.26.6+k3s1   
 k3d-foo-cluster-agent-2    Ready    <none>                 16s   v1.26.6+k3s1   172.18.0.6    <none>        K3s dev    5.4.226-129.415.amzn2.x86_64   containerd://1.7.1-k3s1
 ```
 
+```bash
+# ArgoCDを作成するワーカーNodeの場合
+$ kubectl label node k3d-foo-cluster-agent-0 node-type=deploy
+
+# IngressやIngressGatewayを作成するワーカーNodeの場合
+$ kubectl label node k3d-foo-cluster-agent-1 node-type=ingress
+
+# アプリケーションを作成するワーカーNodeの場合
+$ kubectl label node k3d-foo-cluster-agent-2 node-type=app
+```
+
 > - https://docs.rancherdesktop.io/how-to-guides/create-multi-node-cluster/
 
 #### ▼ --config
