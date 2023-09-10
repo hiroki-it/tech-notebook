@@ -376,11 +376,13 @@ ECサイトがあり、これの商品販売ドメインを販売サブドメイ
 
 ![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
 
-モノリシックなアプリケーションには二つの段階 (v1、v2) がある。
+アプリケーションには3つの段階がある。
 
-v2では、アプリケーションがプレゼンテーション層、アプリケーション層、ドメイン層、インフラ層、を持っており、このうちプレゼンテーション層がフロントエンドアプリケーションとして分離されている。
+モノリスの段階では、フロントエンドとバックエンドが1つのアプリケーションで密結合になっている。
 
-続くマイクロサービスアーキテクチャでは、残りのアプリケーション層、ドメイン層、インフラ層、を分離していく。
+フロントエンドとバックエンドを分離した段階では、フロントエンドとバックエンドが異なるアプリケーションとして分離される。
+
+マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションに分離される。
 
 > - https://cloud.google.com/architecture/devops/devops-tech-architecture
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith

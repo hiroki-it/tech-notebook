@@ -375,6 +375,61 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
+#### ▼ gRPCサーバー
+
+`go-grpc-middleware`パッケージを使用すると、複数のInterceptorを設定できる。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"net"
+
+	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
+	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+
+
+	"google.golang.org/grpc"
+	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+	"github.com/grpc-ecosystem/go-grpc-middleware/tags"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		grpc.ChainUnaryInterceptor(
+			// Order matters e.g. tracing interceptor have to create span first for the later exemplars to work.
+			otelgrpc.UnaryServerInterceptor(),
+
+			...
+
+			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
+		),
+		grpc.ChainStreamInterceptor(
+			otelgrpc.StreamServerInterceptor(),
+
+			...
+
+			recovery.StreamServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
+		),
+	)
+
+	...
+}
+```
+
+> - https://github.com/grpc-ecosystem/go-grpc-middleware#middleware
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
+> - https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order
+
 <br>
 
 ### クライアント側
