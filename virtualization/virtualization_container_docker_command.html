@@ -3344,7 +3344,8 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <p>イメージレジストリにログインする。</p>
 <h4 id="-password-stdin">▼ --password-stdin<a class="headerlink" href="#-password-stdin" title="Permanent link">&para;</a></h4>
 <p>コマンドへの標準入力をパスワードとしつつ、<code>docker login</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pass&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>foo<span class="w"> </span>--password-stdin
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;pass&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>foo<span class="w"> </span>--password-stdin
 </code></pre></div>
 <p><br></p>
 <h3 id="network">network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
@@ -3588,7 +3589,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>

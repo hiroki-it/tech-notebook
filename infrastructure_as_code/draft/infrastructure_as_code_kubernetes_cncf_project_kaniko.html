@@ -1731,9 +1731,69 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    セットアップ
+  <a href="#01" class="md-nav__link">
+    01. セットアップ
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-configjson" class="md-nav__link">
+    02. config.jsonファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="02. config.jsonファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configjson" class="md-nav__link">
+    config.jsonファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    機密情報の設定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    Podの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="Podの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-ecr" class="md-nav__link">
+    ▼ AWS ECR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1764,9 +1824,46 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>コンテナ内でコンテナイメージをビルドする。</p>
 <p>Docker in Dockerを回避できる。</p>
+<p><br></p>
+<h2 id="02-configjson">02. <code>config.json</code>ファイル<a class="headerlink" href="#02-configjson" title="Permanent link">&para;</a></h2>
+<h3 id="configjson"><code>config.json</code>ファイルとは<a class="headerlink" href="#configjson" title="Permanent link">&para;</a></h3>
+<p>Kanikoのオプションを設定する。</p>
+<p>イメージレジストリごとに、認証処理ヘルパーがある。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;credHelpers&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecr-login&quot;</span><span class="p p-Indicator">},</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/awslabs/amazon-ecr-credential-helper#configuration">https://github.com/awslabs/amazon-ecr-credential-helper#configuration</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_2">機密情報の設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>機密情報は、動的に設定できるようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com
+
+$<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/kaniko/.docker/config.json<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">  {</span>
+<span class="s">    ...</span>
+<span class="s">  }</span>
+<span class="s">  EOF</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries">https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries</a></li>
+<li><a href="https://int128.hatenablog.com/entry/2019/09/25/204930">https://int128.hatenablog.com/entry/2019/09/25/204930</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="pod">Podの場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="aws-ecr">▼ AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1783,20 +1880,18 @@
 <span class="w">        </span><span class="c1"># ビルドしたコンテナイメージのキャッシュを作成するリポジトリを設定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko&quot;</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaniko-secret</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/secret</span>
-<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GOOGLE_APPLICATION_CREDENTIALS</span>
-<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/secret/kaniko-secret.json</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-credentials</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/root/.aws/</span>
 <span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaniko-secret</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-credentials</span>
 <span class="w">      </span><span class="nt">secret</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kaniko-secret</span>
+<span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-credentials</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/GoogleContainerTools/kaniko#running-kaniko">https://github.com/GoogleContainerTools/kaniko#running-kaniko</a></li>
+<li><a href="https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr">https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -1806,7 +1901,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>

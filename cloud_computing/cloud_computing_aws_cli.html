@@ -3976,8 +3976,14 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <h3 id="ecr">ECR<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h3>
 <h4 id="get-login-password">▼ get-login-password<a class="headerlink" href="#get-login-password" title="Permanent link">&para;</a></h4>
 <p>一時的に有効なパスワード取得する。</p>
+<p><code>aws ecr get-login --no-include-email</code>コマンドを使用することは非推奨である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/hayao_k/items/3e4c822425b7b72e7fd0">https://qiita.com/hayao_k/items/3e4c822425b7b72e7fd0</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="iam">IAM<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
 <h4 id="update-user">▼ update-user<a class="headerlink" href="#update-user" title="Permanent link">&para;</a></h4>
@@ -4261,7 +4267,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
       
     
   </small>
