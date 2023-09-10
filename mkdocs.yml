@@ -234,7 +234,11 @@ nav:
       - ■ ユーティリティ:
           - ユーティリティ: software/software_basic_utility.md
           - Unix系標準ユーティリティ: software/software_basic_utility_unix.md
-          - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
+          - ■ パッケージ管理ユーティリティ:
+              - パッケージ管理ユーティリティ: software/software_basic_utility_package_management.md
+              - Linux系: software/software_basic_utility_package_management_linux.md
+              - RedHat系: software/software_basic_utility_package_management_redhat.md
+              - Debian系: software/software_basic_utility_package_management_debian.md
           - シェル: software/software_basic_utility_shell.md
           - スクリプト: software/software_basic_utility_script.md
           - ■ パッケージ:
