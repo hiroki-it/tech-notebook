@@ -1731,8 +1731,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. セットアップ
+  <a href="#01-kaniko" class="md-nav__link">
+    01. Kanikoとは
   </a>
   
 </li>
@@ -1753,8 +1753,48 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#credhelpers" class="md-nav__link">
+    credHelpers
+  </a>
+  
+    <nav class="md-nav" aria-label="credHelpers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#credhelpers_1" class="md-nav__link">
+    ▼ credHelpersとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    機密情報の設定
+    ▼ 機密情報の設定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-pod" class="md-nav__link">
+    03. Podの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Podの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-ecr" class="md-nav__link">
+    AWS ECR
   </a>
   
 </li>
@@ -1765,30 +1805,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. コマンド
+  <a href="#04-gitlab" class="md-nav__link">
+    04. GitLab
   </a>
   
-    <nav class="md-nav" aria-label="03. コマンド">
+    <nav class="md-nav" aria-label="04. GitLab">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    Podの場合
-  </a>
-  
-    <nav class="md-nav" aria-label="Podの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-ecr" class="md-nav__link">
-    ▼ AWS ECR
+  <a href="#dockerhub" class="md-nav__link">
+    DockerHub
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#aws-ecr_1" class="md-nav__link">
+    AWS ECR
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcp-gcr" class="md-nav__link">
+    GCP GCR
+  </a>
   
 </li>
         
@@ -1824,17 +1865,25 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01-kaniko">01. Kanikoとは<a class="headerlink" href="#01-kaniko" title="Permanent link">&para;</a></h2>
 <p>コンテナ内でコンテナイメージをビルドする。</p>
 <p>Docker in Dockerを回避できる。</p>
 <p><br></p>
 <h2 id="02-configjson">02. <code>config.json</code>ファイル<a class="headerlink" href="#02-configjson" title="Permanent link">&para;</a></h2>
 <h3 id="configjson"><code>config.json</code>ファイルとは<a class="headerlink" href="#configjson" title="Permanent link">&para;</a></h3>
 <p>Kanikoのオプションを設定する。</p>
-<p>イメージレジストリごとに、認証処理ヘルパーがある。</p>
+<p><code>/kaniko/.docker</code>ディレクトリに配置する。</p>
+<p><br></p>
+<h3 id="credhelpers">credHelpers<a class="headerlink" href="#credhelpers" title="Permanent link">&para;</a></h3>
+<h4 id="credhelpers_1">▼ credHelpersとは<a class="headerlink" href="#credhelpers_1" title="Permanent link">&para;</a></h4>
+<p>イメージレジストリごとに、認証ヘルパーがある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;credHelpers&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecr-login&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="c1"># 使用する認証ヘルパーを設定する</span>
+<span class="w">  </span><span class="s">&quot;credHelpers&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># amazon-ecr-credential-helperに設定を渡す</span>
+<span class="w">      </span><span class="s">&quot;&lt;AWSアカウントID</span><span class="nv"> </span><span class="s">(1つ目)&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecr-login&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;&lt;AWSアカウントID</span><span class="nv"> </span><span class="s">(2つ目)&gt;.dkr.ecr.ap-northeast-1.amazonaws.com&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ecr-login&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -1842,9 +1891,8 @@
 <li><a href="https://github.com/awslabs/amazon-ecr-credential-helper#configuration">https://github.com/awslabs/amazon-ecr-credential-helper#configuration</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_2">機密情報の設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>機密情報は、動的に設定できるようにする。</p>
+<h4 id="_2">▼ 機密情報の設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>CIの実行コンテナでは、機密情報を動的に設定できるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com
 
@@ -1861,9 +1909,8 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="pod">Podの場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
-<h4 id="aws-ecr">▼ AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h4>
+<h2 id="03-pod">03. Podの場合<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
+<h3 id="aws-ecr">AWS ECR<a class="headerlink" href="#aws-ecr" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1892,6 +1939,71 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <ul>
 <li><a href="https://github.com/GoogleContainerTools/kaniko#running-kaniko">https://github.com/GoogleContainerTools/kaniko#running-kaniko</a></li>
 <li><a href="https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr">https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-gitlab">04. GitLab<a class="headerlink" href="#04-gitlab" title="Permanent link">&para;</a></h2>
+<h3 id="dockerhub">DockerHub<a class="headerlink" href="#dockerhub" title="Permanent link">&para;</a></h3>
+<p>DockerHubの認証情報は、エンコードした上で、あらかじめGitLab CIの変数 (<code>DOCKERHUB_TOKEN</code>) に設定しておく。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>USER:PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
+
+*****
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+
+<span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcr.io/kaniko-project/executor:debug</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;{\&quot;auths\&quot;:{\&quot;https://index.docker.io/v2/\&quot;:{\&quot;auth\&quot;:\&quot;${DOCKERHUB_TOKEN}\&quot;}}}&quot; &gt; /kaniko/.docker/config.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub">https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="aws-ecr_1">AWS ECR<a class="headerlink" href="#aws-ecr_1" title="Permanent link">&para;</a></h3>
+<p>AWSの認証情報は、あらかじめGitLab CIの変数 (<code>AWS_ACCESS_KEY_ID</code>、<code>AWS_SECRET_ACCESS_KEY</code>) に設定しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcr.io/kaniko-project/executor:debug</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ECR_URL</span><span class="p">:</span><span class="w"> </span><span class="err">****</span><span class="l l-Scalar l-Scalar-Plain">.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;{\&quot;credsStore\&quot;:\&quot;ecr-login\&quot;}&quot; &gt; /kaniko/.docker/config.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr">https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="gcp-gcr">GCP GCR<a class="headerlink" href="#gcp-gcr" title="Permanent link">&para;</a></h3>
+<p>GCPのクレデンシャルファイルは、あらかじめGitLab CIの変数 (<code>GOOGLE_APPLICATION_CREDENTIALS</code>) に設定しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcr.io/kaniko-project/executor:debug</span>
+<span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">GOOGLE_APPLICATION_CREDENTIALS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/gcloud-service-key.json</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir /tmp</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${GCP_TOKEN} &gt; /tmp/gcloud-service-key.json</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination &quot;asia.gcr.io/${PROJECT_ID}/image_name:TAG&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr">https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr</a></li>
 </ul>
 </blockquote>
 <p><br></p>
