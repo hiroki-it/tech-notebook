@@ -2735,11 +2735,13 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="c1"># github-comment execコマンドで使用するテンプレート</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># テンプレート名</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">...</span>
 
-<span class="w">    </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">...</span>
 </code></pre></div>
@@ -2747,7 +2749,8 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 静的解析以外の処理のためのテンプレート</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 
 <span class="w">        </span><span class="no">## `{{ .Vars.TestName }}`</span>
@@ -2771,8 +2774,9 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 
 <span class="w">        </span><span class="no">&lt;/details&gt;</span>
 
-<span class="w">    </span><span class="c1"># 静的解析のためのテンプレート</span>
-<span class="w">    </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 静的解析のためのテンプレート</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 
 <span class="w">        </span><span class="no">## `{{ .Vars.TestName }}`</span>
