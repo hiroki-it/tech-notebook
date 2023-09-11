@@ -45,12 +45,14 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 ### -var
 
+#### ▼ -varとは
+
 レビューコメントのテンプレートの`{{ .Vars.<変数> }}`に出力できる変数を定義する。
 
 実行コマンドごとに異なる文字列を使用したい場合に役立つ。
 
 ```bash
-$ ./github-comment exec -k <テンプレート名>  -var 'TestName:foo-test' -var 'Description:〇〇を検証する' -- <好きなコマンド>
+$ ./github-comment exec -k <テンプレート名>  -var "TestName:foo-test" -var "Description:〇〇を検証する" -- <好きなコマンド>
 ```
 
 ここでは、以下のようなテンプレートを想定している。
@@ -86,6 +88,60 @@ exec:
 ````
 
 > - https://suzuki-shunsuke.github.io/github-comment/config/#define-variables
+
+**＊実装例＊**
+
+```bash
+#!/bin/bash
+
+./github-comment exec -var "TestName:trivy" -var "Description:報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する" \
+  -- trivy config --exit-code 1 --severity HIGH,CRITICAL --include-non-failures manifest.yaml
+```
+
+```bash
+#!/bin/bash
+
+./github-comment exec -var "TestName:polaris" -var "Description:一般に知られているK8sのベストプラクティスに基づいて、マニフェストのベストプラクティス違反を検証する" \
+  -- polaris audit --config polaris-config.yaml --audit-path manifest.yaml --severity danger --only-show-failed-tests true --format pretty --set-exit-code-on-danger 1
+```
+
+#### ▼ 変数の出力
+
+レビューコメント中に変数を出力できる。
+
+**＊実装例＊**
+
+```bash
+#!/bin/bash
+
+K8S_CURRENT_VERSION=1.26
+K8S_NEXT_VERSION=1.26
+
+echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
+./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
+  -- /pluto detect -t k8s=v${K8S_CURRENT_VERSION} manifest.yaml \
+  || true
+
+echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
+./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
+  -- /pluto detect -t k8s=v${K8S_NEXT_VERSION} manifest.yaml
+```
+
+```bash
+#!/bin/bash
+
+K8S_CURRENT_VERSION=1.26
+K8S_NEXT_VERSION=1.26
+
+echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
+./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) のスキーマに基づいて、マニフェストの文法の誤りを検証する" \
+  -- /kubeconform -kubernetes-version ${K8S_CURRENT_VERSION} -strict -summary -output text -schema-location 'default' -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json' manifest.yaml \
+  || true
+
+echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
+./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) のスキーマに基づいて、マニフェスト文法の誤りを検証する" \
+  -- /kubeconform -kubernetes-version ${K8S_NEXT_VERSION} -strict -summary -output text -schema-location 'default' -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json' manifest.yaml
+```
 
 <br>
 

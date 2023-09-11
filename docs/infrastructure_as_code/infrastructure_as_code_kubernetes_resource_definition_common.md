@@ -78,6 +78,8 @@ kube-apiserverが、前回の`kubectl apply`コマンドで適用したマニフ
 
 そのため、次回の`kubectl apply`コマンドが失敗することがある。
 
+また、`kubectl apply`したいマニフェストが多すぎると、JSONが大きすぎて、`kubectl apply`に失敗することがある。
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
