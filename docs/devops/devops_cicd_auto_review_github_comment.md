@@ -229,11 +229,13 @@ exec:
 # github-comment execコマンドで使用するテンプレート
 exec:
   # テンプレート名
-  - default:
+  default:
+    - when: true
       template: |
         ...
 
-    test:
+  test:
+    - when: true
       template: |
         ...
 ```
@@ -244,7 +246,8 @@ exec:
 ---
 exec:
   # 静的解析以外の処理のためのテンプレート
-  - default:
+  default:
+    - when: true
       template: |
 
         ## `{{ .Vars.TestName }}`
@@ -268,8 +271,9 @@ exec:
 
         </details>
 
-    # 静的解析のためのテンプレート
-    test:
+  # 静的解析のためのテンプレート
+  test:
+    - when: true
       template: |
 
         ## `{{ .Vars.TestName }}`
