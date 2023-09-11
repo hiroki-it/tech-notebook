@@ -2006,6 +2006,13 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    ▼ 複数のテンプレート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     ▼ 必要なコマンド
   </a>
   
@@ -2432,6 +2439,13 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
+    ▼ 複数のテンプレート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     ▼ 必要なコマンド
   </a>
   
@@ -2721,15 +2735,74 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="c1"># github-comment execコマンドで使用するテンプレート</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># テンプレート名</span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">...</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">...</span>
 
-<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">...</span>
+<span class="w">    </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">...</span>
 </code></pre></div>
-<h4 id="_5">▼ 必要なコマンド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 複数のテンプレート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">exec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 静的解析以外の処理のためのテンプレート</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">        </span><span class="no">## `{{ .Vars.TestName }}`</span>
+
+<span class="w">        </span><span class="no">| 項目 | 内容 |</span>
+<span class="w">        </span><span class="no">|-----|--------------------|</span>
+<span class="w">        </span><span class="no">| コマンド | `{{ .JoinCommand }}` |</span>
+<span class="w">        </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
+<span class="w">        </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
+
+<span class="w">        </span><span class="no">## 詳細</span>
+
+<span class="w">        </span><span class="no">&lt;details&gt;</span>
+<span class="w">        </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
+
+<span class="w">        </span><span class="no">```bash</span>
+<span class="w">        </span><span class="no">$ {{ .JoinCommand }}</span>
+
+<span class="w">        </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
+<span class="w">        </span><span class="no">```</span>
+
+<span class="w">        </span><span class="no">&lt;/details&gt;</span>
+
+<span class="w">    </span><span class="c1"># 静的解析のためのテンプレート</span>
+<span class="w">    </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">        </span><span class="no">## `{{ .Vars.TestName }}`</span>
+
+<span class="w">        </span><span class="no">| 項目 | 内容 |</span>
+<span class="w">        </span><span class="no">|-----|--------------------|</span>
+<span class="w">        </span><span class="no">| 静的解析 | `{{ .JoinCommand }}` |</span>
+<span class="w">        </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
+<span class="w">        </span><span class="no">| 成否 | {{ template &quot;status&quot; . }} |</span>
+<span class="w">        </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
+
+<span class="w">        </span><span class="no">## 詳細</span>
+
+<span class="w">        </span><span class="no">&lt;details&gt;</span>
+<span class="w">        </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
+
+<span class="w">        </span><span class="no">```bash</span>
+<span class="w">        </span><span class="no">$ {{ .JoinCommand }}</span>
+
+<span class="w">        </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
+<span class="w">        </span><span class="no">```</span>
+
+<span class="w">        </span><span class="no">&lt;/details&gt;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/suzuki-shunsuke/github-comment/blob/main/github-comment.yaml">https://github.com/suzuki-shunsuke/github-comment/blob/main/github-comment.yaml</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ 必要なコマンド<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><code>default</code>のテンプレートを使用する場合、<code>-k</code>オプションは不要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
@@ -2860,58 +2933,6 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">        </span><span class="no">```</span>
 
 <span class="w">        </span><span class="no">&lt;/details&gt;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="nt">exec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 静的解析以外の処理のためのテンプレート</span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-
-<span class="w">      </span><span class="no">## `{{ .Vars.TestName }}`</span>
-
-<span class="w">      </span><span class="no">| 項目 | 内容 |</span>
-<span class="w">      </span><span class="no">|-----|--------------------|</span>
-<span class="w">      </span><span class="no">| コマンド | `{{ .JoinCommand }}` |</span>
-<span class="w">      </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
-<span class="w">      </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
-
-<span class="w">      </span><span class="no">## 詳細</span>
-
-<span class="w">      </span><span class="no">&lt;details&gt;</span>
-<span class="w">      </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
-
-<span class="w">      </span><span class="no">```bash</span>
-<span class="w">      </span><span class="no">$ {{ .JoinCommand }}</span>
-
-<span class="w">      </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
-<span class="w">      </span><span class="no">```</span>
-
-<span class="w">      </span><span class="no">&lt;/details&gt;</span>
-<span class="w">  </span><span class="c1"># 静的解析のためのテンプレート</span>
-<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-
-<span class="w">      </span><span class="no">## `{{ .Vars.TestName }}`</span>
-
-<span class="w">      </span><span class="no">| 項目 | 内容 |</span>
-<span class="w">      </span><span class="no">|-----|--------------------|</span>
-<span class="w">      </span><span class="no">| 静的解析 | `{{ .JoinCommand }}` |</span>
-<span class="w">      </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
-<span class="w">      </span><span class="no">| 成否 | {{ template &quot;status&quot; . }} |</span>
-<span class="w">      </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
-
-<span class="w">      </span><span class="no">## 詳細</span>
-
-<span class="w">      </span><span class="no">&lt;details&gt;</span>
-<span class="w">      </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
-
-<span class="w">      </span><span class="no">```bash</span>
-<span class="w">      </span><span class="no">$ {{ .JoinCommand }}</span>
-
-<span class="w">      </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
-<span class="w">      </span><span class="no">```</span>
-
-<span class="w">      </span><span class="no">&lt;/details&gt;</span>
 </code></pre></div>
 <p><strong>※実装例※</strong></p>
 <p>終了コードを条件とする場合、<code>ExitCode</code>を使用する。</p>
