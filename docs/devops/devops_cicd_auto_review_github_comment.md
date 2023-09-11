@@ -218,7 +218,7 @@ GitHubに送信するレビューコメントのテンプレートを設定す�
 exec:
   # テンプレート名
   default:
-    # テンプレートが1つの場合は、whenをtrueとする
+    # hen=true は必ず設定する
     - when: true
       template: |
         ...
@@ -230,6 +230,7 @@ exec:
 exec:
   # テンプレート名
   default:
+    # when=true は必ず設定する
     - when: true
       template: |
         ...
@@ -325,6 +326,7 @@ $ ./github-comment exec -k test -- <好きなコマンド>
 ---
 exec:
   default:
+    # when=true は必ず設定する
     - when: true
       template: |
         ...
@@ -369,6 +371,7 @@ hide:
 ---
 exec:
   default:
+    # when=true は必ず設定する
     - when: true
       template: |
 
@@ -413,7 +416,7 @@ exec:
 ---
 exec:
   test:
-    # テンプレートが1つの場合は、whenをtrueとする
+    # when=true は必ず設定する
     - when: true
       template: |
 
