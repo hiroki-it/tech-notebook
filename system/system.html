@@ -2518,7 +2518,7 @@
 <p><br></p>
 <h2 id="02-02">02-02. フォワード/リバースプロキシサーバー<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">フォワード/リバースプロキシサーバーとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>クライアントとアプリケーションの間にあり、ロードバランシングやキャッシュ作成を担う。</p>
+<p>クライアントとwebサーバーの間にあり、webサーバーへのロードバランシングやキャッシュ作成を担う。</p>
 <p><br></p>
 <h3 id="_6">能力<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ロードバランシング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -2533,11 +2533,11 @@
 <tbody>
 <tr>
 <td>フォワードプロキシサーバー</td>
-<td>特定のクライアントのアウトバウンド通信を、不特定多数のサーバーにロードバランシングする。</td>
+<td>特定のクライアントのアウトバウンド通信を、不特定多数の宛先にロードバランシングする。</td>
 </tr>
 <tr>
 <td>リバースプロキシサーバー</td>
-<td>不特定のクライアントからのインバウンド通信を、特定のサーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。</td>
+<td>不特定のクライアントからのインバウンド通信を、特定のwebサーバーにロードバランシングする。また、ロードバランサーのように負荷分散もできる。</td>
 </tr>
 </tbody>
 </table>
@@ -2598,7 +2598,7 @@
 <p><br></p>
 <h2 id="02-03-web">02-03. webサーバー<a class="headerlink" href="#02-03-web" title="Permanent link">&para;</a></h2>
 <h3 id="web_2">webサーバーとは<a class="headerlink" href="#web_2" title="Permanent link">&para;</a></h3>
-<p>リバースプロキシのミドルウェア (例：Apache、Nginxなど) を稼働させるためのサーバーのこと。</p>
+<p>静的コンテンツを返却するミドルウェア (例：Apache、Nginxなど) を稼働させるためのサーバーのこと。</p>
 <p>また、webサーバーかつappサーバーのミドルウェアとして動作する (例：NGINX Unit) がインストールされていることもある。</p>
 <p><br></p>
 <h3 id="_12">能力<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -2687,7 +2687,7 @@
 <p><br></p>
 <h2 id="02-04-app">02-04. appサーバー<a class="headerlink" href="#02-04-app" title="Permanent link">&para;</a></h2>
 <h3 id="app">appサーバーとは<a class="headerlink" href="#app" title="Permanent link">&para;</a></h3>
-<p>Webアプリケーションのミドルウェア (例：PHPならPHP-FPM、JavaならApache Tomcat) を稼働させるためのサーバーのこと。</p>
+<p>動的コンテンツを返却するミドルウェア (例：PHPならPHP-FPM、JavaならApache Tomcat) を稼働させるためのサーバーのこと。</p>
 <p><br></p>
 <h3 id="_15">能力<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ 動的コンテンツのレスポンス<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -2742,7 +2742,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>

@@ -1880,6 +1880,26 @@
     -var
   </a>
   
+    <nav class="md-nav" aria-label="-var">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var_1" class="md-nav__link">
+    ▼ -varとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 変数の出力
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1956,7 +1976,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     変数
   </a>
   
@@ -1978,14 +1998,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ テンプレート名
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 必要なコマンド
   </a>
   
@@ -2286,6 +2306,26 @@
     -var
   </a>
   
+    <nav class="md-nav" aria-label="-var">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-var_1" class="md-nav__link">
+    ▼ -varとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 変数の出力
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2362,7 +2402,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     変数
   </a>
   
@@ -2384,14 +2424,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ テンプレート名
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 必要なコマンド
   </a>
   
@@ -2509,9 +2549,10 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="-var">-var<a class="headerlink" href="#-var" title="Permanent link">&para;</a></h3>
+<h4 id="-var_1">▼ -varとは<a class="headerlink" href="#-var_1" title="Permanent link">&para;</a></h4>
 <p>レビューコメントのテンプレートの<code>{{ .Vars.&lt;変数&gt; }}</code>に出力できる変数を定義する。</p>
 <p>実行コマンドごとに異なる文字列を使用したい場合に役立つ。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w">  </span>-var<span class="w"> </span><span class="s1">&#39;TestName:foo-test&#39;</span><span class="w"> </span>-var<span class="w"> </span><span class="s1">&#39;Description:〇〇を検証する&#39;</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w">  </span>-var<span class="w"> </span><span class="s2">&quot;TestName:foo-test&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:〇〇を検証する&quot;</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
 <p>ここでは、以下のようなテンプレートを想定している。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
@@ -2547,6 +2588,48 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <li><a href="https://suzuki-shunsuke.github.io/github-comment/config/#define-variables">https://suzuki-shunsuke.github.io/github-comment/config/#define-variables</a></li>
 </ul>
 </blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:trivy&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>--include-non-failures<span class="w"> </span>manifest.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:polaris&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:一般に知られているK8sのベストプラクティスに基づいて、マニフェストのベストプラクティス違反を検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--config<span class="w"> </span>polaris-config.yaml<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--severity<span class="w"> </span>danger<span class="w"> </span>--only-show-failed-tests<span class="w"> </span><span class="nb">true</span><span class="w"> </span>--format<span class="w"> </span>pretty<span class="w"> </span>--set-exit-code-on-danger<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h4 id="_2">▼ 変数の出力<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>レビューコメント中に変数を出力できる。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">K8S_CURRENT_VERSION</span><span class="o">=</span><span class="m">1</span>.26
+<span class="nv">K8S_NEXT_VERSION</span><span class="o">=</span><span class="m">1</span>.26
+
+<span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Current K8s Version: </span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:pluto&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">) に基づいて、マニフェストの非推奨なapiVersionを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Next K8s Version: </span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:pluto&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">) に基づいて、マニフェストの非推奨なapiVersionを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nv">K8S_CURRENT_VERSION</span><span class="o">=</span><span class="m">1</span>.26
+<span class="nv">K8S_NEXT_VERSION</span><span class="o">=</span><span class="m">1</span>.26
+
+<span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Current K8s Version: </span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:kubeconform&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">) のスキーマに基づいて、マニフェストの文法の誤りを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>/kubeconform<span class="w"> </span>-kubernetes-version<span class="w"> </span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="w"> </span>-strict<span class="w"> </span>-summary<span class="w"> </span>-output<span class="w"> </span>text<span class="w"> </span>-schema-location<span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span>-schema-location<span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json&#39;</span><span class="w"> </span>manifest.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Next K8s Version: </span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
+./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:kubeconform&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">) のスキーマに基づいて、マニフェスト文法の誤りを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>/kubeconform<span class="w"> </span>-kubernetes-version<span class="w"> </span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="w"> </span>-strict<span class="w"> </span>-summary<span class="w"> </span>-output<span class="w"> </span>text<span class="w"> </span>-schema-location<span class="w"> </span><span class="s1">&#39;default&#39;</span><span class="w"> </span>-schema-location<span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json&#39;</span><span class="w"> </span>manifest.yaml
+</code></pre></div>
 <p><br></p>
 <h2 id="04">04. コマンド<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
@@ -2579,7 +2662,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <p>GitHubに送信するレビューコメントのテンプレートを設定する。</p>
 <p>文法は、Goテンプレートと同じである。</p>
 <p><br></p>
-<h3 id="_2">変数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">変数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2623,7 +2706,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <h3 id="exec_2">exec<a class="headerlink" href="#exec_2" title="Permanent link">&para;</a></h3>
 <h4 id="exec_3">▼ execとは<a class="headerlink" href="#exec_3" title="Permanent link">&para;</a></h4>
 <p><code>github-comment exec</code>コマンドの結果に使用するテンプレート</p>
-<h4 id="_3">▼ テンプレート名<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ テンプレート名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="c1"># github-comment execコマンドで使用するテンプレート</span>
 <span class="nt">exec</span><span class="p">:</span>
@@ -2650,7 +2733,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">...</span>
 </code></pre></div>
-<h4 id="_4">▼ 必要なコマンド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 必要なコマンド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><code>default</code>のテンプレートを使用する場合、<code>-k</code>オプションは不要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
@@ -2825,7 +2908,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
       
     
   </small>
