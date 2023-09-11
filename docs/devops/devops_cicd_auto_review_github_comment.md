@@ -233,10 +233,6 @@ exec:
     template: |
       ...
 
-  build:
-    template: |
-      ...
-
   test:
     template: |
       ...
@@ -379,6 +375,60 @@ exec:
         ```
 
         </details>
+````
+
+````yaml
+---
+exec:
+  # 静的解析以外の処理のためのテンプレート
+  default:
+    template: |
+
+      ## `{{ .Vars.TestName }}`
+
+      | 項目 | 内容 |
+      |-----|--------------------|
+      | コマンド | `{{ .JoinCommand }}` |
+      | 説明 | {{ .Vars.Description }} |
+      | 実行ジョブ | {{ template "link" . }} |
+
+      ## 詳細
+
+      <details>
+      <summary>クリックで開く</summary>
+
+      ```bash
+      $ {{ .JoinCommand }}
+
+      {{ .CombinedOutput | AvoidHTMLEscape }}
+      ```
+
+      </details>
+  # 静的解析のためのテンプレート
+  test:
+    template: |
+
+      ## `{{ .Vars.TestName }}`
+
+      | 項目 | 内容 |
+      |-----|--------------------|
+      | 静的解析 | `{{ .JoinCommand }}` |
+      | 説明 | {{ .Vars.Description }} |
+      | 成否 | {{ template "status" . }} |
+      | 実行ジョブ | {{ template "link" . }} |
+
+      ## 詳細
+
+      <details>
+      <summary>クリックで開く</summary>
+
+      ```bash
+      $ {{ .JoinCommand }}
+
+      {{ .CombinedOutput | AvoidHTMLEscape }}
+      ```
+
+      </details>
 ````
 
 **※実装例※**
