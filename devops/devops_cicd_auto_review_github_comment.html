@@ -2725,10 +2725,6 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">...</span>
 
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">...</span>
-
 <span class="w">  </span><span class="nt">test</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">...</span>
@@ -2864,6 +2860,58 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">        </span><span class="no">```</span>
 
 <span class="w">        </span><span class="no">&lt;/details&gt;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">exec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 静的解析以外の処理のためのテンプレート</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">      </span><span class="no">## `{{ .Vars.TestName }}`</span>
+
+<span class="w">      </span><span class="no">| 項目 | 内容 |</span>
+<span class="w">      </span><span class="no">|-----|--------------------|</span>
+<span class="w">      </span><span class="no">| コマンド | `{{ .JoinCommand }}` |</span>
+<span class="w">      </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
+<span class="w">      </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
+
+<span class="w">      </span><span class="no">## 詳細</span>
+
+<span class="w">      </span><span class="no">&lt;details&gt;</span>
+<span class="w">      </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
+
+<span class="w">      </span><span class="no">```bash</span>
+<span class="w">      </span><span class="no">$ {{ .JoinCommand }}</span>
+
+<span class="w">      </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
+<span class="w">      </span><span class="no">```</span>
+
+<span class="w">      </span><span class="no">&lt;/details&gt;</span>
+<span class="w">  </span><span class="c1"># 静的解析のためのテンプレート</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">      </span><span class="no">## `{{ .Vars.TestName }}`</span>
+
+<span class="w">      </span><span class="no">| 項目 | 内容 |</span>
+<span class="w">      </span><span class="no">|-----|--------------------|</span>
+<span class="w">      </span><span class="no">| 静的解析 | `{{ .JoinCommand }}` |</span>
+<span class="w">      </span><span class="no">| 説明 | {{ .Vars.Description }} |</span>
+<span class="w">      </span><span class="no">| 成否 | {{ template &quot;status&quot; . }} |</span>
+<span class="w">      </span><span class="no">| 実行ジョブ | {{ template &quot;link&quot; . }} |</span>
+
+<span class="w">      </span><span class="no">## 詳細</span>
+
+<span class="w">      </span><span class="no">&lt;details&gt;</span>
+<span class="w">      </span><span class="no">&lt;summary&gt;クリックで開く&lt;/summary&gt;</span>
+
+<span class="w">      </span><span class="no">```bash</span>
+<span class="w">      </span><span class="no">$ {{ .JoinCommand }}</span>
+
+<span class="w">      </span><span class="no">{{ .CombinedOutput | AvoidHTMLEscape }}</span>
+<span class="w">      </span><span class="no">```</span>
+
+<span class="w">      </span><span class="no">&lt;/details&gt;</span>
 </code></pre></div>
 <p><strong>※実装例※</strong></p>
 <p>終了コードを条件とする場合、<code>ExitCode</code>を使用する。</p>
