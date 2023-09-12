@@ -3101,11 +3101,16 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
 <p>失敗した結果のみを出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--only-show-failed-tests
 </code></pre></div>
-<p>1つのKubernetesリソース内で一部にルールに違反があった場合に、<code>--only-show-failed-tests</code>オプションを有効化していると、違反が無視されて結果に表示されない不具合がある可能性がある。</p>
+<p>カスタムルールに違反があった場合に、<code>--only-show-failed-tests</code>オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml
 
+Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w"> </span>manifest.yaml<span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-09-13T03:27:57+09:00
+<span class="w">    </span>Nodes:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Namespaces:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Controllers:<span class="w"> </span><span class="m">1</span>
+<span class="w">    </span>Final<span class="w"> </span>score:<span class="w"> </span><span class="m">85</span>
+
+
 DaemonSet<span class="w"> </span>fluentd
-<span class="w">    </span>daemonSetPriorityClassMissing<span class="w">        </span>❌<span class="w"> </span>Danger<span class="w"> </span><span class="c1"># &lt;----------- これが無視されてしまう</span>
+<span class="w">    </span>daemonSetPriorityClassMissing<span class="w">        </span>❌<span class="w"> </span>Danger<span class="w"> </span><span class="c1"># &lt;----------- このカスタムルールが無視されてしまう</span>
 <span class="w">        </span>Reliability<span class="w"> </span>-<span class="w"> </span>In<span class="w"> </span>DaemonSet,<span class="w"> </span>priority<span class="w"> </span>class<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span>
 <span class="w">  </span>Container<span class="w"> </span>fluentd
 <span class="w">    </span>memoryRequestsMissing<span class="w">                </span>🎉<span class="w"> </span>Success
@@ -3120,6 +3125,12 @@ DaemonSet<span class="w"> </span>fluentd
 <span class="w">        </span>Reliability<span class="w"> </span>-<span class="w"> </span>Liveness<span class="w"> </span>probe<span class="w"> </span>is<span class="w"> </span>configured
 <span class="w">    </span>memoryLimitsMissing<span class="w">                  </span>🎉<span class="w"> </span>Success
 <span class="w">        </span>Efficiency<span class="w"> </span>-<span class="w"> </span>Memory<span class="w"> </span>limits<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--only-show-failed-tests
+
+Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w"> </span>manifest.yaml<span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-09-13T03:27:57+09:00
+<span class="w">    </span>Nodes:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Namespaces:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>Controllers:<span class="w"> </span><span class="m">1</span>
+<span class="w">    </span>Final<span class="w"> </span>score:<span class="w"> </span><span class="m">85</span>
 </code></pre></div>
 <blockquote>
 <ul>
