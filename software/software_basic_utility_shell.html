@@ -1444,6 +1444,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    $?
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1458,7 +1465,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     順次実行
   </a>
   
@@ -1466,7 +1473,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     ▼ 終了ステータスがいずれであっても
   </a>
   
@@ -1492,7 +1499,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     並列実行
   </a>
   
@@ -2742,6 +2749,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    $?
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2756,7 +2770,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_24" class="md-nav__link">
     順次実行
   </a>
   
@@ -2764,7 +2778,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_25" class="md-nav__link">
     ▼ 終了ステータスがいずれであっても
   </a>
   
@@ -2790,7 +2804,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_26" class="md-nav__link">
     並列実行
   </a>
   
@@ -3160,9 +3174,21 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_23"><code>$?</code><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>コマンドの終了コードを出力する</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
+
+<span class="m">0</span><span class="w"> </span><span class="c1"># 終了コードが 0 である</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/takayuki206/items/f4d0dbb45e5ee2ee698e">https://qiita.com/takayuki206/items/f4d0dbb45e5ee2ee698e</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="04">04. コマンドの実行タイミング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_23">順次実行<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<h4 id="_24">▼ 終了ステータスがいずれであっても<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<h3 id="_24">順次実行<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h4 id="_25">▼ 終了ステータスがいずれであっても<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>連結したコマンドを順次実行する。</p>
 <p>前のコマンドがいずれかの終了ステータスで完了しない限り、後ろのコマンドを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>foo<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>bar<span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>baz
@@ -3196,7 +3222,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_25">並列実行<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h3 id="_26">並列実行<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>連結したコマンドを並列実行する。</p>
 <p>前のコマンドが完了しない限り、後ろのコマンドを実行しない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>foo<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>bar<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span>baz
@@ -3214,7 +3240,7 @@ foo<span class="w"> </span><span class="c1"># 出力される</span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
       
     
   </small>

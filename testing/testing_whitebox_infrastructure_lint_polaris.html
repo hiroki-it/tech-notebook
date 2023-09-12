@@ -1649,6 +1649,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#audit_1" class="md-nav__link">
+    ▼ auditとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-format" class="md-nav__link">
     ▼ --format
   </a>
@@ -2710,6 +2717,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#audit_1" class="md-nav__link">
+    ▼ auditとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-format" class="md-nav__link">
     ▼ --format
   </a>
@@ -2927,15 +2941,29 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># .specキーに関するルール</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priorityClassName</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template</span>
 <span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">priorityClassName</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
-<span class="w">              </span><span class="nt">not</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">            </span><span class="c1"># .spec.templateキーに関するルール</span>
+<span class="w">            </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">              </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
+<span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># .spec.template.specキーに関するルール</span>
+<span class="w">                </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                  </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priorityClassName</span>
+<span class="w">                  </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># .spec.template.spec.priorityClassNameキーに関するルール</span>
+<span class="w">                    </span><span class="nt">priorityClassName</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 
 <span class="w">  </span><span class="c1"># Deploymentのaffinityの設定し忘れを検証する</span>
 <span class="w">  </span><span class="nt">deploymentAffinityMissing</span><span class="p">:</span>
@@ -2949,21 +2977,25 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># .specキーに関するルール</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template</span>
 <span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># .spec.templateキーに関するルール</span>
 <span class="w">            </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">              </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># .spec.template.specキーに関するルール</span>
+<span class="w">                </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                  </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">affinity</span>
 <span class="w">                  </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># .spec.template.spec.affinityキーに関するルール</span>
 <span class="w">                    </span><span class="nt">affinity</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
@@ -3045,6 +3077,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="audit">audit<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h3>
+<h4 id="audit_1">▼ auditとは<a class="headerlink" href="#audit_1" title="Permanent link">&para;</a></h4>
+<p>マニフェストがルールに違反しているかどうかを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 結果を読みやすく出力する。</span>
+$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml
+
+<span class="c1"># 該当するKubernetesリソースのルールのみを検証する</span>
+INFO<span class="o">[</span><span class="m">0000</span><span class="o">]</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>danger<span class="w"> </span>items<span class="w"> </span>found<span class="w"> </span><span class="k">in</span><span class="w"> </span>audit
+</code></pre></div>
 <h4 id="-format">▼ --format<a class="headerlink" href="#-format" title="Permanent link">&para;</a></h4>
 <p>結果の形式を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果を読みやすく出力する。</span>
@@ -3074,9 +3114,8 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="-set-exit-code-on-danger">▼ --set-exit-code-on-danger<a class="headerlink" href="#-set-exit-code-on-danger" title="Permanent link">&para;</a></h4>
-<p>dangerラベルが検出された場合の終了コードを設定する。</p>
-<p>デフォルトは<code>0</code>である。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--severity<span class="w"> </span>danger<span class="w"> </span>--set-exit-code-on-danger<span class="w"> </span><span class="m">1</span>
+<p>dangerレベルのルール違反が検出された場合に、終了コード<code>3</code>を出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--severity<span class="w"> </span>danger<span class="w"> </span>--set-exit-code-on-danger
 </code></pre></div>
 <h4 id="-severity">▼ --severity<a class="headerlink" href="#-severity" title="Permanent link">&para;</a></h4>
 <p>検出する下限の重要度レベル (warning、danger) を設定する。</p>
@@ -3089,7 +3128,7 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
       
     
   </small>
