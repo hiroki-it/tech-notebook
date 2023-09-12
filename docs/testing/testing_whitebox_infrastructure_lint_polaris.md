@@ -157,50 +157,64 @@ DaemonSet配下のPodでは、`.spec.priorityClassName`キーや`.spec.affinity`
 ```yaml
 checks:
   # 重要度を設定する
-  daemonSetPriorityClassNotSet: danger
-  daemonSetAffinityNotSet: danger
+  daemonSetPriorityClassMissing: danger
+  daemonSetAffinityMissing: danger
 
 customChecks:
   # DaemonSetのpriorityClassの設定し忘れを検証する
   # ビルトインのpriorityClassNotSetルールではWorkload全体を検証してしまうため、DaemonSet限定のルールを定義した
-  daemonSetPriorityClassNotSet:
-    successMessage: In DaemonSet, priority class has been set
+  daemonSetPriorityClassMissing:
+    successMessage: In DaemonSet, priority class is set
     failureMessage: In DaemonSet, priority class should be set
     category: Reliability
-    # Controller (Workload) 、PodTemplate、PodSpec、Container、を設定する
-    # あるいはAPIグループ名を指定する
     target: apps/DaemonSet
     schema:
       "$schema": http://json-schema.org/draft-07/schema
       type: object
       required:
-        # .specキーを必須にする
         - spec
       properties:
         spec:
           type: object
           required:
-            # DaemonSet配下のPodで、.spec.priorityClassNameキーを必須にする
             - priorityClassName
+          properties:
+            priorityClassName:
+              type: string
+              not:
+                const: ""
 
-  # DaemonSetのaffinityの設定し忘れを検証する
-  daemonSetAffinityNotSet:
-    successMessage: In DaemonSet, affinity has been set
-    failureMessage: In DaemonSet, affinity should be set
+  # Deploymentのaffinityの設定し忘れを検証する
+  deploymentAffinityMissing:
+    successMessage: In Deployment, affinity is set
+    failureMessage: In Deployment, affinity should be set
     category: Reliability
-    target: apps/DaemonSet
+    target: apps/Deployment
     schema:
       "$schema": http://json-schema.org/draft-07/schema
       type: object
       required:
-        # .specキーを必須にする
         - spec
       properties:
         spec:
           type: object
           required:
-            # DaemonSet配下のPodで、.spec.affinityキーを必須にする
-            - affinity
+            - template
+          properties:
+            template:
+              type: object
+              required:
+                - spec
+              properties:
+                template:
+                  type: object
+                  required:
+                    - affinity
+                  properties:
+                    affinity:
+                      type: object
+                      not:
+                        const: ""
 ```
 
 > - https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example
