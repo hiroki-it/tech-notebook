@@ -65,7 +65,7 @@ echo bar
 
 #### ▼ エスケープ
 
-一部の記号 (例：`{`、`}`) は、エスケープしないとヒアドキュメント内で使用できない。
+一部の記号 (例：`{`、`}`) を文字として使用する場合、エスケープしないとヒアドキュメント内で使用できない。
 
 終了文字列 (例：EOF) をシングルクオートで囲うと、エスケープできる。
 
@@ -87,6 +87,53 @@ echo bar
 ```
 
 > - https://qiita.com/mofmofneko/items/bf003d14670644dd6197
+
+バックスラッシュを使用して、個別にエスケープすることもできる。
+
+```bash
+#!/bin/bash
+
+cat << EOF > echo.sh
+#!/bin/bash
+\${FOO}
+\${BAR}
+EOF
+```
+
+```bash
+#!/bin/bash
+
+echo foo
+echo bar
+```
+
+> - https://qiita.com/watertight/items/96596f8da4f8c71632b0
+
+#### ▼ 変数
+
+終了文字列をシングルクオートで囲わずにエスケープしないことで、変数の記号 (例：`{`、`}`) を使用できる。
+
+```bash
+#!/bin/bash
+
+FOO=foo
+BAR=bar
+
+cat << EOF > echo.sh
+#!/bin/bash
+${FOO}
+${BAR}
+EOF
+```
+
+```bash
+#!/bin/bash
+
+echo foo
+echo bar
+```
+
+> - https://itneko.com/shell-here-document/
 
 <br>
 

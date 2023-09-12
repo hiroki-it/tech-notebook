@@ -351,13 +351,18 @@ $ polaris audit --audit-path manifest.yaml --format pretty
 $ polaris audit --audit-path manifest.yaml --only-show-failed-tests
 ```
 
-1つのKubernetesリソース内で一部にルールに違反があった場合に、`--only-show-failed-tests`オプションを有効化していると、違反が無視されて結果に表示されない不具合がある可能性がある。
+カスタムルールに違反があった場合に、`--only-show-failed-tests`オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml
 
+Polaris audited Path manifest.yaml at 2023-09-13T03:27:57+09:00
+    Nodes: 0 | Namespaces: 0 | Controllers: 1
+    Final score: 85
+
+
 DaemonSet fluentd
-    daemonSetPriorityClassMissing        ❌ Danger # <----------- これが無視されてしまう
+    daemonSetPriorityClassMissing        ❌ Danger # <----------- このカスタムルールが無視されてしまう
         Reliability - In DaemonSet, priority class should be set
   Container fluentd
     memoryRequestsMissing                🎉 Success
@@ -372,6 +377,14 @@ DaemonSet fluentd
         Reliability - Liveness probe is configured
     memoryLimitsMissing                  🎉 Success
         Efficiency - Memory limits are set
+```
+
+```bash
+$ polaris audit --audit-path manifest.yaml --only-show-failed-tests
+
+Polaris audited Path manifest.yaml at 2023-09-13T03:27:57+09:00
+    Nodes: 0 | Namespaces: 0 | Controllers: 1
+    Final score: 85
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests
