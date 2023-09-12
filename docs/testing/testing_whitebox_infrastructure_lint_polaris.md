@@ -232,7 +232,7 @@ customChecks:
                     affinity:
                       type: object
                       not:
-                        const: ""
+                        const: null
 ```
 
 > - https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example
@@ -252,7 +252,7 @@ customChecks:
   # Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する
   missingHorizontalPodAutoscalerWithDeployment:
     successMessage: HorizontalPodAutoscaler exists
-    failureMessage: HorizontalPodAutoscaler is missing
+    failureMessage: HorizontalPodAutoscaler should exist
     category: Reliability
     target: apps/Deployment
     schema: {}
