@@ -1770,20 +1770,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ フォワーダーアグリゲーターパターンの例
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     エージェントパターン
   </a>
   
@@ -1791,14 +1784,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ▼ エージェントパターンとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ エージェントパターンの例
   </a>
   
@@ -2530,20 +2523,13 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ フォワーダーアグリゲーターパターンの例
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     エージェントパターン
   </a>
   
@@ -2551,14 +2537,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ▼ エージェントパターンとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ エージェントパターンの例
   </a>
   
@@ -2694,7 +2680,8 @@
 <h3 id="_6">フォワーダーアグリゲーターパターン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ フォワーダーアグリゲーターパターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。</p>
-<p>フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。</p>
+<p>フォワーダーのFluentBit/Fluentdは送信元で稼働し、アグリゲーターとしての別のFluentBit/Fluentdにログを送信する。</p>
+<p>アグリゲーターは、ログの監視バックエンドにログを送信する。</p>
 <p><img alt="fluent-bit_fluentd_forwarder-aggregator-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png" /></p>
 <blockquote>
 <ul>
@@ -2702,14 +2689,9 @@
 <li><a href="https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works">https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ フォワーダーアグリゲーターパターンの例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<ul>
-<li>FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。</li>
-<li>KubernetesのDaemonSet配下のPodとして常駐させる。</li>
-</ul>
 <p><br></p>
-<h3 id="_9">エージェントパターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ エージェントパターンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h3 id="_8">エージェントパターン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ エージェントパターンとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>エージェントパターンは、FluentBit/Fluentdのエージェントをログの送信元に常駐させ、宛先にログを直接的に送信する。</p>
 <p><img alt="fluent-bit_fluentd_agent-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png" /></p>
 <blockquote>
@@ -2717,11 +2699,11 @@
 <li><a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/">https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/</a></li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ エージェントパターンの例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ エージェントパターンの例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <ul>
-<li>サーバーで直接的に常駐させる。</li>
 <li>KubernetesのDaemonSet配下のPodとして常駐させる。</li>
 <li>KubernetesのPod内のサイドカーとして配置する。</li>
+<li>FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。</li>
 </ul>
 <blockquote>
 <ul>
@@ -2732,34 +2714,34 @@
 <table>
 <thead>
 <tr>
-<th></th>
+<th>項目</th>
 <th style="text-align: center;">Pod内サイドカーパターン</th>
 <th style="text-align: center;">DaemonSetパターン</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Nodeのハードウェアリソース消費量</td>
+<td>Nodeのハードウェアリソース消費量が少ない</td>
 <td style="text-align: center;">×</td>
 <td style="text-align: center;">⭕️</td>
 </tr>
 <tr>
-<td>Nodeのストレージ使用量</td>
+<td>Nodeのストレージ使用量が少ない</td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">△</td>
 </tr>
 <tr>
-<td>FluentBit/Fluentdの冗長性</td>
+<td>FluentBit/Fluentdの冗長性が高い</td>
 <td style="text-align: center;">⭕️️</td>
 <td style="text-align: center;">△</td>
 </tr>
 <tr>
-<td>アプリごとの設定カスタマイズ</td>
+<td>アプリごとの設定カスタマイズ度が高い</td>
 <td style="text-align: center;">⭕️</td>
 <td style="text-align: center;">△</td>
 </tr>
 <tr>
-<td>単純性</td>
+<td>単純性が高い</td>
 <td style="text-align: center;">×</td>
 <td style="text-align: center;">⭕️</td>
 </tr>
@@ -2779,7 +2761,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
       
     
   </small>

@@ -6,34 +6,30 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="PgBouncer＠コネクションプールプロキシの知見を記録しています。">
+        <meta name="description" content="アーキテクチャ特性＠Javaの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/draft/language_java_architecture_characteristics.html">
       
       
-        <link rel="prev" href="software_middleware_database_tsdb_victoriametrics_command.html">
       
       
-        <link rel="next" href="software_middleware_database_connection_pool_proxy_pgbouncer_conf.html">
-      
-      
-      <link rel="icon" href="../assets/images/logo_v2.png">
+      <link rel="icon" href="../../assets/images/logo_v2.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
     
     
       
-        <title>【IT技術の知見】PgBouncer＠コネクションプールプロキシ - 俺の技術ノート</title>
+        <title>【IT技術の知見】アーキテクチャ特性＠Java - 俺の技術ノート</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
       
       
 
@@ -52,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -91,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pgbouncer" class="md-skip">
+        <a href="#java" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -109,7 +105,7 @@
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -126,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】PgBouncer＠コネクションプールプロキシ
+              【IT技術の知見】アーキテクチャ特性＠Java
             
           </span>
         </div>
@@ -202,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../index.html" class="md-tabs__link">
+      <a href="../../index.html" class="md-tabs__link">
         
   
     
@@ -219,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../about.html" class="md-tabs__link">
+      <a href="../../about.html" class="md-tabs__link">
         
   
     
@@ -238,7 +234,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
     
@@ -258,7 +254,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../../software/index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="application/index.html" class="md-tabs__link">
+        <a href="../../software/application/index.html" class="md-tabs__link">
           
   
     
@@ -294,13 +290,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="middleware/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../software/middleware/index.html" class="md-tabs__link">
           
   
     
@@ -320,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="basic/index.html" class="md-tabs__link">
+        <a href="../../software/basic/index.html" class="md-tabs__link">
           
   
     
@@ -340,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../language/index.html" class="md-tabs__link">
+        <a href="../index.html" class="md-tabs__link">
           
   
     
@@ -360,7 +354,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../testing/index.html" class="md-tabs__link">
+        <a href="../../testing/index.html" class="md-tabs__link">
           
   
     
@@ -380,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../hardware/index.html" class="md-tabs__link">
+        <a href="../../hardware/index.html" class="md-tabs__link">
           
   
     
@@ -400,7 +394,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../network/index.html" class="md-tabs__link">
+        <a href="../../network/index.html" class="md-tabs__link">
           
   
     
@@ -420,7 +414,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../security/index.html" class="md-tabs__link">
+        <a href="../../security/index.html" class="md-tabs__link">
           
   
     
@@ -440,7 +434,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cloud_computing/index.html" class="md-tabs__link">
+        <a href="../../cloud_computing/index.html" class="md-tabs__link">
           
   
     
@@ -460,7 +454,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../virtualization/index.html" class="md-tabs__link">
+        <a href="../../virtualization/index.html" class="md-tabs__link">
           
   
     
@@ -480,7 +474,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="../../infrastructure_as_code/index.html" class="md-tabs__link">
           
   
     
@@ -500,7 +494,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+        <a href="../../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +514,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="../../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +534,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+        <a href="../../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -560,7 +554,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../devops/index.html" class="md-tabs__link">
+        <a href="../../devops/index.html" class="md-tabs__link">
           
   
     
@@ -580,7 +574,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../devops/cicd/index.html" class="md-tabs__link">
+        <a href="../../devops/cicd/index.html" class="md-tabs__link">
           
   
     
@@ -600,7 +594,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/index.html" class="md-tabs__link">
+        <a href="../../observability/index.html" class="md-tabs__link">
           
   
     
@@ -620,7 +614,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+        <a href="../../software_development_methodology/index.html" class="md-tabs__link">
           
   
     
@@ -663,7 +657,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     俺の技術ノート
@@ -689,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -708,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about.html" class="md-nav__link">
+      <a href="../../about.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -747,7 +741,7 @@
         
   
   
-    <a href="../system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -792,7 +786,7 @@
         
   
   
-    <a href="index.html" class="md-nav__link">
+    <a href="../../software/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -837,7 +831,7 @@
         
   
   
-    <a href="application/index.html" class="md-nav__link">
+    <a href="../../software/application/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -860,8 +854,6 @@
       
   
   
-    
-  
   
     
     
@@ -882,608 +874,28 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="middleware/index.html" class="md-nav__link ">
-              
+  
+  
+    <a href="../../software/middleware/index.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     🤝🏻 ミドルウェア
   </span>
   
 
-            </a>
-            
-              <label class="md-nav__link " for="__nav_6">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            🤝🏻 ミドルウェア
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="software_middleware_web_nginx.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Web系
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    
-  
-  
-    <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ アプリケーション系
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
-        
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ データベース系
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ データベース系
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ RDB
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_database_tsdb.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ TSDB
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_3" checked>
-        
-          <label class="md-nav__link" for="__nav_6_4_3" id="__nav_6_4_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ コネクションプールプロキシー
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ コネクションプールプロキシー
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_3_1" checked>
-        
-          <label class="md-nav__link" for="__nav_6_4_3_1" id="__nav_6_4_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ PgBouncer
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_4_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ PgBouncer
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    PgBouncer
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    PgBouncer
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pgbouncer_1" class="md-nav__link">
-    PgBouncerの仕組み
-  </a>
-  
-    <nav class="md-nav" aria-label="PgBouncerの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    アーキテクチャ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ユースケース
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ユースケース">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    コネクションプール
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ロードバランサーとしては使用できない
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    設定ファイル
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_security_linux.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ セキュリティ系
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_service_mesh.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ サービスメッシュ系
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1517,7 +929,7 @@
         
   
   
-    <a href="basic/index.html" class="md-nav__link">
+    <a href="../../software/basic/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1574,7 +986,7 @@
         
   
   
-    <a href="../language/index.html" class="md-nav__link">
+    <a href="../index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1619,7 +1031,7 @@
         
   
   
-    <a href="../testing/index.html" class="md-nav__link">
+    <a href="../../testing/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1670,7 +1082,7 @@
         
   
   
-    <a href="../hardware/index.html" class="md-nav__link">
+    <a href="../../hardware/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1715,7 +1127,7 @@
         
   
   
-    <a href="../network/index.html" class="md-nav__link">
+    <a href="../../network/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1762,7 +1174,7 @@
         
   
   
-    <a href="../security/index.html" class="md-nav__link">
+    <a href="../../security/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1809,7 +1221,7 @@
         
   
   
-    <a href="../cloud_computing/index.html" class="md-nav__link">
+    <a href="../../cloud_computing/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1854,7 +1266,7 @@
         
   
   
-    <a href="../virtualization/index.html" class="md-nav__link">
+    <a href="../../virtualization/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1901,7 +1313,7 @@
         
   
   
-    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+    <a href="../../infrastructure_as_code/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1954,7 +1366,7 @@
         
   
   
-    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+    <a href="../../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2005,7 +1417,7 @@
         
   
   
-    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+    <a href="../../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2068,7 +1480,7 @@
         
   
   
-    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+    <a href="../../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2115,7 +1527,7 @@
         
   
   
-    <a href="../devops/index.html" class="md-nav__link">
+    <a href="../../devops/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2166,7 +1578,7 @@
         
   
   
-    <a href="../devops/cicd/index.html" class="md-nav__link">
+    <a href="../../devops/cicd/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2215,7 +1627,7 @@
         
   
   
-    <a href="../observability/index.html" class="md-nav__link">
+    <a href="../../observability/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2264,7 +1676,7 @@
         
   
   
-    <a href="../software_development_methodology/index.html" class="md-nav__link">
+    <a href="../../software_development_methodology/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2319,44 +1731,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pgbouncer_1" class="md-nav__link">
-    PgBouncerの仕組み
-  </a>
-  
-    <nav class="md-nav" aria-label="PgBouncerの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    アーキテクチャ
+    性能
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ユースケース
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ユースケース">
+    <nav class="md-nav" aria-label="性能">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    コネクションプール
+    コンテナイメージの軽量化
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ロードバランサーとしては使用できない
+    ウォームアップ
   </a>
+  
+    <nav class="md-nav" aria-label="ウォームアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ウォームアップとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    ▼ Kubernetesでの注意点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2383,7 +1795,7 @@
   
 
 
-<h1 id="pgbouncer">PgBouncer＠コネクションプールプロキシ<a class="headerlink" href="#pgbouncer" title="Permanent link">&para;</a></h1>
+<h1 id="java">アーキテクチャ特性＠Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -2392,30 +1804,32 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="pgbouncer_1">PgBouncerの仕組み<a class="headerlink" href="#pgbouncer_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PgBouncerは、クライアントからの接続をプールし、DBにプロキシする。</p>
-<p><img alt="pgbouncer_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_architecture.png" /></p>
+<h2 id="_2">性能<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">コンテナイメージの軽量化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>コンテナイメージは、LTS (headless) が軽量なのでおすすめ。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.2ndquadrant.com/en/blog/pgbouncer-1-6/">https://www.2ndquadrant.com/en/blog/pgbouncer-1-6/</a></li>
-<li><a href="https://scalegrid.io/blog/postgresql-connection-pooling-part-2-pgbouncer/">https://scalegrid.io/blog/postgresql-connection-pooling-part-2-pgbouncer/</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">コネクションプール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>DBへのコネクションをプールし、アプリケーションがコネクションを再利用できるようにする。</p>
-<p><br></p>
-<h3 id="_4">ロードバランサーとしては使用できない<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>PgBouncerは、クエリのロードバランサーとしては使用できない。</p>
-<p>ロードバランシング機能はなく、落ちたDBにもプロキシしてしまう。</p>
-<p>そのため、もしロードバランシング機能を使用する場合には、後段にロードバランサーを配置する必要がある。</p>
-<p><img alt="pgbouncer_load-balancer.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_load-balancer.png" /></p>
+<h3 id="_4">ウォームアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ ウォームアップとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Javaアプリケーションの実行前に、本番環境と同じデータを使ってアプリを実行しておく。</p>
+<p>これにより、ソースコードがコンパイルされ、アプリケーションの実行が早くなる。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.percona.com/blog/scaling-postgresql-using-connection-poolers-and-load-balancers-for-an-enterprise-grade-environment/">https://www.percona.com/blog/scaling-postgresql-using-connection-poolers-and-load-balancers-for-an-enterprise-grade-environment/</a></li>
-<li><a href="https://github.com/pgbouncer/pgbouncer/issues/93#issuecomment-158463342">https://github.com/pgbouncer/pgbouncer/issues/93#issuecomment-158463342</a></li>
+<li><a href="https://www.baeldung.com/java-jvm-warmup">https://www.baeldung.com/java-jvm-warmup</a></li>
+<li><a href="https://www.fujitsu.com/jp/about/faq/sfw-interstage/applicationserver/11883.html">https://www.fujitsu.com/jp/about/faq/sfw-interstage/applicationserver/11883.html</a></li>
+<li><a href="https://techblog.zozo.com/entry/zozomat-jvm-warmup">https://techblog.zozo.com/entry/zozomat-jvm-warmup</a></li>
+<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=46">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=46</a></li>
+</ul>
+</blockquote>
+<h4 id="kubernetes">▼ Kubernetesでの注意点<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
+<p>暖機運転が完了した後に、Readness Probeが成功となるように設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48">https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -2490,10 +1904,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
   </body>

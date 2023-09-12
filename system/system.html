@@ -948,6 +948,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    ▼ SSL終端
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1018,6 +1025,13 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     ▼ 静的 + 動的コンテンツのレスポンス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl_1" class="md-nav__link">
+    ▼ SSL終端
   </a>
   
 </li>
@@ -2209,6 +2223,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    ▼ SSL終端
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2279,6 +2300,13 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     ▼ 静的 + 動的コンテンツのレスポンス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssl_1" class="md-nav__link">
+    ▼ SSL終端
   </a>
   
 </li>
@@ -2446,7 +2474,7 @@
 </tr>
 <tr>
 <td>appサーバー</td>
-<td style="text-align: left;">Tomcat</td>
+<td style="text-align: left;">Apache Tomcat</td>
 <td>なし</td>
 <td>Uvicorn</td>
 </tr>
@@ -2576,6 +2604,13 @@
 <li><a href="https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm">https://software.fujitsu.com/jp/manual/manualfiles/M100003/B1WN9491/07Z201/ihs02/ihs00016.htm</a></li>
 </ul>
 </blockquote>
+<h4 id="ssl">▼ SSL終端<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
+<p>リバースプロキシをSSL終端として、HTTPプロトコルでwebサーバーにリクエストをロードバランシングする。</p>
+<blockquote>
+<ul>
+<li><a href="https://pig-log.com/nginx-reverseproxy-ssl/">https://pig-log.com/nginx-reverseproxy-ssl/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_9">配置場所<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 物理サーバーの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -2684,6 +2719,13 @@
 </tr>
 </tbody>
 </table>
+<h4 id="ssl_1">▼ SSL終端<a class="headerlink" href="#ssl_1" title="Permanent link">&para;</a></h4>
+<p>webサーバーをSSL終端として、HTTPプロトコルでappサーバーにリクエストをロードバランシングする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.f5.com/ja_jp/glossary/https">https://www.f5.com/ja_jp/glossary/https</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-04-app">02-04. appサーバー<a class="headerlink" href="#02-04-app" title="Permanent link">&para;</a></h2>
 <h3 id="app">appサーバーとは<a class="headerlink" href="#app" title="Permanent link">&para;</a></h3>
@@ -2742,7 +2784,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
       
     
   </small>
