@@ -2999,7 +2999,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                    </span><span class="nt">affinity</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
-<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3017,7 +3017,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># Deploymentを作成している場合に、HorizontalPodAutoscalerも作成していることを検証する</span>
 <span class="w">  </span><span class="nt">missingHorizontalPodAutoscalerWithDeployment</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler exists</span>
-<span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler is missing</span>
+<span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler should exist</span>
 <span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reliability</span>
 <span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/Deployment</span>
 <span class="w">    </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
