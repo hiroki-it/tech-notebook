@@ -247,6 +247,8 @@ Prometheusは、現在処理中のブロックをメモリ上に保持し、同�
 
 事前に定義したPromQLの結果をTSDBに保管できる。
 
+TSDBのデータ量がむやみに増えないように、最低限のレコーディングルールを定義する。
+
 > - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
 > - https://training.promlabs.com/training/recording-rules/recording-rules-overview/motivation
 > - https://chronosphere.io/learn/prometheus-recording-rules-right-tool/

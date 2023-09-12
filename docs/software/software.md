@@ -106,11 +106,12 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 ### webサーバーのミドルウェア (リバースプロキシとしても機能する場合がある)
 
 - Apache
-- Apache Tomcat
 - Nginx
 - IIS
+- Apache Tomcat (appサーバーとwebサーバーの両方の機能を持つ)
 
 > - https://thinkit.co.jp/article/11837
+> - https://www.javatpoint.com/apache-tomcat-server-vs-apache-webserver
 
 <br>
 
@@ -119,9 +120,10 @@ webサーバー上のソフトウェアによって稼働するアプリケー�
 - Apacheの拡張モジュール
 - PHP-FPM
 - NGINX Unit (webサーバーのNginxと組み合わせて使用できるミドルウェア)
-- Tomcat
+- Apache Tomcat (appサーバーとwebサーバーの両方の機能を持つ)
 
 > - https://thinkit.co.jp/article/11837
+> - https://www.javatpoint.com/apache-tomcat-server-vs-apache-webserver
 
 <br>
 

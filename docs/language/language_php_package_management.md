@@ -13,7 +13,14 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 <br>
 
-## 01. Composerによる管理
+## 01. パッケージ管理ツールの種類
+
+- composer
+-
+
+<br>
+
+## 02. Composerによる管理
 
 ### セットアップ
 
@@ -283,7 +290,7 @@ $ php -r '
 
 <br>
 
-## 01-02. composerコマンド
+## 02-02. composerコマンド
 
 ### clear-cache
 
@@ -539,7 +546,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 <br>
 
-## 02. バージョンアップの手順
+## 03. バージョンアップの手順
 
 ### 事前確認の重要性
 

@@ -86,17 +86,14 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
 
-フォワーダーのFluentBit/Fluentdの送信元で稼働させ、アグリゲーターを介して、宛先にログを送信する。
+フォワーダーのFluentBit/Fluentdは送信元で稼働し、アグリゲーターとしての別のFluentBit/Fluentdにログを送信する。
+
+アグリゲーターは、ログの監視バックエンドにログを送信する。
 
 ![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 > - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
-
-#### ▼ フォワーダーアグリゲーターパターンの例
-
-- FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。
-- KubernetesのDaemonSet配下のPodとして常駐させる。
 
 <br>
 
@@ -112,21 +109,21 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 #### ▼ エージェントパターンの例
 
-- サーバーで直接的に常駐させる。
 - KubernetesのDaemonSet配下のPodとして常駐させる。
 - KubernetesのPod内のサイドカーとして配置する。
+- FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。
 
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
 #### ▼ DaemonSetパターンとPod内サイドカーパターンの比較
 
-|                                  | Pod内サイドカーパターン | DaemonSetパターン |
-| -------------------------------- | :---------------------: | :---------------: |
-| Nodeのハードウェアリソース消費量 |            ×            |        ⭕️         |
-| Nodeのストレージ使用量           |           ⭕️            |         △         |
-| FluentBit/Fluentdの冗長性        |           ⭕️️           |         △         |
-| アプリごとの設定カスタマイズ     |           ⭕️            |         △         |
-| 単純性                           |            ×            |        ⭕️         |
+| 項目                                     | Pod内サイドカーパターン | DaemonSetパターン |
+| ---------------------------------------- | :---------------------: | :---------------: |
+| Nodeのハードウェアリソース消費量が少ない |            ×            |        ⭕️         |
+| Nodeのストレージ使用量が少ない           |           ⭕️            |         △         |
+| FluentBit/Fluentdの冗長性が高い          |           ⭕️️           |         △         |
+| アプリごとの設定カスタマイズ度が高い     |           ⭕️            |         △         |
+| 単純性が高い                             |            ×            |        ⭕️         |
 
 > - https://codersociety.com/blog/articles/kubernetes-logging
 > - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
