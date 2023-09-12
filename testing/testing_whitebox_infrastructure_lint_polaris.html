@@ -2963,6 +2963,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                    </span><span class="nt">priorityClassName</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
+<span class="w">                        </span><span class="c1"># ostring型が空値であった場合にエラーとする</span>
 <span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 
 <span class="w">  </span><span class="c1"># Deploymentのaffinityの設定し忘れを検証する</span>
@@ -2999,7 +3000,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">                    </span><span class="nt">affinity</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
-<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">                        </span><span class="c1"># object型が空値であった場合にエラーとする</span>
+<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3097,7 +3099,27 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
 </blockquote>
 <h4 id="-only-show-failed-tests">▼ --only-show-failed-tests<a class="headerlink" href="#-only-show-failed-tests" title="Permanent link">&para;</a></h4>
 <p>失敗した結果のみを出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--only-show-failed-tests<span class="w"> </span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml<span class="w"> </span>--only-show-failed-tests
+</code></pre></div>
+<p>1つのKubernetesリソース内で一部にルールに違反があった場合に、<code>--only-show-failed-tests</code>オプションを有効化していると、違反が無視されて結果に表示されない不具合がある可能性がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml
+
+DaemonSet<span class="w"> </span>fluentd
+<span class="w">    </span>daemonSetPriorityClassMissing<span class="w">        </span>❌<span class="w"> </span>Danger<span class="w"> </span><span class="c1"># &lt;----------- これが無視されてしまう</span>
+<span class="w">        </span>Reliability<span class="w"> </span>-<span class="w"> </span>In<span class="w"> </span>DaemonSet,<span class="w"> </span>priority<span class="w"> </span>class<span class="w"> </span>should<span class="w"> </span>be<span class="w"> </span><span class="nb">set</span>
+<span class="w">  </span>Container<span class="w"> </span>fluentd
+<span class="w">    </span>memoryRequestsMissing<span class="w">                </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Efficiency<span class="w"> </span>-<span class="w"> </span>Memory<span class="w"> </span>requests<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span>
+<span class="w">    </span>readinessProbeMissing<span class="w">                </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Reliability<span class="w"> </span>-<span class="w"> </span>Readiness<span class="w"> </span>probe<span class="w"> </span>is<span class="w"> </span>configured
+<span class="w">    </span>cpuLimitsMissing<span class="w">                     </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Efficiency<span class="w"> </span>-<span class="w"> </span>CPU<span class="w"> </span>limits<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span>
+<span class="w">    </span>cpuRequestsMissing<span class="w">                   </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Efficiency<span class="w"> </span>-<span class="w"> </span>CPU<span class="w"> </span>requests<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span>
+<span class="w">    </span>livenessProbeMissing<span class="w">                 </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Reliability<span class="w"> </span>-<span class="w"> </span>Liveness<span class="w"> </span>probe<span class="w"> </span>is<span class="w"> </span>configured
+<span class="w">    </span>memoryLimitsMissing<span class="w">                  </span>🎉<span class="w"> </span>Success
+<span class="w">        </span>Efficiency<span class="w"> </span>-<span class="w"> </span>Memory<span class="w"> </span>limits<span class="w"> </span>are<span class="w"> </span><span class="nb">set</span>
 </code></pre></div>
 <blockquote>
 <ul>
