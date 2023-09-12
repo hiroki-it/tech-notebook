@@ -196,6 +196,7 @@ customChecks:
                     priorityClassName:
                       type: string
                       not:
+                        # ostring型が空値であった場合にエラーとする
                         const: ""
 
   # Deploymentのaffinityの設定し忘れを検証する
@@ -232,7 +233,8 @@ customChecks:
                     affinity:
                       type: object
                       not:
-                        const: null
+                        # object型が空値であった場合にエラーとする
+                        const: {}
 ```
 
 > - https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example
@@ -346,7 +348,30 @@ $ polaris audit --audit-path manifest.yaml --format pretty
 失敗した結果のみを出力する。
 
 ```bash
-$ polaris audit --audit-path manifest.yaml --only-show-failed-tests true
+$ polaris audit --audit-path manifest.yaml --only-show-failed-tests
+```
+
+1つのKubernetesリソース内で一部にルールに違反があった場合に、`--only-show-failed-tests`オプションを有効化していると、違反が無視されて結果に表示されない不具合がある可能性がある。
+
+```bash
+$ polaris audit --audit-path manifest.yaml
+
+DaemonSet fluentd
+    daemonSetPriorityClassMissing        ❌ Danger # <----------- これが無視されてしまう
+        Reliability - In DaemonSet, priority class should be set
+  Container fluentd
+    memoryRequestsMissing                🎉 Success
+        Efficiency - Memory requests are set
+    readinessProbeMissing                🎉 Success
+        Reliability - Readiness probe is configured
+    cpuLimitsMissing                     🎉 Success
+        Efficiency - CPU limits are set
+    cpuRequestsMissing                   🎉 Success
+        Efficiency - CPU requests are set
+    livenessProbeMissing                 🎉 Success
+        Reliability - Liveness probe is configured
+    memoryLimitsMissing                  🎉 Success
+        Efficiency - Memory limits are set
 ```
 
 > - https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests
