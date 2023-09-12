@@ -2910,50 +2910,64 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>こういった場合に、カスタムルールが役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 重要度を設定する</span>
-<span class="w">  </span><span class="nt">daemonSetPriorityClassNotSet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
-<span class="w">  </span><span class="nt">daemonSetAffinityNotSet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
+<span class="w">  </span><span class="nt">daemonSetPriorityClassMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
+<span class="w">  </span><span class="nt">daemonSetAffinityMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># DaemonSetのpriorityClassの設定し忘れを検証する</span>
 <span class="w">  </span><span class="c1"># ビルトインのpriorityClassNotSetルールではWorkload全体を検証してしまうため、DaemonSet限定のルールを定義した</span>
-<span class="w">  </span><span class="nt">daemonSetPriorityClassNotSet</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, priority class has been set</span>
+<span class="w">  </span><span class="nt">daemonSetPriorityClassMissing</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, priority class is set</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, priority class should be set</span>
 <span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reliability</span>
-<span class="w">    </span><span class="c1"># Controller (Workload) 、PodTemplate、PodSpec、Container、を設定する</span>
-<span class="w">    </span><span class="c1"># あるいはAPIグループ名を指定する</span>
 <span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/DaemonSet</span>
 <span class="w">    </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">      </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://json-schema.org/draft-07/schema</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># .specキーを必須にする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># DaemonSet配下のPodで、.spec.priorityClassNameキーを必須にする</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priorityClassName</span>
+<span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">priorityClassName</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">              </span><span class="nt">not</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 
-<span class="w">  </span><span class="c1"># DaemonSetのaffinityの設定し忘れを検証する</span>
-<span class="w">  </span><span class="nt">daemonSetAffinityNotSet</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, affinity has been set</span>
-<span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, affinity should be set</span>
+<span class="w">  </span><span class="c1"># Deploymentのaffinityの設定し忘れを検証する</span>
+<span class="w">  </span><span class="nt">deploymentAffinityMissing</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, affinity is set</span>
+<span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, affinity should be set</span>
 <span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reliability</span>
-<span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/DaemonSet</span>
+<span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/Deployment</span>
 <span class="w">    </span><span class="nt">schema</span><span class="p">:</span>
 <span class="w">      </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://json-schema.org/draft-07/schema</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># .specキーを必須にする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># DaemonSet配下のPodで、.spec.affinityキーを必須にする</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">affinity</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template</span>
+<span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">              </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
+<span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                  </span><span class="nt">required</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">affinity</span>
+<span class="w">                  </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">affinity</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
+<span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3075,7 +3089,7 @@ $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
       
     
   </small>
