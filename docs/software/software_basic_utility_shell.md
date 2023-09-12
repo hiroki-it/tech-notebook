@@ -332,6 +332,20 @@ echo bar
 
 <br>
 
+### `$?`
+
+コマンドの終了コードを出力する
+
+```bash
+$ echo "" ; echo $?
+
+0 # 終了コードが 0 である
+```
+
+> - https://qiita.com/takayuki206/items/f4d0dbb45e5ee2ee698e
+
+<br>
+
 ## 04. コマンドの実行タイミング
 
 ### 順次実行

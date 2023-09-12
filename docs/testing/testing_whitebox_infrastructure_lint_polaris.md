@@ -174,15 +174,29 @@ customChecks:
       required:
         - spec
       properties:
+        # .specキーに関するルール
         spec:
           type: object
           required:
-            - priorityClassName
+            - template
           properties:
-            priorityClassName:
-              type: string
-              not:
-                const: ""
+            # .spec.templateキーに関するルール
+            template:
+              type: object
+              required:
+                - spec
+              properties:
+                # .spec.template.specキーに関するルール
+                spec:
+                  type: object
+                  required:
+                    - priorityClassName
+                  properties:
+                    # .spec.template.spec.priorityClassNameキーに関するルール
+                    priorityClassName:
+                      type: string
+                      not:
+                        const: ""
 
   # Deploymentのaffinityの設定し忘れを検証する
   deploymentAffinityMissing:
@@ -196,21 +210,25 @@ customChecks:
       required:
         - spec
       properties:
+        # .specキーに関するルール
         spec:
           type: object
           required:
             - template
           properties:
+            # .spec.templateキーに関するルール
             template:
               type: object
               required:
                 - spec
               properties:
-                template:
+                # .spec.template.specキーに関するルール
+                spec:
                   type: object
                   required:
                     - affinity
                   properties:
+                    # .spec.template.spec.affinityキーに関するルール
                     affinity:
                       type: object
                       not:
@@ -300,6 +318,18 @@ exemptions:
 
 ### audit
 
+#### ▼ auditとは
+
+マニフェストがルールに違反しているかどうかを検証する。
+
+```bash
+# 結果を読みやすく出力する。
+$ polaris audit --audit-path manifest.yaml
+
+# 該当するKubernetesリソースのルールのみを検証する
+INFO[0000] 1 danger items found in audit
+```
+
 #### ▼ --format
 
 結果の形式を指定する。
@@ -333,12 +363,10 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 
 #### ▼ --set-exit-code-on-danger
 
-dangerラベルが検出された場合の終了コードを設定する。
-
-デフォルトは`0`である。
+dangerレベルのルール違反が検出された場合に、終了コード`3`を出力する。
 
 ```bash
-$ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger 1
+$ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger
 ```
 
 #### ▼ --severity
