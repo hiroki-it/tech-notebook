@@ -714,7 +714,11 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/name":"foo-pod
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
-#### ▼ Recreate
+<br>
+
+### .spec.strategy.type (Recreateの場合)
+
+#### ▼ Recreateとは
 
 インプレースデプロイメントを使用して、新しいPodを作成する。
 
@@ -739,7 +743,11 @@ spec:
 
 > - https://amateur-engineer-blog.com/kubernetes-recreate/
 
-#### ▼ RollingUpdate
+<br>
+
+### .spec.strategy (RollingUpdateの場合)
+
+#### ▼ RollingUpdateとは
 
 ローリングアップデートを使用して、新しいPodを作成する。
 
@@ -769,7 +777,15 @@ spec:
         app.kubernetes.io/component: app
 ```
 
+#### ▼ maxSurge、maxUnavailable
+
+割合 / 絶対数を設定できる。
+
 もし`.spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+
+つまり、`10`個のPodがあれば、`10`個の新しいPodを並行的に作成する。
+
+新しい`10`個Podで問題なければ、既存の`10`個のPodと入れ替える。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 

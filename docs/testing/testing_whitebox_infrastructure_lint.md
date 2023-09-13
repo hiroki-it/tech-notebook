@@ -151,8 +151,13 @@ Helmチャートのバージョンを検証する。
 
 コンテナのイメージレイヤーごとに解析する。
 
+#### ▼ ベストプラクティス違反テスト
+
+- hadolint
+
 #### ▼ 脆弱性テスト
 
+- dockle
 - trivy
 
 > - https://snyk.io/learn/container-security/container-scanning/
