@@ -2198,16 +2198,49 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstrategytype-recreate" class="md-nav__link">
+    .spec.strategy.type (Recreateの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.strategy.type (Recreateの場合)">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#recreate" class="md-nav__link">
-    ▼ Recreate
+    ▼ Recreateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstrategy-rollingupdate" class="md-nav__link">
+    .spec.strategy (RollingUpdateの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.strategy (RollingUpdateの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rollingupdate" class="md-nav__link">
+    ▼ RollingUpdateとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rollingupdate" class="md-nav__link">
-    ▼ RollingUpdate
+  <a href="#maxsurgemaxunavailable" class="md-nav__link">
+    ▼ maxSurge、maxUnavailable
   </a>
   
 </li>
@@ -5908,16 +5941,49 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstrategytype-recreate" class="md-nav__link">
+    .spec.strategy.type (Recreateの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.strategy.type (Recreateの場合)">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#recreate" class="md-nav__link">
-    ▼ Recreate
+    ▼ Recreateとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstrategy-rollingupdate" class="md-nav__link">
+    .spec.strategy (RollingUpdateの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.strategy (RollingUpdateの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rollingupdate" class="md-nav__link">
+    ▼ RollingUpdateとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rollingupdate" class="md-nav__link">
-    ▼ RollingUpdate
+  <a href="#maxsurgemaxunavailable" class="md-nav__link">
+    ▼ maxSurge、maxUnavailable
   </a>
   
 </li>
@@ -9060,7 +9126,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment">https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment</a></li>
 </ul>
 </blockquote>
-<h4 id="recreate">▼ Recreate<a class="headerlink" href="#recreate" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="specstrategytype-recreate">.spec.strategy.type (Recreateの場合)<a class="headerlink" href="#specstrategytype-recreate" title="Permanent link">&para;</a></h3>
+<h4 id="recreate">▼ Recreateとは<a class="headerlink" href="#recreate" title="Permanent link">&para;</a></h4>
 <p>インプレースデプロイメントを使用して、新しいPodを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -9084,7 +9152,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://amateur-engineer-blog.com/kubernetes-recreate/">https://amateur-engineer-blog.com/kubernetes-recreate/</a></li>
 </ul>
 </blockquote>
-<h4 id="rollingupdate">▼ RollingUpdate<a class="headerlink" href="#rollingupdate" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="specstrategy-rollingupdate">.spec.strategy (RollingUpdateの場合)<a class="headerlink" href="#specstrategy-rollingupdate" title="Permanent link">&para;</a></h3>
+<h4 id="rollingupdate">▼ RollingUpdateとは<a class="headerlink" href="#rollingupdate" title="Permanent link">&para;</a></h4>
 <p>ローリングアップデートを使用して、新しいPodを作成する。</p>
 <p>ダウンタイムなしでPodを入れ替えられる。</p>
 <blockquote>
@@ -9112,7 +9182,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
+<h4 id="maxsurgemaxunavailable">▼ maxSurge、maxUnavailable<a class="headerlink" href="#maxsurgemaxunavailable" title="Permanent link">&para;</a></h4>
+<p>割合 / 絶対数を設定できる。</p>
 <p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>100</code>%、また<code>maxUnavailable</code>キーを<code>0</code>%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
+<p>つまり、<code>10</code>個のPodがあれば、<code>10</code>個の新しいPodを並行的に作成する。</p>
+<p>新しい<code>10</code>個Podで問題なければ、既存の<code>10</code>個のPodと入れ替える。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
@@ -12941,7 +13015,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
       
     
   </small>
