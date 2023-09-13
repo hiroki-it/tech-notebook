@@ -1224,14 +1224,14 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ エスケープ
+    ▼ ヒアドキュメント内の記号エスケープ
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ▼ 変数
+    ▼ ヒアドキュメント内への変数展開
   </a>
   
 </li>
@@ -2468,14 +2468,14 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ エスケープ
+    ▼ ヒアドキュメント内の記号エスケープ
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ▼ 変数
+    ▼ ヒアドキュメント内への変数展開
   </a>
   
 </li>
@@ -2796,7 +2796,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; echo.sh</span>
 <li><a href="https://webkaru.net/php/here-document/">https://webkaru.net/php/here-document/</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ エスケープ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ ヒアドキュメント内の記号エスケープ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>一部の記号 (例：<code>{</code>、<code>}</code>) を文字として使用する場合、エスケープしないとヒアドキュメント内で使用できない。</p>
 <p>終了文字列 (例：EOF) をシングルクオートで囲うと、エスケープできる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -2822,21 +2822,21 @@ cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; echo.sh</
 
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; echo.sh</span>
 <span class="s">#!/bin/bash</span>
-<span class="s">\${FOO}</span>
+<span class="s">${FOO}</span>
 <span class="s">\${BAR}</span>
 <span class="s">EOF</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">echo</span><span class="w"> </span>foo
-<span class="nb">echo</span><span class="w"> </span>bar
+<span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">BAR</span><span class="si">}</span><span class="w"> </span><span class="c1"># エスケープしたため、変数は展開しない</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/watertight/items/96596f8da4f8c71632b0">https://qiita.com/watertight/items/96596f8da4f8c71632b0</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ 変数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ ヒアドキュメント内への変数展開<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>終了文字列をシングルクオートで囲わずにエスケープしないことで、変数の記号 (例：<code>{</code>、<code>}</code>) を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
