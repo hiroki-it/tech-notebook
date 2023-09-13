@@ -2387,8 +2387,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#maxreplicasminreplicas" class="md-nav__link">
-    ▼ maxReplicas、minReplicas、とは
+  <a href="#maxreplicas" class="md-nav__link">
+    ▼ maxReplicasとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minreplicas" class="md-nav__link">
+    ▼ minReplicasとは
   </a>
   
 </li>
@@ -3848,6 +3855,13 @@
           <li class="md-nav__item">
   <a href="#daemonsetpod_1" class="md-nav__link">
     ▼ DaemonSet配下のPod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeselectoraffinitty" class="md-nav__link">
+    ▼ nodeSelectorとaffinittyの両方設定
   </a>
   
 </li>
@@ -6130,8 +6144,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#maxreplicasminreplicas" class="md-nav__link">
-    ▼ maxReplicas、minReplicas、とは
+  <a href="#maxreplicas" class="md-nav__link">
+    ▼ maxReplicasとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minreplicas" class="md-nav__link">
+    ▼ minReplicasとは
   </a>
   
 </li>
@@ -7591,6 +7612,13 @@
           <li class="md-nav__item">
   <a href="#daemonsetpod_1" class="md-nav__link">
     ▼ DaemonSet配下のPod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeselectoraffinitty" class="md-nav__link">
+    ▼ nodeSelectorとaffinittyの両方設定
   </a>
   
 </li>
@@ -9326,15 +9354,28 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h2 id="10-horizontalpodautoscaler">10. HorizontalPodAutoscaler<a class="headerlink" href="#10-horizontalpodautoscaler" title="Permanent link">&para;</a></h2>
 <h3 id="specmaxreplicasspecminreplicas">.spec.maxReplicas、spec.minReplicas<a class="headerlink" href="#specmaxreplicasspecminreplicas" title="Permanent link">&para;</a></h3>
-<h4 id="maxreplicasminreplicas">▼ maxReplicas、minReplicas、とは<a class="headerlink" href="#maxreplicasminreplicas" title="Permanent link">&para;</a></h4>
-<p>自動水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。</p>
+<h4 id="maxreplicas">▼ maxReplicasとは<a class="headerlink" href="#maxreplicas" title="Permanent link">&para;</a></h4>
+<p>自動水平スケーリングのスケールアウト時の最大Pod数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-horizontal-pod-autoscaler</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">maxReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">  </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80">https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80</a></li>
+</ul>
+</blockquote>
+<h4 id="minreplicas">▼ minReplicasとは<a class="headerlink" href="#minreplicas" title="Permanent link">&para;</a></h4>
+<p>自動水平スケーリングのスケールイン時の最小Pod数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-horizontal-pod-autoscaler</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">minReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -11509,6 +11550,14 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes</a></li>
+</ul>
+</blockquote>
+<h4 id="nodeselectoraffinitty">▼ nodeSelectorとaffinittyの両方設定<a class="headerlink" href="#nodeselectoraffinitty" title="Permanent link">&para;</a></h4>
+<p><code>.spec.nodeSelector</code>キーと<code>.spec.affinity</code>キーの両方を設定できる。</p>
+<p>両方を設定した場合、両方を満たしたNodeにPodをスケジューリングさせられる。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
 </ul>
 </blockquote>
 <p><br></p>
