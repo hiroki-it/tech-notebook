@@ -63,7 +63,7 @@ echo bar
 > - https://qiita.com/kite_999/items/e77fb521fc39454244e7#%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AF
 > - https://webkaru.net/php/here-document/
 
-#### ▼ エスケープ
+#### ▼ ヒアドキュメント内の記号エスケープ
 
 一部の記号 (例：`{`、`}`) を文字として使用する場合、エスケープしないとヒアドキュメント内で使用できない。
 
@@ -95,7 +95,7 @@ echo bar
 
 cat << EOF > echo.sh
 #!/bin/bash
-\${FOO}
+${FOO}
 \${BAR}
 EOF
 ```
@@ -104,12 +104,12 @@ EOF
 #!/bin/bash
 
 echo foo
-echo bar
+echo ${BAR} # エスケープしたため、変数は展開しない
 ```
 
 > - https://qiita.com/watertight/items/96596f8da4f8c71632b0
 
-#### ▼ 変数
+#### ▼ ヒアドキュメント内への変数展開
 
 終了文字列をシングルクオートで囲わずにエスケープしないことで、変数の記号 (例：`{`、`}`) を使用できる。
 
