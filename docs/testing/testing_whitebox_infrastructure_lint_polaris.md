@@ -158,7 +158,6 @@ DaemonSet配下のPodでは、`.spec.priorityClassName`キーや`.spec.affinity`
 checks:
   # 重要度を設定する
   daemonSetPriorityClassMissing: danger
-  daemonSetAffinityMissing: danger
 
 customChecks:
   # DaemonSetのpriorityClassの設定し忘れを検証する
@@ -198,7 +197,14 @@ customChecks:
                       not:
                         # ostring型が空値であった場合にエラーとする
                         const: ""
+```
 
+```yaml
+checks:
+  # 重要度を設定する
+  deploymentAffinityMissing: danger
+
+customChecks:
   # Deploymentのaffinityの設定し忘れを検証する
   deploymentAffinityMissing:
     successMessage: In Deployment, affinity is set
@@ -234,6 +240,45 @@ customChecks:
                       type: object
                       not:
                         # object型が空値であった場合にエラーとする
+                        const: {}
+```
+
+```yaml
+checks:
+  # 重要度を設定する
+  deploymentNodeSelectorMissing: danger
+
+customChecks:
+  # DeploymentのnodeSelectorの設定し忘れを検証する
+  deploymentNodeSelectorMissing:
+    successMessage: In Deployment, nodeSelector is set
+    failureMessage: In Deployment, nodeSelector should be set
+    category: Reliability
+    target: apps/Deployment
+    schema:
+      '\$schema': http://json-schema.org/draft-07/schema
+      type: object
+      required:
+        - spec
+      properties:
+        spec:
+          type: object
+          required:
+            - template
+          properties:
+            template:
+              type: object
+              required:
+                - spec
+              properties:
+                spec:
+                  type: object
+                  required:
+                    - nodeSelector
+                  properties:
+                    nodeSelector:
+                      type: object
+                      not:
                         const: {}
 ```
 
