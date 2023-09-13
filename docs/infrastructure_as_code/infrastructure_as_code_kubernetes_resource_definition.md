@@ -973,9 +973,9 @@ spec:
 
 ### .spec.maxReplicas、spec.minReplicas
 
-#### ▼ maxReplicas、minReplicas、とは
+#### ▼ maxReplicasとは
 
-自動水平スケーリングのスケールアウト時の最大/最小Pod数を設定する。
+自動水平スケーリングのスケールアウト時の最大Pod数を設定する。
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -984,7 +984,21 @@ metadata:
   name: foo-horizontal-pod-autoscaler
 spec:
   maxReplicas: 5
-  minReplicas: 1
+```
+
+> - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
+
+#### ▼ minReplicasとは
+
+自動水平スケーリングのスケールイン時の最小Pod数を設定する。
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  minReplicas: 3
 ```
 
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
@@ -3388,6 +3402,14 @@ spec:
 DaemonSetでは、特定のNodeにPodをスケジューリングさせられる。
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes
+
+#### ▼ nodeSelectorとaffinittyの両方設定
+
+`.spec.nodeSelector`キーと`.spec.affinity`キーの両方を設定できる。
+
+両方を設定した場合、両方を満たしたNodeにPodをスケジューリングさせられる。
+
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 
 <br>
 
