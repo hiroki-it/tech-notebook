@@ -3809,6 +3809,7 @@
 
 <span class="w">    </span><span class="c1">// Setup trace related</span>
 <span class="w">    </span><span class="nx">tp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">setupTraceProvider</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">    </span><span class="p">}</span>
@@ -3832,7 +3833,7 @@
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 
-
+<span class="o">...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">setupTraceProvider</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">*</span><span class="nx">resource</span><span class="p">.</span><span class="nx">Resource</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -3857,7 +3858,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go#L117-L134">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go#L117-L134</a></li>
+<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ 親スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -3877,6 +3878,8 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
 <span class="p">)</span>
 
+<span class="o">...</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">AwsSdkCall</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">rqmc</span><span class="w"> </span><span class="o">*</span><span class="nx">requestBasedMetricCollector</span><span class="p">,</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">*</span><span class="nx">s3Client</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
@@ -3888,6 +3891,7 @@
 <span class="w">        </span><span class="s">&quot;aws-sdk-call&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">trace</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span><span class="nx">traceCommonLabels</span><span class="o">...</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
+
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// Request based metrics provided by rqmc</span>
@@ -3897,10 +3901,12 @@
 
 <span class="w">    </span><span class="nx">writeResponse</span><span class="p">(</span><span class="nx">span</span><span class="p">,</span><span class="w"> </span><span class="nx">w</span><span class="p">)</span>
 <span class="p">}</span>
+
+<span class="o">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app">https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app</a></li>
+<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -3920,6 +3926,8 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
 <span class="p">)</span>
 
+<span class="o">...</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">AwsSdkCall</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">rqmc</span><span class="w"> </span><span class="o">*</span><span class="nx">requestBasedMetricCollector</span><span class="p">,</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">*</span><span class="nx">s3Client</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
@@ -3941,10 +3949,12 @@
 
 <span class="w">    </span><span class="nx">writeResponse</span><span class="p">(</span><span class="nx">span</span><span class="p">,</span><span class="w"> </span><span class="nx">w</span><span class="p">)</span>
 <span class="p">}</span>
+
+<span class="o">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go#L36-L54">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go#L36-L54</a></li>
+<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -4274,7 +4284,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
       
     
   </small>
