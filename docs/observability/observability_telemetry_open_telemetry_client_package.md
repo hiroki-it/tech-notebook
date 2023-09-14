@@ -783,6 +783,7 @@ func StartClient(ctx context.Context) (func(context.Context) error, error) {
 
 	// Setup trace related
 	tp, err := setupTraceProvider(ctx, res)
+
 	if err != nil {
 		return nil, err
 	}
@@ -806,7 +807,7 @@ func StartClient(ctx context.Context) (func(context.Context) error, error) {
 	}, nil
 }
 
-
+...
 
 func setupTraceProvider(ctx context.Context, res *resource.Resource) (*sdktrace.TracerProvider, error) {
 
@@ -830,7 +831,7 @@ func setupTraceProvider(ctx context.Context, res *resource.Resource) (*sdktrace.
 }
 ```
 
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go#L117-L134
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 
 #### ▼ 親スパンの作成
 
@@ -853,6 +854,8 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+...
+
 func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
 
 	w.Header().Set("Content-Type", "application/json")
@@ -864,6 +867,7 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 		"aws-sdk-call",
 		trace.WithAttributes(traceCommonLabels...),
 	)
+
 	defer span.End()
 
 	// Request based metrics provided by rqmc
@@ -873,9 +877,12 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 	writeResponse(span, w)
 }
+
+...
+
 ```
 
-> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -898,6 +905,8 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+...
+
 func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
 
 	w.Header().Set("Content-Type", "application/json")
@@ -919,9 +928,12 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 	writeResponse(span, w)
 }
+
+...
+
 ```
 
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go#L36-L54
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 
 <br>
 
