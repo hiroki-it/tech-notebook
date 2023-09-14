@@ -752,15 +752,176 @@ func createUser(c *gin.Context) {
 
 #### ▼ パッケージの初期化
 
-> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
+```go
+package collection
+
+import (
+	"context"
+	"os"
+	"time"
+
+	"go.opentelemetry.io/contrib/propagators/aws/xray"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/sdk/metric/aggregation"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+
+	"go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/sdk/resource"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+)
+
+...
+
+// StartClient starts the traces and metrics providers which periodically collects signals and exports them.
+// Trace exporter and Metric exporter are both configured.
+func StartClient(ctx context.Context) (func(context.Context) error, error) {
+
+	...
+
+	// Setup trace related
+	tp, err := setupTraceProvider(ctx, res)
+	if err != nil {
+		return nil, err
+	}
+
+	...
+
+	return func(context.Context) (err error) {
+		ctx, cancel := context.WithTimeout(ctx, time.Second)
+		defer cancel()
+
+		// pushes any last exports to the receiver
+		err = meterProvider.Shutdown(ctx)
+		if err != nil {
+			return err
+		}
+		err = tp.Shutdown(ctx)
+		if err != nil {
+			return err
+		}
+		return nil
+	}, nil
+}
+
+
+
+func setupTraceProvider(ctx context.Context, res *resource.Resource) (*sdktrace.TracerProvider, error) {
+
+	// INSECURE !! NOT TO BE USED FOR ANYTHING IN PRODUCTION
+	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithInsecure())
+
+	if err != nil {
+		return nil, err
+	}
+
+	idg := xray.NewIDGenerator()
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(traceExporter),
+		sdktrace.WithResource(res),
+		sdktrace.WithIDGenerator(idg),
+	)
+
+	return tp, nil
+}
+```
+
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go#L117-L134
 
 #### ▼ 親スパンの作成
+
+親スパンを作成する
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+```go
+package collection
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"net"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"go.opentelemetry.io/otel/trace"
+)
+
+func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
+
+	w.Header().Set("Content-Type", "application/json")
+
+	s3.client.ListBuckets(nil) // nil or else would need real aws credentials
+
+	ctx, span := tracer.Start(
+		r.Context(),
+		"aws-sdk-call",
+		trace.WithAttributes(traceCommonLabels...),
+	)
+	defer span.End()
+
+	// Request based metrics provided by rqmc
+	rqmc.AddApiRequest()
+	rqmc.UpdateTotalBytesSent(ctx)
+	rqmc.UpdateLatencyTime(ctx)
+
+	writeResponse(span, w)
+}
+```
 
 > - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
 
 #### ▼ コンテキスト注入と子スパン作成
 
-> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
+現在の処理にコンテキストを注入し、また子スパンを作成する。
+
+なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+
+```go
+package collection
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"net"
+	"net/http"
+
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
+	"go.opentelemetry.io/otel/trace"
+)
+
+func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
+
+	w.Header().Set("Content-Type", "application/json")
+
+	s3.client.ListBuckets(nil) // nil or else would need real aws credentials
+
+	ctx, span := tracer.Start(
+		r.Context(),
+		"aws-sdk-call",
+		trace.WithAttributes(traceCommonLabels...),
+	)
+
+	defer span.End()
+
+	// Request based metrics provided by rqmc
+	rqmc.AddApiRequest()
+	rqmc.UpdateTotalBytesSent(ctx)
+	rqmc.UpdateLatencyTime(ctx)
+
+	writeResponse(span, w)
+}
+```
+
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go#L36-L54
 
 <br>
 
