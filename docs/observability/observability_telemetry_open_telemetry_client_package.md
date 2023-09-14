@@ -54,7 +54,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 #### ▼ Exporter
 
-スパンの宛先とするスパン収集ツール (例：AWS X-ray、GCP CloudTrace、otelコレクター、など) を決める。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -109,6 +109,55 @@ func init() {
 <br>
 
 ## 02. Goの場合
+
+### otelパッケージ
+
+#### ▼ Exporter
+
+> - https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters
+
+#### ▼ Propagator
+
+> - https://github.com/open-telemetry/opentelemetry-go/tree/main/propagation
+
+<br>
+
+### 拡張otelパッケージ
+
+#### ▼ 拡張otelパッケージ
+
+標準のotelパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
+
+#### ▼ Exporter
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/exporters
+
+#### ▼ Propagator
+
+標準のotelパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for otelコレクター) を、使用できるようになる。
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/propagators
+
+<br>
+
+### 分散トレースSDK
+
+#### ▼ 分散トレースSDK
+
+分散トレース収集ツールが、独自のパッケージを提供している場合がある。
+
+拡張otelパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
+
+#### ▼ AWS Distro for otelコレクター
+
+> - https://github.com/aws/aws-xray-sdk-go
+> - https://github.com/aws-samples/aws-xray-sdk-go-sample
+
+#### ▼ GCP CloudTrace
+
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go
+
+<br>
 
 ### 宛先が標準出力の場合
 
@@ -701,7 +750,17 @@ func createUser(c *gin.Context) {
 
 ### 宛先がX-rayの場合
 
-記入中...
+#### ▼ パッケージの初期化
+
+> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
+
+#### ▼ 親スパンの作成
+
+> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
+
+#### ▼ コンテキスト注入と子スパン作成
+
+> - https://github.com/aws-observability/aws-otel-community/tree/master/sample-apps/go-sample-app
 
 <br>
 

@@ -81,9 +81,16 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 #### ▼ バージョンテスト
 
-指定したKubernetesのバージョンに基づいて、マニフェストのバージョンを検証する。
+指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (`apiVersion`キー) を検証する。
+
+`helm install`コマンドにも、マニフェストの`apiVersion`キーが非推奨かどうかを検証する。
 
 - pluto
+- `helm install`コマンド
+
+> - https://helm.sh/docs/topics/kubernetes_apis/
+
+<br>
 
 #### ▼ 脆弱性テスト
 

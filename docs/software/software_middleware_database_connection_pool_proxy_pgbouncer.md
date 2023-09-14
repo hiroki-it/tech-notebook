@@ -17,7 +17,7 @@ description: PgBouncer＠コネクションプールプロキシの知見を記�
 
 ### アーキテクチャ
 
-PgBouncerは、クライアントからの接続をプールし、DBにプロキシする。
+PgBouncerは、クライアントからの接続をプールし、DBにルーティングする。
 
 ![pgbouncer_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_architecture.png)
 
