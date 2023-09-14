@@ -3795,7 +3795,7 @@
 </code></pre></div>
 <h4 id="_9">▼ アプリケーションによるレスポンス<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>webサーバーとアプリケーションの両方でヘルスチェックを受信する。</p>
-<p>アプリケーション側に<code>200</code>ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の<code>server</code>ブロックで、アプリケーションにルーティングするように<code>location</code>ブロックを定義する。</p>
+<p>アプリケーション側に<code>200</code>ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の<code>server</code>ブロックでwebサーバーにルーティングするように<code>location</code>ブロックを定義する。</p>
 <p>Nginxでアクセスログを出力する必要はないため、<code>location</code>ブロックでは<code>access_log</code>を無効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -3897,7 +3897,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
       
     
   </small>

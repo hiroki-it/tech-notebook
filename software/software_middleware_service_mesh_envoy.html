@@ -3850,7 +3850,7 @@
 <h3 id="_25">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 構成<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>リバースプロキシのミドルウェアとして使用できる。</p>
-<p>この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のアプリケーションにアクセスできるようになる。</p>
+<p>この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。</p>
 <h4 id="pod">▼ Pod内の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <p>Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に<code>istio-proxy</code>コンテナをインジェクションする。</p>
 <div class="highlight"><pre><span></span><code>Envoy (istio-proxy)
@@ -3900,7 +3900,7 @@ Nginx
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
       
     
   </small>

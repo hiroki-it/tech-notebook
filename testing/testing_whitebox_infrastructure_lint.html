@@ -2941,10 +2941,18 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ バージョンテスト<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesのバージョンに基づいて、マニフェストのバージョンを検証する。</p>
+<p>指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (<code>apiVersion</code>キー) を検証する。</p>
+<p><code>helm install</code>コマンドにも、マニフェストの<code>apiVersion</code>キーが非推奨かどうかを検証する。</p>
 <ul>
 <li>pluto</li>
+<li><code>helm install</code>コマンド</li>
 </ul>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/topics/kubernetes_apis/">https://helm.sh/docs/topics/kubernetes_apis/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h4 id="_11">▼ 脆弱性テスト<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。</p>
 <ul>
@@ -3031,7 +3039,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
       
     
   </small>

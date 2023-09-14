@@ -3548,7 +3548,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <h4 id="_47">▼ コンテキスト伝播 (分散コンテキスト伝播)<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュのリバースプロキシは、分散トレースのためのコンテキスト (例：トレースID、マイクロサービスの属性情報、など) を生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐付ける機能を持たない。</p>
 <p>そのためマイクロサービス (クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層) で、受信したインバウンド通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。</p>
-<p>各分散トレースの収集ツール (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからコンテキストを簡単に取り出せるパッケージを使用すると良い。</p>
+<p>分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからコンテキストを簡単に取り出せるパッケージを使用すると良い。</p>
 <p>インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。</p>
 <blockquote>
 <ul>
@@ -3645,7 +3645,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
       
     
   </small>
