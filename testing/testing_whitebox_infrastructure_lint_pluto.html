@@ -1639,6 +1639,19 @@
     -t
   </a>
   
+    <nav class="md-nav" aria-label="-t">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-t_1" class="md-nav__link">
+    ▼ -tとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2644,6 +2657,19 @@
     -t
   </a>
   
+    <nav class="md-nav" aria-label="-t">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-t_1" class="md-nav__link">
+    ▼ -tとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2830,12 +2856,12 @@ foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<sp
 </blockquote>
 <h4 id="additional-versionsyaml">▼ <code>additional-versions.yaml</code>ファイル<a class="headerlink" href="#additional-versionsyaml" title="Permanent link">&para;</a></h4>
 <p>追加で検証するAPIグループのルールを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># version: APIグループ名</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># version: APIグループのバージョン</span>
 <span class="c1"># kind: カスタムリソース名</span>
-<span class="c1"># deprecated-in: APIグループが非推奨になるKubernetesバージョン</span>
-<span class="c1"># removed-in: APIグループが機能廃止になるKubernetesバージョン</span>
-<span class="c1"># replacement-api: APIグループ名を変更する必要がある場合に、変更後のAPIグループ名</span>
-<span class="c1"># replacement-available-in: APIグループ名を変更する必要がある場合に、変更できるようになるKubernetesバージョン</span>
+<span class="c1"># deprecated-in: APIグループの特定のバージョンが非推奨になる場合に、警告が出るようになるKubernetesバージョン</span>
+<span class="c1"># removed-in: APIグループの特定のバージョンが機能廃止になる場合に、使用できなくなるKubernetesバージョン</span>
+<span class="c1"># replacement-api: APIグループの特定のバージョンが機能廃止になる場合に、変更後のAPIグループのバージョン</span>
+<span class="c1"># replacement-available-in: APIグループのバージョンが新規追加される場合に、使用できるようになるKubernetesバージョン</span>
 <span class="c1"># component: APIグループを使用しているツール名</span>
 
 <span class="nt">deprecated-versions</span><span class="p">:</span>
@@ -2872,16 +2898,28 @@ VirtualService<span class="w">                   </span>networking.istio.io/v1be
 </code></pre></div>
 <p><br></p>
 <h3 id="-t">-t<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
-<p>plutoで検証する非推奨項目のKubernetesバージョンを指定する。</p>
+<h4 id="-t_1">▼ -tとは<a class="headerlink" href="#-t_1" title="Permanent link">&para;</a></h4>
+<p>plutoで検証するターゲットコンポーネントのバージョン (<code>versions.yaml</code>ファイルの<code>target-versions</code>キー) を指定する。</p>
 <p>マイナーバージョン (例：<code>1.24.0</code>) まで指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;
 </code></pre></div>
-<p>現在と次のKubernetesバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioのバージョン&gt;
+</code></pre></div>
+<p>現在と次のバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。</p>
 <p>継続的に検出できるように、CI上で自動化すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの現在のバージョン&gt;
 
 $<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの次のバージョン&gt;
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioの現在のバージョン&gt;
+
+$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioの次のバージョン&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571">https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="-o">-o<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h3>
 <p>出力形式を指定する。</p>
@@ -2892,6 +2930,7 @@ $<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </s
 <li><a href="https://pluto.docs.fairwinds.com/advanced/#display-options">https://pluto.docs.fairwinds.com/advanced/#display-options</a></li>
 </ul>
 </blockquote>
+<p>マークダウン形式が一番見やすい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>markdown
 </code></pre></div>
 <blockquote>
@@ -2989,7 +3028,7 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
       
     
   </small>

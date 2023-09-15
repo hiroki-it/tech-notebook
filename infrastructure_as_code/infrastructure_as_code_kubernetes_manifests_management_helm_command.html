@@ -3967,7 +3967,8 @@ Error:<span class="w"> </span><span class="m">1</span><span class="w"> </span>ch
 <span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>...
 </code></pre></div>
 <h4 id="-strict">▼ --strict<a class="headerlink" href="#-strict" title="Permanent link">&para;</a></h4>
-<p><code>values</code>ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。</p>
+<p>warningでも終了コード<code>1</code> (失敗) で終えるようにする。</p>
+<p>また、<code>values</code>ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。</p>
 <p>執筆時点 (2023/05/26) でまだリリースされていない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>lint<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>--strict<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
@@ -4308,7 +4309,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
       
     
   </small>

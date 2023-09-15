@@ -2623,12 +2623,12 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 
 <span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Current K8s Version: </span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
 ./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:pluto&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="s2">) に基づいて、マニフェストの非推奨なapiVersionを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_CURRENT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
 
 <span class="nb">echo</span><span class="w"> </span>Test<span class="w"> </span><span class="s2">&quot;Next K8s Version: </span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>
 ./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;TestName:pluto&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:指定したK8sバージョン (</span><span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="s2">) に基づいて、マニフェストの非推奨なapiVersionを検証する&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml
+<span class="w">  </span>--<span class="w"> </span>/pluto<span class="w"> </span>detect<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>v<span class="si">${</span><span class="nv">K8S_NEXT_VERSION</span><span class="si">}</span><span class="w"> </span>manifest.yaml<span class="w"> </span>-o<span class="w"> </span>wide
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -2984,7 +2984,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
       
     
   </small>
