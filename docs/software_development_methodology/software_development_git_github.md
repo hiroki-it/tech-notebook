@@ -201,7 +201,25 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 <br>
 
-## 03. Git-flow
+## 03. GitHub-API
+
+### 最新リリース
+
+GitHubのAPIを使用することで、常に最新のリリースをインストールできる。
+
+```bash
+$ LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/foo-repository/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)
+
+$ curl -sL -O "${LATEST_DOWNLOAD_URL}"
+
+$ tar zxvf *.tar.gz
+
+$ chmod +x foo-bainary
+```
+
+<br>
+
+## 04. Git-flow
 
 ### Git-flowとは
 
@@ -322,7 +340,7 @@ CIツールやCDツールを使用して、コミット (マージコミット�
 
 <br>
 
-## 04. コンフリクトの解決
+## 05. コンフリクトの解決
 
 ### 解決方法
 

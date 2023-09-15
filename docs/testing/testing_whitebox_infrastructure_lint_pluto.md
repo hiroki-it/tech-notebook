@@ -92,7 +92,7 @@ $ brew install pluto
 
 ```bash
 $ helm template foo-chart -f foo-values.yaml \
-    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+    | pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
 
 NAME     NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
@@ -100,7 +100,7 @@ foo-cj   foo-namespace   CronJob                   batch/v1beta1         batch/v
 
 ```bash
 $ helm template foo-chart -f foo-values.yaml \
-    | pluto detect-helm -t k8s=<Kubernetesのバージョン> - -o wide
+    | pluto detect-helm -o wide -t k8s=<Kubernetesのバージョン> -
 
 NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
@@ -110,7 +110,7 @@ CI上でこれを実行する場合、リポジトリ内のマニフェストを
 
 ```bash
 $ helm template foo-chart . --set secret.GCP_CREDENTIALS=test -f foo-values.yaml \
-    | pluto detect -t k8s=<Kubernetesのバージョン> - -o wide
+    | pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
 
 NAME    NAMESPACE       KIND                      VERSION               REPLACEMENT      DEPRECATED   DEPRECATED IN   REMOVED   REMOVED IN
 foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1         true         v1.21.0         false     v1.25.0
