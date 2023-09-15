@@ -3459,7 +3459,7 @@
 <h4 id="ci_dependency_proxy_direct_group_image_prefix">▼ <code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code><a class="headerlink" href="#ci_dependency_proxy_direct_group_image_prefix" title="Permanent link">&para;</a></h4>
 <p>CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。</p>
 <p>イメージレジストリのパスのプレフィクスとして<code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code>をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。</p>
-<p>Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひ</p>
+<p>Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -3707,7 +3707,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
       
     
   </small>
