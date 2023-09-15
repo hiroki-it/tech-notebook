@@ -119,12 +119,12 @@ K8S_NEXT_VERSION=1.26
 
 echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
 ./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
-  -- /pluto detect -t k8s=v${K8S_CURRENT_VERSION} manifest.yaml \
+  -- /pluto detect -t k8s=v${K8S_CURRENT_VERSION} manifest.yaml -o wide \
   || true
 
 echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
 ./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
-  -- /pluto detect -t k8s=v${K8S_NEXT_VERSION} manifest.yaml
+  -- /pluto detect -t k8s=v${K8S_NEXT_VERSION} manifest.yaml -o wide
 ```
 
 ```bash

@@ -138,12 +138,12 @@ $ pluto list-versions -f additional-versions.yaml
 追加で検証するAPIグループのルールを設定する。
 
 ```yaml
-# version: APIグループ名
+# version: APIグループのバージョン
 # kind: カスタムリソース名
-# deprecated-in: APIグループが非推奨になるKubernetesバージョン
-# removed-in: APIグループが機能廃止になるKubernetesバージョン
-# replacement-api: APIグループ名を変更する必要がある場合に、変更後のAPIグループ名
-# replacement-available-in: APIグループ名を変更する必要がある場合に、変更できるようになるKubernetesバージョン
+# deprecated-in: APIグループの特定のバージョンが非推奨になる場合に、警告が出るようになるKubernetesバージョン
+# removed-in: APIグループの特定のバージョンが機能廃止になる場合に、使用できなくなるKubernetesバージョン
+# replacement-api: APIグループの特定のバージョンが機能廃止になる場合に、変更後のAPIグループのバージョン
+# replacement-available-in: APIグループのバージョンが新規追加される場合に、使用できるようになるKubernetesバージョン
 # component: APIグループを使用しているツール名
 
 deprecated-versions:
@@ -186,7 +186,9 @@ VirtualService                   networking.istio.io/v1beta1            n/a     
 
 ### -t
 
-plutoで検証する非推奨項目のKubernetesバージョンを指定する。
+#### ▼ -tとは
+
+plutoで検証するターゲットコンポーネントのバージョン (`versions.yaml`ファイルの`target-versions`キー) を指定する。
 
 マイナーバージョン (例：`1.24.0`) まで指定する必要がある。
 
@@ -194,7 +196,11 @@ plutoで検証する非推奨項目のKubernetesバージョンを指定する�
 $ pluto detect - -o wide -t k8s=<Kubernetesのバージョン>
 ```
 
-現在と次のKubernetesバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。
+```bash
+$ pluto detect - -o wide -t istio=<Istioのバージョン>
+```
+
+現在と次のバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。
 
 継続的に検出できるように、CI上で自動化すると良い。
 
@@ -203,6 +209,14 @@ $ pluto detect - -o wide -t k8s=<Kubernetesの現在のバージョン>
 
 $ pluto detect - -o wide -t k8s=<Kubernetesの次のバージョン>
 ```
+
+```bash
+$ pluto detect - -o wide -t istio=<Istioの現在のバージョン>
+
+$ pluto detect - -o wide -t istio=<Istioの次のバージョン>
+```
+
+> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571
 
 <br>
 
@@ -215,6 +229,8 @@ $ pluto detect - -o wide
 ```
 
 > - https://pluto.docs.fairwinds.com/advanced/#display-options
+
+マークダウン形式が一番見やすい。
 
 ```bash
 $ pluto detect - -o markdown
