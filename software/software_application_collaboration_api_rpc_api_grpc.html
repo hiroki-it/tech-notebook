@@ -2495,13 +2495,13 @@
 <h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">前提<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>ここでは、マイクロサービスが以下のような順で実行されるとする。</p>
-<div class="highlight"><pre><span></span><code>foo (Go製)
+<div class="highlight"><pre><span></span><code>foo (Node.js製)
 ⬇︎
 ⬇︎
 bar (Python製)
 ⬇︎
 ⬇︎
-baz (Node.js製)
+baz (Go製)
 </code></pre></div>
 <p><br></p>
 <h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
@@ -2512,7 +2512,7 @@ baz (Node.js製)
 <li>gRPCサーバーとしてのprotoファイルから作った<code>.pb</code>ファイル</li>
 <li>gRPCクライアントとしての<code>.proto</code>ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った<code>.pb</code>ファイル</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Go製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2525,11 +2525,11 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   └── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── bar-client.pb.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── bar-client.pb.js</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.js</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ...</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
@@ -2577,7 +2577,7 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Node.js製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Go製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2591,11 +2591,11 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.pb.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.pb.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ...</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
@@ -2615,7 +2615,7 @@ baz (Node.js製)
 <h3 id="protopb_go"><code>.proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Go製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2624,7 +2624,7 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.js</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Python製)</span>
@@ -2642,7 +2642,7 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.py</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Node.js製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Go製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2651,7 +2651,7 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
 <blockquote>
@@ -2684,10 +2684,10 @@ baz (Node.js製)
 <span class="l l-Scalar l-Scalar-Plain">└── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server.pb.py</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar-client.pb.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar-client.pb.js</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── baz/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.js</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.go</span>
 </code></pre></div>
 <blockquote>
 <ul>
