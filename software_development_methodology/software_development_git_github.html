@@ -3010,15 +3010,23 @@
 <p><br></p>
 <h2 id="03-github-api">03. GitHub-API<a class="headerlink" href="#03-github-api" title="Permanent link">&para;</a></h2>
 <h3 id="_22">最新リリース<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>GitHubのAPIを使用することで、常に最新のリリースをインストールできる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://api.github.com/repos/foo-repository/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.assets[].browser_download_url&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>linux_amd64<span class="k">)</span>
+<p>GitHubのAPIを使用することで、リリースページにある最新のバイナリをインストールできる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># リリースページの最新のバイナリへのURLを取得する</span>
+$<span class="w"> </span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://api.github.com/repos/hiroki-hasegawa/foo-repository/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.assets[].browser_download_url&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>linux_amd64<span class="k">)</span>
 
 $<span class="w"> </span>curl<span class="w"> </span>-sL<span class="w"> </span>-O<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="si">}</span><span class="s2">&quot;</span>
 
+<span class="c1"># 解凍する</span>
 $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>*.tar.gz
 
-$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>foo-bainary
+<span class="c1"># 相対パスでバイナリを実行する</span>
+$<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/dzeyelid/articles/66213c631caf09883675">https://zenn.dev/dzeyelid/articles/66213c631caf09883675</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04-git-flow">04. Git-flow<a class="headerlink" href="#04-git-flow" title="Permanent link">&para;</a></h2>
 <h3 id="git-flow">Git-flowとは<a class="headerlink" href="#git-flow" title="Permanent link">&para;</a></h3>
@@ -3245,7 +3253,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-16</span>
       
     
   </small>
