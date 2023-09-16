@@ -160,11 +160,15 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
+│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   │   └── bar/
+│   │   │       └── bar-client.html
+│   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   └── bar/
 │   │   │       └── bar-client.pb.go
 │   │   │
-│   │   └── grpc
+│   │   └── grpc # gRPCクライアントの定義
 │   │       └── bar/
 │   │           └── bar-client.go
 │   ...
@@ -184,6 +188,13 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
+│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   │   ├── bar/
+│   │   │   │   └── bar-server.html
+│   │   │   │
+│   │   │   └── baz/
+│   │   │       └── baz-client.html
+│   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   ├── bar/
 │   │   │   │   └── bar-server.pb.py
@@ -191,7 +202,7 @@ repository/
 │   │   │   └── baz/
 │   │   │       └── baz-client.pb.py
 │   │   │
-│   │   └── grpc
+│   │   └── grpc # gRPCサーバーとクライアントの定義
 │   │       ├── bar/
 │   │       │   └── bar-server.py
 │   │       │
@@ -218,11 +229,16 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
+│   ├── infrastructure
+│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   │   └── baz/
+│   │   │       └── baz-server.html
+│   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   └── baz/
 │   │   │       └── baz-server.pb.js
 │   │   │
-│   │   └── grpc
+│   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
 │   │           └── baz-server.js
 │   │
@@ -231,28 +247,6 @@ repository/
 ├── proto/ # サービス定義ファイル (.protoファイル)
 │   └── baz/
 │       └── baz-server.proto
-│
-...
-```
-
-> - https://lab.mo-t.com/blog/protocol-buffers
-> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
-
-#### ▼ プロトコルバッファーのリポジトリ
-
-プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、を同じリポジトリで管理する。
-
-```yaml
-# プロトコルバッファー
-repository/
-├── doc/ # .protoファイルから自動作成したRPC-API仕様書
-│   ├── foo/
-│   │   └── foo.html
-│   │
-│   ├── bar/
-│   │   └── bar.html
-│   │
-│   ...
 │
 ...
 ```
