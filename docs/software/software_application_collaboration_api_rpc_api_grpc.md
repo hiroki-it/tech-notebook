@@ -125,11 +125,123 @@ service Chat {
 
 ## 02. ディレクトリ構成規約
 
-### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
+### プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合
 
-#### ▼ アプリのリポジトリ
+```yaml
+repository/ # fooサービス (Go製)
+└── src/
+    ├── foo/ # マイクロサービス (Go製)
+    │   └── infrastructure
+    │       ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+    │       │   └── bar-client/
+    │       │       └── bar.pb.go
+    │       │
+    │       │
+    │       │
+    │       └── grpc
+    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
+    │           │   └── client.go
+    │           │
+    │           └── server/ # fooサービスをgRPCサーバーとして使う場合の処理
+    │               └── server.go
+    │
+```
 
-アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。
+```yaml
+repository/ # barサービス (Python製)
+└── src/
+    └── infrastructure
+        ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+        │   ├── bar-server/
+        │   │   └── bar.pb.go
+        │   │
+        │   └── baz-client/
+        │       └── bar.pb.go
+        │
+        └── grpc
+            ├── client/
+            │   └── client.py
+            │
+            └── server/
+                └── server.py
+```
+
+```yaml
+repository/ # bazサービス (Node.js製)
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+│   │   │   └── baz-server/
+│   │   │       └── bar.pb.go
+│   │   │
+│   │   └── grpc
+│   │       ├── client/
+│   │       │   └── client.js
+│   │       │
+│   │       └── server/
+│   │           └── server.js
+│   │
+```
+
+> - https://lab.mo-t.com/blog/protocol-buffers
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
+
+#### ▼ プロトコルバッファーのリポジトリ
+
+プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、を同じリポジトリで管理する。
+
+```yaml
+# プロトコルバッファー
+repository/
+├── proto/ # サービス定義ファイル (.protoファイル)
+│   ├── foo/ # マイクロサービス
+│   │   ├── client/
+│   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
+│   │   │
+│   │   └── server/
+│   │       └── foo.proto # fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー
+│   │
+│   ├── bar/
+│   │   ├── client/
+│   │   │   └── bar.proto
+│   │   │
+│   │   └── server/
+│   │       └── bar.proto
+│   │
+│   ├── baz/
+│   │   ├── client/
+│   │   │   └── baz.proto
+│   │   │
+│   │   └── server/
+│   │       └── baz.proto
+│   │
+│   ...
+│
+├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
+│   ├── foo/ # マイクロサービス
+│   │   └── foo.html
+│   │
+│   ├── bar/
+│   │   └── bar.html
+│   │
+│   ...
+│
+...
+```
+
+> - https://lab.mo-t.com/blog/protocol-buffers
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
+
+<br>
+
+### プロトコルバッファー関連のファイルを一括で管理する場合
+
+#### ▼ gRPCクライアント/サーバーのリポジトリ
+
+gRPCクライアント/サーバーのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
 
 ```yaml
 # アプリケーション
@@ -168,6 +280,9 @@ repository/
     │           │
     ...         ...
 ```
+
+> - https://lab.mo-t.com/blog/protocol-buffers
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 
 #### ▼ プロトコルバッファーのリポジトリ
 
