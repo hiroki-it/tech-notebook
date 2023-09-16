@@ -205,17 +205,22 @@ DBからフロント出力までに至る実装をコミットする場合、以
 
 ### 最新リリース
 
-GitHubのAPIを使用することで、常に最新のリリースをインストールできる。
+GitHubのAPIを使用することで、リリースページにある最新のバイナリをインストールできる。
 
 ```bash
-$ LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/foo-repository/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)
+# リリースページの最新のバイナリへのURLを取得する
+$ LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/hiroki-hasegawa/foo-repository/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)
 
 $ curl -sL -O "${LATEST_DOWNLOAD_URL}"
 
+# 解凍する
 $ tar zxvf *.tar.gz
 
-$ chmod +x foo-bainary
+# 相対パスでバイナリを実行する
+$ ./foo-bainary --version
 ```
+
+> - https://zenn.dev/dzeyelid/articles/66213c631caf09883675
 
 <br>
 
