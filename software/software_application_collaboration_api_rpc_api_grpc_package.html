@@ -1223,6 +1223,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#protoc" class="md-nav__link">
+    ▼ protocコマンド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pb" class="md-nav__link">
     ▼ pb.*ファイル (拡張子は言語ごとに異なる)
   </a>
@@ -2638,6 +2645,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#protoc" class="md-nav__link">
+    ▼ protocコマンド
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#pb" class="md-nav__link">
     ▼ pb.*ファイル (拡張子は言語ごとに異なる)
   </a>
@@ -3077,6 +3091,27 @@
 <p>クライアント側とサーバー側の両方で、サービス定義ファイル (<code>.proto</code>ファイル) を作成する。</p>
 <p>gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。</p>
 <p>サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから<code>pb.*</code>ファイルを自動作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://y-zumi.hatenablog.com/entry/2019/09/07/011741">https://y-zumi.hatenablog.com/entry/2019/09/07/011741</a></li>
+<li><a href="https://engineering.mercari.com/blog/entry/2019-05-31-040000/">https://engineering.mercari.com/blog/entry/2019-05-31-040000/</a></li>
+</ul>
+</blockquote>
+<h4 id="protoc">▼ <code>protoc</code>コマンド<a class="headerlink" href="#protoc" title="Permanent link">&para;</a></h4>
+<p>クライアント側とサーバー側の両方で、自動作成のために、<code>protoc</code>コマンドをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://grpc.io/docs/protoc-installation/">https://grpc.io/docs/protoc-installation/</a></li>
+<li><a href="https://maku.blog/p/37e6uck/">https://maku.blog/p/37e6uck/</a></li>
+<li><a href="https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile">https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile</a></li>
+</ul>
+</blockquote>
+<h4 id="pb">▼ <code>pb.*</code>ファイル (拡張子は言語ごとに異なる)<a class="headerlink" href="#pb" title="Permanent link">&para;</a></h4>
+<p>クライアント側とサーバー側の両方で、<code>.proto</code>ファイルから<code>pb.*</code>ファイルを自動作成する。</p>
+<p><code>protoc</code>コマンドを使用して、<code>pb.*</code>ファイルを作成する。</p>
+<p>このファイルには、サーバー側とクライアント側の両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.pb.goファイルを作成する。</span>
 $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="o">=</span>./foo/foo.proto<span class="w"> </span>--go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:foo
 
@@ -3085,12 +3120,9 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://engineering.mercari.com/blog/entry/2019-05-31-040000/">https://engineering.mercari.com/blog/entry/2019-05-31-040000/</a></li>
+<li><a href="https://y-zumi.hatenablog.com/entry/2019/09/07/011741">https://y-zumi.hatenablog.com/entry/2019/09/07/011741</a></li>
 </ul>
 </blockquote>
-<h4 id="pb">▼ <code>pb.*</code>ファイル (拡張子は言語ごとに異なる)<a class="headerlink" href="#pb" title="Permanent link">&para;</a></h4>
-<p>クライアント側とサーバー側の両方で、<code>.proto</code>ファイルから<code>pb.*</code>ファイルを自動作成する。</p>
-<p>このファイルには、サーバー側とクライアント側の両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
 <h4 id="rpc-api">▼ RPC-API仕様書<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
 <p>gRPCにおけるAPI仕様書である。仕様の実装である<code>.proto</code>ファイルを使用して、RPC-API仕様書を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>--doc_out<span class="o">=</span>./<span class="w"> </span>--doc_opt<span class="o">=</span>html,index.html<span class="w"> </span>./*.proto
@@ -3099,6 +3131,15 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 <h2 id="02-go">02. Goの場合<a class="headerlink" href="#02-go" title="Permanent link">&para;</a></h2>
 <h3 id="_6">サーバー側<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ プロトコルバッファー自動作成ツール<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09">https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09</a></li>
+</ul>
+</blockquote>
 <h4 id="grpc-interceptor">▼ gRPCサーバー (単一のInterceptorの場合)<a class="headerlink" href="#grpc-interceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCサーバーを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -3293,7 +3334,15 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="o">=</span>./foo/foo.proto<span class="w"> </span>--go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:foo
 </code></pre></div>
 <p>補足として、<code>pb.go</code>ファイルには、gRPCサーバーとして登録するための<code>Register&lt;ファイル名&gt;ServiceServer</code>関数が定義される。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 〜 中略 〜</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// コメントアウトに元になった.protoファイルの情報が記載されている</span>
+<span class="c1">//</span>
+<span class="c1">// Code generated by protoc-gen-go-grpc. DO NOT EDIT.</span>
+<span class="c1">// versions:</span>
+<span class="c1">// - protoc-gen-go-grpc v1.2.0</span>
+<span class="c1">// - protoc             v3.21.12</span>
+<span class="c1">// source: foo.proto</span>
+
+<span class="c1">// 〜 中略 〜</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">RegisterFooServiceServer</span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="nx">srv</span><span class="w"> </span><span class="nx">FooServiceServer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">RegisterService</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">_FooService_serviceDesc</span><span class="p">,</span><span class="w"> </span><span class="nx">srv</span><span class="p">)</span>
