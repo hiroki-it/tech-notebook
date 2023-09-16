@@ -324,46 +324,29 @@ repository/
 # プロトコルバッファー
 repository/
 ├── proto/ # サービス定義ファイル (.protoファイル)
-│   ├── foo/
-│   │   ├── client/
-│   │   │   └── foo.proto
-│   │   │
-│   │   └── server/
-│   │       └── foo.proto
-│   │
 │   ├── bar/
-│   │   ├── client/
-│   │   │   └── bar.proto
-│   │   │
-│   │   └── server/
-│   │       └── bar.proto
+│   │   ├── bar-server.proto
+│   │   └── bar-client.proto
 │   │
-│   ├── baz/
-│   │   ├── client/
-│   │   │   └── baz.proto
-│   │   │
-│   │   └── server/
-│   │       └── baz.proto
-│   │
-│   ...
+│   └── baz/
+│       └── baz-server.proto
 │
 ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
-│   ├── foo/
-│   │   └── foo.html
-│   │
 │   ├── bar/
-│   │   └── bar.html
+│   │   ├── bar-server.html
+│   │   └── bar-client.html
 │   │
-│   ...
+│   └── baz/
+│       └── baz-server.html
+│
 │
 └── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
-    ├── foo/
-    │   └── foo.pb.go
-    │
     ├── bar/
-    │   └── bar.pb.py
+    │   ├── bar-server.pb.py
+    │   └── bar-client.pb.go
     │
-    ...
+    └── baz/
+        └── baz-server.pb.js
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
