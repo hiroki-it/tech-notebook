@@ -134,13 +134,13 @@ service Chat {
 ここでは、マイクロサービスが以下のような順で実行されるとする。
 
 ```
-foo (Go製)
+foo (Node.js製)
 ⬇︎
 ⬇︎
 bar (Python製)
 ⬇︎
 ⬇︎
-baz (Node.js製)
+baz (Go製)
 ```
 
 <br>
@@ -157,7 +157,7 @@ baz (Node.js製)
 - gRPCクライアントとしての`.proto`ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った`.pb`ファイル
 
 ```yaml
-# fooサービス (Go製)
+# fooサービス (Node.js製)
 repository/
 ├── src/
 │   ├── interface/
@@ -170,11 +170,11 @@ repository/
 │   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   └── bar/
-│   │   │       └── bar-client.pb.go
+│   │   │       └── bar-client.pb.js
 │   │   │
 │   │   └── grpc # gRPCクライアントの定義
 │   │       └── bar/
-│   │           └── bar-client.go
+│   │           └── bar-client.js
 │   ...
 │
 ├── proto/ # サービス定義ファイル (.protoファイル)
@@ -226,7 +226,7 @@ repository/
 ```
 
 ```yaml
-# bazサービス (Node.js製)
+# bazサービス (Go製)
 repository/
 ├── src/
 │   ├── interface/
@@ -240,11 +240,11 @@ repository/
 │   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   └── baz/
-│   │   │       └── baz-server.pb.js
+│   │   │       └── baz-server.pb.go
 │   │   │
 │   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
-│   │           └── baz-server.js
+│   │           └── baz-server.go
 │   │
 │   ...
 │
@@ -267,7 +267,7 @@ repository/
 各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
 
 ```yaml
-# fooサービス (Go製)
+# fooサービス (Node.js製)
 repository/
 ├── src/
 │   ├── interface/
@@ -276,7 +276,7 @@ repository/
 │   ├── infrastructure
 │   │   └── grpc # gRPCクライアントの定義
 │   │       └── bar/
-│   │           └── bar-client.go
+│   │           └── bar-client.js
 │   │
 ```
 
@@ -298,7 +298,7 @@ repository/
 ```
 
 ```yaml
-# bazサービス (Node.js製)
+# bazサービス (Go製)
 repository/
 ├── src/
 │   ├── interface/
@@ -307,7 +307,7 @@ repository/
 │   ├── infrastructure
 │   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
-│   │           └── baz-server.js
+│   │           └── baz-server.go
 │   │
 ```
 
@@ -341,10 +341,10 @@ repository/
 └── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
     ├── bar/
     │   ├── bar-server.pb.py
-    │   └── bar-client.pb.go
+    │   └── bar-client.pb.js
     │
     └── baz/
-        └── baz-server.pb.js
+        └── baz-server.pb.go
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
