@@ -1278,14 +1278,14 @@
         
           <li class="md-nav__item">
   <a href="#grpc-interceptor" class="md-nav__link">
-    ▼ gRPCサーバー (単一のInterceptorの場合)
+    ▼ gRPCサーバー (Interceptorがない場合)
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#grpc-interceptor_1" class="md-nav__link">
-    ▼ gRPCサーバー (複数のInterceptorの場合)
+    ▼ gRPCサーバー (Interceptorを渡す場合)
   </a>
   
 </li>
@@ -2700,14 +2700,14 @@
         
           <li class="md-nav__item">
   <a href="#grpc-interceptor" class="md-nav__link">
-    ▼ gRPCサーバー (単一のInterceptorの場合)
+    ▼ gRPCサーバー (Interceptorがない場合)
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#grpc-interceptor_1" class="md-nav__link">
-    ▼ gRPCサーバー (複数のInterceptorの場合)
+    ▼ gRPCサーバー (Interceptorを渡す場合)
   </a>
   
 </li>
@@ -3145,7 +3145,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <li><a href="https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09">https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09</a></li>
 </ul>
 </blockquote>
-<h4 id="grpc-interceptor">▼ gRPCサーバー (単一のInterceptorの場合)<a class="headerlink" href="#grpc-interceptor" title="Permanent link">&para;</a></h4>
+<h4 id="grpc-interceptor">▼ gRPCサーバー (Interceptorがない場合)<a class="headerlink" href="#grpc-interceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCサーバーを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3198,8 +3198,9 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <li><a href="https://entgo.io/ja/docs/grpc-server-and-client/">https://entgo.io/ja/docs/grpc-server-and-client/</a></li>
 </ul>
 </blockquote>
-<h4 id="grpc-interceptor_1">▼ gRPCサーバー (複数のInterceptorの場合)<a class="headerlink" href="#grpc-interceptor_1" title="Permanent link">&para;</a></h4>
-<p><code>go-grpc-middleware</code>パッケージを使用すると、複数のInterceptorを設定できる。</p>
+<h4 id="grpc-interceptor_1">▼ gRPCサーバー (Interceptorを渡す場合)<a class="headerlink" href="#grpc-interceptor_1" title="Permanent link">&para;</a></h4>
+<p><code>go-grpc-middleware</code>パッケージを使用すると、アプリケーションの前処理 (例：認証、ロギング、メトリクス、分散トレーシング、など) を実行できる。</p>
+<p>執筆時点 (202309/16) で、パッケージの<code>v1</code>は非推奨で、<code>v2</code>が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -3209,28 +3210,41 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">    </span><span class="s">&quot;net&quot;</span>
 
 <span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
-<span class="w">    </span><span class="nx">grpc_middleware</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware&quot;</span>
-<span class="w">    </span><span class="nx">grpc_recovery</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
+<span class="w">    </span><span class="nx">grpcprom</span><span class="w"> </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus&quot;</span>
+
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-
-
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/recovery&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/grpc-ecosystem/go-grpc-middleware/tags&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
 
+<span class="w">    </span><span class="nx">metrics</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">NewServerMetrics</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">WithServerHandlingTimeHistogram</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">WithHistogramBuckets</span><span class="p">([]</span><span class="kt">float64</span><span class="p">{</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">}),</span>
+<span class="w">        </span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
+
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
+<span class="w">            </span><span class="c1">// 認証処理</span>
+<span class="w">            </span><span class="nx">selector</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">auth</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">authFn</span><span class="p">),</span><span class="w"> </span><span class="nx">selector</span><span class="p">.</span><span class="nx">MatchFunc</span><span class="p">(</span><span class="nx">allButHealthZ</span><span class="p">)),</span>
+<span class="w">            </span><span class="c1">// メトリクス処理</span>
+<span class="w">            </span><span class="nx">metrics</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">WithExemplarFromContext</span><span class="p">(</span><span class="nx">exemplarFromContext</span><span class="p">)),</span>
+<span class="w">            </span><span class="c1">// ロギング処理</span>
+<span class="w">            </span><span class="nx">logging</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">interceptorLogger</span><span class="p">(</span><span class="nx">rpcLogger</span><span class="p">),</span><span class="w"> </span><span class="nx">logging</span><span class="p">.</span><span class="nx">WithFieldsFromContext</span><span class="p">(</span><span class="nx">logTraceID</span><span class="p">)),</span>
+<span class="w">            </span><span class="c1">// 分散トレーシング処理</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
-
-<span class="w">            </span><span class="o">...</span>
-
+<span class="w">            </span><span class="c1">// 再試行処理</span>
 <span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">recovery</span><span class="p">.</span><span class="nx">WithRecoveryHandler</span><span class="p">(</span><span class="nx">grpcPanicRecoveryHandler</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCのインターセプター</span>
@@ -3250,7 +3264,9 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <ul>
 <li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware#middleware">https://github.com/grpc-ecosystem/go-grpc-middleware#middleware</a></li>
 <li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152">https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152</a></li>
-<li><a href="https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order">https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF%E3%81%AE%E5%B0%8E%E5%85%A5">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF%E3%81%AE%E5%B0%8E%E5%85%A5</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF</a></li>
+<li><a href="https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme">https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme</a></li>
 </ul>
 </blockquote>
 <p><br></p>
