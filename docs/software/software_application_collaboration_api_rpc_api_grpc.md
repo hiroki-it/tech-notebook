@@ -127,43 +127,50 @@ service Chat {
 
 ### プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合
 
+#### ▼ gRPCクライアント/サーバーのリポジトリ
+
+各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
+
 ```yaml
 repository/ # fooサービス (Go製)
-└── src/
-    ├── foo/ # マイクロサービス (Go製)
-    │   └── infrastructure
-    │       ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-    │       │   └── bar-client/
-    │       │       └── bar.pb.go
-    │       │
-    │       │
-    │       │
-    │       └── grpc
-    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
-    │           │   └── client.go
-    │           │
-    │           └── server/ # fooサービスをgRPCサーバーとして使う場合の処理
-    │               └── server.go
-    │
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+│   │   │   └── bar-client/
+│   │   │       └── bar.pb.go
+│   │   │
+│   │   └── grpc
+│   │       └── client/
+│   │           └── client.js
+│   │
+...
 ```
 
 ```yaml
 repository/ # barサービス (Python製)
-└── src/
-    └── infrastructure
-        ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-        │   ├── bar-server/
-        │   │   └── bar.pb.go
-        │   │
-        │   └── baz-client/
-        │       └── bar.pb.go
-        │
-        └── grpc
-            ├── client/
-            │   └── client.py
-            │
-            └── server/
-                └── server.py
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
+│   │   │   ├── bar-server/
+│   │   │   │   └── bar.pb.go
+│   │   │   │
+│   │   │   └── baz-client/
+│   │   │       └── baz.pb.go
+│   │   │
+│   │   └── grpc
+│   │       ├── client/
+│   │       │   └── client.js
+│   │       │
+│   │       └── server/
+│   │           └── server.js
+│   │
+...
 ```
 
 ```yaml
@@ -178,12 +185,10 @@ repository/ # bazサービス (Node.js製)
 │   │   │       └── bar.pb.go
 │   │   │
 │   │   └── grpc
-│   │       ├── client/
-│   │       │   └── client.js
-│   │       │
 │   │       └── server/
 │   │           └── server.js
 │   │
+...
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
@@ -241,44 +246,51 @@ repository/
 
 #### ▼ gRPCクライアント/サーバーのリポジトリ
 
-gRPCクライアント/サーバーのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
+各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
 
 ```yaml
-# アプリケーション
-repository/
-└── src/
-    ├── foo/ # マイクロサービス (Go製)
-    │   └── infrastructure
-    │       └── grpc
-    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
-    │           │   └── client.go
-    │           │
-    │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
-    │           │   └── server.go
-    │           │
-    │           ...
-    │
-    ├── bar/ # マイクロサービス (Python製)
-    │   └── infrastructure
-    │       └── grpc
-    │           ├── client/
-    │           │   └── client.py
-    │           │
-    │           ├── server/
-    │           │   └── server.py
-    │           │
-    │           ...
-    │
-    ├── baz/ # マイクロサービス (Node.js製)
-    │   └── infrastructure
-    │       └── grpc
-    │           ├── client/
-    │           │   └── client.js
-    │           │
-    │           ├── server/
-    │           │   └── server.js
-    │           │
-    ...         ...
+repository/ # fooサービス (Go製)
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   └── grpc
+│   │       └── client/
+│   │           └── client.js
+│   │
+...
+```
+
+```yaml
+repository/ # barサービス (Python製)
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   └── grpc
+│   │       ├── client/
+│   │       │   └── client.js
+│   │       │
+│   │       └── server/
+│   │           └── server.js
+│   │
+...
+```
+
+```yaml
+repository/ # bazサービス (Node.js製)
+  ├── src/
+  │   ├── interface/
+  │   ├── usecase/
+  │   ├── domain/
+  │   ├── infrastructure
+  │   │   └── grpc
+  │   │       └── server/
+  │   │           └── server.js
+  │   │
+...
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
