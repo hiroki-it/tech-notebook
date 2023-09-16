@@ -1202,16 +1202,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
+  <a href="#grpc_1" class="md-nav__link">
+    プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label="アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)">
+    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ プロトコルバッファーのリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ アプリのリポジトリ
+    プロトコルバッファー関連のファイルを一括で管理する場合
+  </a>
+  
+    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルを一括で管理する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_2" class="md-nav__link">
+    ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
 </li>
@@ -2282,16 +2302,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
+  <a href="#grpc_1" class="md-nav__link">
+    プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label="アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)">
+    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ プロトコルバッファーのリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ アプリのリポジトリ
+    プロトコルバッファー関連のファイルを一括で管理する場合
+  </a>
+  
+    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルを一括で管理する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grpc_2" class="md-nav__link">
+    ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
 </li>
@@ -2435,9 +2475,115 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_4">アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ アプリのリポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。</p>
+<h3 id="grpc_1">プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># fooサービス (Go製)</span>
+<span class="l l-Scalar l-Scalar-Plain">└── src/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># マイクロサービス (Go製)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成される.pb.*ファイル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │   └── bar-client/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │       └── bar.pb.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── grpc</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCクライアントとして使う場合の処理</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           └── server/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCサーバーとして使う場合の処理</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│               └── server.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># barサービス (Python製)</span>
+<span class="l l-Scalar l-Scalar-Plain">└── src/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── infrastructure</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成される.pb.*ファイル</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   │   └── bar.pb.go</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── baz-client/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│       └── bar.pb.go</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── grpc</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── client/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│   └── client.py</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── server/</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">└── server.py</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># bazサービス (Node.js製)</span>
+<span class="l l-Scalar l-Scalar-Plain">├── src/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── domain/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成される.pb.*ファイル</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz-server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── bar.pb.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       ├── client/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── client.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── server.js</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、を同じリポジトリで管理する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span><span class="w"> </span><span class="c1"># マイクロサービス</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── foo.proto</span><span class="w"> </span><span class="c1"># fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── foo.proto</span><span class="w"> </span><span class="c1"># fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── bar.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── bar.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成されるRPC-API仕様書</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span><span class="w"> </span><span class="c1"># マイクロサービス</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── foo.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="nn">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">プロトコルバッファー関連のファイルを一括で管理する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
+<p>gRPCクライアント/サーバーのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># アプリケーション</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── src/</span>
@@ -2474,6 +2620,12 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...         ...</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
+</ul>
+</blockquote>
 <h4 id="_6">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
