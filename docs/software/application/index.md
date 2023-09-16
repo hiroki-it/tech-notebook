@@ -40,7 +40,7 @@
 
 * #### <u>RPC-API</u>
   > * ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc.html)
-  > * ##### [︎gRPCパッケージ](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc_package.html)
+  > * ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_rpc_api_grpc_client_package.html)
 
 * #### <u>GraphQL-API</u>
   > * ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_graphql_api_graphql.html)

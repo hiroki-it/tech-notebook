@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パッケージ＠gRPC
-description: パッケージ＠gRPCの知見を記録しています。
+title: 【IT技術の知見】クライアントパッケージ＠gRPC
+description: クライアントパッケージ＠gRPCの知見を記録しています。
 ---
 
-# パッケージ＠gRPC
+# クライアントパッケージ＠gRPC
 
 ## はじめに
 
