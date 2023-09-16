@@ -3215,7 +3215,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 </ul>
 </blockquote>
 <h4 id="grpc_4">▼ gRPCサーバー (インターセプターを使う場合)<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
-<p>gRPCサーバーは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
+<p>gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
 <p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
 <p>なお、<code>go-grpc-middleware</code>パッケージは、様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。</p>
 <p>執筆時点 (202309/16) で、パッケージの<code>v1</code>は非推奨で、<code>v2</code>が推奨である。</p>
@@ -3244,9 +3244,24 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="nx">metrics</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">NewServerMetrics</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">WithServerHandlingTimeHistogram</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">grpcprom</span><span class="p">.</span><span class="nx">WithHistogramBuckets</span><span class="p">([]</span><span class="kt">float64</span><span class="p">{</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.01</span><span class="p">,</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">}),</span>
+<span class="w">    </span><span class="nx">metrics</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">NewServerMetrics</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">WithServerHandlingTimeHistogram</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">prometheus</span><span class="p">.</span><span class="nx">WithHistogramBuckets</span><span class="p">([]</span><span class="kt">float64</span><span class="p">{</span>
+<span class="w">                </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">                </span><span class="mf">0.01</span><span class="p">,</span>
+<span class="w">                </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">                </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">                </span><span class="mf">0.6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">9</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">90</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">120</span><span class="p">,</span>
+<span class="w">            </span><span class="p">}),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -3262,7 +3277,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">            </span><span class="nx">logging</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">interceptorLogger</span><span class="p">(</span><span class="nx">rpcLogger</span><span class="p">),</span><span class="w"> </span><span class="nx">logging</span><span class="p">.</span><span class="nx">WithFieldsFromContext</span><span class="p">(</span><span class="nx">logTraceID</span><span class="p">)),</span>
 <span class="w">            </span><span class="c1">// 分散トレーシング処理</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
-<span class="w">            </span><span class="c1">// 再試行処理</span>
+<span class="w">            </span><span class="c1">// パニックのgRPCエラー変換処理</span>
 <span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">recovery</span><span class="p">.</span><span class="nx">WithRecoveryHandler</span><span class="p">(</span><span class="nx">grpcPanicRecoveryHandler</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
 <span class="w">        </span><span class="c1">// ストリーミングRPCの場合のインターセプター処理</span>
@@ -3276,6 +3291,14 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
+
+<span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーで通信を受信する。</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to serve: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -3334,13 +3357,13 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 </ul>
 </blockquote>
 <h4 id="grpc_7">▼ gRPCクライアント (インターセプターを使う場合)<a class="headerlink" href="#grpc_7" title="Permanent link">&para;</a></h4>
+<p>gRPCクライアントでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
 <p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;golang.org/x/net/context&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
 <span class="p">)</span>
 

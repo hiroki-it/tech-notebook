@@ -3242,12 +3242,7 @@
 <span class="w">              </span><span class="s">&quot;FunctionName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:foo-function:1&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="s">&quot;Retry&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">            </span><span class="p p-Indicator">[</span>
-<span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;ErrorEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リトライの対象とするエラー&gt;&quot;</span><span class="p p-Indicator">],</span>
-<span class="w">                </span><span class="s">&quot;MaxAttempts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="p p-Indicator">},</span>
-<span class="w">            </span><span class="p p-Indicator">],</span>
+<span class="w">            </span><span class="p p-Indicator">[{</span><span class="s">&quot;ErrorEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;再試行の対象とするエラー&gt;&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;MaxAttempts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">}],</span>
 <span class="w">          </span><span class="s">&quot;End&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="s">&quot;Comment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">state</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">call</span><span class="nv"> </span><span class="s">Lambda&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="p p-Indicator">},</span>
@@ -3314,7 +3309,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-16</span>
       
     
   </small>
