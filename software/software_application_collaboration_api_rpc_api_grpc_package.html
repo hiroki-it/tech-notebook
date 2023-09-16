@@ -3099,7 +3099,12 @@
 </blockquote>
 <h4 id="protoc">▼ <code>protoc</code>コマンド<a class="headerlink" href="#protoc" title="Permanent link">&para;</a></h4>
 <p>クライアント側とサーバー側の両方で、自動作成のために、<code>protoc</code>コマンドをインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc
+<p>マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの<code>protoc</code>コマンドを使用できるように、パッケージ管理ツールを使用した方がよい。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>protoc
+
+$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>protoc<span class="w">  </span>https://github.com/paxosglobal/asdf-protoc.git
+
+$<span class="w"> </span>asdf<span class="w"> </span>install<span class="w"> </span>protoc
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3220,14 +3225,15 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainUnaryInterceptor</span><span class="p">(</span>
-<span class="w">            </span><span class="c1">// Order matters e.g. tracing interceptor have to create span first for the later exemplars to work.</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(),</span>
 
 <span class="w">            </span><span class="o">...</span>
 
 <span class="w">            </span><span class="nx">recovery</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">recovery</span><span class="p">.</span><span class="nx">WithRecoveryHandler</span><span class="p">(</span><span class="nx">grpcPanicRecoveryHandler</span><span class="p">)),</span>
 <span class="w">        </span><span class="p">),</span>
+<span class="w">        </span><span class="c1">// ストリーミングRPCのインターセプター</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">ChainStreamInterceptor</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(),</span>
 

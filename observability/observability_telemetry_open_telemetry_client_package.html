@@ -4249,6 +4249,7 @@
 </blockquote>
 <h4 id="_19">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nx">s</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
+<span class="w">  </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">  </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">NewUnaryServerInterceptor</span><span class="p">())</span>
 <span class="p">)</span>
 
@@ -4284,7 +4285,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-16</span>
       
     
   </small>

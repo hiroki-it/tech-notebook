@@ -1206,6 +1206,26 @@
     アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
   </a>
   
+    <nav class="md-nav" aria-label="アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アプリのリポジトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ プロトコルバッファーのリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2266,6 +2286,26 @@
     アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
   </a>
   
+    <nav class="md-nav" aria-label="アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ アプリのリポジトリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ プロトコルバッファーのリポジトリ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2396,7 +2436,7 @@
 <p><br></p>
 <h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>アプリとプロトコルバッファーを異なるリポジトリで管理する。</p>
+<h4 id="_5">▼ アプリのリポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># アプリケーション</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -2414,15 +2454,27 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># マイクロサービス (Python製)</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│     └── grpc</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── grpc</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.py</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.py</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── baz/</span><span class="w"> </span><span class="c1"># マイクロサービス (Node.js製)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── grpc</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.js</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.js</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...         ...</span>
 </code></pre></div>
+<h4 id="_6">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -2440,6 +2492,14 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── bar.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ...</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成されるRPC-API仕様書</span>
@@ -2462,8 +2522,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
 <li><a href="https://lab.mo-t.com/blog/protocol-buffers">https://lab.mo-t.com/blog/protocol-buffers</a></li>
+<li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
 </ul>
 </blockquote>
 <p><br></p>

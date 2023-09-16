@@ -3192,13 +3192,15 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// ミドルウェアに関するメソッドに、マイクロサービスの属性情報と、これを分散トレースに設定する処理を渡す。</span>
-<span class="w">    </span><span class="nx">streamServerInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">grpctracer</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">    </span><span class="nx">unaryServerInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">grpctracer</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="c1">// ストリーミングRPCのインターセプター</span>
+<span class="w">    </span><span class="nx">streamServerInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamServerInterceptor</span><span class="p">(</span><span class="nx">grpctracer</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;foo-service&quot;</span><span class="p">))</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamInterceptor</span><span class="p">(</span><span class="nx">streamServerInterceptor</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span><span class="nx">unaryServerInterceptor</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">StreamInterceptor</span><span class="p">(</span><span class="nx">streamServerInterceptor</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span><span class="w"> </span><span class="c1">// pb.goファイルに関する実装は省略している。</span>
@@ -3241,7 +3243,9 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// ミドルウェアに関するメソッドに、マイクロサービス名の設定処理を渡す。</span>
+<span class="w">    </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">    </span><span class="nx">unaryClientInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;bar-service&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="c1">// 単項RPCのインターセプター</span>
 <span class="w">    </span><span class="nx">streamClientInterceptor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">(</span><span class="nx">grpctrace</span><span class="p">.</span><span class="nx">WithServiceName</span><span class="p">(</span><span class="s">&quot;bar-service&quot;</span><span class="p">))</span>
 
 <span class="w">    </span><span class="c1">// gRPCコネクションを作成する。</span>
@@ -3277,7 +3281,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-16</span>
       
     
   </small>
