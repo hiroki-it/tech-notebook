@@ -52,6 +52,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 ```protobuf
 service Request {
+
   rpc Request (Request) returns (Response) {
   }
 }
@@ -67,6 +68,7 @@ service Request {
 
 ```protobuf
 service Notification {
+
   rpc Notification (NotificationRequest) returns (stream NotificationResponse) {
   }
 }
@@ -82,6 +84,7 @@ service Notification {
 
 ```protobuf
 service Upload {
+
   rpc Upload (stream UploadRequest) returns (UploadResponse) {
   }
 }
@@ -99,6 +102,7 @@ service Upload {
 
 ```protobuf
 service Chat {
+
   rpc Chat (stream ChatRequest) returns (stream ChatResponse) {
 
     // クライアントからのリクエストを受信する。
@@ -129,7 +133,7 @@ service Chat {
 
 ここでは、マイクロサービスが以下のような順で実行されるとする。
 
-```yaml
+```
 foo (Go製)
 ⬇︎
 ⬇︎
@@ -270,7 +274,7 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc
+│   │   └── grpc # gRPCクライアントの定義
 │   │       └── bar/
 │   │           └── bar-client.go
 │   │
@@ -284,7 +288,7 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc
+│   │   └── grpc # gRPCサーバーとクライアントの定義
 │   │       ├── bar/
 │   │       │   └── bar-server.py
 │   │       │
@@ -301,7 +305,7 @@ repository/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc
+│   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
 │   │           └── baz-server.js
 │   │
