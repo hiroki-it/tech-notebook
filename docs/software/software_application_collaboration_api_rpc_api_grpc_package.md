@@ -174,7 +174,7 @@ func main() {
 
 #### ▼ gRPCサーバー (インターセプターを使う場合)
 
-gRPCサーバーは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
+gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
 
 非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
 
@@ -208,9 +208,24 @@ func main() {
 
 	...
 
-	metrics := grpcprom.NewServerMetrics(
-		grpcprom.WithServerHandlingTimeHistogram(
-			grpcprom.WithHistogramBuckets([]float64{0.001, 0.01, 0.1, 0.3, 0.6, 1, 3, 6, 9, 20, 30, 60, 90, 120}),
+	metrics := prometheus.NewServerMetrics(
+		prometheus.WithServerHandlingTimeHistogram(
+			prometheus.WithHistogramBuckets([]float64{
+				0.001,
+				0.01,
+				0.1,
+				0.3,
+				0.6,
+				1,
+				3,
+				6,
+				9,
+				20,
+				30,
+				60,
+				90,
+				120,
+			}),
 		),
 	)
 
@@ -226,7 +241,7 @@ func main() {
 			logging.UnaryServerInterceptor(interceptorLogger(rpcLogger), logging.WithFieldsFromContext(logTraceID)),
 			// 分散トレーシング処理
 			otelgrpc.UnaryServerInterceptor(),
-			// 再試行処理
+			// パニックのgRPCエラー変換処理
 			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
 		),
         // ストリーミングRPCの場合のインターセプター処理
@@ -240,6 +255,14 @@ func main() {
 	)
 
 	...
+
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+
+	// gRPCサーバーとして、goサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
 }
 ```
 
@@ -302,6 +325,8 @@ func main() {
 
 #### ▼ gRPCクライアント (インターセプターを使う場合)
 
+gRPCクライアントでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
+
 非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
 
 ```go
@@ -310,7 +335,6 @@ package main
 import (
 	"log"
 
-	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
 

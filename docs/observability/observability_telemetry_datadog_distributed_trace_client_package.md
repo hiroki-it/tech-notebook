@@ -392,16 +392,18 @@ func main() {
 
 	defer tracer.Stop()
 
-	// ミドルウェアに関するメソッドに、マイクロサービスの属性情報と、これを分散トレースに設定する処理を渡す。
-	// 単項RPCの場合のインターセプター処理
-	unaryServerInterceptor := grpc.UnaryServerInterceptor(grpctracer.WithServiceName("foo-service"))
-	// ストリーミングRPCの場合のインターセプター処理
-	streamServerInterceptor := grpc.StreamServerInterceptor(grpctracer.WithServiceName("foo-service"))
-
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-		grpc.UnaryInterceptor(unaryServerInterceptor),
-		grpc.StreamInterceptor(streamServerInterceptor),
+		// 単項RPCの場合のインターセプター処理
+		grpc.UnaryInterceptor(grpc.UnaryServerInterceptor(
+            // マイクロサービスの属性情報
+            grpctracer.WithServiceName("foo-service")),
+        ),
+		// ストリーミングRPCの場合のインターセプター処理
+		grpc.StreamInterceptor(grpc.StreamServerInterceptor(
+			// マイクロサービスの属性情報
+            grpctracer.WithServiceName("foo-service")),
+        ),
 	)
 
 	... // pb.goファイルに関する実装は省略している。
