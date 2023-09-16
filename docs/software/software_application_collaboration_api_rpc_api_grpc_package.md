@@ -77,7 +77,7 @@ $ protoc --doc_out=./ --doc_opt=html,index.html ./*.proto
 
 <br>
 
-## 01. Goの場合
+## 02. Goの場合
 
 ### サーバー側
 
@@ -307,7 +307,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 <br>
 
-## 02. Pythonの場合
+## 03. Pythonの場合
 
 ### サーバー側
 
@@ -343,7 +343,7 @@ $ pip3 install grpcio
 
 <br>
 
-## 03. Rubyの場合
+## 04. Rubyの場合
 
 ### サーバー側
 
@@ -379,7 +379,7 @@ $ gem install grpc
 
 <br>
 
-## 04. Javascriptの場合
+## 05. Javascriptの場合
 
 ### サーバー側
 

@@ -127,7 +127,38 @@ service Chat {
 
 ### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
 
-各マイクロサービスの`.proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
+アプリとプロトコルバッファーを異なるリポジトリで管理する。
+
+アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。
+
+```yaml
+# アプリケーション
+repository/
+└── src/
+    ├── foo/ # マイクロサービス (Go製)
+    │   └── infrastructure
+    │       └── grpc
+    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
+    │           │   └── client.go
+    │           │
+    │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
+    │           │   └── server.go
+    │           │
+    │           ...
+    │
+    ├── bar/ # マイクロサービス (Python製)
+    │   └── infrastructure
+    │     └── grpc
+    │           ├── client/
+    │           │   └── client.py
+    │           │
+    │           ├── server/
+    │           │   └── server.py
+    │           │
+    ...         ...
+```
+
+プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
 
 ```yaml
 # プロトコルバッファー
@@ -165,33 +196,6 @@ repository/
     │   └── bar.pb.py
     │
     ...
-```
-
-```yaml
-# アプリケーション
-repository/
-└── src/
-    ├── foo/ # マイクロサービス (Go製)
-    │   └── infrastructure
-    │       └── grpc
-    │           ├── client/ # fooサービスをgRPCクライアントとして使う場合の処理
-    │           │   └── client.go
-    │           │
-    │           ├── server/ # fooサービスをgRPCサーバーとして使う場合の処理
-    │           │   └── server.go
-    │           │
-    │           ...
-    │
-    ├── bar/ # マイクロサービス (Python製)
-    │   └── infrastructure
-    │     └── grpc
-    │           ├── client/
-    │           │   └── client.py
-    │           │
-    │           ├── server/
-    │           │   └── server.py
-    │           │
-    ...         ...
 ```
 
 > - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
