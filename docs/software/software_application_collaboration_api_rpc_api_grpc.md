@@ -125,7 +125,23 @@ service Chat {
 
 ## 02. ディレクトリ構成規約
 
-### プロトコルバッファー関連のファイルをgRPCサーバー側に置く場合
+### 前提
+
+ここでは、マイクロサービスが以下のような順で実行されるとする。
+
+```yaml
+foo (Go製)
+⬇︎
+⬇︎
+bar (Python製)
+⬇︎
+⬇︎
+baz (Node.js製)
+```
+
+<br>
+
+### プロトコルバッファー関連のファイルをマイクロサービス側に置く場合
 
 #### ▼ gRPCクライアント/サーバーのリポジトリ
 
@@ -138,14 +154,19 @@ repository/ # fooサービス (Go製)
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-│   │   │   └── bar-client/
-│   │   │       └── bar.pb.go
+│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   │   └── bar/
+│   │   │       └── bar-client.pb.go
 │   │   │
 │   │   └── grpc
-│   │       └── client/
-│   │           └── client.js
-│   │
+│   │       └── bar/
+│   │           └── bar-client.go
+│   ...
+│
+├── proto/ # サービス定義ファイル (.protoファイル)
+│   └── bar/
+│       └── bar-client.proto
+│
 ...
 ```
 
@@ -156,20 +177,29 @@ repository/ # barサービス (Python製)
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-│   │   │   ├── bar-server/
-│   │   │   │   └── bar.pb.go
+│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   │   ├── bar/
+│   │   │   │   └── bar-server.pb.py
 │   │   │   │
-│   │   │   └── baz-client/
-│   │   │       └── baz.pb.go
+│   │   │   └── baz/
+│   │   │       └── baz-client.pb.py
 │   │   │
 │   │   └── grpc
-│   │       ├── client/
-│   │       │   └── client.js
+│   │       ├── bar/
+│   │       │   └── bar-server.py
 │   │       │
-│   │       └── server/
-│   │           └── server.js
+│   │       └── baz/
+│   │           └── baz-client.py
 │   │
+│   ...
+│
+├── proto/ # サービス定義ファイル (.protoファイル)
+│   ├── bar/
+│   │   └── bar-server.proto
+│   │
+│   └── baz/
+│       └── baz-client.proto
+│
 ...
 ```
 
@@ -180,14 +210,20 @@ repository/ # bazサービス (Node.js製)
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   ├── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-│   │   │   └── baz-server/
-│   │   │       └── bar.pb.go
+│   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+│   │   │   └── baz/
+│   │   │       └── baz-server.pb.js
 │   │   │
 │   │   └── grpc
-│   │       └── server/
-│   │           └── server.js
+│   │       └── baz/
+│   │           └── baz-server.js
 │   │
+│   ...
+│
+├── proto/ # サービス定義ファイル (.protoファイル)
+│   └── baz/
+│       └── baz-server.proto
+│
 ...
 ```
 
@@ -199,34 +235,9 @@ repository/ # bazサービス (Node.js製)
 プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、を同じリポジトリで管理する。
 
 ```yaml
-# プロトコルバッファー
 repository/
-├── proto/ # サービス定義ファイル (.protoファイル)
-│   ├── foo/ # マイクロサービス
-│   │   ├── client/
-│   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
-│   │   │
-│   │   └── server/
-│   │       └── foo.proto # fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー
-│   │
-│   ├── bar/
-│   │   ├── client/
-│   │   │   └── bar.proto
-│   │   │
-│   │   └── server/
-│   │       └── bar.proto
-│   │
-│   ├── baz/
-│   │   ├── client/
-│   │   │   └── baz.proto
-│   │   │
-│   │   └── server/
-│   │       └── baz.proto
-│   │
-│   ...
-│
-├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
-│   ├── foo/ # マイクロサービス
+├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   ├── foo/
 │   │   └── foo.html
 │   │
 │   ├── bar/
@@ -256,8 +267,8 @@ repository/ # fooサービス (Go製)
 │   ├── domain/
 │   ├── infrastructure
 │   │   └── grpc
-│   │       └── client/
-│   │           └── client.js
+│   │       └── bar/
+│   │           └── bar-client.go
 │   │
 ...
 ```
@@ -270,26 +281,26 @@ repository/ # barサービス (Python製)
 │   ├── domain/
 │   ├── infrastructure
 │   │   └── grpc
-│   │       ├── client/
-│   │       │   └── client.js
+│   │       ├── bar/
+│   │       │   └── bar-server.py
 │   │       │
-│   │       └── server/
-│   │           └── server.js
+│   │       └── baz/
+│   │           └── baz-client.py
 │   │
 ...
 ```
 
 ```yaml
 repository/ # bazサービス (Node.js製)
-  ├── src/
-  │   ├── interface/
-  │   ├── usecase/
-  │   ├── domain/
-  │   ├── infrastructure
-  │   │   └── grpc
-  │   │       └── server/
-  │   │           └── server.js
-  │   │
+├── src/
+│   ├── interface/
+│   ├── usecase/
+│   ├── domain/
+│   ├── infrastructure
+│   │   └── grpc
+│   │       └── baz/
+│   │           └── baz-server.js
+│   │
 ...
 ```
 
@@ -304,12 +315,12 @@ repository/ # bazサービス (Node.js製)
 # プロトコルバッファー
 repository/
 ├── proto/ # サービス定義ファイル (.protoファイル)
-│   ├── foo/ # マイクロサービス
+│   ├── foo/
 │   │   ├── client/
-│   │   │   └── foo.proto # fooサービスをgRPCクライアントとして使う場合のプロトコルバッファー
+│   │   │   └── foo.proto
 │   │   │
 │   │   └── server/
-│   │       └── foo.proto # fooサービスをgRPCサーバーとして使う場合のプロトコルバッファー
+│   │       └── foo.proto
 │   │
 │   ├── bar/
 │   │   ├── client/
@@ -327,8 +338,8 @@ repository/
 │   │
 │   ...
 │
-├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
-│   ├── foo/ # マイクロサービス
+├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   ├── foo/
 │   │   └── foo.html
 │   │
 │   ├── bar/
@@ -336,8 +347,8 @@ repository/
 │   │
 │   ...
 │
-└── pb_go/ # .protoファイルから自動作成される.pb.*ファイル
-    ├── foo/ # マイクロサービス
+└── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+    ├── foo/
     │   └── foo.pb.go
     │
     ├── bar/
