@@ -141,14 +141,20 @@ baz (Node.js製)
 
 <br>
 
-### プロトコルバッファー関連のファイルをマイクロサービス側に置く場合
+### `.proto`ファイルをgRPCサーバー側に置く場合
 
 #### ▼ gRPCクライアント/サーバーのリポジトリ
 
-各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
+各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に`.proto`ファイルを置く。
+
+`.pb`ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。
+
+- gRPCサーバーとしてのprotoファイルから作った`.pb`ファイル
+- gRPCクライアントとしての`.proto`ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った`.pb`ファイル
 
 ```yaml
-repository/ # fooサービス (Go製)
+# fooサービス (Go製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -171,7 +177,8 @@ repository/ # fooサービス (Go製)
 ```
 
 ```yaml
-repository/ # barサービス (Python製)
+# barサービス (Python製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -204,7 +211,8 @@ repository/ # barサービス (Python製)
 ```
 
 ```yaml
-repository/ # bazサービス (Node.js製)
+# bazサービス (Node.js製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -235,6 +243,7 @@ repository/ # bazサービス (Node.js製)
 プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、を同じリポジトリで管理する。
 
 ```yaml
+# プロトコルバッファー
 repository/
 ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
 │   ├── foo/
@@ -253,14 +262,15 @@ repository/
 
 <br>
 
-### プロトコルバッファー関連のファイルを一括で管理する場合
+### `.proto`ファイルと`pb_go`ファイルを専用リポジトリに置く場合
 
 #### ▼ gRPCクライアント/サーバーのリポジトリ
 
 各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。
 
 ```yaml
-repository/ # fooサービス (Go製)
+# fooサービス (Go製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -270,11 +280,11 @@ repository/ # fooサービス (Go製)
 │   │       └── bar/
 │   │           └── bar-client.go
 │   │
-...
 ```
 
 ```yaml
-repository/ # barサービス (Python製)
+# barサービス (Python製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -287,11 +297,11 @@ repository/ # barサービス (Python製)
 │   │       └── baz/
 │   │           └── baz-client.py
 │   │
-...
 ```
 
 ```yaml
-repository/ # bazサービス (Node.js製)
+# bazサービス (Node.js製)
+repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
@@ -301,7 +311,6 @@ repository/ # bazサービス (Node.js製)
 │   │       └── baz/
 │   │           └── baz-server.js
 │   │
-...
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
