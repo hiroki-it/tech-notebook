@@ -166,6 +166,8 @@ func main() {
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
+
+	...
 }
 ```
 
@@ -257,12 +259,14 @@ func main() {
 	...
 
 	// goサーバーで待ち受けるポート番号を設定する。
-	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
+
+	...
 }
 ```
 
@@ -270,6 +274,50 @@ func main() {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
 > - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
+
+#### ▼ ヘルスチェックサーバー
+
+`grpc_health_v1`パッケージの`RegisterHealthServer`関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
+
+```go
+package main
+
+import (
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	grpc_health_v1 "google.golang.org/grpc/health/grpc_health_v1"
+)
+
+func main() {
+
+	...
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		...
+	)
+
+	...
+
+	healthCheckServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthCheckServer)
+
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+
+	// gRPCサーバーとして、goサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
+
+	...
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/healthcheck
 
 <br>
 
