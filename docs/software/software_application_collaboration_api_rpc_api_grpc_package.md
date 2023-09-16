@@ -114,7 +114,7 @@ $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
 > - https://qiita.com/totoaoao/items/6bf533b6d2164b74ac09
 
-#### ▼ gRPCサーバー (単一のInterceptorの場合)
+#### ▼ gRPCサーバー (Interceptorがない場合)
 
 gRPCサーバーを実装する。
 
@@ -168,9 +168,11 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
-#### ▼ gRPCサーバー (複数のInterceptorの場合)
+#### ▼ gRPCサーバー (Interceptorを渡す場合)
 
-`go-grpc-middleware`パッケージを使用すると、複数のInterceptorを設定できる。
+`go-grpc-middleware`パッケージを使用すると、アプリケーションの前処理 (例：認証、ロギング、メトリクス、分散トレーシング、など) を実行できる。
+
+執筆時点 (202309/16) で、パッケージの`v1`は非推奨で、`v2`が推奨である。
 
 ```go
 package main
@@ -182,28 +184,41 @@ import (
 	"net"
 
 	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
-	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
-	grpc_recovery "github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+	grpcprom "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
+
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/auth"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
+	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/selector"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-
-
 	"google.golang.org/grpc"
-	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
-	"github.com/grpc-ecosystem/go-grpc-middleware/tags"
 )
 
 func main() {
 
 	...
 
+	metrics := grpcprom.NewServerMetrics(
+		grpcprom.WithServerHandlingTimeHistogram(
+			grpcprom.WithHistogramBuckets([]float64{0.001, 0.01, 0.1, 0.3, 0.6, 1, 3, 6, 9, 20, 30, 60, 90, 120}),
+		),
+	)
+
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
         // 単項RPCのインターセプター
 		grpc.ChainUnaryInterceptor(
+			// 認証処理
+			selector.UnaryServerInterceptor(auth.UnaryServerInterceptor(authFn), selector.MatchFunc(allButHealthZ)),
+			// メトリクス処理
+			metrics.UnaryServerInterceptor(grpcprom.WithExemplarFromContext(exemplarFromContext)),
+			// ロギング処理
+			logging.UnaryServerInterceptor(interceptorLogger(rpcLogger), logging.WithFieldsFromContext(logTraceID)),
+			// 分散トレーシング処理
 			otelgrpc.UnaryServerInterceptor(),
-
-			...
-
+			// 再試行処理
 			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
 		),
         // ストリーミングRPCのインターセプター
@@ -222,7 +237,9 @@ func main() {
 
 > - https://github.com/grpc-ecosystem/go-grpc-middleware#middleware
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
-> - https://christina04.hatenablog.com/entry/grcp-interceptor-chain-order
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF%E3%81%AE%E5%B0%8E%E5%85%A5
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
 
 <br>
 
