@@ -110,7 +110,7 @@ func init() {
 
 ## 02. Goの場合
 
-### otelパッケージ
+### otelクライアントパッケージ
 
 #### ▼ Exporter
 
@@ -122,11 +122,11 @@ func init() {
 
 <br>
 
-### 拡張otelパッケージ
+### 拡張otelクライアントパッケージ
 
-#### ▼ 拡張otelパッケージ
+#### ▼ 拡張otelクライアントパッケージ
 
-標準のotelパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
+標準のotelクライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
 
 #### ▼ Exporter
 
@@ -134,7 +134,7 @@ func init() {
 
 #### ▼ Propagator
 
-標準のotelパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for otelコレクター) を、使用できるようになる。
+標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for otelコレクター) を、使用できるようになる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/propagators
 
@@ -146,7 +146,7 @@ func init() {
 
 分散トレース収集ツールが、独自のパッケージを提供している場合がある。
 
-拡張otelパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
+拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
 
 #### ▼ AWS Distro for otelコレクター
 
@@ -1255,7 +1255,7 @@ c := pb.NewGreeterClient(conn)
 
 ```go
 s := grpc.NewServer(
-  // 単項RPCのインターセプター
+  // 単項RPCの場合のインターセプター処理
   grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor())
 )
 

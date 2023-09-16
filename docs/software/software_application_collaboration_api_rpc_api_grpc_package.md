@@ -19,6 +19,8 @@ description: パッケージ＠gRPCの知見を記録しています。
 
 #### ▼ プロトコルバッファー自動作成ツール
 
+記入中...
+
 #### ▼ gRPCサーバー
 
 リモートプロシージャーコールを受け付けるサーバーを定義する。
@@ -31,9 +33,11 @@ description: パッケージ＠gRPCの知見を記録しています。
 
 ### クライアント側
 
-#### ▼ gRPCライブラリのインストール
+#### ▼ gRPCクライアントパッケージ
 
-#### ▼ gRPCサーバーのコール
+記入中...
+
+#### ▼ gRPCクライアント
 
 GoのgRPCサーバーをリモートプロシージャーコールする。
 
@@ -168,9 +172,13 @@ func main() {
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 > - https://entgo.io/ja/docs/grpc-server-and-client/
 
-#### ▼ gRPCサーバー (Interceptorを渡す場合)
+#### ▼ gRPCサーバー (インターセプターを使う場合)
 
-`go-grpc-middleware`パッケージを使用すると、アプリケーションの前処理 (例：認証、ロギング、メトリクス、分散トレーシング、など) を実行できる。
+gRPCサーバーは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。
+
+非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
+
+なお、`go-grpc-middleware`パッケージは、様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
 
 執筆時点 (202309/16) で、パッケージの`v1`は非推奨で、`v2`が推奨である。
 
@@ -184,7 +192,7 @@ import (
 	"net"
 
 	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
-	grpcprom "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
+	prometheus "github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors"
@@ -208,7 +216,7 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
-        // 単項RPCのインターセプター
+        // 単項RPCの場合のインターセプター処理
 		grpc.ChainUnaryInterceptor(
 			// 認証処理
 			selector.UnaryServerInterceptor(auth.UnaryServerInterceptor(authFn), selector.MatchFunc(allButHealthZ)),
@@ -221,7 +229,7 @@ func main() {
 			// 再試行処理
 			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
 		),
-        // ストリーミングRPCのインターセプター
+        // ストリーミングRPCの場合のインターセプター処理
 		grpc.ChainStreamInterceptor(
 			otelgrpc.StreamServerInterceptor(),
 
@@ -235,19 +243,20 @@ func main() {
 }
 ```
 
-> - https://github.com/grpc-ecosystem/go-grpc-middleware#middleware
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF%E3%81%AE%E5%B0%8E%E5%85%A5
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
 > - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
 
 <br>
 
 ### クライアント側
 
-#### ▼ gRPCライブラリのインストール
+#### ▼ gRPCクライアントパッケージ
 
-#### ▼ gRPCサーバーのコール
+記入中...
+
+#### ▼ gRPCクライアント
 
 gRPCクライアントを実装する。
 
@@ -290,6 +299,41 @@ func main() {
 ```
 
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+
+#### ▼ gRPCクライアント (インターセプターを使う場合)
+
+非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
+
+```go
+package main
+
+import (
+	"log"
+
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
+)
+
+func main() {
+
+	...
+
+	conn, err := grpc.Dial(
+		address,
+		// ストリーミングRPCの場合のインターセプター処理
+		grpc.WithChainStreamInterceptor(
+			myStreamClientInteceptor1,
+			myStreamClientInteceptor2,
+		),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithBlock(),
+	)
+
+	...
+}
+```
+
+> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor
 
 <br>
 
@@ -378,11 +422,13 @@ $ pip3 install grpcio-tools
 
 #### ▼ gRPCサーバー
 
+記入中...
+
 <br>
 
 ### クライアント側
 
-#### ▼ gRPCクライアントのインストール
+#### ▼ gRPCクライアントパッケージ
 
 pipリポジトリから、gRPCクライアントをインストールする。
 
@@ -396,7 +442,11 @@ $ pip3 install grpcio
 
 #### ▼ `.proto`ファイル
 
+記入中...
+
 #### ▼ `pb.py`ファイル
+
+記入中...
 
 <br>
 
@@ -414,11 +464,13 @@ $ gem install grpc-tools
 
 #### ▼ gRPCサーバー
 
+記入中...
+
 <br>
 
 ### クライアント側
 
-#### ▼ gRPCクライアントのインストール
+#### ▼ gRPCクライアントパッケージ
 
 gemリポジトリから、gRPCクライアントをインストールする。
 
@@ -432,7 +484,11 @@ $ gem install grpc
 
 #### ▼ `.proto`ファイル
 
+記入中...
+
 #### ▼ `pb.rb`ファイル
+
+記入中...
 
 <br>
 
@@ -450,11 +506,13 @@ $ npm install grpc-tools
 
 #### ▼ gRPCサーバー
 
+記入中...
+
 <br>
 
 ### クライアント側
 
-#### ▼ gRPCライブラリのインストール
+#### ▼ gRPCクライアントパッケージ
 
 npmリポジトリから、gRPCクライアントをインストールする。
 
@@ -468,6 +526,10 @@ $ npm install grpc
 
 #### ▼ `.proto`ファイル
 
+記入中...
+
 #### ▼ `pb.js`ファイル
+
+記入中...
 
 <br>
