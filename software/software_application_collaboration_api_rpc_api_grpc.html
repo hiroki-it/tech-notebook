@@ -2498,10 +2498,10 @@
 <div class="highlight"><pre><span></span><code>foo (Node.js製)
 ⬇︎
 ⬇︎
-bar (Python製)
+bar (Go製)
 ⬇︎
 ⬇︎
-baz (Go製)
+baz (Python製)
 </code></pre></div>
 <p><br></p>
 <h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
@@ -2538,7 +2538,7 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Python製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Go製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2554,17 +2554,17 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   ├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │   │   └── bar-server.pb.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │   │   └── bar-server.pb.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-client.pb.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-client.pb.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーとクライアントの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       ├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ...</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
@@ -2577,7 +2577,7 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Go製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Python製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2591,11 +2591,11 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   ├── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.pb.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-server.pb.py</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.py</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ...</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
@@ -2627,7 +2627,7 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.js</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Python製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Go製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2636,13 +2636,13 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーとクライアントの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       ├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.py</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Go製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Python製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
@@ -2651,7 +2651,7 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│   ├── infrastructure</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.go</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.py</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
 </code></pre></div>
 <blockquote>
@@ -2683,11 +2683,12 @@ baz (Go製)
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">└── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server.pb.py</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server.pb.go</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar-client.pb.js</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── baz/</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.go</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── baz-client.pb.go</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.py</span>
 </code></pre></div>
 <blockquote>
 <ul>
