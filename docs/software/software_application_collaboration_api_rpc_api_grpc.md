@@ -127,7 +127,7 @@ service Chat {
 
 ### アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)
 
-アプリとプロトコルバッファーを異なるリポジトリで管理する。
+#### ▼ アプリのリポジトリ
 
 アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。
 
@@ -148,15 +148,28 @@ repository/
     │
     ├── bar/ # マイクロサービス (Python製)
     │   └── infrastructure
-    │     └── grpc
+    │       └── grpc
     │           ├── client/
     │           │   └── client.py
     │           │
     │           ├── server/
     │           │   └── server.py
     │           │
+    │           ...
+    │
+    ├── baz/ # マイクロサービス (Node.js製)
+    │   └── infrastructure
+    │       └── grpc
+    │           ├── client/
+    │           │   └── client.js
+    │           │
+    │           ├── server/
+    │           │   └── server.js
+    │           │
     ...         ...
 ```
+
+#### ▼ プロトコルバッファーのリポジトリ
 
 プロトコルバッファーのリポジトリでは、各マイクロサービスの`.proto`ファイル、RPC-API仕様書、`.pb.*`ファイル、を同じリポジトリで管理する。
 
@@ -177,6 +190,14 @@ repository/
 │   │   │
 │   │   └── server/
 │   │       └── bar.proto
+│   │
+│   ├── baz/
+│   │   ├── client/
+│   │   │   └── baz.proto
+│   │   │
+│   │   └── server/
+│   │       └── baz.proto
+│   │
 │   ...
 │
 ├── doc/ # .protoファイルから自動作成されるRPC-API仕様書
@@ -198,7 +219,7 @@ repository/
     ...
 ```
 
-> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 > - https://lab.mo-t.com/blog/protocol-buffers
+> - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 
 <br>

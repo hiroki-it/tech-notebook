@@ -1255,6 +1255,7 @@ c := pb.NewGreeterClient(conn)
 
 ```go
 s := grpc.NewServer(
+  // 単項RPCのインターセプター
   grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor())
 )
 

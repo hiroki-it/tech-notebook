@@ -58,8 +58,14 @@ gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明�
 
 クライアント側とサーバー側の両方で、自動作成のために、`protoc`コマンドをインストールする。
 
+マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの`protoc`コマンドを使用できるように、パッケージ管理ツールを使用した方がよい。
+
 ```bash
-$ protoc
+$ asdf plugin list all | grep protoc
+
+$ asdf plugin add protoc  https://github.com/paxosglobal/asdf-protoc.git
+
+$ asdf install protoc
 ```
 
 > - https://grpc.io/docs/protoc-installation/
@@ -192,14 +198,15 @@ func main() {
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
+        // 単項RPCのインターセプター
 		grpc.ChainUnaryInterceptor(
-			// Order matters e.g. tracing interceptor have to create span first for the later exemplars to work.
 			otelgrpc.UnaryServerInterceptor(),
 
 			...
 
 			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandler(grpcPanicRecoveryHandler)),
 		),
+        // ストリーミングRPCのインターセプター
 		grpc.ChainStreamInterceptor(
 			otelgrpc.StreamServerInterceptor(),
 

@@ -62,7 +62,11 @@ DDDが適する機能的アプリケーションのみでなく、あらゆる�
 
 <br>
 
-## 02. <span style="color: lightgreen; ">インターフェース層</span> (プレゼンテーション層)
+## 02. <span style="color: lightgreen; ">インターフェース層</span> (プレゼンテーション層、デリバリー層)
+
+### インターフェース層とは
+
+<br>
 
 ### コントローラー
 
@@ -2554,8 +2558,6 @@ class DogToyRepository
 {
      /**
      * ドメインモデルを全て取得します。
-
-
      */
     public function findAll(): array
     {
