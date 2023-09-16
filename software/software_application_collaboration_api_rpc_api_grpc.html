@@ -2396,7 +2396,34 @@
 <p><br></p>
 <h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">アプリとプロトコルバッファーを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
+<p>アプリとプロトコルバッファーを異なるリポジトリで管理する。</p>
+<p>アプリのリポジトリでは、インフラ層にgRPCクライアントとgRPCサーバーを置く。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># アプリケーション</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── src/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># マイクロサービス (Go製)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── grpc</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCクライアントとして使う場合の処理</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCサーバーとして使う場合の処理</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.go</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># マイクロサービス (Python製)</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│     └── grpc</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.py</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.py</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...         ...</span>
+</code></pre></div>
+<p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
@@ -2432,31 +2459,6 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar.pb.py</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># アプリケーション</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── src/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># マイクロサービス (Go製)</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│       └── grpc</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCクライアントとして使う場合の処理</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.go</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span><span class="w"> </span><span class="c1"># fooサービスをgRPCサーバーとして使う場合の処理</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.go</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ...</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># マイクロサービス (Python製)</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── infrastructure</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│     └── grpc</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── client/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── client.py</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           ├── server/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │   └── server.py</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│           │</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...         ...</span>
 </code></pre></div>
 <blockquote>
 <ul>
