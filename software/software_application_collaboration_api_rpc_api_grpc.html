@@ -2680,46 +2680,29 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── foo.proto</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │       └── foo.proto</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── bar.proto</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │       └── bar.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── bar-server.proto</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar-client.proto</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── baz/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── client/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz.proto</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── server/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │       └── baz.proto</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-server.proto</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── foo.html</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── bar/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   ├── bar-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── bar-client.html</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── baz/</span>
+<span class="l l-Scalar l-Scalar-Plain">│       └── baz-server.html</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">└── pb_go/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成した.pb.*ファイル</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── foo.pb.go</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar.pb.py</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── bar-server.pb.py</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── bar-client.pb.go</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── baz/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── baz-server.pb.js</span>
 </code></pre></div>
 <blockquote>
 <ul>
