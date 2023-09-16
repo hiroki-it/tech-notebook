@@ -1209,11 +1209,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    プロトコルバッファー関連のファイルをマイクロサービス側に置く場合
+  <a href="#protogrpc" class="md-nav__link">
+    .protoファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルをマイクロサービス側に置く場合">
+    <nav class="md-nav" aria-label=".protoファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1224,7 +1224,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ プロトコルバッファーのリポジトリ
   </a>
   
@@ -1236,11 +1236,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    プロトコルバッファー関連のファイルを一括で管理する場合
+  <a href="#protopb_go" class="md-nav__link">
+    .protoファイルとpb_goファイルを専用リポジトリに置く場合
   </a>
   
-    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルを一括で管理する場合">
+    <nav class="md-nav" aria-label=".protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1251,7 +1251,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ プロトコルバッファーのリポジトリ
   </a>
   
@@ -2323,11 +2323,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    プロトコルバッファー関連のファイルをマイクロサービス側に置く場合
+  <a href="#protogrpc" class="md-nav__link">
+    .protoファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルをマイクロサービス側に置く場合">
+    <nav class="md-nav" aria-label=".protoファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2338,7 +2338,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ プロトコルバッファーのリポジトリ
   </a>
   
@@ -2350,11 +2350,11 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    プロトコルバッファー関連のファイルを一括で管理する場合
+  <a href="#protopb_go" class="md-nav__link">
+    .protoファイルとpb_goファイルを専用リポジトリに置く場合
   </a>
   
-    <nav class="md-nav" aria-label="プロトコルバッファー関連のファイルを一括で管理する場合">
+    <nav class="md-nav" aria-label=".protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2365,7 +2365,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ プロトコルバッファーのリポジトリ
   </a>
   
@@ -2514,10 +2514,16 @@
 <span class="l l-Scalar l-Scalar-Plain">baz (Node.js製)</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_5">プロトコルバッファー関連のファイルをマイクロサービス側に置く場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_1">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># fooサービス (Go製)</span>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>.proto</code>ファイルを置く。</p>
+<p><code>.pb</code>ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。</p>
+<ul>
+<li>gRPCサーバーとしてのprotoファイルから作った<code>.pb</code>ファイル</li>
+<li>gRPCクライアントとしての<code>.proto</code>ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った<code>.pb</code>ファイル</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Go製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2538,7 +2544,8 @@
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># barサービス (Python製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Python製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2569,7 +2576,8 @@
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># bazサービス (Node.js製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Node.js製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2597,9 +2605,10 @@
 <li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、を同じリポジトリで管理する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── doc/</span><span class="w"> </span><span class="c1"># .protoファイルから自動作成したRPC-API仕様書</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── foo/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   └── foo.html</span>
@@ -2618,10 +2627,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_7">プロトコルバッファー関連のファイルを一括で管理する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="protopb_go"><code>.proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># fooサービス (Go製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Go製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2631,9 +2641,9 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── bar/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │           └── bar-client.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># barサービス (Python製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># barサービス (Python製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2646,9 +2656,9 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-client.py</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="nn">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># bazサービス (Node.js製)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># bazサービス (Node.js製)</span>
+<span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── interface/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── usecase/</span>
@@ -2658,7 +2668,6 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │       └── baz/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │           └── baz-server.js</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="nn">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2666,7 +2675,7 @@
 <li><a href="https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35">https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
