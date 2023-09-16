@@ -137,10 +137,10 @@ service Chat {
 foo (Node.js製)
 ⬇︎
 ⬇︎
-bar (Python製)
+bar (Go製)
 ⬇︎
 ⬇︎
-baz (Go製)
+baz (Python製)
 ```
 
 <br>
@@ -185,7 +185,7 @@ repository/
 ```
 
 ```yaml
-# barサービス (Python製)
+# barサービス (Go製)
 repository/
 ├── src/
 │   ├── interface/
@@ -201,17 +201,17 @@ repository/
 │   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   ├── bar/
-│   │   │   │   └── bar-server.pb.py
+│   │   │   │   └── bar-server.pb.go
 │   │   │   │
 │   │   │   └── baz/
-│   │   │       └── baz-client.pb.py
+│   │   │       └── baz-client.pb.go
 │   │   │
 │   │   └── grpc # gRPCサーバーとクライアントの定義
 │   │       ├── bar/
-│   │       │   └── bar-server.py
+│   │       │   └── bar-server.go
 │   │       │
 │   │       └── baz/
-│   │           └── baz-client.py
+│   │           └── baz-client.go
 │   │
 │   ...
 │
@@ -226,7 +226,7 @@ repository/
 ```
 
 ```yaml
-# bazサービス (Go製)
+# bazサービス (Python製)
 repository/
 ├── src/
 │   ├── interface/
@@ -240,11 +240,11 @@ repository/
 │   │   │
 │   │   ├── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
 │   │   │   └── baz/
-│   │   │       └── baz-server.pb.go
+│   │   │       └── baz-server.pb.py
 │   │   │
 │   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
-│   │           └── baz-server.go
+│   │           └── baz-server.py
 │   │
 │   ...
 │
@@ -281,7 +281,7 @@ repository/
 ```
 
 ```yaml
-# barサービス (Python製)
+# barサービス (Go製)
 repository/
 ├── src/
 │   ├── interface/
@@ -290,15 +290,15 @@ repository/
 │   ├── infrastructure
 │   │   └── grpc # gRPCサーバーとクライアントの定義
 │   │       ├── bar/
-│   │       │   └── bar-server.py
+│   │       │   └── bar-server.go
 │   │       │
 │   │       └── baz/
-│   │           └── baz-client.py
+│   │           └── baz-client.go
 │   │
 ```
 
 ```yaml
-# bazサービス (Go製)
+# bazサービス (Python製)
 repository/
 ├── src/
 │   ├── interface/
@@ -307,7 +307,7 @@ repository/
 │   ├── infrastructure
 │   │   └── grpc # gRPCサーバーの定義
 │   │       └── baz/
-│   │           └── baz-server.go
+│   │           └── baz-server.py
 │   │
 ```
 
@@ -340,11 +340,12 @@ repository/
 │
 └── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
     ├── bar/
-    │   ├── bar-server.pb.py
+    │   ├── bar-server.pb.go
     │   └── bar-client.pb.js
     │
     └── baz/
-        └── baz-server.pb.go
+        ├── baz-client.pb.go
+        └── baz-server.pb.py
 ```
 
 > - https://lab.mo-t.com/blog/protocol-buffers
