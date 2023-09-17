@@ -1092,16 +1092,15 @@ func main() {
 
 ## 02-03. gRPCを使う場合
 
-### Goの場合
+### 宛先がotelコレクターの場合
+
+#### ▼ パッケージの初期化
+
+gRPCを使わない場合と実装方法は同じである。
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go#L25-L37
 
 #### ▼ 親スパンの作成 (gRPCクライアント)
-
-```go
-mux := http.NewServeMux()
-mux.Handle("/", http.HandlerFunc(h.alive))
-mux.Handle("/hello", http.HandlerFunc(h.hello))
-http.ListenAndServe(":8000", telemetry.NewHTTPMiddleware()(mux))
-```
 
 ```go
 package main
@@ -1112,28 +1111,36 @@ import (
 	"net/http"
 
 	"google.golang.org/grpc"
-
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+
+	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
 )
 
 func main() {
 
 	conn, err := grpc.Dial(
-		    addr,
-		    grpc.WithInsecure(),
-            grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		    ":7777",
+			grpc.WithTransportCredentials(insecure.NewCredentials()),
+			grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+			grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
 		)
 
-	if err != nil {
-        log.Fatal(err)
-	}
+	defer conn.Close()
 
-	client := pb.NewGreeterClient(conn)
+	// gRPCクライアントを作成する
+	client := pb.NewFooServiceClient(conn)
+
+	// goサーバーをリモートプロシージャーコールする。
+	response, err := client.SayHello(
+        context.Background(),
+        &pb.Message{Body: "Hello From Client!"},
+    )
 
 	...
 }
 ```
 
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
 #### ▼ コンテキスト注入と子スパン作成 (gRPCサーバー)
@@ -1144,53 +1151,35 @@ package main
 import (
 	"fmt"
 	"log"
-	"net"
+	"net/http"
 
 	"google.golang.org/grpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 
 	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
 )
 
 func main() {
 
-	grpcServer := grpc.NewServer(
-		// 単項RPCの場合のインターセプター処理
-		grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor()),
+	conn, err := grpc.Dial(
+		":7777",
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
 	)
 
-	pb.RegisterGreeterServer(grpcServer, &server{})
+	defer conn.Close()
 
-	// goサーバーで待ち受けるポート番号を設定する。
-	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	// gRPCクライアントを作成する
+	client := pb.NewFooServiceClient(conn)
 
-	// gRPCサーバーで通信を受信する。
-	if err := grpcServer.Serve(listenPort); err != nil {
-		log.Fatalf("failed to serve: %s", err)
-	}
+	// goサーバーをリモートプロシージャーコールする。
+	response, err := client.SayHello(
+		context.Background(),
+		&pb.Message{Body: "Hello From Client!"},
+	)
 
-	if err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
-}
-```
-
-```go
-package main
-
-import (
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
-)
-
-func NewUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
-
-  opts = append(
-    opts,
-    // ヘルスチェックのスパンは作成しないようにフィルタリングする
-    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
-  )
-
-  return otelgrpc.UnaryServerInterceptor(opts...)
+	...
 }
 ```
 

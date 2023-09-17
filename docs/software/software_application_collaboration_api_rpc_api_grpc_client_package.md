@@ -355,11 +355,14 @@ func main() {
 
 	defer conn.Close()
 
-	// gRPCサーバーとして、goサーバーを作成する。
-	c := pb.NewFooServiceClient(conn)
+	// gRPCクライアントを作成する
+	client := pb.NewFooServiceClient(conn)
 
 	// goサーバーをリモートプロシージャーコールする。
-	response, err := c.SayHello(context.Background(), &pb.Message{Body: "Hello From Client!"})
+	response, err := client.SayHello(
+        context.Background(),
+        &pb.Message{Body: "Hello From Client!"},
+    )
 
 	if err != nil {
 		log.Fatalf("Error when calling SayHello: %s", err)
