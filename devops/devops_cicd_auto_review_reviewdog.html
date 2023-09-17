@@ -1910,6 +1910,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#yamllint" class="md-nav__link">
+    ▼ yamllint
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2168,6 +2175,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#yamllint" class="md-nav__link">
+    ▼ yamllint
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2233,7 +2247,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-reviewdog">01. reviewdogとは<a class="headerlink" href="#01-reviewdog" title="Permanent link">&para;</a></h2>
-<p>任意のツールの標準エラー出力の結果を、宛先にPOSTで送信する。</p>
+<p>任意のツールの標準出力/標準エラー出力の結果を、レビューコメントとしてGitHubにPOSTで送信する。</p>
 <p><br></p>
 <h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="-conf">-conf<a class="headerlink" href="#-conf" title="Permanent link">&para;</a></h3>
@@ -2257,6 +2271,11 @@
 <li><a href="https://r-tech14.com/reviewdog/#toc2">https://r-tech14.com/reviewdog/#toc2</a></li>
 </ul>
 </blockquote>
+<h4 id="yamllint">▼ yamllint<a class="headerlink" href="#yamllint" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yamllint<span class="w"> </span>foo.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span><span class="p">|</span><span class="w"> </span>reviewdog<span class="w"> </span>-reporter<span class="o">=</span>github-pr-review<span class="w"> </span>-f<span class="o">=</span>yamllint
+</code></pre></div>
+<p><br></p>
 <h3 id="-list">--list<a class="headerlink" href="#-list" title="Permanent link">&para;</a></h3>
 <h4 id="-list_1">▼ --listとは<a class="headerlink" href="#-list_1" title="Permanent link">&para;</a></h4>
 <p>宛先に送信するビルトインのエラーフォーマットを表示する。</p>
@@ -2326,7 +2345,7 @@ yamllint<span class="w">        </span><span class="o">(</span>yamllint<span cla
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>
