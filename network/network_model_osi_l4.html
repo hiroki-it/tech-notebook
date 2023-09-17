@@ -1478,7 +1478,7 @@
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    ▼ クライアントへのレスポンス時 (図の 『←』 )
+    ▼ クライアントへのレスポンス時 (図の 『⬅︎』 )
   </a>
   
 </li>
@@ -1564,6 +1564,19 @@
   <a href="#03-l4" class="md-nav__link">
     03. L4ロードバランサー
   </a>
+  
+    <nav class="md-nav" aria-label="03. L4ロードバランサー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    L4ロードバランサーとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2354,7 +2367,7 @@
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    ▼ クライアントへのレスポンス時 (図の 『←』 )
+    ▼ クライアントへのレスポンス時 (図の 『⬅︎』 )
   </a>
   
 </li>
@@ -2441,6 +2454,19 @@
     03. L4ロードバランサー
   </a>
   
+    <nav class="md-nav" aria-label="03. L4ロードバランサー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    L4ロードバランサーとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2485,7 +2511,7 @@
 <p>また反対に、レスポンス時にアプリケーション層のプロセスから出力されたパケットに情報を付加し、ネットワーク層に渡す。</p>
 <p>この時、各アプリケーションはプロセスとして稼働していることに留意する。</p>
 <p><img alt="トランスポート層からアプリケーション層へのパケットの移動" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランスポート層からアプリケーション層へのパケットの移動.PNG" /></p>
-<h4 id="_5">▼ クライアントからのリクエスト時 (図の 『<code>➡︎</code>』 )<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ クライアントからのリクエスト時 (図の 『➡︎』 )<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -2500,7 +2526,7 @@
 <p>インバウンド通信を待ち受けるポート番号を<code>8080</code>と設定した場合、リクエスト時に以下の様にポート番号を指定すると、<code>nginx</code>プロセスにリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET http://127.0.0.1:8080</span>
 </code></pre></div>
-<h4 id="_6">▼ クライアントへのレスポンス時 (図の 『<code>←</code>』 )<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ クライアントへのレスポンス時 (図の 『⬅︎』 )<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -2545,6 +2571,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-l4">03. <code>L4</code>ロードバランサー<a class="headerlink" href="#03-l4" title="Permanent link">&para;</a></h2>
+<h3 id="l4"><code>L4</code>ロードバランサーとは<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
 <p><code>L4</code>プロトコル (例：UDP、TCP) の通信のヘッダー情報に基づいて、通信をロードバランシングする。</p>
 <p><code>L4</code>プロトコルは、ヘッダーに宛先の情報 (例：IPアドレス、ポート番号) をもっている。</p>
 <p><code>L4</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けているサーバーに、通信をロードバランシングする。</p>

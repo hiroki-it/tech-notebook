@@ -2675,7 +2675,7 @@
 <td>DBが<code>24</code>時間稼働するとして、<code>0.01</code>% (0.24時間) 以内の時間にダウンタイムを抑えること。</td>
 </tr>
 <tr>
-<td>レスポンス速度 (レイテンシー)</td>
+<td>レスポンス速度</td>
 <td>全リクエストの平均レスポンス速度が<code>300</code>msとして、リクエストの<code>50</code>%が<code>300</code>ms より早くレスポンスできること。</td>
 </tr>
 <tr>
@@ -2707,7 +2707,7 @@
 <p>また、分位ボックス (<code>q(n)</code>) により全データの何パーセントの集合かを表しており、例えば、<code>q(0.99)</code>は、<code>99%</code>以上が5<code>ms</code>未満であることを示す。</p>
 <p>LT (ロングテール) の先にある見えない最大値は<code>120</code>msである。</p>
 <p>単なる最小値/最大値/中央値/平均値であると表面的な結果しか得られない。</p>
-<p>しかし、このようなヒストグラムを使用すれば、各リクエストがどの程度のレイテンシーに、どのくらい分布しているか、を正確に知られる。</p>
+<p>しかし、このようなヒストグラムを使用すれば、各リクエストがどの程度のレイテンシー (レスポンスタイム) に、どのくらい分布しているか、を正確に知られる。</p>
 <p>例えば、SLOを『<code>5</code>ms未満のレイテンシー』に設定としたとして、ヒストグラムから<code>99.4597</code>%がこれを満たしていると結論付けられる。</p>
 <p><img alt="slo_histogram" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_histogram.png" /></p>
 <p><br></p>
@@ -2815,7 +2815,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>
