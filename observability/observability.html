@@ -2207,7 +2207,7 @@
         
           <li class="md-nav__item">
   <a href="#_45" class="md-nav__link">
-    ▼ 通信速度の最適化
+    ▼ レスポンス速度の最適化
   </a>
   
 </li>
@@ -2299,7 +2299,34 @@
       
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
-    05. その他のテレメトリー
+    05. プロファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="05. プロファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    プロファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    プロファイルの用途
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. その他のテレメトリー
   </a>
   
 </li>
@@ -3026,7 +3053,7 @@
         
           <li class="md-nav__item">
   <a href="#_45" class="md-nav__link">
-    ▼ 通信速度の最適化
+    ▼ レスポンス速度の最適化
   </a>
   
 </li>
@@ -3118,7 +3145,34 @@
       
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
-    05. その他のテレメトリー
+    05. プロファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="05. プロファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    プロファイルとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    プロファイルの用途
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. その他のテレメトリー
   </a>
   
 </li>
@@ -3496,10 +3550,10 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 </blockquote>
 <p><br></p>
 <h3 id="_44">分散トレースの用途<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
-<h4 id="_45">▼ 通信速度の最適化<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
-<p>分散トレースを収集すると、マイクロサービス間の通信速度を可視化できる。</p>
+<h4 id="_45">▼ レスポンス速度の最適化<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>分散トレースを収集すると、マイクロサービス間のレスポンス速度を可視化できる。</p>
 <p>例えば、性能試験でシステム全体の性能劣化があったとする。</p>
-<p>分散トレースで特定のマイクロサービス間で通信速度を可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。</p>
+<p>分散トレースで特定のマイクロサービス間でレスポンス速度を可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。</p>
 <p>その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。</p>
 <p><img alt="distributed-trace_connection-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png" /></p>
 <blockquote>
@@ -3625,12 +3679,26 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 </dl>
 <p><img alt="monolith-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png" /></p>
 <p><br></p>
-<h2 id="05">05. その他のテレメトリー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>メトリクス/ログ/分散トレースに加えて、新しいテレメトリーがいくつか提唱されている。</p>
+<h2 id="05">05. プロファイル<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_53">プロファイルとは<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h3>
+<p>分散トレースのスパンにハードウェアリソース消費量の情報を加えたもの。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95">https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95</a></li>
+<li><a href="https://github.com/google/pprof">https://github.com/google/pprof</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_54">プロファイルの用途<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
+<p>分散トレースだけではマイクロサービス間のレスポンス速度しかわからない。</p>
+<p>プロファイルを導入すると、各マイクロサービスのハードウェアリソース消費量もわかるようになる。</p>
+<p>これにより、性能劣化のボトルネックを特定しやすくなる。</p>
+<p><br></p>
+<h2 id="06">06. その他のテレメトリー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<p>メトリクス/ログ/分散トレース/プロファイルに加えて、新しいテレメトリーがいくつか提唱されている。</p>
 <ul>
 <li>Events (ドメインイベントのようなユーザー定義の処理イベント)</li>
 <li>Exception</li>
-<li>Profiles</li>
 </ul>
 <blockquote>
 <ul>
@@ -3645,7 +3713,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
       
     
   </small>
