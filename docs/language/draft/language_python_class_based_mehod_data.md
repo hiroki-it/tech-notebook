@@ -19,7 +19,7 @@ https://hiroki-it.github.io/tech-notebook/
 
 どのオブジェクトでも呼び出せる。
 
-```python
+```pycon
 class Foo:
 
     def __init__(self, foo):
@@ -39,7 +39,7 @@ class Foo:
 
 最初に、`2`個のアンダースコア (`__`) を宣言する必要がある。
 
-```python
+```pycon
 class Foo:
 
     def __init__(self, foo):

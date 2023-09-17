@@ -19,7 +19,7 @@ description: コンポーネント＠FastAPIの知見を記録しています。
 
 #### ▼ FastAPIクラスとは
 
-```python
+```pycon
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -42,7 +42,7 @@ FastAPIインスタンスに登録するためには、`include_router`メソッ
 
 > - https://github.com/tiangolo/fastapi/issues/1693#issuecomment-665833384
 
-```python
+```pycon
 from fastapi import FastAPI, APIRouter, Depends
 
 app = FastAPI()

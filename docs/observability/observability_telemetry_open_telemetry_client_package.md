@@ -1229,7 +1229,7 @@ otelクライアントパッケージを初期化する。
 
 初期化の段階で、コンテキストの伝播処理も実行する。
 
-```python
+```pycon
 import time
 
 from opentelemetry import trace
@@ -1269,7 +1269,7 @@ tracer = trace.get_tracer(__name__)
 
 ここでは、`requests`パッケージでリクエストを送信するため、`RequestsInstrumentor`関数による初期化も必要である。
 
-```python
+```pycon
 import requests
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
 
@@ -1293,7 +1293,7 @@ print(response.text)
 
 ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor`関数でスパンを処理している。
 
-```python
+```pycon
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from flask import Flask
 
@@ -1327,7 +1327,7 @@ def hello_world():
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
-```python
+```pycon
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from flask import Flask
 

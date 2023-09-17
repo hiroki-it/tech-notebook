@@ -174,12 +174,12 @@ resource.labels.pod_name=~".*pod.*"
 #### ▼ リソースタイプ
 
 ```bash
-# Kubernetes Cluster
+# KubernetesCluster
 resource.type = "k8s_cluster"
 ```
 
 ```bash
-# Kubernetes コンテナ
+# Kubernetesコンテナ
 resource.type = "k8s_container"
 ```
 
@@ -219,7 +219,7 @@ jsonPayload.Level = "WARN"
 ここでは、上流Clusterとして`PassthroughCluster`を指定した。
 
 ```bash
-# Kubernetes 上のPod内のistio-proxyコンテナ
+# Kubernetes上のPod内のistio-proxyコンテナ
 # 上流Clusterとして、PassthroughClusterを設定する
 resource.labels.container_name="istio-proxy"
 resource.labels.pod_name="foo-pod"

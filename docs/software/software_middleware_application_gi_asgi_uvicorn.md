@@ -51,7 +51,7 @@ CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 $ python main.py
 ```
 
-```python
+```pycon
 import uvicorn
 from src import create_app
 
