@@ -612,7 +612,7 @@ nav:
               - AWS EKSアドオン: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.md
               - AWS EBS CSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.md
 
-  - 🌊 CNCFプロジェクト:
+  - 🌊 CNCF:
       - infrastructure_as_code/cncf_projects/index.md
       - ■ ArgoCD:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.md
