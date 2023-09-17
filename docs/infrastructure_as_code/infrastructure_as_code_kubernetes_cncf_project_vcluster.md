@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VCluster＠CNCFプロジェクト
-description: VCluster＠CNCFプロジェクト。
+title: 【IT技術の知見】VCluster＠CNCF
+description: VCluster＠CNCF。
 ---
 
-# VCluster＠CNCFプロジェクト
+# VCluster＠CNCF
 
 ## はじめに
 

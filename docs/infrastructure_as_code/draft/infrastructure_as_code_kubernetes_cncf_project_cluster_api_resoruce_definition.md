@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ClusterAPI＠CNCFプロジェクト
-description: ClusterAPI＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】ClusterAPI＠CNCF
+description: ClusterAPI＠CNCFの知見を記録しています。
 ---
 
-# ClusterAPI＠CNCFプロジェクト
+# ClusterAPI＠CNCF
 
 ## はじめに
 

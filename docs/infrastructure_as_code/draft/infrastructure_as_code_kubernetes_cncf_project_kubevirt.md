@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubevirt＠CNCFプロジェクト
-description: Kubevirt＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】Kubevirt＠CNCF
+description: Kubevirt＠CNCFの知見を記録しています。
 ---
 
-# Kubevirt＠CNCFプロジェクト
+# Kubevirt＠CNCF
 
 ## はじめに
 

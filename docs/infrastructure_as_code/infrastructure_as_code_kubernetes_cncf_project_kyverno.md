@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kyverno＠CNCFプロジェクト
-description: Kyverno＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】Kyverno＠CNCF
+description: Kyverno＠CNCFの知見を記録しています。
 ---
 
-# Kyverno＠CNCFプロジェクト
+# Kyverno＠CNCF
 
 ## はじめに
 

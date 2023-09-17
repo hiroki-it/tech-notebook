@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Ingress系＠CNCFプロジェクト
-description: Ingress系＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】Ingress系＠CNCF
+description: Ingress系＠CNCFの知見を記録しています。
 ---
 
-# Ingress系＠CNCFプロジェクト
+# Ingress系＠CNCF
 
 ## はじめに
 

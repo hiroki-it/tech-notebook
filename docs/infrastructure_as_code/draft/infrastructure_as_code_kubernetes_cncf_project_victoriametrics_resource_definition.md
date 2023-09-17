@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠CNCFプロジェクト
-description: VictoriaMetrics＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】VictoriaMetrics＠CNCF
+description: VictoriaMetrics＠CNCFの知見を記録しています。
 ---
 
-# VictoriaMetrics＠CNCFプロジェクト
+# VictoriaMetrics＠CNCF
 
 ## はじめに
 

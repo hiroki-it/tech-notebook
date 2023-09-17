@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kiali＠CNCFプロジェクト
-description: Kiali＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】Kiali＠CNCF
+description: Kiali＠CNCFの知見を記録しています。
 ---
 
-# Kiali＠CNCFプロジェクト
+# Kiali＠CNCF
 
 ## はじめに
 

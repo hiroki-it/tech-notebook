@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Prometheus＠CNCFプロジェクト
-description: Prometheus＠CNCFプロジェクト
+title: 【IT技術の知見】Prometheus＠CNCF
+description: Prometheus＠CNCF
 ---
 
-# Prometheus＠CNCFプロジェクト
+# Prometheus＠CNCF
 
 ## はじめに
 

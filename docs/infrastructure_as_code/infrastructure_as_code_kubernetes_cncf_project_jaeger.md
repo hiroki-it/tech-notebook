@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Jaeger＠CNCFプロジェクト
-description: Jaeger＠CNCFプロジェクトの知見を記録しています。
+title: 【IT技術の知見】Jaeger＠CNCF
+description: Jaeger＠CNCFの知見を記録しています。
 ---
 
-# Jaeger＠CNCFプロジェクト
+# Jaeger＠CNCF
 
 ## はじめに
 
