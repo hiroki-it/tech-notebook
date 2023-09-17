@@ -412,9 +412,9 @@ nav:
               - SAML: security/security_auth_sso_saml.md
               - OIDC: security/security_auth_sso_oidc.md
 
-  - ⛅️ クラウド:
+  - ⛅️ 3大クラウド:
       - cloud_computing/index.md
-      - クラウド: cloud_computing/cloud_computing.md
+      - 3大クラウド: cloud_computing/cloud_computing.md
       - ■ AWS:
           - AWS CLI: cloud_computing/cloud_computing_aws_cli.md
           - ■ AWSリソース:
