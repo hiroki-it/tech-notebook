@@ -377,7 +377,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
+	"net"
 
 	"google.golang.org/grpc"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
@@ -408,7 +408,7 @@ func main() {
 
 	... // pb.goファイルに関する実装は省略している。
 
-	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

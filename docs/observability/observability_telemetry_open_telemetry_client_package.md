@@ -159,6 +159,8 @@ func init() {
 
 <br>
 
+## 02-02. スパンの送信
+
 ### 宛先が標準出力の場合
 
 #### ▼ パッケージの初期化
@@ -1088,7 +1090,134 @@ func main() {
 
 <br>
 
+### Goの場合
+
+#### ▼ 親スパンの作成 (gRPCクライアント)
+
+```go
+mux := http.NewServeMux()
+mux.Handle("/", http.HandlerFunc(h.alive))
+mux.Handle("/hello", http.HandlerFunc(h.hello))
+http.ListenAndServe(":8000", telemetry.NewHTTPMiddleware()(mux))
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+
+	"google.golang.org/grpc"
+
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+)
+
+func main() {
+
+	conn, err := grpc.Dial(
+		    addr,
+		    grpc.WithInsecure(),
+            grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
+		)
+
+	if err != nil {
+        log.Fatal(err)
+	}
+
+	client := pb.NewGreeterClient(conn)
+
+	...
+}
+```
+
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+
+#### ▼ コンテキスト注入と子スパン作成 (gRPCサーバー)
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net"
+
+	"google.golang.org/grpc"
+
+	pb "github.com/hiroki-hasegawa/foo/foo" // pb.goファイルを読み込む。
+)
+
+func main() {
+
+	grpcServer := grpc.NewServer(
+		// 単項RPCの場合のインターセプター処理
+		grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor()),
+	)
+
+	pb.RegisterGreeterServer(grpcServer, &server{})
+
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+
+	// gRPCサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
+
+	if err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+```
+
+```go
+package main
+
+import (
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
+	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters"
+)
+
+func NewUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
+
+  opts = append(
+    opts,
+    // ヘルスチェックのスパンは作成しないようにフィルタリングする
+    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
+  )
+
+  return otelgrpc.UnaryServerInterceptor(opts...)
+}
+```
+
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - https://blog.cybozu.io/entry/2023/04/12/170000
+
+<br>
+
 ## 03. Pythonの場合
+
+### otelクライアントパッケージ
+
+記入中...
+
+<br>
+
+### 拡張otelクライアントパッケージ
+
+記入中...
+
+<br>
+
+### 分散トレースSDK
+
+記入中...
+
+<br>
+
+## 03-02. スパンの送信
 
 ### 宛先がGCP CloudTraceの場合
 
@@ -1220,68 +1349,5 @@ def hello_world():
 
     ...
 ```
-
-<br>
-
-## 04. 任意の言語とgRPCの場合
-
-### Goの場合
-
-#### ▼ 親スパンの作成
-
-```go
-mux := http.NewServeMux()
-mux.Handle("/", http.HandlerFunc(h.alive))
-mux.Handle("/hello", http.HandlerFunc(h.hello))
-http.ListenAndServe(":8000", telemetry.NewHTTPMiddleware()(mux))
-```
-
-```go
-conn, err := grpc.Dial(addr,
-        grpc.WithInsecure(),
-        grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-)
-
-if err != nil {
-        log.Fatal(err)
-}
-
-c := pb.NewGreeterClient(conn)
-```
-
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
-
-#### ▼ コンテキスト注入と子スパン作成
-
-```go
-s := grpc.NewServer(
-  // 単項RPCの場合のインターセプター処理
-  grpc.UnaryInterceptor(telemetry.NewUnaryServerInterceptor())
-)
-
-pb.RegisterGreeterServer(s, &server{})
-
-err = s.Serve(lis)
-
-if err != nil {
-        log.Fatal(err)
-}
-```
-
-```go
-func NewUnaryServerInterceptor(opts ...otelgrpc.Option) grpc.UnaryServerInterceptor {
-
-  opts = append(
-    opts,
-    // ヘルスチェックのスパンは作成しないようにする
-    otelgrpc.WithInterceptorFilter(filters.Not(filters.HealthCheck())),
-  )
-
-  return otelgrpc.UnaryServerInterceptor(opts...)
-}
-```
-
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
-> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 <br>

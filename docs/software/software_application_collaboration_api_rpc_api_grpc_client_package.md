@@ -149,7 +149,7 @@ func (s *Server) SayHello (ctx context.Context, in *pb.Message) (*Message, error
 func main() {
 
 	// goサーバーで待ち受けるポート番号を設定する。
-	listenPort, err := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
@@ -406,6 +406,7 @@ func main() {
 }
 ```
 
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L46-L49
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor
 
 <br>

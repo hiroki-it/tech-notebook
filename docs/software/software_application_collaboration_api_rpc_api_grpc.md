@@ -54,6 +54,9 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 service Request {
 
   rpc Request (Request) returns (Response) {
+
+    ...
+
   }
 }
 ```
@@ -70,6 +73,9 @@ service Request {
 service Notification {
 
   rpc Notification (NotificationRequest) returns (stream NotificationResponse) {
+
+    ...
+
   }
 }
 ```
@@ -86,6 +92,9 @@ service Notification {
 service Upload {
 
   rpc Upload (stream UploadRequest) returns (UploadResponse) {
+
+    ...
+
   }
 }
 ```
