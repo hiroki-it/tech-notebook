@@ -1756,15 +1756,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#06-l7" class="md-nav__link">
     06. L7ロードバランサー
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2877,15 +2877,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#06-l7" class="md-nav__link">
     06. L7ロードバランサー
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3526,16 +3526,14 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 </dl>
 <p><br></p>
-<h3 id="06-l7">06. <code>L7</code>ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h3>
-<p><code>L7</code>のプロトコルの通信をロードバランシングする。</p>
-<ul>
-<li><code>L7</code>のプロトコル</li>
-<li>ポート番号</li>
-<li>HTTPリクエスト (パス、<code>Host</code>ヘッダー)</li>
-</ul>
+<h2 id="06-l7">06. <code>L7</code>ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
+<p><code>L7</code>プロトコル (例：HTTP、TCP) の通信のヘッダー情報に基づいて、通信をロードバランシングする。</p>
+<p><code>L7</code>プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。</p>
+<p><code>L7</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けているサーバーに、通信をロードバランシングする。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.infraexpert.com/study/tcpip8.html">https://www.infraexpert.com/study/tcpip8.html</a></li>
+<li><a href="https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef">https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef</a></li>
+<li><a href="https://www.infraexpert.com/study/tcpip16.html">https://www.infraexpert.com/study/tcpip16.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -3545,7 +3543,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>
