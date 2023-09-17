@@ -1783,26 +1783,26 @@
 <h2 id="01">01. メソッドとデータのカプセル化<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="public">public<a class="headerlink" href="#public" title="Permanent link">&para;</a></h3>
 <p>どのオブジェクトでも呼び出せる。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="go">class Foo:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
+<span class="go">    def __init__(self, foo):</span>
+<span class="go">        self.foo = foo</span>
 
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">foo</span>
+<span class="go">    def foo():</span>
+<span class="go">        return self.foo</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="private">private<a class="headerlink" href="#private" title="Permanent link">&para;</a></h3>
 <p>同じオブジェクト内でのみ呼び出せる。</p>
 <p>オブジェクト指向のメリットを最大限に得られる機能である。</p>
 <p>最初に、<code>2</code>個のアンダースコア (<code>__</code>) を宣言する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="go">class Foo:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__foo</span> <span class="o">=</span> <span class="n">foo</span>
+<span class="go">    def __init__(self, foo):</span>
+<span class="go">        self.__foo = foo</span>
 
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__foo</span>
+<span class="go">    def foo():</span>
+<span class="go">        return self.__foo</span>
 </code></pre></div>
 
   <hr>
@@ -1810,7 +1810,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
       
     
   </small>

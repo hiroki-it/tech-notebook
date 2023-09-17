@@ -2569,10 +2569,10 @@ resource.labels.pod_name<span class="o">=</span>~<span class="s2">&quot;.*pod.*&
 <p>ログの条件を設定する。</p>
 <p>ロジックは、ログクエリと同じである。</p>
 <h4 id="_12">▼ リソースタイプ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes Cluster</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesCluster</span>
 resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_cluster&quot;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes コンテナ</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kubernetesコンテナ</span>
 resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_container&quot;</span>
 </code></pre></div>
 <h3 id="_13">リソースラベル<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -2595,7 +2595,7 @@ jsonPayload.Level<span class="w"> </span><span class="o">=</span><span class="w"
 <h4 id="_15">▼ 組み合わせ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスアーキテクチャで、アウトバウンド時に送信元<code>istio-proxy</code>コンテナで発生したエラーをクエリする。</p>
 <p>ここでは、上流Clusterとして<code>PassthroughCluster</code>を指定した。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes 上のPod内のistio-proxyコンテナ</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes上のPod内のistio-proxyコンテナ</span>
 <span class="c1"># 上流Clusterとして、PassthroughClusterを設定する</span>
 resource.labels.container_name<span class="o">=</span><span class="s2">&quot;istio-proxy&quot;</span>
 resource.labels.pod_name<span class="o">=</span><span class="s2">&quot;foo-pod&quot;</span>
@@ -2609,7 +2609,7 @@ jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">&quot;Passt
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
       
     
   </small>

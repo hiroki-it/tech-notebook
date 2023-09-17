@@ -1819,17 +1819,17 @@
 <p><br></p>
 <h2 id="01">01. 継承<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">継承によるクラスチェーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="go">class Foo:</span>
 
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;foo&quot;</span>
+<span class="go">    def foo(self):</span>
+<span class="go">        return &quot;foo&quot;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.models.model</span> <span class="kn">import</span> <span class="n">Foo</span>
+<div class="highlight"><pre><span></span><code><span class="go">from src.models.model import Foo</span>
 
-<span class="k">class</span> <span class="nc">Bar</span><span class="p">(</span><span class="n">Foo</span><span class="p">):</span>
+<span class="go">class Bar(Foo):</span>
 
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;bar&quot;</span>
+<span class="go">    def bar(self):</span>
+<span class="go">        return &quot;bar&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -1838,33 +1838,33 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">継承元のメソッドを参照<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Foo</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="go">class Foo:</span>
 
-    <span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;foo&quot;</span>
+<span class="go">    def foo(self):</span>
+<span class="go">        return &quot;foo&quot;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src.models.model</span> <span class="kn">import</span> <span class="n">Foo</span>
+<div class="highlight"><pre><span></span><code><span class="go">from src.models.model import Foo</span>
 
-<span class="c1"># 継承</span>
-<span class="k">class</span> <span class="nc">Bar</span><span class="p">(</span><span class="n">Foo</span><span class="p">):</span>
+<span class="go"># 継承</span>
+<span class="go">class Bar(Foo):</span>
 
-    <span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1">#  継承元のメソッドを参照する。</span>
-        <span class="n">foo</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">foo</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">foo</span>
+<span class="go">    def bar(self):</span>
+<span class="go">        #  継承元のメソッドを参照する。</span>
+<span class="go">        foo = super().foo()</span>
+<span class="go">        return foo</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02-use">02. use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#02-use" title="Permanent link">&para;</a></h2>
 <h3 id="didependency-injection">DI：Dependency Injection (依存オブジェクト注入)<a class="headerlink" href="#didependency-injection" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ コンストラクタインジェクション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>依存先のUserNameクラスを、<code>__init__</code>メソッドの引数として、Userクラスに注入する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">User</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="go">class User:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="go">    def __init__(self, name):</span>
+<span class="go">        self.name = name</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">name</span> <span class="o">=</span> <span class="n">UserName</span><span class="p">()</span>
-<span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="c1"># インジェクション</span>
+<div class="highlight"><pre><span></span><code><span class="go">name = UserName()</span>
+<span class="go">user = User(name) # インジェクション</span>
 </code></pre></div>
 
   <hr>
@@ -1872,7 +1872,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
       
     
   </small>

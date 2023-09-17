@@ -4288,36 +4288,36 @@
 <p>ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
 <p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight"><pre><span></span><code><span class="go">import time</span>
 
-<span class="kn">from</span> <span class="nn">opentelemetry</span> <span class="kn">import</span> <span class="n">trace</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.propagate</span> <span class="kn">import</span> <span class="n">set_global_textmap</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace</span> <span class="kn">import</span> <span class="n">TracerProvider</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.sdk.resources</span> <span class="kn">import</span> <span class="n">Resource</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace.export</span> <span class="kn">import</span> <span class="n">BatchSpanProcessor</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.exporter.cloud_trace</span> <span class="kn">import</span> <span class="n">CloudTraceSpanExporter</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.propagators.cloud_trace_propagator</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">,)</span>
+<span class="go">from opentelemetry import trace</span>
+<span class="go">from opentelemetry.propagate import set_global_textmap</span>
+<span class="go">from opentelemetry.sdk.trace import TracerProvider</span>
+<span class="go">from opentelemetry.sdk.resources import Resource</span>
+<span class="go">from opentelemetry.sdk.trace.export import BatchSpanProcessor</span>
+<span class="go">from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter</span>
+<span class="go">from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)</span>
 
-<span class="c1"># 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
-<span class="n">set_global_textmap</span><span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">())</span>
+<span class="go"># 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="go">set_global_textmap(CloudTraceFormatPropagator())</span>
 
-<span class="c1"># 任意のコンテキストを設定する</span>
-<span class="n">resource</span> <span class="o">=</span> <span class="n">Resource</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
-        <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;flask_e2e_client&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;service.namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;service.instance.id&quot;</span><span class="p">:</span> <span class="s2">&quot;instance554&quot;</span><span class="p">,</span>
-    <span class="p">})</span>
+<span class="go"># 任意のコンテキストを設定する</span>
+<span class="go">resource = Resource.create({</span>
+<span class="go">        &quot;service.name&quot;: &quot;flask_e2e_client&quot;,</span>
+<span class="go">        &quot;service.namespace&quot;: &quot;examples&quot;,</span>
+<span class="go">        &quot;service.instance.id&quot;: &quot;instance554&quot;,</span>
+<span class="go">    })</span>
 
-<span class="n">tracer_provider</span> <span class="o">=</span> <span class="n">TracerProvider</span><span class="p">()</span>
+<span class="go">tracer_provider = TracerProvider()</span>
 
-<span class="c1"># スパンの宛先として、GCP CloudTraceを設定する。</span>
-<span class="n">cloud_trace_exporter</span> <span class="o">=</span> <span class="n">CloudTraceSpanExporter</span><span class="p">()</span>
+<span class="go"># スパンの宛先として、GCP CloudTraceを設定する。</span>
+<span class="go">cloud_trace_exporter = CloudTraceSpanExporter()</span>
 
-<span class="n">tracer_provider</span><span class="o">.</span><span class="n">add_span_processor</span><span class="p">(</span><span class="n">BatchSpanProcessor</span><span class="p">(</span><span class="n">cloud_trace_exporter</span><span class="p">))</span>
+<span class="go">tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))</span>
 
-<span class="n">trace</span><span class="o">.</span><span class="n">set_tracer_provider</span><span class="p">(</span><span class="n">tracer_provider</span><span class="p">)</span>
+<span class="go">trace.set_tracer_provider(tracer_provider)</span>
 
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">tracer = trace.get_tracer(__name__)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4328,14 +4328,14 @@
 </ul>
 </blockquote>
 <p>ここでは、<code>requests</code>パッケージでリクエストを送信するため、<code>RequestsInstrumentor</code>関数による初期化も必要である。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.requests</span> <span class="kn">import</span> <span class="n">RequestsInstrumentor</span>
+<div class="highlight"><pre><span></span><code><span class="go">import requests</span>
+<span class="go">from opentelemetry.instrumentation.requests import RequestsInstrumentor</span>
 
-<span class="n">RequestsInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument</span><span class="p">()</span>
+<span class="go">RequestsInstrumentor().instrument()</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://flask-app:6000&quot;</span><span class="p">)</span>
+<span class="go">response = requests.get(&quot;http://flask-app:6000&quot;)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="go">print(response.text)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4349,26 +4349,26 @@
 <p>親スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <p>ここでは、Flaskでリクエストを受信するため、<code>FlaskInstrumentor</code>関数でスパンを処理している。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go">from opentelemetry.instrumentation.flask import FlaskInstrumentor</span>
+<span class="go">from flask import Flask</span>
 
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">tracer = trace.get_tracer(__name__)</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">app = Flask(__name__)</span>
 
-<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="go">FlaskInstrumentor().instrument_app(app)</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="go">@app.route(&quot;/&quot;)</span>
+<span class="go">def hello_world():</span>
 
-    <span class="o">...</span>
+<span class="go">    ...</span>
 
-    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
-    <span class="c1"># 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
-    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="go">    # 現在の処理にコンテキストを注入する。</span>
+<span class="go">    # 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
+<span class="go">    with tracer.start_as_current_span(&quot;do_work&quot;):</span>
+<span class="go">        time.sleep(0.1)</span>
 
-    <span class="o">...</span>
+<span class="go">    ...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4381,26 +4381,26 @@
 <h4 id="_17">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go">from opentelemetry.instrumentation.flask import FlaskInstrumentor</span>
+<span class="go">from flask import Flask</span>
 
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">tracer = trace.get_tracer(__name__)</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">app = Flask(__name__)</span>
 
-<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+<span class="go">FlaskInstrumentor().instrument_app(app)</span>
 
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+<span class="go">@app.route(&quot;/&quot;)</span>
+<span class="go">def hello_world():</span>
 
-    <span class="o">...</span>
+<span class="go">    ...</span>
 
-    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
-    <span class="c1"># 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
-    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="go">    # 現在の処理にコンテキストを注入する。</span>
+<span class="go">    # 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+<span class="go">    with tracer.start_as_current_span(&quot;do_work&quot;):</span>
+<span class="go">        time.sleep(0.1)</span>
 
-    <span class="o">...</span>
+<span class="go">    ...</span>
 </code></pre></div>
 <p><br></p>
 

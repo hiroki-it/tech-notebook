@@ -2664,12 +2664,12 @@
 <p>WSGIアプリケーションの実行に関するメソッドを持つ。</p>
 <p>クラスの引数に、グローバル変数の『<code>__name__</code>』あるいはエントリーポイントのパスを直接的に設定する。</p>
 <p>環境変数の<code>FLASK_APP</code>で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go">from flask import Flask</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">app = Flask(__name__)</span>
 
-<span class="c1"># src/app.py</span>
-<span class="c1"># app = Flask(src)</span>
+<span class="go"># src/app.py</span>
+<span class="go"># app = Flask(src)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2680,32 +2680,32 @@
 <h3 id="route"><code>route</code>メソッド<a class="headerlink" href="#route" title="Permanent link">&para;</a></h3>
 <h4 id="route_1">▼ <code>route</code>メソッド<a class="headerlink" href="#route_1" title="Permanent link">&para;</a></h4>
 <p>Flaskクラスにエンドポイントを追加する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go">from flask import Flask</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">app = Flask(__name__)</span>
 
-<span class="n">PREFIX_FOO</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{PREFIX}</span><span class="s2">/show&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
-        <span class="c1"># DBへのアクセス処理</span>
+<span class="go">PREFIX_FOO = &quot;foo&quot;</span>
+<span class="go">@app.route(&quot;/{PREFIX}/show&quot;, methods=[&quot;GET&quot;])</span>
+<span class="go">    def show():</span>
+<span class="go">        # DBへのアクセス処理</span>
 
-<span class="o">...</span>
+<span class="go">...</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="run"><code>run</code>メソッド<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <h4 id="run_1">▼ <code>run</code>メソッドとは<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
 <p>設定されたルーティングを元に、Werkzeugによるwebサーバーを起動する。</p>
 <p>開発環境のみで推奨される方法である。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go">from flask import Flask</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">app = Flask(__name__)</span>
 
-<span class="n">PREFIX_FOO</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{PREFIX}</span><span class="s2">/show&quot;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">])</span>
-    <span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
-        <span class="c1"># DBへのアクセス処理</span>
+<span class="go">PREFIX_FOO = &quot;foo&quot;</span>
+<span class="go">@app.route(&quot;/{PREFIX}/show&quot;, methods=[&quot;GET&quot;])</span>
+<span class="go">    def show():</span>
+<span class="go">        # DBへのアクセス処理</span>
 
-<span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="go">app.run()</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2790,17 +2790,17 @@
 <h3 id="_3">アプリケーションファクトリーパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ アプリケーションファクトリーパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Pythonのコードを配置するディレクトリに<code>__init__.py</code>ファイルを配置し、ここでFlaskクラスのインスタンスを作成するメソッドを定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># __init__.py</span>
-<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<div class="highlight"><pre><span></span><code><span class="go"># __init__.py</span>
+<span class="go">from flask import Flask</span>
 
-<span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
-    <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">def create_app():</span>
+<span class="go">    app = Flask(__name__)</span>
 
-    <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s1">&#39;Hello World&#39;</span>
+<span class="go">    @app.route(&#39;/&#39;)</span>
+<span class="go">    def index():</span>
+<span class="go">        return &#39;Hello World&#39;</span>
 
-    <span class="k">return</span> <span class="n">app</span>
+<span class="go">    return app</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2812,12 +2812,12 @@
 <h4 id="_5">▼ エントリーポイント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>プロジェクトのルートディレクトリに、<code>create_app</code>メソッドを実行するエントリーポイント (例：<code>main.py</code>ファイル) を配置する。</p>
 <p>名前空間を判定する条件分の外で<code>create_app</code>メソッドを実行しないと、uwsgiがapp変数を見つけられない。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">create_app</span>
+<div class="highlight"><pre><span></span><code><span class="go">from src import create_app</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
+<span class="go">app = create_app()</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="go">if __name__ == &#39;__main__&#39;:</span>
+<span class="go">    app.run()</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2841,7 +2841,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
       
     
   </small>
