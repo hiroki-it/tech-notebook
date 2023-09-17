@@ -74,7 +74,7 @@ Global Acceleratorを使用しない場合、クライアントPCのリージョ
 
 ![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入前.png)
 
-以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンス速度を比較できる。
+以下のサイトで、Global Acceleratorを使用した場合としなかった場合のレスポンスタイムを比較できる。
 
 > - https://speedtest.globalaccelerator.aws/#/
 

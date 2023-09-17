@@ -600,15 +600,15 @@ rate(node_disk_io_time_seconds_total[1m])
 > - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
 > - https://www.qoosky.io/techs/42affa2c4b
 
-#### ▼ ディスクのI/Oレイテンシー
+#### ▼ ディスクのI/Oレスポンスタイム
 
 ```bash
-# 読み出しレイテンシー
+# 読み出しレスポンスタイム
 rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m])
 ```
 
 ```bash
-# 書き込みレイテンシー
+# 書き込みレスポンスタイム
 rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
 ```
 
