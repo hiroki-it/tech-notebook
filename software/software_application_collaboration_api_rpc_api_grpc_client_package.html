@@ -3399,11 +3399,14 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーを作成する。</span>
-<span class="w">    </span><span class="nx">c</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewFooServiceClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// gRPCクライアントを作成する</span>
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewFooServiceClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
-<span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">})</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;Error when calling SayHello: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>

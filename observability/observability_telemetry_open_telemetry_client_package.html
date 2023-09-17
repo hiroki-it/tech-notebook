@@ -2337,12 +2337,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    Goの場合
+  <a href="#otel_4" class="md-nav__link">
+    宛先がotelコレクターの場合
   </a>
   
-    <nav class="md-nav" aria-label="Goの場合">
+    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#grpc" class="md-nav__link">
@@ -2377,14 +2384,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_4" class="md-nav__link">
+  <a href="#otel_5" class="md-nav__link">
     otelクライアントパッケージ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#otel_5" class="md-nav__link">
+  <a href="#otel_6" class="md-nav__link">
     拡張otelクライアントパッケージ
   </a>
   
@@ -2419,21 +2426,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ 親スパン作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ コンテキスト注入と子スパン作成
   </a>
   
@@ -3027,12 +3034,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#go" class="md-nav__link">
-    Goの場合
+  <a href="#otel_4" class="md-nav__link">
+    宛先がotelコレクターの場合
   </a>
   
-    <nav class="md-nav" aria-label="Goの場合">
+    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ パッケージの初期化
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#grpc" class="md-nav__link">
@@ -3067,14 +3081,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_4" class="md-nav__link">
+  <a href="#otel_5" class="md-nav__link">
     otelクライアントパッケージ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#otel_5" class="md-nav__link">
+  <a href="#otel_6" class="md-nav__link">
     拡張otelクライアントパッケージ
   </a>
   
@@ -3109,21 +3123,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ 親スパン作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ コンテキスト注入と子スパン作成
   </a>
   
@@ -4198,13 +4212,15 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="02-03-grpc">02-03. gRPCを使う場合<a class="headerlink" href="#02-03-grpc" title="Permanent link">&para;</a></h2>
-<h3 id="go">Goの場合<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
+<h3 id="otel_4">宛先がotelコレクターの場合<a class="headerlink" href="#otel_4" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ パッケージの初期化<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>gRPCを使わない場合と実装方法は同じである。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go#L25-L37">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go#L25-L37</a></li>
+</ul>
+</blockquote>
 <h4 id="grpc">▼ 親スパンの作成 (gRPCクライアント)<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nx">mux</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">NewServeMux</span><span class="p">()</span>
-<span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nx">alive</span><span class="p">))</span>
-<span class="nx">mux</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">h</span><span class="p">.</span><span class="nx">hello</span><span class="p">))</span>
-<span class="nx">http</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8000&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">NewHTTPMiddleware</span><span class="p">()(</span><span class="nx">mux</span><span class="p">))</span>
-</code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -4213,29 +4229,37 @@
 <span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
-
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
+
+<span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">addr</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">(),</span>
+<span class="w">            </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
 <span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
+<span class="w">            </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
 <span class="w">        </span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewGreeterClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// gRPCクライアントを作成する</span>
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewFooServiceClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
 </ul>
 </blockquote>
@@ -4245,51 +4269,35 @@
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;fmt&quot;</span>
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
 
 <span class="w">    </span><span class="nx">pb</span><span class="w"> </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/foo&quot;</span><span class="w"> </span><span class="c1">// pb.goファイルを読み込む。</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// 単項RPCの場合のインターセプター処理</span>
-<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryInterceptor</span><span class="p">(</span><span class="nx">telemetry</span><span class="p">.</span><span class="nx">NewUnaryServerInterceptor</span><span class="p">()),</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">Dial</span><span class="p">(</span>
+<span class="w">        </span><span class="s">&quot;:7777&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithUnaryInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryClientInterceptor</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithStreamInterceptor</span><span class="p">(</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">StreamClientInterceptor</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">pb</span><span class="p">.</span><span class="nx">RegisterGreeterServer</span><span class="p">(</span><span class="nx">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">server</span><span class="p">{})</span>
+<span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">conn</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
-<span class="w">    </span><span class="nx">listenPort</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+<span class="w">    </span><span class="c1">// gRPCクライアントを作成する</span>
+<span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">pb</span><span class="p">.</span><span class="nx">NewFooServiceClient</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// gRPCサーバーで通信を受信する。</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to serve: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// goサーバーをリモートプロシージャーコールする。</span>
+<span class="w">    </span><span class="nx">response</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">SayHello</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">Message</span><span class="p">{</span><span class="nx">Body</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello From Client!&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to serve: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters&quot;</span>
-<span class="p">)</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">NewUnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">Option</span><span class="p">)</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">  </span><span class="nx">opts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">opts</span><span class="p">,</span>
-<span class="w">    </span><span class="c1">// ヘルスチェックのスパンは作成しないようにフィルタリングする</span>
-<span class="w">    </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">WithInterceptorFilter</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">Not</span><span class="p">(</span><span class="nx">filters</span><span class="p">.</span><span class="nx">HealthCheck</span><span class="p">())),</span>
-<span class="w">  </span><span class="p">)</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">otelgrpc</span><span class="p">.</span><span class="nx">UnaryServerInterceptor</span><span class="p">(</span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
+<span class="w">    </span><span class="o">...</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -4300,10 +4308,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-python">03. Pythonの場合<a class="headerlink" href="#03-python" title="Permanent link">&para;</a></h2>
-<h3 id="otel_4">otelクライアントパッケージ<a class="headerlink" href="#otel_4" title="Permanent link">&para;</a></h3>
+<h3 id="otel_5">otelクライアントパッケージ<a class="headerlink" href="#otel_5" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="otel_5">拡張otelクライアントパッケージ<a class="headerlink" href="#otel_5" title="Permanent link">&para;</a></h3>
+<h3 id="otel_6">拡張otelクライアントパッケージ<a class="headerlink" href="#otel_6" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h3 id="sdk_2">分散トレースSDK<a class="headerlink" href="#sdk_2" title="Permanent link">&para;</a></h3>
@@ -4311,7 +4319,7 @@
 <p><br></p>
 <h2 id="03-02">03-02. スパンの送信<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="gcp-cloudtrace_2">宛先がGCP CloudTraceの場合<a class="headerlink" href="#gcp-cloudtrace_2" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ パッケージの初期化<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_16">▼ パッケージの初期化<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
 <p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
@@ -4372,7 +4380,7 @@
 <li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69</a></li>
 </ul>
 </blockquote>
-<h4 id="_16">▼ 親スパン作成<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_17">▼ 親スパン作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>親スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <p>ここでは、Flaskでリクエストを受信するため、<code>FlaskInstrumentor</code>関数でスパンを処理している。</p>
@@ -4405,7 +4413,7 @@
 <li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97</a></li>
 </ul>
 </blockquote>
-<h4 id="_17">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="go">from opentelemetry.instrumentation.flask import FlaskInstrumentor</span>
