@@ -6,7 +6,7 @@
 
 <br>
 
-## 🌊 CNCF (IaC)
+## 🌊 CNCF
 
 ### ArgoCD
 

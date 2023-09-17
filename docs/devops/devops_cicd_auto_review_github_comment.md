@@ -15,7 +15,7 @@ description: github-comment＠自動レビューツールの知見を記録し�
 
 ## 01. github-commentとは
 
-記入中...
+任意のツールの標準出力/標準エラー出力の結果を、レビューコメントとしてGitHubにPOSTで送信する。
 
 <br>
 

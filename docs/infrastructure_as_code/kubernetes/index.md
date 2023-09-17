@@ -8,7 +8,7 @@
 
 <br>
 
-## ☸️ Kubernetes (IaC)
+## ☸️ Kubernetes
 
 ### Kubernetes
 

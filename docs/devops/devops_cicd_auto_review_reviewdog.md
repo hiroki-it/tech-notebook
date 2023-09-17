@@ -15,7 +15,7 @@ description: reviewdog＠自動レビューツールの知見を記録してい�
 
 ## 01. reviewdogとは
 
-任意のツールの標準エラー出力の結果を、宛先にPOSTで送信する。
+任意のツールの標準出力/標準エラー出力の結果を、レビューコメントとしてGitHubにPOSTで送信する。
 
 <br>
 
@@ -52,6 +52,15 @@ $ ./vendor/bin/phpstan analyse --error-format=raw --no-progress -l 5 index.php \
 
 > - https://qiita.com/ishii1648/items/4878b01823113b50128d#%E5%AE%9F%E8%A3%85
 > - https://r-tech14.com/reviewdog/#toc2
+
+#### ▼ yamllint
+
+```bash
+$ yamllint foo.yaml \
+   | reviewdog -reporter=github-pr-review -f=yamllint
+```
+
+<br>
 
 ### --list
 
