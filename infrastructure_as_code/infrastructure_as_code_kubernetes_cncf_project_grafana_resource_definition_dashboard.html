@@ -4368,7 +4368,7 @@
 <span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
 <span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。</span>
-<span class="w">                </span><span class="c1"># label_eks_amazonaws_com_nodegroupラベルの値は前段のプルダウンですでに取得しており、変数として使用する。</span>
+<span class="w">                </span><span class="c1"># label_eks_amazonaws_com_nodegroupラベルの値はプルダウンですでに取得しており、変数として使用する。</span>
 <span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\&quot;$nodegroup\&quot;},</span><span class="nv"> </span><span class="s">node)&#39;</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-node-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
@@ -4409,7 +4409,7 @@
 <span class="w">            </span><span class="s">&quot;options&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[],</span>
 <span class="w">            </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="c1"># 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。</span>
-<span class="w">                </span><span class="c1"># nodeラベルの値は前段のプルダウンですでに取得しており、変数として使用する。</span>
+<span class="w">                </span><span class="c1"># nodeラベルの値はプルダウンですでに取得しており、変数として使用する。</span>
 <span class="w">                </span><span class="s">&quot;query&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;label_values(kube_pod_container_info{cluster=\&quot;$cluster\&quot;,instance=\&quot;$node\&quot;,pod=\&quot;$pod\&quot;},</span><span class="nv"> </span><span class="s">container)&#39;</span><span class="p p-Indicator">,</span>
 <span class="w">                </span><span class="s">&quot;refId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Prometheus-container-Variable-Query&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
@@ -4479,7 +4479,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
       
     
   </small>

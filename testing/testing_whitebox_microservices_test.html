@@ -2527,7 +2527,7 @@
 <h3 id="_14">マイクロサービスの結合テストとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャの文脈では、機能テストを結合テストと呼ぶ。</p>
 <p>マイクロサービスの各エンドポイントを<code>1</code>個の機能ととらえる。</p>
-<p>最上流のマイクロサービス (またはその前段のAPI Gateway) のエンドポイントにリクエストを送信し、下流のマイクロサービスや外部Webサービス (正常である前提) との連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
+<p>最上流のマイクロサービス (またはその上流のAPI Gateway) のエンドポイントにリクエストを送信し、下流のマイクロサービスや外部Webサービス (正常である前提) との連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
 <p>もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。</p>
 <p>またパイプライン実行環境がマイクロサービスのエンドポイントにリクエストを送信できるよう、パイプライン実行環境からマイクロサービスまでの通信経路を用意する必要がある。</p>
 <blockquote>
@@ -2569,7 +2569,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
       
     
   </small>
