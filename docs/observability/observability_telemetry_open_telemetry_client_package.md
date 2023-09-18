@@ -474,7 +474,7 @@ func initProvider() (func(context.Context) error, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
 	}
-	
+
 	conn, err := grpc.DialContext(
         ctx, "sample-collector.observability.svc.cluster.local:4317",
         grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock(),
@@ -808,7 +808,7 @@ import (
 
 
 func initProvider() (func(context.Context) error, error) {
-    
+
 	ctx := context.Background()
 
 	resr, err := resource.New(
@@ -864,7 +864,7 @@ func initProvider() (func(context.Context) error, error) {
 
 > - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
-> - https://qiita.com/kashi222/items/4dc503b6e4a3e9abce4a#opentelemetry-protocol-otlp-exporter%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154
 > - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
 
 #### ▼ 親スパンの作成
@@ -940,9 +940,10 @@ func parent(ctx *gin.Context) {
 }
 ```
 
+> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L96C8-L97C19
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -1011,9 +1012,28 @@ func child(ctx *gin.Context) {
 }
 ```
 
+> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L96C8-L97C19
+
+X-rayのトレースIDを使用する場合、otelクライアントが使用できる形式に変換する必要がある。
+
+```go
+func getXrayTraceID(span trace.Span) string {
+
+	xrayTraceID := span.SpanContext().TraceID().String()
+
+	return fmt.Sprintf(
+		"1-%s-%s",
+		xrayTraceID[0:8],
+		xrayTraceID[8:]
+	)
+}
+```
+
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160
+> - https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs
 
 <br>
 
@@ -1111,6 +1131,7 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
+
 	    // 現在の処理にコンテキストを注入する。
         // 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
@@ -1158,6 +1179,7 @@ func main() {
   tracer := otel.GetTracerProvider().Tracer("example.com/trace")
 
   err = func(ctx context.Context) error {
+
 	    // 現在の処理にコンテキストを注入する。
         // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
 		ctx, span := tracer.Start(ctx, "foo")
