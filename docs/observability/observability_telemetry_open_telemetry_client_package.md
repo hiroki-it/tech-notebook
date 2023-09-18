@@ -860,7 +860,7 @@ func initProvider() (func(context.Context) error, error) {
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
-package collection
+package main
 
 import (
 	"context"
@@ -875,31 +875,44 @@ import (
 
 ...
 
-var tracer = otel.Tracer("github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection")
+func main() {
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	
+	defer stop()
 
-func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
+	shutdown, err := initProvider()
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+	
+	defer func() {
+		if err := shutdown(ctx); err != nil {
+			log.Fatal("failed to shutdown TracerProvider: %w", err)
+		}
+	}()
 
-	w.Header().Set("Content-Type", "application/json")
-
-	s3.client.ListBuckets(nil)
-
-	ctx, span := tracer.Start(
-		r.Context(),
-		"aws-sdk-call",
-		trace.WithAttributes(traceCommonLabels...),
-	)
-
-	defer span.End()
-
-	rqmc.AddApiRequest()
-	rqmc.UpdateTotalBytesSent(ctx)
-	rqmc.UpdateLatencyTime(ctx)
-
-	writeResponse(span, w)
+	r := gin.New()
+	
+	r.Use(otelgin.Middleware("sample"))
+	
+	r.GET("/sample", sample1)
+	
+	r.Run(":8080")
 }
 
-...
-
+func parent(c *gin.Context) {
+	
+	_, span := tracer.Start(c.Request.Context(), "sample1")
+	
+	time.Sleep(time.Second * 1)
+	
+	log.Println("sample1 done.")
+	
+	sample2(c)
+	
+	span.End()
+}
 ```
 
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
@@ -913,7 +926,7 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
 ```go
-package collection
+package main
 
 import (
 	"context"
@@ -928,31 +941,44 @@ import (
 
 ...
 
-var tracer = otel.Tracer("github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection")
+func main() {
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	
+	defer stop()
 
-func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
+	shutdown, err := initProvider()
+	
+	if err != nil {
+		log.Fatal(err)
+	}
+	
+	defer func() {
+		if err := shutdown(ctx); err != nil {
+			log.Fatal("failed to shutdown TracerProvider: %w", err)
+		}
+	}()
 
-	w.Header().Set("Content-Type", "application/json")
-
-	s3.client.ListBuckets(nil)
-
-	ctx, span := tracer.Start(
-		r.Context(),
-		"aws-sdk-call",
-		trace.WithAttributes(traceCommonLabels...),
-	)
-
-	defer span.End()
-
-	rqmc.AddApiRequest()
-	rqmc.UpdateTotalBytesSent(ctx)
-	rqmc.UpdateLatencyTime(ctx)
-
-	writeResponse(span, w)
+	r := gin.New()
+	
+	r.Use(otelgin.Middleware("sample"))
+	
+	r.GET("/sample", sample1)
+	
+	r.Run(":8080")
 }
 
-...
-
+func child(c *gin.Context) {
+	
+	_, span := tracer.Start(c.Request.Context(), "sample1")
+	
+	time.Sleep(time.Second * 1)
+	
+	log.Println("sample1 done.")
+	
+	sample2(c)
+	
+	span.End()
+}
 ```
 
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
