@@ -3189,7 +3189,7 @@
 <h2 id="01-traceprovider">01. TraceProvider<a class="headerlink" href="#01-traceprovider" title="Permanent link">&para;</a></h2>
 <h3 id="traceprovider">TraceProviderとは<a class="headerlink" href="#traceprovider" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryをセットアップし、スパンを作成する機能を提供する。</p>
-<p><code>go.opentelemetry.io/otel/sdk</code>パッケージからコールできる。</p>
+<p>Goなら、<code>go.opentelemetry.io/otel/sdk</code>パッケージからコールできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace">https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace</a></li>
@@ -3219,7 +3219,7 @@
 <h4 id="spanprocessor">▼ SpanProcessor<a class="headerlink" href="#spanprocessor" title="Permanent link">&para;</a></h4>
 <p>スパンを処理する。</p>
 <p>具体的には、<code>BatchSpanProcessor</code>関数を使用して、スパンをExporterで決めた宛先に送信できる。</p>
-<p><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
+<p>Goなら、<code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
@@ -3230,6 +3230,12 @@
 <p>スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める。</p>
 <p>具体的には、<code>WithEndpoint</code>関数を使用して、宛先 (例：<code>localhost:4317</code>、<code>opentelemetry-collector.tracing.svc.cluster.local</code>、など) を設定できる。</p>
 <p>スパンの収集ツールがそれぞれパッケージを提供している。</p>
+<ul>
+<li>Goと標準出力なら、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージである。</li>
+<li>Goとotelコレクターなら、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>である。 (otelクライアントはgRPCでotelコレクター接続する)</li>
+<li>GoとJaegerなら、<code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージである。</li>
+<li>GoとX-rayなら、一度otelコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>である。</li>
+</ul>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
@@ -3241,7 +3247,7 @@
 <p>コンテキストを下流マイクロサービスに伝播させる。</p>
 <p>伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。</p>
 <p>Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
-<p><code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</p>
+<p>Goなら、<code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 上流マイクロサービス</span>
 <span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
@@ -3270,7 +3276,7 @@
 <h4 id="sampler">▼ Sampler<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
 <p>スパンのサンプリング率を設定する。</p>
 <p>具体的には、<code>AlwaysOn</code> (<code>100</code>%) や<code>TraceIdRationBased</code> (任意の割合) でサンプリング率を設定できる。</p>
-<p><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
+<p>Goなら、<code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19</a></li>
@@ -3643,6 +3649,7 @@
 <li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go</a></li>
 <li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go</a></li>
 <li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93">https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ 親スパン作成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -3770,6 +3777,7 @@
 <li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go</a></li>
 <li><a href="https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go">https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go</a></li>
 <li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125">https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125</a></li>
 </ul>
 </blockquote>
 <h4 id="_8">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -3931,19 +3939,24 @@
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
 
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
 
 <span class="w">        </span><span class="c1">// pushes any last exports to the receiver</span>
 <span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">meterProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
+
 <span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
 <span class="w">        </span><span class="p">}</span>
+
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
 <span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -4260,7 +4273,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go</a></li>
 <li><a href="https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations">https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations</a></li>
 </ul>
 </blockquote>
