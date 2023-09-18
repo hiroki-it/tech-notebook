@@ -1571,6 +1571,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     高可用性構成
   </a>
@@ -2658,6 +2665,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#controller" class="md-nav__link">
+    Controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     高可用性構成
   </a>
@@ -3072,12 +3086,26 @@
 </blockquote>
 <h3 id="_2">クライアント<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>クライアント (<code>kubectl</code>クライアント、Kubernetesリソース) は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md">https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="node">コントロールプレーンNodeで待ち受けるポート番号<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンコンポーネントのために、コントロールプレーンNodeがパケットを待ち受けるデフォルトのポート番号は、以下の通りである。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane">https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="controller">Controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h3>
+<p>コントロールプレーンNodeでは様々なControllerが動いている。</p>
+<p>Controllerは、マニフェストで宣言されたKubernetesリソースと同じ実体を作成し、状態を維持する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md">https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -3550,7 +3578,7 @@ healthz<span class="w"> </span>check<span class="w"> </span>passed
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>
