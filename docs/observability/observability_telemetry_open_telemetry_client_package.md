@@ -98,24 +98,32 @@ Carrierからコンテキストを注入する操作を『注入 (Inject)』、�
 | Go   | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。 |
 
 ```go
-// 上流マイクロサービス
-otel.SetTextMapPropagator(
-        propagation.NewCompositeTextMapPropagator(
-                propagation.TraceContext{},
-                propagation.Baggage{},
-        ),
-)
+// クライアント側マイクロサービス
+// 前のマイクロサービスにとってはサーバー側にもなる
+func initProvider() {
+
+    // 前段のマイクロサービスのリクエストからコンテキストを抽出する。
+	otel.SetTextMapPropagator(
+		propagation.NewCompositeTextMapPropagator(
+			propagation.TraceContext{},
+			propagation.Baggage{},
+		),
+    )
+}
 ```
 
 ```go
-// 下流マイクロサービス
-func init() {
-        otel.SetTextMapPropagator(
-                propagation.NewCompositeTextMapPropagator(
-                        propagation.TraceContext{},
-                        propagation.Baggage{},
-                ),
-        )
+// サーバー側マイクロサービス
+// 後続のマイクロサービスにとってはクライアント側にもなる
+func initProvider() {
+
+    // 前段のマイクロサービスのリクエストからコンテキストを抽出する。
+	otel.SetTextMapPropagator(
+		propagation.NewCompositeTextMapPropagator(
+			propagation.TraceContext{},
+			propagation.Baggage{},
+		),
+    )
 }
 ```
 
@@ -969,7 +977,10 @@ import (
 
 func main() {
 
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	ctx, stop := signal.NotifyContext(
+		context.Background(),
+		os.Interrupt,
+	)
 
 	defer stop()
 
@@ -1017,7 +1028,7 @@ func child(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L96C8-L97C19
 
-X-rayのトレースIDを使用する場合、otelクライアントが使用できる形式に変換する必要がある。
+X-rayのトレースID (`X-AMZN-TRACE-ID`) を使用する場合、otelクライアントが使用できる形式に変換する必要がある。
 
 ```go
 func getXrayTraceID(span trace.Span) string {
@@ -1090,9 +1101,6 @@ func main() {
 
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(traceProvider)
-
-	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
-	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
@@ -1230,6 +1238,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	otel.SetTracerProvider(traceProvider)
 
+	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(
 		propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
