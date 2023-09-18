@@ -955,7 +955,7 @@ func parent(ctx *gin.Context) {
 > - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L96C8-L97C19
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -1030,7 +1030,7 @@ func child(ctx *gin.Context) {
 > - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L96C8-L97C19
+> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
 X-rayのトレースID (`X-AMZN-TRACE-ID`) を使用する場合、otelクライアントが使用できる形式に変換する必要がある。
 
@@ -1109,7 +1109,8 @@ func installPropagators() {
 			gcppropagator.CloudTraceOneWayPropagator{},
 			propagation.TraceContext{},
 			propagation.Baggage{},
-		))
+		),
+	)
 }
 ```
 
@@ -1127,6 +1128,8 @@ import (
 	"log"
 	"os"
 	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
 func main() {
@@ -1177,6 +1180,8 @@ import (
 	"log"
 	"os"
 	"net/http"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
 func main() {
@@ -1306,9 +1311,25 @@ func main() {
 
 	...
 }
+
+func (s *server) workHard(ctx context.Context) {
+
+	// スパンを作成する
+	_, span := tracer.Start(
+		ctx,
+		"workHard",
+		trace.WithAttributes(attribute.String("extra.key", "extra.value")),
+	)
+
+	defer span.End()
+
+	time.Sleep(50 * time.Millisecond)
+}
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L57-L63
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
 #### ▼ コンテキスト注入と子スパン作成 (gRPCサーバー)
@@ -1366,7 +1387,7 @@ func main() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
