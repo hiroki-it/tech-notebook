@@ -83,8 +83,11 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 システムをコントロールプレーンとデータプレーンに切り分ける。
 
+一部のデータプレーンで障害が起こっても、他のデータプレーンを制御することにより、システム全体としての可用性を高める。
+
 > - https://ganganichamika.medium.com/separating-data-plane-and-control-plane-9fee0b7f3ef8
 > - https://danieldonbavand.com/2022/03/08/what-is-a-control-and-data-plane-architecture/
+> - https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/control-planes-and-data-planes.html
 
 <br>
 

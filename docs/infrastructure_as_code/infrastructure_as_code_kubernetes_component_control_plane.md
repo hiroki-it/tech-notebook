@@ -46,6 +46,8 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 クライアント (`kubectl`クライアント、Kubernetesリソース) は、kube-apiserverにリクエストを送信し、Kubernetesリソースを操作する。
 
+> - https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md
+
 <br>
 
 ### コントロールプレーンNodeで待ち受けるポート番号
@@ -53,6 +55,16 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 コントロールプレーンコンポーネントのために、コントロールプレーンNodeがパケットを待ち受けるデフォルトのポート番号は、以下の通りである。
 
 > - https://kubernetes.io/docs/reference/ports-and-protocols/#control-plane
+
+<br>
+
+### Controller
+
+コントロールプレーンNodeでは様々なControllerが動いている。
+
+Controllerは、マニフェストで宣言されたKubernetesリソースと同じ実体を作成し、状態を維持する。
+
+> - https://github.com/kubernetes/design-proposals-archive/blob/main/architecture/resource-management.md
 
 <br>
 
