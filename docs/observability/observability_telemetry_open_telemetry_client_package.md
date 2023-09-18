@@ -794,6 +794,7 @@ func StartClient(ctx context.Context) (func(context.Context) error, error) {
 
 	return func(context.Context) (err error) {
 		ctx, cancel := context.WithTimeout(ctx, time.Second)
+
 		defer cancel()
 
 		// pushes any last exports to the receiver
@@ -1161,28 +1162,49 @@ import (
 
 func main() {
 
-	conn, err := grpc.Dial(
-		":7777",
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-		grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+	tp, err := config.Init()
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer func() {
+		if err := tp.Shutdown(context.Background()); err != nil {
+			log.Printf("Error shutting down tracer provider: %v", err)
+		}
+	}()
+
+	lis, err := net.Listen("tcp", port)
+
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
+	// gRPCサーバーを作成する。
+	grpcServer := grpc.NewServer(
+		grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+		grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
 	)
 
-	defer conn.Close()
+	// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。
+	// goサーバーがリモートプロシージャーコールを受信できるようになる。
+	pb.RegisterFooServiceServer(grpcServer, &Server{})
 
-	// gRPCクライアントを作成する
-	client := pb.NewFooServiceClient(conn)
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
 
-	// goサーバーをリモートプロシージャーコールする。
-	response, err := client.SayHello(
-		context.Background(),
-		&pb.Message{Body: "Hello From Client!"},
-	)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
 
-	...
+	// gRPCサーバーとして、goサーバーで通信を受信する。
+	if err := grpcServer.Serve(listenPort); err != nil {
+		log.Fatalf("failed to serve: %s", err)
+	}
 }
 ```
 
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 

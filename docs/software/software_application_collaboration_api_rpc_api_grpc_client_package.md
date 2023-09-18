@@ -148,19 +148,19 @@ func (s *Server) SayHello (ctx context.Context, in *pb.Message) (*Message, error
 
 func main() {
 
-	// goサーバーで待ち受けるポート番号を設定する。
-	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
-
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-	}
-
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer()
 
 	// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。
 	// goサーバーがリモートプロシージャーコールを受信できるようになる。
 	pb.RegisterFooServiceServer(grpcServer, &Server{})
+
+	// goサーバーで待ち受けるポート番号を設定する。
+	listenPort := net.Listen("tcp", fmt.Sprintf(":%d", 9000))
+
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
 
 	// gRPCサーバーとして、goサーバーで通信を受信する。
 	if err := grpcServer.Serve(listenPort); err != nil {
@@ -307,6 +307,7 @@ func main() {
 	...
 
 	healthCheckServer := health.NewServer()
+
 	grpc_health_v1.RegisterHealthServer(grpcServer, healthCheckServer)
 
 	// goサーバーで待ち受けるポート番号を設定する。
