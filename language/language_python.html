@@ -2927,7 +2927,7 @@
 <h4 id="from-import_1">▼ from importとは<a class="headerlink" href="#from-import_1" title="Permanent link">&para;</a></h4>
 <p>パッケージとして定義したディレクトリからクラスや関数読み込む。</p>
 <p>存在しないパッケージをインポートしようとすると、インポートエラーになってしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="go">from &lt;パッケージ名&gt;.&lt;サブパッケージ名&gt;.&lt;モジュール名&gt; import &lt;クラス名、関数名&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="o">&lt;</span><span class="n">パッケージ名</span><span class="o">&gt;.&lt;</span><span class="n">サブパッケージ名</span><span class="o">&gt;.&lt;</span><span class="n">モジュール名</span><span class="o">&gt;</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">クラス名</span><span class="err">、</span><span class="n">関数名</span><span class="o">&gt;</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -2945,27 +2945,27 @@
 <p>パッケージ名は絶対パスを指定する。</p>
 <h4 id="_15">▼ 宣言場所について<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><code>1</code>個のファイルで<code>1</code>個のクラスや関数のみを宣言する場合は、<code>import</code>を実行する場所はクラスや関数の外でも中でもよい。</p>
-<div class="highlight"><pre><span></span><code><span class="go">from foo import foo</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">foo</span> <span class="kn">import</span> <span class="n">foo</span>
 
-<span class="go">def foo():</span>
-<span class="go">    foo = foo()</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span>
 
-<span class="go">    return foo</span>
+    <span class="k">return</span> <span class="n">foo</span>
 </code></pre></div>
 <p>ただし、複数を宣言する場合は、可読性の観点からクラスや関数の中で<code>import</code>を実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="go">def foo():</span>
-<span class="go">    from foo import foo</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">foo</span> <span class="kn">import</span> <span class="n">foo</span>
 
-<span class="go">    foo = foo()</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span>
 
-<span class="go">    return foo</span>
+    <span class="k">return</span> <span class="n">foo</span>
 
-<span class="go">def bar():</span>
-<span class="go">    from bar import bar</span>
+<span class="k">def</span> <span class="nf">bar</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">bar</span> <span class="kn">import</span> <span class="n">bar</span>
 
-<span class="go">    bar = bar()</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span><span class="p">()</span>
 
-<span class="go">    return bar</span>
+    <span class="k">return</span> <span class="n">bar</span>
 </code></pre></div>
 <h4 id="1">▼ <code>1</code>個ずつインポート<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、<code>1</code>個ずつインポートした方が良い。</p>
@@ -2974,14 +2974,14 @@
 <li><a href="https://www.tech-teacher.jp/blog/python-import/">https://www.tech-teacher.jp/blog/python-import/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="go"># import foo, bar</span>
-<span class="go">import foo</span>
-<span class="go">import bar</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># import foo, bar</span>
+<span class="kn">import</span> <span class="nn">foo</span>
+<span class="kn">import</span> <span class="nn">bar</span>
 
-<span class="go">def foo():</span>
-<span class="go">    foo = foo()</span>
+<span class="k">def</span> <span class="nf">foo</span><span class="p">():</span>
+    <span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span><span class="p">()</span>
 
-<span class="go">    return foo</span>
+    <span class="k">return</span> <span class="n">foo</span>
 </code></pre></div>
 <p><br></p>
 
@@ -2990,7 +2990,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>

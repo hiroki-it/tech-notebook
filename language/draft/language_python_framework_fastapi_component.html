@@ -1826,12 +1826,12 @@
 <h2 id="01-app">01. App<a class="headerlink" href="#01-app" title="Permanent link">&para;</a></h2>
 <h3 id="fastapi_1">FastAPIクラス<a class="headerlink" href="#fastapi_1" title="Permanent link">&para;</a></h3>
 <h4 id="fastapi_2">▼ FastAPIクラスとは<a class="headerlink" href="#fastapi_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="go">from fastapi import FastAPI</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
 
-<span class="go">app = FastAPI()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
-<span class="go"># src/app.py</span>
-<span class="go"># app = Flask(src)</span>
+<span class="c1"># src/app.py</span>
+<span class="c1"># app = Flask(src)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="apirouter">APIRouterクラス<a class="headerlink" href="#apirouter" title="Permanent link">&para;</a></h3>
@@ -1844,20 +1844,20 @@
 <li><a href="https://github.com/tiangolo/fastapi/issues/1693#issuecomment-665833384">https://github.com/tiangolo/fastapi/issues/1693#issuecomment-665833384</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="go">from fastapi import FastAPI, APIRouter, Depends</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span>
 
-<span class="go">app = FastAPI()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
-<span class="go">router = APIRouter()</span>
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">()</span>
 
-<span class="go">PREFIX_FOO = &quot;foo&quot;</span>
-<span class="go">@router.get(&quot;/{PREFIX}/show&quot;)</span>
-<span class="go">async def show(db: Session = Depends(get_db)):</span>
-<span class="go">        # DBへのアクセス処理</span>
+<span class="n">PREFIX_FOO</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span>
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/</span><span class="si">{PREFIX}</span><span class="s2">/show&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">show</span><span class="p">(</span><span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+        <span class="c1"># DBへのアクセス処理</span>
 
-<span class="go">app.include_router(router)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
 
-<span class="go">...</span>
+<span class="o">...</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. 非同期<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -1875,7 +1875,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>

@@ -1813,36 +1813,36 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="db">DBへの接続<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="go"># SessionLocalクラスを作成します。</span>
-<span class="go"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class</span>
-<span class="go">def create_session_local():</span>
-<span class="go">    import os</span>
-<span class="go">    from sqlalchemy import create_engine</span>
-<span class="go">    from sqlalchemy.orm import sessionmaker</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># SessionLocalクラスを作成します。</span>
+<span class="c1"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class</span>
+<span class="k">def</span> <span class="nf">create_session_local</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+    <span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">sessionmaker</span>
 
-<span class="go">    db_url = &quot;{db_driver}://{db_user}:{db_password}@{db_host}/{db_database}?charset=utf8&quot;.format(</span>
-<span class="go">        db_driver=os.getenv(&quot;DB_DRIVER&quot;),</span>
-<span class="go">        db_user=os.getenv(&quot;DB_USER&quot;),</span>
-<span class="go">        db_password=os.getenv(&quot;DB_PASSWORD&quot;),</span>
-<span class="go">        db_host=os.getenv(&quot;DB_HOST&quot;),</span>
-<span class="go">        db_database=os.getenv(&quot;DB_DATABASE&quot;),</span>
-<span class="go">    )</span>
+    <span class="n">db_url</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{db_driver}</span><span class="s2">://</span><span class="si">{db_user}</span><span class="s2">:</span><span class="si">{db_password}</span><span class="s2">@</span><span class="si">{db_host}</span><span class="s2">/</span><span class="si">{db_database}</span><span class="s2">?charset=utf8&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">db_driver</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_DRIVER&quot;</span><span class="p">),</span>
+        <span class="n">db_user</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_USER&quot;</span><span class="p">),</span>
+        <span class="n">db_password</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">),</span>
+        <span class="n">db_host</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">),</span>
+        <span class="n">db_database</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
 
-<span class="go">    engine = create_engine(db_url)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">db_url</span><span class="p">)</span>
 
-<span class="go">    session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)</span>
+    <span class="n">session_local</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">autocommit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">autoflush</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="go">    return session_local()</span>
+    <span class="k">return</span> <span class="n">session_local</span><span class="p">()</span>
 
 
-<span class="go"># DBに接続します。</span>
-<span class="go"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-dependency</span>
-<span class="go">def get_db():</span>
-<span class="go">    try:</span>
-<span class="go">        session_local = create_session_local()</span>
-<span class="go">        yield session_local</span>
-<span class="go">    finally:</span>
-<span class="go">        session_local.close()</span>
+<span class="c1"># DBに接続します。</span>
+<span class="c1"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-dependency</span>
+<span class="k">def</span> <span class="nf">get_db</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">session_local</span> <span class="o">=</span> <span class="n">create_session_local</span><span class="p">()</span>
+        <span class="k">yield</span> <span class="n">session_local</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session_local</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -1853,21 +1853,21 @@
 <h3 id="_2">モデルの定義<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>基底モデルのインスタンスを<code>declarative_base</code>メソッドで作成し、この変数を各モデルで継承する。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="go">from sqlalchemy.ext.declarative import declarative_base</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
 
-<span class="go"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-base-class</span>
-<span class="go">Base = declarative_base()</span>
+<span class="c1"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-base-class</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="go"># user.pyファイル</span>
-<span class="go">from src.models.model import Base</span>
-<span class="go">from sqlalchemy import Column</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># user.pyファイル</span>
+<span class="kn">from</span> <span class="nn">src.models.model</span> <span class="kn">import</span> <span class="n">Base</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Column</span>
 
-<span class="go"> # 基底モデルクラスを継承する。</span>
-<span class="go">class User(Base):</span>
-<span class="go">    __tablename__ = &quot;users&quot;</span>
+ <span class="c1"># 基底モデルクラスを継承する。</span>
+<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s2">&quot;users&quot;</span>
 
-<span class="go">    id = Column(Integer, primary_key=True)</span>
-<span class="go">    ...</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -1877,32 +1877,32 @@
 <p><br></p>
 <h2 id="02-crud">02. CRUD<a class="headerlink" href="#02-crud" title="Permanent link">&para;</a></h2>
 <h3 id="create">Create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="go">from fastapi import Depends</span>
-<span class="go">from sqlalchemy.orm import Session</span>
-<span class="go">from src.models.foo import Foo</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">Depends</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">src.models.foo</span> <span class="kn">import</span> <span class="n">Foo</span>
 
-<span class="go">class FooController():</span>
+<span class="k">class</span> <span class="nc">FooController</span><span class="p">():</span>
 
-<span class="go">     # コンストラクタ</span>
-<span class="go">     # @see https://fastapi.tiangolo.com/tutorial/dependencies/</span>
-<span class="go">     def __init__(self, db: Session = Depends(get_db)):</span>
-<span class="go">         self.db = db</span>
+     <span class="c1"># コンストラクタ</span>
+     <span class="c1"># @see https://fastapi.tiangolo.com/tutorial/dependencies/</span>
+     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_db</span><span class="p">)):</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span>
 
-<span class="go">     # 作成トランザクションを実行します。</span>
-<span class="go">     # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data</span>
-<span class="go">     def createFoo(self):</span>
-<span class="go">         foo = Foo(first_name=&quot;hiroki&quot;, last_name=&quot;hasegawa&quot;)</span>
+     <span class="c1"># 作成トランザクションを実行します。</span>
+     <span class="c1"># @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data</span>
+     <span class="k">def</span> <span class="nf">createFoo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="n">foo</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;hiroki&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;hasegawa&quot;</span><span class="p">)</span>
 
-<span class="go">         # セッションにクラスを追加する。</span>
-<span class="go">         self.db.add(foo)</span>
+         <span class="c1"># セッションにクラスを追加する。</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
 
-<span class="go">         # DBレコードを作成する。</span>
-<span class="go">         self.db.commit()</span>
+         <span class="c1"># DBレコードを作成する。</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
-<span class="go">         # 作成したレコードをインスタンスのデータに設定する。</span>
-<span class="go">         self.db.refresh(foo)</span>
+         <span class="c1"># 作成したレコードをインスタンスのデータに設定する。</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span>
 
-<span class="go">         return JSONResponse(jsonable_encoder(foo))</span>
+         <span class="k">return</span> <span class="n">JSONResponse</span><span class="p">(</span><span class="n">jsonable_encoder</span><span class="p">(</span><span class="n">foo</span><span class="p">))</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -1923,7 +1923,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>

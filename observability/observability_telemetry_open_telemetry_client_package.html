@@ -2343,15 +2343,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_4" class="md-nav__link">
-    宛先がotelコレクターの場合
+  <a href="#_15" class="md-nav__link">
+    宛先が標準出力の場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
+    <nav class="md-nav" aria-label="宛先が標準出力の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
@@ -2390,14 +2390,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_5" class="md-nav__link">
+  <a href="#otel_4" class="md-nav__link">
     otelクライアントパッケージ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#otel_6" class="md-nav__link">
+  <a href="#otel_5" class="md-nav__link">
     拡張otelクライアントパッケージ
   </a>
   
@@ -2432,21 +2432,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ 親スパン作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     ▼ コンテキスト注入と子スパン作成
   </a>
   
@@ -3040,15 +3040,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_4" class="md-nav__link">
-    宛先がotelコレクターの場合
+  <a href="#_15" class="md-nav__link">
+    宛先が標準出力の場合
   </a>
   
-    <nav class="md-nav" aria-label="宛先がotelコレクターの場合">
+    <nav class="md-nav" aria-label="宛先が標準出力の場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
@@ -3087,14 +3087,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#otel_5" class="md-nav__link">
+  <a href="#otel_4" class="md-nav__link">
     otelクライアントパッケージ
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#otel_6" class="md-nav__link">
+  <a href="#otel_5" class="md-nav__link">
     拡張otelクライアントパッケージ
   </a>
   
@@ -3129,21 +3129,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ パッケージの初期化
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ 親スパン作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     ▼ コンテキスト注入と子スパン作成
   </a>
   
@@ -3336,7 +3336,6 @@
 <span class="w">    </span><span class="s">&quot;time&quot;</span>
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="c1">// スパンの宛先として、標準出力を設定する。</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/stdout/stdouttrace&quot;</span>
 
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
@@ -3402,8 +3401,6 @@
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
-
-<span class="w">    </span><span class="c1">// 定義したtracerパッケージ</span>
 <span class="w">    </span><span class="s">&quot;github.com/hiroki-hasegawa/infrastructure/tracer&quot;</span>
 <span class="p">)</span>
 
@@ -3489,8 +3486,6 @@
 
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
-
-<span class="w">    </span><span class="c1">// 定義したtracerパッケージ</span>
 <span class="w">    </span><span class="s">&quot;github.com/hiroki-hasegawa/foo/infrastructure/tracer&quot;</span>
 <span class="p">)</span>
 
@@ -3574,10 +3569,11 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
-<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
-<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.4.0&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;google.golang.org/grpc/credentials/insecure&quot;</span>
+
+<span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.4.0&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;&lt;マイクロサービス名&gt;&quot;</span><span class="p">)</span>
@@ -3664,7 +3660,6 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions/cookie&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
-
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
@@ -3792,7 +3787,6 @@
 <span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/gin-contrib/sessions/cookie&quot;</span>
 <span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
-
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
@@ -3905,11 +3899,11 @@
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/metric/aggregation&quot;</span>
-<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.17.0&quot;</span>
-
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/metric&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.17.0&quot;</span>
 <span class="p">)</span>
 
 <span class="o">...</span>
@@ -4079,10 +4073,11 @@
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
 
-<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
 <span class="p">)</span>
@@ -4141,10 +4136,11 @@
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
 
-<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
 <span class="p">)</span>
@@ -4185,12 +4181,13 @@
 <span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
 
-<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/detectors/gcp&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
+
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
 <span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.7.0&quot;</span>
+<span class="w">    </span><span class="nx">texporter</span><span class="w"> </span><span class="s">&quot;github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace&quot;</span>
 <span class="p">)</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -4215,8 +4212,8 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="02-03-grpc">02-03. gRPCを使う場合<a class="headerlink" href="#02-03-grpc" title="Permanent link">&para;</a></h2>
-<h3 id="otel_4">宛先がotelコレクターの場合<a class="headerlink" href="#otel_4" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ パッケージの初期化<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h3 id="_15">宛先が標準出力の場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">▼ パッケージの初期化<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>gRPCを使わない場合と実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -4230,6 +4227,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">Init</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">    </span><span class="c1">// 標準出力を宛先に設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdout</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">WithPrettyPrint</span><span class="p">())</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -4243,7 +4241,12 @@
 
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tp</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{}))</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tp</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -4251,6 +4254,7 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go</a></li>
+<li><a href="https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations">https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations</a></li>
 </ul>
 </blockquote>
 <h4 id="grpc">▼ 親スパンの作成 (gRPCクライアント)<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
@@ -4356,10 +4360,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-python">03. Pythonの場合<a class="headerlink" href="#03-python" title="Permanent link">&para;</a></h2>
-<h3 id="otel_5">otelクライアントパッケージ<a class="headerlink" href="#otel_5" title="Permanent link">&para;</a></h3>
+<h3 id="otel_4">otelクライアントパッケージ<a class="headerlink" href="#otel_4" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="otel_6">拡張otelクライアントパッケージ<a class="headerlink" href="#otel_6" title="Permanent link">&para;</a></h3>
+<h3 id="otel_5">拡張otelクライアントパッケージ<a class="headerlink" href="#otel_5" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h3 id="sdk_2">分散トレースSDK<a class="headerlink" href="#sdk_2" title="Permanent link">&para;</a></h3>
@@ -4367,40 +4371,40 @@
 <p><br></p>
 <h2 id="03-02">03-02. スパンの送信<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="gcp-cloudtrace_2">宛先がGCP CloudTraceの場合<a class="headerlink" href="#gcp-cloudtrace_2" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ パッケージの初期化<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_17">▼ パッケージの初期化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。</p>
 <p>otelクライアントパッケージを初期化する。</p>
 <p>初期化の段階で、コンテキストの伝播処理も実行する。</p>
-<div class="highlight"><pre><span></span><code><span class="go">import time</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
 
-<span class="go">from opentelemetry import trace</span>
-<span class="go">from opentelemetry.propagate import set_global_textmap</span>
-<span class="go">from opentelemetry.sdk.trace import TracerProvider</span>
-<span class="go">from opentelemetry.sdk.resources import Resource</span>
-<span class="go">from opentelemetry.sdk.trace.export import BatchSpanProcessor</span>
-<span class="go">from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter</span>
-<span class="go">from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)</span>
+<span class="kn">from</span> <span class="nn">opentelemetry</span> <span class="kn">import</span> <span class="n">trace</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.propagate</span> <span class="kn">import</span> <span class="n">set_global_textmap</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace</span> <span class="kn">import</span> <span class="n">TracerProvider</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.resources</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.sdk.trace.export</span> <span class="kn">import</span> <span class="n">BatchSpanProcessor</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.exporter.cloud_trace</span> <span class="kn">import</span> <span class="n">CloudTraceSpanExporter</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.propagators.cloud_trace_propagator</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">,)</span>
 
-<span class="go"># 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
-<span class="go">set_global_textmap(CloudTraceFormatPropagator())</span>
+<span class="c1"># 前段のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="n">set_global_textmap</span><span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">())</span>
 
-<span class="go"># 任意のコンテキストを設定する</span>
-<span class="go">resource = Resource.create({</span>
-<span class="go">        &quot;service.name&quot;: &quot;flask_e2e_client&quot;,</span>
-<span class="go">        &quot;service.namespace&quot;: &quot;examples&quot;,</span>
-<span class="go">        &quot;service.instance.id&quot;: &quot;instance554&quot;,</span>
-<span class="go">    })</span>
+<span class="c1"># 任意のコンテキストを設定する</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">Resource</span><span class="o">.</span><span class="n">create</span><span class="p">({</span>
+        <span class="s2">&quot;service.name&quot;</span><span class="p">:</span> <span class="s2">&quot;flask_e2e_client&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;service.namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;service.instance.id&quot;</span><span class="p">:</span> <span class="s2">&quot;instance554&quot;</span><span class="p">,</span>
+    <span class="p">})</span>
 
-<span class="go">tracer_provider = TracerProvider()</span>
+<span class="n">tracer_provider</span> <span class="o">=</span> <span class="n">TracerProvider</span><span class="p">()</span>
 
-<span class="go"># スパンの宛先として、GCP CloudTraceを設定する。</span>
-<span class="go">cloud_trace_exporter = CloudTraceSpanExporter()</span>
+<span class="c1"># スパンの宛先として、GCP CloudTraceを設定する。</span>
+<span class="n">cloud_trace_exporter</span> <span class="o">=</span> <span class="n">CloudTraceSpanExporter</span><span class="p">()</span>
 
-<span class="go">tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))</span>
+<span class="n">tracer_provider</span><span class="o">.</span><span class="n">add_span_processor</span><span class="p">(</span><span class="n">BatchSpanProcessor</span><span class="p">(</span><span class="n">cloud_trace_exporter</span><span class="p">))</span>
 
-<span class="go">trace.set_tracer_provider(tracer_provider)</span>
+<span class="n">trace</span><span class="o">.</span><span class="n">set_tracer_provider</span><span class="p">(</span><span class="n">tracer_provider</span><span class="p">)</span>
 
-<span class="go">tracer = trace.get_tracer(__name__)</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4411,14 +4415,14 @@
 </ul>
 </blockquote>
 <p>ここでは、<code>requests</code>パッケージでリクエストを送信するため、<code>RequestsInstrumentor</code>関数による初期化も必要である。</p>
-<div class="highlight"><pre><span></span><code><span class="go">import requests</span>
-<span class="go">from opentelemetry.instrumentation.requests import RequestsInstrumentor</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.requests</span> <span class="kn">import</span> <span class="n">RequestsInstrumentor</span>
 
-<span class="go">RequestsInstrumentor().instrument()</span>
+<span class="n">RequestsInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument</span><span class="p">()</span>
 
-<span class="go">response = requests.get(&quot;http://flask-app:6000&quot;)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://flask-app:6000&quot;</span><span class="p">)</span>
 
-<span class="go">print(response.text)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4428,30 +4432,30 @@
 <li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69</a></li>
 </ul>
 </blockquote>
-<h4 id="_17">▼ 親スパン作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ 親スパン作成<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>親スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
 <p>ここでは、Flaskでリクエストを受信するため、<code>FlaskInstrumentor</code>関数でスパンを処理している。</p>
-<div class="highlight"><pre><span></span><code><span class="go">from opentelemetry.instrumentation.flask import FlaskInstrumentor</span>
-<span class="go">from flask import Flask</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
-<span class="go">tracer = trace.get_tracer(__name__)</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="go">app = Flask(__name__)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="go">FlaskInstrumentor().instrument_app(app)</span>
+<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-<span class="go">@app.route(&quot;/&quot;)</span>
-<span class="go">def hello_world():</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 
-<span class="go">    ...</span>
+    <span class="o">...</span>
 
-<span class="go">    # 現在の処理にコンテキストを注入する。</span>
-<span class="go">    # 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
-<span class="go">    with tracer.start_as_current_span(&quot;do_work&quot;):</span>
-<span class="go">        time.sleep(0.1)</span>
+    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
+    <span class="c1"># 変数にすでにコンテキストが注入されていないので、親スパンが作成される。</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="go">    ...</span>
+    <span class="o">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -4461,29 +4465,29 @@
 <li><a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97">https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97</a></li>
 </ul>
 </blockquote>
-<h4 id="_18">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_19">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>現在の処理にコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。</p>
-<div class="highlight"><pre><span></span><code><span class="go">from opentelemetry.instrumentation.flask import FlaskInstrumentor</span>
-<span class="go">from flask import Flask</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">opentelemetry.instrumentation.flask</span> <span class="kn">import</span> <span class="n">FlaskInstrumentor</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
-<span class="go">tracer = trace.get_tracer(__name__)</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">get_tracer</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="go">app = Flask(__name__)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
-<span class="go">FlaskInstrumentor().instrument_app(app)</span>
+<span class="n">FlaskInstrumentor</span><span class="p">()</span><span class="o">.</span><span class="n">instrument_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-<span class="go">@app.route(&quot;/&quot;)</span>
-<span class="go">def hello_world():</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
 
-<span class="go">    ...</span>
+    <span class="o">...</span>
 
-<span class="go">    # 現在の処理にコンテキストを注入する。</span>
-<span class="go">    # 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
-<span class="go">    with tracer.start_as_current_span(&quot;do_work&quot;):</span>
-<span class="go">        time.sleep(0.1)</span>
+    <span class="c1"># 現在の処理にコンテキストを注入する。</span>
+    <span class="c1"># 変数にすでにコンテキストが注入されているので、子スパンが作成される。</span>
+    <span class="k">with</span> <span class="n">tracer</span><span class="o">.</span><span class="n">start_as_current_span</span><span class="p">(</span><span class="s2">&quot;do_work&quot;</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="go">    ...</span>
+    <span class="o">...</span>
 </code></pre></div>
 <p><br></p>
 
