@@ -3317,19 +3317,19 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
-<span class="w">    </span><span class="nx">listenPort</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to listen: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-
 <span class="w">    </span><span class="c1">// gRPCサーバーを作成する。</span>
 <span class="w">    </span><span class="nx">grpcServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">()</span>
 
 <span class="w">    </span><span class="c1">// pb.goファイルで自動作成された関数を使用して、goサーバーをgRPCサーバーとして登録する。</span>
 <span class="w">    </span><span class="c1">// goサーバーがリモートプロシージャーコールを受信できるようになる。</span>
 <span class="w">    </span><span class="nx">pb</span><span class="p">.</span><span class="nx">RegisterFooServiceServer</span><span class="p">(</span><span class="nx">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Server</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
+<span class="w">    </span><span class="nx">listenPort</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;:%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9000</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">log</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&quot;failed to listen: %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// gRPCサーバーとして、goサーバーで通信を受信する。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpcServer</span><span class="p">.</span><span class="nx">Serve</span><span class="p">(</span><span class="nx">listenPort</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -3473,6 +3473,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <span class="w">    </span><span class="o">...</span>
 
 <span class="w">    </span><span class="nx">healthCheckServer</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">health</span><span class="p">.</span><span class="nx">NewServer</span><span class="p">()</span>
+
 <span class="w">    </span><span class="nx">grpc_health_v1</span><span class="p">.</span><span class="nx">RegisterHealthServer</span><span class="p">(</span><span class="nx">grpcServer</span><span class="p">,</span><span class="w"> </span><span class="nx">healthCheckServer</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// goサーバーで待ち受けるポート番号を設定する。</span>
