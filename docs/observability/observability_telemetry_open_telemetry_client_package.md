@@ -19,6 +19,9 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
 
+`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
+
+> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace
 > - https://christina04.hatenablog.com/entry/opentelemetry-in-go
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21
@@ -30,6 +33,8 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 #### ▼ Resource
 
 スパンにコンテキストを設定する。
+
+`go.opentelemetry.io/otel/resource`パッケージからコールできる。
 
 ```yaml
 {
@@ -49,6 +54,8 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
 
+`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
+
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
 
@@ -57,6 +64,8 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
+
+スパンの収集ツールがそれぞれパッケージを提供している。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
@@ -70,6 +79,8 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
+
+`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
 
 ```go
 // 上流マイクロサービス
@@ -102,6 +113,8 @@ func init() {
 スパンのサンプリング率を設定する。
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
+
+`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
@@ -815,14 +828,14 @@ func setupTraceProvider(ctx context.Context, res *resource.Resource) (*sdktrace.
 
 	idg := xray.NewIDGenerator()
 
-	tp := sdktrace.NewTracerProvider(
+	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithBatcher(traceExporter),
 		sdktrace.WithResource(res),
 		sdktrace.WithIDGenerator(idg),
 	)
 
-	return tp, nil
+	return traceProvider, nil
 }
 ```
 
@@ -973,15 +986,15 @@ func main() {
 		log.Fatalf("resource.New: %v", err)
 	}
 
-	tp := sdktrace.NewTracerProvider(
+	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(res),
 	)
 
-	defer tp.Shutdown(ctx)
+	defer traceProvider.Shutdown(ctx)
 
 	// パッケージをセットアップする。
-	otel.SetTracerProvider(tp)
+	otel.SetTracerProvider(traceProvider)
 
 	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
@@ -1112,12 +1125,12 @@ func Init() (*sdktrace.TracerProvider, error) {
 		return nil, err
 	}
 
-	tp := sdktrace.NewTracerProvider(
+	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithBatcher(exporter),
 	)
 
-	otel.SetTracerProvider(tp)
+	otel.SetTracerProvider(traceProvider)
 
 	otel.SetTextMapPropagator(
 		propagation.NewCompositeTextMapPropagator(
@@ -1126,7 +1139,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 			),
 		)
 
-	return tp, nil
+	return traceProvider, nil
 }
 ```
 
