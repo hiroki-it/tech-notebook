@@ -166,6 +166,12 @@ p {
     font-size: 0.63rem;
 }
 
+/** 左サイドバーの余白を消す **/
+[dir=ltr] .md-nav--lifted .md-nav[data-md-level="1"]>.md-nav__list>.md-nav__item {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 /* マウスオーバー時の動き */
 .md-nav__item a:hover {
     text-decoration: underline;
@@ -408,22 +414,6 @@ blockquote {
     .md-content {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
-    }
-
-    /* サイドバー */
-    /* NOTE: ローカルマシンでは適用されるのに、Web上だと適用されない */
-    .md-sidebar {
-        width: 14.0rem;
-    }
-
-    /* サイドバーのスクロール幅 */
-    .md-sidebar__scrollwrap {
-        width: 14rem;
-    }
-
-    /* サイドバーの幅 */
-    .md-nav__list {
-        width: 20rem;
     }
 }
 
