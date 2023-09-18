@@ -231,7 +231,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 		semconv.ServiceVersionKey.String("1.0.0"),
 	)
 
-	// パッケージを定義する。
+	// TraceProviderを作成する
 	tracerProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
@@ -498,6 +498,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(traceExporter)
 
+	// TraceProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resr),
@@ -807,12 +808,12 @@ import (
 
 
 func initProvider() (func(context.Context) error, error) {
+    
 	ctx := context.Background()
 
-	resr, err := resource.New(ctx,
-		resource.WithAttributes(
-			semconv.ServiceNameKey.String("sample"),
-		),
+	resr, err := resource.New(
+        ctx,
+		resource.WithAttributes(semconv.ServiceNameKey.String("sample")),
 	)
 
 	if err != nil {
@@ -831,6 +832,7 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
 
+	// スパンの宛先として、AWS Distro for otelコレクターを設定する。
 	traceExporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
@@ -844,10 +846,12 @@ func initProvider() (func(context.Context) error, error) {
 
 	var tracerProvider *sdktrace.TracerProvider
 
+    // TraceProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resr),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
+		// 作成したスパンをX-rayで使用できる形式に変換する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
@@ -860,6 +864,8 @@ func initProvider() (func(context.Context) error, error) {
 
 > - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
+> - https://qiita.com/kashi222/items/4dc503b6e4a3e9abce4a#opentelemetry-protocol-otlp-exporter%E3%81%AE%E4%BD%9C%E6%88%90
+> - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
 
 #### ▼ 親スパンの作成
 
@@ -1054,6 +1060,7 @@ func main() {
 		log.Fatalf("resource.New: %v", err)
 	}
 
+	// TraceProviderを作成する
 	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithResource(resr),
@@ -1193,6 +1200,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 		return nil, err
 	}
 
+	// TraceProviderを作成する
 	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithBatcher(exporter),
