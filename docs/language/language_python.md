@@ -216,7 +216,7 @@ Pythonの命名規則は、PEPに記載されている。
 
 存在しないパッケージをインポートしようとすると、インポートエラーになってしまう。
 
-```pycon
+```python
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
@@ -236,7 +236,7 @@ from <パッケージ名>.<サブパッケージ名>.<モジュール名> import
 
 `1`個のファイルで`1`個のクラスや関数のみを宣言する場合は、`import`を実行する場所はクラスや関数の外でも中でもよい。
 
-```pycon
+```python
 from foo import foo
 
 def foo():
@@ -247,7 +247,7 @@ def foo():
 
 ただし、複数を宣言する場合は、可読性の観点からクラスや関数の中で`import`を実行する。
 
-```pycon
+```python
 def foo():
     from foo import foo
 
@@ -269,7 +269,7 @@ def bar():
 
 > - https://www.tech-teacher.jp/blog/python-import/
 
-```pycon
+```python
 # import foo, bar
 import foo
 import bar

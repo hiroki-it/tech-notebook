@@ -181,7 +181,6 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel"
-    // スパンの宛先として、標準出力を設定する。
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
 
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -249,8 +248,6 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
-
-	// 定義したtracerパッケージ
 	"github.com/hiroki-hasegawa/infrastructure/tracer"
 )
 
@@ -338,8 +335,6 @@ import (
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/trace"
-
-	// 定義したtracerパッケージ
 	"github.com/hiroki-hasegawa/foo/infrastructure/tracer"
 )
 
@@ -428,10 +423,11 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
 var tracer = otel.Tracer("<マイクロサービス名>")
@@ -520,7 +516,6 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-
     "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
@@ -651,7 +646,6 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-
     "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
@@ -766,11 +760,11 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/sdk/metric/aggregation"
-	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
-
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
+
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
 )
 
 ...
@@ -948,10 +942,11 @@ import (
 	"log"
 	"os"
 
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	"go.opentelemetry.io/contrib/detectors/gcp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
+
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
@@ -1010,10 +1005,11 @@ import (
 	"log"
 	"os"
 
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	"go.opentelemetry.io/contrib/detectors/gcp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
+
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
@@ -1056,12 +1052,13 @@ import (
 	"log"
 	"os"
 
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 	"go.opentelemetry.io/contrib/detectors/gcp"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
+
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
+	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
 )
 
 func main() {
@@ -1089,7 +1086,7 @@ func main() {
 
 ## 02-03. gRPCを使う場合
 
-### 宛先がotelコレクターの場合
+### 宛先が標準出力の場合
 
 #### ▼ パッケージの初期化
 
@@ -1108,6 +1105,7 @@ import (
 
 func Init() (*sdktrace.TracerProvider, error) {
 
+	// 標準出力を宛先に設定する。
 	exporter, err := stdout.New(stdout.WithPrettyPrint())
 
 	if err != nil {
@@ -1121,13 +1119,19 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	otel.SetTracerProvider(tp)
 
-	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
+	otel.SetTextMapPropagator(
+		propagation.NewCompositeTextMapPropagator(
+			propagation.TraceContext{},
+			propagation.Baggage{},
+			),
+		)
 
 	return tp, nil
 }
 ```
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
+> - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
 
 #### ▼ 親スパンの作成 (gRPCクライアント)
 
@@ -1264,7 +1268,7 @@ otelクライアントパッケージを初期化する。
 
 初期化の段階で、コンテキストの伝播処理も実行する。
 
-```pycon
+```python
 import time
 
 from opentelemetry import trace
@@ -1304,7 +1308,7 @@ tracer = trace.get_tracer(__name__)
 
 ここでは、`requests`パッケージでリクエストを送信するため、`RequestsInstrumentor`関数による初期化も必要である。
 
-```pycon
+```python
 import requests
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
 
@@ -1328,7 +1332,7 @@ print(response.text)
 
 ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor`関数でスパンを処理している。
 
-```pycon
+```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from flask import Flask
 
@@ -1362,7 +1366,7 @@ def hello_world():
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
-```pycon
+```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from flask import Flask
 

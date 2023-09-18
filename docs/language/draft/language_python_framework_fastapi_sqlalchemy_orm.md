@@ -19,7 +19,7 @@ description: SQLAlchemy ORM＠FastAPIの知見を記録しています。
 
 **＊実装例＊**
 
-```pycon
+```python
 # SessionLocalクラスを作成します。
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
 def create_session_local():
@@ -63,14 +63,14 @@ def get_db():
 
 **＊実装例＊**
 
-```pycon
+```python
 from sqlalchemy.ext.declarative import declarative_base
 
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-base-class
 Base = declarative_base()
 ```
 
-```pycon
+```python
 # user.pyファイル
 from src.models.model import Base
 from sqlalchemy import Column
@@ -91,7 +91,7 @@ class User(Base):
 
 ### Create
 
-```pycon
+```python
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from src.models.foo import Foo

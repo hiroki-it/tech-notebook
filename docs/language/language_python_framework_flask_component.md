@@ -25,7 +25,7 @@ WSGIアプリケーションの実行に関するメソッドを持つ。
 
 環境変数の`FLASK_APP`で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
 
-```pycon
+```python
 from flask import Flask
 
 app = Flask(__name__)
@@ -44,7 +44,7 @@ app = Flask(__name__)
 
 Flaskクラスにエンドポイントを追加する。
 
-```pycon
+```python
 from flask import Flask
 
 app = Flask(__name__)
@@ -67,7 +67,7 @@ PREFIX_FOO = "foo"
 
 開発環境のみで推奨される方法である。
 
-```pycon
+```python
 from flask import Flask
 
 app = Flask(__name__)
@@ -124,7 +124,7 @@ app.run()
 
 Pythonのコードを配置するディレクトリに`__init__.py`ファイルを配置し、ここでFlaskクラスのインスタンスを作成するメソッドを定義する。
 
-```pycon
+```python
 # __init__.py
 from flask import Flask
 
@@ -148,7 +148,7 @@ def create_app():
 
 名前空間を判定する条件分の外で`create_app`メソッドを実行しないと、uwsgiがapp変数を見つけられない。
 
-```pycon
+```python
 from src import create_app
 
 app = create_app()

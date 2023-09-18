@@ -17,14 +17,14 @@ description: クラス＠Pythonの知見を記録しています。
 
 ### 継承によるクラスチェーン
 
-```pycon
+```python
 class Foo:
 
     def foo(self):
         return "foo"
 ```
 
-```pycon
+```python
 from src.models.model import Foo
 
 class Bar(Foo):
@@ -39,14 +39,14 @@ class Bar(Foo):
 
 ### 継承元のメソッドを参照
 
-```pycon
+```python
 class Foo:
 
     def foo(self):
         return "foo"
 ```
 
-```pycon
+```python
 from src.models.model import Foo
 
 # 継承
@@ -68,14 +68,14 @@ class Bar(Foo):
 
 依存先のUserNameクラスを、`__init__`メソッドの引数として、Userクラスに注入する。
 
-```pycon
+```python
 class User:
 
     def __init__(self, name):
         self.name = name
 ```
 
-```pycon
+```python
 name = UserName()
 user = User(name) # インジェクション
 ```
