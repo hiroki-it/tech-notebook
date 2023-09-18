@@ -158,20 +158,12 @@ p {
 /** 左サイドバー **/
 .md-nav__link .md-ellipsis {
     /** タイトルのテキスト **/
-    font-size: 1.1em;
+    font-size: 1.0em;
 }
 
 .md-nav {
     /** 以外のテキスト **/
     font-size: 0.63rem;
-}
-
-/* サイドバーの余白 */
-/* なぜかローカルマシン上でしか機能しない */
-[dir=ltr] .md-sidebar__inner {
-    /** 幅を広げるために余白を無くす **/
-    margin-left: 0;
-    margin-right: 0;
 }
 
 /* マウスオーバー時の動き */
@@ -431,7 +423,7 @@ blockquote {
 
     /* サイドバーの幅 */
     .md-nav__list {
-        width: 12rem;
+        width: 20rem;
     }
 }
 
