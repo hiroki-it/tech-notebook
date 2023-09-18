@@ -3233,7 +3233,6 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 <h4 id="grpc_5">▼ gRPCサーバー (インターセプターを使う場合)<a class="headerlink" href="#grpc_5" title="Permanent link">&para;</a></h4>
 <p>gRPCサーバーでは、リクエスト/レスポンスの送受信前にインターセプター処理を実行できる。</p>
 <p>非<code>Chain</code>関数であれば単一のインターセプター、一方で<code>Chain</code>関数であれば複数のインターセプターを渡せる。</p>
-<p>なお、<code>go-grpc-middleware</code>パッケージは、様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。</p>
 <p>執筆時点 (202309/16) で、パッケージの<code>v1</code>は非推奨で、<code>v2</code>が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -3321,10 +3320,16 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors">https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors</a></li>
-<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152">https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152</a></li>
 <li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor</a></li>
 <li><a href="https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme">https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme</a></li>
+</ul>
+</blockquote>
+<p>なお、<code>go-grpc-middleware</code>パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。</p>
+<p>これを<code>Chain</code>関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors">https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors</a></li>
+<li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152">https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ ヘルスチェックサーバー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -3589,7 +3594,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="フロントエンドアーキテクチャ＠アーキテクチャの知見を記録しています。">
+        <meta name="description" content="オブジェクト指向＠アーキテクチャの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_object_orientation.html">
       
       
-        <link rel="prev" href="software_application_architecture_backend_cqrs.html">
+        <link rel="prev" href="software_application_architecture.html">
       
       
-        <link rel="next" href="software_application_architecture_microservices.html">
+        <link rel="next" href="software_application_architecture_object_orientation_analysis.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】フロントエンドアーキテクチャ＠アーキテクチャ - 俺の技術ノート</title>
+        <title>【IT技術の知見】オブジェクト指向＠アーキテクチャ - 俺の技術ノート</title>
       
     
     
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】フロントエンドアーキテクチャ＠アーキテクチャ
+              【IT技術の知見】オブジェクト指向＠アーキテクチャ
             
           </span>
         </div>
@@ -939,40 +939,326 @@
                 
   
   
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
-    <a href="software_application_architecture_object_orientation.html" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ オブジェクト指向
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ オブジェクト指向
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
-        <span class="md-nav__icon md-icon"></span>
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-    </a>
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    オブジェクト指向
+  </span>
   
 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_architecture_object_orientation.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    オブジェクト指向
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01 オブジェクト指向
+  </a>
+  
+    <nav class="md-nav" aria-label="01 オブジェクト指向">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    オブジェクト指向とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. オブジェクト指向分析/設計の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="02. オブジェクト指向分析/設計の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    オブジェクト指向分析の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="オブジェクト指向分析の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. ユースケース図の作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. オブジェクト図の作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    オブジェクト指向設計の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="オブジェクト指向設計の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. クラス図の作成、多重度の付記
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. シーケンス図の作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 設計のレビュー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. デザインパターンの導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. フレームワークのコンポーネントの導入
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ダイアグラム
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ダイアグラム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ダイアグラムとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ダイアグラムの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    視点による分類
+  </a>
+  
+    <nav class="md-nav" aria-label="視点による分類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 機能の視点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 振舞の視点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 構造の視点
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_object_orientation_analysis.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オブジェクト指向分析
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_architecture_object_orientation_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オブジェクト指向設計
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1027,8 +1313,6 @@
                 
   
   
-    
-  
   
     
     
@@ -1037,297 +1321,28 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" checked>
-        
-          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
-            
+  
+  
+    <a href="software_application_architecture_frontend.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ フロントエンド
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ フロントエンド
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    フロントエンドアーキテクチャ
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_application_architecture_frontend.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    フロントエンドアーキテクチャ
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-spa-csr-single-page-application" class="md-nav__link">
-    01. SPA (CSR) ：Single Page Application
-  </a>
-  
-    <nav class="md-nav" aria-label="01. SPA (CSR) ：Single Page Application">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spa" class="md-nav__link">
-    SPAとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spa_1" class="md-nav__link">
-    SPAの実装方法
-  </a>
-  
-    <nav class="md-nav" aria-label="SPAの実装方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvvm" class="md-nav__link">
-    ▼ MVVMアーキテクチャ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spampa" class="md-nav__link">
-    SPAと従来MPAの比較
-  </a>
-  
-    <nav class="md-nav" aria-label="SPAと従来MPAの比較">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 処理速度
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#seo" class="md-nav__link">
-    ▼ SEO
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ssrserver-side-rendering" class="md-nav__link">
-    02. SSR：Server Side Rendering
-  </a>
-  
-    <nav class="md-nav" aria-label="02. SSR：Server Side Rendering">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssr" class="md-nav__link">
-    広義のSSRとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssr_1" class="md-nav__link">
-    狭義のSSRとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-ssgstatic-site-generation" class="md-nav__link">
-    03. SSG：Static Site Generation
-  </a>
-  
-    <nav class="md-nav" aria-label="03. SSG：Static Site Generation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ssg" class="md-nav__link">
-    SSGとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-isrincremental-static-regeneration" class="md-nav__link">
-    04. ISR：Incremental Static Regeneration
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ISR：Incremental Static Regeneration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#isr" class="md-nav__link">
-    ISRとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-atomic-design" class="md-nav__link">
-    05. Atomic Design
-  </a>
-  
-    <nav class="md-nav" aria-label="05. Atomic Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#atmic-design" class="md-nav__link">
-    Atmic Designとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nuxtjs" class="md-nav__link">
-    Nuxt.jsを参考に考える
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
-    07. マイクロサービスアーキテクチャにおけるフロントエンド
-  </a>
-  
-    <nav class="md-nav" aria-label="07. マイクロサービスアーキテクチャにおけるフロントエンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ui" class="md-nav__link">
-    UI部品合成
-  </a>
-  
-    <nav class="md-nav" aria-label="UI部品合成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ui_1" class="md-nav__link">
-    ▼ UI部品合成とは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2322,58 +2337,99 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-spa-csr-single-page-application" class="md-nav__link">
-    01. SPA (CSR) ：Single Page Application
+  <a href="#01" class="md-nav__link">
+    01 オブジェクト指向
   </a>
   
-    <nav class="md-nav" aria-label="01. SPA (CSR) ：Single Page Application">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spa" class="md-nav__link">
-    SPAとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spa_1" class="md-nav__link">
-    SPAの実装方法
-  </a>
-  
-    <nav class="md-nav" aria-label="SPAの実装方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mvvm" class="md-nav__link">
-    ▼ MVVMアーキテクチャ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spampa" class="md-nav__link">
-    SPAと従来MPAの比較
-  </a>
-  
-    <nav class="md-nav" aria-label="SPAと従来MPAの比較">
+    <nav class="md-nav" aria-label="01 オブジェクト指向">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ 処理速度
+    オブジェクト指向とは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. オブジェクト指向分析/設計の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="02. オブジェクト指向分析/設計の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    オブジェクト指向分析の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="オブジェクト指向分析の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. ユースケース図の作成
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#seo" class="md-nav__link">
-    ▼ SEO
+  <a href="#2" class="md-nav__link">
+    2. オブジェクト図の作成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    オブジェクト指向設計の手順例
+  </a>
+  
+    <nav class="md-nav" aria-label="オブジェクト指向設計の手順例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1. クラス図の作成、多重度の付記
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2. シーケンス図の作成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 設計のレビュー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. デザインパターンの導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. フレームワークのコンポーネントの導入
   </a>
   
 </li>
@@ -2389,118 +2445,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-ssrserver-side-rendering" class="md-nav__link">
-    02. SSR：Server Side Rendering
+  <a href="#03" class="md-nav__link">
+    03. ダイアグラム
   </a>
   
-    <nav class="md-nav" aria-label="02. SSR：Server Side Rendering">
+    <nav class="md-nav" aria-label="03. ダイアグラム">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssr" class="md-nav__link">
-    広義のSSRとは
+  <a href="#_6" class="md-nav__link">
+    ダイアグラムとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ssr_1" class="md-nav__link">
-    狭義のSSRとは
+  <a href="#_7" class="md-nav__link">
+    ダイアグラムの種類
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-ssgstatic-site-generation" class="md-nav__link">
-    03. SSG：Static Site Generation
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    視点による分類
   </a>
   
-    <nav class="md-nav" aria-label="03. SSG：Static Site Generation">
+    <nav class="md-nav" aria-label="視点による分類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssg" class="md-nav__link">
-    SSGとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-isrincremental-static-regeneration" class="md-nav__link">
-    04. ISR：Incremental Static Regeneration
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ISR：Incremental Static Regeneration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#isr" class="md-nav__link">
-    ISRとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-atomic-design" class="md-nav__link">
-    05. Atomic Design
-  </a>
-  
-    <nav class="md-nav" aria-label="05. Atomic Design">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#atmic-design" class="md-nav__link">
-    Atmic Designとは
+  <a href="#_9" class="md-nav__link">
+    ▼ 機能の視点
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nuxtjs" class="md-nav__link">
-    Nuxt.jsを参考に考える
+  <a href="#_10" class="md-nav__link">
+    ▼ 振舞の視点
   </a>
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
-    07. マイクロサービスアーキテクチャにおけるフロントエンド
-  </a>
-  
-    <nav class="md-nav" aria-label="07. マイクロサービスアーキテクチャにおけるフロントエンド">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#ui" class="md-nav__link">
-    UI部品合成
-  </a>
-  
-    <nav class="md-nav" aria-label="UI部品合成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ui_1" class="md-nav__link">
-    ▼ UI部品合成とは
+  <a href="#_11" class="md-nav__link">
+    ▼ 構造の視点
   </a>
   
 </li>
@@ -2533,7 +2523,7 @@
   
 
 
-<h1 id="_1">フロントエンドアーキテクチャ＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="_1">オブジェクト指向＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -2542,186 +2532,75 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-spa-csr-single-page-application">01. SPA (CSR) ：Single Page Application<a class="headerlink" href="#01-spa-csr-single-page-application" title="Permanent link">&para;</a></h2>
-<h3 id="spa">SPAとは<a class="headerlink" href="#spa" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>ブラウザレンダリングのステップ</th>
-<th>実行者</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Loading</td>
-<td>ブラウザ</td>
-</tr>
-<tr>
-<td>Scripting</td>
-<td>ブラウザ</td>
-</tr>
-<tr>
-<td>Rendering</td>
-<td>ブラウザ</td>
-</tr>
-<tr>
-<td>Paiting</td>
-<td>ブラウザ</td>
-</tr>
-</tbody>
-</table>
-<p>1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを作成する。</p>
-<p>クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。</p>
-<p>非同期通信は、Ajaxの手法を使用して実現される。</p>
-<p>また、静的ファイルの部分的な作成は、MVVMアーキテクチャによって実現する。</p>
-<p>SPAでは、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。</p>
-<p>２回目以降は、ページ部分的にリクエストを行い、サーバー側からJSONを受け取っていく。</p>
-<p><img alt="SPアプリにおけるデータ通信の仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png" /></p>
+<h2 id="01">01 オブジェクト指向<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_3">オブジェクト指向とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>互いに密接に関連するデータと手続き (処理手順) を、オブジェクトと呼ばれる<code>1</code>個のまとまりとして捉えること。</p>
+<p><br></p>
+<h2 id="02">02. オブジェクト指向分析/設計の手順例<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_4">オブジェクト指向分析の手順例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="1">1. ユースケース図の作成<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>要件定義を基に、ユースケース図を作成する。</p>
+<p>これにより、ソフトウェアの具体的な機能を明確化させる。</p>
+<h4 id="2">2. オブジェクト図の作成<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>要件定義とユースケース図を基に、オブジェクト図を作成する。</p>
+<p>ユースケース図に含まれる名詞に着目し、オブジェクトを抽出する。</p>
+<p>これにより、ソフトウェアの具体的な静的構造を明確化させる。</p>
 <blockquote>
 <ul>
-<li><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications">https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90">https://ja.wikipedia.org/wiki/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90%E8%A8%AD%E8%A8%88#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E5%88%86%E6%9E%90</a>&gt;</li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="spa_1">SPAの実装方法<a class="headerlink" href="#spa_1" title="Permanent link">&para;</a></h3>
-<h4 id="mvvm">▼ MVVMアーキテクチャ<a class="headerlink" href="#mvvm" title="Permanent link">&para;</a></h4>
-<p>View層とModel層の間にViewModel層を配置し、View層とViewModel層の間で双方向にデータをやり取り (双方向データバインディング) することによって、View層とModel層の間を疎結合にするための設計手法の一種。</p>
-<p>Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。</p>
-<p>詳しくは、以下のリンクを参考にせよ。</p>
+<h3 id="_5">オブジェクト指向設計の手順例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. クラス図の作成、多重度の付記<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<p>オブジェクト図のインスタンス間の関係性を参考にして、クラス図を作成する。</p>
+<p>また、クラス間がデータとして保持する関係性にある時に、インスタンス間のリンク記号数を参考にして、多重度を付記する。</p>
+<p>これにより、ソフトウェアの抽象的な静的構造を明確化させる。</p>
+<p>クラス図ではソフトウェアの『振舞』を設計できないため、これはシーケンス図に託す。</p>
+<h4 id="2_1">2. シーケンス図の作成<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p>オブジェクト図を参考にしつつ、これに時系列を取り入れ、シーケンス図を作成する。</p>
+<p>シーケンス図ではソフトウェアの『構造』を設計できないため、これはクラス図に託す。</p>
+<p>システムシーケンス図とシーケンス図の違いについて、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html">https://hiroki-it.github.io/tech-notebook/language/language_js_framework_vuejs.html</a></li>
+<li><a href="https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd">https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd</a>&gt;</li>
+<li><a href="https://en.wikipedia.org/wiki/Sequence_diagram">https://en.wikipedia.org/wiki/Sequence_diagram</a>&gt;</li>
 </ul>
 </blockquote>
-<p><img alt="一般的なMVVMアーキテクチャ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png" /></p>
+<h4 id="3">3. 設計のレビュー<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>ソフトウェアの静的構造を設計するクラス図と、動的な振舞を設計するシーケンス図の間の整合性から、設計を妥当性をレビューする。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf">https://www.sparxsystems.jp/bin/docs/ClassAndSeq.pdf</a>&gt;</li>
+</ul>
+</blockquote>
+<h4 id="4">4. デザインパターンの導入<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>クラス図に、デザインパターンを基にしたクラスを導入する。</p>
+<h4 id="5">5. フレームワークのコンポーネントの導入<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<p>クラス図に、フレームワークのコンポーネントを導入する。</p>
 <p><br></p>
-<h3 id="spampa">SPAと従来MPAの比較<a class="headerlink" href="#spampa" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 処理速度<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>MPAと比較して、データを非同期的に通信できるため、1つのWebページの中で必要なデータのみを通信すればよく、レンダリングが速い。</p>
-<p><img alt="従来WebアプリとSPアプリの処理速度の違い" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.switchitmaker2.com/seo/spa/">https://www.switchitmaker2.com/seo/spa/</a></li>
-</ul>
-</blockquote>
-<h4 id="seo">▼ SEO<a class="headerlink" href="#seo" title="Permanent link">&para;</a></h4>
-<p>SPAは、Googleのクローラーがページを認識しにくく、Webページがインデックスされない可能性がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.switchitmaker2.com/seo/spa/">https://www.switchitmaker2.com/seo/spa/</a></li>
-</ul>
-</blockquote>
+<h2 id="03">03. ダイアグラム<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_6">ダイアグラムとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>オブジェクト指向分析/設計で、ソフトウェアをモデリングしやすくするための図のこと。</p>
 <p><br></p>
-<h2 id="02-ssrserver-side-rendering">02. SSR：Server Side Rendering<a class="headerlink" href="#02-ssrserver-side-rendering" title="Permanent link">&para;</a></h2>
-<h3 id="ssr">広義のSSRとは<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h3>
-<p>ブラウザ側ではなくサーバー側で静的ファイルを作成する。</p>
-<p>フレームワークのテンプレートエンジンやCGIを使用して、サーバー側で静的ファイルを作成すること、も含まれる。</p>
-<table>
-<thead>
-<tr>
-<th>ブラウザレンダリングのステップ</th>
-<th>実行者</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Loading</td>
-<td>サーバー</td>
-</tr>
-<tr>
-<td>Scripting</td>
-<td>サーバー</td>
-</tr>
-<tr>
-<td>Rendering</td>
-<td>サーバー</td>
-</tr>
-<tr>
-<td>Paiting</td>
-<td>ブラウザ</td>
-</tr>
-</tbody>
-</table>
+<h3 id="_7">ダイアグラムの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>UML、概念データモデリング、構造化分析、リアルタイム分析、がある。</p>
+<p><img alt="diagrams" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8">https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8</a></li>
-<li><a href="https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering">https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering</a></li>
+<li><a href="https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf">https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf</a>&gt;</li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ssr_1">狭義のSSRとは<a class="headerlink" href="#ssr_1" title="Permanent link">&para;</a></h3>
-<p>広義のSSRにSPAを取り入れた方法のこと。</p>
-<p>ブラウザ側ではなくサーバー側で静的ファイルを作成する。</p>
-<p>広義のSSRと異なる点は、ブラウザ側にレンダリングされた後、アイソモーフィックJavaScriptという仕組みでSPAとして動作する。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/rita0222/items/66fec6e7be5987bace3c">https://qiita.com/rita0222/items/66fec6e7be5987bace3c</a></li>
-<li><a href="https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89">https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89</a><br></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-ssgstatic-site-generation">03. SSG：Static Site Generation<a class="headerlink" href="#03-ssgstatic-site-generation" title="Permanent link">&para;</a></h2>
-<h3 id="ssg">SSGとは<a class="headerlink" href="#ssg" title="Permanent link">&para;</a></h3>
-<p>事前にビルドを行って静的ファイルを作成しておく。</p>
-<p>そして、これをレンダリングし、静的サイトとして稼働させる。</p>
-<p>動的な要素 (例：ランダム表示) を含む静的ファイルについては、該当の部分でAjaxを使用できるようにしておく。</p>
-<p><br></p>
-<h2 id="04-isrincremental-static-regeneration">04. ISR：Incremental Static Regeneration<a class="headerlink" href="#04-isrincremental-static-regeneration" title="Permanent link">&para;</a></h2>
-<h3 id="isr">ISRとは<a class="headerlink" href="#isr" title="Permanent link">&para;</a></h3>
-<p>SSGの発展型。</p>
-<p>SSGとは異なり、事前にビルドせず、静的ファイルを作成しない。</p>
-<p>その代わり、クライアントからリクエストがあって初めて、そのWebページのみビルドが実行され、レンダリングされる。</p>
-<p>クライアントから一回でもリクエストがあったWebページでは、初回時にビルドされた静的ファイルがその都度レンダリングされる。</p>
-<blockquote>
-<ul>
-<li><a href="https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration">https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="05-atomic-design">05. Atomic Design<a class="headerlink" href="#05-atomic-design" title="Permanent link">&para;</a></h2>
-<h3 id="atmic-design">Atmic Designとは<a class="headerlink" href="#atmic-design" title="Permanent link">&para;</a></h3>
-<p>フロントエンドを構成する要素を、5つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。</p>
-<blockquote>
-<ul>
-<li><a href="https://atomicdesign.bradfrost.com/">https://atomicdesign.bradfrost.com/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="nuxtjs">Nuxt.jsを参考に考える<a class="headerlink" href="#nuxtjs" title="Permanent link">&para;</a></h3>
-<p>Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。</p>
-<blockquote>
-<ul>
-<li><a href="https://tec.tecotec.co.jp/entry/2020/03/27/090000">https://tec.tecotec.co.jp/entry/2020/03/27/090000</a></li>
-</ul>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>Nuxt.jsのディレクトリ</th>
-<th>Atomic Designのレイヤー</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>components</td>
-<td>Atoms、Molecules、Organisms</td>
-</tr>
-<tr>
-<td>pages</td>
-<td>Pages</td>
-</tr>
-<tr>
-<td>layouts</td>
-<td>Templates</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h2 id="07">07. マイクロサービスアーキテクチャにおけるフロントエンド<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="ui">UI部品合成<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
-<h4 id="ui_1">▼ UI部品合成とは<a class="headerlink" href="#ui_1" title="Permanent link">&para;</a></h4>
-<p>フロントエンドのコンポーネントを、各マイクロサービスに対応するように分割する設計方法。</p>
-<p><img alt="composite-ui" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png" /></p>
+<h3 id="_8">視点による分類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ 機能の視点<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>ユーザーの要求に対するソフトウェアの機能に注目するダイアグラムが所属する。</p>
+<h4 id="_10">▼ 振舞の視点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>ソフトウェアの時系列的な振舞に注目するダイアグラムが所属する。</p>
+<p>シーケンス図には、分析に使用するシステムシーケンス図と、設計に使用するシーケンス図があることに注意する。</p>
+<h4 id="_11">▼ 構造の視点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ソフトウェアの構成要素とそれぞれの関係に注目するダイアグラムが所属する。</p>
+<p>クラス図は設計のために使用することに注意する。</p>
 <p><br></p>
 
   <hr>
@@ -2729,7 +2608,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
       
     
   </small>
