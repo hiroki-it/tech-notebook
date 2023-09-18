@@ -136,35 +136,33 @@ nav:
       - 設計規約: software/software_policy.md
 
   - 🚀 アプリ:
-      - software/application/index.md
-      - ■ アーキテクチャ:
-          - アーキテクチャ: software/software_application_architecture.md
-          - ■ オブジェクト指向:
-              - オブジェクト指向: software/software_application_architecture_object_orientation.md
-              - オブジェクト指向分析: software/software_application_architecture_object_orientation_analysis.md
-              - オブジェクト指向設計: software/software_application_architecture_object_orientation_design.md
-          - ■ バックエンド:
+        - software/application/index.md
+        - アーキテクチャ: software/software_application_architecture.md
+        - ■ バックエンドアーキテクチャ:
+              - ■ オブジェクト指向:
+                    - オブジェクト指向: software/software_application_architecture_backend_object_orientation.md
+                    - オブジェクト指向分析: software/software_application_architecture_backend_object_orientation_analysis.md
+                    - オブジェクト指向設計: software/software_application_architecture_backend_object_orientation_design.md
               - ドメイン駆動設計: software/software_application_architecture_backend_domain_driven_design.md
               - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
               - CQRS: software/software_application_architecture_backend_cqrs.md
-          - ■ フロントエンド:
+        - ■ フロントエンド:
               - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
-          - ■ マイクロサービスアーキテクチャ:
+        - ■ マイクロサービスアーキテクチャ:
               - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
               - 認証/認可: software/software_application_architecture_microservices_auth.md
               - DB: software/software_application_architecture_microservices_database.md
               - ネットワーク: software/software_application_architecture_microservices_network.md
-      - ■ アプリケーション間連携:
-          - アプリケーション間通信: software/software_application_collaboration_communication.md
-          - ■ RESTful-API:
-              - RESTful-API: software/software_application_collaboration_api_restful.md
-              - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
-          - ■ RPC-API:
-              - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
-              - クライアントパッケージ: software/software_application_collaboration_api_rpc_api_grpc_client_package.md
-          - ■ GraphQL-API:
-              - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
-
+        - ■ アプリケーション間連携:
+              - アプリケーション間通信: software/software_application_collaboration_communication.md
+              - ■ RESTful-API:
+                    - RESTful-API: software/software_application_collaboration_api_restful.md
+                    - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
+              - ■ RPC-API:
+                    - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
+                    - クライアントパッケージ: software/software_application_collaboration_api_rpc_api_grpc_client_package.md
+              - ■ GraphQL-API:
+                    - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
   - 🤝🏻 ミドルウェア:
       - software/middleware/index.md
       - ■ Web系:
