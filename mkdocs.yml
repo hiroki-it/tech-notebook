@@ -139,7 +139,10 @@ nav:
       - software/application/index.md
       - ■ アーキテクチャ:
           - アーキテクチャ: software/software_application_architecture.md
-          - オブジェクト指向分析設計: software/software_application_architecture_analysis_and_design.md
+          - ■ オブジェクト指向:
+              - オブジェクト指向: software/software_application_architecture_object_orientation.md
+              - オブジェクト指向分析: software/software_application_architecture_object_orientation_analysis.md
+              - オブジェクト指向設計: software/software_application_architecture_object_orientation_design.md
           - ■ バックエンド:
               - ドメイン駆動設計: software/software_application_architecture_backend_domain_driven_design.md
               - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
