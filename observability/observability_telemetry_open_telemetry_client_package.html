@@ -3202,7 +3202,20 @@
 <h3 id="traceprovider_1">TraceProviderの関数の要素<a class="headerlink" href="#traceprovider_1" title="Permanent link">&para;</a></h3>
 <h4 id="resource">▼ Resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
 <p>スパンにコンテキストを設定する。</p>
-<p><code>go.opentelemetry.io/otel/resource</code>パッケージからコールできる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/resource</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;service.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-service&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;service.namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app&quot;</span><span class="p p-Indicator">,</span>
@@ -3219,7 +3232,20 @@
 <h4 id="spanprocessor">▼ SpanProcessor<a class="headerlink" href="#spanprocessor" title="Permanent link">&para;</a></h4>
 <p>スパンを処理する。</p>
 <p>具体的には、<code>BatchSpanProcessor</code>関数を使用して、スパンをExporterで決めた宛先に送信できる。</p>
-<p>Goなら、<code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
@@ -3230,16 +3256,41 @@
 <p>スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める。</p>
 <p>具体的には、<code>WithEndpoint</code>関数を使用して、宛先 (例：<code>localhost:4317</code>、<code>opentelemetry-collector.tracing.svc.cluster.local</code>、など) を設定できる。</p>
 <p>スパンの収集ツールがそれぞれパッケージを提供している。</p>
-<ul>
-<li>Goと標準出力なら、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージである。</li>
-<li>Goとotelコレクターなら、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>である。 (otelクライアントはgRPCでotelコレクター接続する)</li>
-<li>GoとJaegerなら、<code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージである。</li>
-<li>GoとX-rayなら、一度otelコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>である。</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goと標準出力</td>
+<td><code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code>パッケージからコールできる。otelクライアントはgRPCでotelコレクター接続する。<code>go.opentelemetry.io/otel/sdk/export/</code>パッケージは執筆時点 (2023/09/18時点) で非推奨である。</td>
+</tr>
+<tr>
+<td>Goとotelコレクター</td>
+<td><code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>パッケージからコールできる。</td>
+</tr>
+<tr>
+<td>GoとJaeger</td>
+<td><code>go.opentelemetry.io/otel/exporters/trace/jaeger</code>パッケージからコールできる。</td>
+</tr>
+<tr>
+<td>GoとX-ray</td>
+<td>一度otelコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
+</tr>
+<tr>
+<td>GoとCloud Trace</td>
+<td><code>github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11">https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11</a></li>
 </ul>
 </blockquote>
 <h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
@@ -3247,7 +3298,20 @@
 <p>コンテキストを下流マイクロサービスに伝播させる。</p>
 <p>伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。</p>
 <p>Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
-<p>Goなら、<code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/propagation</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="c1">// 上流マイクロサービス</span>
 <span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
@@ -3276,7 +3340,20 @@
 <h4 id="sampler">▼ Sampler<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
 <p>スパンのサンプリング率を設定する。</p>
 <p>具体的には、<code>AlwaysOn</code> (<code>100</code>%) や<code>TraceIdRationBased</code> (任意の割合) でサンプリング率を設定できる。</p>
-<p>Goなら、<code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19</a></li>
@@ -3617,9 +3694,9 @@
 
 <span class="w">    </span><span class="c1">// スパンの宛先として、otelコレクターを設定する。</span>
 <span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
-<span class="w">  </span><span class="p">)</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
+<span class="w">        </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -3905,88 +3982,76 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
 <span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
 <span class="w">    </span><span class="s">&quot;time&quot;</span>
 
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/propagators/aws/xray&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/attribute&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/metric/aggregation&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/metric&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/propagation&quot;</span>
 <span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/resource&quot;</span>
 
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc&quot;</span>
+<span class="w">    </span><span class="s">&quot;google.golang.org/grpc/credentials/insecure&quot;</span>
+
 <span class="w">    </span><span class="nx">sdktrace</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/sdk/trace&quot;</span>
-<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.17.0&quot;</span>
+<span class="w">    </span><span class="nx">semconv</span><span class="w"> </span><span class="s">&quot;go.opentelemetry.io/otel/semconv/v1.4.0&quot;</span>
 <span class="p">)</span>
 
 <span class="o">...</span>
 
-<span class="c1">// StartClient starts the traces and metrics providers which periodically collects signals and exports them.</span>
-<span class="c1">// Trace exporter and Metric exporter are both configured.</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">StartClient</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="o">...</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">initProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// Setup trace related</span>
-<span class="w">    </span><span class="nx">tp</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">setupTraceProvider</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="o">...</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
-
-<span class="w">        </span><span class="c1">// pushes any last exports to the receiver</span>
-<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">meterProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tp</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
-
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">        </span><span class="p">}</span>
-
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
-<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
-<span class="p">}</span>
-
-<span class="o">...</span>
-
-<span class="kd">func</span><span class="w"> </span><span class="nx">setupTraceProvider</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">*</span><span class="nx">resource</span><span class="p">.</span><span class="nx">Resource</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="c1">// INSECURE !! NOT TO BE USED FOR ANYTHING IN PRODUCTION</span>
-<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithInsecure</span><span class="p">())</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nx">idg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()</span>
-
-<span class="w">    </span><span class="nx">traceProvider</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithBatcher</span><span class="p">(</span><span class="nx">traceExporter</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">res</span><span class="p">),</span>
-<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">idg</span><span class="p">),</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">resource</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">resource</span><span class="p">.</span><span class="nx">WithAttributes</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">semconv</span><span class="p">.</span><span class="nx">ServiceNameKey</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">traceProvider</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create resource: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample-collector.sample.svc.cluster.local:4318&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">())</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create gRPC connection to collector: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">bsp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">traceExporter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
+
+<span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">res</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">bsp</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go</a></li>
+<li><a href="https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ 親スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -4007,11 +4072,13 @@
 
 <span class="o">...</span>
 
+<span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection&quot;</span><span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">AwsSdkCall</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">rqmc</span><span class="w"> </span><span class="o">*</span><span class="nx">requestBasedMetricCollector</span><span class="p">,</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">*</span><span class="nx">s3Client</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">s3</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">ListBuckets</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">// nil or else would need real aws credentials</span>
+<span class="w">    </span><span class="nx">s3</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">ListBuckets</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
@@ -4021,7 +4088,6 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// Request based metrics provided by rqmc</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">AddApiRequest</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">UpdateTotalBytesSent</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">UpdateLatencyTime</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
@@ -4033,7 +4099,9 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go</a></li>
 <li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go</a></li>
+<li><a href="https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4</a></li>
 </ul>
 </blockquote>
 <h4 id="_11">▼ コンテキスト注入と子スパン作成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -4054,11 +4122,13 @@
 
 <span class="o">...</span>
 
+<span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection&quot;</span><span class="p">)</span>
+
 <span class="kd">func</span><span class="w"> </span><span class="nx">AwsSdkCall</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">rqmc</span><span class="w"> </span><span class="o">*</span><span class="nx">requestBasedMetricCollector</span><span class="p">,</span><span class="w"> </span><span class="nx">s3</span><span class="w"> </span><span class="o">*</span><span class="nx">s3Client</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">s3</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">ListBuckets</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="c1">// nil or else would need real aws credentials</span>
+<span class="w">    </span><span class="nx">s3</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">ListBuckets</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
@@ -4068,7 +4138,6 @@
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// Request based metrics provided by rqmc</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">AddApiRequest</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">UpdateTotalBytesSent</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">rqmc</span><span class="p">.</span><span class="nx">UpdateLatencyTime</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
@@ -4080,7 +4149,9 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go</a></li>
 <li><a href="https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go">https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go</a></li>
+<li><a href="https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4</a></li>
 </ul>
 </blockquote>
 <p><br></p>
