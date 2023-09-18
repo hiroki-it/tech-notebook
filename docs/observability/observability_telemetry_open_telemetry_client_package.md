@@ -93,17 +93,18 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
-| 項目 | 必要なパッケージ                                                   |
-| ---- | ------------------------------------------------------------------ |
-| Go   | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。 |
+| 項目               | 必要なパッケージ                                                                                                                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goとotelコレクター | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。                                                                                               |
+| GoとX-ray          | 一度、otelコレクター互換のAWS Distro for otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。 |
 
 ```go
 // クライアント側マイクロサービス
 // 前のマイクロサービスにとってはサーバー側にもなる
 func initProvider() {
 
-    // 前段のマイクロサービスのリクエストからコンテキストを抽出する。
-	otel.SetTextMapPropagator(
+    // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+    otel.SetTextMapPropagator(
 		propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
 			propagation.Baggage{},
@@ -117,8 +118,8 @@ func initProvider() {
 // 後続のマイクロサービスにとってはクライアント側にもなる
 func initProvider() {
 
-    // 前段のマイクロサービスのリクエストからコンテキストを抽出する。
-	otel.SetTextMapPropagator(
+    // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+    otel.SetTextMapPropagator(
 		propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
 			propagation.Baggage{},
@@ -130,6 +131,7 @@ func initProvider() {
 > - https://github.com/openzipkin/b3-propagation#overall-process
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - https://www.lottohub.jp/posts/otelsql-grpc/
 
 #### ▼ Sampler
 
@@ -249,7 +251,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 前段のマイクロサービスへのリクエストからコンテキストを抽出する。
+	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
@@ -516,7 +518,7 @@ func initProvider() (func(context.Context) error, error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
+	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
 	return tracerProvider.Shutdown, nil
@@ -864,7 +866,9 @@ func initProvider() (func(context.Context) error, error) {
 	)
 
 	otel.SetTracerProvider(tracerProvider)
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(xray.Propagator{})
 
 	return tracerProvider.Shutdown, nil
 }
@@ -1069,47 +1073,49 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
 )
 
-func main() {
-	ctx := context.Background()
+func initProvider() (func(), error) {
+	projectID := os.Getenv("PROJECT_ID")
 
-	projectID := os.Getenv("GOOGLE_CLOUD_PROJECT")
-
-    exporter, err := texporter.New(texporter.WithProjectID(projectID))
-
-	if err != nil {
-		log.Fatalf("texporter.New: %v", err)
-	}
-
-	resr, err := resource.New(
-		ctx,
-		resource.WithDetectors(gcp.NewDetector()),
-		resource.WithTelemetrySDK(),
-		resource.WithAttributes(semconv.ServiceNameKey.String("my-application"), ),
-	)
+	// Create Google Cloud Trace exporter to be able to retrieve
+	// the collected spans.
+	exporter, err := cloudtrace.New(cloudtrace.WithProjectID(projectID))
 
 	if err != nil {
-		log.Fatalf("resource.New: %v", err)
+		return nil, err
 	}
 
 	// TraceProviderを作成する
-	traceProvider := sdktrace.NewTracerProvider(
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(resr),
 	)
 
-	defer traceProvider.Shutdown(ctx)
-
 	// パッケージをセットアップする。
-	otel.SetTracerProvider(traceProvider)
+	otel.SetTracerProvider(tracerProvider)
 
-	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+	return func() {
+		err := tp.Shutdown(context.Background())
+		if err != nil {
+			fmt.Printf("error shutting down trace provider: %+v", err)
+		}
+	}, nil
+}
 
-    ...
+func installPropagators() {
+
+	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	otel.SetTextMapPropagator(
+		propagation.NewCompositeTextMapPropagator(
+			gcppropagator.CloudTraceOneWayPropagator{},
+			propagation.TraceContext{},
+			propagation.Baggage{},
+		))
 }
 ```
 
 > - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L39-L72
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L37-L70
 
 #### ▼ 親スパン作成
 
@@ -1120,40 +1126,42 @@ import (
 	"context"
 	"log"
 	"os"
-
-	"go.opentelemetry.io/contrib/detectors/gcp"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/sdk/resource"
-
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
+	"net/http"
 )
 
 func main() {
 
-  ctx := context.Background()
+	installPropagators()
 
-  ...
+	shutdown, err := initTracer()
 
-  tracer := otel.GetTracerProvider().Tracer("example.com/trace")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  err = func(ctx context.Context) error {
+	defer shutdown()
 
-	    // 現在の処理にコンテキストを注入する。
-        // 変数にすでにコンテキストが注入されていないので、親スパンが作成される。
-		ctx, span := tracer.Start(ctx, "foo")
-		defer span.End()
+	helloHandler := func(w http.ResponseWriter, req *http.Request) {
 
-		...
+		ctx := req.Context()
+		span := trace.SpanFromContext(ctx)
+		span.SetAttributes(attribute.String("server", "handling this..."))
+		_, _ = io.WriteString(w, "Hello, world!\n")
+	}
 
-		return nil
-	}(ctx)
+	otelHandler := otelhttp.NewHandler(http.HandlerFunc(helloHandler), "Hello")
+
+	http.Handle("/hello", otelHandler)
+
+	err = http.ListenAndServe(":7777", nil)
+
+	if err != nil {
+		panic(err)
+	}
 }
 ```
 
-> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -1168,37 +1176,45 @@ import (
 	"context"
 	"log"
 	"os"
-
-	"go.opentelemetry.io/contrib/detectors/gcp"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/sdk/resource"
-
-	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.7.0"
-	texporter "github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace"
+	"net/http"
 )
 
 func main() {
 
-  ctx := context.Background()
+	installPropagators()
 
-  ...
+	shutdown, err := initTracer()
 
-  tracer := otel.GetTracerProvider().Tracer("example.com/trace")
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  err = func(ctx context.Context) error {
+	defer shutdown()
 
-	    // 現在の処理にコンテキストを注入する。
-        // 変数にすでにコンテキストが注入されているので、子スパンが作成される。
-		ctx, span := tracer.Start(ctx, "foo")
-		defer span.End()
+	helloHandler := func(w http.ResponseWriter, req *http.Request) {
 
-		...
+		ctx := req.Context()
+		span := trace.SpanFromContext(ctx)
+		span.SetAttributes(attribute.String("server", "handling this..."))
+		_, _ = io.WriteString(w, "Hello, world!\n")
+	}
 
-		return nil
-	}(ctx)
+	otelHandler := otelhttp.NewHandler(http.HandlerFunc(helloHandler), "Hello")
+
+	http.Handle("/hello", otelHandler)
+
+	err = http.ListenAndServe(":7777", nil)
+
+	if err != nil {
+		panic(err)
+	}
 }
 ```
+
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
+> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L72-L93
+> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
+> - https://blog.cybozu.io/entry/2023/04/12/170000
 
 <br>
 
@@ -1238,7 +1254,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	otel.SetTracerProvider(traceProvider)
 
-	// 前段のマイクロサービスのリクエストからコンテキストを抽出する。
+	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
@@ -1399,7 +1415,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
-# 前段のマイクロサービスのリクエストからコンテキストを抽出する。
+# 上流のマイクロサービスのリクエストからコンテキストを抽出する。
 set_global_textmap(CloudTraceFormatPropagator())
 
 # 任意のコンテキストを設定する

@@ -940,7 +940,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。
-                # label_eks_amazonaws_com_nodegroupラベルの値は前段のプルダウンですでに取得しており、変数として使用する。
+                # label_eks_amazonaws_com_nodegroupラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
               },
@@ -981,7 +981,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
             "options": [],
             "query": {
                 # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                # nodeラベルの値は前段のプルダウンですでに取得しており、変数として使用する。
+                # nodeラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)',
                 "refId": "Prometheus-container-Variable-Query",
               },
