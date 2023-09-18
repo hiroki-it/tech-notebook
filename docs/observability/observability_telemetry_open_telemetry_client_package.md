@@ -19,7 +19,7 @@ description: クライアントパッケージ＠OpenTelemetryの知見を記録
 
 OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
 
-`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
+Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace
 > - https://christina04.hatenablog.com/entry/opentelemetry-in-go
@@ -54,7 +54,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
 
-`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
+Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
 
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
@@ -66,6 +66,11 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
 スパンの収集ツールがそれぞれパッケージを提供している。
+
+- Goと標準出力なら、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージである。
+- Goとotelコレクターなら、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`である。 (otelクライアントはgRPCでotelコレクター接続する)
+- GoとJaegerなら、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージである。
+- GoとX-rayなら、一度otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`である。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
@@ -80,7 +85,7 @@ OpenTelemetryをセットアップし、スパンを作成する機能を提供�
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
-`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
+Goなら、`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
 
 ```go
 // 上流マイクロサービス
@@ -114,7 +119,7 @@ func init() {
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
-`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
+Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
@@ -502,6 +507,7 @@ func initProvider() (func(context.Context) error, error) {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93
 
 #### ▼ 親スパン作成
 
@@ -632,6 +638,7 @@ func checkSession() gin.HandlerFunc {
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go
 > - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go
 > - https://blog.cybozu.io/entry/2023/04/12/170000
+> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -798,19 +805,24 @@ func StartClient(ctx context.Context) (func(context.Context) error, error) {
 	...
 
 	return func(context.Context) (err error) {
+
 		ctx, cancel := context.WithTimeout(ctx, time.Second)
 
 		defer cancel()
 
 		// pushes any last exports to the receiver
 		err = meterProvider.Shutdown(ctx)
+
 		if err != nil {
 			return err
 		}
+
 		err = tp.Shutdown(ctx)
+
 		if err != nil {
 			return err
 		}
+
 		return nil
 	}, nil
 }
@@ -1143,7 +1155,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
 > - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
 
 #### ▼ 親スパンの作成 (gRPCクライアント)
