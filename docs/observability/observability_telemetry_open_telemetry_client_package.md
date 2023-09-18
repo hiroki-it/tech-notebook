@@ -504,8 +504,7 @@ func initProvider() (func(context.Context) error, error) {
 package main
 
 import (
-  "context"
-	"fmt"
+    "context"
 	"log"
 	"net/http"
 	"os"
@@ -636,8 +635,7 @@ func checkSession() gin.HandlerFunc {
 package main
 
 import (
-  "context"
-	"fmt"
+    "context"
 	"log"
 	"net/http"
 	"os"
@@ -848,7 +846,6 @@ package collection
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"net"
 	"net/http"
 
@@ -899,7 +896,6 @@ package collection
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"net"
 	"net/http"
 
@@ -1099,7 +1095,39 @@ func main() {
 
 gRPCを使わない場合と実装方法は同じである。
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go#L25-L37
+```go
+package main
+
+import (
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/propagation"
+
+	stdout "go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+)
+
+func Init() (*sdktrace.TracerProvider, error) {
+
+	exporter, err := stdout.New(stdout.WithPrettyPrint())
+
+	if err != nil {
+		return nil, err
+	}
+
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithBatcher(exporter),
+	)
+
+	otel.SetTracerProvider(tp)
+
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
+
+	return tp, nil
+}
+```
+
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
 
 #### ▼ 親スパンの作成 (gRPCクライアント)
 
@@ -1107,7 +1135,6 @@ gRPCを使わない場合と実装方法は同じである。
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
@@ -1152,7 +1179,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
+	"net"
 
 	"google.golang.org/grpc"
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
@@ -1162,6 +1189,7 @@ import (
 
 func main() {
 
+	// otelパッケージを初期化する
 	tp, err := config.Init()
 
 	if err != nil {
@@ -1173,12 +1201,6 @@ func main() {
 			log.Printf("Error shutting down tracer provider: %v", err)
 		}
 	}()
-
-	lis, err := net.Listen("tcp", port)
-
-	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
-	}
 
 	// gRPCサーバーを作成する。
 	grpcServer := grpc.NewServer(
