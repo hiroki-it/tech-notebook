@@ -76,7 +76,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 | Goと標準出力       | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでotelコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
 | Goとotelコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                   |
 | GoとJaeger         | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                   |
-| GoとX-ray          | 一度otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                                                                     |
+| GoとX-ray          | 一度、otelコレクター互換のAWS Distro for otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                                |
 | GoとCloud Trace    | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                         |
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
@@ -746,6 +746,7 @@ func createUser(c *gin.Context) {
 	user, _ := models.GetUserByEmail(c, json.Email)
 
     if user.ID != 0 {
+
 		c.JSON(http.StatusOK, gin.H{
       "error_code": "その Email はすでに存在しております",
     })
@@ -815,34 +816,43 @@ func initProvider() (func(context.Context) error, error) {
 			semconv.ServiceNameKey.String("sample"),
 		),
 	)
-	
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
 	}
 
-	conn, err := grpc.DialContext(ctx, "sample-collector.sample.svc.cluster.local:4318", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
-	
+	// AWS Distro for otelコレクターに接続する
+	conn, err := grpc.DialContext(
+		ctx,
+		"sample-collector.sample.svc.cluster.local:4318",
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
+		grpc.WithBlock(),
+	)
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
 	}
-	
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
-	
+
+	traceExporter, err := otlptracegrpc.New(
+		ctx,
+		otlptracegrpc.WithGRPCConn(conn),
+	)
+
 	if err != nil {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
 	}
 
 	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
-	
+
 	var tracerProvider *sdktrace.TracerProvider
-	
+
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(res),
 		sdktrace.WithSpanProcessor(bsp),
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
-	
+
 	otel.SetTracerProvider(tracerProvider)
 	otel.SetTextMapPropagator(propagation.TraceContext{})
 
@@ -864,28 +874,33 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"net"
-	"net/http"
+	"fmt"
+	"log"
+	"os"
+	"os/signal"
+	"time"
 
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 
 ...
 
 func main() {
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
-	
+
+	ctx, stop := signal.NotifyContext(
+		context.Background(),
+		os.Interrupt,
+	)
+
 	defer stop()
 
 	shutdown, err := initProvider()
-	
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Fatal("failed to shutdown TracerProvider: %w", err)
@@ -893,24 +908,30 @@ func main() {
 	}()
 
 	r := gin.New()
-	
+
 	r.Use(otelgin.Middleware("sample"))
-	
+
 	r.GET("/sample", sample1)
-	
+
 	r.Run(":8080")
 }
 
-func parent(c *gin.Context) {
-	
-	_, span := tracer.Start(c.Request.Context(), "sample1")
-	
+func parent(ctx *gin.Context) {
+
+	var tracer = otel.Tracer("sample")
+
+	// スパンを作成する
+	_, span := tracer.Start(
+		ctx.Request.Context(),
+		"sample1",
+	)
+
 	time.Sleep(time.Second * 1)
-	
+
 	log.Println("sample1 done.")
-	
-	sample2(c)
-	
+
+	child(ctx)
+
 	span.End()
 }
 ```
@@ -930,28 +951,29 @@ package main
 
 import (
 	"context"
-	"encoding/json"
-	"net"
-	"net/http"
+	"fmt"
+	"log"
+	"os"
+	"os/signal"
+	"time"
 
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
-	"go.opentelemetry.io/otel/trace"
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 )
 
-...
 
 func main() {
+
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
-	
+
 	defer stop()
 
 	shutdown, err := initProvider()
-	
+
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	defer func() {
 		if err := shutdown(ctx); err != nil {
 			log.Fatal("failed to shutdown TracerProvider: %w", err)
@@ -959,24 +981,28 @@ func main() {
 	}()
 
 	r := gin.New()
-	
+
 	r.Use(otelgin.Middleware("sample"))
-	
+
 	r.GET("/sample", sample1)
-	
+
 	r.Run(":8080")
 }
 
-func child(c *gin.Context) {
-	
-	_, span := tracer.Start(c.Request.Context(), "sample1")
-	
+func child(ctx *gin.Context) {
+
+	var tracer = otel.Tracer("sample")
+
+	// スパンを作成する
+	_, span := tracer.Start(
+		ctx.Request.Context(),
+		"sample1",
+	)
+
 	time.Sleep(time.Second * 1)
-	
+
 	log.Println("sample1 done.")
-	
-	sample2(c)
-	
+
 	span.End()
 }
 ```
