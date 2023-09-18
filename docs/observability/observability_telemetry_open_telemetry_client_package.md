@@ -466,7 +466,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	ctx := context.Background()
 
-	res, err := resource.New(
+	resr, err := resource.New(
 		ctx,
 		resource.WithAttributes(semconv.ServiceNameKey.String("<マイクロサービス名>")),
 	)
@@ -474,9 +474,7 @@ func initProvider() (func(context.Context) error, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to create resource: %w", err)
 	}
-
-	var tracerProvider *sdktrace.TracerProvider
-
+	
 	conn, err := grpc.DialContext(
         ctx, "sample-collector.observability.svc.cluster.local:4317",
         grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock(),
@@ -490,7 +488,7 @@ func initProvider() (func(context.Context) error, error) {
 	traceExporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
-		)
+	)
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
@@ -498,12 +496,12 @@ func initProvider() (func(context.Context) error, error) {
 
     var tracerProvider *sdktrace.TracerProvider
 
-	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(traceExporter)
 
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(res),
-		sdktrace.WithSpanProcessor(bsp),
+		sdktrace.WithResource(resr),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 	)
 
 	// パッケージをセットアップする。
@@ -811,7 +809,7 @@ import (
 func initProvider() (func(context.Context) error, error) {
 	ctx := context.Background()
 
-	res, err := resource.New(ctx,
+	resr, err := resource.New(ctx,
 		resource.WithAttributes(
 			semconv.ServiceNameKey.String("sample"),
 		),
@@ -842,14 +840,14 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
 	}
 
-	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(traceExporter)
 
 	var tracerProvider *sdktrace.TracerProvider
 
 	tracerProvider = sdktrace.NewTracerProvider(
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithResource(res),
-		sdktrace.WithSpanProcessor(bsp),
+		sdktrace.WithResource(resr),
+		sdktrace.WithSpanProcessor(batchSpanProcessor),
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
@@ -860,8 +858,8 @@ func initProvider() (func(context.Context) error, error) {
 }
 ```
 
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 
 #### ▼ 親スパンの作成
 
@@ -1045,7 +1043,7 @@ func main() {
 		log.Fatalf("texporter.New: %v", err)
 	}
 
-	res, err := resource.New(
+	resr, err := resource.New(
 		ctx,
 		resource.WithDetectors(gcp.NewDetector()),
 		resource.WithTelemetrySDK(),
@@ -1058,7 +1056,7 @@ func main() {
 
 	traceProvider := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
-		sdktrace.WithResource(res),
+		sdktrace.WithResource(resr),
 	)
 
 	defer traceProvider.Shutdown(ctx)
