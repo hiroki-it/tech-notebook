@@ -180,8 +180,6 @@ gRPCサーバーでは、リクエスト/レスポンスの送受信前にイン
 
 非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
 
-なお、`go-grpc-middleware`パッケージは、様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
-
 執筆時点 (202309/16) で、パッケージの`v1`は非推奨で、`v2`が推奨である。
 
 ```go
@@ -270,10 +268,15 @@ func main() {
 }
 ```
 
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
 > - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
+
+なお、`go-grpc-middleware`パッケージは、gRPCに関する様々なインターセプター処理の関数 (例：認証、ロギング、メトリクス、分散トレーシング、など) を持つ。
+
+これを`Chain`関数に渡せば、gRPCで様々なインターセプター処理を簡単に実行できる。
+
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
+> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
 
 #### ▼ ヘルスチェックサーバー
 

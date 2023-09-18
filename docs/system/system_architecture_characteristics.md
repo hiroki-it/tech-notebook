@@ -79,6 +79,13 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 > - https://knowledge.sakura.ad.jp/6274/#i-3
 
+#### ▼ コントロールプレーン/データプレーン
+
+システムをコントロールプレーンとデータプレーンに切り分ける。
+
+> - https://ganganichamika.medium.com/separating-data-plane-and-control-plane-9fee0b7f3ef8
+> - https://danieldonbavand.com/2022/03/08/what-is-a-control-and-data-plane-architecture/
+
 <br>
 
 ## 02-02. 冗長化システムの種類

@@ -13,7 +13,10 @@
 ### アーキテクチャ
 
 * #### [アーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture.html)
-* #### [︎オブジェクト指向分析設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html)
+* #### <u>オブジェクト指向</u>
+  > * #### [︎オブジェクト指向](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_object_orientation.html)
+  > * #### [︎オブジェクト指向分析](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_object_orientation_analysis.html)
+  > * #### [︎オブジェクト指向設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_object_orientation_design.html)
 * #### <u>バックエンド</u>
   > * ##### [︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
   > * ##### [︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
