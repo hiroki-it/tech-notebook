@@ -34,7 +34,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 スパンにコンテキストを設定する。
 
-`go.opentelemetry.io/otel/resource`パッケージからコールできる。
+| 項目 | 必要なパッケージ                                                |
+| ---- | --------------------------------------------------------------- |
+| Go   | `go.opentelemetry.io/otel/resource`パッケージからコールできる。 |
 
 ```yaml
 {
@@ -54,7 +56,9 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
 
-Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
+| 項目 | 必要なパッケージ                                                 |
+| ---- | ---------------------------------------------------------------- |
+| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
 
 > - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
@@ -67,13 +71,17 @@ Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールで
 
 スパンの収集ツールがそれぞれパッケージを提供している。
 
-- Goと標準出力なら、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージである。
-- Goとotelコレクターなら、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`である。 (otelクライアントはgRPCでotelコレクター接続する)
-- GoとJaegerなら、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージである。
-- GoとX-rayなら、一度otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`である。
+| 項目               | 必要なパッケージ                                                                                                                                                                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Goと標準出力       | `go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。otelクライアントはgRPCでotelコレクター接続する。`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。 |
+| Goとotelコレクター | `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。                                                                                                                                   |
+| GoとJaeger         | `go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。                                                                                                                                                   |
+| GoとX-ray          | 一度otelコレクターに送信する必要があるため、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`が必要である。                                                                                                     |
+| GoとCloud Trace    | `github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。                                                                                                                         |
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
+> - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
 
 #### ▼ Propagator
 
@@ -85,7 +93,9 @@ Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールで
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
-Goなら、`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
+| 項目 | 必要なパッケージ                                                   |
+| ---- | ------------------------------------------------------------------ |
+| Go   | `go.opentelemetry.io/otel/propagation`パッケージからコールできる。 |
 
 ```go
 // 上流マイクロサービス
@@ -119,7 +129,9 @@ func init() {
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
-Goなら、`go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。
+| 項目 | 必要なパッケージ                                                 |
+| ---- | ---------------------------------------------------------------- |
+| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
@@ -476,9 +488,9 @@ func initProvider() (func(context.Context) error, error) {
 
 	// スパンの宛先として、otelコレクターを設定する。
 	traceExporter, err := otlptracegrpc.New(
-    ctx,
-    otlptracegrpc.WithGRPCConn(conn),
-  )
+		ctx,
+		otlptracegrpc.WithGRPCConn(conn),
+		)
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
@@ -771,87 +783,75 @@ package collection
 
 import (
 	"context"
+	"fmt"
+	"log"
 	"os"
+	"os/signal"
 	"time"
 
+	"github.com/gin-gonic/gin"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/contrib/propagators/aws/xray"
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-	"go.opentelemetry.io/otel/sdk/metric/aggregation"
-	"go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/resource"
 
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
+
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
 
 ...
 
-// StartClient starts the traces and metrics providers which periodically collects signals and exports them.
-// Trace exporter and Metric exporter are both configured.
-func StartClient(ctx context.Context) (func(context.Context) error, error) {
 
-	...
+func initProvider() (func(context.Context) error, error) {
+	ctx := context.Background()
 
-	// Setup trace related
-	tp, err := setupTraceProvider(ctx, res)
-
-	if err != nil {
-		return nil, err
-	}
-
-	...
-
-	return func(context.Context) (err error) {
-
-		ctx, cancel := context.WithTimeout(ctx, time.Second)
-
-		defer cancel()
-
-		// pushes any last exports to the receiver
-		err = meterProvider.Shutdown(ctx)
-
-		if err != nil {
-			return err
-		}
-
-		err = tp.Shutdown(ctx)
-
-		if err != nil {
-			return err
-		}
-
-		return nil
-	}, nil
-}
-
-...
-
-func setupTraceProvider(ctx context.Context, res *resource.Resource) (*sdktrace.TracerProvider, error) {
-
-	// INSECURE !! NOT TO BE USED FOR ANYTHING IN PRODUCTION
-	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithInsecure())
-
-	if err != nil {
-		return nil, err
-	}
-
-	idg := xray.NewIDGenerator()
-
-	traceProvider := sdktrace.NewTracerProvider(
-		sdktrace.WithSampler(sdktrace.AlwaysSample()),
-		sdktrace.WithBatcher(traceExporter),
-		sdktrace.WithResource(res),
-		sdktrace.WithIDGenerator(idg),
+	res, err := resource.New(ctx,
+		resource.WithAttributes(
+			semconv.ServiceNameKey.String("sample"),
+		),
 	)
+	
+	if err != nil {
+		return nil, fmt.Errorf("failed to create resource: %w", err)
+	}
 
-	return traceProvider, nil
+	conn, err := grpc.DialContext(ctx, "sample-collector.sample.svc.cluster.local:4318", grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
+	
+	if err != nil {
+		return nil, fmt.Errorf("failed to create gRPC connection to collector: %w", err)
+	}
+	
+	traceExporter, err := otlptracegrpc.New(ctx, otlptracegrpc.WithGRPCConn(conn))
+	
+	if err != nil {
+		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
+	}
+
+	bsp := sdktrace.NewBatchSpanProcessor(traceExporter)
+	
+	var tracerProvider *sdktrace.TracerProvider
+	
+	tracerProvider = sdktrace.NewTracerProvider(
+		sdktrace.WithSampler(sdktrace.AlwaysSample()),
+		sdktrace.WithResource(res),
+		sdktrace.WithSpanProcessor(bsp),
+		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
+	)
+	
+	otel.SetTracerProvider(tracerProvider)
+	otel.SetTextMapPropagator(propagation.TraceContext{})
+
+	return tracerProvider.Shutdown, nil
 }
 ```
 
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
+> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 
 #### ▼ 親スパンの作成
 
@@ -875,11 +875,13 @@ import (
 
 ...
 
+var tracer = otel.Tracer("github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection")
+
 func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
 
 	w.Header().Set("Content-Type", "application/json")
 
-	s3.client.ListBuckets(nil) // nil or else would need real aws credentials
+	s3.client.ListBuckets(nil)
 
 	ctx, span := tracer.Start(
 		r.Context(),
@@ -889,7 +891,6 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 	defer span.End()
 
-	// Request based metrics provided by rqmc
 	rqmc.AddApiRequest()
 	rqmc.UpdateTotalBytesSent(ctx)
 	rqmc.UpdateLatencyTime(ctx)
@@ -901,7 +902,9 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 ```
 
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
+> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 
 #### ▼ コンテキスト注入と子スパン作成
 
@@ -925,11 +928,13 @@ import (
 
 ...
 
+var tracer = otel.Tracer("github.com/aws-otel-commnunity/sample-apps/go-sample-app/collection")
+
 func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetricCollector, s3 *s3Client) {
 
 	w.Header().Set("Content-Type", "application/json")
 
-	s3.client.ListBuckets(nil) // nil or else would need real aws credentials
+	s3.client.ListBuckets(nil)
 
 	ctx, span := tracer.Start(
 		r.Context(),
@@ -939,7 +944,6 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 	defer span.End()
 
-	// Request based metrics provided by rqmc
 	rqmc.AddApiRequest()
 	rqmc.UpdateTotalBytesSent(ctx)
 	rqmc.UpdateLatencyTime(ctx)
@@ -951,7 +955,9 @@ func AwsSdkCall(w http.ResponseWriter, r *http.Request, rqmc *requestBasedMetric
 
 ```
 
+> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
+> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
 
 <br>
 
