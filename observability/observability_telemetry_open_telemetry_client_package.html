@@ -3278,7 +3278,7 @@
 </tr>
 <tr>
 <td>GoとX-ray</td>
-<td>一度otelコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
+<td>一度、otelコレクター互換のAWS Distro for otelコレクターに送信する必要があるため、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code>が必要である。</td>
 </tr>
 <tr>
 <td>GoとCloud Trace</td>
@@ -3947,6 +3947,7 @@
 <span class="w">    </span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">models</span><span class="p">.</span><span class="nx">GetUserByEmail</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
 <span class="w">      </span><span class="s">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;その Email はすでに存在しております&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">})</span>
@@ -4019,13 +4020,22 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create resource: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sample-collector.sample.svc.cluster.local:4318&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">())</span>
+<span class="w">    </span><span class="c1">// AWS Distro for otelコレクターに接続する</span>
+<span class="w">    </span><span class="nx">conn</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;sample-collector.sample.svc.cluster.local:4318&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithTransportCredentials</span><span class="p">(</span><span class="nx">insecure</span><span class="p">.</span><span class="nx">NewCredentials</span><span class="p">()),</span>
+<span class="w">        </span><span class="nx">grpc</span><span class="p">.</span><span class="nx">WithBlock</span><span class="p">(),</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create gRPC connection to collector: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">))</span>
+<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
@@ -4061,19 +4071,24 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws/session&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/service/s3&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
 <span class="p">)</span>
 
 <span class="o">...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
 
@@ -4098,15 +4113,21 @@
 <span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">parent</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">parent</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;sample1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// スパンを作成する</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="s">&quot;sample1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sample1 done.&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="nx">sample2</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">child</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 <span class="p">}</span>
@@ -4125,18 +4146,19 @@
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;context&quot;</span>
-<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span>
-<span class="w">    </span><span class="s">&quot;net&quot;</span>
-<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="s">&quot;os/signal&quot;</span>
+<span class="w">    </span><span class="s">&quot;time&quot;</span>
 
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/aws/session&quot;</span>
-<span class="w">    </span><span class="s">&quot;github.com/aws/aws-sdk-go/service/s3&quot;</span>
-<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/otel/trace&quot;</span>
+<span class="w">    </span><span class="s">&quot;github.com/gin-gonic/gin&quot;</span>
+<span class="w">    </span><span class="s">&quot;go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin&quot;</span>
 <span class="p">)</span>
 
-<span class="o">...</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
 <span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">stop</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">signal</span><span class="p">.</span><span class="nx">NotifyContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Interrupt</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">stop</span><span class="p">()</span>
@@ -4162,15 +4184,19 @@
 <span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="kd">func</span><span class="w"> </span><span class="nx">child</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">child</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;sample1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">otel</span><span class="p">.</span><span class="nx">Tracer</span><span class="p">(</span><span class="s">&quot;sample&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// スパンを作成する</span>
+<span class="w">    </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Start</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Request</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
+<span class="w">        </span><span class="s">&quot;sample1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;sample1 done.&quot;</span><span class="p">)</span>
-
-<span class="w">    </span><span class="nx">sample2</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">span</span><span class="p">.</span><span class="nx">End</span><span class="p">()</span>
 <span class="p">}</span>
