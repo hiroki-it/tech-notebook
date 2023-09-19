@@ -164,7 +164,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 
 `define`関数で定義したテンプレートをそのまま出力する。
 
-`template`関数では出力内容を変数に格納できないため、これが可能な`include`関数が推奨されている。
+`template`関数では出力内容を変数に格納できないため、これが可能な`include`関数が推奨である。
 
 > - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
 > - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da

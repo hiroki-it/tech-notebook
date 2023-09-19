@@ -55,23 +55,52 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 
 ## 02. 可用性
 
-### Pod
+### コントロールプレーンNode
 
-#### ▼ ReplicaSet
+#### ▼ 冗長化
 
-Podの冗長化で、可用性を担保する。
+Etcdの可用性を高めるために、コントロールプレーンNodeは`3`~`7`台を作成する。
 
-#### ▼ HorizontalPodAutoscaler
-
-Podの水平スケーリングで、可用性を担保する。
+> - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
+> - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
 
 <br>
 
-### Node
+### ワーカーNode
 
-#### ▼ HorizontalPodAutoscaler
+#### ▼ Nodeグループ
 
-Nodeのオートスケーラー (例：cluster autoscaler、Karpenter) による水平スケーリングで、可用性を担保する。
+Podの可用性を高めるために、ワーカーNodeはPodの種類 (アプリ系、インフラ系、ロードバランサー系、など) ごとに作成する。
+
+特にクラウドプロバイダーではNodeグループを作成できる。
+
+#### ▼ 冗長化
+
+NodeグループごとにワーカーNodeを冗長化する。
+
+#### ▼ 水平スケーリング
+
+オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングで、可用性を担保する。
+
+<br>
+
+### Pod
+
+#### ▼ 冗長化
+
+ReplicaSetでPodを冗長化し、可用性を担保する。
+
+#### ▼ 水平スケーリング
+
+HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。
+
+<br>
+
+### コンテナ
+
+#### ▼ ヘルスチェック
+
+コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) できるようにする。
 
 <br>
 

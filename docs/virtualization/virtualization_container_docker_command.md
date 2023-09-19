@@ -615,7 +615,7 @@ $ docker stop $(docker ps --all --quiet)
 
 ボリュームマウントを作成する。
 
-`docker`コマンドではなく、`docker compose`コマンドで作成することが推奨されている。
+`docker`コマンドではなく、`docker compose`コマンドで作成することが推奨である。
 
 **＊例＊**
 
@@ -684,7 +684,7 @@ Dockerfileでボリュームマウントを行う場合、コンテナ側のマ�
 
 dockerエリアのマウントポイントは、自動的に作成される。
 
-Docker Composeで行うことが推奨されている。
+Docker Composeで行うことが推奨である。
 
 ```dockerfile
 FROM ubuntu

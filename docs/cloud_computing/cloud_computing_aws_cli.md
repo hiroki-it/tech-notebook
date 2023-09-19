@@ -104,7 +104,7 @@ LinuxやUnixの場合は、`$HOME/.aws/<credentialsファイル名>`に配置さ
 
 AWS CLIを実行するアカウントのアクセスキーIDを設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
 
 ```ini
 [default]
@@ -117,7 +117,7 @@ aws_access_key_id = *****
 
 AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
 
 ```ini
 [default]
@@ -130,7 +130,7 @@ aws_secret_access_key = *****
 
 認証で補助的に使用するセッショントークン値を設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨されている。
+`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
 
 ```ini
 [default]

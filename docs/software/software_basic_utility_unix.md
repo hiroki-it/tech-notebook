@@ -449,7 +449,7 @@ $ curl -X POST -H "Content-Type:application/json" -d '{}' https://example.com/fo
 $ curl -sL https://example.com/foo
 ```
 
-`curl`コマンドの結果から、特定の文字を抽出することができる。
+`curl`コマンドの結果から、特定の文字を抽出できる。
 
 ```bash
 # 『=』より後ろのバージョンを取得する

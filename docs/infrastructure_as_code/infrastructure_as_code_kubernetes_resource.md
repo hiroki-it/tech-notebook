@@ -112,9 +112,9 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。
 
-> - https://www.amazon.com/dp/1617297615
-
 ![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
+
+> - https://www.amazon.com/dp/1617297615
 
 <br>
 
@@ -122,7 +122,11 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 
 #### ▼ Jobとは
 
-複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) させる。
+バッチ処理 (単発実行) を定義したい場合、Jobを使用する。
+
+もう一度実行したい場合は、Jobを削除する必要がある。
+
+複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) する。
 
 デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。
 
@@ -133,8 +137,11 @@ DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有す
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/
 > - https://qiita.com/MahoTakara/items/82853097a1911671a704
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
+> - https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8
 
-#### ▼ CronJobの動作確認
+#### ▼ CronJob
+
+ジョブ処理 (定期実行) を定義したい場合、CronJobを使用する。
 
 CronJob配下のJobは、決まった時間にならないと実行されない。
 
@@ -153,6 +160,7 @@ $ kubectl delete job test-job -n foo
 > - https://zenn.dev/kennygt51/articles/2497931b8264de
 > - https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05
 > - https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job
+> - https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8
 
 <br>
 
