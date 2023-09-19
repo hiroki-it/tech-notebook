@@ -1752,6 +1752,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#jvm" class="md-nav__link">
+    JVMのメモリ消費
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     ウォームアップ
   </a>
@@ -1819,6 +1826,24 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="jvm">JVMのメモリ消費<a class="headerlink" href="#jvm" title="Permanent link">&para;</a></h3>
+<p>JavaのJVMではOOMキラーが起こることがある。</p>
+<p>JVMは以下でメモリを消費するため、これら全てを合計したメモリサイズ以上を割り当てる必要がある。</p>
+<ul>
+<li>ヒープサイズ</li>
+<li>ロードされたメタデータ</li>
+<li>Code Cache</li>
+<li>UseCodeCacheFlushing</li>
+<li>ReservedCodeCacheSize</li>
+<li>Thread</li>
+<li>GC</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/using-native-memory-by-jvm/">https://dev.classmethod.jp/articles/using-native-memory-by-jvm/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="_4">ウォームアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ウォームアップとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Javaアプリケーションの実行前に、本番環境と同じデータを使ってアプリを実行しておく。</p>
@@ -1845,7 +1870,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
       
     
   </small>
