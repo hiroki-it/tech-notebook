@@ -13,7 +13,7 @@ description: リソース定義＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. APIService
+## APIService
 
 ### .spec.group
 
@@ -130,7 +130,7 @@ spec:
 
 <br>
 
-## 02. CertificateSigningRequest
+## CertificateSigningRequest
 
 ### .spec.request
 
@@ -170,7 +170,7 @@ $ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.c
 
 <br>
 
-## 03. Config
+## Config
 
 ### clusters
 
@@ -401,7 +401,7 @@ users:
 
 <br>
 
-## 05. ConfigMap
+## ConfigMap
 
 ### data
 
@@ -462,7 +462,7 @@ data:
 
 <br>
 
-## 04. CronJob
+## CronJob
 
 ### .spec.jobTemplate
 
@@ -568,7 +568,7 @@ spec:
 
 <br>
 
-## 07. Deployment
+## Deployment
 
 ### .spec.replicas
 
@@ -833,7 +833,7 @@ spec:
 
 <br>
 
-## 08. EndpointSlice
+## EndpointSlice
 
 ### .spec.endpoints
 
@@ -940,7 +940,7 @@ ports:
 
 <br>
 
-## 09. HTTPRoute
+## HTTPRoute
 
 記入中...
 
@@ -969,7 +969,7 @@ spec:
 
 <br>
 
-## 10. HorizontalPodAutoscaler
+## HorizontalPodAutoscaler
 
 ### .spec.maxReplicas、spec.minReplicas
 
@@ -1078,7 +1078,7 @@ spec:
 
 <br>
 
-## 11. Ingress
+## Ingress
 
 ### .metadata.annotations
 
@@ -1246,7 +1246,7 @@ spec:
 
 <br>
 
-## 12. IngressClass
+## IngressClass
 
 ### .spec.controller
 
@@ -1328,7 +1328,7 @@ spec:
 
 <br>
 
-## 13. Gateway
+## Gateway
 
 ### spec.gatewayClassName
 
@@ -1384,7 +1384,7 @@ spec:
 
 <br>
 
-## 14. GatewayClass
+## GatewayClass
 
 ### spec.controllerName
 
@@ -1451,7 +1451,7 @@ spec:
 
 <br>
 
-## 14. NetworkPolicy
+## NetworkPolicy
 
 ### NetworkPolicyとは
 
@@ -1599,7 +1599,7 @@ spec:
 
 <br>
 
-## 14. Job
+## Job
 
 ### .spec.activeDeadlineSeconds
 
@@ -1716,7 +1716,7 @@ spec:
 
 <br>
 
-## 15. Node
+## Node
 
 Kubernetesの実行時に自動的に作成される。
 
@@ -1724,7 +1724,32 @@ Kubernetesの実行時に自動的に作成される。
 
 <br>
 
-## 16. PersistentVolume
+## LimitRange
+
+### .spec.limit
+
+#### ▼ Containerの場合
+
+Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。
+
+```yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: foo-limit-range
+  namespace: foo
+spec:
+  limits:
+    - max:
+        cpu: "500m"
+      min:
+        cpu: "200m"
+      type: Container
+```
+
+<br>
+
+## PersistentVolume
 
 ### .spec.accessModes
 
@@ -2084,7 +2109,7 @@ spec:
 
 <br>
 
-## 17. PersistentVolumeClaim
+## PersistentVolumeClaim
 
 ### .spec.accessModes
 
@@ -2157,7 +2182,7 @@ spec:
 
 <br>
 
-## 18. Pod
+## Pod
 
 ### .spec.affinity
 
@@ -4036,7 +4061,7 @@ data:
 
 <br>
 
-## 19. PodDisruptionBudget
+## PodDisruptionBudget
 
 ### .spec.maxUnavailable
 
@@ -4104,7 +4129,7 @@ spec:
 
 <br>
 
-## 20. PriorityClass
+## PriorityClass
 
 ### value
 
@@ -4124,7 +4149,7 @@ value: 1000000
 
 <br>
 
-## 21. ReplicaController
+## ReplicaController
 
 旧Deployment。
 
@@ -4134,7 +4159,7 @@ value: 1000000
 
 <br>
 
-## 22. Role、ClusterRole
+## Role、ClusterRole
 
 ### rules.apiGroups
 
@@ -4209,7 +4234,7 @@ rules:
 
 <br>
 
-## 23. RoleBinding、ClusterRoleBinding
+## RoleBinding、ClusterRoleBinding
 
 ### roleRef.name
 
@@ -4282,7 +4307,7 @@ subjects:
 
 <br>
 
-## 24. Secret
+## Secret
 
 ### data
 
@@ -4537,7 +4562,7 @@ data:
 
 <br>
 
-## 25. Service
+## Service
 
 ### .spec.ports
 
@@ -4823,7 +4848,7 @@ status:
 
 <br>
 
-## 26. ServiceAccount
+## ServiceAccount
 
 ### automountServiceAccountToken
 
@@ -4979,7 +5004,7 @@ data:
 
 <br>
 
-## 27. StatefulSet
+## StatefulSet
 
 ### .spec.serviceName
 
@@ -5141,7 +5166,7 @@ spec:
 
 <br>
 
-## 28. StorageClass
+## StorageClass
 
 ### allowVolumeExpansion
 

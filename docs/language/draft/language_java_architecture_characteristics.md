@@ -23,6 +23,24 @@ description: アーキテクチャ特性＠Javaの知見を記録しています
 
 <br>
 
+### JVMのメモリ消費
+
+JavaのJVMではOOMキラーが起こることがある。
+
+JVMは以下でメモリを消費するため、これら全てを合計したメモリサイズ以上を割り当てる必要がある。
+
+- ヒープサイズ
+- ロードされたメタデータ
+- Code Cache
+- UseCodeCacheFlushing
+- ReservedCodeCacheSize
+- Thread
+- GC
+
+> - https://dev.classmethod.jp/articles/using-native-memory-by-jvm/
+
+<br>
+
 ### ウォームアップ
 
 #### ▼ ウォームアップとは
