@@ -3360,8 +3360,15 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <p>Helmでは<code>values</code>ファイルをテンプレート化できないが、Helmfileではこれが可能である。</p>
 <p><code>values</code>ファイルに、Helmfileの変数や他の<code>values</code>ファイルの値を出力する。</p>
 <p>特に、公式チャートに実行環境別の<code>values</code>ファイルを渡したい場合に役立つ。</p>
-<p>注意点として、<code>values.yaml.gotmpl</code>ファイルに値を渡すための<code>values</code>ファイルは、Helmfileの<code>environments</code>キー配下で読み込まなければならない。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">repositories</span><span class="p">:</span>
+<p>注意点として、<code>environments</code>キーの後に<code>releases</code>キーが読み込まれる。</p>
+<p>そのため、<code>values.yaml.gotmpl</code>ファイルに値を渡すための<code>values</code>ファイルは、Helmfileの<code>environments</code>キー配下で読み込まなければならない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">environments</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">.Environment.Name</span><span class="p p-Indicator">}}:</span>
+<span class="w">    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># values.yaml.gotmplファイルに値を渡すvaluesファイル</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values-{{ .Environment.Name }}.yaml</span>
+
+<span class="nt">repositories</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-repository</span>
 <span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-repository</span>
 
@@ -3370,12 +3377,8 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-repository/foo-chart</span>
 <span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 <span class="w">    </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values.yaml.gotmpl</span><span class="w"> </span><span class="c1"># 実行環境間で共有するvaluesファイル</span>
-
-<span class="nt">environments</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">.Environment.Name</span><span class="p p-Indicator">}}:</span>
-<span class="w">    </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values-{{ .Environment.Name }}.yaml</span><span class="w"> </span><span class="c1"># values.yaml.gotmplファイルに値を渡すvaluesファイル</span>
+<span class="w">      </span><span class="c1"># 実行環境間で共有するvaluesファイル</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values.yaml.gotmpl</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -3391,7 +3394,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>
