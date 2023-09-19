@@ -1696,7 +1696,7 @@
         
           <li class="md-nav__item">
   <a href="#cronjob" class="md-nav__link">
-    ▼ CronJobの動作確認
+    ▼ CronJob
   </a>
   
 </li>
@@ -3378,7 +3378,7 @@
         
           <li class="md-nav__item">
   <a href="#cronjob" class="md-nav__link">
-    ▼ CronJobの動作確認
+    ▼ CronJob
   </a>
   
 </li>
@@ -4455,16 +4455,18 @@
 </blockquote>
 <h4 id="persistentvolume">▼ PersistentVolumeとの関係性<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h4>
 <p>DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。</p>
+<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.com/dp/1617297615">https://www.amazon.com/dp/1617297615</a></li>
 </ul>
 </blockquote>
-<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png" /></p>
 <p><br></p>
 <h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
 <h4 id="job_1">▼ Jobとは<a class="headerlink" href="#job_1" title="Permanent link">&para;</a></h4>
-<p>複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) させる。</p>
+<p>バッチ処理 (単発実行) を定義したい場合、Jobを使用する。</p>
+<p>もう一度実行したい場合は、Jobを削除する必要がある。</p>
+<p>複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) する。</p>
 <p>デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。</p>
 <p><code>.spec.ttlSecondsAfterFinished</code>キーを使用すると、Podのみを自動削除できるようになる。</p>
 <p>定期的に実行する場合、CronJobのテンプレートとして定義する。</p>
@@ -4473,9 +4475,11 @@
 <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">https://kubernetes.io/docs/concepts/workloads/controllers/job/</a></li>
 <li><a href="https://qiita.com/MahoTakara/items/82853097a1911671a704">https://qiita.com/MahoTakara/items/82853097a1911671a704</a></li>
 <li><a href="https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/">https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/</a></li>
+<li><a href="https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8">https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8</a></li>
 </ul>
 </blockquote>
-<h4 id="cronjob">▼ CronJobの動作確認<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
+<h4 id="cronjob">▼ CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
+<p>ジョブ処理 (定期実行) を定義したい場合、CronJobを使用する。</p>
 <p>CronJob配下のJobは、決まった時間にならないと実行されない。</p>
 <p>任意の時間に実行するためには、CronJobを指定し、これの配下で一時的にJobを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>test-job<span class="w"> </span>--from<span class="o">=</span>cronjob/foo-cron-job<span class="w"> </span>-n<span class="w"> </span>foo
@@ -4488,6 +4492,7 @@
 <li><a href="https://zenn.dev/kennygt51/articles/2497931b8264de">https://zenn.dev/kennygt51/articles/2497931b8264de</a></li>
 <li><a href="https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05">https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05</a></li>
 <li><a href="https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job">https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job</a></li>
+<li><a href="https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8">https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -5861,7 +5866,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
       
     
   </small>

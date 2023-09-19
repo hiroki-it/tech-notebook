@@ -6,34 +6,30 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="CircleCI＠CIツールの知見を記録しています。">
+        <meta name="description" content="アラート＠Prometheusの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_prometheus_alert.html">
       
       
-        <link rel="prev" href="devops_cicd_ci_capistrano.html">
       
       
-        <link rel="next" href="devops_cicd_ci_circleci_config_yml.html">
-      
-      
-      <link rel="icon" href="../assets/images/logo_v2.png">
+      <link rel="icon" href="../../assets/images/logo_v2.png">
       <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
     
     
       
-        <title>【IT技術の知見】CircleCI＠CIツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】アラート＠Prometheus - 俺の技術ノート</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.046329b4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.85d0ee34.min.css">
       
       
 
@@ -52,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -91,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#circleci" class="md-skip">
+        <a href="#prometheus" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -109,7 +105,7 @@
   <nav class="md-header__inner md-grid" aria-label="ヘッダー">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-header__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -126,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】CircleCI＠CIツール
+              【IT技術の知見】アラート＠Prometheus
             
           </span>
         </div>
@@ -202,7 +198,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../index.html" class="md-tabs__link">
+      <a href="../../index.html" class="md-tabs__link">
         
   
     
@@ -219,7 +215,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../about.html" class="md-tabs__link">
+      <a href="../../about.html" class="md-tabs__link">
         
   
     
@@ -238,7 +234,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
     
@@ -258,7 +254,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="../../software/index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+        <a href="../../software/application/index.html" class="md-tabs__link">
           
   
     
@@ -298,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+        <a href="../../software/middleware/index.html" class="md-tabs__link">
           
   
     
@@ -318,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="../../software/basic/index.html" class="md-tabs__link">
           
   
     
@@ -338,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../language/index.html" class="md-tabs__link">
+        <a href="../../language/index.html" class="md-tabs__link">
           
   
     
@@ -358,7 +354,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../testing/index.html" class="md-tabs__link">
+        <a href="../../testing/index.html" class="md-tabs__link">
           
   
     
@@ -378,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../hardware/index.html" class="md-tabs__link">
+        <a href="../../hardware/index.html" class="md-tabs__link">
           
   
     
@@ -398,7 +394,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../network/index.html" class="md-tabs__link">
+        <a href="../../network/index.html" class="md-tabs__link">
           
   
     
@@ -418,7 +414,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../security/index.html" class="md-tabs__link">
+        <a href="../../security/index.html" class="md-tabs__link">
           
   
     
@@ -438,7 +434,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../cloud_computing/index.html" class="md-tabs__link">
+        <a href="../../cloud_computing/index.html" class="md-tabs__link">
           
   
     
@@ -458,7 +454,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../virtualization/index.html" class="md-tabs__link">
+        <a href="../../virtualization/index.html" class="md-tabs__link">
           
   
     
@@ -478,7 +474,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="../index.html" class="md-tabs__link">
           
   
     
@@ -498,7 +494,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+        <a href="../kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -518,7 +514,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="../kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -538,7 +534,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+        <a href="../cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -558,7 +554,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../../devops/index.html" class="md-tabs__link">
           
   
     
@@ -574,13 +570,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="cicd/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../devops/cicd/index.html" class="md-tabs__link">
           
   
     
@@ -600,7 +594,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../observability/index.html" class="md-tabs__link">
+        <a href="../../observability/index.html" class="md-tabs__link">
           
   
     
@@ -620,7 +614,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software_development_methodology/index.html" class="md-tabs__link">
+        <a href="../../software_development_methodology/index.html" class="md-tabs__link">
           
   
     
@@ -663,7 +657,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="https://hiroki-it.github.io/tech-notebook/" title="俺の技術ノート" class="md-nav__button md-logo" aria-label="俺の技術ノート" data-md-component="logo">
       
-  <img src="../assets/images/logo_v2.png" alt="logo">
+  <img src="../../assets/images/logo_v2.png" alt="logo">
 
     </a>
     俺の技術ノート
@@ -689,7 +683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -708,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about.html" class="md-nav__link">
+      <a href="../../about.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -747,7 +741,7 @@
         
   
   
-    <a href="../system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -792,7 +786,7 @@
         
   
   
-    <a href="../software/index.html" class="md-nav__link">
+    <a href="../../software/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -843,7 +837,7 @@
         
   
   
-    <a href="../software/application/index.html" class="md-nav__link">
+    <a href="../../software/application/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -894,7 +888,7 @@
         
   
   
-    <a href="../software/middleware/index.html" class="md-nav__link">
+    <a href="../../software/middleware/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -941,7 +935,7 @@
         
   
   
-    <a href="../software/basic/index.html" class="md-nav__link">
+    <a href="../../software/basic/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -998,7 +992,7 @@
         
   
   
-    <a href="../language/index.html" class="md-nav__link">
+    <a href="../../language/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1043,7 +1037,7 @@
         
   
   
-    <a href="../testing/index.html" class="md-nav__link">
+    <a href="../../testing/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1094,7 +1088,7 @@
         
   
   
-    <a href="../hardware/index.html" class="md-nav__link">
+    <a href="../../hardware/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1139,7 +1133,7 @@
         
   
   
-    <a href="../network/index.html" class="md-nav__link">
+    <a href="../../network/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1186,7 +1180,7 @@
         
   
   
-    <a href="../security/index.html" class="md-nav__link">
+    <a href="../../security/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1233,7 +1227,7 @@
         
   
   
-    <a href="../cloud_computing/index.html" class="md-nav__link">
+    <a href="../../cloud_computing/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1278,7 +1272,7 @@
         
   
   
-    <a href="../virtualization/index.html" class="md-nav__link">
+    <a href="../../virtualization/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1325,7 +1319,7 @@
         
   
   
-    <a href="../infrastructure_as_code/index.html" class="md-nav__link">
+    <a href="../index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1378,7 +1372,7 @@
         
   
   
-    <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link">
+    <a href="../kubernetes/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1429,7 +1423,7 @@
         
   
   
-    <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link">
+    <a href="../kubernetes_addon/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1492,7 +1486,7 @@
         
   
   
-    <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link">
+    <a href="../cncf_projects/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1539,7 +1533,7 @@
         
   
   
-    <a href="index.html" class="md-nav__link">
+    <a href="../../devops/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1562,8 +1556,6 @@
       
   
   
-    
-  
   
     
     
@@ -1584,611 +1576,28 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="cicd/index.html" class="md-nav__link ">
-              
+  
+  
+    <a href="../../devops/cicd/index.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     🔄 CI/CD
   </span>
   
 
-            </a>
-            
-              <label class="md-nav__link " for="__nav_20">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_20">
-            <span class="md-nav__icon md-icon"></span>
-            🔄 CI/CD
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    CI/CD
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_deploy.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    デプロイ手法
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20_4" checked>
-        
-          <label class="md-nav__link" for="__nav_20_4" id="__nav_20_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ CIツール
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_20_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_20_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ CIツール
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_github_actions.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    GitHub Actions
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_gitlab_ci.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    GitLab CI
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_capistrano.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Capistrano
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20_4_4" checked>
-        
-          <label class="md-nav__link" for="__nav_20_4_4" id="__nav_20_4_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ CircleCI
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_20_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_20_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ CircleCI
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    CircleCI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="devops_cicd_ci_circleci.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    CircleCI
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#01-circleci" class="md-nav__link">
-    01. CircleCIの仕組み
-  </a>
-  
-    <nav class="md-nav" aria-label="01. CircleCIの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    アーキテクチャ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cicd" class="md-nav__link">
-    CIパイプライン/CDパイプライン
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="02. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    インストール
-  </a>
-  
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#webhook" class="md-nav__link">
-    ▼ Webhook
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ デバッグの事前準備
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ バリデーション
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 処理の展開
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ ローカルテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#circlecissh" class="md-nav__link">
-    ▼ CircleCIコンテナにSSH公開鍵認証
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-insights" class="md-nav__link">
-    ▼ Test Insights
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    ▼ SSHキー
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_circleci_config_yml.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    config.yml
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_circleci_orbs.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    orbs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="devops_cicd_ci_circleci_policy.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="devops_cicd_ci_skaffold_yaml.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Skaffold
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="devops_cicd_cd_argocd.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ CDツール
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="devops_cicd_auto_review_github_comment.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ 自動レビューツール
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2224,7 +1633,7 @@
         
   
   
-    <a href="../observability/index.html" class="md-nav__link">
+    <a href="../../observability/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2273,7 +1682,7 @@
         
   
   
-    <a href="../software_development_methodology/index.html" class="md-nav__link">
+    <a href="../../software_development_methodology/index.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2321,106 +1730,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#01-circleci" class="md-nav__link">
-    01. CircleCIの仕組み
-  </a>
-  
-    <nav class="md-nav" aria-label="01. CircleCIの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    アーキテクチャ
+    はじめに
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cicd" class="md-nav__link">
-    CIパイプライン/CDパイプライン
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. セットアップ
+  <a href="#kubernetes" class="md-nav__link">
+    Kubernetesで便利なアラート
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ">
+    <nav class="md-nav" aria-label="Kubernetesで便利なアラート">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    インストール
-  </a>
-  
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#webhook" class="md-nav__link">
-    ▼ Webhook
+  <a href="#kubeapidown" class="md-nav__link">
+    KubeAPIDown
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ デバッグの事前準備
+  <a href="#kubedeploymentreplicasmismatch" class="md-nav__link">
+    KubeDeploymentReplicasMismatch
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ バリデーション
+  <a href="#kubeversionmismatch" class="md-nav__link">
+    KubeVersionMismatch
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 処理の展開
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ ローカルテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#circlecissh" class="md-nav__link">
-    ▼ CircleCIコンテナにSSH公開鍵認証
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#test-insights" class="md-nav__link">
-    ▼ Test Insights
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
-    ▼ SSHキー
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2447,145 +1788,38 @@
   
 
 
-<h1 id="circleci">CircleCI<a class="headerlink" href="#circleci" title="Permanent link">&para;</a></h1>
-<h2 id="01-circleci">01. CircleCIの仕組み<a class="headerlink" href="#01-circleci" title="Permanent link">&para;</a></h2>
-<h3 id="_1">アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p><img alt="circleci_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png" /></p>
+<h1 id="prometheus">アラート＠Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
-<li><a href="https://circleci.com/docs/2.0/server-3-overview/">https://circleci.com/docs/2.0/server-3-overview/</a></li>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">https://hiroki-it.github.io/tech-notebook/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cicd">CIパイプライン/CDパイプライン<a class="headerlink" href="#cicd" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>テストクラスを実装したうえで、新機能を設計実装する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>リポジトリへプッシュすると、CIツールがGituHubからブランチの状態を取得する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>CIツールによって、CIパイプラインが実行される。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>CIOpsを採用している場合に、CDパイプラインも実行される。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
-<p>結果を通知することも可能。</p>
-</dd>
-</dl>
-<p><img alt="継続的インテグレーション" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png" /></p>
+<h2 id="kubernetes">Kubernetesで便利なアラート<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
+<h3 id="kubeapidown"><code>KubeAPIDown</code><a class="headerlink" href="#kubeapidown" title="Permanent link">&para;</a></h3>
+<p>kube-apiserverから<code>15</code>分以上レスポンスがない場合に発火する。</p>
+<p>Kubernetes Clusterのアップグレード時に発火する可能性がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="webhook">▼ Webhook<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h4>
-<p>CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック (プッシュフック) できるようになる。</p>
-<p>鍵のうちでデプロイキーを使用することが推奨である。</p>
-<p>注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。</p>
+<h3 id="kubedeploymentreplicasmismatch"><code>KubeDeploymentReplicasMismatch</code><a class="headerlink" href="#kubedeploymentreplicasmismatch" title="Permanent link">&para;</a></h3>
+<p>Deploymentで指定したレプリカ数のPodがない場合に発火する。</p>
 <blockquote>
 <ul>
-<li><a href="https://circleci.com/docs/2.0/gh-bb-integration/">https://circleci.com/docs/2.0/gh-bb-integration/</a></li>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubedeploymentreplicasmismatch/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubedeploymentreplicasmismatch/</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ デバッグの事前準備<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>デバッグでは行数がわからない仕様になっている。</p>
-<p>そこで、workflowのjobのどこで失敗しているのかを特定するために、検証しないjobをコメントアウトしておく。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># build以外を実行しないことにより、buildのみを検証できる。</span>
-<span class="w">  </span><span class="nt">build-test-and-deploy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="c1">#      - test1:</span>
-<span class="c1">#          requires:</span>
-<span class="c1">#            - build</span>
-<span class="c1">#      - test2:</span>
-<span class="c1">#          requires:</span>
-<span class="c1">#            - test1</span>
-<span class="c1">#      - deploy:</span>
-<span class="c1">#          requires:</span>
-<span class="c1">#            - test2</span>
-</code></pre></div>
-<h4 id="_4">▼ バリデーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ホストで、以下のコマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>circleci<span class="w"> </span>config<span class="w"> </span>validate
-
-<span class="c1"># 以下の文章が表示されれば問題ない。</span>
-<span class="c1"># Config file at .circleci/config.yml is valid.</span>
-</code></pre></div>
-<h4 id="_5">▼ 処理の展開<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>設定ファイルを実行した時の処理を展開し、ファイルに出力できる</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>circleci<span class="w"> </span>config<span class="w"> </span>process<span class="w"> </span>.circleci/config.yml<span class="w"> </span>&gt;<span class="w"> </span>.circleci/process.yml
-</code></pre></div>
-<h4 id="_6">▼ ローカルテスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>コマンドにより、テストに必要なコンテナイメージをプルし、コンテナを作成する。</p>
-<p>続いて、コンテナ内でCircleCIを実行する。</p>
-<p>バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># バージョン2.1の設定ファイルの処理を展開する。</span>
-$<span class="w"> </span>circleci<span class="w"> </span>config<span class="w"> </span>process<span class="w"> </span>.circleci/config.yml<span class="w"> </span>&gt;<span class="w"> </span>.circleci/process.yml
-
-<span class="c1"># 専用のコンテナを作成し、展開ファイルを元にテストを実施する。</span>
-$<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local</span><span class="w"> </span>execute<span class="w"> </span>-c<span class="w"> </span>.circleci/process.yml<span class="w"> </span>--job<span class="w"> </span>&lt;job名&gt;
-</code></pre></div>
-<h4 id="circlecissh">▼ CircleCIコンテナにSSH公開鍵認証<a class="headerlink" href="#circlecissh" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>CircleCI用に鍵を作成しても良いが、ここではGitHubの鍵をそのまま使用することとする。</p>
-<p>GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。</p>
-<p>この時、他の連携サービスと区別しやすいように、ホスト名を<code>github</code>とする。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pbcopy<span class="w"> </span>&lt;<span class="w"> </span>~/.ssh/github/&lt;秘密鍵名&gt;
-</code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>CircleCIの<code>Enable SSH</code>ステップに表示された<code>ssh</code>コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を行う。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;CircleCIから提示されたコマンドをコピペ&gt;<span class="w"> </span>-i<span class="w"> </span>~/.ssh/github/&lt;秘密鍵名&gt;
-</code></pre></div>
+<p><br></p>
+<h3 id="kubeversionmismatch"><code>KubeVersionMismatch</code><a class="headerlink" href="#kubeversionmismatch" title="Permanent link">&para;</a></h3>
+<p>コントロールプレーンNode側のkube-apiserverとワーカーNode側のkubeletのバージョンが一致していない場合に発火する。</p>
 <blockquote>
 <ul>
-<li><a href="https://circleci.com/docs/ja/2.0/add-ssh-key/">https://circleci.com/docs/ja/2.0/add-ssh-key/</a></li>
-</ul>
-</blockquote>
-<h4 id="test-insights">▼ Test Insights<a class="headerlink" href="#test-insights" title="Permanent link">&para;</a></h4>
-<p>各テストの性能や成功失敗率を確認できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://circleci.com/docs/2.0/insights-tests/">https://circleci.com/docs/2.0/insights-tests/</a></li>
-</ul>
-</blockquote>
-<h4 id="ssh">▼ SSHキー<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
-<p>SSHキーを作成する必要がある。</p>
-<table>
-<thead>
-<tr>
-<th>鍵名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>デプロイキー</td>
-<td>CircleCIコンテナがプロジェクトのGitHubリポジトリにアクセスするために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。</td>
-</tr>
-<tr>
-<td>ユーザーキー</td>
-<td>CircleCIコンテナがプロジェクト以外のGitHubリポジトリにアクセスするために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://circleci.com/docs/2.0/add-ssh-key/">https://circleci.com/docs/2.0/add-ssh-key/</a></li>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -2660,10 +1894,10 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
   </body>

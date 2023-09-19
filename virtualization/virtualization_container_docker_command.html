@@ -3559,7 +3559,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h3 id="volume">volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
 <h4 id="create_2">▼ create<a class="headerlink" href="#create_2" title="Permanent link">&para;</a></h4>
 <p>ボリュームマウントを作成する。</p>
-<p><code>docker</code>コマンドではなく、<code>docker compose</code>コマンドで作成することが推奨されている。</p>
+<p><code>docker</code>コマンドではなく、<code>docker compose</code>コマンドで作成することが推奨である。</p>
 <p><strong>＊例＊</strong></p>
 <p>ホスト側のdockerエリアにボリュームを作成</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>&lt;ボリューム名&gt;
@@ -3603,7 +3603,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><strong>＊実装例＊</strong></p>
 <p>Dockerfileでボリュームマウントを行う場合、コンテナ側のマウントポイントを設定する。</p>
 <p>dockerエリアのマウントポイントは、自動的に作成される。</p>
-<p>Docker Composeで行うことが推奨されている。</p>
+<p>Docker Composeで行うことが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu</span>
 <span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/myvol
 <span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/myvol/greeting
@@ -3618,7 +3618,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
       
     
   </small>
