@@ -85,8 +85,6 @@ Istioの機能のセットを提供する。
 
 Istioが正しく動作しているか否かを検証する。
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
-
 成功した場合を以下に示す。
 
 ```bash
@@ -102,6 +100,8 @@ $ istioctl analyze
 
 Info [IST0118] (Service default/foo-service) Port name (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
 ```
+
+> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
 
 <br>
 
@@ -277,7 +277,7 @@ $ istioctl kube-inject -f pod.yaml
 
 ## manifest diff
 
-### diffとは
+### manifest diffとは
 
 ymlファイルの差分を取得する。
 

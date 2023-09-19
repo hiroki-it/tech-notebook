@@ -477,9 +477,17 @@ Helmでは`values`ファイルをテンプレート化できないが、Helmfile
 
 特に、公式チャートに実行環境別の`values`ファイルを渡したい場合に役立つ。
 
-注意点として、`values.yaml.gotmpl`ファイルに値を渡すための`values`ファイルは、Helmfileの`environments`キー配下で読み込まなければならない。
+注意点として、`environments`キーの後に`releases`キーが読み込まれる。
+
+そのため、`values.yaml.gotmpl`ファイルに値を渡すための`values`ファイルは、Helmfileの`environments`キー配下で読み込まなければならない。
 
 ```yaml
+environments:
+  {{.Environment.Name}}:
+    values:
+      # values.yaml.gotmplファイルに値を渡すvaluesファイル
+      - values-{{ .Environment.Name }}.yaml
+
 repositories:
   - name: foo-repository
     url: https://github.com/hiroki-hasegawa/foo-repository
@@ -489,12 +497,8 @@ releases:
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      - values.yaml.gotmpl # 実行環境間で共有するvaluesファイル
-
-environments:
-  {{.Environment.Name}}:
-    values:
-      - values-{{ .Environment.Name }}.yaml # values.yaml.gotmplファイルに値を渡すvaluesファイル
+      # 実行環境間で共有するvaluesファイル
+      - values.yaml.gotmpl
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
