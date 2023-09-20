@@ -428,7 +428,9 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 
 ## 05. CI
 
-### `.gitlab-ci.yml`ファイル
+### GitLab
+
+#### ▼ `.gitlab-ci.yml`ファイル
 
 CI上でClusterを作成し、Istioをデプロイする。
 
@@ -534,7 +536,7 @@ test_istio:
     - k3d cluster delete $CI_PIPELINE_ID
 ```
 
-### `.setup-asdf.sh`ファイル
+#### ▼ `.setup-asdf.sh`ファイル
 
 ```bash
 #!/bin/bash

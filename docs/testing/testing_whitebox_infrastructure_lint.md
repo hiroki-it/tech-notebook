@@ -86,6 +86,7 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 `helm install`コマンドにも、マニフェストの`apiVersion`キーが非推奨かどうかを検証する。
 
 - pluto
+- kube-no-trouble
 - `helm install`コマンド
 
 > - https://helm.sh/docs/topics/kubernetes_apis/
