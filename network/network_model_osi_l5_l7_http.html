@@ -3353,9 +3353,14 @@
 <h4 id="cookiecookie_1">▼ Cookie、Cookie情報とは<a class="headerlink" href="#cookiecookie_1" title="Permanent link">&para;</a></h4>
 <p>クライアントからの次回のリクエスト時でも、Cookie情報 (キー名/値のセット) を使用して、同一クライアントと認識できる仕組みをCookieという。</p>
 <p>HTTPはステートレスなプロトコルであるが、Cookie情報により擬似的にステートフルな通信を行える。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.engilaboo.com/definitely-understand-cookie-session/">https://www.engilaboo.com/definitely-understand-cookie-session/</a></li>
+</ul>
+</blockquote>
 <h4 id="cookie">▼ Cookie情報に関わるヘッダー<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
-<p>最初、サーバーからのレスポンス時、<code>Set-Cookie</code>ヘッダーを使用して送信される。</p>
-<p>反対に、クライアントからのリクエスト時、Cookie情報は、<code>Cookie</code>ヘッダーを使用して送信される。</p>
+<p>最初、サーバーからのレスポンス時に<code>Set-Cookie</code>ヘッダーに割り当てて送信される。</p>
+<p>反対に、クライアントからのリクエスト時、Cookie情報は、<code>Cookie</code>ヘッダーに割り当てて送信される。</p>
 <table>
 <thead>
 <tr>
@@ -3464,7 +3469,7 @@
 <p>この時、セッションIDを使用すると、セッションの各リクエストの送信元を同一クライアントとして識別できる。</p>
 <p>HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。</p>
 <p>例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。</p>
-<p>セッションIDは、Cookie情報の1つとして、<code>Cookie</code>ヘッダーと<code>Set-Cookie</code>ヘッダーを使用して送受信される。</p>
+<p>セッションIDはCookie情報の1つであり、<code>Cookie</code>ヘッダーと<code>Set-Cookie</code>ヘッダーに割り当てて送受信される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエストヘッダーの場合</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; csrftoken=u32t4o3tb3gg43; _gat=1</span>
 </code></pre></div>
@@ -3545,7 +3550,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、レスポンスヘッダー情報の<code>Cookie</code>ヘッダーを使用して、セッションIDを送信する。</p>
+<p>サーバーは、レスポンスヘッダー情報の<code>Cookie</code>ヘッダーにセッションIDを割り当て送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -3553,7 +3558,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の<code>Cookie</code>ヘッダーを使用して、セッションIDをサーバーに送信する。</p>
+<p>2回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の<code>Cookie</code>ヘッダーにセッションIDを割り当て、サーバーに送信する。</p>
 <p>サーバーは、セッションIDに紐付くクライアントのデータをReadする。</p>
 </dd>
 </dl>
@@ -3576,7 +3581,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>

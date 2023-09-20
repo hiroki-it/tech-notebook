@@ -2072,6 +2072,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#elasticache" class="md-nav__link">
+    ▼ ElastiCacheを使わない場合
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3425,6 +3432,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#elasticache" class="md-nav__link">
+    ▼ ElastiCacheを使わない場合
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3677,15 +3691,12 @@
 <p><br></p>
 <h3 id="_5">セッション管理機能<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ セッション管理機能とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>サーバー内のセッションデータの代わりにセッションIDを管理し、冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする。</p>
-<p>そのため、リリース後に既存のセッションが破棄されることがなくなり、ログイン状態を保持できるようになる。</p>
-<p>セッションIDについては、以下のリンクを参考にせよ。</p>
+<p>アプリがセッションIDを管理する代わりに、セッションIDを管理する。</p>
+<p>冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、ElastiCacheから共通のセッションIDを取得する。</p>
 <p><img alt="ElastiCacheのセッション管理機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html</a></li>
-</ul>
-</blockquote>
+<h4 id="elasticache">▼ ElastiCacheを使わない場合<a class="headerlink" href="#elasticache" title="Permanent link">&para;</a></h4>
+<p>アプリが特にコンテナの場合にアプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナがセッションデータを他のコンテナに引き継げずに、スケールイン/スケールアウトしてしまう。</p>
+<p>一方で、ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、既存のセッションデータをログイン状態を保持できるようになる。</p>
 <p><br></p>
 <h3 id="_7">クエリキャッシュ管理機能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ クエリキャッシュ管理機能とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -3856,7 +3867,7 @@ redis<span class="w"> </span>*****:6379&gt;<span class="w"> </span>monitor
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>

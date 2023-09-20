@@ -2612,7 +2612,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>レスポンスの<code>Set-Cookie</code>ヘッダーを使用して、セッションIDをクライアントに送信する。</p>
+<p>レスポンスの<code>Set-Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
@@ -2623,7 +2623,7 @@
 <dt><code>(6)</code></dt>
 <dd>
 <p>サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保存する。</p>
-<p>加えて次回のログイン時、クライアントは、リクエストの<code>Cookie</code>ヘッダーを使用して、セッションIDをクライアントに送信する。</p>
+<p>加えて次回のログイン時、クライアントは、リクエストの<code>Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
 <p>サーバーは、保存されたセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。</p>
 <p>これにより、改めて認証情報を送信せずに、素早くログインできるようになる。</p>
 </dd>
@@ -2803,7 +2803,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>
