@@ -1861,7 +1861,11 @@ Choose<span class="w"> </span>a<span class="w"> </span>simulation<span class="w"
 </blockquote>
 <p><br></p>
 <h3 id="_3">結果の評価<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="o">================================================================================</span>
+<div class="highlight"><pre><span></span><code>...
+
+Generating<span class="w"> </span>reports...
+
+<span class="o">================================================================================</span>
 ----<span class="w"> </span>Global<span class="w"> </span>Information<span class="w"> </span>--------------------------------------------------------
 <span class="c1"># リクエスト数</span>
 &gt;<span class="w"> </span>request<span class="w"> </span>count<span class="w">                                         </span><span class="m">13</span><span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">13</span><span class="w">     </span><span class="nv">KO</span><span class="o">=</span><span class="m">0</span><span class="w">     </span><span class="o">)</span>
@@ -1878,7 +1882,8 @@ Choose<span class="w"> </span>a<span class="w"> </span>simulation<span class="w"
 <span class="c1"># 標準偏差</span>
 &gt;<span class="w"> </span>std<span class="w"> </span>deviation<span class="w">                                        </span><span class="m">254</span><span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">254</span><span class="w">    </span><span class="nv">KO</span><span class="o">=</span>-<span class="w">     </span><span class="o">)</span>
 
-<span class="c1"># レスポンスタイムを小さい順に並べた時に、全体の何%にいるか</span>
+<span class="c1"># レスポンスタイムを小さい順に並べた時に、全体の何%にいくついるか</span>
+<span class="c1"># レスポンスタイムの分布を示すだけで、実際の時間を表しているわけではない</span>
 &gt;<span class="w"> </span>response<span class="w"> </span><span class="nb">time</span><span class="w"> </span>50th<span class="w"> </span>percentile<span class="w">                        </span><span class="m">354</span><span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">354</span><span class="w">    </span><span class="nv">KO</span><span class="o">=</span>-<span class="w">     </span><span class="o">)</span>
 &gt;<span class="w"> </span>response<span class="w"> </span><span class="nb">time</span><span class="w"> </span>75th<span class="w"> </span>percentile<span class="w">                        </span><span class="m">454</span><span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">454</span><span class="w">    </span><span class="nv">KO</span><span class="o">=</span>-<span class="w">     </span><span class="o">)</span>
 &gt;<span class="w"> </span>response<span class="w"> </span><span class="nb">time</span><span class="w"> </span>95th<span class="w"> </span>percentile<span class="w">                        </span><span class="m">910</span><span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">910</span><span class="w">    </span><span class="nv">KO</span><span class="o">=</span>-<span class="w">     </span><span class="o">)</span>
@@ -1887,17 +1892,24 @@ Choose<span class="w"> </span>a<span class="w"> </span>simulation<span class="w"
 <span class="c1"># 1秒間当たりに処理したリクエスト数</span>
 &gt;<span class="w"> </span>mean<span class="w"> </span>requests/sec<span class="w">                                  </span><span class="m">0</span>.464<span class="w"> </span><span class="o">(</span><span class="nv">OK</span><span class="o">=</span><span class="m">0</span>.464<span class="w">  </span><span class="nv">KO</span><span class="o">=</span>-<span class="w">     </span><span class="o">)</span>
 
-<span class="c1"># レスポンスタイムの分布</span>
+<span class="c1"># レスポンスタイムを小さい順に並べた時に、各ミリ秒の間に何割いるか</span>
+<span class="c1"># レスポンスタイムの実際の時間を表す</span>
 ----<span class="w"> </span>Response<span class="w"> </span>Time<span class="w"> </span>Distribution<span class="w"> </span>------------------------------------------------
+<span class="c1"># 92%が800ミリ秒未満である</span>
 &gt;<span class="w"> </span>t<span class="w"> </span>&lt;<span class="w"> </span><span class="m">800</span><span class="w"> </span>ms<span class="w">                                            </span><span class="m">12</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="m">92</span>%<span class="o">)</span>
 &gt;<span class="w"> </span><span class="m">800</span><span class="w"> </span>ms<span class="w"> </span>&lt;<span class="w"> </span>t<span class="w"> </span>&lt;<span class="w"> </span><span class="m">1200</span><span class="w"> </span>ms<span class="w">                                   </span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">0</span>%<span class="o">)</span>
 &gt;<span class="w"> </span>t<span class="w"> </span>&gt;<span class="w"> </span><span class="m">1200</span><span class="w"> </span>ms<span class="w">                                            </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">8</span>%<span class="o">)</span>
 &gt;<span class="w"> </span>failed<span class="w">                                                 </span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="w">  </span><span class="m">0</span>%<span class="o">)</span>
 <span class="o">================================================================================</span>
+
+Reports<span class="w"> </span>generated<span class="w"> </span><span class="k">in</span><span class="w"> </span>0s.
+
+...
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://gatling.io/docs/gatling/reference/current/stats/reports/">https://gatling.io/docs/gatling/reference/current/stats/reports/</a></li>
+<li><a href="https://developer.mamezou-tech.com/blogs/2023/04/29/load-test-with-gatling/">https://developer.mamezou-tech.com/blogs/2023/04/29/load-test-with-gatling/</a></li>
 <li><a href="https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f">https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f</a></li>
 <li><a href="https://blog.studysapuri.jp/entry/school-communication-with-gatling">https://blog.studysapuri.jp/entry/school-communication-with-gatling</a></li>
 </ul>
