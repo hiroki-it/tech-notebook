@@ -2232,6 +2232,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05-ci" class="md-nav__link">
+    05. CI
+  </a>
+  
+    <nav class="md-nav" aria-label="05. CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    .gitlab-ci.ymlファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    .setup-asdf.shファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3063,6 +3090,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05-ci" class="md-nav__link">
+    05. CI
+  </a>
+  
+    <nav class="md-nav" aria-label="05. CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    .gitlab-ci.ymlファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    .setup-asdf.shファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3446,13 +3500,138 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
+<h3 id="gitlab-ciyml"><code>.gitlab-ci.yml</code>ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h3>
+<p>CI上でClusterを作成し、Istioをデプロイする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行環境名を切り替える</span>
+<span class="nt">workflow</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># masterブランチにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;master&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span>
+<span class="w">    </span><span class="c1"># developブランチにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;develop&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">    </span><span class="c1"># MRにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;merge_request_event&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span>
+<span class="w">    </span><span class="c1"># 上記以外で、webから手動でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;web&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># EKSはK8sのマイナーバージョンを公開していないため、&quot;.0&quot;と仮定して処理する</span>
+<span class="w">  </span><span class="c1"># 現在のEKSのK8sバージョン</span>
+<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.24.0&quot;</span>
+<span class="w">  </span><span class="c1"># アップグレード後のEKSのK8sバージョン</span>
+<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.26.0&quot;</span>
+
+<span class="w">  </span><span class="c1"># 現在のIstioのバージョン</span>
+<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.15.3&quot;</span>
+<span class="w">  </span><span class="c1"># アップグレード後のIstioのバージョン</span>
+<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.17.5&quot;</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+
+<span class="c1"># 指定したバージョンのIstioを検証する</span>
+<span class="nt">test_istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># K3Dを使うことで Docker in Docker となるため、そのための環境変数を設定する</span>
+<span class="w">    </span><span class="c1"># @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300</span>
+<span class="w">    </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;overlay2&quot;</span>
+<span class="w">    </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tcp://docker:2375&quot;</span>
+<span class="w">    </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:dind</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--tls=false&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="c1"># K3D Clusterは異なるJobに持ち越せないので、事前処理として実行する</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk --update add bash curl git</span>
+<span class="w">    </span><span class="c1"># スクリプトでasdfをセットアップする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source setup-asdf.sh</span>
+<span class="w">    </span><span class="c1"># K3Dをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh</span>
+<span class="w">      </span><span class="no">k3d version</span>
+<span class="w">    </span><span class="c1"># kubectlコマンドをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">curl -kLO https://dl.k8s.io/release/v&quot;${K8S_NEXT_VERSION}&quot;/bin/linux/amd64/kubectl</span>
+<span class="w">      </span><span class="no">chmod +x ./kubectl</span>
+<span class="w">      </span><span class="no">mv ./kubectl /usr/local/bin/kubectl</span>
+<span class="w">      </span><span class="no">kubectl version</span>
+<span class="w">    </span><span class="c1"># Clusterを作成する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2</span>
+<span class="w">    </span><span class="c1"># Nodeにラベル付けする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-0 node.kubernetes.io/nodegroup=ingress</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodegroup=system</span>
+<span class="w">    </span><span class="c1"># 動作を確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get nodes --show-labels</span>
+<span class="w">  </span><span class="c1"># Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る</span>
+<span class="w">  </span><span class="c1"># @see https://istio.io/latest/docs/setup/upgrade/helm/</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># CRDをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f https://raw.githubusercontent.com/istio/istio/&quot;${ISTIO_NEXT_VERSION}&quot;/manifests/charts/base/crds/crd-all.gen.yaml</span>
+<span class="w">    </span><span class="c1"># Namespaceを作成する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">kubectl create ns istio-ingress</span>
+<span class="w">      </span><span class="no">kubectl label ns istio-ingress istio.io/rev=default</span>
+<span class="w">      </span><span class="no">kubectl create ns istio-system</span>
+<span class="w">    </span><span class="c1"># Namespaceのラベルを確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get ns -L istio.io/rev</span>
+<span class="w">    </span><span class="c1"># istiodチャートをApplyする</span>
+<span class="w">    </span><span class="c1"># ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョン番号をつける</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istiod_&quot;${ISTIO_NEXT_VERSION//\./-}&quot;.yaml apply --skip-crds --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># istio-baseチャートをApplyする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># istio-ingressgatewayチャートをApplyする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># 動作を確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl version</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl proxy-status</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-ingress</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-system</span>
+<span class="w">    </span><span class="c1"># Clusterを削除する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete $CI_PIPELINE_ID</span>
+</code></pre></div>
+<h3 id="setup-asdfsh"><code>.setup-asdf.sh</code>ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># asdfをインストールする</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/asdf-vm/asdf.git<span class="w"> </span>~/.asdf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;. &quot;$HOME/.asdf/asdf.sh&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_DIR</span><span class="o">=</span>~/.asdf
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+
+<span class="c1"># コマンドをインストールする</span>
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helm<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helmfile<span class="w"> </span>https://github.com/feniix/asdf-helmfile.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>istioctl<span class="w"> </span>https://github.com/virtualstaticvoid/asdf-istioctl.git
+asdf<span class="w"> </span>install
+asdf<span class="w"> </span>list
+
+<span class="c1"># 正しいバージョンをインストールできていることを確認する</span>
+helm<span class="w"> </span>version
+helmfile<span class="w"> </span>version
+istioctl<span class="w"> </span>version
+</code></pre></div>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>
