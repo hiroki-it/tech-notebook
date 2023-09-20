@@ -54,6 +54,10 @@ Choose a simulation number:
 ### 結果の評価
 
 ```bash
+...
+
+Generating reports...
+
 ================================================================================
 ---- Global Information --------------------------------------------------------
 # リクエスト数
@@ -71,7 +75,8 @@ Choose a simulation number:
 # 標準偏差
 > std deviation                                        254 (OK=254    KO=-     )
 
-# レスポンスタイムを小さい順に並べた時に、全体の何%にいるか
+# レスポンスタイムを小さい順に並べた時に、全体の何%にいくついるか
+# レスポンスタイムの分布を示すだけで、実際の時間を表しているわけではない
 > response time 50th percentile                        354 (OK=354    KO=-     )
 > response time 75th percentile                        454 (OK=454    KO=-     )
 > response time 95th percentile                        910 (OK=910    KO=-     )
@@ -80,16 +85,23 @@ Choose a simulation number:
 # 1秒間当たりに処理したリクエスト数
 > mean requests/sec                                  0.464 (OK=0.464  KO=-     )
 
-# レスポンスタイムの分布
+# レスポンスタイムを小さい順に並べた時に、各ミリ秒の間に何割いるか
+# レスポンスタイムの実際の時間を表す
 ---- Response Time Distribution ------------------------------------------------
+# 92%が800ミリ秒未満である
 > t < 800 ms                                            12 ( 92%)
 > 800 ms < t < 1200 ms                                   0 (  0%)
 > t > 1200 ms                                            1 (  8%)
 > failed                                                 0 (  0%)
 ================================================================================
+
+Reports generated in 0s.
+
+...
 ```
 
 > - https://gatling.io/docs/gatling/reference/current/stats/reports/
+> - https://developer.mamezou-tech.com/blogs/2023/04/29/load-test-with-gatling/
 > - https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f
 > - https://blog.studysapuri.jp/entry/school-communication-with-gatling
 
