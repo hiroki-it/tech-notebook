@@ -1758,10 +1758,43 @@
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
-    02. ロードテスト
+    02. 設定ファイル
   </a>
   
-    <nav class="md-nav" aria-label="02. ロードテスト">
+    <nav class="md-nav" aria-label="02. 設定ファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatlingconf" class="md-nav__link">
+    gatling.confファイル
+  </a>
+  
+    <nav class="md-nav" aria-label="gatling.confファイル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#charting" class="md-nav__link">
+    ▼ charting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. ロードテスト
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1784,15 +1817,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. 性能テスト
+  <a href="#04" class="md-nav__link">
+    04. 性能テスト
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. ロードテスト
+  <a href="#05" class="md-nav__link">
+    05. ロードテスト
   </a>
   
 </li>
@@ -1834,7 +1867,37 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. ロードテスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. 設定ファイル<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="gatlingconf"><code>gatling.conf</code>ファイル<a class="headerlink" href="#gatlingconf" title="Permanent link">&para;</a></h3>
+<h4 id="charting">▼ charting<a class="headerlink" href="#charting" title="Permanent link">&para;</a></h4>
+<p>レスポンスタイムの分布の区切りを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">gatling {</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">charting {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">indicators {</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">lowerBound = 20</span><span class="w">        </span><span class="c1"># Lower bound for the requests&#39; response time to track in the reports and the console summary</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">higherBound = 200</span><span class="w">      </span><span class="c1"># Higher bound for the requests&#39; response time to track in the reports and the console summary</span>
+<span class="w">      </span><span class="c1"># percentile1 = 50      # Value for the 1st percentile to track in the reports, the console summary and Graphite</span>
+<span class="w">      </span><span class="c1"># percentile2 = 75      # Value for the 2nd percentile to track in the reports, the console summary and Graphite</span>
+<span class="w">      </span><span class="c1"># percentile3 = 95      # Value for the 3rd percentile to track in the reports, the console summary and Graphite</span>
+<span class="w">      </span><span class="c1"># percentile4 = 99      # Value for the 4th percentile to track in the reports, the console summary and Graphite</span>
+<span class="w">    </span><span class="err">}</span>
+<span class="w">  </span><span class="err">}</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://hkawabata.github.io/technical-note/note/OSS/gatling.html">https://hkawabata.github.io/technical-note/note/OSS/gatling.html</a></li>
+<li><a href="https://github.com/gatling/gatling/blob/v3.9.5/gatling-core/src/main/resources/gatling-defaults.conf#L76-L88">https://github.com/gatling/gatling/blob/v3.9.5/gatling-core/src/main/resources/gatling-defaults.conf#L76-L88</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. ロードテスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_2">実行<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>(1)</code></dt>
@@ -1915,14 +1978,14 @@ Reports<span class="w"> </span>generated<span class="w"> </span><span class="k">
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. 性能テスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. 性能テスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://blog.studysapuri.jp/entry/school-communication-with-gatling">https://blog.studysapuri.jp/entry/school-communication-with-gatling</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04">04. ロードテスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="05">05. ロードテスト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
 <li><a href="https://blog.studysapuri.jp/entry/school-communication-with-gatling">https://blog.studysapuri.jp/entry/school-communication-with-gatling</a></li>

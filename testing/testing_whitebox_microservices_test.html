@@ -1329,10 +1329,10 @@
       
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
-    04. マイクロサービスの結合テスト (機能テスト)
+    04. マイクロサービスの結合テスト (機能テスト、サービステスト)
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト)">
+    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト、サービステスト)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2375,10 +2375,10 @@
       
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
-    04. マイクロサービスの結合テスト (機能テスト)
+    04. マイクロサービスの結合テスト (機能テスト、サービステスト)
   </a>
   
-    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト)">
+    <nav class="md-nav" aria-label="04. マイクロサービスの結合テスト (機能テスト、サービステスト)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2505,7 +2505,7 @@
 <p><br></p>
 <h2 id="03">03. コンポーネントテスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_9">コンポーネントテストとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスがそれのみで正しく動作するかを検証する。</p>
+<p>マイクロサービスがそれ単体で正しく動作するかを検証する。</p>
 <p>下流のマイクロサービスは検証対象ではないため、サービスモックとする。</p>
 <blockquote>
 <ul>
@@ -2523,9 +2523,10 @@
 <h4 id="_13">▼ バックエンド系ツール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="04">04. マイクロサービスの結合テスト (機能テスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. マイクロサービスの結合テスト (機能テスト、サービステスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_14">マイクロサービスの結合テストとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャの文脈では、機能テストを結合テストと呼ぶ。</p>
+<p>マイクロサービスアーキテクチャの文脈では、一般的な機能テストを結合テストと呼ぶ。</p>
+<p>『サービステスト』ともいう。</p>
 <p>マイクロサービスの各エンドポイントを<code>1</code>個の機能ととらえる。</p>
 <p>最上流のマイクロサービス (またはその上流のAPI Gateway) のエンドポイントにリクエストを送信し、下流のマイクロサービスや外部Webサービス (正常である前提) との連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
 <p>もしマイクロサービスの結合テストを自動化する場合、マイクロサービスのCIパイプライン上ではなく、結合テスト専用のパイプライン上で実施する。</p>
@@ -2540,7 +2541,7 @@
 <h3 id="_15">結合テストツール例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ バックエンド系ツール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Postman</li>
+<li>Gatling</li>
 </ul>
 <p><br></p>
 <h2 id="05-cdcconsumer-driven-contract">05. CDCテスト：Consumer-Driven Contract<a class="headerlink" href="#05-cdcconsumer-driven-contract" title="Permanent link">&para;</a></h2>
@@ -2569,7 +2570,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>
