@@ -1965,6 +1965,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 前提
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#datadog" class="md-nav__link">
     ▼ 目標値の例 (Datadog)
   </a>
@@ -2403,6 +2410,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 前提
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#datadog" class="md-nav__link">
     ▼ 目標値の例 (Datadog)
   </a>
@@ -2661,6 +2675,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="slo_1">SLOの決め方<a class="headerlink" href="#slo_1" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 前提<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>ビジネスに関連する目標値 (例：KPI、SLA) に基づいて、SLOを決める。</p>
+<p>SLOを決めることは、性能テストの性能目標値を決めることに似ている。</p>
 <h4 id="datadog">▼ 目標値の例 (Datadog)<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
 <p>SLOを期間のパーセントで定めることにより、状況によらず、一定の基準を設けることができる。</p>
 <p>目標値は、予測値を使用すると良い。</p>
@@ -2669,29 +2686,35 @@
 <thead>
 <tr>
 <th>指標</th>
-<th>目標値の期間例</th>
+<th>完璧の状態</th>
+<th>目標値</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>サーバー稼働率</td>
-<td>サーバーが<code>24</code>時間稼働するとして、<code>0.01</code>% (0.24時間) 以内の時間にダウンタイムを抑えること。</td>
+<td>サーバーが<code>24</code>時間稼働する。</td>
+<td><code>0.01</code>% (0.24時間) 以内の時間にダウンタイムを抑えること。</td>
 </tr>
 <tr>
 <td>DB稼働率</td>
-<td>DBが<code>24</code>時間稼働するとして、<code>0.01</code>% (0.24時間) 以内の時間にダウンタイムを抑えること。</td>
+<td>DBが<code>24</code>時間稼働する。</td>
+<td><code>0.01</code>% (0.24時間) 以内の時間にダウンタイムを抑えること。</td>
 </tr>
 <tr>
 <td>レスポンス速度</td>
-<td>全リクエストの平均レスポンス速度が<code>300</code>msとして、リクエストの<code>50</code>%が<code>300</code>ms より早くレスポンスできること。</td>
+<td>全リクエストの平均レスポンス速度が<code>300</code>msである。</td>
+<td>リクエストの<code>50</code>%が<code>300</code>ms より早くレスポンスできること。</td>
 </tr>
 <tr>
 <td>レスポンスのステータスコード率</td>
-<td><code>24</code>時間当たりの全リクエストのうちで、<code>50</code>% 以上のリクエストが<code>200</code>ステータスコードになること。</td>
+<td><code>24</code>時間当たりの全リクエストが<code>200</code>ステータスである</td>
+<td><code>50</code>% 以上のリクエストが<code>200</code>ステータスコードになること。</td>
 </tr>
 <tr>
 <td>スループット</td>
-<td><code>24</code>hのうちの<code>0.1</code>(%) 以下の時間にスループット低下を抑えること。</td>
+<td><code>24</code>時間で、スループットが<code>50</code>件/秒</td>
+<td><code>24</code>時間で、<code>0.1</code>% 以下の時間にスループット低下を抑えること。</td>
 </tr>
 </tbody>
 </table>
