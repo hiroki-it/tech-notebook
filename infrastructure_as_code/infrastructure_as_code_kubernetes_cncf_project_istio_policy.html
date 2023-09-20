@@ -2241,16 +2241,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    GitLab
+  </a>
+  
+    <nav class="md-nav" aria-label="GitLab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#gitlab-ciyml" class="md-nav__link">
-    .gitlab-ci.ymlファイル
+    ▼ .gitlab-ci.ymlファイル
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#setup-asdfsh" class="md-nav__link">
-    .setup-asdf.shファイル
+    ▼ .setup-asdf.shファイル
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3099,16 +3112,29 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    GitLab
+  </a>
+  
+    <nav class="md-nav" aria-label="GitLab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#gitlab-ciyml" class="md-nav__link">
-    .gitlab-ci.ymlファイル
+    ▼ .gitlab-ci.ymlファイル
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#setup-asdfsh" class="md-nav__link">
-    .setup-asdf.shファイル
+    ▼ .setup-asdf.shファイル
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3501,7 +3527,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </blockquote>
 <p><br></p>
 <h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
-<h3 id="gitlab-ciyml"><code>.gitlab-ci.yml</code>ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h3>
+<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
+<h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code>ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
 <p>CI上でClusterを作成し、Istioをデプロイする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行環境名を切り替える</span>
 <span class="nt">workflow</span><span class="p">:</span>
@@ -3603,7 +3630,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">    </span><span class="c1"># Clusterを削除する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete $CI_PIPELINE_ID</span>
 </code></pre></div>
-<h3 id="setup-asdfsh"><code>.setup-asdf.sh</code>ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h3>
+<h4 id="setup-asdfsh">▼ <code>.setup-asdf.sh</code>ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># asdfをインストールする</span>

@@ -2126,12 +2126,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_load_balancer_haproxy.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh.html</loc>
          <lastmod>2023-09-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_messaging_kafka.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_event_mesh_kafka.html</loc>
+         <lastmod>2023-09-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/draft/software_middleware_load_balancer_haproxy.html</loc>
          <lastmod>2023-09-20</lastmod>
          <changefreq>daily</changefreq>
     </url>

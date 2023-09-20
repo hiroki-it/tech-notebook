@@ -3298,7 +3298,7 @@
 <th>項目</th>
 <th>ヒアリング内容</th>
 <th>達成するべき要件</th>
-<th>検証方法</th>
+<th>検証方法例</th>
 </tr>
 </thead>
 <tbody>
@@ -3306,43 +3306,43 @@
 <td>可用性</td>
 <td>許容できる障害時間、バックアップ規約、稼働率、災害対策規約、など</td>
 <td>...</td>
-<td>...</td>
+<td>可用性テストを実施する。</td>
 </tr>
 <tr>
 <td>性能</td>
-<td>予想される同時アクセス数、など</td>
+<td>将来的に予想される同時アクセス数、など</td>
 <td>...</td>
-<td>...</td>
+<td>性能テストを実施する。</td>
 </tr>
 <tr>
 <td>拡張性</td>
-<td>予想されるDBレコード数増加率、など</td>
+<td>将来的に予想されるDBレコード数増加率、など</td>
 <td>...</td>
-<td>...</td>
+<td>将来的に予想されるテストデータをDBに用意した上で、処理速度に問題が起こらないかどうかを検証する。</td>
 </tr>
 <tr>
 <td>安全性</td>
 <td>DoS攻撃、など</td>
 <td>...</td>
-<td>...</td>
+<td>脆弱性テストを実施する。</td>
 </tr>
 <tr>
 <td>保守性</td>
 <td>機能修正、障害対応、アップグレード規約、など</td>
 <td>...</td>
-<td>...</td>
+<td>テストデータを、追加/変更/削除できるかどうかを検証する。</td>
 </tr>
 <tr>
 <td>運用性</td>
 <td>監視、定期的な再起動、日時的な作業、ログとメトリクスの保管規約、リリース規約、など</td>
 <td>...</td>
-<td>...</td>
+<td>意図的にエラーを発生させ、アラートを正しく送信するかどうかを検証する。</td>
 </tr>
 <tr>
 <td>可搬性</td>
 <td>新旧移行規約、など</td>
 <td>...</td>
-<td>...</td>
+<td>移行テストを実施する。</td>
 </tr>
 <tr>
 <td>信頼性</td>
@@ -3354,7 +3354,7 @@
 <td>使いやすさ</td>
 <td>ペルソナ、エラー処理、など</td>
 <td>...</td>
-<td>...</td>
+<td>Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を実施する。</td>
 </tr>
 </tbody>
 </table>
@@ -3410,7 +3410,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>
