@@ -64,7 +64,7 @@ Failed to render chart: exit status 1: Error: unable to build kubernetes objects
 
 <br>
 
-## 01-02.セットアップ
+## 02.セットアップ
 
 ### ユーザーによる管理
 
@@ -96,7 +96,7 @@ custom-controllerのチャートをインストールし、後はcustom-controll
 
 <br>
 
-## 01-03. CRD
+## 03. CRD
 
 ### CRDとは
 

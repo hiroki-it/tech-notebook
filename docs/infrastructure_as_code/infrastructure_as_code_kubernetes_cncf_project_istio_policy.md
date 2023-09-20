@@ -425,3 +425,137 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 > - https://lib.jimmysong.io/blog/performance-and-scalability/
 
 <br>
+
+## 05. CI
+
+### `.gitlab-ci.yml`ファイル
+
+CI上でClusterを作成し、Istioをデプロイする。
+
+```yaml
+# ブランチ名に応じて、CIで使用する実行環境名を切り替える
+workflow:
+  rules:
+    # masterブランチにて、任意の方法でパイプラインを実行した場合
+    - if: $CI_COMMIT_REF_NAME == 'master'
+      variables:
+        ENV: "prd"
+    # developブランチにて、任意の方法でパイプラインを実行した場合
+    - if: $CI_COMMIT_REF_NAME == 'develop'
+      variables:
+        ENV: "tes"
+    # MRにて、任意の方法でパイプラインを実行した場合
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      variables:
+        ENV: "dev"
+    # 上記以外で、webから手動でパイプラインを実行した場合
+    - if: $CI_PIPELINE_SOURCE == 'web'
+      variables:
+        ENV: "dev"
+
+variables:
+  # EKSはK8sのマイナーバージョンを公開していないため、".0"と仮定して処理する
+  # 現在のEKSのK8sバージョン
+  K8S_CURRENT_VERSION: "1.24.0"
+  # アップグレード後のEKSのK8sバージョン
+  K8S_NEXT_VERSION: "1.26.0"
+
+  # 現在のIstioのバージョン
+  ISTIO_CURRENT_VERSION: "1.15.3"
+  # アップグレード後のIstioのバージョン
+  ISTIO_NEXT_VERSION: "1.17.5"
+
+stages:
+  - test
+
+# 指定したバージョンのIstioを検証する
+test_istio:
+  stage: test
+  image:
+    name: docker
+  variables:
+    # K3Dを使うことで Docker in Docker となるため、そのための環境変数を設定する
+    # @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
+    DOCKER_DRIVER: "overlay2"
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - name: docker:dind
+      command: ["--tls=false"]
+  # K3D Clusterは異なるJobに持ち越せないので、事前処理として実行する
+  before_script:
+    - apk --update add bash curl git
+    # スクリプトでasdfをセットアップする
+    - source setup-asdf.sh
+    # K3Dをインストールする
+    - |
+      curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
+      k3d version
+    # kubectlコマンドをインストールする
+    - |
+      curl -kLO https://dl.k8s.io/release/v"${K8S_NEXT_VERSION}"/bin/linux/amd64/kubectl
+      chmod +x ./kubectl
+      mv ./kubectl /usr/local/bin/kubectl
+      kubectl version
+    # Clusterを作成する
+    - k3d cluster create "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2
+    # Nodeにラベル付けする
+    - |
+      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodegroup=ingress
+      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodegroup=system
+    # 動作を確認する
+    - k3d cluster list
+    - kubectl get nodes --show-labels
+  # Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る
+  # @see https://istio.io/latest/docs/setup/upgrade/helm/
+  script:
+    # CRDをインストールする
+    - kubectl apply -f https://raw.githubusercontent.com/istio/istio/"${ISTIO_NEXT_VERSION}"/manifests/charts/base/crds/crd-all.gen.yaml
+    # Namespaceを作成する
+    - |
+      kubectl create ns istio-ingress
+      kubectl label ns istio-ingress istio.io/rev=default
+      kubectl create ns istio-system
+    # Namespaceのラベルを確認する
+    - kubectl get ns -L istio.io/rev
+    # istiodチャートをApplyする
+    # ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョン番号をつける
+    - helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install
+    # istio-baseチャートをApplyする
+    - helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install
+    # istio-ingressgatewayチャートをApplyする
+    - helmfile -e "${ENV}" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install
+    # 動作を確認する
+    - istioctl version
+    - istioctl proxy-status
+    - kubectl get all -n istio-ingress
+    - kubectl get all -n istio-system
+    # Clusterを削除する
+    - k3d cluster delete $CI_PIPELINE_ID
+```
+
+### `.setup-asdf.sh`ファイル
+
+```bash
+#!/bin/bash
+
+# asdfをインストールする
+git clone --depth 1 https://github.com/asdf-vm/asdf.git ~/.asdf
+echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
+export ASDF_DIR=~/.asdf
+source ~/.bashrc
+
+# コマンドをインストールする
+asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin add helmfile https://github.com/feniix/asdf-helmfile.git
+asdf plugin add istioctl https://github.com/virtualstaticvoid/asdf-istioctl.git
+asdf install
+asdf list
+
+# 正しいバージョンをインストールできていることを確認する
+helm version
+helmfile version
+istioctl version
+```
+
+<br>

@@ -17,7 +17,7 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 ### 検出項目
 
-指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (apiVersion) を検証する。
+指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。
 
 <br>
 

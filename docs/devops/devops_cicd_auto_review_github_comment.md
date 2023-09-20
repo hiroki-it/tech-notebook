@@ -118,12 +118,12 @@ K8S_CURRENT_VERSION=1.26
 K8S_NEXT_VERSION=1.26
 
 echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
-./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
+./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_CURRENT_VERSION}) で使用できるK8sリソースやカスタムリソースのスキーマに基づいて、マニフェスト文法の誤りを検証する" \
   -- /pluto detect -t k8s=v${K8S_CURRENT_VERSION} manifest.yaml -o wide \
   || true
 
 echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
-./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) に基づいて、マニフェストの非推奨なapiVersionを検証する" \
+./github-comment exec -var "TestName:pluto" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) で使用できるK8sリソースやCRDのスキーマに基づいて、マニフェスト文法の誤りを検証する" \
   -- /pluto detect -t k8s=v${K8S_NEXT_VERSION} manifest.yaml -o wide
 ```
 
@@ -139,7 +139,7 @@ echo Test "Current K8s Version: ${K8S_CURRENT_VERSION}"
   || true
 
 echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
-./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) のスキーマに基づいて、マニフェスト文法の誤りを検証する" \
+./github-comment exec -var "TestName:kubeconform" -var "Description:指定したK8sバージョン (${K8S_NEXT_VERSION}) で使用できるK8sリソースやカスタムリソースのスキーマに基づいて、マニフェスト文法の誤りを検証する" \
   -- /kubeconform -kubernetes-version ${K8S_NEXT_VERSION} -strict -summary -output text -schema-location 'default' -schema-location 'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{.ResourceAPIVersion}}.json' manifest.yaml
 ```
 

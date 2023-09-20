@@ -316,7 +316,7 @@ GitLab CIが発火する条件を設定する。
 # main、develop、MR作成/変更、の順に条件を検証する。
 workflow:
   rules:
-    # masterブランチにて、任意の方法でパイプラインを実行した場合
+    # mainブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'main'
       variables:
         ENV: "prd"
