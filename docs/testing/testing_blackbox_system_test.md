@@ -166,10 +166,13 @@ description: 総合テスト＠ブラックボックステストの知見を記�
 
 > - https://hub.uni-face.co.jp/performance-test/
 > - https://gihyo.jp/dev/serial/01/tech_station/0008
+> - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/#%E8%B2%A0%E8%8D%B7%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E7%9B%AE%E6%A8%99%E5%80%A4%E8%A8%AD%E5%AE%9A
 
 #### ▼ 性能目標値
 
-ビジネスに関連する目標値 (例：KPI、SLI) に基づいて、各性能指標の目標値を決める。
+ビジネスに関連する目標値 (例：KPI、SLA) に基づいて、各性能指標の目標値を決める。
+
+性能目標値を決めることは、SLOを決めることに似ている。
 
 例えば、指標に対して以下を決めたとする。
 
