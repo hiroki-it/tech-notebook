@@ -41,6 +41,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
+> - https://solace.com/what-is-an-event-mesh/
 
 <br>
 
@@ -116,7 +117,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <br>
 
-## 02-02. サービスメッシュの実装
+## 03. サービスメッシュの実装
 
 ### サービスメッシュのコンポーネント
 
@@ -150,7 +151,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <br>
 
-## 02-03. サービスディスカバリー
+## 04. サービスディスカバリー
 
 ### サービスディスカバリーとは
 
@@ -174,7 +175,7 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 <br>
 
-## 02-04. デザインパターン
+## 05. デザインパターン
 
 ### クライアントサイドパターン
 

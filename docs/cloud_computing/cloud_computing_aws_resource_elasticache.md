@@ -103,15 +103,17 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 #### ▼ セッション管理機能とは
 
-サーバー内のセッションデータの代わりにセッションIDを管理し、冗長化されたアプリケーション間で共通のセッションIDを使用できるようにする。
+アプリがセッションIDを管理する代わりに、セッションIDを管理する。
 
-そのため、リリース後に既存のセッションが破棄されることがなくなり、ログイン状態を保持できるようになる。
-
-セッションIDについては、以下のリンクを参考にせよ。
+冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、ElastiCacheから共通のセッションIDを取得する。
 
 ![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png)
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_collaboration_api_restful.html
+#### ▼ ElastiCacheを使わない場合
+
+アプリが特にコンテナの場合にアプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナがセッションデータを他のコンテナに引き継げずに、スケールイン/スケールアウトしてしまう。
+
+一方で、ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、既存のセッションデータをログイン状態を保持できるようになる。
 
 <br>
 

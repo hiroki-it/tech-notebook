@@ -24,11 +24,17 @@ description: イベントメッシュ＠イベントメッシュ系ミドルウ�
 > - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
 > - https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
 > - https://www.infoq.com/articles/service-mesh-event-driven-messaging/
+> - https://solace.com/what-is-an-event-mesh/
 
 <br>
 
-### サービスメッシュの層
+### OSS
 
-イベントキュー (例：AWS SQS、Kafka、) を使用する。
+- Solance Event Mesh
+- SAP Event Mesh
+- Knative Event Mesh
+- Apache EventMesh
+
+> - https://www.slideshare.net/laclefyoshi/apache-eventmesh#13
 
 <br>
