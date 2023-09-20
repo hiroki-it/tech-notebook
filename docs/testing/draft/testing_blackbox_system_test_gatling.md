@@ -25,7 +25,41 @@ $ apt-get install gatling
 
 <br>
 
-## 02. ロードテスト
+## 02. 設定ファイル
+
+### `gatling.conf`ファイル
+
+#### ▼ charting
+
+レスポンスタイムの分布の区切りを設定する。
+
+```yaml
+gatling {
+
+  ...
+
+  charting {
+    indicators {
+      lowerBound = 20        # Lower bound for the requests' response time to track in the reports and the console summary
+      higherBound = 200      # Higher bound for the requests' response time to track in the reports and the console summary
+      # percentile1 = 50      # Value for the 1st percentile to track in the reports, the console summary and Graphite
+      # percentile2 = 75      # Value for the 2nd percentile to track in the reports, the console summary and Graphite
+      # percentile3 = 95      # Value for the 3rd percentile to track in the reports, the console summary and Graphite
+      # percentile4 = 99      # Value for the 4th percentile to track in the reports, the console summary and Graphite
+    }
+  }
+
+  ...
+
+}
+```
+
+> - https://hkawabata.github.io/technical-note/note/OSS/gatling.html
+> - https://github.com/gatling/gatling/blob/v3.9.5/gatling-core/src/main/resources/gatling-defaults.conf#L76-L88
+
+<br>
+
+## 03. ロードテスト
 
 ### 実行
 
@@ -107,13 +141,13 @@ Reports generated in 0s.
 
 <br>
 
-## 03. 性能テスト
+## 04. 性能テスト
 
 > - https://blog.studysapuri.jp/entry/school-communication-with-gatling
 
 <br>
 
-## 04. ロードテスト
+## 05. ロードテスト
 
 > - https://blog.studysapuri.jp/entry/school-communication-with-gatling
 
