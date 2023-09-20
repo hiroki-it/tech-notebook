@@ -1310,6 +1310,19 @@
     01. セットアップ
   </a>
   
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1375,28 +1388,35 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. ユースケース
+    03. ロードテスト
   </a>
   
-    <nav class="md-nav" aria-label="03. ユースケース">
+    <nav class="md-nav" aria-label="03. ロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ロードテスト
+    実行
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    ストレステスト
+    結果の評価
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ストレステスト
+  </a>
   
 </li>
       
@@ -2137,6 +2157,19 @@
     01. セットアップ
   </a>
   
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yum" class="md-nav__link">
+    yumリポジトリから
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2202,28 +2235,35 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. ユースケース
+    03. ロードテスト
   </a>
   
-    <nav class="md-nav" aria-label="03. ユースケース">
+    <nav class="md-nav" aria-label="03. ロードテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ロードテスト
+    実行
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    ストレステスト
+    結果の評価
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. ストレステスト
+  </a>
   
 </li>
       
@@ -2255,10 +2295,17 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>JMeterをインストールし、環境を作成する。</p>
+<h3 id="yum">yumリポジトリから<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>java-1.8.0-openjdk
+
+$<span class="w"> </span>wget<span class="w"> </span>http://ftp.meisei-u.ac.jp/mirror/apache/dist//jmeter/binaries/apache-jmeter-5.2.1.tgz
+
+$<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>apache-jmeter-5.2.1.tgz
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://jmeter.apache.org/download_jmeter.cgi">https://jmeter.apache.org/download_jmeter.cgi</a></li>
+<li><a href="https://bbh.bz/2020/04/13/how-to-use-jmeter-at-linux/">https://bbh.bz/2020/04/13/how-to-use-jmeter-at-linux/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -2288,8 +2335,8 @@
 <p>リクエストを送信する期間に相当する。</p>
 <p>長くし過ぎすると、全てのリクエスト数を送信するまでに時間がかかるため、負荷が小さくなる。</p>
 <p><br></p>
-<h2 id="03">03. ユースケース<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_8">ロードテスト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. ロードテスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_8">実行<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>以下の手順で、JMeterを使用したロードテストを実施する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -2298,7 +2345,8 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>JMeterのGUI版にて、シナリオ (<code>jmx</code>ファイル) を作成する。スループットコントローラーでURLリスト (<code>csv</code>ファイル) をJMeterのビルトイン関数で読み込むようにする。csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば<code>10000</code>個といった高負荷であると、ローカルマシンがフリーズするため注意すること。</p>
+<p>JMeterのGUI版にて、シナリオ (<code>jmx</code>ファイル) を作成する。スループットコントローラーでURLリスト (<code>csv</code>ファイル) をJMeterのビルトイン関数で読み込むようにする。</p>
+<p>csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば<code>10000</code>個といった高負荷であると、ローカルマシンがフリーズするため注意すること。</p>
 </dd>
 </dl>
 <blockquote>
@@ -2313,7 +2361,8 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>JMeterのCUI版のバイナリファイルに、<code>jmx</code>ファイルをドラッグ＆ドロップし、テストを実施する。または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。</p>
+<p>JMeterのCUI版のバイナリファイルに、<code>jmx</code>ファイルをドラッグ＆ドロップし、テストを実施する。</p>
+<p>または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>jmeter<span class="w"> </span>-n<span class="w"> </span><span class="se">\</span>
@@ -2335,9 +2384,14 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
 <dd>
 <p>テストを修正して新しく実行したい場合、<code>jmx</code>ファイル、<code>jtl</code>ファイル、logファイルをコピーして、バックアアップしておく。</p>
 </dd>
+</dl>
+<p><br></p>
+<h3 id="_9">結果の評価<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。これらの画面で、<code>jtl</code>ファイルを読み込むと、<code>jtl</code>ファイルに基づく集計データを得られる。</p>
+<p>JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。</p>
+<p>これらの画面で、<code>jtl</code>ファイルを読み込むと、<code>jtl</code>ファイルに基づく集計データを得られる。</p>
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
@@ -2345,7 +2399,7 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
 </dd>
 </dl>
 <p><br></p>
-<h3 id="_9">ストレステスト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h2 id="04">04. ストレステスト<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
 <p><br></p>
 
@@ -2354,7 +2408,7 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
       
     
   </small>

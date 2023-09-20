@@ -2311,6 +2311,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_blackbox_system_test_gatling.html</loc>
+         <lastmod>2023-09-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_e2e.html</loc>
          <lastmod>2023-09-20</lastmod>
          <changefreq>daily</changefreq>
