@@ -15,9 +15,18 @@ description: JMeter＠総合テストの知見を記録しています。
 
 ## 01. セットアップ
 
-JMeterをインストールし、環境を作成する。
+### yumリポジトリから
+
+```bash
+$ yum install java-1.8.0-openjdk
+
+$ wget http://ftp.meisei-u.ac.jp/mirror/apache/dist//jmeter/binaries/apache-jmeter-5.2.1.tgz
+
+$ tar xvzf apache-jmeter-5.2.1.tgz
+```
 
 > - https://jmeter.apache.org/download_jmeter.cgi
+> - https://bbh.bz/2020/04/13/how-to-use-jmeter-at-linux/
 
 <br>
 
@@ -57,9 +66,9 @@ JMeterは、以下のコンポーネントから構成されている。
 
 <br>
 
-## 03. ユースケース
+## 03. ロードテスト
 
-### ロードテスト
+### 実行
 
 以下の手順で、JMeterを使用したロードテストを実施する。
 
@@ -69,7 +78,9 @@ JMeterは、以下のコンポーネントから構成されている。
 
 `(2)`
 
-: JMeterのGUI版にて、シナリオ (`jmx`ファイル) を作成する。スループットコントローラーでURLリスト (`csv`ファイル) をJMeterのビルトイン関数で読み込むようにする。csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
+: JMeterのGUI版にて、シナリオ (`jmx`ファイル) を作成する。スループットコントローラーでURLリスト (`csv`ファイル) をJMeterのビルトイン関数で読み込むようにする。
+
+     csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
 > - https://jmeter.apache.org/usermanual/functions.html#__Random
 
@@ -79,7 +90,9 @@ JMeterは、以下のコンポーネントから構成されている。
 
 `(4)`
 
-: JMeterのCUI版のバイナリファイルに、`jmx`ファイルをドラッグ＆ドロップし、テストを実施する。または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
+: JMeterのCUI版のバイナリファイルに、`jmx`ファイルをドラッグ＆ドロップし、テストを実施する。
+
+     または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
 
 ```bash
 $ jmeter -n \
@@ -104,9 +117,15 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 : テストを修正して新しく実行したい場合、`jmx`ファイル、`jtl`ファイル、logファイルをコピーして、バックアアップしておく。
 
+<br>
+
+### 結果の評価
+
 `(7)`
 
-: JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
+: JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示、のリスナーを追加する。
+
+     これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
 
 `(8)`
 
@@ -114,7 +133,7 @@ Don't use GUI mode for load testing !, only for Test creation and Test debugging
 
 <br>
 
-### ストレステスト
+## 04. ストレステスト
 
 記入中...
 
