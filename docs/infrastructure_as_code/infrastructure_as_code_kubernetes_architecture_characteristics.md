@@ -59,7 +59,7 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 
 #### ▼ 冗長化
 
-Etcdの可用性を高めるために、コントロールプレーンNodeは`3`~`7`台を作成する。
+コントロールプレーンNodeは`3`~`7`台を作成し、Etcdの可用性を担保する。
 
 > - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
 > - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
@@ -70,7 +70,7 @@ Etcdの可用性を高めるために、コントロールプレーンNodeは`3`
 
 #### ▼ Nodeグループ
 
-Podの可用性を高めるために、ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、など) ごとに作成する。
+ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、など) ごとに作成し、可用性を担保する。
 
 特にクラウドプロバイダーではNodeグループを作成できる。
 
@@ -80,7 +80,7 @@ NodeグループごとにワーカーNodeを冗長化する。
 
 #### ▼ 水平スケーリング
 
-オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングで、可用性を担保する。
+オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングし、可用性を担保する。
 
 <br>
 
