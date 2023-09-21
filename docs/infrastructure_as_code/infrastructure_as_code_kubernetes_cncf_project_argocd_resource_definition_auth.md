@@ -152,7 +152,11 @@ subjects:
 
 #### ▼ argocd-managerとは
 
-ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにServiceAccountを作成する必要がある。
+ArgoCDのapplication-controllerがデプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにエージェントを作成する必要がある。
+
+argocd-managerは、エージェントとして、デプロイ先Clusterでapplication-controllerからの通信を仲介する。
+
+argocd-managerの実体は、ServiceAccountである。
 
 このServiceAccountを介して、ArgoCDのapplication-controllerはClusterにKubernetesリソースをデプロイする。
 
@@ -160,7 +164,12 @@ ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働
 
 ```bash
 # デフォルトでkube-systemに作成するため、nオプションは不要である
-$ argocd cluster add <デプロイ先ClusterのARN> --name <ダッシュボード上のCluster名>  -n kube-system
+$ argocd cluster add <デプロイ先ClusterのARN> --name <デプロイ先のCluster名>  -n kube-system
+
+INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
+INFO[0011] ClusterRole "argocd-manager-role" updated
+INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
+Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
 ```yaml
