@@ -3151,7 +3151,7 @@
 <h2 id="02">02. 可用性<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 冗長化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Etcdの可用性を高めるために、コントロールプレーンNodeは<code>3</code>~<code>7</code>台を作成する。</p>
+<p>コントロールプレーンNodeは<code>3</code>~<code>7</code>台を作成し、Etcdの可用性を担保する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
@@ -3161,12 +3161,12 @@
 <p><br></p>
 <h3 id="node_1">ワーカーNode<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="node_2">▼ Nodeグループ<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
-<p>Podの可用性を高めるために、ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、など) ごとに作成する。</p>
+<p>ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、など) ごとに作成し、可用性を担保する。</p>
 <p>特にクラウドプロバイダーではNodeグループを作成できる。</p>
 <h4 id="_6">▼ 冗長化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>NodeグループごとにワーカーNodeを冗長化する。</p>
 <h4 id="_7">▼ 水平スケーリング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングで、可用性を担保する。</p>
+<p>オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングし、可用性を担保する。</p>
 <p><br></p>
 <h3 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 冗長化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -3444,7 +3444,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
       
     
   </small>
