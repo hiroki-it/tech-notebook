@@ -10977,7 +10977,7 @@ Allocatable:
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>各コンテナの実際のハードウェアリソース消費量を確認する場合は、<code>kubectl top</code>コマンドを使用する。</p>
-<p>『<code>(実際の値) ÷ (メモリ上限値) × 100</code>』で計算できる。</p>
+<p>『<code>(実測値) ÷ (メモリ上限値) × 100</code>』で計算できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>--container<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 POD<span class="w">       </span>NAME<span class="w">          </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span>
@@ -13154,7 +13154,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
       
     
   </small>

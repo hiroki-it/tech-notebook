@@ -3231,7 +3231,7 @@
 <h3 id="_17">性能テスト<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ 性能テストとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><img alt="performance-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/performance-test.png" /></p>
-<p>一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行った時に、指標 (スループット、レスポンスタイム、など) にどのような変化があるかを検証する。</p>
+<p>一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行った時に、あらかじめ定めた指標にどのような変化があるかを検証する。</p>
 <p>具体的にはテスト時に、アクセス数を段階的に増加させて、テストレポートとしてグラフ化する。</p>
 <p>テストレポートを元に、想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し、加えて最大負荷の場合でも性能目標を満たしているかを確認する。</p>
 <p>これらを運用時の監視の参考値にする。</p>
@@ -3244,9 +3244,10 @@
 </blockquote>
 <h4 id="_19">▼ 性能指標<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <ul>
-<li>スループット</li>
-<li>レスポンスタイム</li>
-<li>ハードウェア使用率</li>
+<li>平均スループット</li>
+<li>平均レスポンスタイム</li>
+<li>平均ハードウェア使用率</li>
+<li>時間当たり平均トランザクション数</li>
 </ul>
 <blockquote>
 <ul>
@@ -3257,15 +3258,15 @@
 <h4 id="_20">▼ 機能別の性能目標値<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>KPI (組織内の合意) に基づいて、各機能ごとに性能指標の目標値を決める。</p>
 <p>SLA (顧客との合意) に基づいたSLOとは区別したい。</p>
-<p>例えば、<code>1</code>秒間に<code>50</code>人のユーザーからリクエストがあり、それらのレスポンスタイムは<code>3</code>秒以内である必要があるとする。</p>
-<p>この場合、スループットの目標値は<code>50</code> (件/秒) 、レスポンスタイムの目標値は<code>3</code>秒以内となる。</p>
+<p>例えば、<code>1</code>秒間に<code>50</code>人のユーザーからリクエスト (<code>50</code>個/秒のリクエスト) があり、とある機能ではレスポンスタイムは<code>3</code>秒以内である必要があるとする。</p>
+<p>この場合、平均スループットの目標値は<code>50</code> (個/秒) 、平均レスポンスタイムの目標値は<code>3</code>秒以内、となる。</p>
 <table>
 <thead>
 <tr>
 <th>項目</th>
-<th>スループット目標値 (件/秒以上)</th>
-<th>レスポンス目標値 (秒以内)</th>
-<th>ハードウェア使用率</th>
+<th>平均スループット目標値 (件/秒以上)</th>
+<th>平均レスポンス目標値 (秒以内)</th>
+<th>ハードウェア使用率目標値 (最大率)</th>
 </tr>
 </thead>
 <tbody>
@@ -3273,19 +3274,19 @@
 <td>機能A</td>
 <td><code>50</code></td>
 <td><code>3</code></td>
-<td>最大<code>60</code>%</td>
+<td><code>60</code>%</td>
 </tr>
 <tr>
 <td>機能B</td>
-<td><code>50</code></td>
-<td><code>3</code></td>
-<td>最大<code>60</code>%</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 <tr>
 <td>機能C</td>
-<td><code>50</code></td>
-<td><code>3</code></td>
-<td>最大<code>60</code>%</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 </tbody>
 </table>

@@ -2234,15 +2234,27 @@
 <p>補足として、リクエストとレスポンスの送受信の前後に行われるTCP接続の確立を『スリーウェイハンドシェイク』という。</p>
 <p><br></p>
 <h3 id="bandwidth">Bandwidth (帯域幅)<a class="headerlink" href="#bandwidth" title="Permanent link">&para;</a></h3>
-<p>一度に送受信できるデータの最大サイズのこと。</p>
+<p>単位時間当たりの送信できる最大データサイズの理論値のこと。</p>
+<p>帯域幅の実測値はスループットである。</p>
 <p>インターネットやWANの帯域幅が狭いと、ダウンロード (例：インストール、コンテナイメージのプル) やアップロード (例：POST送信、コンテナイメージのプッシュ) に時間がかかる。</p>
+<blockquote>
+<ul>
+<li><a href="https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html">https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_8">スループット (伝送速度)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ スループットとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>単位時間当たりの送信できる最大のデータサイズのこと。</p>
-<p>実際には、スループットは、『プロバイダ』、『光回線』、『自宅の有線/無線』の<code>3</code>個に影響されるため、スループットで期待されるデータサイズを満たせないことが多い。</p>
-<p>他からの影響を受けた実際のスループットを『実効スループット』という。</p>
+<p>単位時間当たりの送信できる最大データサイズの実測値こと。</p>
+<p>スループットの理論値は帯域幅である。</p>
+<p>ただし、スループットは、『プロバイダ』『光回線』『自宅の有線/無線』の<code>3</code>個に影響されるため、スループットで期待されるデータサイズを満たせないことが多い。</p>
+<p>他からの影響を受けたスループットを、特に『実効スループット』という。</p>
 <p><img alt="伝送速度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html">https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html</a></li>
+</ul>
+</blockquote>
 <h4 id="_10">▼ 伝送<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>サーバーからクライアントPCにパケットを送信すること。</p>
 <p>相互の送信は、通信 (パケット送受信) と呼ぶ。</p>
@@ -2272,7 +2284,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
       
     
   </small>
