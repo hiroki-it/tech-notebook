@@ -1891,6 +1891,26 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eks" class="md-nav__link">
+    EKS
+  </a>
+  
+    <nav class="md-nav" aria-label="EKS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-addon" class="md-nav__link">
+    update-addon
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#iam" class="md-nav__link">
     IAM
@@ -3385,6 +3405,26 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eks" class="md-nav__link">
+    EKS
+  </a>
+  
+    <nav class="md-nav" aria-label="EKS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-addon" class="md-nav__link">
+    update-addon
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#iam" class="md-nav__link">
     IAM
@@ -3991,6 +4031,15 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="eks">EKS<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h2>
+<h3 id="update-addon">update-addon<a class="headerlink" href="#update-addon" title="Permanent link">&para;</a></h3>
+<p>コンフリクトでEKSアドオンの設定を更新できない場合に、変更できるようにする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-addon<span class="w"> </span>--cluster-name<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--addon-name<span class="w"> </span>&lt;アドオン名&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--addon-version<span class="w"> </span>v1.14.1-eksbuild.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--resolve-conflicts<span class="w"> </span>PRESERVE
+</code></pre></div>
+<p><br></p>
 <h3 id="iam">IAM<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
 <h4 id="update-user">▼ update-user<a class="headerlink" href="#update-user" title="Permanent link">&para;</a></h4>
 <p>ユーザー名は、コンソール画面から変更できず、コマンドで変更する必要がある。</p>
@@ -4273,7 +4322,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
       
     
   </small>

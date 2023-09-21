@@ -2130,13 +2130,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    11. 権限設定
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#12-prometheus" class="md-nav__link">
     12. Prometheusによる監視
   </a>
@@ -2175,26 +2168,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-cd" class="md-nav__link">
-    13. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="13. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    デプロイ
-  </a>
   
 </li>
         
@@ -3459,13 +3432,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
-    11. 権限設定
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#12-prometheus" class="md-nav__link">
     12. Prometheusによる監視
   </a>
@@ -3504,26 +3470,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-cd" class="md-nav__link">
-    13. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="13. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    デプロイ
-  </a>
   
 </li>
         
@@ -4030,10 +3976,6 @@
 <p>この場合、Pruneを無効化した上で、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。</p>
 <p>新バージョンの動作が問題なければ、旧バージョンのKubernetesリソースをPruneで削除する。</p>
 <p><br></p>
-<h2 id="11">11. 権限設定<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
-<p>ArgoCDには、ダッシュボード上から特定の<code>kubectl</code>コマンド (<code>kubectl logs</code>コマンド、<code>kubectl exec</code>コマンド) を実行できる機能がある。</p>
-<p>ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。</p>
-<p><br></p>
 <h2 id="12-prometheus">12. Prometheusによる監視<a class="headerlink" href="#12-prometheus" title="Permanent link">&para;</a></h2>
 <h3 id="_17">メトリクスの種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>ArgoCDはデータポイントを作成し、これをPrometheusで収集できる。</p>
@@ -4266,17 +4208,6 @@
 <span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="13-cd">13. CDパイプライン<a class="headerlink" href="#13-cd" title="Permanent link">&para;</a></h2>
-<h3 id="_18">デプロイ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>ArgoCD自体はArgoCD以外でデプロイする必要がある。</p>
-<p>GitOpsを採用できないため、CIOpsになる。</p>
-<p>本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。</p>
-<blockquote>
-<ul>
-<li><a href="https://developer.mamezou-tech.com/oss-intro/setup-helmfile/">https://developer.mamezou-tech.com/oss-intro/setup-helmfile/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h2 id="14">14. マルチテナント<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
 <h3 id="argocd_5">ArgoCDでテナント分割が必要な理由<a class="headerlink" href="#argocd_5" title="Permanent link">&para;</a></h3>
 <p>異なるClusterをデプロイ先とするArgoCDを同じClusterで管理する場合、ArgoCDはNamespace単位でテナント分割できない。</p>
@@ -4320,7 +4251,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
       
     
   </small>
