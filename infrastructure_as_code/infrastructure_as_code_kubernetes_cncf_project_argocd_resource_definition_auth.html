@@ -2918,11 +2918,18 @@
 <h2 id="03-serviceaccount">03. 専用ServiceAccount<a class="headerlink" href="#03-serviceaccount" title="Permanent link">&para;</a></h2>
 <h3 id="argocd-manager">argocd-manager<a class="headerlink" href="#argocd-manager" title="Permanent link">&para;</a></h3>
 <h4 id="argocd-manager_1">▼ argocd-managerとは<a class="headerlink" href="#argocd-manager_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのapplication-controllerが、デプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにServiceAccountを作成する必要がある。</p>
+<p>ArgoCDのapplication-controllerがデプロイ先と異なるClusterで稼働している場合に、デプロイ先のClusterにエージェントを作成する必要がある。</p>
+<p>argocd-managerは、エージェントとして、デプロイ先Clusterでapplication-controllerからの通信を仲介する。</p>
+<p>argocd-managerの実体は、ServiceAccountである。</p>
 <p>このServiceAccountを介して、ArgoCDのapplication-controllerはClusterにKubernetesリソースをデプロイする。</p>
 <p><code>argocd cluster add &lt;デプロイ先のClusterのコンテキスト&gt;</code>コマンドで、<code>argocd-manager</code>というServiceAccountを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルトでkube-systemに作成するため、nオプションは不要である</span>
-$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先ClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上のCluster名&gt;<span class="w">  </span>-n<span class="w"> </span>kube-system
+$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先ClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;デプロイ先のCluster名&gt;<span class="w">  </span>-n<span class="w"> </span>kube-system
+
+INFO<span class="o">[</span><span class="m">0011</span><span class="o">]</span><span class="w"> </span>ServiceAccount<span class="w"> </span><span class="s2">&quot;argocd-manager&quot;</span><span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;kube-system&quot;</span>
+INFO<span class="o">[</span><span class="m">0011</span><span class="o">]</span><span class="w"> </span>ClusterRole<span class="w"> </span><span class="s2">&quot;argocd-manager-role&quot;</span><span class="w"> </span>updated
+INFO<span class="o">[</span><span class="m">0011</span><span class="o">]</span><span class="w"> </span>ClusterRoleBinding<span class="w"> </span><span class="s2">&quot;argocd-manager-role-binding&quot;</span><span class="w"> </span>updated
+Cluster<span class="w"> </span><span class="s1">&#39;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&#39;</span><span class="w"> </span>added
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
@@ -2959,7 +2966,7 @@ $<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
       
     
   </small>

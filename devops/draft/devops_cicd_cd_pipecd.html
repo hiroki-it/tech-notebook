@@ -1737,16 +1737,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    アーキテクチャ
+  <a href="#01" class="md-nav__link">
+    01. アーキテクチャ
   </a>
   
-    <nav class="md-nav" aria-label="アーキテクチャ">
+    <nav class="md-nav" aria-label="01. アーキテクチャ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ecs" class="md-nav__link">
-    ECSの場合
+  <a href="#_2" class="md-nav__link">
+    コントロールプレーン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    データプレーン (エージェント)
   </a>
   
 </li>
@@ -1757,8 +1764,48 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-ecsapp" class="md-nav__link">
-    02. ECSApp
+  <a href="#02" class="md-nav__link">
+    02. ユースケース
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ユースケース">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    ECSの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="ECSの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ecs-cluster" class="md-nav__link">
+    ▼ 同一のECS Cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs-cluster_1" class="md-nav__link">
+    ▼ 外部のECS Cluster
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ecsapp" class="md-nav__link">
+    03. ECSApp
   </a>
   
 </li>
@@ -1790,17 +1837,45 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. アーキテクチャ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">コントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>対象のリポジトリをポーリングし、リポジトリをクローンする。</p>
+<p>また、デプロイ先にアプリをデプロイする。</p>
+<blockquote>
+<ul>
+<li><a href="https://pipecd.dev/docs-v0.45.x/installation/install-controlplane/">https://pipecd.dev/docs-v0.45.x/installation/install-controlplane/</a></li>
+</ul>
+</blockquote>
+<h3 id="_3">データプレーン (エージェント)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>デプロイ先で、コントロールプレーンからの通信を仲介する。</p>
+<blockquote>
+<ul>
+<li><a href="https://pipecd.dev/docs-v0.45.x/installation/install-piped/">https://pipecd.dev/docs-v0.45.x/installation/install-piped/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="ecs">ECSの場合<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h3>
-<p>PipeCDをECSの専用Serviceで動かして、Gitのリポジトリをポーリングする。</p>
+<h4 id="ecs-cluster">▼ 同一のECS Cluster<a class="headerlink" href="#ecs-cluster" title="Permanent link">&para;</a></h4>
+<p>PipeCDをデプロイ先のECS Clusterで一緒に動かす。</p>
+<p>同じECS Clusterの専用Service上でPipeCDを動かし、Gitのリポジトリをポーリングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/">https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/</a></li>
 <li><a href="https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/">https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/</a></li>
 </ul>
 </blockquote>
+<h4 id="ecs-cluster_1">▼ 外部のECS Cluster<a class="headerlink" href="#ecs-cluster_1" title="Permanent link">&para;</a></h4>
+<p>PipeCDをデプロイ先のECS Clusterの外部で動かす。</p>
+<p>PipeCDは、サーバーやコンテナ (AWS EKS、ECS、EC2) で動かせる。</p>
+<p>なお、デプロイ先のECS Clusterにエージェントをインストールする必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://pipecd.dev/docs-v0.45.x/installation/install-piped/">https://pipecd.dev/docs-v0.45.x/installation/install-piped/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="02-ecsapp">02. ECSApp<a class="headerlink" href="#02-ecsapp" title="Permanent link">&para;</a></h2>
+<h2 id="03-ecsapp">03. ECSApp<a class="headerlink" href="#03-ecsapp" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pipecd.dev/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ECSApp</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -1821,7 +1896,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
       
     
   </small>
