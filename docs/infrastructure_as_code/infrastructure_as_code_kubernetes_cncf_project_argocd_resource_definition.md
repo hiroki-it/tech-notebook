@@ -1176,6 +1176,23 @@ spec:
         - ./prd.yaml
 ```
 
+デフォルトの`values`ファイルと実行環境別の`values`ファイルの複数を指定できる。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  source:
+    helm:
+      releaseName: foo
+      valueFiles:
+        - default.yaml
+        - ./prd.yaml
+```
+
 暗号化された`values`ファイルを使用することもできる。
 
 > - https://github.com/camptocamp/argocd-helm-sops-example

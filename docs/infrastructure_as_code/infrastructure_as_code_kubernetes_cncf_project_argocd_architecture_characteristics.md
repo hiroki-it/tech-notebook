@@ -13,9 +13,33 @@ description: ArgoCD＠アーキテクチャ特性の知見を記録していま�
 
 <br>
 
-## 01. 共通
+## 01. 可用性
 
-### 拡張性設計
+### repo-server
+
+Podを冗長化させることで、repo-serverの可用性を高める。
+
+ArgoCDの場合、冗長化はrepo-serverの性能設計の改善にもつながる。
+
+<br>
+
+### application-controller
+
+Podを冗長化させることで、application-controllerの可用性を高める。
+
+ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善にもつながる。
+
+<br>
+
+### argocd-server
+
+Podを冗長化させることで、argocd-serverの可用性を高める。
+
+ArgoCDの場合、冗長化はargocd-serverの性能設計の改善にもつながる。
+
+<br>
+
+## 02. 拡張性設計
 
 ArgoCDをプラットフォームのように使う場合、各プロダクトのPodがNodeに乗りつつ、各argoコンポーネントのPodを冗長化することになる。
 
@@ -25,17 +49,9 @@ ArgoCDはハードウェアリソースをあまり使わないので、特にEK
 
 <br>
 
-## 02. repo-server
+## 03. 性能
 
-### 可用性設計
-
-Podを冗長化させることで、repo-serverの可用性を高める。
-
-ArgoCDの場合、冗長化はrepo-serverの性能設計の改善にもつながる。
-
-<br>
-
-### 性能設計
+### repo-server
 
 #### ▼ 問題
 
@@ -71,17 +87,7 @@ Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-genera
 
 <br>
 
-## 03. application-controller
-
-### 可用性設計
-
-Podを冗長化させることで、application-controllerの可用性を高める。
-
-ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善にもつながる。
-
-<br>
-
-### 性能設計
+### application-controller
 
 #### ▼ 問題
 
@@ -167,17 +173,7 @@ data:
 
 <br>
 
-## 04. argocd-server
-
-### 可用性設計
-
-Podを冗長化させることで、argocd-serverの可用性を高める。
-
-ArgoCDの場合、冗長化はargocd-serverの性能設計の改善にもつながる。
-
-<br>
-
-### 性能設計
+### argocd-server
 
 #### ▼ 問題
 
@@ -206,5 +202,13 @@ spec:
 ```
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-server
+
+<br>
+
+## 04. 安全性
+
+ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`kubectl logs`コマンド、`kubectl exec`コマンド) を実行できる機能がある。
+
+ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。
 
 <br>
