@@ -2064,6 +2064,46 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. 性能
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 性能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_7" class="md-nav__link">
+    ワーカーNode
+  </a>
+  
+    <nav class="md-nav" aria-label="ワーカーNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU/メモリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ストレージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3078,6 +3118,46 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. 性能
+  </a>
+  
+    <nav class="md-nav" aria-label="06. 性能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node_7" class="md-nav__link">
+    ワーカーNode
+  </a>
+  
+    <nav class="md-nav" aria-label="ワーカーNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU/メモリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    ▼ ストレージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3175,7 +3255,7 @@
 <p><br></p>
 <h3 id="node_1">ワーカーNode<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="node_2">▼ Nodeグループ<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
-<p>ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、など) ごとに作成し、可用性を担保する。</p>
+<p>ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、バッチ系、など) ごとに作成し、可用性を担保する。</p>
 <p>特にクラウドプロバイダーではNodeグループを作成できる。</p>
 <h4 id="_6">▼ 冗長化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>NodeグループごとにワーカーNodeを冗長化する。</p>
@@ -3476,6 +3556,18 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 <li><a href="https://developer.mamezou-tech.com/oss-intro/setup-helmfile/">https://developer.mamezou-tech.com/oss-intro/setup-helmfile/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="06">06. 性能<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="node_7">ワーカーNode<a class="headerlink" href="#node_7" title="Permanent link">&para;</a></h3>
+<h4 id="cpu">▼ CPU/メモリ<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<p>NodeグループにあったCPUとメモリを割り当てる。</p>
+<p>例えば、業務アプリは恒常的にCPUとメモリを必要とするため、アプリ系NodeグループにはCPUとメモリを多めに割り当てる。</p>
+<p>一方で、バッチ系は瞬間的にこれらを必要とするため、バッチ系Nodeグループには瞬間的な要求 (バースト) に適したCPUとメモリを選ぶ。</p>
+<p>AWSであればT系のインスタンスタイプが瞬間的な要求に適している。</p>
+<h4 id="_26">▼ ストレージ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>Nodeグループにあったストレージを割り当てる。</p>
+<p>例えば、ArgoCDがストレージに永続化するデータ量は少ないので、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
+<p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。</p>
 <p><br></p>
 
   <hr>
