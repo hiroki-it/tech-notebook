@@ -281,7 +281,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 クラウドプロバイダーではローリング方式をサポートしている。
 
-クラウドプロバイダーごとにNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。
+クラウドプロバイダーのNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。
 
 例えばAWSであれば、新旧のEC2AutoScaling (正確にいうとEC2AutoScalingに紐づく起動テンプレート) を作成し、EC2AutoScaling配下のNodeを順番に入れ替える。
 

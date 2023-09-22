@@ -17,7 +17,7 @@ description: cluster-autoscaler＠ハードウェアリソース管理の知見�
 
 ### アーキテクチャ
 
-cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2 AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
+cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 cluster-autoscalerを使用しない場合、クラウドプロバイダーのNode数は固定である。
 

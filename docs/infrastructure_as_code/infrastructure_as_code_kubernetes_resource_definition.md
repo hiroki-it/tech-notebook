@@ -2895,8 +2895,25 @@ kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼�
 
 コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。
 
+readinessProbeに失敗する場合、コンテナは起動しているが準備ができていない状態である。
+
+そのため、`READY`は`0`で、`STATUS`は`Running`になる。
+
+```bash
+$ kubectl get pod -n foo-namespace
+
+NAME       READY   STATUS             RESTARTS      AGE
+foo-pod    0/1     Running            0             14m
+bar-pod    0/1     Running            0             14m
+```
+
+```bash
+Readiness probe failed: Get "http://*.*.*.*:*/ready": dial tcp *.*.*.*:*: connect: connection refused
+```
+
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4
+> - https://kodekloud.com/community/t/what-is-the-meaning-for-a-pod-with-ready-0-1-and-state-running/21660
 
 #### ▼ failureThreshold
 
@@ -3207,7 +3224,7 @@ spec:
     - name: readiness-check-db
       image: busybox:1.28
       # StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。
-      # StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
+      # StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。
       command:
         - /bin/bash
         - -c

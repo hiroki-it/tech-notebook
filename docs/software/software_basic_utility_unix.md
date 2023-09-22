@@ -2308,6 +2308,11 @@ OSの情報を表示する。
 $ uname -m
 
 x86_64
+
+# IntelとAMDは互換性があるため、AMD表記のCPUの場合があある
+$ uname -m
+
+amd64
 ```
 
 ```bash
@@ -2325,6 +2330,7 @@ amd64
 ```
 
 > - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B
+> - https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu
 
 <br>
 
