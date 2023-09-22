@@ -88,15 +88,15 @@ ENTRYPOINT ["/app"]
 
 #### ▼ 対応できるCPUアーキテクチャの種類
 
-Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：インテル、AMD、ARM) がある。
+Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：Intel、AMD、ARM) がある。
 
 同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。
 
-例えば、MacBook 2020 にはIntel、またMacBook 2021 (M1 Mac) にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。
+例えば、`MacBook 2020`にはIntel、また`MacBook 2021 (M1 Mac)`にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。
 
 ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、`docker pull`時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。
 
-コンテナの現在のCPUアーキテクチャは、`docker inspect`コマンドで確認できる。
+コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。
 
 ```bash
 $ docker inspect <コンテナ名>
@@ -110,7 +110,15 @@ $ docker inspect <コンテナ名>
 }
 ```
 
+```bash
+$ docker exec -it <起動中コンテナ名> /bin/bash -- uname -m
+
+arm64
+```
+
 > - https://github.com/docker-library/official-images#architectures-other-than-amd64
+> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#1.-%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A3%E3%81%A6%E3%81%AE%E3%81%8C%E9%81%95%E3%81%86
+> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B
 
 #### ▼ バージョン
 

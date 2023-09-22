@@ -13,6 +13,32 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 
 <br>
 
+## adduser
+
+### adduser
+
+シェルのユーザーを操作する。
+
+<br>
+
+### -s
+
+ユーザーが使用するシェルを設定する。
+
+**＊実行例＊**
+
+ユーザーを作成する。
+
+無効なシェルを設定し、ログインできないようにしておく。
+
+```bash
+$ adduser -s /bin/false foo
+```
+
+> - https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
+
+<br>
+
 ## chmod：change mode
 
 ### `<数字／シンボル>`
@@ -2263,6 +2289,45 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 <br>
 
+## uname
+
+### uname
+
+OSの情報を表示する。
+
+> - https://linuc.spa-miz.com/2021/01/27/commands-that-are-used-to-verify-system-information/
+
+<br>
+
+### -m
+
+対応するCPUアーキテクチャを表示する。
+
+```bash
+# Intelの場合
+$ uname -m
+
+x86_64
+```
+
+```bash
+# Armの場合
+$ uname -m
+
+arm64
+```
+
+```bash
+# AMDの場合
+$ uname -m
+
+amd64
+```
+
+> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B
+
+<br>
+
 ## unlink
 
 ### unlinkとは
@@ -2274,32 +2339,6 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 ```bash
 $ unlink <シンボリックリンク名>
 ```
-
-<br>
-
-## adduser
-
-### adduser
-
-シェルのユーザーを操作する。
-
-<br>
-
-### -s
-
-ユーザーが使用するシェルを設定する。
-
-**＊実行例＊**
-
-ユーザーを作成する。
-
-無効なシェルを設定し、ログインできないようにしておく。
-
-```bash
-$ adduser -s /bin/false foo
-```
-
-> - https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
 
 <br>
 

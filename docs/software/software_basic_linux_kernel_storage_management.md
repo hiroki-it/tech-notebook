@@ -356,7 +356,7 @@ crw-rw-rw-  kvm                   # 仮想化のkvm
 lrwxrwxrwx  log -> /run/systemd/journal/dev-log   # システムログ
 crw-rw----  loop-control          # ループデバイス
 drwxr-xr-x  mapper                # ディスクのマッピング
-crw-------  mei0                  # インテルチップセット
+crw-------  mei0                  # Intelチップセット
 crw-r-----  mem                   # メモリ
 drwxrwxrwt  mqueue                # POSIX メッセージキュー
 crw-------  mtd0                  # フラッシュデバイス

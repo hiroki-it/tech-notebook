@@ -456,7 +456,7 @@ $ docker network inspect <プロジェクト名>_default
 
 ### `platform`
 
-コンテナのCPUアーキテクチャ (例：インテル、AMD、ARM) を設定する。
+コンテナのCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
 **＊実装例＊**
 

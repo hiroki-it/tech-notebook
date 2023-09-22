@@ -667,7 +667,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 **＊例＊**
 
-CPUアーキテクチャ (例：インテル、AMD、ARM) を設定しつつ、`terraform.lock.hcl`ファイルを作成する。
+CPUアーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl`ファイルを作成する。
 
 ```bash
 $ terraform providers lock \
