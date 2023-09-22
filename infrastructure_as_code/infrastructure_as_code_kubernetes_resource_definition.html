@@ -11167,10 +11167,21 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。</p>
 <p>コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。</p>
+<p>readinessProbeに失敗する場合、コンテナは起動しているが準備ができていない状態である。</p>
+<p>そのため、<code>READY</code>は<code>0</code>で、<code>STATUS</code>は<code>Running</code>になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">      </span>AGE
+foo-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">             </span>14m
+bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">             </span>14m
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Readiness<span class="w"> </span>probe<span class="w"> </span>failed:<span class="w"> </span>Get<span class="w"> </span><span class="s2">&quot;http://*.*.*.*:*/ready&quot;</span>:<span class="w"> </span>dial<span class="w"> </span>tcp<span class="w"> </span>*.*.*.*:*:<span class="w"> </span>connect:<span class="w"> </span>connection<span class="w"> </span>refused
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.ianlewis.org/jp/kubernetes-health-check">https://www.ianlewis.org/jp/kubernetes-health-check</a></li>
 <li><a href="https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4">https://amateur-engineer-blog.com/livenessprobe-readinessprobe/#toc4</a></li>
+<li><a href="https://kodekloud.com/community/t/what-is-the-meaning-for-a-pod-with-ready-0-1-and-state-running/21660">https://kodekloud.com/community/t/what-is-the-meaning-for-a-pod-with-ready-0-1-and-state-running/21660</a></li>
 </ul>
 </blockquote>
 <h4 id="failurethreshold_1">▼ failureThreshold<a class="headerlink" href="#failurethreshold_1" title="Permanent link">&para;</a></h4>
@@ -11422,7 +11433,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readiness-check-db</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
 <span class="w">      </span><span class="c1"># StatefulSetのDBコンテナの3306番ポートに通信できるまで、本Podのappコンテナの起動を待機する。</span>
-<span class="w">      </span><span class="c1"># StatefulSetでredinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。</span>
+<span class="w">      </span><span class="c1"># StatefulSetでreadinessProbeを設定しておけば、これのPodがREADYになるまでncコマンドは成功しないようになる。</span>
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
@@ -13154,7 +13165,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-23</span>
       
     
   </small>

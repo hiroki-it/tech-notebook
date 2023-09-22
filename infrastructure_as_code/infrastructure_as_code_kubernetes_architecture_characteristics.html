@@ -3382,7 +3382,7 @@
 </blockquote>
 <h4 id="_20">▼ マネージドなローリング方式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダーではローリング方式をサポートしている。</p>
-<p>クラウドプロバイダーごとにNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。</p>
+<p>クラウドプロバイダーのNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。</p>
 <p>例えばAWSであれば、新旧のEC2AutoScaling (正確にいうとEC2AutoScalingに紐づく起動テンプレート) を作成し、EC2AutoScaling配下のNodeを順番に入れ替える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node
 
@@ -3483,7 +3483,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-23</span>
       
     
   </small>

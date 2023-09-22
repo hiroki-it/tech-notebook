@@ -2670,8 +2670,37 @@
 </blockquote>
 <h4 id="cpu">▼ 対応できるCPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
 <p>Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
-<p>IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。</p>
-<p>同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>表記</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intel</td>
+<td><code>amd64</code> (<code>x86_64</code>)</td>
+<td>IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。</td>
+</tr>
+<tr>
+<td>Arm</td>
+<td><code>arm64</code>、<code>arm/v5</code>、<code>arm/v7</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Amd</td>
+<td><code>amd64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
+</ul>
+</blockquote>
 <p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
 <p>ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、<code>docker pull</code>時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
 <p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
@@ -2996,7 +3025,7 @@ README.md
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-23</span>
       
     
   </small>
