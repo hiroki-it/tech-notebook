@@ -2516,11 +2516,11 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS EKSアドオンをインストールする。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;aws_ebs_csi_driver&quot;</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="na">cluster_name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_eks_cluster.cluster.name</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-ebs-csi-driver&quot;</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">service_account_role_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn</span>
-<span class="w">  </span><span class="na">resolve_conflicts</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_eks_cluster.cluster.name</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws-ebs-csi-driver&quot;</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">service_account_role_arn</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -2826,7 +2826,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
       
     
   </small>
