@@ -2669,11 +2669,11 @@
 </ul>
 </blockquote>
 <h4 id="cpu">▼ 対応できるCPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
-<p>Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：インテル、AMD、ARM) がある。</p>
+<p>Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
 <p>同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。</p>
-<p>例えば、MacBook 2020 にはIntel、またMacBook 2021 (M1 Mac) にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
+<p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
 <p>ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、<code>docker pull</code>時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
-<p>コンテナの現在のCPUアーキテクチャは、<code>docker inspect</code>コマンドで確認できる。</p>
+<p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
 
 <span class="o">{</span>
@@ -2684,9 +2684,15 @@
 <span class="w">    </span>...
 <span class="o">}</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span>--<span class="w"> </span>uname<span class="w"> </span>-m
+
+arm64
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">https://github.com/docker-library/official-images#architectures-other-than-amd64</a></li>
+<li><a href="https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#1.-%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A3%E3%81%A6%E3%81%AE%E3%81%8C%E9%81%95%E3%81%86">https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#1.-%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A3%E3%81%A6%E3%81%AE%E3%81%8C%E9%81%95%E3%81%86</a></li>
+<li><a href="https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B">https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ バージョン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -2989,7 +2995,7 @@ README.md
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
       
     
   </small>
