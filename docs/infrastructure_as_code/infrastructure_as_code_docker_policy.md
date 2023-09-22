@@ -90,6 +90,8 @@ ENTRYPOINT ["/app"]
 
 Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：Intel、AMD、ARM) がある。
 
+IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。
+
 同じOSでも、機種ごとに搭載されるCPUアーキテクチャは異なる。
 
 例えば、`MacBook 2020`にはIntel、また`MacBook 2021 (M1 Mac)`にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。
@@ -117,8 +119,8 @@ arm64
 ```
 
 > - https://github.com/docker-library/official-images#architectures-other-than-amd64
-> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#1.-%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%A3%E3%81%A6%E3%81%AE%E3%81%8C%E9%81%95%E3%81%86
-> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B
+> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm
+> - https://linuxfan.info/post-2745
 
 #### ▼ バージョン
 

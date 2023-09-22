@@ -46,10 +46,10 @@ Terraformを使用する。
 ```terraform
 # aws-eks-corednsアドオン
 resource "aws_eks_addon" "coredns" {
-  cluster_name      = aws_eks_cluster.foo.name
-  addon_version     = "<バージョン>"
-  addon_name        = "coredns"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name                = aws_eks_cluster.foo.name
+  addon_version               = "<バージョン>"
+  addon_name                  = "coredns"
+  resolve_conflicts_on_update = "OVERWRITE"
   # スケジューリングするNodeを設定する
   configuration_values = jsonencode(
     {
@@ -63,19 +63,19 @@ resource "aws_eks_addon" "coredns" {
 
 # aws-kube-proxyアドオン
 resource "aws_eks_addon" "kube_proxy" {
-  cluster_name      = aws_eks_cluster.foo.name
-  addon_version     = "<バージョン>"
-  addon_name        = "kube-proxy"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name                = aws_eks_cluster.foo.name
+  addon_version               = "<バージョン>"
+  addon_name                  = "kube-proxy"
+  resolve_conflicts_on_update = "OVERWRITE"
 }
 
 
 # aws-vpc-cniアドオン
 resource "aws_eks_addon" "vpc_cni" {
-  cluster_name      = aws_eks_cluster.foo.name
-  addon_version     = "<バージョン>"
-  addon_name        = "vpc-cni"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name                = aws_eks_cluster.foo.name
+  addon_version               = "<バージョン>"
+  addon_name                  = "vpc-cni"
+  resolve_conflicts_on_update = "OVERWRITE"
   # 環境変数を設定する
   configuration_values = jsonencode(
     {

@@ -223,7 +223,7 @@ HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保
 
 : ワーカーNodeを再作成する。
 
-#### ▼ ローリング方式 (サージ方式、ライブ方式)
+#### ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
 
 ![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png)
 
@@ -240,17 +240,18 @@ HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保
 : 旧Nodeグループ (Prodブルー) を残したまま、新Nodeグループ (Testグリーン) を作成する。
 
 この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。
+
 `(2)`
 
 : `kubectl drain`コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。
 
-この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
+     この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 
-また、emptyDirボリュームを持つPodを退避できるように `--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
+     また、emptyDirボリュームを持つPodを退避できるように `--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
 
-その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。
+     その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。
 
-この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+     この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
 ```bash
 $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
@@ -273,9 +274,32 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 > - https://logmi.jp/tech/articles/323032
+
+> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
+
+#### ▼ マネージドなローリング方式
+
+クラウドプロバイダーではローリング方式をサポートしている。
+
+クラウドプロバイダーごとにNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。
+
+例えばAWSであれば、新旧のEC2AutoScaling (正確にいうとEC2AutoScalingに紐づく起動テンプレート) を作成し、EC2AutoScaling配下のNodeを順番に入れ替える。
+
+```bash
+$ kubectl get node
+
+NAME                                       STATUS                        ROLES    AGE     VERSION
+ip-*****.ap-northeast-1.compute.internal   Ready                         <none>   19m     v1.26.7-eks-*** # 作成した新しいK8sバージョンのNode
+ip-*****.ap-northeast-1.compute.internal   Ready                         <none>   19s     v1.26.7-eks-***
+ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none>   66m     v1.25.7-eks-*** # 削除中の古いK8sバージョンのNode
+ip-*****.ap-northeast-1.compute.internal   Ready                         <none>   21m     v1.26.7-eks-***
+ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none>   75m     v1.25.7-eks-***
+ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none>   73m     v1.25.7-eks-***
+```
+
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
-> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
 
 #### ▼ ブルー/グリーン方式
 

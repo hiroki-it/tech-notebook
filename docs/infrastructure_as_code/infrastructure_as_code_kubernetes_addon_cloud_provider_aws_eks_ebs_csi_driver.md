@@ -41,11 +41,11 @@ Terraformの`aws_eks_addon`でEKSアドオンをインストールし、AWS EBS 
 # AWS EKSアドオンをインストールする。
 resource "aws_eks_addon" "aws_ebs_csi_driver" {
 
-  cluster_name             = data.aws_eks_cluster.cluster.name
-  addon_name               = "aws-ebs-csi-driver"
-  addon_version            = "<バージョン>"
-  service_account_role_arn = module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn
-  resolve_conflicts        = "OVERWRITE"
+  cluster_name                = data.aws_eks_cluster.cluster.name
+  addon_name                  = "aws-ebs-csi-driver"
+  addon_version               = "<バージョン>"
+  service_account_role_arn    = module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn
+  resolve_conflicts_on_update = "OVERWRITE"
 }
 ```
 
