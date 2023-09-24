@@ -49,6 +49,7 @@ resource "aws_eks_addon" "coredns" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
   addon_name                  = "coredns"
+  # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
   # スケジューリングするNodeを設定する
   configuration_values = jsonencode(
@@ -66,6 +67,7 @@ resource "aws_eks_addon" "kube_proxy" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
   addon_name                  = "kube-proxy"
+  # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
 }
 
@@ -75,6 +77,7 @@ resource "aws_eks_addon" "vpc_cni" {
   cluster_name                = aws_eks_cluster.foo.name
   addon_version               = "<バージョン>"
   addon_name                  = "vpc-cni"
+  # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
   # 環境変数を設定する
   configuration_values = jsonencode(

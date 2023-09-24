@@ -185,9 +185,9 @@ HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保
 
 このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されている (ワーカーNodeではダウンタイムが発生してしまう) 。
 
-そのため、コントロールプレーンNodeのみ、インプレース方式でアップグレードする。
-
 > - https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+
+#### ▼ ローリング方式
 
 <br>
 
@@ -279,11 +279,13 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 #### ▼ マネージドなローリング方式
 
-クラウドプロバイダーではローリング方式をサポートしている。
+クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている。
 
-クラウドプロバイダーのNodeグループ (例：AWS EC2AutoScaling) を持っており、新旧Nodeグループを作成することにより、Nodeを入れ替える。
+クラウドプロバイダーのNodeグループ (例：AWS EC2AutoScaling) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。
 
-例えばAWSであれば、新旧のEC2AutoScaling (正確にいうとEC2AutoScalingに紐づく起動テンプレート) を作成し、EC2AutoScaling配下のNodeを順番に入れ替える。
+例えばAWS EC2AutoScalingであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。
+
+新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。
 
 ```bash
 $ kubectl get node

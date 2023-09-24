@@ -45,6 +45,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
   addon_name                  = "aws-ebs-csi-driver"
   addon_version               = "<バージョン>"
   service_account_role_arn    = module.iam_assumable_role_ebs_csi_driver[0].iam_role_arn
+  # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
 }
 ```
