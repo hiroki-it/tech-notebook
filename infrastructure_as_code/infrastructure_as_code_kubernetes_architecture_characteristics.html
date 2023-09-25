@@ -3281,10 +3281,14 @@
 <p>ReplicaSetでPodを冗長化し、可用性を担保する。</p>
 <h4 id="_9">▼ 水平スケーリング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。</p>
+<p>水平スケーリングは、Podの負荷が高くなると冗長化してくれ、高負荷でいずれかのPodで障害が起こっても正常なPodがこれを埋め合わせしてくれるため、システム全体として稼働時間を長くできる。</p>
 <p><br></p>
 <h3 id="_10">コンテナ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ヘルスチェック<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) できるようにする。</p>
+<p>コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。</p>
+<p>コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。</p>
+<p>LivenessProbeヘルスチェックは、コンテナで障害が起こるとコンテナを再起動してくれるため、システム全体として稼働時間を長くできる。</p>
+<p>またReadinessProbeヘルスチェックは、コンテナで処理待ちが起こるとそのコンテナが処理できるようになるまで通信を流さないようにしてくれるため、システム全体として稼働時間を長くできる。</p>
 <p><br></p>
 <h2 id="03">03. 保守性<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_12">設計規約<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -3590,7 +3594,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-25</span>
       
     
   </small>

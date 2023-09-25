@@ -2665,6 +2665,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ 対処方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><code>tini</code>を使用し、アプリやミドルウェアのプロセスを<code>PID=1</code>で動かさないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:16-alpine3.15</span>
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
