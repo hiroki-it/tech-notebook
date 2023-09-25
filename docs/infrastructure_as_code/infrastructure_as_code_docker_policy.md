@@ -13,7 +13,9 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. プロセス単位でコンテナを分割する
+## 01. プロセス
+
+### プロセス単位でコンテナを分割する
 
 これは、Dockerの原則である。
 
@@ -32,6 +34,53 @@ description: 設計規約＠Dockerの知見を記録しています。
 プロセス管理ツール (例：supervisor) を使用すると、終了順序を考えやすくなる。
 
 > - https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container
+
+<br>
+
+### `PID 1`問題
+
+#### ▼ `PID 1`問題とは
+
+サーバーのLinuxでは、`init`プロセスが`PID=1`として稼働している。
+
+![container_pid_1_problem_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png)
+
+`init`プロセスは、配下のいずれかの親プロセスを終了したとする。
+
+![container_pid_1_problem_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png)
+
+すると、これの子プロセスも連鎖的に終了してくれる。
+
+![container_pid_1_problem_3.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png)
+
+一方でコンテナのLinuxでは、アプリやミドルウェアのプロセスが`PID=1`で動いている。
+
+これらのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。
+
+そのため、子プロセスが残骸として残ってしまう。
+
+![container_pid_1_problem_4.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png)
+
+> - https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
+
+#### ▼ 対処方法
+
+```dockerfile
+FROM node:16-alpine3.15
+WORKDIR /app
+
+RUN apk add --no-cache tini
+
+COPY package.json yarn.lock ./
+RUN yarn install --prod --frozen-lockfile
+
+COPY . .
+
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["node", "index.js"]
+```
+
+> - https://blog.shinonome.io/nodejs-docker/#for-toc-14
 
 <br>
 
