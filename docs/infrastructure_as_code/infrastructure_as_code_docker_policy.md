@@ -65,6 +65,8 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 #### ▼ 対処方法
 
+`tini`を使用し、アプリやミドルウェアのプロセスを`PID=1`で動かさないようにする。
+
 ```dockerfile
 FROM node:16-alpine3.15
 WORKDIR /app
