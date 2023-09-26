@@ -55,6 +55,12 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 
 ## 02. 可用性
 
+### Cluster
+
+#### ▼ バックアップ
+
+<br>
+
 ### コントロールプレーンNode
 
 #### ▼ 冗長化
@@ -77,6 +83,12 @@ Secretの `.data`キーには、`base64`方式でエンコードされた値を�
 #### ▼ 冗長化
 
 NodeグループごとにワーカーNodeを冗長化する。
+
+Nodeグループにあった数に冗長化する。
+
+例えば、アプリ系Nodeグループはユーザーに影響があり、稼働時間を長くしたいので、Nodeを多く冗長化する。
+
+一方で、システム系Nodeグループはユーザーに影響がなく、稼働時間を機にする必要がないため、Nodeは少なめに冗長化する。
 
 #### ▼ 水平スケーリング
 
@@ -114,13 +126,19 @@ LivenessProbeヘルスチェックは、コンテナで障害が起こるとコ�
 
 ## 03. 保守性
 
-### 設計規約
+記入中...
+
+<br>
+
+## 03-02. アップグレード
+
+### アップグレードの設計規約
 
 #### ▼ マイナーバージョン単位でアップグレード
 
-アップグレード時、新旧バージョンのコントロールプレーンコンポーネントが並行的に稼働する。
+アップグレード時、新旧バージョンのコントロールプレーンNodeが並行的に稼働する。
 
-基本的にはいずれのコントロールプレーンコンポーネントも、並行的に稼働するコンポーネントのバージョンを前方/後方の `1`個のマイナーバージョン以内に収める必要がある。
+基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の `1`個のマイナーバージョン以内に収める必要がある。
 
 そのため、Kubernetesのアップグレードもこれに合わせて、後方の `1`個のマイナーバージョンにアップグレードしていくことになる。
 
@@ -128,19 +146,19 @@ LivenessProbeヘルスチェックは、コンテナで障害が起こるとコ�
 
 > - https://kubernetes.io/releases/version-skew-policy/
 
-#### ▼ コントロールプレーンコンポーネントでダウンタイムを発生させない
+#### ▼ コントロールプレーンNodeでダウンタイムを発生させない
 
-コントロールプレーンコンポーネントでダウンタイムが発生すると、Nodeコンポーネントが正常に稼働しなくなる。
+コントロールプレーンNodeでダウンタイムが発生すると、Nodeコンポーネントが正常に稼働しなくなる。
 
 これにより、システム全体でダウンタイムが発生する可能性がある。
 
-ただし、コントロールプレーンコンポーネントの、kube-controller-manager、kube-scheduler、ではダウンタイムが発生することは許容する。
+ただし、コントロールプレーンNodeの、kube-controller-manager、kube-scheduler、ではダウンタイムが発生することは許容する。
 
 > - https://logmi.jp/tech/articles/323032
 
-#### ▼ コントロールプレーンコンポーネントのデータを損失させない
+#### ▼ コントロールプレーンNodeのデータを損失させない
 
-コントロールプレーンコンポーネントやNodeコンポーネントのデータを損失させないようにする。
+コントロールプレーンNodeのデータを損失させないようにする。
 
 ただし、コンテナ内のローカルストレージの損失は許容する。
 
@@ -156,7 +174,7 @@ LivenessProbeヘルスチェックは、コンテナで障害が起こるとコ�
 
 > - https://eng-blog.iij.ad.jp/archives/17944
 
-#### ▼ 変更されるメトリクス名やクエリロジックを確認する
+#### ▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する
 
 アップグレードに伴い、監視系リソース (例：Prometheus、Grafana) でメトリクス名やクエリロジックが廃止されることがある。
 
@@ -164,7 +182,7 @@ LivenessProbeヘルスチェックは、コンテナで障害が起こるとコ�
 
 > - https://eng-blog.iij.ad.jp/archives/17944
 
-#### ▼ 動作確認では、Podだけでなく、Podの管理リソースも確認する
+#### ▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する
 
 動作確認として、`Ready`コンディションと `Running`ステータスを `kubectl get pod`で確認する。
 
@@ -311,7 +329,7 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
 
-#### ▼ ブルー/グリーン方式
+#### ▼ ブルー/グリーン方式 (マイグレーション方式)
 
 ![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png)
 
