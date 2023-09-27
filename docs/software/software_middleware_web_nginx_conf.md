@@ -101,8 +101,6 @@ OSやそのバージョンによっては、変数のデフォルト値が異な
 
 Debian10の設定ファイルを以下に示す。
 
-> - https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
-
 **＊実装例＊**
 
 ```nginx
@@ -135,6 +133,8 @@ fastcgi_param  SERVER_NAME        $server_name;
 fastcgi_param  REDIRECT_STATUS    200;
 ```
 
+> - https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/
+
 <br>
 
 ## 03. Core
@@ -143,8 +143,6 @@ fastcgi_param  REDIRECT_STATUS    200;
 
 #### ▼ events
 
-> - https://nginx.org/en/docs/ngx_core_module.html#events
-
 **＊実装例＊**
 
 ```nginx
@@ -152,6 +150,8 @@ events {
   worker_connections  1024;
 }
 ```
+
+> - https://nginx.org/en/docs/ngx_core_module.html#events
 
 <br>
 
@@ -193,11 +193,11 @@ pid  logs/nginx.pid;
 
 workerプロセスが同時に処理できるコネクションの最大数を設定する。
 
-> - https://nginx.org/en/docs/ngx_core_module.html#worker_connections
-
 ```nginx
 worker_connections  1024;
 ```
+
+> - https://nginx.org/en/docs/ngx_core_module.html#worker_connections
 
 #### ▼ worker_processes
 
@@ -255,8 +255,6 @@ http {
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#location
-
 **＊実装例＊**
 
 各設定の優先順位に沿った以下の順番で実装した方が良い。
@@ -299,11 +297,11 @@ location / {
 |    4     |  `~*`  | 正規表現 (大文字・小文字を区別しない) 。 | `https://example.com/images/foo.jpg`                                       |
 |    5     |  なし  | 指定したルートで始まる場合。             | ・`https://example.com/foo.html` <br>・`https://example.com/docs/foo.html` |
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+
 #### ▼ server
 
 特定のルーティング先に関する処理を設定する。
-
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server
 
 **＊実装例＊**
 
@@ -328,6 +326,8 @@ server {
 }
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+
 #### ▼ リダイレクトとリライトの違い
 
 以下のリンクを参考にせよ。
@@ -342,8 +342,6 @@ server {
 
 `Content-Type`ヘッダーの値が`mime.types`ファイルにないMIME typeであった場合に適用するMIME typeを設定する。
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
-
 **＊実装例＊**
 
 任意のMIME type (指定なし) のインバウンド通信を処理する。
@@ -352,11 +350,11 @@ server {
 default_type application/octet-stream
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
+
 #### ▼ listen
 
 インバウンド通信を待ち受けるポート番号を設定する。
-
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 
 **＊実装例＊**
 
@@ -372,6 +370,8 @@ listen 80;
 listen 443 ssl;
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+
 #### ▼ sendfile
 
 クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。
@@ -380,21 +380,19 @@ listen 443 ssl;
 
 使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
-
 **＊実装例＊**
 
 ```nginx
 sendfile on;
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
+
 #### ▼ server_name
 
 受信するインバウンド通信の`Host`ヘッダーの値を設定する。
 
 補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
-
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
 
 ```nginx
 server_name example.com;
@@ -414,17 +412,19 @@ server_name 192.168.0.0;
 server_name 127.0.0.1;
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+
 #### ▼ ssl
 
 HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。
-
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
 **＊実装例＊**
 
 ```nginx
 ssl on;
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
 
 #### ▼ ssl_certificate
 
@@ -484,8 +484,6 @@ tcp_nopush on;
 
 内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
-
 ```nginx
 location / {
     try_files file ... uri;
@@ -516,6 +514,8 @@ location ~ \.php$ {
     include       fastcgi_params;
 }
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
 
 <br>
 
@@ -580,13 +580,13 @@ server {
 
 リクエストのURLがトレイリングスラッシュで終了する全ての場合、指定されたファイルをURLの末尾に追加する。
 
-> - https://nginx.org/en/docs/http/ngx_http_index_module.html
-
 **＊実装例＊**
 
 ```nginx
 index index.php;
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_index_module.html
 
 <br>
 
@@ -598,14 +598,14 @@ index index.php;
 
 レスポンス時に付与するレスポンスヘッダーを設定する。
 
-> - https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
-
 **＊実装例＊**
 
 ```nginx
 # Referrer-Policyヘッダーに値を設定する
 add_header Referrer-Policy "no-referrer-when-downgrade";
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
 
 <br>
 
@@ -619,8 +619,6 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。
 
-> - https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
-
 **＊実装例＊**
 
 ```nginx
@@ -629,6 +627,8 @@ upstream foo_servers {
     server 192.168.0.1:81;
 }
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
 
 <br>
 
@@ -640,25 +640,25 @@ upstream foo_servers {
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。
 
-> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
-
 **＊実装例＊**
 
 ```nginx
 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 ```
 
+> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
+
 #### ▼ fastcgi_pass
 
 FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
-
-> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
 **＊実装例＊**
 
 ```nginx
 fastcgi_pass 127.0.0.1:9000;
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
 
 <br>
 
@@ -670,12 +670,20 @@ fastcgi_pass 127.0.0.1:9000;
 
 HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
 
-> - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
-
 **＊実装例＊**
 
 ```nginx
 proxy_pass http://127.0.0.1:80;
 ```
+
+> - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+
+<br>
+
+## 03-08. ngx_http_stub_status_module
+
+### ディレクティブ
+
+> - https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
 
 <br>

@@ -19,7 +19,7 @@ description: ChaosMesh＠総合テストの知見を記録しています。
 
 ChaosMeshは、chaos-dashboard、chaos-controller-manager、chaos-daemon、といったコンポーネントから構成されている。
 
-Chaos monkeyやChaos Kongと比べて、Kubernetesにより合った手法でカオスエンジニアリングを実行できる。
+他のカオスエンジニアリングツール (例：Chaos monkey、Chaos Kong) と比べて、Kubernetesにより合った手法でカオスエンジニアリングを実行できる。
 
 ![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/chaos-mesh_architecture.png)
 

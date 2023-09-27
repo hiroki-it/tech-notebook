@@ -434,7 +434,7 @@ Kubernetes内で管理できるメリットがある。
 
 #### ▼ OSSを使用
 
-API GatewayのOSS (Kong、Tyk、Apigee) を使用する。
+API GatewayのOSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、など) を使用する。
 
 Kubernetes内で管理できるメリットがある。
 
