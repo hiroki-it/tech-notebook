@@ -62,8 +62,10 @@ $ nginx -t
 
 Nginxの設定ファイルのバリデーションを実行する。
 
-> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
-
 ```bash
 $ service nginx configtest
 ```
+
+> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+
+<br>

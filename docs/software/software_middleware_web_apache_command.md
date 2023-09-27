@@ -19,11 +19,11 @@ description: コマンド＠Apacheの知見を記録しています。
 
 設定ファイルのバリデーションを実行する。
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
-
 ```bash
 $ apachectl configtest
 ```
+
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 <br>
 
@@ -33,11 +33,11 @@ Apacheを段階的に再起動する。
 
 安全に再起動できる。
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
-
 ```bash
 $ apachectl graceful
 ```
+
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 <br>
 
@@ -45,11 +45,11 @@ $ apachectl graceful
 
 設定ファイルのバリデーションを実行する。
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
-
 ```bash
 $ apachectl -t
 ```
+
+> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
 
 <br>
 
@@ -61,13 +61,13 @@ $ apachectl -t
 
 この結果から、使われていない`conf`ファイルもを検出できる。
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
-
 ```bash
 $ httpd -t -D DUMP_CONFIG 2>/dev/null \
     | grep "# In" \
     | awk "{print $4}"
 ```
+
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 <br>
 
@@ -77,11 +77,11 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null \
 
 表示されているからといって、読み込まれているとは限らない。
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
-
 ```bash
 $ httpd -l
 ```
+
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 <br>
 
@@ -89,11 +89,11 @@ $ httpd -l
 
 特定のディレクティブを実装する必要がある設定ファイルの一覧を取得する。
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
-
 ```bash
 $ httpd -L
 ```
+
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 <br>
 
@@ -101,11 +101,11 @@ $ httpd -L
 
 コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを取得する。
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
-
 ```bash
 $ httpd -M
 ```
+
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 <br>
 
@@ -113,11 +113,11 @@ $ httpd -M
 
 実際に読み込まれたVirtualHostの設定を取得する。
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
-
 ```bash
 $ httpd -S
 ```
+
+> - https://httpd.apache.org/docs/2.4/programs/httpd.html
 
 <br>
 
@@ -127,10 +127,10 @@ $ httpd -S
 
 Apacheの設定ファイルのバリデーションを実行する。
 
-> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
-
 ```bash
 $ service httpd configtest
 ```
+
+> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
 
 <br>

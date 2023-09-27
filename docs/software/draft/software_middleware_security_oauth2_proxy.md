@@ -17,11 +17,56 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 ### アーキテクチャ
 
-OAuth2 Proxyは、認証を必要とするアプリの代わりに認可リクエストを送信しつつ、認可レスポンスを受信する。
+OAuth2 Proxyは、認証を必要とするアプリの代わりにIDプロバイダーに認可リクエストを送信する。
+
+また、一連の処理の後に認可レスポンスを受信する。
 
 ![oauth2-proxy_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
 
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 > - https://blog.doctor-cha.com/google-sso-with-kubernetes-oauth-proxy
+
+<br>
+
+## 02. ユースケース
+
+### Kubernetesの場合
+
+![oauth2-proxy_kubernetes_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
+
+Ingressコントローラーは、リクエストヘッダーの情報 (例：認証系ヘッダー、Cookie、など) から、ユーザーが認証済みであるかどうかを判定する。
+
+未認証のリクエストの場合、IngressコントローラーはリクエストをOAuth2 Proxyに転送する。
+
+OAuth2 Proxyは、指定されたIDプロバイダーに認可リクエストを転送し、一連の処理の後に認可レスポンスを受信する。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # 認可リクエストの送信先のIDプロバイダーを設定する
+    nginx.ingress.kubernetes.io/auth-signin: http://$host/oauth2/start?rd=$escaped_request_uri
+    # 認可レスポンスで指定してもらうURLを設定する
+    nginx.ingress.kubernetes.io/auth-url: http://$host/oauth2/auth
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
+  name: nginx-ingress
+  namespace: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: foo.bar.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: nginx-service
+                port:
+                  number: 80
+            path: /index.html
+            pathType: Prefix
+```
+
+> - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 
 <br>
