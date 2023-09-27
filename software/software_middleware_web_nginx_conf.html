@@ -1661,6 +1661,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-08-ngx_http_stub_status_module" class="md-nav__link">
+    03-08. ngx_http_stub_status_module
+  </a>
+  
+    <nav class="md-nav" aria-label="03-08. ngx_http_stub_status_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ディレクティブ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3351,6 +3371,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-08-ngx_http_stub_status_module" class="md-nav__link">
+    03-08. ngx_http_stub_status_module
+  </a>
+  
+    <nav class="md-nav" aria-label="03-08. ngx_http_stub_status_module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ディレクティブ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3426,11 +3466,6 @@
 <p>実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。</p>
 <h4 id="debian">▼ Debian系の場合<a class="headerlink" href="#debian" title="Permanent link">&para;</a></h4>
 <p>Debian10の設定ファイルを以下に示す。</p>
-<blockquote>
-<ul>
-<li><a href="https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/">https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------------------------</span>
 <span class="c1"># OSによって、fastcgi_paramsファイルの必要な設定が異なる</span>
@@ -3460,20 +3495,25 @@
 <span class="c1"># PHPのみで必要な設定</span>
 <span class="k">fastcgi_param</span><span class="w">  </span><span class="s">REDIRECT_STATUS</span><span class="w">    </span><span class="mi">200</span><span class="p">;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/">https://mogile.web.fc2.com/nginx_wiki/start/topics/examples/phpfcgi/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03-core">03. Core<a class="headerlink" href="#03-core" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ブロック<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="events">▼ events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/ngx_core_module.html#events">https://nginx.org/en/docs/ngx_core_module.html#events</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">events</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kn">worker_connections</span><span class="w">  </span><span class="mi">1024</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/ngx_core_module.html#events">https://nginx.org/en/docs/ngx_core_module.html#events</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_4">ディレクティブ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="user">▼ user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
@@ -3494,13 +3534,13 @@
 </code></pre></div>
 <h4 id="worker_connections">▼ worker_connections<a class="headerlink" href="#worker_connections" title="Permanent link">&para;</a></h4>
 <p>workerプロセスが同時に処理できるコネクションの最大数を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">worker_connections</span><span class="w">  </span><span class="mi">1024</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_core_module.html#worker_connections">https://nginx.org/en/docs/ngx_core_module.html#worker_connections</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">worker_connections</span><span class="w">  </span><span class="mi">1024</span><span class="p">;</span>
-</code></pre></div>
 <h4 id="worker_processes">▼ worker_processes<a class="headerlink" href="#worker_processes" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">5</span><span class="p">;</span>
 </code></pre></div>
@@ -3545,11 +3585,6 @@
 </blockquote>
 <h4 id="location">▼ location<a class="headerlink" href="#location" title="Permanent link">&para;</a></h4>
 <p>特定のパスのインバウンド通信に関する処理を設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>各設定の優先順位に沿った以下の順番で実装した方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. ドキュメントルートを指定したインバウンド通信の場合</span>
@@ -3621,13 +3656,13 @@
 </tr>
 </tbody>
 </table>
-<h4 id="server">▼ server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h4>
-<p>特定のルーティング先に関する処理を設定する。</p>
 <blockquote>
 <ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server">https://nginx.org/en/docs/http/ngx_http_core_module.html#server</a></li>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location">https://nginx.org/en/docs/http/ngx_http_core_module.html#location</a></li>
 </ul>
 </blockquote>
+<h4 id="server">▼ server<a class="headerlink" href="#server" title="Permanent link">&para;</a></h4>
+<p>特定のルーティング先に関する処理を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># 80番ポートで受信</span>
@@ -3648,6 +3683,11 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server">https://nginx.org/en/docs/http/ngx_http_core_module.html#server</a></li>
+</ul>
+</blockquote>
 <h4 id="_6">▼ リダイレクトとリライトの違い<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -3659,22 +3699,17 @@
 <h3 id="_7">ディレクティブ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="default_type">▼ default_type<a class="headerlink" href="#default_type" title="Permanent link">&para;</a></h4>
 <p><code>Content-Type</code>ヘッダーの値が<code>mime.types</code>ファイルにないMIME typeであった場合に適用するMIME typeを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>任意のMIME type (指定なし) のインバウンド通信を処理する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type">https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<p>任意のMIME type (指定なし) のインバウンド通信を処理する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span>
-</code></pre></div>
 <h4 id="listen">▼ listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信を待ち受けるポート番号を設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen">https://nginx.org/en/docs/http/ngx_http_core_module.html#listen</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>インバウンド通信を<code>80</code>番ポートで受信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
@@ -3682,26 +3717,26 @@
 <p>インバウンド通信を<code>443</code>番ポートで受信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen">https://nginx.org/en/docs/http/ngx_http_core_module.html#listen</a></li>
+</ul>
+</blockquote>
 <h4 id="sendfile">▼ sendfile<a class="headerlink" href="#sendfile" title="Permanent link">&para;</a></h4>
 <p>クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。</p>
 <p>ファイル返信処理をOS内で行うため、処理が速くなる。</p>
 <p>使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile">https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-</code></pre></div>
 <h4 id="server_name">▼ server_name<a class="headerlink" href="#server_name" title="Permanent link">&para;</a></h4>
 <p>受信するインバウンド通信の<code>Host</code>ヘッダーの値を設定する。</p>
 <p>補足として<code>Host</code>ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name">https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
 </code></pre></div>
 <p>パブリックIPアドレスを直接的に記述しても良い。</p>
@@ -3711,16 +3746,21 @@
 <p><code>127.0.0.1</code>としても良いが、<code>127.0.0.1</code>のIPアドレスが<code>127.0.0.1</code>でない場合も考慮して、<code>127.0.0.1</code>とした方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name">https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name</a></li>
+</ul>
+</blockquote>
 <h4 id="ssl">▼ ssl<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
 <p>HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効にする必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl">https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
-</code></pre></div>
 <h4 id="ssl_certificate">▼ ssl_certificate<a class="headerlink" href="#ssl_certificate" title="Permanent link">&para;</a></h4>
 <p>HTTPSプロトコルを受信する場合、SSL証明書のパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -3750,11 +3790,6 @@
 <p>内部リダイレクトによって、nginx内でリクエストが再処理される。</p>
 <p>異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックで改めて処理される。</p>
 <p>内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。</p>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="s">uri</span><span class="p">;</span>
 <span class="p">}</span>
@@ -3779,6 +3814,11 @@
 <span class="w">    </span><span class="kn">include</span><span class="w">       </span><span class="s">fastcgi_params</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files">https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_8">ヘルスチェックの受信<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="nginx">▼ nginxによるレスポンス<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
@@ -3821,81 +3861,89 @@
 <h3 id="_10">ディレクティブ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="index">▼ index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
 <p>リクエストのURLがトレイリングスラッシュで終了する全ての場合、指定されたファイルをURLの末尾に追加する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="s">index.php</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_index_module.html">https://nginx.org/en/docs/http/ngx_http_index_module.html</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="s">index.php</span><span class="p">;</span>
-</code></pre></div>
 <p><br></p>
 <h2 id="03-04-http_headers_module">03-04. http_headers_module<a class="headerlink" href="#03-04-http_headers_module" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ディレクティブ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="add_header">▼ add_header<a class="headerlink" href="#add_header" title="Permanent link">&para;</a></h4>
 <p>レスポンス時に付与するレスポンスヘッダーを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Referrer-Policyヘッダーに値を設定する</span>
+<span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">&quot;no-referrer-when-downgrade&quot;</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header">https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Referrer-Policyヘッダーに値を設定する</span>
-<span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">&quot;no-referrer-when-downgrade&quot;</span><span class="p">;</span>
-</code></pre></div>
 <p><br></p>
 <h2 id="03-05-http_upstream_module">03-05. http_upstream_module<a class="headerlink" href="#03-05-http_upstream_module" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ブロック<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="upstream">▼ upstream<a class="headerlink" href="#upstream" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信のルーティング先をグループ化する。</p>
 <p>デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。</p>
-<blockquote>
-<ul>
-<li><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">81</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream">https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03-06-http_fast_cgi_module">03-06. http_fast_cgi_module<a class="headerlink" href="#03-06-http_fast_cgi_module" title="Permanent link">&para;</a></h2>
 <h3 id="_13">ディレクティブ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi_params_1">▼ fastcgi_params<a class="headerlink" href="#fastcgi_params_1" title="Permanent link">&para;</a></h4>
 <p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
-</code></pre></div>
 <h4 id="fastcgi_pass">▼ fastcgi_pass<a class="headerlink" href="#fastcgi_pass" title="Permanent link">&para;</a></h4>
 <p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">fastcgi_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass">https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">fastcgi_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
-</code></pre></div>
 <p><br></p>
 <h2 id="03-07-http_proxy_module">03-07. http_proxy_module<a class="headerlink" href="#03-07-http_proxy_module" title="Permanent link">&para;</a></h2>
 <h3 id="_14">ディレクティブ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="proxy_pass">▼ proxy_pass<a class="headerlink" href="#proxy_pass" title="Permanent link">&para;</a></h4>
 <p>HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass">https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
-</code></pre></div>
+<p><br></p>
+<h2 id="03-08-ngx_http_stub_status_module">03-08. ngx_http_stub_status_module<a class="headerlink" href="#03-08-ngx_http_stub_status_module" title="Permanent link">&para;</a></h2>
+<h3 id="_15">ディレクティブ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html">https://nginx.org/en/docs/http/ngx_http_stub_status_module.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -3903,7 +3951,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-27</span>
       
     
   </small>
