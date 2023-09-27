@@ -82,6 +82,77 @@ server {
 }
 ```
 
+**＊実装例＊**
+
+もし分散トレースを採用する場合、リクエストヘッダーにトレースIDを持たせる。
+
+クライアント/サーバー側のリバースプロキシでトレースIDを受け渡すようにする。
+
+サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシが自動で処理してくれるが、Nginxであれば自分で実装する必要がある。
+
+```nginx
+# クライアント側
+http {
+    # $_request_id
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for" "$_request_id"';
+
+    server {
+
+        listen 80;
+
+        # Request-IDからリクエストIDを取得する
+        set $tmp $request_id;
+
+        # X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
+        if ($http_x_request_id) {
+            set $tmp $http_x_request_id;
+        }
+
+        access_log logs/access1.log  main;
+
+        location / {
+            proxy_pass http://127.0.0.2:8080/server;
+            # X-Request-IDヘッダーにトレースIDを設定し、リクエスト送信する
+            proxy_set_header X-Request-ID $tmp;
+        }
+    }
+}
+```
+
+```nginx
+# サーバー側
+http {
+    # $_request_id を参照する
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for" "$_request_id"';
+
+    server {
+
+        listen 80;
+
+        # Request-IDからリクエストIDを取得する
+        set $tmp $request_id;
+
+        # X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
+        if ($http_x_request_id) {
+            set $tmp $http_x_request_id;
+        }
+
+        access_log logs/access1.log  main;
+
+        location = /server {
+            echo "This is server side";
+        }
+    }
+}
+```
+
+> - https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85
+> - https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2
+
 #### ▼ FastCGIプロトコルの場合
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png)

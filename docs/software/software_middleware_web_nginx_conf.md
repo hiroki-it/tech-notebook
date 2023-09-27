@@ -21,11 +21,11 @@ description: nginx.conf＠Nginxの知見を記録しています。
 
 nginxを`apt-get`コマンドでインストールすると、旧バージョンが指定されるため、`apt`コマンドを使用する。
 
-> - https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
-
 ```bash
 $ apt install nginx
 ```
+
+> - https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
 #### ▼ yumリポジトリから
 
@@ -680,10 +680,30 @@ proxy_pass http://127.0.0.1:80;
 
 <br>
 
-## 03-08. ngx_http_stub_status_module
+## 03-08. http_stub_status_module
 
 ### ディレクティブ
 
+#### ▼ stub_status
+
+特定のパスにリクエストを送信することで、メトリクスを取得できるようにする。
+
+```nginx
+location = /metrics {
+    stub_status;
+}
+```
+
+```bashあ
+$ curl localhost/metrics
+
+Active connections: 1
+server accepts handled requests
+ 93370 93370 74159
+Reading: 0 Writing: 1 Waiting: 0
+```
+
 > - https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
+> - https://qiita.com/stanabe/items/a208377100a4ba2ea907
 
 <br>
