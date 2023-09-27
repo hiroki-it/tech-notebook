@@ -667,7 +667,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする`L7`ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
-そのため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+そのため、クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。
 
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://thinkit.co.jp/article/18263
@@ -675,7 +675,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 ただし、クラウドプロバイダーによっては`L7`ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。
 
-これを使用すれば、ClusterIP Serviceでも、クラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
+この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 
 > - https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8
 
@@ -729,9 +729,9 @@ NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) 
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
-この時、`1`個のNodeのポート番号につき、`1`個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
+`1`個のNodeのポート番号につき、`1`個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。
 
-一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。
+この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 
 > - https://stackoverflow.com/a/64605782
 
@@ -755,11 +755,16 @@ LoadBalancer Service
 Pod
 ```
 
-クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする`L4`ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。
+クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする`L4`ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。
+
+クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。
+
+なお、注意点として、Ingressは`L7`ロードバランサーを自動的にプロビジョニングする。
 
 > - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
 > - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
 > - https://thinkit.co.jp/article/18263
+> - https://www.ios-net.co.jp/blog/20230621-1179/
 
 #### ▼ ExternalName Service
 
