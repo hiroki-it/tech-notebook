@@ -12808,7 +12808,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <h4 id="loadbalancer">▼ LoadBalancerの場合<a class="headerlink" href="#loadbalancer" title="Permanent link">&para;</a></h4>
 <p>LoadBalancer Serviceを設定する。</p>
-<p>クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。</p>
+<p>クラウドプロバイダーでLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。</p>
 <p>同時に、<code>.status.loadBalancer</code>キーが自動的に追加される。</p>
 <p><code>.status.loadBalancer.ingress</code>キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『<code>ingress</code>』である。</p>
 <p><code>.status.loadBalancer.ingress.ip</code>キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。</p>
