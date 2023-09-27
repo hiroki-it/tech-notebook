@@ -232,9 +232,9 @@ GCP環境上にAnthos GKE Clusterを作成する。
 
 ### on-クラウドプロバイダーの仕組み
 
-GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー環境上にAnthos GKE Clusterを作成する。
+GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
 
-ただし他のクラウドプロバイダー環境では、専用Kubernetes実行環境 (例：AWS EKS、GCP GKE、Azure AKS、など) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、GCP GKE、Azure AKS、など) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
 ![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
 

@@ -4830,7 +4830,7 @@ spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid ran
 
 LoadBalancer Serviceを設定する。
 
-クラウドプロバイダー環境でLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。
+クラウドプロバイダーでLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。
 
 同時に、`.status.loadBalancer`キーが自動的に追加される。
 
