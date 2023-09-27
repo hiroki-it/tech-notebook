@@ -1662,17 +1662,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-08-ngx_http_stub_status_module" class="md-nav__link">
-    03-08. ngx_http_stub_status_module
+  <a href="#03-08-http_stub_status_module" class="md-nav__link">
+    03-08. http_stub_status_module
   </a>
   
-    <nav class="md-nav" aria-label="03-08. ngx_http_stub_status_module">
+    <nav class="md-nav" aria-label="03-08. http_stub_status_module">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     ディレクティブ
   </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stub_status" class="md-nav__link">
+    ▼ stub_status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3372,17 +3385,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-08-ngx_http_stub_status_module" class="md-nav__link">
-    03-08. ngx_http_stub_status_module
+  <a href="#03-08-http_stub_status_module" class="md-nav__link">
+    03-08. http_stub_status_module
   </a>
   
-    <nav class="md-nav" aria-label="03-08. ngx_http_stub_status_module">
+    <nav class="md-nav" aria-label="03-08. http_stub_status_module">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     ディレクティブ
   </a>
+  
+    <nav class="md-nav" aria-label="ディレクティブ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stub_status" class="md-nav__link">
+    ▼ stub_status
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3422,13 +3448,13 @@
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="apt">▼ aptリポジトリから<a class="headerlink" href="#apt" title="Permanent link">&para;</a></h4>
 <p>nginxを<code>apt-get</code>コマンドでインストールすると、旧バージョンが指定されるため、<code>apt</code>コマンドを使用する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">https://www.nginx.com/resources/wiki/start/topics/tutorials/install/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
-</code></pre></div>
 <h4 id="yum">▼ yumリポジトリから<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx
 </code></pre></div>
@@ -3937,11 +3963,25 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-08-ngx_http_stub_status_module">03-08. ngx_http_stub_status_module<a class="headerlink" href="#03-08-ngx_http_stub_status_module" title="Permanent link">&para;</a></h2>
+<h2 id="03-08-http_stub_status_module">03-08. http_stub_status_module<a class="headerlink" href="#03-08-http_stub_status_module" title="Permanent link">&para;</a></h2>
 <h3 id="_15">ディレクティブ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="stub_status">▼ stub_status<a class="headerlink" href="#stub_status" title="Permanent link">&para;</a></h4>
+<p>特定のパスにリクエストを送信することで、メトリクスを取得できるようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/metrics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">stub_status</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ curl localhost/metrics
+
+Active connections: 1
+server accepts handled requests
+ 93370 93370 74159
+Reading: 0 Writing: 1 Waiting: 0
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html">https://nginx.org/en/docs/http/ngx_http_stub_status_module.html</a></li>
+<li><a href="https://qiita.com/stanabe/items/a208377100a4ba2ea907">https://qiita.com/stanabe/items/a208377100a4ba2ea907</a></li>
 </ul>
 </blockquote>
 <p><br></p>

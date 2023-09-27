@@ -2542,6 +2542,72 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>もし分散トレースを採用する場合、リクエストヘッダーにトレースIDを持たせる。</p>
+<p>クライアント/サーバー側のリバースプロキシでトレースIDを受け渡すようにする。</p>
+<p>サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシが自動で処理してくれるが、Nginxであれば自分で実装する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># クライアント側</span>
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># $_request_id</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">&#39;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request&quot;</span><span class="w"> </span><span class="s">&#39;</span>
+<span class="w">                      </span><span class="s">&#39;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&#39;</span>
+<span class="w">                      </span><span class="s">&#39;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$_request_id&quot;&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Request-IDからリクエストIDを取得する</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$request_id</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
+<span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$http_x_request_id</span><span class="s">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$http_x_request_id</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">logs/access</span><span class="mi">1</span><span class="s">.log</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.2:8080/server</span><span class="p">;</span>
+<span class="w">            </span><span class="c1"># X-Request-IDヘッダーにトレースIDを設定し、リクエスト送信する</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Request-ID</span><span class="w"> </span><span class="nv">$tmp</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># サーバー側</span>
+<span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1"># $_request_id を参照する</span>
+<span class="w">    </span><span class="kn">log_format</span><span class="w">  </span><span class="s">main</span><span class="w">  </span><span class="s">&#39;</span><span class="nv">$remote_addr</span><span class="w"> </span><span class="s">-</span><span class="w"> </span><span class="nv">$remote_user</span><span class="w"> </span><span class="s">[</span><span class="nv">$time_local]</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$request&quot;</span><span class="w"> </span><span class="s">&#39;</span>
+<span class="w">                      </span><span class="s">&#39;</span><span class="nv">$status</span><span class="w"> </span><span class="nv">$body_bytes_sent</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_referer&quot;</span><span class="w"> </span><span class="s">&#39;</span>
+<span class="w">                      </span><span class="s">&#39;&quot;</span><span class="nv">$http_user_agent&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$http_x_forwarded_for&quot;</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$_request_id&quot;&#39;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Request-IDからリクエストIDを取得する</span>
+<span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$request_id</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
+<span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$http_x_request_id</span><span class="s">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$http_x_request_id</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="s">logs/access</span><span class="mi">1</span><span class="s">.log</span><span class="w">  </span><span class="s">main</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">echo</span><span class="w"> </span><span class="s">&quot;This</span><span class="w"> </span><span class="s">is</span><span class="w"> </span><span class="s">server</span><span class="w"> </span><span class="s">side&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85">https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85</a></li>
+<li><a href="https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2">https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2</a></li>
+</ul>
+</blockquote>
 <h4 id="fastcgi">▼ FastCGIプロトコルの場合<a class="headerlink" href="#fastcgi" title="Permanent link">&para;</a></h4>
 <p><img alt="NginxとPHP-FPMの組み合わせ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png" /></p>
 <p>PHP-FPMはFastCGIプロトコルでインバウンド通信を受信するため、これに変換する必要がある。</p>
@@ -2752,7 +2818,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-27</span>
       
     
   </small>
