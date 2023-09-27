@@ -5043,7 +5043,7 @@ Pod
 </code></pre></div>
 <p>Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。</p>
 <p>一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
-<p>そのため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。</p>
+<p>そのため、クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
@@ -5052,7 +5052,7 @@ Pod
 </ul>
 </blockquote>
 <p>ただし、クラウドプロバイダーによっては<code>L7</code>ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。</p>
-<p>これを使用すれば、ClusterIP Serviceでも、クラウドプロバイダーのリソースとKubernetesの境界を明確化できる。</p>
+<p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8">https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8</a></li>
@@ -5092,8 +5092,8 @@ Pod
 </code></pre></div>
 <p>NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。</p>
 <p>Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。</p>
-<p>この時、<code>1</code>個のNodeのポート番号につき、<code>1</code>個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
-<p>一方でクラウドプロバイダーのリソースとKubernetesの境界を明確化できる。</p>
+<p><code>1</code>個のNodeのポート番号につき、<code>1</code>個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
+<p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/64605782">https://stackoverflow.com/a/64605782</a></li>
@@ -5113,12 +5113,15 @@ LoadBalancer Service
 ⬇︎
 Pod
 </code></pre></div>
-<p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする<code>L4</code>ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングするため、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまう。</p>
+<p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする<code>L4</code>ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
+<p>なお、注意点として、Ingressは<code>L7</code>ロードバランサーを自動的にプロビジョニングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
 <li><a href="https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0">https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0</a></li>
 <li><a href="https://thinkit.co.jp/article/18263">https://thinkit.co.jp/article/18263</a></li>
+<li><a href="https://www.ios-net.co.jp/blog/20230621-1179/">https://www.ios-net.co.jp/blog/20230621-1179/</a></li>
 </ul>
 </blockquote>
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
