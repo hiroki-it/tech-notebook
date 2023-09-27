@@ -2443,100 +2443,100 @@
 <h2 id="01-apachectl">01. apachectlコマンド<a class="headerlink" href="#01-apachectl" title="Permanent link">&para;</a></h2>
 <h3 id="configtest">configtest<a class="headerlink" href="#configtest" title="Permanent link">&para;</a></h3>
 <p>設定ファイルのバリデーションを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>configtest
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html">https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>configtest
-</code></pre></div>
 <p><br></p>
 <h3 id="graceful">graceful<a class="headerlink" href="#graceful" title="Permanent link">&para;</a></h3>
 <p>Apacheを段階的に再起動する。</p>
 <p>安全に再起動できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>graceful
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html">https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>graceful
-</code></pre></div>
 <p><br></p>
 <h3 id="-t">-t<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
 <p>設定ファイルのバリデーションを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>-t
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html">https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>apachectl<span class="w"> </span>-t
-</code></pre></div>
 <p><br></p>
 <h2 id="02-httpd">02. httpdコマンド<a class="headerlink" href="#02-httpd" title="Permanent link">&para;</a></h2>
 <h3 id="-d">-D<a class="headerlink" href="#-d" title="Permanent link">&para;</a></h3>
 <p>読み込まれた<code>conf</code>ファイルの一覧を取得する。</p>
 <p>この結果から、使われていない<code>conf</code>ファイルもを検出できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-t<span class="w"> </span>-D<span class="w"> </span>DUMP_CONFIG<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;# In&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s2">&quot;{print </span><span class="nv">$4</span><span class="s2">}&quot;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="-l">-l<a class="headerlink" href="#-l" title="Permanent link">&para;</a></h3>
 <p>コンパイル済みのモジュールの一覧を取得する。</p>
 <p>表示されているからといって、読み込まれているとは限らない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-l
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-l
-</code></pre></div>
 <p><br></p>
 <h3 id="-l_1">-L<a class="headerlink" href="#-l_1" title="Permanent link">&para;</a></h3>
 <p>特定のディレクティブを実装する必要がある設定ファイルの一覧を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-L
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-L
-</code></pre></div>
 <p><br></p>
 <h3 id="-m">-M<a class="headerlink" href="#-m" title="Permanent link">&para;</a></h3>
 <p>コンパイル済みのモジュールのうちで、実際に読み込まれているモジュールを取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-M
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-M
-</code></pre></div>
 <p><br></p>
 <h3 id="-s">-S<a class="headerlink" href="#-s" title="Permanent link">&para;</a></h3>
 <p>実際に読み込まれたVirtualHostの設定を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-S
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/programs/httpd.html">https://httpd.apache.org/docs/2.4/programs/httpd.html</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>httpd<span class="w"> </span>-S
-</code></pre></div>
 <p><br></p>
 <h2 id="03-service">03. serviceコマンドによる操作<a class="headerlink" href="#03-service" title="Permanent link">&para;</a></h2>
 <h3 id="httpd-configtest">httpd configtest<a class="headerlink" href="#httpd-configtest" title="Permanent link">&para;</a></h3>
 <p>Apacheの設定ファイルのバリデーションを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>service<span class="w"> </span>httpd<span class="w"> </span>configtest
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/">http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>service<span class="w"> </span>httpd<span class="w"> </span>configtest
-</code></pre></div>
 <p><br></p>
 
   <hr>
@@ -2544,7 +2544,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-27</span>
       
     
   </small>
