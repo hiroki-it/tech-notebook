@@ -6400,6 +6400,15 @@
 <h2 id="01-pluto">01. plutoの仕組み<a class="headerlink" href="#01-pluto" title="Permanent link">&para;</a></h2>
 <h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。</p>
+<p>pluto以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨apiVersionを確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/using-api/deprecation-guide/">https://kubernetes.io/docs/reference/using-api/deprecation-guide/</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade</a></li>
+<li><a href="https://kubernetes.io/blog/2020/09/03/warnings/#metrics">https://kubernetes.io/blog/2020/09/03/warnings/#metrics</a></li>
+<li><a href="https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations">https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="kubernetes">対応するKubernetesリソース<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <p>標準のKubernetesリソースだけでなく、CRDや一部のカスタムリソース (Istioも含む) も対応している。</p>
@@ -6666,7 +6675,7 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
       
     
   </small>

@@ -5540,10 +5540,10 @@
         
           <li class="md-nav__item">
   <a href="#action-list" class="md-nav__link">
-    ■ Action List
+    Action List
   </a>
   
-    <nav class="md-nav" aria-label="■ Action List">
+    <nav class="md-nav" aria-label="Action List">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5574,17 +5574,17 @@
         
           <li class="md-nav__item">
   <a href="#pros" class="md-nav__link">
-    ■ Pros
+    Pros
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#cons" class="md-nav__link">
-    ■ Cons
+    Cons
   </a>
   
-    <nav class="md-nav" aria-label="■ Cons">
+    <nav class="md-nav" aria-label="Cons">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5627,10 +5627,10 @@
         
           <li class="md-nav__item">
   <a href="#action-list_1" class="md-nav__link">
-    ■ Action List
+    Action List
   </a>
   
-    <nav class="md-nav" aria-label="■ Action List">
+    <nav class="md-nav" aria-label="Action List">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5654,17 +5654,17 @@
         
           <li class="md-nav__item">
   <a href="#pros_1" class="md-nav__link">
-    ■ Pros
+    Pros
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#cons_2" class="md-nav__link">
-    ■ Cons
+    Cons
   </a>
   
-    <nav class="md-nav" aria-label="■ Cons">
+    <nav class="md-nav" aria-label="Cons">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5783,9 +5783,8 @@
 <li>例外的に、開発環境のDBはパブリックアクセスとなっており、GitHubを経由せずに、アクセスできる。</li>
 </ul>
 <h1 id="1">候補<code>(1)</code><a class="headerlink" href="#1" title="Permanent link">&para;</a></h1>
-<p>:</p>
 <h2 id="iam-aws-cli">IAMポリシー、 aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#iam-aws-cli" title="Permanent link">&para;</a></h2>
-<h3 id="action-list">■ Action List<a class="headerlink" href="#action-list" title="Permanent link">&para;</a></h3>
+<h3 id="action-list">Action List<a class="headerlink" href="#action-list" title="Permanent link">&para;</a></h3>
 <p>IAMポリシーを使用して、アクセスを制限する。</p>
 <p>aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにアクセス可能にする。
 シェルスクリプトで自動化する。</p>
@@ -5798,13 +5797,13 @@
 <ul>
 <li>IAMポリシーで、GitHubのアカウントをトークンを判定可能にする設定が必要であるが、現時点で不明。</li>
 </ul>
-<h3 id="pros">■ Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
+<h3 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
 <ul>
 <li>シェルスクリプトとして実装すれば、誰でもAWSリソースを操作できる。</li>
 <li><code>1</code>個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
 <li>アクセス制限の仕組みが単純のため、AWSに関わりが少ないエンジニアが理解しやすい。</li>
 </ul>
-<h3 id="cons">■ Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
+<h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
 <ul>
 <li>認証情報が固定のため、IAMユーザーの認証情報が漏洩すると、危険が多い。</li>
 <li>非関係者にIAMユーザーの認証情報やシェルスクリプトが漏れた場合、AWSリソースにアクセスされる可能性がある。</li>
@@ -5820,7 +5819,7 @@
 <dd>※ 安全で実現性がある</dd>
 </dl>
 <h2 id="aws-stsaws-cli">AWS STS、aws-cli、シェルスクリプトによる自動化<a class="headerlink" href="#aws-stsaws-cli" title="Permanent link">&para;</a></h2>
-<h3 id="action-list_1">■ Action List<a class="headerlink" href="#action-list_1" title="Permanent link">&para;</a></h3>
+<h3 id="action-list_1">Action List<a class="headerlink" href="#action-list_1" title="Permanent link">&para;</a></h3>
 <p>AWS STS を使用して、aws-cli用IAMユーザーに一時的にIAMロールを委譲するようにし、アクセスを制限する。
 aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにアクセス可能にする。
 シェルスクリプトで自動化する。</p>
@@ -5830,14 +5829,14 @@ aws-cliを活用して、aws-cli用IAMユーザーが特定のリソースにア
 <p>IAMユーザーにIAMロールを委譲する処理を書いたシェルスクリプトを作成する。</p>
 <p>クローンと削除のスクリプトは別に作成する。</p>
 <p>この時、日付を引数として、指定した過去日のバックアップをクローン可能にする。</p>
-<h3 id="pros_1">■ Pros<a class="headerlink" href="#pros_1" title="Permanent link">&para;</a></h3>
+<h3 id="pros_1">Pros<a class="headerlink" href="#pros_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>シェルスクリプトとして実装すれば、誰でもAWSリソースを操作できる。</li>
 <li><code>1</code>個のIAMユーザーを作成すればよく、CTOの一度の承諾で済む。</li>
 <li>認証情報が一時的なため、IAMユーザーの認証情報が漏洩しても、危険が少ない。</li>
 <li>今後、同様の要望があった場合、移譲するためのIAMロールを新しく作成すればよく、CTOの手間が少ない。</li>
 </ul>
-<h3 id="cons_2">■ Cons<a class="headerlink" href="#cons_2" title="Permanent link">&para;</a></h3>
+<h3 id="cons_2">Cons<a class="headerlink" href="#cons_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>非関係者にシェルスクリプトが漏れた場合、AWSリソースにアクセスされる可能性がある。</li>
 <li>仕組みが難しく、AWSに関わりの少ないエンジニアが理解しにくい。</li>
@@ -5893,7 +5892,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
       
     
   </small>
