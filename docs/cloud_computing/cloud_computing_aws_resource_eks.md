@@ -41,7 +41,7 @@ EKSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 複数のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。
 
-『`on-EC2`』『`on-Fargate`』という呼び方は、データプレーンがEKSの実行環境 (`on environment`) の意味合いを持つからである。
+『`on EC2`』『`on Fargate`』という呼び方は、データプレーンがEKSの実行環境 (`on environment`) の意味合いを持つからである。
 
 <br>
 
@@ -291,7 +291,7 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 | FargateワーカーNode、EC2ワーカーNode | ワーカーNode                | - https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                                          |
 | EKS Cluster                          | Cluster                     | - https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                                             |
 | AWS ALB                              | Ingress                     | IngressはAWS ALBに置き換える必要がある。AWS Load Balancerコントローラーを作成すると、AWS ALBは自動的に作成される。<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| AWS Load Balancerコントローラー      | Ingressコントローラー       | AWS ALBを自動的に作成する。- https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on-fargate/                                                                                                                                                                   |
+| AWS Load Balancerコントローラー      | Ingressコントローラー       | AWS ALBを自動的に作成する。- https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on Fargate/                                                                                                                                                                   |
 | API Gateway + NLB                    |                             | - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                         |
 | EBS、EFS                             | PersistentVolume            | - https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                              |
 | Secrets Manager                      | Secret                      | - https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                       |
@@ -649,7 +649,7 @@ VPC外からNLBへの`443`番ポートに対するネットワークからのア
 
 <br>
 
-## 04. on-EC2 (EC2ワーカーNode)
+## 04. on EC2 (EC2ワーカーNode)
 
 ### EC2ワーカーNode
 
@@ -686,7 +686,7 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 <br>
 
-## 04-02. Nodeグループ (on-EC2)
+## 04-02. Nodeグループ (on EC2)
 
 ### マネージド
 
@@ -1155,9 +1155,9 @@ resource "aws_autoscaling_group" "foo" {
 
 <br>
 
-## 05. on-Fargate (FargateワーカーNode)
+## 05. on Fargate (FargateワーカーNode)
 
-### on-Fargate (FargateワーカーNode) とは
+### on Fargate (FargateワーカーNode) とは
 
 <br>
 
@@ -1296,7 +1296,7 @@ Fargateを設定する。
 
 <br>
 
-## 05-02. Nodeグループ (on-Fargate)
+## 05-02. Nodeグループ (on Fargate)
 
 記入中...
 

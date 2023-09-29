@@ -19,6 +19,13 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。
 
+pluto以外では、ドキュメント、リリースノート、メトリクス (`apiserver_requested_deprecated_apis`) 、監査ログ、で非推奨apiVersionを確認できる。
+
+> - https://kubernetes.io/docs/reference/using-api/deprecation-guide/
+> - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade
+> - https://kubernetes.io/blog/2020/09/03/warnings/#metrics
+> - https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations
+
 <br>
 
 ### 対応するKubernetesリソース

@@ -37,7 +37,7 @@ ECSのコントロールプレーンは、開発者や他のAWSリソースか�
 
 単一のホスト (EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。
 
-『`on-EC2`』『`on-Fargate`』という呼び方は、データプレーンがECSの実行環境 (`on environment`) の意味合いを持つからである。
+『`on EC2`』『`on Fargate`』という呼び方は、データプレーンがECSの実行環境 (`on environment`) の意味合いを持つからである。
 
 <br>
 
@@ -381,9 +381,9 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 
 <br>
 
-## 04. on-EC2
+## 04. on EC2
 
-### on-EC2とは
+### on EC2とは
 
 EC2インスタンスをホストとして、コンテナを作成する。
 
@@ -420,9 +420,9 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 <br>
 
-## 05. on-Fargate
+## 05. on Fargate
 
-### on-Fargateとは
+### on Fargateとは
 
 Fargateをホストとして、コンテナを作成する。
 

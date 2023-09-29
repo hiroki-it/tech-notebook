@@ -684,7 +684,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 #### ▼ 公開ルールレシピとは
 
-独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins) を使用した方が良い。
+独自ルールを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用した方が良い。
 
 > - https://monitoring.mixins.dev
 
@@ -696,6 +696,12 @@ kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernet
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets
 > - https://monitoring.mixins.dev
+
+#### ▼ runbooks
+
+prometheus-opratorでは、アラートルールとレコーディングルールのレシピが公開されている。
+
+> - https://runbooks.prometheus-operator.dev/
 
 <br>
 
