@@ -22,9 +22,12 @@
 
 * #### [ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
 
-* #### [アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics.html)
-
 * #### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
+
+* #### <u>アーキテクチャ特性</u>
+> * ##### [K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html)
+> * ##### [K8sコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_component.html)
+> * ##### [K8sリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_resource.html)
 
 <br>
 

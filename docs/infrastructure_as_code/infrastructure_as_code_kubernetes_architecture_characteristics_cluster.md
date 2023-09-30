@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubernetes＠アーキテクチャ特性
-description: Kubernetes＠アーキテクチャ特性の知見を記録しています。
+title: 【IT技術の知見】K8s Cluster＠アーキテクチャ特性
+description: K8s Cluster＠アーキテクチャ特性の知見を記録しています。
 ---
 
-# Kubernetes＠アーキテクチャ特性
+# K8s Cluster＠アーキテクチャ特性
 
 ## はじめに
 
@@ -13,124 +13,21 @@ description: Kubernetes＠アーキテクチャ特性の知見を記録してい
 
 <br>
 
-## 01. 安全性
+## 01. 運用
 
-### 認証/認可の実施
+### CDパイプライン
 
-#### ▼ Kubernetesリソースの場合
+ArgoCD自体はArgoCD以外でデプロイする必要がある。
 
-RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。
+GitOpsを採用できないため、CIOpsになる。
 
-> - https://qiita.com/sheepland/items/67a5bb9b19d8686f389d
-> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。
 
-#### ▼ コンテナの場合
-
-Podの `.spec.securityContext`キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
-
-> - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+> - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
 
 <br>
 
-### 機密な変数やファイルの扱い
-
-#### ▼ Secretの変数の暗号化と管理
-
-Secretの `.data`キーには、`base64`方式でエンコードされた値を設定する必要がある。
-
-この `base64`方式エンコード値をどのように管理するかには選択肢がある。
-
-| 方法                                                  | バージョン管理 | 暗号化とSecretストア                                                                                                                                                                                                                                                                                                               |
-| ----------------------------------------------------- | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GitHubリポジトリ                                      |       ⭕️       | `base64`方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。                                                                                                                                                                                                                                                     |
-| GitHubリポジトリ + キーバリュー型バックエンド         |       ⭕️       | `base64`方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) で暗号化した上で、リポジトリ上やCluster内でキーバリュー型バックエンド (例：SOPS、Hashicorp Vault、Secrets Store CSI Driver、External Secrets、External Secrets Operator) で管理する。kube-apiserverへの送信前に `base64`方式エンコード値に復号化する。 |
-| GitHubリポジトリ + クラウドキーバリュー型バックエンド |       ×        | `base64`方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型バックエンド (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。kube-apiserverへの送信前に `base64`方式エンコード値に復号化する。                                               |
-
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/
-> - https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/
-> - https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/
-
-<br>
-
-## 02. 可用性
-
-### Cluster
-
-#### ▼ バックアップ
-
-<br>
-
-### コントロールプレーンNode
-
-#### ▼ 冗長化
-
-コントロールプレーンNodeは`3`~`7`台を作成し、Etcdの可用性を担保する。
-
-> - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
-> - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
-
-<br>
-
-### ワーカーNode
-
-#### ▼ Nodeグループ
-
-ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、バッチ系、など) ごとに作成し、可用性を担保する。
-
-特にクラウドプロバイダーではNodeグループを作成できる。
-
-#### ▼ 冗長化
-
-NodeグループごとにワーカーNodeを冗長化する。
-
-Nodeグループにあった数に冗長化する。
-
-例えば、アプリ系Nodeグループはユーザーに影響があり、稼働時間を長くしたいので、Nodeを多く冗長化する。
-
-一方で、システム系Nodeグループはユーザーに影響がなく、稼働時間を機にする必要がないため、Nodeは少なめに冗長化する。
-
-#### ▼ 水平スケーリング
-
-オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングし、可用性を担保する。
-
-<br>
-
-### Pod
-
-#### ▼ 冗長化
-
-ReplicaSetでPodを冗長化し、可用性を担保する。
-
-#### ▼ 水平スケーリング
-
-HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。
-
-水平スケーリングは、Podの負荷が高くなると冗長化してくれ、高負荷でいずれかのPodで障害が起こっても正常なPodがこれを埋め合わせしてくれるため、システム全体として稼働時間を長くできる。
-
-<br>
-
-### コンテナ
-
-#### ▼ ヘルスチェック
-
-コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。
-
-コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。
-
-LivenessProbeヘルスチェックは、コンテナで障害が起こるとコンテナを再起動してくれるため、システム全体として稼働時間を長くできる。
-
-またReadinessProbeヘルスチェックは、コンテナで処理待ちが起こるとそのコンテナが処理できるようになるまで通信を流さないようにしてくれるため、システム全体として稼働時間を長くできる。
-
-<br>
-
-## 03. 保守性
-
-記入中...
-
-<br>
-
-## 03-02. アップグレード
+## 02. アップグレード
 
 ### アップグレードの設計規約
 
@@ -401,63 +298,5 @@ ArgoCDのリソースに影響がないため、アップグレードは問題�
 external-dnsの場合、チャートをアップグレードする。
 
 ArgoCDのリソースに影響がないため、アップグレードは問題ない。
-
-<br>
-
-## 04. 信頼性
-
-### コンテナ
-
-#### ▼ ステートレス化
-
-コンテナにセッションデータを持たせた場合、Podがスケールインすることにより、コンテナ上のセッションデータを削除してしまう。
-
-セッションデータがなくなると、セッションを途中で維持できなくなってしまう。
-
-コンテナに状態を持たせない代わりに外部のセッション管理サーバー (例：Redis) を使用する。
-
-コンテナがスケールイン/スケールアウトしながらセッション管理サーバーからセッションデータを取得できるようにし、信頼性を担保する。
-
-> - https://qiita.com/tomoyk/items/67722472a55b8dc7d01d#3-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E7%AE%A1%E5%85%88
-
-<br>
-
-## 05. 運用性
-
-### リリース
-
-#### ▼ CDパイプライン
-
-ArgoCD自体はArgoCD以外でデプロイする必要がある。
-
-GitOpsを採用できないため、CIOpsになる。
-
-本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。
-
-> - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
-
-<br>
-
-## 06. 性能
-
-### ワーカーNode
-
-#### ▼ CPU/メモリ
-
-NodeグループにあったCPUとメモリを割り当てる。
-
-例えば、業務アプリは恒常的にCPUとメモリを必要とするため、アプリ系NodeグループにはCPUとメモリを多めに割り当てる。
-
-一方で、バッチ系は瞬間的にこれらを必要とするため、バッチ系Nodeグループには瞬間的な要求 (バースト) に適したCPUとメモリを選ぶ。
-
-AWSであればT系のインスタンスタイプが瞬間的な要求に適している。
-
-#### ▼ ストレージ
-
-Nodeグループにあったストレージを割り当てる。
-
-例えば、ArgoCDがストレージに永続化するデータ量は少ないので、ArgoCDのNodeグループにはストレージはあまり必要ない。
-
-一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。
 
 <br>
