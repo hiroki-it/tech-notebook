@@ -544,7 +544,10 @@ nav:
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
           - 設計規約: infrastructure_as_code/infrastructure_as_code_kubernetes_policy.md
-          - アーキテクチャ特性: infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics.md
+      - ■ アーキテクチャ特性:
+          - K8s Cluster: infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.md
+          - K8sコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_component.md
+          - K8sリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_resource.md
       - ■ Kubernetesリソース:
           - Kubernetesリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_resource.md
           - ■ リソース定義:
