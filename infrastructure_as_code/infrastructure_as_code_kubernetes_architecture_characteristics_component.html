@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コマンド＠Containerdの知見を記録しています。">
+        <meta name="description" content="Kubernetesコンポーネント＠アーキテクチャ特性の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_containerd_command.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_component.html">
       
       
-        <link rel="prev" href="virtualization_container_containerd.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html">
       
       
-        <link rel="next" href="../infrastructure_as_code/index.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_architecture_characteristics_resource.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】コマンド＠Containerd - 俺の技術ノート</title>
+        <title>【IT技術の知見】Kubernetesコンポーネント＠アーキテクチャ特性 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#containerd" class="md-skip">
+        <a href="#kubernetes" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コマンド＠Containerd
+              【IT技術の知見】Kubernetesコンポーネント＠アーキテクチャ特性
             
           </span>
         </div>
@@ -454,13 +454,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../virtualization/index.html" class="md-tabs__link">
           
   
     
@@ -480,7 +478,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -496,11 +494,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +520,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +540,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -3001,8 +3001,6 @@
       
   
   
-    
-  
   
     
     
@@ -3022,17 +3020,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../virtualization/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3049,7 +3047,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             📦 仮想化
@@ -3064,7 +3062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="virtualization.html" class="md-nav__link">
+      <a href="../virtualization/virtualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3082,57 +3080,9 @@
                 
   
   
-    
-  
   
     
     
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_14_3" id="__nav_14_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ コンテナ型仮想化
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_14_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ コンテナ型仮想化
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
       
         
       
@@ -3150,11 +3100,14 @@
         
   
   
-    <a href="virtualization_container_docker.html" class="md-nav__link">
+    
+  
+  
+    <a href="../virtualization/virtualization_container_docker.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ Docker
+    ■ コンテナ型仮想化
   </span>
   
 
@@ -3164,189 +3117,8 @@
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_3_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_14_3_2" id="__nav_14_3_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Containerd
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_14_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_14_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Containerd
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="virtualization_container_containerd.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Containerd
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    コマンド
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="virtualization_container_containerd_command.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    コマンド
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-crictl" class="md-nav__link">
-    01. crictl
-  </a>
-  
-    <nav class="md-nav" aria-label="01. crictl">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pods" class="md-nav__link">
-    pods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ps" class="md-nav__link">
-    ps
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ctr" class="md-nav__link">
-    02. ctr
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3395,7 +3167,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3427,7 +3199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3468,7 +3240,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3523,7 +3295,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3556,6 +3328,8 @@
       
   
   
+    
+  
   
     
     
@@ -3585,17 +3359,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
+            <a href="kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3612,7 +3386,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3653,7 +3427,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3677,42 +3451,326 @@
                 
   
   
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_16_3" id="__nav_16_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ アーキテクチャ特性
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アーキテクチャ特性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8s Cluster
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    K8sコンポーネント
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_component.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    K8sコンポーネント
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-node" class="md-nav__link">
+    01. コントロールプレーンNode
+  </a>
+  
+    <nav class="md-nav" aria-label="01. コントロールプレーンNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 冗長化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-node" class="md-nav__link">
+    02. ワーカーNode
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ワーカーNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    性能
+  </a>
+  
+    <nav class="md-nav" aria-label="性能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU/メモリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ストレージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ Nodeグループ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 水平スケーリング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    可用性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ プロセスの実行ユーザーに認可スコープを設定する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    信頼性
+  </a>
+  
+    <nav class="md-nav" aria-label="信頼性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ステートレス化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_resource.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8sリソース
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3743,7 +3801,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3787,7 +3845,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3837,7 +3895,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3881,7 +3939,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3928,7 +3986,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3996,7 +4054,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4044,7 +4102,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4088,7 +4146,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4134,7 +4192,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4181,7 +4239,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4228,7 +4286,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4308,7 +4366,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4364,7 +4422,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4406,7 +4464,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4450,7 +4508,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4494,7 +4552,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4538,7 +4596,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4592,7 +4650,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4634,7 +4692,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4678,7 +4736,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4720,7 +4778,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4770,7 +4828,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4812,7 +4870,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5737,24 +5795,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-crictl" class="md-nav__link">
-    01. crictl
+  <a href="#01-node" class="md-nav__link">
+    01. コントロールプレーンNode
   </a>
   
-    <nav class="md-nav" aria-label="01. crictl">
+    <nav class="md-nav" aria-label="01. コントロールプレーンNode">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pods" class="md-nav__link">
-    pods
+  <a href="#_2" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 冗長化
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ps" class="md-nav__link">
-    ps
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -5764,9 +5828,136 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-ctr" class="md-nav__link">
-    02. ctr
+  <a href="#02-node" class="md-nav__link">
+    02. ワーカーNode
   </a>
+  
+    <nav class="md-nav" aria-label="02. ワーカーNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    性能
+  </a>
+  
+    <nav class="md-nav" aria-label="性能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    ▼ CPU/メモリ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ストレージ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ Nodeグループ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 水平スケーリング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    可用性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ プロセスの実行ユーザーに認可スコープを設定する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    信頼性
+  </a>
+  
+    <nav class="md-nav" aria-label="信頼性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ ステートレス化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5788,7 +5979,7 @@
   
 
 
-<h1 id="containerd">コマンド＠Containerd<a class="headerlink" href="#containerd" title="Permanent link">&para;</a></h1>
+<h1 id="kubernetes">Kubernetesコンポーネント＠アーキテクチャ特性<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5797,38 +5988,66 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-crictl">01. crictl<a class="headerlink" href="#01-crictl" title="Permanent link">&para;</a></h2>
-<h3 id="pods">pods<a class="headerlink" href="#pods" title="Permanent link">&para;</a></h3>
-<p>KubernetesのNode内で<code>crictl</code>コマンドを実行している場合に、Node内で稼働するPodを取得する。</p>
+<h2 id="01-node">01. コントロールプレーンNode<a class="headerlink" href="#01-node" title="Permanent link">&para;</a></h2>
+<h3 id="_2">可用性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>コントロールプレーンNodeは<code>3</code>~<code>7</code>台を作成し、Etcdの可用性を担保する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods">https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods</a></li>
+<li><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/</a></li>
+<li><a href="https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/">https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>crictl<span class="w"> </span>pods
-
-POD<span class="w"> </span>ID<span class="w">      </span>CREATED<span class="w">             </span>STATE<span class="w">        </span>NAME<span class="w">            </span>NAMESPACE<span class="w">           </span>ATTEMPT<span class="w">        </span>RUNTIME
-*****<span class="w">       </span><span class="m">2</span><span class="w"> </span>months<span class="w"> </span>ago<span class="w">        </span>Ready<span class="w">        </span>foo-pod<span class="w">         </span>foo<span class="w">                 </span><span class="m">0</span><span class="w">              </span><span class="o">(</span>default<span class="o">)</span>
-</code></pre></div>
 <p><br></p>
-<h3 id="ps">ps<a class="headerlink" href="#ps" title="Permanent link">&para;</a></h3>
-<p>コンテナを取得する。</p>
+<h2 id="02-node">02. ワーカーNode<a class="headerlink" href="#02-node" title="Permanent link">&para;</a></h2>
+<h3 id="_4">性能<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="cpu">▼ CPU/メモリ<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<p>NodeグループにあったCPUとメモリを割り当てる。</p>
+<p>例えば、業務アプリは恒常的にCPUとメモリを必要とするため、アプリ系NodeグループにはCPUとメモリを多めに割り当てる。</p>
+<p>一方で、バッチ系は瞬間的にこれらを必要とするため、バッチ系Nodeグループには瞬間的な要求 (バースト) に適したCPUとメモリを選ぶ。</p>
+<p>AWSであればT系のインスタンスタイプが瞬間的な要求に適している。</p>
+<h4 id="_5">▼ ストレージ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Nodeグループにあったストレージを割り当てる。</p>
+<p>例えば、ArgoCDがストレージに永続化するデータ量は少ないので、ArgoCDのNodeグループにはストレージはあまり必要ない。</p>
+<p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。</p>
+<p><br></p>
+<h3 id="_6">可用性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="node">▼ Nodeグループ<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
+<p>ワーカーNodeはPodの種類 (アプリ系、システム系、ロードバランサー系、バッチ系、など) ごとに作成し、可用性を担保する。</p>
+<p>特にクラウドプロバイダーではNodeグループを作成できる。</p>
+<h4 id="_7">▼ 冗長化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>NodeグループごとにワーカーNodeを冗長化する。</p>
+<p>Nodeグループにあった数に冗長化する。</p>
+<p>例えば、アプリ系Nodeグループはユーザーに影響があり、稼働時間を長くしたいので、Nodeを多く冗長化する。</p>
+<p>一方で、システム系Nodeグループはユーザーに影響がなく、稼働時間を機にする必要がないため、Nodeは少なめに冗長化する。</p>
+<h4 id="_8">▼ 水平スケーリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>オートスケーラー (例：cluster autoscaler、Karpenter) を使用してワーカーNodeを水平スケーリングし、可用性を担保する。</p>
+<p><br></p>
+<h2 id="03">03. コンテナ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_9">可用性<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>コンテナをヘルスチェック (例：LivenessProbe、ReadinessProbe) し、可用性を担保する。</p>
+<p>LivenessProbeヘルスチェックは、コンテナで障害が起こるとコンテナを再起動してくれるため、システム全体として稼働時間を長くできる。</p>
+<p>またReadinessProbeヘルスチェックは、コンテナで処理待ちが起こるとそのコンテナが処理できるようになるまで通信を流さないようにしてくれるため、システム全体として稼働時間を長くできる。</p>
+<p><br></p>
+<h3 id="_10">安全性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ プロセスの実行ユーザーに認可スコープを設定する<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>Podの <code>.spec.securityContext</code>キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers">https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">https://kubernetes.io/docs/tasks/configure-pod-container/security-context/</a></li>
+<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>crictl<span class="w"> </span>ps<span class="w"> </span>-a
-
-CONTAINER<span class="w">   </span>IMAGE<span class="w">   </span>CREATED<span class="w">        </span>STATE<span class="w">       </span>NAME<span class="w">              </span>ATTEMPT<span class="w">        </span>POD<span class="w"> </span>ID
-*****<span class="w">       </span>*****<span class="w">   </span><span class="m">6</span><span class="w"> </span>weeks<span class="w"> </span>ago<span class="w">    </span>Running<span class="w">     </span>foo-container<span class="w">     </span><span class="m">1</span><span class="w">              </span>*****
-</code></pre></div>
 <p><br></p>
-<h2 id="02-ctr">02. ctr<a class="headerlink" href="#02-ctr" title="Permanent link">&para;</a></h2>
-<p>見にくいため、<code>crictl</code>コマンドを使用する。</p>
+<h3 id="_12">信頼性<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ ステートレス化<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>コンテナにセッションデータを持たせた場合、Podがスケールインすることにより、コンテナ上のセッションデータを削除してしまう。</p>
+<p>セッションデータがなくなると、セッションを途中で維持できなくなってしまう。</p>
+<p>コンテナに状態を持たせない代わりに外部のセッション管理サーバー (例：Redis) を使用する。</p>
+<p>コンテナがスケールイン/スケールアウトしながらセッション管理サーバーからセッションデータを取得できるようにし、信頼性を担保する。</p>
 <blockquote>
 <ul>
-<li><a href="https://repl.info/archives/2894/">https://repl.info/archives/2894/</a></li>
+<li><a href="https://qiita.com/tomoyk/items/67722472a55b8dc7d01d#3-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E7%AE%A1%E5%85%88">https://qiita.com/tomoyk/items/67722472a55b8dc7d01d#3-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E7%AE%A1%E5%85%88</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -5838,7 +6057,7 @@ CONTAINER<span class="w">   </span>IMAGE<span class="w">   </span>CREATED<span c
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-30</span>
       
     
   </small>
