@@ -6929,8 +6929,8 @@
 </tr>
 <tr>
 <td><code>app.kubernetes.io/component</code></td>
-<td><code>database</code></td>
-<td>コンテナの役割名を設定する。</td>
+<td><code>app</code>、<code>database</code></td>
+<td>K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。</td>
 </tr>
 <tr>
 <td><code>app.kubernetes.io/created-by</code></td>
@@ -6950,12 +6950,12 @@
 <tr>
 <td><code>app.kubernetes.io/managed-by</code></td>
 <td><code>helm</code>、<code>foo-operator</code></td>
-<td>アプリケーションの管理ツール名を設定する。</td>
+<td>K8sリソースの管理ツール名を設定する。</td>
 </tr>
 <tr>
 <td><code>app.kubernetes.io/name</code></td>
-<td><code>mysql</code></td>
-<td>マイクロサービスを構成するコンテナのベンダー名を設定する。</td>
+<td><code>foo-service</code>、<code>prometheus</code></td>
+<td>アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。</td>
 </tr>
 <tr>
 <td><code>app.kubernetes.io/nodegrop</code></td>
@@ -6965,7 +6965,7 @@
 <tr>
 <td><code>app.kubernetes.io/part-of</code></td>
 <td><code>bar</code></td>
-<td>マイクロサービス全体のアプリケーション名を設定する。</td>
+<td>K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。</td>
 </tr>
 <tr>
 <td><code>app.kubernetes.io/type</code></td>
@@ -6975,7 +6975,7 @@
 <tr>
 <td><code>app.kubernetes.io/version</code></td>
 <td><code>5.7.21</code></td>
-<td>マイクロサービスのリリースバージョン名を設定する。</td>
+<td>K8sリソースのリリースバージョン名を設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -7297,7 +7297,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-01</span>
       
     
   </small>

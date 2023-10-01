@@ -7489,8 +7489,8 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>CodeDeployによって、ECSタスク定義を基に、現行の旧環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
-<p>ロードバランサーの接続先を、旧環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。</p>
+<p>CodeDeployによって、ECSタスク定義を基に、現行の現環境 (Prodブルー) のECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
+<p>ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -7502,11 +7502,11 @@
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>新環境 (Testグリーン) が新しい旧環境としてユーザーに公開される。</p>
+<p>新環境 (Testグリーン) が新しい現環境としてユーザーに公開される。</p>
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
-<p>元の旧環境 (Prodブルー) は削除される。</p>
+<p>元の現環境 (Prodブルー) は削除される。</p>
 </dd>
 </dl>
 <blockquote>
@@ -7631,7 +7631,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-01</span>
       
     
   </small>
