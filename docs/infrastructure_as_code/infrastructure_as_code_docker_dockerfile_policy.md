@@ -17,7 +17,16 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 ### プロセス単位で分割する
 
-これは、Dockerの原則である。
+#### ▼ なぜプロセス単位なのか
+
+- プロセスを疎結合にし、プロセス間で影響を与え合わないようにする
+- 必要なコンポーネントだけスケーリングできるようになる
+- 必要なコンポーネントだけアップグレードできるようになる
+
+> - https://www.tutorialworks.com/containers-single-or-multiple-processes/
+> - https://devops.stackexchange.com/questions/447/why-it-is-recommended-to-run-only-one-process-in-a-container
+
+#### ▼ 分割方法
 
 アプリケーションを稼働させるには、最低限、webサーバーミドルウェア、アプリケーション、DBMSが必要である。
 
@@ -154,6 +163,16 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 
 > - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 > - https://codezine.jp/article/detail/15119
+
+<br>
+
+### 本番環境ではバインドマウントを使用しない
+
+バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にした方がよい。
+
+代わりに、ボリュームマウントやCOPYでファイルをコンテナイメージに詰め込むようにすることになる。
+
+> - https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952
 
 <br>
 
@@ -490,7 +509,23 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
-## 05. ホワイトボックステストする
+## 06. ログを適切に扱う
+
+### 標準出力/標準エラー出力に出力する
+
+ログをファイルとして出力すると、ホスト上にログファイルが保管され、ストレージ容量が必要になる。
+
+ログファイルをホスト外で管理するために、標準出力/標準エラー出力に出力する。
+
+### 構造化ログとして出力する
+
+ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。
+
+そのため、構造化ログ (例：JSON) として出力する。
+
+<br>
+
+## 07. ホワイトボックステストする
 
 ### 静的解析
 
