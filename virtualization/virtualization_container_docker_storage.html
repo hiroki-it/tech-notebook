@@ -6092,7 +6092,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">使用方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できる。</p>
+<p><code>docker</code>コマンド、<code>docker-compose.yml</code>ファイル、で定義できる。</p>
 <p>なお、バインドマウントはDockerfileでは定義できない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
@@ -6172,12 +6172,23 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_7">使用方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p><code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できる。</p>
+<p><code>docker</code>コマンドの実行、Dockerfile、<code>docker-compose.yml</code>ファイル、で定義できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,<span class="w"> </span><span class="nv">src</span><span class="o">=</span>home/projects/&lt;ホスト側のディレクトリ名&gt;,<span class="w"> </span><span class="nv">dst</span><span class="o">=</span>/var/www/&lt;コンテナ側のディレクトリ名&gt;
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:latest</span>
+<span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/data
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/data</span>
+<span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from Volume&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>test
+<span class="k">VOLUME</span><span class="w"> </span><span class="s">/data</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/collabnix/dockerlabs/blob/master/beginners/volume/create-a-volume-mount-from-dockerfile.md">https://github.com/collabnix/dockerlabs/blob/master/beginners/volume/create-a-volume-mount-from-dockerfile.md</a></li>
+</ul>
+</blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nextjs</span><span class="p">:</span>
@@ -6217,6 +6228,27 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><br></p>
 <h2 id="05-copynfs">05. バインドマウント、ボリュームマウント、<code>COPY</code>、NFS<a class="headerlink" href="#05-copynfs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
 <p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code>コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
 <p>一方でボリュームマウント (<code>VOLUME</code>) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
@@ -6224,10 +6256,9 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>そのため、バインドマウントより安全である。</p>
 <blockquote>
 <ul>
-<li><a href="https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/">https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/</a></li>
+<li><a href="https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952">https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952</a></li>
 <li><a href="https://blog.logrocket.com/docker-volumes-vs-bind-mounts/">https://blog.logrocket.com/docker-volumes-vs-bind-mounts/</a></li>
 <li><a href="https://devops4solutions.com/storage-options-in-docker/">https://devops4solutions.com/storage-options-in-docker/</a></li>
-<li><a href="https://www.takapy.work/entry/2019/02/24/110932">https://www.takapy.work/entry/2019/02/24/110932</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6254,31 +6285,27 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <table>
 <thead>
 <tr>
-<th>コンテナへのコードの組み込み方</th>
-<th>性能に関する説明</th>
-<th>補足</th>
+<th></th>
+<th>バインドマウント</th>
+<th>ボリュームマウント</th>
+<th><code>COPY</code></th>
+<th>NFS</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>バインドマウント</td>
+<td>性能に関する説明</td>
 <td>バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナの性能は悪い。</td>
-<td>・<a href="https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison">https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison</a> <br>・<a href="https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163">https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163</a></td>
-</tr>
-<tr>
-<td>ボリュームマウント</td>
 <td>ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナの性能が良い。</td>
-<td>- <a href="https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163">https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163</a></td>
-</tr>
-<tr>
-<td><code>COPY</code></td>
 <td><code>COPY</code>では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナの性能が良い。このことは、DockerのみでなくKubernetesでも同様である。</td>
-<td></td>
+<td>NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナの性能が良い。</td>
 </tr>
 <tr>
-<td>NFS</td>
-<td>NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナの性能が良い。</td>
-<td>- <a href="https://qiita.com/kunit/items/36d9e5fa710ad26f8010">https://qiita.com/kunit/items/36d9e5fa710ad26f8010</a></td>
+<td>補足</td>
+<td>・<a href="https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison">https://stackoverflow.com/questions/64629569/docker-bind-mount-directory-vs-named-volume-performance-comparison</a> <br>・<a href="https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163">https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163</a></td>
+<td>•<a href="https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163">https://qiita.com/ucan-lab/items/a88e2e5c2a79f2426163</a></td>
+<td></td>
+<td>•<a href="https://qiita.com/kunit/items/36d9e5fa710ad26f8010">https://qiita.com/kunit/items/36d9e5fa710ad26f8010</a></td>
 </tr>
 </tbody>
 </table>

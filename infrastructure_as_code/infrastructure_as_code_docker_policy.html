@@ -3518,37 +3518,44 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    信頼できるベースイメージの選定
-  </a>
-  
-    <nav class="md-nav" aria-label="信頼できるベースイメージの選定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 信頼できるベースイメージとは
+  <a href="#sudo" class="md-nav__link">
+    sudoを実行しない。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ ベースイメージの種類
+  <a href="#_5" class="md-nav__link">
+    信頼できるベースイメージを選ぶ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest" class="md-nav__link">
+    イメージタグにlatestを設定しない
+  </a>
+  
+    <nav class="md-nav" aria-label="イメージタグにlatestを設定しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest_1" class="md-nav__link">
+    ▼ latestタグを指定しない方が良い理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ タグの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#cpu" class="md-nav__link">
-    ▼ 対応できるCPUアーキテクチャの種類
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ バージョン
+    ▼ CPUアーキテクチャの種類
   </a>
   
 </li>
@@ -3560,7 +3567,7 @@
         
           <li class="md-nav__item">
   <a href="#docker-in-docker" class="md-nav__link">
-    Docker in Docker
+    Docker in Dockerの脆弱性に対処する
   </a>
   
 </li>
@@ -3572,37 +3579,36 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. イメージサイズ
+    03. 不要なファイルを含めない
   </a>
   
-    <nav class="md-nav" aria-label="03. イメージサイズ">
+    <nav class="md-nav" aria-label="03. 不要なファイルを含めない">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    不要なファイルの除外
-  </a>
-  
-    <nav class="md-nav" aria-label="不要なファイルの除外">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dockerignore" class="md-nav__link">
-    ▼ .dockerignoreファイル
+  <a href="#_7" class="md-nav__link">
+    ベースイメージの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ キャッシュを削除する
+  <a href="#dockerignore" class="md-nav__link">
+    .dockerignoreファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    キャッシュを削除する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#os" class="md-nav__link">
-    ▼ できる限りOSイメージをベースとしない
+    できる限りOSイメージをベースとしない
   </a>
   
 </li>
@@ -3611,51 +3617,46 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    イメージレイヤー数の抑制
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. イメージレイヤー数を削減する
   </a>
   
-    <nav class="md-nav" aria-label="イメージレイヤー数の抑制">
+    <nav class="md-nav" aria-label="04. イメージレイヤー数を削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    ▼ RUNコマンドをまとめる
+    RUNを多用しない
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    マルチステージビルドの採用
+  <a href="#_9" class="md-nav__link">
+    マルチステージビルドを採用する
   </a>
   
-    <nav class="md-nav" aria-label="マルチステージビルドの採用">
+    <nav class="md-nav" aria-label="マルチステージビルドを採用する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ マルチステージビルドとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     ▼ コンパイル済バイナリファイルを再利用する場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     ▼ 実行環境別にステージを分ける場合
   </a>
   
@@ -3672,37 +3673,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-ci" class="md-nav__link">
-    04. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="04. CIパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    コンテナイメージの署名
+  <a href="#05" class="md-nav__link">
+    05. コンテナイメージを署名する
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    Dockerfileのホワイトボックステスト
+      
+        <li class="md-nav__item">
+  <a href="#06-dockerfile" class="md-nav__link">
+    06. Dockerfileのホワイトボックステスト
   </a>
   
-    <nav class="md-nav" aria-label="Dockerfileのホワイトボックステスト">
+    <nav class="md-nav" aria-label="06. Dockerfileのホワイトボックステスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ 静的解析
+  <a href="#_13" class="md-nav__link">
+    静的解析
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6045,37 +6033,44 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    信頼できるベースイメージの選定
-  </a>
-  
-    <nav class="md-nav" aria-label="信頼できるベースイメージの選定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 信頼できるベースイメージとは
+  <a href="#sudo" class="md-nav__link">
+    sudoを実行しない。
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ ベースイメージの種類
+  <a href="#_5" class="md-nav__link">
+    信頼できるベースイメージを選ぶ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latest" class="md-nav__link">
+    イメージタグにlatestを設定しない
+  </a>
+  
+    <nav class="md-nav" aria-label="イメージタグにlatestを設定しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest_1" class="md-nav__link">
+    ▼ latestタグを指定しない方が良い理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ タグの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#cpu" class="md-nav__link">
-    ▼ 対応できるCPUアーキテクチャの種類
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ バージョン
+    ▼ CPUアーキテクチャの種類
   </a>
   
 </li>
@@ -6087,7 +6082,7 @@
         
           <li class="md-nav__item">
   <a href="#docker-in-docker" class="md-nav__link">
-    Docker in Docker
+    Docker in Dockerの脆弱性に対処する
   </a>
   
 </li>
@@ -6099,37 +6094,36 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. イメージサイズ
+    03. 不要なファイルを含めない
   </a>
   
-    <nav class="md-nav" aria-label="03. イメージサイズ">
+    <nav class="md-nav" aria-label="03. 不要なファイルを含めない">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    不要なファイルの除外
-  </a>
-  
-    <nav class="md-nav" aria-label="不要なファイルの除外">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dockerignore" class="md-nav__link">
-    ▼ .dockerignoreファイル
+  <a href="#_7" class="md-nav__link">
+    ベースイメージの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ キャッシュを削除する
+  <a href="#dockerignore" class="md-nav__link">
+    .dockerignoreファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    キャッシュを削除する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#os" class="md-nav__link">
-    ▼ できる限りOSイメージをベースとしない
+    できる限りOSイメージをベースとしない
   </a>
   
 </li>
@@ -6138,51 +6132,46 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    イメージレイヤー数の抑制
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. イメージレイヤー数を削減する
   </a>
   
-    <nav class="md-nav" aria-label="イメージレイヤー数の抑制">
+    <nav class="md-nav" aria-label="04. イメージレイヤー数を削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    ▼ RUNコマンドをまとめる
+    RUNを多用しない
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    マルチステージビルドの採用
+  <a href="#_9" class="md-nav__link">
+    マルチステージビルドを採用する
   </a>
   
-    <nav class="md-nav" aria-label="マルチステージビルドの採用">
+    <nav class="md-nav" aria-label="マルチステージビルドを採用する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ マルチステージビルドとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     ▼ コンパイル済バイナリファイルを再利用する場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     ▼ 実行環境別にステージを分ける場合
   </a>
   
@@ -6199,37 +6188,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-ci" class="md-nav__link">
-    04. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="04. CIパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    コンテナイメージの署名
+  <a href="#05" class="md-nav__link">
+    05. コンテナイメージを署名する
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    Dockerfileのホワイトボックステスト
+      
+        <li class="md-nav__item">
+  <a href="#06-dockerfile" class="md-nav__link">
+    06. Dockerfileのホワイトボックステスト
   </a>
   
-    <nav class="md-nav" aria-label="Dockerfileのホワイトボックステスト">
+    <nav class="md-nav" aria-label="06. Dockerfileのホワイトボックステスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ 静的解析
+  <a href="#_13" class="md-nav__link">
+    静的解析
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6342,15 +6318,134 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">信頼できるベースイメージの選定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 信頼できるベースイメージとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="sudo"><code>sudo</code>を実行しない。<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h3>
+<p>不必要に権限を昇格させないためにsudoを使わない。</p>
+<p>sudoを使いたければ、gosuを使う。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#use-multi-stage-builds">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#use-multi-stage-builds</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">信頼できるベースイメージを選ぶ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>インストールされているパッケージを把握できるベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.forcia.com/blog/002273.html">https://www.forcia.com/blog/002273.html</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ ベースイメージの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="latest">イメージタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
+<h4 id="latest_1">▼ <code>latest</code>タグを指定しない方が良い理由<a class="headerlink" href="#latest_1" title="Permanent link">&para;</a></h4>
+<p>イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
+<p>そこで、イメージはセマンティックバージョニングでタグ付けし、コンテナでは特定のバージョンをプルように設定する。</p>
+<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、DockerがホストのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
+<h4 id="_6">▼ タグの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>イメージのタグには種類があり、追跡できるバージョンアップが異なる。</p>
+<table>
+<thead>
+<tr>
+<th>バージョン例</th>
+<th>追跡できるバージョンアップ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2.0.9</code></td>
+<td>バージョンを直指定し、追跡しない。</td>
+</tr>
+<tr>
+<td><code>2.0</code></td>
+<td>『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>『<code>2.X</code>』と『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
+</tr>
+<tr>
+<td><code>latest</code></td>
+<td>メジャーアップデートとマイナーアップデートを追跡する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated">https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated</a></li>
+</ul>
+</blockquote>
+<h4 id="cpu">▼ CPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<p>コンテナは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるホストのCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>表記</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intel</td>
+<td><code>amd64</code> (<code>x86_64</code>)</td>
+<td>IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。</td>
+</tr>
+<tr>
+<td>Arm</td>
+<td><code>arm64</code>、<code>arm/v5</code>、<code>arm/v7</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Amd</td>
+<td><code>amd64</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
+</ul>
+</blockquote>
+<p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
+<p>ただし、コンテナイメージがホストのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はない。</p>
+<p><code>docker pull</code>時に、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
+<p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
+
+<span class="o">{</span>
+<span class="w">    </span>...
+
+<span class="w">        </span><span class="s2">&quot;Architecture&quot;</span>:<span class="w"> </span><span class="s2">&quot;arm64&quot;</span>,
+
+<span class="w">    </span>...
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span>--<span class="w"> </span>uname<span class="w"> </span>-m
+
+arm64
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">https://github.com/docker-library/official-images#architectures-other-than-amd64</a></li>
+<li><a href="https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm">https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm</a></li>
+<li><a href="https://linuxfan.info/post-2745">https://linuxfan.info/post-2745</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="docker-in-docker">Docker in Dockerの脆弱性に対処する<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
+<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
+<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
+<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
+<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
+<li><a href="https://shisho.dev/blog/posts/docker-in-docker/">https://shisho.dev/blog/posts/docker-in-docker/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. 不要なファイルを含めない<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_7">ベースイメージの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -6421,112 +6516,8 @@
 <li><a href="https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E">https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E</a>)</li>
 </ul>
 </blockquote>
-<h4 id="cpu">▼ 対応できるCPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
-<p>Dockerは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>表記</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Intel</td>
-<td><code>amd64</code> (<code>x86_64</code>)</td>
-<td>IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。</td>
-</tr>
-<tr>
-<td>Arm</td>
-<td><code>arm64</code>、<code>arm/v5</code>、<code>arm/v7</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Amd</td>
-<td><code>amd64</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
-</ul>
-</blockquote>
-<p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
-<p>ただし、コンテナイメージがOSのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はなく、<code>docker pull</code>時に、OSのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
-<p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
-
-<span class="o">{</span>
-<span class="w">    </span>...
-
-<span class="w">        </span><span class="s2">&quot;Architecture&quot;</span>:<span class="w"> </span><span class="s2">&quot;arm64&quot;</span>,
-
-<span class="w">    </span>...
-<span class="o">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span>--<span class="w"> </span>uname<span class="w"> </span>-m
-
-arm64
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">https://github.com/docker-library/official-images#architectures-other-than-amd64</a></li>
-<li><a href="https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm">https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm</a></li>
-<li><a href="https://linuxfan.info/post-2745">https://linuxfan.info/post-2745</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ バージョン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>イメージのバージョンには種類があり、追跡できるバージョンアップが異なる。</p>
-<table>
-<thead>
-<tr>
-<th>バージョン例</th>
-<th>追跡できるバージョンアップ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>2.0.9</code></td>
-<td>バージョンを直指定し、追跡しない。</td>
-</tr>
-<tr>
-<td><code>2.0</code></td>
-<td>『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
-</tr>
-<tr>
-<td><code>2</code></td>
-<td>『<code>2.X</code>』と『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
-</tr>
-<tr>
-<td><code>latest</code></td>
-<td>メジャーアップデートとマイナーアップデートを追跡する。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated">https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
-<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
-<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
-<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
-<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
-<li><a href="https://shisho.dev/blog/posts/docker-in-docker/">https://shisho.dev/blog/posts/docker-in-docker/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. イメージサイズ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_9">不要なファイルの除外<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="dockerignore">▼ <code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h4>
+<h3 id="dockerignore"><code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h3>
 <p>イメージのビルド時に無視するファイルを設定する。</p>
 <p>開発環境のみで使用するファイル、<code>.gitignore</code>ファイル、<code>README</code>ファイル、などはコンテナの稼働には不要である。</p>
 <div class="highlight"><pre><span></span><code>.env.example
@@ -6538,7 +6529,8 @@ README.md
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools</a></li>
 </ul>
 </blockquote>
-<h4 id="_10">▼ キャッシュを削除する<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="_8">キャッシュを削除する<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>Unixユーティリティをインストールするとキャッシュが残る。</p>
 <p>キャッシュが使用されることはないため、削除してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -6557,7 +6549,8 @@ README.md
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache</a></li>
 </ul>
 </blockquote>
-<h4 id="os">▼ できる限りOSイメージをベースとしない<a class="headerlink" href="#os" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="os">できる限りOSイメージをベースとしない<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
 <p>OSベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。</p>
 <p>原則として、1つのコンテナで1つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。</p>
 <blockquote>
@@ -6612,8 +6605,8 @@ README.md
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_11">イメージレイヤー数の抑制<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="run">▼ <code>RUN</code>コマンドをまとめる<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
+<h2 id="04">04. イメージレイヤー数を削減する<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="run"><code>RUN</code>を多用しない<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
 <p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
 <p>例えば、以下のような時、</p>
@@ -6646,8 +6639,8 @@ README.md
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_12">マルチステージビルドの採用<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ マルチステージビルドとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h3 id="_9">マルチステージビルドを採用する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ マルチステージビルドとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>1つのDockerfile内に複数の独立したステージを定義する。</p>
 <p>以下の手順で作成する。</p>
 <dl>
@@ -6673,7 +6666,7 @@ README.md
 <p>また、バイナリファイルを1つ目のステージからコピーする。</p>
 </dd>
 </dl>
-<h4 id="_14">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># 中間イメージ</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:1.7.3</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
@@ -6691,7 +6684,7 @@ README.md
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/go/src/github.com/alexellis/href-counter/app<span class="w"> </span>.
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./app&quot;</span><span class="p">]</span>
 </code></pre></div>
-<h4 id="_15">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c">#===================</span>
@@ -6733,8 +6726,7 @@ README.md
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="04-ci">04. CIパイプライン<a class="headerlink" href="#04-ci" title="Permanent link">&para;</a></h2>
-<h3 id="_16">コンテナイメージの署名<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h2 id="05">05. コンテナイメージを署名する<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code>コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
 <p><code>docker trust</code>コマンドの内部では、notaryが使用されている。</p>
 <blockquote>
@@ -6744,8 +6736,8 @@ README.md
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="dockerfile">Dockerfileのホワイトボックステスト<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ 静的解析<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h2 id="06-dockerfile">06. Dockerfileのホワイトボックステスト<a class="headerlink" href="#06-dockerfile" title="Permanent link">&para;</a></h2>
+<h3 id="_13">静的解析<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
