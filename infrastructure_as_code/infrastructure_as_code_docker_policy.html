@@ -6514,6 +6514,7 @@ arm64
 <p><br></p>
 <h3 id="docker-in-docker">Docker in Docker<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
 <p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
+<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
 <p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
 <p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
 <blockquote>
@@ -6614,7 +6615,7 @@ README.md
 <h3 id="_11">イメージレイヤー数の抑制<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="run">▼ <code>RUN</code>コマンドをまとめる<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
-<p>Dockerfileの各命令によって、コンテナイメージ レイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
+<p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
 <p>例えば、以下のような時、</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ベースイメージ上に、複数のソフトウェアをインストール</span>
 <span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>isntall<span class="w"> </span>httpd
@@ -6778,7 +6779,7 @@ README.md
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-02</span>
       
     
   </small>

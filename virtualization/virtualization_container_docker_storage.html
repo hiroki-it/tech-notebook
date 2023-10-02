@@ -6092,12 +6092,35 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">使用方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Dockerfileや<code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できるが、<code>docker-compose.yml</code>ファイルでの定義が推奨である。</p>
+<p><code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できる。</p>
+<p>なお、バインドマウントはDockerfileでは定義できない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>bind,<span class="w"> </span><span class="nv">src</span><span class="o">=</span>home/projects/&lt;ホスト側のディレクトリ名&gt;,<span class="w"> </span><span class="nv">dst</span><span class="o">=</span>/var/www/&lt;コンテナ側のディレクトリ名&gt;
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/47942216">https://stackoverflow.com/a/47942216</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nextjs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hr_website_container</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./app:/usr/src/app</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86">https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_4">マウント元として指定できるディレクトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>以下の通り、ホスト側のマウント元のディレクトリにはいくつか選択肢がある。</p>
@@ -6149,12 +6172,31 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_7">使用方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Dockerfileや<code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できるが、<code>docker-compose.yml</code>ファイルでの定義が推奨である。</p>
+<p><code>docker-compose.yml</code>ファイルへの定義、<code>docker</code>コマンドの実行、で使用できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホストをコンテナ側にバインドマウント</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,<span class="w"> </span><span class="nv">src</span><span class="o">=</span>home/projects/&lt;ホスト側のディレクトリ名&gt;,<span class="w"> </span><span class="nv">dst</span><span class="o">=</span>/var/www/&lt;コンテナ側のディレクトリ名&gt;
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nextjs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000:3000</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">      </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hr_website_container</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># ボリュームマウント</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/src/app/node_modules</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/src/app/.next</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86">https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="data-volume">Data Volumeコンテナによる永続化データの提供<a class="headerlink" href="#data-volume" title="Permanent link">&para;</a></h3>
 <p>ボリュームを使用する場合のコンテナ配置手法の一種。</p>
@@ -6177,7 +6219,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
 <p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code>コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
-<p>一方でボリュームマウントでは、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
+<p>一方でボリュームマウント (<code>VOLUME</code>) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
 <p>これにより、マウントに関係のないファイルへはアクセスできないようになっている。</p>
 <p>そのため、バインドマウントより安全である。</p>
 <blockquote>
@@ -6247,7 +6289,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-02</span>
       
     
   </small>

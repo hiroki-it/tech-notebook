@@ -6299,7 +6299,8 @@
 <p><br></p>
 <h3 id="_8">各ベンダーのコンテナイメージのログ出力先<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ コンテナの標準出力/標準エラー出力<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Linuxでは、標準出力は『<code>/proc/&lt;プロセスID&gt;/fd/1</code>』、標準エラー出力は『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』である。コンテナでは、『<code>/dev/stdout</code>』が『<code>/proc/self/fd/1</code>』のシンボリックリンク、また『<code>/dev/stderr</code>』が『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』のシンボリックリンクとして設定されている。</p>
+<p>Linuxでは、標準出力は『<code>/proc/&lt;プロセスID&gt;/fd/1</code>』、標準エラー出力は『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』である。</p>
+<p>コンテナでは、『<code>/dev/stdout</code>』が『<code>/proc/self/fd/1</code>』のシンボリックリンク、また『<code>/dev/stderr</code>』が『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』のシンボリックリンクとして設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>root@&lt;コンテナID&gt;:/dev<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
 
 total<span class="w"> </span><span class="m">4</span>
@@ -6339,7 +6340,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-02</span>
       
     
   </small>
