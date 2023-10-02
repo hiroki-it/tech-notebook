@@ -751,7 +751,13 @@ volumes:
 
 #### ▼ ビルド時にSQL実行
 
-mysqlコンテナには`docker-entrypoint-initdb.d`ディレクトリがある。このディレクトリ配下に配置された`sql`ファイルや`bash`プロセスは、mysqlコンテナのビルド時に`docker-entrypoint.sh`ファイルによって実行される。そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの投入や複数DBの作成を実現できる。具体的な実行タイミングについては、以下のリンクを参考にせよ。
+mysqlコンテナには`docker-entrypoint-initdb.d`ディレクトリがある。
+
+このディレクトリ配下に配置された`sql`ファイルや`bash`プロセスは、mysqlコンテナのビルド時に`docker-entrypoint.sh`ファイルによって実行される。
+
+そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの投入や複数DBの作成を実現できる。
+
+具体的な実行タイミングについては、以下のリンクを参考にせよ。
 
 > - https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
 
