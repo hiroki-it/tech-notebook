@@ -12,7 +12,7 @@
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_policy.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile_policy.html">
       
       
         <link rel="prev" href="infrastructure_as_code_docker_command.html">
@@ -3421,7 +3421,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="infrastructure_as_code_docker_policy.html" class="md-nav__link md-nav__link--active">
+      <a href="infrastructure_as_code_docker_dockerfile_policy.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -3503,16 +3503,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-dockerfile" class="md-nav__link">
-    02. Dockerfileの脆弱性対策
+  <a href="#02" class="md-nav__link">
+    02. 脆弱性に対処する
   </a>
   
-    <nav class="md-nav" aria-label="02. Dockerfileの脆弱性対策">
+    <nav class="md-nav" aria-label="02. 脆弱性に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    実行ユーザーの非特権化
+    実行ユーザーを非特権化する
   </a>
   
 </li>
@@ -3532,22 +3532,41 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#latest" class="md-nav__link">
-    イメージタグにlatestを設定しない
-  </a>
-  
-    <nav class="md-nav" aria-label="イメージタグにlatestを設定しない">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#latest_1" class="md-nav__link">
-    ▼ latestタグを指定しない方が良い理由
+  <a href="#docker-in-docker" class="md-nav__link">
+    Docker in Dockerの脆弱性に対処する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    コンテナイメージを署名する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-latest" class="md-nav__link">
+    03. イメージタグにlatestを設定しない
+  </a>
+  
+    <nav class="md-nav" aria-label="03. イメージタグにlatestを設定しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest" class="md-nav__link">
+    ▼ latestタグを指定しない方が良い理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     ▼ タグの種類
   </a>
   
@@ -3564,45 +3583,46 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-in-docker" class="md-nav__link">
-    Docker in Dockerの脆弱性に対処する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. 不要なファイルを含めない
+  <a href="#04" class="md-nav__link">
+    04. イメージサイズを削減する
   </a>
   
-    <nav class="md-nav" aria-label="03. 不要なファイルを含めない">
+    <nav class="md-nav" aria-label="04. イメージサイズを削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ベースイメージの種類
+  <a href="#_8" class="md-nav__link">
+    不要なファイルを含めない
+  </a>
+  
+    <nav class="md-nav" aria-label="不要なファイルを含めない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ベースイメージの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dockerignore" class="md-nav__link">
-    .dockerignoreファイル
+    ▼ .dockerignoreファイル
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    キャッシュを削除する
+  <a href="#_10" class="md-nav__link">
+    ▼ キャッシュを削除する
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3613,28 +3633,28 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. イメージレイヤー数を削減する
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    イメージレイヤー数を削減する
   </a>
   
-    <nav class="md-nav" aria-label="04. イメージレイヤー数を削減する">
+    <nav class="md-nav" aria-label="イメージレイヤー数を削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    RUNを多用しない
+    ▼ RUNを多用しない
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     マルチステージビルドを採用する
   </a>
   
@@ -3642,21 +3662,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     ▼ マルチステージビルドとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     ▼ コンパイル済バイナリファイルを再利用する場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     ▼ 実行環境別にステージを分ける場合
   </a>
   
@@ -3674,21 +3694,14 @@
       
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
-    05. コンテナイメージを署名する
+    05. ホワイトボックステストする
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-dockerfile" class="md-nav__link">
-    06. Dockerfileのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="06. Dockerfileのホワイトボックステスト">
+    <nav class="md-nav" aria-label="05. ホワイトボックステストする">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     静的解析
   </a>
   
@@ -6018,16 +6031,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-dockerfile" class="md-nav__link">
-    02. Dockerfileの脆弱性対策
+  <a href="#02" class="md-nav__link">
+    02. 脆弱性に対処する
   </a>
   
-    <nav class="md-nav" aria-label="02. Dockerfileの脆弱性対策">
+    <nav class="md-nav" aria-label="02. 脆弱性に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    実行ユーザーの非特権化
+    実行ユーザーを非特権化する
   </a>
   
 </li>
@@ -6047,22 +6060,41 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#latest" class="md-nav__link">
-    イメージタグにlatestを設定しない
-  </a>
-  
-    <nav class="md-nav" aria-label="イメージタグにlatestを設定しない">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#latest_1" class="md-nav__link">
-    ▼ latestタグを指定しない方が良い理由
+  <a href="#docker-in-docker" class="md-nav__link">
+    Docker in Dockerの脆弱性に対処する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    コンテナイメージを署名する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-latest" class="md-nav__link">
+    03. イメージタグにlatestを設定しない
+  </a>
+  
+    <nav class="md-nav" aria-label="03. イメージタグにlatestを設定しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest" class="md-nav__link">
+    ▼ latestタグを指定しない方が良い理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     ▼ タグの種類
   </a>
   
@@ -6079,45 +6111,46 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-in-docker" class="md-nav__link">
-    Docker in Dockerの脆弱性に対処する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. 不要なファイルを含めない
+  <a href="#04" class="md-nav__link">
+    04. イメージサイズを削減する
   </a>
   
-    <nav class="md-nav" aria-label="03. 不要なファイルを含めない">
+    <nav class="md-nav" aria-label="04. イメージサイズを削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ベースイメージの種類
+  <a href="#_8" class="md-nav__link">
+    不要なファイルを含めない
+  </a>
+  
+    <nav class="md-nav" aria-label="不要なファイルを含めない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ベースイメージの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#dockerignore" class="md-nav__link">
-    .dockerignoreファイル
+    ▼ .dockerignoreファイル
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    キャッシュを削除する
+  <a href="#_10" class="md-nav__link">
+    ▼ キャッシュを削除する
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6128,28 +6161,28 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. イメージレイヤー数を削減する
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    イメージレイヤー数を削減する
   </a>
   
-    <nav class="md-nav" aria-label="04. イメージレイヤー数を削減する">
+    <nav class="md-nav" aria-label="イメージレイヤー数を削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    RUNを多用しない
+    ▼ RUNを多用しない
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     マルチステージビルドを採用する
   </a>
   
@@ -6157,21 +6190,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     ▼ マルチステージビルドとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     ▼ コンパイル済バイナリファイルを再利用する場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     ▼ 実行環境別にステージを分ける場合
   </a>
   
@@ -6189,21 +6222,14 @@
       
         <li class="md-nav__item">
   <a href="#05" class="md-nav__link">
-    05. コンテナイメージを署名する
+    05. ホワイトボックステストする
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-dockerfile" class="md-nav__link">
-    06. Dockerfileのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="06. Dockerfileのホワイトボックステスト">
+    <nav class="md-nav" aria-label="05. ホワイトボックステストする">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     静的解析
   </a>
   
@@ -6295,8 +6321,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-dockerfile">02. Dockerfileの脆弱性対策<a class="headerlink" href="#02-dockerfile" title="Permanent link">&para;</a></h2>
-<h3 id="_4">実行ユーザーの非特権化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="02">02. 脆弱性に対処する<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_4">実行ユーザーを非特権化する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。</p>
 <p>これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.12</span>
@@ -6335,12 +6361,34 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="latest">イメージタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
-<h4 id="latest_1">▼ <code>latest</code>タグを指定しない方が良い理由<a class="headerlink" href="#latest_1" title="Permanent link">&para;</a></h4>
+<h3 id="docker-in-docker">Docker in Dockerの脆弱性に対処する<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
+<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
+<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
+<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
+<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
+<li><a href="https://shisho.dev/blog/posts/docker-in-docker/">https://shisho.dev/blog/posts/docker-in-docker/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_6">コンテナイメージを署名する<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code>コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
+<p><code>docker trust</code>コマンドの内部では、notaryが使用されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust">https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust</a></li>
+<li><a href="https://codezine.jp/article/detail/15119">https://codezine.jp/article/detail/15119</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-latest">03. イメージタグにlatestを設定しない<a class="headerlink" href="#03-latest" title="Permanent link">&para;</a></h2>
+<h4 id="latest">▼ <code>latest</code>タグを指定しない方が良い理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h4>
 <p>イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
 <p>そこで、イメージはセマンティックバージョニングでタグ付けし、コンテナでは特定のバージョンをプルように設定する。</p>
 <p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、DockerがホストのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
-<h4 id="_6">▼ タグの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ タグの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>イメージのタグには種類があり、追跡できるバージョンアップが異なる。</p>
 <table>
 <thead>
@@ -6432,20 +6480,9 @@ arm64
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="docker-in-docker">Docker in Dockerの脆弱性に対処する<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
-<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
-<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
-<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
-<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
-<li><a href="https://shisho.dev/blog/posts/docker-in-docker/">https://shisho.dev/blog/posts/docker-in-docker/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. 不要なファイルを含めない<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_7">ベースイメージの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h2 id="04">04. イメージサイズを削減する<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_8">不要なファイルを含めない<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ ベースイメージの種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -6516,8 +6553,7 @@ arm64
 <li><a href="https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E">https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E</a>)</li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="dockerignore"><code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h3>
+<h4 id="dockerignore">▼ <code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h4>
 <p>イメージのビルド時に無視するファイルを設定する。</p>
 <p>開発環境のみで使用するファイル、<code>.gitignore</code>ファイル、<code>README</code>ファイル、などはコンテナの稼働には不要である。</p>
 <div class="highlight"><pre><span></span><code>.env.example
@@ -6529,8 +6565,7 @@ README.md
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_8">キャッシュを削除する<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ キャッシュを削除する<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Unixユーティリティをインストールするとキャッシュが残る。</p>
 <p>キャッシュが使用されることはないため、削除してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -6605,8 +6640,8 @@ README.md
 <span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="04">04. イメージレイヤー数を削減する<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="run"><code>RUN</code>を多用しない<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
+<h3 id="_11">イメージレイヤー数を削減する<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="run">▼ <code>RUN</code>を多用しない<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
 <p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
 <p>例えば、以下のような時、</p>
@@ -6639,8 +6674,8 @@ README.md
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">マルチステージビルドを採用する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ マルチステージビルドとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h3 id="_12">マルチステージビルドを採用する<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">▼ マルチステージビルドとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>1つのDockerfile内に複数の独立したステージを定義する。</p>
 <p>以下の手順で作成する。</p>
 <dl>
@@ -6666,7 +6701,7 @@ README.md
 <p>また、バイナリファイルを1つ目のステージからコピーする。</p>
 </dd>
 </dl>
-<h4 id="_11">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># 中間イメージ</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:1.7.3</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
@@ -6684,7 +6719,7 @@ README.md
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/go/src/github.com/alexellis/href-counter/app<span class="w"> </span>.
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./app&quot;</span><span class="p">]</span>
 </code></pre></div>
-<h4 id="_12">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c">#===================</span>
@@ -6726,18 +6761,8 @@ README.md
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="05">05. コンテナイメージを署名する<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code>コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
-<p><code>docker trust</code>コマンドの内部では、notaryが使用されている。</p>
-<blockquote>
-<ul>
-<li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust">https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust</a></li>
-<li><a href="https://codezine.jp/article/detail/15119">https://codezine.jp/article/detail/15119</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="06-dockerfile">06. Dockerfileのホワイトボックステスト<a class="headerlink" href="#06-dockerfile" title="Permanent link">&para;</a></h2>
-<h3 id="_13">静的解析<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h2 id="05">05. ホワイトボックステストする<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_16">静的解析<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
