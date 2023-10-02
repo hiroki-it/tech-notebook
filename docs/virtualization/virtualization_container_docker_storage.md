@@ -45,7 +45,9 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ### 使用方法
 
-Dockerfileや`docker-compose.yml`ファイルへの定義、`docker`コマンドの実行、で使用できるが、`docker-compose.yml`ファイルでの定義が推奨である。
+`docker-compose.yml`ファイルへの定義、`docker`コマンドの実行、で使用できる。
+
+なお、バインドマウントはDockerfileでは定義できない。
 
 **＊例＊**
 
@@ -54,6 +56,24 @@ Dockerfileや`docker-compose.yml`ファイルへの定義、`docker`コマンド
 $ docker run -d -it --name <コンテナ名> /bin/bash \
     --mount type=bind, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
 ```
+
+> - https://stackoverflow.com/a/47942216
+
+```yaml
+version: "3.9"
+services:
+  nextjs:
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hr_website_container
+    volumes:
+      - ./app:/usr/src/app
+```
+
+> - https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86
 
 <br>
 
@@ -121,7 +141,7 @@ dockerエリア (`/var/lib/docker/volumes`ディレクトリ) に保存される
 
 ### 使用方法
 
-Dockerfileや`docker-compose.yml`ファイルへの定義、`docker`コマンドの実行、で使用できるが、`docker-compose.yml`ファイルでの定義が推奨である。
+`docker-compose.yml`ファイルへの定義、`docker`コマンドの実行、で使用できる。
 
 **＊例＊**
 
@@ -130,6 +150,24 @@ Dockerfileや`docker-compose.yml`ファイルへの定義、`docker`コマンド
 $ docker run -d -it --name <コンテナ名> /bin/bash \
     --mount type=volume, src=home/projects/<ホスト側のディレクトリ名>, dst=/var/www/<コンテナ側のディレクトリ名>
 ```
+
+```yaml
+version: "3.9"
+services:
+  nextjs:
+    ports:
+      - 3000:3000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hr_website_container
+    volumes:
+      # ボリュームマウント
+      - /usr/src/app/node_modules
+      - /usr/src/app/.next
+```
+
+> - https://zenn.dev/randd/articles/84ac7de7f22800#%E5%AE%9F%E9%9A%9B%E3%81%AEdocker-compose.yml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%82%88%E3%81%86
 
 <br>
 
@@ -167,7 +205,7 @@ Docker on Linuxでのみ使用できる。
 
 しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：`cd`コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。
 
-一方でボリュームマウントでは、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。
+一方でボリュームマウント (`VOLUME`) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。
 
 これにより、マウントに関係のないファイルへはアクセスできないようになっている。
 

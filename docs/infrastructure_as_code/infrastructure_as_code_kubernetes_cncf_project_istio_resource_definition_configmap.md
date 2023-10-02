@@ -502,7 +502,7 @@ OpenTelemetryに送信するためには、`mesh.extensionProviders[].envoyOtelA
 apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
-  name: access-log-to-otel
+  name: access-log-provider
 spec:
   # Opentelemetryにアクセスログを送信させるPodを設定する
   selector:
@@ -513,8 +513,24 @@ spec:
         - name: otel
 ```
 
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+spec:
+  # Opentelemetryにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        - name: otel
+```
+
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
-> - https://github.com/istio/istio/tree/master/samples/open-telemetry/tracing
+> - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
+> - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
 
 <br>
 

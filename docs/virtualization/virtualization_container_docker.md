@@ -192,7 +192,9 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ コンテナの標準出力/標準エラー出力
 
-Linuxでは、標準出力は『`/proc/<プロセスID>/fd/1`』、標準エラー出力は『`/proc/<プロセスID>/fd/2`』である。コンテナでは、『`/dev/stdout`』が『`/proc/self/fd/1`』のシンボリックリンク、また『`/dev/stderr`』が『`/proc/<プロセスID>/fd/2`』のシンボリックリンクとして設定されている。
+Linuxでは、標準出力は『`/proc/<プロセスID>/fd/1`』、標準エラー出力は『`/proc/<プロセスID>/fd/2`』である。
+
+コンテナでは、『`/dev/stdout`』が『`/proc/self/fd/1`』のシンボリックリンク、また『`/dev/stderr`』が『`/proc/<プロセスID>/fd/2`』のシンボリックリンクとして設定されている。
 
 ```bash
 [root@<コンテナID>:/dev] $ ls -la
