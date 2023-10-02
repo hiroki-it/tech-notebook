@@ -86,9 +86,9 @@ CMD ["node", "index.js"]
 
 <br>
 
-## 02. Dockerfileの脆弱性対策
+## 02. 脆弱性に対処する
 
-### 実行ユーザーの非特権化
+### 実行ユーザーを非特権化する
 
 コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。
 
@@ -131,7 +131,33 @@ sudoを使いたければ、gosuを使う。
 
 <br>
 
-### イメージタグにlatestを設定しない
+### Docker in Dockerの脆弱性に対処する
+
+コンテナの中でコンテナを作成するという入れ子構造のこと。
+
+中へのコンテナが外へのコンテナのアクセス権限が必要である。
+
+Docker in Dockerは、特権モードが必要になり、安全性に問題がある。
+
+一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。
+
+> - https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/
+> - https://shisho.dev/blog/posts/docker-in-docker/
+
+<br>
+
+### コンテナイメージを署名する
+
+コンテナイメージをビルドインのコマンド (例：`docker trust`コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。
+
+`docker trust`コマンドの内部では、notaryが使用されている。
+
+> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+> - https://codezine.jp/article/detail/15119
+
+<br>
+
+## 03. イメージタグにlatestを設定しない
 
 #### ▼ `latest`タグを指定しない方が良い理由
 
@@ -198,24 +224,11 @@ arm64
 
 <br>
 
-### Docker in Dockerの脆弱性に対処する
+## 04. イメージサイズを削減する
 
-コンテナの中でコンテナを作成するという入れ子構造のこと。
+### 不要なファイルを含めない
 
-中へのコンテナが外へのコンテナのアクセス権限が必要である。
-
-Docker in Dockerは、特権モードが必要になり、安全性に問題がある。
-
-一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。
-
-> - https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/
-> - https://shisho.dev/blog/posts/docker-in-docker/
-
-<br>
-
-## 03. 不要なファイルを含めない
-
-### ベースイメージの種類
+#### ▼ ベースイメージの種類
 
 | ベースイメージの種類名 | 接尾辞                                    | 説明                                                                         | OSの有無       | ユーティリティの有無 | パッケージマネージャー系統の有無 |
 | ---------------------- | ----------------------------------------- | ---------------------------------------------------------------------------- | -------------- | -------------------- | -------------------------------- |
@@ -231,9 +244,7 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
 > - https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E)
 
-<br>
-
-### `.dockerignore`ファイル
+#### ▼ `.dockerignore`ファイル
 
 イメージのビルド時に無視するファイルを設定する。
 
@@ -247,9 +258,7 @@ README.md
 
 > - https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools
 
-<br>
-
-### キャッシュを削除する
+#### ▼ キャッシュを削除する
 
 Unixユーティリティをインストールするとキャッシュが残る。
 
@@ -335,9 +344,9 @@ EXPOSE 80
 
 <br>
 
-## 04. イメージレイヤー数を削減する
+### イメージレイヤー数を削減する
 
-### `RUN`を多用しない
+#### ▼ `RUN`を多用しない
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。
 
@@ -481,18 +490,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
-## 05. コンテナイメージを署名する
-
-コンテナイメージをビルドインのコマンド (例：`docker trust`コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。
-
-`docker trust`コマンドの内部では、notaryが使用されている。
-
-> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
-> - https://codezine.jp/article/detail/15119
-
-<br>
-
-## 06. Dockerfileのホワイトボックステスト
+## 05. ホワイトボックステストする
 
 ### 静的解析
 

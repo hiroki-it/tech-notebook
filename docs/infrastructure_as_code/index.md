@@ -21,7 +21,7 @@
 * #### <u>Docker</u>
   > * ##### [︎Dockerfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)
   > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_command.html)
-  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_policy.html)
+  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile_policy.html)
 
 <br>
 
