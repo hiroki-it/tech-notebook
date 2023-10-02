@@ -77,9 +77,12 @@ ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善に�
 
 application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
 
+Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。
+
 大量のApplicationをReconciliationする場合、次のような対処方法がある。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 
 #### ▼ レプリカ当たりの処理効率の向上
 

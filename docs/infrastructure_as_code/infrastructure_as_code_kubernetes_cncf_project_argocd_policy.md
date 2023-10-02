@@ -544,9 +544,13 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 | `argocd_kubectl_exec_total`           |     Counter      | ArgoCDのexecの合計数を表す。                                                                |
 | `argocd_redis_request_duration`       |    Histogram     | Redisへのリクエストのレイテンシーを表す。                                                   |
 | `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                               |
+| `app_reconciliation_queue`            |     Counter      | application-controllerのReconciliation処理キューに格納されている処理数を表す。              |
+| `app_operation_processing_queue`      |     Counter      | application-controllerのSync処理キューに格納されている処理数を表す。                        |
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
+> - https://aws.amazon.com/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
+> - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 
 <br>
 
