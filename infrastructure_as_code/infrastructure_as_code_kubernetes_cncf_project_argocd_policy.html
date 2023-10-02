@@ -7339,12 +7339,24 @@
 <td style="text-align: center;">Counter</td>
 <td>Redisへのリクエスト数を表す。</td>
 </tr>
+<tr>
+<td><code>app_reconciliation_queue</code></td>
+<td style="text-align: center;">Counter</td>
+<td>application-controllerのReconciliation処理キューに格納されている処理数を表す。</td>
+</tr>
+<tr>
+<td><code>app_operation_processing_queue</code></td>
+<td style="text-align: center;">Counter</td>
+<td>application-controllerのSync処理キューに格納されている処理数を表す。</td>
+</tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting">https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting</a></li>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/">https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/</a></li>
+<li><a href="https://aws.amazon.com/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/">https://aws.amazon.com/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/</a></li>
+<li><a href="https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b">https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7527,7 +7539,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
       
     
   </small>
