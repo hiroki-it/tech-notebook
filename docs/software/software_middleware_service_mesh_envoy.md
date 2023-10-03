@@ -35,6 +35,20 @@ Envoyは、xDSサーバーとの間で、リモートプロシージャーコー
 
 <br>
 
+### ホットリロード
+
+Envoyは、通信を切断することなく、コントロールプレーンから取得した動的な設定を再読み込みできる。
+
+ホットリロードでは、現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。
+
+![envoy_hot-reload.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining
+> - https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5
+
+<br>
+
 ## 01-02. コントロールプレーン
 
 ### コントロールプレーンとは
@@ -207,15 +221,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
-#### ▼ ホットリロード
 
-Envoyは、ドレインプロセスの途中に通信を切断することなく、設定を再読み込みできる。
-
-![envoy_hot-reload.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining
-> - https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5
 
 #### ▼ XDS-APIとの通信の仕組み
 
