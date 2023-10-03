@@ -6564,7 +6564,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>MINIMUM_IP_TARGET</code></td>
-<td>AWS EC2/FargateワーカーNode当たりで最低限確保するIPアドレス数を設定する。</td>
+<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するIPアドレス数を設定する。</td>
 <td><code>20</code></td>
 </tr>
 <tr>
@@ -6599,7 +6599,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>WARM_IP_TARGET</code></td>
-<td>AWS EC2/FargateワーカーNode当たりで余剰に確保するIPアドレス数を設定する。</td>
+<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで余剰に確保するIPアドレス数を設定する。</td>
 <td><code>2</code></td>
 </tr>
 </tbody>
@@ -6622,8 +6622,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <h4 id="pod">▼ Podの上限数を上げる<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限IPアドレス数) と<code>WARM_IP_TARGET</code> (Node当たり余剰IPアドレス数) で、Node当たりのPod数が決まる。</p>
-<p><code>MINIMUM_IP_TARGET=10</code>と<code>WARM_IP_TARGET=5</code>を設定した場合、スケジューリングできるPodの合計数は<code>11</code>となる。</p>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限IPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たり余剰IPアドレス数) で、Node当たりのPod数が決まる。</p>
+<p><code>MINIMUM_IP_TARGET=10</code>を設定した場合、スケジューリングできるPodの合計数は<code>11</code>となる。</p>
+<p><code>WARM_IP_TARGET=5</code>を設定した場合、スケジューリングできるPodの合計数は<code>11</code>となる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>

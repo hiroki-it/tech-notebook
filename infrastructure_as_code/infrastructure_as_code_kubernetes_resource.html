@@ -8246,12 +8246,6 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの<code>.spec.containers[].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
 <p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを削除可能にする。</p>
-<p>補足として、サービスメッシュツール (例：Istio、Linkerd) のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
-</ul>
-</blockquote>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -9348,7 +9342,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
       
     
   </small>

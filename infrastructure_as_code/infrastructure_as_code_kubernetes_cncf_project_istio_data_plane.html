@@ -4710,6 +4710,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#graceful-drain" class="md-nav__link">
+    Graceful Drainモード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6253,6 +6260,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#graceful-drain" class="md-nav__link">
+    Graceful Drainモード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6759,6 +6773,47 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="graceful-drain">Graceful Drainモード<a class="headerlink" href="#graceful-drain" title="Permanent link">&para;</a></h3>
+<p>istio-proxyは、自分自身を安全に停止する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスがホットリロードを実行し、新しいEnvoyプロセスが起動する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>terminationDrainDuration</code>値 (デフォルト<code>5</code>秒) によるGraceful Drainモード待機時間が開始する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスは、Graceful Drainモードを開始する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。</p>
+<p>この時、現在のEnvoyプロセスはすぐに通信を閉じず、<code>drainDuration</code>値 (デフォルト<code>5</code>秒) による待機時間だけ、通信を受信しながら移行していく。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>現在のEnvoyは、プロセスのGraceful Drainモードを終了する。</p>
+</dd>
+<dt><code>(6)</code></dt>
+<dd>
+<p>Graceful Drainモードの終了後、<code>terminationDrainDuration</code>によるGraceful Drainモード待機時間が完了する。</p>
+</dd>
+<dt><code>(7)</code></dt>
+<dd>
+<p>現行EnvoyプロセスにSIGKILLを送信する。</p>
+</dd>
+</dl>
+<p><img alt="pod_terminating_process_istio-proxy.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">https://sreake.com/blog/istio-proxy-stop-behavior/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy">https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02-03">02-03. 待ち受けるポート番号<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="15000"><code>15000</code>番<a class="headerlink" href="#15000" title="Permanent link">&para;</a></h3>
 <p><code>istio-proxy</code>コンテナの<code>15000</code>番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。</p>
@@ -6857,7 +6912,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
       
     
   </small>
