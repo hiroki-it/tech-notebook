@@ -4375,6 +4375,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Podの上限数を上げる
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6168,6 +6175,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    ▼ Podの上限数を上げる
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6545,12 +6559,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>MAX_ENI</code></td>
-<td>AWS EC2/FargateワーカーNodeが<code>1</code>個あたりで最大で紐づけるENI数を設定する。</td>
+<td>AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。</td>
 <td><code>20</code></td>
 </tr>
 <tr>
 <td><code>MINIMUM_IP_TARGET</code></td>
-<td>AWS EC2/FargateワーカーNodeが<code>1</code>個あたりで最低限確保するIPアドレス数を設定する。</td>
+<td>AWS EC2/FargateワーカーNode当たりで最低限確保するIPアドレス数を設定する。</td>
 <td><code>20</code></td>
 </tr>
 <tr>
@@ -6575,7 +6589,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>WARM_ENI_TARGET</code></td>
-<td>AWS EC2/FargateワーカーNodeが<code>1</code>個あたりで最低限確保するAWS ENI数を設定する。</td>
+<td>AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。</td>
 <td><code>1</code></td>
 </tr>
 <tr>
@@ -6585,7 +6599,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>WARM_IP_TARGET</code></td>
-<td>AWS EC2/FargateワーカーNodeが<code>1</code>個あたりで余分に確保するIPアドレス数を設定する。</td>
+<td>AWS EC2/FargateワーカーNode当たりで余剰に確保するIPアドレス数を設定する。</td>
 <td><code>2</code></td>
 </tr>
 </tbody>
@@ -6607,6 +6621,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.template.spec.containers[*].env}&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
+<h4 id="pod">▼ Podの上限数を上げる<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限IPアドレス数) と<code>WARM_IP_TARGET</code> (Node当たり余剰IPアドレス数) で、Node当たりのPod数が決まる。</p>
+<p><code>MINIMUM_IP_TARGET=10</code>と<code>WARM_IP_TARGET=5</code>を設定した場合、スケジューリングできるPodの合計数は<code>11</code>となる。</p>
 <p><br></p>
 
   <hr>
@@ -6614,7 +6631,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
       
     
   </small>
