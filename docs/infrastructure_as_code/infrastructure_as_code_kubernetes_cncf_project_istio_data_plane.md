@@ -456,6 +456,47 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 <br>
 
+### Graceful Drainモード
+
+istio-proxyは、自分自身を安全に停止する。
+
+`(1)`
+
+: 現在のEnvoyプロセスがホットリロードを実行し、新しいEnvoyプロセスが起動する。
+
+`(2)`
+
+: `terminationDrainDuration`値 (デフォルト`5`秒) によるGraceful Drainモード待機時間が開始する。
+
+`(3)`
+
+: 現在のEnvoyプロセスは、Graceful Drainモードを開始する。
+
+`(4)`
+
+: 現在のEnvoyプロセスへの接続を新しいEnvoyに段階的に移行する。
+
+     この時、現在のEnvoyプロセスはすぐに通信を閉じず、`drainDuration`値 (デフォルト`5`秒) による待機時間だけ、通信を受信しながら移行していく。
+
+`(5)`
+
+: 現在のEnvoyは、プロセスのGraceful Drainモードを終了する。
+
+`(6)`
+
+: Graceful Drainモードの終了後、`terminationDrainDuration`によるGraceful Drainモード待機時間が完了する。
+
+`(7)`
+
+: 現行EnvoyプロセスにSIGKILLを送信する。
+
+![pod_terminating_process_istio-proxy.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+
+> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+
+<br>
+
 ## 02-03. 待ち受けるポート番号
 
 ### `15000`番

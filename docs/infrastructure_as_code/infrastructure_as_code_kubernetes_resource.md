@@ -346,10 +346,6 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 `.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを削除可能にする。
 
-補足として、サービスメッシュツール (例：Istio、Linkerd) のサイドカーを持つPodを安全に削除する場合も、サイドカーコンテナが停止した上でPodを削除できるように、Podの削除プロセスの完了を待機する必要がある。
-
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
-
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
 `(1)`
@@ -386,7 +382,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 : `.spec.terminationGracePeriodSeconds`キーによるPodの削除プロセス完了の待機時間が終了する。
 
-     この段階でもコンテナが停止していない場合は、コンテナに```SIGKILL```シグナルが送信され、コンテナを強制的に終了することになる。
+     この段階でもコンテナが停止していない場合は、コンテナに`SIGKILL`シグナルが送信され、コンテナを強制的に終了することになる。
 
 `(9)`
 
