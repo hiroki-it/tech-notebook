@@ -1697,6 +1697,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ホットリロード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1711,7 +1718,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     コントロールプレーンとは
   </a>
   
@@ -1795,7 +1802,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 実装
   </a>
   
@@ -1820,7 +1827,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     データプレーンとは
   </a>
   
@@ -1828,15 +1835,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ データプレーンの仕組み
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ ホットリロード
+    ▼ データプレーンの仕組み
   </a>
   
 </li>
@@ -6145,6 +6145,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ホットリロード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6159,7 +6166,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     コントロールプレーンとは
   </a>
   
@@ -6243,7 +6250,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 実装
   </a>
   
@@ -6268,7 +6275,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     データプレーンとは
   </a>
   
@@ -6276,15 +6283,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ データプレーンの仕組み
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ ホットリロード
+    ▼ データプレーンの仕組み
   </a>
   
 </li>
@@ -6560,8 +6560,20 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_3">ホットリロード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>Envoyは、通信を切断することなく、コントロールプレーンから取得した動的な設定を再読み込みできる。</p>
+<p>ホットリロードでは、現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。</p>
+<p><img alt="envoy_hot-reload.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining</a></li>
+<li><a href="https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5">https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="01-02">01-02. コントロールプレーン<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">コントロールプレーンとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">コントロールプレーンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンは、データプレーンのEnvoyを管理する。サービスディスカバリーのためのAPI (XDS-API) を持つ。</p>
 <p><br></p>
 <h3 id="xds-api">XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h3>
@@ -6639,7 +6651,7 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 実装<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 実装<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Envoyを使用するサービスディスカバリーツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに<code>go-control-plane</code>パッケージが使用されている。</p>
 <blockquote>
 <ul>
@@ -6707,8 +6719,8 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="01-03">01-03. データプレーン<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
-<h3 id="_5">データプレーンとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ データプレーンの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_6">データプレーンとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ データプレーンの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="envoy_data-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_data-plane_architecture.png" /></p>
 <p>データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。</p>
 <p>データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。</p>
@@ -6716,16 +6728,6 @@
 <ul>
 <li><a href="https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5">https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5</a></li>
 <li><a href="https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010">https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ ホットリロード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Envoyは、ドレインプロセスの途中に通信を切断することなく、設定を再読み込みできる。</p>
-<p><img alt="envoy_hot-reload.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining</a></li>
-<li><a href="https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5">https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5</a></li>
 </ul>
 </blockquote>
 <h4 id="xds-api_4">▼ XDS-APIとの通信の仕組み<a class="headerlink" href="#xds-api_4" title="Permanent link">&para;</a></h4>
