@@ -551,6 +551,19 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
 > - https://aws.amazon.com/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
+> - https://argo-cd.readthedocs.io/en/stable/proposals/004-scalability-benchmarking/#proposal
+
+<br>
+
+### Grafanaダッシュボード
+
+#### ▼ 性能ヒートマップ
+
+縦軸でReconciliationの秒数、横軸で色でReconciliationの処理数、を表現する。
+
+グラフの上部にたくさんの処理が分布するほど、Reconciliationの性能が低いことがわかる。
+
+> - https://blog.argoproj.io/argo-cd-v1-5-generally-available-a16b9a2347ba
 
 <br>
 

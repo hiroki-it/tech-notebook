@@ -271,15 +271,15 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `ENABLE_IPv6`                           |                                                                                                      | `false`                                                                          |
 | `ENABLE_POD_ENI`                        |                                                                                                      | `false`                                                                          |
 | `ENABLE_PREFIX_DELEGATION`              |                                                                                                      | `false`                                                                          |
-| `MAX_ENI`                               | AWS EC2/FargateワーカーNodeが`1`個あたりで最大で紐づけるENI数を設定する。                            | `20`                                                                             |
-| `MINIMUM_IP_TARGET`                     | AWS EC2/FargateワーカーNodeが`1`個あたりで最低限確保するIPアドレス数を設定する。                     | `20`                                                                             |
+| `MAX_ENI`                               | AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。                                   | `20`                                                                             |
+| `MINIMUM_IP_TARGET`                     | AWS EC2/FargateワーカーNode当たりで最低限確保するIPアドレス数を設定する。                            | `20`                                                                             |
 | `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                         | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
 | `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
 | `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。 | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
 | `VPC_ID`                                | AWS VPCのIDを設定する。                                                                              | `vpc-*****`                                                                      |
-| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNodeが`1`個あたりで最低限確保するAWS ENI数を設定する。                        | `1`                                                                              |
+| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。                               | `1`                                                                              |
 | `WARM_PREFIX_TARGET`                    |                                                                                                      | `1`                                                                              |
-| `WARM_IP_TARGET`                        | AWS EC2/FargateワーカーNodeが`1`個あたりで余分に確保するIPアドレス数を設定する。                     | `2`                                                                              |
+| `WARM_IP_TARGET`                        | AWS EC2/FargateワーカーNode当たりで余剰に確保するIPアドレス数を設定する。                            | `2`                                                                              |
 
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
@@ -299,5 +299,11 @@ $ kubectl get daemonset aws-node \
     jsonpath='{.spec.template.spec.containers[*].env}' \
     | jq .
 ```
+
+#### ▼ Podの上限数を上げる
+
+`MINIMUM_IP_TARGET` (Node当たり最低限IPアドレス数) と`WARM_IP_TARGET` (Node当たり余剰IPアドレス数) で、Node当たりのPod数が決まる。
+
+`MINIMUM_IP_TARGET=10`と`WARM_IP_TARGET=5`を設定した場合、スケジューリングできるPodの合計数は`11`となる。
 
 <br>

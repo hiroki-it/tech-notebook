@@ -76,9 +76,9 @@ VPCのIPアドレスの最初から、パブリックサブネットとプライ
 
 | AWSリソース       | 最低限のIPアドレス数                        |
 | ----------------- | ------------------------------------------- |
-| ALB               | ALB1つ当たり、`8`個                         |
+| ALB               | ALB当たり`8`個                              |
 | AutoScaling       | 自動水平スケーリング時のEC2最大数と同じ個数 |
-| VPCエンドポイント | VPCエンドポイント1つ当たり、IPアドレス`1`個 |
+| VPCエンドポイント | VPCエンドポイント当たり、IPアドレス`1`個    |
 | ECS、EKS          | Elastic Network Interface 数と同じ個数      |
 | Lambda            | Elastic Network Interface 数と同じ個数      |
 
