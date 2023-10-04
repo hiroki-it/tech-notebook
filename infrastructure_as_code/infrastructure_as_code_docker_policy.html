@@ -3491,16 +3491,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pid-1" class="md-nav__link">
-    PID 1問題に対処する
+  <a href="#pid1" class="md-nav__link">
+    PID=1問題に対処する
   </a>
   
-    <nav class="md-nav" aria-label="PID 1問題に対処する">
+    <nav class="md-nav" aria-label="PID=1問題に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pid-1_1" class="md-nav__link">
-    ▼ PID 1問題とは
+  <a href="#pid1_1" class="md-nav__link">
+    ▼ PID=1問題とは
   </a>
   
 </li>
@@ -6155,16 +6155,16 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pid-1" class="md-nav__link">
-    PID 1問題に対処する
+  <a href="#pid1" class="md-nav__link">
+    PID=1問題に対処する
   </a>
   
-    <nav class="md-nav" aria-label="PID 1問題に対処する">
+    <nav class="md-nav" aria-label="PID=1問題に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pid-1_1" class="md-nav__link">
-    ▼ PID 1問題とは
+  <a href="#pid1_1" class="md-nav__link">
+    ▼ PID=1問題とは
   </a>
   
 </li>
@@ -6567,8 +6567,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="pid-1"><code>PID 1</code>問題に対処する<a class="headerlink" href="#pid-1" title="Permanent link">&para;</a></h3>
-<h4 id="pid-1_1">▼ <code>PID 1</code>問題とは<a class="headerlink" href="#pid-1_1" title="Permanent link">&para;</a></h4>
+<h3 id="pid1"><code>PID=1</code>問題に対処する<a class="headerlink" href="#pid1" title="Permanent link">&para;</a></h3>
+<h4 id="pid1_1">▼ <code>PID=1</code>問題とは<a class="headerlink" href="#pid1_1" title="Permanent link">&para;</a></h4>
 <p>サーバーのLinuxでは、<code>init</code>プロセスが<code>PID=1</code>として稼働している。</p>
 <p><img alt="container_pid_1_problem_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png" /></p>
 <p><code>init</code>プロセスは、配下のいずれかの親プロセスを終了したとする。</p>
@@ -6895,6 +6895,7 @@ README.md
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
 
@@ -6923,6 +6924,7 @@ README.md
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
 
@@ -7020,6 +7022,23 @@ README.md
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/go/src/github.com/alexellis/href-counter/app<span class="w"> </span>.
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./app&quot;</span><span class="p">]</span>
 </code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">maven:3.5.0-jdk-8-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">COPY</span><span class="w"> </span>./pom.xml<span class="w"> </span>pom.xml
+<span class="k">COPY</span><span class="w"> </span>./src<span class="w"> </span>src/
+<span class="k">RUN</span><span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>package
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">openjdk:8-jre-alpine</span>
+<span class="c"># ビルドの成果物はtargetディレクトリにある</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>target/app.jar<span class="w"> </span>app.jar
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-jar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.jar&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds">https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds</a></li>
+</ul>
+</blockquote>
 <h4 id="_19">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -7075,6 +7094,7 @@ README.md
 <h3 id="_20">標準出力/標準エラー出力に出力する<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>ログをファイルとして出力すると、ホスト上にログファイルが保管され、ストレージ容量が必要になる。</p>
 <p>ログファイルをホスト外で管理するために、標準出力/標準エラー出力に出力する。</p>
+<p><br></p>
 <h3 id="_21">構造化ログとして出力する<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p>ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。</p>
 <p>そのため、構造化ログ (例：JSON) として出力する。</p>
@@ -7093,11 +7113,11 @@ README.md
 <tr>
 <td>安全性</td>
 <td>ホストコンテナ間をネットワークを分離できるため、安全性が高い</td>
-<td></td>
+<td>-</td>
 </tr>
 <tr>
 <td>性能</td>
-<td></td>
+<td>-</td>
 <td>ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。</td>
 </tr>
 </tbody>

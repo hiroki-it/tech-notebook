@@ -4361,6 +4361,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockervolume" class="md-nav__link">
+    ▼ DockerのVolumeとの違い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostpath_1" class="md-nav__link">
     ▼ HostPath (本番環境で非推奨)
   </a>
@@ -7487,6 +7494,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#dockervolume" class="md-nav__link">
+    ▼ DockerのVolumeとの違い
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostpath_1" class="md-nav__link">
     ▼ HostPath (本番環境で非推奨)
   </a>
@@ -8923,12 +8937,6 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <p><img alt="storage_class.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
 <p>既存 (例：NFS、iSCSI、Ceph、など) のボリュームをそのままKubernetesのVolumeとして使用する。</p>
 <p>Podの<code>.spec.volumes</code>キーで指定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://thinkit.co.jp/article/14195">https://thinkit.co.jp/article/14195</a></li>
-</ul>
-</blockquote>
-<p>Dockerのボリュームとは独立した機能であることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -8965,6 +8973,13 @@ Volumes:
 <span class="w">    </span>Name:<span class="w">      </span>baz-cm
 <span class="w">    </span>Optional:<span class="w">  </span><span class="nb">false</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://thinkit.co.jp/article/14195">https://thinkit.co.jp/article/14195</a></li>
+</ul>
+</blockquote>
+<h4 id="dockervolume">▼ DockerのVolumeとの違い<a class="headerlink" href="#dockervolume" title="Permanent link">&para;</a></h4>
+<p>Dockerのボリュームとは独立した機能であることに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume">https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume</a></li>
@@ -9342,7 +9357,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
       
     
   </small>
