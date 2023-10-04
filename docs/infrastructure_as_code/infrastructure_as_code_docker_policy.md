@@ -103,6 +103,22 @@ CMD ["node", "index.js"]
 
 そのため、`SIGTERM`を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。
 
+なお、ツールの特性に合わせて、DockerfileのSTOPSIGNALを使用してシグナルを上書きするとよい。
+
+例えば、Nginxの公式イメージでは、GracefulShut DownのためにSIGTERMではなくSIGQUITを送信している。
+
+```dockerfile
+FROM alpine
+
+...
+
+STOPSIGNAL SIGQUIT
+
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+> - https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114
+
 <br>
 
 ## 02. 脆弱性に対処する
