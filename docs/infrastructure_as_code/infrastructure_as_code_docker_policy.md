@@ -95,7 +95,7 @@ CMD ["node", "index.js"]
 
 <br>
 
-### コンテナ終了時にプロセスをGraceful Shutdownできるようにする
+### コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
 
 コンテナの終了時、コンテナランタイムはコンテナに`SIGTERM`を送信する。
 
@@ -103,9 +103,11 @@ CMD ["node", "index.js"]
 
 そのため、`SIGTERM`を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。
 
-なお、ツールの特性に合わせて、DockerfileのSTOPSIGNALを使用してシグナルを上書きするとよい。
+多くのツールが`SIGTERM`でGraceful Shutdownを実行するように設計されているため、特に対処不要である。
 
-例えば、Nginxの公式イメージでは、GracefulShut DownのためにSIGTERMではなくSIGQUITを送信している。
+ただし、`SIGTERM`以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの`STOPSIGNAL`処理を使用してシグナルを上書きするとよい。
+
+例えば、Nginxは`SIGQUIT`でGracefulShut Downする仕様のため、`STOPSIGNAL`処理で`SIGQUIT`を定義しておく。
 
 ```dockerfile
 FROM alpine
@@ -118,6 +120,8 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 > - https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114
+> - https://nginx.org/en/docs/control.html
+> - https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit
 
 <br>
 
@@ -401,7 +405,7 @@ EXPOSE 80
 
 ### イメージレイヤー数を削減する
 
-#### ▼ `RUN`を多用しない
+#### ▼ `RUN`処理を多用しない
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。
 
@@ -463,7 +467,7 @@ RUN yum -y install \
 
 `(3)`
 
-: Dockerfileで、2つ目の`FROM`を宣言する。
+: Dockerfileで、2つ目の`FROM`処理を宣言する。
 
 `(4)`
 
@@ -562,11 +566,11 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
-### `ADD`よりも`COPY`を使用する
+### `ADD`処理よりも`COPY`処理を使用する
 
-`ADD`は`COPY`とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。
+`ADD`処理は`COPY`処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。
 
-解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`が推奨である。
+解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`処理が推奨である。
 
 > - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy
 
