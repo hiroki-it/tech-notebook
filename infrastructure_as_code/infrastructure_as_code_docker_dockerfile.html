@@ -6552,11 +6552,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="copy">COPYとの違い<a class="headerlink" href="#copy" title="Permanent link">&para;</a></h3>
-<p>似た命令として<code>COPY</code>がある。</p>
-<p><code>ADD</code>は<code>COPY</code>とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
-<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>が推奨である。</p>
+<p>似た命令として<code>COPY</code>処理がある。</p>
+<p><code>ADD</code>処理は<code>COPY</code>処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>処理が推奨である。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>以下では<code>ADD</code>を使用している。</p>
+<p>以下では<code>ADD</code>処理を使用している。</p>
 <p>URLを直接的に指定し、ダウンロードから解答までを実行している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">ADD</span><span class="w"> </span>http://example.com/big.tar.xz<span class="w"> </span>/usr/src/things/
 <span class="k">RUN</span><span class="w"> </span>tar<span class="w"> </span>-xJf<span class="w"> </span>/usr/src/things/big.tar.xz<span class="w"> </span>-C<span class="w"> </span>/usr/src/things

@@ -3367,10 +3367,10 @@
       
         <li class="md-nav__item">
   <a href="#05-copynfs" class="md-nav__link">
-    05. バインドマウント、ボリュームマウント、COPY、NFS
+    05. バインドマウント、ボリュームマウント、COPY処理、NFS
   </a>
   
-    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY、NFS">
+    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY処理、NFS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6008,10 +6008,10 @@
       
         <li class="md-nav__item">
   <a href="#05-copynfs" class="md-nav__link">
-    05. バインドマウント、ボリュームマウント、COPY、NFS
+    05. バインドマウント、ボリュームマウント、COPY処理、NFS
   </a>
   
-    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY、NFS">
+    <nav class="md-nav" aria-label="05. バインドマウント、ボリュームマウント、COPY処理、NFS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6226,11 +6226,11 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-copynfs">05. バインドマウント、ボリュームマウント、<code>COPY</code>、NFS<a class="headerlink" href="#05-copynfs" title="Permanent link">&para;</a></h2>
+<h2 id="05-copynfs">05. バインドマウント、ボリュームマウント、<code>COPY</code>処理、NFS<a class="headerlink" href="#05-copynfs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
 <p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code>コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
-<p>一方でボリュームマウント (<code>VOLUME</code>) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
+<p>一方でボリュームマウント (<code>VOLUME</code>処理) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
 <p>これにより、マウントに関係のないファイルへはアクセスできないようになっている。</p>
 <p>そのため、バインドマウントより安全である。</p>
 <blockquote>
@@ -6242,14 +6242,14 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_9">本番環境での使いやすさの比較<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code>) や<code>COPY</code>を使用して、アプリケーションをコンテナイメージに組み込むようにする。</p>
+<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code>処理) や<code>COPY</code>処理を使用して、アプリケーションをコンテナイメージに組み込むようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments">https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments</a></li>
 </ul>
 </blockquote>
-<p>その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する (例：ディレクトリの実行権限を変更するなど) 場合は<code>COPY</code>の方が便利である。</p>
-<p>方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に<code>COPY</code>しておく。</p>
+<p>その上で、ボリュームマウントでは、組み込んだアプリケーションのコードをコンテナ起動後しか参照できないため、コードの組み込みとコンテナ起動の間にアプリケーションを加工する (例：ディレクトリの実行権限を変更するなど) 場合は<code>COPY</code>処理の方が便利である。</p>
+<p>方法として、コンテナイメージレジストリ内のプライベートリポジトリにデプロイするイメージのビルド時に、ホスト側のアプリケーションをイメージ側に<code>COPY</code>処理しておく。</p>
 <p>これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。</p>
 <blockquote>
 <ul>
@@ -6267,7 +6267,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <th></th>
 <th>バインドマウント</th>
 <th>ボリュームマウント</th>
-<th><code>COPY</code></th>
+<th><code>COPY</code>処理</th>
 <th>NFS</th>
 </tr>
 </thead>
@@ -6276,7 +6276,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <td>性能に関する説明</td>
 <td>バインドマウントでは、ホストとコンテナ間のライフサイクルは同じであり、ファイルの状態が同期されている。この時、コンテナからホストにアウトプット処理、またホストからコンテナにインプット処理が発生する。そのため、コンテナではアプリケーションの処理を実行しながら、合わせてホスト間とI/O処理も実行することになり、コンテナの性能は悪い。</td>
 <td>ボリュームマウントでは、ホストとコンテナ間のライフサイクルは分離されており、ファイルの状態は同期されていない。そのため、ボリュームマウントよりはコンテナの性能が良い。</td>
-<td><code>COPY</code>では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナの性能が良い。このことは、DockerのみでなくKubernetesでも同様である。</td>
+<td><code>COPY</code>処理では、コンテナイメージのビルド時にコードを組み込むのみで、以降、ホストとコンテナ間でコードのI/O処理は発生しない。そのため、バインドマウントやボリュームマウントと比べて、コンテナの性能が良い。このことは、DockerのみでなくKubernetesでも同様である。</td>
 <td>NFSを使用したマウントでは、高速でI/O処理が実行される。そのため、コンテナの性能が良い。</td>
 </tr>
 <tr>

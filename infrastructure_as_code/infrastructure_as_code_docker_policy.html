@@ -3519,7 +3519,7 @@
         
           <li class="md-nav__item">
   <a href="#graceful-shutdown" class="md-nav__link">
-    コンテナ終了時にプロセスをGraceful Shutdownできるようにする
+    コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
   </a>
   
 </li>
@@ -3690,7 +3690,7 @@
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    ▼ RUNを多用しない
+    ▼ RUN処理を多用しない
   </a>
   
 </li>
@@ -3736,7 +3736,7 @@
         
           <li class="md-nav__item">
   <a href="#addcopy" class="md-nav__link">
-    ADDよりもCOPYを使用する
+    ADD処理よりもCOPY処理を使用する
   </a>
   
 </li>
@@ -6183,7 +6183,7 @@
         
           <li class="md-nav__item">
   <a href="#graceful-shutdown" class="md-nav__link">
-    コンテナ終了時にプロセスをGraceful Shutdownできるようにする
+    コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
   </a>
   
 </li>
@@ -6354,7 +6354,7 @@
         
           <li class="md-nav__item">
   <a href="#run" class="md-nav__link">
-    ▼ RUNを多用しない
+    ▼ RUN処理を多用しない
   </a>
   
 </li>
@@ -6400,7 +6400,7 @@
         
           <li class="md-nav__item">
   <a href="#addcopy" class="md-nav__link">
-    ADDよりもCOPYを使用する
+    ADD処理よりもCOPY処理を使用する
   </a>
   
 </li>
@@ -6605,12 +6605,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="graceful-shutdown">コンテナ終了時にプロセスをGraceful Shutdownできるようにする<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
+<h3 id="graceful-shutdown">コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
 <p>コンテナの終了時、コンテナランタイムはコンテナに<code>SIGTERM</code>を送信する。</p>
 <p>その後、<code>SIGKILL</code>を送信し、プロセスを終了させる。</p>
 <p>そのため、<code>SIGTERM</code>を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
-<p>なお、ツールの特性に合わせて、DockerfileのSTOPSIGNALを使用してシグナルを上書きするとよい。</p>
-<p>例えば、Nginxの公式イメージでは、GracefulShut DownのためにSIGTERMではなくSIGQUITを送信している。</p>
+<p>多くのツールが<code>SIGTERM</code>でGraceful Shutdownを実行するように設計されているため、特に対処不要である。</p>
+<p>ただし、<code>SIGTERM</code>以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの<code>STOPSIGNAL</code>処理を使用してシグナルを上書きするとよい。</p>
+<p>例えば、Nginxは<code>SIGQUIT</code>でGracefulShut Downする仕様のため、<code>STOPSIGNAL</code>処理で<code>SIGQUIT</code>を定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span>
 
 ...
@@ -6622,6 +6623,8 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114">https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114</a></li>
+<li><a href="https://nginx.org/en/docs/control.html">https://nginx.org/en/docs/control.html</a></li>
+<li><a href="https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit">https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6959,7 +6962,7 @@ README.md
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">イメージレイヤー数を削減する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="run">▼ <code>RUN</code>を多用しない<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
+<h4 id="run">▼ <code>RUN</code>処理を多用しない<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
 <p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
 <p>例えば、以下のような時、</p>
@@ -7007,7 +7010,7 @@ README.md
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Dockerfileで、2つ目の<code>FROM</code>を宣言する。</p>
+<p>Dockerfileで、2つ目の<code>FROM</code>処理を宣言する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -7096,9 +7099,9 @@ README.md
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="addcopy"><code>ADD</code>よりも<code>COPY</code>を使用する<a class="headerlink" href="#addcopy" title="Permanent link">&para;</a></h3>
-<p><code>ADD</code>は<code>COPY</code>とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
-<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>が推奨である。</p>
+<h3 id="addcopy"><code>ADD</code>処理よりも<code>COPY</code>処理を使用する<a class="headerlink" href="#addcopy" title="Permanent link">&para;</a></h3>
+<p><code>ADD</code>処理は<code>COPY</code>処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>処理が推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy</a></li>
