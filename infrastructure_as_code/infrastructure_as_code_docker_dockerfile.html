@@ -6553,8 +6553,7 @@
 <p><br></p>
 <h3 id="copy">COPYとの違い<a class="headerlink" href="#copy" title="Permanent link">&para;</a></h3>
 <p>似た命令として<code>COPY</code>がある。</p>
-<p><code>ADD</code>は<code>COPY</code>とは異なり、インターネットからファイルをダウンロードし、解凍も行う。</p>
-<p>イメージのビルド時にコピーされるのみで、ビルド後のコードの変更は反映されない。</p>
+<p><code>ADD</code>は<code>COPY</code>とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
 <p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>が推奨である。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下では<code>ADD</code>を使用している。</p>
@@ -6808,7 +6807,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
       
     
   </small>

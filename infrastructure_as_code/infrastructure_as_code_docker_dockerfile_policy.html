@@ -3714,6 +3714,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#addcopy" class="md-nav__link">
+    ADDよりもCOPYを使用する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6296,6 +6303,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#addcopy" class="md-nav__link">
+    ADDよりもCOPYを使用する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6892,6 +6906,15 @@ README.md
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="addcopy"><code>ADD</code>よりも<code>COPY</code>を使用する<a class="headerlink" href="#addcopy" title="Permanent link">&para;</a></h3>
+<p><code>ADD</code>は<code>COPY</code>とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>が推奨である。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="06">06. ログを適切に扱う<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_19">標準出力/標準エラー出力に出力する<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>ログをファイルとして出力すると、ホスト上にログファイルが保管され、ストレージ容量が必要になる。</p>
@@ -6935,7 +6958,7 @@ README.md
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
       
     
   </small>
