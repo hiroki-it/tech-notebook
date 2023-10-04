@@ -39,6 +39,29 @@ OSが起動している間、メモリ上のアドレス空間の区画に恒常
 
 <br>
 
+### シグナル
+
+#### ▼ シグナルとは
+
+一方のプロセスが他方のプロセスを操作する時の信号である。
+
+> - https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#1-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E3%81%A8%E3%81%AF
+
+#### ▼ シグナルの種類
+
+| 代表的なシグナル | 説明                     | 実行方法                       |
+| ---------------- | ------------------------ | ------------------------------ |
+| `SIGINT`         | プロセスを一時停止する。 | キーボードで `Ctrl+C` を打つ。 |
+| `SIGQUIT`        | プロセスを一時停止する。 | ...                            |
+| `SIGKILL`        | プロセスを強制終了する。 | `kill`コマンドを実行する。     |
+| `SIGTERM`        | プロセスを通常終了する。 | ...                            |
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html
+> - https://atmarkit.itmedia.co.jp/ait/articles/1708/10/news012.html
+> - https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#2-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E5%88%A9%E7%94%A8%E4%BE%8B
+
+<br>
+
 ### 親/子プロセス
 
 #### ▼ 親/子プロセスとは

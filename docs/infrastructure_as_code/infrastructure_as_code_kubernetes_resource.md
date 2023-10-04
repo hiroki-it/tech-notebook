@@ -1047,10 +1047,6 @@ StorageClassとPersistentVolumeClaimを介して、PersistentVolumeと外部サ�
 
 Podの`.spec.volumes`キーで指定する。
 
-> - https://thinkit.co.jp/article/14195
-
-Dockerのボリュームとは独立した機能であることに注意する。
-
 ```bash
 # Podに接続する
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
@@ -1091,6 +1087,12 @@ Volumes:
     Name:      baz-cm
     Optional:  false
 ```
+
+> - https://thinkit.co.jp/article/14195
+
+#### ▼ DockerのVolumeとの違い
+
+Dockerのボリュームとは独立した機能であることに注意する。
 
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 > - https://stackoverflow.com/questions/53062547/docker-volume-vs-kubernetes-persistent-volume

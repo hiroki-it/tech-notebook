@@ -46,9 +46,9 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 <br>
 
-### `PID 1`問題に対処する
+### `PID=1`問題に対処する
 
-#### ▼ `PID 1`問題とは
+#### ▼ `PID=1`問題とは
 
 サーバーのLinuxでは、`init`プロセスが`PID=1`として稼働している。
 
@@ -327,6 +327,8 @@ OSベンダーが提供するベースイメージを使用すると、不要な
 
 **＊実装例＊**
 
+以下はCentOSをベースイメージに使っており、よくない例である。
+
 ```dockerfile
 # CentOSイメージを、コンテナにインストール
 FROM centos:8
@@ -357,6 +359,8 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 ```
 
 **＊実装例＊**
+
+以下はCentOSをベースイメージに使っており、よくない例である。
 
 ```dockerfile
 # CentOSイメージを、コンテナにインストール
@@ -477,6 +481,23 @@ COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
 CMD ["./app"]
 ```
 
+**＊実装例＊**
+
+```dockerfile
+FROM maven:3.5.0-jdk-8-alpine AS builder
+COPY ./pom.xml pom.xml
+COPY ./src src/
+RUN mvn clean package
+
+FROM openjdk:8-jre-alpine
+# ビルドの成果物はtargetディレクトリにある
+COPY --from=builder target/app.jar app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
+```
+
+> - https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds
+
 #### ▼ 実行環境別にステージを分ける場合
 
 実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。
@@ -543,6 +564,8 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 ログファイルをホスト外で管理するために、標準出力/標準エラー出力に出力する。
 
+<br>
+
 ### 構造化ログとして出力する
 
 ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。
@@ -557,8 +580,8 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 |        | bridgeネットワーク                                           | hostネットワーク                                                               |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| 安全性 | ホストコンテナ間をネットワークを分離できるため、安全性が高い |                                                                                |
-| 性能   |                                                              | ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。 |
+| 安全性 | ホストコンテナ間をネットワークを分離できるため、安全性が高い | -                                                                              |
+| 性能   | -                                                            | ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。 |
 
 > - https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/
 > - https://jtway.co/docker-network-performance-b95bce32b4b9
