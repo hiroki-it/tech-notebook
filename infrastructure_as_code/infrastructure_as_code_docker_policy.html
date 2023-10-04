@@ -6609,6 +6609,21 @@
 <p>コンテナの終了時、コンテナランタイムはコンテナに<code>SIGTERM</code>を送信する。</p>
 <p>その後、<code>SIGKILL</code>を送信し、プロセスを終了させる。</p>
 <p>そのため、<code>SIGTERM</code>を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
+<p>なお、ツールの特性に合わせて、DockerfileのSTOPSIGNALを使用してシグナルを上書きするとよい。</p>
+<p>例えば、Nginxの公式イメージでは、GracefulShut DownのためにSIGTERMではなくSIGQUITを送信している。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span>
+
+...
+
+<span class="k">STOPSIGNAL</span><span class="w"> </span><span class="s">SIGQUIT</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114">https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02">02. 脆弱性に対処する<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">実行ユーザーを非特権化する<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
