@@ -507,7 +507,7 @@ nav:
           - ■ Docker:
               - Dockerfile: infrastructure_as_code/infrastructure_as_code_docker_dockerfile.md
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_command.md
-              - 設計規約: infrastructure_as_code/infrastructure_as_code_docker_dockerfile_policy.md
+              - 設計規約: infrastructure_as_code/infrastructure_as_code_docker_policy.md
       - ■ 宣言型:
           - ■ Docker Compose:
               - コマンド: infrastructure_as_code/infrastructure_as_code_docker_compose_command.md
