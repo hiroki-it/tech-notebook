@@ -6228,27 +6228,6 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><br></p>
 <h2 id="05-copynfs">05. バインドマウント、ボリュームマウント、<code>COPY</code>、NFS<a class="headerlink" href="#05-copynfs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
 <p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code>コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
 <p>一方でボリュームマウント (<code>VOLUME</code>) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
@@ -6316,7 +6295,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
       
     
   </small>
