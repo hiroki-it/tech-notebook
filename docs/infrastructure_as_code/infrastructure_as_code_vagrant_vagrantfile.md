@@ -366,7 +366,7 @@ end
 
 > - https://www.vagrantup.com/docs/synced-folders/basic_usage#type
 
-ホストと仮想環境間のファイルの入出力の速度差によって、性能に差がある。
+ホストと仮想環境間のファイルのIOPSによって、性能に差がある。
 
 以下のリンクで、ロードテストを実施したところ、『`RSync > SMB > VirtualBox共有ディレクトリ`』の順で性能が良かった。
 

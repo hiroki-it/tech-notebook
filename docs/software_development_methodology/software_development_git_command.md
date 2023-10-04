@@ -98,7 +98,7 @@ $ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 
 最近コミットのみをクローンする。
 
-速度が求められる場合 (例：CIの実行コンテナなど) に役立つ。
+処理速度が求められる場合 (例：CIの実行コンテナなど) に役立つ。
 
 ```bash
 $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git

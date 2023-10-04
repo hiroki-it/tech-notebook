@@ -292,7 +292,7 @@ $ brew install speedtest-cli
 
 ### speedtest-cliとは
 
-SPEEDTESTのAPIを使用して、ダウンロード (下り) とアップロード (上り) の通信速度を解析する。
+SPEEDTESTのAPIを使用して、ダウンロード (下り) とアップロード (上り) のスループットを解析する。
 
 ```bash
 $ speedtest-cli
