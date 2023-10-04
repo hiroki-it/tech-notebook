@@ -513,6 +513,16 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
+### `ADD`よりも`COPY`を使用する
+
+`ADD`は`COPY`とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。
+
+解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`が推奨である。
+
+> - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy
+
+<br>
+
 ## 06. ログを適切に扱う
 
 ### 標準出力/標準エラー出力に出力する

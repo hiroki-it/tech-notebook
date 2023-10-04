@@ -503,6 +503,8 @@ apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
   name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
 spec:
   # Opentelemetryにアクセスログを送信させるPodを設定する
   selector:
@@ -518,6 +520,8 @@ apiVersion: telemetry.istio.io/v1alpha1
 kind: Telemetry
 metadata:
   name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
 spec:
   # Opentelemetryにアクセスログを送信させるPodを設定する
   selector:
