@@ -424,6 +424,7 @@ GitLabでは、同じJob間ではファイルを自動で継承できるが、�
 異なるステージでは、継承ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。
 
 ```yaml
+# ビルドステージ
 foo_job:
   stage: build
   script:
@@ -433,6 +434,7 @@ foo_job:
     paths:
       - path/tmp/
 
+# デプロイステージ
 bar_job:
   stage: deploy
   script:
@@ -454,7 +456,9 @@ bar_job:
 ```yaml
 stages:
   - build
+  - deploy
 
+# ビルドステージ
 foo_job:
   stage: build
   script:
@@ -465,22 +469,29 @@ foo_job:
 
 bar_job:
   stage: build
-  # foo_jobのartifactsを継承できる
-  needs:
-    - foo_job
   script:
-    - echo foo
+    - echo bar
   artifacts:
     paths:
       - bar
 
+# デプロイステージ
 baz_job:
-  stage: build
-  # bar_jobのartifactsは継承できるが、foo_jobのartifactsは継承できない
+  stage: deploy
+  # foo_jobのartifactsは継承できるが、bar_jobのartifactsは継承できない
   needs:
+    - foo_job
+  script:
+    - echo baz
+
+qux_job:
+  stage: deploy
+  # foo_jobとbar_jobの両方のartifactsを継承できる
+  needs:
+    - foo_job
     - bar_job
   script:
-    - echo bar
+    - echo qux
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts
