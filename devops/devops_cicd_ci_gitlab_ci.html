@@ -5292,6 +5292,26 @@
     artifacts
   </a>
   
+    <nav class="md-nav" aria-label="artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_1" class="md-nav__link">
+    ▼ artifactsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_2" class="md-nav__link">
+    ▼ artifactsを使用できない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -5359,6 +5379,19 @@
   <a href="#needs" class="md-nav__link">
     needs
   </a>
+  
+    <nav class="md-nav" aria-label="needs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#needs_1" class="md-nav__link">
+    ▼ needsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6382,6 +6415,26 @@
     artifacts
   </a>
   
+    <nav class="md-nav" aria-label="artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_1" class="md-nav__link">
+    ▼ artifactsとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_2" class="md-nav__link">
+    ▼ artifactsを使用できない場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6449,6 +6502,19 @@
   <a href="#needs" class="md-nav__link">
     needs
   </a>
+  
+    <nav class="md-nav" aria-label="needs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#needs_1" class="md-nav__link">
+    ▼ needsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6936,8 +7002,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="artifacts">artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
-<p>ジョブ間でファイルを共有する。</p>
-<p>次のジョブでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。</p>
+<h4 id="artifacts_1">▼ artifactsとは<a class="headerlink" href="#artifacts_1" title="Permanent link">&para;</a></h4>
+<p>GitLabでは、同じJob間ではファイルを自動で共有できるが、異なるJob間ではこれを共有できない。</p>
+<p>異なるステージ間でファイルを共有する。</p>
+<p>異なるステージでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -6956,7 +7024,43 @@
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html">https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html</a></li>
-<li><a href="https://ngyuki.hatenablog.com/entry/2019/03/28/085717">https://ngyuki.hatenablog.com/entry/2019/03/28/085717</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html">https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts">https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts</a></li>
+<li><a href="https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/">https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/</a></li>
+</ul>
+</blockquote>
+<h4 id="artifacts_2">▼ artifactsを使用できない場合<a class="headerlink" href="#artifacts_2" title="Permanent link">&para;</a></h4>
+<p><code>needs</code>で依存関係を定義している場合、デフォルトでは<code>artifacts</code>を使用しても前のステージとファイルを共有できない。</p>
+<p>この場合、<code>needs:artifacts</code>を<code>true</code>としないとファイルを共有できない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+
+<span class="nt">foo_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
+
+<span class="c1"># fooの後に、baz_jobと並行実行する</span>
+<span class="nt">bar_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
+<span class="w">      </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo bar</span>
+
+<span class="c1"># fooの後に、bar_jobと並行実行する</span>
+<span class="nt">baz_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
+<span class="w">      </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts">https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7064,6 +7168,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="needs">needs<a class="headerlink" href="#needs" title="Permanent link">&para;</a></h3>
+<h4 id="needs_1">▼ needsとは<a class="headerlink" href="#needs_1" title="Permanent link">&para;</a></h4>
 <p>Job間の依存関係を設定する。</p>
 <p>同じステージ内に複数のJobがある場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
@@ -7295,7 +7400,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>
