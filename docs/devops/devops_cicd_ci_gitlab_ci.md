@@ -106,7 +106,7 @@ GitLab CIのJobの設定ファイルを、中央集権的なリポジトリで�
 
 GitLab CIでは、定義したJobは自動的に実行される。
 
-一方で`.` (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しジョブ』として定義できる。
+一方で`.` (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しJob』として定義できる。
 
 また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。
 
@@ -153,13 +153,9 @@ variables:
 
 #### ▼ 子リポジトリ側のリモートコール
 
-子リポジトリでは、親リポジトリのCIテンプレートをコールする。
+子リポジトリでは、親リポジトリのCIテンプレート上の隠しJobをコールする。
 
 ```yaml
-# 親リポジトリの変数を上書きする
-variables:
-  PATH: "child/path"
-
 include:
   # GitLab CIのテンプレートを管理するリポジトリ
   - project: project/ci-template-repository-1
@@ -173,16 +169,32 @@ include:
     file:
       - qux-job.yml
 
-foo_job:
-  # 親リポジトリで定義したジョブをコールする
+foo_1_job:
+  # 親リポジトリで定義した隠しJobをコールする
   extends: .foo_job
   stage: build
   script:
     - cat "${PATH}"/foo.txt
+  # 親リポジトリの変数を上書きする
+  variables:
+    PATH: "path_1"
+
+foo_2_job:
+  # 親リポジトリで定義した隠しJobをコールする
+  extends: .foo_job
+  stage: build
+  script:
+    - cat "${PATH}"/foo.txt
+  # 親リポジトリの変数を上書きする
+  variables:
+    PATH: "path_2"
 
 bar_job:
   extends: .bar_job
   stage: build
+  needs:
+    - foo1_job
+    - foo2_job
   script:
     - cat "${PATH}"/bar.txt
 
@@ -208,43 +220,73 @@ variables:
 # github-commentを準備する
 .install_github_comment:
   stage: build
-  image: alpine:latest
+  image: alpine/git:latest
   script:
     # github-commentをインストールする
     - |
-      apk add --upgrade curl tar
-      curl -sL -O https://github.com/suzuki-shunsuke/github-comment/releases/download/v"${GITHUB_COMMENT_VERSION}"/github-comment_"${GITHUB_COMMENT_VERSION}"_darwin_amd64.tar.gz
-      tar zxvf github-comment_"${GITHUB_COMMENT_VERSION}"_darwin_amd64
-    # 各リポジトリに配布するgithub-comment.yamlファイルを作成する
+      apk add --upgrade curl tar jq
+      LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)
+      curl -sL -O "${LATEST_DOWNLOAD_URL}"
+      tar zxvf *.tar.gz
+    - ./github-comment --version
+    # CIの実行環境で各リポジトリに配布するgithub-comment.yamlファイルを作成する
     - |
       cat << 'EOF' > github-comment.yaml
       # https://suzuki-shunsuke.github.io/github-comment/getting-started
       ---
       exec:
+        # 静的解析以外の処理のためのテンプレート
+        # -kオプションで何も指定しない場合、defaultテンプレートになる
         default:
           - when: true
             template: |
-              
+
               ## `{{ .Vars.TestName }}`
-              
+
+              | 項目 | 内容 |
+              |-----|--------------------|
+              | コマンド | `{{ .JoinCommand }}` |
+              | 説明 | {{ .Vars.Description }} |
+              | 実行Job | {{ template "link" . }} |
+
+              ## 詳細
+
+              <details>
+              <summary>クリックで開く</summary>
+
+              ```bash
+              $ {{ .JoinCommand }}
+
+              {{ .CombinedOutput | AvoidHTMLEscape }}
+              ```
+
+              </details>
+
+        # 静的解析のためのテンプレート
+        test:
+          - when: true
+            template: |
+
+              ## `{{ .Vars.TestName }}`
+
               | 項目 | 内容 |
               |-----|--------------------|
               | 静的解析 | `{{ .JoinCommand }}` |
               | 説明 | {{ .Vars.Description }} |
               | 成否 | {{ template "status" . }} |
-              | 実行ジョブ | {{ template "link" . }} |
-              
+              | 実行Job | {{ template "link" . }} |
+
               ## 詳細
-              
+
               <details>
               <summary>クリックで開く</summary>
-              
+
               ```bash
               $ {{ .JoinCommand }}
-              
+
               {{ .CombinedOutput | AvoidHTMLEscape }}
               ```
-              
+
               </details>
 
       EOF
@@ -449,7 +491,7 @@ bar_job:
 
 #### ▼ artifactsを使用できない場合
 
-`needs`で依存関係を定義している場合、デフォルトでは`artifacts`を使用しても、異なるステージ間でファイルを継承できない。
+`needs`でJob間に依存関係を定義している場合、デフォルトでは`artifacts`を使用しても、異なるステージ間でファイルを継承できない。
 
 `needs`で指定したJobの`artifacts`しか使用できない。
 
@@ -680,7 +722,7 @@ Jobの発火条件を設定する。
 
 #### ▼ if
 
-条件に合致した場合のみ、ジョブを発火する。
+条件に合致した場合のみ、Jobを発火する。
 
 ブランチ名やタグを使用した発火を定義できる。
 
@@ -711,7 +753,7 @@ check_tag:
 
 #### ▼ changes
 
-プッシュ時に、指定したファイルやディレクトリで差分があれば、ジョブを発火する。
+プッシュ時に、指定したファイルやディレクトリで差分があれば、Jobを発火する。
 
 ```yaml
 gemerate_template:
@@ -854,7 +896,7 @@ foo_job:
 
 ### trigger
 
-ジョブが発火した場合に、特定のアクションを実施する。
+Jobが発火した場合に、特定のアクションを実施する。
 
 **＊例＊**
 
