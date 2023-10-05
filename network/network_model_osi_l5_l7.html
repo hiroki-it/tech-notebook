@@ -2827,8 +2827,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 送信側のメールサーバーのモック
+  <a href="#smtp" class="md-nav__link">
+    ▼ SMTPサーバーのモック
   </a>
   
 </li>
@@ -2847,7 +2847,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smtp" class="md-nav__link">
+  <a href="#smtp_1" class="md-nav__link">
     ▼ SMTPとは
   </a>
   
@@ -6089,8 +6089,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 送信側のメールサーバーのモック
+  <a href="#smtp" class="md-nav__link">
+    ▼ SMTPサーバーのモック
   </a>
   
 </li>
@@ -6109,7 +6109,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smtp" class="md-nav__link">
+  <a href="#smtp_1" class="md-nav__link">
     ▼ SMTPとは
   </a>
   
@@ -6252,31 +6252,39 @@
 <h2 id="02">02. メールデータのプロトコル<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">メールデータの送受信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><img alt="smtp_pop3_imap4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアント (メール送信できるアプリケーション) から受信したメールは、送信側のメールサーバーに送信される。</p>
+<p>送信側アプリは、メールを送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>送信側のメールサーバーは、メールを受信側のメールサーバーに転送する。</p>
+<p>SMTPサーバー (送信側メールサーバー) は、メールを受信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>受信側のアプリケーションは、各々が指定したプロトコルに応じて、受信側のメールサーバーからメールデータを取得する。</p>
+<p>SMTPサーバーは、メールをPOP/IMAPサーバー (受信側メールサーバー) に転送する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>POP/IMAPサーバーは、メールを保管する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>受信側アプリは、各々が指定したプロトコルに応じて、POP/IMAPサーバーからメールデータを定期的に取得する。</p>
 </dd>
 </dl>
-<p><img alt="smtp_pop3_imap4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/">https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ 送信側のメールサーバーのモック<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>メールデータの送信機能を開発する時に、送信テストを実施する必要があり、この内容は公開したくない。</p>
-<p>そこで、送信側メールサーバーのモック (例：mailtrap、MailCatcher、MailDev、など) を提供するサービスを利用する。</p>
-<p>この送信側メールサーバーモックは、メールアプリから受信したメールのテストデータを受信側メールサーバーに転送しない。</p>
-<p>そのため、受信側メールサーバーにテスト用メールを送信することなく、メールアプルは送信テストを実施できる。</p>
+<h4 id="smtp">▼ SMTPサーバーのモック<a class="headerlink" href="#smtp" title="Permanent link">&para;</a></h4>
+<p>アプリのメール送信機能を開発する時に、送信テストを実施する必要があり、この内容は公開したくない。</p>
+<p>そこで、SMTPサーバーのモック (例：mailtrap、MailCatcher、MailDev、など) を提供するサービスを利用する。</p>
+<p>このSMTPサーバーのモックは、アプリから受信したメールをPOP/IMAPサーバーに転送しない。</p>
+<p>そのため、POP/IMAPサーバーにテスト用メールを送信することなく、アプリは送信テストを実施できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://untitledreport.com/mailhog%E3%81%AE%E5%BE%8C%E7%B6%99fake-smtp%E3%80%81mailpit%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/">https://untitledreport.com/mailhog%E3%81%AE%E5%BE%8C%E7%B6%99fake-smtp%E3%80%81mailpit%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/</a></li>
@@ -6284,7 +6292,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="smtpsimple-mail-transfer-protocol">SMTP：Simple Mail Transfer Protocol<a class="headerlink" href="#smtpsimple-mail-transfer-protocol" title="Permanent link">&para;</a></h3>
-<h4 id="smtp">▼ SMTPとは<a class="headerlink" href="#smtp" title="Permanent link">&para;</a></h4>
+<h4 id="smtp_1">▼ SMTPとは<a class="headerlink" href="#smtp_1" title="Permanent link">&para;</a></h4>
 <p>メールデータを送信するためのプロトコルのこと。</p>
 <h4 id="smtp-authsmtp-authentication">▼ SMTP-AUTH：SMTP AUTHentication<a class="headerlink" href="#smtp-authsmtp-authentication" title="Permanent link">&para;</a></h4>
 <p>SMTPに認証を組み込んだ仕組みのこと。</p>
