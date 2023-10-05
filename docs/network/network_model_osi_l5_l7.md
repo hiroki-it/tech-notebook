@@ -51,31 +51,39 @@ $ sudo lsof -i -P | grep LISTEN
 
 #### ▼ 仕組み
 
+![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
+
 `(1)`
 
-: クライアント (メール送信できるアプリケーション) から受信したメールは、送信側のメールサーバーに送信される。
+: 送信側アプリは、メールを送信する。
 
 `(2)`
 
-: 送信側のメールサーバーは、メールを受信側のメールサーバーに転送する。
+: SMTPサーバー (送信側メールサーバー) は、メールを受信する。
 
 `(3)`
 
-: 受信側のアプリケーションは、各々が指定したプロトコルに応じて、受信側のメールサーバーからメールデータを取得する。
+: SMTPサーバーは、メールをPOP/IMAPサーバー (受信側メールサーバー) に転送する。
 
-![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
+`(4)`
+
+: POP/IMAPサーバーは、メールを保管する。
+
+`(4)`
+
+: 受信側アプリは、各々が指定したプロトコルに応じて、POP/IMAPサーバーからメールデータを定期的に取得する。
 
 > - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
-#### ▼ 送信側のメールサーバーのモック
+#### ▼ SMTPサーバーのモック
 
-メールデータの送信機能を開発する時に、送信テストを実施する必要があり、この内容は公開したくない。
+アプリのメール送信機能を開発する時に、送信テストを実施する必要があり、この内容は公開したくない。
 
-そこで、送信側メールサーバーのモック (例：mailtrap、MailCatcher、MailDev、など) を提供するサービスを利用する。
+そこで、SMTPサーバーのモック (例：mailtrap、MailCatcher、MailDev、など) を提供するサービスを利用する。
 
-この送信側メールサーバーモックは、メールアプリから受信したメールのテストデータを受信側メールサーバーに転送しない。
+このSMTPサーバーのモックは、アプリから受信したメールをPOP/IMAPサーバーに転送しない。
 
-そのため、受信側メールサーバーにテスト用メールを送信することなく、メールアプルは送信テストを実施できる。
+そのため、POP/IMAPサーバーにテスト用メールを送信することなく、アプリは送信テストを実施できる。
 
 > - https://untitledreport.com/mailhog%E3%81%AE%E5%BE%8C%E7%B6%99fake-smtp%E3%80%81mailpit%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/
 
