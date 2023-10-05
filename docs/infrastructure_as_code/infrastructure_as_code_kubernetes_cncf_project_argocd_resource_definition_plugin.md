@@ -207,7 +207,7 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 
 プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
 
-argo-reposerverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
+repo-serverは、VolumeのUnixドメインソケットを介して、`cmp-server`コンテナのプラグインの実行をコールする。
 
 ArgoCD公式ではサイドカーのベースイメージが用意されていない。
 

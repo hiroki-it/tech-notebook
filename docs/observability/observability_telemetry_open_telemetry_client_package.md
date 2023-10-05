@@ -228,7 +228,7 @@ import (
 
 func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
-	// 標準出力を宛先に設定する。
+	// スパンの宛先として、標準出力を設定する。
 	exporter := stdouttrace.New(
 		stdouttrace.WithPrettyPrint(),
 		stdouttrace.WithWriter(os.Stderr),
@@ -495,7 +495,7 @@ func initProvider() (func(context.Context) error, error) {
 	}
 
 	// スパンの宛先として、otelコレクターを設定する。
-	traceExporter, err := otlptracegrpc.New(
+	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
 	)
@@ -506,7 +506,7 @@ func initProvider() (func(context.Context) error, error) {
 
     var tracerProvider *sdktrace.TracerProvider
 
-	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(traceExporter)
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	// TraceProviderを作成する
 	tracerProvider = sdktrace.NewTracerProvider(
@@ -843,7 +843,7 @@ func initProvider() (func(context.Context) error, error) {
 	}
 
 	// スパンの宛先として、AWS Distro for otelコレクターを設定する。
-	traceExporter, err := otlptracegrpc.New(
+	exporter, err := otlptracegrpc.New(
 		ctx,
 		otlptracegrpc.WithGRPCConn(conn),
 	)
@@ -852,7 +852,7 @@ func initProvider() (func(context.Context) error, error) {
 		return nil, fmt.Errorf("failed to create trace exporter: %w", err)
 	}
 
-	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(traceExporter)
+	batchSpanProcessor := sdktrace.NewBatchSpanProcessor(exporter)
 
 	var tracerProvider *sdktrace.TracerProvider
 
@@ -1076,8 +1076,7 @@ import (
 func initProvider() (func(), error) {
 	projectID := os.Getenv("PROJECT_ID")
 
-	// Create Google Cloud Trace exporter to be able to retrieve
-	// the collected spans.
+	// CloudTraceを宛先に設定する。
 	exporter, err := cloudtrace.New(cloudtrace.WithProjectID(projectID))
 
 	if err != nil {
@@ -1197,14 +1196,16 @@ func main() {
 	defer shutdown()
 
 	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-
 		ctx := req.Context()
 		span := trace.SpanFromContext(ctx)
 		span.SetAttributes(attribute.String("server", "handling this..."))
 		_, _ = io.WriteString(w, "Hello, world!\n")
 	}
 
-	otelHandler := otelhttp.NewHandler(http.HandlerFunc(helloHandler), "Hello")
+	otelHandler := otelhttp.NewHandler(
+        http.HandlerFunc(helloHandler),
+        "Hello",
+    )
 
 	http.Handle("/hello", otelHandler)
 

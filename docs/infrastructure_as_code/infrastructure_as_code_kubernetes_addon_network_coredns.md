@@ -172,7 +172,9 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
 対応する完全修飾ドメイン名は、『`<Service名>.<Namespace名>.svc.cluster.local`』である。
 
-通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。
+通常のServiceの名前解決ではCluster-IPが返却される。
+
+一方でHeadless Serviceの名前解決では、PodのIPアドレスが返却される。
 
 『`svc.cluster.local`』は省略でき、『`<Service名>.<Namespace名>`』のみを指定しても名前解決できる。
 
@@ -326,6 +328,18 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 対応する完全修飾ドメイン名は、『`<PodのIPアドレス>.<Namespace名>.pod.cluster.local`』である。
 
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+
+<br>
+
+### PodのIPアドレスを固定する
+
+Kubernetesでは、PodのIPアドレスを固定できない。
+
+そのため、IPアドレスを固定したアプリは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させた方が良い。
+
+ただし、一部のCNIプラグインを使用すれば、IPアドレスを固定することはできる。
+
+> - https://stackoverflow.com/a/68255939
 
 <br>
 
