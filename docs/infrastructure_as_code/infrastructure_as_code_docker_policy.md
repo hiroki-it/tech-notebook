@@ -114,6 +114,7 @@ FROM alpine
 
 ...
 
+# SIGQUITを実行する
 STOPSIGNAL SIGQUIT
 
 CMD ["nginx", "-g", "daemon off;"]
@@ -147,18 +148,39 @@ USER foouser
 ENTRYPOINT ["/app"]
 ```
 
+> - https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker
 > - https://blog.aquasec.com/docker-security-best-practices
 > - https://www.forcia.com/blog/002273.html
 
 <br>
 
-### `sudo`を実行しない。
+### ユーザーにroot権限を付与しない
 
-不必要に権限を昇格させないためにsudoを使わない。
+#### ▼ root権限を付与しない理由
 
-sudoを使いたければ、gosuを使う。
+悪意のあるユーザーがコンテナに接続した場合に、root権限を与えてしまうと、悪意のある操作を実行されてしまう。
 
-> - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#use-multi-stage-builds
+そこで、接続するユーザーにroot権限を付与しないようにする。
+
+#### ▼ `sudo`コマンドを実行させない
+
+root権限を付与させないために、コンテナ内で`sudo`コマンドを実行できないようにするべきである。
+
+ただし、多くのコンテナイメージで`sudo`コマンドを実行するためのパッケージは基本インストールされていないため、`sudo`コマンドを実行しようとするとエラーになる。
+
+> - https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker
+
+どうしても`sudo`コマンドを実行したい場合は、gosuパッケージを使う。
+
+> - https://docs.docker.com/develop/develop-images/instructions/#user
+
+`sudo`パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。
+
+> - https://stackoverflow.com/a/25908200
+
+dockerコマンドの`-u`オプションを使用し、実行ユーザーにroot権限で付与する方法もある。
+
+> - https://stackoverflow.com/a/49529946
 
 <br>
 
@@ -405,16 +427,15 @@ EXPOSE 80
 
 ### イメージレイヤー数を削減する
 
-#### ▼ `RUN`処理を多用しない
+#### ▼ イメージレイヤーの増え方
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。
 
 Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『`&&`』で1つにまとめてしまう方が良い。
 
-例えば、以下のような時、
+例えば、以下のような時、`RUN`処理ごとにレイヤーが増える。
 
 ```dockerfile
-# ベースイメージ上に、複数のソフトウェアをインストール
 RUN yum -y isntall httpd
 RUN yum -y install php
 RUN yum -y install php-mbstring
@@ -422,20 +443,20 @@ RUN yum -y install php-pear
 RUN rm -Rf /var/cache/yum
 ```
 
-これは、以下の様に１行でまとめられる。
+#### ▼ `&&`を使う
+
+`&&`を使い、イメージのレイヤー数を減らせる。
 
 イメージレイヤーが少なくなり、コンテナイメージを軽量化できる。
 
 ```dockerfile
-# ベースイメージ上に、複数のソフトウェアをインストール
 RUN yum -y install httpd php php-mbstring php-pear \
   && rm -Rf /var/cache/dnf
 ```
 
-加えて、これは以下の様にも書ける。
+あるいは、これは以下の様にも書ける。
 
 ```dockerfile
-# ベースイメージ上に、複数のソフトウェアをインストール
 RUN yum -y install \
      httpd \
      php \
@@ -446,6 +467,18 @@ RUN yum -y install \
 
 > - https://www.itbook.info/network/docker02.html
 > - https://yuhabeem.com/2021/03/27/311/
+
+#### ▼ ヒアドキュメントを使う
+
+```dockerfile
+RUN << EOF
+  yum -y install httpd php php-mbstring php-pear
+  rm -Rf /var/cache/dnf
+EOF
+```
+
+> - https://www.docker.com/blog/introduction-to-heredocs-in-dockerfiles/
+> - https://kakakakakku.hatenablog.com/entry/2021/08/10/085625
 
 <br>
 

@@ -410,7 +410,7 @@ serviceユニットのオプションを設定する。
 
 ```ini
 [Service]
-# デーモンの実行ユーザーを。もし設定しない場合、rootユーザーで実行する。
+# デーモンの実行ユーザーを。もし設定しない場合、root権限の実行ユーザーを使用する。
 # https://www.golinuxcloud.com/run-systemd-service-specific-user-group-linux/
 User=foo
 Type=notify

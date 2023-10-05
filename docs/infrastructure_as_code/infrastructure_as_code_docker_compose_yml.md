@@ -195,7 +195,7 @@ services:
     env_file:
       - .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # rootユーザーのパス
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # root権限の実行ユーザーのパス
       MYSQL_DATABASE: ${DB_DATABASE} # DB名
       MYSQL_USER: ${DB_USER} # 一般ユーザー名
       MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザーのパス
@@ -204,7 +204,7 @@ services:
 ```bash
 # .envファイル
 
-MYSQL_ROOT_PASSWORD=foo # rootユーザーのパス
+MYSQL_ROOT_PASSWORD=foo # root権限の実行ユーザーのパス
 MYSQL_DATABASE=bar # DB名
 MYSQL_USER=baz # 一般ユーザー名
 MYSQL_PASSWORD=qux # 一般ユーザーのパス

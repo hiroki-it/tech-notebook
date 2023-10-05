@@ -540,7 +540,7 @@ spec:
       # IngressGateway
       istio-ingressgateway:
         env: {}
-        # IstioOperatorをrootユーザーで実行する。
+        # IstioOperatorをroot権限の実行ユーザーを使用する
         runAsRoot: true
         autoscaleEnabled: true
         type: LoadBalancer

@@ -329,7 +329,7 @@ mutations:
 
 脆弱性検出の項目から除外するKubernetesリソースを設定する。
 
-一部のKubernetesリソース (例：kube-system) を`root`ユーザーで実行しなければならないため、除外設定が必要である。
+一部のKubernetesリソース (例：kube-system) は、root権限を持つ実行ユーザーで実行しなければならないため、除外設定が必要である。
 
 ```yaml
 exemptions:
