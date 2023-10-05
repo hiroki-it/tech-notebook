@@ -4581,6 +4581,26 @@ data:
 
 ## Service
 
+### .spec.externalIPs
+
+ServiceのIPアドレスを固定する。
+
+Serviceに紐づくPodを外部に直接公開したい場合に役立つ。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-app-service
+spec:
+  externalIPs:
+    - *.*.*.*
+```
+
+> - https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/kubernetes/#external-ips-service
+
+<br>
+
 ### .spec.ports
 
 #### ▼ portsとは
