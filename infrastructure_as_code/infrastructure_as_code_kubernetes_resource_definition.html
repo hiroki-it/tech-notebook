@@ -6543,6 +6543,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specexternalips" class="md-nav__link">
+    .spec.externalIPs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specports_1" class="md-nav__link">
     .spec.ports
   </a>
@@ -11775,6 +11782,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specexternalips" class="md-nav__link">
+    .spec.externalIPs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specports_1" class="md-nav__link">
     .spec.ports
   </a>
@@ -16093,6 +16107,23 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <p><br></p>
 <h2 id="service_1">Service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h2>
+<h3 id="specexternalips">.spec.externalIPs<a class="headerlink" href="#specexternalips" title="Permanent link">&para;</a></h3>
+<p>ServiceのIPアドレスを固定する。</p>
+<p>Serviceに紐づくPodを外部に直接公開したい場合に役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">externalIPs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/kubernetes/#external-ips-service">https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/kubernetes/#external-ips-service</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="specports_1">.spec.ports<a class="headerlink" href="#specports_1" title="Permanent link">&para;</a></h3>
 <h4 id="ports_2">▼ portsとは<a class="headerlink" href="#ports_2" title="Permanent link">&para;</a></h4>
 <p>受信するインバウンド通信を設定する。</p>
