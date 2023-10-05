@@ -5346,6 +5346,19 @@
     dependencies
   </a>
   
+    <nav class="md-nav" aria-label="dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies_1" class="md-nav__link">
+    ▼ dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6469,6 +6482,19 @@
     dependencies
   </a>
   
+    <nav class="md-nav" aria-label="dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies_1" class="md-nav__link">
+    ▼ dependencies
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -7003,14 +7029,14 @@
 <p><br></p>
 <h3 id="artifacts">artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
 <h4 id="artifacts_1">▼ artifactsとは<a class="headerlink" href="#artifacts_1" title="Permanent link">&para;</a></h4>
-<p>GitLabでは、同じJob間ではファイルを自動で共有できるが、異なるJob間ではこれを共有できない。</p>
-<p>異なるステージ間でファイルを共有する。</p>
-<p>異なるステージでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。</p>
+<p>GitLabでは、同じJob間ではファイルを自動で継承できるが、異なるJob間ではこれを継承できない。</p>
+<p>異なるステージ間でファイルを継承する。</p>
+<p>異なるステージでは、継承ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
-<span class="w">  </span><span class="c1"># 共有したいファイル</span>
+<span class="w">  </span><span class="c1"># 継承したいファイル</span>
 <span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path/tmp/</span>
@@ -7030,8 +7056,8 @@
 </ul>
 </blockquote>
 <h4 id="artifacts_2">▼ artifactsを使用できない場合<a class="headerlink" href="#artifacts_2" title="Permanent link">&para;</a></h4>
-<p><code>needs</code>で依存関係を定義している場合、デフォルトでは<code>artifacts</code>を使用しても前のステージとファイルを共有できない。</p>
-<p>この場合、<code>needs:artifacts</code>を<code>true</code>としないとファイルを共有できない。</p>
+<p><code>needs</code>で依存関係を定義している場合、デフォルトでは<code>artifacts</code>を使用しても、異なるステージ間でファイルを継承できない。</p>
+<p><code>needs</code>で指定したJobの<code>artifacts</code>しか使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 
@@ -7039,24 +7065,28 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 
-<span class="c1"># fooの後に、baz_jobと並行実行する</span>
 <span class="nt">bar_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="c1"># foo_jobのartifactsを継承できる</span>
 <span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
-<span class="w">      </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo bar</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
 
-<span class="c1"># fooの後に、bar_jobと並行実行する</span>
 <span class="nt">baz_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="c1"># bar_jobのartifactsは継承できるが、foo_jobのartifactsは継承できない</span>
 <span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
-<span class="w">      </span><span class="nt">artifacts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar_job</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo bar</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -7109,7 +7139,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="dependencies">dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
-<p>先に実行するJobを設定する。</p>
+<h4 id="dependencies_1">▼ dependencies<a class="headerlink" href="#dependencies_1" title="Permanent link">&para;</a></h4>
+<p>通常、<code>dependencies</code>を指定しなければ、<code>artifacts</code>が設定された全てのJobとファイルを継承する。</p>
+<p><code>dependencies</code>を設定すれば、<code>artifacts</code>が設定された特定のJobを指定し、そのJobのみをファイルを継承する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -7118,17 +7150,30 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 
 <span class="nt">bar_job</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo bar</span>
+<span class="w">  </span><span class="nt">artifacts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+
+<span class="nt">baz_job</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
+<span class="w">  </span><span class="c1"># foo_jobのアーティファクトのみを継承する</span>
 <span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies">https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies</a></li>
+<li><a href="https://stackoverflow.com/a/45422614">https://stackoverflow.com/a/45422614</a></li>
 </ul>
 </blockquote>
 <p><br></p>
