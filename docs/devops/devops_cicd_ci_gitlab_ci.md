@@ -415,9 +415,13 @@ foo_job:
 
 ### artifacts
 
-ジョブ間でファイルを共有する。
+#### ▼ artifactsとは
 
-次のジョブでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。
+GitLabでは、同じJob間ではファイルを自動で共有できるが、異なるJob間ではこれを共有できない。
+
+異なるステージ間でファイルを共有する。
+
+異なるステージでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。
 
 ```yaml
 foo_job:
@@ -437,7 +441,45 @@ bar_job:
 ```
 
 > - https://docs.gitlab.com/ee/ci/jobs/job_artifacts.html
-> - https://ngyuki.hatenablog.com/entry/2019/03/28/085717
+> - https://docs.gitlab.com/ee/ci/jobs/job_artifacts_troubleshooting.html
+> - https://docs.gitlab.com/ee/ci/caching/#how-cache-is-different-from-artifacts
+> - https://www.codeblocq.com/2019/03/Pass-artifacts-around-in-between-stages-in-gitlab-CI/
+
+#### ▼ artifactsを使用できない場合
+
+`needs`で依存関係を定義している場合、デフォルトでは`artifacts`を使用しても前のステージとファイルを共有できない。
+
+この場合、`needs:artifacts`を`true`としないとファイルを共有できない。
+
+```yaml
+stages:
+  - build
+
+foo_job:
+  stage: build
+  script:
+    - echo foo
+
+# fooの後に、baz_jobと並行実行する
+bar_job:
+  stage: build
+  needs:
+    - job: foo_job
+      artifacts: true
+  script:
+    - echo bar
+
+# fooの後に、bar_jobと並行実行する
+baz_job:
+  stage: build
+  needs:
+    - job: foo_job
+      artifacts: true
+  script:
+    - echo baz
+```
+
+> - https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts
 
 <br>
 
@@ -561,6 +603,8 @@ foo_job:
 <br>
 
 ### needs
+
+#### ▼ needsとは
 
 Job間の依存関係を設定する。
 

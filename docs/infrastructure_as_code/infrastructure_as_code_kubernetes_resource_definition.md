@@ -4585,13 +4585,13 @@ data:
 
 ServiceのIPアドレスを固定する。
 
-Serviceに紐づくPodを外部に直接公開したい場合に役立つ。
+Serviceに紐づくPodを外部に直接公開したい場合 (例：POP/IMAPコンテナ) に役立つ。
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-imap-service
 spec:
   externalIPs:
     - *.*.*.*
