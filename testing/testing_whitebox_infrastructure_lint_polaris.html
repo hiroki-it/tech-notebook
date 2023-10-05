@@ -6771,7 +6771,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="exemptions">exemptions<a class="headerlink" href="#exemptions" title="Permanent link">&para;</a></h3>
 <p>脆弱性検出の項目から除外するKubernetesリソースを設定する。</p>
-<p>一部のKubernetesリソース (例：kube-system) を<code>root</code>ユーザーで実行しなければならないため、除外設定が必要である。</p>
+<p>一部のKubernetesリソース (例：kube-system) は、root権限を持つ実行ユーザーで実行しなければならないため、除外設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exemptions</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Namespace名</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
@@ -6886,7 +6886,7 @@ Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>
