@@ -417,18 +417,18 @@ foo_job:
 
 #### ▼ artifactsとは
 
-GitLabでは、同じJob間ではファイルを自動で共有できるが、異なるJob間ではこれを共有できない。
+GitLabでは、同じJob間ではファイルを自動で継承できるが、異なるJob間ではこれを継承できない。
 
-異なるステージ間でファイルを共有する。
+異なるステージ間でファイルを継承する。
 
-異なるステージでは、共有ファイルを指定せずとも、自動的に同じディレクトリに共有ファイルが配置される。
+異なるステージでは、継承ファイルを指定せずとも、自動的に同じディレクトリに継承ファイルが配置される。
 
 ```yaml
 foo_job:
   stage: build
   script:
     - echo foo
-  # 共有したいファイル
+  # 継承したいファイル
   artifacts:
     paths:
       - path/tmp/
@@ -447,9 +447,9 @@ bar_job:
 
 #### ▼ artifactsを使用できない場合
 
-`needs`で依存関係を定義している場合、デフォルトでは`artifacts`を使用しても前のステージとファイルを共有できない。
+`needs`で依存関係を定義している場合、デフォルトでは`artifacts`を使用しても、異なるステージ間でファイルを継承できない。
 
-この場合、`needs:artifacts`を`true`としないとファイルを共有できない。
+`needs`で指定したJobの`artifacts`しか使用できない。
 
 ```yaml
 stages:
@@ -459,24 +459,28 @@ foo_job:
   stage: build
   script:
     - echo foo
+  artifacts:
+    paths:
+      - foo
 
-# fooの後に、baz_jobと並行実行する
 bar_job:
   stage: build
+  # foo_jobのartifactsを継承できる
   needs:
-    - job: foo_job
-      artifacts: true
+    - foo_job
   script:
-    - echo bar
+    - echo foo
+  artifacts:
+    paths:
+      - bar
 
-# fooの後に、bar_jobと並行実行する
 baz_job:
   stage: build
+  # bar_jobのartifactsは継承できるが、foo_jobのartifactsは継承できない
   needs:
-    - job: foo_job
-      artifacts: true
+    - bar_job
   script:
-    - echo baz
+    - echo bar
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#needsartifacts
@@ -537,7 +541,11 @@ bar_job:
 
 ### dependencies
 
-先に実行するJobを設定する。
+#### ▼ dependencies
+
+通常、`dependencies`を指定しなければ、`artifacts`が設定された全てのJobとファイルを継承する。
+
+`dependencies`を設定すれば、`artifacts`が設定された特定のJobを指定し、そのJobのみをファイルを継承する。
 
 ```yaml
 stages:
@@ -548,16 +556,29 @@ foo_job:
   stage: build
   script:
     - echo foo
+  artifacts:
+    paths:
+      - foo
 
 bar_job:
-  stage: deploy
+  stage: build
   script:
     - echo bar
+  artifacts:
+    paths:
+      - bar
+
+baz_job:
+  stage: deploy
+  script:
+    - echo baz
+  # foo_jobのアーティファクトのみを継承する
   dependencies:
     - foo_job
 ```
 
 > - https://docs.gitlab.com/ee/ci/yaml/index.html#dependencies
+> - https://stackoverflow.com/a/45422614
 
 <br>
 
