@@ -6726,7 +6726,7 @@
 <p>悪意のあるユーザーがコンテナに接続した場合に、root権限を与えてしまうと、悪意のある操作を実行されてしまう。</p>
 <p>そこで、接続するユーザーにroot権限を付与しないようにする。</p>
 <h4 id="sudo">▼ <code>sudo</code>コマンドを実行させない<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h4>
-<p>root権限を付与させないために、コンテナ内で<code>sudo</code>コマンドを実行できないようにするべきである。</p>
+<p>root権限を付与しないために、コンテナ内で<code>sudo</code>コマンドを実行できないようにするべきである。</p>
 <p>ただし、多くのコンテナイメージで<code>sudo</code>コマンドを実行するためのパッケージは基本インストールされていないため、<code>sudo</code>コマンドを実行しようとするとエラーになる。</p>
 <blockquote>
 <ul>
@@ -6739,13 +6739,13 @@
 <li><a href="https://docs.docker.com/develop/develop-images/instructions/#user">https://docs.docker.com/develop/develop-images/instructions/#user</a></li>
 </ul>
 </blockquote>
-<p><code>sudo</code>パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
+<p>gosuパッケージの代わりに、<code>sudo</code>パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/25908200">https://stackoverflow.com/a/25908200</a></li>
 </ul>
 </blockquote>
-<p>dockerコマンドの<code>-u</code>オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
+<p>gosuパッケージの代わりに、<code>docker</code>コマンドの<code>-u</code>オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/49529946">https://stackoverflow.com/a/49529946</a></li>

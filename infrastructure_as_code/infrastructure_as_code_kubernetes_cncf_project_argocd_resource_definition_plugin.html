@@ -6914,7 +6914,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 </code></pre></div>
 <h4 id="_6">▼ サイドカーを配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プラグインを実行するサイドカー (<code>cmp-server</code>コンテナ) を配置する。</p>
-<p>argo-reposerverは、VolumeのUnixドメインソケットを介して、<code>cmp-server</code>コンテナのプラグインの実行をコールする。</p>
+<p>repo-serverは、VolumeのUnixドメインソケットを介して、<code>cmp-server</code>コンテナのプラグインの実行をコールする。</p>
 <p>ArgoCD公式ではサイドカーのベースイメージが用意されていない。</p>
 <p>サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntu、など) とするかを選ぶことができ、いくつかのツール (
 例：Helm、Kustomize、Ks、Jsonnet、など) が組み込まれていないため、インストールする必要がある。</p>
@@ -8055,7 +8055,7 @@ Flags:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>

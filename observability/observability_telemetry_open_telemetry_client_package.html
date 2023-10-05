@@ -7044,7 +7044,7 @@
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">initTracer</span><span class="p">(</span><span class="nx">shutdownTimeout</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// 標準出力を宛先に設定する。</span>
+<span class="w">    </span><span class="c1">// スパンの宛先として、標準出力を設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithPrettyPrint</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">stdouttrace</span><span class="p">.</span><span class="nx">WithWriter</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stderr</span><span class="p">),</span>
@@ -7302,7 +7302,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// スパンの宛先として、otelコレクターを設定する。</span>
-<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -7313,7 +7313,7 @@
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
-<span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">traceExporter</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// TraceProviderを作成する</span>
 <span class="w">    </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewTracerProvider</span><span class="p">(</span>
@@ -7643,7 +7643,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// スパンの宛先として、AWS Distro for otelコレクターを設定する。</span>
-<span class="w">    </span><span class="nx">traceExporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">otlptracegrpc</span><span class="p">.</span><span class="nx">WithGRPCConn</span><span class="p">(</span><span class="nx">conn</span><span class="p">),</span>
 <span class="w">    </span><span class="p">)</span>
@@ -7652,7 +7652,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;failed to create trace exporter: %w&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">traceExporter</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">batchSpanProcessor</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">NewBatchSpanProcessor</span><span class="p">(</span><span class="nx">exporter</span><span class="p">)</span>
 
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="w"> </span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span>
 
@@ -7870,8 +7870,7 @@
 <span class="kd">func</span><span class="w"> </span><span class="nx">initProvider</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">projectID</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">Getenv</span><span class="p">(</span><span class="s">&quot;PROJECT_ID&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// Create Google Cloud Trace exporter to be able to retrieve</span>
-<span class="w">    </span><span class="c1">// the collected spans.</span>
+<span class="w">    </span><span class="c1">// CloudTraceを宛先に設定する。</span>
 <span class="w">    </span><span class="nx">exporter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">cloudtrace</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">cloudtrace</span><span class="p">.</span><span class="nx">WithProjectID</span><span class="p">(</span><span class="nx">projectID</span><span class="p">))</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
@@ -7989,14 +7988,16 @@
 <span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">shutdown</span><span class="p">()</span>
 
 <span class="w">    </span><span class="nx">helloHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">        </span><span class="nx">ctx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">Context</span><span class="p">()</span>
 <span class="w">        </span><span class="nx">span</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">SpanFromContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 <span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">SetAttributes</span><span class="p">(</span><span class="nx">attribute</span><span class="p">.</span><span class="nx">String</span><span class="p">(</span><span class="s">&quot;server&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;handling this...&quot;</span><span class="p">))</span>
 <span class="w">        </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, world!\n&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">otelHandler</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">otelhttp</span><span class="p">.</span><span class="nx">NewHandler</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandlerFunc</span><span class="p">(</span><span class="nx">helloHandler</span><span class="p">),</span>
+<span class="w">        </span><span class="s">&quot;Hello&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handle</span><span class="p">(</span><span class="s">&quot;/hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">otelHandler</span><span class="p">)</span>
 
@@ -8319,7 +8320,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>

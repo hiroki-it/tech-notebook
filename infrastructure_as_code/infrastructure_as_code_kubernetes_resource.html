@@ -8620,6 +8620,7 @@ Pod
 </blockquote>
 <h4 id="headless-service">▼ Headless Service<a class="headerlink" href="#headless-service" title="Permanent link">&para;</a></h4>
 <p>Serviceに対するインバウンド通信を、そのままPodにルーティングする。</p>
+<p>StatefulSet配下のPodにルーティングする場合に特に役立つ。</p>
 <p>Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dig<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名&gt;
 
@@ -9357,7 +9358,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>

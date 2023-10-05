@@ -4231,6 +4231,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#podip" class="md-nav__link">
+    PodのIPアドレスを固定する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6125,6 +6132,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#podip" class="md-nav__link">
+    PodのIPアドレスを固定する
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6292,7 +6306,8 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <p>DNSレコードタイプごとに、完全修飾ドメイン名が異なる。</p>
 <h4 id="aaaaa">▼ <code>A/AAAA</code>レコードの場合<a class="headerlink" href="#aaaaa" title="Permanent link">&para;</a></h4>
 <p>対応する完全修飾ドメイン名は、『<code>&lt;Service名&gt;.&lt;Namespace名&gt;.svc.cluster.local</code>』である。</p>
-<p>通常のServiceの名前解決ではCluster-IPが返却される。一方でHeadless Serviceの名前解決ではPodのIPアドレスが返却される。</p>
+<p>通常のServiceの名前解決ではCluster-IPが返却される。</p>
+<p>一方でHeadless Serviceの名前解決では、PodのIPアドレスが返却される。</p>
 <p>『<code>svc.cluster.local</code>』は省略でき、『<code>&lt;Service名&gt;.&lt;Namespace名&gt;</code>』のみを指定しても名前解決できる。</p>
 <p>また、同じNamespace内でパケットを送受信する場合は、さらに『<code>&lt;Namespace名&gt;</code>』も省略でき、『<code>&lt;Service名&gt;</code>』のみで名前解決できる。</p>
 <blockquote>
@@ -6430,6 +6445,16 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="podip">PodのIPアドレスを固定する<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
+<p>Kubernetesでは、PodのIPアドレスを固定できない。</p>
+<p>そのため、IPアドレスを固定したアプリは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させた方が良い。</p>
+<p>ただし、一部のCNIプラグインを使用すれば、IPアドレスを固定することはできる。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/68255939">https://stackoverflow.com/a/68255939</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="04">04. サービスディスカバリー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <p>CoreDNSの名前解決と、Serviceとkube-proxyによるIPアドレスとポート番号の動的な検出を組み合わせることにより、サービスディスカバリーを実装できる。</p>
 <blockquote>
@@ -6445,7 +6470,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>
