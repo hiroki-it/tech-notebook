@@ -105,7 +105,8 @@ func initProvider() {
 
     // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
     otel.SetTextMapPropagator(
-		propagation.NewCompositeTextMapPropagator(
+        // トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある
+	    propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
 			propagation.Baggage{},
 		),
@@ -120,7 +121,8 @@ func initProvider() {
 
     // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
     otel.SetTextMapPropagator(
-		propagation.NewCompositeTextMapPropagator(
+	    // トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある
+	    propagation.NewCompositeTextMapPropagator(
 			propagation.TraceContext{},
 			propagation.Baggage{},
 		),
@@ -252,7 +254,10 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	otel.SetTracerProvider(tracerProvider)
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+	otel.SetTextMapPropagator(
+		// Otel形式のトレースIDを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
 
 	// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
 	cleanUp := func() {
@@ -519,7 +524,10 @@ func initProvider() (func(context.Context) error, error) {
 	otel.SetTracerProvider(tracerProvider)
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
-	otel.SetTextMapPropagator(propagation.TraceContext{})
+	otel.SetTextMapPropagator(
+		// Otel形式のトレースIDを伝播するためPropagatorを設定する
+        propagation.TraceContext{},
+    )
 
 	return tracerProvider.Shutdown, nil
 }
@@ -861,14 +869,17 @@ func initProvider() (func(context.Context) error, error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resr),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
-		// 作成したスパンをX-rayで使用できる形式に変換する
+		// X-ray形式のトレースIDを新しく作成する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
 	otel.SetTracerProvider(tracerProvider)
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
-	otel.SetTextMapPropagator(xray.Propagator{})
+	otel.SetTextMapPropagator(
+		// X-ray形式のトレースIDを伝播するためPropagatorを設定する
+        xray.Propagator{},
+    )
 
 	return tracerProvider.Shutdown, nil
 }
@@ -1104,6 +1115,7 @@ func installPropagators() {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
+		// CloudTrace形式のトレースIDを伝播するためPropagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
 			gcppropagator.CloudTraceOneWayPropagator{},
 			propagation.TraceContext{},
@@ -1262,9 +1274,10 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
+		// Otel形式のトレースIDを伝播するためPropagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
-			propagation.TraceContext{},
-			propagation.Baggage{},
+			    propagation.TraceContext{},
+			    propagation.Baggage{},
 			),
 		)
 
