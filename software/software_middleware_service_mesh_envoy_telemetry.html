@@ -1880,41 +1880,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#id" class="md-nav__link">
-    分散トレースID
+  <a href="#carrier" class="md-nav__link">
+    Carrier
   </a>
   
-    <nav class="md-nav" aria-label="分散トレースID">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    ▼ 標準ヘッダー
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#zipkin" class="md-nav__link">
-    ▼ zipkin系ヘッダー
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-x-ray" class="md-nav__link">
-    ▼ AWS X-Ray系ヘッダー
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
     監視バックエンドへの送信
   </a>
   
@@ -6117,41 +6090,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#id" class="md-nav__link">
-    分散トレースID
+  <a href="#carrier" class="md-nav__link">
+    Carrier
   </a>
   
-    <nav class="md-nav" aria-label="分散トレースID">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    ▼ 標準ヘッダー
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#zipkin" class="md-nav__link">
-    ▼ zipkin系ヘッダー
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-x-ray" class="md-nav__link">
-    ▼ AWS X-Ray系ヘッダー
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
     監視バックエンドへの送信
   </a>
   
@@ -6391,89 +6337,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="id">分散トレースID<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 標準ヘッダー<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>ヘッダー名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>X-REQUEST-ID</code></td>
-<td>トレースIDが割り当てられている。</td>
-</tr>
-<tr>
-<td><code>GRPC-TRACE-BIN</code></td>
-<td>RPCによるリクエストにて、トレースIDが割り当てられている。</td>
-</tr>
-</tbody>
-</table>
+<h3 id="carrier">Carrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
+<p>Envoyは、トレースIDのCarrier</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/opencensus.proto#enum-config-trace-v3-opencensusconfig-tracecontext</a></li>
-</ul>
-</blockquote>
-<h4 id="zipkin">▼ zipkin系ヘッダー<a class="headerlink" href="#zipkin" title="Permanent link">&para;</a></h4>
-<p>Envoyは、Zipkinが使用するヘッダーを追加する。</p>
-<table>
-<thead>
-<tr>
-<th>ヘッダー名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>X-B3-SAMPLED</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>X-B3-SPANID</code></td>
-<td>スパンIDが割り当てられている。</td>
-</tr>
-<tr>
-<td><code>X-B3-TRACEID</code></td>
-<td>トレースIDが割り当てられている。</td>
-</tr>
-<tr>
-<td><code>X-B3-PARENTSPANId</code></td>
-<td>親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers</a></li>
-</ul>
-</blockquote>
-<h4 id="aws-x-ray">▼ AWS X-Ray系ヘッダー<a class="headerlink" href="#aws-x-ray" title="Permanent link">&para;</a></h4>
-<p>Envoyは、AWS X-Rayが使用するヘッダーを追加する。</p>
-<table>
-<thead>
-<tr>
-<th>ヘッダー名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>X-AMZN-TRACE-ID</code></td>
-<td>トレースIDが割り当てられている。トレースIDはALBで作られる。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers</a></li>
-<li><a href="https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html">https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">監視バックエンドへの送信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_13">監視バックエンドへの送信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="x-ray">▼ X-rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>
 <p>スパンをX-rayデーモンに送信して、X-rayで分散トレースを監視できる。</p>
 <p>一部のサービスメッシュツール (例：AppMesh) では、Envoyのこの機能を使用して、X-rayにスパンを送信する。</p>
@@ -6492,7 +6364,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>
