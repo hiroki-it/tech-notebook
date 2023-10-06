@@ -6647,7 +6647,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
 <p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。</p>
 <p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングできない。</p>
-<p><img alt="kubernetes_cni-addon_aws-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png" /></p>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
@@ -6671,12 +6671,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>L-IPAMデーモンは、ENIプールからこれを取得し、Nodeに割り当てる。</p>
 <p>反対に、NodeからENIを解放し、ENIのプールに戻す。</p>
 </dd>
+</dl>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" /></p>
+<dl>
 <dt><code>(4)</code></dt>
 <dd>
 <p>L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。</p>
 <p>反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。</p>
 </dd>
 </dl>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2">https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2</a></li>
