@@ -170,9 +170,24 @@ Envoyは、スパンを作成できるように、自分を通過した通信に
 
 ### Carrier
 
-Envoyは、トレースIDのCarrier
+#### ▼ Carrierの種類
+
+Envoyでは、様々なCarrierを使用できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+
+#### ▼ IDの割り当て
+
+EnvoyはIDを自動作成し、Carrierの一つである`X-REQUEST-ID`ヘッダーに割り当てる。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+
+#### ▼ IDの結合
+
+Envoyは、`X-REQUEST-ID`ヘッダーの自動作成IDと`X-CLIENT-TRACE-ID`の外部作成IDを結合する
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-client-trace-id
 
 <br>
 

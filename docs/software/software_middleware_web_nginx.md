@@ -102,10 +102,10 @@ http {
 
         listen 80;
 
-        # Request-IDからリクエストIDを取得する
+        # REQUEST-IDからリクエストIDを取得する
         set $tmp $request_id;
 
-        # X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
+        # X-REQUEST-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
         if ($http_x_request_id) {
             set $tmp $http_x_request_id;
         }
@@ -114,7 +114,7 @@ http {
 
         location / {
             proxy_pass http://127.0.0.2:8080/server;
-            # X-Request-IDヘッダーにトレースIDを設定し、リクエスト送信する
+            # X-REQUEST-IDヘッダーにトレースIDを設定し、リクエスト送信する
             proxy_set_header X-Request-ID $tmp;
         }
     }
@@ -133,10 +133,10 @@ http {
 
         listen 80;
 
-        # Request-IDからリクエストIDを取得する
+        # REQUEST-IDからリクエストIDを取得する
         set $tmp $request_id;
 
-        # X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
+        # X-REQUEST-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする
         if ($http_x_request_id) {
             set $tmp $http_x_request_id;
         }
