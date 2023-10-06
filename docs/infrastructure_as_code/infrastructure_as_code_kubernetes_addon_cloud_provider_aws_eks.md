@@ -203,7 +203,7 @@ AWS EKS Cluster内にネットワークを作成する。
 
 <br>
 
-### L-IPAMデーモン
+### L-IPAMデーモン：Local IP Address Manager Daemon
 
 #### ▼ L-IPAMデーモンとは
 
@@ -307,7 +307,17 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 : kubeletは、L-IPAMデーモンに`ADD`または`DEL`の命令を送信する。
 
-       L-IPAMデーモンはPodにIPアドレスを割り当て、またはPodからIPアドレスを回収する。
+`(3)`
+
+: L-IPAMデーモンは、ENIプールからこれを取得し、Nodeに割り当てる。
+
+     反対に、NodeからENIを解放し、ENIのプールに戻す。
+
+`(4)`
+
+: L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。
+
+     反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。
 
 > - https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
