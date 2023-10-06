@@ -6619,7 +6619,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 <tr>
 <td><code>WARM_IP_TARGET</code></td>
-<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。<code>WARM_ENI_TARGET</code>の値が小さすぎると、EC2 APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。</td>
+<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。<code>WARM_ENI_TARGET</code>の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。</td>
 <td><code>2</code></td>
 </tr>
 </tbody>
@@ -6660,30 +6660,36 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスをNodeのメモリ上にプールする。</p>
+<p>L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報を、CNIプラグインにプールする。</p>
+<p>プールのENIとセカンダリープライベートIPアドレスの数は、<code>MINIMUM_IP_TARGET</code>と<code>WARM_IP_TARGET</code> (または<code>WARM_ENI_TARGET</code>) の合計数で決まる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>kubeletは、L-IPAMデーモンに<code>ADD</code>または<code>DEL</code>の命令を送信する。</p>
+<p>kubeletは、ENIに関する<code>ADD</code>/<code>DEL</code>の命令をCNIプラグインに送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>L-IPAMデーモンは、ENIプールからこれを取得し、Nodeに割り当てる。</p>
-<p>反対に、NodeからENIを解放し、ENIのプールに戻す。</p>
+<p>L-IPAMデーモンはCNIプラグインを参照する。</p>
+<p>また、CNIプラグイン上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。</p>
+<p>反対に、NodeのENIを解放し、ENIのプールに戻す。</p>
 </dd>
 </dl>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" /></p>
 <dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>kubeletは、セカンダリープライベートIPアドレスに関する<code>ADD</code>/<code>DEL</code>の命令を、CNIプラグインに送信する。</p>
+</dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。</p>
-<p>反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。</p>
+<p>CNIプラグインは、L-IPAMデーモンのプールからIPアドレスを取得し、Podを割り当てる。</p>
+<p>反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。</p>
 </dd>
 </dl>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2">https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview</a></li>
 <li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
