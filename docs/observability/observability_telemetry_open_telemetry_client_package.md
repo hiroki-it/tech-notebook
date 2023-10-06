@@ -132,7 +132,6 @@ func initProvider() {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://www.lottohub.jp/posts/otelsql-grpc/
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
 
 #### ▼ Sampler
 
@@ -888,6 +887,7 @@ func initProvider() (func(context.Context) error, error) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154
 > - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
 
 #### ▼ 親スパンの作成
 
@@ -1042,7 +1042,11 @@ func child(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
-X-rayのトレースID (`X-AMZN-TRACE-ID`) を使用する場合、otelクライアントが使用できる形式に変換する必要がある。
+#### ▼ ログへのID出力
+
+`trace.Span`から取得できるトレースIDはotel形式である。
+
+そのため、もしX-ray形式でトレースIDを使用したい場合 (例：ログにX-ray形式トレースIDを出力したい)、変換処理が必要である。
 
 ```go
 func getXrayTraceID(span trace.Span) string {

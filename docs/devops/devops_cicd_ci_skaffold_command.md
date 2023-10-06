@@ -75,7 +75,7 @@ $ skaffold dev --trigger=polling
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、`dev`コマンドを実行する。
+イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`dev`コマンドを実行する。
 
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
@@ -111,7 +111,7 @@ $ skaffold run --force
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また後処理で全てのコンテナイメージを削除しつつ、`skaffold run`コマンドを実行する。
+イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`skaffold run`コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
