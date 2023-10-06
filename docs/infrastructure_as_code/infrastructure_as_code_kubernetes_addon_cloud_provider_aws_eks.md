@@ -257,7 +257,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `VPC_ID`                                | AWS VPCのIDを設定する。                                                                                                                                                                                                                                                              | `vpc-*****`                                                                      |
 | `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。                                                                                                                                                                                                               | `1`                                                                              |
 | `WARM_PREFIX_TARGET`                    |                                                                                                                                                                                                                                                                                      | `1`                                                                              |
-| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。`WARM_ENI_TARGET`の値が小さすぎると、EC2 APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                              |
+| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。`WARM_ENI_TARGET`の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                              |
 
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
@@ -301,29 +301,37 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 `(1)`
 
-: L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスをNodeのメモリ上にプールする。
+: L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報を、CNIプラグインにプールする。
+
+      プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
 
 `(2)`
 
-: kubeletは、L-IPAMデーモンに`ADD`または`DEL`の命令を送信する。
+: kubeletは、ENIに関する`ADD`/`DEL`の命令をCNIプラグインに送信する。
 
 `(3)`
 
-: L-IPAMデーモンは、ENIプールからこれを取得し、Nodeに割り当てる。
+: L-IPAMデーモンはCNIプラグインを参照する。
 
-     反対に、NodeからENIを解放し、ENIのプールに戻す。
+     また、CNIプラグイン上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。
+
+     反対に、NodeのENIを解放し、ENIのプールに戻す。
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
+`(3)`
+
+: kubeletは、セカンダリープライベートIPアドレスに関する`ADD`/`DEL`の命令を、CNIプラグインに送信する。
+
 `(4)`
 
-: L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。
+: CNIプラグインは、L-IPAMデーモンのプールからIPアドレスを取得し、Podを割り当てる。
 
-     反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。
+     反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
-> - https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 #### ▼ Podの上限数を上げる
