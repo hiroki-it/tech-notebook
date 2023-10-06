@@ -6920,6 +6920,7 @@
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
@@ -6933,6 +6934,7 @@
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
@@ -7068,7 +7070,10 @@
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// Otel形式のトレースIDを伝播するためPropagatorを設定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。</span>
 <span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -7326,7 +7331,10 @@
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// Otel形式のトレースIDを伝播するためPropagatorを設定する</span>
+<span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -7661,14 +7669,17 @@
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSampler</span><span class="p">(</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">AlwaysSample</span><span class="p">()),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithResource</span><span class="p">(</span><span class="nx">resr</span><span class="p">),</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithSpanProcessor</span><span class="p">(</span><span class="nx">batchSpanProcessor</span><span class="p">),</span>
-<span class="w">        </span><span class="c1">// 作成したスパンをX-rayで使用できる形式に変換する</span>
+<span class="w">        </span><span class="c1">// X-ray形式のトレースIDを新しく作成する</span>
 <span class="w">        </span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">WithIDGenerator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">NewIDGenerator</span><span class="p">()),</span>
 <span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
-<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{})</span>
+<span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// X-ray形式のトレースIDを伝播するためPropagatorを設定する</span>
+<span class="w">        </span><span class="nx">xray</span><span class="p">.</span><span class="nx">Propagator</span><span class="p">{},</span>
+<span class="w">    </span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">tracerProvider</span><span class="p">.</span><span class="nx">Shutdown</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span>
 <span class="p">}</span>
@@ -7898,6 +7909,7 @@
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// CloudTrace形式のトレースIDを伝播するためPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
 <span class="w">            </span><span class="nx">gcppropagator</span><span class="p">.</span><span class="nx">CloudTraceOneWayPropagator</span><span class="p">{},</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
@@ -8050,9 +8062,10 @@
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
+<span class="w">        </span><span class="c1">// Otel形式のトレースIDを伝播するためPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
-<span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
-<span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
+<span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
+<span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
 <span class="w">            </span><span class="p">),</span>
 <span class="w">        </span><span class="p">)</span>
 
@@ -8320,7 +8333,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>
