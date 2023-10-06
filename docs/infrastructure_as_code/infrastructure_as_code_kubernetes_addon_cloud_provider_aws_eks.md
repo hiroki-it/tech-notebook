@@ -290,7 +290,7 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない。
 
-![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
+![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
@@ -313,11 +313,15 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
      反対に、NodeからENIを解放し、ENIのプールに戻す。
 
+![aws-eks-vpc-cni-addon_standard-mode_architecture_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
+
 `(4)`
 
 : L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。
 
      反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。
+
+![aws-eks-vpc-cni-addon_standard-mode_architecture_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
 > - https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
