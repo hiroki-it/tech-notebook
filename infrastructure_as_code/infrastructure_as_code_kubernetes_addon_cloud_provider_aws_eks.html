@@ -4300,15 +4300,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#l-ipam" class="md-nav__link">
-    L-IPAMデーモン
+  <a href="#l-ipamlocal-ip-address-manager-daemon" class="md-nav__link">
+    L-IPAMデーモン：Local IP Address Manager Daemon
   </a>
   
-    <nav class="md-nav" aria-label="L-IPAMデーモン">
+    <nav class="md-nav" aria-label="L-IPAMデーモン：Local IP Address Manager Daemon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#l-ipam_1" class="md-nav__link">
+  <a href="#l-ipam" class="md-nav__link">
     ▼ L-IPAMデーモンとは
   </a>
   
@@ -6120,15 +6120,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#l-ipam" class="md-nav__link">
-    L-IPAMデーモン
+  <a href="#l-ipamlocal-ip-address-manager-daemon" class="md-nav__link">
+    L-IPAMデーモン：Local IP Address Manager Daemon
   </a>
   
-    <nav class="md-nav" aria-label="L-IPAMデーモン">
+    <nav class="md-nav" aria-label="L-IPAMデーモン：Local IP Address Manager Daemon">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#l-ipam_1" class="md-nav__link">
+  <a href="#l-ipam" class="md-nav__link">
     ▼ L-IPAMデーモンとは
   </a>
   
@@ -6443,8 +6443,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="l-ipam">L-IPAMデーモン<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h3>
-<h4 id="l-ipam_1">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam_1" title="Permanent link">&para;</a></h4>
+<h3 id="l-ipamlocal-ip-address-manager-daemon">L-IPAMデーモン：Local IP Address Manager Daemon<a class="headerlink" href="#l-ipamlocal-ip-address-manager-daemon" title="Permanent link">&para;</a></h3>
+<h4 id="l-ipam">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h4>
 <p>NodeやPodにIPアドレスを割り当てる。</p>
 <p><code>aws-node</code>のDaemonSet配下のPod上で、デーモンとして稼働している。</p>
 <p>他のCNIアドオンにない独自モードを持つ。</p>
@@ -6665,7 +6665,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <dt><code>(2)</code></dt>
 <dd>
 <p>kubeletは、L-IPAMデーモンに<code>ADD</code>または<code>DEL</code>の命令を送信する。</p>
-<p>L-IPAMデーモンはPodにIPアドレスを割り当て、またはPodからIPアドレスを回収する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>L-IPAMデーモンは、ENIプールからこれを取得し、Nodeに割り当てる。</p>
+<p>反対に、NodeからENIを解放し、ENIのプールに戻す。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>L-IPAMデーモンは、セカンダリープライベートIPアドレスのプールからこれを取得し、Podを割り当てる。</p>
+<p>反対に、PodからIPアドレスを解放し、セカンダリープライベートIPアドレスのプールに戻す。</p>
 </dd>
 </dl>
 <blockquote>
