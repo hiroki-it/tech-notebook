@@ -203,42 +203,15 @@ AWS EKS Cluster内にネットワークを作成する。
 
 <br>
 
-### L-IPAM
+### L-IPAMデーモン
 
-#### ▼ L-IPAMとは
+#### ▼ L-IPAMデーモンとは
 
 NodeやPodにIPアドレスを割り当てる。
 
 `aws-node`のDaemonSet配下のPod上で、デーモンとして稼働している。
 
 他のCNIアドオンにない独自モードを持つ。
-
-<br>
-
-### IPアドレス割り当てモード
-
-#### ▼ 通常モード
-
-L-IPAMは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
-
-この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
-
-執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない。
-
-![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
-
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
-> - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
-> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-
-#### ▼ Prefix Delegationモード
-
-L-IPAMは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
-
-Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
-
-> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
 
 <br>
 
@@ -252,39 +225,39 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 #### ▼ 環境変数
 
-| 環境変数名                              | 説明                                                                                                                                       | 設定例                                                                           |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| `ADDITIONAL_ENI_TAGS`                   |                                                                                                                                            | `{}`                                                                             |
-| `ANNOTATE_POD_IP`                       |                                                                                                                                            | `true`                                                                           |
-| `AWS_VPC_CNI_NODE_PORT_SUPPORT`         |                                                                                                                                            | `true`                                                                           |
-| `AWS_VPC_ENI_MTU`                       |                                                                                                                                            | `9001`                                                                           |
-| `AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER`    |                                                                                                                                            | `false`                                                                          |
-| `AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG`    |                                                                                                                                            | `false`                                                                          |
-| `AWS_VPC_K8S_CNI_EXTERNALSNAT`          |                                                                                                                                            | `false`                                                                          |
-| `AWS_VPC_K8S_CNI_LOGLEVEL`              | aws-eks-vpcアドオンのログレベルを設定する。                                                                                                | `DEBUG`                                                                          |
-| `AWS_VPC_K8S_CNI_LOG_FILE`              | aws-eks-vpcアドオンのログファイルの保管先を設定する。                                                                                      | `/host/var/log/aws-routed-eni/ipamd.log`                                         |
-| `AWS_VPC_K8S_CNI_RANDOMIZESNAT`         |                                                                                                                                            | `prng`                                                                           |
-| `AWS_VPC_K8S_CNI_VETHPREFIX`            |                                                                                                                                            | `eni`                                                                            |
-| `AWS_VPC_K8S_PLUGIN_LOG_FILE`           | aws-eks-vpcアドオンのプラグインのログファイルの保管先を設定する。                                                                          | `/var/log/aws-routed-eni/plugin.log`                                             |
-| `AWS_VPC_K8S_PLUGIN_LOG_LEVEL`          | aws-eks-vpcアドオンのプラグインのログレベルを設定する。                                                                                    | `DEBUG`                                                                          |
-| `CLUSTER_ENDPOINT`                      | AWS EKS ClusterのエンドポイントのURLを設定する。                                                                                           | `https://*****.sk1.ap-northeast-1.eks.amazonaws.com`                             |
-| `CLUSTER_NAME`                          | AWS EKS Clusterの名前を設定する。                                                                                                          | `foo-cluster`                                                                    |
-| `DISABLE_INTROSPECTION`                 |                                                                                                                                            | `false`                                                                          |
-| `DISABLE_METRICS`                       |                                                                                                                                            | `false`                                                                          |
-| `DISABLE_NETWORK_RESOURCE_PROVISIONING` |                                                                                                                                            | `false`                                                                          |
-| `ENABLE_IPv4`                           |                                                                                                                                            | `true`                                                                           |
-| `ENABLE_IPv6`                           |                                                                                                                                            | `false`                                                                          |
-| `ENABLE_POD_ENI`                        |                                                                                                                                            | `false`                                                                          |
-| `ENABLE_PREFIX_DELEGATION`              |                                                                                                                                            | `false`                                                                          |
-| `MAX_ENI`                               | AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。                                                                         | `20`                                                                             |
-| `MINIMUM_IP_TARGET`                     | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するIPアドレス数を設定する。 | `20`                                                                             |
-| `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                                                               | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
-| `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                                                        | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
-| `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。                                       | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
-| `VPC_ID`                                | AWS VPCのIDを設定する。                                                                                                                    | `vpc-*****`                                                                      |
-| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。                                                                     | `1`                                                                              |
-| `WARM_PREFIX_TARGET`                    |                                                                                                                                            | `1`                                                                              |
-| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで余剰に確保するIPアドレス数を設定する。 | `2`                                                                              |
+| 環境変数名                              | 説明                                                                                                                                                                                                                                                                                 | 設定例                                                                           |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| `ADDITIONAL_ENI_TAGS`                   |                                                                                                                                                                                                                                                                                      | `{}`                                                                             |
+| `ANNOTATE_POD_IP`                       |                                                                                                                                                                                                                                                                                      | `true`                                                                           |
+| `AWS_VPC_CNI_NODE_PORT_SUPPORT`         |                                                                                                                                                                                                                                                                                      | `true`                                                                           |
+| `AWS_VPC_ENI_MTU`                       |                                                                                                                                                                                                                                                                                      | `9001`                                                                           |
+| `AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER`    |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG`    |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `AWS_VPC_K8S_CNI_EXTERNALSNAT`          |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `AWS_VPC_K8S_CNI_LOGLEVEL`              | aws-eks-vpcアドオンのログレベルを設定する。                                                                                                                                                                                                                                          | `DEBUG`                                                                          |
+| `AWS_VPC_K8S_CNI_LOG_FILE`              | aws-eks-vpcアドオンのログファイルの保管先を設定する。                                                                                                                                                                                                                                | `/host/var/log/aws-routed-eni/ipamd.log`                                         |
+| `AWS_VPC_K8S_CNI_RANDOMIZESNAT`         |                                                                                                                                                                                                                                                                                      | `prng`                                                                           |
+| `AWS_VPC_K8S_CNI_VETHPREFIX`            |                                                                                                                                                                                                                                                                                      | `eni`                                                                            |
+| `AWS_VPC_K8S_PLUGIN_LOG_FILE`           | aws-eks-vpcアドオンのプラグインのログファイルの保管先を設定する。                                                                                                                                                                                                                    | `/var/log/aws-routed-eni/plugin.log`                                             |
+| `AWS_VPC_K8S_PLUGIN_LOG_LEVEL`          | aws-eks-vpcアドオンのプラグインのログレベルを設定する。                                                                                                                                                                                                                              | `DEBUG`                                                                          |
+| `CLUSTER_ENDPOINT`                      | AWS EKS ClusterのエンドポイントのURLを設定する。                                                                                                                                                                                                                                     | `https://*****.sk1.ap-northeast-1.eks.amazonaws.com`                             |
+| `CLUSTER_NAME`                          | AWS EKS Clusterの名前を設定する。                                                                                                                                                                                                                                                    | `foo-cluster`                                                                    |
+| `DISABLE_INTROSPECTION`                 |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `DISABLE_METRICS`                       |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `DISABLE_NETWORK_RESOURCE_PROVISIONING` |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `ENABLE_IPv4`                           |                                                                                                                                                                                                                                                                                      | `true`                                                                           |
+| `ENABLE_IPv6`                           |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `ENABLE_POD_ENI`                        |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `ENABLE_PREFIX_DELEGATION`              |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `MAX_ENI`                               | AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。                                                                                                                                                                                                                   | `20`                                                                             |
+| `MINIMUM_IP_TARGET`                     | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。                                                                                                                   | `20`                                                                             |
+| `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                         | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
+| `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
+| `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。                                                                                                                                                                                 | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
+| `VPC_ID`                                | AWS VPCのIDを設定する。                                                                                                                                                                                                                                                              | `vpc-*****`                                                                      |
+| `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。                                                                                                                                                                                                               | `1`                                                                              |
+| `WARM_PREFIX_TARGET`                    |                                                                                                                                                                                                                                                                                      | `1`                                                                              |
+| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。`WARM_ENI_TARGET`の値が小さすぎると、EC2 APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                              |
 
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
@@ -305,22 +278,72 @@ $ kubectl get daemonset aws-node \
     | jq .
 ```
 
+<br>
+
+### 通常のIPアドレス割り当てモード
+
+#### ▼ 通常のIPアドレス割り当てモードとは
+
+L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
+
+この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
+
+執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない。
+
+![kubernetes_cni-addon_aws-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_aws-mode.png)
+
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
+> - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+
+#### ▼ IPアドレス割り当ての仕組み
+
+`(1)`
+
+: L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスをNodeのメモリ上にプールする。
+
+`(2)`
+
+: kubeletは、L-IPAMデーモンに`ADD`または`DEL`の命令を送信する。
+
+       L-IPAMデーモンはPodにIPアドレスを割り当て、またはPodからIPアドレスを回収する。
+
+> - https://medium.com/@terako.studio/deepen-understanding-of-cni-by-reading-amazon-vpc-cni-k8s-11ab525882f2
+> - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+
 #### ▼ Podの上限数を上げる
 
-Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
+Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
 
-`MINIMUM_IP_TARGET` (Node当たり最低限IPアドレス数) または`WARM_IP_TARGET` (Node当たり余剰IPアドレス数) で、Node当たりのPod数が決まる。
+`MINIMUM_IP_TARGET` (Node当たり最低限セカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
 
-`MINIMUM_IP_TARGET`にはスケーリングも加味して予想されるPod数分、`WARM_IP_TARGET`には余剰分のIPアドレスを設定する。
+`MINIMUM_IP_TARGET`にはスケーリングも加味して予想されるPod数分プラスアルファ、`WARM_IP_TARGET`にはウォーム状態のセカンダリープライベートIPアドレスを設定する。
 
 例えば、スケーリングも加味して、NodeにスケジューリングされるPod数の最大数が`10`個だとする。
 
-この場合、`MINIMUM_IP_TARGET=10`と`WARM_IP_TARGET=5`を設定し、Node当たり`15`個のIPアドレスを確保する。
+この場合、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定し、Node当たり`15`個のセカンダリープライベートIPアドレスを確保する。
 
-なお、Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するIPアドレス数も考慮すること。
+すると、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+
+そのため、Podが`10`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
+
+なお、Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-> - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
+> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#aws-node-%E3%81%AE%E8%A8%AD%E5%AE%9A%E5%80%A4
+
+<br>
+
+### Prefix Delegationモード
+
+#### ▼ Prefix Delegationモードとは
+
+L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+
+Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
+
+> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
 
 <br>
