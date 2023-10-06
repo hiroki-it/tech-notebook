@@ -28,11 +28,11 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 <br>
 
-### TraceProviderの関数の要素
+### TraceProviderの処理の要素
 
 #### ▼ Resource
 
-スパンにコンテキストを設定する。
+スパンにコンテキストを設定する処理を持つ。
 
 | 項目 | 必要なパッケージ                                                |
 | ---- | --------------------------------------------------------------- |
@@ -52,7 +52,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 #### ▼ SpanProcessor
 
-スパンを処理する。
+他の処理コンポーネントを操作する処理を持つ。
 
 具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
 
@@ -65,7 +65,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 #### ▼ Exporter
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める処理を持つ。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -87,7 +87,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
-コンテキストを下流マイクロサービスに伝播させる。
+コンテキストを下流マイクロサービスに伝播させる処理を持つ。
 
 伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
 
@@ -134,10 +134,11 @@ func initProvider() {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://www.lottohub.jp/posts/otelsql-grpc/
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
 
 #### ▼ Sampler
 
-スパンのサンプリング率を設定する。
+スパンのサンプリング率を設定する処理を持つ。
 
 具体的には、`AlwaysOn` (`100`%) や`TraceIdRationBased` (任意の割合) でサンプリング率を設定できる。
 
@@ -156,11 +157,11 @@ func initProvider() {
 
 #### ▼ Exporter
 
-> - https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters
+> - https://github.com/open-telemetry/opentelemetry-go/tree/v1.18.0/exporters
 
 #### ▼ Propagator
 
-> - https://github.com/open-telemetry/opentelemetry-go/tree/main/propagation
+> - https://github.com/open-telemetry/opentelemetry-go/tree/v1.18.0/propagation
 
 <br>
 
@@ -172,13 +173,13 @@ func initProvider() {
 
 #### ▼ Exporter
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/exporters
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/exporters
 
 #### ▼ Propagator
 
 標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for otelコレクター) を、使用できるようになる。
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/propagators
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators
 
 <br>
 

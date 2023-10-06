@@ -413,7 +413,7 @@ func main() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L46-L49
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L46-L49
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor
 
 <br>
