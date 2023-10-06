@@ -184,24 +184,26 @@ Envoyは、スパンを作成できるように、自分を通過した通信に
 
 Envoyは、Zipkinが使用するヘッダーを追加する。
 
-| ヘッダー名          | 説明                                                                               |
-| ------------------- | ---------------------------------------------------------------------------------- |
-| `X-B3-SAMPLED`      |                                                                                    |
-| `X-B3-SPANID`       | スパンIDが割り当てられている。                                                     |
-| `X-B3-TRACEID`      | トレースIDが割り当てられている。                                                   |
-| `X-B3-PARENTSPANId` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
+| ヘッダー名          | 説明                                                                               | 値の例                                |
+| ------------------- | ---------------------------------------------------------------------------------- |------------------------------------|
+| `X-B3-SAMPLED`      |                                                                                    | `1`                                |
+| `X-B3-SPANID`       | スパンIDが割り当てられている。                                                     | `a2fb4a1d1a96d312`                 |
+| `X-B3-TRACEID`      | トレースIDが割り当てられている。                                                   | `463ac35c9f6413ad48485a3953bb6124` |
+| `X-B3-PARENTSPANId` | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 | `0020000000000001`                                 |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://github.com/openzipkin/b3-propagation#multiple-headers
 
 #### ▼ AWS X-Ray系ヘッダー
 
 Envoyは、AWS X-Rayが使用するヘッダーを追加する。
 
-| ヘッダー名        | 説明                                                        |
-| ----------------- | ----------------------------------------------------------- |
-| `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。トレースIDはALBで作られる。 |
+| ヘッダー名        | 説明                                                        | 値の例 |
+| ----------------- | ----------------------------------------------------------- |-----|
+| `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。トレースIDはALBで作られる。 | `Root=1-5759e988-bd862e3fe1be46a994272793`  |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-concepts.html
 > - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 <br>
