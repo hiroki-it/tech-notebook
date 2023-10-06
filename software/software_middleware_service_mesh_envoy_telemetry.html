@@ -1884,6 +1884,33 @@
     Carrier
   </a>
   
+    <nav class="md-nav" aria-label="Carrier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carrier_1" class="md-nav__link">
+    ▼ Carrierの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    ▼ IDの割り当て
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id_1" class="md-nav__link">
+    ▼ IDの結合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6094,6 +6121,33 @@
     Carrier
   </a>
   
+    <nav class="md-nav" aria-label="Carrier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#carrier_1" class="md-nav__link">
+    ▼ Carrierの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    ▼ IDの割り当て
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id_1" class="md-nav__link">
+    ▼ IDの結合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6338,10 +6392,26 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </blockquote>
 <p><br></p>
 <h3 id="carrier">Carrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
-<p>Envoyは、トレースIDのCarrier</p>
+<h4 id="carrier_1">▼ Carrierの種類<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
+<p>Envoyでは、様々なCarrierを使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers</a></li>
+</ul>
+</blockquote>
+<h4 id="id">▼ IDの割り当て<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
+<p>EnvoyはIDを自動作成し、Carrierの一つである<code>X-REQUEST-ID</code>ヘッダーに割り当てる。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing</a></li>
+</ul>
+</blockquote>
+<h4 id="id_1">▼ IDの結合<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
+<p>Envoyは、<code>X-REQUEST-ID</code>ヘッダーの自動作成IDと<code>X-CLIENT-TRACE-ID</code>の外部作成IDを結合する</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-client-trace-id">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-client-trace-id</a></li>
 </ul>
 </blockquote>
 <p><br></p>

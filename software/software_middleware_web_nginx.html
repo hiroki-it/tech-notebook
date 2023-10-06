@@ -6070,10 +6070,10 @@
 
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1"># Request-IDからリクエストIDを取得する</span>
+<span class="w">        </span><span class="c1"># REQUEST-IDからリクエストIDを取得する</span>
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$request_id</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1"># X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
+<span class="w">        </span><span class="c1"># X-REQUEST-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
 <span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$http_x_request_id</span><span class="s">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$http_x_request_id</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
@@ -6082,7 +6082,7 @@
 
 <span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.2:8080/server</span><span class="p">;</span>
-<span class="w">            </span><span class="c1"># X-Request-IDヘッダーにトレースIDを設定し、リクエスト送信する</span>
+<span class="w">            </span><span class="c1"># X-REQUEST-IDヘッダーにトレースIDを設定し、リクエスト送信する</span>
 <span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Request-ID</span><span class="w"> </span><span class="nv">$tmp</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -6099,10 +6099,10 @@
 
 <span class="w">        </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1"># Request-IDからリクエストIDを取得する</span>
+<span class="w">        </span><span class="c1"># REQUEST-IDからリクエストIDを取得する</span>
 <span class="w">        </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$request_id</span><span class="p">;</span>
 
-<span class="w">        </span><span class="c1"># X-Request-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
+<span class="w">        </span><span class="c1"># X-REQUEST-IDヘッダーにトレースIDがあれば、リクエストIDを上書きする</span>
 <span class="w">        </span><span class="kn">if</span><span class="w"> </span><span class="s">(</span><span class="nv">$http_x_request_id</span><span class="s">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="kn">set</span><span class="w"> </span><span class="nv">$tmp</span><span class="w"> </span><span class="nv">$http_x_request_id</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
@@ -6331,7 +6331,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>
