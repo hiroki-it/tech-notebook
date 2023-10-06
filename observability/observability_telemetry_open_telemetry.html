@@ -5487,6 +5487,40 @@
     otelコレクター
   </a>
   
+    <nav class="md-nav" aria-label="otelコレクター">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_2" class="md-nav__link">
+    ▼ otelコレクターとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ レシーバー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ プロセッサー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ エクスポーター
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -5933,6 +5967,40 @@
     otelコレクター
   </a>
   
+    <nav class="md-nav" aria-label="otelコレクター">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel_2" class="md-nav__link">
+    ▼ otelコレクターとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ レシーバー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ プロセッサー
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ エクスポーター
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -6002,6 +6070,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="otel_1">otelコレクター<a class="headerlink" href="#otel_1" title="Permanent link">&para;</a></h3>
+<h4 id="otel_2">▼ otelコレクターとは<a class="headerlink" href="#otel_2" title="Permanent link">&para;</a></h4>
 <p>otelコレクターは、レシーバー、プロセッサー、エクスポーター、といったコンポーネントから構成されている。</p>
 <p>otelクライアントパッケージからのテレメトリーデータを、レシーバーで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
 <p>もし、サービスメッシュツール (例：Istio、Linkerd、など) のサイドカープロキシメッシュとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがotelコレクターにテレメトリーデータを送信する責務を持つ。</p>
@@ -6010,6 +6079,28 @@
 <ul>
 <li><a href="https://www.logicmonitor.com/blog/what-is-an-otel-collector">https://www.logicmonitor.com/blog/what-is-an-otel-collector</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ レシーバー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>OTLP形式のテレメトリーを受信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ プロセッサー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>テレメトリーを監視バックエンドに送信する前に、事前処理を実行する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ エクスポーター<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>OTLP形式でテレメトリーを監視バックエンドに送信する。</p>
+<p>他の形式で送信したい場合は、監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6027,7 +6118,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>

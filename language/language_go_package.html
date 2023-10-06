@@ -2658,7 +2658,7 @@
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
-    ▼ 前処理と後処理
+    ▼ 事前処理と事後処理
   </a>
   
 </li>
@@ -6517,7 +6517,7 @@
         
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
-    ▼ 前処理と後処理
+    ▼ 事前処理と事後処理
   </a>
   
 </li>
@@ -7122,16 +7122,16 @@ go 1.16
 <li><a href="https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions">https://pkg.go.dev/github.com/stretchr/testify/assert?tab=versions</a></li>
 </ul>
 </blockquote>
-<h4 id="_15">▼ 前処理と後処理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>テスト関数を実行する直前に、前処理を実行する。</p>
+<h4 id="_15">▼ 事前処理と事後処理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>テスト関数を実行する直前に、事前処理を実行する。</p>
 <p>モックの作成のために使用すると良い。</p>
-<p>PHPUnitにおける前処理と後処理については、以下のリンクを参考にせよ。</p>
+<p>PHPUnitにおける事前処理と事後処理については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html">https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html</a></li>
 </ul>
 </blockquote>
-<p>前処理と後処理については、以下のリンクを参考にせよ。</p>
+<p>事前処理と事後処理については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66">https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66</a></li>
@@ -7149,32 +7149,32 @@ go 1.16
 <tr>
 <td><code>SetupSuite</code></td>
 <td>1</td>
-<td>テストスイート内の全てのテストの前処理として、一回だけ実行する。</td>
+<td>テストスイート内の全てのテストの事前処理として、一回だけ実行する。</td>
 </tr>
 <tr>
 <td><code>SetupTest</code></td>
 <td>2</td>
-<td>テストスイート内の各テストの前処理として、テストの度に事前に実行する。<code>BeforeTest</code>関数よりも前に実行されることに注意する。</td>
+<td>テストスイート内の各テストの事前処理として、テストの度に事前に実行する。<code>BeforeTest</code>関数よりも前に実行されることに注意する。</td>
 </tr>
 <tr>
 <td><code>BeforeTest</code></td>
 <td>3</td>
-<td>テストスイート内の各テストの直前の前処理として、テストの度に事前に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+<td>テストスイート内の各テストの直前の事前処理として、テストの度に事前に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
 </tr>
 <tr>
 <td><code>AfterTest</code></td>
 <td>4</td>
-<td>テストスイート内の各テストの直後の後処理として、テストの度に事後に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
+<td>テストスイート内の各テストの直後の事後処理として、テストの度に事後に実行する。必ず、『<code>suiteName</code>』『<code>testName</code>』を引数として設定する必要がある。</td>
 </tr>
 <tr>
 <td><code>TearDownTest</code></td>
 <td>5</td>
-<td>テストスイート内の各テストの後処理として、テストの度に事後に実行する。<code>BeforeTest</code>関数よりも後に実行されることに注意する。</td>
+<td>テストスイート内の各テストの事後処理として、テストの度に事後に実行する。<code>BeforeTest</code>関数よりも後に実行されることに注意する。</td>
 </tr>
 <tr>
 <td><code>TearDownSuite</code></td>
 <td>6</td>
-<td>テストスイート内の全てのテストの後処理として、一回だけ実行する。</td>
+<td>テストスイート内の全てのテストの事後処理として、一回だけ実行する。</td>
 </tr>
 </tbody>
 </table>
@@ -7197,7 +7197,7 @@ go 1.16
 <span class="p">}</span>
 
 <span class="cm">/**</span>
-<span class="cm"> * 単体テストの直前の前処理を実行する。</span>
+<span class="cm"> * 単体テストの直前の事前処理を実行する。</span>
 
 
 <span class="cm"> */</span>
@@ -7231,7 +7231,7 @@ go 1.16
 
 <span class="w">    </span><span class="nx">suite</span><span class="p">.</span><span class="nx">T</span><span class="p">().</span><span class="nx">Helper</span><span class="p">()</span>
 
-<span class="w">    </span><span class="c1">// 前処理で作成したモックを使用する。</span>
+<span class="w">    </span><span class="c1">// 事前処理で作成したモックを使用する。</span>
 <span class="w">    </span><span class="nx">fooMock</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">suite</span><span class="p">.</span><span class="nx">fooMock</span>
 
 <span class="w">    </span><span class="c1">// 以降にテスト処理</span>
@@ -7338,7 +7338,7 @@ go 1.16
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
       
     
   </small>
