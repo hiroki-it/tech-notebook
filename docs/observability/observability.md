@@ -432,6 +432,7 @@ jsonPayload.traceId="<トレースID>"
 - W3C Baggage
 - B3 (Zipkin)
 - Jaeger
+- 独自仕様 (AWS X-ray、Datadog、LightStep、など)
 
 > - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry

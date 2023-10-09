@@ -476,9 +476,68 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
 
-#### ▼ envoyOtelAls
+#### ▼ datadog
 
-Istioに連携するOpenTelemetryの宛先情報を設定する。
+監視バックエンドとするDatadogの宛先情報を設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: istio-mesh-cm
+  namespace: istio-system
+data:
+  mesh: |
+    extensionProviders:
+      - name: datadog-tracing
+        datadog:
+          # datadogエージェントを宛先として設定する
+          service: datadog-agent.tracing.svc.cluster.local
+          port: 8126
+```
+
+Datadogに送信するためには、`mesh.extensionProviders[].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  # Datadogにアクセスログを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  accessLogging:
+    - providers:
+        - name: datadog-tracing
+```
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: tracing-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  # Datadogにスパンを送信させるPodを設定する
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        - name: datadog-tracing
+```
+
+> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
+> - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
+
+#### ▼ opentelemetry
+
+監視バックエンドとするotelコレクターの宛先情報を設定する。
 
 ```yaml
 apiVersion: v1
@@ -491,12 +550,12 @@ data:
     extensionProviders:
       - name: opentelemetry-tracing
         opentelemetry:
-          # otelコレクターに設定する
+          # otelコレクターを宛先として設定する
           service: opentelemetry-collector.tracing.svc.cluster.local
           port: 4317
 ```
 
-OpenTelemetryに送信するためには、`mesh.extensionProviders[].envoyOtelAls`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+OpenTelemetryに送信するためには、`mesh.extensionProviders[].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
@@ -533,6 +592,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
+> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37
 > - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
 > - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
 > - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
