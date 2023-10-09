@@ -112,7 +112,6 @@ plugins:
       lang:
         - ja
         - en
-      separator: '[\s\-\.]'
   # サブディレクトリをまとめて除外する
   # @see https://squidfunk.github.io/mkdocs-material/blog/2021/09/26/excluding-content-from-search/
   - exclude-search:
