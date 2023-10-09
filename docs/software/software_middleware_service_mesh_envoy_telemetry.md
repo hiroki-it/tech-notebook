@@ -189,9 +189,9 @@ Envoyは、`X-REQUEST-ID`ヘッダーの自動作成IDと`X-CLIENT-TRACE-ID`の�
 
 <br>
 
-### 監視バックエンドへの送信
+### 監視バックエンドへのスパン送信
 
-#### ▼ 自動送信
+#### ▼ スパン送信
 
 Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。
 
@@ -204,6 +204,19 @@ Envoyは、Exporterとしてコンテキストを監視バックエンドに送�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 > - https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works
 > - https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/
+
+#### ▼ コンテキスト仕様
+
+監視バックエンドの種類を指定することで、送信するコンテキストの仕様を切り替えられる。
+
+- Datadog (Datadogコンテキスト)
+- OpenTelemetry (W3C Trace Context、Baggage)
+- X-Ray (X-rayコンテキスト)
+- Zipkin (B3)
+- など
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing
 
 #### ▼ X-rayの場合
 

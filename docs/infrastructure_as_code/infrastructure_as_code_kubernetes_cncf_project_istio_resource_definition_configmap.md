@@ -421,11 +421,11 @@ data:
 
 #### ▼ 認証/認可系
 
-認証の委譲先となるIDプロバイダーの宛先情報を設定する。
+SSOの認証フェーズの委譲先となるIDプロバイダーの宛先情報を設定する。
 
 #### ▼ envoyExtAuthzHttp
 
-SSOのIDプロバイダーの情報を設定する。
+HTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。
 
 AuthorizationPolicyによる認可の実施に、認可フェーズを外部のIDプロバイダーに委譲できるようにする。
 
@@ -475,6 +475,10 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
+
+#### ▼ envoyExtAuthzGrpc
+
+HTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。
 
 <br>
 
@@ -614,6 +618,12 @@ spec:
 > - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
 > - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
 > - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
+
+#### ▼ prometheus
+
+メトリクスの監視バックエンドとするPrometheusの宛先情報を設定する。
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
 
 <br>
 
