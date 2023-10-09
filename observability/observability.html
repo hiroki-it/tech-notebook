@@ -7297,16 +7297,32 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <h4 id="_49">▼ コンテキスト仕様の種類<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <p>コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。</p>
 <ul>
-<li>W3C Trace Context</li>
+<li>W3C TraceContext</li>
 <li>W3C Baggage</li>
 <li>B3 (Zipkin)</li>
 <li>Jaeger</li>
 <li>独自仕様 (AWS X-ray、Datadog、LightStep、など)</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># W3C TraceContext</span>
+<span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<span class="nn">---</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost.com</span>
+<span class="nt">traceparent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01</span>
+<span class="nt">tracestate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># B3 (Zipkin)</span>
+<span class="l l-Scalar l-Scalar-Plain">GET /my-service HTTP/1.1</span>
+<span class="nn">---</span>
+<span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myhost.com</span>
+<span class="nt">X-B3-TraceId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">f102024f34f30692b676c13f47cbcf03</span>
+<span class="nt">X-B3-SpanId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">e2695f90dfd76b09</span>
+<span class="nt">X-B3-Sampled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution">https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
+<li><a href="https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5">https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5</a></li>
 </ul>
 </blockquote>
 <h4 id="_50">▼ コンテキスト作成の仕組み<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
