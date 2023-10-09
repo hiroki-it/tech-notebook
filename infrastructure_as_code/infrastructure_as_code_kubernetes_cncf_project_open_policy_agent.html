@@ -5969,14 +5969,21 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>リクエスト内容を<code>.json</code>形式で作成する。</p>
-<p>ここでは、aliceというアカウントの参照権限の有無をリクエストを定義する。</p>
+<p>認可スコープを取得するためのリクエストを<code>.json</code>形式で作成する。</p>
+<p>実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># request.jsonファイル</span>
 <span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;input&quot;</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">{</span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;finance&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;salary&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="c1"># リクエストの内容</span>
+<span class="w">  </span><span class="s">&quot;input&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="c1"># GETメソッド</span>
+<span class="w">      </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="c1"># パス</span>
+<span class="w">      </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;finance&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;salary&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">      </span><span class="c1"># アカウント名</span>
+<span class="w">      </span><span class="s">&quot;user&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <dl>
@@ -6085,7 +6092,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
       
     
   </small>
