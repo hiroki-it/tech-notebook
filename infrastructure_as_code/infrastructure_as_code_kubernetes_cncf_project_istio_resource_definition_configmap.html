@@ -7267,7 +7267,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">extensionProviders:</span>
-<span class="w">      </span><span class="no">- name: otel</span>
+<span class="w">      </span><span class="no">- name: opentelemetry-tracing</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
 <span class="w">          </span><span class="no"># otelコレクターに設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.tracing.svc.cluster.local</span>
@@ -7287,7 +7287,7 @@
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-tracing</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -7296,19 +7296,20 @@
 <span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Opentelemetryにアクセスログを送信させるPodを設定する</span>
+<span class="w">  </span><span class="c1"># Opentelemetryにスパンを送信させるPodを設定する</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">otel</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-tracing</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection">https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection</a></li>
 <li><a href="https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml">https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml</a></li>
+<li><a href="https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099">https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099</a>.</li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7556,7 +7557,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
     
   </small>
