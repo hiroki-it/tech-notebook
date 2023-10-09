@@ -5006,8 +5006,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoyotelals" class="md-nav__link">
-    ▼ envoyOtelAls
+  <a href="#datadog" class="md-nav__link">
+    ▼ datadog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    ▼ opentelemetry
   </a>
   
 </li>
@@ -6661,8 +6668,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoyotelals" class="md-nav__link">
-    ▼ envoyOtelAls
+  <a href="#datadog" class="md-nav__link">
+    ▼ datadog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentelemetry" class="md-nav__link">
+    ▼ opentelemetry
   </a>
   
 </li>
@@ -7257,8 +7271,61 @@
 <li><a href="https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer">https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer</a></li>
 </ul>
 </blockquote>
-<h4 id="envoyotelals">▼ envoyOtelAls<a class="headerlink" href="#envoyotelals" title="Permanent link">&para;</a></h4>
-<p>Istioに連携するOpenTelemetryの宛先情報を設定する。</p>
+<h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
+<p>監視バックエンドとするDatadogの宛先情報を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-mesh-cm</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">extensionProviders:</span>
+<span class="w">      </span><span class="no">- name: datadog-tracing</span>
+<span class="w">        </span><span class="no">datadog:</span>
+<span class="w">          </span><span class="no"># datadogエージェントを宛先として設定する</span>
+<span class="w">          </span><span class="no">service: datadog-agent.tracing.svc.cluster.local</span>
+<span class="w">          </span><span class="no">port: 8126</span>
+</code></pre></div>
+<p>Datadogに送信するためには、<code>mesh.extensionProviders[].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Datadogにアクセスログを送信させるPodを設定する</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datadog-tracing</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tracing-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Datadogにスパンを送信させるPodを設定する</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datadog-tracing</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27">https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27</a></li>
+<li><a href="https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host">https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host</a></li>
+</ul>
+</blockquote>
+<h4 id="opentelemetry">▼ opentelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
+<p>監視バックエンドとするotelコレクターの宛先情報を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7269,11 +7336,11 @@
 <span class="w">    </span><span class="no">extensionProviders:</span>
 <span class="w">      </span><span class="no">- name: opentelemetry-tracing</span>
 <span class="w">        </span><span class="no">opentelemetry:</span>
-<span class="w">          </span><span class="no"># otelコレクターに設定する</span>
+<span class="w">          </span><span class="no"># otelコレクターを宛先として設定する</span>
 <span class="w">          </span><span class="no">service: opentelemetry-collector.tracing.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 4317</span>
 </code></pre></div>
-<p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[].envoyOtelAls</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7307,6 +7374,7 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37">https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection">https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection</a></li>
 <li><a href="https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml">https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml</a></li>
 <li><a href="https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099">https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099</a>.</li>
