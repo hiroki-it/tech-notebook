@@ -415,33 +415,44 @@ jsonPayload.traceId="<トレースID>"
 
 <br>
 
-### 分散トレースに必要なIDの種類
+### コンテキスト
 
-#### ▼ IDの種類
+#### ▼ コンテキストとは
+
+各スパンに含まれる情報のこと。
+
+- 各種ID
+- マイクロサービスの属性情報
+
+#### ▼ コンテキスト作成の仕組み
+
+ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にコンテキストを作成する。
+
+これらは、コンテキストがIDが持っているかを検証する。
+
+もしIDがなければ、スパンにIDを新しく割り当てる。
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png)
 
-サービスメッシュでは、まずリバースプロキシ (例：Envoy、Linkerd2-proxy) 、ロードバランサー (例：Istio IngressGateway、AWS ALB) 、API Gateway (例：AWS API Gateway) がIDを作成する。
-
-また、これらはインバウンド通信のHTTPヘッダーやRPCヘッダーにIDが割り当てられているか (メッセージボディにIDを追加するツールもある) を検証する。
-
-この時、もしIDなければ、トレースIDを新しく割り当てるようにする仕組みが必要になる。
-
-| HTTPヘッダー名     | 説明                                                                               |
-| ------------------ | ---------------------------------------------------------------------------------- |
-| スパンIDヘッダー   | スパンIDが割り当てられている。                                                     |
-| トレースIDヘッダー | トレースIDが割り当てられている。                                                   |
-| 親スパンIDヘッダー | 親のスパンIDが割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 |
-
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 > - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+
+#### ▼ IDの種類
+
+コンテキストには、以下のIDが含まれている。
+
+| ID         | 説明                                                                                             |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| トレースID | リクエストIDである。全てのマイクロサービスで同じになる。                                         |
+| スパンID   | 各マイクロサービス固有の処理IDである。 全てのマイクロサービスで異なっている。                    |
+| 親スパンID | クライアントのマイクロサービスの処理IDである。クライアントが同じマイクロサービス間で同じになる。 |
+
+> - https://docs.lightstep.com/docs/understand-distributed-tracing#context
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5
 
 #### ▼ コンテキスト伝播 (分散コンテキスト伝播)
 
-サービスメッシュのリバースプロキシは、分散トレースのためのコンテキスト (例：トレースID、マイクロサービスの属性情報、など) を生成するが、マイクロサービスに対するインバウンド通信とそれのアウトバウンド通信を紐付ける機能を持たない。
-
-そのためマイクロサービス (クリーンアーキテクチャを採用している場合は、アプリのインフラストラクチャ層) で、受信したインバウンド通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。
+マイクロサービスで、受信したインバウンド通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。
 
 分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからコンテキストを簡単に取り出せるパッケージを使用すると良い。
 
@@ -450,7 +461,6 @@ jsonPayload.traceId="<トレースID>"
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=4
 
 <br>
 
@@ -462,7 +472,7 @@ jsonPayload.traceId="<トレースID>"
 
 コンテキストを下流マイクロサービスに伝播させる処理を持つ。
 
-伝播に使用する媒体 (例：HTTPヘッダー) を『Carrier』という。
+伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、など) を『Carrier』という。
 
 #### ▼ 標準ヘッダー
 

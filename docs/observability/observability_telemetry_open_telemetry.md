@@ -79,11 +79,12 @@ OTLP形式のテレメトリーを受信する。
 
 #### ▼ エクスポーター
 
-OTLP形式でテレメトリーを監視バックエンドに送信する。
+OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。
 
-他の形式で送信したい場合は、監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。
+非対応の監視バックエンド (例：X-ray) に関しては、その形式の監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。
 
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md
+> - https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters
 
 <br>
 

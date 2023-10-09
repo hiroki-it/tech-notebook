@@ -30,39 +30,6 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 ### TraceProviderの処理の要素
 
-#### ▼ Resource
-
-スパンにコンテキストを設定する処理を持つ。
-
-| 項目 | 必要なパッケージ                                                |
-| ---- | --------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/resource`パッケージからコールできる。 |
-
-```yaml
-{
-  "service.name": "foo-service",
-  "service.namespace": "app",
-  "service.instance.id": "<Pod名>",
-  "service.version": "1.0.0",
-  "telemetry.sdk.name": "otel",
-}
-```
-
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
-
-#### ▼ SpanProcessor
-
-他の処理コンポーネントを操作する処理を持つ。
-
-具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
-
-| 項目 | 必要なパッケージ                                                 |
-| ---- | ---------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
-
-> - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
-
 #### ▼ Exporter
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める処理を持つ。
@@ -82,6 +49,29 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18
 > - https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11
+
+#### ▼ IDGenerator
+
+特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。
+
+IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムなIDを作成する。
+
+もしotel形式以外のランダムなIDがよければ、専用のIDGeneratorを使う必要がある。
+
+> - https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90
+
+#### ▼ SpanProcessor
+
+他の処理コンポーネントを操作する処理を持つ。
+
+具体的には、`BatchSpanProcessor`関数を使用して、スパンをExporterで決めた宛先に送信できる。
+
+| 項目 | 必要なパッケージ                                                 |
+| ---- | ---------------------------------------------------------------- |
+| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
+
+> - https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
 
 #### ▼ Propagator
 
@@ -132,6 +122,26 @@ func initProvider() {
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://www.lottohub.jp/posts/otelsql-grpc/
+
+#### ▼ Resource
+
+スパンにコンテキストを設定する処理を持つ。
+
+| 項目 | 必要なパッケージ                                                |
+| ---- | --------------------------------------------------------------- |
+| Go   | `go.opentelemetry.io/otel/resource`パッケージからコールできる。 |
+
+```yaml
+{
+  "service.name": "foo-service",
+  "service.namespace": "app",
+  "service.instance.id": "<Pod名>",
+  "service.version": "1.0.0",
+  "telemetry.sdk.name": "otel",
+}
+```
+
+> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
 #### ▼ Sampler
 
@@ -888,6 +898,7 @@ func initProvider() (func(context.Context) error, error) {
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154
 > - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
+> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74
 
 #### ▼ 親スパンの作成
 
