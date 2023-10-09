@@ -489,7 +489,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: otel
+      - name: opentelemetry-tracing
         opentelemetry:
           # otelコレクターに設定する
           service: opentelemetry-collector.tracing.svc.cluster.local
@@ -512,7 +512,7 @@ spec:
       name: app
   accessLogging:
     - providers:
-        - name: otel
+        - name: opentelemetry-tracing
 ```
 
 ```yaml
@@ -523,18 +523,19 @@ metadata:
   # サイドカーをインジェクションしている各Namespaceで作成する
   namespace: foo
 spec:
-  # Opentelemetryにアクセスログを送信させるPodを設定する
+  # Opentelemetryにスパンを送信させるPodを設定する
   selector:
     matchLabels:
       name: app
   tracing:
     - providers:
-        - name: otel
+        - name: opentelemetry-tracing
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
 > - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
 > - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
+> - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
 
 <br>
 
