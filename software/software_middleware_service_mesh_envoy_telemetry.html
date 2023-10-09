@@ -1908,15 +1908,22 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    監視バックエンドへの送信
+    監視バックエンドへのスパン送信
   </a>
   
-    <nav class="md-nav" aria-label="監視バックエンドへの送信">
+    <nav class="md-nav" aria-label="監視バックエンドへのスパン送信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
-    ▼ 自動送信
+    ▼ スパン送信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ コンテキスト仕様
   </a>
   
 </li>
@@ -6145,15 +6152,22 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    監視バックエンドへの送信
+    監視バックエンドへのスパン送信
   </a>
   
-    <nav class="md-nav" aria-label="監視バックエンドへの送信">
+    <nav class="md-nav" aria-label="監視バックエンドへのスパン送信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
-    ▼ 自動送信
+    ▼ スパン送信
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ コンテキスト仕様
   </a>
   
 </li>
@@ -6414,8 +6428,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_13">監視バックエンドへの送信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<h4 id="_14">▼ 自動送信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h3 id="_13">監視バックエンドへのスパン送信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ スパン送信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。</p>
 <p>これにより、アプリ側でExporterを実装する必要がなくなる。</p>
 <p>ただし、もしアプリ側でExporterを設定しないとEnvoyとアプリの処理時間を合計したスパンを送信する。</p>
@@ -6425,6 +6439,21 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation</a></li>
 <li><a href="https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works">https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works</a></li>
 <li><a href="https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/">https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ コンテキスト仕様<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>監視バックエンドの種類を指定することで、送信するコンテキストの仕様を切り替えられる。</p>
+<ul>
+<li>Datadog (Datadogコンテキスト)</li>
+<li>OpenTelemetry (W3C Trace Context、Baggage)</li>
+<li>X-Ray (X-rayコンテキスト)</li>
+<li>Zipkin (B3)</li>
+<li>など</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing</a></li>
 </ul>
 </blockquote>
 <h4 id="x-ray">▼ X-rayの場合<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>

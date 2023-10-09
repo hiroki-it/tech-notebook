@@ -5005,6 +5005,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#envoyextauthzgrpc" class="md-nav__link">
+    ▼ envoyExtAuthzGrpc
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5035,6 +5042,13 @@
           <li class="md-nav__item">
   <a href="#opentelemetry" class="md-nav__link">
     ▼ opentelemetry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    ▼ prometheus
   </a>
   
 </li>
@@ -6687,6 +6701,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#envoyextauthzgrpc" class="md-nav__link">
+    ▼ envoyExtAuthzGrpc
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6717,6 +6738,13 @@
           <li class="md-nav__item">
   <a href="#opentelemetry" class="md-nav__link">
     ▼ opentelemetry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    ▼ prometheus
   </a>
   
 </li>
@@ -7265,9 +7293,9 @@
 <p><br></p>
 <h3 id="extensionproviders">extensionProviders (認証/認可系)<a class="headerlink" href="#extensionproviders" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 認証/認可系<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>認証の委譲先となるIDプロバイダーの宛先情報を設定する。</p>
+<p>SSOの認証フェーズの委譲先となるIDプロバイダーの宛先情報を設定する。</p>
 <h4 id="envoyextauthzhttp">▼ envoyExtAuthzHttp<a class="headerlink" href="#envoyextauthzhttp" title="Permanent link">&para;</a></h4>
-<p>SSOのIDプロバイダーの情報を設定する。</p>
+<p>HTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。</p>
 <p>AuthorizationPolicyによる認可の実施に、認可フェーズを外部のIDプロバイダーに委譲できるようにする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>oauth2-proxyのPodに紐づくServiceを識別できるようにする。</p>
@@ -7311,6 +7339,8 @@
 <li><a href="https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer">https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer</a></li>
 </ul>
 </blockquote>
+<h4 id="envoyextauthzgrpc">▼ envoyExtAuthzGrpc<a class="headerlink" href="#envoyextauthzgrpc" title="Permanent link">&para;</a></h4>
+<p>HTTPで認可リクエストを送信する場合に、SSOのIDプロバイダーの情報を設定する。</p>
 <p><br></p>
 <h3 id="extensionproviders_1">extensionProviders (可観測系)<a class="headerlink" href="#extensionproviders_1" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 可観測性系とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -7432,6 +7462,13 @@
 <li><a href="https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection">https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection</a></li>
 <li><a href="https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml">https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml</a></li>
 <li><a href="https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099">https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099</a>.</li>
+</ul>
+</blockquote>
+<h4 id="prometheus">▼ prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
+<p>メトリクスの監視バックエンドとするPrometheusの宛先情報を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider</a></li>
 </ul>
 </blockquote>
 <p><br></p>
