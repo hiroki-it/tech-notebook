@@ -6096,11 +6096,12 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ エクスポーター<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>OTLP形式でテレメトリーを監視バックエンドに送信する。</p>
-<p>他の形式で送信したい場合は、監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。</p>
+<p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaeger、など) のテレメトリーを監視バックエンドに送信する。</p>
+<p>非対応の監視バックエンド (例：X-ray) に関しては、その形式の監視バックエンドが提供するエクスポーター (例：AWS Distro for otelコレクターのエクスポーター) を使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md</a></li>
+<li><a href="https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters">https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6118,7 +6119,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
     
   </small>

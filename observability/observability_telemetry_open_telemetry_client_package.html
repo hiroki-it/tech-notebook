@@ -5497,8 +5497,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resource" class="md-nav__link">
-    ▼ Resource
+  <a href="#exporter" class="md-nav__link">
+    ▼ Exporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idgenerator" class="md-nav__link">
+    ▼ IDGenerator
   </a>
   
 </li>
@@ -5511,15 +5518,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exporter" class="md-nav__link">
-    ▼ Exporter
+  <a href="#propagator" class="md-nav__link">
+    ▼ Propagator
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#propagator" class="md-nav__link">
-    ▼ Propagator
+  <a href="#resource" class="md-nav__link">
+    ▼ Resource
   </a>
   
 </li>
@@ -6335,8 +6342,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#resource" class="md-nav__link">
-    ▼ Resource
+  <a href="#exporter" class="md-nav__link">
+    ▼ Exporter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idgenerator" class="md-nav__link">
+    ▼ IDGenerator
   </a>
   
 </li>
@@ -6349,15 +6363,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exporter" class="md-nav__link">
-    ▼ Exporter
+  <a href="#propagator" class="md-nav__link">
+    ▼ Propagator
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#propagator" class="md-nav__link">
-    ▼ Propagator
+  <a href="#resource" class="md-nav__link">
+    ▼ Resource
   </a>
   
 </li>
@@ -6812,58 +6826,6 @@
 </blockquote>
 <p><br></p>
 <h3 id="traceprovider_1">TraceProviderの処理の要素<a class="headerlink" href="#traceprovider_1" title="Permanent link">&para;</a></h3>
-<h4 id="resource">▼ Resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
-<p>スパンにコンテキストを設定する処理を持つ。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>必要なパッケージ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Go</td>
-<td><code>go.opentelemetry.io/otel/resource</code>パッケージからコールできる。</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
-<span class="w">  </span><span class="s">&quot;service.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-service&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;service.namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;service.instance.id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Pod名&gt;&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;service.version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">  </span><span class="s">&quot;telemetry.sdk.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;otel&quot;</span><span class="p p-Indicator">,</span>
-<span class="p p-Indicator">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
-</ul>
-</blockquote>
-<h4 id="spanprocessor">▼ SpanProcessor<a class="headerlink" href="#spanprocessor" title="Permanent link">&para;</a></h4>
-<p>他の処理コンポーネントを操作する処理を持つ。</p>
-<p>具体的には、<code>BatchSpanProcessor</code>関数を使用して、スパンをExporterで決めた宛先に送信できる。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>必要なパッケージ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Go</td>
-<td><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
-<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17</a></li>
-</ul>
-</blockquote>
 <h4 id="exporter">▼ Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h4>
 <p>スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、GCP CloudTrace、otelコレクター、など) を決める処理を持つ。</p>
 <p>具体的には、<code>WithEndpoint</code>関数を使用して、宛先 (例：<code>localhost:4317</code>、<code>opentelemetry-collector.tracing.svc.cluster.local</code>、など) を設定できる。</p>
@@ -6903,6 +6865,38 @@
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 <li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=18</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11">https://github.com/open-telemetry/opentelemetry-go/blob/main/CHANGELOG.md#0290---2022-04-11</a></li>
+</ul>
+</blockquote>
+<h4 id="idgenerator">▼ IDGenerator<a class="headerlink" href="#idgenerator" title="Permanent link">&para;</a></h4>
+<p>特定の監視バックエンドの形式で、トレースIDまたはスパンIDを作成する。</p>
+<p>IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムなIDを作成する。</p>
+<p>もしotel形式以外のランダムなIDがよければ、専用のIDGeneratorを使う必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90">https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90</a></li>
+</ul>
+</blockquote>
+<h4 id="spanprocessor">▼ SpanProcessor<a class="headerlink" href="#spanprocessor" title="Permanent link">&para;</a></h4>
+<p>他の処理コンポーネントを操作する処理を持つ。</p>
+<p>具体的には、<code>BatchSpanProcessor</code>関数を使用して、スパンをExporterで決めた宛先に送信できる。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/sdk/trace</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor">https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.export.html?highlight=BatchSpanProcessor#opentelemetry.sdk.trace.export.BatchSpanProcessor</a></li>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17</a></li>
 </ul>
 </blockquote>
 <h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
@@ -6961,6 +6955,35 @@
 <li><a href="https://blog.cybozu.io/entry/2023/04/12/170000">https://blog.cybozu.io/entry/2023/04/12/170000</a></li>
 <li><a href="https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry">https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry</a></li>
 <li><a href="https://www.lottohub.jp/posts/otelsql-grpc/">https://www.lottohub.jp/posts/otelsql-grpc/</a></li>
+</ul>
+</blockquote>
+<h4 id="resource">▼ Resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
+<p>スパンにコンテキストを設定する処理を持つ。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>必要なパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Go</td>
+<td><code>go.opentelemetry.io/otel/resource</code>パッケージからコールできる。</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;service.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo-service&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.namespace&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.instance.id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;Pod名&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;service.version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;telemetry.sdk.name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;otel&quot;</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16">https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16</a></li>
 </ul>
 </blockquote>
 <h4 id="sampler">▼ Sampler<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
@@ -7704,6 +7727,7 @@
 <li><a href="https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154">https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154</a></li>
 <li><a href="https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/">https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/</a></li>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go</a></li>
+<li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74">https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ 親スパンの作成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -8349,7 +8373,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
     
   </small>
