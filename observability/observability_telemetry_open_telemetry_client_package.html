@@ -7100,7 +7100,7 @@
 
 <span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// W3C TraceContext仕様のコンテキストを伝播するためPropagatorを設定する</span>
+<span class="w">        </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -7361,7 +7361,7 @@
 
 <span class="w">    </span><span class="c1">// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
-<span class="w">        </span><span class="c1">// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する</span>
+<span class="w">        </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
@@ -7950,7 +7950,7 @@
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
 <span class="w">            </span><span class="c1">// CloudTrace形式のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">            </span><span class="nx">gcppropagator</span><span class="p">.</span><span class="nx">CloudTraceOneWayPropagator</span><span class="p">{},</span>
-<span class="w">            </span><span class="c1">// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する</span>
+<span class="w">            </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">            </span><span class="c1">// W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">            </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>
@@ -8104,7 +8104,7 @@
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// 複数のPropagatorを動的に選べるようにする</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">NewCompositeTextMapPropagator</span><span class="p">(</span>
-<span class="w">                </span><span class="c1">// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する</span>
+<span class="w">                </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">                </span><span class="c1">// W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する</span>
 <span class="w">                </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">Baggage</span><span class="p">{},</span>

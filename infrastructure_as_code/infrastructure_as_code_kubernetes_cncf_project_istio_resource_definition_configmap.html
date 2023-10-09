@@ -4985,15 +4985,15 @@
         
           <li class="md-nav__item">
   <a href="#extensionproviders" class="md-nav__link">
-    extensionProviders
+    extensionProviders (認証/認可系)
   </a>
   
-    <nav class="md-nav" aria-label="extensionProviders">
+    <nav class="md-nav" aria-label="extensionProviders (認証/認可系)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#extensionproviders_1" class="md-nav__link">
-    ▼ extensionProvidersとは
+  <a href="#_2" class="md-nav__link">
+    ▼ 認証/認可系
   </a>
   
 </li>
@@ -5001,6 +5001,26 @@
           <li class="md-nav__item">
   <a href="#envoyextauthzhttp" class="md-nav__link">
     ▼ envoyExtAuthzHttp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensionproviders_1" class="md-nav__link">
+    extensionProviders (可観測系)
+  </a>
+  
+    <nav class="md-nav" aria-label="extensionProviders (可観測系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 可観測性系とは
   </a>
   
 </li>
@@ -6647,15 +6667,15 @@
         
           <li class="md-nav__item">
   <a href="#extensionproviders" class="md-nav__link">
-    extensionProviders
+    extensionProviders (認証/認可系)
   </a>
   
-    <nav class="md-nav" aria-label="extensionProviders">
+    <nav class="md-nav" aria-label="extensionProviders (認証/認可系)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#extensionproviders_1" class="md-nav__link">
-    ▼ extensionProvidersとは
+  <a href="#_2" class="md-nav__link">
+    ▼ 認証/認可系
   </a>
   
 </li>
@@ -6663,6 +6683,26 @@
           <li class="md-nav__item">
   <a href="#envoyextauthzhttp" class="md-nav__link">
     ▼ envoyExtAuthzHttp
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensionproviders_1" class="md-nav__link">
+    extensionProviders (可観測系)
+  </a>
+  
+    <nav class="md-nav" aria-label="extensionProviders (可観測系)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 可観測性系とは
   </a>
   
 </li>
@@ -7223,9 +7263,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="extensionproviders">extensionProviders<a class="headerlink" href="#extensionproviders" title="Permanent link">&para;</a></h3>
-<h4 id="extensionproviders_1">▼ extensionProvidersとは<a class="headerlink" href="#extensionproviders_1" title="Permanent link">&para;</a></h4>
-<p>Istioに連携するためのツールの情報を定義する。</p>
+<h3 id="extensionproviders">extensionProviders (認証/認可系)<a class="headerlink" href="#extensionproviders" title="Permanent link">&para;</a></h3>
+<h4 id="_2">▼ 認証/認可系<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>認証の委譲先となるIDプロバイダーの宛先情報を設定する。</p>
 <h4 id="envoyextauthzhttp">▼ envoyExtAuthzHttp<a class="headerlink" href="#envoyextauthzhttp" title="Permanent link">&para;</a></h4>
 <p>SSOのIDプロバイダーの情報を設定する。</p>
 <p>AuthorizationPolicyによる認可の実施に、認可フェーズを外部のIDプロバイダーに委譲できるようにする。</p>
@@ -7271,8 +7311,19 @@
 <li><a href="https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer">https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="extensionproviders_1">extensionProviders (可観測系)<a class="headerlink" href="#extensionproviders_1" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 可観測性系とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>監視バックエンドの宛先情報を設定する。</p>
+<p>プロバイダーによって、いずれのテレメトリーを送信するのかが異なる。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider</a></li>
+</ul>
+</blockquote>
 <h4 id="datadog">▼ datadog<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h4>
-<p>監視バックエンドとするDatadogの宛先情報を設定する。</p>
+<p>分散トレースの監視バックエンドとするDatadogの宛先情報を設定する。</p>
+<p>コンテキストの仕様は選べず、強制的にDatadogコンテキストになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7322,10 +7373,12 @@
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27">https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27</a></li>
 <li><a href="https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host">https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider</a></li>
 </ul>
 </blockquote>
 <h4 id="opentelemetry">▼ opentelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
-<p>監視バックエンドとするotelコレクターの宛先情報を設定する。</p>
+<p>分散トレースの監視バックエンドとするotelコレクターの宛先情報を設定する。</p>
+<p>コンテキストの仕様は選べず、強制的にW3C Trace Contextになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7375,6 +7428,7 @@
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging</a></li>
 <li><a href="https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37">https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection">https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection</a></li>
 <li><a href="https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml">https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml</a></li>
 <li><a href="https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099">https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099</a>.</li>
