@@ -162,15 +162,21 @@ $ kubectl exec \
 
 ### Carrier
 
+Envoyは、自身を通過したリクエストのCarrierにリクエストIDを設定する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+
 #### ▼ Carrierの種類
 
 Envoyでは、様々なCarrierを使用できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-#### ▼ IDの割り当て
+#### ▼ リクエストIDの作成
 
-EnvoyはIDを自動作成し、Carrierの一つである`X-REQUEST-ID`ヘッダーに割り当てる。
+EnvoyはIDを自動作成する。
+
+また、自身を通過したリクエストのCarrierの`X-REQUEST-ID`ヘッダーに、IDを割り当てる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 

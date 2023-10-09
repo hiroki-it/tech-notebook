@@ -424,6 +424,18 @@ jsonPayload.traceId="<トレースID>"
 - 各種ID
 - マイクロサービスの属性情報
 
+#### ▼ コンテキスト仕様の種類
+
+コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。
+
+- W3C Trace Context
+- W3C Baggage
+- B3 (Zipkin)
+- Jaeger
+
+> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
+> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+
 #### ▼ コンテキスト作成の仕組み
 
 ロードバランサー (例：Istio IngressGateway、AWS ALB) やAPI Gateway (例：AWS API Gateway) が最初にコンテキストを作成する。

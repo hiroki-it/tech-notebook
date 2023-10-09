@@ -762,7 +762,10 @@ func createUser(c *gin.Context) {
 	var json signupRequest
 
 	if err := c.BindJSON(&json); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(
+            http.StatusBadRequest,
+            gin.H{"error": err.Error()},
+        )
 		return
 	}
 
@@ -772,9 +775,10 @@ func createUser(c *gin.Context) {
 
     if user.ID != 0 {
 
-		c.JSON(http.StatusOK, gin.H{
-      "error_code": "その Email はすでに存在しております",
-    })
+		c.JSON(
+            http.StatusOK,
+            gin.H{"error_code": "その Email はすでに存在しております"},
+        )
 	} else {
 
     user := models.User{
@@ -787,10 +791,10 @@ func createUser(c *gin.Context) {
 			log.Println(err)
 		}
 
-		c.JSON(http.StatusOK, gin.H{
-			"Name":  json.Name,
-			"Email": json.Email,
-		})
+		c.JSON(
+            http.StatusOK,
+            gin.H{"Name":  json.Name,"Email": json.Email},
+        )
 	}
 }
 ```

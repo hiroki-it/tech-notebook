@@ -76,10 +76,10 @@ JSON型データとして、レスポンスを返信する。
 マップ型データを渡す。
 
 ```go
-c.JSON(200, gin.H{
-    "id": 1,
-    "name": "hiroki hasegawa",
-})
+c.JSON(
+  200,
+  gin.H{id": 1,"name": "hiroki hasegawa"},
+)
 ```
 
 構造体型データを渡す。
@@ -90,10 +90,10 @@ type Foo struct {
 	name string json:"name"
 }
 
-c.JSON(200, &Foo{
-    id: 1,
-    name: "hiroki hasegawa",
-})
+c.JSON(
+  200,
+  &Foo{id: 1, name: "hiroki hasegawa"},
+)
 ```
 
 <br>
@@ -179,7 +179,11 @@ func (uc *UserController) GetUser(ctx *gin.Context) {
 	userId, ok := ctx.Get("id")
 
 	if !ok {
-		uc.SendErrorJson(ctx, 400, []string{"Parameters are not found."})
+		uc.SendErrorJson(
+            ctx,
+            400,
+            []string{"Parameters are not found."},
+        )
 		return
 	}
 ```
@@ -197,19 +201,17 @@ type H map[string]interface{}
 ```
 
 ```go
-c.JSON(200, gin.H{
-    "id": 1,
-    "name": "hiroki hasegawa",
-})
+c.JSON(
+  200,
+  gin.H{"id": 1,"name": "hiroki hasegawa"},
+)
 ```
 
 ```go
-c.JSON(400, gin.H{
-    "errors": []string{
-        "Fooエラーメッセージ",
-        "Barエラーメッセージ",
-    }
-})
+c.JSON(
+  400,
+  gin.H{"errors": []string{"Fooエラーメッセージ", "Barエラーメッセージ"}},
+)
 ```
 
 <br>
