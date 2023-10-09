@@ -7592,7 +7592,10 @@
 <span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="nx">signupRequest</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">c</span><span class="p">.</span><span class="nx">BindJSON</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">json</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()})</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;error&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()},</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -7602,9 +7605,10 @@
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">ID</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
-<span class="w">      </span><span class="s">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;その Email はすでに存在しております&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">})</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;その Email はすでに存在しております&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">models</span><span class="p">.</span><span class="nx">User</span><span class="p">{</span>
@@ -7617,10 +7621,10 @@
 <span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
-<span class="w">            </span><span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="w">  </span><span class="nx">json</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span>
-<span class="w">            </span><span class="s">&quot;Email&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">,</span>
-<span class="w">        </span><span class="p">})</span>
+<span class="w">        </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;Name&quot;</span><span class="p">:</span><span class="w">  </span><span class="nx">json</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span><span class="s">&quot;Email&quot;</span><span class="p">:</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Email</span><span class="p">},</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>

@@ -6339,10 +6339,10 @@
 <p>第二引数の引数型がインターフェースになっているため、様々なデータ型を渡せる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>マップ型データを渡す。</p>
-<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">,</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">  </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="nx">id</span><span class="s">&quot;: 1,&quot;</span><span class="nx">name</span><span class="s">&quot;: &quot;</span><span class="nx">hiroki</span><span class="w"> </span><span class="nx">hasegawa</span><span class="err">&quot;</span><span class="p">},</span>
+<span class="p">)</span>
 </code></pre></div>
 <p>構造体型データを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -6350,10 +6350,10 @@
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">json</span><span class="p">:</span><span class="s">&quot;name&quot;</span>
 <span class="p">}</span>
 
-<span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span>
-<span class="w">    </span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">,</span>
-<span class="p">})</span>
+<span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">  </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">  </span><span class="o">&amp;</span><span class="nx">Foo</span><span class="p">{</span><span class="nx">id</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
+<span class="p">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="mustget">MustGet<a class="headerlink" href="#mustget" title="Permanent link">&para;</a></h3>
@@ -6421,7 +6421,11 @@
 <span class="w">    </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">ok</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">ok</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">uc</span><span class="p">.</span><span class="nx">SendErrorJson</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Parameters are not found.&quot;</span><span class="p">})</span>
+<span class="w">        </span><span class="nx">uc</span><span class="p">.</span><span class="nx">SendErrorJson</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">ctx</span><span class="p">,</span>
+<span class="w">            </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">            </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Parameters are not found.&quot;</span><span class="p">},</span>
+<span class="w">        </span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
@@ -6431,17 +6435,15 @@
 <p>マップ型の変数のエイリアスとして働く。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">H</span><span class="w"> </span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">,</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">  </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;hiroki hasegawa&quot;</span><span class="p">},</span>
+<span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span>
-<span class="w">    </span><span class="s">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span>
-<span class="w">        </span><span class="s">&quot;Fooエラーメッセージ&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;Barエラーメッセージ&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span>
+<span class="w">  </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{</span><span class="s">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Fooエラーメッセージ&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Barエラーメッセージ&quot;</span><span class="p">}},</span>
+<span class="p">)</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="validator">Validator<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h2>
@@ -6461,7 +6463,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
     
   </small>
