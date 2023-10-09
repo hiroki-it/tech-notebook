@@ -91,13 +91,9 @@ Carrierからコンテキストを注入する操作を『注入 (Inject)』、�
 // 前のマイクロサービスにとってはサーバー側にもなる
 func initProvider() {
 
-    // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+    // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
     otel.SetTextMapPropagator(
-        // トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある
-	    propagation.NewCompositeTextMapPropagator(
-			propagation.TraceContext{},
-			propagation.Baggage{},
-		),
+      ...
     )
 }
 ```
@@ -107,21 +103,18 @@ func initProvider() {
 // 後続のマイクロサービスにとってはクライアント側にもなる
 func initProvider() {
 
-    // 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
-    otel.SetTextMapPropagator(
-	    // トレースIDの形式に合わせて、異なるPropagatorを使用する必要がある
-	    propagation.NewCompositeTextMapPropagator(
-			propagation.TraceContext{},
-			propagation.Baggage{},
-		),
-    )
+    // 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
+	otel.SetTextMapPropagator(
+      ...
+	)
 }
 ```
 
-> - https://github.com/openzipkin/b3-propagation#overall-process
+> - https://zenn.dev/k6s4i53rx/articles/2fa37a293cf228#%E2%96%A0-propagator-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://www.lottohub.jp/posts/otelsql-grpc/
+> - https://github.com/openzipkin/b3-propagation#overall-process
 
 #### ▼ Resource
 
@@ -263,7 +256,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Otel形式のコンテキストを伝播するためPropagatorを設定する
+		// W3C TraceContext仕様のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -531,9 +524,9 @@ func initProvider() (func(context.Context) error, error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// Otel形式のコンテキストを伝播するためPropagatorを設定する
+		// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -887,9 +880,9 @@ func initProvider() (func(context.Context) error, error) {
 
 	otel.SetTracerProvider(tracerProvider)
 
-	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// X-ray形式のコンテキストを伝播するためPropagatorを設定する
+		// X-ray形式のコンテキストを伝播できるPropagatorを設定する
         xray.Propagator{},
     )
 
@@ -1131,12 +1124,15 @@ func initProvider() (func(), error) {
 
 func installPropagators() {
 
-	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// CloudTrace形式のコンテキストを伝播するためPropagatorを設定する
+        // 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
+			// CloudTrace形式のコンテキストを伝播できるPropagatorを設定する
 			gcppropagator.CloudTraceOneWayPropagator{},
+			// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
 			propagation.TraceContext{},
+			// W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
 			propagation.Baggage{},
 		),
 	)
@@ -1290,11 +1286,13 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	otel.SetTracerProvider(traceProvider)
 
-	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// Otel形式のコンテキストを伝播するためPropagatorを設定する
+		// 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
+			    // W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
 			    propagation.TraceContext{},
+			    // W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
 			    propagation.Baggage{},
 			),
 		)

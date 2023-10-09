@@ -428,14 +428,34 @@ jsonPayload.traceId="<トレースID>"
 
 コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。
 
-- W3C Trace Context
+- W3C TraceContext
 - W3C Baggage
 - B3 (Zipkin)
 - Jaeger
 - 独自仕様 (AWS X-ray、Datadog、LightStep、など)
 
+```yaml
+# W3C TraceContext
+GET /my-service HTTP/1.1
+---
+Host: myhost.com
+traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
+tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
+```
+
+```yaml
+# B3 (Zipkin)
+GET /my-service HTTP/1.1
+---
+Host: myhost.com
+X-B3-TraceId: f102024f34f30692b676c13f47cbcf03
+X-B3-SpanId: e2695f90dfd76b09
+X-B3-Sampled: 1
+```
+
 > - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5
 
 #### ▼ コンテキスト作成の仕組み
 
