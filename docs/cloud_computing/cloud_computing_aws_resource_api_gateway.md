@@ -310,7 +310,7 @@ CloudWatchログにAPI Gatewayのアクセスログを送信するか否かを�
 
 X-Rayを使用して、API Gatewayを開始点とした分散トレースを収集する。
 
-まず、API GatewayでトレースIDが作成される。
+まず、API GatewayでトーレスIDを作成する。
 
 その後、各AWSリソースでスパンを取得し、スパンを紐付けることより、分散トレースを表現できる。
 

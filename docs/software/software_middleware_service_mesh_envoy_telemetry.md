@@ -39,7 +39,7 @@ Envoyは、アプリコンテナへのアクセスログ (インバウンド通�
 
 なお、`%REQ()`を使用して、好きなリクエストヘッダーの値を出力できる。
 
-これは、例えばユーザー定義のトレースIDを使用している場合に役立つ。
+これは、例えばユーザー定義のIDを使用している場合に役立つ。
 
 ```log
 [%START_TIME%] %REQ(<リクエストヘッダー名 (例：ユーザー定義のトレースIDのヘッダー)>)% ...
@@ -160,14 +160,6 @@ $ kubectl exec \
 
 ## 03. 分散トレース
 
-### Envoyによるトレーシング
-
-Envoyは、スパンを作成できるように、自分を通過した通信にHTTPヘッダーやRPCヘッダーに分散トレースIDを割り当てる。
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
-
-<br>
-
 ### Carrier
 
 #### ▼ Carrierの種類
@@ -192,6 +184,20 @@ Envoyは、`X-REQUEST-ID`ヘッダーの自動作成IDと`X-CLIENT-TRACE-ID`の�
 <br>
 
 ### 監視バックエンドへの送信
+
+#### ▼ 自動送信
+
+Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。
+
+これにより、アプリ側でExporterを実装する必要がなくなる。
+
+ただし、もしアプリ側でExporterを設定しないとEnvoyとアプリの処理時間を合計したスパンを送信する。
+
+アプリとEnvoyの両方で設定すると、Envoyとアプリコンテナをちゃんと区別したスパンになる。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
+> - https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works
+> - https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/
 
 #### ▼ X-rayの場合
 

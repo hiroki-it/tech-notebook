@@ -263,7 +263,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Otel形式のトレースIDを伝播するためPropagatorを設定する
+		// Otel形式のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -533,7 +533,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Otel形式のトレースIDを伝播するためPropagatorを設定する
+		// Otel形式のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -744,7 +744,7 @@ func LoggerAndCreateSpan(c *gin.Context, msg string) trace.Span {
 		"Logger",
 		// スパンID
 		zap.String("span_id", SpanId),
-		// トレースId
+		// トレースID
 		zap.String("trace_id", TraceId),
 		// 実行時間
 		zap.Duration("elapsed", time.Since(start)),
@@ -877,7 +877,7 @@ func initProvider() (func(context.Context) error, error) {
 		sdktrace.WithSampler(sdktrace.AlwaysSample()),
 		sdktrace.WithResource(resr),
 		sdktrace.WithSpanProcessor(batchSpanProcessor),
-		// X-ray形式のトレースIDを新しく作成する
+		// X-ray形式の各種IDを新しく作成する
 		sdktrace.WithIDGenerator(xray.NewIDGenerator()),
 	)
 
@@ -885,7 +885,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// X-ray形式のトレースIDを伝播するためPropagatorを設定する
+		// X-ray形式のコンテキストを伝播するためPropagatorを設定する
         xray.Propagator{},
     )
 
@@ -1057,7 +1057,7 @@ func child(ctx *gin.Context) {
 
 `trace.Span`から取得できるトレースIDはotel形式である。
 
-そのため、もしX-ray形式でトレースIDを使用したい場合 (例：ログにX-ray形式トレースIDを出力したい)、変換処理が必要である。
+そのため、もしX-ray形式の各種IDを使用したい場合 (例：ログにX-ray形式IDを出力したい)、変換処理が必要である。
 
 ```go
 func getXrayTraceID(span trace.Span) string {
@@ -1129,7 +1129,7 @@ func installPropagators() {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// CloudTrace形式のトレースIDを伝播するためPropagatorを設定する
+		// CloudTrace形式のコンテキストを伝播するためPropagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
 			gcppropagator.CloudTraceOneWayPropagator{},
 			propagation.TraceContext{},
@@ -1288,7 +1288,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// Otel形式のトレースIDを伝播するためPropagatorを設定する
+		// Otel形式のコンテキストを伝播するためPropagatorを設定する
 		propagation.NewCompositeTextMapPropagator(
 			    propagation.TraceContext{},
 			    propagation.Baggage{},
