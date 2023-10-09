@@ -136,15 +136,22 @@ $ curl \
 
 `(5)`
 
-: リクエスト内容を`.json`形式で作成する。
+: 認可スコープを取得するためのリクエストを`.json`形式で作成する。
 
-     ここでは、aliceというアカウントの参照権限の有無をリクエストを定義する。
+     実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
 ```yaml
 # request.jsonファイル
 {
-  "input":
-    {"method": "GET", "path": ["finance", "salary", "alice"], "user": "alice"},
+  # リクエストの内容
+  "input": {
+      # GETメソッド
+      "method": "GET",
+      # パス
+      "path": ["finance", "salary", "alice"],
+      # アカウント名
+      "user": "alice",
+    },
 }
 ```
 
@@ -152,7 +159,7 @@ $ curl \
 
 : アプリケーションは、aliceアカウントの参照権限の有無をOpenPolicyエージェントにリクエストする。
 
-     OpenPolicyエージェントは、アプリケーションに```true```を返却する。
+     OpenPolicyエージェントは、アプリケーションに`true`を返却する。
 
 ```bash
 $ curl \

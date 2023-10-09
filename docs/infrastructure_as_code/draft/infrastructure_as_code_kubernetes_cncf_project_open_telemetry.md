@@ -1,0 +1,240 @@
+---
+title: 【IT技術の知見】OpenTelemetry＠CNCF
+description: OpenTelemetry＠CNCFの知見を記録しています。
+---
+
+# OpenTelemetry＠CNCF
+
+## はじめに
+
+本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
+
+> - https://hiroki-it.github.io/tech-notebook/
+
+<br>
+
+## 01. マニフェスト
+
+### ConfigMap
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-agent-conf
+  labels:
+    app: opentelemetry
+    component: otel-agent-conf
+data:
+  otel-agent-config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: ${env:MY_POD_IP}:4317
+          http:
+            endpoint: ${env:MY_POD_IP}:4318
+    exporters:
+      otlp:
+        endpoint: "otel-collector.default:4317"
+        tls:
+          insecure: true
+        sending_queue:
+          num_consumers: 4
+          queue_size: 100
+        retry_on_failure:
+          enabled: true
+    processors:
+      batch:
+      memory_limiter:
+        # 80% of maximum memory up to 2G
+        limit_mib: 400
+        # 25% of limit up to 2G
+        spike_limit_mib: 100
+        check_interval: 5s
+    extensions:
+      zpages: {}
+      memory_ballast:
+        # Memory Ballast size should be max 1/3 to 1/2 of memory.
+        size_mib: 165
+    service:
+      extensions: [zpages, memory_ballast]
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
+          exporters: [otlp]
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector
+
+<br>
+
+### DaemonSet
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: otel-agent
+  labels:
+    app: opentelemetry
+    component: otel-agent
+spec:
+  selector:
+    matchLabels:
+      app: opentelemetry
+      component: otel-agent
+  template:
+    metadata:
+      labels:
+        app: opentelemetry
+        component: otel-agent
+    spec:
+      containers:
+        - command:
+            - "/otelcol"
+            - "--config=/conf/otel-agent-config.yaml"
+          image: otel/opentelemetry-collector:0.86.0
+          name: otel-agent
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 55679 # ZPages endpoint.
+            - containerPort: 4317 # Default OpenTelemetry receiver port.
+            - containerPort: 8888 # Metrics.
+          env:
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          volumeMounts:
+            - name: otel-agent-config-vol
+              mountPath: /conf
+      volumes:
+        - configMap:
+            name: otel-agent-conf
+            items:
+              - key: otel-agent-config
+                path: otel-agent-config.yaml
+          name: otel-agent-config-vol
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector
+
+<br>
+
+### Deployment
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otel-collector
+  labels:
+    app: opentelemetry
+    component: otel-collector
+spec:
+  selector:
+    matchLabels:
+      app: opentelemetry
+      component: otel-collector
+  minReadySeconds: 5
+  progressDeadlineSeconds: 120
+  replicas: 1 #TODO - adjust this to your own requirements
+  template:
+    metadata:
+      labels:
+        app: opentelemetry
+        component: otel-collector
+    spec:
+      containers:
+        - command:
+            - "/otelcol"
+            - "--config=/conf/otel-collector-config.yaml"
+          image: otel/opentelemetry-collector:0.86.0
+          name: otel-collector
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 200m
+              memory: 400Mi
+          ports:
+            - containerPort: 55679 # Default endpoint for ZPages.
+            - containerPort: 4317 # Default endpoint for OpenTelemetry receiver.
+            - containerPort: 14250 # Default endpoint for Jaeger gRPC receiver.
+            - containerPort: 14268 # Default endpoint for Jaeger HTTP receiver.
+            - containerPort: 9411 # Default endpoint for Zipkin receiver.
+            - containerPort: 8888 # Default endpoint for querying metrics.
+          env:
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: status.podIP
+          volumeMounts:
+            - name: otel-collector-config-vol
+              mountPath: /conf
+      #        - name: otel-collector-secrets
+      #          mountPath: /secrets
+      volumes:
+        - configMap:
+            name: otel-collector-conf
+            items:
+              - key: otel-collector-config
+                path: otel-collector-config.yaml
+          name: otel-collector-config-vol
+#        - secret:
+#            name: otel-collector-secrets
+#            items:
+#              - key: cert.pem
+#                path: cert.pem
+#              - key: key.pem
+#                path: key.pem
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector
+
+<br>
+
+### Service
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-collector
+  labels:
+    app: opentelemetry
+    component: otel-collector
+spec:
+  ports:
+    - name: otlp-grpc # Default endpoint for OpenTelemetry gRPC receiver.
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: otlp-http # Default endpoint for OpenTelemetry HTTP receiver.
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
+    - name: metrics # Default endpoint for querying metrics.
+      port: 8888
+  selector:
+    component: otel-collector
+```
+
+> - https://github.com/open-telemetry/opentelemetry-collector/blob/v0.86.0/examples/k8s/otel-config.yaml
+> - https://github.com/open-telemetry/opentelemetry-helm-charts/tree/opentelemetry-operator-0.39.1/charts/opentelemetry-collector
+
+<br>
