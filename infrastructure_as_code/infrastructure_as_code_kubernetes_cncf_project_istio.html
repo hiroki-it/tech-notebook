@@ -7612,7 +7612,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 <h3 id="_31">分散トレースの監視<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ スパンの作成<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
 <p>Istio上のEnvoyは、スパンを作成する。</p>
-<p>ただし、アプリコンテナ間でスパンが持つコンテキスト伝播することはしないため、コンテキストを伝播させる実装が必要になる。</p>
+<p>ただし、アプリコンテナ間でスパンが持つコンテキストを伝播しないため、コンテキストを伝播させる実装が必要になる。</p>
 <h4 id="_33">▼ スパンの送信<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>Istio上のEnvoyは、スパンを分散トレース収集ツール (例：jaegerコレクター、otelコレクター、など) に送信する。</p>
 <p>Envoyでは宛先として対応していても、Istio上のEnvoyでは使用できない場合がある。(例：X-rayデーモン)</p>
@@ -7677,7 +7677,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
     
   </small>
