@@ -256,7 +256,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 
 	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
-		// W3C TraceContext仕様のコンテキストを伝播するためPropagatorを設定する
+		// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -526,7 +526,7 @@ func initProvider() (func(context.Context) error, error) {
 
 	// 監視バックエンドが対応するコンテキストの仕様を設定する必要がある
 	otel.SetTextMapPropagator(
-		// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
+		// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
         propagation.TraceContext{},
     )
 
@@ -1130,7 +1130,7 @@ func installPropagators() {
 		propagation.NewCompositeTextMapPropagator(
 			// CloudTrace形式のコンテキストを伝播できるPropagatorを設定する
 			gcppropagator.CloudTraceOneWayPropagator{},
-			// W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
+			// W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
 			propagation.TraceContext{},
 			// W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
 			propagation.Baggage{},
@@ -1290,7 +1290,7 @@ func Init() (*sdktrace.TracerProvider, error) {
 	otel.SetTextMapPropagator(
 		// 複数のPropagatorを動的に選べるようにする
 		propagation.NewCompositeTextMapPropagator(
-			    // W3C TraceContext仕様のコンテキストを伝播できるPropagatorを設定する
+			    // W3C Trace Context仕様のコンテキストを伝播できるPropagatorを設定する
 			    propagation.TraceContext{},
 			    // W3C Baggage仕様のコンテキストを伝播できるPropagatorを設定する
 			    propagation.Baggage{},

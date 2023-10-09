@@ -428,14 +428,14 @@ jsonPayload.traceId="<トレースID>"
 
 コンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。
 
-- W3C TraceContext
+- W3C Trace Context
 - W3C Baggage
 - B3 (Zipkin)
 - Jaeger
 - 独自仕様 (AWS X-ray、Datadog、LightStep、など)
 
 ```yaml
-# W3C TraceContext
+# W3C Trace Context
 GET /my-service HTTP/1.1
 ---
 Host: myhost.com

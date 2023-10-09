@@ -417,11 +417,11 @@ data:
 
 <br>
 
-### extensionProviders
+### extensionProviders (認証/認可系)
 
-#### ▼ extensionProvidersとは
+#### ▼ 認証/認可系
 
-Istioに連携するためのツールの情報を定義する。
+認証の委譲先となるIDプロバイダーの宛先情報を設定する。
 
 #### ▼ envoyExtAuthzHttp
 
@@ -476,9 +476,23 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
 
+<br>
+
+### extensionProviders (可観測系)
+
+#### ▼ 可観測性系とは
+
+監視バックエンドの宛先情報を設定する。
+
+プロバイダーによって、いずれのテレメトリーを送信するのかが異なる。
+
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+
 #### ▼ datadog
 
-監視バックエンドとするDatadogの宛先情報を設定する。
+分散トレースの監視バックエンドとするDatadogの宛先情報を設定する。
+
+コンテキストの仕様は選べず、強制的にDatadogコンテキストになる。
 
 ```yaml
 apiVersion: v1
@@ -534,10 +548,13 @@ spec:
 
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
 > - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider
 
 #### ▼ opentelemetry
 
-監視バックエンドとするotelコレクターの宛先情報を設定する。
+分散トレースの監視バックエンドとするotelコレクターの宛先情報を設定する。
+
+コンテキストの仕様は選べず、強制的にW3C Trace Contextになる。
 
 ```yaml
 apiVersion: v1
@@ -593,6 +610,7 @@ spec:
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37
+> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider
 > - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
 > - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
 > - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
