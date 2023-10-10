@@ -89,11 +89,17 @@ Ingressコントローラーの場合、`L7`ロードバランサーをプロビ
 
 `L7`ロードバランサーは、受信した通信をServiceにルーティングする。
 
-Serviceは、これを`L4`として処理し、Podにルーティングする。
+Serviceはこれを`L4`として処理し、Podにルーティングする。
 
 ![kubernetes_network_l4-l7.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
 
 > - https://www.netone.co.jp/media/detail/20191226-1/
+
+<br>
+
+### LoadBalancer Serviceの場合
+
+LoadBalancer Serviceの場合、`L4`ロードバランサーをプロビジョニングする。
 
 <br>
 

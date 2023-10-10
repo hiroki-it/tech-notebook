@@ -4601,6 +4601,40 @@ spec:
 
 <br>
 
+### .spec.externalTrafficPolicy
+
+#### ▼ externalTrafficPolicyとは
+
+記入中...
+
+#### ▼ Local
+
+ServiceのSNAT処理を無効化し、送信元IPアドレスを変換しなようにする。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  type: NodePort
+  externalTrafficPolicy: Local
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+```
+
+> - https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport
+
+<br>
+
 ### .spec.ports
 
 #### ▼ portsとは
