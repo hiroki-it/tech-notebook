@@ -326,7 +326,7 @@ service/foo-service created
 
 Pod数を維持管理するReplicaSetを作成する。
 
-Podを削除するためには、Deployment自体を削除しなければならない。
+Podを終了するためには、Deployment自体を削除しなければならない。
 
 **＊例＊**
 
@@ -410,7 +410,7 @@ $ kubectl delete <Kubernetesリソース> <Kubernetesリソース名>
 
 **＊例＊**
 
-Podを削除する。
+Podを終了する。
 
 Podの場合、オプションの無い`kubectl delete`コマンドが安全な削除となる。
 

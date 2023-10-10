@@ -3635,9 +3635,9 @@ spec:
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
-Podの削除プロセスを開始するまで待機時間を設定する。
+Podの終了プロセスを開始するまで待機時間を設定する。
 
-この時間を超えてもPodを削除できていない場合は、コンテナを強制的に停止する。
+この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
 
 なお、Pod側でコンテナの終了時間を制御することはできない。
 

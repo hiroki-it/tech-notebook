@@ -326,31 +326,31 @@ PodがCrashLoopBackOffになっている場合、以下を確認すると良い�
 
 #### ▼ Podを安全に削除する方法
 
-Podの削除プロセスが始まると、以下のプロセスも開始する。
+Podの終了プロセスが始まると、以下の一連のプロセスも開始する。
 
-- DeploymentがPodを切り離す。
-- Serviceとkube-proxyがPodの宛先情報を削除する。
+- Workload (例：Deployment) が古いPodを切り離す。
+- Serviceとkube-proxyが古いPodの宛先情報を削除する。
 - コンテナを停止する。
 
 これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。
 
-この時、コンテナが正常に終了する前にPodを削除してしまうと、コンテナでは強制的に終了として扱われてしまい、ログにエラーが出力されてしまう。
+例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。
 
-また、Serviceとkube-proxyがPodの宛先情報を削除する前に、Podが削除されてしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。
+また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。
 
-そのため、コンテナの正常な終了後にPodを削除できるように、`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの削除プロセスの完了を待機する必要がある。
+そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.containers[].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
 
-また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの`.spec.containers[].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
+また、コンテナの正常な終了後にPodを終了できるように、`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。
 
 これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。
 
-`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを削除可能にする。
+`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを終了可能にする。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
 `(1)`
 
-: クライアントは、`kubectl`コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。
+: クライアントは、`kubectl`コマンドがを使用して、Podを終了するリクエストをkube-apiserverに送信する。
 
 `(2)`
 
@@ -358,7 +358,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 `(3)`
 
-: Podの`.spec.terminationGracePeriodSeconds`キーに応じて、Podの削除プロセス完了の待機時間を開始する。
+: Podの`.spec.terminationGracePeriodSeconds`キーに応じて、Podの終了プロセス完了の待機時間を開始する。
 
 `(4)`
 
@@ -380,7 +380,7 @@ Podの削除プロセスが始まると、以下のプロセスも開始する�
 
 `(8)`
 
-: `.spec.terminationGracePeriodSeconds`キーによるPodの削除プロセス完了の待機時間が終了する。
+: `.spec.terminationGracePeriodSeconds`キーによるPodの終了プロセス完了の待機時間が終了する。
 
      この段階でもコンテナが停止していない場合は、コンテナに`SIGKILL`シグナルが送信され、コンテナを強制的に終了することになる。
 
