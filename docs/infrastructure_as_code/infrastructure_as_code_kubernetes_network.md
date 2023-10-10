@@ -13,7 +13,7 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. Kubernetesネットワーク
+## 01. ネットワークの種類
 
 ### Nodeネットワーク
 
@@ -81,7 +81,23 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 <br>
 
-## 02. Pod間通信
+## 02. ネットワークレイヤー
+
+### Ingressコントローラー由来のロードバランサーの場合
+
+Ingressコントローラーの場合、`L7`ロードバランサーをプロビジョニングする。
+
+`L7`ロードバランサーは、受信した通信をServiceにルーティングする。
+
+Serviceは、これを`L4`として処理し、Podにルーティングする。
+
+![kubernetes_network_l4-l7.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
+
+> - https://www.netone.co.jp/media/detail/20191226-1/
+
+<br>
+
+## 03. Pod間通信
 
 ### Pod間通信の経路
 

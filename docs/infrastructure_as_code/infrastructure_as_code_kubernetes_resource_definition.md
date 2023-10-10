@@ -4825,8 +4825,7 @@ spec:
       timeoutSeconds: 3600
 ```
 
-> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
-> - https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb
+> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-stickiness-timeout
 
 <br>
 
