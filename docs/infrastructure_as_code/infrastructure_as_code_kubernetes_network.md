@@ -149,7 +149,7 @@ Pod内のコンテナは、これを使用し、Serviceを介してPodにリク�
 
 **＊実装例＊**
 
-foo-app-serviceというServiceを作成した場合の環境変数を示す。
+foo-serviceというServiceを作成した場合の環境変数を示す。
 
 ```bash
 $ kubectl exec -it foo-pod -- printenv | sort -n

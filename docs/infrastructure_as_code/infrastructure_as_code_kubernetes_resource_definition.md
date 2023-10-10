@@ -4617,7 +4617,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - appProtocol: http
@@ -4628,7 +4628,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - appProtocol: tcp
@@ -4643,7 +4643,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - name: http
@@ -4654,7 +4654,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - name: tcp-foo
@@ -4671,7 +4671,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - protocol: TCP
@@ -4682,7 +4682,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - protocol: UDP
@@ -4693,7 +4693,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - protocol: SCTP
@@ -4710,7 +4710,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - port: 80
@@ -4720,7 +4720,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - port: 9000
@@ -4740,7 +4740,7 @@ Pod内で最初にインバウンド通信を受信するコンテナの`contain
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - port: 8080
@@ -4751,7 +4751,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     - port: 9000
@@ -4774,13 +4774,59 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   selector:
     app.kubernetes.io/name: foo-pod
 ```
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+
+<br>
+
+### .spec.sessionAffinity
+
+#### ▼ sessionAffinityとは
+
+同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  sessionAffinity: ClientIP
+```
+
+> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
+> - https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb
+
+<br>
+
+### .spec.sessionAffinityConfig
+
+#### ▼ sessionAffinityConfigとは
+
+`.spec.sessionAffinity`キーを使用している場合に、セッションのタイムアウト時間を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 3600
+```
+
+> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
+> - https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb
 
 <br>
 
@@ -4798,7 +4844,7 @@ ClusterIP Serviceを設定する。`.spec.clusterIP`キーでCluster-IPを指定
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-clusterip-service
+  name: foo-service
 spec:
   type: ClusterIP
   ports:
@@ -4825,7 +4871,7 @@ Serviceが待ち受けるポート番号とは別に、NodeのNICで待ち受け
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-nodeip-service
+  name: foo-service
 spec:
   type: NodePort
   ports:
@@ -4862,7 +4908,7 @@ LoadBalancer Serviceを設定する。
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-loadbalancer-service
+  name: foo-service
 spec:
   type: LoadBalancer
   ports:

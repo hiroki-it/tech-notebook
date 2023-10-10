@@ -1106,7 +1106,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: foo-app-service-entry
+  name: foo-service-entry
 spec:
   hosts:
     - "*"
@@ -1126,7 +1126,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: foo-app-service-entry
+  name: foo-service-entry
 spec:
   ports:
     - name: http
@@ -1151,7 +1151,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: ServiceEntry
 metadata:
-  name: foo-app-service-entry
+  name: foo-service-entry
 spec:
   resolution: DNS # DNSサーバーから返信されたIPアドレスを許可する。
 ```
@@ -1622,7 +1622,7 @@ appProtocolを使用しない場合は以下の通りとなる。
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     # HTTPのみ
@@ -1634,7 +1634,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     # TCPのみ
@@ -1650,7 +1650,7 @@ appProtocolを使用する場合は以下の通りとなる。
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     # HTTPのみをVirtualServiceから送信できる
@@ -1662,7 +1662,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: foo-app-service
+  name: foo-service
 spec:
   ports:
     # TCPのみをVirtualServiceから送信できる
