@@ -6152,7 +6152,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h2 id="03">03. ボリュームマウント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ボリュームマウントとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ホスト側のストレージ上にあるdockerエリア (<code>/var/lib/docker/volumes</code>ディレクトリ) のマウントポイント (<code>/var/lib/docker/volumes/&lt;ボリューム名&gt;/_data</code>) を、コンテナ側にマウントすることより、データを永続化する。</p>
-<p>ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBのデータをホストコンテナ間と共有する方法として推奨である。</p>
+<p>ホストで作成されるデータをめったに変更しない場合に適しており、例えばDBレコードをホストコンテナ間と共有する方法として推奨である。</p>
 <p>しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。</p>
 <p><img alt="docker_volume-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png" /></p>
 <blockquote>
@@ -6295,7 +6295,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
       
     
   </small>
