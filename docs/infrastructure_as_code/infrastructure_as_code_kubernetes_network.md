@@ -220,21 +220,33 @@ options ndots:5
 
 #### ▼ ndots
 
-宛先コンテナの名前解決時のドメインの厳格度を設定する。
+宛先コンテナの名前解決時のドット数を設定する。
 
-厳格度が高ければ高いほど、網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。
+ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。
 
-例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
+例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、ドット数は`5`になる。
 
-`(1)` `example.com.default.svc.cluster.local.`
+そのため、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
 
-`(2)` `example.com.svc.cluster.local.`
+`(1)`
 
-`(3)` `example.com.cluster.local.`
+: `example.com.default.svc.cluster.local.`
 
-`(4)` `example.com.ec2.internal.`
+`(2)`
 
-`(5)` `example.com.`
+: `example.com.svc.cluster.local.`
+
+`(3)`
+
+: `example.com.cluster.local.`
+
+`(4)`
+
+: `example.com.ec2.internal.`
+
+`(5)`
+
+: `example.com.`
 
 > - https://techblog.stanby.co.jp/entry/EKS_Coredns
 > - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3

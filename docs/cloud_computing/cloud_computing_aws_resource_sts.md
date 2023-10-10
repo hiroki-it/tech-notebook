@@ -226,7 +226,7 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内での�
 
 ### 発行するIAMユーザーの切り替え
 
-IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲するようにする。
+IAMユーザーを一括で管理しておき、特定のAWSアカウントでは特定の認可スコープを委譲する。
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
 

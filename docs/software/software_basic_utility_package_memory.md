@@ -674,7 +674,7 @@ $ journalctl -u foo.service | grep error
 OnFailure=notify-email@%i.service
 ```
 
-`/etc/systemd/system/notify-email@.service`ファイルで、失敗状態時に起動するユニットを定義しておく。`ExecStart`オプションで、特定のアドレスにメールを送信するようにする。
+`/etc/systemd/system/notify-email@.service`ファイルで、失敗状態時に起動するユニットを定義しておく。`ExecStart`オプションで、特定のアドレスにメールを送信する。
 
 ```ini
 # notify-email@.serviceファイル

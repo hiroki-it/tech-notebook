@@ -770,7 +770,7 @@ spec:
             # istio-proxyコンテナ終了直前の処理
             preStop:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。
+                # istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。
                 # envoyプロセスとpilot-agentプロセスの終了を待機する。
                 command:
                   - "/bin/bash"
@@ -781,7 +781,7 @@ spec:
             # istio-proxyコンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。
+                # istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。
                 # pilot-agentの起動完了を待機する。
                 command:
                   - |
@@ -1324,6 +1324,23 @@ spec:
 ```
 
 > - https://speakerdeck.com/nutslove/istioru-men?slide=19
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    - fault:
+        - delay:
+            fixedDelay: 22s # レスポンスの遅延時間
+            percentage:
+              value: 100 # 遅延レスポンスを発生させる割合
+```
 
 #### ▼ match
 

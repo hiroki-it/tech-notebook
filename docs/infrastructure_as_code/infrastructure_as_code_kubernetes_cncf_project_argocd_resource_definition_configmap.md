@@ -518,7 +518,7 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  # ロードバランサーで、リクエストをHTTPで転送するように設定している場合に、argocd-serverでHTTPの受信を許可するようにする
+  # ロードバランサーで、リクエストをHTTPで転送するように設定している場合に、argocd-serverでHTTPの受信を許可する
   server.insecure: "true"
   server.log.format: text
   server.log.level: warn

@@ -95,7 +95,7 @@ $ kind create cluster --wait 3m
 
 Kind Clusterを削除する。
 
-CIの実行コンテナでKind Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行するようにする。
+CIの実行コンテナでKind Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行する。
 
 ```bash
 $ kind delete cluster --name foo-cluster
