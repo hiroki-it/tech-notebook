@@ -6550,6 +6550,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specexternaltrafficpolicy" class="md-nav__link">
+    .spec.externalTrafficPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.externalTrafficPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externaltrafficpolicy" class="md-nav__link">
+    ▼ externalTrafficPolicyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_1" class="md-nav__link">
+    ▼ Local
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specports_1" class="md-nav__link">
     .spec.ports
   </a>
@@ -11829,6 +11856,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specexternaltrafficpolicy" class="md-nav__link">
+    .spec.externalTrafficPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.externalTrafficPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#externaltrafficpolicy" class="md-nav__link">
+    ▼ externalTrafficPolicyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_1" class="md-nav__link">
+    ▼ Local
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specports_1" class="md-nav__link">
     .spec.ports
   </a>
@@ -16201,6 +16255,33 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <blockquote>
 <ul>
 <li><a href="https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/kubernetes/#external-ips-service">https://docker-mailserver.github.io/docker-mailserver/edge/config/advanced/kubernetes/#external-ips-service</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specexternaltrafficpolicy">.spec.externalTrafficPolicy<a class="headerlink" href="#specexternaltrafficpolicy" title="Permanent link">&para;</a></h3>
+<h4 id="externaltrafficpolicy">▼ externalTrafficPolicyとは<a class="headerlink" href="#externaltrafficpolicy" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<h4 id="local_1">▼ Local<a class="headerlink" href="#local_1" title="Permanent link">&para;</a></h4>
+<p>ServiceのSNAT処理を無効化し、送信元IPアドレスを変換しなようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+<span class="w">  </span><span class="nt">externalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Local</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+<span class="w">  </span><span class="nt">externalTrafficPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Local</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport">https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport</a></li>
 </ul>
 </blockquote>
 <p><br></p>

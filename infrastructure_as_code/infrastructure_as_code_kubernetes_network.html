@@ -3702,6 +3702,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#loadbalancer-service" class="md-nav__link">
+    LoadBalancer Serviceの場合
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6009,6 +6016,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#loadbalancer-service" class="md-nav__link">
+    LoadBalancer Serviceの場合
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6184,13 +6198,16 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <h3 id="ingress">Ingressコントローラー由来のロードバランサーの場合<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーの場合、<code>L7</code>ロードバランサーをプロビジョニングする。</p>
 <p><code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
-<p>Serviceは、これを<code>L4</code>として処理し、Podにルーティングする。</p>
+<p>Serviceはこれを<code>L4</code>として処理し、Podにルーティングする。</p>
 <p><img alt="kubernetes_network_l4-l7.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.netone.co.jp/media/detail/20191226-1/">https://www.netone.co.jp/media/detail/20191226-1/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
+<p>LoadBalancer Serviceの場合、<code>L4</code>ロードバランサーをプロビジョニングする。</p>
 <p><br></p>
 <h2 id="03-pod">03. Pod間通信<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod_2">Pod間通信の経路<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h3>
