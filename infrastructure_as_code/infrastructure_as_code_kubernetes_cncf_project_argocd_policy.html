@@ -4626,7 +4626,7 @@
         
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
-    すでに削除されたPodがポーリングされ続ける
+    すでに終了したPodがポーリングされ続ける
   </a>
   
 </li>
@@ -6636,7 +6636,7 @@
         
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
-    すでに削除されたPodがポーリングされ続ける
+    すでに終了したPodがポーリングされ続ける
   </a>
   
 </li>
@@ -7233,12 +7233,12 @@
 <h3 id="configmapsecret">ConfigMapやSecretの設定変更が反映されない<a class="headerlink" href="#configmapsecret" title="Permanent link">&para;</a></h3>
 <p>ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定変更を反映する場合、Deployment/StatefulSet/DaemonSetを再起動する必要がある。</p>
 <p><br></p>
-<h3 id="pod">すでに削除されたPodがポーリングされ続ける<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
-<p>すでに削除したPodをポーリングし続けてしまうことがあり、この場合Podが存在しないため、Podの削除すらできなくなってしまう。</p>
+<h3 id="pod">すでに終了したPodがポーリングされ続ける<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<p>すでに終了したPodをポーリングし続けてしまうことがある。</p>
 <p>この問題が起こった場合、以下のいずれかで解決する。</p>
 <ul>
 <li>argocd-serverを再起動する。親になるリソースを削除する必要がなく、apply先のClusterには影響がないため、安全な方法である。ArgoCDの使用者に周知しさえすれば問題ない。</li>
-<li>親になるリソース (Deployment、DaemonSet、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。</li>
+<li>Workload (Deployment、DaemonSet、など) を一度削除する。ただし、親になるリソースを削除する必要があるため、やや危険である。</li>
 </ul>
 <p><br></p>
 <h3 id="progressing"><code>Progressing</code>状態でスタックする<a class="headerlink" href="#progressing" title="Permanent link">&para;</a></h3>
@@ -7590,7 +7590,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
       
     
   </small>

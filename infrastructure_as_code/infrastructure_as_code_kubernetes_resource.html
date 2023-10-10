@@ -8247,24 +8247,24 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <h4 id="pod_7">▼ Podを安全に削除する方法<a class="headerlink" href="#pod_7" title="Permanent link">&para;</a></h4>
-<p>Podの削除プロセスが始まると、以下のプロセスも開始する。</p>
+<p>Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
 <ul>
-<li>DeploymentがPodを切り離す。</li>
-<li>Serviceとkube-proxyがPodの宛先情報を削除する。</li>
+<li>Workload (例：Deployment) が古いPodを切り離す。</li>
+<li>Serviceとkube-proxyが古いPodの宛先情報を削除する。</li>
 <li>コンテナを停止する。</li>
 </ul>
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
-<p>この時、コンテナが正常に終了する前にPodを削除してしまうと、コンテナでは強制的に終了として扱われてしまい、ログにエラーが出力されてしまう。</p>
-<p>また、Serviceとkube-proxyがPodの宛先情報を削除する前に、Podが削除されてしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。</p>
-<p>そのため、コンテナの正常な終了後にPodを削除できるように、<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの削除プロセスの完了を待機する必要がある。</p>
-<p>また、Serviceとkube-proxyの処理後にPodを削除できるように、ユーザーがPodの<code>.spec.containers[].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
+<p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。</p>
+<p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
+<p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
+<p>また、コンテナの正常な終了後にPodを終了できるように、<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
-<p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを削除可能にする。</p>
+<p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを終了可能にする。</p>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアントは、<code>kubectl</code>コマンドがを使用して、Podを削除するリクエストをkube-apiserverに送信する。</p>
+<p>クライアントは、<code>kubectl</code>コマンドがを使用して、Podを終了するリクエストをkube-apiserverに送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -8272,7 +8272,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Podの<code>.spec.terminationGracePeriodSeconds</code>キーに応じて、Podの削除プロセス完了の待機時間を開始する。</p>
+<p>Podの<code>.spec.terminationGracePeriodSeconds</code>キーに応じて、Podの終了プロセス完了の待機時間を開始する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -8293,7 +8293,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
-<p><code>.spec.terminationGracePeriodSeconds</code>キーによるPodの削除プロセス完了の待機時間が終了する。</p>
+<p><code>.spec.terminationGracePeriodSeconds</code>キーによるPodの終了プロセス完了の待機時間が終了する。</p>
 <p>この段階でもコンテナが停止していない場合は、コンテナに<code>SIGKILL</code>シグナルが送信され、コンテナを強制的に終了することになる。</p>
 </dd>
 <dt><code>(9)</code></dt>

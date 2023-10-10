@@ -15434,8 +15434,8 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specterminationgraceperiodseconds">.spec.terminationGracePeriodSeconds<a class="headerlink" href="#specterminationgraceperiodseconds" title="Permanent link">&para;</a></h3>
 <h4 id="terminationgraceperiodseconds">▼ terminationGracePeriodSecondsとは<a class="headerlink" href="#terminationgraceperiodseconds" title="Permanent link">&para;</a></h4>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
-<p>Podの削除プロセスを開始するまで待機時間を設定する。</p>
-<p>この時間を超えてもPodを削除できていない場合は、コンテナを強制的に停止する。</p>
+<p>Podの終了プロセスを開始するまで待機時間を設定する。</p>
+<p>この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>なお、Pod側でコンテナの終了時間を制御することはできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
