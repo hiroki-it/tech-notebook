@@ -8415,7 +8415,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
 <span class="w">            </span><span class="nt">preStop</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも後に終了するようにする。</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも後に終了する。</span>
 <span class="w">                </span><span class="c1"># envoyプロセスとpilot-agentプロセスの終了を待機する。</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/bin/bash&quot;</span>
@@ -8426,7 +8426,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ開始直後の処理</span>
 <span class="w">            </span><span class="nt">postStart</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exec</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動するようにする。</span>
+<span class="w">                </span><span class="c1"># istio-proxyコンテナが、必ずアプリコンテナよりも先に起動する。</span>
 <span class="w">                </span><span class="c1"># pilot-agentの起動完了を待機する。</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -8879,6 +8879,20 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=19">https://speakerdeck.com/nutslove/istioru-men?slide=19</a></li>
 </ul>
 </blockquote>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delay</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22s</span><span class="w"> </span><span class="c1"># レスポンスの遅延時間</span>
+<span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"> </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
+</code></pre></div>
 <h4 id="match_1">▼ match<a class="headerlink" href="#match_1" title="Permanent link">&para;</a></h4>
 <p>受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -9177,7 +9191,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

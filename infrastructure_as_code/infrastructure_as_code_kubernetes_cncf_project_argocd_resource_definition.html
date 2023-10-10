@@ -8829,7 +8829,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <tr>
 <td><code>values</code></td>
 <td><code>helm</code>コマンドに渡す<code>values</code>ファイルの値をハードコーディングする。</td>
-<td>執筆時点 (2022/10/31) では、<code>values</code>ファイルは、同じチャートリポジトリ内にある必要がある。チャートと<code>values</code>ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code>ファイルは独自で定義する) 、<code>valueFiles</code>オプションの代わりに<code>values</code>オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに<code>values</code>ファイルをハードコーディングした場合に、共有<code>values</code>ファイルと差分<code>values</code>ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code>オプションの一部分をHelmのテンプレート機能で動的に出力するようにする。ただし、新機能として複数のリポジトリの<code>values</code>ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに<code>values</code>ファイルがあっても<code>valueFiles</code>オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
+<td>執筆時点 (2022/10/31) では、<code>values</code>ファイルは、同じチャートリポジトリ内にある必要がある。チャートと<code>values</code>ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、<code>values</code>ファイルは独自で定義する) 、<code>valueFiles</code>オプションの代わりに<code>values</code>オプションを使用する。<br>・<a href="https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936">https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936</a> <br>・<a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62</a> <br><br>ただし、Applicationに<code>values</code>ファイルをハードコーディングした場合に、共有<code>values</code>ファイルと差分<code>values</code>ファイルに切り分けて定義できなくなってしまう。そこで、<code>values</code>オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの<code>values</code>ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに<code>values</code>ファイルがあっても<code>valueFiles</code>オプションで指定できるようになる。新機能のリリースあとはこちらを使用した方が良さそう。<br>・<a href="https://github.com/argoproj/argo-cd/pull/10432">https://github.com/argoproj/argo-cd/pull/10432</a></td>
 </tr>
 <tr>
 <td><code>valueFiles</code></td>
@@ -9266,7 +9266,7 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <h3 id="default-appproject">default AppProject<a class="headerlink" href="#default-appproject" title="Permanent link">&para;</a></h3>
 <p>ArgoCDは、最も認可スコープの大きい<code>default</code>のAppProjectを自動的に作成する。</p>
 <p><code>default</code>のAppProjectでは、任意のNamespaceでApplicationを作成できる。</p>
-<p>テナントを完全に分離するために、<code>default</code>のAppProjectにはApplicationを作成せずに、ユーザー定義のAppProjectを使用するようにする。</p>
+<p>テナントを完全に分離するために、<code>default</code>のAppProjectにはApplicationを作成せずに、ユーザー定義のAppProjectを使用する。</p>
 <p>なお同じAppProject内では、ArgoCDのApplication名は一意にする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
@@ -9788,7 +9788,7 @@ spec:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

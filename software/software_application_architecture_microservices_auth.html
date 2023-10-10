@@ -5895,7 +5895,7 @@
 <p>JWTを作成する認証マイクロサービスを<code>1</code>個だけ配置し、CookieベースのForm認証を実現する。</p>
 <p>各マイクロサービスはJWTに基づいてユーザーを認証する。</p>
 <p><code>1</code>個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込む。</p>
-<p>ただ分散型の認証とは異なり、クライアント側にはJWTの代わりとなるOpaqueトークンを保存させるようにする。</p>
+<p>ただ分散型の認証とは異なり、クライアント側にはJWTの代わりとなるOpaqueトークンを保存する。</p>
 <p>また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。</p>
 <p><img alt="micro-auth_type_gateway-distribution" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_gateway-distribution.png" /></p>
 <blockquote>
@@ -5930,7 +5930,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

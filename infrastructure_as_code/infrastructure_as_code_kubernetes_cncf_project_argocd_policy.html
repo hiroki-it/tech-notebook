@@ -7085,7 +7085,7 @@
 <p>ArgoCDのデフォルトの認証方法は、Bearer認証である。</p>
 <p>利便性のためSSOを採用しつつ、二要素認証を組み合わせて強度を高める。</p>
 <p>そのために、認証フェーズを信頼性の高い外部サービス (Auth0、GitHub、GitLab、など) に委譲し、SSO (OAuth、SAML、OIDC) を採用する。</p>
-<p>さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求するようにする。</p>
+<p>さらに、SSOと二要素認証を組み合わせ、上記の認証フェーズ時にPCやスマホのワンタイムパスワードを要求する。</p>
 <table>
 <thead>
 <tr>
@@ -7285,7 +7285,7 @@
 <h4 id="crd">▼ CRDについて<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
 <p>ArgoCD自体をArgoCDで管理することはできないため、手動やマニフェスト管理ツール (Helm、Kustomize) でArgoCDをアップグレードする必要がある。</p>
 <p>特にCRDは、マニフェスト管理ツールで更新できない (作成はできる) 場合がある。</p>
-<p>そのため、チャートリポジトリにある該当のディレクトリ配下のCRDのマニフェストを指定し、直接的に更新するようにする。</p>
+<p>そのため、チャートリポジトリにある該当のディレクトリ配下のCRDのマニフェストを指定し、直接的に更新する。</p>
 <p><br></p>
 <h3 id="argocd_4">ArgoCDを使用したツールのアップグレード<a class="headerlink" href="#argocd_4" title="Permanent link">&para;</a></h3>
 <p>マニフェストリポジトリやチャートリポジトリの設計によっては、新バージョンのKubernetesリソース名にリビジョン番号がつくようになっていることがある (例：Istioのチャート) 。</p>
@@ -7590,7 +7590,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

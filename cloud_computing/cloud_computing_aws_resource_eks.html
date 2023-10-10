@@ -9284,7 +9284,7 @@
 <span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
 <p>ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。</p>
-<p>パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力するようにする。</p>
+<p>パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
@@ -9456,7 +9456,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p><br></p>
 <h3 id="_25">プライベートサブネット内のデータプレーンからのアウトバウンド通信<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 宛先情報の管理方法<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントするようにする。</p>
+<p>アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9711,7 +9711,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </ul>
 </blockquote>
 <h4 id="fargatenode_2">▼ FargateワーカーNodeを使用できない場合<a class="headerlink" href="#fargatenode_2" title="Permanent link">&para;</a></h4>
-<p>以下の場合は、EC2ワーカーNodeを使用するようにする。</p>
+<p>以下の場合は、EC2ワーカーNodeを使用する。</p>
 <ul>
 <li>FargateワーカーNodeでは、DaemonSetが使えない。サイドカーを配置する必要がある。</li>
 <li>Fargateで設定可能な最大スペックを超えたスペックが必要である。</li>
@@ -9844,7 +9844,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

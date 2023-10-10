@@ -6314,14 +6314,32 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <h4 id="ndots">▼ ndots<a class="headerlink" href="#ndots" title="Permanent link">&para;</a></h4>
-<p>宛先コンテナの名前解決時のドメインの厳格度を設定する。</p>
-<p>厳格度が高ければ高いほど、網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。</p>
-<p>例えば、<code>ndots:5</code>としたPodが<code>example.com</code>を名前解決する場合、最初は<code>example.com.default.svc.cluster.local.</code>から名前解決を始め、<code>example.com.</code>で終わる。</p>
-<p><code>(1)</code> <code>example.com.default.svc.cluster.local.</code></p>
-<p><code>(2)</code> <code>example.com.svc.cluster.local.</code></p>
-<p><code>(3)</code> <code>example.com.cluster.local.</code></p>
-<p><code>(4)</code> <code>example.com.ec2.internal.</code></p>
-<p><code>(5)</code> <code>example.com.</code></p>
+<p>宛先コンテナの名前解決時のドット数を設定する。</p>
+<p>ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。</p>
+<p>例えば、<code>ndots:5</code>としたPodが<code>example.com</code>を名前解決する場合、ドット数は<code>5</code>になる。</p>
+<p>そのため、最初は<code>example.com.default.svc.cluster.local.</code>から名前解決を始め、<code>example.com.</code>で終わる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p><code>example.com.default.svc.cluster.local.</code></p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p><code>example.com.svc.cluster.local.</code></p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p><code>example.com.cluster.local.</code></p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p><code>example.com.ec2.internal.</code></p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p><code>example.com.</code></p>
+</dd>
+</dl>
 <blockquote>
 <ul>
 <li><a href="https://techblog.stanby.co.jp/entry/EKS_Coredns">https://techblog.stanby.co.jp/entry/EKS_Coredns</a></li>
@@ -6335,7 +6353,7 @@ options<span class="w"> </span>ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

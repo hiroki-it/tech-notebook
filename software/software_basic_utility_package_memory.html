@@ -7605,7 +7605,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <span class="c1"># ユニットが失敗状態時に起動するユニット</span>
 <span class="na">OnFailure</span><span class="o">=</span><span class="s">notify-email@%i.service</span>
 </code></pre></div>
-<p><code>/etc/systemd/system/notify-email@.service</code>ファイルで、失敗状態時に起動するユニットを定義しておく。<code>ExecStart</code>オプションで、特定のアドレスにメールを送信するようにする。</p>
+<p><code>/etc/systemd/system/notify-email@.service</code>ファイルで、失敗状態時に起動するユニットを定義しておく。<code>ExecStart</code>オプションで、特定のアドレスにメールを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># notify-email@.serviceファイル</span>
 <span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">Sent email</span>
@@ -7687,7 +7687,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>
