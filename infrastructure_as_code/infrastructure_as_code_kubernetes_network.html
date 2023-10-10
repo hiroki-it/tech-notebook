@@ -3588,11 +3588,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-kubernetes" class="md-nav__link">
-    01. Kubernetesネットワーク
+  <a href="#01" class="md-nav__link">
+    01. ネットワークの種類
   </a>
   
-    <nav class="md-nav" aria-label="01. Kubernetesネットワーク">
+    <nav class="md-nav" aria-label="01. ネットワークの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3688,11 +3688,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-pod" class="md-nav__link">
-    02. Pod間通信
+  <a href="#02" class="md-nav__link">
+    02. ネットワークレイヤー
   </a>
   
-    <nav class="md-nav" aria-label="02. Pod間通信">
+    <nav class="md-nav" aria-label="02. ネットワークレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingressコントローラー由来のロードバランサーの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-pod" class="md-nav__link">
+    03. Pod間通信
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Pod間通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5875,11 +5895,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-kubernetes" class="md-nav__link">
-    01. Kubernetesネットワーク
+  <a href="#01" class="md-nav__link">
+    01. ネットワークの種類
   </a>
   
-    <nav class="md-nav" aria-label="01. Kubernetesネットワーク">
+    <nav class="md-nav" aria-label="01. ネットワークの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5975,11 +5995,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-pod" class="md-nav__link">
-    02. Pod間通信
+  <a href="#02" class="md-nav__link">
+    02. ネットワークレイヤー
   </a>
   
-    <nav class="md-nav" aria-label="02. Pod間通信">
+    <nav class="md-nav" aria-label="02. ネットワークレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingressコントローラー由来のロードバランサーの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-pod" class="md-nav__link">
+    03. Pod間通信
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Pod間通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6088,7 +6128,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-kubernetes">01. Kubernetesネットワーク<a class="headerlink" href="#01-kubernetes" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. ネットワークの種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="node">Nodeネットワーク<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="node_1">▼ Nodeネットワークとは<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
 <p>同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。</p>
@@ -6140,7 +6180,19 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://127.0.0.1:&lt;ポート番号&gt;
 </code></pre></div>
 <p><br></p>
-<h2 id="02-pod">02. Pod間通信<a class="headerlink" href="#02-pod" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. ネットワークレイヤー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="ingress">Ingressコントローラー由来のロードバランサーの場合<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<p>Ingressコントローラーの場合、<code>L7</code>ロードバランサーをプロビジョニングする。</p>
+<p><code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
+<p>Serviceは、これを<code>L4</code>として処理し、Podにルーティングする。</p>
+<p><img alt="kubernetes_network_l4-l7.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.netone.co.jp/media/detail/20191226-1/">https://www.netone.co.jp/media/detail/20191226-1/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-pod">03. Pod間通信<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod_2">Pod間通信の経路<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h3>
 <p>Pod内のコンテナから宛先のPodにリクエストを送信する。</p>
 <p>この時、PodのスケジューリングされているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。</p>
