@@ -5503,11 +5503,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-nginx-ingress" class="md-nav__link">
-    01. Nginx Ingressコントローラー
+  <a href="#01" class="md-nav__link">
+    01. 仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. Nginx Ingressコントローラー">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. マニフェスト
+  </a>
+  
+    <nav class="md-nav" aria-label="02. マニフェスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5562,9 +5569,15 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-nginx-ingress">01. Nginx Ingressコントローラー<a class="headerlink" href="#01-nginx-ingress" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p><code>L4</code>/<code>L7</code>ロードバランサーとしてのNginxを使用して、通信をロードバランシングする。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.nginx.com/nginx-ingress-controller/intro/how-nginx-ingress-controller-works/#the-ingress-controller-pod">https://docs.nginx.com/nginx-ingress-controller/intro/how-nginx-ingress-controller-works/#the-ingress-controller-pod</a></li>
+</ul>
+</blockquote>
 <p><br></p>
+<h2 id="02">02. マニフェスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi">▼ FastCGIプロトコル<a class="headerlink" href="#fastcgi" title="Permanent link">&para;</a></h4>
 <p>Nginx Ingressコントローラーは、受信したリクエストをFastCGIプロトコルで転送できる。</p>
@@ -5610,7 +5623,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>

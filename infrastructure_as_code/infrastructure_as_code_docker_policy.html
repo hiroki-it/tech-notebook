@@ -3860,7 +3860,7 @@
         
           <li class="md-nav__item">
   <a href="#dockerfile_2" class="md-nav__link">
-    ▼ Dockerfileの脆弱性テスト
+    ▼ Dockerfileの脆弱性診断
   </a>
   
 </li>
@@ -6558,7 +6558,7 @@
         
           <li class="md-nav__item">
   <a href="#dockerfile_2" class="md-nav__link">
-    ▼ Dockerfileの脆弱性テスト
+    ▼ Dockerfileの脆弱性診断
   </a>
   
 </li>
@@ -7268,12 +7268,12 @@ EOF
 <p>Dockerfileの文法の誤りを検証する。</p>
 <h4 id="dockerfile_1">▼ Dockerfileのベストプラクティス違反テスト<a class="headerlink" href="#dockerfile_1" title="Permanent link">&para;</a></h4>
 <p>外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfileのベストプラクティス違反を検証する。</p>
-<h4 id="dockerfile_2">▼ Dockerfileの脆弱性テスト<a class="headerlink" href="#dockerfile_2" title="Permanent link">&para;</a></h4>
-<p>外部の脆弱性テストツール (例：hadolint) を使用する。</p>
+<h4 id="dockerfile_2">▼ Dockerfileの脆弱性診断<a class="headerlink" href="#dockerfile_2" title="Permanent link">&para;</a></h4>
+<p>外部の脆弱性診断ツール (例：hadolint) を使用する。</p>
 <p>報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
 <p>補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。</p>
 <h4 id="_27">▼ コンテナ構造テスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>外部の脆弱性テストツール (例：container-structure-test) を使用する。</p>
+<p>外部の脆弱性診断ツール (例：container-structure-test) を使用する。</p>
 <p>報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の<code>ENTRYPOINT</code>が正しく動作するか、など) 。</p>
 <blockquote>
 <ul>
