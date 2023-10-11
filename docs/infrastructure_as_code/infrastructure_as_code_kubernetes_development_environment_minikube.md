@@ -310,13 +310,13 @@ ClusterIP Serviceの場合、やや難易度が高くなる。
 
 クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。
 
-minikubeのingressアドオン (Nginxコントローラー) を有効化し、Ingressとnginxを指定したIngressClassを作成する。
+minikubeのingressアドオン (Nginx Ingressコントローラー) を有効化し、Ingressとnginxを指定したIngressClassを作成する。
 
 ```bash
 $ minikube addons enable ingress
 ```
 
-Nginxコントローラーを含むIngressコントローラーは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。
+Nginx Ingressコントローラーを含むIngressコントローラーは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。
 
 これをMinikube上で再現するために名前解決するために、ingress-dnsアドオンを有効化する。
 

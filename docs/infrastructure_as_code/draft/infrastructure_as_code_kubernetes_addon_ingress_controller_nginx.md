@@ -23,6 +23,14 @@ description: Nginx Ingressコントローラー＠Ingressコントローラー�
 
 ## 02. マニフェスト
 
+### Ingress
+
+```yaml
+
+```
+
+<br>
+
 ### Service
 
 #### ▼ FastCGIプロトコル
@@ -40,7 +48,7 @@ spec:
   selector:
     app: foo-app
   ports:
-    # NginxコントローラーがTCPプロトコルに変換してくれる
+    # Nginx IngressコントローラーがTCPプロトコルに変換してくれる
     - protocol: TCP
       port: 9000
       targetPort: 9000
@@ -63,5 +71,56 @@ spec:
 
 > - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
 > - https://www.tecmint.com/connect-nginx-to-php-fpm/
+
+<br>
+
+### `.metadata.annotations`キー
+
+#### ▼ `.metadata.annotations`キーとは
+
+Nginxをルーティングルール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
+
+#### ▼ `nginx.ingress.kubernetes.io/affinity`キーとは
+
+Podへのルーティング時にセッションを維持するかどうかを設定する。
+
+同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。
+
+```yaml
+piVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/affinity: cookie
+```
+
+> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity
+
+#### ▼ `nginx.ingress.kubernetes.io/whitelist-source-range`キーとは
+
+インバウンド通信で許可するCIDRを設定する。
+
+```yaml
+piVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/whitelist-source-range: *.*.*.*/*
+```
+
+#### ▼ `nginx.ingress.kubernetes.io/denylist-source-range`キーとは
+
+インバウンド通信で拒否するCIDRを設定する。
+
+```yaml
+piVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/denylist-source-range: *.*.*.*/*
+```
 
 <br>

@@ -73,6 +73,21 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-path: /healthz
 ```
 
+#### ▼ `alb.ingress.kubernetes.io/inbound-cidrs`キー
+
+インバウンド通信で許可するCIDRを設定する。
+
+`alb.ingress.kubernetes.io/wafv2-acl-arn`キーを使用して、同じルールを持ったWAFを紐づけても良い。
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foo-alb-ingress
+  annotations:
+    alb.ingress.kubernetes.io/inbound-cidrs: *.*.*.*
+```
+
 #### ▼ `alb.ingress.kubernetes.io/listen-ports`キー
 
 AWS ALBでインバウンド通信を受け付けるポート番号を設定する。
