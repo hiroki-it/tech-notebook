@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 kics＠脆弱性テスト
-description: kics＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 kics＠脆弱性診断
+description: kics＠脆弱性診断の知見を記録しています。
 ---
 
-# kics＠脆弱性テスト
+# kics＠脆弱性診断
 
 ## はじめに
 

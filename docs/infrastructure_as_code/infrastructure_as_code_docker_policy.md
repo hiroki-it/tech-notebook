@@ -673,9 +673,9 @@ Dockerfileの文法の誤りを検証する。
 
 外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfileのベストプラクティス違反を検証する。
 
-#### ▼ Dockerfileの脆弱性テスト
+#### ▼ Dockerfileの脆弱性診断
 
-外部の脆弱性テストツール (例：hadolint) を使用する。
+外部の脆弱性診断ツール (例：hadolint) を使用する。
 
 報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。
 
@@ -683,7 +683,7 @@ Dockerfileの文法の誤りを検証する。
 
 #### ▼ コンテナ構造テスト
 
-外部の脆弱性テストツール (例：container-structure-test) を使用する。
+外部の脆弱性診断ツール (例：container-structure-test) を使用する。
 
 報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) 。
 

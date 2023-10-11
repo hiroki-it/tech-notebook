@@ -29,7 +29,7 @@
 > * ##### <u>バージョンテスト</u>
 > > * ##### [pluto](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_pluto.html)
 > > * ##### [nova](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_nova.html)
-> * ##### <u>脆弱性テスト</u>
+> * ##### <u>脆弱性診断</u>
 > > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_checkov.html)
 > > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kics.html)
 > > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kube_score.html)

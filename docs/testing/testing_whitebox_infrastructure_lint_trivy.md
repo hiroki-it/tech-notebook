@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 trivy＠脆弱性テスト
-description: trivy＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 trivy＠脆弱性診断
+description: trivy＠脆弱性診断の知見を記録しています。
 ---
 
-# trivy＠脆弱性テスト
+# trivy＠脆弱性診断
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 checkov＠脆弱性テスト
-description: checkov＠脆弱性テストの知見を記録しています。
+title: 【IT技術の知見】 checkov＠脆弱性診断
+description: checkov＠脆弱性診断の知見を記録しています。
 ---
 
-# checkov＠脆弱性テスト
+# checkov＠脆弱性診断
 
 ## はじめに
 

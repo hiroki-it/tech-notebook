@@ -29,11 +29,11 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 ### ビルトインの静的解析
 
-#### ▼ 脆弱性テスト
+#### ▼ 脆弱性診断
 
 CodeQLを使用して、ソースコードの脆弱性を検証できる。
 
-CodeQL以外の脆弱性テストツールを使用するよりも、GitHubと連携しやすい。
+CodeQL以外の脆弱性診断ツールを使用するよりも、GitHubと連携しやすい。
 
 > - https://docs.github.com/ja/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql
 

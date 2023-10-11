@@ -13,11 +13,15 @@ description: Nginx Ingressコントローラー＠Ingressコントローラー�
 
 <br>
 
-## 01. Nginx Ingressコントローラー
+## 01. 仕組み
 
 `L4`/`L7`ロードバランサーとしてのNginxを使用して、通信をロードバランシングする。
 
+> - https://docs.nginx.com/nginx-ingress-controller/intro/how-nginx-ingress-controller-works/#the-ingress-controller-pod
+
 <br>
+
+## 02. マニフェスト
 
 ### Service
 
