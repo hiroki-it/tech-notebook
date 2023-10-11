@@ -5518,6 +5518,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    Ingress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#service" class="md-nav__link">
     Service
   </a>
@@ -5528,6 +5535,47 @@
           <li class="md-nav__item">
   <a href="#fastcgi" class="md-nav__link">
     ▼ FastCGIプロトコル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadataannotations" class="md-nav__link">
+    .metadata.annotationsキー
+  </a>
+  
+    <nav class="md-nav" aria-label=".metadata.annotationsキー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metadataannotations_1" class="md-nav__link">
+    ▼ .metadata.annotationsキーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginxingresskubernetesioaffinity" class="md-nav__link">
+    ▼ nginx.ingress.kubernetes.io/affinityキーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginxingresskubernetesiowhitelist-source-range" class="md-nav__link">
+    ▼ nginx.ingress.kubernetes.io/whitelist-source-rangeキーとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginxingresskubernetesiodenylist-source-range" class="md-nav__link">
+    ▼ nginx.ingress.kubernetes.io/denylist-source-rangeキーとは
   </a>
   
 </li>
@@ -5578,6 +5626,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. マニフェスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi">▼ FastCGIプロトコル<a class="headerlink" href="#fastcgi" title="Permanent link">&para;</a></h4>
 <p>Nginx Ingressコントローラーは、受信したリクエストをFastCGIプロトコルで転送できる。</p>
@@ -5590,7 +5642,7 @@
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
 <span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># NginxコントローラーがTCPプロトコルに変換してくれる</span>
+<span class="w">    </span><span class="c1"># Nginx IngressコントローラーがTCPプロトコルに変換してくれる</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
@@ -5616,6 +5668,43 @@
 <li><a href="https://www.tecmint.com/connect-nginx-to-php-fpm/">https://www.tecmint.com/connect-nginx-to-php-fpm/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="metadataannotations"><code>.metadata.annotations</code>キー<a class="headerlink" href="#metadataannotations" title="Permanent link">&para;</a></h3>
+<h4 id="metadataannotations_1">▼ <code>.metadata.annotations</code>キーとは<a class="headerlink" href="#metadataannotations_1" title="Permanent link">&para;</a></h4>
+<p>Nginxをルーティングルール以外を設定するために、Ingressの<code>.metadata.annotations</code>キーを設定する必要がある。</p>
+<h4 id="nginxingresskubernetesioaffinity">▼ <code>nginx.ingress.kubernetes.io/affinity</code>キーとは<a class="headerlink" href="#nginxingresskubernetesioaffinity" title="Permanent link">&para;</a></h4>
+<p>Podへのルーティング時にセッションを維持するかどうかを設定する。</p>
+<p>同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nginx-ingress</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/affinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cookie</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity">https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity</a></li>
+</ul>
+</blockquote>
+<h4 id="nginxingresskubernetesiowhitelist-source-range">▼ <code>nginx.ingress.kubernetes.io/whitelist-source-range</code>キーとは<a class="headerlink" href="#nginxingresskubernetesiowhitelist-source-range" title="Permanent link">&para;</a></h4>
+<p>インバウンド通信で許可するCIDRを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nginx-ingress</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/whitelist-source-range</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*/*</span>
+</code></pre></div>
+<h4 id="nginxingresskubernetesiodenylist-source-range">▼ <code>nginx.ingress.kubernetes.io/denylist-source-range</code>キーとは<a class="headerlink" href="#nginxingresskubernetesiodenylist-source-range" title="Permanent link">&para;</a></h4>
+<p>インバウンド通信で拒否するCIDRを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nginx-ingress</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/denylist-source-range</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*/*</span>
+</code></pre></div>
 <p><br></p>
 
   <hr>

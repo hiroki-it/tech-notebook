@@ -6692,10 +6692,10 @@ $<span class="w"> </span>curl<span class="w"> </span>http://&lt;minikube<span cl
 <h4 id="clusterip-service_1">▼ ClusterIP Serviceで頑張る<a class="headerlink" href="#clusterip-service_1" title="Permanent link">&para;</a></h4>
 <p>ClusterIP Serviceの場合、やや難易度が高くなる。</p>
 <p>クラウドプロバイダーとは状況が異なり、Node外にロードバランサーを構築できず、別の方法でホストから仮想サーバー内のNodeに接続する必要がある。</p>
-<p>minikubeのingressアドオン (Nginxコントローラー) を有効化し、Ingressとnginxを指定したIngressClassを作成する。</p>
+<p>minikubeのingressアドオン (Nginx Ingressコントローラー) を有効化し、Ingressとnginxを指定したIngressClassを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>addons<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ingress
 </code></pre></div>
-<p>Nginxコントローラーを含むIngressコントローラーは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。</p>
+<p>Nginx Ingressコントローラーを含むIngressコントローラーは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。</p>
 <p>これをMinikube上で再現するために名前解決するために、ingress-dnsアドオンを有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>addons<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>ingress-dns
 </code></pre></div>
@@ -6739,7 +6739,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
       
     
   </small>
