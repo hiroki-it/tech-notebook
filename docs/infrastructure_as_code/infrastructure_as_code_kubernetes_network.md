@@ -87,9 +87,9 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 Ingressコントローラーの場合、`L7`ロードバランサーをプロビジョニングする。
 
-`L7`ロードバランサーは、受信した通信をServiceにルーティングする。
+Ingressコントローラーによる`L7`ロードバランサーは、受信した通信をServiceにルーティングする。
 
-Serviceはこれを`L4`として処理し、Podにルーティングする。
+Serviceは`L4`ロードバランサーとして、インバウンド通信をPodにルーティングする。
 
 ![kubernetes_network_l4-l7.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
 
