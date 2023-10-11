@@ -7050,7 +7050,7 @@
 <p>Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnelのPodを経由して、一度waypoint-proxyのPodにリダイレクトされる。</p>
 <p>サイドカープロキシメッシュを将来的に廃止するということはなく、好きな方を選べるようにするらしい。</p>
 <p>ztunnelのPodを経由した段階でHTTPSプロトコルになる。</p>
-<p>ハードウェアリソースの消費量の少ない<code>L4</code>と多い<code>L7</code>のプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
+<p>ハードウェアリソースの消費量の少ない<code>L4</code>と多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
 <p>インバウンド時の通信の経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code>外
 ⬇︎
@@ -7677,7 +7677,7 @@ ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>

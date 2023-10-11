@@ -6197,8 +6197,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <h2 id="02">02. ネットワークレイヤー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="ingress">Ingressコントローラー由来のロードバランサーの場合<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーの場合、<code>L7</code>ロードバランサーをプロビジョニングする。</p>
-<p><code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
-<p>Serviceはこれを<code>L4</code>として処理し、Podにルーティングする。</p>
+<p>Ingressコントローラーによる<code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
+<p>Serviceは<code>L4</code>ロードバランサーとして、インバウンド通信をPodにルーティングする。</p>
 <p><img alt="kubernetes_network_l4-l7.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png" /></p>
 <blockquote>
 <ul>
@@ -6353,7 +6353,7 @@ options<span class="w"> </span>ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>

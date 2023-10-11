@@ -8436,15 +8436,15 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="gateway_1">▼ Gatewayとは<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayは、<code>L4</code>/<code>L7</code>のインバウンド通信の受信ルールを定義し、また<code>L4</code>/<code>L7</code>ロードバランサーとしてインバウンド通信をルーティングする。</p>
+<p>Gatewayは、<code>L4</code>/<code>L7</code>プロトコルのインバウンド通信の受信ルールを定義し、また<code>L4</code>/<code>L7</code>ロードバランサーとしてインバウンド通信をルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
 </ul>
 </blockquote>
 <h4 id="ingress">▼ Ingressとの違い<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>だけでなく<code>L4</code>のインバウンド通信を処理できる。</p>
-<p>また、Gateway自体がロードバランサーとしても機能する。</p>
+<p><code>L7</code>プロトコルの受信ルールしか定義できないIngressとは異なり、<code>L4</code>プロトコルの受信ルールも定義できる。</p>
+<p>また、Gateway自体が<code>L4/L7</code>ロードバランサーとしても機能する。</p>
 <p><br></p>
 <h3 id="gatewayclass">GatewayClass<a class="headerlink" href="#gatewayclass" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclass_1">▼ GatewayClassとは<a class="headerlink" href="#gatewayclass_1" title="Permanent link">&para;</a></h4>
@@ -8452,7 +8452,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress_1">Ingress<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
 <h4 id="ingress_2">▼ Ingressとは<a class="headerlink" href="#ingress_2" title="Permanent link">&para;</a></h4>
-<p>Ingressは、<code>L7</code>のインバウンド通信の受信ルールを定義する。</p>
+<p>Ingressは、<code>L7</code>プロトコルのインバウンド通信の受信ルールを定義する。</p>
 <p>Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。</p>
 <p>NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。</p>
 <p><img alt="kubernetes_ingress" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png" /></p>
@@ -8465,7 +8465,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <h4 id="gateway_2">▼ Gatewayとの違い<a class="headerlink" href="#gateway_2" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>のインバウンド通信のみを処理できる。</p>
+<p><code>L7</code>プロトコルのインバウンド通信のみを処理できる。</p>
 <p>また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。</p>
 <h4 id="_8">▼ パスベースルーティング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>パスの値に基づいて、Serviceにルーティングする。</p>
@@ -8495,7 +8495,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>Serviceは、<code>L4</code>のインバウンド通信を受信する。</p>
+<p>Serviceは、<code>L4</code>ロードバランサーとしてPodにインバウンド通信をルーティングする。</p>
 <p>kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
 <p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png" /></p>
@@ -9358,7 +9358,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>
