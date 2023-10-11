@@ -17,7 +17,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 オブジェクト指向分析設計から派生した分析設計の手法の一種。
 
-オブジェクト指向分析設計をより強化するために考案され、特に機能要件の多いアプリケーションに有効である。
+オブジェクト指向分析設計をより強化するために提唱され、特に機能要件の多いアプリケーションに有効である。
 
 > - https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
 > - https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88
@@ -343,7 +343,7 @@ ECサイトを運営するアスクルの例。
 
 #### ▼ MVCと問題点
 
-ドメイン駆動設計が考案される以前、MVCの考え方が主流であった。
+ドメイン駆動設計が提唱される以前、MVCの考え方が主流であった。
 
 しかし、特にModelの役割が抽象的過ぎたため、開発規模が大きくなるにつれて、Modelに役割を集中させ過ぎてしまうことがあった。
 
@@ -363,7 +363,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 #### ▼ レイヤードアーキテクチャ
 
-最初に考案された実現方法。
+最初に提唱された実現方法。
 
 ![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
 
