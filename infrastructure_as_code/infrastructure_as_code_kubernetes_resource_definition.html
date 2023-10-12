@@ -6037,6 +6037,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spectolerations" class="md-nav__link">
+    .spec.tolerations
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.tolerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tolerations" class="md-nav__link">
+    ▼ tolerationsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specserviceaccountname" class="md-nav__link">
     .spec.serviceAccountName
   </a>
@@ -11363,6 +11383,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#spectolerations" class="md-nav__link">
+    .spec.tolerations
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.tolerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tolerations" class="md-nav__link">
+    ▼ tolerationsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specserviceaccountname" class="md-nav__link">
     .spec.serviceAccountName
   </a>
@@ -14167,7 +14207,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h2>
 <h3 id="specaffinity">.spec.affinity<a class="headerlink" href="#specaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinity">▼ affinityとは<a class="headerlink" href="#affinity" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerがPodをスケジューリングするNodeを設定する。</p>
+<p>Podのスケジューリング対象のNodeを設定する。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
 <p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。</p>
 <blockquote>
@@ -15294,7 +15334,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <p><br></p>
 <h3 id="specnodeselector">.spec.nodeSelector<a class="headerlink" href="#specnodeselector" title="Permanent link">&para;</a></h3>
 <h4 id="nodeselector">▼ nodeSelectorとは<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerがPodをスケジューリングするNodeを設定する。</p>
+<p>Podのスケジューリング対象とするNodeを設定する。</p>
 <p><code>.spec.affinity</code>キーと比較して、より単純に条件を設定できる。</p>
 <p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -15454,6 +15494,34 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">  </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
 </code></pre></div>
+<p><br></p>
+<h3 id="spectolerations">.spec.tolerations<a class="headerlink" href="#spectolerations" title="Permanent link">&para;</a></h3>
+<h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
+<p>Podのスケジューリング対象としないNodeを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="c1"># bar-podがいるNodeではスケジューリングさせない</span>
+<span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equal</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-pod</span>
+<span class="w">          </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/sheepland/items/8fedae15e157c102757f">https://qiita.com/sheepland/items/8fedae15e157c102757f</a></li>
+<li><a href="https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a">https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specserviceaccountname">.spec.serviceAccountName<a class="headerlink" href="#specserviceaccountname" title="Permanent link">&para;</a></h3>
 <h4 id="serviceaccountname">▼ serviceAccountNameとは<a class="headerlink" href="#serviceaccountname" title="Permanent link">&para;</a></h4>
