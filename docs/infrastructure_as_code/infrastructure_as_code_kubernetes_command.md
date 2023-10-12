@@ -985,7 +985,7 @@ baz-application    baz-project    Unknown
 
 **＊例＊**
 
-ロードバランサーのIPアドレスを取得する。
+`L4`ロードバランサーのIPアドレスを取得する。
 
 ```bash
 $ kubectl get service istio-ingressgateway \

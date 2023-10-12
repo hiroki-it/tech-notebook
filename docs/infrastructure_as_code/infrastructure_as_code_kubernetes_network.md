@@ -83,7 +83,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 ## 02. ネットワークレイヤー
 
-### Ingressコントローラー由来のロードバランサーの場合
+### Ingressコントローラー由来の`L7`ロードバランサーの場合
 
 Ingressコントローラーの場合、`L7`ロードバランサーをプロビジョニングする。
 
@@ -97,7 +97,7 @@ Serviceは`L4`ロードバランサーとして、インバウンド通信をPod
 
 <br>
 
-### LoadBalancer Serviceの場合
+### LoadBalancer Service由来の`L4`ロードバランサーの場合
 
 LoadBalancer Serviceの場合、`L4`ロードバランサーをプロビジョニングする。
 

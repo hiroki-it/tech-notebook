@@ -302,7 +302,7 @@ listen.owner = www-data
 
 #### ▼ php_admin_flagとは
 
-Apacheでのみ使用できる。
+Apacheのみで使用できる。
 
 PHPの`ini`ファイルで設定されたbool値のオプションを上書きし、他から上書きされないようにする。
 
@@ -324,7 +324,7 @@ php_admin_flag[log_errors] = on
 
 #### ▼ php_admin_valueとは
 
-Apacheでのみ使用できる。
+Apacheのみで使用できる。
 
 PHPの`ini`ファイルで設定されたbool値以外のオプションを上書きし、他から上書きされないようにする。
 

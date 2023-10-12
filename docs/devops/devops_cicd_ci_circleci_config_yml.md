@@ -38,7 +38,7 @@ version: 2.1
 | command parameters  | `command`キー内で定義する。定義された`command`キー内のみで定義できる。 | `workflows`      |
 | job parameters      | `jobs`キー内で定義する。定義された`jobs`キー内のみで参照できる。       | `workflows`      |
 | executors parameter | `executors`内で定義する。定義された`executos`内のみで参照できる。      | `job`            |
-| pipeline parameters | トップレベルで定義する。リポジトリ内でのみ参照できる。                 | `workflows`      |
+| pipeline parameters | トップレベルで定義する。リポジトリ内のみで参照できる。                 | `workflows`      |
 
 <br>
 
@@ -335,7 +335,7 @@ workflows:
 
 定義できるデータ型は、job parameterと同じ。
 
-リポジトリ内でのみ参照できる。
+リポジトリ内のみで参照できる。
 
 ```yaml
 version: 2.1

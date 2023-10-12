@@ -181,7 +181,7 @@ $ kubectl get secret argocd-initial-admin-secret \
 
 `(3)`
 
-: `443`番ポートにルーティングできるロードバランサーを作成する。
+: `443`番ポートにルーティングできる`L7`ロードバランサーを作成する。
 
      この時、IngressとIngressコントローラーを作成するか、`kubectl port-forward`コマンドなど実行することにより、ダッシュボードにアクセスする。
 

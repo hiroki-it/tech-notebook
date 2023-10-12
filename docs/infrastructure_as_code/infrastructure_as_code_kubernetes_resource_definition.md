@@ -4796,6 +4796,38 @@ spec:
 
 <br>
 
+### .spec.loadBalancerSourceRanges
+
+#### ▼ loadBalancerSourceRangesとは
+
+LoadBalancer Serviceのみで設定できる。
+
+プロビジョニングされる`L4`ロードバランサーのインバウンド通信で許可するCIDRを設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  type: NodePort
+  ports:
+    - name: http-foo
+      protocol: TCP
+      nodePort: 30000
+      port: 8080
+      targetPort: 8080
+  loadBalancerSourceRanges:
+    - *.*.*.*/*
+```
+
+> - https://repost.aws/ja/knowledge-center/eks-cidr-ip-address-loadbalancer
+> - https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters?hl=ja
+
+<br>
+
 ### .spec.selector
 
 #### ▼ selectorとは

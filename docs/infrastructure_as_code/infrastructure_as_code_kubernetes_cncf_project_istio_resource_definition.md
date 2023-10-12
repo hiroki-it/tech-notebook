@@ -304,7 +304,7 @@ spec:
 
 #### ▼ `.` (ドット)
 
-全てのNamespaceのうちで、`.metadata.namespace`キーのNamespaceでのみ使用できるようにする。
+全てのNamespaceのうちで、`.metadata.namespace`キーのNamespaceのみで使用できるようにする。
 
 DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。
 
@@ -1170,7 +1170,7 @@ spec:
 
 #### ▼ `*` (アスタリスク)
 
-全てのNamespaceでのみ使用できるようにする。
+全てのNamespaceのみで使用できるようにする。
 
 **＊実装例＊**
 

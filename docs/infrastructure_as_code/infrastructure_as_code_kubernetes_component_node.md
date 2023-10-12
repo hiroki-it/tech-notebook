@@ -55,7 +55,7 @@ KubernetesにはNodeグループというリソースがなく、グループを
 
 基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。
 
-Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
+Nodeグループをターゲットとする`L7`ロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。
 
 > - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
@@ -302,7 +302,7 @@ Serviceネットワークさえ作成できていれば、ServiceとPodが同じ
 > - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
 > - https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/
 
-#### ▼ Podのロードバランサー
+#### ▼ Podの`L4`ロードバランサー
 
 ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決める。
 
