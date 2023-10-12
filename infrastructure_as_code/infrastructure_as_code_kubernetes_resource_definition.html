@@ -6632,6 +6632,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specloadbalancersourceranges" class="md-nav__link">
+    .spec.loadBalancerSourceRanges
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.loadBalancerSourceRanges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loadbalancersourceranges" class="md-nav__link">
+    ▼ loadBalancerSourceRangesとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specselector_2" class="md-nav__link">
     .spec.selector
   </a>
@@ -11938,6 +11958,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#specloadbalancersourceranges" class="md-nav__link">
+    .spec.loadBalancerSourceRanges
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.loadBalancerSourceRanges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loadbalancersourceranges" class="md-nav__link">
+    ▼ loadBalancerSourceRangesとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specselector_2" class="md-nav__link">
     .spec.selector
   </a>
@@ -16407,6 +16447,33 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="specloadbalancersourceranges">.spec.loadBalancerSourceRanges<a class="headerlink" href="#specloadbalancersourceranges" title="Permanent link">&para;</a></h3>
+<h4 id="loadbalancersourceranges">▼ loadBalancerSourceRangesとは<a class="headerlink" href="#loadbalancersourceranges" title="Permanent link">&para;</a></h4>
+<p>LoadBalancer Serviceのみで設定できる。</p>
+<p>プロビジョニングされる<code>L4</code>ロードバランサーのインバウンド通信で許可するCIDRを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePort</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-foo</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
+<span class="w">  </span><span class="nt">loadBalancerSourceRanges</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*/*</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://repost.aws/ja/knowledge-center/eks-cidr-ip-address-loadbalancer">https://repost.aws/ja/knowledge-center/eks-cidr-ip-address-loadbalancer</a></li>
+<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters?hl=ja">https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters?hl=ja</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="specselector_2">.spec.selector<a class="headerlink" href="#specselector_2" title="Permanent link">&para;</a></h3>
 <h4 id="selector_1">▼ selectorとは<a class="headerlink" href="#selector_1" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信の転送先とするPodの<code>.metadata.labels</code>キー名と値を設定する。</p>
@@ -16874,7 +16941,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>

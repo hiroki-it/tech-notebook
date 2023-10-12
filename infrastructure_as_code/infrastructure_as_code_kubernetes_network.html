@@ -3696,15 +3696,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
-    Ingressコントローラー由来のロードバランサーの場合
+  <a href="#ingressl7" class="md-nav__link">
+    Ingressコントローラー由来のL7ロードバランサーの場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancer-service" class="md-nav__link">
-    LoadBalancer Serviceの場合
+  <a href="#loadbalancer-servicel4" class="md-nav__link">
+    LoadBalancer Service由来のL4ロードバランサーの場合
   </a>
   
 </li>
@@ -6010,15 +6010,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
-    Ingressコントローラー由来のロードバランサーの場合
+  <a href="#ingressl7" class="md-nav__link">
+    Ingressコントローラー由来のL7ロードバランサーの場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#loadbalancer-service" class="md-nav__link">
-    LoadBalancer Serviceの場合
+  <a href="#loadbalancer-servicel4" class="md-nav__link">
+    LoadBalancer Service由来のL4ロードバランサーの場合
   </a>
   
 </li>
@@ -6195,7 +6195,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </code></pre></div>
 <p><br></p>
 <h2 id="02">02. ネットワークレイヤー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="ingress">Ingressコントローラー由来のロードバランサーの場合<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
+<h3 id="ingressl7">Ingressコントローラー由来の<code>L7</code>ロードバランサーの場合<a class="headerlink" href="#ingressl7" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーの場合、<code>L7</code>ロードバランサーをプロビジョニングする。</p>
 <p>Ingressコントローラーによる<code>L7</code>ロードバランサーは、受信した通信をServiceにルーティングする。</p>
 <p>Serviceは<code>L4</code>ロードバランサーとして、インバウンド通信をPodにルーティングする。</p>
@@ -6206,7 +6206,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
+<h3 id="loadbalancer-servicel4">LoadBalancer Service由来の<code>L4</code>ロードバランサーの場合<a class="headerlink" href="#loadbalancer-servicel4" title="Permanent link">&para;</a></h3>
 <p>LoadBalancer Serviceの場合、<code>L4</code>ロードバランサーをプロビジョニングする。</p>
 <p><br></p>
 <h2 id="03-pod">03. Pod間通信<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>

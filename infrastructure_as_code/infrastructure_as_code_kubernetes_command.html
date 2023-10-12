@@ -8022,7 +8022,7 @@ baz-application<span class="w">    </span>baz-project<span class="w">    </span>
 <h4 id="-o-jsonpath">▼ -o jsonpath<a class="headerlink" href="#-o-jsonpath" title="Permanent link">&para;</a></h4>
 <p>指定したKubernetesリソースの特定の設定を出力する。</p>
 <p><strong>＊例＊</strong></p>
-<p>ロードバランサーのIPアドレスを取得する。</p>
+<p><code>L4</code>ロードバランサーのIPアドレスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>istio-ingressgateway<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
@@ -8565,7 +8565,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>

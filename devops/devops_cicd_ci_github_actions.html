@@ -7084,7 +7084,7 @@
 <h2 id="06">06. 環境変数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="workflow">Workflowレベル<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <h4 id="workflow_1">▼ Workflowレベルとは<a class="headerlink" href="#workflow_1" title="Permanent link">&para;</a></h4>
-<p>定義された<code>workflow</code> (<code>.yaml</code>ファイル) 内でのみ参照できる。</p>
+<p>定義された<code>workflow</code> (<code>.yaml</code>ファイル) 内のみで参照できる。</p>
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>環境変数を定義する。</p>
 <p>Secretの値を設定できない。</p>
@@ -7108,7 +7108,7 @@
 <p><br></p>
 <h3 id="jobs_1">Jobsレベル<a class="headerlink" href="#jobs_1" title="Permanent link">&para;</a></h3>
 <h4 id="jobs_2">▼ Jobsレベルとは<a class="headerlink" href="#jobs_2" title="Permanent link">&para;</a></h4>
-<p>定義された<code>jobs</code>キー内でのみ参照できる。</p>
+<p>定義された<code>jobs</code>キー内のみで参照できる。</p>
 <h4 id="env_1">▼ env<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -7149,7 +7149,7 @@
 <p><br></p>
 <h3 id="step">Stepレベル<a class="headerlink" href="#step" title="Permanent link">&para;</a></h3>
 <h4 id="step_1">▼ Stepレベルとは<a class="headerlink" href="#step_1" title="Permanent link">&para;</a></h4>
-<p>定義された<code>step</code>キー内でのみ参照できる。</p>
+<p>定義された<code>step</code>キー内のみで参照できる。</p>
 <h4 id="env_2">▼ env<a class="headerlink" href="#env_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -7255,7 +7255,7 @@
 </blockquote>
 <h4 id="action-environment-secrets">▼ Actionレベル (Environment Secrets)<a class="headerlink" href="#action-environment-secrets" title="Permanent link">&para;</a></h4>
 <p>リポジトリの設定のEnvironment項目に変数名と値を登録する。</p>
-<p>リポジトリ内のGitHub Actionsでのみ参照できる。</p>
+<p>リポジトリ内のGitHub Actionsのみで参照できる。</p>
 <p>また、シェルスクリプト内で環境変数を出力するためにも必要である。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
 <p>Projectレベルとは異なり、<code>env</code>キーに明示的に環境変数を渡す必要がある。</p>
@@ -7279,7 +7279,7 @@
 </blockquote>
 <h4 id="step_2">▼ Stepレベル<a class="headerlink" href="#step_2" title="Permanent link">&para;</a></h4>
 <p><code>jobs.foo.steps.env</code>キーに変数名と値を登録する。</p>
-<p>ステップ内でのみ参照できる。</p>
+<p>ステップ内のみで参照できる。</p>
 <p>また、シェルスクリプト内で環境変数を出力するためにも必要である。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
@@ -7495,7 +7495,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>

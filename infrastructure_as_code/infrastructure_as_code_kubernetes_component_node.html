@@ -3767,8 +3767,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    ▼ Podのロードバランサー
+  <a href="#podl4" class="md-nav__link">
+    ▼ PodのL4ロードバランサー
   </a>
   
 </li>
@@ -6279,8 +6279,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    ▼ Podのロードバランサー
+  <a href="#podl4" class="md-nav__link">
+    ▼ PodのL4ロードバランサー
   </a>
   
 </li>
@@ -6492,7 +6492,7 @@
 <p>ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループを実現できる。</p>
 <p>同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。</p>
 <p>基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。</p>
-<p>Nodeグループをターゲットとするロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。</p>
+<p>Nodeグループをターゲットとする<code>L7</code>ロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6">https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6</a></li>
@@ -6727,7 +6727,7 @@ kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</s
 <li><a href="https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/">https://tech-blog.cloud-config.jp/2021-12-07-kubernetes-service/</a></li>
 </ul>
 </blockquote>
-<h4 id="pod">▼ Podのロードバランサー<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<h4 id="podl4">▼ Podの<code>L4</code>ロードバランサー<a class="headerlink" href="#podl4" title="Permanent link">&para;</a></h4>
 <p>ロードバランシングアルゴリズムによって、Serviceがルーティング先のPodを決める。</p>
 <p>プロキシモードごとに、使用するロードバランシングアルゴリズムが異なる。</p>
 <blockquote>

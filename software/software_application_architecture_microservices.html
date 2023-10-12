@@ -6785,7 +6785,7 @@
 <p>各マイクロサービスに<code>docker-compose.yml</code>ファイルを置き、基本的には他のマイクロサービスには依存せずに開発可能にする必要があり、これはモノリポジトリでもポリリポジトリでも同じである。</p>
 <p>ただし、マイクロサービス間のネットワークを繋げないと、マイクロサービス間でパケットを送受信できない。そのため、Docker composeの<code>external</code>オプションを使用して、マイクロサービス間のネットワークを接続する。</p>
 <p>この時に、開発環境でサービスメッシュを使用している場合、マイクロサービス間の通信で名前解決しやすい。</p>
-<p>一方で、これを使用していない場合、開発環境でのみコンテナのホスト名を指定する。</p>
+<p>一方で、これを使用していない場合、開発環境のみでコンテナのホスト名を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># モノリポジトリの場合</span>
 <span class="l l-Scalar l-Scalar-Plain">backend_mono_repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
@@ -7148,7 +7148,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>
