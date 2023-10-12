@@ -2188,7 +2188,7 @@ spec:
 
 #### ▼ affinityとは
 
-kube-schedulerがPodをスケジューリングするNodeを設定する。
+Podのスケジューリング対象のNodeを設定する。
 
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
@@ -3418,7 +3418,7 @@ DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリ�
 
 #### ▼ nodeSelectorとは
 
-kube-schedulerがPodをスケジューリングするNodeを設定する。
+Podのスケジューリング対象とするNodeを設定する。
 
 `.spec.affinity`キーと比較して、より単純に条件を設定できる。
 
@@ -3602,6 +3602,38 @@ spec:
       image: app:1.0.0
   restartPolicy: OnFailure
 ```
+
+<br>
+
+### .spec.tolerations
+
+#### ▼ tolerationsとは
+
+Podのスケジューリング対象としないNodeを設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      ports:
+        - containerPort: 8080
+      # bar-podがいるNodeではスケジューリングさせない
+      tolerations:
+        - key: name
+          operator: Equal
+          value: bar-pod
+          effect: NoSchedule
+```
+
+> - https://qiita.com/sheepland/items/8fedae15e157c102757f
+> - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
 
 <br>
 
