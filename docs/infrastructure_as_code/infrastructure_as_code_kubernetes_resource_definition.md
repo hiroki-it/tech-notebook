@@ -2190,6 +2190,8 @@ spec:
 
 Podのスケジューリング対象のNodeを設定する。
 
+`.spec.tolerations`キーとは反対の条件である。
+
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
 DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
@@ -3610,6 +3612,8 @@ spec:
 #### ▼ tolerationsとは
 
 Podのスケジューリング対象としないNodeを設定する。
+
+`.spec.affinity`キーとは反対の条件である。
 
 **＊実装例＊**
 
