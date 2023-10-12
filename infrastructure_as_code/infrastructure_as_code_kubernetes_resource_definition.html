@@ -13850,8 +13850,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="spechostpath">.spec.hostPath<a class="headerlink" href="#spechostpath" title="Permanent link">&para;</a></h3>
 <h4 id="hostpath">▼ hostPathとは<a class="headerlink" href="#hostpath" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeの一種であるHostPathボリュームを作成する。</p>
-<p>Volumeの一種であるHostPathボリュームとは区別すること。</p>
+<p>PersistentVolumeの一種であるHostPath Volumeを作成する。</p>
+<p>Volumeの一種であるHostPath Volumeとは区別すること。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></li>
@@ -15633,8 +15633,8 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </ul>
 </blockquote>
 <h4 id="emptydir">▼ emptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
-<p>Volumeの一種であるEmptyDirボリュームを作成する。</p>
-<p>EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。</p>
+<p>Volumeの一種であるEmptyDir Volumeを作成する。</p>
+<p>『Pod』が削除されると、このEmptyDir Volumeも同時に削除される。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>オンディスクストレージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -15685,10 +15685,10 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </ul>
 </blockquote>
 <h4 id="hostpath_1">▼ hostPath<a class="headerlink" href="#hostpath_1" title="Permanent link">&para;</a></h4>
-<p>Volumeの一種であるHostPathボリュームを作成する。</p>
-<p>PersistentVolumeの一種であるHostPathボリュームとは区別すること。</p>
-<p>HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。</p>
-<p>HostPathボリューム自体は本番環境で非推奨である。</p>
+<p>Volumeの一種であるHostPath Volumeを作成する。</p>
+<p>PersistentVolumeの一種であるHostPath Volumeとは区別すること。</p>
+<p>『Node』が削除されると、このHostPath Volumeも同時に削除される。</p>
+<p>HostPath Volume自体は本番環境で非推奨である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>

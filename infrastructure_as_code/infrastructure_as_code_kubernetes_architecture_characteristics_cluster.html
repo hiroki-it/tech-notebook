@@ -6238,7 +6238,7 @@
 <dd>
 <p><code>kubectl drain</code>コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。</p>
 <p>この時、DaemonSetのPodを退避させられるように、<code>--ignore-daemonsets</code>オプションを有効化する。</p>
-<p>また、emptyDirボリュームを持つPodを退避できるように <code>--delete-emptydir-data</code>オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。</p>
+<p>また、EmptyDir Volumeを持つPodを退避できるように <code>--delete-emptydir-data</code>オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。</p>
 <p>その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。</p>
 <p>この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。</p>
 </dd>

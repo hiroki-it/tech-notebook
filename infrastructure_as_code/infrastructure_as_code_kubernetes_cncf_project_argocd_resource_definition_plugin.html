@@ -6891,7 +6891,7 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 
-<span class="w">  </span><span class="c1"># 共有ボリューム</span>
+<span class="w">  </span><span class="c1"># 共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
@@ -6998,7 +6998,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var-files</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/argocd</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmp-cm</span>
 <span class="w">      </span><span class="nt">configMap</span><span class="p">:</span>
@@ -7186,7 +7186,7 @@ Flags:
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Helmのバイナリファイルを置くパスを指定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/helm</span>
-<span class="w">          </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でHelmを使用する。</span>
+<span class="w">          </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でHelmを使用する。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 
 <span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -7207,11 +7207,11 @@ Flags:
 <span class="w">          </span><span class="no">cp ./linux-amd64/helm /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにHelmを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有VolumeにHelmを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
@@ -7261,14 +7261,14 @@ Flags:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/argocd/cmp-server/config/plugin.yaml</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmp-cm</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile.yaml</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でHelmfileを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile-working-dir</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でhelmプラグインを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でhelmプラグインを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 
@@ -7295,7 +7295,7 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにHelmfileを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有VolumeにHelmfileを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="c1"># SOPS</span>
@@ -7311,7 +7311,7 @@ Flags:
 <span class="w">          </span><span class="no">wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/sops</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームに、SOPSを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeに、SOPSを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-plugins-installer</span>
@@ -7329,11 +7329,11 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir/plugins/</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir/plugins/</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにhelmプラグインを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeにhelmプラグインを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># SOPSなどを含む</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
@@ -7459,7 +7459,7 @@ Flags:
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/ssl</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">certificate</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でhelm-secretsを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でhelm-secretsを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 
@@ -7483,7 +7483,7 @@ Flags:
 <span class="w">          </span><span class="no">cp ./linux-amd64/helm /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにHelmを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有VolumeにHelmを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="c1"># SOPS</span>
@@ -7499,7 +7499,7 @@ Flags:
 <span class="w">          </span><span class="no">wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/sops</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームに、SOPSを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeに、SOPSを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-plugins-installer</span>
@@ -7517,11 +7517,11 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir/plugins/</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir/plugins/</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにhelmプラグインを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeにhelmプラグインを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># SOPSなどを含む</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
@@ -7734,7 +7734,7 @@ Flags:
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Kustomizeのバイナリファイルを置くパスを指定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
-<span class="w">          </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。</span>
+<span class="w">          </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
 
@@ -7758,12 +7758,12 @@ Flags:
 <span class="w">          </span><span class="no">cp kustomize /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/kustomize</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにKustomizeを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有VolumeにKustomizeを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
@@ -7832,7 +7832,7 @@ Flags:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">XDG_CONFIG_HOME</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/.config</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="c1"># Kustomizeのバイナリファイルを置くパスを指定する。</span>
 <span class="w">          </span><span class="c1"># ArgoCDにデフォルトでインストールされたKustomizeを上書きする</span>
@@ -7862,7 +7862,7 @@ Flags:
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">cp ksops /custom-tools/</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームに、KSOPSを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有Volumeに、KSOPSを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="c1"># Kustomize</span>
@@ -7881,12 +7881,12 @@ Flags:
 <span class="w">          </span><span class="no">cp kustomize /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/kustomize</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Podの共有ボリュームにKustomizeを配置する。</span>
+<span class="w">        </span><span class="c1"># Podの共有VolumeにKustomizeを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
 
-<span class="w">  </span><span class="c1"># Podの共有ボリューム</span>
+<span class="w">  </span><span class="c1"># Podの共有Volume</span>
 <span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
@@ -8055,7 +8055,7 @@ Flags:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
       
     
   </small>
