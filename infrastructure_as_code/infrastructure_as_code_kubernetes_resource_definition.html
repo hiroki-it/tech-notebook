@@ -14208,6 +14208,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specaffinity">.spec.affinity<a class="headerlink" href="#specaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinity">▼ affinityとは<a class="headerlink" href="#affinity" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリング対象のNodeを設定する。</p>
+<p><code>.spec.tolerations</code>キーとは反対の条件である。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
 <p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。</p>
 <blockquote>
@@ -15498,6 +15499,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="spectolerations">.spec.tolerations<a class="headerlink" href="#spectolerations" title="Permanent link">&para;</a></h3>
 <h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリング対象としないNodeを設定する。</p>
+<p><code>.spec.affinity</code>キーとは反対の条件である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
