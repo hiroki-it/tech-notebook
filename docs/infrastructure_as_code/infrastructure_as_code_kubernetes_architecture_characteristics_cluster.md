@@ -170,7 +170,7 @@ GitOpsを採用できないため、CIOpsになる。
 
      この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 
-     また、emptyDirボリュームを持つPodを退避できるように `--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
+     また、EmptyDir Volumeを持つPodを退避できるように `--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
 
      その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。
 

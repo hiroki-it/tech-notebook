@@ -1841,9 +1841,9 @@ spec:
 
 #### ▼ hostPathとは
 
-PersistentVolumeの一種であるHostPathボリュームを作成する。
+PersistentVolumeの一種であるHostPath Volumeを作成する。
 
-Volumeの一種であるHostPathボリュームとは区別すること。
+Volumeの一種であるHostPath Volumeとは区別すること。
 
 > - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
@@ -3823,9 +3823,9 @@ data:
 
 #### ▼ emptyDir
 
-Volumeの一種であるEmptyDirボリュームを作成する。
+Volumeの一種であるEmptyDir Volumeを作成する。
 
-EmptyDirボリュームのため、『Pod』が削除されるとこのボリュームも同時に削除される。
+『Pod』が削除されると、このEmptyDir Volumeも同時に削除される。
 
 **＊実装例＊**
 
@@ -3881,13 +3881,13 @@ spec:
 
 #### ▼ hostPath
 
-Volumeの一種であるHostPathボリュームを作成する。
+Volumeの一種であるHostPath Volumeを作成する。
 
-PersistentVolumeの一種であるHostPathボリュームとは区別すること。
+PersistentVolumeの一種であるHostPath Volumeとは区別すること。
 
-HostPathボリュームのため、『Node』が削除されるとこのボリュームも同時に削除される。
+『Node』が削除されると、このHostPath Volumeも同時に削除される。
 
-HostPathボリューム自体は本番環境で非推奨である。
+HostPath Volume自体は本番環境で非推奨である。
 
 **＊実装例＊**
 

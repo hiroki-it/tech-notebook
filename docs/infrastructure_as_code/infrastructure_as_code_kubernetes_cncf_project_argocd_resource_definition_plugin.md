@@ -178,7 +178,7 @@ spec:
         - name: custom-tools
           mountPath: /custom-tools
 
-  # 共有ボリューム
+  # 共有Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -296,7 +296,7 @@ spec:
         - name: var-files
           mountPath: /var/run/argocd
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     - name: argocd-cmp-cm
       configMap:
@@ -474,7 +474,7 @@ spec:
       volumeMounts:
         # Helmのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/helm
-          # Podの共有ボリュームを介して、コンテナ内でHelmを使用する。
+          # Podの共有Volumeを介して、コンテナ内でHelmを使用する。
           name: custom-tools
 
       ...
@@ -495,11 +495,11 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Podの共有ボリュームにHelmを配置する。
+        # Podの共有VolumeにHelmを配置する。
         - name: custom-tools
           mountPath: /custom-tools
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -563,14 +563,14 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: argocd-cmp-cm
           subPath: helmfile.yaml
-        # Podの共有ボリュームを介して、コンテナ内でHelmfileを使用する。
+        # Podの共有Volumeを介して、コンテナ内でHelmfileを使用する。
         - mountPath: /usr/local/bin
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
         - mountPath: /helm-working-dir
           name: helmfile-working-dir
-        # Podの共有ボリュームを介して、コンテナ内でhelmプラグインを使用する。
+        # Podの共有Volumeを介して、コンテナ内でhelmプラグインを使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -597,7 +597,7 @@ spec:
           chown -R 999 /helm-working-dir
           chmod -R u+rwx /helm-working-dir
       volumeMounts:
-        # Podの共有ボリュームにHelmfileを配置する。
+        # Podの共有VolumeにHelmfileを配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -613,7 +613,7 @@ spec:
           wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
-        # Podの共有ボリュームに、SOPSを配置する。
+        # Podの共有Volumeに、SOPSを配置する。
         - name: custom-tools
           mountPath: /custom-tools
     - name: helm-plugins-installer
@@ -631,11 +631,11 @@ spec:
           chown -R 999 /helm-working-dir/plugins/
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Podの共有ボリュームにhelmプラグインを配置する。
+        # Podの共有Volumeにhelmプラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     # SOPSなどを含む
     - name: custom-tools
@@ -773,7 +773,7 @@ spec:
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
-        # Podの共有ボリュームを介して、コンテナ内でhelm-secretsを使用する。
+        # Podの共有Volumeを介して、コンテナ内でhelm-secretsを使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -797,7 +797,7 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Podの共有ボリュームにHelmを配置する。
+        # Podの共有VolumeにHelmを配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -813,7 +813,7 @@ spec:
           wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
-        # Podの共有ボリュームに、SOPSを配置する。
+        # Podの共有Volumeに、SOPSを配置する。
         - name: custom-tools
           mountPath: /custom-tools
     - name: helm-plugins-installer
@@ -831,11 +831,11 @@ spec:
           chown -R 999 /helm-working-dir/plugins/
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Podの共有ボリュームにhelmプラグインを配置する。
+        # Podの共有Volumeにhelmプラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     # SOPSなどを含む
     - name: custom-tools
@@ -1087,7 +1087,7 @@ spec:
       volumeMounts:
         # Kustomizeのバイナリファイルを置くパスを指定する。
         - mountPath: /usr/local/bin/kustomize
-          # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
+          # Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。
           name: custom-tools
           subPath: kustomize
 
@@ -1111,12 +1111,12 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Podの共有ボリュームにKustomizeを配置する。
+        # Podの共有VolumeにKustomizeを配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -1205,7 +1205,7 @@ spec:
         - name: XDG_CONFIG_HOME
           value: /.config
       volumeMounts:
-        # Podの共有ボリュームを介して、コンテナ内でKustomizeを使用する。
+        # Podの共有Volumeを介して、コンテナ内でKustomizeを使用する。
         - name: custom-tools
           # Kustomizeのバイナリファイルを置くパスを指定する。
           # ArgoCDにデフォルトでインストールされたKustomizeを上書きする
@@ -1235,7 +1235,7 @@ spec:
         - |
           cp ksops /custom-tools/
       volumeMounts:
-        # Podの共有ボリュームに、KSOPSを配置する。
+        # Podの共有Volumeに、KSOPSを配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # Kustomize
@@ -1254,12 +1254,12 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Podの共有ボリュームにKustomizeを配置する。
+        # Podの共有VolumeにKustomizeを配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
 
-  # Podの共有ボリューム
+  # Podの共有Volume
   volumes:
     - name: custom-tools
       emptyDir: {}

@@ -1276,7 +1276,7 @@ EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode
 
 - FargateワーカーNodeでは、DaemonSetが使えない。サイドカーを配置する必要がある。
 - Fargateで設定可能な最大スペックを超えたスペックが必要である。
-- emptyDirボリューム以外が必要である。
+- EmptyDir Volume以外が必要である。
 - FargateワーカーNodeでは、サービスメッシュにAppMeshしか使えない。もし、AppMeshを使いたくない場合は、EC2ワーカーNodeを使用する。
 
 > - https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
