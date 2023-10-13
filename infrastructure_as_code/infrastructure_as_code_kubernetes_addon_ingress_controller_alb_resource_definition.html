@@ -4042,13 +4042,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#metadataannotations" class="md-nav__link">
-    .metadata.annotationsキーとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#albingresskubernetesiocertificate-arn" class="md-nav__link">
     alb.ingress.kubernetes.io/certificate-arnキー
   </a>
@@ -4058,7 +4051,7 @@
         
           <li class="md-nav__item">
   <a href="#albingresskubernetesiocertificate-arn_1" class="md-nav__link">
-    ▼ alb.ingress.kubernetes.io/certificate-arn`キーとは
+    ▼ alb.ingress.kubernetes.io/certificate-arnキーとは
   </a>
   
 </li>
@@ -5833,13 +5826,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#metadataannotations" class="md-nav__link">
-    .metadata.annotationsキーとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#albingresskubernetesiocertificate-arn" class="md-nav__link">
     alb.ingress.kubernetes.io/certificate-arnキー
   </a>
@@ -5849,7 +5835,7 @@
         
           <li class="md-nav__item">
   <a href="#albingresskubernetesiocertificate-arn_1" class="md-nav__link">
-    ▼ alb.ingress.kubernetes.io/certificate-arn`キーとは
+    ▼ alb.ingress.kubernetes.io/certificate-arnキーとは
   </a>
   
 </li>
@@ -5990,20 +5976,13 @@
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/">https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="metadataannotations"><code>.metadata.annotations</code>キーとは<a class="headerlink" href="#metadataannotations" title="Permanent link">&para;</a></h3>
-<p>AWS ALBをリスナールール以外を設定するために、Ingressの<code>.metadata.annotations</code>キーを設定する必要がある。</p>
-<blockquote>
-<ul>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/</a></li>
 <li><a href="https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f">https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="albingresskubernetesiocertificate-arn"><code>alb.ingress.kubernetes.io/certificate-arn</code>キー<a class="headerlink" href="#albingresskubernetesiocertificate-arn" title="Permanent link">&para;</a></h3>
-<h4 id="albingresskubernetesiocertificate-arn_1">▼ alb.ingress.kubernetes.io/certificate-arn`キーとは<a class="headerlink" href="#albingresskubernetesiocertificate-arn_1" title="Permanent link">&para;</a></h4>
+<h4 id="albingresskubernetesiocertificate-arn_1">▼ <code>alb.ingress.kubernetes.io/certificate-arn</code>キーとは<a class="headerlink" href="#albingresskubernetesiocertificate-arn_1" title="Permanent link">&para;</a></h4>
 <p>AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したACMのSSL証明書のARNを設定する。</p>
 <p>AWS LBコントローラーは、プロビジョニングしたALBにACMのSSL証明書を自動的に紐づける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>

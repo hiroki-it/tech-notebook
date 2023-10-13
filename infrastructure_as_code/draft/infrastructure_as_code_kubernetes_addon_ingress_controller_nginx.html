@@ -5590,6 +5590,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04-configmap" class="md-nav__link">
+    04. ConfigMap
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ConfigMap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-connect-timeout" class="md-nav__link">
+    proxy-connect-timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-read-timeout" class="md-nav__link">
+    proxy-read-timeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-forwarded-headers" class="md-nav__link">
+    use-forwarded-headers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5717,6 +5751,54 @@
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-configmap">04. ConfigMap<a class="headerlink" href="#04-configmap" title="Permanent link">&para;</a></h2>
+<h3 id="proxy-connect-timeout">proxy-connect-timeout<a class="headerlink" href="#proxy-connect-timeout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">proxy-connect-timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-connect-timeout">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-connect-timeout</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="proxy-read-timeout">proxy-read-timeout<a class="headerlink" href="#proxy-read-timeout" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">proxy-read-timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-read-timeout">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-read-timeout</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="use-forwarded-headers">use-forwarded-headers<a class="headerlink" href="#use-forwarded-headers" title="Permanent link">&para;</a></h3>
+<p>通過したリクエストに<code>X-Forwarded-For</code>ヘッダーを追加する。</p>
+<p>送信元IPアドレスを保持するために役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-ingress</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">use-forwarded-headers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers</a></li>
 </ul>
 </blockquote>
 <p><br></p>
