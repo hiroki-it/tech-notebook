@@ -74,13 +74,17 @@ spec:
 
 <br>
 
-### `.metadata.annotations`キー
+## 03. Ingressの`.metadata.annotations`キー
 
-#### ▼ `.metadata.annotations`キーとは
+### Ingressの`.metadata.annotations`キーとは
 
-Nginxをルーティングルール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
+特定のALBのリスナールールを決める。
 
-#### ▼ `nginx.ingress.kubernetes.io/affinity`キーとは
+Ingressで`nginx`のIngressClassを指定する必要がある。
+
+<br>
+
+### `nginx.ingress.kubernetes.io/affinity`キー
 
 Podへのルーティング時にセッションを維持するかどうかを設定する。
 
@@ -97,7 +101,9 @@ metadata:
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity
 
-#### ▼ `nginx.ingress.kubernetes.io/whitelist-source-range`キーとは
+<br>
+
+### `nginx.ingress.kubernetes.io/whitelist-source-range`キー
 
 インバウンド通信で許可するCIDRを設定する。
 
@@ -110,7 +116,11 @@ metadata:
     nginx.ingress.kubernetes.io/whitelist-source-range: *.*.*.*/*
 ```
 
-#### ▼ `nginx.ingress.kubernetes.io/denylist-source-range`キーとは
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+
+<br>
+
+### `nginx.ingress.kubernetes.io/denylist-source-range`キー
 
 インバウンド通信で拒否するCIDRを設定する。
 
@@ -122,5 +132,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/denylist-source-range: *.*.*.*/*
 ```
+
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
 
 <br>

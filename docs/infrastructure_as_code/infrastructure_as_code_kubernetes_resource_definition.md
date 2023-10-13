@@ -4898,6 +4898,8 @@ spec:
 
 Podへのルーティング時にセッションを維持するかどうかを設定する。
 
+セッションIDは、Node上に保管する。
+
 なお、Ingressにも同じ機能がある。
 
 > - https://stackoverflow.com/a/58960523
@@ -4945,6 +4947,8 @@ spec:
 #### ▼ sessionAffinityConfigとは
 
 `.spec.sessionAffinity`キーを使用している場合に、セッションのタイムアウト時間を設定する。
+
+タイムアウト時間を過ぎると、Node上に保管したセッションIDを削除する。
 
 **＊実装例＊**
 

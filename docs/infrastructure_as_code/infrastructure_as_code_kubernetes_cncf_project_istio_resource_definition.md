@@ -1189,6 +1189,8 @@ spec:
 
 ### metrics
 
+#### ▼ metricsとは
+
 同じNamespace内の`istio-proxy`コンテナを対象として、メトリクスの作成方法を設定する。
 
 ```yaml
@@ -1212,6 +1214,8 @@ spec:
 <br>
 
 ### tracing
+
+#### ▼ tracingとは
 
 同じNamespace内の`istio-proxy`コンテナを対象として、スパンの作成方法を設定する。
 
