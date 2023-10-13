@@ -136,3 +136,57 @@ metadata:
 > - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
 
 <br>
+
+## 04. ConfigMap
+
+### proxy-connect-timeout
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress
+  namespace: ingress
+data:
+  proxy-connect-timeout: 10s
+```
+
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-connect-timeout
+
+<br>
+
+### proxy-read-timeout
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress
+  namespace: ingress
+data:
+  proxy-read-timeout: 10s
+```
+
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-read-timeout
+
+<br>
+
+### use-forwarded-headers
+
+通過したリクエストに`X-Forwarded-For`ヘッダーを追加する。
+
+送信元IPアドレスを保持するために役立つ。
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-ingress
+  namespace: ingress
+data:
+  use-forwarded-headers: true
+```
+
+> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers
+
+<br>

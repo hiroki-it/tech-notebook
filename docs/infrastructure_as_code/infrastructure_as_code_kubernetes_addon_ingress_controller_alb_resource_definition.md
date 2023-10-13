@@ -24,13 +24,6 @@ Ingressで`alb`のIngressClassを指定する必要がある。
 AWS Load Balancerコントローラーは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
-
-<br>
-
-### `.metadata.annotations`キーとは
-
-AWS ALBをリスナールール以外を設定するために、Ingressの`.metadata.annotations`キーを設定する必要がある。
-
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
 > - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
 
@@ -38,7 +31,7 @@ AWS ALBをリスナールール以外を設定するために、Ingressの`.meta
 
 ### `alb.ingress.kubernetes.io/certificate-arn`キー
 
-#### ▼ alb.ingress.kubernetes.io/certificate-arn`キーとは
+#### ▼ `alb.ingress.kubernetes.io/certificate-arn`キーとは
 
 AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したACMのSSL証明書のARNを設定する。
 
