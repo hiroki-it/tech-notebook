@@ -8522,9 +8522,11 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p>Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー</span><span class="w"> </span><span class="c1"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、など)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span><span class="w"> </span><span class="c1"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
@@ -8538,7 +8540,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <li><a href="https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF">https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF</a></li>
 </ul>
 </blockquote>
-<p>ただし、クラウドプロバイダーによっては<code>L7</code>ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。</p>
+<p>ただし、クラウドプロバイダーによってはIngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
 <blockquote>
 <ul>

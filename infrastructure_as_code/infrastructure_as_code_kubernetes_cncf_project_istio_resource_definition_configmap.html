@@ -7153,6 +7153,7 @@
 <span class="w">      </span><span class="no">holdApplicationUntilProxyStarts: true</span>
 </code></pre></div>
 <h4 id="proxymetadata">▼ proxyMetadata<a class="headerlink" href="#proxymetadata" title="Permanent link">&para;</a></h4>
+<p><code>istio-proxy</code>コンテナに環境変数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7162,9 +7163,16 @@
 <span class="w">  </span><span class="nt">mesh</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">defaultConfig:</span>
 <span class="w">      </span><span class="no">proxyMetadata:</span>
-<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: &quot;true&quot;</span>
-<span class="w">        </span><span class="no">BOOTSTRAP_XDS_AGENT: &quot;true&quot;</span>
+<span class="w">        </span><span class="no">ISTIO_META_DNS_CAPTURE: true</span>
+<span class="w">        </span><span class="no">BOOTSTRAP_XDS_AGENT: true</span>
+<span class="w">        </span><span class="no"># ServiceからPod内のistio-proxyへの通信がなくなったら、istio-proxyコンテナを終了させる</span>
+<span class="w">        </span><span class="no">EXIT_ON_ZERO_ACTIVE_CONNECTIONS: true</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars">https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars</a></li>
+</ul>
+</blockquote>
 <h4 id="rootnamespace">▼ rootNamespace<a class="headerlink" href="#rootnamespace" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -7487,6 +7495,7 @@
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB">https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB</a></li>
+<li><a href="https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters">https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters</a></li>
 </ul>
 </blockquote>
 <p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
@@ -7716,7 +7725,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>

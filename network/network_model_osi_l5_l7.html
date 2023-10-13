@@ -2900,6 +2900,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 仕組み
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6162,6 +6169,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 仕組み
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6312,6 +6326,73 @@
 <p><strong>＊例＊</strong></p>
 <p>GmailでPOPかIMAPを設定できる。</p>
 <p><img alt="GmailでPOPorIMAPを設定" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg" /></p>
+<h4 id="_6">▼ 仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>IMAPのリクエストは、<code>&lt;タグ&gt; &lt;リクエストコマンド&gt; &lt;引数&gt;</code>からなる。</p>
+<p>レスポンスは、<code>&lt;タグ&gt; &lt;ステータス&gt; &lt;レスポンスコード&gt; &lt;メッセージ&gt;</code>からなる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
+<span class="m">0001</span><span class="w"> </span>AUTHENTICATE<span class="w"> </span>CRAM-MD5
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span>CAPABILITY<span class="w"> </span>IMAP4<span class="w"> </span>IMAP4REV1<span class="w"> </span>IDLE<span class="w"> </span>NAMESPACE<span class="w"> </span>MAILBOX-REFERRALS
+SCAN<span class="w"> </span>SORT<span class="w"> </span><span class="nv">THREAD</span><span class="o">=</span>REFERENCES
+<span class="nv">THREAD</span><span class="o">=</span>ORDEREDSUBJECT<span class="w"> </span>MULTIAPPEND
+<span class="m">0001</span><span class="w"> </span>OK<span class="w"> </span>AUTHENTICATE<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0002</span><span class="w"> </span>NAMESPACE
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span>NAMESPACE<span class="w"> </span><span class="o">((</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">)(</span><span class="s2">&quot;#mhinbox&quot;</span><span class="w"> </span>NIL<span class="o">)(</span><span class="s2">&quot;#mh/&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">))</span><span class="w"> </span><span class="o">((</span><span class="s2">&quot;~&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">))</span>
+<span class="o">((</span><span class="s2">&quot;#shared/&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">)</span>
+<span class="o">(</span><span class="s2">&quot;#ftp/&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">)(</span><span class="s2">&quot;#news.&quot;</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="o">)(</span><span class="s2">&quot;#public/&quot;</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="o">))</span>
+<span class="m">0002</span><span class="w"> </span>OK<span class="w"> </span>NAMESPACE<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0003</span><span class="w"> </span>LIST<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="s2">&quot;INBOX&quot;</span>
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="o">)</span><span class="w"> </span>NIL<span class="w"> </span>INBOX
+<span class="m">0003</span><span class="w"> </span>OK<span class="w"> </span>LIST<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0004</span><span class="w"> </span>LIST<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>*
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="o">)</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="p">&amp;</span>kAFP4W4IMH8wojCkMMYw4A-
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="o">)</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span><span class="p">&amp;</span>Tgtm+DBN-
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oSelect<span class="o">)</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span>fol2
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="o">)</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span>fol2/fol3
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="w"> </span><span class="se">\U</span>nMarked<span class="o">)</span><span class="w"> </span><span class="s2">&quot;/&quot;</span><span class="w"> </span>fol10
+*<span class="w"> </span>LIST<span class="w"> </span><span class="o">(</span><span class="se">\N</span>oInferiors<span class="o">)</span><span class="w"> </span>NIL<span class="w"> </span>INBOX
+<span class="m">0004</span><span class="w"> </span>OK<span class="w"> </span>LIST<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0005</span><span class="w"> </span>CREATE<span class="w"> </span>Trash
+<span class="c1"># レスポンス</span>
+<span class="m">0005</span><span class="w"> </span>OK<span class="w"> </span>CREATE<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0014</span><span class="w"> </span>SELECT<span class="w"> </span><span class="s2">&quot;INBOX&quot;</span>
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span><span class="m">5</span><span class="w"> </span>EXISTS
+*<span class="w"> </span><span class="m">0</span><span class="w"> </span>RECENT
+*<span class="w"> </span>OK<span class="w"> </span><span class="o">[</span>UIDVALIDITY<span class="w"> </span><span class="m">988028003</span><span class="o">]</span><span class="w"> </span>UID<span class="w"> </span>validity<span class="w"> </span>status
+*<span class="w"> </span>OK<span class="w"> </span><span class="o">[</span>UIDNEXT<span class="w"> </span><span class="m">6</span><span class="o">]</span><span class="w"> </span>Predicted<span class="w"> </span>next<span class="w"> </span>UID
+*<span class="w"> </span>FLAGS<span class="w"> </span><span class="o">(</span><span class="se">\A</span>nswered<span class="w"> </span><span class="se">\F</span>lagged<span class="w"> </span><span class="se">\D</span>eleted<span class="w"> </span><span class="se">\D</span>raft<span class="w"> </span><span class="se">\S</span>een<span class="o">)</span>
+*<span class="w"> </span>OK<span class="w"> </span><span class="o">[</span>PERMANENTFLAGS<span class="w"> </span><span class="o">(</span><span class="se">\*</span><span class="w"> </span><span class="se">\A</span>nswered<span class="w"> </span><span class="se">\F</span>lagged<span class="w"> </span><span class="se">\D</span>eleted<span class="w"> </span><span class="se">\D</span>raft
+<span class="se">\S</span>een<span class="o">)]</span><span class="w"> </span>Permanent<span class="w"> </span>flags
+*<span class="w"> </span>OK<span class="w"> </span><span class="o">[</span>UNSEEN<span class="w"> </span><span class="m">5</span><span class="o">]</span><span class="w"> </span>first<span class="w"> </span>unseen<span class="w"> </span>message<span class="w"> </span><span class="k">in</span><span class="w"> </span>/var/spool/mail/user
+<span class="m">0014</span><span class="w"> </span>OK<span class="w"> </span><span class="o">[</span>READ-WRITE<span class="o">]</span><span class="w"> </span>SELECT<span class="w"> </span>completed
+
+<span class="c1"># リクエスト</span>
+<span class="m">0015</span><span class="w"> </span>STATUS<span class="w"> </span><span class="s2">&quot;INBOX&quot;</span><span class="w"> </span><span class="o">(</span>MESSAGES<span class="w"> </span>UNSEEN<span class="w"> </span>UIDNEXT<span class="o">)</span>
+<span class="c1"># レスポンス</span>
+*<span class="w"> </span>NO<span class="w"> </span>CLIENT<span class="w"> </span>BUG<span class="w"> </span>DETECTED:<span class="w"> </span>STATUS<span class="w"> </span>on<span class="w"> </span>selected<span class="w"> </span>mailbox:<span class="w"> </span>INBOX
+*<span class="w"> </span>STATUS<span class="w"> </span>INBOX<span class="w"> </span><span class="o">(</span>MESSAGES<span class="w"> </span><span class="m">5</span><span class="w"> </span>UNSEEN<span class="w"> </span><span class="m">1</span><span class="w"> </span>UIDNEXT<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+<span class="m">0015</span><span class="w"> </span>OK<span class="w"> </span>STATUS<span class="w"> </span>completed
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0106/13/news001.html">https://atmarkit.itmedia.co.jp/ait/articles/0106/13/news001.html</a></li>
+<li><a href="https://superuser.com/a/218592">https://superuser.com/a/218592</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="apopauthenticated-pop">APOP：Authenticated POP<a class="headerlink" href="#apopauthenticated-pop" title="Permanent link">&para;</a></h3>
 <h4 id="apop">▼ APOPとは<a class="headerlink" href="#apop" title="Permanent link">&para;</a></h4>
@@ -6323,7 +6404,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>

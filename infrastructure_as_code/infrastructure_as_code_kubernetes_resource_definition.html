@@ -6706,6 +6706,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#clientip" class="md-nav__link">
+    ▼ ClientIP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    ▼ None
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -12052,6 +12066,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#clientip" class="md-nav__link">
+    ▼ ClientIP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#none" class="md-nav__link">
+    ▼ None
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -16569,6 +16597,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specsessionaffinity">.spec.sessionAffinity<a class="headerlink" href="#specsessionaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="sessionaffinity">▼ sessionAffinityとは<a class="headerlink" href="#sessionaffinity" title="Permanent link">&para;</a></h4>
 <p>Podへのルーティング時にセッションを維持するかどうかを設定する。</p>
+<h4 id="clientip">▼ ClientIP<a class="headerlink" href="#clientip" title="Permanent link">&para;</a></h4>
 <p>同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -16582,6 +16611,22 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity">https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity</a></li>
 <li><a href="https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb">https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb</a></li>
+<li><a href="https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity">https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity</a></li>
+</ul>
+</blockquote>
+<h4 id="none">▼ None<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
+<p>sessionAffinityを無効化する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sessionAffinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity">https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity</a></li>
 </ul>
 </blockquote>
 <p><br></p>
