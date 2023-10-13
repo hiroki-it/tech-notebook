@@ -29,6 +29,8 @@ ArgoCDの場合、冗長化はrepo-serverの性能設計の改善にもつなが
 
 repo-serverは、リポジトリでコミットが更新されるたびにキャッシュを作成する。
 
+Volumeの種類によるが、EmptyDir Volumeであれば、Podを再作成するたびにリポジトリをクローンする。
+
 #### ▼ レプリカ当たりの処理効率の向上
 
 Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを置いておくと並行処理をしてくれる。

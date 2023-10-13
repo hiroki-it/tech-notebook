@@ -534,9 +534,10 @@ spec:
   selector:
     matchLabels:
       name: app
+  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
   accessLogging:
     - providers:
-        - name: datadog-tracing
+        - name: envoy
 ```
 
 ```yaml
@@ -559,6 +560,7 @@ spec:
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
 > - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider
+> - https://istio.io/latest/docs/reference/config/telemetry/
 
 #### ▼ opentelemetry
 
@@ -596,9 +598,10 @@ spec:
   selector:
     matchLabels:
       name: app
+  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
   accessLogging:
     - providers:
-        - name: opentelemetry-tracing
+        - name: envoy
 ```
 
 ```yaml
@@ -624,12 +627,14 @@ spec:
 > - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
 > - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
 > - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
+> - https://istio.io/latest/docs/reference/config/telemetry/
 
 #### ▼ prometheus
 
 メトリクスの監視バックエンドとするPrometheusの宛先情報を設定する。
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
+> - https://istio.io/latest/docs/reference/config/telemetry/
 
 <br>
 
