@@ -5365,11 +5365,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#09-virtualservice" class="md-nav__link">
-    09. VirtualService
+  <a href="#09-telemetry" class="md-nav__link">
+    09. Telemetry
   </a>
   
-    <nav class="md-nav" aria-label="09. VirtualService">
+    <nav class="md-nav" aria-label="09. Telemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accesslogging" class="md-nav__link">
+    accessLogging
+  </a>
+  
+    <nav class="md-nav" aria-label="accessLogging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accesslogging_1" class="md-nav__link">
+    ▼ accessLoggingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracing" class="md-nav__link">
+    tracing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-virtualservice" class="md-nav__link">
+    10. VirtualService
+  </a>
+  
+    <nav class="md-nav" aria-label="10. VirtualService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7507,11 +7554,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#09-virtualservice" class="md-nav__link">
-    09. VirtualService
+  <a href="#09-telemetry" class="md-nav__link">
+    09. Telemetry
   </a>
   
-    <nav class="md-nav" aria-label="09. VirtualService">
+    <nav class="md-nav" aria-label="09. Telemetry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accesslogging" class="md-nav__link">
+    accessLogging
+  </a>
+  
+    <nav class="md-nav" aria-label="accessLogging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accesslogging_1" class="md-nav__link">
+    ▼ accessLoggingとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    metrics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracing" class="md-nav__link">
+    tracing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-virtualservice" class="md-nav__link">
+    10. VirtualService
+  </a>
+  
+    <nav class="md-nav" aria-label="10. VirtualService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8753,7 +8847,77 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span><span class="w"> </span><span class="c1"># DNSサーバーから返信されたIPアドレスを許可する。</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="09-virtualservice">09. VirtualService<a class="headerlink" href="#09-virtualservice" title="Permanent link">&para;</a></h2>
+<h2 id="09-telemetry">09. Telemetry<a class="headerlink" href="#09-telemetry" title="Permanent link">&para;</a></h2>
+<h3 id="accesslogging">accessLogging<a class="headerlink" href="#accesslogging" title="Permanent link">&para;</a></h3>
+<h4 id="accesslogging_1">▼ accessLoggingとは<a class="headerlink" href="#accesslogging_1" title="Permanent link">&para;</a></h4>
+<p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、アクセスログの作成方法を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="c1"># デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である</span>
+<span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging">https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="metrics">metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、メトリクスの作成方法を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">metrics</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/#Metrics">https://istio.io/latest/docs/reference/config/telemetry/#Metrics</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="tracing">tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h3>
+<p>同じNamespace内の<code>istio-proxy</code>コンテナを対象として、スパンの作成方法を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">access-log-provider</span>
+<span class="w">  </span><span class="c1"># サイドカーをインジェクションしている各Namespaceで作成する</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">tracing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry</span>
+<span class="w">      </span><span class="nt">randomSamplingPercentage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/#Tracing">https://istio.io/latest/docs/reference/config/telemetry/#Tracing</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="10-virtualservice">10. VirtualService<a class="headerlink" href="#10-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="specexportto_1">.spec.exportTo<a class="headerlink" href="#specexportto_1" title="Permanent link">&para;</a></h3>
 <h4 id="exportto_1">▼ exportToとは<a class="headerlink" href="#exportto_1" title="Permanent link">&para;</a></h4>
 <p>そのVirtualServiceを使用できるNamespaceを設定する。</p>
@@ -9191,7 +9355,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>
