@@ -21,7 +21,9 @@ description: Kaniko＠CNCFの知見を記録しています。
 
 また、Kubernetes Cluster内でコンテナイメージをビルドできるようになる。
 
-レイヤー単位でコンテナイメージのキャッシュを作成できるため、都度、コンテナイメージをビルドしなくて良くなる。
+レイヤー単位でコンテナイメージのキャッシュを作成できる。
+
+そのため、都度、コンテナイメージをビルドしなくて良くなる。
 
 > - https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE
 > - https://snyk.io/blog/building-docker-images-kubernetes/

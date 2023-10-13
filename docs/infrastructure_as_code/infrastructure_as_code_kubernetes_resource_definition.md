@@ -4647,6 +4647,10 @@ spec:
 
 ServiceのSNAT処理を無効化し、送信元IPアドレスを変換しなようにする。
 
+代わりに、そのServiceが属するNode上のPodにしかルーティングできない。
+
+NodePort ServiceとLoadBalancer Serviceで使用でき、ClusterIP Serviceでは使用できない。
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -4668,6 +4672,8 @@ spec:
 ```
 
 > - https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport
+> - https://thinkit.co.jp/article/13738?page=0%2C1
+> - https://gist.github.com/IMOKURI/fc27c28139c575b7decf3ac1126db767
 
 <br>
 

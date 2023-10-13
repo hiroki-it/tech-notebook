@@ -55,8 +55,10 @@ AWS Load Balancerコントローラーを使用する場合は、NodePort Servic
 ⬇︎
 AWS Route53
 ⬇︎
-AWS Load Balancerコントローラー、AWS ALB (Ingressの設定で決まる)
+# L7ロードバランサー
+AWS Load BalancerコントローラーによるAWS ALB
 ⬇︎
+# L4ロードバランサー
 NodePort Service (ポート番号はランダムでよい)
 ⬇︎
 Pod

@@ -4545,7 +4545,9 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ServiceProviderのコール
 
-クラスの名前空間を、`config/app.php`ファイルの`providers`配列に登録すると、アプリケーションの起動時にServiceProviderをコールできるため、ServiceContainerへのクラスのバインドが自動的に完了する。
+クラスの名前空間を、`config/app.php`ファイルの`providers`配列に登録すると、アプリケーションの起動時にServiceProviderをコールできる。
+
+そのため、ServiceContainerへのクラスのバインドが自動的に完了する。
 
 **＊実装例＊**
 

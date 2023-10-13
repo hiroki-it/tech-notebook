@@ -631,7 +631,7 @@ kube-proxyが更新したNode上で稼働するiptablesを使用し、またロ�
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
 
-Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
 
 Cluster-IPはServiceの`.spec.clusterIP`キーで指定しない限りランダムで決まり、Podの`/etc/resolv.conf `ファイルに記載されている。
 
@@ -649,12 +649,12 @@ options ndots:5 # 名前解決時のローカルドメインの優先度
 
 Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
 
-```
+```yaml
 パブリックネットワーク
 ⬇︎
-Ingressコントローラー ⇄ Ingress
+Ingressコントローラー # L7ロードバランサー
 ⬇︎
-ClusterIP Service
+ClusterIP Service # L4ロードバランサー
 ⬇︎
 Pod
 ```
@@ -679,13 +679,14 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
 
-Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
 
 NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
 
-```
+```yaml
 パブリックネットワーク
 ⬇︎
+# L4ロードバランサー
 NodePort Service
 ⬇︎
 Pod
@@ -693,13 +694,15 @@ Pod
 
 パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingressコントローラー由来ではない) 。
 
-```
+```yaml
 パブリックネットワーク
 ⬇︎
 AWS Route53
 ⬇︎
+# L7ロードバランサー
 AWS ALB
 ⬇︎
+# L4ロードバランサー
 NodePort Service
 ⬇︎
 Pod
@@ -711,17 +714,19 @@ Pod
 
 この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。
 
-```
+```yaml
 パブリックネットワーク
 ⬇︎
-Ingressコントローラー ⇄ Ingress
+# L7ロードバランサー
+Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー)
 ⬇︎
+# L4ロードバランサー
 ClusterIP Service (実体はNodePort Service)
 ⬇︎
 Pod
 ```
 
-NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。
+NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
@@ -735,18 +740,19 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
 
-Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。
 
-External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。
+External-IPはNode外から宛先IPアドレスとして指定できる。
 
-```
+そのため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。
+
+```yaml
 パブリックネットワーク
 ⬇︎
 AWS Route53
 ⬇︎
-AWS ALB
-⬇︎
-LoadBalancer Service
+# L4ロードバランサー
+LoadBalancer ServiceによるAWS NLB
 ⬇︎
 Pod
 ```

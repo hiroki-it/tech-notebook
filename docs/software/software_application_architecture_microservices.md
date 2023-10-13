@@ -466,7 +466,9 @@ Kubernetes内で管理できるメリットがある。
 
 マイクロサービスにリクエストを送信するアプリケーションの種類 (Webアプリケーション、Mobileアプリケーション、他社向けアプリケーション、など) に応じたAPI Gateway (Web API Gateway、Mobile API Gateway、他社向けAPI Gateway、など) を作成する。
 
-ただし、複数のクライアントをWebアプリとして開発することもできるため、同じWebからのアクセスであっても、異なるAPI Gatewayを作成する場合がある。
+ただし、複数のクライアントをWebアプリとして開発することもできる。
+
+そのため、同じWebからのアクセスであっても、異なるAPI Gatewayを作成する場合がある。
 
 ![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
 
