@@ -6088,6 +6088,7 @@
 <h3 id="_3">性能<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 問題<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>repo-serverは、リポジトリでコミットが更新されるたびにキャッシュを作成する。</p>
+<p>Volumeの種類によるが、EmptyDir Volumeであれば、Podを再作成するたびにリポジトリをクローンする。</p>
 <h4 id="_5">▼ レプリカ当たりの処理効率の向上<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Applicationがポーリングするリポジトリのパス直下に<code>.argocd-allow-concurrency</code>ファイルを置いておくと並行処理をしてくれる。</p>
 <blockquote>
@@ -6243,7 +6244,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>

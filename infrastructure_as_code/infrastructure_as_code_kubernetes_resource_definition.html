@@ -16597,6 +16597,12 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specsessionaffinity">.spec.sessionAffinity<a class="headerlink" href="#specsessionaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="sessionaffinity">▼ sessionAffinityとは<a class="headerlink" href="#sessionaffinity" title="Permanent link">&para;</a></h4>
 <p>Podへのルーティング時にセッションを維持するかどうかを設定する。</p>
+<p>なお、Ingressにも同じ機能がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/58960523">https://stackoverflow.com/a/58960523</a></li>
+</ul>
+</blockquote>
 <h4 id="clientip">▼ ClientIP<a class="headerlink" href="#clientip" title="Permanent link">&para;</a></h4>
 <p>同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。</p>
 <p><strong>＊実装例＊</strong></p>

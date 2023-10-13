@@ -7388,9 +7388,10 @@
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="c1"># デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">datadog-tracing</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -7412,6 +7413,7 @@
 <li><a href="https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27">https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27</a></li>
 <li><a href="https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host">https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host</a></li>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/">https://istio.io/latest/docs/reference/config/telemetry/</a></li>
 </ul>
 </blockquote>
 <h4 id="opentelemetry">▼ opentelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
@@ -7443,9 +7445,10 @@
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="c1"># デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である</span>
 <span class="w">  </span><span class="nt">accessLogging</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">providers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">opentelemetry-tracing</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
@@ -7470,6 +7473,7 @@
 <li><a href="https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection">https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection</a></li>
 <li><a href="https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml">https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml</a></li>
 <li><a href="https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099">https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099</a>.</li>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/">https://istio.io/latest/docs/reference/config/telemetry/</a></li>
 </ul>
 </blockquote>
 <h4 id="prometheus">▼ prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
@@ -7477,6 +7481,7 @@
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider">https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/telemetry/">https://istio.io/latest/docs/reference/config/telemetry/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
