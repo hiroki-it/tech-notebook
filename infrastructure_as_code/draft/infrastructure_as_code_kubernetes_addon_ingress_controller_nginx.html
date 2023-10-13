@@ -5544,44 +5544,44 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#metadataannotations" class="md-nav__link">
-    .metadata.annotationsキー
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-ingressmetadataannotations" class="md-nav__link">
+    03. Ingressの.metadata.annotationsキー
   </a>
   
-    <nav class="md-nav" aria-label=".metadata.annotationsキー">
+    <nav class="md-nav" aria-label="03. Ingressの.metadata.annotationsキー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#metadataannotations_1" class="md-nav__link">
-    ▼ .metadata.annotationsキーとは
+  <a href="#ingressmetadataannotations" class="md-nav__link">
+    Ingressの.metadata.annotationsキーとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nginxingresskubernetesioaffinity" class="md-nav__link">
-    ▼ nginx.ingress.kubernetes.io/affinityキーとは
+    nginx.ingress.kubernetes.io/affinityキー
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nginxingresskubernetesiowhitelist-source-range" class="md-nav__link">
-    ▼ nginx.ingress.kubernetes.io/whitelist-source-rangeキーとは
+    nginx.ingress.kubernetes.io/whitelist-source-rangeキー
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#nginxingresskubernetesiodenylist-source-range" class="md-nav__link">
-    ▼ nginx.ingress.kubernetes.io/denylist-source-rangeキーとは
+    nginx.ingress.kubernetes.io/denylist-source-rangeキー
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5669,10 +5669,12 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="metadataannotations"><code>.metadata.annotations</code>キー<a class="headerlink" href="#metadataannotations" title="Permanent link">&para;</a></h3>
-<h4 id="metadataannotations_1">▼ <code>.metadata.annotations</code>キーとは<a class="headerlink" href="#metadataannotations_1" title="Permanent link">&para;</a></h4>
-<p>Nginxをルーティングルール以外を設定するために、Ingressの<code>.metadata.annotations</code>キーを設定する必要がある。</p>
-<h4 id="nginxingresskubernetesioaffinity">▼ <code>nginx.ingress.kubernetes.io/affinity</code>キーとは<a class="headerlink" href="#nginxingresskubernetesioaffinity" title="Permanent link">&para;</a></h4>
+<h2 id="03-ingressmetadataannotations">03. Ingressの<code>.metadata.annotations</code>キー<a class="headerlink" href="#03-ingressmetadataannotations" title="Permanent link">&para;</a></h2>
+<h3 id="ingressmetadataannotations">Ingressの<code>.metadata.annotations</code>キーとは<a class="headerlink" href="#ingressmetadataannotations" title="Permanent link">&para;</a></h3>
+<p>特定のALBのリスナールールを決める。</p>
+<p>Ingressで<code>nginx</code>のIngressClassを指定する必要がある。</p>
+<p><br></p>
+<h3 id="nginxingresskubernetesioaffinity"><code>nginx.ingress.kubernetes.io/affinity</code>キー<a class="headerlink" href="#nginxingresskubernetesioaffinity" title="Permanent link">&para;</a></h3>
 <p>Podへのルーティング時にセッションを維持するかどうかを設定する。</p>
 <p>同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
@@ -5687,7 +5689,8 @@
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity">https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity</a></li>
 </ul>
 </blockquote>
-<h4 id="nginxingresskubernetesiowhitelist-source-range">▼ <code>nginx.ingress.kubernetes.io/whitelist-source-range</code>キーとは<a class="headerlink" href="#nginxingresskubernetesiowhitelist-source-range" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="nginxingresskubernetesiowhitelist-source-range"><code>nginx.ingress.kubernetes.io/whitelist-source-range</code>キー<a class="headerlink" href="#nginxingresskubernetesiowhitelist-source-range" title="Permanent link">&para;</a></h3>
 <p>インバウンド通信で許可するCIDRを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
@@ -5696,7 +5699,13 @@
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/whitelist-source-range</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*/*</span>
 </code></pre></div>
-<h4 id="nginxingresskubernetesiodenylist-source-range">▼ <code>nginx.ingress.kubernetes.io/denylist-source-range</code>キーとは<a class="headerlink" href="#nginxingresskubernetesiodenylist-source-range" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="nginxingresskubernetesiodenylist-source-range"><code>nginx.ingress.kubernetes.io/denylist-source-range</code>キー<a class="headerlink" href="#nginxingresskubernetesiodenylist-source-range" title="Permanent link">&para;</a></h3>
 <p>インバウンド通信で拒否するCIDRを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
@@ -5705,6 +5714,11 @@
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">nginx.ingress.kubernetes.io/denylist-source-range</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*/*</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/">https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -5712,7 +5726,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-14</span>
       
     
   </small>

@@ -16597,6 +16597,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specsessionaffinity">.spec.sessionAffinity<a class="headerlink" href="#specsessionaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="sessionaffinity">▼ sessionAffinityとは<a class="headerlink" href="#sessionaffinity" title="Permanent link">&para;</a></h4>
 <p>Podへのルーティング時にセッションを維持するかどうかを設定する。</p>
+<p>セッションIDは、Node上に保管する。</p>
 <p>なお、Ingressにも同じ機能がある。</p>
 <blockquote>
 <ul>
@@ -16639,6 +16640,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specsessionaffinityconfig">.spec.sessionAffinityConfig<a class="headerlink" href="#specsessionaffinityconfig" title="Permanent link">&para;</a></h3>
 <h4 id="sessionaffinityconfig">▼ sessionAffinityConfigとは<a class="headerlink" href="#sessionaffinityconfig" title="Permanent link">&para;</a></h4>
 <p><code>.spec.sessionAffinity</code>キーを使用している場合に、セッションのタイムアウト時間を設定する。</p>
+<p>タイムアウト時間を過ぎると、Node上に保管したセッションIDを削除する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
@@ -17066,7 +17068,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-14</span>
       
     
   </small>
