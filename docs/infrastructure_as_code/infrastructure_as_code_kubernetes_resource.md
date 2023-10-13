@@ -652,9 +652,11 @@ Cluster-IPはNode外から宛先として指定できないため、インバウ
 ```yaml
 パブリックネットワーク
 ⬇︎
-Ingressコントローラー # L7ロードバランサー
+# L7ロードバランサー
+Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、など)
 ⬇︎
-ClusterIP Service # L4ロードバランサー
+# L4ロードバランサー
+ClusterIP Service
 ⬇︎
 Pod
 ```
@@ -669,7 +671,7 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 > - https://thinkit.co.jp/article/18263
 > - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
 
-ただし、クラウドプロバイダーによっては`L7`ロードバランサーとClusterIP Serviceを仲介するカスタムリソースを提供している場合がある (AWSのTargetGroupBindings) 。
+ただし、クラウドプロバイダーによってはIngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。
 
 この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。
 

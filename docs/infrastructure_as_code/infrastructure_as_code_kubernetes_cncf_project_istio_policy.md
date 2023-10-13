@@ -196,12 +196,14 @@ LoadBalancer Serviceを使用する場合、以下のようなネットワーク
 ⬇︎
 AWS Route53
 ⬇︎
-LoadBalancer Service (Istio IngressGateway) によるAWS NLB # L4ロードバランサー
+# L4ロードバランサー
+LoadBalancer Service (Istio IngressGateway) によるAWS NLB
 ⬇︎
 Gateway
 ⬇︎
 VirtualService
 ⬇︎
+# L4ロードバランサー
 ClusterIP Service
 ⬇︎
 Pod
@@ -254,6 +256,7 @@ Gateway
 ⬇︎
 VirtualService
 ⬇︎
+# L4ロードバランサー
 ClusterIP Service
 ⬇︎
 Pod

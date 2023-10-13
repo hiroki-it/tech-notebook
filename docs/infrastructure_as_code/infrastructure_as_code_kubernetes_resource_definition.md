@@ -4898,6 +4898,8 @@ spec:
 
 Podへのルーティング時にセッションを維持するかどうかを設定する。
 
+#### ▼ ClientIP
+
 同じセッション内であれば、特定のクライアントからの通信をService配下の同じPodにルーティングし続けられる。
 
 **＊実装例＊**
@@ -4913,6 +4915,24 @@ spec:
 
 > - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
 > - https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity
+
+#### ▼ None
+
+sessionAffinityを無効化する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-service
+spec:
+  sessionAffinity: None
+```
+
+> - https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity
 
 <br>
 

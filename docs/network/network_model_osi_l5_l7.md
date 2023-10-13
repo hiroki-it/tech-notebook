@@ -131,6 +131,75 @@ GmailでPOPかIMAPを設定できる。
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
 
+#### ▼ 仕組み
+
+IMAPのリクエストは、`<タグ> <リクエストコマンド> <引数>`からなる。
+
+レスポンスは、`<タグ> <ステータス> <レスポンスコード> <メッセージ>`からなる。
+
+```bash
+# リクエスト
+0001 AUTHENTICATE CRAM-MD5
+# レスポンス
+* CAPABILITY IMAP4 IMAP4REV1 IDLE NAMESPACE MAILBOX-REFERRALS
+SCAN SORT THREAD=REFERENCES
+THREAD=ORDEREDSUBJECT MULTIAPPEND
+0001 OK AUTHENTICATE completed
+
+# リクエスト
+0002 NAMESPACE
+# レスポンス
+* NAMESPACE (("" "/")("#mhinbox" NIL)("#mh/" "/")) (("~" "/"))
+(("#shared/" "/")
+("#ftp/" "/")("#news." ".")("#public/" "/"))
+0002 OK NAMESPACE completed
+
+# リクエスト
+0003 LIST "" "INBOX"
+# レスポンス
+* LIST (\NoInferiors) NIL INBOX
+0003 OK LIST completed
+
+# リクエスト
+0004 LIST "" *
+# レスポンス
+* LIST (\NoInferiors) "/" &kAFP4W4IMH8wojCkMMYw4A-
+* LIST (\NoInferiors) "/" &Tgtm+DBN-
+* LIST (\NoSelect) "/" fol2
+* LIST (\NoInferiors) "/" fol2/fol3
+* LIST (\NoInferiors \UnMarked) "/" fol10
+* LIST (\NoInferiors) NIL INBOX
+0004 OK LIST completed
+
+# リクエスト
+0005 CREATE Trash
+# レスポンス
+0005 OK CREATE completed
+
+# リクエスト
+0014 SELECT "INBOX"
+# レスポンス
+* 5 EXISTS
+* 0 RECENT
+* OK [UIDVALIDITY 988028003] UID validity status
+* OK [UIDNEXT 6] Predicted next UID
+* FLAGS (\Answered \Flagged \Deleted \Draft \Seen)
+* OK [PERMANENTFLAGS (\* \Answered \Flagged \Deleted \Draft
+\Seen)] Permanent flags
+* OK [UNSEEN 5] first unseen message in /var/spool/mail/user
+0014 OK [READ-WRITE] SELECT completed
+
+# リクエスト
+0015 STATUS "INBOX" (MESSAGES UNSEEN UIDNEXT)
+# レスポンス
+* NO CLIENT BUG DETECTED: STATUS on selected mailbox: INBOX
+* STATUS INBOX (MESSAGES 5 UNSEEN 1 UIDNEXT 6)
+0015 OK STATUS completed
+```
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/0106/13/news001.html
+> - https://superuser.com/a/218592
+
 <br>
 
 ### APOP：Authenticated POP
