@@ -6592,57 +6592,59 @@
 <h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
 <p>LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-AWS Route53
-⬇︎
-AWS ALB
-⬇︎
-LoadBalancer Service (Istio IngressGateway)
-⬇︎
-Gateway
-⬇︎
-VirtualService
-⬇︎
-Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">LoadBalancer Service (Istio IngressGateway) によるAWS NLB</span><span class="w"> </span><span class="c1"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="nodeport-service_1">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h3>
 <h4 id="l7">▼ <code>L7</code>ロードバランサーがない場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
 <p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-NodePort Service (Istio IngressGateway)
-⬇︎
-Gateway
-⬇︎
-VirtualService
-⬇︎
-Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <h4 id="l7_1">▼ <code>L7</code>ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
-<p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に置く (このLBは、Ingressコントローラー由来ではない) 。</p>
+<p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に置く。</p>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-AWS Route53
-⬇︎
-AWS ALB
-⬇︎
-NodePort Service (Istio IngressGateway)
-⬇︎
-Gateway
-⬇︎
-VirtualService
-⬇︎
-Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. アップグレード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
@@ -6934,7 +6936,7 @@ istioctl<span class="w"> </span>version
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>

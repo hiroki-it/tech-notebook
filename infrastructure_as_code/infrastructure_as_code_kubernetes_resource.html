@@ -8508,7 +8508,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
-<p>Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。</p>
 <p>Cluster-IPはServiceの<code>.spec.clusterIP</code>キーで指定しない限りランダムで決まり、Podの<code>/etc/resolv.conf</code>ファイルに記載されている。</p>
 <p>Pod内に複数のコンテナがある場合、各コンテナに同じ内容の<code>/etc/resolv.conf</code>ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -8520,13 +8520,13 @@ search<span class="w"> </span>default.svc.cluster.local<span class="w"> </span>s
 options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1"># 名前解決時のローカルドメインの優先度</span>
 </code></pre></div>
 <p>Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。</p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-Ingressコントローラー ⇄ Ingress
-⬇︎
-ClusterIP Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー</span><span class="w"> </span><span class="c1"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span><span class="w"> </span><span class="c1"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>Ingressが無いとClusterネットワーク内からのみしかアクセスできず、安全である。</p>
 <p>一方でもしIngressを使用する場合、LoadBalancer Serviceと同様にして (レイヤーは異なるが) 、PodのIPアドレスを宛先とする<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
@@ -8547,37 +8547,42 @@ Pod
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png" /></p>
-<p>Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。</p>
 <p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-NodePort Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>パブリックプロバイダーのLB (例：AWS ALB) を別に置いても良い (このLBは、Ingressコントローラー由来ではない) 。</p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-AWS Route53
-⬇︎
-AWS ALB
-⬇︎
-NodePort Service
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>ただし、NodePort Serviceは内部的にCluster-IPを使っている。</p>
 <p>そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。</p>
 <p>この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。</p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-Ingressコントローラー ⇄ Ingress
-⬇︎
-ClusterIP Service (実体はNodePort Service)
-⬇︎
-Pod
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service (実体はNodePort Service)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<p>NodeのNICの宛先情報は、Nodeの作成方法 (AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。</p>
+<p>NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。</p>
 <p>Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。</p>
 <p><code>1</code>個のNodeのポート番号につき、<code>1</code>個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
@@ -8588,17 +8593,17 @@ Pod
 </blockquote>
 <h4 id="loadbalancer-service">▼ LoadBalancer Service<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png" /></p>
-<p>Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報、Cluster-IP、を介してPodにルーティングする。</p>
-<p>External-IPはNode外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
-<div class="highlight"><pre><span></span><code>パブリックネットワーク
-⬇︎
-AWS Route53
-⬇︎
-AWS ALB
-⬇︎
-LoadBalancer Service
-⬇︎
-Pod
+<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。</p>
+<p>External-IPはNode外から宛先IPアドレスとして指定できる。</p>
+<p>そのため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">LoadBalancer ServiceによるAWS NLB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p>クラウドプロバイダー (例：AWS) では、LoadBalancer Serviceを作成すると、External-IPを宛先とする<code>L4</code>ロードバランサー (例：AWS NLBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>クラウドプロバイダーのリソースとKubernetesリソースが密結合になり、責務の境界が曖昧になってしまう。</p>
@@ -9358,7 +9363,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>

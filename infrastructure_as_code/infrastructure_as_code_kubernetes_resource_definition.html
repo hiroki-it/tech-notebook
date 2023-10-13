@@ -16373,6 +16373,8 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <p>記入中...</p>
 <h4 id="local_1">▼ Local<a class="headerlink" href="#local_1" title="Permanent link">&para;</a></h4>
 <p>ServiceのSNAT処理を無効化し、送信元IPアドレスを変換しなようにする。</p>
+<p>代わりに、そのServiceが属するNode上のPodにしかルーティングできない。</p>
+<p>NodePort ServiceとLoadBalancer Serviceで使用でき、ClusterIP Serviceでは使用できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -16392,6 +16394,8 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport">https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport</a></li>
+<li><a href="https://thinkit.co.jp/article/13738?page=0%2C1">https://thinkit.co.jp/article/13738?page=0%2C1</a></li>
+<li><a href="https://gist.github.com/IMOKURI/fc27c28139c575b7decf3ac1126db767">https://gist.github.com/IMOKURI/fc27c28139c575b7decf3ac1126db767</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -17011,7 +17015,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
       
     
   </small>
