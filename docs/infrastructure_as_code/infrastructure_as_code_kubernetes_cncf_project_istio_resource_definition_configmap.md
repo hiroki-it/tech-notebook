@@ -554,7 +554,8 @@ spec:
       name: app
   tracing:
     - providers:
-        - name: datadog-tracing
+        - name: datadog
+      randomSamplingPercentage: 100
 ```
 
 > - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
@@ -577,7 +578,7 @@ metadata:
 data:
   mesh: |
     extensionProviders:
-      - name: opentelemetry-tracing
+      - name: opentelemetry
         opentelemetry:
           # otelコレクターを宛先として設定する
           service: opentelemetry-collector.tracing.svc.cluster.local
@@ -618,7 +619,8 @@ spec:
       name: app
   tracing:
     - providers:
-        - name: opentelemetry-tracing
+        - name: opentelemetry
+      randomSamplingPercentage: 100
 ```
 
 > - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging

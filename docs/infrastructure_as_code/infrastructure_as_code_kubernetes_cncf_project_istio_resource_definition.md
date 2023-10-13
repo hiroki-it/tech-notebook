@@ -1158,7 +1158,85 @@ spec:
 
 <br>
 
-## 09. VirtualService
+## 09. Telemetry
+
+### accessLogging
+
+#### ▼ accessLoggingとは
+
+同じNamespace内の`istio-proxy`コンテナを対象として、アクセスログの作成方法を設定する。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  selector:
+    matchLabels:
+      name: app
+  # デフォルトでEnvoyをアクセスログプロバイダーとして使用するため、設定不要である
+  accessLogging:
+    - providers:
+        - name: envoy
+```
+
+> - https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging
+
+<br>
+
+### metrics
+
+同じNamespace内の`istio-proxy`コンテナを対象として、メトリクスの作成方法を設定する。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  selector:
+    matchLabels:
+      name: app
+  metrics:
+    - providers:
+        - name: prometheus
+```
+
+> - https://istio.io/latest/docs/reference/config/telemetry/#Metrics
+
+<br>
+
+### tracing
+
+同じNamespace内の`istio-proxy`コンテナを対象として、スパンの作成方法を設定する。
+
+```yaml
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: access-log-provider
+  # サイドカーをインジェクションしている各Namespaceで作成する
+  namespace: foo
+spec:
+  selector:
+    matchLabels:
+      name: app
+  tracing:
+    - providers:
+        - name: opentelemetry
+      randomSamplingPercentage: 100
+```
+
+> - https://istio.io/latest/docs/reference/config/telemetry/#Tracing
+
+<br>
+
+## 10. VirtualService
 
 ### .spec.exportTo
 
