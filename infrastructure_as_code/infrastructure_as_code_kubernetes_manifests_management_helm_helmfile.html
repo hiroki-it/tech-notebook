@@ -6604,13 +6604,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="helmfiled_1"><code>helmfile.d</code>ファイルで使える変数<a class="headerlink" href="#helmfiled_1" title="Permanent link">&para;</a></h3>
 <h4 id="environmentname">▼ <code>.Environment.Name</code><a class="headerlink" href="#environmentname" title="Permanent link">&para;</a></h4>
 <p><code>helmfile</code>コマンドの<code>-e</code>オプションに渡した値は、<code>helmfile.d</code>ファイル内の<code>.Environment.Name</code>に出力できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Environment.Name</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="values">▼ <code>.Values</code><a class="headerlink" href="#values" title="Permanent link">&para;</a></h4>
 <p><code>helmfile</code>コマンドの<code>--state-values-set</code>オプションに渡した値は、<code>helmfile.d</code>ファイル内の<code>.Values</code>に出力できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>--state-values-set<span class="w"> </span><span class="nv">region</span><span class="o">=</span>tokyo
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>--state-values-set<span class="w"> </span><span class="nv">region</span><span class="o">=</span>tokyo
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.region</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
@@ -6704,7 +6704,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 </code></pre></div>
 <h4 id="namespace">▼ namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
 <p>チャートをインストールするNamespaceを設定する。</p>
-<p>各マニフェストで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。</p>
+<p>各マニフェストで定義できるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。</p>
 <p>ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
@@ -6883,7 +6883,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
       
     
   </small>

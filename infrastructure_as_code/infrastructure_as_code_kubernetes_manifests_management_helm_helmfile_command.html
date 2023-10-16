@@ -4121,6 +4121,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#destroy_2" class="md-nav__link">
+    ▼ 特定のリリースのみdestroyしたい
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6224,6 +6231,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#destroy_2" class="md-nav__link">
+    ▼ 特定のリリースのみdestroyしたい
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6492,6 +6506,14 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <li><a href="https://helmfile.readthedocs.io/en/latest/#destroy">https://helmfile.readthedocs.io/en/latest/#destroy</a></li>
 </ul>
 </blockquote>
+<h4 id="destroy_2">▼ 特定のリリースのみ<code>destroy</code>したい<a class="headerlink" href="#destroy_2" title="Permanent link">&para;</a></h4>
+<p><code>helmfile</code>コマンドで複数のリリースを一緒に管理している場合、特定のリリースのみ<code>destroy</code>できない。</p>
+<p>代わりに、<code>helm uninstall</code>コマンドで特定のリリースを削除する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;リリース名&gt;
+
+<span class="c1"># 削除したリリースのみが差分として出力される</span>
+$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>diff
+</code></pre></div>
 <p><br></p>
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <h4 id="list_1">▼ list<a class="headerlink" href="#list_1" title="Permanent link">&para;</a></h4>
