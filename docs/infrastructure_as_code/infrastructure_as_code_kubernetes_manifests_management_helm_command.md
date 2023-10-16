@@ -819,7 +819,6 @@ TEST SUITE: None
 $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
 ```
 
-
 #### ▼ --skip-crds
 
 `--install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。

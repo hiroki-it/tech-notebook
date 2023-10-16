@@ -82,7 +82,6 @@ metadata:
 
 全てのIngressに一括してルールを設定する。
 
-
 <br>
 
 ### proxy-connect-timeout

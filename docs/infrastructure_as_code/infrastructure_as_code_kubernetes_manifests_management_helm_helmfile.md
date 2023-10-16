@@ -134,7 +134,7 @@ releases:
 `helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.d`ファイル内の`.Environment.Name`に出力できる。
 
 ```bash
-$ helmfile -e prd -f helmfile.yaml
+$ helmfile -e dev -f helmfile.yaml
 ```
 
 ```yaml
@@ -146,7 +146,7 @@ $ helmfile -e prd -f helmfile.yaml
 `helmfile`コマンドの`--state-values-set`オプションに渡した値は、`helmfile.d`ファイル内の`.Values`に出力できる。
 
 ```bash
-$ helmfile -e prd -f helmfile.yaml --state-values-set region=tokyo
+$ helmfile -e dev -f helmfile.yaml --state-values-set region=tokyo
 ```
 
 ```yaml
@@ -269,7 +269,7 @@ releases:
 
 チャートをインストールするNamespaceを設定する。
 
-各マニフェストで定義することもできるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。
+各マニフェストで定義できるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。
 
 ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。
 
