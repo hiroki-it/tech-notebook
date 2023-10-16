@@ -6438,7 +6438,7 @@ Do<span class="w"> </span>you<span class="w"> </span>really<span class="w"> </sp
 <p><br></p>
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
 <h4 id="apply_1">▼ apply<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
-<p>まず<code>helmfile diff</code>コマンドを実行することにより、この時に差分があれば、<code>helmfile apply</code>コマンドを実行する。</p>
+<p>まず<code>helmfile diff</code>コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code>コマンドを実行する。</p>
 <p><code>helmfile sync</code>コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。</p>
 <p>注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>apply
@@ -6562,6 +6562,7 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://helmfile.readthedocs.io/en/latest/#diff">https://helmfile.readthedocs.io/en/latest/#diff</a></li>
 <li><a href="https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply">https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply</a></li>
 </ul>
 </blockquote>
@@ -6593,7 +6594,7 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
       
     
   </small>
