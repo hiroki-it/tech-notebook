@@ -4163,6 +4163,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    非推奨なAPIのアップグレード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6491,6 +6498,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    非推奨なAPIのアップグレード
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6993,6 +7007,19 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <h3 id="_16">新バージョンの自動検出<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>外部のツール (例：renovate) を使用して、チャートの新バージョンを自動的に検出する。</p>
 <p><br></p>
+<h3 id="api">非推奨なAPIのアップグレード<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p>チャートの含まれる廃止予定のAPIをアップグレードせずに、Kubernetesをアップグレードしてしまったとする。</p>
+<p>Helmは、<code>helm upgrade</code>コマンド時に、デプロイ済みリリースとデプロイ予定リリースの間で差分パッチを作成しようとする。</p>
+<p>この時、APIがすでに存在しないマニフェストが含まれると、差分パッチを作れずにエラーになる。</p>
+<p>これが起こってしまった場合、Helmのデプロイ済みのリリースを直接書き換える必要がある。</p>
+<p>Helmは、デプロイ済みのリリースをCluster内でSecretのデータとして管理している。</p>
+<p>そのため、これを書き換えることになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/topics/kubernetes_apis/#helm-users">https://helm.sh/docs/topics/kubernetes_apis/#helm-users</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="06-ci">06. CIパイプライン<a class="headerlink" href="#06-ci" title="Permanent link">&para;</a></h2>
 <h3 id="_17">仕様書自動作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>helm-docsを使用して、<code>values</code>ファイルの仕様書を作成する。</p>
@@ -7170,7 +7197,7 @@ foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Dep
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
       
     
   </small>
