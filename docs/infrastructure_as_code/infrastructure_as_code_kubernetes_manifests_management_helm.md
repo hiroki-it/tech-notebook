@@ -226,6 +226,25 @@ repository/
 
 実際にインストールされたチャートのインスタンスのこと。
 
+インスタンスの実体は、Secretのデータとして管理している。
+
+```bash
+$ kubectl get secret -n foo-namespace
+
+NAME                                   TYPE                  DATA   AGE
+sh.helm.release.v1.foo-chart.v1        helm.sh/release.v1    1      122d
+sh.helm.release.v1.foo-chart.v2        helm.sh/release.v1    1      122d
+sh.helm.release.v1.foo-chart.v3        helm.sh/release.v1    1      122d
+sh.helm.release.v1.foo-chart.v4        helm.sh/release.v1    1      122d
+sh.helm.release.v1.foo-chart.v5        helm.sh/release.v1    1      119d
+sh.helm.release.v1.bar-chart.v1        helm.sh/release.v1    1      97d
+sh.helm.release.v1.bar-chart.v2        helm.sh/release.v1    1      84d
+sh.helm.release.v1.bar-chart.v3        helm.sh/release.v1    1      74d
+sh.helm.release.v1.bar-chart.v4        helm.sh/release.v1    1      60d
+sh.helm.release.v1.bar-chart.v5        helm.sh/release.v1    1      49d
+```
+
 > - https://helm.sh/docs/intro/using_helm/#three-big-concepts
+> - https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest
 
 <br>
