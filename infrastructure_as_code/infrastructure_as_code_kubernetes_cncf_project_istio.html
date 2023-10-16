@@ -7476,11 +7476,12 @@
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 <span class="w">      </span><span class="nt">relabelings</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
-<span class="w">          </span><span class="nt">sourceLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">__meta_kubernetes_pod_container_name</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">sourceLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_container_name</span>
 <span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;istio-proxy&quot;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keep</span>
 <span class="w">          </span><span class="nt">sourceLabels</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">[</span><span class="nv">__meta_kubernetes_pod_annotationpresent_prometheus_io_scrape</span><span class="p p-Indicator">]</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_annotationpresent_prometheus_io_scrape</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
 <span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(\d+);(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})</span>
 <span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[$2]:$1&quot;</span>
@@ -7497,10 +7498,12 @@
 <span class="w">          </span><span class="nt">targetLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__address__</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">labeldrop</span>
 <span class="w">          </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;__meta_kubernetes_pod_label_(.+)&quot;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sourceLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">__meta_kubernetes_namespace</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sourceLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_namespace</span>
 <span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
 <span class="w">          </span><span class="nt">targetLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sourceLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">__meta_kubernetes_pod_name</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">sourceLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">__meta_kubernetes_pod_name</span>
 <span class="w">          </span><span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace</span>
 <span class="w">          </span><span class="nt">targetLabel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pod_name</span>
 </code></pre></div>
