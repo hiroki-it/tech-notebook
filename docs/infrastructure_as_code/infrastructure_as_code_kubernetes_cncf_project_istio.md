@@ -377,6 +377,91 @@ Prometheusは、`discovery`コンテナの`/stats/prometheus`エンドポイン�
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
 
+#### ▼ セットアップ
+
+Prometheusが`discovery`コンテナからデータポイントを取得するためには、`discovery`コンテナのPodを監視するためのServiceMonitorが必要である。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: istio-system
+  name: istiod-monitor
+spec:
+  jobLabel: istio
+  targetLabels:
+    - app
+  selector:
+    matchExpressions:
+      key: istio
+      operator: In
+      values:
+        - pilot
+  namespaceSelector:
+    matchNames:
+      - istio-system
+  endpoints:
+    - port: http-monitoring
+      interval: 15s
+```
+
+また、`istio-proxy`コンテナの監視には、PodMonitorが必要である。
+
+```yaml
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  namespace: istio-system
+  name: istio-proxy-monitor
+spec:
+  selector:
+    matchExpressions:
+      - key: istio-prometheus-ignore
+        operator: DoesNotExist
+  namespaceSelector:
+    # istio-proxyをインジェクションしているNamespaceを網羅できるようにする
+    any: true
+  jobLabel: envoy-stats
+  podMetricsEndpoints:
+    # istio-proxyコンテナが公開しているメトリクス収集用のエンドポイントを指定する
+    - path: /stats/prometheus
+      interval: 15s
+      relabelings:
+        - action: keep
+          sourceLabels: [__meta_kubernetes_pod_container_name]
+          regex: "istio-proxy"
+        - action: keep
+          sourceLabels:
+            [__meta_kubernetes_pod_annotationpresent_prometheus_io_scrape]
+        - action: replace
+          regex: (\d+);(([A-Fa-f0-9]{1,4}::?){1,7}[A-Fa-f0-9]{1,4})
+          replacement: "[$2]:$1"
+          sourceLabels:
+            - __meta_kubernetes_pod_annotation_prometheus_io_port
+            - __meta_kubernetes_pod_ip
+          targetLabel: __address__
+        - action: replace
+          regex: (\d+);((([0-9]+?)(\.|$)){4})
+          replacement: $2:$1
+          sourceLabels:
+            - __meta_kubernetes_pod_annotation_prometheus_io_port
+            - __meta_kubernetes_pod_ip
+          targetLabel: __address__
+        - action: labeldrop
+          regex: "__meta_kubernetes_pod_label_(.+)"
+        - sourceLabels: [__meta_kubernetes_namespace]
+          action: replace
+          targetLabel: namespace
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          action: replace
+          targetLabel: pod_name
+```
+
+> - https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml
+> - https://discuss.istio.io/t/scraping-istio-metrics-from-prometheus-operator-e-g-using-servicemonitor/10632
+> - https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations
+> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23
+
 <br>
 
 ### メトリクスの種類
