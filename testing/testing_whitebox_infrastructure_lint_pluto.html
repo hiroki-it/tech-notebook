@@ -6448,7 +6448,7 @@
 <h2 id="01-pluto">01. plutoの仕組み<a class="headerlink" href="#01-pluto" title="Permanent link">&para;</a></h2>
 <h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。</p>
-<p>pluto以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨apiVersionを確認できる。</p>
+<p>pluto以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨なAPIを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/using-api/deprecation-guide/">https://kubernetes.io/docs/reference/using-api/deprecation-guide/</a></li>
@@ -6636,7 +6636,7 @@ $<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </s
 <p><br></p>
 <h2 id="03_1">03. サブコマンド<a class="headerlink" href="#03_1" title="Permanent link">&para;</a></h2>
 <h3 id="detect">detect<a class="headerlink" href="#detect" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。</p>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。</p>
 <p><code>pluto detect-api-resources</code>コマンドとの違いは記入中...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
@@ -6653,7 +6653,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-api-resources">detect-api-resources<a class="headerlink" href="#detect-api-resources" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。</p>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。</p>
 <p><code>pluto detect</code>コマンドとの違いは記入中...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-api-resources<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
@@ -6670,7 +6670,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-files">detect-files<a class="headerlink" href="#detect-files" title="Permanent link">&para;</a></h3>
-<p>ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨のapiVersionを検出する。</p>
+<p>ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨なAPIを検出する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-files<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 </code></pre></div>
 <blockquote>
@@ -6681,7 +6681,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-helm">detect-helm<a class="headerlink" href="#detect-helm" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。</p>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨なAPIを検出する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-helm<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAME<span class="w">       </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
@@ -6723,7 +6723,7 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
       
     
   </small>
