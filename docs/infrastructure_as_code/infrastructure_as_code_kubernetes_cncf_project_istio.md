@@ -72,13 +72,15 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 
 インバウンド時の通信の経路は以下の通りである。
 
-```
-外
+```yaml
+パブリックネットワーク
 ⬇︎
 リダイレクト
 ⬇︎
+# L4ロードバランサー
 ztunnelのPod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
 ⬇︎
+# L7ロードバランサー
 waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 ⬇︎
 アプリコンテナのPod
@@ -86,11 +88,13 @@ waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 
 アウトバウンド時の通信の経路は以下の通りである。
 
-```
-外
+```yaml
+パブリックネットワーク
 ⬆︎
+# L7ロードバランサー
 waypointのPod (L7) # Deployment配下なので、任意のNodeにいる
 ⬆︎
+# L4ロードバランサー
 ztunnelのPod (L4) # DaemonSet配下なので、Nodeごとにいる
 ⬆︎
 リダイレクト
