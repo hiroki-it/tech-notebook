@@ -19,7 +19,7 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。
 
-pluto以外では、ドキュメント、リリースノート、メトリクス (`apiserver_requested_deprecated_apis`) 、監査ログ、で非推奨apiVersionを確認できる。
+pluto以外では、ドキュメント、リリースノート、メトリクス (`apiserver_requested_deprecated_apis`) 、監査ログ、で非推奨なAPIを確認できる。
 
 > - https://kubernetes.io/docs/reference/using-api/deprecation-guide/
 > - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade
@@ -251,7 +251,7 @@ $ pluto detect - -o markdown
 
 ### detect
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。
 
 `pluto detect-api-resources`コマンドとの違いは記入中...
 
@@ -271,7 +271,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 ### detect-api-resources
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨のapiVersionを検出する。
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。
 
 `pluto detect`コマンドとの違いは記入中...
 
@@ -291,7 +291,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 ### detect-files
 
-ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨のapiVersionを検出する。
+ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨なAPIを検出する。
 
 ```bash
 $ pluto detect-files - -o wide
@@ -304,7 +304,7 @@ $ pluto detect-files - -o wide
 
 ### detect-helm
 
-kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨のapiVersionを検出する。
+kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨なAPIを検出する。
 
 ```bash
 $ pluto detect-helm - -o wide
