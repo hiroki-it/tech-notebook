@@ -76,7 +76,14 @@ metadata:
 
 <br>
 
-## 02. ConfigMap
+## 02. 一括設定のConfigMap
+
+### 一括設定のConfigMapとは
+
+全てのIngressに一括してルールを設定する。
+
+
+<br>
 
 ### proxy-connect-timeout
 

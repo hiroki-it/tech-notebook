@@ -237,6 +237,18 @@ $ helm install <チャートリポジトリ名>/<チャート名> --generate-nam
 > - https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 > - https://stackoverflow.com/a/57347077
 
+#### ▼ --force
+
+既存のマニフェストを置き換える。
+
+`kubectl replace`コマンドに近い。
+
+```bash
+$ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
+```
+
+> - https://helm.sh/docs/helm/helm_install/
+
 #### ▼ --wait
 
 作成したPodがReady状態になるまで、`helm install`コマンドの完了を待機する。
@@ -796,6 +808,17 @@ STATUS: deployed
 REVISION: 3 # <---- リビジョン番号が増えていく
 TEST SUITE: None
 ```
+
+#### ▼ --force
+
+既存のマニフェストを置き換える。
+
+`kubectl replace`コマンドに近い。
+
+```bash
+$ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
+```
+
 
 #### ▼ --skip-crds
 

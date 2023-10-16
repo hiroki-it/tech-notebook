@@ -79,7 +79,7 @@ Do you really want to delete?
 
 #### ▼ apply
 
-まず`helmfile diff`コマンドを実行することにより、この時に差分があれば、`helmfile apply`コマンドを実行する。
+まず`helmfile diff`コマンドを実行することにより、この時に差分があれば、`helmfile sync`コマンドを実行する。
 
 `helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョン番号は更新されない。
 
@@ -245,6 +245,7 @@ Source: project/manifests/persistent-volume.yaml
 $ helmfile -e dev sync
 ```
 
+> - https://helmfile.readthedocs.io/en/latest/#diff
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 <br>

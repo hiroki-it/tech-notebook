@@ -221,7 +221,6 @@ webhooks:
         port: 443
     failurePolicy: Ignore
     matchPolicy: Exact
-
     namespaceSelector:
       matchExpressions:
         - key: admission.gatekeeper.sh/ignore
