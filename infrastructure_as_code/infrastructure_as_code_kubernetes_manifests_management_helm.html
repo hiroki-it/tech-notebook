@@ -6461,9 +6461,25 @@
 <p><br></p>
 <h3 id="helm_2">Helmリリース<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h3>
 <p>実際にインストールされたチャートのインスタンスのこと。</p>
+<p>インスタンスの実体は、Secretのデータとして管理している。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+NAME<span class="w">                                   </span>TYPE<span class="w">                  </span>DATA<span class="w">   </span>AGE
+sh.helm.release.v1.foo-chart.v1<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>122d
+sh.helm.release.v1.foo-chart.v2<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>122d
+sh.helm.release.v1.foo-chart.v3<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>122d
+sh.helm.release.v1.foo-chart.v4<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>122d
+sh.helm.release.v1.foo-chart.v5<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>119d
+sh.helm.release.v1.bar-chart.v1<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>97d
+sh.helm.release.v1.bar-chart.v2<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>84d
+sh.helm.release.v1.bar-chart.v3<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>74d
+sh.helm.release.v1.bar-chart.v4<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>60d
+sh.helm.release.v1.bar-chart.v5<span class="w">        </span>helm.sh/release.v1<span class="w">    </span><span class="m">1</span><span class="w">      </span>49d
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/intro/using_helm/#three-big-concepts">https://helm.sh/docs/intro/using_helm/#three-big-concepts</a></li>
+<li><a href="https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest">https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6473,7 +6489,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
       
     
   </small>
