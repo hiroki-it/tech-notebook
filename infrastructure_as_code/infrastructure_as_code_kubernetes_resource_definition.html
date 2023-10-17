@@ -15598,6 +15598,12 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="spectopologyspreadconstraints">.spec.topologySpreadConstraints<a class="headerlink" href="#spectopologyspreadconstraints" title="Permanent link">&para;</a></h3>
 <h4 id="topologyspreadconstraints">▼ topologySpreadConstraintsとは<a class="headerlink" href="#topologyspreadconstraints" title="Permanent link">&para;</a></h4>
 <p>異なるリージョン、AZ、Node、にPodを分散させる。</p>
+<p><code>.spec.nodeSelector</code>キーや<code>.spec.affinity</code>キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/73159361">https://stackoverflow.com/a/73159361</a></li>
+</ul>
+</blockquote>
 <h4 id="maxskew">▼ maxSkew<a class="headerlink" href="#maxskew" title="Permanent link">&para;</a></h4>
 <p><code>.spec.topologySpreadConstraints[].topologyKey</code>キーで指定した分散の単位の間で、Podの個数差を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -17070,7 +17076,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-17</span>
       
     
   </small>
