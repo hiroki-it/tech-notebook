@@ -574,22 +574,31 @@ $ kube-scheduler \
 
 ### kube-schedulerの仕組み
 
+
 `(1)`
 
-: フィルタリングを行う。フィルタリングステップでは、まず全てのNodeの一覧を取得する。その後、Pod作成の条件を満たすNodeを選定する。
+: 全てのNodeの一覧を取得する。
 
 `(2)`
 
-: スコアリングを行う。スコアリングステップでは、まずフィルタリングで選定されたNodeに点数をつける。
+: Predicatesフェーズである。
 
-     その後、点数に基づいて、Pod作成に最も望ましいNodeを選定する。
+    条件 (例：`.spec.nodeSelector`キー、ハードウェアリソースの空き容量) に応じて、Nodeをフィルタリングする。
 
-     この時、Podの作成先のNodeグループが設定されていれば、Nodeグループの中から望ましいものを選定する。
+`(3)`
+
+: Prioritiesフェーズである。
+
+     フィルタリングで選定されたNodeに点数をつける。
+
+`(4)`
+
+: 点数に基づいて、Pod作成に最も望ましいNodeを選定する。
 
 ![kubernetes_kube-scheduler_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-scheduler_flow.png)
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
 > - https://techblog.ap-com.co.jp/entry/2019/06/20/191459
-> - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node%E3%81%AE%E9%9A%94%E9%9B%A2%E3%82%84%E5%88%B6%E9%99%90
+> - https://qiita.com/tkusumi/items/58fdadbe4053812cb44e#%E6%9C%80%E9%81%A9%E3%81%AA%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E9%81%B8%E6%8A%9E
 
 <br>

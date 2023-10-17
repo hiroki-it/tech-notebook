@@ -220,7 +220,7 @@ PersistentVolumeClaimでVolumeを要求する。
 
 PersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
-Podの`.spec.nodeSelector`も不要である。
+Podの`.spec.nodeSelector`キーも不要である。
 
 **＊実装例＊**
 
@@ -338,7 +338,7 @@ PersistentVolumeClaimでStorageClassを指定し、外部サービスが提供�
 
 StorageClassが指定されたPersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
-Podの`.spec.nodeSelector`も不要である。
+Podの`.spec.nodeSelector`キーも不要である。
 
 **＊実装例＊**
 

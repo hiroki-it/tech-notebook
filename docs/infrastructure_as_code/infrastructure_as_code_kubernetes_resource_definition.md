@@ -3701,6 +3701,10 @@ spec:
 
 異なるリージョン、AZ、Node、にPodを分散させる。
 
+`.spec.nodeSelector`キーや`.spec.affinity`キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。
+
+> - https://stackoverflow.com/a/73159361
+
 #### ▼ maxSkew
 
 `.spec.topologySpreadConstraints[].topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
