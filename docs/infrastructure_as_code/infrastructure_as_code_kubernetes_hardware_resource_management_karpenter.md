@@ -88,14 +88,16 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 ### providerRef
 
+Provisionerで使用するNodeテンプレートを設定する。
+
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
 kind: Provisioner
 metadata:
-  name: foo-provisioner
+  name: foo-node-provisioner
 spec:
   providerRef:
-    name: foo-provisioner
+    name: foo-template
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -141,6 +143,8 @@ spec:
 
 ### labels
 
+全てのNodeに挿入するラベルを設定する。
+
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
 kind: Provisioner
@@ -157,6 +161,8 @@ spec:
 <br>
 
 ### annotations
+
+全てのNodeに挿入するアノテーションを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -356,7 +362,45 @@ spec:
   weight: 10
 ```
 
-<br>
-
 > - https://karpenter.sh/docs/concepts/provisioners/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+## 04. AWSNodeTemplate
+
+### subnetSelector
+
+EC2ワーカーNodeがあるサブネットを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  subnetSelector:
+    Name: foo-private-subnet
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector
+
+<br>
+
+### tags
+
+全てのEC2ワーカーNodeに挿入するタグを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  tags:
+    karpenter.template: foo-node-template
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#spectags
+
+<br>
