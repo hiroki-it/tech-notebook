@@ -2356,6 +2356,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks_krr.html</loc>
+         <lastmod>2023-10-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_unit_terraform.html</loc>
          <lastmod>2023-10-18</lastmod>
          <changefreq>daily</changefreq>
