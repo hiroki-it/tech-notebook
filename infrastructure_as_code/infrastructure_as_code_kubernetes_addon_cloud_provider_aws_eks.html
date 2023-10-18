@@ -6310,7 +6310,7 @@
 <span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;coredns&quot;</span>
 <span class="c1">  # Terraformで設定を上書きできるようにする</span>
 <span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
-<span class="c1">  # スケジューリングするNodeを設定する</span>
+<span class="c1">  # スケジューリングさせるNodeを設定する</span>
 <span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">nodeSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -6647,8 +6647,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="ip">通常のIPアドレス割り当てモード<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
 <h4 id="ip_1">▼ 通常のIPアドレス割り当てモードとは<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
-<p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。</p>
-<p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングできない。</p>
+<p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
+<p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
 <blockquote>
 <ul>
@@ -6753,7 +6753,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 </tbody>
 </table>
-<p>そのため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。</p>
+<p>そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限セカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。</p>
 <p><code>MINIMUM_IP_TARGET</code>にはスケーリングも加味して予想されるPod数分プラスアルファ、<code>WARM_IP_TARGET</code>にはウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>例えば、スケーリングも加味して、Node当たりにスケジューリングされるPod数の最大数が<code>10</code>個だとする。</p>

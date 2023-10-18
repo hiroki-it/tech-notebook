@@ -3840,8 +3840,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod_9" class="md-nav__link">
-    ▼ バルーンPod
+  <a href="#pod-overprovisioning-pod" class="md-nav__link">
+    ▼ バルーンPod (OverProvisioning Pod)
   </a>
   
 </li>
@@ -7002,8 +7002,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod_9" class="md-nav__link">
-    ▼ バルーンPod
+  <a href="#pod-overprovisioning-pod" class="md-nav__link">
+    ▼ バルーンPod (OverProvisioning Pod)
   </a>
   
 </li>
@@ -8075,7 +8075,7 @@
 <h4 id="nodepod">▼ 例外的なコントロールプレーンNode上のPod<a class="headerlink" href="#nodepod" title="Permanent link">&para;</a></h4>
 <p>脆弱性の観点で、デフォルトではコントロールプレーンNodeにPodはスケジューリングされない。</p>
 <p>これは、コントロールプレーンNodeにはTaint (<code>node-role.kubernetes.io/master:NoSchedule</code>) が設定されているためである。</p>
-<p>一方で、Nodeにはこれがないため、Podをスケジューリングできる。</p>
+<p>一方で、Nodeにはこれがないため、Podをスケジューリングさせられる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># コントロールプレーンNodeの場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;コントロールプレーンNode名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>taint
 
@@ -8092,7 +8092,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </ul>
 </blockquote>
 <p>ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。</p>
-<p>コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングすることがある。</p>
+<p>コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>--all<span class="w"> </span>node-role.kubernetes.io/master:NoSchedule-
 </code></pre></div>
 <h4 id="pod_4">▼ Podのライフサイクルフェーズ<a class="headerlink" href="#pod_4" title="Permanent link">&para;</a></h4>
@@ -8423,14 +8423,16 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15012<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
 tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15014<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
 </code></pre></div>
-<h4 id="pod_9">▼ バルーンPod<a class="headerlink" href="#pod_9" title="Permanent link">&para;</a></h4>
-<p>Nodeに余剰リソース (<code>N+1</code>、CPU/メモリの容量) を割り当てるために、バルーンPodをスケジューリングする。</p>
+<h4 id="pod-overprovisioning-pod">▼ バルーンPod (OverProvisioning Pod)<a class="headerlink" href="#pod-overprovisioning-pod" title="Permanent link">&para;</a></h4>
+<p>『OverProvisioning Pod』ともいう。</p>
+<p>NodeにバルーンPodをスケジューリングし、Nodeが常に余剰リソース (例：<code>N+1</code>、CPU/メモリの容量) を持たせられる。</p>
 <p>優先順位の最も低いPod (バルーンPod) を<code>N+1</code>個作成し、またバルーンPodが余剰リソースを要求するように設定しておく。</p>
 <p>これを各Nodeに<code>1</code>個ずつスケジューリングさせる。</p>
-<p>バルーンPodは優先度が低いため、他のPodをスケジューリングする時にNodeから退避する。</p>
+<p>バルーンPodは優先度が低いため、他のPodをスケジューリングさせる時にNodeから退避する。</p>
 <blockquote>
 <ul>
 <li><a href="https://wdenniss.com/gke-autopilot-spare-capacity">https://wdenniss.com/gke-autopilot-spare-capacity</a></li>
+<li><a href="https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95">https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95</a></li>
 </ul>
 </blockquote>
 <p><br></p>

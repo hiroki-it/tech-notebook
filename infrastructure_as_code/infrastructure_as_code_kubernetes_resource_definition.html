@@ -6051,6 +6051,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#noschedule" class="md-nav__link">
+    ▼ NoSchedule
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -11413,6 +11420,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#noschedule" class="md-nav__link">
+    ▼ NoSchedule
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -14240,7 +14254,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>Podのスケジューリング対象のNodeを設定する。</p>
 <p><code>.spec.tolerations</code>キーとは反対の条件である。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
-<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングする。</p>
+<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
@@ -14251,10 +14265,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitynodeaffinity">.spec.affinity.nodeAffinity<a class="headerlink" href="#specaffinitynodeaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitynodeaffinity">▼ affinity.nodeAffinityとは<a class="headerlink" href="#affinitynodeaffinity" title="Permanent link">&para;</a></h4>
-<p>Nodeの<code>.metadata.labels</code>キーを指定することにより、kube-schedulerがPodをスケジューリングするNodeを設定する。</p>
+<p>Nodeの<code>.metadata.labels</code>キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
-<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングする。</p>
-<p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。</p>
+<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングさせる。</p>
+<p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
@@ -14263,9 +14277,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="requiredduringschedulingignoredduringexecution">▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)<a class="headerlink" href="#requiredduringschedulingignoredduringexecution" title="Permanent link">&para;</a></h4>
-<p>条件に合致するNodeにのみPodをスケジューリングする。</p>
+<p>条件に合致するNodeにのみPodをスケジューリングさせる。</p>
 <p>もし条件に合致するNodeがない場合、Podのスケジューリングを待機し続ける。</p>
-<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。</p>
+<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
 <p>Podが削除された後にNodeの<code>.metadata.labels</code>キーの値が変更されたとしても、一度スケジューリングされたPodが<code>.spec.affinity</code>キーの設定で再スケジューリングされることはない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -14284,10 +14298,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># PodをスケジューリングしたいNodeのmetadata.labelsキー</span>
-<span class="w">              </span><span class="c1"># ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。</span>
+<span class="w">              </span><span class="c1"># ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodegroup</span>
 <span class="w">                </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                </span><span class="c1"># 指定した値をキーに持つNodeに、Podをスケジューリングする。</span>
+<span class="w">                </span><span class="c1"># 指定した値をキーに持つNodeに、Podをスケジューリングさせる。</span>
 <span class="w">                </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
@@ -14298,10 +14312,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="preferredduringschedulingignoredduringexecution">▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)<a class="headerlink" href="#preferredduringschedulingignoredduringexecution" title="Permanent link">&para;</a></h4>
-<p>条件に合致するNodeに優先的にPodをスケジューリングする。</p>
-<p>もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングする。</p>
+<p>条件に合致するNodeに優先的にPodをスケジューリングさせる。</p>
+<p>もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングさせる。</p>
 <p>条件に合致しないNodeの探索で重みづけルールを設定できる。</p>
-<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。</p>
+<p>共通する<code>SchedulingIgnoredDuringExecution</code>の名前の通り、<code>.spec.affinity</code>キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。</p>
+<p>すでに実行中のPodには適用できず、再スケジューリングさせないといけない。</p>
 <p>Podが削除された後にNodeの<code>.metadata.labels</code>キーの値が変更されたとしても、一度スケジューリングされたPodが<code>.spec.affinity</code>キーの設定で再スケジューリングされることはない。</p>
 <blockquote>
 <ul>
@@ -14312,7 +14327,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitypodaffinity">.spec.affinity.podAffinity<a class="headerlink" href="#specaffinitypodaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitypodaffinity">▼ affinity.podAffinityとは<a class="headerlink" href="#affinitypodaffinity" title="Permanent link">&para;</a></h4>
-<p>Node内のPodを、<code>.metadata.labels</code>キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。</p>
+<p>Node内のPodを、<code>.metadata.labels</code>キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14334,7 +14349,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">                </span><span class="c1"># Podのmetadata.labelsキー</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                  </span><span class="c1"># 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングする。</span>
+<span class="w">                  </span><span class="c1"># 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングさせる。</span>
 <span class="w">                  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
 </code></pre></div>
@@ -14380,7 +14395,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specaffinitypodantiaffinity">.spec.affinity.podAntiAffinity<a class="headerlink" href="#specaffinitypodantiaffinity" title="Permanent link">&para;</a></h3>
 <h4 id="affinitypodantiaffinity">▼ affinity.podAntiAffinityとは<a class="headerlink" href="#affinitypodantiaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.metadata.labels</code>キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。</p>
+<p><code>.metadata.labels</code>キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14402,7 +14417,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">                </span><span class="c1"># Podのmetadata.labelsキー</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                  </span><span class="c1"># 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。</span>
+<span class="w">                  </span><span class="c1"># 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングさせる。</span>
 <span class="w">                  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-gin</span>
 </code></pre></div>
@@ -14442,7 +14457,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <p><strong>＊スケジューリング例＊</strong></p>
 <p>もし、複製するPodの名前を設定した場合、Podのレプリカ同士は同じNodeにスケジューリングされることを避ける。</p>
-<p>また、分散単位に<code>topology.kubernetes.io/zone</code>を設定しているため、各AZにPodをバラバラにスケジューリングする。</p>
+<p>また、分散単位に<code>topology.kubernetes.io/zone</code>を設定しているため、各AZにPodをバラバラにスケジューリングさせる。</p>
 <p>結果として、各AZのNodeにPodが<code>1</code>個ずつスケジューリングされるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -14474,7 +14489,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">                    </span><span class="c1"># Podのmetadata.labelsキー</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                      </span><span class="c1"># 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。</span>
+<span class="w">                      </span><span class="c1"># 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングさせる。</span>
 <span class="w">                      </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                        </span><span class="c1"># 自身が複製するPodの名前</span>
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -15310,7 +15325,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specpriorityclassname">.spec.priorityClassName<a class="headerlink" href="#specpriorityclassname" title="Permanent link">&para;</a></h3>
 <h4 id="priorityclassname">▼ priorityClassNameとは<a class="headerlink" href="#priorityclassname" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリングの優先度を設定する。</p>
-<p>何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングできない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングする。</p>
+<p>何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングさせられない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングさせる。</p>
 <table>
 <thead>
 <tr>
@@ -15354,7 +15369,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 </blockquote>
 <h4 id="daemonsetpod">▼ DaemonSet配下のPod<a class="headerlink" href="#daemonsetpod" title="Permanent link">&para;</a></h4>
 <p>DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリングされるようになっている。</p>
-<p>ただし何らかの理由 (例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングできないことがある。</p>
+<p>ただし何らかの理由 (例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングさせられないことがある。</p>
 <p>他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、<code>system-node-critical</code>のPriorityClassNameを設定しておく。</p>
 <blockquote>
 <ul>
@@ -15528,17 +15543,17 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <p><br></p>
 <h3 id="spectolerations">.spec.tolerations<a class="headerlink" href="#spectolerations" title="Permanent link">&para;</a></h3>
 <h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
-<p>Podのスケジューリング対象としないNodeを設定する。</p>
+<p>Taintへの耐性を設定する。</p>
+<p>事前にTaintを付与しているNodeには、該当の<code>.spec.tolerations</code>キーがついているPodしかスケジューリングさせられない。</p>
 <p><code>.spec.affinity</code>キーとは反対の条件である。</p>
-<p>デフォルトでは、Podは以下のNodeの<code>metadata.labels</code>キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングする。</p>
-<ul>
-<li><code>node.kubernetes.io/not-ready</code> (<code>node-ready</code>)</li>
-</ul>
+<p>デフォルトでは、Podは以下のNodeの<code>metadata.labels</code>キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions</a></li>
 </ul>
 </blockquote>
+<h4 id="noschedule">▼ NoSchedule<a class="headerlink" href="#noschedule" title="Permanent link">&para;</a></h4>
+<p>指定した条件に合致するNodeにはスケジューリングさせない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -15550,11 +15565,11 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">      </span><span class="c1"># bar-podがいるNodeではスケジューリングさせない</span>
+<span class="w">      </span><span class="c1"># Nodeにはスケジューリングさせない</span>
 <span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nodegroup</span>
 <span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Equal</span>
-<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-pod</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch</span>
 <span class="w">          </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
 </code></pre></div>
 <blockquote>
@@ -15658,7 +15673,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h4 id="whenunsatisfiable">▼ whenUnsatisfiable<a class="headerlink" href="#whenunsatisfiable" title="Permanent link">&para;</a></h4>
 <p>分散の条件に合致するNodeがない場合の振る舞いを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>分散の条件に合致するNodeがない場合、このPodをスケジューリングしない。</p>
+<p>分散の条件に合致するNodeがない場合、このPodをスケジューリングさせない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -15976,7 +15991,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specmaxunavailable">.spec.maxUnavailable<a class="headerlink" href="#specmaxunavailable" title="Permanent link">&para;</a></h3>
 <p>古いPodをNodeから退避させる時に、Nodeで削除できる古いPodの最大数を設定する。</p>
 <p>これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て削除してしまう問題が起こる。</p>
-<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングできる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
+<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -15995,7 +16010,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="specminavailable">.spec.minAvailable<a class="headerlink" href="#specminavailable" title="Permanent link">&para;</a></h3>
 <p>古いPodをNodeから退避させる時に、他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。</p>
 <p>このスケジューリングを待機する新しいPodの最低限数を設定する。</p>
-<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングできる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
+<p>まずは<code>.spec.minAvailable</code>キーでスケジューリングさせられる新しいPodの個数を制御し、その後に<code>.spec.minAvailable</code>キーで退避できる古いPodの個数を制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodDisruptionBudget</span>
 <span class="nt">metadata</span><span class="p">:</span>

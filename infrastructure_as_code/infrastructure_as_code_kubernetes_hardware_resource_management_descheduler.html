@@ -5956,8 +5956,8 @@
 <p><br></p>
 <h2 id="01-descheduler">01. descheduler<a class="headerlink" href="#01-descheduler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングする。</p>
-<p>類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングすることはない。</p>
+<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。</p>
+<p>類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。</p>
 <p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
 <p><code>kubectl rollout restart</code>コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。</p>
@@ -6083,7 +6083,7 @@
 <p><br></p>
 <h3 id="_5">ポリシーの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。</p>
+<p>Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6106,7 +6106,7 @@
 </ul>
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
-<p>Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。</p>
+<p>Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6136,7 +6136,7 @@
 </ul>
 </blockquote>
 <h4 id="removepodsviolatingnodeaffinity">▼ RemovePodsViolatingNodeAffinity<a class="headerlink" href="#removepodsviolatingnodeaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.spec.nodeAffinity</code>キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。</p>
+<p><code>.spec.nodeAffinity</code>キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6185,7 +6185,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
     
   </small>

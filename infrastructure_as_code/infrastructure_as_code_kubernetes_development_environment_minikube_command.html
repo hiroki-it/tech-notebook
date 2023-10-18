@@ -7306,7 +7306,7 @@ type:<span class="w"> </span>Worker
 host:<span class="w"> </span>Running
 kubelet:<span class="w"> </span>Running
 </code></pre></div>
-<p>補足として、コントロールプレーンNodeも単なるNodeの<code>1</code>個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。</p>
+<p>補足として、コントロールプレーンNodeも単なるNodeの<code>1</code>個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAME<span class="w">                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">           </span>NODE<span class="w">           </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
@@ -7368,7 +7368,7 @@ Switched<span class="w"> </span>to<span class="w"> </span>context<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
     
   </small>
