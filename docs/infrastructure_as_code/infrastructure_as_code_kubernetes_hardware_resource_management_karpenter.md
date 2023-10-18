@@ -13,7 +13,7 @@ description: karpenter＠ハードウェアリソース管理の知見を記録�
 
 <br>
 
-## 01. karpenter
+## 01. karpenterの仕組み
 
 ### アーキテクチャ
 
@@ -83,3 +83,280 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 記入中...
 
 <br>
+
+## 03. Provisioner
+
+### providerRef
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  providerRef:
+    name: foo-provisioner
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### taints
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  taints:
+    - key: example.com/special-taint
+      effect: NoSchedule
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### startupTaints
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  startupTaints:
+    - key: example.com/another-taint
+      effect: NoSchedule
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### labels
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  labels:
+    billing-team: my-team
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### annotations
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  annotations:
+    example.com/owner: "my-team"
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### requirements
+
+プロビジョニングするNodeのハードウェアリソースを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  requirements:
+    - key: "karpenter.k8s.aws/instance-category"
+      operator: In
+      values:
+        - "c"
+        - "m"
+        - "r"
+    - key: "karpenter.k8s.aws/instance-cpu"
+      operator: In
+      values:
+        - "4"
+        - "8"
+        - "16"
+        - "32"
+    - key: "karpenter.k8s.aws/instance-hypervisor"
+      operator: In
+      values:
+        - "nitro"
+    - key: "karpenter.k8s.aws/instance-generation"
+      operator: Gt
+      values:
+        - "2"
+    - key: "topology.kubernetes.io/zone"
+      operator: In
+      values:
+        - "us-west-2a", "us-west-2b"
+    - key: "kubernetes.io/arch"
+      operator: In
+      values:
+        - "arm64", "amd64"
+    - key: "karpenter.sh/capacity-type" # If not included, the webhook for the AWS cloud provider will default to on-demand
+      operator: In
+      values:
+        - "spot"
+        - "on-demand"
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### kubeletConfiguration
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  kubeletConfiguration:
+    clusterDNS: ["10.0.1.100"]
+    containerRuntime: containerd
+    systemReserved:
+      cpu: 100m
+      memory: 100Mi
+      ephemeral-storage: 1Gi
+    kubeReserved:
+      cpu: 200m
+      memory: 100Mi
+      ephemeral-storage: 3Gi
+    evictionHard:
+      memory.available: 5%
+      nodefs.available: 10%
+      nodefs.inodesFree: 10%
+    evictionSoft:
+      memory.available: 500Mi
+      nodefs.available: 15%
+      nodefs.inodesFree: 15%
+    evictionSoftGracePeriod:
+      memory.available: 1m
+      nodefs.available: 1m30s
+      nodefs.inodesFree: 2m
+    evictionMaxPodGracePeriod: 60
+    imageGCHighThresholdPercent: 85
+    imageGCLowThresholdPercent: 80
+    cpuCFSQuota: true
+    podsPerCore: 2
+    maxPods: 20
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### limits
+
+ハードウェアリソースの合計使用量の上限値を設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  limits:
+    resources:
+      cpu: "1000"
+      memory: 1000Gi
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### consolidation
+
+コスト削減のため、既存のNodeのスペックを下げるプロビジョニングを実行するかどうかを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  consolidation:
+    enabled: true
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### ttlSecondsUntilExpired
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  ttlSecondsUntilExpired: 2592000 # 30 Days = 60 * 60 * 24 * 30 Seconds;
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### ttlSecondsAfterEmpty
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  ttlSecondsAfterEmpty: 30
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### weight
+
+複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。
+
+デフォルトでは、重みが`0`である。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  weight: 10
+```
+
+<br>
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner

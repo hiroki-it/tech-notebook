@@ -2194,7 +2194,7 @@ Podのスケジューリング対象のNodeを設定する。
 
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
-DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
+DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングする。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
@@ -2210,7 +2210,7 @@ Nodeの`.metadata.labels`キーを指定することにより、kube-scheduler�
 
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
-DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。
+DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングする。
 
 複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
 
@@ -3615,6 +3615,12 @@ Podのスケジューリング対象としないNodeを設定する。
 
 `.spec.affinity`キーとは反対の条件である。
 
+デフォルトでは、Podは以下のNodeの`metadata.labels`キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングする。
+
+- `node.kubernetes.io/not-ready` (`node-ready`)
+
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions
+
 **＊実装例＊**
 
 ```yaml
@@ -3704,6 +3710,7 @@ spec:
 `.spec.nodeSelector`キーや`.spec.affinity`キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。
 
 > - https://stackoverflow.com/a/73159361
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
 
 #### ▼ maxSkew
 

@@ -574,7 +574,6 @@ $ kube-scheduler \
 
 ### kube-schedulerの仕組み
 
-
 `(1)`
 
 : 全てのNodeの一覧を取得する。
