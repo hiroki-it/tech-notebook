@@ -1732,6 +1732,8 @@ Kubernetesの実行時に自動的に作成される。
 
 Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。
 
+Podの`.spec.containers[].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。
+
 ```yaml
 apiVersion: v1
 kind: LimitRange
@@ -1746,6 +1748,8 @@ spec:
         cpu: "200m"
       type: Container
 ```
+
+> - https://kubernetes.io/docs/concepts/policy/limit-range/
 
 <br>
 
@@ -3615,7 +3619,7 @@ spec:
 
 TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。
 
-例えば、Podが少ないNodeグループ (`monitoring`、`ingress`、など) にTaintを設定し、Podが多いNodeグループ (`app`、`system`、など) にはこれを設定しないようにする。
+例えば、Workloadが少ないNodeグループ (`monitoring`、`ingress`、など) にTaintを設定し、Workloadが多いNodeグループ (`app`、`system`、など) にはこれを設定しないようにする。
 
 すると、`.spec.tolerations`キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。
 
