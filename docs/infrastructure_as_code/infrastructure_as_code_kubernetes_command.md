@@ -1393,7 +1393,7 @@ Deployment、DaemonSet、StatefulSet、で複製されたPodを操作する。
 
 #### ▼ restart
 
-レプリカのPodを再作成する。
+配下のPodを再作成する。
 
 PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。
 

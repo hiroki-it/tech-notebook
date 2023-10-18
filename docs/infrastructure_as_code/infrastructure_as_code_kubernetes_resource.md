@@ -108,14 +108,6 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 
 > - https://dr-asa.hatenablog.com/entry/2018/04/02/174006
 
-#### ▼ PersistentVolumeとの関係性
-
-DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。
-
-![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
-
-> - https://www.amazon.com/dp/1617297615
-
 <br>
 
 ### Job
@@ -499,6 +491,20 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 そのためDeploymentやReplicaSetと比べて、全てのPodが揃うのに時間がかかる。
 
 > - https://thinkit.co.jp/article/13611
+
+<br>
+
+### DeploymentとStatefulSetとの違い
+
+#### ▼ PersistentVolume
+
+Deployment配下のPodは、全てが同じPersistentVolumeを共有する。
+
+一方でStatefulSet配下のPodは、別々のPersistentVolumeを使用する。Podが別のNodeに再スケジューリングされても、同じPersistentVolumeを使用し続ける。
+
+![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
+
+> - https://www.amazon.com/dp/1617297615
 
 <br>
 

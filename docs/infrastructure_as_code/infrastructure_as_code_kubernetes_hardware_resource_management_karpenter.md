@@ -52,9 +52,19 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 <br>
 
-## 02. スケーリングの仕組み
+### パラメーター
 
-### スケールアウトの場合
+#### ▼ Pod上限数
+
+karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
+
+> - https://karpenter.sh/docs/concepts/provisioners/#max-pods
+
+<br>
+
+### スケーリングの仕組み
+
+#### ▼ スケールアウトの場合
 
 例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールアウトを実行する。
 
@@ -76,9 +86,7 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 : 結果として、`1`台で`2`個のPodがスケジューリングされている。
 
-<br>
-
-### スケールインの場合
+#### ▼ スケールインの場合
 
 記入中...
 
@@ -219,7 +227,7 @@ spec:
       operator: In
       values:
         - "arm64", "amd64"
-    - key: "karpenter.sh/capacity-type" # If not included, the webhook for the AWS cloud provider will default to on-demand
+    - key: "karpenter.sh/capacity-type"
       operator: In
       values:
         - "spot"
@@ -233,6 +241,8 @@ spec:
 
 ### kubeletConfiguration
 
+Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
+
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
 kind: Provisioner
@@ -240,7 +250,8 @@ metadata:
   name: foo-provisioner
 spec:
   kubeletConfiguration:
-    clusterDNS: ["10.0.1.100"]
+    clusterDNS:
+      - "10.0.1.100"
     containerRuntime: containerd
     systemReserved:
       cpu: 100m
@@ -270,14 +281,14 @@ spec:
     maxPods: 20
 ```
 
-> - https://karpenter.sh/docs/concepts/provisioners/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://karpenter.sh/docs/concepts/provisioners/#speckubeletconfiguration
+> - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
 
 <br>
 
 ### limits
 
-ハードウェアリソースの合計使用量の上限値を設定する。
+プロビジョニング可能なNodeの最大スペックを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -287,12 +298,11 @@ metadata:
 spec:
   limits:
     resources:
-      cpu: "1000"
+      cpu: 1000
       memory: 1000Gi
 ```
 
-> - https://karpenter.sh/docs/concepts/provisioners/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources
 
 <br>
 
@@ -323,7 +333,7 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  ttlSecondsUntilExpired: 2592000 # 30 Days = 60 * 60 * 24 * 30 Seconds;
+  ttlSecondsUntilExpired: 2592000
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
