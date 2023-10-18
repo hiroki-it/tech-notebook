@@ -3839,6 +3839,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod_9" class="md-nav__link">
+    ▼ バルーンPod
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6994,6 +7001,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pod_9" class="md-nav__link">
+    ▼ バルーンPod
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8409,6 +8423,16 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15012<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
 tcp6<span class="w">       </span><span class="m">0</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>:::15014<span class="w">                </span>:::*<span class="w">                    </span>LISTEN<span class="w">      </span><span class="m">1</span>/pilot-discovery
 </code></pre></div>
+<h4 id="pod_9">▼ バルーンPod<a class="headerlink" href="#pod_9" title="Permanent link">&para;</a></h4>
+<p>Nodeに余剰リソース (<code>N+1</code>、CPU/メモリの容量) を割り当てるために、バルーンPodをスケジューリングする。</p>
+<p>優先順位の最も低いPod (バルーンPod) を<code>N+1</code>個作成し、またバルーンPodが余剰リソースを要求するように設定しておく。</p>
+<p>これを各Nodeに<code>1</code>個ずつスケジューリングさせる。</p>
+<p>バルーンPodは優先度が低いため、他のPodをスケジューリングする時にNodeから退避する。</p>
+<blockquote>
+<ul>
+<li><a href="https://wdenniss.com/gke-autopilot-spare-capacity">https://wdenniss.com/gke-autopilot-spare-capacity</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="replicaset_1">ReplicaSet<a class="headerlink" href="#replicaset_1" title="Permanent link">&para;</a></h3>
 <h4 id="replicaset_2">▼ ReplicaSetとは<a class="headerlink" href="#replicaset_2" title="Permanent link">&para;</a></h4>
