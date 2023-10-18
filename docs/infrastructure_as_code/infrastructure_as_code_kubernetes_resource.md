@@ -436,6 +436,18 @@ tcp6       0      0 :::15012                :::*                    LISTEN      
 tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery
 ```
 
+#### ▼ バルーンPod
+
+Nodeに余剰リソース (`N+1`、CPU/メモリの容量) を割り当てるために、バルーンPodをスケジューリングする。
+
+優先順位の最も低いPod (バルーンPod) を`N+1`個作成し、またバルーンPodが余剰リソースを要求するように設定しておく。
+
+これを各Nodeに`1`個ずつスケジューリングさせる。
+
+バルーンPodは優先度が低いため、他のPodをスケジューリングする時にNodeから退避する。
+
+> - https://wdenniss.com/gke-autopilot-spare-capacity
+
 <br>
 
 ### ReplicaSet
