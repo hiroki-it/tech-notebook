@@ -6696,7 +6696,64 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="pod">▼ Podの上限数を上げる<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。</p>
+<p>Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>t3.nano</th>
+<th>t3.micro</th>
+<th>t3.small</th>
+<th>t3.medium</th>
+<th>t3.large</th>
+<th>t3.xlarge</th>
+<th>t3.2xlarge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node <code>1</code>個</td>
+<td>4</td>
+<td>4</td>
+<td>11</td>
+<td>17</td>
+<td>35</td>
+<td>58</td>
+<td>58</td>
+</tr>
+<tr>
+<td><code>2</code>個</td>
+<td>8</td>
+<td>8</td>
+<td>22</td>
+<td>34</td>
+<td>70</td>
+<td>116</td>
+<td>116</td>
+</tr>
+<tr>
+<td><code>3</code>個</td>
+<td>12</td>
+<td>12</td>
+<td>33</td>
+<td>51</td>
+<td>105</td>
+<td>174</td>
+<td>174</td>
+</tr>
+<tr>
+<td><code>4</code>個</td>
+<td>16</td>
+<td>16</td>
+<td>44</td>
+<td>68</td>
+<td>140</td>
+<td>232</td>
+<td>232</td>
+</tr>
+</tbody>
+</table>
+<p>そのため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。</p>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限セカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。</p>
 <p><code>MINIMUM_IP_TARGET</code>にはスケーリングも加味して予想されるPod数分プラスアルファ、<code>WARM_IP_TARGET</code>にはウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>例えば、スケーリングも加味して、Node当たりにスケジューリングされるPod数の最大数が<code>10</code>個だとする。</p>
@@ -6729,7 +6786,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
     
   </small>

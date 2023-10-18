@@ -3702,13 +3702,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#persistentvolume" class="md-nav__link">
-    ▼ PersistentVolumeとの関係性
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3896,6 +3889,26 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     ▼ ライフサイクル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploymentstatefulset" class="md-nav__link">
+    DeploymentとStatefulSetとの違い
+  </a>
+  
+    <nav class="md-nav" aria-label="DeploymentとStatefulSetとの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume" class="md-nav__link">
+    ▼ PersistentVolume
   </a>
   
 </li>
@@ -6837,13 +6850,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#persistentvolume" class="md-nav__link">
-    ▼ PersistentVolumeとの関係性
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -7031,6 +7037,26 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     ▼ ライフサイクル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploymentstatefulset" class="md-nav__link">
+    DeploymentとStatefulSetとの違い
+  </a>
+  
+    <nav class="md-nav" aria-label="DeploymentとStatefulSetとの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume" class="md-nav__link">
+    ▼ PersistentVolume
   </a>
   
 </li>
@@ -7948,14 +7974,6 @@
 <li><a href="https://dr-asa.hatenablog.com/entry/2018/04/02/174006">https://dr-asa.hatenablog.com/entry/2018/04/02/174006</a></li>
 </ul>
 </blockquote>
-<h4 id="persistentvolume">▼ PersistentVolumeとの関係性<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h4>
-<p>DeploymentのレプリカのPodは、全てが同じPersistentVolumeを共有する。</p>
-<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.amazon.com/dp/1617297615">https://www.amazon.com/dp/1617297615</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
 <h4 id="job_1">▼ Jobとは<a class="headerlink" href="#job_1" title="Permanent link">&para;</a></h4>
@@ -8416,6 +8434,17 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13611">https://thinkit.co.jp/article/13611</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="deploymentstatefulset">DeploymentとStatefulSetとの違い<a class="headerlink" href="#deploymentstatefulset" title="Permanent link">&para;</a></h3>
+<h4 id="persistentvolume">▼ PersistentVolume<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h4>
+<p>Deployment配下のPodは、全てが同じPersistentVolumeを共有する。</p>
+<p>一方でStatefulSet配下のPodは、別々のPersistentVolumeを使用する。Podが別のNodeに再スケジューリングされても、同じPersistentVolumeを使用し続ける。</p>
+<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.com/dp/1617297615">https://www.amazon.com/dp/1617297615</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9367,7 +9396,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
     
   </small>

@@ -3773,30 +3773,50 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. スケーリングの仕組み
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    パラメーター
   </a>
   
-    <nav class="md-nav" aria-label="02. スケーリングの仕組み">
+    <nav class="md-nav" aria-label="パラメーター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    スケールアウトの場合
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod上限数
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    スケールインの場合
+    スケーリングの仕組み
   </a>
+  
+    <nav class="md-nav" aria-label="スケーリングの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ スケールアウトの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ スケールインの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5869,30 +5889,50 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. スケーリングの仕組み
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    パラメーター
   </a>
   
-    <nav class="md-nav" aria-label="02. スケーリングの仕組み">
+    <nav class="md-nav" aria-label="パラメーター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    スケールアウトの場合
+  <a href="#pod" class="md-nav__link">
+    ▼ Pod上限数
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    スケールインの場合
+    スケーリングの仕組み
   </a>
+  
+    <nav class="md-nav" aria-label="スケーリングの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ スケールアウトの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ スケールインの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6082,8 +6122,17 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. スケーリングの仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">スケールアウトの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">パラメーター<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="pod">▼ Pod上限数<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/provisioners/#max-pods">https://karpenter.sh/docs/concepts/provisioners/#max-pods</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">スケーリングの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ スケールアウトの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールアウトを実行する。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -6104,8 +6153,7 @@
 <p>結果として、<code>1</code>台で<code>2</code>個のPodがスケジューリングされている。</p>
 </dd>
 </dl>
-<p><br></p>
-<h3 id="_4">スケールインの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ スケールインの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 <h2 id="03-provisioner">03. Provisioner<a class="headerlink" href="#03-provisioner" title="Permanent link">&para;</a></h2>
@@ -6231,7 +6279,7 @@
 <span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">      </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;arm64&quot;</span><span class="err">,</span><span class="w"> </span><span class="s">&quot;amd64&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;karpenter.sh/capacity-type&quot;</span><span class="w"> </span><span class="c1"># If not included, the webhook for the AWS cloud provider will default to on-demand</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;karpenter.sh/capacity-type&quot;</span>
 <span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">      </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;spot&quot;</span>
@@ -6245,13 +6293,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="kubeletconfiguration">kubeletConfiguration<a class="headerlink" href="#kubeletconfiguration" title="Permanent link">&para;</a></h3>
+<p>Kubeletの<code>KubeletConfiguration</code>オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">kubeletConfiguration</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">clusterDNS</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;10.0.1.100&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">clusterDNS</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;10.0.1.100&quot;</span>
 <span class="w">    </span><span class="nt">containerRuntime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">containerd</span>
 <span class="w">    </span><span class="nt">systemReserved</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
@@ -6282,13 +6332,13 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/concepts/provisioners/">https://karpenter.sh/docs/concepts/provisioners/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+<li><a href="https://karpenter.sh/docs/concepts/provisioners/#speckubeletconfiguration">https://karpenter.sh/docs/concepts/provisioners/#speckubeletconfiguration</a></li>
+<li><a href="https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration">https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>ハードウェアリソースの合計使用量の上限値を設定する。</p>
+<p>プロビジョニング可能なNodeの最大スペックを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6296,13 +6346,12 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1000&quot;</span>
+<span class="w">      </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000Gi</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/concepts/provisioners/">https://karpenter.sh/docs/concepts/provisioners/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+<li><a href="https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources">https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6329,7 +6378,7 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ttlSecondsUntilExpired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2592000</span><span class="w"> </span><span class="c1"># 30 Days = 60 * 60 * 24 * 30 Seconds;</span>
+<span class="w">  </span><span class="nt">ttlSecondsUntilExpired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2592000</span>
 </code></pre></div>
 <blockquote>
 <ul>
