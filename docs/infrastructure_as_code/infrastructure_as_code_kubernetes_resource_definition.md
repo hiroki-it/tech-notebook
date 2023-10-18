@@ -3615,6 +3615,14 @@ spec:
 
 TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。
 
+例えば、Podが少ないNodeグループ (`monitoring`、`ingress`、など) にTaintを設定し、Podが多いNodeグループ (`app`、`system`、など) にはこれを設定しないようにする。
+
+すると、`.spec.tolerations`キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。
+
+そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。
+
+以下の方法で設定する。
+
 事前にNodeにTaintを設定しておく。
 
 ```bash
@@ -3652,6 +3660,8 @@ spec:
 
 指定した条件に合致するNodeにはスケジューリングさせない。
 
+なお、実行中のPodが違反していた場合でも、再スケジューリングしない。
+
 **＊実装例＊**
 
 ```bash
@@ -3676,8 +3686,41 @@ spec:
       effect: NoSchedule
 ```
 
-> - https://qiita.com/sheepland/items/8fedae15e157c102757f
 > - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
+> - https://qiita.com/sheepland/items/8fedae15e157c102757f#effect%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E3%81%9D%E3%81%AE%E5%8A%B9%E6%9E%9C
+
+#### ▼ NoExecute
+
+指定した条件に合致するNodeにはスケジューリングさせない。
+
+なお、実行中のPodが違反していた場合、再スケジューリングする。
+
+**＊実装例＊**
+
+```bash
+$ kubectl taint node foo-node group=monitoring:NoExecute
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: prometheus
+spec:
+  containers:
+    - name: prometheus
+      image: prom/prometheus
+      imagePullPolicy: IfNotPresent
+  # Taintへの耐性をtolerationsで定義する
+  tolerations:
+    - key: group
+      operator: Equal
+      value: monitoring
+      effect: NoExecute
+```
+
+> - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
+> - https://qiita.com/sheepland/items/8fedae15e157c102757f#effect%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E3%81%9D%E3%81%AE%E5%8A%B9%E6%9E%9C
 
 <br>
 
