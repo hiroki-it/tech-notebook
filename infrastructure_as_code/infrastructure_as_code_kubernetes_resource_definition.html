@@ -14240,7 +14240,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>Podのスケジューリング対象のNodeを設定する。</p>
 <p><code>.spec.tolerations</code>キーとは反対の条件である。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
-<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。</p>
+<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity">https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity</a></li>
@@ -14253,7 +14253,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="affinitynodeaffinity">▼ affinity.nodeAffinityとは<a class="headerlink" href="#affinitynodeaffinity" title="Permanent link">&para;</a></h4>
 <p>Nodeの<code>.metadata.labels</code>キーを指定することにより、kube-schedulerがPodをスケジューリングするNodeを設定する。</p>
 <p><code>.spec.nodeSelector</code>キーと比較して、より複雑に条件を設定できる。</p>
-<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてスケジューリングされる。</p>
+<p>DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングする。</p>
 <p>複数のNodeに同じ<code>.metadata.labels</code>キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。</p>
 <blockquote>
 <ul>
@@ -15530,6 +15530,15 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
 <p>Podのスケジューリング対象としないNodeを設定する。</p>
 <p><code>.spec.affinity</code>キーとは反対の条件である。</p>
+<p>デフォルトでは、Podは以下のNodeの<code>metadata.labels</code>キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングする。</p>
+<ul>
+<li><code>node.kubernetes.io/not-ready</code> (<code>node-ready</code>)</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions</a></li>
+</ul>
+</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -15602,6 +15611,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/73159361">https://stackoverflow.com/a/73159361</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/">https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/</a></li>
 </ul>
 </blockquote>
 <h4 id="maxskew">▼ maxSkew<a class="headerlink" href="#maxskew" title="Permanent link">&para;</a></h4>
@@ -17076,7 +17086,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
     
   </small>
