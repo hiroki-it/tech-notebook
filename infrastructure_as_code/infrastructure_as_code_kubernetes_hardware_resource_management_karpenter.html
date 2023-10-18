@@ -3902,6 +3902,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04-awsnodetemplate" class="md-nav__link">
+    04. AWSNodeTemplate
+  </a>
+  
+    <nav class="md-nav" aria-label="04. AWSNodeTemplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subnetselector" class="md-nav__link">
+    subnetSelector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5971,6 +5998,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#04-awsnodetemplate" class="md-nav__link">
+    04. AWSNodeTemplate
+  </a>
+  
+    <nav class="md-nav" aria-label="04. AWSNodeTemplate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#subnetselector" class="md-nav__link">
+    subnetSelector
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -6056,13 +6110,14 @@
 <p><br></p>
 <h2 id="03-provisioner">03. Provisioner<a class="headerlink" href="#03-provisioner" title="Permanent link">&para;</a></h2>
 <h3 id="providerref">providerRef<a class="headerlink" href="#providerref" title="Permanent link">&para;</a></h3>
+<p>Provisionerで使用するNodeテンプレートを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-provisioner</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">providerRef</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-template</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6106,6 +6161,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="labels">labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h3>
+<p>全てのNodeに挿入するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6122,6 +6178,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="annotations">annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
+<p>全てのNodeに挿入するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6306,13 +6363,46 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
-<p><br></p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/provisioners/">https://karpenter.sh/docs/concepts/provisioners/</a></li>
 <li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="04-awsnodetemplate">04. AWSNodeTemplate<a class="headerlink" href="#04-awsnodetemplate" title="Permanent link">&para;</a></h2>
+<h3 id="subnetselector">subnetSelector<a class="headerlink" href="#subnetselector" title="Permanent link">&para;</a></h3>
+<p>EC2ワーカーNodeがあるサブネットを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">subnetSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-private-subnet</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector">https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p>全てのEC2ワーカーNodeに挿入するタグを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">karpenter.template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/node-templates/#spectags">https://karpenter.sh/docs/concepts/node-templates/#spectags</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
