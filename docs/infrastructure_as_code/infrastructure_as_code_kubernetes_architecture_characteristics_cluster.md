@@ -172,7 +172,7 @@ GitOpsを採用できないため、CIOpsになる。
 
      また、EmptyDir Volumeを持つPodを退避できるように `--delete-emptydir-data`オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。
 
-     その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングする。
+     その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。
 
      この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 

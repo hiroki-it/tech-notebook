@@ -2194,7 +2194,7 @@ Podのスケジューリング対象のNodeを設定する。
 
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
-DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングする。
+DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングさせる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
@@ -2206,13 +2206,13 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 
 #### ▼ affinity.nodeAffinityとは
 
-Nodeの`.metadata.labels`キーを指定することにより、kube-schedulerがPodをスケジューリングするNodeを設定する。
+Nodeの`.metadata.labels`キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。
 
 `.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
 
-DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングする。
+DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングさせる。
 
-複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングできる。
+複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
@@ -2220,11 +2220,11 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
 
-条件に合致するNodeにのみPodをスケジューリングする。
+条件に合致するNodeにのみPodをスケジューリングさせる。
 
 もし条件に合致するNodeがない場合、Podのスケジューリングを待機し続ける。
 
-共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。
+共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。
 
 Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
 
@@ -2246,10 +2246,10 @@ spec:
         nodeSelectorTerms:
           - matchExpressions:
               # PodをスケジューリングしたいNodeのmetadata.labelsキー
-              # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングできる。
+              # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。
               - key: node.kubernetes.io/nodegroup
                 operator: In
-                # 指定した値をキーに持つNodeに、Podをスケジューリングする。
+                # 指定した値をキーに持つNodeに、Podをスケジューリングさせる。
                 values:
                   - app
 ```
@@ -2259,13 +2259,15 @@ spec:
 
 #### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
 
-条件に合致するNodeに優先的にPodをスケジューリングする。
+条件に合致するNodeに優先的にPodをスケジューリングさせる。
 
-もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングする。
+もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングさせる。
 
 条件に合致しないNodeの探索で重みづけルールを設定できる。
 
-共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングしないといけない。
+共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。
+
+すでに実行中のPodには適用できず、再スケジューリングさせないといけない。
 
 Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
 
@@ -2278,7 +2280,7 @@ Podが削除された後にNodeの`.metadata.labels`キーの値が変更され�
 
 #### ▼ affinity.podAffinityとは
 
-Node内のPodを、`.metadata.labels`キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングする。
+Node内のPodを、`.metadata.labels`キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。
 
 ```yaml
 apiVersion: v1
@@ -2302,7 +2304,7 @@ spec:
                 # Podのmetadata.labelsキー
                 - key: app.kubernetes.io/name
                   operator: In
-                  # 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングする。
+                  # 指定した値をキーに持つPodと同じNodeに、Podをスケジューリングさせる。
                   values:
                     - bar-gin
 ```
@@ -2353,7 +2355,7 @@ spec:
 
 #### ▼ affinity.podAntiAffinityとは
 
-`.metadata.labels`キーを持つNodeとは異なるNode内に、そのPodをスケジューリングする。
+`.metadata.labels`キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。
 
 ```yaml
 apiVersion: v1
@@ -2377,7 +2379,7 @@ spec:
                 # Podのmetadata.labelsキー
                 - key: app.kubernetes.io/name
                   operator: In
-                  # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
+                  # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングさせる。
                   values:
                     - bar-gin
 ```
@@ -2417,7 +2419,7 @@ spec:
 
 もし、複製するPodの名前を設定した場合、Podのレプリカ同士は同じNodeにスケジューリングされることを避ける。
 
-また、分散単位に`topology.kubernetes.io/zone`を設定しているため、各AZにPodをバラバラにスケジューリングする。
+また、分散単位に`topology.kubernetes.io/zone`を設定しているため、各AZにPodをバラバラにスケジューリングさせる。
 
 結果として、各AZのNodeにPodが`1`個ずつスケジューリングされるようになる。
 
@@ -2452,7 +2454,7 @@ spec:
                     # Podのmetadata.labelsキー
                     - key: app.kubernetes.io/name
                       operator: In
-                      # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングする。
+                      # 指定した値をキーに持つPodとは異なるNodeに、Podをスケジューリングさせる。
                       values:
                         # 自身が複製するPodの名前
                         - app
@@ -3380,7 +3382,7 @@ app-*****   init-1,init-2   app
 
 Podのスケジューリングの優先度を設定する。
 
-何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングできない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングする。
+何らかの理由 (例：ハードウェアリソース不足、など) でより優先度の高いPodをスケジューリングさせられない場合、より優先度の低いPodをNodeから退去させ、優先度の高いPodをスケジューリングさせる。
 
 | 設定値                                            | 優先度 |
 | ------------------------------------------------- | :----: |
@@ -3407,7 +3409,7 @@ spec:
 
 DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリングされるようになっている。
 
-ただし何らかの理由 (例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングできないことがある。
+ただし何らかの理由 (例：ハードウェアリソース不足、など) で、特定のNodeでDaemonSet配下のPodをスケジューリングさせられないことがある。
 
 他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
 
@@ -3611,15 +3613,19 @@ spec:
 
 #### ▼ tolerationsとは
 
-Podのスケジューリング対象としないNodeを設定する。
+Taintへの耐性を設定する。
+
+事前にTaintを付与しているNodeには、該当の`.spec.tolerations`キーがついているPodしかスケジューリングさせられない。
 
 `.spec.affinity`キーとは反対の条件である。
 
-デフォルトでは、Podは以下のNodeの`metadata.labels`キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングする。
-
-- `node.kubernetes.io/not-ready` (`node-ready`)
+デフォルトでは、Podは以下のNodeの`metadata.labels`キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions
+
+#### ▼ NoSchedule
+
+指定した条件に合致するNodeにはスケジューリングさせない。
 
 **＊実装例＊**
 
@@ -3634,11 +3640,11 @@ spec:
       image: app:1.0.0
       ports:
         - containerPort: 8080
-      # bar-podがいるNodeではスケジューリングさせない
+      # Nodeにはスケジューリングさせない
       tolerations:
-        - key: name
+        - key: nodegroup
           operator: Equal
-          value: bar-pod
+          value: batch
           effect: NoSchedule
 ```
 
@@ -3765,7 +3771,7 @@ spec:
 
 **＊実装例＊**
 
-分散の条件に合致するNodeがない場合、このPodをスケジューリングしない。
+分散の条件に合致するNodeがない場合、このPodをスケジューリングさせない。
 
 ```yaml
 apiVersion: v1
@@ -4133,7 +4139,7 @@ data:
 
 これを設定しないと、特定のWorkload (例：Deployment、StatefulSet) 配下のPodを全て削除してしまう問題が起こる。
 
-まずは`.spec.minAvailable`キーでスケジューリングできる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
+まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -4156,7 +4162,7 @@ spec:
 
 このスケジューリングを待機する新しいPodの最低限数を設定する。
 
-まずは`.spec.minAvailable`キーでスケジューリングできる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
+まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1beta1

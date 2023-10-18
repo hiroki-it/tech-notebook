@@ -193,7 +193,7 @@ PHP-FPMコンテナとNginxコンテナを稼働させる場合、これら同�
 
 これは、コントロールプレーンNodeにはTaint (`node-role.kubernetes.io/master:NoSchedule`) が設定されているためである。
 
-一方で、Nodeにはこれがないため、Podをスケジューリングできる。
+一方で、Nodeにはこれがないため、Podをスケジューリングさせられる。
 
 ```bash
 # コントロールプレーンNodeの場合
@@ -211,7 +211,7 @@ Taints: <none>
 
 ただし、セルフマネージドなコントロールプレーンNodeを採用している場合に、全てのコントロールプレーンNodeでTaintを解除すれば、Podを起動させられる。
 
-コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングすることがある。
+コントロールプレーンNodeがマネージドではない環境 (オンプレミス環境、ベアメタル環境、など) では、コントロールプレーンNodeにDaemonSetによるPodをスケジューリングさせることがある。
 
 ```bash
 $ kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
@@ -436,17 +436,20 @@ tcp6       0      0 :::15012                :::*                    LISTEN      
 tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery
 ```
 
-#### ▼ バルーンPod
+#### ▼ バルーンPod (OverProvisioning Pod)
 
-Nodeに余剰リソース (`N+1`、CPU/メモリの容量) を割り当てるために、バルーンPodをスケジューリングする。
+『OverProvisioning Pod』ともいう。
+
+NodeにバルーンPodをスケジューリングし、Nodeが常に余剰リソース (例：`N+1`、CPU/メモリの容量) を持たせられる。
 
 優先順位の最も低いPod (バルーンPod) を`N+1`個作成し、またバルーンPodが余剰リソースを要求するように設定しておく。
 
 これを各Nodeに`1`個ずつスケジューリングさせる。
 
-バルーンPodは優先度が低いため、他のPodをスケジューリングする時にNodeから退避する。
+バルーンPodは優先度が低いため、他のPodをスケジューリングさせる時にNodeから退避する。
 
 > - https://wdenniss.com/gke-autopilot-spare-capacity
+> - https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95
 
 <br>
 

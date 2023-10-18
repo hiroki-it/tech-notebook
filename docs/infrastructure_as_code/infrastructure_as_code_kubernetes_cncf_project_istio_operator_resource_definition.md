@@ -138,7 +138,7 @@ spec:
                   matchExpressions:
                     - key: app.kubernetes.io/nodegroup
                       operator: In
-                      # meshというNodeグループにスケジューリングできるようにする。
+                      # meshというNodeグループにスケジューリングさせられるようにする。
                       values:
                         - mesh
 ```

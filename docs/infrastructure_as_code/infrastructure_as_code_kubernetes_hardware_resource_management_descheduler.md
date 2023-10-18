@@ -17,9 +17,9 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングする。
+deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。
 
-類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングすることはない。
+類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。
 
 そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。
 
@@ -167,7 +167,7 @@ data:
 
 #### ▼ LowNodeUtilization
 
-Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングする。
+Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングさせる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -191,7 +191,7 @@ strategies:
 
 #### ▼ RemoveDuplicates
 
-Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングする。
+Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -223,7 +223,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
-`.spec.nodeAffinity`キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングする。
+`.spec.nodeAffinity`キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1

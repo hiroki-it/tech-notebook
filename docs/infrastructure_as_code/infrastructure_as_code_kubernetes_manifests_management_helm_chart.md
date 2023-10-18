@@ -534,9 +534,9 @@ service:
 
 ```yaml
 tolerations:
-  - key: "app"
-    operator: "Exists"
-    effect: "NoSchedule"
+  - key: app
+    operator: Exists
+    effect: NoSchedule
 ```
 
 <br>

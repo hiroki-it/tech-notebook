@@ -202,6 +202,8 @@ Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイ�
 
 - NetflixのEureka
 
+> - https://github.com/Netflix/eureka
+
 <br>
 
 ### サーバーサイドパターン

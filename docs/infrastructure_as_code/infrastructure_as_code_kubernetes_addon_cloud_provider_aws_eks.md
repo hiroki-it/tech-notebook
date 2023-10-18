@@ -51,7 +51,7 @@ resource "aws_eks_addon" "coredns" {
   addon_name                  = "coredns"
   # Terraformで設定を上書きできるようにする
   resolve_conflicts_on_update = "OVERWRITE"
-  # スケジューリングするNodeを設定する
+  # スケジューリングさせるNodeを設定する
   configuration_values = jsonencode(
     {
       nodeSelector = {
@@ -286,9 +286,9 @@ $ kubectl get daemonset aws-node \
 
 L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
 
-この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
+この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
-執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングできない。
+執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングさせられない。
 
 ![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png)
 
@@ -345,7 +345,7 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 | `3`個      | 12      | 12       | 33       | 51        | 105      | 174       | 174        |
 | `4`個      | 16      | 16       | 44       | 68        | 140      | 232       | 232        |
 
-そのため、Node上でスケジューリングするPod数がインスタンスタイプに依存する。
+そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
 `MINIMUM_IP_TARGET` (Node当たり最低限セカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
 

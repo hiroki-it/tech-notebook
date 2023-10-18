@@ -773,7 +773,7 @@ host: Running
 kubelet: Running
 ```
 
-補足として、コントロールプレーンNodeも単なるNodeの`1`個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングする。
+補足として、コントロールプレーンNodeも単なるNodeの`1`個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。
 
 ```bash
 $ kubectl get pod -o wide
