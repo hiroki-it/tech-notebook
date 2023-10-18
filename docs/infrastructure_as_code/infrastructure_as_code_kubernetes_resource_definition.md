@@ -3613,9 +3613,34 @@ spec:
 
 #### ▼ tolerationsとは
 
-Taintへの耐性を設定する。
+TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。
 
-事前にTaintを付与しているNodeには、該当の`.spec.tolerations`キーがついているPodしかスケジューリングさせられない。
+事前にNodeにTaintを設定しておく。
+
+```bash
+$ kubectl taint node foo-node <キー名>=<値>:<エフェクト>
+```
+
+Taintへの耐性を`.spec.tolerations`キーで設定する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: prometheus
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+  # Taintへの耐性をtolerationsで定義する
+  tolerations:
+    - key: <キー>
+      operator: Equal
+      value: <値>
+      effect: <エフェクト>
+```
+
+合致する条件の`.spec.tolerations`キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。
 
 `.spec.affinity`キーとは反対の条件である。
 
@@ -3629,23 +3654,26 @@ Taintへの耐性を設定する。
 
 **＊実装例＊**
 
+```bash
+$ kubectl taint node foo-node group=monitoring:NoSchedule
+```
+
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: foo-pod
+  name: prometheus
 spec:
   containers:
-    - name: app
-      image: app:1.0.0
-      ports:
-        - containerPort: 8080
-      # Nodeにはスケジューリングさせない
-      tolerations:
-        - key: nodegroup
-          operator: Equal
-          value: batch
-          effect: NoSchedule
+    - name: prometheus
+      image: prom/prometheus
+      imagePullPolicy: IfNotPresent
+  # Taintへの耐性をtolerationsで定義する
+  tolerations:
+    - key: group
+      operator: Equal
+      value: monitoring
+      effect: NoSchedule
 ```
 
 > - https://qiita.com/sheepland/items/8fedae15e157c102757f
