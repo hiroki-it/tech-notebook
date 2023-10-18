@@ -13868,6 +13868,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speclimit">.spec.limit<a class="headerlink" href="#speclimit" title="Permanent link">&para;</a></h3>
 <h4 id="container">▼ Containerの場合<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
 <p>Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。</p>
+<p>Podの<code>.spec.containers[].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -13881,6 +13882,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200m&quot;</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/policy/limit-range/">https://kubernetes.io/docs/concepts/policy/limit-range/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="persistentvolume">PersistentVolume<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h2>
 <h3 id="specaccessmodes">.spec.accessModes<a class="headerlink" href="#specaccessmodes" title="Permanent link">&para;</a></h3>
@@ -15558,7 +15564,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <h3 id="spectolerations">.spec.tolerations<a class="headerlink" href="#spectolerations" title="Permanent link">&para;</a></h3>
 <h4 id="tolerations">▼ tolerationsとは<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
 <p>TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。</p>
-<p>例えば、Podが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>、など) にTaintを設定し、Podが多いNodeグループ (<code>app</code>、<code>system</code>、など) にはこれを設定しないようにする。</p>
+<p>例えば、Workloadが少ないNodeグループ (<code>monitoring</code>、<code>ingress</code>、など) にTaintを設定し、Workloadが多いNodeグループ (<code>app</code>、<code>system</code>、など) にはこれを設定しないようにする。</p>
 <p>すると、<code>.spec.tolerations</code>キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。</p>
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
