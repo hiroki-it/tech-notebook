@@ -473,12 +473,6 @@ Deploymentとは異なり、ストレートフルなコンテナ (例：dbコン
 
 Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodにも同じPersistentVolumeを継続的にマウントできる。
 
-その代わり、StatefulSetの作成後に一部の設定変更が禁止されている。
-
-```bash
-The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
-```
-
 > - https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#%E5%AE%89%E5%AE%9A%E3%81%97%E3%81%9F%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8
 > - https://sorarinu.dev/2021/08/kubernetes_01/
 
@@ -496,11 +490,27 @@ StatefulSetは、DeploymentやReplicaSetとは異なり、同時にPodを作成�
 
 ### DeploymentとStatefulSetとの違い
 
+#### ▼ 設定値
+
+StatefulSetでは、一部の設定変更が禁止されている。
+
+```bash
+The StatefulSet "foo-pod" is invalid: spec: Forbidden: updates to statefulset spec for fields other than 'replicas', 'template', 'updateStrategy' and 'minReadySeconds' are forbidden
+```
+
 #### ▼ PersistentVolume
 
-Deployment配下のPodは、全てが同じPersistentVolumeを共有する。
+Deployment配下のPodは、全てが同じPersistentVolumeClaimを共有する。
 
-一方でStatefulSet配下のPodは、別々のPersistentVolumeを使用する。Podが別のNodeに再スケジューリングされても、同じPersistentVolumeを使用し続ける。
+そのため、Podに紐づくPersistentVolumeは同じになる。
+
+一方でStatefulSet配下のPodは、別々のPersistentVolumeClaimを使用する。
+
+そのため、Podに紐づくPersistentVolumeは別々になる。
+
+Podが別のNodeに再スケジューリングされても、Podに同じPersistentVolumeをマウントできる。
+
+Podが削除されてもPersistentVolumeClaimsは削除されないため、新しいPodも同じPersistentVolumeをマウントできる。
 
 ![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
 
