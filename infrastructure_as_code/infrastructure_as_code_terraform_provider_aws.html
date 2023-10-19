@@ -9727,7 +9727,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <tr>
 <td>パラメーターストア</td>
 <td>全て</td>
-<td>セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また<code>tfstate</code>ファイルに書き込まれてしまうため。パラメーターストアの代わりとして、キーバリュー型ストア (例：SOPS、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理しても良い。</td>
+<td>セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また<code>tfstate</code>ファイルに書き込まれてしまうため。パラメーターストアの代わりとして、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理しても良い。</td>
 </tr>
 </tbody>
 </table>

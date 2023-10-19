@@ -5842,25 +5842,29 @@
 <thead>
 <tr>
 <th>方法</th>
-<th style="text-align: center;">バージョン管理</th>
-<th>暗号化とSecretストア</th>
+<th>リポジトリ</th>
+<th>リポジトリ + キーバリュー型ストア</th>
+<th>リポジトリ + クラウドキーバリュー型ストア</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GitHubリポジトリ</td>
-<td style="text-align: center;">⭕️</td>
-<td><code>base64</code>方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。</td>
+<td>バージョン管理</td>
+<td>管理できる。</td>
+<td>管理できる。</td>
+<td>管理できない。</td>
 </tr>
 <tr>
-<td>GitHubリポジトリ + キーバリュー型ストア</td>
-<td style="text-align: center;">⭕️</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) で暗号化した上で、リポジトリ上やCluster内でキーバリュー型ストア (例：SOPS、Hashicorp Vault、Secrets Store CSI Driver、External Secrets、External Secrets Operator) で管理する。kube-apiserverへの送信前に <code>base64</code>方式エンコード値に復号化する。</td>
+<td>暗号化</td>
+<td><code>base64</code>方式エンコード値をリポジトリ内でそのまま管理する。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
 </tr>
 <tr>
-<td>GitHubリポジトリ + クラウドキーバリュー型ストア</td>
-<td style="text-align: center;">×</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。kube-apiserverへの送信前に <code>base64</code>方式エンコード値に復号化する。</td>
+<td>Secretストア</td>
+<td>なし</td>
+<td>リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、<code>base64</code>方式エンコード値に復号化する。</td>
 </tr>
 </tbody>
 </table>

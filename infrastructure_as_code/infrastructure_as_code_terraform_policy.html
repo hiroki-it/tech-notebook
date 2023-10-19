@@ -8413,31 +8413,35 @@ crash.*.log
 <thead>
 <tr>
 <th>方法</th>
-<th>バージョン管理</th>
-<th>暗号化とSecretストア</th>
+<th>リポジトリ</th>
+<th>リポジトリ + キーバリュー型ストア</th>
+<th>リポジトリ + クラウドキーバリュー型ストア</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GitHubリポジトリ</td>
-<td>⭕️</td>
-<td><code>base64</code>方式エンコード値をGitHubリポジトリ内でそのまま管理する。非推奨である。</td>
+<td>バージョン管理</td>
+<td>管理できる。</td>
+<td>管理できる。</td>
+<td>管理できない。</td>
 </tr>
 <tr>
-<td>GitHubリポジトリ + キーバリュー型ストア</td>
-<td>⭕</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、など) で暗号化した上で、リポジトリ上でキーバリュー型ストア (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
+<td>暗号化</td>
+<td><code>base64</code>方式エンコード値をリポジトリ内でそのまま管理する。非推奨である。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
 </tr>
 <tr>
-<td>GitHubリポジトリ + クラウドキーバリュー型ストア</td>
-<td>×</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、など) で暗号化した上で、クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
+<td>Secretストア</td>
+<td>なし</td>
+<td>リポジトリ上でキーバリュー型ストア (例：SOPS、Hashicorp Vault) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。クラウドインフラへのプロビジョニング時に<code>base64</code>方式エンコード値に復号化する。</td>
 </tr>
 </tbody>
 </table>
 <h4 id="tfstate">▼ <code>tfstate</code>ファイルへの書き込みを防ぐ<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
 <p>機密な変数を<code>ignore_changes</code>引数を使用して、<code>tfstate</code>ファイルへの書き込みを防ぐ。</p>
-<p>その上で、特定の方法 (例：SOPS、AWS Secrets Manager) で実際の値を管理し、これを<code>data</code>ブロックで参照する。</p>
+<p>その上で、特定の方法 (例：SOPS、kubesec、AWS Secrets Manager) で実際の値を管理し、これを<code>data</code>ブロックで参照する。</p>
 <p>ただし、リソースによっては<code>ignore_changes</code>引数を使えないものがある (例：SSMパラメーターストア) 。</p>
 <blockquote>
 <ul>
