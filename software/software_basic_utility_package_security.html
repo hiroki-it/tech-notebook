@@ -6087,9 +6087,9 @@
 <p><code>.yaml</code>ファイル、<code>.env</code>ファイル、などを暗号化できる。</p>
 <p>暗号化すると、<code>secrets</code>ファイルになる。</p>
 <h4 id="secrets">▼ <code>secrets</code>ファイル<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
-<p>SOPSによって暗号化されたファイルであり、キーバリュー型バックエンドとして機能する。</p>
+<p>SOPSによって暗号化されたファイルであり、キーバリュー型ストアとして機能する。</p>
 <p><code>sops</code>キー以下に暗号化の設定値が記載される。</p>
-<p>他のキーバリュー型ストア (例：Hashicorp Vaultなど) よりも安全で、またクラウドキーバリュー型バックエンド (例：AWS パラメーターストア、など) よりも簡単に変数を管理できる。</p>
+<p>他のキーバリュー型ストア (例：Hashicorp Vaultなど) よりも安全で、またクラウドキーバリュー型ストア (例：AWS パラメーターストア、など) よりも簡単に変数を管理できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ここでは、<code>.yaml</code>ファイルを暗号化する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 平文ファイル</span>
@@ -6104,7 +6104,7 @@ $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>.
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化されたファイル</span>
 $<span class="w"> </span>cat<span class="w"> </span>./secrets/foo-secrets.yaml
 
-<span class="c1"># キーバリュー型バックエンド</span>
+<span class="c1"># キーバリュー型ストア</span>
 DB_USERNAME:<span class="w"> </span>ENC<span class="o">[</span>AES256...
 DB_PASSWORD:<span class="w"> </span>ENC<span class="o">[</span>AES256...
 
@@ -6204,7 +6204,7 @@ Failed<span class="w"> </span>to<span class="w"> </span>call<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>

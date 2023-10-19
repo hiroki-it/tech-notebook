@@ -8913,11 +8913,11 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">        </span><span class="c1"># helm-secretsを使用して暗号化されたvaluesファイル</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./secrets.yaml</span>
 </code></pre></div>
-<p>あらかじめ、SOPSを使用して、<code>values</code>ファイルを暗号化し、キーバリュー型バックエンドに設定しておく。</p>
-<p>ポーリング対象のリポジトリに<code>.sops.yaml</code>ファイルと<code>secrets</code>ファイル (キーバリュー型バックエンド) を配置しておく必要がある。</p>
+<p>あらかじめ、SOPSを使用して、<code>values</code>ファイルを暗号化し、キーバリュー型ストアに設定しておく。</p>
+<p>ポーリング対象のリポジトリに<code>.sops.yaml</code>ファイルと<code>secrets</code>ファイル (キーバリュー型ストア) を配置しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># secretsファイル</span>
 
-<span class="c1"># キーバリュー型バックエンド</span>
+<span class="c1"># キーバリュー型ストア</span>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">AWS_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENC[AES256...</span>
 <span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENC[AES256...</span>
@@ -9790,7 +9790,7 @@ spec:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>
