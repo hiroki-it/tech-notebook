@@ -159,7 +159,7 @@ Ansibleの設定値を暗号化し、キーバリュー型ストアとして管�
 
 Ansibleの実行時にパスワードを要求し、これが正しければ復号化し、設定値として出力する。
 
-パスワード自体をファイル上でバージョン管理したい場合、暗号化ツール (例：SOPS) で暗号化することもできる。
+パスワード自体をファイル上でバージョン管理したい場合、暗号化ツール (例：SOPS、kubesec) で暗号化することもできる。
 
 ![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
 
