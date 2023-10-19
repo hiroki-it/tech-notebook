@@ -95,13 +95,13 @@ WWW-Authenticate: Basic realm=""
 
 : 認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗する。
 
-> - https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
-
 ```yaml
 POST https://example.com/foo-form/logout
 ---
 authorization: Basic <誤った認証情報>
 ```
+
+> - https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out
 
 `(6)`
 

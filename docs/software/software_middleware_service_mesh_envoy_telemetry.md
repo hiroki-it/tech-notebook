@@ -61,7 +61,7 @@ Envoyは、アプリコンテナへのアクセスログ (インバウンド通�
 | `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。アウトバウンド通信にて、Envoyは何らかの理由でアプリコンテナに接続できなかった。                     |
 | `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | アウトバウンド通信にて、Envoyは通信障害でアプリコンテナに接続できなかった。                                           |
 | `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | アウトバウンド通信にて、Envoyはタイムアウトでアプリコンテナに接続できなかった。                                       |
-| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | アウトバウンド通信にて、意図的なサーキットブレイカーで、Envoyはアプリコンテナに接続できなかった。                     |
+| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | アウトバウンド通信にて、サーキットブレイカーで、Envoyはアプリコンテナに接続できなかった。                             |
 | `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | アウトバウンド通信にて、アプリコンテナの通信試行回数制限の上限超過で、Envoyはアプリコンテナに接続拒否されてしまった。 |
 | `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | アウトバウンド通信にて、Envoyはアプリコンテナの異常で接続できなかった。                                               |
 

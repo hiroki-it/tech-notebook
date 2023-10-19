@@ -161,20 +161,22 @@ $ curl --fail http://host.docker.internal:8080
 
 <br>
 
-## 03. ネットワーク名前空間
+## 03. 名前空間
 
-### ネットワーク名前空間とは
+### 名前空間とは
 
 カーネルは、Dockerのネットワークを名前空間で分離している。
 
 異なる名前空間のコンテナ間では、ハードウェアリソース要求やプロセス間通信を分離できる。
 
+注意点として、Kubernetesとは名前空間の種類が異なる。
+
 > - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4
-> - https://qiita.com/sasamuku/items/8f09307dc9bdfe26a2db
+> - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
 
 <br>
 
-### IPC
+### IPC名前空間
 
 SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
@@ -184,7 +186,7 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 <br>
 
-### Network
+### Network名前空間
 
 ネットワークデバイス、アドレス、ポート、ルーティングテーブル、フィルタ、を分離する。
 
@@ -194,7 +196,7 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 <br>
 
-### Mount
+### Mount名前空間
 
 マウントに関する処理を分離する。
 
@@ -204,7 +206,7 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 <br>
 
-### PID
+### PID名前空間
 
 プロセスIDを分離する。
 
@@ -216,7 +218,7 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 <br>
 
-### User
+### User名前空間
 
 ユーザーID (UID)、グループID (GID)、を分離する。
 
@@ -226,7 +228,7 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 <br>
 
-### UTS
+### UTS名前空間
 
 ドメインを分離する。
 

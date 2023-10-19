@@ -162,8 +162,6 @@ STSのエンドポイントから一時的な認証情報が発行される。
 
 認証情報を環境変数として出力し、使用できるようにする。
 
-> - https://stedolan.github.io/jq/
-
 ```bash
 #!/bin/bash
 
@@ -190,6 +188,8 @@ EOF
 
 echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") >> ~/.aws/credentials
 ```
+
+> - https://stedolan.github.io/jq/
 
 <br>
 
