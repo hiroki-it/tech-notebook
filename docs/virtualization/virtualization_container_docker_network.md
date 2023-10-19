@@ -160,3 +160,78 @@ $ curl --fail http://host.docker.internal:8080
 ```
 
 <br>
+
+## 03. ネットワーク名前空間
+
+### ネットワーク名前空間とは
+
+カーネルは、Dockerのネットワークを名前空間で分離している。
+
+異なる名前空間のコンテナ間では、ハードウェアリソース要求やプロセス間通信を分離できる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4
+> - https://qiita.com/sasamuku/items/8f09307dc9bdfe26a2db
+
+<br>
+
+### IPC
+
+SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
+
+コンテナは、同じIPC名前空間に属する他のプロセスと通信できる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
+
+<br>
+
+### Network
+
+ネットワークデバイス、アドレス、ポート、ルーティングテーブル、フィルタ、を分離する。
+
+各コンテナが独立した、ネットワークデバイス、アドレス、ポート、ルーティングテーブル、フィルタ、を持てるようになる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h7
+
+<br>
+
+### Mount
+
+マウントに関する処理を分離する。
+
+各コンテナが独立してマウントを処理できるようになる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h2
+
+<br>
+
+### PID
+
+プロセスIDを分離する。
+
+各コンテナが独立したPIDを持てるようになる。
+
+逆に言うと、同じPID名前空間に属するプロセスはPIDは同じになる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
+
+<br>
+
+### User
+
+ユーザーID (UID)、グループID (GID)、を分離する。
+
+各コンテナが独立したUIDやGIDを持てるようになる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8
+
+<br>
+
+### UTS
+
+ドメインを分離する。
+
+各コンテナが独立したドメインを持てるようになる。
+
+> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h4
+
+<br>
