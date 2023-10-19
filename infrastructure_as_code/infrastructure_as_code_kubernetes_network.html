@@ -3588,11 +3588,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ネットワークの種類
+  <a href="#01-kubernetes" class="md-nav__link">
+    01. 各Kubernetesリソースのネットワーク
   </a>
   
-    <nav class="md-nav" aria-label="01. ネットワークの種類">
+    <nav class="md-nav" aria-label="01. 各Kubernetesリソースのネットワーク">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3672,6 +3672,13 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    ▼ 名前空間の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     ▼ 通信方法
   </a>
   
@@ -3738,7 +3745,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -3758,7 +3765,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -3778,7 +3785,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -5904,11 +5911,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ネットワークの種類
+  <a href="#01-kubernetes" class="md-nav__link">
+    01. 各Kubernetesリソースのネットワーク
   </a>
   
-    <nav class="md-nav" aria-label="01. ネットワークの種類">
+    <nav class="md-nav" aria-label="01. 各Kubernetesリソースのネットワーク">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5988,6 +5995,13 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
+    ▼ 名前空間の種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
     ▼ 通信方法
   </a>
   
@@ -6054,7 +6068,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -6074,7 +6088,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -6094,7 +6108,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ 仕組み
   </a>
   
@@ -6144,7 +6158,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ネットワークの種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01-kubernetes">01. 各Kubernetesリソースのネットワーク<a class="headerlink" href="#01-kubernetes" title="Permanent link">&para;</a></h2>
 <h3 id="node">Nodeネットワーク<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="node_1">▼ Nodeネットワークとは<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
 <p>同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。</p>
@@ -6188,7 +6202,21 @@
 <li><a href="https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate">https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate</a></li>
 </ul>
 </blockquote>
-<h4 id="_2">▼ 通信方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="_2">▼ 名前空間の種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>Podネットワークは、IPC名前空間、Network名前空間、PID名前空間、Hostname名前空間、cgroup名前空間、といったコンポーネントから構成される。</p>
+<p>コンテナにとっての論理ホストはPodであるため、これに基づく階層的なネットワークを作成する。</p>
+<p>セキュリティ上の理由から、デフォルトではコンテナと論理ホスト (ここではPod) では異なる名前空間を使用し、ネットワークを分離している。</p>
+<p>そのため、コンテナのプロセスはPodのプロセスと通信できないようになっている。</p>
+<p>ネットワークの範囲に応じて、コンテナがPod内のいずれのプロセスと通信できるようになるのかが決まる。</p>
+<p><img alt="kubernetes_pod-network_namespace.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway">https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway</a></li>
+<li><a href="https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured">https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured</a></li>
+<li><a href="https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896">https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ 通信方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>同じPod内のコンテナ間は『<code>localhost:&lt;ポート番号&gt;</code>』で通信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -6240,7 +6268,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 </blockquote>
 <p><br></p>
 <h3 id="podip">PodのIPアドレスを指定する場合<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。</p>
 <p>ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。</p>
 <p><strong>＊例＊</strong></p>
@@ -6267,7 +6295,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 </code></pre></div>
 <p><br></p>
 <h3 id="serviceip">ServiceのIPアドレスを指定する場合<a class="headerlink" href="#serviceip" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、IPアドレス、ポート番号) を出力する。</p>
 <p>Pod内のコンテナは、これを使用し、Serviceを介してPodにリクエストを送信する。</p>
 <blockquote>
@@ -6291,7 +6319,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 </code></pre></div>
 <p><br></p>
 <h3 id="service_2">Serviceの完全修飾ドメイン名を指定する場合<a class="headerlink" href="#service_2" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consul、など) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。</p>
 <p>Podのスケジューリング時に、kubeletはPod内のコンテナの<code>/etc/resolv.conf</code>ファイルに権威DNSサーバーのIPアドレスを設定する。</p>
 <p>Pod内のコンテナは、自身の<code>/etc/resolv.conf</code>ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーにPodのIPアドレスを正引きする。</p>
@@ -6355,7 +6383,7 @@ options<span class="w"> </span>ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>

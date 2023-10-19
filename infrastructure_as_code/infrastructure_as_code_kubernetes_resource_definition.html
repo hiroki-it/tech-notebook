@@ -15569,7 +15569,11 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <p>そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。</p>
 <p>以下の方法で設定する。</p>
 <p>事前にNodeにTaintを設定しておく。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span>&lt;キー名&gt;<span class="o">=</span>&lt;値&gt;:&lt;エフェクト&gt;
+<div class="highlight"><pre><span></span><code><span class="c1"># 非マネージドの場合</span>
+$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">group</span><span class="o">=</span>monitoring:NoSchedule
+
+<span class="c1"># マネージドの場合</span>
+<span class="c1"># NodeグループやNodeプールで一括してTaintを設定する</span>
 </code></pre></div>
 <p>Taintへの耐性を<code>.spec.tolerations</code>キーで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -17174,7 +17178,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>
