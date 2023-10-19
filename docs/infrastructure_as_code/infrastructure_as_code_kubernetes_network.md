@@ -13,7 +13,7 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. ネットワークの種類
+## 01. 各Kubernetesリソースのネットワーク
 
 ### Nodeネットワーク
 
@@ -67,6 +67,24 @@ Pod内のネットワークのみを経由して、他のコンテナにリク�
 Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。
 
 > - https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+
+#### ▼ 名前空間の種類
+
+Podネットワークは、IPC名前空間、Network名前空間、PID名前空間、Hostname名前空間、cgroup名前空間、といったコンポーネントから構成される。
+
+コンテナにとっての論理ホストはPodであるため、これに基づく階層的なネットワークを作成する。
+
+セキュリティ上の理由から、デフォルトではコンテナと論理ホスト (ここではPod) では異なる名前空間を使用し、ネットワークを分離している。
+
+そのため、コンテナのプロセスはPodのプロセスと通信できないようになっている。
+
+ネットワークの範囲に応じて、コンテナがPod内のいずれのプロセスと通信できるようになるのかが決まる。
+
+![kubernetes_pod-network_namespace.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
+
+> - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
+> - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 
 #### ▼ 通信方法
 

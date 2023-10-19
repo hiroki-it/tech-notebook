@@ -3630,7 +3630,11 @@ TaintsとTolerationsを使用すると、指定した条件に合致するPod以
 事前にNodeにTaintを設定しておく。
 
 ```bash
-$ kubectl taint node foo-node <キー名>=<値>:<エフェクト>
+# 非マネージドの場合
+$ kubectl taint node foo-node group=monitoring:NoSchedule
+
+# マネージドの場合
+# NodeグループやNodeプールで一括してTaintを設定する
 ```
 
 Taintへの耐性を`.spec.tolerations`キーで設定する。
