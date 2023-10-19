@@ -13,11 +13,9 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. 各Kubernetesリソースのネットワーク
+## 01. Nodeネットワーク
 
-### Nodeネットワーク
-
-#### ▼ Nodeネットワークとは
+### Nodeネットワークとは
 
 同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。
 
@@ -29,9 +27,9 @@ Nodeネットワークの作成は、Kubernetesの実行環境のネットワー
 
 <br>
 
-### Serviceネットワーク
+## 02. Serviceネットワーク
 
-#### ▼ Serviceネットワークとは
+### Serviceネットワークとは
 
 Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでリクエストを送信する。
 
@@ -44,9 +42,9 @@ Serviceネットワークの作成は、Kubernetesが担う。
 
 <br>
 
-### Clusterネットワーク
+## 03. Clusterネットワーク
 
-#### ▼ Clusterネットワークとは
+### Clusterネットワークとは
 
 同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。
 
@@ -58,9 +56,9 @@ Clusterネットワークの作成は、CNIアドオンが担う。
 
 <br>
 
-### Podネットワーク
+## 04. Podネットワーク
 
-#### ▼ Podネットワークとは
+### Podネットワークとは
 
 Pod内のネットワークのみを経由して、他のコンテナにリクエストを送信する。
 
@@ -68,38 +66,49 @@ Podごとにネットワークインターフェースが付与され、またIP
 
 > - https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
 
+<br>
+
+### 名前空間
+
 #### ▼ 名前空間の種類
 
-Podネットワークは、IPC名前空間、Network名前空間、PID名前空間、Hostname名前空間、cgroup名前空間、といったコンポーネントから構成される。
-
-コンテナにとっての論理ホストはPodであるため、これに基づく階層的なネットワークを作成する。
-
-セキュリティ上の理由から、デフォルトではコンテナと論理ホスト (ここではPod) では異なる名前空間を使用し、ネットワークを分離している。
-
-そのため、コンテナのプロセスはPodのプロセスと通信できないようになっている。
-
-ネットワークの範囲に応じて、コンテナがPod内のいずれのプロセスと通信できるようになるのかが決まる。
+Podのネットワークは複数の種類の名前空間から構成される。
 
 ![kubernetes_pod-network_namespace.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
 
 > - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
+
+#### ▼ IPC名前空間
+
+プロセスは、同じIPC名前空間に属する他のプロセスと通信できる。
+
+セキュリティ上の理由から、デフォルトではPod内のコンテナはホスト (Node) とは異なるIPC名前空間を使用し、ネットワークを分離している。
+
+そのため、コンテナのプロセスはNodeのプロセスと通信できないようになっている。
+
+ネットワークの範囲に応じて、コンテナが同じNode内のいずれのコンポーネントのプロセスと通信できるようになるのかが決まる。
+
+> - https://qiita.com/mamorita/items/15437a1dbcc00919fa4e
 > - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
 > - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 
-#### ▼ 通信方法
-
-同じPod内のコンテナ間は『`localhost:<ポート番号>`』で通信できる。
-
-```bash
-# Pod内のコンテナに接続する。
-$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
-
-[root@<Pod名>:~] $ curl -X GET http://127.0.0.1:<ポート番号>
-```
+### Network名前空間
 
 <br>
 
-## 02. ネットワークレイヤー
+### PID名前空間
+
+<br>
+
+### Hostname名前空間
+
+<br>
+
+### cgroup名前空間
+
+<br>
+
+## 05. ネットワークレイヤー
 
 ### Ingressコントローラー由来の`L7`ロードバランサーの場合
 
@@ -121,7 +130,7 @@ LoadBalancer Serviceの場合、`L4`ロードバランサーをプロビジョ�
 
 <br>
 
-## 03. Pod間通信
+## 06. Pod間通信
 
 ### Pod間通信の経路
 
@@ -135,6 +144,21 @@ Pod内のコンテナから宛先のPodにリクエストを送信する。
 | Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
 
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
+
+<br>
+
+### 通信方法
+
+同じPod内のコンテナ間は『`localhost:<ポート番号>`』で通信できる。
+
+```bash
+# Pod内のコンテナに接続する。
+$ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
+
+[root@<Pod名>:~] $ curl -X GET http://127.0.0.1:<ポート番号>
+```
+
+<br>
 
 <br>
 
