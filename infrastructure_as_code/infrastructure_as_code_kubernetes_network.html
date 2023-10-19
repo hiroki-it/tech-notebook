@@ -6275,6 +6275,8 @@
 <h3 id="_2">名前空間<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 名前空間の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Podのネットワークは複数の種類の名前空間から構成される。</p>
+<p>ネットワークの範囲に応じて、コンテナが同じNode内のいずれのコンポーネントのプロセスと通信できるようになるのかが決まる。</p>
+<p>注意点として、Dockerとは名前空間の種類が異なる。</p>
 <p><img alt="kubernetes_pod-network_namespace.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png" /></p>
 <blockquote>
 <ul>
@@ -6283,9 +6285,8 @@
 </blockquote>
 <h4 id="ipc">▼ IPC名前空間<a class="headerlink" href="#ipc" title="Permanent link">&para;</a></h4>
 <p>プロセスは、同じIPC名前空間に属する他のプロセスと通信できる。</p>
-<p>セキュリティ上の理由から、デフォルトではPod内のコンテナはホスト (Node) とは異なるIPC名前空間を使用し、ネットワークを分離している。</p>
+<p>Kubernetesのセキュリティ上の理由から、デフォルトではPod内のコンテナはホスト (Node) とは異なるIPC名前空間を使用し、ネットワークを分離している。</p>
 <p>そのため、コンテナのプロセスはNodeのプロセスと通信できないようになっている。</p>
-<p>ネットワークの範囲に応じて、コンテナが同じNode内のいずれのコンポーネントのプロセスと通信できるようになるのかが決まる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mamorita/items/15437a1dbcc00919fa4e">https://qiita.com/mamorita/items/15437a1dbcc00919fa4e</a></li>
@@ -6351,7 +6352,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>http://127.0.0.1:&lt;ポート番号&gt;
 </code></pre></div>
-<p><br></p>
 <p><br></p>
 <h3 id="podip">PodのIPアドレスを指定する場合<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>

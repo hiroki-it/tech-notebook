@@ -7322,11 +7322,6 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 <p>この時、アクセスキーID、シークレットアクセスキー、セッショントークン、が必要になる。</p>
 <p>代わりとして、<code>~/.aws/cli/cache</code>ディレクトリ配下の<code>.json</code>ファイルから取得しても良い。</p>
 <p>認証情報を環境変数として出力し、使用できるようにする。</p>
-<blockquote>
-<ul>
-<li><a href="https://stedolan.github.io/jq/">https://stedolan.github.io/jq/</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; assumed_user.sh</span>
@@ -7349,6 +7344,11 @@ aws<span class="w"> </span>configure<span class="w"> </span>--profile<span class
 
 <span class="nb">echo</span><span class="w"> </span><span class="nv">aws_session_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_sts_credentials</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.SessionToken&quot;</span><span class="k">)</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.aws/credentials
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stedolan.github.io/jq/">https://stedolan.github.io/jq/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="5">5. 認証認可の動作確認<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
 <p>ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証認可できるか否かを確認する。</p>
@@ -7595,7 +7595,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>

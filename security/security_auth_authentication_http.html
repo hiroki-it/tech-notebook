@@ -6103,15 +6103,15 @@
 <p>認証の解除時は、誤った認証情報をブラウザに意図的に送信させて認証を失敗する。</p>
 </dd>
 </dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form/logout</span>
+<span class="nn">---</span>
+<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic &lt;誤った認証情報&gt;</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out">https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form/logout</span>
-<span class="nn">---</span>
-<span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic &lt;誤った認証情報&gt;</span>
-</code></pre></div>
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
@@ -6291,7 +6291,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>

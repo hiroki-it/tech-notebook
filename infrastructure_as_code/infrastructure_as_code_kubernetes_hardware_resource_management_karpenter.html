@@ -3803,13 +3803,20 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ スケールアウトの場合
+    ▼ 対応するスケーリング
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    ▼ スケールアウトの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     ▼ スケールインの場合
   </a>
   
@@ -5919,13 +5926,20 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ スケールアウトの場合
+    ▼ 対応するスケーリング
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
+    ▼ スケールアウトの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
     ▼ スケールインの場合
   </a>
   
@@ -6132,8 +6146,16 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">スケーリングの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ スケールアウトの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>例えば、以下のような仕組みで、Nodeの自動水平スケーリングのスケールアウトを実行する。</p>
+<h4 id="_5">▼ 対応するスケーリング<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Karpenterは、現在のハードウェアリソースの使用量に応じて、Nodeを水平/垂直スケーリングする。</p>
+<p>なお、Karpeneterでは垂直スケーリングを代わりに『deprovisioning』という。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/karpenter/issues/1226">https://github.com/aws/karpenter/issues/1226</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ スケールアウトの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -6153,7 +6175,7 @@
 <p>結果として、<code>1</code>台で<code>2</code>個のPodがスケジューリングされている。</p>
 </dd>
 </dl>
-<h4 id="_6">▼ スケールインの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ スケールインの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
 <h2 id="03-provisioner">03. Provisioner<a class="headerlink" href="#03-provisioner" title="Permanent link">&para;</a></h2>
@@ -6458,7 +6480,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
       
     
   </small>
