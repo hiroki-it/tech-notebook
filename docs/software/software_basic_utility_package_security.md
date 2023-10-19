@@ -35,11 +35,11 @@ $ brew install sops
 
 #### ▼ `secrets`ファイル
 
-SOPSによって暗号化されたファイルであり、キーバリュー型バックエンドとして機能する。
+SOPSによって暗号化されたファイルであり、キーバリュー型ストアとして機能する。
 
 `sops`キー以下に暗号化の設定値が記載される。
 
-他のキーバリュー型ストア (例：Hashicorp Vaultなど) よりも安全で、またクラウドキーバリュー型バックエンド (例：AWS パラメーターストア、など) よりも簡単に変数を管理できる。
+他のキーバリュー型ストア (例：Hashicorp Vaultなど) よりも安全で、またクラウドキーバリュー型ストア (例：AWS パラメーターストア、など) よりも簡単に変数を管理できる。
 
 **＊実装例＊**
 
@@ -62,7 +62,7 @@ $ sops -e ./values/foo-values.yaml > ./secrets/foo-secrets.yaml
 # 暗号化されたファイル
 $ cat ./secrets/foo-secrets.yaml
 
-# キーバリュー型バックエンド
+# キーバリュー型ストア
 DB_USERNAME: ENC[AES256...
 DB_PASSWORD: ENC[AES256...
 
