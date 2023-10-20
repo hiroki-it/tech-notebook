@@ -3613,6 +3613,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#volumes" class="md-nav__link">
     volumes (バインドマウント)
   </a>
@@ -6315,6 +6322,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    user
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#volumes" class="md-nav__link">
     volumes (バインドマウント)
   </a>
@@ -6598,7 +6612,7 @@
 <li><a href="https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322">https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322</a></li>
 </ul>
 </blockquote>
-<p>ルートユーザー名は定義できず、『<code>root</code>』となる。</p>
+<p>Rootユーザー名は定義できず、『<code>root</code>』となる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156">https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156</a></li>
@@ -6819,6 +6833,16 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="user"><code>user</code><a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
+<p><code>docker compose</code>コマンドの裏側で実行される<code>docker run</code>コマンドで、<code>u</code>オプションを有効化するか否かを設定する。</p>
+<p>コンテナの実行ユーザーを設定する。</p>
+<p>Root以外で実行するために使用する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${UID}:${GID}&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="volumes"><code>volumes</code> (バインドマウント)<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h3>
@@ -7061,7 +7085,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
       
     
   </small>

@@ -6701,7 +6701,7 @@
 <p><br></p>
 <h2 id="02">02. 脆弱性に対処する<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">実行ユーザーを非特権化する<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。</p>
+<p>コンテナのプロセスの実行ユーザーにRoot権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。</p>
 <p>これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.12</span>
 
@@ -7137,7 +7137,7 @@ EOF
 
 <span class="c"># 最終イメージ</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span>
-<span class="c"># コンテナからHTTPSリクエストを送信するために、ルート証明書をインストールする</span>
+<span class="c"># コンテナからHTTPSリクエストを送信するために、Root証明書をインストールする</span>
 <span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>--no-cache<span class="w"> </span>add<span class="w"> </span>ca-certificates<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>update-ca-certificates
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root/</span>
@@ -7289,7 +7289,7 @@ EOF
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
       
     
   </small>
