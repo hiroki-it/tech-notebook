@@ -8005,7 +8005,7 @@
 <p><br></p>
 <h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
 <h4 id="job_1">▼ Jobとは<a class="headerlink" href="#job_1" title="Permanent link">&para;</a></h4>
-<p>バッチ処理 (単発実行) を定義したい場合、Jobを使用する。</p>
+<p>単発的なバッチ処理を定義したい場合、Jobを使用する。</p>
 <p>もう一度実行したい場合は、Jobを削除する必要がある。</p>
 <p>複数のPodを作成 (SuccessfulCreate) し、指定された数のPodを正常に削除 (SuccessfulDelete) する。</p>
 <p>デフォルトでは、ログの確認のためにPodは削除されず、Jobが削除されて初めてPodも削除される。</p>
@@ -8020,7 +8020,7 @@
 </ul>
 </blockquote>
 <h4 id="cronjob">▼ CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
-<p>ジョブ処理 (定期実行) を定義したい場合、CronJobを使用する。</p>
+<p>定期的なバッチ処理を定義したい場合、CronJobを使用する。</p>
 <p>CronJob配下のJobは、決まった時間にならないと実行されない。</p>
 <p>任意の時間に実行するためには、CronJobを指定し、これの配下で一時的にJobを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>job<span class="w"> </span>test-job<span class="w"> </span>--from<span class="o">=</span>cronjob/foo-cron-job<span class="w"> </span>-n<span class="w"> </span>foo
@@ -9441,7 +9441,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
       
     
   </small>

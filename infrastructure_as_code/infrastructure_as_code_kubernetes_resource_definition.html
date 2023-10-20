@@ -4040,6 +4040,47 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specconcurrencypolicy" class="md-nav__link">
+    .spec.concurrencyPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.concurrencyPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concurrencypolicy" class="md-nav__link">
+    ▼ concurrencyPolicy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow" class="md-nav__link">
+    ▼ Allow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forbid" class="md-nav__link">
+    ▼ Forbid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow_1" class="md-nav__link">
+    ▼ Allow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specjobtemplate" class="md-nav__link">
     .spec.jobTemplate
   </a>
@@ -9416,6 +9457,47 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#specconcurrencypolicy" class="md-nav__link">
+    .spec.concurrencyPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label=".spec.concurrencyPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concurrencypolicy" class="md-nav__link">
+    ▼ concurrencyPolicy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow" class="md-nav__link">
+    ▼ Allow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forbid" class="md-nav__link">
+    ▼ Forbid
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allow_1" class="md-nav__link">
+    ▼ Allow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#specjobtemplate" class="md-nav__link">
     .spec.jobTemplate
   </a>
@@ -12778,6 +12860,16 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h2 id="cronjob">CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h2>
+<h3 id="specconcurrencypolicy">.spec.concurrencyPolicy<a class="headerlink" href="#specconcurrencypolicy" title="Permanent link">&para;</a></h3>
+<h4 id="concurrencypolicy">▼ concurrencyPolicy<a class="headerlink" href="#concurrencypolicy" title="Permanent link">&para;</a></h4>
+<p>CronJob配下のJobの並列実行ルールを設定できる。</p>
+<h4 id="allow">▼ Allow<a class="headerlink" href="#allow" title="Permanent link">&para;</a></h4>
+<p>Jobの並列実行を許可する。</p>
+<h4 id="forbid">▼ Forbid<a class="headerlink" href="#forbid" title="Permanent link">&para;</a></h4>
+<p>Jobの並列実行を拒否する。</p>
+<h4 id="allow_1">▼ Allow<a class="headerlink" href="#allow_1" title="Permanent link">&para;</a></h4>
+<p>もし別のJobを実行していれば、そのJobを停止して新しくJobを実行する。</p>
+<p><br></p>
 <h3 id="specjobtemplate">.spec.jobTemplate<a class="headerlink" href="#specjobtemplate" title="Permanent link">&para;</a></h3>
 <h4 id="jobtemplate">▼ jobTemplateとは<a class="headerlink" href="#jobtemplate" title="Permanent link">&para;</a></h4>
 <p>CronJobで、定期的に実行するJobを設定する。</p>
@@ -12827,8 +12919,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specstartingdeadlineseconds">.spec.startingDeadlineSeconds<a class="headerlink" href="#specstartingdeadlineseconds" title="Permanent link">&para;</a></h3>
 <h4 id="startingdeadlineseconds">▼ startingDeadlineSeconds<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h4>
-<p>JobがCronのスケジュール通りに実行されなかった場合に、遅れを何秒まで許容するかを設定する。</p>
-<p>指定した秒数を過ぎると、失敗とみなす。</p>
+<p>JobがCronのスケジュール通りに実行されなかった場合に、実行の遅れを何秒まで許容するかを設定する。</p>
+<p>指定した秒数を過ぎると、実行を失敗とみなす。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -12840,6 +12932,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <ul>
 <li><a href="https://kubernetes.io/ja/docs/concepts/workloads/controllers/cron-jobs/#cron-job-limitations">https://kubernetes.io/ja/docs/concepts/workloads/controllers/cron-jobs/#cron-job-limitations</a></li>
 <li><a href="https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds">https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds</a></li>
+</ul>
+</blockquote>
+<p>CronJobのデフォルトの仕様として、Jobが<code>100</code>回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
+<p>この時、.spec.startingDeadlineSecondsキーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
+<p>そのため、Jobが再実行不可になりにくくなる。</p>
+<blockquote>
+<ul>
+<li><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -13937,11 +14037,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speccapacity">.spec.capacity<a class="headerlink" href="#speccapacity" title="Permanent link">&para;</a></h3>
 <h4 id="capacity">▼ capacityとは<a class="headerlink" href="#capacity" title="Permanent link">&para;</a></h4>
 <p>ストレージの最大サイズを設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -13951,6 +14046,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">capacity</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10G</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="spechostpath">.spec.hostPath<a class="headerlink" href="#spechostpath" title="Permanent link">&para;</a></h3>
 <h4 id="hostpath">▼ hostPathとは<a class="headerlink" href="#hostpath" title="Permanent link">&para;</a></h4>
@@ -13988,12 +14088,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="local">▼ localとは<a class="headerlink" href="#local" title="Permanent link">&para;</a></h4>
 <p>Node上にストレージ上にボリュームを作成する。</p>
 <p><code>.spec.nodeAffinity</code>キーの設定が必須であり、Nodeを明示的に指定できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity</a></li>
-</ul>
-</blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14010,6 +14104,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/">https://kubernetes.io/docs/concepts/storage/persistent-volumes/</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specmountoptions">.spec.mountOptions<a class="headerlink" href="#specmountoptions" title="Permanent link">&para;</a></h3>
 <h4 id="mountoptions">▼ mountOptionsとは<a class="headerlink" href="#mountoptions" title="Permanent link">&para;</a></h4>
@@ -14087,12 +14187,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </tr>
 </tbody>
 </table>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></li>
-<li><a href="https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/">https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -14112,6 +14206,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">              </span><span class="c1"># 開発環境であれば minikubeを指定する。</span>
 <span class="w">              </span><span class="c1"># - minikube</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement</a></li>
+<li><a href="https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/">https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specpersistentvolumereclaimpolicy">.spec.persistentVolumeReclaimPolicy<a class="headerlink" href="#specpersistentvolumereclaimpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="persistentvolumereclaimpolicy">▼ persistentVolumeReclaimPolicyとは<a class="headerlink" href="#persistentvolumereclaimpolicy" title="Permanent link">&para;</a></h4>
@@ -14140,11 +14240,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="recycle">▼ Recycle (非推奨)<a class="headerlink" href="#recycle" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、PersistentVolume内のデータのみを削除し、PersistentVolume自体は削除しない。</p>
 <p>将来的に廃止予定のため、非推奨。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.amazon.co.jp/dp/B07HFS7TDT">https://www.amazon.co.jp/dp/B07HFS7TDT</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -14153,15 +14248,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">persistentVolumeReclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Recycle</span>
 </code></pre></div>
-<h4 id="retain">▼ Retain<a class="headerlink" href="#retain" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても、PersistentVolumeは削除しない。</p>
-<p>割り当てから解除されたPersistentVolumeはReleasedステータスになる。</p>
-<p>一度、Releasedステータスになると、他のPersistentVolumeClaimからは指定できなくなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/B07HFS7TDT">https://www.amazon.co.jp/dp/B07HFS7TDT</a></li>
 </ul>
 </blockquote>
+<h4 id="retain">▼ Retain<a class="headerlink" href="#retain" title="Permanent link">&para;</a></h4>
+<p>PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても、PersistentVolumeは削除しない。</p>
+<p>割り当てから解除されたPersistentVolumeはReleasedステータスになる。</p>
+<p>一度、Releasedステータスになると、他のPersistentVolumeClaimからは指定できなくなる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
@@ -14170,6 +14265,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">persistentVolumeReclaimPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/B07HFS7TDT">https://www.amazon.co.jp/dp/B07HFS7TDT</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specstorageclassname">.spec.storageClassName<a class="headerlink" href="#specstorageclassname" title="Permanent link">&para;</a></h3>
 <h4 id="storageclassname">▼ storageClassNameとは<a class="headerlink" href="#storageclassname" title="Permanent link">&para;</a></h4>
@@ -17178,7 +17278,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
       
     
   </small>
