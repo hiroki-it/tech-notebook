@@ -21,6 +21,14 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 <br>
 
+### Self hosted Runner
+
+GitHub Actionsをサーバー (例：オンプレサーバー、AWS EC2、など) でコンテナとして実行する。
+
+> - https://fintan.jp/page/4177/
+
+<br>
+
 ### パイプライン構成
 
 記入中...

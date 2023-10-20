@@ -130,7 +130,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ### 実行ユーザーを非特権化する
 
-コンテナのプロセスの実行ユーザーにルート権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。
+コンテナのプロセスの実行ユーザーにRoot権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。
 
 これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。
 
@@ -526,7 +526,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
 # 最終イメージ
 FROM alpine:latest
-# コンテナからHTTPSリクエストを送信するために、ルート証明書をインストールする
+# コンテナからHTTPSリクエストを送信するために、Root証明書をインストールする
 RUN apk --no-cache add ca-certificates \
   && update-ca-certificates
 WORKDIR /root/

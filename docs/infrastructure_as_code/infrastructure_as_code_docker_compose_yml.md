@@ -216,7 +216,7 @@ DB名の環境変数が設定されている場合は『`CREATE DATABASE`』、�
 
 > - https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L308-L322
 
-ルートユーザー名は定義できず、『`root`』となる。
+Rootユーザー名は定義できず、『`root`』となる。
 
 > - https://github.com/docker-library/mysql/blob/master/5.7/docker-entrypoint.sh#L156
 
@@ -511,6 +511,24 @@ services:
 services:
   app:
     tty: true
+```
+
+<br>
+
+### `user`
+
+`docker compose`コマンドの裏側で実行される`docker run`コマンドで、`u`オプションを有効化するか否かを設定する。
+
+コンテナの実行ユーザーを設定する。
+
+Root以外で実行するために使用する。
+
+**＊実装例＊**
+
+```yaml
+services:
+  app:
+    user: "${UID}:${GID}"
 ```
 
 <br>
