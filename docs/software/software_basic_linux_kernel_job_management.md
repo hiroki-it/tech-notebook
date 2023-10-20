@@ -17,7 +17,9 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 ### ジョブとは
 
-定期的に実行するように設定されたバッチ処理を、特に『ジョブ』という。
+バッチ処理には、単発実行と定期実行の形式がある。
+
+定期的なバッチ処理を、特に『ジョブ』という。
 
 > - https://strategicppm.wordpress.com/2010/01/20/batch-vs-job-processes-becoming-more-efficient/
 > - https://www.quora.com/What-is-the-difference-between-cron-job-and-batch-job
@@ -55,7 +57,7 @@ Unixでは`at`や`cron`に、またWindowsではタスクスケジューラー�
 
 『Task』と『Job』の定義は曖昧なため、『process』と『set of processes』を使用する必要があるとのこと。
 
-複数のジョブ (定期的に実行するように設定されたバッチ処理) の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。
+複数のジョブ (定期的なバッチ処理) の起動と終了を制御したり、ジョブの実行と終了を監視報告するソフトウェア。
 
 ややこしいことに、タスクスケジューラーとも呼ぶ。
 

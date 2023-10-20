@@ -464,6 +464,26 @@ data:
 
 ## CronJob
 
+### .spec.concurrencyPolicy
+
+#### ▼ concurrencyPolicy
+
+CronJob配下のJobの並列実行ルールを設定できる。
+
+#### ▼ Allow
+
+Jobの並列実行を許可する。
+
+#### ▼ Forbid
+
+Jobの並列実行を拒否する。
+
+#### ▼ Allow
+
+もし別のJobを実行していれば、そのJobを停止して新しくJobを実行する。
+
+<br>
+
 ### .spec.jobTemplate
 
 #### ▼ jobTemplateとは
@@ -533,9 +553,9 @@ spec:
 
 #### ▼ startingDeadlineSeconds
 
-JobがCronのスケジュール通りに実行されなかった場合に、遅れを何秒まで許容するかを設定する。
+JobがCronのスケジュール通りに実行されなかった場合に、実行の遅れを何秒まで許容するかを設定する。
 
-指定した秒数を過ぎると、失敗とみなす。
+指定した秒数を過ぎると、実行を失敗とみなす。
 
 ```yaml
 apiVersion: io.k8s.api.batch.v1
@@ -548,6 +568,14 @@ spec:
 
 > - https://kubernetes.io/ja/docs/concepts/workloads/controllers/cron-jobs/#cron-job-limitations
 > - https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds
+
+CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。
+
+この時、.spec.startingDeadlineSecondsキーを設定しておくと、これの期間に`100`回連続で失敗した時のみ、Jobを再実行できなくなる。
+
+そのため、Jobが再実行不可になりにくくなる。
+
+> - https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/
 
 <br>
 
@@ -1825,8 +1853,6 @@ spec:
 
 ストレージの最大サイズを設定する。
 
-> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
-
 **＊実装例＊**
 
 ```yaml
@@ -1838,6 +1864,8 @@ spec:
   capacity:
     storage: 10G
 ```
+
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#capacity
 
 <br>
 
@@ -1892,9 +1920,6 @@ Node上にストレージ上にボリュームを作成する。
 
 `.spec.nodeAffinity`キーの設定が必須であり、Nodeを明示的に指定できる。
 
-> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
-> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -1912,6 +1937,9 @@ spec:
               values:
                 - foo-node
 ```
+
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+> - https://kubernetes.io/docs/concepts/storage/persistent-volumes/#node-affinity
 
 <br>
 
@@ -1983,9 +2011,6 @@ PersistentVolumeの作成先とするNodeを設定する。
 | Exists        | 指定した`metadata.labels`キーを持つ。                       |
 | DoesNotExists | 指定した`metadata.labels`キーを持たない。                   |
 
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
-> - https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/
-
 **＊実装例＊**
 
 ```yaml
@@ -2007,6 +2032,9 @@ spec:
               # 開発環境であれば minikubeを指定する。
               # - minikube
 ```
+
+> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement
+> - https://riyafa.wordpress.com/2020/06/07/kubernetes-matchexpressions-explained/
 
 <br>
 
@@ -2043,8 +2071,6 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除された場合、P
 
 将来的に廃止予定のため、非推奨。
 
-> - https://www.amazon.co.jp/dp/B07HFS7TDT
-
 **＊実装例＊**
 
 ```yaml
@@ -2056,6 +2082,8 @@ spec:
   persistentVolumeReclaimPolicy: Recycle
 ```
 
+> - https://www.amazon.co.jp/dp/B07HFS7TDT
+
 #### ▼ Retain
 
 PersistentVolumeを指定するPersistentVolumeClaimが削除されたとしても、PersistentVolumeは削除しない。
@@ -2063,8 +2091,6 @@ PersistentVolumeを指定するPersistentVolumeClaimが削除されたとして�
 割り当てから解除されたPersistentVolumeはReleasedステータスになる。
 
 一度、Releasedステータスになると、他のPersistentVolumeClaimからは指定できなくなる。
-
-> - https://www.amazon.co.jp/dp/B07HFS7TDT
 
 **＊実装例＊**
 
@@ -2076,6 +2102,8 @@ metadata:
 spec:
   persistentVolumeReclaimPolicy: Retain
 ```
+
+> - https://www.amazon.co.jp/dp/B07HFS7TDT
 
 <br>
 
