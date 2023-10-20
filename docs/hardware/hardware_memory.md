@@ -387,6 +387,22 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 ## 04. GPUとVRAM
 
+### GPU
+
+CPUより少ないパラメーターで、より高速に並列処理を実行できる。
+
+画像処理や機械学習処理に的する。
+
+<br>
+
+### VRAM
+
+記入中...
+
+<br>
+
+### サイズ
+
 GPUとVRAMのサイズによって、扱うことのできる解像度と色数が決まる。
 
 ![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VRAM.jpg)
