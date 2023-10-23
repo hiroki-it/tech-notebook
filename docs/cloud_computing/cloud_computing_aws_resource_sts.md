@@ -216,7 +216,7 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 AssumeRoleの仕組みでは、まずこの(Trusted Entityをコールする。
 
-Trusted Entityを使って、必要なIAMロールを持つ一時的なIAMユーザーをSTSから発行する。
+Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時的なIAMユーザーを作成する。
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
