@@ -17,12 +17,22 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 ### アーキテクチャ
 
-GitLab Runnerを処理の実行環境として、GitLabリポジトリの`gitlab-ci.yml`ファイルで定義されたパイプラインを実行する。
+GitLab Runnerを実行環境として使用し、GitLabリポジトリの`gitlab-ci.yml`ファイルで定義されたパイプラインを実行する。
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
 
 > - https://subscription.packtpub.com/book/cloud-&-networking/9781789531282/19/ch19lvl1sec32/the-runner-client-architecture
 > - https://www.insight-tec.com/tech-blog/ci-cd/20201222_gitlab_runner/
+
+<br>
+
+### GitLab Runner
+
+#### ▼ GitLab Runnerとは
+
+GitLab CIの実行環境を用意する。
+
+> - https://docs.gitlab.com/runner/
 
 <br>
 

@@ -21,7 +21,15 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 <br>
 
-### Self hosted Runner
+### GitHub Actions Runner
+
+#### ▼ GitHub Actions Runnerとは
+
+GitHub Actionsの実行環境を用意する。
+
+> - https://github.com/actions/runner
+
+#### ▼ Self hosted Runner
 
 GitHub Actionsをサーバー (例：オンプレサーバー、AWS EC2、など) でコンテナとして実行する。
 
