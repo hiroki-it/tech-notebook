@@ -7377,7 +7377,7 @@ aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>-
 <h3 id="trusted-entity">Trusted Entityの事前作成<a class="headerlink" href="#trusted-entity" title="Permanent link">&para;</a></h3>
 <p>事前に、元となるIAMユーザー (Trusted Entity) を作成しておく。</p>
 <p>AssumeRoleの仕組みでは、まずこの(Trusted Entityをコールする。</p>
-<p>Trusted Entityを使って、必要なIAMロールを持つ一時的なIAMユーザーをSTSから発行する。</p>
+<p>Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時的なIAMユーザーを作成する。</p>
 <p><img alt="AssumeRole" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png" /></p>
 <blockquote>
 <ul>
