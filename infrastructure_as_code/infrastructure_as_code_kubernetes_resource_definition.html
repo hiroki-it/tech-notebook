@@ -15285,10 +15285,10 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h3 id="specinitcontainers">.spec.initContainers<a class="headerlink" href="#specinitcontainers" title="Permanent link">&para;</a></h3>
 <h4 id="initcontainers">▼ initContainersとは<a class="headerlink" href="#initcontainers" title="Permanent link">&para;</a></h4>
 <p><code>.spec.containers</code>キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。</p>
-<p>事事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。</p>
+<p>事前処理 (例：待機処理、ツールのインストール処理、など) のために使用する。</p>
 <h4 id="speccontainers_1">▼ .spec.containers と同じ<a class="headerlink" href="#speccontainers_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実行例＊</strong></p>
-<p>dbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
+<p>別のPodのdbコンテナが起動するために時間が必要であり、appコンテナではそれを待機可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -17278,7 +17278,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>
