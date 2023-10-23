@@ -210,6 +210,18 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 ## 03. STSで発行されるIAMユーザー
 
+### Trusted Entityの事前作成
+
+事前に、元となるIAMユーザー (Trusted Entity) を作成しておく。
+
+AssumeRoleの仕組みでは、まずこの(Trusted Entityをコールする。
+
+Trusted Entityを使って、必要なIAMロールを持つ一時的なIAMユーザーをSTSから発行する。
+
+![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
+
+> - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
+
 ### IAMユーザーの自動更新
 
 STSで発行されたIAMユーザーには、そのAWSアカウント内のみで使用できるロールが紐付けられている。
@@ -217,10 +229,6 @@ STSで発行されたIAMユーザーには、そのAWSアカウント内のみ�
 この情報には有効秒数が存在し、期限が過ぎると新しいIAMユーザーになる。
 
 秒数の最大値は、該当するIAMロールの概要の最大セッション時間から変更できる。
-
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
-
-> - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
 
 <br>
 

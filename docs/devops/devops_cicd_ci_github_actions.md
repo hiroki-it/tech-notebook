@@ -33,7 +33,7 @@ GitHub Actionsの設定ファイルで定義されたパイプラインを実行
 
 #### ▼ Self hosted Runner
 
-GitHub Actionsをサーバー (例：オンプレサーバー、AWS EC2、など) でコンテナとして実行する。
+GitHub Actionsのパイプラインをサーバー (例：オンプレサーバー、AWS EC2、など) 上で実行する。
 
 > - https://fintan.jp/page/4177/
 
