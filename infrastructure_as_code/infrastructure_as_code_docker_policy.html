@@ -6627,7 +6627,8 @@
 <p>アプリを稼働させるには、最低限、webサーバーミドルウェア、アプリ、DBMSが必要である。</p>
 <p>これらのプロセスは、同じコンテナに共存させることなく、個別のコンテナで稼働させ、ネットワークで接続する。</p>
 <p><img alt="プロセス単位のコンテナ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png" /></p>
-<p>また、各コンテナでは起動コマンドを単一の親プロセスとし、これに子プロセスが紐づくようにする。</p>
+<p>コンテナでは、起点となるinitプロセスが、コンテナの起動コマンドを単一の親プロセスとして実行する。</p>
+<p>この親プロセスは、子プロセスを実行する。</p>
 <p><img alt="container_processes.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png" /></p>
 <p>なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。</p>
 <p>プロセス管理ツール (例：supervisor) を使用すると、終了順序を考えやすくなる。</p>
@@ -7289,7 +7290,7 @@ EOF
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>
