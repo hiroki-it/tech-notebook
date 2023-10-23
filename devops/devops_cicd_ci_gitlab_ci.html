@@ -6722,7 +6722,7 @@
 <p><br></p>
 <h2 id="01-gitlab-ci">01. GitLab CIの仕組み<a class="headerlink" href="#01-gitlab-ci" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>GitLab Runnerを実行環境として使用し、GitLabリポジトリの<code>gitlab-ci.yml</code>ファイルで定義されたパイプラインを実行する。</p>
+<p>GitLab Runnerは、GitLabリポジトリの<code>gitlab-ci.yml</code>ファイルをHTTPSで参照し、定義されたパイプラインを実行する。</p>
 <p><img alt="gitlab-ci_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -6733,7 +6733,7 @@
 <p><br></p>
 <h3 id="gitlab-runner">GitLab Runner<a class="headerlink" href="#gitlab-runner" title="Permanent link">&para;</a></h3>
 <h4 id="gitlab-runner_1">▼ GitLab Runnerとは<a class="headerlink" href="#gitlab-runner_1" title="Permanent link">&para;</a></h4>
-<p>GitLab CIの実行環境を用意する。</p>
+<p>GitLab CIの<code>gitlab-ci.yml</code>ファイルで定義されたパイプラインを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/runner/">https://docs.gitlab.com/runner/</a></li>
