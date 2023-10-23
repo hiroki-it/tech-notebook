@@ -17,7 +17,9 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 ### アーキテクチャ
 
-記入中...
+GitHub Actions Runnerは、GitHubリポジトリの設定ファイルをHTTPSで参照し、定義されたパイプラインを実行する。
+
+> - https://blog.devops.dev/a-deep-dive-into-devops-6-85f199efc3f8
 
 <br>
 
@@ -25,7 +27,7 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 #### ▼ GitHub Actions Runnerとは
 
-GitHub Actionsの実行環境を用意する。
+GitHub Actionsの設定ファイルで定義されたパイプラインを実行する。
 
 > - https://github.com/actions/runner
 
