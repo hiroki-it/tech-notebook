@@ -34,7 +34,9 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 ![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png)
 
-また、各コンテナでは起動コマンドを単一の親プロセスとし、これに子プロセスが紐づくようにする。
+コンテナでは、起点となるinitプロセスが、コンテナの起動コマンドを単一の親プロセスとして実行する。
+
+この親プロセスは、子プロセスを実行する。
 
 ![container_processes.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png)
 
