@@ -8193,7 +8193,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specsubsets">.spec.subsets<a class="headerlink" href="#specsubsets" title="Permanent link">&para;</a></h3>
 <h4 id="subsets">▼ subsetsとは<a class="headerlink" href="#subsets" title="Permanent link">&para;</a></h4>
 <p>ルーティング先のPodの<code>.metadata.labels</code>キーを設定する。</p>
-<p><code>.spec.subsets[].name</code>キーの値は、VirtualServiceで設定した<code>.spec.http[].route[].destination.subset</code>キーに合わせる必要がある。</p>
+<p><code>.spec.subsets[*].name</code>キーの値は、VirtualServiceで設定した<code>.spec.http[*].route[*].destination.subset</code>キーに合わせる必要がある。</p>
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
 <blockquote>
 <ul>
@@ -8705,7 +8705,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="tlscredentialname">▼ tls.credentialName<a class="headerlink" href="#tlscredentialname" title="Permanent link">&para;</a></h4>
 <p>GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。</p>
-<p>SSL証明書のファイルを指定する場合は、<code>.spec.servers[].tls.serverCertificate</code>キーを設定する。</p>
+<p>SSL証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code>キーを設定する。</p>
 <p>Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。</p>
 <blockquote>
 <ul>
@@ -8742,7 +8742,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="tlsservercertificate">▼ tls.serverCertificate<a class="headerlink" href="#tlsservercertificate" title="Permanent link">&para;</a></h4>
 <p>GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。</p>
-<p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[].tls.credentialName</code>キーを設定する。</p>
+<p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings</a></li>
@@ -9249,7 +9249,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="routeweight">▼ route.weight<a class="headerlink" href="#routeweight" title="Permanent link">&para;</a></h4>
 <p>Serviceの重み付けルーティングの割合を設定する。</p>
-<p><code>.spec.http[].route[].destination.subset</code>キーの値は、DestinationRuleで設定した<code>.spec.subsets[].name</code>キーに合わせる必要がある。</p>
+<p><code>.spec.http[*].route[*].destination.subset</code>キーの値は、DestinationRuleで設定した<code>.spec.subsets[*].name</code>キーに合わせる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination</a></li>
@@ -9353,7 +9353,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="service">宛先のServiceのポート番号について<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <p>Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。</p>
-<p>宛先のServiceの<code>.spec.ports[].name</code>キー (<code>&lt;プロトコル名&gt;-&lt;任意の文字列&gt;</code>) または<code>.spec.ports[].appProtocol</code>キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。</p>
+<p>宛先のServiceの<code>.spec.ports[*].name</code>キー (<code>&lt;プロトコル名&gt;-&lt;任意の文字列&gt;</code>) または<code>.spec.ports[*].appProtocol</code>キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。</p>
 <p><strong>＊例＊</strong></p>
 <p>appProtocolを使用しない場合は以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -9411,7 +9411,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

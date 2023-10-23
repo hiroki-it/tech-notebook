@@ -7378,7 +7378,7 @@
 <span class="w">          </span><span class="no">service: datadog-agent.tracing.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 8126</span>
 </code></pre></div>
-<p>Datadogに送信するためには、<code>mesh.extensionProviders[].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>Datadogに送信するためには、<code>mesh.extensionProviders[*].datadog</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7436,7 +7436,7 @@
 <span class="w">          </span><span class="no">service: opentelemetry-collector.tracing.svc.cluster.local</span>
 <span class="w">          </span><span class="no">port: 4317</span>
 </code></pre></div>
-<p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
+<p>OpenTelemetryに送信するためには、<code>mesh.extensionProviders[*].opentelemetry</code>キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7507,7 +7507,7 @@
 <li><a href="https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters">https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters</a></li>
 </ul>
 </blockquote>
-<p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
+<p>オプションを有効化すると、<code>istio-proxy</code>コンテナの<code>.spec.containers[*].lifecycle.postStart.exec.command</code>キーに、<code>pilot-agent -wait</code>コマンドが挿入される。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span>
 
 <span class="nt">spec</span><span class="p">:</span>
@@ -7734,7 +7734,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

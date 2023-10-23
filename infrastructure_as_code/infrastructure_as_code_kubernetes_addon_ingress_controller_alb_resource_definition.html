@@ -6046,8 +6046,8 @@
 </blockquote>
 <h4 id="_2">▼ オートディスカバリー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>ACMのSSL証明書のARNを指定せずとも、オートディスカバリーを使用して、ACMのSSL証明書を紐づけられる。</p>
-<p>aws-load-balancer-controllerは、Ingressの<code>.spec.tls</code>キーや<code>.spec.rules[].host</code>キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。</p>
-<p>例えばIngressで<code>.spec.rules[].hosts</code>キーに<code>foo.example.com</code>を設定していた場合、aws-load-balancer-controllerは<code>*.example.com</code>で認証されたSSL証明書をACMから探す。</p>
+<p>aws-load-balancer-controllerは、Ingressの<code>.spec.tls</code>キーや<code>.spec.rules[*].host</code>キーに基づいて、適切なACMのSSL証明書をALBに自動的に紐づける。</p>
+<p>例えばIngressで<code>.spec.rules[*].hosts</code>キーに<code>foo.example.com</code>を設定していた場合、aws-load-balancer-controllerは<code>*.example.com</code>で認証されたSSL証明書をACMから探す。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/guide/ingress/cert_discovery/#discover-via-ingress-rule-host</a></li>
@@ -6196,7 +6196,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

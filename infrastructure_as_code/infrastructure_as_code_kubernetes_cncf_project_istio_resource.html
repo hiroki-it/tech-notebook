@@ -6381,7 +6381,7 @@
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/istio/proxyv2:&lt;リビジョン番号&gt;</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">      </span><span class="c1"># 待ち受けるポート番号の仕様</span>
-<span class="w">      </span><span class="c1"># コンテナの公開ポートがspec.containers[].portsキーに定義されていなくても問題ない。</span>
+<span class="w">      </span><span class="c1"># コンテナの公開ポートがspec.containers[*].portsキーに定義されていなくても問題ない。</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15090</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-envoy-prom</span>
@@ -6544,7 +6544,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

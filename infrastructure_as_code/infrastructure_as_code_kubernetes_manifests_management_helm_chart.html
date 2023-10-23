@@ -7218,17 +7218,17 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p>そのため、<code>nameOverride</code>オプションでチャートをインストールした後に<code>fullnameOverride</code>オプションに移行したい場合、<code>nameOverride</code>オプションによるチャートを一度アンインストールする必要がある。</p>
 <p>しかし、そのまま<code>fullnameOverride</code>オプションに移行してしまうと、<code>nameOverride</code>オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。</p>
 <h4 id="imagepullpolicy">▼ image.pullPolicy<a class="headerlink" href="#imagepullpolicy" title="Permanent link">&para;</a></h4>
-<p>チャート内のDeploymentの<code>.spec.template.spec.containers[].imagePullPolicy</code>キーに値を設定する。</p>
+<p>チャート内のDeploymentの<code>.spec.template.spec.containers[*].imagePullPolicy</code>キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 </code></pre></div>
 <h4 id="imagerepository">▼ image.repository<a class="headerlink" href="#imagerepository" title="Permanent link">&para;</a></h4>
-<p>チャート内のDeploymentの<code>.spec.template.spec.containers[].image</code>キーのリポジトリ名部分に値を設定する。</p>
+<p>チャート内のDeploymentの<code>.spec.template.spec.containers[*].image</code>キーのリポジトリ名部分に値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-repository</span>
 </code></pre></div>
 <h4 id="imagetag">▼ image.tag<a class="headerlink" href="#imagetag" title="Permanent link">&para;</a></h4>
-<p>チャート内のDeploymentの<code>.spec.template.spec.containers[].image</code>キーのタグ値部分に値を設定する。</p>
+<p>チャート内のDeploymentの<code>.spec.template.spec.containers[*].image</code>キーのタグ値部分に値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.0.0</span>
 </code></pre></div>
@@ -7285,13 +7285,13 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h4 id="resources">▼ resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h4>
-<p>チャート内のDeploymentの<code>.spec.template.spec.containers[].resources</code>オプションに値を設定する。</p>
+<p>チャート内のDeploymentの<code>.spec.template.spec.containers[*].resources</code>オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50m</span>
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400Mi</span>
 </code></pre></div>
 <h4 id="securitycontext">▼ securityContext<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
-<p>チャート内のDeploymentの<code>.spec.template.spec.containers[].securityContext</code>オプションに値を設定する。</p>
+<p>チャート内のDeploymentの<code>.spec.template.spec.containers[*].securityContext</code>オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">  </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
@@ -7331,7 +7331,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

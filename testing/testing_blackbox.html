@@ -6730,7 +6730,7 @@
 <tr>
 <td>IT</td>
 <td>metrics-server + <br>HorizontalPodAutoscaler</td>
-<td>HorizontalPodAutoscalerからメトリクスを取得できるかを確認する。例えば、事前に<code>.spec.containers[].resources</code>キーが設定されたDeploymentを確認しておく。<code>kubectl get hpa -A</code>コマンドで、Target列が<code>&lt;unknown&gt;</code>になっていないことを確認する。</td>
+<td>HorizontalPodAutoscalerからメトリクスを取得できるかを確認する。例えば、事前に<code>.spec.containers[*].resources</code>キーが設定されたDeploymentを確認しておく。<code>kubectl get hpa -A</code>コマンドで、Target列が<code>&lt;unknown&gt;</code>になっていないことを確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -6768,7 +6768,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

@@ -5970,7 +5970,7 @@
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>するとExternalDNSアドオンは、Ingressの<code>.spec.rules[].host</code>キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。</p>
+<p>するとExternalDNSアドオンは、Ingressの<code>.spec.rules[*].host</code>キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>external-dns<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>example.com
 
 <span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-02-28T10:09:30Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;Desired change: CREATE example.com A [Id: /hostedzone/*****]&quot;</span>
@@ -6178,7 +6178,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

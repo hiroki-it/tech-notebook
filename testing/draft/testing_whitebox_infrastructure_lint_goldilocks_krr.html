@@ -5581,7 +5581,7 @@
 <h2 id="01-krr">01. krrの仕組み<a class="headerlink" href="#01-krr" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。</p>
-<p>CPUの<code>.spec.containers[].resources.limits</code>キー値の設定はアンチパターンとして扱っており、未設定を推奨している。</p>
+<p>CPUの<code>.spec.containers[*].resources.limits</code>キー値の設定はアンチパターンとして扱っており、未設定を推奨している。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/robusta-dev/krr">https://github.com/robusta-dev/krr</a></li>
@@ -5623,7 +5623,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

@@ -6243,7 +6243,7 @@
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <p>ここでは、Deploymentの差分を設定する。</p>
-<p><code>.spec.template.spec.containers[].resources</code>キー以下は<code>base</code>ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。</p>
+<p><code>.spec.template.spec.containers[*].resources</code>キー以下は<code>base</code>ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6313,7 +6313,7 @@ viaduct.ai/v1/ksops/ksops
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

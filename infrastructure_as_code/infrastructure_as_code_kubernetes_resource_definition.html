@@ -4654,7 +4654,7 @@
         
           <li class="md-nav__item">
   <a href="#specruleshost" class="md-nav__link">
-    ▼ .spec.rules[].host
+    ▼ .spec.rules[*].host
   </a>
   
 </li>
@@ -5644,10 +5644,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainerslivenessprobe" class="md-nav__link">
-    .spec.containers[].livenessProbe
+    .spec.containers[*].livenessProbe
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].livenessProbe">
+    <nav class="md-nav" aria-label=".spec.containers[*].livenessProbe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5706,10 +5706,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainersreadinessprobe" class="md-nav__link">
-    .spec.containers[].readinessProbe
+    .spec.containers[*].readinessProbe
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].readinessProbe">
+    <nav class="md-nav" aria-label=".spec.containers[*].readinessProbe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5761,10 +5761,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainerssecuritycontext" class="md-nav__link">
-    .spec.containers[].securityContext
+    .spec.containers[*].securityContext
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].securityContext">
+    <nav class="md-nav" aria-label=".spec.containers[*].securityContext">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5781,10 +5781,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainersvolumemounts" class="md-nav__link">
-    .spec.containers[].volumeMounts
+    .spec.containers[*].volumeMounts
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].volumeMounts">
+    <nav class="md-nav" aria-label=".spec.containers[*].volumeMounts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -10071,7 +10071,7 @@
         
           <li class="md-nav__item">
   <a href="#specruleshost" class="md-nav__link">
-    ▼ .spec.rules[].host
+    ▼ .spec.rules[*].host
   </a>
   
 </li>
@@ -11061,10 +11061,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainerslivenessprobe" class="md-nav__link">
-    .spec.containers[].livenessProbe
+    .spec.containers[*].livenessProbe
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].livenessProbe">
+    <nav class="md-nav" aria-label=".spec.containers[*].livenessProbe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -11123,10 +11123,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainersreadinessprobe" class="md-nav__link">
-    .spec.containers[].readinessProbe
+    .spec.containers[*].readinessProbe
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].readinessProbe">
+    <nav class="md-nav" aria-label=".spec.containers[*].readinessProbe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -11178,10 +11178,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainerssecuritycontext" class="md-nav__link">
-    .spec.containers[].securityContext
+    .spec.containers[*].securityContext
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].securityContext">
+    <nav class="md-nav" aria-label=".spec.containers[*].securityContext">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -11198,10 +11198,10 @@
         
           <li class="md-nav__item">
   <a href="#speccontainersvolumemounts" class="md-nav__link">
-    .spec.containers[].volumeMounts
+    .spec.containers[*].volumeMounts
   </a>
   
-    <nav class="md-nav" aria-label=".spec.containers[].volumeMounts">
+    <nav class="md-nav" aria-label=".spec.containers[*].volumeMounts">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -12700,7 +12700,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
-<p>実際に使用するCluster名とユーザー名を、<code>.contexts[].context.cluster</code>キーと<code>.contexts[].context.user</code>キーから選んで設定する。</p>
+<p>実際に使用するCluster名とユーザー名を、<code>.contexts[*].context.cluster</code>キーと<code>.contexts[*].context.user</code>キーから選んで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Config</span>
 <span class="nt">contexts</span><span class="p">:</span>
@@ -13426,7 +13426,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="spechosts">.spec.hosts<a class="headerlink" href="#spechosts" title="Permanent link">&para;</a></h3>
 <h4 id="hosts">▼ hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>ルーティング条件とするHostヘッダーの値を設定する。</p>
-<p><code>.spec.rules[].hosts</code>キーを設定しなければ、全てのHostヘッダー値が対象になる。</p>
+<p><code>.spec.rules[*].hosts</code>キーを設定しなければ、全てのHostヘッダー値が対象になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -13445,7 +13445,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86">https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86</a></li>
 </ul>
 </blockquote>
-<h4 id="specruleshost">▼ .spec.rules[].host<a class="headerlink" href="#specruleshost" title="Permanent link">&para;</a></h4>
+<h4 id="specruleshost">▼ .spec.rules[*].host<a class="headerlink" href="#specruleshost" title="Permanent link">&para;</a></h4>
 <p>ホストベースルーティングの判定に使用するパス名を設定する。</p>
 <p>本番環境では、ドメインを指定した各種ダッシュボードにアクセス可能にする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
@@ -13460,7 +13460,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 </code></pre></div>
-<h4 id="specruleshttppathspath">▼ .spec.rules[].http.paths[].path<a class="headerlink" href="#specruleshttppathspath" title="Permanent link">&para;</a></h4>
+<h4 id="specruleshttppathspath">▼ .spec.rules[<em>].http.paths[</em>].path<a class="headerlink" href="#specruleshttppathspath" title="Permanent link">&para;</a></h4>
 <p>パスベースルーティングの判定に使用するパス名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
@@ -13481,7 +13481,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#examples">https://kubernetes.io/docs/concepts/services-networking/ingress/#examples</a></li>
 </ul>
 </blockquote>
-<h4 id="specruleshttppathspathtype">▼ .spec.rules[].http.paths[].pathType<a class="headerlink" href="#specruleshttppathspathtype" title="Permanent link">&para;</a></h4>
+<h4 id="specruleshttppathspathtype">▼ .spec.rules[<em>].http.paths[</em>].pathType<a class="headerlink" href="#specruleshttppathspathtype" title="Permanent link">&para;</a></h4>
 <p>パスベースルーティング判定時のルールの厳しさを設定する。</p>
 <table>
 <thead>
@@ -13532,7 +13532,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/2066">https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/2066</a></li>
 </ul>
 </blockquote>
-<h4 id="specruleshttppathsbackend">▼ .spec.rules[].http.paths[].backend<a class="headerlink" href="#specruleshttppathsbackend" title="Permanent link">&para;</a></h4>
+<h4 id="specruleshttppathsbackend">▼ .spec.rules[<em>].http.paths[</em>].backend<a class="headerlink" href="#specruleshttppathsbackend" title="Permanent link">&para;</a></h4>
 <p>宛先のServiceを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
@@ -13968,7 +13968,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speclimit">.spec.limit<a class="headerlink" href="#speclimit" title="Permanent link">&para;</a></h3>
 <h4 id="container">▼ Containerの場合<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
 <p>Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。</p>
-<p>Podの<code>.spec.containers[].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
+<p>Podの<code>.spec.containers[*].resources</code>キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14063,7 +14063,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
 <p>Node側のマウント元のディレクトリを設定する。</p>
-<p>Podのマウントポイントは、Podの<code>.spec.containers[].volumeMount</code>キーで設定する。</p>
+<p>Podのマウントポイントは、Podの<code>.spec.containers[*].volumeMount</code>キーで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14689,7 +14689,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <h4 id="ports_1">▼ ports<a class="headerlink" href="#ports_1" title="Permanent link">&para;</a></h4>
 <p>コンテナが待ち受けるポート番号を、仕様として設定する。</p>
-<p>単なる仕様であるため、コンテナがポート番号を公開してさえいれば、<code>.spec.containers[].ports</code>キーは設定しなくとも問題ない。</p>
+<p>単なる仕様であるため、コンテナがポート番号を公開してさえいれば、<code>.spec.containers[*].ports</code>キーは設定しなくとも問題ない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14902,7 +14902,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">workingDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/go/src</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="speccontainerslivenessprobe">.spec.containers[].livenessProbe<a class="headerlink" href="#speccontainerslivenessprobe" title="Permanent link">&para;</a></h3>
+<h3 id="speccontainerslivenessprobe">.spec.containers[*].livenessProbe<a class="headerlink" href="#speccontainerslivenessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletは、Pod内のコンテナが起動しているか否かのヘルスチェックを行う。</p>
 <p>ReadinessProbeチェックよりもヘルスチェックの意味合いが強い。</p>
@@ -14974,7 +14974,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <h4 id="graceperiodseconds">▼ gracePeriodSeconds<a class="headerlink" href="#graceperiodseconds" title="Permanent link">&para;</a></h4>
 <p><code>2</code>回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、初回のLivenessProbeヘルスチェックは、<code>.spec.containers[].livenessProbe.initialDelaySeconds</code>キーで設定する。</p>
+<p>注意として、初回のLivenessProbeヘルスチェックは、<code>.spec.containers[*].livenessProbe.initialDelaySeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -14991,7 +14991,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <h4 id="initialdelayseconds">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds" title="Permanent link">&para;</a></h4>
 <p>初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[].livenessProbe.gracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、<code>2</code>回目以降のLivenessProbeによる再起動は、<code>.spec.containers[*].livenessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -15036,7 +15036,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="speccontainersreadinessprobe">.spec.containers[].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
+<h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。</p>
 <p>コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。</p>
@@ -15072,7 +15072,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </code></pre></div>
 <h4 id="graceperiodseconds_1">▼ gracePeriodSeconds<a class="headerlink" href="#graceperiodseconds_1" title="Permanent link">&para;</a></h4>
 <p><code>2</code>回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、初回のReadinessProbeヘルスチェックは、<code>.spec.containers[].readinessProbe.initialDelaySeconds</code>キーで設定する。</p>
+<p>注意として、初回のReadinessProbeヘルスチェックは、<code>.spec.containers[*].readinessProbe.initialDelaySeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -15089,7 +15089,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </code></pre></div>
 <h4 id="initialdelayseconds_1">▼ initialDelaySeconds<a class="headerlink" href="#initialdelayseconds_1" title="Permanent link">&para;</a></h4>
 <p>初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。</p>
-<p>注意として、<code>2</code>回目以降のreadinessProbeによる再起動は、<code>.spec.containers[].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
+<p>注意として、<code>2</code>回目以降のreadinessProbeによる再起動は、<code>.spec.containers[*].readinessProbe.gracePeriodSeconds</code>キーで設定する。</p>
 <p>この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。</p>
 <p>設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -15131,7 +15131,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="speccontainerssecuritycontext">.spec.containers[].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
+<h3 id="speccontainerssecuritycontext">.spec.containers[*].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext">▼ securityContextとは<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
 <p>Pod内の特定のコンテナに対して、認可スコープを設定する。</p>
 <p>オプションは、<code>.spec.securityContext</code>キーと同じである。</p>
@@ -15141,7 +15141,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="speccontainersvolumemounts">.spec.containers[].volumeMounts<a class="headerlink" href="#speccontainersvolumemounts" title="Permanent link">&para;</a></h3>
+<h3 id="speccontainersvolumemounts">.spec.containers[*].volumeMounts<a class="headerlink" href="#speccontainersvolumemounts" title="Permanent link">&para;</a></h3>
 <h4 id="volumemounts_1">▼ volumeMountsとは<a class="headerlink" href="#volumemounts_1" title="Permanent link">&para;</a></h4>
 <p>PodのVolume内のディレクトリをコンテナにマウントする。</p>
 <h4 id="subpath">▼ subPath<a class="headerlink" href="#subpath" title="Permanent link">&para;</a></h4>
@@ -15807,7 +15807,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="maxskew">▼ maxSkew<a class="headerlink" href="#maxskew" title="Permanent link">&para;</a></h4>
-<p><code>.spec.topologySpreadConstraints[].topologyKey</code>キーで指定した分散の単位の間で、Podの個数差を設定する。</p>
+<p><code>.spec.topologySpreadConstraints[*].topologyKey</code>キーで指定した分散の単位の間で、Podの個数差を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>AZが<code>2</code>個あるとすると、各AZ間のPodの個数差を<code>1</code>個にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -16119,7 +16119,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="secret">▼ secret<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
 <p>Secretの<code>.data</code>キー配下のキーをファイルとしてマウントする。</p>
-<p><code>.spec.containers[].envFrom</code>キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。</p>
+<p><code>.spec.containers[*].envFrom</code>キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。</p>
 <p>ConfigMapをマウントする場合は、<code>.spec.volumes.configMap</code>キーで設定することに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Secretが持つ認証情報ファイル (ここでは<code>credentials.json</code>キー) をコンテナにファイルとしてマウントする</p>

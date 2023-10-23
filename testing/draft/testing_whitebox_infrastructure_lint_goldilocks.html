@@ -5566,7 +5566,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-goldilocks">01. goldilocksの仕組み<a class="headerlink" href="#01-goldilocks" title="Permanent link">&para;</a></h2>
-<p>IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適な設定値 (<code>.spec.containers[].resources.limits</code>キー) を算出できる</p>
+<p>IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適な設定値 (<code>.spec.containers[*].resources.limits</code>キー) を算出できる</p>
 <p>実際のClusterにアクセスしないと解析できない。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -5595,7 +5595,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>-n<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-31</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

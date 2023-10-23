@@ -7107,8 +7107,8 @@
 <h3 id="managedfields">managedFieldsとは<a class="headerlink" href="#managedfields" title="Permanent link">&para;</a></h3>
 <p>特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。</p>
 <p><code>kubectl apply</code>コマンドで<code>--server-side</code>オプションを有効化した場合に作成される。</p>
-<p><code>.metadata.managedFields[].manager</code>キーで、クライアント (<code>kubectl</code>クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。</p>
-<p><code>.metadata.managedFields[].manager</code>キーにないマネージャーはマニフェストを変更できない。</p>
+<p><code>.metadata.managedFields[*].manager</code>キーで、クライアント (<code>kubectl</code>クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。</p>
+<p><code>.metadata.managedFields[*].manager</code>キーにないマネージャーはマニフェストを変更できない。</p>
 <p><code>.metadata.managedFields</code>キー配下にマネージャーを新しく追加するためには、基本的には<code>--force-conflicts</code>オプションを使用する必要がある (他にも方法はあるが) 。</p>
 <p>ただし、kube-controllerやOperatorでは常に<code>--force-conflicts</code>オプションを実行するようになっている。</p>
 <blockquote>
@@ -7299,7 +7299,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

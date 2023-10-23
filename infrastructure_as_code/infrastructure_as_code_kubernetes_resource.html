@@ -8304,10 +8304,10 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>これらのプロセスはそれぞれ独立して実施され、ユーザーは制御できない。</p>
 <p>例えば、Serviceとkube-proxyがPodの宛先情報を削除する前にPodが削除してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまう。</p>
 <p>また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。</p>
-<p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
+<p>そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの<code>.spec.containers[*].lifecycle.preStop</code>キーに任意の秒数を設定し、コンテナに待機処理 (例：<code>sleep</code>コマンド) を実行させる必要がある。</p>
 <p>また、コンテナの正常な終了後にPodを終了できるように、<code>.spec.terminationGracePeriodSeconds</code>キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
-<p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを終了可能にする。</p>
+<p><code>.spec.terminationGracePeriodSeconds</code>キーを長めに設定し、<code>.spec.containers[*].lifecycle.preStop</code>キーの秒数も含めて、全てが完了した上でPodを終了可能にする。</p>
 <p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -8324,7 +8324,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>最初にpreStopフックが起動し、<code>.spec.containers[].lifecycle.preStop</code>キーで設定した待機処理をコンテナが実行する。</p>
+<p>最初にpreStopフックが起動し、<code>.spec.containers[*].lifecycle.preStop</code>キーで設定した待機処理をコンテナが実行する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -8332,7 +8332,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p><code>.spec.containers[].lifecycle.preStop</code>キーによるコンテナの待機処理が終了する。</p>
+<p><code>.spec.containers[*].lifecycle.preStop</code>キーによるコンテナの待機処理が終了する。</p>
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
@@ -9441,7 +9441,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

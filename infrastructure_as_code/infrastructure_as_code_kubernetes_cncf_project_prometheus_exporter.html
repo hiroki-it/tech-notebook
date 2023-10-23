@@ -7446,7 +7446,7 @@ kube_pod_info
 <tr>
 <td><code>kube_pod_container_resource_limits</code></td>
 <td>Count</td>
-<td>Podのハードウェアリソースの<code>.spec.containers[].resources.limits</code>キーを表す。設定していなければ<code>null</code>になる。</td>
+<td>Podのハードウェアリソースの<code>.spec.containers[*].resources.limits</code>キーを表す。設定していなければ<code>null</code>になる。</td>
 <td><code>kube_pod_container_resource_limits{job="kube-state-metrics"}</code></td>
 </tr>
 <tr>
@@ -7808,7 +7808,7 @@ redis_exporter_build_info<span class="o">{</span><span class="nv">build_date</sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

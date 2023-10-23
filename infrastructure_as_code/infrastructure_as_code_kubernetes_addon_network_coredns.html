@@ -6411,7 +6411,7 @@ $<span class="w"> </span>dig<span class="w"> </span>nginx-service.default.svc.cl
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、<code>.spec.containers[].ports</code>キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。</p>
+<p>Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、<code>.spec.containers[*].ports</code>キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する</span>
@@ -6472,7 +6472,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

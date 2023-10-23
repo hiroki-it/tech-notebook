@@ -7525,7 +7525,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td>GroupLabels</td>
 <td>map型</td>
 <td>・<code>.GroupLabels.alertname</code> <br>・<code>.GroupLabels.instance</code> <br>・<code>.GroupLabels.job</code></td>
-<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[].rules[].labels</code>キー配下で設定したユーザー定義のラベルも含む。<br>- <a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
+<td>特定のアラートグループに関するラベルが割り当てられている。<code>.spec.groups[*].rules[*].labels</code>キー配下で設定したユーザー定義のラベルも含む。<br>- <a href="https://prometheus.io/docs/alerting/latest/notifications/#kv">https://prometheus.io/docs/alerting/latest/notifications/#kv</a></td>
 </tr>
 <tr>
 <td>CommonLabels</td>
@@ -7537,7 +7537,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td>CommonAnnotations</td>
 <td>map型</td>
 <td><code>.CommonAnnotations.summary</code></td>
-<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[].rules[].labels</code>キー配下で設定したユーザー定義のアノテーションも含む。</td>
+<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code>キー配下で設定したユーザー定義のアノテーションも含む。</td>
 </tr>
 <tr>
 <td>ExternalURL</td>
@@ -7975,7 +7975,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

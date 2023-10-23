@@ -6330,7 +6330,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="ssl">▼ SSL証明書を使用する<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
-<p>Ingressの<code>.spec.tls[].secretName</code>キーにて、Secretを設定する。</p>
+<p>Ingressの<code>.spec.tls[*].secretName</code>キーにて、Secretを設定する。</p>
 <p>これにより、IngressにSSL証明書を割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
@@ -6569,7 +6569,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>

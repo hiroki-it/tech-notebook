@@ -8583,7 +8583,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </blockquote>
 <h4 id="respectignoredifferences">▼ 合わせて<code>RespectIgnoreDifferences</code>キーも使う<a class="headerlink" href="#respectignoredifferences" title="Permanent link">&para;</a></h4>
 <p>注意点として、Syncステータスの判定時に無視されるのみで、内部的にSyncは実行されてしまうため、Syncのたびに設定値が元に戻ってしまう。</p>
-<p>そこで別途、<code>.spec.syncPolicy.syncOptions[].RespectIgnoreDifferences</code>キーも有効にしておくと良い。</p>
+<p>そこで別途、<code>.spec.syncPolicy.syncOptions[*].RespectIgnoreDifferences</code>キーも有効にしておくと良い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9790,7 +9790,7 @@ spec:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
       
     
   </small>
