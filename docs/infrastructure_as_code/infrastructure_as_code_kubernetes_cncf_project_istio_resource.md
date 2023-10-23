@@ -102,7 +102,7 @@ spec:
       image: docker.io/istio/proxyv2:<リビジョン番号>
       name: istio-proxy
       # 待ち受けるポート番号の仕様
-      # コンテナの公開ポートがspec.containers[].portsキーに定義されていなくても問題ない。
+      # コンテナの公開ポートがspec.containers[*].portsキーに定義されていなくても問題ない。
       ports:
         - containerPort: 15090
           name: http-envoy-prom

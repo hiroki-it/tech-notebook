@@ -520,7 +520,7 @@ data:
           port: 8126
 ```
 
-Datadogに送信するためには、`mesh.extensionProviders[].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+Datadogに送信するためには、`mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
@@ -585,7 +585,7 @@ data:
           port: 4317
 ```
 
-OpenTelemetryに送信するためには、`mesh.extensionProviders[].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+OpenTelemetryに送信するためには、`mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1alpha1
@@ -660,7 +660,7 @@ data:
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 > - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
 
-オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+オプションを有効化すると、`istio-proxy`コンテナの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
 
 ```yaml
 ...

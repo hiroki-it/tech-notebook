@@ -330,13 +330,13 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 また、コンテナを停止する前にPodを終了してしまうと、コンテナを強制的に終了することになり、ログにエラーが出力されてしまう。
 
-そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.containers[].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
+そのため、Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.containers[*].lifecycle.preStop`キーに任意の秒数を設定し、コンテナに待機処理 (例：`sleep`コマンド) を実行させる必要がある。
 
 また、コンテナの正常な終了後にPodを終了できるように、`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定し、Podの終了に伴う一連のプロセスの完了を待機する必要がある。
 
 これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。
 
-`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを終了可能にする。
+`.spec.terminationGracePeriodSeconds`キーを長めに設定し、`.spec.containers[*].lifecycle.preStop`キーの秒数も含めて、全てが完了した上でPodを終了可能にする。
 
 ![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
 
@@ -354,7 +354,7 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 `(4)`
 
-: 最初にpreStopフックが起動し、`.spec.containers[].lifecycle.preStop`キーで設定した待機処理をコンテナが実行する。
+: 最初にpreStopフックが起動し、`.spec.containers[*].lifecycle.preStop`キーで設定した待機処理をコンテナが実行する。
 
 `(5)`
 
@@ -362,7 +362,7 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 `(6)`
 
-: `.spec.containers[].lifecycle.preStop`キーによるコンテナの待機処理が終了する。
+: `.spec.containers[*].lifecycle.preStop`キーによるコンテナの待機処理が終了する。
 
 `(7)`
 

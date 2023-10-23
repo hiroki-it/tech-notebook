@@ -351,9 +351,9 @@ rules: ... # 特定のKubernetesリソースの認可スコープを狭めたい
 
 `kubectl apply`コマンドで`--server-side`オプションを有効化した場合に作成される。
 
-`.metadata.managedFields[].manager`キーで、クライアント (`kubectl`クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。
+`.metadata.managedFields[*].manager`キーで、クライアント (`kubectl`クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。
 
-`.metadata.managedFields[].manager`キーにないマネージャーはマニフェストを変更できない。
+`.metadata.managedFields[*].manager`キーにないマネージャーはマニフェストを変更できない。
 
 `.metadata.managedFields`キー配下にマネージャーを新しく追加するためには、基本的には`--force-conflicts`オプションを使用する必要がある (他にも方法はあるが) 。
 

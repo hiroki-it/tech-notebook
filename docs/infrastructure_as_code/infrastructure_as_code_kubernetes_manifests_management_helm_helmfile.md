@@ -351,7 +351,7 @@ releases:
 
 #### ▼ name
 
-チャートリポジトリ名を設定する。ここで設定したリポジトリ名は、`releases[].chart`キーでも使用する。
+チャートリポジトリ名を設定する。ここで設定したリポジトリ名は、`releases[*].chart`キーでも使用する。
 
 ```yaml
 repositories:

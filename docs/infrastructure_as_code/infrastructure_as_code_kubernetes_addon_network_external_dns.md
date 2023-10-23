@@ -54,7 +54,7 @@ spec:
             pathType: Prefix
 ```
 
-するとExternalDNSアドオンは、Ingressの`.spec.rules[].host`キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
+するとExternalDNSアドオンは、Ingressの`.spec.rules[*].host`キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
 
 ```bash
 $ kubectl logs external-dns -n kube-system | grep example.com

@@ -269,7 +269,7 @@ contexts:
 
 #### ▼ context
 
-実際に使用するCluster名とユーザー名を、`.contexts[].context.cluster`キーと`.contexts[].context.user`キーから選んで設定する。
+実際に使用するCluster名とユーザー名を、`.contexts[*].context.cluster`キーと`.contexts[*].context.user`キーから選んで設定する。
 
 ```yaml
 apiVersion: v1
@@ -1142,7 +1142,7 @@ spec:
 
 ルーティング条件とするHostヘッダーの値を設定する。
 
-`.spec.rules[].hosts`キーを設定しなければ、全てのHostヘッダー値が対象になる。
+`.spec.rules[*].hosts`キーを設定しなければ、全てのHostヘッダー値が対象になる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1167,7 +1167,7 @@ Ingressを使用する場合、宛先のServiceは、ClusterIP Serviceとする�
 
 > - https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86
 
-#### ▼ .spec.rules[].host
+#### ▼ .spec.rules[*].host
 
 ホストベースルーティングの判定に使用するパス名を設定する。
 
@@ -1187,7 +1187,7 @@ spec:
           - path: /
 ```
 
-#### ▼ .spec.rules[].http.paths[].path
+#### ▼ .spec.rules[*].http.paths[*].path
 
 パスベースルーティングの判定に使用するパス名を設定する。
 
@@ -1209,7 +1209,7 @@ spec:
 
 > - https://kubernetes.io/docs/concepts/services-networking/ingress/#examples
 
-#### ▼ .spec.rules[].http.paths[].pathType
+#### ▼ .spec.rules[*].http.paths[*].pathType
 
 パスベースルーティング判定時のルールの厳しさを設定する。
 
@@ -1241,7 +1241,7 @@ spec:
 > - https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#better-path-matching-with-path-types
 > - https://github.com/kubernetes-sigs/aws-load-balancer-controller/issues/2066
 
-#### ▼ .spec.rules[].http.paths[].backend
+#### ▼ .spec.rules[*].http.paths[*].backend
 
 宛先のServiceを設定する。
 
@@ -1760,7 +1760,7 @@ Kubernetesの実行時に自動的に作成される。
 
 Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。
 
-Podの`.spec.containers[].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。
+Podの`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。
 
 ```yaml
 apiVersion: v1
@@ -1883,7 +1883,7 @@ Volumeの一種であるHostPath Volumeとは区別すること。
 
 Node側のマウント元のディレクトリを設定する。
 
-Podのマウントポイントは、Podの`.spec.containers[].volumeMount`キーで設定する。
+Podのマウントポイントは、Podの`.spec.containers[*].volumeMount`キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -2586,7 +2586,7 @@ spec:
 
 コンテナが待ち受けるポート番号を、仕様として設定する。
 
-単なる仕様であるため、コンテナがポート番号を公開してさえいれば、`.spec.containers[].ports`キーは設定しなくとも問題ない。
+単なる仕様であるため、コンテナがポート番号を公開してさえいれば、`.spec.containers[*].ports`キーは設定しなくとも問題ない。
 
 ```yaml
 apiVersion: v1
@@ -2776,7 +2776,7 @@ spec:
 
 <br>
 
-### .spec.containers[].livenessProbe
+### .spec.containers[*].livenessProbe
 
 #### ▼ livenessProbeとは
 
@@ -2839,7 +2839,7 @@ spec:
 
 `2`回目以降のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、初回のLivenessProbeヘルスチェックは、`.spec.containers[].livenessProbe.initialDelaySeconds`キーで設定する。
+注意として、初回のLivenessProbeヘルスチェックは、`.spec.containers[*].livenessProbe.initialDelaySeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -2863,7 +2863,7 @@ spec:
 
 初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、`2`回目以降のLivenessProbeによる再起動は、`.spec.containers[].livenessProbe.gracePeriodSeconds`キーで設定する。
+注意として、`2`回目以降のLivenessProbeによる再起動は、`.spec.containers[*].livenessProbe.gracePeriodSeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -2923,7 +2923,7 @@ spec:
 
 <br>
 
-### .spec.containers[].readinessProbe
+### .spec.containers[*].readinessProbe
 
 #### ▼ readinessProbeとは
 
@@ -2972,7 +2972,7 @@ spec:
 
 `2`回目以降のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[].readinessProbe.initialDelaySeconds`キーで設定する。
+注意として、初回のReadinessProbeヘルスチェックは、`.spec.containers[*].readinessProbe.initialDelaySeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -2996,7 +2996,7 @@ spec:
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
-注意として、`2`回目以降のreadinessProbeによる再起動は、`.spec.containers[].readinessProbe.gracePeriodSeconds`キーで設定する。
+注意として、`2`回目以降のreadinessProbeによる再起動は、`.spec.containers[*].readinessProbe.gracePeriodSeconds`キーで設定する。
 
 この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
@@ -3052,7 +3052,7 @@ spec:
 
 <br>
 
-### .spec.containers[].securityContext
+### .spec.containers[*].securityContext
 
 #### ▼ securityContextとは
 
@@ -3064,7 +3064,7 @@ Pod内の特定のコンテナに対して、認可スコープを設定する�
 
 <br>
 
-### .spec.containers[].volumeMounts
+### .spec.containers[*].volumeMounts
 
 #### ▼ volumeMountsとは
 
@@ -3827,7 +3827,7 @@ spec:
 
 #### ▼ maxSkew
 
-`.spec.topologySpreadConstraints[].topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
+`.spec.topologySpreadConstraints[*].topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
 
 **＊実装例＊**
 
@@ -4186,7 +4186,7 @@ spec:
 
 Secretの`.data`キー配下のキーをファイルとしてマウントする。
 
-`.spec.containers[].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。
+`.spec.containers[*].envFrom`キー (環境変数としてコンテナに出力する) とは異なり、ファイルを持つSecretを設定する。
 
 ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設定することに注意する。
 

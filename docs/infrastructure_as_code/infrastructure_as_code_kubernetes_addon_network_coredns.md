@@ -285,7 +285,7 @@ $ kubectl get service <Service名> -o yaml | grep targetPort:
 
 `(2)`
 
-: Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[].ports`キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+: Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[*].ports`キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
 # 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する

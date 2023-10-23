@@ -332,7 +332,7 @@ $ kubectl get fo
 
 CRDに対応するカスタムリソースに関して、APIグループのバージョンを設定する。
 
-複数のバージョンのCRDをCluster内で同時に管理する場合、`.spec.versions[].name`キー配下に複数のスキーマを定義する。
+複数のバージョンのCRDをCluster内で同時に管理する場合、`.spec.versions[*].name`キー配下に複数のスキーマを定義する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

@@ -147,7 +147,7 @@ spec:
 
 ここでは、Deploymentの差分を設定する。
 
-`.spec.template.spec.containers[].resources`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+`.spec.template.spec.containers[*].resources`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1

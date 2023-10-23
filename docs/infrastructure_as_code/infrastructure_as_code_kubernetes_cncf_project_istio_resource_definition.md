@@ -351,7 +351,7 @@ spec:
 
 ルーティング先のPodの`.metadata.labels`キーを設定する。
 
-`.spec.subsets[].name`キーの値は、VirtualServiceで設定した`.spec.http[].route[].destination.subset`キーに合わせる必要がある。
+`.spec.subsets[*].name`キーの値は、VirtualServiceで設定した`.spec.http[*].route[*].destination.subset`キーに合わせる必要がある。
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
@@ -938,7 +938,7 @@ spec:
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。
 
-SSL証明書のファイルを指定する場合は、`.spec.servers[].tls.serverCertificate`キーを設定する。
+SSL証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate`キーを設定する。
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
@@ -980,7 +980,7 @@ spec:
 
 GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。
 
-SSL証明書を保持するSecretを指定する場合は、`.spec.servers[].tls.credentialName`キーを設定する。
+SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
@@ -1583,7 +1583,7 @@ spec:
 
 Serviceの重み付けルーティングの割合を設定する。
 
-`.spec.http[].route[].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[].name`キーに合わせる必要がある。
+`.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
@@ -1711,7 +1711,7 @@ spec:
 
 Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。
 
-宛先のServiceの`.spec.ports[].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
+宛先のServiceの`.spec.ports[*].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[*].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
 
 **＊例＊**
 

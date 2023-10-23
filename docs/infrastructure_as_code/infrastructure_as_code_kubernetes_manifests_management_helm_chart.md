@@ -352,7 +352,7 @@ fullnameOverride: foo
 
 #### ▼ image.pullPolicy
 
-チャート内のDeploymentの`.spec.template.spec.containers[].imagePullPolicy`キーに値を設定する。
+チャート内のDeploymentの`.spec.template.spec.containers[*].imagePullPolicy`キーに値を設定する。
 
 ```yaml
 image:
@@ -361,7 +361,7 @@ image:
 
 #### ▼ image.repository
 
-チャート内のDeploymentの`.spec.template.spec.containers[].image`キーのリポジトリ名部分に値を設定する。
+チャート内のDeploymentの`.spec.template.spec.containers[*].image`キーのリポジトリ名部分に値を設定する。
 
 ```yaml
 image:
@@ -370,7 +370,7 @@ image:
 
 #### ▼ image.tag
 
-チャート内のDeploymentの`.spec.template.spec.containers[].image`キーのタグ値部分に値を設定する。
+チャート内のDeploymentの`.spec.template.spec.containers[*].image`キーのタグ値部分に値を設定する。
 
 ```yaml
 image:
@@ -473,7 +473,7 @@ replicaCount: 3
 
 #### ▼ resources
 
-チャート内のDeploymentの`.spec.template.spec.containers[].resources`オプションに値を設定する。
+チャート内のDeploymentの`.spec.template.spec.containers[*].resources`オプションに値を設定する。
 
 ```yaml
 resources:
@@ -483,7 +483,7 @@ resources:
 
 #### ▼ securityContext
 
-チャート内のDeploymentの`.spec.template.spec.containers[].securityContext`オプションに値を設定する。
+チャート内のDeploymentの`.spec.template.spec.containers[*].securityContext`オプションに値を設定する。
 
 ```yaml
 securityContext:
