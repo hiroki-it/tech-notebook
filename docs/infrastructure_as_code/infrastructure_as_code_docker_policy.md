@@ -34,7 +34,9 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 ![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png)
 
-コンテナでは、起点となるinitプロセスが、コンテナの起動コマンドを単一の親プロセスとして実行する。
+#### ▼ コンテナのプロセスの関係
+
+コンテナでは、起点となるinitプロセスがなく、コンテナの起動コマンドが最初の親プロセスになる。
 
 この親プロセスは、子プロセスを実行する。
 
