@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="GCP CLI＠GCPリソースの知見を記録しています。">
+        <meta name="description" content="Google Cloud CLI＠Google Cloudリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】GCP CLI＠GCPリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Google Cloud CLI＠Google Cloudリソース - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gcp-cligcp" class="md-skip">
+        <a href="#google-cloud-cligoogle-cloud" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】GCP CLI＠GCPリソース
+              【IT技術の知見】Google Cloud CLI＠Google Cloudリソース
             
           </span>
         </div>
@@ -3080,11 +3080,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-gcp-cli" class="md-nav__link">
-    02. GCP CLIのセットアップ
+  <a href="#02-google-cloud-cli" class="md-nav__link">
+    02. Google Cloud CLIのセットアップ
   </a>
   
-    <nav class="md-nav" aria-label="02. GCP CLIのセットアップ">
+    <nav class="md-nav" aria-label="02. Google Cloud CLIのセットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3419,11 +3419,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-gcp" class="md-nav__link">
-    03. GCPリソース別のプラクティス
+  <a href="#03-google-cloud" class="md-nav__link">
+    03. Google Cloudリソース別のプラクティス
   </a>
   
-    <nav class="md-nav" aria-label="03. GCPリソース別のプラクティス">
+    <nav class="md-nav" aria-label="03. Google Cloudリソース別のプラクティス">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6107,11 +6107,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-gcp-cli" class="md-nav__link">
-    02. GCP CLIのセットアップ
+  <a href="#02-google-cloud-cli" class="md-nav__link">
+    02. Google Cloud CLIのセットアップ
   </a>
   
-    <nav class="md-nav" aria-label="02. GCP CLIのセットアップ">
+    <nav class="md-nav" aria-label="02. Google Cloud CLIのセットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6446,11 +6446,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-gcp" class="md-nav__link">
-    03. GCPリソース別のプラクティス
+  <a href="#03-google-cloud" class="md-nav__link">
+    03. Google Cloudリソース別のプラクティス
   </a>
   
-    <nav class="md-nav" aria-label="03. GCPリソース別のプラクティス">
+    <nav class="md-nav" aria-label="03. Google Cloudリソース別のプラクティス">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6536,7 +6536,7 @@
   
 
 
-<h1 id="gcp-cligcp">GCP CLI＠GCPリソース<a class="headerlink" href="#gcp-cligcp" title="Permanent link">&para;</a></h1>
+<h1 id="google-cloud-cligoogle-cloud">Google Cloud CLI＠Google Cloudリソース<a class="headerlink" href="#google-cloud-cligoogle-cloud" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6570,7 +6570,7 @@ Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </
 ...
 </code></pre></div>
 <p><br></p>
-<h2 id="02-gcp-cli">02. GCP CLIのセットアップ<a class="headerlink" href="#02-gcp-cli" title="Permanent link">&para;</a></h2>
+<h2 id="02-google-cloud-cli">02. Google Cloud CLIのセットアップ<a class="headerlink" href="#02-google-cloud-cli" title="Permanent link">&para;</a></h2>
 <h3 id="auth">auth<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
 <h4 id="auth_1">▼ authとは<a class="headerlink" href="#auth_1" title="Permanent link">&para;</a></h4>
 <p>プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証を行う。</p>
@@ -6614,9 +6614,9 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </ul>
 </blockquote>
 <h4 id="application-default-login">▼ application-default login<a class="headerlink" href="#application-default-login" title="Permanent link">&para;</a></h4>
-<p>GCP CLIによるGCPリソースへのアクセスを認証するために使用する。</p>
+<p>Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。</p>
 <p><code>~/.config/gcloud/application_default_credentials.json</code>ファイルを作成し、認証情報を定義する。</p>
-<p>また、これ使用してGCPにログインする。</p>
+<p>また、これ使用してGoogle Cloudにログインする。</p>
 <p><code>~/.config/gcloud/application_default_credentials.json</code>ファイルは<code>1</code>個のプリンシパルの認証情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<span class="w"> </span>login
 </code></pre></div>
@@ -6645,7 +6645,7 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </code></pre></div>
 <h4 id="login">▼ login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h4>
 <p>IAMユーザーを認証する。</p>
-<p>GCP SDKによるGCPリソースへのアクセスを認証するために使用する。</p>
+<p>Google Cloud SDKによるGoogle Cloudリソースへのアクセスを認証するために使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login
 </code></pre></div>
 <blockquote>
@@ -6655,7 +6655,7 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </blockquote>
 <h4 id="login-update-adc">▼ login --update-adc<a class="headerlink" href="#login-update-adc" title="Permanent link">&para;</a></h4>
 <p><code>gcloud auth application-default login</code>コマンドと<code>gcloud auth login</code>コマンドを同時に実行する。</p>
-<p>これにより、GCP CLIのための認証情報 (<code>~/.config/gcloud/application_default_credentials.json</code>ファイル) とGCP SDKのための認証情報が更新される。</p>
+<p>これにより、Google Cloud CLIのための認証情報 (<code>~/.config/gcloud/application_default_credentials.json</code>ファイル) とGoogle Cloud SDKのための認証情報が更新される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--update-adc
 </code></pre></div>
 <blockquote>
@@ -6668,7 +6668,7 @@ ACTIVE<span class="w">  </span>ACCOUNT
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token
 </code></pre></div>
 <p>環境変数に設定して使用すると良い。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">GCP_AUTH_TOKEN</span><span class="o">=</span><span class="sb">`</span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token<span class="sb">`</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span>Google<span class="w"> </span><span class="nv">Cloud_AUTH_TOKEN</span><span class="o">=</span><span class="sb">`</span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token<span class="sb">`</span>
 </code></pre></div>
 <h4 id="revoke">▼ revoke<a class="headerlink" href="#revoke" title="Permanent link">&para;</a></h4>
 <p>Configurationに設定されているプリンシパルを削除する。</p>
@@ -7025,7 +7025,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-gcp">03. GCPリソース別のプラクティス<a class="headerlink" href="#03-gcp" title="Permanent link">&para;</a></h2>
+<h2 id="03-google-cloud">03. Google Cloudリソース別のプラクティス<a class="headerlink" href="#03-google-cloud" title="Permanent link">&para;</a></h2>
 <h3 id="cloudlogging">CloudLogging<a class="headerlink" href="#cloudlogging" title="Permanent link">&para;</a></h3>
 <h4 id="read">▼ read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
 <p>CloudLoggingからログを読み出す。</p>
@@ -7064,7 +7064,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>

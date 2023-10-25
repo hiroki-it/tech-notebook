@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Anthos＠GCPリソースの知見を記録しています。">
+        <meta name="description" content="Anthos＠Google Cloudリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Anthos＠GCP GCPリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Anthos＠Google Cloud Google Cloudリソース - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#anthosgcp" class="md-skip">
+        <a href="#anthosgoogle-cloud" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Anthos＠GCP GCPリソース
+              【IT技術の知見】Anthos＠Google Cloud Google Cloudリソース
             
           </span>
         </div>
@@ -3419,16 +3419,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-03-on-gcp" class="md-nav__link">
-    02-03. on-GCP
+  <a href="#02-03-on-google-cloud" class="md-nav__link">
+    02-03. on-Google Cloud
   </a>
   
-    <nav class="md-nav" aria-label="02-03. on-GCP">
+    <nav class="md-nav" aria-label="02-03. on-Google Cloud">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#on-gcp" class="md-nav__link">
-    on-GCPの仕組み
+  <a href="#on-google-cloud" class="md-nav__link">
+    on-Google Cloudの仕組み
   </a>
   
 </li>
@@ -6408,16 +6408,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-03-on-gcp" class="md-nav__link">
-    02-03. on-GCP
+  <a href="#02-03-on-google-cloud" class="md-nav__link">
+    02-03. on-Google Cloud
   </a>
   
-    <nav class="md-nav" aria-label="02-03. on-GCP">
+    <nav class="md-nav" aria-label="02-03. on-Google Cloud">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#on-gcp" class="md-nav__link">
-    on-GCPの仕組み
+  <a href="#on-google-cloud" class="md-nav__link">
+    on-Google Cloudの仕組み
   </a>
   
 </li>
@@ -6545,7 +6545,7 @@
   
 
 
-<h1 id="anthosgcp">Anthos＠GCPリソース<a class="headerlink" href="#anthosgcp" title="Permanent link">&para;</a></h1>
+<h1 id="anthosgoogle-cloud">Anthos＠Google Cloudリソース<a class="headerlink" href="#anthosgoogle-cloud" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6635,7 +6635,7 @@
 <h4 id="cluster-operator">▼ cluster-operator<a class="headerlink" href="#cluster-operator" title="Permanent link">&para;</a></h4>
 <p>cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを送信している。</p>
 <p>Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。</p>
-<p>Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。</p>
+<p>Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。</p>
 <p>またkube-controller-managerはcluster-operatorを反復的に実行する。</p>
 <p>これにより、Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
 <blockquote>
@@ -6646,7 +6646,7 @@
 <p><br></p>
 <h3 id="_3">その他<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="connect-gateway">▼ connect-gateway<a class="headerlink" href="#connect-gateway" title="Permanent link">&para;</a></h4>
-<p>GCP上で<code>kubectl</code>コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。</p>
+<p>Google Cloud上で<code>kubectl</code>コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。</p>
 <p><img alt="anthos_connect-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -6654,7 +6654,7 @@
 </ul>
 </blockquote>
 <h4 id="fleet-workload-identity">▼ fleet-workload-identity<a class="headerlink" href="#fleet-workload-identity" title="Permanent link">&para;</a></h4>
-<p>GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。</p>
+<p>Google Cloud側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。</p>
 <p>これにより、クラウドプロバイダー側でアカウントを作成する必要がない。</p>
 <blockquote>
 <ul>
@@ -6672,8 +6672,8 @@
 <h2 id="02-on-">02. on-オンプレミス<a class="headerlink" href="#02-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-">on-オンプレミスの仕組み<a class="headerlink" href="#on-" title="Permanent link">&para;</a></h3>
 <p>on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、GCPのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。</p>
-<p>Anthos GKE ClusterのライフサイクルもGCPから管理できる。</p>
+<p>ワークステーションにて、Google CloudのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。</p>
+<p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_on-premises_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -6685,8 +6685,8 @@
 <h3 id="on-_1">on-ベアメタルの仕組み<a class="headerlink" href="#on-_1" title="Permanent link">&para;</a></h3>
 <h4 id="cluster_1">▼ マルチClusterタイプ<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
 <p>マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
-<p>GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
-<p>Anthos GKE ClusterのライフサイクルもGCPから管理できる。</p>
+<p>Google CloudのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
+<p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_bare-metal_multi-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png" /></p>
 <blockquote>
 <ul>
@@ -6696,8 +6696,8 @@
 </blockquote>
 <h4 id="cluster_2">▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
 <p>スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
-<p>Anthos GKE ClusterのライフサイクルもGCPから管理できる。</p>
+<p>ワークステーションにて、Google CloudのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。</p>
+<p>Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
 <p><img alt="anthos_on_bare-metal_standalone-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png" /></p>
 <blockquote>
 <ul>
@@ -6723,14 +6723,14 @@
 <span class="w">    </span>--kubeconfig<span class="w"> </span>~/baremetal/bmctl-workspace/.kindkubeconfig
 </code></pre></div>
 <p><br></p>
-<h2 id="02-03-on-gcp">02-03. on-GCP<a class="headerlink" href="#02-03-on-gcp" title="Permanent link">&para;</a></h2>
-<h3 id="on-gcp">on-GCPの仕組み<a class="headerlink" href="#on-gcp" title="Permanent link">&para;</a></h3>
-<p>GCP環境上にAnthos GKE Clusterを作成する。</p>
+<h2 id="02-03-on-google-cloud">02-03. on-Google Cloud<a class="headerlink" href="#02-03-on-google-cloud" title="Permanent link">&para;</a></h2>
+<h3 id="on-google-cloud">on-Google Cloudの仕組み<a class="headerlink" href="#on-google-cloud" title="Permanent link">&para;</a></h3>
+<p>Google Cloud環境上にAnthos GKE Clusterを作成する。</p>
 <p><br></p>
 <h2 id="02-04-on-">02-04. on-クラウドプロバイダー<a class="headerlink" href="#02-04-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-_2">on-クラウドプロバイダーの仕組み<a class="headerlink" href="#on-_2" title="Permanent link">&para;</a></h3>
-<p>GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。</p>
-<p>ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、GCP GKE、Azure AKS、など) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。</p>
+<p>Google CloudのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。</p>
+<p>ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKS、など) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。</p>
 <p><img alt="anthos_on_cloud-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png" /></p>
 <p><br></p>
 <h2 id="03-bmctl">03. bmctlコマンド<a class="headerlink" href="#03-bmctl" title="Permanent link">&para;</a></h2>
@@ -6766,7 +6766,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>
