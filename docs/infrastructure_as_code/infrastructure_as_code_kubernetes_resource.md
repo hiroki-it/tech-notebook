@@ -1467,6 +1467,15 @@ kube-apiserverが、クライアントを認証可能にする。別途、RoleBi
 
 <br>
 
+### User/Group
+
+クラウド上のユーザーやグループをKubernetes上で使用する場合、User/Groupで指定する。
+
+> - https://qiita.com/toshi1973814/items/d97f857af4aa2250a450
+> - https://stackoverflow.com/a/58708162
+
+<br>
+
 ## 08. 認可系リソース
 
 ### Role、ClusterRole
