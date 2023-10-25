@@ -6116,7 +6116,7 @@ sops:
 <span class="w">        </span>created_at:<span class="w"> </span><span class="s1">&#39;2021-01-01T12:00:00Z&#39;</span>
 <span class="w">        </span>enc:<span class="w"> </span>*****
 <span class="w">        </span>aws_profile:<span class="w"> </span><span class="s2">&quot;&quot;</span>
-<span class="w">    </span><span class="c1"># GCP CKM</span>
+<span class="w">    </span><span class="c1"># Google Cloud CKM</span>
 <span class="w">    </span>gcp_kms:<span class="w"> </span><span class="o">[]</span>
 <span class="w">    </span><span class="c1"># Azure Key Vault</span>
 <span class="w">    </span>azure_kv:<span class="w"> </span><span class="o">[]</span>
@@ -6146,7 +6146,7 @@ sops:
 <div class="highlight"><pre><span></span><code><span class="nt">creation_rules</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ワイルドカードで平文ファイルを再帰的に指定できる。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path_regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/*\.yaml</span>
-<span class="w">    </span><span class="c1"># GCP CKMを暗号化キーとして使用する。</span>
+<span class="w">    </span><span class="c1"># Google Cloud CKMを暗号化キーとして使用する。</span>
 <span class="w">    </span><span class="nt">gcp_kms</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key&quot;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># ファイル名が path_regexキーのルールに該当するため、AWS KMSを使用して暗号化される。</span>
@@ -6182,7 +6182,7 @@ $<span class="w"> </span>sops<span class="w"> </span>-e<span class="w"> </span>.
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sops<span class="w"> </span>-d<span class="w"> </span>./secrets/foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>./values/foo-values.yaml
 </code></pre></div>
 <h4 id="-e">▼ -e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h4>
-<p>外部の暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) に基づいて、<code>.yaml</code>ファイルや<code>.json</code>ファイルの値の部分を暗号化する。</p>
+<p>外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP、など) に基づいて、<code>.yaml</code>ファイルや<code>.json</code>ファイルの値の部分を暗号化する。</p>
 <p>環境変数や<code>.sops.yaml</code>ファイルで暗号化ルールを定義しておく必要がある。</p>
 <p>標準出力に出力されるため、ファイルに書き出すようにすると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS KMSを暗号化キーとして使用する。</span>
@@ -6204,7 +6204,7 @@ Failed<span class="w"> </span>to<span class="w"> </span>call<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>

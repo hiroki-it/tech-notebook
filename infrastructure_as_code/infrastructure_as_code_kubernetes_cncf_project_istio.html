@@ -7263,7 +7263,7 @@
 <h4 id="passthroughcluster">▼ PassthroughCluster<a class="headerlink" href="#passthroughcluster" title="Permanent link">&para;</a></h4>
 <p>IPアドレスを指定した送信できる宛先のこと。</p>
 <p>Istio 1.3以降で、デフォルトで全てのアウトバウンド通信のポリシーが<code>ALLOW_ANY</code>となり、PassthroughClusterとして扱うようになった。</p>
-<p>AWS RDS、GCP CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。</p>
+<p>AWS RDS、Google Cloud CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。</p>
 <p>そのため、アウトバウンド通信はPassthroughClusterに属する。</p>
 <p>注意点として、<code>REGISTRY_ONLY</code>モードを有効化すると、ServiceEntryで登録された宛先以外への全てのアウトバウンド通信がBlackHoleClusterになってしまう</p>
 <blockquote>
@@ -7333,7 +7333,7 @@
 </blockquote>
 <h4 id="jwtbearer-id">▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)<a class="headerlink" href="#jwtbearer-id" title="Permanent link">&para;</a></h4>
 <p>JWTによるBearer認証を実施し、送信元のPodの通信を認証する。</p>
-<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、GCP Auth) に委譲することになる。</p>
+<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Auth) に委譲することになる。</p>
 <p>JWTの取得方法として、例えば以下の方法がある。</p>
 <ul>
 <li>送信元のPodがIDプロバイダーからJWTを直接取得する。</li>
@@ -7359,7 +7359,7 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ 通信の認可の委譲<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、GCP Auth) を指定し、認可フェーズを委譲できる。</p>
+<p>AuthorizationPolicyでIDプロバイダー (例：Auth0、GitHub、Keycloak、AWS Cognito、Google Cloud Auth) を指定し、認可フェーズを委譲できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3">https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3</a></li>
@@ -7781,7 +7781,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>

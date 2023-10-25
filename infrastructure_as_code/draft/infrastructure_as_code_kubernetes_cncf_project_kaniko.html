@@ -5601,8 +5601,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#gcp-gcr" class="md-nav__link">
-    GCP GCR
+  <a href="#google-cloud-gcr" class="md-nav__link">
+    Google Cloud GCR
   </a>
   
 </li>
@@ -5769,8 +5769,8 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="gcp-gcr">GCP GCR<a class="headerlink" href="#gcp-gcr" title="Permanent link">&para;</a></h3>
-<p>GCPのクレデンシャルファイルは、あらかじめGitLab CIの変数 (<code>GOOGLE_APPLICATION_CREDENTIALS</code>) に設定しておく。</p>
+<h3 id="google-cloud-gcr">Google Cloud GCR<a class="headerlink" href="#google-cloud-gcr" title="Permanent link">&para;</a></h3>
+<p>Google Cloudのクレデンシャルファイルは、あらかじめGitLab CIの変数 (<code>GOOGLE_APPLICATION_CREDENTIALS</code>) に設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -5780,7 +5780,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <span class="w">    </span><span class="nt">GOOGLE_APPLICATION_CREDENTIALS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/gcloud-service-key.json</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mkdir /tmp</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${GCP_TOKEN} &gt; /tmp/gcloud-service-key.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo ${Google Cloud_TOKEN} &gt; /tmp/gcloud-service-key.json</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination &quot;asia.gcr.io/${PROJECT_ID}/image_name:TAG&quot;</span>
 </code></pre></div>
@@ -5796,7 +5796,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>

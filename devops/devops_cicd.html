@@ -6315,7 +6315,7 @@
 <td>セルフマネージドなKuberbetesオーケストレーションツールを使用している場合、適切なCIOpsがあるため、聞いておきたい。</td>
 </tr>
 <tr>
-<td>ベアメタル型IaaS上でクラウドプロバイダーのKuberbetesオーケストレーションツール (例：AWS EKS Anywhere、GCP Anthos on Baremetal) を使用しているか。</td>
+<td>ベアメタル型IaaS上でクラウドプロバイダーのKuberbetesオーケストレーションツール (例：AWS EKS Anywhere、Google Cloud Anthos on Baremetal) を使用しているか。</td>
 <td>ベアメタル型IaaS上でクラウドプロバイダーのKuberbetesオーケストレーションツールを使用している場合、適切なCIOpsがあるため、聞いておきたい。</td>
 </tr>
 <tr>
@@ -6367,7 +6367,7 @@
   D --&gt; | いずれも使っていない | J[そのまま進む]
   D ----&gt; | Kubeadm, Rancher, on オンプレ | K[オンプレのための&lt;br&gt;GitOps]
   D ----&gt; | AWS EKS Anywhere Baremetal Deployment, Google Anthos on Baremetal| L[IaaSのための&lt;br&gt;GitOps]
-  D ----&gt; | AWS EKS, GCP GKE | M[CaaSのための&lt;br&gt;GitOps]
+  D ----&gt; | AWS EKS, Google Cloud GKE | M[CaaSのための&lt;br&gt;GitOps]
 
   J --&gt; | AWS Lambda, Google Cloud Function | N[コンテナ化FaaSのための&lt;br&gt;CIOps]
   J --&gt; | dockerコマンド on オンプレ| O[dockerコマンドのための&lt;br&gt;CIOps]
@@ -6420,7 +6420,7 @@
 <p>KubernetesのCI/CDパイプラインにCIOpsを採用する場合、セキュリティ上の理由でCIOpsはアンチパターンとされている。</p>
 <p>リポジトリ側に<code>kubeconfig</code>ファイルを置く必要がある。</p>
 <p><code>kubeconfig</code>ファイルは機密性が高く、漏洩させたくない。</p>
-<p>ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) で<code>kubeconfig</code>ファイルを暗号化しておき、これをCIパイプライン内に出力する。</p>
+<p>ただし、どうしてもCIOpsを採用したいのであれば、暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP、など) で<code>kubeconfig</code>ファイルを暗号化しておき、これをCIパイプライン内に出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://devops-blog.virtualtech.jp/entry/20220418/1650250499">https://devops-blog.virtualtech.jp/entry/20220418/1650250499</a></li>
@@ -6473,7 +6473,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
       
     
   </small>
