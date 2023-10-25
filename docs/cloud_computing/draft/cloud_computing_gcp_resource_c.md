@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCPリソース＠GCPリソース
-description: GCPリソース＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloudリソース＠Google Cloudリソース
+description: Google Cloudリソース＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCPリソース＠GCP
+# Google Cloudリソース＠Google Cloud
 
 ## はじめに
 
@@ -33,7 +33,7 @@ https://hiroki-it.github.io/tech-notebook/
 
 | サーバー提供者 | 名前                    |
 | -------------- | ----------------------- |
-| 中間認証局     | GTS：GCP Trust Services |
+| 中間認証局     | GTS：Google Cloud Trust Services |
 | ルート認証局   | 記入中...               |
 
 <br>

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCP CLI＠GCPリソース
-description: GCP CLI＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloud CLI＠Google Cloudリソース
+description: Google Cloud CLI＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCP CLI＠GCPリソース
+# Google Cloud CLI＠Google Cloudリソース
 
 ## はじめに
 
@@ -50,7 +50,7 @@ Traceback (most recent call last):
 
 <br>
 
-## 02. GCP CLIのセットアップ
+## 02. Google Cloud CLIのセットアップ
 
 ### auth
 
@@ -100,11 +100,11 @@ ACTIVE  ACCOUNT
 
 #### ▼ application-default login
 
-GCP CLIによるGCPリソースへのアクセスを認証するために使用する。
+Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。
 
 `~/.config/gcloud/application_default_credentials.json`ファイルを作成し、認証情報を定義する。
 
-また、これ使用してGCPにログインする。
+また、これ使用してGoogle Cloudにログインする。
 
 `~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のプリンシパルの認証情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
 
@@ -142,7 +142,7 @@ ACTIVE  ACCOUNT
 
 IAMユーザーを認証する。
 
-GCP SDKによるGCPリソースへのアクセスを認証するために使用する。
+Google Cloud SDKによるGoogle Cloudリソースへのアクセスを認証するために使用する。
 
 ```bash
 $ gcloud auth login
@@ -154,7 +154,7 @@ $ gcloud auth login
 
 `gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。
 
-これにより、GCP CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGCP SDKのための認証情報が更新される。
+これにより、Google Cloud CLIのための認証情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGoogle Cloud SDKのための認証情報が更新される。
 
 ```bash
 $ gcloud auth login --update-adc
@@ -173,7 +173,7 @@ $ gcloud auth print-access-token
 環境変数に設定して使用すると良い。
 
 ```bash
-$ export GCP_AUTH_TOKEN=`gcloud auth print-access-token`
+$ export Google Cloud_AUTH_TOKEN=`gcloud auth print-access-token`
 ```
 
 #### ▼ revoke
@@ -601,7 +601,7 @@ bar-project-***    bar-project   *****
 
 <br>
 
-## 03. GCPリソース別のプラクティス
+## 03. Google Cloudリソース別のプラクティス
 
 ### CloudLogging
 

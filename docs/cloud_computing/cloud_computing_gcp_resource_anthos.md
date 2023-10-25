@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Anthos＠GCP GCPリソース
-description: Anthos＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】Anthos＠Google Cloud Google Cloudリソース
+description: Anthos＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Anthos＠GCPリソース
+# Anthos＠Google Cloudリソース
 
 ## はじめに
 
@@ -104,7 +104,7 @@ cluster-operatorは、kube-apiserverを介して、etcdにwatchイベントを�
 
 Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを介して、Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
 
-Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。
+Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを介してAnthos GKE Cluster上のkubeletをコールすることになる。
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 
@@ -118,7 +118,7 @@ Anthos GKE Clusterが、GCP以外 (オンプレミス、ベアメタル、他ク
 
 #### ▼ connect-gateway
 
-GCP上で`kubectl`コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+Google Cloud上で`kubectl`コマンドを実行して各クラウドプロバイダー上のAnthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
@@ -126,7 +126,7 @@ GCP上で`kubectl`コマンドを実行して各クラウドプロバイダー�
 
 #### ▼ fleet-workload-identity
 
-GCP側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。
+Google Cloud側のアカウント情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。
 
 これにより、クラウドプロバイダー側でアカウントを作成する必要がない。
 
@@ -146,9 +146,9 @@ cniアドオンとして、Ciliumを使用してAnthos GKE Clusterのネット�
 
 on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、GCPのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを介してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にAnthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
 
@@ -164,9 +164,9 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 マルチClusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
-GCPのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを介して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
 
@@ -177,9 +177,9 @@ Anthos GKE ClusterのライフサイクルもGCPから管理できる。
 
 スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。
 
-ワークステーションにて、GCPのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
+ワークステーションにて、Google CloudのAPIを介してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にAnthos GKE Clusterを作成する。
 
-Anthos GKE ClusterのライフサイクルもGCPから管理できる。
+Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。
 
 ![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
 
@@ -220,11 +220,11 @@ $ kubectl get pod \
 
 <br>
 
-## 02-03. on-GCP
+## 02-03. on-Google Cloud
 
-### on-GCPの仕組み
+### on-Google Cloudの仕組み
 
-GCP環境上にAnthos GKE Clusterを作成する。
+Google Cloud環境上にAnthos GKE Clusterを作成する。
 
 <br>
 
@@ -232,9 +232,9 @@ GCP環境上にAnthos GKE Clusterを作成する。
 
 ### on-クラウドプロバイダーの仕組み
 
-GCPのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
+Google CloudのAPIを介して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にAnthos GKE Clusterを作成する。
 
-ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、GCP GKE、Azure AKS、など) を使用すれば良いため、GCP環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
+ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：AWS EKS、Google Cloud GKE、Azure AKS、など) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。
 
 ![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
 

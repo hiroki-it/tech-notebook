@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudLogging＠GCPリソース
-description: CloudLogging＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】CloudLogging＠Google Cloudリソース
+description: CloudLogging＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCloudLogging＠GCPリソース
+# GCloudLogging＠Google Cloudリソース
 
 ## はじめに
 

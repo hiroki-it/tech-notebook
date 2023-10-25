@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCPリソース＠GCPリソース
-description: GCPリソース＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】PrivateServiceConnect＠Google Cloudリソース
+description: PrivateServiceConnect＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCPリソース＠GCPリソース
+# PrivateServiceConnect＠Google Cloudリソース
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: GCPリソース＠GCPリソースの知見を記録しています�
 
 グローバルプライベートIPアドレスを発行する。
 
-このグローバルプライベートIPアドレスを指定することにより、GCP側のプライベートネットワーク (VPC) とユーザー側のプライベートネットワークの間を接続できる。
+このグローバルプライベートIPアドレスを指定することにより、Google Cloud側のプライベートネットワーク (VPC) とユーザー側のプライベートネットワークの間を接続できる。
 
 注意点として、PrivateServiceConnectは、それ専用の中継VPC内に作成する。
 

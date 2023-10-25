@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】IAM＠GCPリソース
-description: IAM＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】IAM＠Google Cloudリソース
+description: IAM＠Google Cloudリソースの知見を記録しています。
 ---
 
-# IAM＠GCPリソース
+# IAM＠Google Cloudリソース
 
 ## はじめに
 
@@ -60,7 +60,7 @@ $ gcloud auth login
 
 ### サービスアカウントとは
 
-サービスアカウントを実際のGCPリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。
+サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツール、など) に紐づけるためには、サービスアカウントの認証情報ファイルをこれに持たせる必要がある。
 
 <br>
 
@@ -135,7 +135,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS="<認証情報ファイルパス>"
 
 認可スコープのこと。
 
-`<サービス>.<GCPリソース>.<動作>` (例：`compute.instances.create`) で表記する。
+`<サービス>.<Google Cloudリソース>.<動作>` (例：`compute.instances.create`) で表記する。
 
 <br>
 

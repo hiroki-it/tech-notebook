@@ -42,7 +42,7 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 **＊例＊**
 
 - AWS
-- GCP
+- Google Cloud
 - Azure
 - さくらのクラウド (さくらインターネット)
 - OpenCanvas (NTT)
@@ -100,7 +100,7 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 | サービス名 | リソース名                             |
 | ---------- | -------------------------------------- |
 | AWS        | AWS EC2 (ベアメタルインスタンスタイプ) |
-| GCP        | Bare Metal Solution                    |
+| Google Cloud        | Bare Metal Solution                    |
 | Azure      |                                        |
 
 #### ▼ 仮想サーバー型IaaS
@@ -112,7 +112,7 @@ OpenStackを使用して、オンプレミス環境に仮想クラウドを作�
 | サービス名 | リソース名            |
 | ---------- | --------------------- |
 | AWS        | AWS EC2               |
-| GCP        | Google Compute Engine |
+| Google Cloud        | Google Compute Engine |
 | Azure      | Azure Virtual Machine |
 
 #### ▼ CaaS
@@ -124,7 +124,7 @@ CaaSで構築したシステムは、FaaSと同じくサーバーの管理が全
 | サービス名 | リソース名                |
 | ---------- | ------------------------- |
 | AWS        | AWS Fargate               |
-| GCP        | Google Cloud Run          |
+| Google Cloud        | Google Cloud Run          |
 | Azure      | Azure Container Instances |
 
 > - https://dev.to/aws-builders/understanding-aws-fargate-serverless-container-or-caas-4kd7
@@ -136,7 +136,7 @@ CaaSで構築したシステムは、FaaSと同じくサーバーの管理が全
 | サービス名 | リソース名                                                             |
 | ---------- | ---------------------------------------------------------------------- |
 | AWS        | AWS Elastic Beanstalk、AWS RDS、AWS CloudFront、AWS Dynamo DB、AWS SES |
-| GCP        | Google App Engine、Google CLoud SQL                                    |
+| Google Cloud        | Google App Engine、Google CLoud SQL                                    |
 | Azure      | Azure App Service                                                      |
 
 #### ▼ FaaS
@@ -148,7 +148,7 @@ FaaSで構築したシステムは、CaaSと同じくサーバーの管理が全
 | サービス名 | リソース名      |
 | ---------- | --------------- |
 | AWS        | AWS Lambda      |
-| GCP        | Google AppSheet |
+| Google Cloud        | Google AppSheet |
 | Azure      | Azure Functions |
 
 > - https://hantechnote.wordpress.com/2019/12/01/%E4%BB%96%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%EF%BC%9F/
@@ -158,7 +158,7 @@ FaaSで構築したシステムは、CaaSと同じくサーバーの管理が全
 | サービス名 | リソース名             |
 | ---------- | ---------------------- |
 | AWS        | AWS Honeycode          |
-| GCP        | Google Cloud Functions |
+| Google Cloud        | Google Cloud Functions |
 | Azure      | Azure Logc Apps        |
 
 > - https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/
@@ -170,7 +170,7 @@ FaaSで構築したシステムは、CaaSと同じくサーバーの管理が全
 | サービス名 | リソース名                                                       |
 | ---------- | ---------------------------------------------------------------- |
 | AWS        | AWS S3、AWS CloudWatch                                           |
-| GCP        | Google Apps (例：Google Map、Google Cloud、Google Calender など) |
+| Google Cloud        | Google Apps (例：Google Map、Google Cloud、Google Calender など) |
 | Azure      | -                                                                |
 
 <br>

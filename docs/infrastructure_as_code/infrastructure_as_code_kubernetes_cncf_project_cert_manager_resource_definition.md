@@ -305,7 +305,7 @@ spec:
 
 #### ▼ solvers
 
-名前解決の委譲先 (例：AWS Route53、GCP Cloud DNS、など) を設定する。
+名前解決の委譲先 (例：AWS Route53、Google Cloud Cloud DNS、など) を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
