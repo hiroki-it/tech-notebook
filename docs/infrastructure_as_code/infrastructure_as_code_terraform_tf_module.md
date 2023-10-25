@@ -35,7 +35,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 #### ▼ required_providers
 
-AWSやGCPなど、使用するプロバイダを定義する。
+AWSやGoogle Cloudなど、使用するプロバイダを定義する。
 
 プロバイダによって、異なる`resource`タイプが提供される。
 

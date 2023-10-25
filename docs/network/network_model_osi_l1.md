@@ -45,7 +45,7 @@ LAN内に配置されたNATルーターが、WAN内のグローバルIPアドレ
 
 LANは、バリアセグメント、パブリックサブネット (非武装地帯) 、プライベートサブネット (内部ネットワーク) 、に分割できる。
 
-AWSやGCPでも、VPCを同様のサブネットに分割すると良い。
+AWSやGoogle Cloudでも、VPCを同様のサブネットに分割すると良い。
 
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internal_dmz_external.png)
 

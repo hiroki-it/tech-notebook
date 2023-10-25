@@ -165,9 +165,9 @@ build:
 
 <br>
 
-### GCP GCR
+### Google Cloud GCR
 
-GCPのクレデンシャルファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+Google Cloudのクレデンシャルファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
 
 ```yaml
 build:
@@ -179,7 +179,7 @@ build:
     GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcloud-service-key.json
   before_script:
     - mkdir /tmp
-    - echo ${GCP_TOKEN} > /tmp/gcloud-service-key.json
+    - echo ${Google Cloud_TOKEN} > /tmp/gcloud-service-key.json
   script:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination "asia.gcr.io/${PROJECT_ID}/image_name:TAG"
 ```

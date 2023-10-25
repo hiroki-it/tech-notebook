@@ -43,7 +43,7 @@ spec:
 
 <br>
 
-### Cluster (GCP Anthos)
+### Cluster (Google Cloud Anthos)
 
 Anthos GKE Clusterを設定する。
 
@@ -277,7 +277,7 @@ spec:
 
 <br>
 
-### NodePool (GCP Anthos)
+### NodePool (Google Cloud Anthos)
 
 Anthos GKE Cluster内のNodeに関して、Nodeグループを設定する。
 

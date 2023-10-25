@@ -179,7 +179,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 - AWS CloudFormation
 - Azure Resource Manager
-- GCP Deployment Manager
+- Google Cloud Deployment Manager
 - SAM
 - Serverless Framework
 - Terraform

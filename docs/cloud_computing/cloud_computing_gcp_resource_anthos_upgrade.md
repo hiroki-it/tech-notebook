@@ -259,7 +259,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 ```bash
 $ ./repository/asmcli-1140-0 install \
     --kubeconfig <kubeconfigファイルへのパス> \
-    `# GCP以外 (オンプレ、AWS、Azure、など) で稼働させることを宣言する。` \
+    `# Google Cloud以外 (オンプレ、AWS、Azure、など) で稼働させることを宣言する。` \
     --platform multicloud \
     --fleet_id <フリートのグループID> \
     --output_dir ./output \
@@ -638,6 +638,6 @@ $ kubectl get pod -A -o wide
 
 ## 03. NodeのOSのアップグレード (ベアメタル環境の場合)
 
-ベアメタル環境の場合、GCPはNodeのOSのバージョンを管理してくれず、GCP外でアップグレードする必要がある。
+ベアメタル環境の場合、Google CloudはNodeのOSのバージョンを管理してくれず、Google Cloud外でアップグレードする必要がある。
 
 <br>

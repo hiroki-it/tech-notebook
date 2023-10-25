@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCPリソース＠GCPリソース
-description: GCPリソース＠GCPリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloudリソース＠Google Cloudリソース
+description: Google Cloudリソース＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GCPリソース＠GCPリソース
+# Google Cloudリソース＠Google Cloudリソース
 
 ## はじめに
 

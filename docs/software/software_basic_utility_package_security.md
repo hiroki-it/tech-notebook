@@ -74,7 +74,7 @@ sops:
         created_at: '2021-01-01T12:00:00Z'
         enc: *****
         aws_profile: ""
-    # GCP CKM
+    # Google Cloud CKM
     gcp_kms: []
     # Azure Key Vault
     azure_kv: []
@@ -108,7 +108,7 @@ creation_rules:
 creation_rules:
   # ワイルドカードで平文ファイルを再帰的に指定できる。
   - path_regex: ./values/*\.yaml
-    # GCP CKMを暗号化キーとして使用する。
+    # Google Cloud CKMを暗号化キーとして使用する。
     gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 
@@ -159,7 +159,7 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー (例：AWS KMS、GCP CKM、GPG、PGP、など) に基づいて、`.yaml`ファイルや`.json`ファイルの値の部分を暗号化する。
+外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP、など) に基づいて、`.yaml`ファイルや`.json`ファイルの値の部分を暗号化する。
 
 環境変数や`.sops.yaml`ファイルで暗号化ルールを定義しておく必要がある。
 
