@@ -426,6 +426,24 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
+### コンテナ
+
+#### ▼ ライフサイクルフェーズ
+
+コンテナのライフサイクルにはフェーズがある。
+
+| フェーズ名 | 説明                                                          |
+| ---------- | ------------------------------------------------------------- |
+| Waiting    | `Running`フェーズと`Terminated`フェーズ以外のフェーズにある。 |
+| Running    | コンテナの起動が完了し、実行中である。                        |
+| Terminated | コンテナが正常/異常に停止した。                               |
+
+> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+
+<br>
+
+## 06-02. Containerdの場合
+
 ### セットアップ (Containerdの場合)
 
 #### ▼ Containerdのインストールの事前作業
@@ -560,21 +578,5 @@ $ journalctl -u containerd.service
 -- Logs begin at Mon 2022-04-18 21:04:26 JST, end at Mon 2022-12-05 17:43:49 JST. --
 04/19 18:10:17 fo-node systemd[1]: Starting containerd container runtime...
 ```
-
-<br>
-
-### コンテナのライフサイクルフェーズ
-
-#### ▼ ライフサイクルフェーズとは
-
-コンテナのライフサイクルにはフェーズがある。
-
-| フェーズ名 | 説明                                                          |
-| ---------- | ------------------------------------------------------------- |
-| Waiting    | `Running`フェーズと`Terminated`フェーズ以外のフェーズにある。 |
-| Running    | コンテナの起動が完了し、実行中である。                        |
-| Terminated | コンテナが正常/異常に停止した。                               |
-
-> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
 
 <br>
