@@ -404,6 +404,28 @@ kube-proxyの起動時に、`--feature-gates`オプションに`SupportIPVSProxy
 
 <br>
 
+### CRIランタイム
+
+#### ▼ CRIランタイムとは
+
+高レベルなランタイムであり、Podやコンテナを管理する。
+
+> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#4
+> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#8
+> - https://thinkit.co.jp/article/18024
+
+<br>
+
+### OCIランタイム
+
+低レベルなランタイムであり、Nodeのカーネルと通信し、コンテナの作成に必要な環境を整備する。
+
+> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#4
+> - https://www.slideshare.net/KoheiTokunaga/ss-123664087#15
+> - https://thinkit.co.jp/article/18024
+
+<br>
+
 ### セットアップ (Containerdの場合)
 
 #### ▼ Containerdのインストールの事前作業
