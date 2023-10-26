@@ -3874,6 +3874,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ ライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-containerd" class="md-nav__link">
+    06-02. Containerdの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. Containerdの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#containerd" class="md-nav__link">
     セットアップ (Containerdの場合)
   </a>
@@ -3915,29 +3948,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ログ
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    コンテナのライフサイクルフェーズ
-  </a>
-  
-    <nav class="md-nav" aria-label="コンテナのライフサイクルフェーズ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    ▼ ライフサイクルフェーズとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6415,6 +6428,39 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ ライフサイクルフェーズ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-02-containerd" class="md-nav__link">
+    06-02. Containerdの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="06-02. Containerdの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#containerd" class="md-nav__link">
     セットアップ (Containerdの場合)
   </a>
@@ -6456,29 +6502,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ログ
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    コンテナのライフサイクルフェーズ
-  </a>
-  
-    <nav class="md-nav" aria-label="コンテナのライフサイクルフェーズ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    ▼ ライフサイクルフェーズとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6940,6 +6966,38 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="_14">コンテナ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="_15">▼ ライフサイクルフェーズ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>コンテナのライフサイクルにはフェーズがある。</p>
+<table>
+<thead>
+<tr>
+<th>フェーズ名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Waiting</td>
+<td><code>Running</code>フェーズと<code>Terminated</code>フェーズ以外のフェーズにある。</td>
+</tr>
+<tr>
+<td>Running</td>
+<td>コンテナの起動が完了し、実行中である。</td>
+</tr>
+<tr>
+<td>Terminated</td>
+<td>コンテナが正常/異常に停止した。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="06-02-containerd">06-02. Containerdの場合<a class="headerlink" href="#06-02-containerd" title="Permanent link">&para;</a></h2>
 <h3 id="containerd">セットアップ (Containerdの場合)<a class="headerlink" href="#containerd" title="Permanent link">&para;</a></h3>
 <h4 id="containerd_1">▼ Containerdのインストールの事前作業<a class="headerlink" href="#containerd_1" title="Permanent link">&para;</a></h4>
 <dl>
@@ -7070,44 +7128,13 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">ログ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_16">ログ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>ワーカーNodeでデーモンとして常駐しているため、<code>journalctl</code>コマンドでログを取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span>-u<span class="w"> </span>containerd.service
 
 --<span class="w"> </span>Logs<span class="w"> </span>begin<span class="w"> </span>at<span class="w"> </span>Mon<span class="w"> </span><span class="m">2022</span>-04-18<span class="w"> </span><span class="m">21</span>:04:26<span class="w"> </span>JST,<span class="w"> </span>end<span class="w"> </span>at<span class="w"> </span>Mon<span class="w"> </span><span class="m">2022</span>-12-05<span class="w"> </span><span class="m">17</span>:43:49<span class="w"> </span>JST.<span class="w"> </span>--
 <span class="m">04</span>/19<span class="w"> </span><span class="m">18</span>:10:17<span class="w"> </span>fo-node<span class="w"> </span>systemd<span class="o">[</span><span class="m">1</span><span class="o">]</span>:<span class="w"> </span>Starting<span class="w"> </span>containerd<span class="w"> </span>container<span class="w"> </span>runtime...
 </code></pre></div>
-<p><br></p>
-<h3 id="_15">コンテナのライフサイクルフェーズ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="_16">▼ ライフサイクルフェーズとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>コンテナのライフサイクルにはフェーズがある。</p>
-<table>
-<thead>
-<tr>
-<th>フェーズ名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Waiting</td>
-<td><code>Running</code>フェーズと<code>Terminated</code>フェーズ以外のフェーズにある。</td>
-</tr>
-<tr>
-<td>Running</td>
-<td>コンテナの起動が完了し、実行中である。</td>
-</tr>
-<tr>
-<td>Terminated</td>
-<td>コンテナが正常/異常に停止した。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
   <hr>
