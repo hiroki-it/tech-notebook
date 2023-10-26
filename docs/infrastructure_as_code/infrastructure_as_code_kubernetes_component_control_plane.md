@@ -60,7 +60,7 @@ kubernetesマスターともいう。コントロールプレーンコンポー�
 
 ### Controller
 
-コントロールプレーンNodeでは様々なControllerが動いている。
+コントロールプレーンNodeでは様々なControllerが稼働している。
 
 Controllerは、マニフェストで宣言されたKubernetesリソースと同じ実体を作成し、状態を維持する。
 

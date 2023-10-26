@@ -32,7 +32,7 @@ Pull型通信により、アプリケーションはPrometheusの存在を知る
 
 ### 確認
 
-Nodeで動いているExporterを確認する。
+Nodeで稼働しているExporterを確認する。
 
 ```bash
 $ ps -aux | grep exporter

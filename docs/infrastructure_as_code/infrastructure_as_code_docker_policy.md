@@ -52,9 +52,9 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 ### `PID=1`問題に対処する
 
-#### ▼ `PID=1`問題とは
+#### ▼ サーバーのプロセス
 
-サーバーのLinuxでは、`init`プロセスが`PID=1`として稼働している。
+サーバーの場合、`init`プロセスが`PID=1`として稼働している。
 
 ![container_pid_1_problem_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png)
 
@@ -66,15 +66,20 @@ description: 設計規約＠Dockerの知見を記録しています。
 
 ![container_pid_1_problem_3.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png)
 
-一方でコンテナのLinuxでは、アプリやミドルウェアのプロセスが`PID=1`で動いている。
+#### ▼ コンテナのプロセス
 
-これらのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。
+コンテナの場合、ホスト上の`init`プロセスが`PID=1`として動いており、またコンテナのアプリやミドルウェアのプロセスも`PID=1`として稼働している。
+
+![host_container_pid_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png)
+
+アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。
 
 そのため、子プロセスが残骸として残ってしまう。
 
 ![container_pid_1_problem_4.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png)
 
 > - https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
+> - https://tech-lab.sios.jp/archives/18811
 
 #### ▼ 対処方法
 
