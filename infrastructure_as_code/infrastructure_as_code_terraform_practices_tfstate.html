@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設計規約＠Helmの知見を記録しています。">
+        <meta name="description" content="tfstateファイルの分割＠プラクティス集の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html">
+        <link rel="prev" href="infrastructure_as_code_terraform_practices.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html">
+        <link rel="next" href="infrastructure_as_code_vagrant_vagrantfile.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設計規約＠Helm - 俺の技術ノート</title>
+        <title>【IT技術の知見】tfstateファイルの分割＠プラクティス集 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#helm" class="md-skip">
+        <a href="#tfstate" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設計規約＠Helm
+              【IT技術の知見】tfstateファイルの分割＠プラクティス集
             
           </span>
         </div>
@@ -474,10 +474,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -494,12 +496,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes/index.html" class="md-tabs__link">
           
   
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -3136,6 +3136,8 @@
       
   
   
+    
+  
   
     
     
@@ -3157,12 +3159,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
         
           
           
@@ -3184,7 +3186,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             ⚙️ IaC
@@ -3266,6 +3268,8 @@
                 
   
   
+    
+  
   
     
     
@@ -3275,6 +3279,48 @@
         
       
         
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_4" id="__nav_15_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 宣言型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 宣言型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
       
         
       
@@ -3292,14 +3338,11 @@
         
   
   
-    
-  
-  
     <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ 宣言型
+    ■ Docker Compose
   </span>
   
 
@@ -3309,8 +3352,550 @@
     </a>
   
 
+      
+    </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_packer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Packer
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_serverless_framework_serverless_yml.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Serverless Framework
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_4_4" id="__nav_15_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Terraform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_conf.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_tf_block.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ tfファイル
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_terraform_provider_aws.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ プロバイダー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_ci_cd_pipeline.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CDパイプライン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_4_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_4_4_6" id="__nav_15_4_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ プラクティス集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_15_4_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_4_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ プラクティス集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_terraform_practices.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    tfstateファイル分割
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_terraform_practices_tfstate.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    tfstateファイル分割
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-tfstate" class="md-nav__link">
+    01. tfstateファイルの分割について
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. ローカル/リモートモジュールのディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ローカル/リモートモジュールのディレクトリ構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    依存先AWSリソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    リソース別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    リージョン別
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    実行環境別
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-tfstate" class="md-nav__link">
+    03. モノリスなtfstateファイルを分割する
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="infrastructure_as_code_vagrant_vagrantfile.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ Vagrant
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3327,8 +3912,6 @@
       
       
   
-  
-    
   
   
     
@@ -3359,12 +3942,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
         
           
           
@@ -3386,7 +3969,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3473,7 +4056,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3679,8 +4262,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3693,793 +4274,33 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_8" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_8" id="__nav_16_8_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ マニフェスト管理
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_8">
-            <span class="md-nav__icon md-icon"></span>
-            ■ マニフェスト管理
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_8_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_8_1" id="__nav_16_8_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Helm
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_8_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Helm
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Helm
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ コマンド
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ チャート
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_policy.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. リポジトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    リポジトリ分割のメリット
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    アプリとIaCを同じリポジトリで管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac_1" class="md-nav__link">
-    アプリとIaCを異なるリポジトリで管理 (推奨)
-  </a>
-  
-    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 各チャートを同じリポジトリで管理する (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 各チャートを異なるリポジトリで管理する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ディレクトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ディレクトリ構成規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    通常
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    実行環境別
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    リソース別
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. コード規約
-  </a>
-  
-    <nav class="md-nav" aria-label="03. コード規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    テンプレート
-  </a>
-  
-    <nav class="md-nav" aria-label="テンプレート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ 命名規則
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ ロジック
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 拡張子
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ アクションの選定
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. 開発環境
-  </a>
-  
-    <nav class="md-nav" aria-label="04. 開発環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    helmコマンドのセットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="helmコマンドのセットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ バージョンの固定
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    05. チャートのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="05. チャートのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    チャートのアップグレードとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    チャートのアップグレード方法
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのアップグレード方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#crd" class="md-nav__link">
-    ▼ 非CRDのみからなるチャート場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crd_1" class="md-nav__link">
-    ▼ CRDを含むチャートの場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    新バージョンの自動検出
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    非推奨なAPIのアップグレード
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-ci" class="md-nav__link">
-    06. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="06. CIパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    仕様書自動作成
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    チャートのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    ▼ ホワイトボックステストの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ ドライラン
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    ▼ 単体テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    ▼ 回帰テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    ホワイトボックステスト結果の通知
-  </a>
-  
-    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_2" class="md-nav__link">
-    ▼ Helmを採用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm_3" class="md-nav__link">
-    ▼ Helm以外を使用する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    チャートのブラックボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのブラックボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    ▼ ブラックボックステストの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    ▼ 結合テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    ▼ 総合テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-02-cd" class="md-nav__link">
-    06-02. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="06-02. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    デプロイ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    ロールバック
-  </a>
-  
-    <nav class="md-nav" aria-label="ロールバック">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_4" class="md-nav__link">
-    ▼ Helmを採用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm_5" class="md-nav__link">
-    ▼ Helm以外を使用する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-03" class="md-nav__link">
-    06-03. 事後処理
-  </a>
-  
-    <nav class="md-nav" aria-label="06-03. 事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    デプロイの通知
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Helmfile
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Kustomize
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -5258,7 +5079,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6275,434 +6096,57 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. リポジトリ構成規約
+  <a href="#01-tfstate" class="md-nav__link">
+    01. tfstateファイルの分割について
   </a>
   
-    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. ローカル/リモートモジュールのディレクトリ構成
+  </a>
+  
+    <nav class="md-nav" aria-label="02. ローカル/リモートモジュールのディレクトリ構成">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    依存先AWSリソース別
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    リポジトリ分割のメリット
+    リソース別
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    アプリとIaCを同じリポジトリで管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac_1" class="md-nav__link">
-    アプリとIaCを異なるリポジトリで管理 (推奨)
-  </a>
-  
-    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ 各チャートを同じリポジトリで管理する (推奨)
+    リージョン別
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ▼ 各チャートを異なるリポジトリで管理する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ディレクトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="02. ディレクトリ構成規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    通常
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
     実行環境別
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    リソース別
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. コード規約
+  <a href="#03-tfstate" class="md-nav__link">
+    03. モノリスなtfstateファイルを分割する
   </a>
-  
-    <nav class="md-nav" aria-label="03. コード規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    テンプレート
-  </a>
-  
-    <nav class="md-nav" aria-label="テンプレート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ 命名規則
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ ロジック
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 拡張子
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ アクションの選定
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. 開発環境
-  </a>
-  
-    <nav class="md-nav" aria-label="04. 開発環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    helmコマンドのセットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="helmコマンドのセットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ バージョンの固定
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    05. チャートのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="05. チャートのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    チャートのアップグレードとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    チャートのアップグレード方法
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのアップグレード方法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#crd" class="md-nav__link">
-    ▼ 非CRDのみからなるチャート場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crd_1" class="md-nav__link">
-    ▼ CRDを含むチャートの場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    新バージョンの自動検出
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    非推奨なAPIのアップグレード
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-ci" class="md-nav__link">
-    06. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="06. CIパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    仕様書自動作成
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    チャートのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    ▼ ホワイトボックステストの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ ドライラン
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    ▼ 単体テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    ▼ 回帰テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    ホワイトボックステスト結果の通知
-  </a>
-  
-    <nav class="md-nav" aria-label="ホワイトボックステスト結果の通知">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_2" class="md-nav__link">
-    ▼ Helmを採用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm_3" class="md-nav__link">
-    ▼ Helm以外を使用する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    チャートのブラックボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="チャートのブラックボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    ▼ ブラックボックステストの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    ▼ 結合テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    ▼ 総合テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-02-cd" class="md-nav__link">
-    06-02. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="06-02. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    デプロイ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    ロールバック
-  </a>
-  
-    <nav class="md-nav" aria-label="ロールバック">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_4" class="md-nav__link">
-    ▼ Helmを採用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm_5" class="md-nav__link">
-    ▼ Helm以外を使用する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-03" class="md-nav__link">
-    06-03. 事後処理
-  </a>
-  
-    <nav class="md-nav" aria-label="06-03. 事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    デプロイの通知
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -6724,7 +6168,7 @@
   
 
 
-<h1 id="helm">設計規約＠Helm<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h1>
+<h1 id="tfstate"><code>tfstate</code>ファイルの分割＠プラクティス集<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6733,463 +6177,269 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. リポジトリ構成規約<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">リポジトリ分割のメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>リポジトリを分割することにより、以下のメリットがある。</p>
-<ul>
-<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
-</ul>
-<p><br></p>
-<h3 id="iac">アプリとIaCを同じリポジトリで管理<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── app/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── manifests/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── helm/</span>
-<span class="l l-Scalar l-Scalar-Plain">│       ├── foo-chart/</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="iac_1">アプリとIaCを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 各チャートを同じリポジトリで管理する (推奨)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>各チャートを同じリポジトリで管理する。</p>
-<p>各チャートの全てのバージョンをリポジトリ内で管理すると、<code>index.yaml</code>ファイルやチャートアーカイブ (<code>.tgz</code>形式ファイル) が必要になってしまう。</p>
-<p>そのため、<code>1</code>個のバージョンのみを管理する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── helm/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── foo-chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── bar-chart/</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを異なるリポジトリにする場合</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar-chart/</span>
-</code></pre></div>
-<h4 id="_4">▼ 各チャートを異なるリポジトリで管理する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>各チャートを異なるリポジトリで管理する。</p>
-<p>この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理する方が良い。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを同じリポジトリにする場合</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── helm/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── foo-chart/</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># KubernetesとHelmを異なるリポジトリにする場合</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02">02. ディレクトリ構成規約<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_5">通常<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>最も基本的な構成。</p>
-<p>実行環境別に<code>values</code>ファイルを作成する。</p>
-<p>また、実行環境の差は設定値だけとし、<code>templates</code>ディレクトリ配下にマニフェストを配置する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── config-map.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── values/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── tes.yaml</span><span class="w"> </span><span class="c1"># テスト環境へのapply時に出力する値</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg.yaml</span><span class="w"> </span><span class="c1"># ステージング環境へのapply時に出力する値</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── prd.yaml</span><span class="w"> </span><span class="c1"># 本番環境へのapply時に出力する値</span>
-<span class="nn">...</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_6">実行環境別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>実行環境別に<code>values</code>ファイルを作成する。</p>
-<p>また、実行環境ごとにマニフェストの構造に差分があるとし、<code>templates</code>ディレクトリ配下に実行環境別のディレクトリを配置する。</p>
+<h2 id="01-tfstate">01. <code>tfstate</code>ファイルの分割について<a class="headerlink" href="#01-tfstate" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
-<li><a href="https://github.com/codefresh-contrib/helm-promotion-sample-app">https://github.com/codefresh-contrib/helm-promotion-sample-app</a></li>
+<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756">https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo-chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── shared/</span><span class="w"> </span><span class="c1"># 共通のマニフェストの部品</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── prd/</span><span class="w"> </span><span class="c1"># 本番環境のみで適用するマニフェストの部品</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── tes/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── values/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── tes.yaml</span><span class="w"> </span><span class="c1"># テスト環境へのapply時に出力する値</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   ├── stg.yaml</span><span class="w"> </span><span class="c1"># ステージング環境へのapply時に出力する値</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── prd.yaml</span><span class="w"> </span><span class="c1"># 本番環境へのapply時に出力する値</span>
-<span class="nn">...</span>
-</code></pre></div>
 <p><br></p>
-<h3 id="_7">リソース別<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>リソース別にチャートを作成する。</p>
-<p>また、<code>values</code>ファイルを配置するディレクトリをルートに配置する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── istio/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── argocd/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">└── values/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境へのインストール時に出力するvaluesファイル</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── kubernetes/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── istio/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── istio/</span>
+<h2 id="02">02. ローカル/リモートモジュールのディレクトリ構成<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p>ここから先の話は遊びみたいなもんです👶🏻</p>
+<p>ローカルモジュールとリモートモジュールは、”汎用的に使用できる<code>resource</code>ブロックや<code>data</code>ブロックのセット” である。</p>
+<p>これらは、モジュールがローカルリポジトリまたはリモートリポジトリのいずれにあるかの違いしかない。</p>
+<p>そのため、このディレクトリ構成はローカル / リモートモジュールの両方に適用できる。</p>
+<p>ローカルモジュールに関して、これをリポジトリ内で汎用的に使い回すユースケースのみ作成するべきである。</p>
+<p>そのためローカルモジュールに関しては、</p>
+<ul>
+<li>そもそもローカルモジュールを制限使用にする</li>
+<li>ローカルモジュールは自前リモートモジュール化する</li>
+<li>公式リモートモジュールを使用する</li>
+</ul>
+<p>のほうが良い。</p>
+<p>ローカル/リモートモジュールのディレクトリ構成に関して、<strong><code>tfstate</code>ファイルは粒度に関係ないので、これといった目安はない</strong>が、参考までに今までに観測したことのある例をあげた。</p>
+<p><br></p>
+<h3 id="aws">依存先AWSリソース別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<p>依存先の多いAWSリソースに関して、依存先のAWSリソース別にローカルモジュールを分割する。</p>
+<p>依存先AWSリソース別の分割方法は、Terraformの公式リモートモジュールに一番多い構成である。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClass、など）</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── auto_scaling/</span><span class="w"> </span><span class="c1"># AutoScaling</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境へのインストール時に出力するvaluesファイル</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── prd/</span><span class="w"> </span><span class="c1"># 本番環境へのインストール時に出力するvaluesファイル</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── iam/</span><span class="w"> </span><span class="c1"># IAMロール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── kubernetes/</span><span class="w"> </span><span class="c1"># Kubernetesリソース（例：RoleBinding、StorageClass、など）</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── launch_template/</span><span class="w"> </span><span class="c1"># 起動テンプレート</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── security_group/</span><span class="w"> </span><span class="c1"># セキュリティグループ</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── main.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── outputs.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── variables.tf</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── node_group/</span><span class="w"> </span><span class="c1"># Nodeグループ</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── main.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_2">リソース別<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>最上層は、AWSリソースで分割する。</p>
+<p>またスクリプトを使用するAWSリソース（例：Lambda）では、そのソースコードをモジュール下で管理する。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function/</span><span class="w"> </span><span class="c1"># とある関数</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="l l-Scalar l-Scalar-Plain">├── alb/</span><span class="w"> </span><span class="c1"># ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">├── lambda/</span><span class="w"> </span><span class="c1"># Lambda</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function/</span><span class="w"> </span><span class="c1"># とある関数</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">リージョン別<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>AWSリソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。</p>
+<p>例えば、ACMは同じリージョンのAWSリソースにしかアタッチできない制約があるため、AWSリソースによっては複数リージョン必要になる。</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># ACM</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">実行環境別<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>環境ごとに差分が大きいAWSリソースに関して、実行環境別にローカルモジュールを分割する。</p>
+<p>なおcountで条件分岐しても良い</p>
+<p>(例)</p>
+<p>ローカルモジュールの場合</p>
+<p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうが良い。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
+</code></pre></div>
+<p>(例)</p>
+<p>リモートモジュールの場合</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span><span class="w"> </span><span class="c1"># テスト環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span><span class="w"> </span><span class="c1"># ステージング環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span><span class="w"> </span><span class="c1"># 本番環境</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── ssm/</span><span class="w"> </span><span class="c1"># Systems Manager</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── tes/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── stg/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── prd/</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── alb/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── tes/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-tfstate">03. モノリスな<code>tfstate</code>ファイルを分割する<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
+<p>モノリスな<code>tfstate</code>ファイルとは、例えば特定のAWSアカウント内のAWSリソースを全て一つの<code>tfstate</code>ファイルで管理している場合である。</p>
+<p>AWSリソース値を参照しない関係であれば、これらは別の<code>tfstate</code>ファイルに分割できる。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>既存のバックエンド内に新しいディレクトリを作成し、その配下に<code>tfstate</code>ファイルを新しく作成する。</p>
+<p>ここでは、サブシステムを分割するとする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── bar/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/bar/terraform.tfstate</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── remote_state.tfvars</span><span class="w"> </span><span class="c1"># terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── resource.tf</span><span class="w"> </span><span class="c1"># fooのtfstateファイルから参照した状態を使用する</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── provider.tf</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ...</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="nn">...</span>
 </code></pre></div>
-<p>ルートに配置した<code>values</code>ディレクトリには<code>values</code>ファイルを置く。</p>
-<p><code>values</code>ファイルは、リソース別に管理する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 共通のvaluesファイル</span>
-<span class="c1">#============</span>
-<span class="c1"># Global</span>
-<span class="c1">#============</span>
-<span class="nt">labels</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
-
-<span class="c1">#============</span>
-<span class="c1"># Deployment</span>
-<span class="c1">#============</span>
-<span class="nt">deployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-
-<span class="c1">#============</span>
-<span class="c1"># Service</span>
-<span class="c1">#============</span>
-<span class="nt">service</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="03">03. コード規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_8">テンプレート<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ 命名規則<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ファイル名はスネークケースとする。</p>
-<p>可能な限り、Kubernetesリソースの種類名 (例：Deployment、Service、ConfigMap) とする。</p>
-<p>ただし、同じKubernetesリソースのマニフェストを複数作成する場合は、識別できる名前をプレフィクスとしてつける。</p>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/chart_best_practices/templates/">https://helm.sh/docs/chart_best_practices/templates/</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ ロジック<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>可能な限り、Kubernetesリソースごとのテンプレートを使い回すようにする。</p>
-<p><strong>＊実装例＊</strong></p>
-<p>このConfigMapのマニフェストが<code>1</code>個あれば、<code>values</code>ファイルによらずにConfigMapを作成できる。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-config-map</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- range $key</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Values.config | fromYaml</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$key</span><span class="w"> </span><span class="p p-Indicator">}}:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">$value</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- end</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-</code></pre></div>
-<h4 id="_11">▼ 拡張子<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>拡張子は<code>.yaml</code>とする。</p>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/chart_best_practices/templates/">https://helm.sh/docs/chart_best_practices/templates/</a></li>
-</ul>
-</blockquote>
-<h4 id="_12">▼ アクションの選定<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p><code>.yaml</code>ファイルを丸ごと出力するようなアクション (例：<code>include</code>関数など) はできるだけ避け、マニフェストの共有部分を増やす。</p>
-<p>差分があるところに関しては、<code>Values</code>関数を使用し、<code>values</code>ファイルからパラメーターを渡すだけになるように設計する。</p>
-<p>公式リポジトリの実装方法を見て学んだ方が早い。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts">https://github.com/istio/istio/blob/1.14.3/manifests/charts</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04">04. 開発環境<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="helm_1">helmコマンドのセットアップ<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ バージョンの固定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>バージョンを統一するために、<code>.tool-versions</code>ファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span><span class="nb">local</span><span class="w"> </span>helm<span class="w"> </span>&lt;バージョン&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
-helm<span class="w"> </span>&lt;バージョンタグ&gt;
-</code></pre></div>
-<p>asdfパッケージを使用して、<code>helm</code>コマンドをインストールする。</p>
-<p><code>.tool-versions</code>ファイルに定義されたバージョンがインストールされる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>helm
-
-helm<span class="w">   </span>*https://github.com/Antiarchitect/asdf-helm.git
-...
-
-
-$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
-$<span class="w"> </span>asdf<span class="w"> </span>install
-</code></pre></div>
-<p><br></p>
-<h2 id="05">05. チャートのアップグレード<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_14">チャートのアップグレードとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>新バージョンのチャートを使用して、改めてHelmリリースを実行することにより、チャートをアップグレードする。</p>
-<p><br></p>
-<h3 id="_15">チャートのアップグレード方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<h4 id="crd">▼ 非CRDのみからなるチャート場合<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
-<p>非CRDのみからなるチャートのアップグレードは以下の手順で行う。</p>
-<p>アップグレードが正常に完了したことがわかるように、<code>--wait</code>オプションを有効化すると良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback</a></li>
-</ul>
-</blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p><code>helm upgrade</code>コマンドを実行することにより、インストール済みのチャートをアップグレードする。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>--wait
+<div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-sub-system/terraform.tfstate&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Helmリリースのリビジョン番号が新しくなっていることを確認する。</p>
+<p>bar側では、foo側の<code>tfstate</code>ファイルからリソース値を取得しつつ、</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>list
-</code></pre></div>
-<h4 id="crd_1">▼ CRDを含むチャートの場合<a class="headerlink" href="#crd_1" title="Permanent link">&para;</a></h4>
-<p>Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
-<p>そのため、アップグレードとアンインストールは<code>kubectl</code>コマンドで実行する必要がある。</p>
-<p>補足として、他のツール (例：ArgoCD、Flux) を介してHelmを実行する場合、<code>helm upgrade</code>コマンドではなく、<code>helm template</code>コマンドと<code>kubectl apply</code>コマンドを使用しているため、この問題は考慮しなくともよくなる。</p>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you</a></li>
-</ul>
-</blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>kube-apiserverにCRDのマニフェストを送信し、新バージョンのCRDを更新する。</p>
-<p>Helmは、CRDの更新に対応していない (作成には対応している) .</p>
-<p>そのため、<code>kubectl</code>コマンドを使用してこれを更新する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;新バージョンのCRDのマニフェストのURL&gt;
-</code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>kube-apiserverにカスタムリソースのマニフェストを送信する。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/foo-crd<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+<div class="highlight"><pre><span></span><code><span class="c1"># 分割した異なるfooというtfstateファイルから取得する</span>
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;terraform_remote_state&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s3&quot;</span>
+
+<span class="w">  </span><span class="nb">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-tfstate&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo/terraform.tfstate&quot;</span>
+<span class="w">    </span><span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>補足として、もしCRDをインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずにエラーになってしまう。</p>
+<p>新しい<code>tfstate</code>ファイルに、既存のサブシステムの状態をインポートする。</p>
+<p>事前に、バックエンドを新しいサブシステムの<code>tfstate</code>ファイルに切り替える。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span><span class="o">[</span>unable<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span><span class="s2">&quot;&quot;</span>:<span class="w"> </span>no<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>kind<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソース名&gt;&gt;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>version<span class="w"> </span><span class="s2">&quot;&lt;カスタムリソースのAPIグループ&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>import
 </code></pre></div>
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>旧バージョンのCRDを削除する。</p>
-<p>Helmは、CRDの削除に対応していないため、<code>kubectl delete</code>コマンドを使用する。</p>
+<p>サブシステムの<code>tfstate</code>ファイルで差分がないことを確認する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>&lt;旧バージョンのCRDのマニフェストのURL&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>plan
 </code></pre></div>
-<p><br></p>
-<h3 id="_16">新バージョンの自動検出<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>外部のツール (例：renovate) を使用して、チャートの新バージョンを自動的に検出する。</p>
-<p><br></p>
-<h3 id="api">非推奨なAPIのアップグレード<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
-<p>チャートの含まれる廃止予定のAPIをアップグレードせずに、Kubernetesをアップグレードしてしまったとする。</p>
-<p>Helmは、<code>helm upgrade</code>コマンド時に、デプロイ済みリリースとデプロイ予定リリースの間で差分パッチを作成しようとする。</p>
-<p>この時、APIがすでに存在しないマニフェストが含まれると、差分パッチを作れずにエラーになる。</p>
-<p>これが起こってしまった場合、Helmのデプロイ済みのリリースを直接書き換える必要がある。</p>
-<p>Helmは、デプロイ済みのリリースをCluster内でSecretのデータとして管理している。</p>
-<p>そのため、これを書き換えることになる。</p>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/topics/kubernetes_apis/#helm-users">https://helm.sh/docs/topics/kubernetes_apis/#helm-users</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="06-ci">06. CIパイプライン<a class="headerlink" href="#06-ci" title="Permanent link">&para;</a></h2>
-<h3 id="_17">仕様書自動作成<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>helm-docsを使用して、<code>values</code>ファイルの仕様書を作成する。</p>
-<p>作成した仕様書を自動コミットできるようにする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm-docs<span class="w"> </span>-f<span class="w"> </span>&lt;valuesファイル名&gt;
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>モノリスな<code>tfstate</code>ファイルから、サブシステムの状態を削除する。</p>
+<p>事前に、バックエンドをモノリスな<code>tfstate</code>ファイルに切り替える。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-backend.tfvars
+$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>&lt;サブシステムの状態&gt;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code># チャート名 ![Version:
-0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square)
-![Type:
-application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
-... ## Maintainers | Name | Email | Url | | ---- | ----- | --- | --- | | ... |
-... | ... | ... | ## Source Code ... ## Requirements | Repository | Name |
-Version | | ---------- | ---- | ------- | --- | | ... | ... | ... | ... | ##
-Values | Key | Type | Default | Description | | --- | ---- | ------- |
------------ | | ... | ... | ... | ... | --- Autogenerated from chart metadata
-using [helm-docs
-v1.11.0](https://github.com/norwoodj/helm-docs/releases/v1.11.0)
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/norwoodj/helm-docs">https://github.com/norwoodj/helm-docs</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_18">チャートのホワイトボックステスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<h4 id="_19">▼ ホワイトボックステストの実行環境<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>Helmで作成したマニフェストをツールの標準入力に渡し、Helmを検証する。</p>
-<p>静的解析の実行環境は、実際のマニフェストデプロイ時の実行環境 (ArgoCDであればrepo-serverのコンテナ) と同じにする。</p>
-<h4 id="_20">▼ 静的解析<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>観点</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>チャートの構造テスト</td>
-<td>Helmの静的解析コマンド (<code>helm lint</code>コマンド) を使用する。チャートの構造 (valuesファイルがあるか、Chart.yamlがあるか、など) を検証する。</td>
-<td></td>
-</tr>
-<tr>
-<td>チャートのベストプラクティス違反テスト</td>
-<td>外部のベストプラクティス違反テストツール (例：記入中...) を使用する。マニフェストではなく、チャートのベストプラクティス違反を検証する。</td>
-<td></td>
-</tr>
-<tr>
-<td>チャートの脆弱性診断</td>
-<td>外部の脆弱性診断ツール (例：記入中...) を使用する。マニフェストではなく、チャートの実装方法に起因する脆弱性を検証する。補足として、チャートのインストールによるKubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
-<td>- <a href="https://blog.aquasec.com/trivy-v0.29.0-rbac-security">https://blog.aquasec.com/trivy-v0.29.0-rbac-security</a></td>
-</tr>
-</tbody>
-</table>
-<p>静的解析のコマンドセットを使用してよい。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/helm/chart-testing">https://github.com/helm/chart-testing</a></li>
-</ul>
-</blockquote>
-<h4 id="_21">▼ ドライラン<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm diff</code>コマンドを実行することにより、ドライランを実施する。</p>
-<p><code>helm diff</code>コマンドの結果は可読性が高いわけではないため、差分が多くなるほど確認が大変になる。</p>
-<p>Helmリリースの粒度を小さくし、差分が少なくなるようにする。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
-</ul>
-</blockquote>
-<h4 id="_22">▼ 単体テスト<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>Helmの単体テストコマンド (<code>helm test</code>コマンド) を使用して、機能追加/変更を含むチャートが単体で正しく動作するか否かを検証する。</p>
-<p>代わりに、外部のテストツール (例：Terratest) を使用しても良い。</p>
-<p><code>helm test</code>コマンドを使用する場合、チャートの<code>/templates/test</code>ディレクトリ以下にテストコードを配置する必要がある。</p>
-<p>そのため、<code>helm upgrade</code>コマンドでインストールされるHelmリリースにテストコードも含まれてしまうことに注意する。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
-<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
-</ul>
-</blockquote>
-<h4 id="_23">▼ 回帰テスト<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>事前に、既存のチャートでゴールデンファイルを作成しておき、回帰テストを実施する。</p>
-<blockquote>
-<ul>
-<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_24">ホワイトボックステスト結果の通知<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<h4 id="helm_2">▼ Helmを採用する場合<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h4>
-<p>Helmには通知能力がなく、手動で知らせる必要がある。</p>
-<p>そこで、<code>helm diff</code>コマンドをGitOpsによるCDパイプライン上で実行していない (手動で実行している) 場合、<code>helm diff</code>コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff<span class="w"> </span>&lt;チャート名&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--no-color<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span>Comparing<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
-</code></pre></div>
-<p>あるいは、Namespaceを指定すると、追加/変更/削除の箇所のみ取得できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff<span class="w"> </span>&lt;チャート名&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--no-color<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
-
-foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Deployment<span class="w"> </span><span class="o">(</span>apps<span class="o">)</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>added:
-...
-</code></pre></div>
-<h4 id="helm_3">▼ Helm以外を使用する場合<a class="headerlink" href="#helm_3" title="Permanent link">&para;</a></h4>
-<p>GitOpsツールの差分を使用して、差分画面のURLを共有する。またはCDツールの通知能力 (例：argocd-bot) を使用して、CDパイプラインの結果が通知されるようにする。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/argoproj-labs/argocd-bot">https://github.com/argoproj-labs/argocd-bot</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_25">チャートのブラックボックステスト<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="_26">▼ ブラックボックステストの実行環境<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>Helmで作成したマニフェストをClusterにデプロイし、動作を検証する。</p>
-<p>実際のCluster上でマニフェストを検証してもよいし、本番のCluster (例：AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) に相当する実行環境 (例：Kind、K3SやK3D、Minikube、など) をCI上に作成してもよい。</p>
-<p>GitHub Actionsであれば、CI上にCluster構築するActionが提供されている。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/helm/kind-action">https://github.com/helm/kind-action</a></li>
-<li><a href="https://github.com/medyagh/setup-minikube">https://github.com/medyagh/setup-minikube</a></li>
-<li><a href="https://github.com/debianmaster/actions-k3s">https://github.com/debianmaster/actions-k3s</a></li>
-<li><a href="https://github.com/AbsaOSS/k3d-action">https://github.com/AbsaOSS/k3d-action</a></li>
-</ul>
-</blockquote>
-<h4 id="_27">▼ 結合テスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、追加/変更を含む複数のチャートが正しく連携するか否かを検証する。</p>
-<p>これは、CDパイプライン上で実施しても良いが、デメリットとして<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/">https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/</a></li>
-<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
-<li><a href="https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test">https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test</a></li>
-<li><a href="https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically">https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically</a></li>
-</ul>
-</blockquote>
-<h4 id="_28">▼ 総合テスト<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して<code>helm upgrade</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。</p>
-<p>これは、GitOpsによるCDパイプライン上で実施しても良いが、デメリットとしてGitOpsツール上では<code>helm upgrade</code>コマンドで出力される警告ログを確認できなくなってしまう。</p>
-<blockquote>
-<ul>
-<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
-</ul>
-</blockquote>
-<h2 id="06-02-cd">06-02. CDパイプライン<a class="headerlink" href="#06-02-cd" title="Permanent link">&para;</a></h2>
-<h3 id="_29">デプロイ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_30">ロールバック<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<h4 id="helm_4">▼ Helmを採用する場合<a class="headerlink" href="#helm_4" title="Permanent link">&para;</a></h4>
-<p><code>helm history</code>コマンドで過去のHelmリリースタグ (リビジョン) を確認し、<code>helm rollback</code>コマンドでロールバックする。</p>
-<h4 id="helm_5">▼ Helm以外を使用する場合<a class="headerlink" href="#helm_5" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="06-03">06-03. 事後処理<a class="headerlink" href="#06-03" title="Permanent link">&para;</a></h2>
-<h3 id="_31">デプロイの通知<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 
   <hr>
@@ -7197,7 +6447,7 @@ foo-namespace,<span class="w"> </span>foo-deployment,<span class="w"> </span>Dep
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設計規約＠Kubernetesの知見を記録しています。">
+        <meta name="description" content="プラクティス集＠Dockerの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_practices.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_network.html">
+        <link rel="prev" href="infrastructure_as_code_docker_command.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html">
+        <link rel="next" href="infrastructure_as_code_docker_compose_command.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】設計規約＠Kubernetes - 俺の技術ノート</title>
+        <title>【IT技術の知見】プラクティス集＠Docker - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#docker" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】設計規約＠Kubernetes
+              【IT技術の知見】プラクティス集＠Docker
             
           </span>
         </div>
@@ -474,10 +474,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -494,12 +496,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes/index.html" class="md-tabs__link">
           
   
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -3136,6 +3136,8 @@
       
   
   
+    
+  
   
     
     
@@ -3157,12 +3159,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
         
           
           
@@ -3184,7 +3186,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             ⚙️ IaC
@@ -3217,9 +3219,59 @@
                 
   
   
+    
+  
   
     
     
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_3" id="__nav_15_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 手続き型
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_15_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 手続き型
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
       
         
       
@@ -3237,14 +3289,11 @@
         
   
   
-    
-  
-  
     <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ 手続き型
+    ■ Ansible
   </span>
   
 
@@ -3254,8 +3303,618 @@
     </a>
   
 
+      
+    </li>
   
 
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15_3_2" id="__nav_15_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Docker
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_15_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Docker
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_docker_dockerfile.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dockerfile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_docker_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_docker_practices.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. コンテナイメージを適切に分割する
+  </a>
+  
+    <nav class="md-nav" aria-label="01. コンテナイメージを適切に分割する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    プロセス単位で分割する
+  </a>
+  
+    <nav class="md-nav" aria-label="プロセス単位で分割する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ なぜプロセス単位なのか
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 分割方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ コンテナのプロセスの関係
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid1" class="md-nav__link">
+    PID=1問題に対処する
+  </a>
+  
+    <nav class="md-nav" aria-label="PID=1問題に対処する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ サーバーのプロセス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ コンテナのプロセス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 対処方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graceful-shutdown" class="md-nav__link">
+    コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 脆弱性に対処する
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 脆弱性に対処する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    実行ユーザーを非特権化する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ユーザーにroot権限を付与しない
+  </a>
+  
+    <nav class="md-nav" aria-label="ユーザーにroot権限を付与しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root_1" class="md-nav__link">
+    ▼ root権限を付与しない理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    ▼ sudoコマンドを実行させない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    信頼できるベースイメージを選ぶ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    Docker in Dockerの脆弱性に対処する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    コンテナイメージを署名する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    本番環境ではバインドマウントを使用しない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-latest" class="md-nav__link">
+    03. イメージタグにlatestを設定しない
+  </a>
+  
+    <nav class="md-nav" aria-label="03. イメージタグにlatestを設定しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#latest" class="md-nav__link">
+    latestタグを指定しない方が良い理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    タグの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    CPUアーキテクチャの種類
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. イメージサイズを削減する
+  </a>
+  
+    <nav class="md-nav" aria-label="04. イメージサイズを削減する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    不要なファイルを含めない
+  </a>
+  
+    <nav class="md-nav" aria-label="不要なファイルを含めない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerignore" class="md-nav__link">
+    ▼ .dockerignoreファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ キャッシュを削除する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ファイルサイズの小さなベースイメージを使用する
+  </a>
+  
+    <nav class="md-nav" aria-label="ファイルサイズの小さなベースイメージを使用する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ ベースイメージの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    ▼ できる限りOSイメージをベースとしない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    イメージレイヤー数を削減する
+  </a>
+  
+    <nav class="md-nav" aria-label="イメージレイヤー数を削減する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ イメージレイヤーの増え方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ &amp;&amp;を使う
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ヒアドキュメントを使う
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    マルチステージビルドを採用する
+  </a>
+  
+    <nav class="md-nav" aria-label="マルチステージビルドを採用する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ マルチステージビルドとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ コンパイル済バイナリファイルを再利用する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    ▼ 実行環境別にステージを分ける場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addcopy" class="md-nav__link">
+    ADD処理よりもCOPY処理を使用する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. ログを適切に扱う
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ログを適切に扱う">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    標準出力/標準エラー出力に出力する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    構造化ログとして出力する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    06. 適切なネットワークを使用する
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-ci" class="md-nav__link">
+    07. CIパイプライン上でコンテナイメージを用意する
+  </a>
+  
+    <nav class="md-nav" aria-label="07. CIパイプライン上でコンテナイメージを用意する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    CIパイプラインに適切なステップを用意する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    イメージレジストリのレートリミットに対処する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    静的解析を実施する
+  </a>
+  
+    <nav class="md-nav" aria-label="静的解析を実施する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    ▼ Dockerfileの文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_1" class="md-nav__link">
+    ▼ Dockerfileのベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_2" class="md-nav__link">
+    ▼ Dockerfileの脆弱性診断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    ▼ コンテナ構造テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3328,8 +3987,6 @@
       
   
   
-    
-  
   
     
     
@@ -3359,12 +4016,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
         
           
           
@@ -3386,7 +4043,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3399,8 +4056,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3421,882 +4076,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_2" id="__nav_16_2_label" tabindex="0">
-            
+  
+  
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ Kubernetes
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Kubernetes
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Kubernetes
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_component_control_plane.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    コントロールプレーンコンポーネント
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_component_node.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nodeコンポーネント
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_command.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    コマンド
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_network.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ネットワーク
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_policy.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. リポジトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    リポジトリ分割のメリット
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    アプリとIaCを同じリポジトリで管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac_1" class="md-nav__link">
-    アプリとIaCを異なるリポジトリで管理 (推奨)
-  </a>
-  
-    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 各マイクロサービスを同じリポジトリで管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 各マイクロサービスを異なるリポジトリで管理
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    01-02. ディレクトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. ディレクトリ構成規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ディレクトリ/ファイルの構成
-  </a>
-  
-    <nav class="md-nav" aria-label="ディレクトリ/ファイルの構成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ マイクロサービス別
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ ディレクトリ無し
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. 命名規則
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 命名規則">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    リソース名
-  </a>
-  
-    <nav class="md-nav" aria-label="リソース名">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ 冗長な名前が嫌いな場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ 冗長な名前が嫌いでない場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    マニフェストのファイル名
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのファイル名">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ 重複しない場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ ファイル名重複する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    拡張子
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    マニフェストの粒度
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. 実行環境
-  </a>
-  
-    <nav class="md-nav" aria-label="03. 実行環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    開発環境
-  </a>
-  
-    <nav class="md-nav" aria-label="開発環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_1" class="md-nav__link">
-    ▼ Kubernetesの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubernetesapply" class="md-nav__link">
-    ▼ Kubernetesリソースのapply
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    テスト環境、ステージング環境、本番環境
-  </a>
-  
-    <nav class="md-nav" aria-label="テスト環境、ステージング環境、本番環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_2" class="md-nav__link">
-    ▼ Kubernetesの実行環境
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubernetesapply_1" class="md-nav__link">
-    ▼ Kubernetesリソースのapply
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ 実行環境の分割
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. バージョンの互換性
-  </a>
-  
-    <nav class="md-nav" aria-label="04. バージョンの互換性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kube-apiserver" class="md-nav__link">
-    kube-apiserver
-  </a>
-  
-    <nav class="md-nav" aria-label="kube-apiserver">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kube-apiserver_1" class="md-nav__link">
-    ▼ kube-apiserverが冗長化されている場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubectl" class="md-nav__link">
-    kubectl
-  </a>
-  
-    <nav class="md-nav" aria-label="kubectl">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kube-apiserver_2" class="md-nav__link">
-    ▼ kube-apiserverの場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-cidr" class="md-nav__link">
-    06. CIDRブロックの設計
-  </a>
-  
-    <nav class="md-nav" aria-label="06. CIDRブロックの設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ワーカーNodeの場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    サブネットの場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
-    07. 監視ポリシー
-  </a>
-  
-    <nav class="md-nav" aria-label="07. 監視ポリシー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ハードウェアリソース系
-  </a>
-  
-    <nav class="md-nav" aria-label="ハードウェアリソース系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ ハードウェアリソース系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster" class="md-nav__link">
-    ▼ Cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    ▼ Pod
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    ▼ コンテナ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    ネットワーク系
-  </a>
-  
-    <nav class="md-nav" aria-label="ネットワーク系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    ▼ ネットワーク系
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
-    状態系
-  </a>
-  
-    <nav class="md-nav" aria-label="状態系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
-    ▼ 状態系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster_1" class="md-nav__link">
-    ▼ Cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod_1" class="md-nav__link">
-    ▼ Pod
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
-    ▼ コンテナ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#08" class="md-nav__link">
-    08. デバッグ
-  </a>
-  
-    <nav class="md-nav" aria-label="08. デバッグ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    便利なイメージ
-  </a>
-  
-    <nav class="md-nav" aria-label="便利なイメージ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    ▼ Deployment系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    ▼ ネットワーク系
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-ci" class="md-nav__link">
-    09. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="09. CIパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
-    マニフェストのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    マニフェストのブラックボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのブラックボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    ▼ 結合テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    ▼ 総合テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-02-cd" class="md-nav__link">
-    09-02. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="09-02. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    マニフェストのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    デプロイ
-  </a>
-  
-    <nav class="md-nav" aria-label="デプロイ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    ▼ デプロイとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    ▼ インプレースデプロイメント (非推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    ▼ ローリングアップデート (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bg" class="md-nav__link">
-    ▼ BGデプロイメント (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    ▼ カナリアリリース (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#progressive-delivery" class="md-nav__link">
-    ▼ Progressive Delivery (推奨)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
-    ロールバック
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-03" class="md-nav__link">
-    09-03. 事後処理
-  </a>
-  
-    <nav class="md-nav" aria-label="09-03. 事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_43" class="md-nav__link">
-    デプロイの通知
-  </a>
-  
-    <nav class="md-nav" aria-label="デプロイの通知">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_3" class="md-nav__link">
-    ▼ Kubernetesを使用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_4" class="md-nav__link">
-    ▼ Kubernetes以外を使用する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -4329,7 +4130,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5352,7 +5153,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6370,90 +6171,84 @@
       
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
-    01. リポジトリ構成規約
+    01. コンテナイメージを適切に分割する
   </a>
   
-    <nav class="md-nav" aria-label="01. リポジトリ構成規約">
+    <nav class="md-nav" aria-label="01. コンテナイメージを適切に分割する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    リポジトリ分割のメリット
+    プロセス単位で分割する
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    アプリとIaCを同じリポジトリで管理
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac_1" class="md-nav__link">
-    アプリとIaCを異なるリポジトリで管理 (推奨)
-  </a>
-  
-    <nav class="md-nav" aria-label="アプリとIaCを異なるリポジトリで管理 (推奨)">
+    <nav class="md-nav" aria-label="プロセス単位で分割する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ 各マイクロサービスを同じリポジトリで管理
+    ▼ なぜプロセス単位なのか
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ▼ 各マイクロサービスを異なるリポジトリで管理
+    ▼ 分割方法
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-02" class="md-nav__link">
-    01-02. ディレクトリ構成規約
-  </a>
-  
-    <nav class="md-nav" aria-label="01-02. ディレクトリ構成規約">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ディレクトリ/ファイルの構成
+    ▼ コンテナのプロセスの関係
   </a>
   
-    <nav class="md-nav" aria-label="ディレクトリ/ファイルの構成">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid1" class="md-nav__link">
+    PID=1問題に対処する
+  </a>
+  
+    <nav class="md-nav" aria-label="PID=1問題に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    ▼ マイクロサービス別
+    ▼ サーバーのプロセス
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ ディレクトリ無し
+    ▼ コンテナのプロセス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 対処方法
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graceful-shutdown" class="md-nav__link">
+    コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
+  </a>
   
 </li>
         
@@ -6464,76 +6259,70 @@
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
-    02. 命名規則
+    02. 脆弱性に対処する
   </a>
   
-    <nav class="md-nav" aria-label="02. 命名規則">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    リソース名
-  </a>
-  
-    <nav class="md-nav" aria-label="リソース名">
+    <nav class="md-nav" aria-label="02. 脆弱性に対処する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    ▼ 冗長な名前が嫌いな場合
+    実行ユーザーを非特権化する
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ユーザーにroot権限を付与しない
+  </a>
+  
+    <nav class="md-nav" aria-label="ユーザーにroot権限を付与しない">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#root_1" class="md-nav__link">
+    ▼ root権限を付与しない理由
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    ▼ sudoコマンドを実行させない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
-    ▼ 冗長な名前が嫌いでない場合
+    信頼できるベースイメージを選ぶ
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#docker-in-docker" class="md-nav__link">
+    Docker in Dockerの脆弱性に対処する
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
-    マニフェストのファイル名
+    コンテナイメージを署名する
   </a>
   
-    <nav class="md-nav" aria-label="マニフェストのファイル名">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
-    ▼ 重複しない場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ ファイル名重複する場合
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    拡張子
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    マニフェストの粒度
+    本番環境ではバインドマウントを使用しない
   </a>
   
 </li>
@@ -6544,71 +6333,31 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. 実行環境
+  <a href="#03-latest" class="md-nav__link">
+    03. イメージタグにlatestを設定しない
   </a>
   
-    <nav class="md-nav" aria-label="03. 実行環境">
+    <nav class="md-nav" aria-label="03. イメージタグにlatestを設定しない">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    開発環境
-  </a>
-  
-    <nav class="md-nav" aria-label="開発環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_1" class="md-nav__link">
-    ▼ Kubernetesの実行環境
+  <a href="#latest" class="md-nav__link">
+    latestタグを指定しない方が良い理由
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubernetesapply" class="md-nav__link">
-    ▼ Kubernetesリソースのapply
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    テスト環境、ステージング環境、本番環境
-  </a>
-  
-    <nav class="md-nav" aria-label="テスト環境、ステージング環境、本番環境">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_2" class="md-nav__link">
-    ▼ Kubernetesの実行環境
+  <a href="#_13" class="md-nav__link">
+    タグの種類
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubernetesapply_1" class="md-nav__link">
-    ▼ Kubernetesリソースのapply
+  <a href="#cpu" class="md-nav__link">
+    CPUアーキテクチャの種類
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ 実行環境の分割
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6619,23 +6368,30 @@
       
         <li class="md-nav__item">
   <a href="#04" class="md-nav__link">
-    04. バージョンの互換性
+    04. イメージサイズを削減する
   </a>
   
-    <nav class="md-nav" aria-label="04. バージョンの互換性">
+    <nav class="md-nav" aria-label="04. イメージサイズを削減する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kube-apiserver" class="md-nav__link">
-    kube-apiserver
+  <a href="#_14" class="md-nav__link">
+    不要なファイルを含めない
   </a>
   
-    <nav class="md-nav" aria-label="kube-apiserver">
+    <nav class="md-nav" aria-label="不要なファイルを含めない">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kube-apiserver_1" class="md-nav__link">
-    ▼ kube-apiserverが冗長化されている場合
+  <a href="#dockerignore" class="md-nav__link">
+    ▼ .dockerignoreファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ キャッシュを削除する
   </a>
   
 </li>
@@ -6646,16 +6402,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubectl" class="md-nav__link">
-    kubectl
+  <a href="#_16" class="md-nav__link">
+    ファイルサイズの小さなベースイメージを使用する
   </a>
   
-    <nav class="md-nav" aria-label="kubectl">
+    <nav class="md-nav" aria-label="ファイルサイズの小さなベースイメージを使用する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kube-apiserver_2" class="md-nav__link">
-    ▼ kube-apiserverの場合
+  <a href="#_17" class="md-nav__link">
+    ▼ ベースイメージの種類
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os" class="md-nav__link">
+    ▼ できる限りOSイメージをベースとしない
   </a>
   
 </li>
@@ -6665,145 +6428,105 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-cidr" class="md-nav__link">
-    06. CIDRブロックの設計
-  </a>
-  
-    <nav class="md-nav" aria-label="06. CIDRブロックの設計">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ワーカーNodeの場合
+  <a href="#_18" class="md-nav__link">
+    イメージレイヤー数を削減する
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="イメージレイヤー数を削減する">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
-    サブネットの場合
+    ▼ イメージレイヤーの増え方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ &amp;&amp;を使う
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    ▼ ヒアドキュメントを使う
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
-    07. 監視ポリシー
-  </a>
-  
-    <nav class="md-nav" aria-label="07. 監視ポリシー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ハードウェアリソース系
-  </a>
-  
-    <nav class="md-nav" aria-label="ハードウェアリソース系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ ハードウェアリソース系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster" class="md-nav__link">
-    ▼ Cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
-    ▼ Pod
-  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_22" class="md-nav__link">
-    ▼ コンテナ
+    マルチステージビルドを採用する
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
-    ネットワーク系
-  </a>
-  
-    <nav class="md-nav" aria-label="ネットワーク系">
+    <nav class="md-nav" aria-label="マルチステージビルドを採用する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
-    ▼ ネットワーク系
+  <a href="#_23" class="md-nav__link">
+    ▼ マルチステージビルドとは
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    ▼ コンパイル済バイナリファイルを再利用する場合
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_25" class="md-nav__link">
-    状態系
+    ▼ 実行環境別にステージを分ける場合
   </a>
   
-    <nav class="md-nav" aria-label="状態系">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addcopy" class="md-nav__link">
+    ADD処理よりもCOPY処理を使用する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    05. ログを適切に扱う
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ログを適切に扱う">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_26" class="md-nav__link">
-    ▼ 状態系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster_1" class="md-nav__link">
-    ▼ Cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pod_1" class="md-nav__link">
-    ▼ Pod
+    標準出力/標準エラー出力に出力する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_27" class="md-nav__link">
-    ▼ コンテナ
+    構造化ログとして出力する
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6813,226 +6536,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#08" class="md-nav__link">
-    08. デバッグ
+  <a href="#06" class="md-nav__link">
+    06. 適切なネットワークを使用する
   </a>
   
-    <nav class="md-nav" aria-label="08. デバッグ">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07-ci" class="md-nav__link">
+    07. CIパイプライン上でコンテナイメージを用意する
+  </a>
+  
+    <nav class="md-nav" aria-label="07. CIパイプライン上でコンテナイメージを用意する">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    CIパイプラインに適切なステップを用意する
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
-    便利なイメージ
-  </a>
-  
-    <nav class="md-nav" aria-label="便利なイメージ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    ▼ Deployment系
+    イメージレジストリのレートリミットに対処する
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
-    ▼ ネットワーク系
+    静的解析を実施する
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-ci" class="md-nav__link">
-    09. CIパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="09. CIパイプライン">
+    <nav class="md-nav" aria-label="静的解析を実施する">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile" class="md-nav__link">
+    ▼ Dockerfileの文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_1" class="md-nav__link">
+    ▼ Dockerfileのベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerfile_2" class="md-nav__link">
+    ▼ Dockerfileの脆弱性診断
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
-    マニフェストのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_32" class="md-nav__link">
-    マニフェストのブラックボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのブラックボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_33" class="md-nav__link">
-    ▼ 結合テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_34" class="md-nav__link">
-    ▼ 総合テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-02-cd" class="md-nav__link">
-    09-02. CDパイプライン
-  </a>
-  
-    <nav class="md-nav" aria-label="09-02. CDパイプライン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_35" class="md-nav__link">
-    マニフェストのホワイトボックステスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェストのホワイトボックステスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_36" class="md-nav__link">
-    ▼ 静的解析
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_37" class="md-nav__link">
-    デプロイ
-  </a>
-  
-    <nav class="md-nav" aria-label="デプロイ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_38" class="md-nav__link">
-    ▼ デプロイとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_39" class="md-nav__link">
-    ▼ インプレースデプロイメント (非推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_40" class="md-nav__link">
-    ▼ ローリングアップデート (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bg" class="md-nav__link">
-    ▼ BGデプロイメント (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_41" class="md-nav__link">
-    ▼ カナリアリリース (推奨)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#progressive-delivery" class="md-nav__link">
-    ▼ Progressive Delivery (推奨)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_42" class="md-nav__link">
-    ロールバック
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09-03" class="md-nav__link">
-    09-03. 事後処理
-  </a>
-  
-    <nav class="md-nav" aria-label="09-03. 事後処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_43" class="md-nav__link">
-    デプロイの通知
-  </a>
-  
-    <nav class="md-nav" aria-label="デプロイの通知">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_3" class="md-nav__link">
-    ▼ Kubernetesを使用する場合
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubernetes_4" class="md-nav__link">
-    ▼ Kubernetes以外を使用する場合
+    ▼ コンテナ構造テスト
   </a>
   
 </li>
@@ -7065,7 +6628,7 @@
   
 
 
-<h1 id="kubernetes">設計規約＠Kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h1 id="docker">プラクティス集＠Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -7074,840 +6637,684 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. リポジトリ構成規約<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">リポジトリ分割のメリット<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>リポジトリを分割することにより、以下のメリットがある。</p>
+<h2 id="01">01. コンテナイメージを適切に分割する<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">プロセス単位で分割する<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ なぜプロセス単位なのか<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>認可スコープをリポジトリ内に閉じられるため、運用チームを別に分けられる。</li>
+<li>プロセスを疎結合にし、プロセス間で影響を与え合わないようにする</li>
+<li>必要なコンポーネントだけスケーリングできるようになる</li>
+<li>必要なコンポーネントだけアップグレードできるようになる</li>
 </ul>
-<p><br></p>
-<h3 id="iac">アプリとIaCを同じリポジトリで管理<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
-<p>アプリケーションと同じリポジトリにて、<code>kubernetes</code>ディレクトリを作成し、ここにマニフェストを配置する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── app/</span><span class="w"> </span><span class="c1"># アプリケーション</span>
-<span class="l l-Scalar l-Scalar-Plain">├── manifests/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── kubernetes/</span>
-<span class="l l-Scalar l-Scalar-Plain">│       ├── foo/</span>
-<span class="l l-Scalar l-Scalar-Plain">│       │   ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│       │   ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│       │   ├── persistent-volume.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│       │   └── persistent-volume-claim.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│       │</span>
-<span class="nn">...</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="iac_1">アプリとIaCを異なるリポジトリで管理 (推奨)<a class="headerlink" href="#iac_1" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 各マイクロサービスを同じリポジトリで管理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── persistent-volume.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── persistent-volume-claim.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># barサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz/</span><span class="w"> </span><span class="c1"># bazサービス</span>
-</code></pre></div>
-<h4 id="_4">▼ 各マイクロサービスを異なるリポジトリで管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">├── deployment.yaml</span>
-<span class="nn">...</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># barサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">├── deployment.yaml</span>
-<span class="nn">...</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span><span class="w"> </span><span class="c1"># bazサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">├── deployment.yaml</span>
-<span class="nn">...</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="01-02">01-02. ディレクトリ構成規約<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
-<h3 id="_5">ディレクトリ/ファイルの構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ マイクロサービス別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに異なるマニフェストを定義する。</p>
-<p><code>kubectl</code>コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.amazon.co.jp/dp/B08FZX8PYW">https://www.amazon.co.jp/dp/B08FZX8PYW</a></li>
+<li><a href="https://www.tutorialworks.com/containers-single-or-multiple-processes/">https://www.tutorialworks.com/containers-single-or-multiple-processes/</a></li>
+<li><a href="https://devops.stackexchange.com/questions/447/why-it-is-recommended-to-run-only-one-process-in-a-container">https://devops.stackexchange.com/questions/447/why-it-is-recommended-to-run-only-one-process-in-a-container</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── persistent-volume.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── persistent-volume-claim.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># barサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz/</span><span class="w"> </span><span class="c1"># bazサービス</span>
-</code></pre></div>
-<p>加えて、実行環境やコンポーネント (app、db) 別に分割しても良い。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── service.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── persistent-volume.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── persistent-volume-claim.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── prd</span><span class="w"> </span><span class="c1"># 本番環境</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── stg</span><span class="w"> </span><span class="c1"># ステージング環境</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">└── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── app/</span><span class="w"> </span><span class="c1"># appコンポーネント</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── service.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── persistent-volume.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   └── persistent-volume-claim.yaml</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── db/</span><span class="w"> </span><span class="c1"># dbコンポーネント</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── stateful-set.yaml</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── service.yaml</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── persistent-volume.yaml</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── persistent-volume-claim.yaml</span>
-</code></pre></div>
-<h4 id="_7">▼ ディレクトリ無し<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ディレクトリを作成しない。</p>
-<p>代わりに、マイクロサービス別にマニフェストを定義し、関連する全てのKubernetesリソースをこの中で定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo.yaml</span><span class="w"> </span><span class="c1"># fooサービス (Deployment、Service、PersistentVolume、...)</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar.yaml</span><span class="w"> </span><span class="c1"># barサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz.yaml</span><span class="w"> </span><span class="c1"># bazサービス</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02">02. 命名規則<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_8">リソース名<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ 冗長な名前が嫌いな場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>冗長な名前が嫌いな場合は <code>&lt;マイクロサービス名&gt;</code>とする。</p>
-<p>基本はこれを使用する。</p>
-<p>ケバブケースとする。</p>
-<table>
-<thead>
-<tr>
-<th>Kubernetesリソース</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Service</td>
-<td><code>foo</code></td>
-</tr>
-<tr>
-<td>Deployment</td>
-<td><code>foo</code></td>
-</tr>
-<tr>
-<td>PersistentVolume</td>
-<td><code>foo</code></td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<h4 id="_10">▼ 冗長な名前が嫌いでない場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>嫌いでない場合は <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>とする。</p>
-<p>ケバブケースとする。</p>
-<table>
-<thead>
-<tr>
-<th>Kubernetesリソース</th>
-<th>例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Service</td>
-<td><code>foo-service</code></td>
-</tr>
-<tr>
-<td>Deployment</td>
-<td><code>foo-pod</code></td>
-</tr>
-<tr>
-<td>PersistentVolume</td>
-<td><code>foo-persistent-volume</code></td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_11">マニフェストのファイル名<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="_12">▼ 重複しない場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ファイル名は、Kubernetesリソース名 (例：<code>deployment.yaml</code>ファイル) になるようにする。</p>
-<p>基本的にはこれを使用する。</p>
-<p>ケバブケースとする。</p>
-<p>GitHubの公式チャートを見ると、命名方法が参考になる。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">├── persistent-volume.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">└── persistent-volume-claim.yaml</span>
-</code></pre></div>
-<h4 id="_13">▼ ファイル名重複する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><code>1</code>個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。</p>
-<p>その場合、<code>app.kubernetes.io</code>キーの値 (例：<code>&lt;マイクロサービス名&gt;</code>または <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>) と同じにする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 全てApplication</span>
-<span class="c1"># 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz.yaml</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 全てApplication</span>
-<span class="c1"># 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。</span>
-<span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo-application.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar-application.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz-application.yaml</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_14">拡張子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、<code>.yaml</code>ファイルの拡張子を<code>yml</code>ではなく <code>.yaml</code>でしている。</p>
-<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoy、など) の <code>.yaml</code>ファイルの拡張子を <code>.yaml</code>で統一する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── service.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── persistent-volume.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── persistent-volume-claim.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│</span>
-<span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># barサービス</span>
-<span class="l l-Scalar l-Scalar-Plain">└── baz/</span><span class="w"> </span><span class="c1"># bazサービス</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_15">マニフェストの粒度<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p><code>1</code>個のマニフェストに、<code>1</code>個のKubernetesリソースを定義する。</p>
-<p><br></p>
-<h2 id="03">03. 実行環境<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_16">開発環境<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="kubernetes_1">▼ Kubernetesの実行環境<a class="headerlink" href="#kubernetes_1" title="Permanent link">&para;</a></h4>
-<p>開発環境でKubernetesリソースの機能追加を検証するツールの例を記載する。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Minikube</th>
-<th>Docker for Desktop</th>
-<th>Kind</th>
-<th>クラウドプロバイダー (AWS EKS、GCP GKE、など)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>概要</td>
-<td>カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022年3月の現在では、Kubernetesの開発環境として、ベタープラクティスである。</td>
-<td>セットアップが非常に簡単 (有効化するだけ) なため、開発に取り掛かるまでが早い。</td>
-<td>セットアップが簡単なため、開発に取り掛かるまでが早い</td>
-<td>実行環境を開発環境としても使用する。開発者ごとに異なるNamespaceを作成する。これを採用している企業が多い。</td>
-</tr>
-<tr>
-<td>セットアップの難易度</td>
-<td>簡単</td>
-<td>非常に簡単</td>
-<td>簡単</td>
-<td>難しい</td>
-</tr>
-<tr>
-<td>コンテナランタイム</td>
-<td>docker、containerd、cri-o</td>
-<td>docker</td>
-<td>containerd (ホストOSのdockerコンテナを作成し、この中にcontainerdコンテナを作成する)</td>
-<td>docker、containerd</td>
-</tr>
-<tr>
-<td>Kubernetesのバージョン</td>
-<td>任意のバージョンを指定できる。</td>
-<td>Docker for Desktopのバージョンごとに、Kubernetesのバージョンが固定される。</td>
-<td>任意のバージョンを指定できる。</td>
-<td>任意のバージョンを指定できる。</td>
-</tr>
-<tr>
-<td>マルチNode</td>
-<td>可能</td>
-<td>可能</td>
-<td>可能</td>
-<td>可能</td>
-</tr>
-<tr>
-<td>Nodeのカスタマイズ性</td>
-<td>高い</td>
-<td>低い</td>
-<td>高い</td>
-<td>高い</td>
-</tr>
-<tr>
-<td>料金</td>
-<td>無料</td>
-<td>無料</td>
-<td>無料</td>
-<td>非常に高い</td>
-</tr>
-</tbody>
-</table>
+<h4 id="_4">▼ 分割方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>アプリを稼働させるには、最低限、webサーバーミドルウェア、アプリ、DBMSが必要である。</p>
+<p>これらのプロセスは、同じコンテナに共存させることなく、個別のコンテナで稼働させ、ネットワークで接続する。</p>
+<p><img alt="プロセス単位のコンテナ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png" /></p>
+<h4 id="_5">▼ コンテナのプロセスの関係<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>コンテナでは、起点となるinitプロセスがなく、コンテナの起動コマンドが最初の親プロセスになる。</p>
+<p>この親プロセスは、子プロセスを実行する。</p>
+<p><img alt="container_processes.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png" /></p>
+<p>なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。</p>
+<p>プロセス管理ツール (例：supervisor) を使用すると、終了順序を考えやすくなる。</p>
 <blockquote>
 <ul>
-<li><a href="https://minikube.sigs.k8s.io/docs/tutorials/multi_node/">https://minikube.sigs.k8s.io/docs/tutorials/multi_node/</a></li>
-<li><a href="https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/">https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/</a></li>
-<li><a href="https://blog.cybozu.io/entry/2019/07/03/170000">https://blog.cybozu.io/entry/2019/07/03/170000</a></li>
-<li><a href="https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#2%E9%87%8D%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3">https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#2%E9%87%8D%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3</a></li>
-</ul>
-</blockquote>
-<h4 id="kubernetesapply">▼ Kubernetesリソースのapply<a class="headerlink" href="#kubernetesapply" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Skaffold</th>
-<th>Telepresence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>概要</td>
-<td>CIOpsによって、Kubernetesの開発環境にKubernetesリソースを作成する。本番環境へのCIOpsは非推奨であるが、開発環境であれば問題ない。</td>
-<td>ローカルマシンに対するリクエストを、リモートにあるKubernetesのテスト環境に転送する。<br>- <a href="https://thinkit.co.jp/article/17853">https://thinkit.co.jp/article/17853</a></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_17">テスト環境、ステージング環境、本番環境<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="kubernetes_2">▼ Kubernetesの実行環境<a class="headerlink" href="#kubernetes_2" title="Permanent link">&para;</a></h4>
-<p>開発環境で検証後、Kubernetesリソースの機能追加を検証するツールの例を記載する。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>全て自前</th>
-<th>オンプレ</th>
-<th>クラウド</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Kuberbetesオーケストレーションツール</td>
-<td>全て自前なため、自由にカスタマイズできる。</td>
-<td>Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)、など</td>
-<td>AWS EKS、GCP GKE、など</td>
-</tr>
-<tr>
-<td>説明</td>
-<td>オンプレミス上にコントロールプレーンNodeやワーカーNodeとなる仮想サーバーを事前に作成しておく。ユーザー自身が、Clusterを作成し、仮想サーバーにコントロールプレーンNodeあるいはワーカーNodeとしての役割を割り当てる。</td>
-<td>オンプレミス上にコントロールプレーンNodeやワーカーNodeとなる仮想サーバーを事前に作成しておく。ツールを使用して、仮想サーバーをClusterに参加させ、仮想サーバーにコントロールプレーンNodeあるいはワーカーNodeとしての役割を割り当てる。マニフェストの DB として KVS を使用する必要があるが、KVS 用クエリを RDB 用クエリに変換するツール (例：Kine) を使用すれば、RDB も使用できる。</td>
-<td>セルフマネージドワーカーNodeの場合は、ワーカーNodeとなる仮想サーバーを事前に作成しておく。コントロールプレーンNodeは必ずマネージドになる。クラウドプロバイダーを使用して、仮想サーバーをClusterに参加させ、仮想サーバーにコントロールプレーンNodeあるいはワーカーNodeとしての役割を割り当てる。</td>
-</tr>
-<tr>
-<td>メリット</td>
-<td>全て自前なため、自由にカスタマイズできる。</td>
-<td>カスタマイズ性が高い。</td>
-<td>マネージドであるため、ユーザーがKubernetesのワーカーNodeを管理するコストが低い。執筆時点 (2022年3月) では、Kubernetesの本番環境として、ベタープラクティスである。</td>
-</tr>
-<tr>
-<td>デメリット</td>
-<td>ユーザーが Kubernetes のワーカーNodeを管理するコストが高い。</td>
-<td>ユーザーが Kubernetes のワーカーNodeを管理するコストが高い。</td>
-<td>カスタマイズ性が低い</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://techstep.hatenablog.com/entry/2019/12/23/000715">https://techstep.hatenablog.com/entry/2019/12/23/000715</a></li>
-</ul>
-</blockquote>
-<h4 id="kubernetesapply_1">▼ Kubernetesリソースのapply<a class="headerlink" href="#kubernetesapply_1" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>CIOps</th>
-<th>GitOps</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>概要</td>
-<td>CIOpsによって、Kubernetesの本番環境にKubernetesリソースを作成する。非推奨である。</td>
-<td>GitOpsによって、Kubernetesの本番環境にKubernetesリソースを作成する。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="_18">▼ 実行環境の分割<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>Clusterの複数の実行環境 (<code>dev-*</code>、<code>stg-*</code>、<code>prd-*</code>) を用意したい場合、個人的にはその分Clusterを増やすようにする。</p>
-<p>実行環境が <code>5</code>個や <code>10</code>個となってくると、Clusterの分だけアップグレードやSync漏れ (手動の場合) が発生するため、運用コストが高くなるというデメリットはある。</p>
-<p>一方で、Namespaceを実行環境の粒度とすると、上記のデメリットは少ないが、Namespaceのプレフィクスに実行環境名を付与することとなり、名前が長くなってしまう。</p>
-<p>これらを比較して、より自身に合った方法を選ぶ。</p>
-<p><br></p>
-<h2 id="04">04. バージョンの互換性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
-<h4 id="kube-apiserver_1">▼ kube-apiserverが冗長化されている場合<a class="headerlink" href="#kube-apiserver_1" title="Permanent link">&para;</a></h4>
-<p>冗長化されたkube-apiserverのバージョン差は、前方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://kubernetes.io/releases/version-skew-policy/#kube-apiserver">https://kubernetes.io/releases/version-skew-policy/#kube-apiserver</a></li>
+<li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
-<h4 id="kube-apiserver_2">▼ kube-apiserverの場合<a class="headerlink" href="#kube-apiserver_2" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code>コマンドとkube-apiserverのバージョン差は、前方/後方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
+<h3 id="pid1"><code>PID=1</code>問題に対処する<a class="headerlink" href="#pid1" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ サーバーのプロセス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>サーバーの場合、<code>init</code>プロセスが<code>PID=1</code>として稼働している。</p>
+<p><img alt="container_pid_1_problem_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png" /></p>
+<p><code>init</code>プロセスは、配下のいずれかの親プロセスを終了したとする。</p>
+<p><img alt="container_pid_1_problem_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png" /></p>
+<p>すると、これの子プロセスも連鎖的に終了してくれる。</p>
+<p><img alt="container_pid_1_problem_3.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png" /></p>
+<h4 id="_7">▼ コンテナのプロセス<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>コンテナの場合、ホスト上の<code>init</code>プロセスが<code>PID=1</code>として動いており、またコンテナのアプリやミドルウェアのプロセスも<code>PID=1</code>として稼働している。</p>
+<p><img alt="host_container_pid_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png" /></p>
+<p>アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。</p>
+<p>そのため、子プロセスが残骸として残ってしまう。</p>
+<p><img alt="container_pid_1_problem_4.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/releases/version-skew-policy/#kubectl">https://kubernetes.io/releases/version-skew-policy/#kubectl</a></li>
+<li><a href="https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF">https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF</a></li>
+<li><a href="https://tech-lab.sios.jp/archives/18811">https://tech-lab.sios.jp/archives/18811</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ 対処方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><code>tini</code>を使用し、アプリやミドルウェアのプロセスを<code>PID=1</code>で動かさないようにする。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:16-alpine3.15</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>--no-cache<span class="w"> </span>tini
+
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>yarn.lock<span class="w"> </span>./
+<span class="k">RUN</span><span class="w"> </span>yarn<span class="w"> </span>install<span class="w"> </span>--prod<span class="w"> </span>--frozen-lockfile
+
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
+
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/sbin/tini&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;index.js&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.shinonome.io/nodejs-docker/#for-toc-14">https://blog.shinonome.io/nodejs-docker/#for-toc-14</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06-cidr">06. CIDRブロックの設計<a class="headerlink" href="#06-cidr" title="Permanent link">&para;</a></h2>
-<h3 id="node">ワーカーNodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNodeのCIDRブロックを算出すると良い。</p>
-<p>アプリケーションのPodがスケーリングすることや、カスタムリソース (例：Istio、Linkerd) を導入することも考慮して、尤もらしいIPアドレス数を算出できる。</p>
-<p>削除されるPodと作成されるPodが別のIPアドレスになるようにするために (IPアドレスの再利用を防ぐために) 、Podの最大数の <code>2</code>倍のIPアドレスを持つCIDRブロックを設定すると良い。</p>
+<h3 id="graceful-shutdown">コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
+<p>コンテナの終了時、コンテナランタイムはコンテナに<code>SIGTERM</code>を送信する。</p>
+<p>その後、<code>SIGKILL</code>を送信し、プロセスを終了させる。</p>
+<p>そのため、<code>SIGTERM</code>を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
+<p>多くのツールが<code>SIGTERM</code>でGraceful Shutdownを実行するように設計されているため、特に対処不要である。</p>
+<p>ただし、<code>SIGTERM</code>以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの<code>STOPSIGNAL</code>処理を使用してシグナルを上書きするとよい。</p>
+<p>例えば、Nginxは<code>SIGQUIT</code>でGracefulShut Downする仕様のため、<code>STOPSIGNAL</code>処理で<code>SIGQUIT</code>を定義しておく。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span>
+
+...
+
+<span class="c"># SIGQUITを実行する</span>
+<span class="k">STOPSIGNAL</span><span class="w"> </span><span class="s">SIGQUIT</span>
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114">https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114</a></li>
+<li><a href="https://nginx.org/en/docs/control.html">https://nginx.org/en/docs/control.html</a></li>
+<li><a href="https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit">https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 脆弱性に対処する<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">実行ユーザーを非特権化する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>コンテナのプロセスの実行ユーザーにRoot権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。</p>
+<p>これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.12</span>
+
+<span class="c"># 実行ユーザーを作成し、必要最低限の認可スコープを付与する。</span>
+<span class="k">RUN</span><span class="w"> </span>adduser<span class="w"> </span>-D<span class="w"> </span>foouser<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># ディレクトリに作成した実行ユーザーを設定する。` \</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>foouser<span class="w"> </span>/app-data
+
+<span class="c"># コンテナのプロセスの実行ユーザーを指定する。</span>
+<span class="k">USER</span><span class="w"> </span><span class="s">foouser</span>
+
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/app&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker">https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker</a></li>
+<li><a href="https://blog.aquasec.com/docker-security-best-practices">https://blog.aquasec.com/docker-security-best-practices</a></li>
+<li><a href="https://www.forcia.com/blog/002273.html">https://www.forcia.com/blog/002273.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="root">ユーザーにroot権限を付与しない<a class="headerlink" href="#root" title="Permanent link">&para;</a></h3>
+<h4 id="root_1">▼ root権限を付与しない理由<a class="headerlink" href="#root_1" title="Permanent link">&para;</a></h4>
+<p>悪意のあるユーザーがコンテナに接続した場合に、root権限を与えてしまうと、悪意のある操作を実行されてしまう。</p>
+<p>そこで、接続するユーザーにroot権限を付与しないようにする。</p>
+<h4 id="sudo">▼ <code>sudo</code>コマンドを実行させない<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h4>
+<p>root権限を付与しないために、コンテナ内で<code>sudo</code>コマンドを実行できないようにするべきである。</p>
+<p>ただし、多くのコンテナイメージで<code>sudo</code>コマンドを実行するためのパッケージは基本インストールされていないため、<code>sudo</code>コマンドを実行しようとするとエラーになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker">https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker</a></li>
+</ul>
+</blockquote>
+<p>どうしても<code>sudo</code>コマンドを実行したい場合は、gosuパッケージを使う。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/develop/develop-images/instructions/#user">https://docs.docker.com/develop/develop-images/instructions/#user</a></li>
+</ul>
+</blockquote>
+<p>gosuパッケージの代わりに、<code>sudo</code>パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/25908200">https://stackoverflow.com/a/25908200</a></li>
+</ul>
+</blockquote>
+<p>gosuパッケージの代わりに、<code>docker</code>コマンドの<code>-u</code>オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/49529946">https://stackoverflow.com/a/49529946</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_10">信頼できるベースイメージを選ぶ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>インストールされているパッケージを把握できるベースイメージを使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.forcia.com/blog/002273.html">https://www.forcia.com/blog/002273.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="docker-in-docker">Docker in Dockerの脆弱性に対処する<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
+<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
+<p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
+<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
+<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
+<li><a href="https://shisho.dev/blog/posts/docker-in-docker/">https://shisho.dev/blog/posts/docker-in-docker/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">コンテナイメージを署名する<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code>コマンド) やコンテナイメージ署名ツール (例：cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
+<p><code>docker trust</code>コマンドの内部では、notaryが使用されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust">https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust</a></li>
+<li><a href="https://codezine.jp/article/detail/15119">https://codezine.jp/article/detail/15119</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_12">本番環境ではバインドマウントを使用しない<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にした方がよい。</p>
+<p>代わりに、ボリュームマウントやCOPYでファイルをコンテナイメージに詰め込むようにすることになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952">https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-latest">03. イメージタグにlatestを設定しない<a class="headerlink" href="#03-latest" title="Permanent link">&para;</a></h2>
+<h3 id="latest"><code>latest</code>タグを指定しない方が良い理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
+<p>イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
+<p>そこで、イメージはセマンティックバージョニングでタグ付けし、コンテナでは特定のバージョンをプルように設定する。</p>
+<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、DockerがホストのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
+<p><br></p>
+<h3 id="_13">タグの種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>イメージのタグには種類があり、追跡できるバージョンアップが異なる。</p>
 <table>
 <thead>
 <tr>
-<th>Node当たりの最大Pod数</th>
-<th>ワーカーNode当たりのCIDRブロック</th>
-<th>IPアドレス数</th>
+<th>バージョン例</th>
+<th>追跡できるバージョンアップ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>1</code></td>
-<td><code>/32</code></td>
+<td><code>2.0.9</code></td>
+<td>バージョンを直指定し、追跡しない。</td>
+</tr>
+<tr>
+<td><code>2.0</code></td>
+<td>『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
+</tr>
+<tr>
 <td><code>2</code></td>
+<td>『<code>2.X</code>』と『<code>2.0.X</code>』のマイナーアップデートのみを追跡する。</td>
 </tr>
 <tr>
-<td><code>8</code></td>
-<td><code>/28</code></td>
-<td><code>16</code></td>
-</tr>
-<tr>
-<td><code>9</code>～<code>16</code></td>
-<td><code>/27</code></td>
-<td><code>32</code></td>
-</tr>
-<tr>
-<td><code>17</code>～<code>32</code></td>
-<td><code>/26</code></td>
-<td><code>64</code></td>
-</tr>
-<tr>
-<td><code>33</code>～<code>64</code></td>
-<td><code>/25</code></td>
-<td><code>128</code></td>
-</tr>
-<tr>
-<td><code>65</code>～<code>110</code></td>
-<td><code>/24</code></td>
-<td><code>256</code></td>
+<td><code>latest</code></td>
+<td>メジャーアップデートとマイナーアップデートを追跡する。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr">https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr</a></li>
+<li><a href="https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated">https://hub.docker.com/_/composer/?tab=description&amp;page=1&amp;ordering=last_updated</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_19">サブネットの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>AWS EKSでの目安であるが、サブネットごとに <code>/19</code>や <code>/20</code>なるように設計するのが、個人的にはおすすめ。</p>
-<p><br></p>
-<h2 id="07">07. 監視ポリシー<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="_20">ハードウェアリソース系<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<h4 id="_21">▼ ハードウェアリソース系<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>ハードウェアリソースの性能指標に関するメトリクスである。</p>
-<p>収集ツールとして、node-exporterがある。</p>
-<h4 id="cluster">▼ Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
+<h3 id="cpu">CPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<p>コンテナは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるホストのCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
 <table>
 <thead>
 <tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CPU</td>
-<td>%</td>
-<td>同じCluster内のワーカーNodeのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-<tr>
-<td>Memory</td>
-<td>%</td>
-<td>同じCluster内のワーカーNodeのメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="pod">▼ Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CPU</td>
-<td>%</td>
-<td>Pod全体のCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-<tr>
-<td>Memory</td>
-<td>%</td>
-<td>Pod全体のメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-</tbody>
-</table>
-<h4 id="_22">▼ コンテナ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CPU</td>
-<td>%</td>
-<td>コンテナのCPU使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-<tr>
-<td>Memory</td>
-<td>%</td>
-<td>コンテナのメモリ使用率をデータポイントとする。</td>
-<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-<h3 id="_23">ネットワーク系<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<h4 id="_24">▼ ネットワーク系<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>ネットワークの性能指標に関するメトリクスである。</p>
-<p>収集ツールとして、kuebeletに内蔵されたcAdvisorがある。</p>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>container_network_receive_bytes_total</code></td>
-<td>カウント</td>
-<td>同じCluster内の受信したバイトの累積数をデータポイントとする。</td>
-<td>記入中...</td>
-</tr>
-<tr>
-<td><code>container_network_transmit_bytes_total</code></td>
-<td>カウント</td>
-<td>同じCluster内の送信したバイトの累積数をデータポイントとする。</td>
-<td>記入中...</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/">https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_25">状態系<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<h4 id="_26">▼ 状態系<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>状態に関するメトリクスである。</p>
-<p>収集ツールとして、kube-state-metricsがある。</p>
-<h4 id="cluster_1">▼ Cluster<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
-<p>Clusterをディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nodeの必要最低数</td>
-<td>カウント</td>
-<td>同じCluster内のワーカーNode数の必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 2</code></td>
-</tr>
-<tr>
-<td>Podの必要最低数</td>
-<td>カウント</td>
-<td>同じCluster内のワーカーNodeのPod必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 1</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">https://www.tigera.io/learn/guides/kubernetes-monitoring/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h4 id="pod_1">▼ Pod<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>Pod全体をディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Podの最低必要数</td>
-<td>カウント</td>
-<td>同じDeployment内のPodの必要最低数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&lt;= 2</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">https://www.tigera.io/learn/guides/kubernetes-monitoring/</a></li>
-</ul>
-</blockquote>
-<h4 id="_27">▼ コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>コンテナをディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
-<table>
-<thead>
-<tr>
-<th>メトリクス</th>
-<th>単位</th>
-<th>説明</th>
-<th>アラート条件例 (合致したら発火)</th>
+<th>項目</th>
+<th>表記</th>
 <th>補足</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>readinessProbe</td>
-<td>カウント</td>
-<td>コンテナのreadinessProbeの失敗数をデータポイントとする。</td>
-<td>・統計 : 期間内合計数<br>・期間 : <code>1</code>分<br>・閾値 : <code>&gt;= 2</code></td>
-<td>ネットワーク由来の問題で発生することがあるため、連続的に発生した上でアラートする。</td>
+<td>Intel</td>
+<td><code>amd64</code> (<code>x86_64</code>)</td>
+<td>IntelとAMDは互換性があるので、CPUアーキテクチャがIntelであっても、AMD対応のコンテナイメージを使用できる。</td>
+</tr>
+<tr>
+<td>Arm</td>
+<td><code>arm64</code>、<code>arm/v5</code>、<code>arm/v7</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Amd</td>
+<td><code>amd64</code></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
-<li><a href="https://www.tigera.io/learn/guides/kubernetes-monitoring/">https://www.tigera.io/learn/guides/kubernetes-monitoring/</a></li>
+<li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="08">08. デバッグ<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
-<h3 id="_28">便利なイメージ<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<h4 id="deployment">▼ Deployment系<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
-<p>Deploymentが正しくPodを作成できない場合、それだけでHelloWorldのアプリケーションを起動できるイメージがある。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello-world</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">paulbouwer/hello-kubernetes:1.10</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<p>例えば、<code>MacBook 2020</code>にはIntel、また<code>MacBook 2021 (M1 Mac)</code>にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
+<p>ただし、コンテナイメージがホストのCPUアーキテクチャに対応しているか否かを開発者が気にする必要はない。</p>
+<p><code>docker pull</code>時に、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
+<p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
+
+<span class="o">{</span>
+<span class="w">    </span>...
+
+<span class="w">        </span><span class="s2">&quot;Architecture&quot;</span>:<span class="w"> </span><span class="s2">&quot;arm64&quot;</span>,
+
+<span class="w">    </span>...
+<span class="o">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span>/bin/bash<span class="w"> </span>--<span class="w"> </span>uname<span class="w"> </span>-m
+
+arm64
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://hub.docker.com/r/paulbouwer/hello-kubernetes/">https://hub.docker.com/r/paulbouwer/hello-kubernetes/</a></li>
-<li><a href="https://hub.docker.com/_/nginx">https://hub.docker.com/_/nginx</a></li>
+<li><a href="https://github.com/docker-library/official-images#architectures-other-than-amd64">https://github.com/docker-library/official-images#architectures-other-than-amd64</a></li>
+<li><a href="https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm">https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm</a></li>
+<li><a href="https://linuxfan.info/post-2745">https://linuxfan.info/post-2745</a></li>
 </ul>
 </blockquote>
-<h4 id="_29">▼ ネットワーク系<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p>ネットワークのトラブルシューティングに役立つツールがインストールされているイメージがある。</p>
-<p><code>kubectl debug</code>コマンドと組み合わせる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>debug<span class="w"> </span>node/&lt;Node名&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--image<span class="o">=</span>praqma/network-multitool
+<p><br></p>
+<h2 id="04">04. イメージサイズを削減する<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_14">不要なファイルを含めない<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="dockerignore">▼ <code>.dockerignore</code>ファイル<a class="headerlink" href="#dockerignore" title="Permanent link">&para;</a></h4>
+<p>イメージのビルド時に無視するファイルを設定する。</p>
+<p>開発環境のみで使用するファイル、<code>.gitignore</code>ファイル、<code>README</code>ファイル、などはコンテナの稼働には不要である。</p>
+<div class="highlight"><pre><span></span><code>.env.example
+.gitignore
+README.md
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://hub.docker.com/r/praqma/network-multitool">https://hub.docker.com/r/praqma/network-multitool</a></li>
-<li><a href="https://hub.docker.com/r/nicolaka/netshoot">https://hub.docker.com/r/nicolaka/netshoot</a></li>
+<li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#remove_unnecessary_tools</a></li>
+</ul>
+</blockquote>
+<h4 id="_15">▼ キャッシュを削除する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>Unixユーティリティをインストールするとキャッシュが残る。</p>
+<p>キャッシュが使用されることはないため、削除してしまう。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
+
+<span class="k">RUN</span><span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># メタデータ削除` \</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>clean<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># キャッシュ削除` \</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/cache/dnf
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#optimize-for-the-docker-build-cache</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="09-ci">09. CIパイプライン<a class="headerlink" href="#09-ci" title="Permanent link">&para;</a></h2>
-<h3 id="_30">マニフェストのホワイトボックステスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<h4 id="_31">▼ 静的解析<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<h3 id="_16">ファイルサイズの小さなベースイメージを使用する<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ ベースイメージの種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
-<th>観点</th>
+<th>ベースイメージの種類名</th>
+<th>接尾辞</th>
 <th>説明</th>
-<th>補足</th>
+<th>OSの有無</th>
+<th>ユーティリティの有無</th>
+<th>パッケージマネージャー系統の有無</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>マニフェストの文法の誤りテスト</td>
-<td>外部の文法の誤りテストツール ( (例：kubeconform) を使用する。Kubernetesリソースのスキーマに基づいて、マニフェストの文法の誤りを検証する。</td>
-<td>- <a href="https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06">https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06</a></td>
+<td>distribution型</td>
+<td><code>scratch</code></td>
+<td>パッケージを何もインストールしていない。</td>
+<td>無</td>
+<td>無</td>
+<td>無</td>
 </tr>
 <tr>
-<td>マニフェストのコード規約違反</td>
-<td>外部のPaCツール (例：conftest、GatekeeperCLIのgator、など) を使用する。ポリシー (regoなど) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
-<td>- <a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></td>
+<td></td>
+<td><code>alpine</code></td>
+<td>最小限のパッケージのみをインストールしている。</td>
+<td>Alpine Linux</td>
+<td>有</td>
+<td>apk</td>
 </tr>
 <tr>
-<td>マニフェストのベストプラクティス違反テスト</td>
-<td>外部のベストプラクティス違反テストツール (例：polaris、kubeconform、など) を使用する。報告されたCVEに基づいて、チャートの実装方法に起因する脆弱性を検証する。</td>
-<td>- <a href="https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3">https://gavin-zhou.medium.com/%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%81%A8%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AEkubernetes-yaml%E3%81%AE%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-%E7%AC%AC%E5%9B%9B%E7%AB%A0-bc00f1610a3</a></td>
+<td></td>
+<td><code>buster</code>、<code>bullseye</code>、<code>jessie</code>、<code>stretch</code></td>
+<td>最小限のパッケージのみをインストールしている。</td>
+<td>Debian</td>
+<td>有</td>
+<td>Debian系 (dpkg、apt-get、apt)</td>
 </tr>
 <tr>
-<td>マニフェストのバージョンテスト</td>
-<td>外部のバージョンテストツール (例：pluto) を使用する。指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (apiVersion) を検証する。</td>
-<td>- <a href="https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically">https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically</a></td>
+<td></td>
+<td><code>slim</code></td>
+<td>最もオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。</td>
+<td>イメージによる</td>
+<td>有</td>
+<td>イメージによる</td>
 </tr>
 <tr>
-<td>マニフェストの脆弱性診断</td>
-<td>外部の脆弱性診断ツール (例：kics) を使用する。報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。補足として、Kubernetesリソースのセキュリティスキャン (例：trivy) は、既に作成されたKubernetesリソースに対する検証のため、ここには含めない。</td>
-<td>・<a href="https://blog.nflabs.jp/entry/2021/12/24/091803">https://blog.nflabs.jp/entry/2021/12/24/091803</a><br>・<a href="https://weblog.grimoh.net/entry/2022/01/02/100000">https://weblog.grimoh.net/entry/2022/01/02/100000</a> <br>・<a href="https://zenn.dev/tayusa/articles/ad9fafa197888b">https://zenn.dev/tayusa/articles/ad9fafa197888b</a></td>
+<td></td>
+<td>接尾辞なし</td>
+<td>使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。</td>
+<td>イメージによる</td>
+<td>有</td>
+<td>イメージによる</td>
+</tr>
+<tr>
+<td>distroless型</td>
+<td>接尾辞なし</td>
+<td>最小限のパッケージのみをインストールしている。</td>
+<td>イメージによる</td>
+<td>有 (非常に少ない)</td>
+<td>イメージによる</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="_32">マニフェストのブラックボックステスト<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
-<h4 id="_33">▼ 結合テスト<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>kubectl apply</code>コマンドを実行することにより、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。</p>
-<h4 id="_34">▼ 総合テスト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>kubectl apply</code>コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせた総合テストを実施する。</p>
 <blockquote>
 <ul>
-<li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
+<li><a href="https://prograshi.com/platform/docker/docker-image-tags-difference/">https://prograshi.com/platform/docker/docker-image-tags-difference/</a></li>
+<li><a href="https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9">https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9</a></li>
+<li><a href="https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e">https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e</a></li>
+<li><a href="https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E">https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E</a>)</li>
+</ul>
+</blockquote>
+<h4 id="os">▼ できる限りOSイメージをベースとしない<a class="headerlink" href="#os" title="Permanent link">&para;</a></h4>
+<p>OSベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。</p>
+<p>原則として、1つのコンテナで1つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。</p>
+<blockquote>
+<ul>
+<li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
+<div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
+
+<span class="c"># PHPをインストールするために、EPELとRemiリポジトリをインストールして有効化。</span>
+<span class="k">RUN</span><span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>https://rpms.remirepo.net/enterprise/remi-release-8.rpm<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>module<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>php:remi-7.4<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># フレームワークの要件のPHP拡張機能をインストール` \</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-bcmath<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-ctype<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-fileinfo<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-json<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-mbstring<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-openssl<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-pdo<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-tokenizer<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>php-xml<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>clean<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
+
+<span class="c"># DockerHubのComposerイメージからバイナリファイルを取得</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
+<div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
+
+<span class="c"># nginxをインストール</span>
+<span class="k">RUN</span><span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>nginx<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>dnf<span class="w"> </span>clean<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
+
+<span class="k">COPY</span><span class="w"> </span>infra/docker/web/nginx.conf<span class="w"> </span>/etc/nginx/nginx.conf
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">80</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_18">イメージレイヤー数を削減する<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="_19">▼ イメージレイヤーの増え方<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
+<p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『<code>&amp;&amp;</code>』で1つにまとめてしまう方が良い。</p>
+<p>例えば、以下のような時、<code>RUN</code>処理ごとにレイヤーが増える。</p>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>isntall<span class="w"> </span>httpd
+<span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php
+<span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php-mbstring
+<span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php-pear
+<span class="k">RUN</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/yum
+</code></pre></div>
+<h4 id="_20">▼ <code>&amp;&amp;</code>を使う<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p><code>&amp;&amp;</code>を使い、イメージのレイヤー数を減らせる。</p>
+<p>イメージレイヤーが少なくなり、コンテナイメージを軽量化できる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>php<span class="w"> </span>php-mbstring<span class="w"> </span>php-pear<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
+</code></pre></div>
+<p>あるいは、これは以下の様にも書ける。</p>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>httpd<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>php<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>php-mbstring<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>php-pear<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.itbook.info/network/docker02.html">https://www.itbook.info/network/docker02.html</a></li>
+<li><a href="https://yuhabeem.com/2021/03/27/311/">https://yuhabeem.com/2021/03/27/311/</a></li>
+</ul>
+</blockquote>
+<h4 id="_21">▼ ヒアドキュメントを使う<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>&lt;&lt;<span class="w"> </span>EOF
+<span class="w">  </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>php<span class="w"> </span>php-mbstring<span class="w"> </span>php-pear
+<span class="w">  </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
+EOF
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.docker.com/blog/introduction-to-heredocs-in-dockerfiles/">https://www.docker.com/blog/introduction-to-heredocs-in-dockerfiles/</a></li>
+<li><a href="https://kakakakakku.hatenablog.com/entry/2021/08/10/085625">https://kakakakakku.hatenablog.com/entry/2021/08/10/085625</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="09-02-cd">09-02. CDパイプライン<a class="headerlink" href="#09-02-cd" title="Permanent link">&para;</a></h2>
-<h3 id="_35">マニフェストのホワイトボックステスト<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<h4 id="_36">▼ 静的解析<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>GitOpsの場合、CIパイプライン上だけでなく、CDパイプライン上でもホワイトボックステストを実施できる。</p>
-<p>ただし、kube-apiserverのvalidating-admissionステップ時にこれを実施する必要がある。</p>
+<h3 id="_22">マルチステージビルドを採用する<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="_23">▼ マルチステージビルドとは<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>1つのDockerfile内に複数の独立したステージを定義する。</p>
+<p>以下の手順で作成する。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>シングルステージビルドに成功するDockerfileを作成する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>ビルドによって作成されたバイナリファイルがどこに配置されるかを場所を調べる。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>Dockerfileで、2つ目の<code>FROM</code>処理を宣言する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>1つ目のステージで、バイナリファイルをコンパイルするのみで終了させる。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>2つ目のステージで、Unixユーティリティをインストールする。</p>
+<p>また、バイナリファイルを1つ目のステージからコピーする。</p>
+</dd>
+</dl>
+<h4 id="_24">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># 中間イメージ</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">golang:1.7.3</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/go/src/github.com/alexellis/href-counter/</span>
+<span class="k">RUN</span><span class="w"> </span>go<span class="w"> </span>get<span class="w"> </span>-d<span class="w"> </span>-v<span class="w"> </span>golang.org/x/net/html
+<span class="k">COPY</span><span class="w"> </span>app.go<span class="w"> </span>/go/src/github.com/alexellis/href-counter/
+<span class="k">RUN</span><span class="w"> </span><span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">GOOS</span><span class="o">=</span>linux<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>-a<span class="w"> </span>-installsuffix<span class="w"> </span>cgo<span class="w"> </span>-o<span class="w"> </span>app<span class="w"> </span>.
+
+<span class="c"># 最終イメージ</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">alpine:latest</span>
+<span class="c"># コンテナからHTTPSリクエストを送信するために、Root証明書をインストールする</span>
+<span class="k">RUN</span><span class="w"> </span>apk<span class="w"> </span>--no-cache<span class="w"> </span>add<span class="w"> </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>update-ca-certificates
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/root/</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/go/src/github.com/alexellis/href-counter/app<span class="w"> </span>.
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./app&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">maven:3.5.0-jdk-8-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
+<span class="k">COPY</span><span class="w"> </span>./pom.xml<span class="w"> </span>pom.xml
+<span class="k">COPY</span><span class="w"> </span>./src<span class="w"> </span>src/
+<span class="k">RUN</span><span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>package
+
+<span class="k">FROM</span><span class="w"> </span><span class="s">openjdk:8-jre-alpine</span>
+<span class="c"># ビルドの成果物はtargetディレクトリにある</span>
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>target/app.jar<span class="w"> </span>app.jar
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">8080</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-jar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;app.jar&quot;</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds">https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds</a></li>
+</ul>
+</blockquote>
+<h4 id="_25">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c">#===================</span>
+<span class="c"># Global ARG</span>
+<span class="c">#===================</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">NGINX_VERSION</span><span class="o">=</span><span class="s2">&quot;1.19&quot;</span>
+<span class="k">ARG</span><span class="w"> </span><span class="nv">LABEL</span><span class="o">=</span><span class="s2">&quot;Hiroki &lt;example@gmail.com&gt;&quot;</span>
+
+<span class="c">#===================</span>
+<span class="c"># Build Stage</span>
+<span class="c">#===================</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">nginx:${NGINX_VERSION}</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">build</span>
+
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>vim<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="sb">`</span><span class="c1"># キャッシュ削除` \</span>
+<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>clean
+
+<span class="c">#===================</span>
+<span class="c"># Develop Stage</span>
+<span class="c">#===================</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">build</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">develop</span>
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">mantainer</span><span class="o">=</span><span class="si">${</span><span class="nv">LABEL</span><span class="si">}</span>
+
+<span class="k">COPY</span><span class="w"> </span>./infra/docker/www/develop.nginx.conf<span class="w"> </span>/etc/nginx/nginx.conf
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+
+<span class="c">#===================</span>
+<span class="c"># Production Stage</span>
+<span class="c">#===================</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">build</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="s">production</span>
+<span class="k">LABEL</span><span class="w"> </span><span class="nv">mantainer</span><span class="o">=</span><span class="si">${</span><span class="nv">LABEL</span><span class="si">}</span>
+
+<span class="k">COPY</span><span class="w"> </span>./infra/docker/www/production.nginx.conf<span class="w"> </span>/etc/nginx/nginx.conf
+
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/sbin/nginx&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-g&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;daemon off;&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="addcopy"><code>ADD</code>処理よりも<code>COPY</code>処理を使用する<a class="headerlink" href="#addcopy" title="Permanent link">&para;</a></h3>
+<p><code>ADD</code>処理は<code>COPY</code>処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code>処理が推奨である。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05">05. ログを適切に扱う<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_26">標準出力/標準エラー出力に出力する<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>ログをファイルとして出力すると、ホスト上にログファイルが保管され、ストレージ容量が必要になる。</p>
+<p>ログファイルをホスト外で管理するために、標準出力/標準エラー出力に出力する。</p>
+<p><br></p>
+<h3 id="_27">構造化ログとして出力する<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。</p>
+<p>そのため、構造化ログ (例：JSON) として出力する。</p>
+<p><br></p>
+<h2 id="06">06. 適切なネットワークを使用する<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<p>状況に応じて、ネットワークタイプを選ぶ。</p>
 <table>
 <thead>
 <tr>
-<th>観点</th>
-<th>説明</th>
-<th>補足</th>
+<th></th>
+<th>bridgeネットワーク</th>
+<th>hostネットワーク</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>マニフェストのコード規約違反</td>
-<td>外部のPaCツール (例：Gatekeeper、Kyverno) を使用する。ポリシー (regoなど) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
-<td>- <a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></td>
+<td>安全性</td>
+<td>ホストコンテナ間をネットワークを分離できるため、安全性が高い</td>
+<td>-</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>-</td>
+<td>ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="_37">デプロイ<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
-<h4 id="_38">▼ デプロイとは<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
-<p>本番環境に対して、ローカルマシンまたはCDツールを使用して、マニフェストをデプロイする。</p>
-<h4 id="_39">▼ インプレースデプロイメント (非推奨)<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-<p>KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。</p>
 <blockquote>
 <ul>
-<li><a href="https://amateur-engineer-blog.com/kubernetes-recreate/#toc2">https://amateur-engineer-blog.com/kubernetes-recreate/#toc2</a></li>
-</ul>
-</blockquote>
-<h4 id="_40">▼ ローリングアップデート (推奨)<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>KubernetesのDeploymentのRollingUpdate戦略を採用する。</p>
-<h4 id="bg">▼ BGデプロイメント (推奨)<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：Argo Rollout) のBGデプロイメント機能を採用する。</p>
-<blockquote>
-<ul>
-<li><a href="https://argoproj.github.io/argo-rollouts/concepts/#blue-green">https://argoproj.github.io/argo-rollouts/concepts/#blue-green</a></li>
-</ul>
-</blockquote>
-<h4 id="_41">▼ カナリアリリース (推奨)<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：Argo Rollout) やサービスメッシュツール (例：Istio、Linkerd、など) のカナリアリリース機能を採用する。</p>
-<p>注意点として、サービスメッシュツールであると、重み付けの段階的な変更が手動になってしまう。</p>
-<blockquote>
-<ul>
-<li><a href="https://argoproj.github.io/argo-rollouts/concepts/#canary">https://argoproj.github.io/argo-rollouts/concepts/#canary</a></li>
-</ul>
-</blockquote>
-<h4 id="progressive-delivery">▼ Progressive Delivery (推奨)<a class="headerlink" href="#progressive-delivery" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：Argo Rollout) のProgressive Delivery機能を採用する。</p>
-<blockquote>
-<ul>
-<li><a href="https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery">https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery</a></li>
+<li><a href="https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/">https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/</a></li>
+<li><a href="https://jtway.co/docker-network-performance-b95bce32b4b9">https://jtway.co/docker-network-performance-b95bce32b4b9</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_42">ロールバック<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>デプロイ方法の採用状況</th>
-<th>方法</th>
-<th style="text-align: center;">推奨/非推奨</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DeploymentのRollingUpdate戦略を採用している場合</td>
-<td>過去のリリースタグ (リビジョン) を再デプロイする。あるいはGitHubによるコミットのリバートを使用し、現在のコミットを打ち消すコミットを作成し、PRを作成する。</td>
-<td style="text-align: center;">非推奨</td>
-</tr>
-<tr>
-<td>CDツールのBGデプロイメントを採用している場合</td>
-<td>削除せずに残してある現環境に再ルーティングする。手順は、CDツールによる。</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-<tr>
-<td>CDツールのカナリアリリースを採用している場合</td>
-<td>現環境へのルーティングの重みづけを100%にする。手順は、CDツールによる。</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-<tr>
-<td>CDツールのProgressive Deliveryを採用している場合</td>
-<td>削除せずに残してある現環境に再ルーティングする。手順はCDツールによる。</td>
-<td style="text-align: center;">推奨</td>
-</tr>
-</tbody>
-</table>
+<h2 id="07-ci">07. CIパイプライン上でコンテナイメージを用意する<a class="headerlink" href="#07-ci" title="Permanent link">&para;</a></h2>
+<h3 id="ci">CIパイプラインに適切なステップを用意する<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
+<ul>
+<li>コンテナイメージの静的解析を実施する</li>
+<li>コンテナイメージからコンテナをビルドする</li>
+<li>コンテナイメージをプッシュする</li>
+</ul>
 <p><br></p>
-<h2 id="09-03">09-03. 事後処理<a class="headerlink" href="#09-03" title="Permanent link">&para;</a></h2>
-<h3 id="_43">デプロイの通知<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
-<h4 id="kubernetes_3">▼ Kubernetesを使用する場合<a class="headerlink" href="#kubernetes_3" title="Permanent link">&para;</a></h4>
-<p>Kubernetesには通知能力がなく、手動で知らせる必要がある。</p>
-<h4 id="kubernetes_4">▼ Kubernetes以外を使用する場合<a class="headerlink" href="#kubernetes_4" title="Permanent link">&para;</a></h4>
-<p>CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパイプラインの結果が通知されるようにする。</p>
-<p>通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。</p>
+<h3 id="_28">イメージレジストリのレートリミットに対処する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>ビルド時にイメージのプルが頻発すると、DockerHubのレートリミット上限にすぐ達してしまう。</p>
+<p>そのため、イメージのキャッシュが有効である。</p>
+<p>DockerHub以外のイメージレジストリを使って、レートリミットを回避してもよい。</p>
+<p><br></p>
+<h3 id="_29">静的解析を実施する<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h4 id="dockerfile">▼ Dockerfileの文法の誤りテスト<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
+<p>Dockerのビルトインのコマンド (例：<code>docker build</code>コマンド) を使用する。</p>
+<p>Dockerfileの文法の誤りを検証する。</p>
+<h4 id="dockerfile_1">▼ Dockerfileのベストプラクティス違反テスト<a class="headerlink" href="#dockerfile_1" title="Permanent link">&para;</a></h4>
+<p>外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfileのベストプラクティス違反を検証する。</p>
+<h4 id="dockerfile_2">▼ Dockerfileの脆弱性診断<a class="headerlink" href="#dockerfile_2" title="Permanent link">&para;</a></h4>
+<p>外部の脆弱性診断ツール (例：hadolint) を使用する。</p>
+<p>報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
+<p>補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。</p>
+<h4 id="_30">▼ コンテナ構造テスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>外部の脆弱性診断ツール (例：container-structure-test) を使用する。</p>
+<p>報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の<code>ENTRYPOINT</code>が正しく動作するか、など) 。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF">https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -7915,7 +7322,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="可用性＠AWSの知見を記録しています。">
+        <meta name="description" content="信頼性＠AWSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_availability.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_reliability.html">
       
       
-        <link rel="prev" href="cloud_computing_aws_resource_work_mail.html">
+        <link rel="prev" href="cloud_computing_aws_practices_availability.html">
       
       
-        <link rel="next" href="cloud_computing_aws_policy_reliability.html">
+        <link rel="next" href="cloud_computing_aws_practices_security.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】可用性＠AWS - 俺の技術ノート</title>
+        <title>【IT技術の知見】信頼性＠AWS - 俺の技術ノート</title>
       
     
     
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】可用性＠AWS
+              【IT技術の知見】信頼性＠AWS
             
           </span>
         </div>
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -3128,7 +3128,7 @@
             
   
   <span class="md-ellipsis">
-    ■ 設計規約
+    ■ プラクティス集
   </span>
   
 
@@ -3138,9 +3138,29 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_13_3_3">
             <span class="md-nav__icon md-icon"></span>
-            ■ 設計規約
+            ■ プラクティス集
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_availability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可用性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -3161,18 +3181,18 @@
           
   
   <span class="md-ellipsis">
-    可用性
+    信頼性
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link md-nav__link--active">
+      <a href="cloud_computing_aws_practices_reliability.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    可用性
+    信頼性
   </span>
   
 
@@ -3203,45 +3223,201 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-dr" class="md-nav__link">
-    01. DRリージョン
+  <a href="#01" class="md-nav__link">
+    01. ネットワークポリシー
   </a>
   
-    <nav class="md-nav" aria-label="01. DRリージョン">
+    <nav class="md-nav" aria-label="01. ネットワークポリシー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dr-bcp" class="md-nav__link">
-    DRリージョン (BCPリージョン) とは
+  <a href="#cidr" class="md-nav__link">
+    推奨されるCIDRブロック
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    VPCの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="VPCの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpccidr" class="md-nav__link">
+    ▼ VPC全体のCIDRブロック
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    バックアップリストア構成
+    サブネットの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="サブネットの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cidr_1" class="md-nav__link">
+    ▼ 各サブネットのCIDRブロック
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    パイロットライト構成
+    ▼ アクセスタイプ別の命名
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ウォームスタンバイ構成
+    ▼ コンポーネントタイプ別の命名
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    マルチサイトアクティブ構成
+    ルートテーブルの設計
   </a>
+  
+    <nav class="md-nav" aria-label="ルートテーブルの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osi" class="md-nav__link">
+    OSI層
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 監視ポリシー
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 監視ポリシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    監視すべきメトリクスとアラート条件例
+  </a>
+  
+    <nav class="md-nav" aria-label="監視すべきメトリクスとアラート条件例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ユーザー定義の名前空間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb" class="md-nav__link">
+    ▼ ALB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    ▼ API Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    ▼ EC2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    ▼ ECS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticache-redis" class="md-nav__link">
+    ▼ ElastiCache Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora" class="md-nav__link">
+    ▼ RDS (Aurora)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora_1" class="md-nav__link">
+    ▼ RDS (非Aurora)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    ▼ S3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3265,27 +3441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_reliability.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    信頼性
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_security.html" class="md-nav__link">
+      <a href="cloud_computing_aws_practices_security.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3305,7 +3461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_cost_optimization.html" class="md-nav__link">
+      <a href="cloud_computing_aws_practices_cost_optimization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3880,7 +4036,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4903,7 +5059,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5920,45 +6076,201 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-dr" class="md-nav__link">
-    01. DRリージョン
+  <a href="#01" class="md-nav__link">
+    01. ネットワークポリシー
   </a>
   
-    <nav class="md-nav" aria-label="01. DRリージョン">
+    <nav class="md-nav" aria-label="01. ネットワークポリシー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dr-bcp" class="md-nav__link">
-    DRリージョン (BCPリージョン) とは
+  <a href="#cidr" class="md-nav__link">
+    推奨されるCIDRブロック
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#vpc" class="md-nav__link">
+    VPCの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="VPCの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vpccidr" class="md-nav__link">
+    ▼ VPC全体のCIDRブロック
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    バックアップリストア構成
+    サブネットの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="サブネットの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cidr_1" class="md-nav__link">
+    ▼ 各サブネットのCIDRブロック
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    パイロットライト構成
+    ▼ アクセスタイプ別の命名
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ウォームスタンバイ構成
+    ▼ コンポーネントタイプ別の命名
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    マルチサイトアクティブ構成
+    ルートテーブルの設計
   </a>
+  
+    <nav class="md-nav" aria-label="ルートテーブルの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc_1" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osi" class="md-nav__link">
+    OSI層
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 監視ポリシー
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 監視ポリシー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    監視すべきメトリクスとアラート条件例
+  </a>
+  
+    <nav class="md-nav" aria-label="監視すべきメトリクスとアラート条件例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ユーザー定義の名前空間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb" class="md-nav__link">
+    ▼ ALB
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway" class="md-nav__link">
+    ▼ API Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    ▼ EC2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecs" class="md-nav__link">
+    ▼ ECS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elasticache-redis" class="md-nav__link">
+    ▼ ElastiCache Redis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora" class="md-nav__link">
+    ▼ RDS (Aurora)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds-aurora_1" class="md-nav__link">
+    ▼ RDS (非Aurora)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    ▼ S3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5985,7 +6297,7 @@
   
 
 
-<h1 id="aws">可用性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
+<h1 id="aws">信頼性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5994,70 +6306,723 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-dr">01. DRリージョン<a class="headerlink" href="#01-dr" title="Permanent link">&para;</a></h2>
-<h3 id="dr-bcp">DRリージョン (BCPリージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
-<p>『BCPリージョン』ともいう。</p>
-<p>メインリージョンで障害が起こった場合に、システムの利用可能な時間をできるだけ長くできる (可用性を高められる) ように、災害復旧用リージョンを用意しておく。</p>
-<p><br></p>
-<h3 id="_2">バックアップリストア構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_backup-restore" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png" /></p>
-<p>DRリージョンにメインリージョンのAWSリソース (例：EBSボリューム、RDS) のスナップショットを定期的に作成しておく。</p>
-<p>メインリージョンで障害が起こった場合は、スナップショットを使用して、DRリージョンにAWSリソースを復元する。</p>
-<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
-<p>障害が起こってから対応することが多いため、RTOが長くなってしまう。</p>
-<p>RPOは最後のバックアップ時点である。</p>
-<p>一方で金銭的コストが低い。</p>
+<h2 id="01">01. ネットワークポリシー<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="cidr">推奨されるCIDRブロック<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
+<p><code>1</code>個のVPC内には複数のサブネットが入る。</p>
+<p>そのため、サブネットのCIDRブロックは、サブネットの個数だけ含めなければならない。</p>
+<p>また、VPCが持つCIDRブロックから、VPC内の各AWSリソースにIPアドレスを割り当てていかなければならず、VPC内でIPアドレスが枯渇しないようにする。</p>
+<p>RFC1918では、以下のCIDRブロックが推奨である。</p>
+<table>
+<thead>
+<tr>
+<th>RFC1918推奨のCIDRブロック</th>
+<th>IPアドレス</th>
+<th>個数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.0.0.0/8</code></td>
+<td><code>10.0.0.0</code>～<code>10.255.255.255</code></td>
+<td><code>16777216</code></td>
+</tr>
+<tr>
+<td><code>172.16.0.0/12</code></td>
+<td><code>172.16.0.0</code>～<code>172.31.255.255</code></td>
+<td><code>1048576</code></td>
+</tr>
+<tr>
+<td><code>192.168.0.0/16</code></td>
+<td><code>192.168.0.0</code>～<code>192.168.255.255</code></td>
+<td><code>65536</code></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
-<li><a href="https://aws.amazon.com/jp/cdp/cdp-dr/">https://aws.amazon.com/jp/cdp/cdp-dr/</a></li>
+<li><a href="https://note.com/takashi_sakurada/n/n502fb0299938">https://note.com/takashi_sakurada/n/n502fb0299938</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/aig/06network/privateip.html">https://atmarkit.itmedia.co.jp/aig/06network/privateip.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">パイロットライト構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_pilot-light" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png" /></p>
-<p>DRリージョンに低スペックなDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでDB以外のインフラコンポーネント (例：アプリケーション部分など) を作成し、またDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
-<p>障害が起こってから対応することが多いため、RTOがやや長くなってしまう。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で金銭的コストが低い。</p>
+<h3 id="vpc">VPCの設計<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h3>
+<h4 id="vpccidr">▼ VPC全体のCIDRブロック<a class="headerlink" href="#vpccidr" title="Permanent link">&para;</a></h4>
+<p>あらかじめ、会社内の全てのアプリケーションのCIDRブロックをスプレッドシートなどで一括で管理しておく。</p>
+<p>この時、CIDRブロックと、これの開始IPアドレスと終了IPアドレスをメモしておくと良い。</p>
+<p>各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。</p>
+<p>拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。</p>
+<p>例えば、以前に開発したアプリケーションが<code>10.200.47.0</code>までを使用していた場合、<code>10.200.48.0</code>から使用を始める。</p>
+<p>また、VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>/28</code>) であり、実際は<code>512</code>個 (<code>/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">ウォームスタンバイ構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_warm-standby" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png" /></p>
-<p>DRリージョンにメインリージョンよりも低スペックなアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでアプリケーションとDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
-<p>障害が起こった後、スペックを向上させ、またルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で、金銭的コストが高い。</p>
+<h3 id="_2">サブネットの設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="cidr_1">▼ 各サブネットのCIDRブロック<a class="headerlink" href="#cidr_1" title="Permanent link">&para;</a></h4>
+<p>VPCのIPアドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。</p>
+<p>この時、VPC内の各AWSリソースの特徴に合わせて、CIDRブロックを割り当てる。</p>
+<p>例えば、VPCの最初のIPアドレスを<code>10.0.0.0</code>とした場合は、1つ目のパブリックサブネットのサブネットマスクは、<code>10.0.0.0</code>から始める。</p>
+<p>パブリックサブネットとプライベートサブネットを冗長化する場合は、VPCのIPアドレス数をサブネット数で割って各サブネットのIPアドレス数を算出し、CIDRブロックを設定する。</p>
+<p>例えば、VPCのサブネットマスクを<code>/16</code> としている場合は、各サブネットのサブネットマスクは<code>/24</code>とする。</p>
+<p>一方で、VPCを<code>/23</code>としている場合は、各サブネットは<code>/27</code>とする。</p>
+<p>また、各サブネットのCIDRブロックを同じにする必要はなく、アプリケーションが稼働するサブネットにIPアドレス数がやや多くなるようにし、代わりとして、DBの稼働するサブネットのIPアドレスを少なくするような設計でも良い。</p>
+<table>
+<thead>
+<tr>
+<th>AWSリソース</th>
+<th>最低限のIPアドレス数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ALB</td>
+<td>ALB当たり<code>8</code>個</td>
+</tr>
+<tr>
+<td>AutoScaling</td>
+<td>自動水平スケーリング時のEC2最大数と同じ個数</td>
+</tr>
+<tr>
+<td>VPCエンドポイント</td>
+<td>VPCエンドポイント当たり、IPアドレス<code>1</code>個</td>
+</tr>
+<tr>
+<td>ECS、EKS</td>
+<td>Elastic Network Interface 数と同じ個数</td>
+</tr>
+<tr>
+<td>Lambda</td>
+<td>Elastic Network Interface 数と同じ個数</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf">https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf</a></li>
+<li><a href="https://dev.classmethod.jp/articles/amazon-vpc-5-tips/">https://dev.classmethod.jp/articles/amazon-vpc-5-tips/</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ アクセスタイプ別の命名<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><img alt="subnet_accsess-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png" /></p>
+<p>パブリックネットワークとの通信の遮断具合から名前をつける。</p>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>種類</th>
+<th>役割</th>
+<th>配置例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>publicサブネット</td>
+<td>パブリック</td>
+<td>非武装地帯として動作する。Internet Gatewayを介して、パブリックネットワークからのインバウンド通信を待ち受ける。</td>
+<td>ALB、NAT Gateway</td>
+</tr>
+<tr>
+<td>protectedサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、同じVPC内からのインバウンド通信のみを待ち受ける。また、publicサブネットのNAT Gatewayを介してアウトバウンド通信を送信する。</td>
+<td>EC2、Fargate</td>
+</tr>
+<tr>
+<td>privateサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。パブリックネットワークからアクセスできず、前述のprotectedサブネット内からのインバウンド通信のみを待ち受ける。また、アウトバウンド通信を送信しない。</td>
+<td>RDS、Redis</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://mihono-bourbon.com/aws-network-1/">https://mihono-bourbon.com/aws-network-1/</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ コンポーネントタイプ別の命名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><img alt="subnet_component-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" /></p>
+<p>配置するコンポーネントの種類に関する名前をつける。</p>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>種類</th>
+<th>役割</th>
+<th>配置例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frontendサブネット</td>
+<td>パブリック</td>
+<td>非武装地帯として動作する。<code>L7</code>ロードバランサー、ルーター、踏み台サーバー、を配置する。</td>
+<td>ALB、NAT Gateway</td>
+</tr>
+<tr>
+<td>applicationサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。appサーバー、リバースプロキシサーバー、を配置する。</td>
+<td>EC2、Fargate</td>
+</tr>
+<tr>
+<td>datastoreサブネット</td>
+<td>プライベート</td>
+<td>内部ネットワークとして動作する。dbサーバーを配置する。</td>
+<td>RDS、Redis</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/create_nat_gateway/">https://dev.classmethod.jp/articles/create_nat_gateway/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">マルチサイトアクティブ構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><img alt="dr-architecture_multi-site-active" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png" /></p>
-<p>DRリージョンにメインリージョンと同等なアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、インバウンド通信をDRリージョンにルーティング可能にする。</p>
-<p>障害が起こった後、ルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
-<p>一方で、金銭的コストが高い。</p>
+<h3 id="_5">ルートテーブルの設計<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="route-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png" /></p>
+<h4 id="_6">▼ プライベートサブネットのアウトバウンド通信をパブリックネットワークに公開する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット3にはルートテーブル2が紐付けられている。</p>
+<p>サブネット3内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、インバウンド通信と見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>一方で、<code>0.0.0.0/0</code> (local以外の全IPアドレス) の範囲内にあれば、アウトバウンド通信と見なし、Internet Gatewayを宛先に選択する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0.0.0.0/0</code></td>
+<td style="text-align: center;">Internet Gateway</td>
+</tr>
+</tbody>
+</table>
+<h4 id="vpc_1">▼ プライベートサブネットのアウトバウンド通信をVPC内に閉じる場合<a class="headerlink" href="#vpc_1" title="Permanent link">&para;</a></h4>
+<p>上の図中で、サブネット2にはルートテーブル1が紐付けられている。</p>
+<p>サブネット2内の宛先のプライベートIPアドレスが、<code>10.0.0.0/16</code>の範囲内にあれば、インバウンド通信と見なし、local (VPC内の他サブネット) を宛先に選択する。</p>
+<p>一方で、範囲外にあれば通信を破棄する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/16</code> (VPCのCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_7">▼ プライベートサブネットのアウトバウンド通信を同一サブネット内に閉じる場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットのCIDRブロックを設定する。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination (プライベートCIDRブロック)</th>
+<th style="text-align: center;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>10.0.0.0/24</code> (サブネット1のCIDRブロック)</td>
+<td style="text-align: center;">local</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
-<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://koejima.com/archives/1950/">https://koejima.com/archives/1950/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="osi">OSI層<a class="headerlink" href="#osi" title="Permanent link">&para;</a></h3>
+<p>OSI層とAWSリソースの対応関係を以下に示す。</p>
+<table>
+<thead>
+<tr>
+<th>OSI層</th>
+<th>OSI層の番号</th>
+<th>対応するAWSリソース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アプリケーション層</td>
+<td><code>L7</code></td>
+<td>ALB、CLB、EC2、RDS、Route53、S3</td>
+</tr>
+<tr>
+<td>プレゼンテーション層</td>
+<td><code>L6</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>セッション層</td>
+<td><code>L5</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td>トランスポート層</td>
+<td><code>L4</code></td>
+<td>セキュリティグループ、ALB、NLB、CLB</td>
+</tr>
+<tr>
+<td>ネットワーク層</td>
+<td><code>L3</code></td>
+<td>Internet Gateway、NAT Gateway、Transit Gateway</td>
+</tr>
+<tr>
+<td>データリンク層</td>
+<td><code>L2</code></td>
+<td>VPC</td>
+</tr>
+<tr>
+<td>物理層</td>
+<td><code>L1</code></td>
+<td>仮想化のため、意識しなくても良い。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html">https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html</a></li>
+<li><a href="https://aws.amazon.com/jp/elasticloadbalancing/features/">https://aws.amazon.com/jp/elasticloadbalancing/features/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 監視ポリシー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_8">監視すべきメトリクスとアラート条件例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ ユーザー定義の名前空間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>名前空間ユーザー定義としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;任意のプレフィクス&gt;LogMetrics</code></td>
+<td>カウント</td>
+<td>ログステータスの検出数をデータポイントとする。メトリクスと検出ルールはフィルターパターンで作成できる。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="alb">▼ ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
+<p>名前空間をALBとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>HTTPCode_ELB_4XX_Count</code></td>
+<td>カウント</td>
+<td>ALBが原因で返信した<code>400</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HTTPCode_ELB_5XX_Count</code></td>
+<td>カウント</td>
+<td>ALBが原因で返信した<code>500</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HealthyHostCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内の正常なターゲットの数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>UnHealthyHostCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内の異常なターゲットの数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>HTTPCode_TARGET_4XX_Count</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットが<code>400</code>ステータスコードを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>HTTPCode_TARGET_5XX_Count</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットが<code>500</code>ステータスコードを返信した数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 :<code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>RejectedConnectionCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットから接続拒否された数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TargetConnectionErrorCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>TargetTLSNegotiationErrorCount</code></td>
+<td>カウント</td>
+<td>ターゲットグループ内のターゲットへのHTTPSプロトコルでエラーが発生した数をデータポイントとする。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html</a></li>
+</ul>
+</blockquote>
+<h4 id="api-gateway">▼ API Gateway<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h4>
+<p>名前空間をAPI Gatewayとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IntegrationLatency</code></td>
+<td>マイクロ秒</td>
+<td>API Gatewayがリクエストをバックエンドにルーティングしてから、バックエンドからレスポンスを受信するまでの時間をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Latency</code></td>
+<td>マイクロ秒</td>
+<td>API Gatewayがクライアントからリクエストを受信してから、クライアントにこれを返信するまでの時間をデータポイントとする。</td>
+<td></td>
+</tr>
+<tr>
+<td><code>4XXError</code></td>
+<td>カウント</td>
+<td><code>400</code>系ステータスコードの数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>24</code>時間<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+<tr>
+<td><code>5XXError</code></td>
+<td>カウント</td>
+<td><code>500</code>系ステータスコードの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="ec2">▼ EC2<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<p>名前空間をEC2としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>EC2インスタンスで使用されているCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+</tr>
+<tr>
+<td><code>MemoryUtilization</code></td>
+<td>%</td>
+<td>EC2インスタンスで使用されているメモリ使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+</tr>
+<tr>
+<td><code>StatusCheckFailed_Instance</code></td>
+<td>カウント</td>
+<td>インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>- <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+<td></td>
+</tr>
+<tr>
+<td><code>StatusCheckFailed_System</code></td>
+<td>カウント</td>
+<td>インスタンスのシステムステータスの失敗数をデータポイントとする。AWSの障害によるインシデントの検出に適する。<br>- <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics</a></li>
+</ul>
+</blockquote>
+<p>似たメトリクスに<code>StatusCheckFailed_System</code>や<code>StatusCheckFailed_Instance</code>がある。</p>
+<p>これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。</p>
+<blockquote>
+<ul>
+<li><a href="https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html">https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html</a></li>
+</ul>
+</blockquote>
+<h4 id="ecs">▼ ECS<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
+<p>名前空間をECSクラスターまたはECSサービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>ClusterNameディメンションとServiceNameディメンションを使用して、ECSクラスターとECSサービスに関するメトリクスを区別できる。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>ECSクラスターまたはサービスで使用されているCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>MemoryUtilization</code></td>
+<td>%</td>
+<td>ECSクラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>RunningTaskCount</code></td>
+<td>カウント</td>
+<td>稼働中のECSタスク数をデータポイントとする。</td>
+<td></td>
+<td>ECSタスク数の増減の遷移から、デプロイのおおよその時間がわかる。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="elasticache-redis">▼ ElastiCache Redis<a class="headerlink" href="#elasticache-redis" title="Permanent link">&para;</a></h4>
+<p>名前空間をRedisとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BytesUsedForCache</code></td>
+<td>バイト数</td>
+<td>Redisで使用されているメモリ使用サイズをデータポイントとする。</td>
+<td>・統計 : 期間内合計サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 8</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>ノードのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>Evictions</code></td>
+<td>カウント</td>
+<td>空きサイズを確保するために削除されたRedisのキー数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>SwapUsage</code></td>
+<td>バイト数</td>
+<td>ストレージ上のスワップ領域の使用サイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 50</code>GB</td>
+<td>使用可能な最大メモリを超えると、Redisはストレージ上のスワップ領域を使用する。<br>- <a href="https://zenn.dev/dehio3/scraps/710a9714ce9496">https://zenn.dev/dehio3/scraps/710a9714ce9496</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html</a></li>
+</ul>
+</blockquote>
+<h4 id="rds-aurora">▼ RDS (Aurora)<a class="headerlink" href="#rds-aurora" title="Permanent link">&para;</a></h4>
+<p>名前空間をRDS (Aurora) としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BlockedTransactions</code></td>
+<td>カウント</td>
+<td>秒あたりトランザクションの拒否の回数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>Aurora DBインスタンスのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DatabaseConnections</code></td>
+<td>カウント</td>
+<td>Aurora DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>Deadlocks</code></td>
+<td>カウント</td>
+<td>秒あたりデッドロック平均数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>EngineUptime</code></td>
+<td>秒</td>
+<td>インスタンスの起動時間をデータポイントとする。</td>
+<td></td>
+<td>ダウンタイムの最低発生時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>DMLLatency</code></td>
+<td>マイクロ秒</td>
+<td>Aurora DBインスタンスに対するDML系クエリの遅延秒数をデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FreeableMemory</code></td>
+<td>バイト数</td>
+<td>Aurora DBインスタンスの使用できるメモリの最大空きサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+<tr>
+<td><code>FreeLocalStorage</code></td>
+<td>バイト数</td>
+<td>Aurora DBインスタンスの使用できるローカルストレージの最大空きサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 10</code>GB</td>
+<td>DBインスタンスのローカルストレージは、一時テーブルやログの保管に使用される。</td>
+</tr>
+<tr>
+<td><code>LoginFailures</code></td>
+<td>カウント</td>
+<td>Aurora DBへのログインの失敗回数をデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html</a></li>
+</ul>
+</blockquote>
+<h4 id="rds-aurora_1">▼ RDS (非Aurora)<a class="headerlink" href="#rds-aurora_1" title="Permanent link">&para;</a></h4>
+<p>名前空間をRDS (非Aurora) としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、CloudWatchメトリクスと異なることに注意する。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+<th>補足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CPUUtilization</code></td>
+<td>%</td>
+<td>DBインスタンスのCPU使用率をデータポイントとする。</td>
+<td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DatabaseConnections</code></td>
+<td>カウント</td>
+<td>DBインスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 400</code></td>
+<td>クライアントがDBにアクセスしている時間帯がわかるため、メンテナンスウィンドウを実施時間の参考になる。</td>
+</tr>
+<tr>
+<td><code>FreeableMemory</code></td>
+<td>バイト数</td>
+<td>DBインスタンスの使用できるメモリサイズをデータポイントとする。</td>
+<td>・統計 : 期間内最大サイズ<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 2</code>GB</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics</a></li>
+</ul>
+</blockquote>
+<h4 id="s3">▼ S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h4>
+<p>名前空間をS3としたメトリクスの監視ポリシーは以下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>メトリクス名</th>
+<th>単位</th>
+<th>説明</th>
+<th>アラート条件例 (合致したら発火)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5xxErrors</code></td>
+<td>カウント</td>
+<td>S3バケットが原因で返信した<code>500</code>系ステータスコードをデータポイントとする。</td>
+<td>・統計 : 期間内合計数<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 1</code></td>
+</tr>
+</tbody>
+</table>
 <p><br></p>
 
   <hr>
@@ -6065,7 +7030,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

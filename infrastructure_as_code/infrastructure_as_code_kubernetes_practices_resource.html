@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OpenPolicyAgent＠認可の知見を記録しています。">
+        <meta name="description" content="プラクティス集＠Kubernetesリソースの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_policy_agent.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html">
       
       
-        <link rel="prev" href="security_auth_authorization.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_practices_component.html">
       
       
-        <link rel="next" href="security_auth_sso.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_resource.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】OpenPolicyAgent＠認可 - 俺の技術ノート</title>
+        <title>【IT技術の知見】プラクティス集＠Kubernetesリソース - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#openpolicyagent" class="md-skip">
+        <a href="#kubernetes" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】OpenPolicyAgent＠認可
+              【IT技術の知見】プラクティス集＠Kubernetesリソース
             
           </span>
         </div>
@@ -414,13 +414,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../security/index.html" class="md-tabs__link">
           
   
     
@@ -480,7 +478,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -496,11 +494,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +520,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +540,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -2614,8 +2614,6 @@
       
   
   
-    
-  
   
     
     
@@ -2637,17 +2635,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../security/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2664,7 +2662,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
             🔐 セキュリティ
@@ -2697,7 +2695,7 @@
         
   
   
-    <a href="security_cyber_attacks.html" class="md-nav__link">
+    <a href="../security/security_cyber_attacks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2741,7 +2739,7 @@
         
   
   
-    <a href="security_measures.html" class="md-nav__link">
+    <a href="../security/security_measures.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2765,8 +2763,6 @@
                 
   
   
-    
-  
   
     
     
@@ -2781,276 +2777,33 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_12_4" id="__nav_12_4_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    <a href="../security/security_auth_authentication.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ 認証/認可
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ 認証/認可
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="security_auth_authentication.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ 認証
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_4_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_12_4_2" id="__nav_12_4_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ 認可
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_12_4_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ 認可
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="security_auth_authorization.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    認可
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    OpenPolicyAgent
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="security_auth_authorization_open_policy_agent.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    OpenPolicyAgent
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    こちらまで
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="security_auth_sso.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ SSO
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3414,7 +3167,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3446,7 +3199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3487,7 +3240,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3542,7 +3295,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3575,6 +3328,8 @@
       
   
   
+    
+  
   
     
     
@@ -3604,17 +3359,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
+            <a href="kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3631,7 +3386,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3672,7 +3427,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3696,42 +3451,239 @@
                 
   
   
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_16_3" id="__nav_16_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ アーキテクチャ特性
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アーキテクチャ特性
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8s Cluster
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_practices_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K8sコンポーネント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    K8sリソース
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_practices_resource.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    K8sリソース
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-pod" class="md-nav__link">
+    01. Pod
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 認証/認可の実施
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 水平スケーリング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数を暗号化する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3762,7 +3714,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3806,7 +3758,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3856,7 +3808,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3900,7 +3852,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3947,7 +3899,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4015,7 +3967,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4063,7 +4015,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4109,7 +4061,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4155,7 +4107,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4202,7 +4154,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4249,7 +4201,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4329,7 +4281,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4385,7 +4337,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4427,7 +4379,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4471,7 +4423,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4515,7 +4467,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4559,7 +4511,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4613,7 +4565,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4655,7 +4607,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4699,7 +4651,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4741,7 +4693,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4791,7 +4743,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4833,7 +4785,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5758,9 +5710,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    こちらまで
+  <a href="#01-pod" class="md-nav__link">
+    01. Pod
   </a>
+  
+    <nav class="md-nav" aria-label="01. Pod">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 認証/認可の実施
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可用性
+  </a>
+  
+    <nav class="md-nav" aria-label="可用性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 水平スケーリング
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    安全性
+  </a>
+  
+    <nav class="md-nav" aria-label="安全性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    ▼ Secretの変数を暗号化する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -5782,7 +5807,7 @@
   
 
 
-<h1 id="openpolicyagent">OpenPolicyAgent＠認可<a class="headerlink" href="#openpolicyagent" title="Permanent link">&para;</a></h1>
+<h1 id="kubernetes">プラクティス集＠Kubernetesリソース<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5791,11 +5816,63 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_2">こちらまで<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>OpenPolicyAgentはセクションが重複しており、以下のセクションを参照してください。</p>
+<h2 id="01-pod">01. Pod<a class="headerlink" href="#01-pod" title="Permanent link">&para;</a></h2>
+<h3 id="_2">安全性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 認証/認可の実施<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。</p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html</a></li>
+<li><a href="https://qiita.com/sheepland/items/67a5bb9b19d8686f389d">https://qiita.com/sheepland/items/67a5bb9b19d8686f389d</a></li>
+<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">可用性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 冗長化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>ReplicaSetでPodを冗長化し、可用性を担保する。</p>
+<h4 id="_6">▼ 水平スケーリング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。</p>
+<p>水平スケーリングは、Podの負荷が高くなると冗長化してくれ、高負荷でいずれかのPodで障害が起こっても正常なPodがこれを埋め合わせしてくれるため、システム全体として稼働時間を長くできる。</p>
+<p><br></p>
+<h3 id="_7">安全性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="secret">▼ Secretの変数を暗号化する<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
+<p>Secretの <code>.data</code>キーには、<code>base64</code>方式でエンコードされた値を設定する必要がある。</p>
+<p>この <code>base64</code>方式エンコード値をどのように管理するかには選択肢がある。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>リポジトリ</th>
+<th>リポジトリ + キーバリュー型ストア</th>
+<th>リポジトリ + クラウドキーバリュー型ストア</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>バージョン管理</td>
+<td>管理できる。</td>
+<td>管理できる。</td>
+<td>管理できない。</td>
+</tr>
+<tr>
+<td>暗号化</td>
+<td><code>base64</code>方式エンコード値をリポジトリ内でそのまま管理する。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+</tr>
+<tr>
+<td>Secretストア</td>
+<td>なし</td>
+<td>リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、<code>base64</code>方式エンコード値に復号化する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/">https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/</a></li>
+<li><a href="https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/">https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/</a></li>
+<li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -5805,7 +5882,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

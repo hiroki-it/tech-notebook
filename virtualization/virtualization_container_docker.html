@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -3983,7 +3983,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5006,7 +5006,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6448,9 +6448,13 @@
 <h3 id="user-namespace">User namespace<a class="headerlink" href="#user-namespace" title="Permanent link">&para;</a></h3>
 <p>ユーザーID (UID)、グループID (GID)、を分離する。</p>
 <p>各コンテナが独立したUIDやGIDを持てるようになる。</p>
+<p>ただし、Dockerでは機能が制限されることを嫌って、User Namespaceをデフォルトで無効化している。</p>
+<p>そのため、コンテナとホストのUID/GIDが同じになっている。</p>
+<p>これに伴い、コンテナをrootユーザーで実行することに脆弱性がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8</a></li>
+<li><a href="https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations">https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6580,7 +6584,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

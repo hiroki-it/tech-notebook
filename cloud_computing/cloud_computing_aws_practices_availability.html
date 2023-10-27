@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="K8s Cluster＠アーキテクチャ特性の知見を記録しています。">
+        <meta name="description" content="可用性＠AWSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_availability.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_policy.html">
+        <link rel="prev" href="cloud_computing_aws_resource_work_mail.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_architecture_characteristics_component.html">
+        <link rel="next" href="cloud_computing_aws_practices_reliability.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】K8s Cluster＠アーキテクチャ特性 - 俺の技術ノート</title>
+        <title>【IT技術の知見】可用性＠AWS - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#k8s-cluster" class="md-skip">
+        <a href="#aws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】K8s Cluster＠アーキテクチャ特性
+              【IT技術の知見】可用性＠AWS
             
           </span>
         </div>
@@ -434,11 +434,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../cloud_computing/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -478,7 +480,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
           
   
     
@@ -494,13 +496,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="kubernetes/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +520,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +540,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="cncf_projects/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -2821,6 +2821,8 @@
       
   
   
+    
+  
   
     
     
@@ -2842,17 +2844,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cloud_computing/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2869,7 +2871,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             ⛅️ 3大クラウド
@@ -2884,11 +2886,79 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing.html" class="md-nav__link">
+      <a href="cloud_computing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     3大クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
   </span>
   
 
@@ -2914,6 +2984,84 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2926,11 +3074,11 @@
         
   
   
-    <a href="../cloud_computing/cloud_computing_aws_cli.html" class="md-nav__link">
+    <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ AWS
+    ■ AWSリソース
   </span>
   
 
@@ -2940,6 +3088,267 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3_3" id="__nav_13_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ プラクティス集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ プラクティス集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    可用性
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_practices_availability.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    可用性
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-dr" class="md-nav__link">
+    01. DRリージョン
+  </a>
+  
+    <nav class="md-nav" aria-label="01. DRリージョン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dr-bcp" class="md-nav__link">
+    DRリージョン (BCPリージョン) とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    バックアップリストア構成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    パイロットライト構成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ウォームスタンバイ構成
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    マルチサイトアクティブ構成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_reliability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信頼性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_security.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    安全性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_cost_optimization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コスト最適化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2970,7 +3379,7 @@
         
   
   
-    <a href="../cloud_computing/cloud_computing_gcp_cli.html" class="md-nav__link">
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3167,7 +3576,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3199,7 +3608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3240,7 +3649,7 @@
     
   
   
-    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3295,7 +3704,7 @@
     
   
   
-    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3328,8 +3737,6 @@
       
   
   
-    
-  
   
     
     
@@ -3359,17 +3766,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3386,7 +3793,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3427,7 +3834,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3451,8 +3858,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3467,354 +3872,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_3" id="__nav_16_3_label" tabindex="0">
-            
+  
+  
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ アーキテクチャ特性
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ アーキテクチャ特性
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+        <span class="md-nav__icon md-icon"></span>
       
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    K8s Cluster
-  </span>
+    </a>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    K8s Cluster
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. 運用
-  </a>
-  
-    <nav class="md-nav" aria-label="01. 運用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cd" class="md-nav__link">
-    CDパイプライン
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. アップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="02. アップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    アップグレードの設計規約
-  </a>
-  
-    <nav class="md-nav" aria-label="アップグレードの設計規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ マイナーバージョン単位でアップグレード
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ▼ コントロールプレーンNodeでダウンタイムを発生させない
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_1" class="md-nav__link">
-    ▼ コントロールプレーンNodeのデータを損失させない
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    ▼ 廃止されるAPIグループのバージョンを確認する
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podworkload" class="md-nav__link">
-    ▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
-    コントロールプレーンNodeのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="コントロールプレーンNodeのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#node_3" class="md-nav__link">
-    ▼ コントロールプレーンNodeのアップグレードとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ インプレース方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ ローリング方式
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_4" class="md-nav__link">
-    ワーカーNodeのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="ワーカーNodeのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#node_5" class="md-nav__link">
-    ▼ ワーカーNodeのアップグレードとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ インプレース方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ マネージドなローリング方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ ブルー/グリーン方式 (マイグレーション方式)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ツール別
-  </a>
-  
-    <nav class="md-nav" aria-label="ツール別">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
-    ▼ ArgoCD
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-loadbalancer-controller" class="md-nav__link">
-    ▼ aws-loadbalancer-controller
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#descheduler" class="md-nav__link">
-    ▼ descheduler
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#external-dns" class="md-nav__link">
-    ▼ external-dns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_component.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    K8sコンポーネント
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_resource.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    K8sリソース
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3845,7 +3924,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3889,7 +3968,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3939,7 +4018,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3983,7 +4062,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4030,7 +4109,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4098,7 +4177,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4146,7 +4225,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4192,7 +4271,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4238,7 +4317,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4285,7 +4364,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4332,7 +4411,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4412,7 +4491,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="cncf_projects/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4468,7 +4547,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4510,7 +4589,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4554,7 +4633,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4598,7 +4677,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4642,7 +4721,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4696,7 +4775,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4738,7 +4817,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4782,7 +4861,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4824,7 +4903,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4874,7 +4953,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4916,7 +4995,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5841,208 +5920,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. 運用
+  <a href="#01-dr" class="md-nav__link">
+    01. DRリージョン
   </a>
   
-    <nav class="md-nav" aria-label="01. 運用">
+    <nav class="md-nav" aria-label="01. DRリージョン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cd" class="md-nav__link">
-    CDパイプライン
+  <a href="#dr-bcp" class="md-nav__link">
+    DRリージョン (BCPリージョン) とは
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. アップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="02. アップグレード">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    アップグレードの設計規約
+    バックアップリストア構成
   </a>
   
-    <nav class="md-nav" aria-label="アップグレードの設計規約">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ マイナーバージョン単位でアップグレード
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ▼ コントロールプレーンNodeでダウンタイムを発生させない
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_1" class="md-nav__link">
-    ▼ コントロールプレーンNodeのデータを損失させない
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
-    ▼ 廃止されるAPIグループのバージョンを確認する
+    パイロットライト構成
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    ▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#podworkload" class="md-nav__link">
-    ▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_2" class="md-nav__link">
-    コントロールプレーンNodeのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="コントロールプレーンNodeのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#node_3" class="md-nav__link">
-    ▼ コントロールプレーンNodeのアップグレードとは
+    ウォームスタンバイ構成
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ インプレース方式
+    マルチサイトアクティブ構成
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ ローリング方式
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node_4" class="md-nav__link">
-    ワーカーNodeのアップグレード
-  </a>
-  
-    <nav class="md-nav" aria-label="ワーカーNodeのアップグレード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#node_5" class="md-nav__link">
-    ▼ ワーカーNodeのアップグレードとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ インプレース方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ マネージドなローリング方式
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ ブルー/グリーン方式 (マイグレーション方式)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ツール別
-  </a>
-  
-    <nav class="md-nav" aria-label="ツール別">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
-    ▼ ArgoCD
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-loadbalancer-controller" class="md-nav__link">
-    ▼ aws-loadbalancer-controller
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#descheduler" class="md-nav__link">
-    ▼ descheduler
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#external-dns" class="md-nav__link">
-    ▼ external-dns
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6069,7 +5985,7 @@
   
 
 
-<h1 id="k8s-cluster">K8s Cluster＠アーキテクチャ特性<a class="headerlink" href="#k8s-cluster" title="Permanent link">&para;</a></h1>
+<h1 id="aws">可用性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6078,277 +5994,70 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 運用<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="cd">CDパイプライン<a class="headerlink" href="#cd" title="Permanent link">&para;</a></h3>
-<p>ArgoCD自体はArgoCD以外でデプロイする必要がある。</p>
-<p>GitOpsを採用できないため、CIOpsになる。</p>
-<p>本番環境に対して、ローカルマシンまたはCIツール (例：GitHub Actions、CircleCI、GitLab CI) を使用して、ArgoCDをデプロイする。</p>
+<h2 id="01-dr">01. DRリージョン<a class="headerlink" href="#01-dr" title="Permanent link">&para;</a></h2>
+<h3 id="dr-bcp">DRリージョン (BCPリージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
+<p>『BCPリージョン』ともいう。</p>
+<p>メインリージョンで障害が起こった場合に、システムの利用可能な時間をできるだけ長くできる (可用性を高められる) ように、災害復旧用リージョンを用意しておく。</p>
+<p><br></p>
+<h3 id="_2">バックアップリストア構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><img alt="dr-architecture_backup-restore" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png" /></p>
+<p>DRリージョンにメインリージョンのAWSリソース (例：EBSボリューム、RDS) のスナップショットを定期的に作成しておく。</p>
+<p>メインリージョンで障害が起こった場合は、スナップショットを使用して、DRリージョンにAWSリソースを復元する。</p>
+<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
+<p>障害が起こってから対応することが多いため、RTOが長くなってしまう。</p>
+<p>RPOは最後のバックアップ時点である。</p>
+<p>一方で金銭的コストが低い。</p>
 <blockquote>
 <ul>
-<li><a href="https://developer.mamezou-tech.com/oss-intro/setup-helmfile/">https://developer.mamezou-tech.com/oss-intro/setup-helmfile/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
+<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+<li><a href="https://aws.amazon.com/jp/cdp/cdp-dr/">https://aws.amazon.com/jp/cdp/cdp-dr/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. アップグレード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アップグレードの設計規約<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>アップグレード時、新旧バージョンのコントロールプレーンNodeが並行的に稼働する。</p>
-<p>基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の <code>1</code>個のマイナーバージョン以内に収める必要がある。</p>
-<p>そのため、Kubernetesのアップグレードもこれに合わせて、後方の <code>1</code>個のマイナーバージョンにアップグレードしていくことになる。</p>
-<p>マイナーバージョンを <code>2</code>個以上跨いだアップグレードは非推奨である。</p>
+<h3 id="_3">パイロットライト構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><img alt="dr-architecture_pilot-light" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png" /></p>
+<p>DRリージョンに低スペックなDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、DRリージョンでDB以外のインフラコンポーネント (例：アプリケーション部分など) を作成し、またDBのスペックをメインリージョンと同等に上げる。</p>
+<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
+<p>障害が起こってから対応することが多いため、RTOがやや長くなってしまう。</p>
+<p>RPOは最後の同期時点である。</p>
+<p>一方で金銭的コストが低い。</p>
 <blockquote>
 <ul>
-<li><a href="https://kubernetes.io/releases/version-skew-policy/">https://kubernetes.io/releases/version-skew-policy/</a></li>
-</ul>
-</blockquote>
-<h4 id="node">▼ コントロールプレーンNodeでダウンタイムを発生させない<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeでダウンタイムが発生すると、Nodeコンポーネントが正常に稼働しなくなる。</p>
-<p>これにより、システム全体でダウンタイムが発生する可能性がある。</p>
-<p>ただし、コントロールプレーンNodeの、kube-controller-manager、kube-scheduler、ではダウンタイムが発生することは許容する。</p>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
-</ul>
-</blockquote>
-<h4 id="node_1">▼ コントロールプレーンNodeのデータを損失させない<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeのデータを損失させないようにする。</p>
-<p>ただし、コンテナ内のローカルストレージの損失は許容する。</p>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
-</ul>
-</blockquote>
-<h4 id="api">▼ 廃止されるAPIグループのバージョンを確認する<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
-<p>アップグレードに伴い、kube-apiserverでAPIグループのバージョンが廃止されることがある。</p>
-<p>これにより、マニフェストでAPIグループのバージョンを宣言できなくなってしまうため、確認が必要である。</p>
-<p>静的解析ツール (例：pluto) を使用すると検出しやすい。</p>
-<blockquote>
-<ul>
-<li><a href="https://eng-blog.iij.ad.jp/archives/17944">https://eng-blog.iij.ad.jp/archives/17944</a></li>
-</ul>
-</blockquote>
-<h4 id="_4">▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>アップグレードに伴い、監視系リソース (例：Prometheus、Grafana) でメトリクス名やクエリロジックが廃止されることがある。</p>
-<p>これにより、メトリクスのデータポイントを収集できなくなってgしまうため、確認が必要である。</p>
-<blockquote>
-<ul>
-<li><a href="https://eng-blog.iij.ad.jp/archives/17944">https://eng-blog.iij.ad.jp/archives/17944</a></li>
-</ul>
-</blockquote>
-<h4 id="podworkload">▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する<a class="headerlink" href="#podworkload" title="Permanent link">&para;</a></h4>
-<p>動作確認として、<code>Ready</code>コンディションと <code>Running</code>ステータスを <code>kubectl get pod</code>で確認する。</p>
-<p>また加えて、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
-<p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが <code>Ready</code>コンディションかどうかを確認しておく。</p>
-<p><br></p>
-<h3 id="node_2">コントロールプレーンNodeのアップグレード<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
-<h4 id="node_3">▼ コントロールプレーンNodeのアップグレードとは<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
-<p>まず最初に、コントロールプレーンNodeをアップグレードする。</p>
-<p>必要であれば、コントロールプレーンNodeのアドオン (例：aws-eks-corednsアドオン、aws-eks-kubeproxyアドオン、aws-vpc-cniアドオン) を別々にアップグレードする。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/</a></li>
-<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/</a></li>
-</ul>
-</blockquote>
-<h4 id="_5">▼ インプレース方式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeのkube-apiserverのアップグレード時間がダウンタイムに相当する。</p>
-<p>ただし、コントロールプレーンNodeがマネージドなクラウドプロバイダーのいくつか (例：AWS) では、kube-apiserverでダウンタイムの発生しないアップグレードを手法を採用している。</p>
-<p>このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されている (ワーカーNodeではダウンタイムが発生してしまう) 。</p>
-<blockquote>
-<ul>
-<li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
-</ul>
-</blockquote>
-<h4 id="_6">▼ ローリング方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><br></p>
-<h3 id="node_4">ワーカーNodeのアップグレード<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h3>
-<h4 id="node_5">▼ ワーカーNodeのアップグレードとは<a class="headerlink" href="#node_5" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeのアップグレードが終了したら、ワーカーNodeをアップグレードする。</p>
-<p>クラウドプロバイダーのマネージドNodeグループを採用している場合、ワーカーNodeが新しいマシンイメージに基づいてオートスケーリングされるように設定しておく。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>作業時間</th>
-<th>手順の煩雑さ</th>
-<th>ダウンタイム</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>インプレース方式</td>
-<td>より短い</td>
-<td>より簡単</td>
-<td>より長い</td>
-<td>ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。</td>
-</tr>
-<tr>
-<td>ローリング方式 (サージ方式、ライブ方式)</td>
-<td>^</td>
-<td>^</td>
-<td>v</td>
-<td></td>
-</tr>
-<tr>
-<td>ブルー/グリーン方式</td>
-<td>より長い</td>
-<td>より難しい</td>
-<td>なし</td>
-<td>Clusterの作成の労力が、もう <code>1</code>個実行環境を作成することに相当する。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/">https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ インプレース方式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>既存のNodeグループ内のワーカーNodeをそのままアップグレードする。</p>
-<p>ワーカーNodeのアップグレード時間がそのままダウンタイムになるため、メンテナンス時間を設けられる場合にのみ使用できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/323033">https://logmi.jp/tech/articles/323033</a></li>
-</ul>
-</blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>ワーカーNodeを削除する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>ワーカーNodeを再作成する。</p>
-</dd>
-</dl>
-<h4 id="_8">▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_live-upgrade" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png" /></p>
-<p>『サージ方式』『ライブ方式』ともいう。</p>
-<p>新Nodeグループを作成し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、アップグレードする。</p>
-<p>一度にアップグレードするワーカーNode数 (Surge数) を増やすことにより、アップグレードの速さを調整できる。</p>
-<p>デメリットとして、新バージョンを1つずつしかアップグレードできない。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>旧Nodeグループ (Prodブルー) を残したまま、新Nodeグループ (Testグリーン) を作成する。</p>
-</dd>
-</dl>
-<p>この時、新Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが新Nodeグループにルーティングされることはない。</p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p><code>kubectl drain</code>コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。</p>
-<p>この時、DaemonSetのPodを退避させられるように、<code>--ignore-daemonsets</code>オプションを有効化する。</p>
-<p>また、EmptyDir Volumeを持つPodを退避できるように <code>--delete-emptydir-data</code>オプションも有効化する。ドレイン処理によって、旧Nodeグループ内のワーカーNodeがSchedulingDisabled状態になり、加えてこのワーカーNodeからPodが退避していく。</p>
-<p>その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。</p>
-<p>この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。</p>
-</dd>
-</dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;旧Nodeグループ内のワーカーNode名&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--ignore-daemonsets<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--delete-emptydir-data
-</code></pre></div>
-<p><img alt="kubernetes_node_scheduling-pod-status" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://dunkshoot.hatenablog.com/">https://dunkshoot.hatenablog.com/</a></li>
-<li><a href="https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/</a></li>
-</ul>
-</blockquote>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>ドレイン処理が完了した後、新Nodeグループ内ワーカーNode上でPodが正常に稼働していることを確認する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>動作が問題なければ、旧Nodeグループを削除する。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely">https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely</a></li>
-<li>
-<p><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></p>
-</li>
-<li>
-<p><a href="https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44">https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44</a></p>
-</li>
-</ul>
-</blockquote>
-<h4 id="_9">▼ マネージドなローリング方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている。</p>
-<p>クラウドプロバイダーのNodeグループ (例：AWS EC2AutoScaling) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。</p>
-<p>例えばAWS EC2AutoScalingであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。</p>
-<p>新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node
-
-NAME<span class="w">                                       </span>STATUS<span class="w">                        </span>ROLES<span class="w">    </span>AGE<span class="w">     </span>VERSION
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>Ready<span class="w">                         </span>&lt;none&gt;<span class="w">   </span>19m<span class="w">     </span>v1.26.7-eks-***<span class="w"> </span><span class="c1"># 作成した新しいK8sバージョンのNode</span>
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>Ready<span class="w">                         </span>&lt;none&gt;<span class="w">   </span>19s<span class="w">     </span>v1.26.7-eks-***
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,SchedulingDisabled<span class="w">   </span>&lt;none&gt;<span class="w">   </span>66m<span class="w">     </span>v1.25.7-eks-***<span class="w"> </span><span class="c1"># 削除中の古いK8sバージョンのNode</span>
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>Ready<span class="w">                         </span>&lt;none&gt;<span class="w">   </span>21m<span class="w">     </span>v1.26.7-eks-***
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,SchedulingDisabled<span class="w">   </span>&lt;none&gt;<span class="w">   </span>75m<span class="w">     </span>v1.25.7-eks-***
-ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,SchedulingDisabled<span class="w">   </span>&lt;none&gt;<span class="w">   </span>73m<span class="w">     </span>v1.25.7-eks-***
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html</a></li>
-<li><a href="https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/">https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/</a></li>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge</a></li>
-</ul>
-</blockquote>
-<h4 id="_10">▼ ブルー/グリーン方式 (マイグレーション方式)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_cluster-migration" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png" /></p>
-<p>『マイグレーション方式』ともいう。</p>
-<p>新しいClusterを作成することにより、ワーカーNodeをアップグレードする。</p>
-<p>いずれ (例：<code>L7</code>ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。</p>
-<p>メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>旧Cluster (Prodブルー) を残したまま、新Cluster (Testグリーン) を作成する。新Clusterには、全てのKubernetesリソースが揃っている。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>社内から、新Clusterに特定のポート番号でアクセスし、動作を確認する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://logmi.jp/tech/articles/323032">https://logmi.jp/tech/articles/323032</a></li>
-<li><a href="https://logmi.jp/tech/articles/323033">https://logmi.jp/tech/articles/323033</a></li>
-<li><a href="https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely">https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely</a></li>
-<li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy">https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
+<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_11">ツール別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="argocd">▼ ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
-<p>ArgoCDの場合、チャート (ArgoCDのコンテナイメージ) とCRDの両方のアップグレードする。</p>
-<p>ArgoCDをNamespacedスコープで分割している場合、カスタムリソースがCluster内に1つしかないCRDを共有しているため、CRDをアップグレードすると全サービスのカスタムリソースに影響が出る。</p>
-<p>この場合、カスタムリソースへの影響を考えて、CRDの差分がないバージョンまではArgoCDをアップグレードできる。</p>
-<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=&lt;アップグレード先のArgoCDのバージョン&gt;&quot;</span>
-</code></pre></div>
-<p>もしCRDに差分がある大きなアップグレードの場合、別のClusterを新しく構築し、その上で新ArgoCDも構築することとする。</p>
-<h4 id="aws-loadbalancer-controller">▼ aws-loadbalancer-controller<a class="headerlink" href="#aws-loadbalancer-controller" title="Permanent link">&para;</a></h4>
-<p>aws-loadbalancer-controllerの場合、チャートをアップグレードする。</p>
-<p>各サービスのALBへの影響を考えて、CRDの差分がないバージョンまではaws-loadbalancer-controllerをアップグレードできる。</p>
-<p><code>kubectl diff</code>コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=&lt;アップグレード先のaws-loadbalancer-controllerのバージョン&gt;&quot;</span>
-</code></pre></div>
-<h4 id="descheduler">▼ descheduler<a class="headerlink" href="#descheduler" title="Permanent link">&para;</a></h4>
-<p>deschedulerの場合、チャートをアップグレードする。</p>
-<p>ArgoCDのリソースに影響がないため、アップグレードは問題ない。</p>
-<h4 id="external-dns">▼ external-dns<a class="headerlink" href="#external-dns" title="Permanent link">&para;</a></h4>
-<p>external-dnsの場合、チャートをアップグレードする。</p>
-<p>ArgoCDのリソースに影響がないため、アップグレードは問題ない。</p>
+<h3 id="_4">ウォームスタンバイ構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="dr-architecture_warm-standby" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png" /></p>
+<p>DRリージョンにメインリージョンよりも低スペックなアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、DRリージョンでアプリケーションとDBのスペックをメインリージョンと同等に上げる。</p>
+<p>DRリージョンの準備が完了次第、インバウンド通信をDRリージョンにルーティング可能にする。</p>
+<p>障害が起こった後、スペックを向上させ、またルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
+<p>RPOは最後の同期時点である。</p>
+<p>一方で、金銭的コストが高い。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
+<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">マルチサイトアクティブ構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><img alt="dr-architecture_multi-site-active" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png" /></p>
+<p>DRリージョンにメインリージョンと同等なアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、インバウンド通信をDRリージョンにルーティング可能にする。</p>
+<p>障害が起こった後、ルーティング先を切り替えるのみで復旧できるため、RTOが短い。</p>
+<p>RPOは最後の同期時点である。</p>
+<p>一方で、金銭的コストが高い。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/">https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/</a></li>
+<li><a href="https://michimani.net/post/aws-architecture-for-disaster-recovery/">https://michimani.net/post/aws-architecture-for-disaster-recovery/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -6356,7 +6065,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Kubernetesリソース＠アーキテクチャ特性の知見を記録しています。">
+        <meta name="description" content="プラクティス集＠RDBMSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_resource.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_architecture_characteristics_component.html">
+        <link rel="prev" href="software_middleware_database_rdb_rdbms.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_resource.html">
+        <link rel="next" href="software_middleware_database_rdb_rdbms_acid.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】Kubernetesリソース＠アーキテクチャ特性 - 俺の技術ノート</title>
+        <title>プラクティス集 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes" class="md-skip">
+        <a href="#rdbms" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Kubernetesリソース＠アーキテクチャ特性
+              プラクティス集
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+        <a href="application/index.html" class="md-tabs__link">
           
   
     
@@ -294,11 +294,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="middleware/index.html" class="md-tabs__link">
           
   
     
@@ -318,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="basic/index.html" class="md-tabs__link">
           
   
     
@@ -478,7 +480,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
           
   
     
@@ -494,13 +496,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="kubernetes/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +520,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -540,7 +540,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="cncf_projects/index.html" class="md-tabs__link">
+        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -860,7 +860,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software.html" class="md-nav__link">
+      <a href="software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -972,7 +972,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/application/index.html" class="md-nav__link ">
+            <a href="application/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1004,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1049,7 +1049,7 @@
     
   
   
-    <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+    <a href="software_application_architecture_backend_object_orientation.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1093,7 +1093,7 @@
         
   
   
-    <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
+    <a href="software_application_architecture_frontend.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1141,7 +1141,7 @@
         
   
   
-    <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
+    <a href="software_application_architecture_microservices.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1189,7 +1189,7 @@
         
   
   
-    <a href="../software/software_application_collaboration_communication.html" class="md-nav__link">
+    <a href="software_application_collaboration_communication.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1220,6 +1220,8 @@
       
   
   
+    
+  
   
     
     
@@ -1245,17 +1247,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/middleware/index.html" class="md-nav__link ">
+            <a href="middleware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1272,7 +1274,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -1308,7 +1310,7 @@
     
   
   
-    <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
+    <a href="software_middleware_web_nginx.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1362,7 +1364,7 @@
     
   
   
-    <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+    <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1390,6 +1392,470 @@
                 
   
   
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ データベース系
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ データベース系
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RDB
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RDB
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1_1" id="__nav_6_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ RDBMS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_4_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ RDBMS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RDBMS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. テーブル設計
+  </a>
+  
+    <nav class="md-nav" aria-label="01. テーブル設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    テーブルの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="テーブルの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master" class="md-nav__link">
+    ▼ masterテーブル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction" class="md-nav__link">
+    ▼ transactionテーブル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    命名規則
+  </a>
+  
+    <nav class="md-nav" aria-label="命名規則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mastertransaction" class="md-nav__link">
+    ▼ masterテーブルとtransactionテーブルがわかるようにすること
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ テーブル名は複数形にすること
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ カラム名には単数系接頭辞をつけること
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    正規化
+  </a>
+  
+    <nav class="md-nav" aria-label="正規化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 正規化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    データの追加/削除
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 性能設計
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 性能設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBインデックスの作成
+  </a>
+  
+    <nav class="md-nav" aria-label="DBインデックスの作成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    ▼ DBインデックスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_2" class="md-nav__link">
+    ▼ クラスターDBインデックス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_3" class="md-nav__link">
+    ▼ セカンダリDBインデックス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_4" class="md-nav__link">
+    ▼ 複合DBインデックス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. アルゴリズム設計
+  </a>
+  
+    <nav class="md-nav" aria-label="03. アルゴリズム設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    突き合わせ処理
+  </a>
+  
+    <nav class="md-nav" aria-label="突き合わせ処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 突き合わせ処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ アルゴリズム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 具体例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACID
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
     
     
@@ -1412,17 +1878,11 @@
         
   
   
-    
-  
-  
-    
-  
-  
-    <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+    <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ データベース系
+    ■ My︎SQL
   </span>
   
 
@@ -1430,10 +1890,6 @@
         <span class="md-nav__icon md-icon"></span>
       
     </a>
-  
-
-  
-
   
 
       
@@ -1466,7 +1922,158 @@
         
   
   
-    <a href="../software/software_middleware_security_linux.html" class="md-nav__link">
+    <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ PostgreSQL
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_database_tsdb.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ TSDB
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コネクションプールプロキシー
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="software_middleware_security_linux.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1512,7 +2119,7 @@
         
   
   
-    <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
+    <a href="software_middleware_service_mesh.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1574,7 +2181,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/basic/index.html" class="md-nav__link ">
+            <a href="basic/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1632,7 +2239,7 @@
         
   
   
-    <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
+    <a href="software_basic_linux_kernel.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1684,7 +2291,7 @@
         
   
   
-    <a href="../software/software_basic_utility.html" class="md-nav__link">
+    <a href="software_basic_utility.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1728,7 +2335,7 @@
         
   
   
-    <a href="../software/software_basic_language_processor.html" class="md-nav__link">
+    <a href="software_basic_language_processor.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3167,7 +3774,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3199,7 +3806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="infrastructure_as_code.html" class="md-nav__link">
+      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3240,7 +3847,7 @@
     
   
   
-    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3295,7 +3902,7 @@
     
   
   
-    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3328,8 +3935,6 @@
       
   
   
-    
-  
   
     
     
@@ -3359,17 +3964,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3386,7 +3991,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3427,7 +4032,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3451,8 +4056,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3467,223 +4070,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_3" id="__nav_16_3_label" tabindex="0">
-            
+  
+  
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ アーキテクチャ特性
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ アーキテクチャ特性
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    K8s Cluster
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_component.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    K8sコンポーネント
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    K8sリソース
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_architecture_characteristics_resource.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    K8sリソース
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-pod" class="md-nav__link">
-    01. Pod
-  </a>
-  
-    <nav class="md-nav" aria-label="01. Pod">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    安全性
-  </a>
-  
-    <nav class="md-nav" aria-label="安全性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 認証/認可の実施
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    可用性
-  </a>
-  
-    <nav class="md-nav" aria-label="可用性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 冗長化
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 水平スケーリング
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    安全性
-  </a>
-  
-    <nav class="md-nav" aria-label="安全性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    ▼ Secretの変数を暗号化する
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -3714,7 +4122,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3758,7 +4166,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3808,7 +4216,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3852,7 +4260,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3899,7 +4307,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3967,7 +4375,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4015,7 +4423,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4061,7 +4469,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4107,7 +4515,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4154,7 +4562,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4201,7 +4609,7 @@
     
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4281,7 +4689,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="cncf_projects/index.html" class="md-nav__link ">
+            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4337,7 +4745,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4379,7 +4787,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4423,7 +4831,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4467,7 +4875,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4511,7 +4919,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4565,7 +4973,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4607,7 +5015,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4651,7 +5059,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4693,7 +5101,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4743,7 +5151,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4785,7 +5193,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5710,51 +6118,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-pod" class="md-nav__link">
-    01. Pod
+  <a href="#01" class="md-nav__link">
+    01. テーブル設計
   </a>
   
-    <nav class="md-nav" aria-label="01. Pod">
+    <nav class="md-nav" aria-label="01. テーブル設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    安全性
+    テーブルの種類
   </a>
   
-    <nav class="md-nav" aria-label="安全性">
+    <nav class="md-nav" aria-label="テーブルの種類">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 認証/認可の実施
+  <a href="#master" class="md-nav__link">
+    ▼ masterテーブル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction" class="md-nav__link">
+    ▼ transactionテーブル
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    命名規則
+  </a>
+  
+    <nav class="md-nav" aria-label="命名規則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mastertransaction" class="md-nav__link">
+    ▼ masterテーブルとtransactionテーブルがわかるようにすること
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    可用性
-  </a>
-  
-    <nav class="md-nav" aria-label="可用性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 冗長化
+    ▼ テーブル名は複数形にすること
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 水平スケーリング
+  <a href="#_5" class="md-nav__link">
+    ▼ カラム名には単数系接頭辞をつけること
   </a>
   
 </li>
@@ -5765,16 +6187,131 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    安全性
+  <a href="#_6" class="md-nav__link">
+    正規化
   </a>
   
-    <nav class="md-nav" aria-label="安全性">
+    <nav class="md-nav" aria-label="正規化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    ▼ Secretの変数を暗号化する
+  <a href="#_7" class="md-nav__link">
+    ▼ 正規化とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    データの追加/削除
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 性能設計
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 性能設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBインデックスの作成
+  </a>
+  
+    <nav class="md-nav" aria-label="DBインデックスの作成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    ▼ DBインデックスとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_2" class="md-nav__link">
+    ▼ クラスターDBインデックス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_3" class="md-nav__link">
+    ▼ セカンダリDBインデックス
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_4" class="md-nav__link">
+    ▼ 複合DBインデックス
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. アルゴリズム設計
+  </a>
+  
+    <nav class="md-nav" aria-label="03. アルゴリズム設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    突き合わせ処理
+  </a>
+  
+    <nav class="md-nav" aria-label="突き合わせ処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 突き合わせ処理とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ アルゴリズム
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 具体例
   </a>
   
 </li>
@@ -5807,7 +6344,7 @@
   
 
 
-<h1 id="kubernetes">Kubernetesリソース＠アーキテクチャ特性<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h1>
+<h1 id="rdbms">プラクティス集＠RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5816,65 +6353,299 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-pod">01. Pod<a class="headerlink" href="#01-pod" title="Permanent link">&para;</a></h2>
-<h3 id="_2">安全性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 認証/認可の実施<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>RoleやClusterRoleを使用して、ServiceAccountに適切な認可スコープを付与する。</p>
+<h2 id="01">01. テーブル設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">テーブルの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="master">▼ masterテーブル<a class="headerlink" href="#master" title="Permanent link">&para;</a></h4>
+<p>初期開発時に作成して以降、めったに変更処理を実行せず、読み出し処理を主とするテーブル。</p>
+<p>ドメインのうちで、ID、識別コード、名前などに関するデータを管理する。</p>
 <blockquote>
 <ul>
-<li><a href="https://qiita.com/sheepland/items/67a5bb9b19d8686f389d">https://qiita.com/sheepland/items/67a5bb9b19d8686f389d</a></li>
-<li><a href="https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18">https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18</a></li>
+<li><a href="https://innoscale.de/en/difference-master-data-and-transaction-data/">https://innoscale.de/en/difference-master-data-and-transaction-data/</a></li>
+<li><a href="https://products.sint.co.jp/topsic/blog/database-basic-knowledge">https://products.sint.co.jp/topsic/blog/database-basic-knowledge</a></li>
+</ul>
+</blockquote>
+<h4 id="transaction">▼ transactionテーブル<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
+<p>初期開発時に作成して以降、頻繁に変更処理を実行するテーブル。</p>
+<p>ドメインのうちで、履歴、数量、日付などに関するデータを管理する。</p>
+<blockquote>
+<ul>
+<li><a href="https://innoscale.de/en/difference-master-data-and-transaction-data/">https://innoscale.de/en/difference-master-data-and-transaction-data/</a></li>
+<li><a href="https://products.sint.co.jp/topsic/blog/database-basic-knowledge">https://products.sint.co.jp/topsic/blog/database-basic-knowledge</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">可用性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 冗長化<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>ReplicaSetでPodを冗長化し、可用性を担保する。</p>
-<h4 id="_6">▼ 水平スケーリング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>HorizontalPodAutoscalerでPodを水平スケーリングし、可用性を担保する。</p>
-<p>水平スケーリングは、Podの負荷が高くなると冗長化してくれ、高負荷でいずれかのPodで障害が起こっても正常なPodがこれを埋め合わせしてくれるため、システム全体として稼働時間を長くできる。</p>
-<p><br></p>
-<h3 id="_7">安全性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="secret">▼ Secretの変数を暗号化する<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h4>
-<p>Secretの <code>.data</code>キーには、<code>base64</code>方式でエンコードされた値を設定する必要がある。</p>
-<p>この <code>base64</code>方式エンコード値をどのように管理するかには選択肢がある。</p>
+<h3 id="_3">命名規則<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="mastertransaction">▼ masterテーブルとtransactionテーブルがわかるようにすること<a class="headerlink" href="#mastertransaction" title="Permanent link">&para;</a></h4>
+<p>masterテーブルとtransactionテーブルがわかるようにする命名する。</p>
+<p>例えば、<code>mstr_foos</code>、<code>trx_bars</code>とする。</p>
+<h4 id="_4">▼ テーブル名は複数形にすること<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>テーブル名は複数形にして命名する。</p>
+<p>例えば、<code>foos</code>とする。</p>
+<h4 id="_5">▼ カラム名には単数系接頭辞をつけること<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>カラム名には単数系接頭辞をつけて命名する。</p>
+<p>例えば、<code>foo_id</code>、<code>foo_name</code>、<code>foo_type</code>とする。</p>
+<p>ただし、子テーブルの外部キーと紐付くカラムがある場合、そのカラムの接頭辞は、子テーブル名の単数形とする。</p>
+<p>例えば、<code>bar_id</code>とする。</p>
+<p>例外として、ActiveRecordパターンのフレームワーク (例：Laravelなど) では使用しない方がよいかもしれない。</p>
+<p>これらのフレームワークでは、単数形テーブル名の接頭辞がないカラム名を想定して機能が備わっていることがある。</p>
+<p>この場合、DBとの連携で毎回カラム名を明示する必要があったり、デフォルトではないカラム名を使用することによる不具合が発生したり、不便なことが多かったりするため、おすすめしない。</p>
 <table>
 <thead>
 <tr>
-<th>方法</th>
-<th>リポジトリ</th>
-<th>リポジトリ + キーバリュー型ストア</th>
-<th>リポジトリ + クラウドキーバリュー型ストア</th>
+<th>foo_id</th>
+<th>bar_id</th>
+<th>foo_name</th>
+<th>foo_type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>バージョン管理</td>
-<td>管理できる。</td>
-<td>管理できる。</td>
-<td>管理できない。</td>
-</tr>
-<tr>
-<td>暗号化</td>
-<td><code>base64</code>方式エンコード値をリポジトリ内でそのまま管理する。</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
-<td><code>base64</code>方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
-</tr>
-<tr>
-<td>Secretストア</td>
-<td>なし</td>
-<td>リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。 Apply時にbase64方式エンコード値に復号化する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。 Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、<code>base64</code>方式エンコード値に復号化する。</td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+<td><code>foo</code></td>
+<td><code>2</code></td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<h3 id="_6">正規化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 正規化とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>繰り返し要素のある表を『正規形』、その逆を『非正規形』という。</p>
+<p>非正規形の表から、他と連動するカラムを独立させ、正規形の表に変更することを『正規化』という。</p>
+<p>正規化によって、テーブルの冗長性を排除できる (マスターテーブルとトランザクションテーブルの分離を含む) 。</p>
+<h4 id="_8">▼ 方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>まず、主キーが受注Noと商品IDの2つであることを確認。</p>
+<p>これらの主キーは、複合主キーではないとする。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。</p>
+</dd>
+</dl>
+<p><img alt="非正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形.png" /></p>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>第一正規化 (繰り返し要素の排除) を実施する。レコードを1つずつに分割する。</p>
+</dd>
+</dl>
+<p><img alt="第一正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形.png" /></p>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムが連動する (関数従属性がある) 場合、カラムを左表として独立させる。今回、主キーが2つあるため、まず受注Noから関数従属性を排除していく。受注Noと他3カラムが連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。</p>
+</dd>
+</dl>
+<p><img alt="第二正規形-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-1.png" /></p>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>商品IDの関数従属性を排除していく。商品IDと他2カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。</p>
+</dd>
+</dl>
+<p><img alt="第二正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-2.png" /></p>
+<p><img alt="第二正規形-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-3.png" /></p>
+<dl>
+<dt><code>(5)</code></dt>
+<dd>
+<p>第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関係従属性を排除していく。上記で独立させた<code>3</code>個の表のうち、一番左の表で、顧客IDと顧客名に関数従属性があるため、顧客IDを新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。</p>
+</dd>
+</dl>
+<p><img alt="第三正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-1.png" /></p>
+<p><img alt="第三正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-2.png" /></p>
+<dl>
+<dt><code>(6)</code></dt>
+<dd>
+<p>主キーの関係従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関係従属性の排除によって、顧客IDを新しい主キーとした顧客表に分割できた。</p>
+</dd>
+</dl>
+<p><img alt="正規化後にどんな表ができるのか" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化後にどんな表ができるのか.png" /></p>
+<p><strong>＊例＊</strong></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。</p>
+</dd>
+</dl>
+<p><img alt="非正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形-2.png" /></p>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>第一正規化 (繰り返し要素の排除) を実施する。</p>
+</dd>
+</dl>
+<p><img alt="第一正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形-2.png" /></p>
+<p><br></p>
+<h3 id="_9">データの追加/削除<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>データを追加するあるいは削除する場合、カラムではなく、レコードの増減を行う。</p>
+<p>カラムの増減の処理には時間がかかる。</p>
+<p>一方で、レコードの増減の処理には時間がかからない。</p>
+<p><img alt="カラムの増減は✖_レコードの増減は〇" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/カラムの増減は✖_レコードの増減は〇-1.png" /></p>
+<p><strong>＊例＊</strong></p>
+<p>賞与を年1回から、2回・3回と変える場合、主キーを繰り返し、新しく賞与区分と金額区分を作る。</p>
+<p><img alt="カラムの増減は✖_レコードの増減は〇-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/カラムの増減は✖_レコードの増減は〇-2.png" /></p>
+<p><br></p>
+<h2 id="02">02. 性能設計<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="db">DBインデックスの作成<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<h4 id="db_1">▼ DBインデックスとは<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
+<p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保存しておいたもの。</p>
+<p>DBインデックスとして保存されたカラムから特定のレコードを直接的に取得できる。</p>
+<p>そのため、SQLの実行時間がカラム数に依存しなくなる。</p>
+<p>DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
 <blockquote>
 <ul>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/">https://argo-cd.readthedocs.io/en/stable/operator-manual/secret-management/</a></li>
-<li><a href="https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/">https://www.thorsten-hans.com/encrypt-your-kubernetes-secrets-with-mozilla-sops/</a></li>
-<li><a href="https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/">https://akuity.io/blog/how-to-manage-kubernetes-secrets-gitops/</a></li>
+<li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
 </ul>
 </blockquote>
+<h4 id="db_2">▼ クラスターDBインデックス<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
+<p>プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="db_3">▼ セカンダリDBインデックス<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h4>
+<p>プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="db_4">▼ 複合DBインデックス<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h4>
+<p>複数のカラムを基準にして、テーブルを並び替えたDBインデックスのこと。</p>
+<p>対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない (一意の値の多い) カラムが検出される。</p>
+<p>そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">,</span><span class="w"> </span><span class="n">bar_column</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+</code></pre></div>
+<p><strong>＊例＊</strong></p>
+<p>以下のような<code>foo</code>テーブルがあり、<code>name</code>カラムと<code>address</code>カラムを基準に並び替えた<code>foo_index</code>という複合DBインデックス名を作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
+<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+<th>old</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Suzuki</td>
+<td>Tokyo</td>
+<td>24</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yamada</td>
+<td>Osaka</td>
+<td>18</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Takahashi</td>
+<td>Nagoya</td>
+<td>18</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Honda</td>
+<td>Tokyo</td>
+<td>16</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Endou</td>
+<td>Tokyo</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<p>各カラムで値の異なるレコード数が計測され、<code>name</code>カラムは<code>address</code>カラムよりも一意のレコードが多いため、<code>name</code>カラムの昇順 (アルファベット順) に並び替えられ、DBインデックスとして保存される。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>address</th>
+<th>old</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Endou</td>
+<td>Tokyo</td>
+<td>24</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Honda</td>
+<td>Tokyo</td>
+<td>18</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Suzuki</td>
+<td>Tokyo</td>
+<td>24</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Takahashi</td>
+<td>Nagoya</td>
+<td>18</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Yamada</td>
+<td>Osaka</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="03">03. アルゴリズム設計<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_10">突き合わせ処理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ 突き合わせ処理とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ビジネスの基盤となるマスタデータ (例：商品データ、取引先データなど) と、日々更新されるトランザクションデータ (例：販売履歴、入金履歴など) を突き合わせ、新しいデータを作成する処理のこと。</p>
+<p><img alt="マッチング処理_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_1.PNG" /></p>
+<h4 id="_12">▼ アルゴリズム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><img alt="マッチング処理_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_4.png" /></p>
+<h4 id="_13">▼ 具体例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>とある生命保険会社では、顧客の保険契約データを契約マスタテーブルで、またそれとは別に、保険契約データの変更点 (異動事由) を異動トランザクションテーブルで、管理している。</p>
+<p>毎日、契約マスタテーブルと異動トランザクションテーブルにおける前日レコードを突き合わせ、各契約の異動事由に応じて、変更後契約データとして、新契約マスタテーブルに挿入する。</p>
+<p><img alt="マッチング処理_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_2.PNG" /></p>
+<p>前処理として、契約マスタデータと異動トランザクションデータに共通する識別子が同じ順番で並んでいる必要がある。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>契約マスタデータの1行目と、異動トランザクションデータの1行目の識別子を突き合わせる。『<code>契約マスタデータ = 異動トランザクションデータ</code>』の時、異動トランザクションデータを基に契約マスタデータを更新し、それを新しいデータとして変更後契約マスタデータに挿入する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>契約マスタデータの2行目と、異動トランザクションデータの2行目の識別子を突き合わせる。『<code>マスタデータ &lt; トランザクションデータ</code>』の場合、マスタデータをそのまま変更後マスタテーブルに挿入する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>マスタデータの3行目と、固定したままのトランザクションデータの2行目の識別子を突き合わせる。『<code>マスタデータ = トランザクションデータ</code>』の時、トランザクションデータを基にマスタデータを更新し、それを変更後データとして変更後マスタテーブルに挿入する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>『<code>契約マスタデータ &lt; 異動トランザクションデータ</code>』になるまで、データを突き合わせる。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>最終的に、変更後マスタテーブルは以下の通りになる。</p>
+</dd>
+</dl>
+<p><img alt="マッチング処理_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_3.png" /></p>
 <p><br></p>
 
   <hr>
@@ -5882,7 +6653,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

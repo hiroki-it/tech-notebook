@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="設計規約＠RDBMSの知見を記録しています。">
+        <meta name="description" content="安全性＠AWSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_policy.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security.html">
       
       
-        <link rel="prev" href="software_middleware_database_rdb_rdbms.html">
+        <link rel="prev" href="cloud_computing_aws_practices_reliability.html">
       
       
-        <link rel="next" href="software_middleware_database_rdb_rdbms_acid.html">
+        <link rel="next" href="cloud_computing_aws_practices_cost_optimization.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>設計規約 - 俺の技術ノート</title>
+        <title>【IT技術の知見】安全性＠AWS - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rdbms" class="md-skip">
+        <a href="#aws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              設計規約
+              【IT技術の知見】安全性＠AWS
             
           </span>
         </div>
@@ -258,7 +258,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="index.html" class="md-tabs__link">
+        <a href="../software/index.html" class="md-tabs__link">
           
   
     
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="application/index.html" class="md-tabs__link">
+        <a href="../software/application/index.html" class="md-tabs__link">
           
   
     
@@ -294,13 +294,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="middleware/index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../software/middleware/index.html" class="md-tabs__link">
           
   
     
@@ -320,7 +318,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="basic/index.html" class="md-tabs__link">
+        <a href="../software/basic/index.html" class="md-tabs__link">
           
   
     
@@ -436,11 +434,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../cloud_computing/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -860,7 +860,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../software/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -892,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software.html" class="md-nav__link">
+      <a href="../software/software.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -972,7 +972,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="application/index.html" class="md-nav__link ">
+            <a href="../software/application/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1004,7 +1004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="software_application_architecture.html" class="md-nav__link">
+      <a href="../software/software_application_architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1049,7 +1049,7 @@
     
   
   
-    <a href="software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+    <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1093,7 +1093,7 @@
         
   
   
-    <a href="software_application_architecture_frontend.html" class="md-nav__link">
+    <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1141,7 +1141,7 @@
         
   
   
-    <a href="software_application_architecture_microservices.html" class="md-nav__link">
+    <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1189,7 +1189,7 @@
         
   
   
-    <a href="software_application_collaboration_communication.html" class="md-nav__link">
+    <a href="../software/software_application_collaboration_communication.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1220,8 +1220,6 @@
       
   
   
-    
-  
   
     
     
@@ -1247,17 +1245,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="middleware/index.html" class="md-nav__link ">
+            <a href="../software/middleware/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1274,7 +1272,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             🤝🏻 ミドルウェア
@@ -1310,7 +1308,7 @@
     
   
   
-    <a href="software_middleware_web_nginx.html" class="md-nav__link">
+    <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1364,7 +1362,7 @@
     
   
   
-    <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+    <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1392,8 +1390,6 @@
                 
   
   
-    
-  
   
     
     
@@ -1408,625 +1404,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    
+  
+  
+    <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ データベース系
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4">
-            <span class="md-nav__icon md-icon"></span>
-            ■ データベース系
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ RDB
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ RDB
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6_4_1_1" id="__nav_6_4_1_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ RDBMS
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_4_1_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_4_1_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ RDBMS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RDBMS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_middleware_database_rdb_rdbms_policy.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    設計規約
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. テーブル設計
-  </a>
-  
-    <nav class="md-nav" aria-label="01. テーブル設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    テーブルの種類
-  </a>
-  
-    <nav class="md-nav" aria-label="テーブルの種類">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#master" class="md-nav__link">
-    ▼ masterテーブル
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transaction" class="md-nav__link">
-    ▼ transactionテーブル
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    命名規則
-  </a>
-  
-    <nav class="md-nav" aria-label="命名規則">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mastertransaction" class="md-nav__link">
-    ▼ masterテーブルとtransactionテーブルがわかるようにすること
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ テーブル名は複数形にすること
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ カラム名には単数系接頭辞をつけること
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    正規化
-  </a>
-  
-    <nav class="md-nav" aria-label="正規化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ 正規化とは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ 方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    データの追加/削除
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. 性能設計
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 性能設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    DBインデックスの作成
-  </a>
-  
-    <nav class="md-nav" aria-label="DBインデックスの作成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    ▼ DBインデックスとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    ▼ クラスターDBインデックス
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    ▼ セカンダリDBインデックス
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    ▼ 複合DBインデックス
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. アルゴリズム設計
-  </a>
-  
-    <nav class="md-nav" aria-label="03. アルゴリズム設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    突き合わせ処理
-  </a>
-  
-    <nav class="md-nav" aria-label="突き合わせ処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 突き合わせ処理とは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ アルゴリズム
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ 具体例
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ACID
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ My︎SQL
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ PostgreSQL
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="software_middleware_database_tsdb.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ TSDB
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ コネクションプールプロキシー
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
@@ -2035,14 +1434,8 @@
 
   
 
-      
-    </li>
   
 
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2073,7 +1466,7 @@
         
   
   
-    <a href="software_middleware_security_linux.html" class="md-nav__link">
+    <a href="../software/software_middleware_security_linux.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2119,7 +1512,7 @@
         
   
   
-    <a href="software_middleware_service_mesh.html" class="md-nav__link">
+    <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2181,7 +1574,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="basic/index.html" class="md-nav__link ">
+            <a href="../software/basic/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2239,7 +1632,7 @@
         
   
   
-    <a href="software_basic_linux_kernel.html" class="md-nav__link">
+    <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2291,7 +1684,7 @@
         
   
   
-    <a href="software_basic_utility.html" class="md-nav__link">
+    <a href="../software/software_basic_utility.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2335,7 +1728,7 @@
         
   
   
-    <a href="software_basic_language_processor.html" class="md-nav__link">
+    <a href="../software/software_basic_language_processor.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3428,6 +2821,8 @@
       
   
   
+    
+  
   
     
     
@@ -3449,17 +2844,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../cloud_computing/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3476,7 +2871,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             ⛅️ 3大クラウド
@@ -3491,11 +2886,79 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud_computing/cloud_computing.html" class="md-nav__link">
+      <a href="cloud_computing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     3大クラウド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ AWS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS CLI
   </span>
   
 
@@ -3521,6 +2984,84 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3533,11 +3074,11 @@
         
   
   
-    <a href="../cloud_computing/cloud_computing_aws_cli.html" class="md-nav__link">
+    <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ AWS
+    ■ AWSリソース
   </span>
   
 
@@ -3547,6 +3088,409 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3_3" id="__nav_13_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ プラクティス集
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ プラクティス集
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_availability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可用性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_reliability.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信頼性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    安全性
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="cloud_computing_aws_practices_security.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    安全性
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. ファイアウォール設計
+  </a>
+  
+    <nav class="md-nav" aria-label="01. ファイアウォール設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    セキュリティグループ (インバウンド) の設計
+  </a>
+  
+    <nav class="md-nav" aria-label="セキュリティグループ (インバウンド) の設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    ▼ アプリケーションEC2の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_1" class="md-nav__link">
+    ▼ 踏み台EC2の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efs" class="md-nav__link">
+    ▼ EFSの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds" class="md-nav__link">
+    ▼ RDSの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    ▼ Redisの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb" class="md-nav__link">
+    ▼ ALBの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nlb" class="md-nav__link">
+    ▼ NLBの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    セキュリティグループ (アウトバウンド) の設計
+  </a>
+  
+    <nav class="md-nav" aria-label="セキュリティグループ (アウトバウンド) の設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alb_1" class="md-nav__link">
+    ▼ ALBの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-waf" class="md-nav__link">
+    02. クラウド型WAFの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="02. クラウド型WAFの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf" class="md-nav__link">
+    WAFルールの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="WAFルールの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ ユーザーエージェント拒否
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    ▼ CIツールのアクセスを許可
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 特定のパスを社内アクセスに限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 社内アクセスに限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb_2" class="md-nav__link">
+    ▼ ALBを直接的に指定することを防ぐ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#waf_1" class="md-nav__link">
+    WAFマネージドルールの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="WAFマネージドルールの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ マネージドルールの動作確認の必要性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ ブラウザを送信元とした場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ 連携するアプリケーションを送信元とした場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_practices_cost_optimization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コスト最適化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ツール
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3577,7 +3521,7 @@
         
   
   
-    <a href="../cloud_computing/cloud_computing_gcp_cli.html" class="md-nav__link">
+    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4078,7 +4022,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5101,7 +5045,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6119,30 +6063,65 @@
       
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
-    01. テーブル設計
+    01. ファイアウォール設計
   </a>
   
-    <nav class="md-nav" aria-label="01. テーブル設計">
+    <nav class="md-nav" aria-label="01. ファイアウォール設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    テーブルの種類
+    セキュリティグループ (インバウンド) の設計
   </a>
   
-    <nav class="md-nav" aria-label="テーブルの種類">
+    <nav class="md-nav" aria-label="セキュリティグループ (インバウンド) の設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#master" class="md-nav__link">
-    ▼ masterテーブル
+  <a href="#ec2" class="md-nav__link">
+    ▼ アプリケーションEC2の場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#transaction" class="md-nav__link">
-    ▼ transactionテーブル
+  <a href="#ec2_1" class="md-nav__link">
+    ▼ 踏み台EC2の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efs" class="md-nav__link">
+    ▼ EFSの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rds" class="md-nav__link">
+    ▼ RDSの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    ▼ Redisの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb" class="md-nav__link">
+    ▼ ALBの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nlb" class="md-nav__link">
+    ▼ NLBの場合
   </a>
   
 </li>
@@ -6154,29 +6133,76 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    命名規則
+    セキュリティグループ (アウトバウンド) の設計
   </a>
   
-    <nav class="md-nav" aria-label="命名規則">
+    <nav class="md-nav" aria-label="セキュリティグループ (アウトバウンド) の設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mastertransaction" class="md-nav__link">
-    ▼ masterテーブルとtransactionテーブルがわかるようにすること
+  <a href="#alb_1" class="md-nav__link">
+    ▼ ALBの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-waf" class="md-nav__link">
+    02. クラウド型WAFの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="02. クラウド型WAFの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf" class="md-nav__link">
+    WAFルールの設計
+  </a>
+  
+    <nav class="md-nav" aria-label="WAFルールの設計">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ ユーザーエージェント拒否
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ テーブル名は複数形にすること
+  <a href="#ci" class="md-nav__link">
+    ▼ CIツールのアクセスを許可
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ カラム名には単数系接頭辞をつけること
+    ▼ 特定のパスを社内アクセスに限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ 社内アクセスに限定
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alb_2" class="md-nav__link">
+    ▼ ALBを直接的に指定することを防ぐ
   </a>
   
 </li>
@@ -6187,131 +6213,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    正規化
+  <a href="#waf_1" class="md-nav__link">
+    WAFマネージドルールの設計
   </a>
   
-    <nav class="md-nav" aria-label="正規化">
+    <nav class="md-nav" aria-label="WAFマネージドルールの設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    ▼ 正規化とは
+    ▼ マネージドルールの動作確認の必要性
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ▼ 方法
+    ▼ ブラウザを送信元とした場合
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    データの追加/削除
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. 性能設計
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 性能設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
-    DBインデックスの作成
-  </a>
-  
-    <nav class="md-nav" aria-label="DBインデックスの作成">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    ▼ DBインデックスとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_2" class="md-nav__link">
-    ▼ クラスターDBインデックス
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_3" class="md-nav__link">
-    ▼ セカンダリDBインデックス
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_4" class="md-nav__link">
-    ▼ 複合DBインデックス
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. アルゴリズム設計
-  </a>
-  
-    <nav class="md-nav" aria-label="03. アルゴリズム設計">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    突き合わせ処理
-  </a>
-  
-    <nav class="md-nav" aria-label="突き合わせ処理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 突き合わせ処理とは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ アルゴリズム
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ 具体例
+    ▼ 連携するアプリケーションを送信元とした場合
   </a>
   
 </li>
@@ -6344,7 +6269,7 @@
   
 
 
-<h1 id="rdbms">設計規約＠RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h1>
+<h1 id="aws">安全性＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6353,299 +6278,470 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. テーブル設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">テーブルの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="master">▼ masterテーブル<a class="headerlink" href="#master" title="Permanent link">&para;</a></h4>
-<p>初期開発時に作成して以降、めったに変更処理を実行せず、読み出し処理を主とするテーブル。</p>
-<p>ドメインのうちで、ID、識別コード、名前などに関するデータを管理する。</p>
-<blockquote>
-<ul>
-<li><a href="https://innoscale.de/en/difference-master-data-and-transaction-data/">https://innoscale.de/en/difference-master-data-and-transaction-data/</a></li>
-<li><a href="https://products.sint.co.jp/topsic/blog/database-basic-knowledge">https://products.sint.co.jp/topsic/blog/database-basic-knowledge</a></li>
-</ul>
-</blockquote>
-<h4 id="transaction">▼ transactionテーブル<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
-<p>初期開発時に作成して以降、頻繁に変更処理を実行するテーブル。</p>
-<p>ドメインのうちで、履歴、数量、日付などに関するデータを管理する。</p>
-<blockquote>
-<ul>
-<li><a href="https://innoscale.de/en/difference-master-data-and-transaction-data/">https://innoscale.de/en/difference-master-data-and-transaction-data/</a></li>
-<li><a href="https://products.sint.co.jp/topsic/blog/database-basic-knowledge">https://products.sint.co.jp/topsic/blog/database-basic-knowledge</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_3">命名規則<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="mastertransaction">▼ masterテーブルとtransactionテーブルがわかるようにすること<a class="headerlink" href="#mastertransaction" title="Permanent link">&para;</a></h4>
-<p>masterテーブルとtransactionテーブルがわかるようにする命名する。</p>
-<p>例えば、<code>mstr_foos</code>、<code>trx_bars</code>とする。</p>
-<h4 id="_4">▼ テーブル名は複数形にすること<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>テーブル名は複数形にして命名する。</p>
-<p>例えば、<code>foos</code>とする。</p>
-<h4 id="_5">▼ カラム名には単数系接頭辞をつけること<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>カラム名には単数系接頭辞をつけて命名する。</p>
-<p>例えば、<code>foo_id</code>、<code>foo_name</code>、<code>foo_type</code>とする。</p>
-<p>ただし、子テーブルの外部キーと紐付くカラムがある場合、そのカラムの接頭辞は、子テーブル名の単数形とする。</p>
-<p>例えば、<code>bar_id</code>とする。</p>
-<p>例外として、ActiveRecordパターンのフレームワーク (例：Laravelなど) では使用しない方がよいかもしれない。</p>
-<p>これらのフレームワークでは、単数形テーブル名の接頭辞がないカラム名を想定して機能が備わっていることがある。</p>
-<p>この場合、DBとの連携で毎回カラム名を明示する必要があったり、デフォルトではないカラム名を使用することによる不具合が発生したり、不便なことが多かったりするため、おすすめしない。</p>
+<h2 id="01">01. ファイアウォール設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">セキュリティグループ (インバウンド) の設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="ec2">▼ アプリケーションEC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<p>ALBに割り振られる可能性のあるIPアドレスを許可するために、ALBのセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
 <table>
 <thead>
 <tr>
-<th>foo_id</th>
-<th>bar_id</th>
-<th>foo_name</th>
-<th>foo_type</th>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>HTTP</td>
+<td>TCP</td>
+<td><code>80</code></td>
+<td>ALBのセキュリティグループID</td>
+<td>HTTP access from ALB</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>TCP</td>
+<td><code>443</code></td>
+<td>踏み台EC2のセキュリティグループID</td>
+<td>SSH access from bastion EC2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ec2_1">▼ 踏み台EC2の場合<a class="headerlink" href="#ec2_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SSH</td>
+<td>TCP</td>
+<td><code>22</code></td>
+<td>社内のグローバルIPアドレス</td>
+<td>SSH access from global ip address</td>
+</tr>
+</tbody>
+</table>
+<h4 id="efs">▼ EFSの場合<a class="headerlink" href="#efs" title="Permanent link">&para;</a></h4>
+<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFS</td>
+<td>TCP</td>
+<td><code>2049</code></td>
+<td>EC2のセキュリティグループID</td>
+<td>NFS access from app EC2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="rds">▼ RDSの場合<a class="headerlink" href="#rds" title="Permanent link">&para;</a></h4>
+<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MYSQL/Aurora</td>
+<td>TCP</td>
+<td><code>3306</code></td>
+<td>EC2のセキュリティグループID</td>
+<td>MYSQL access from app EC2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="redis">▼ Redisの場合<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h4>
+<p>EC2に割り振られる可能性のあるIPアドレスを許可するために、EC2のセキュリティグループID、またはサブネットのCIDRブロックを設定する。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>カスタムTCP</td>
+<td>TCP</td>
+<td><code>6379</code></td>
+<td>EC2のセキュリティグループID</td>
+<td>TCP access from app EC2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="alb">▼ ALBの場合<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
+<p>CloudFrontと連携する場合、CloudFrontに割り振られる可能性のあるIPアドレスを許可するために、全てのIPアドレスを許可する。</p>
+<p>代わりとして、CloudFrontにWAFを紐付け、ALBの前でIPアドレスを制限する。</p>
+<p>CloudFrontとは連携しない場合、ALBのセキュリティグループでIPアドレスを制限する。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>ソース</th>
+<th>説明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>TCP</td>
+<td><code>80</code></td>
+<td><code>0.0.0.0/0</code></td>
+<td>HTTP access from CloudFront</td>
+<td></td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>TCP</td>
+<td><code>443</code></td>
+<td><code>0.0.0.0/0</code></td>
+<td>HTTPS access from CloudFront</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="nlb">▼ NLBの場合<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
+<p>NLBはセキュリティグループに対応していない。</p>
+<p>そのため、NLBのルーティング先 (EC2、など) でファイアーウォールを設定する必要がある。</p>
+<p><br></p>
+<h3 id="_3">セキュリティグループ (アウトバウンド) の設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="alb_1">▼ ALBの場合<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
+<p>ALBからEC2にインバウンド通信をルーティングする場合、特定のEC2のみへのルーティングを許可するために、アウトバウンドのルールでEC2のセキュリティグループIDを設定する。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>プロトコル</th>
+<th>ポート</th>
+<th>宛先</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTPS</td>
+<td>TCP</td>
+<td><code>443</code></td>
+<td>宛先のEC2のセキュリティグループID</td>
+<td>Full access</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-waf">02. クラウド型WAFの設計<a class="headerlink" href="#02-waf" title="Permanent link">&para;</a></h2>
+<h3 id="waf">WAFルールの設計<a class="headerlink" href="#waf" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ユーザーエージェント拒否<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>悪意のあるユーザーエージェントを拒否する。</p>
+<p>ルール：<code>block-user-agents</code></p>
+<table>
+<thead>
+<tr>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>Match type</th>
+<th>Regex pattern set</th>
+<th>Then</th>
+<th>挙動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>matches</code></td>
+<td><code>URI path</code></td>
+<td><code>Matches pattern from regex pattern set</code></td>
+<td>文字列セット</td>
+<td>Block</td>
+<td>指定した文字列を含むユーザーエージェントの場合、アクセスすることを拒否する。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Default Action</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allow</td>
+<td>指定したユーザーエージェントでない場合、全てのパスにアクセスすることを許可する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ci">▼ CIツールのアクセスを許可<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>社内の送信元IPアドレスのみ許可した状態で、CIツール (例：GitHub Actions、CircleCI、GitLab CI、など) が社内サービスにアクセスできるようにする。</p>
+<p>ルール：<code>allow-request-including-access-token</code></p>
+<table>
+<thead>
+<tr>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>Header field name</th>
+<th>Match type</th>
+<th>String to match</th>
+<th>Then</th>
+<th>挙動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>matches</code></td>
+<td><code>Header</code></td>
+<td><code>authorization</code></td>
+<td><code>Exactly matched  string</code></td>
+<td>『<code>Bearer &lt;トークン文字列&gt;</code>』で文字列を設定する</td>
+<td>Allow</td>
+<td>authorizationヘッダーに指定した文字列を含むリクエストの場合、アクセスすることを拒否する。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Default Action</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Block</td>
+<td>正しいトークンを持たないアクセスの場合、全てのパスにアクセスすることを拒否する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_5">▼ 特定のパスを社内アクセスに限定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>アプリケーションでは、特定のURLパスにアクセスできる送信元IPアドレスを社内だけに制限する。</p>
+<p><code>2</code>個のルールを作成する必要がある。</p>
+<p>ルール：<code>allow-access--to-url-path</code></p>
+<table>
+<thead>
+<tr>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>IP set</th>
+<th>Match type</th>
+<th>Regex pattern set</th>
+<th>Then</th>
+<th>挙動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>matches (AND)</code></td>
+<td><code>Originates from an IP address in</code></td>
+<td>社内IPセット</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>社内の送信元IPアドレスの場合、指定したパスにアクセスすることを許可する。</td>
+</tr>
 <tr>
 <td><code>1</code></td>
+<td><code>matches</code></td>
+<td><code>URI path</code></td>
+<td>-</td>
+<td><code>Matches pattern from regex pattern set</code></td>
+<td>文字列セット</td>
+<td>Allow</td>
+<td>0番目かつ、指定した文字列を含むURLパスアクセスの場合、アクセスすることを許可する。</td>
+</tr>
+</tbody>
+</table>
+<p>ルール：<code>block-access-to-url-path</code></p>
+<table>
+<thead>
+<tr>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>Match type</th>
+<th>Regex pattern set</th>
+<th>Then</th>
+<th>挙動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>matches</code></td>
+<td><code>URI path</code></td>
+<td><code>Matches pattern from regex pattern set</code></td>
+<td>文字列セット</td>
+<td>Block</td>
+<td>指定した文字列を含むURLパスアクセスの場合、アクセスすることを拒否する。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Default Action</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Allow</td>
+<td>指定したURLパス以外のアクセスの場合、そのパスにアクセスすることを許可する。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_6">▼ 社内アクセスに限定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>アプリケーション全体にアクセスできる送信元IPアドレスを、特定のIPアドレスだけに制限する。</p>
+<p>ルール：<code>allow-global-ip-addresses</code></p>
+<table>
+<thead>
+<tr>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>IP set</th>
+<th>Originating address</th>
+<th>Then</th>
+<th>挙動</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>matches (OR)</code></td>
+<td><code>Originates from an IP address in</code></td>
+<td>社内IPセット</td>
+<td>Source IP address</td>
+<td>-</td>
+<td>社内の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。</td>
+</tr>
+<tr>
 <td><code>1</code></td>
-<td><code>foo</code></td>
-<td><code>2</code></td>
+<td><code>matches</code></td>
+<td><code>Originates from an IP address in</code></td>
+<td>協力会社IPセット</td>
+<td>Source IP address</td>
+<td>Allow</td>
+<td>0番目あるいは、協力会社の送信元IPアドレスの場合、全てのパスにアクセスすることを許可する。</td>
 </tr>
 </tbody>
 </table>
-<p><br></p>
-<h3 id="_6">正規化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 正規化とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>繰り返し要素のある表を『正規形』、その逆を『非正規形』という。</p>
-<p>非正規形の表から、他と連動するカラムを独立させ、正規形の表に変更することを『正規化』という。</p>
-<p>正規化によって、テーブルの冗長性を排除できる (マスターテーブルとトランザクションテーブルの分離を含む) 。</p>
-<h4 id="_8">▼ 方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
-<p>まず、主キーが受注Noと商品IDの2つであることを確認。</p>
-<p>これらの主キーは、複合主キーではないとする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。</p>
-</dd>
-</dl>
-<p><img alt="非正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形.png" /></p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>第一正規化 (繰り返し要素の排除) を実施する。レコードを1つずつに分割する。</p>
-</dd>
-</dl>
-<p><img alt="第一正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形.png" /></p>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
-<p>第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムが連動する (関数従属性がある) 場合、カラムを左表として独立させる。今回、主キーが2つあるため、まず受注Noから関数従属性を排除していく。受注Noと他3カラムが連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。</p>
-</dd>
-</dl>
-<p><img alt="第二正規形-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-1.png" /></p>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
-<p>商品IDの関数従属性を排除していく。商品IDと他2カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。</p>
-</dd>
-</dl>
-<p><img alt="第二正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-2.png" /></p>
-<p><img alt="第二正規形-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第二正規形-3.png" /></p>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
-<p>第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関係従属性を排除していく。上記で独立させた<code>3</code>個の表のうち、一番左の表で、顧客IDと顧客名に関数従属性があるため、顧客IDを新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。</p>
-</dd>
-</dl>
-<p><img alt="第三正規形" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-1.png" /></p>
-<p><img alt="第三正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第三正規形-2.png" /></p>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
-<p>主キーの関係従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関係従属性の排除によって、顧客IDを新しい主キーとした顧客表に分割できた。</p>
-</dd>
-</dl>
-<p><img alt="正規化後にどんな表ができるのか" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化後にどんな表ができるのか.png" /></p>
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。</p>
-</dd>
-</dl>
-<p><img alt="非正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形-2.png" /></p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
-<p>第一正規化 (繰り返し要素の排除) を実施する。</p>
-</dd>
-</dl>
-<p><img alt="第一正規形-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/第一正規形-2.png" /></p>
-<p><br></p>
-<h3 id="_9">データの追加/削除<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>データを追加するあるいは削除する場合、カラムではなく、レコードの増減を行う。</p>
-<p>カラムの増減の処理には時間がかかる。</p>
-<p>一方で、レコードの増減の処理には時間がかからない。</p>
-<p><img alt="カラムの増減は✖_レコードの増減は〇" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/カラムの増減は✖_レコードの増減は〇-1.png" /></p>
-<p><strong>＊例＊</strong></p>
-<p>賞与を年1回から、2回・3回と変える場合、主キーを繰り返し、新しく賞与区分と金額区分を作る。</p>
-<p><img alt="カラムの増減は✖_レコードの増減は〇-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/カラムの増減は✖_レコードの増減は〇-2.png" /></p>
-<p><br></p>
-<h2 id="02">02. 性能設計<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="db">DBインデックスの作成<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
-<h4 id="db_1">▼ DBインデックスとは<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
-<p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保存しておいたもの。</p>
-<p>DBインデックスとして保存されたカラムから特定のレコードを直接的に取得できる。</p>
-<p>そのため、SQLの実行時間がカラム数に依存しなくなる。</p>
-<p>DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
-</ul>
-</blockquote>
-<h4 id="db_2">▼ クラスターDBインデックス<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
-<p>プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="db_3">▼ セカンダリDBインデックス<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h4>
-<p>プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="db_4">▼ 複合DBインデックス<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h4>
-<p>複数のカラムを基準にして、テーブルを並び替えたDBインデックスのこと。</p>
-<p>対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない (一意の値の多い) カラムが検出される。</p>
-<p>そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保存される。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
-</ul>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">,</span><span class="w"> </span><span class="n">bar_column</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>以下のような<code>foo</code>テーブルがあり、<code>name</code>カラムと<code>address</code>カラムを基準に並び替えた<code>foo_index</code>という複合DBインデックス名を作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
-<span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
-</code></pre></div>
 <table>
 <thead>
 <tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-<th>old</th>
+<th>Default Action</th>
+<th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>Suzuki</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Yamada</td>
-<td>Osaka</td>
-<td>18</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Takahashi</td>
-<td>Nagoya</td>
-<td>18</td>
-</tr>
-<tr>
-<td>4</td>
-<td>Honda</td>
-<td>Tokyo</td>
-<td>16</td>
-</tr>
-<tr>
-<td>5</td>
-<td>Endou</td>
-<td>Tokyo</td>
-<td>24</td>
+<td>Block</td>
+<td>指定した送信元IPアドレス以外の場合、全てのパスにアクセスすることを拒否する。</td>
 </tr>
 </tbody>
 </table>
-<p>各カラムで値の異なるレコード数が計測され、<code>name</code>カラムは<code>address</code>カラムよりも一意のレコードが多いため、<code>name</code>カラムの昇順 (アルファベット順) に並び替えられ、DBインデックスとして保存される。</p>
+<h4 id="alb_2">▼ ALBを直接的に指定することを防ぐ<a class="headerlink" href="#alb_2" title="Permanent link">&para;</a></h4>
+<p><strong>＊例＊</strong></p>
+<p>Route53のドメイン経由ではなく、ALBの直接的に指定して、リクエストとを送信することを防ぐ。</p>
+<p>ALBのIPアドレスは定期的に変化するため、任意のIPアドレスを指定できる正規表現を定義する必要がある。</p>
+<div class="highlight"><pre><span></span><code>^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$
+</code></pre></div>
+<p>ルール：<code>block-direct-access-to-lb</code></p>
 <table>
 <thead>
 <tr>
-<th>id</th>
-<th>name</th>
-<th>address</th>
-<th>old</th>
+<th>Statementの順番</th>
+<th>If a request</th>
+<th>Inspect</th>
+<th>Match type</th>
+<th>Regex pattern set</th>
+<th>Then</th>
+<th>挙動</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>5</td>
-<td>Endou</td>
-<td>Tokyo</td>
-<td>24</td>
+<td><code>0</code></td>
+<td><code>matches</code></td>
+<td><code>Header</code></td>
+<td><code>Matches pattern from regex pattern set</code></td>
+<td>文字列セット</td>
+<td>Block</td>
+<td>指定した<code>Host</code>ヘッダーに対するアクセスの場合、アクセスすることを拒否する。</td>
 </tr>
+</tbody>
+</table>
+<table>
+<thead>
 <tr>
-<td>4</td>
-<td>Honda</td>
-<td>Tokyo</td>
-<td>18</td>
+<th>Default Action</th>
+<th>説明</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td>1</td>
-<td>Suzuki</td>
-<td>Tokyo</td>
-<td>24</td>
-</tr>
-<tr>
-<td>3</td>
-<td>Takahashi</td>
-<td>Nagoya</td>
-<td>18</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Yamada</td>
-<td>Osaka</td>
-<td>18</td>
+<td>Allow</td>
+<td>指定した<code>Host</code>ヘッダー以外に対するアクセスの場合、アクセスすることを許可する。</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h2 id="03">03. アルゴリズム設計<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_10">突き合わせ処理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ 突き合わせ処理とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>ビジネスの基盤となるマスタデータ (例：商品データ、取引先データなど) と、日々更新されるトランザクションデータ (例：販売履歴、入金履歴など) を突き合わせ、新しいデータを作成する処理のこと。</p>
-<p><img alt="マッチング処理_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_1.PNG" /></p>
-<h4 id="_12">▼ アルゴリズム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p><img alt="マッチング処理_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_4.png" /></p>
-<h4 id="_13">▼ 具体例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>とある生命保険会社では、顧客の保険契約データを契約マスタテーブルで、またそれとは別に、保険契約データの変更点 (異動事由) を異動トランザクションテーブルで、管理している。</p>
-<p>毎日、契約マスタテーブルと異動トランザクションテーブルにおける前日レコードを突き合わせ、各契約の異動事由に応じて、変更後契約データとして、新契約マスタテーブルに挿入する。</p>
-<p><img alt="マッチング処理_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_2.PNG" /></p>
-<p>前処理として、契約マスタデータと異動トランザクションデータに共通する識別子が同じ順番で並んでいる必要がある。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>契約マスタデータの1行目と、異動トランザクションデータの1行目の識別子を突き合わせる。『<code>契約マスタデータ = 異動トランザクションデータ</code>』の時、異動トランザクションデータを基に契約マスタデータを更新し、それを新しいデータとして変更後契約マスタデータに挿入する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>契約マスタデータの2行目と、異動トランザクションデータの2行目の識別子を突き合わせる。『<code>マスタデータ &lt; トランザクションデータ</code>』の場合、マスタデータをそのまま変更後マスタテーブルに挿入する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>マスタデータの3行目と、固定したままのトランザクションデータの2行目の識別子を突き合わせる。『<code>マスタデータ = トランザクションデータ</code>』の時、トランザクションデータを基にマスタデータを更新し、それを変更後データとして変更後マスタテーブルに挿入する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
-<p>『<code>契約マスタデータ &lt; 異動トランザクションデータ</code>』になるまで、データを突き合わせる。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
-<p>最終的に、変更後マスタテーブルは以下の通りになる。</p>
-</dd>
-</dl>
-<p><img alt="マッチング処理_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マッチング処理_3.png" /></p>
+<h3 id="waf_1">WAFマネージドルールの設計<a class="headerlink" href="#waf_1" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ マネージドルールの動作確認の必要性<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>マネージドルールを導入する時は、事前にルールのカウントを使用することが推奨である。</p>
+<p>カウントで検知されたリクエストのほとんどが悪意のないものであれば、設定したマネージドルールの使用をやめる必要がある。</p>
+<h4 id="_8">▼ ブラウザを送信元とした場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>ブラウザを送信元とした場合、リクエストのヘッダーやボディはブラウザによって作成されるため、これに基づいた判断が必要である。</p>
+<ul>
+<li>ブラウザからのリクエスト自体が悪意判定されているか否か</li>
+<li>サイトのURLの記法によって、悪意判定されているか否か</li>
+<li>送信元の国名が『日本』であるのにも関わらず、悪意判定されているか否か</li>
+<li>サイトに送信された全リクエストのうち、カウントで検知されたリクエスト数が多すぎないか否か</li>
+</ul>
+<h4 id="_9">▼ 連携するアプリケーションを送信元とした場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>アプリケーションを送信元とした場合、リクエストのヘッダーやボディは連携するアプリケーションによって作成されるため、これに基づいた判断が必要である。</p>
 <p><br></p>
 
   <hr>
@@ -6653,7 +6749,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>

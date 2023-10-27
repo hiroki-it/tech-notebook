@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="金銭的コスト最適化＠AWSの知見を記録しています。">
+        <meta name="description" content="プラクティス集＠Istioの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_cost_optimization.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_practices.html">
       
       
-        <link rel="prev" href="cloud_computing_aws_policy_security.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_cncf_project_istio_command.html">
       
       
-        <link rel="next" href="cloud_computing_aws_tools.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】金銭的コスト最適化＠AWS - 俺の技術ノート</title>
+        <title>【IT技術の知見】プラクティス集＠Istio - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws" class="md-skip">
+        <a href="#istio" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】金銭的コスト最適化＠AWS
+              【IT技術の知見】プラクティス集＠Istio
             
           </span>
         </div>
@@ -434,13 +434,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../cloud_computing/index.html" class="md-tabs__link">
           
   
     
@@ -480,7 +478,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
     
@@ -500,7 +498,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes/index.html" class="md-tabs__link">
+        <a href="kubernetes/index.html" class="md-tabs__link">
           
   
     
@@ -520,7 +518,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-tabs__link">
+        <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
     
@@ -536,11 +534,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="cncf_projects/index.html" class="md-tabs__link">
           
   
     
@@ -912,11 +912,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_policy.html" class="md-nav__link">
+      <a href="../software/software_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    設計規約
+    プラクティス集
   </span>
   
 
@@ -2821,8 +2821,6 @@
       
   
   
-    
-  
   
     
     
@@ -2844,17 +2842,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../cloud_computing/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2871,7 +2869,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             ⛅️ 3大クラウド
@@ -2886,7 +2884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cloud_computing.html" class="md-nav__link">
+      <a href="../cloud_computing/cloud_computing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2904,155 +2902,9 @@
                 
   
   
-    
-  
   
     
     
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ AWS
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_13_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ AWS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_cli.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AWS CLI
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -3074,11 +2926,11 @@
         
   
   
-    <a href="cloud_computing_aws_resource_account.html" class="md-nav__link">
+    <a href="../cloud_computing/cloud_computing_aws_cli.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ AWSリソース
+    ■ AWS
   </span>
   
 
@@ -3098,460 +2950,6 @@
                 
   
   
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_13_3_3" id="__nav_13_3_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ 設計規約
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_13_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_13_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ 設計規約
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_availability.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    可用性
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_reliability.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    信頼性
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_policy_security.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    安全性
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    コスト最適化
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="cloud_computing_aws_policy_cost_optimization.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    コスト最適化
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. 金銭的コスト最適化戦略
-  </a>
-  
-    <nav class="md-nav" aria-label="01. 金銭的コスト最適化戦略">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    金銭的コスト最適化の項目
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    項目の選び方
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-service-quotas" class="md-nav__link">
-    02. Service Quotas
-  </a>
-  
-    <nav class="md-nav" aria-label="02. Service Quotas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service-quotast" class="md-nav__link">
-    Service Quotastとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws_1" class="md-nav__link">
-    各種AWSリソースの上限値
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. リソース別の金銭的コスト
-  </a>
-  
-    <nav class="md-nav" aria-label="03. リソース別の金銭的コスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cloudfront" class="md-nav__link">
-    CloudFront
-  </a>
-  
-    <nav class="md-nav" aria-label="CloudFront">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 転送
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ebs" class="md-nav__link">
-    EBS
-  </a>
-  
-    <nav class="md-nav" aria-label="EBS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 料金体系
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
-    EC2
-  </a>
-  
-    <nav class="md-nav" aria-label="EC2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ 料金体系
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ 実行時間
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
-    ECR
-  </a>
-  
-    <nav class="md-nav" aria-label="ECR">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ 合計サイズ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fargate" class="md-nav__link">
-    Fargate
-  </a>
-  
-    <nav class="md-nav" aria-label="Fargate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ リソースサイズ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
-    Lambda
-  </a>
-  
-    <nav class="md-nav" aria-label="Lambda">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 実行時間
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rds" class="md-nav__link">
-    RDS
-  </a>
-  
-    <nav class="md-nav" aria-label="RDS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ 料金体系の種類
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ses" class="md-nav__link">
-    SES
-  </a>
-  
-    <nav class="md-nav" aria-label="SES">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ 送受信数
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cloud_computing_aws_tools.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ツール
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
     
     
@@ -3572,7 +2970,7 @@
         
   
   
-    <a href="cloud_computing_gcp_cli.html" class="md-nav__link">
+    <a href="../cloud_computing/cloud_computing_gcp_cli.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3769,7 +3167,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -3801,7 +3199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../infrastructure_as_code/infrastructure_as_code.html" class="md-nav__link">
+      <a href="infrastructure_as_code.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3842,7 +3240,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_ansible.html" class="md-nav__link">
+    <a href="infrastructure_as_code_ansible.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3897,7 +3295,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
+    <a href="infrastructure_as_code_docker_compose_command.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3969,7 +3367,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes/index.html" class="md-nav__link ">
+            <a href="kubernetes/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4027,7 +3425,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4073,7 +3471,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4117,7 +3515,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4161,7 +3559,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_custom_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4211,7 +3609,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_hardware_resource_management_addon_resizer.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4255,7 +3653,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_development_client_package.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4302,7 +3700,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4370,7 +3768,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/kubernetes_addon/index.html" class="md-nav__link ">
+            <a href="kubernetes_addon/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4418,7 +3816,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4464,7 +3862,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_ingress_controller.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4510,7 +3908,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4557,7 +3955,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4604,7 +4002,7 @@
     
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4637,6 +4035,8 @@
       
   
   
+    
+  
   
     
     
@@ -4674,17 +4074,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../infrastructure_as_code/cncf_projects/index.html" class="md-nav__link ">
+            <a href="cncf_projects/index.html" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4701,7 +4101,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             🌊 CNCF
@@ -4740,7 +4140,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_argocd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4782,7 +4182,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_cert_manager_resource_definition.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4826,7 +4226,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_fluentbit_fluentd.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4870,7 +4270,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_grafana.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4914,7 +4314,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kyverno.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -4938,6 +4338,8 @@
                 
   
   
+    
+  
   
     
     
@@ -4951,6 +4353,561 @@
         
       
         
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_18_7" id="__nav_18_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ Istio
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_18_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_18_7">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Istio
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Istio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio_control_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コントロールプレーン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio_data_plane.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    データプレーン
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンド
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio_practices.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    プラクティス集
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="01. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    少ないコントロールプレーン
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    サービスメッシュに登録しないPodの選定 (サイドカープロキシメッシュの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label="サービスメッシュに登録しないPodの選定 (サイドカープロキシメッシュの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    ▼ 監視系のPod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobpod" class="md-nav__link">
+    ▼ Job配下のPod
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. トラフィック管理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. トラフィック管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingressgateway" class="md-nav__link">
+    IngressGatewayに関して
+  </a>
+  
+    <nav class="md-nav" aria-label="IngressGatewayに関して">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istiodnamespace" class="md-nav__link">
+    ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeport-service" class="md-nav__link">
+    ▼ NodePort Serviceを選ぶ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ アプリコンテナごとに作成する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    サブセット名を1個にする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio_1" class="md-nav__link">
+    Istioリソースの使用可能範囲を限定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule" class="md-nav__link">
+    DestinationRuleを最初に更新する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02" class="md-nav__link">
+    02-02. 通信ルーティングのパターン
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. 通信ルーティングのパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loadbalancer-service" class="md-nav__link">
+    LoadBalancer Serviceの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeport-service_1" class="md-nav__link">
+    NodePort Serviceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="NodePort Serviceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l7" class="md-nav__link">
+    ▼ L7ロードバランサーがない場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l7_1" class="md-nav__link">
+    ▼ L7ロードバランサーがある場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. アップグレード
+  </a>
+  
+    <nav class="md-nav" aria-label="03. アップグレード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ サポート期間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istiod" class="md-nav__link">
+    ▼ Istiodコントロールプレーンでダウンタイムを発生させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingressgateway_1" class="md-nav__link">
+    ▼ IngressGatewayでダウンタイムを発生させない
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    インプレース方式
+  </a>
+  
+    <nav class="md-nav" aria-label="インプレース方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ インプレース方式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 手順
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    カナリア方式
+  </a>
+  
+    <nav class="md-nav" aria-label="カナリア方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ カナリア方式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istioctl" class="md-nav__link">
+    ▼ istioctlコマンドの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    ▼ helmコマンドの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. アーキテクチャ特性
+  </a>
+  
+    <nav class="md-nav" aria-label="04. アーキテクチャ特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    性能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-ci" class="md-nav__link">
+    05. CI
+  </a>
+  
+    <nav class="md-nav" aria-label="05. CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    GitLab
+  </a>
+  
+    <nav class="md-nav" aria-label="GitLab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    ▼ .gitlab-ci.ymlファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    ▼ .setup-asdf.shファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IstioOperator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
       
         
       
@@ -4968,11 +4925,11 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_istio_resource.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ Istio
+    ■ リソース
   </span>
   
 
@@ -4982,6 +4939,14 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -5010,7 +4975,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_jaeger.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5054,7 +5019,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_kiali.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5096,7 +5061,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5146,7 +5111,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_prometheus.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -5188,7 +5153,7 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_cncf_project_vcluster.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6114,22 +6079,117 @@
       
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
-    01. 金銭的コスト最適化戦略
+    01. セットアップ
   </a>
   
-    <nav class="md-nav" aria-label="01. 金銭的コスト最適化戦略">
+    <nav class="md-nav" aria-label="01. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    金銭的コスト最適化の項目
+    少ないコントロールプレーン
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    項目の選び方
+    冗長化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    サービスメッシュに登録しないPodの選定 (サイドカープロキシメッシュの場合)
+  </a>
+  
+    <nav class="md-nav" aria-label="サービスメッシュに登録しないPodの選定 (サイドカープロキシメッシュの場合)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    ▼ 監視系のPod
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jobpod" class="md-nav__link">
+    ▼ Job配下のPod
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. トラフィック管理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. トラフィック管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingressgateway" class="md-nav__link">
+    IngressGatewayに関して
+  </a>
+  
+    <nav class="md-nav" aria-label="IngressGatewayに関して">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#istiodnamespace" class="md-nav__link">
+    ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeport-service" class="md-nav__link">
+    ▼ NodePort Serviceを選ぶ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ アプリコンテナごとに作成する
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    サブセット名を1個にする
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio_1" class="md-nav__link">
+    Istioリソースの使用可能範囲を限定する
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule" class="md-nav__link">
+    DestinationRuleを最初に更新する
   </a>
   
 </li>
@@ -6140,31 +6200,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-service-quotas" class="md-nav__link">
-    02. Service Quotas
+  <a href="#02-02" class="md-nav__link">
+    02-02. 通信ルーティングのパターン
   </a>
   
-    <nav class="md-nav" aria-label="02. Service Quotas">
+    <nav class="md-nav" aria-label="02-02. 通信ルーティングのパターン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service-quotast" class="md-nav__link">
-    Service Quotastとは
+  <a href="#loadbalancer-service" class="md-nav__link">
+    LoadBalancer Serviceの場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#aws_1" class="md-nav__link">
-    各種AWSリソースの上限値
+  <a href="#nodeport-service_1" class="md-nav__link">
+    NodePort Serviceの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="NodePort Serviceの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l7" class="md-nav__link">
+    ▼ L7ロードバランサーがない場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    方法
+  <a href="#l7_1" class="md-nav__link">
+    ▼ L7ロードバランサーがある場合
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6175,90 +6248,71 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. リソース別の金銭的コスト
+    03. アップグレード
   </a>
   
-    <nav class="md-nav" aria-label="03. リソース別の金銭的コスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cloudfront" class="md-nav__link">
-    CloudFront
-  </a>
-  
-    <nav class="md-nav" aria-label="CloudFront">
+    <nav class="md-nav" aria-label="03. アップグレード">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    ▼ 転送
+    設計規約
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ebs" class="md-nav__link">
-    EBS
-  </a>
-  
-    <nav class="md-nav" aria-label="EBS">
+    <nav class="md-nav" aria-label="設計規約">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    ▼ 料金体系
+    ▼ サポート期間
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ マイナーバージョン単位でアップグレード
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istiod" class="md-nav__link">
+    ▼ Istiodコントロールプレーンでダウンタイムを発生させない
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingressgateway_1" class="md-nav__link">
+    ▼ IngressGatewayでダウンタイムを発生させない
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ec2" class="md-nav__link">
-    EC2
-  </a>
-  
-    <nav class="md-nav" aria-label="EC2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ 料金体系
-  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
-    ▼ 実行時間
+    インプレース方式
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ecr" class="md-nav__link">
-    ECR
-  </a>
-  
-    <nav class="md-nav" aria-label="ECR">
+    <nav class="md-nav" aria-label="インプレース方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
-    ▼ 合計サイズ
+    ▼ インプレース方式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ 手順
   </a>
   
 </li>
@@ -6267,58 +6321,32 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#fargate" class="md-nav__link">
-    Fargate
-  </a>
-  
-    <nav class="md-nav" aria-label="Fargate">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ リソースサイズ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lambda" class="md-nav__link">
-    Lambda
-  </a>
-  
-    <nav class="md-nav" aria-label="Lambda">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
-    ▼ 実行時間
+    カナリア方式
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rds" class="md-nav__link">
-    RDS
-  </a>
-  
-    <nav class="md-nav" aria-label="RDS">
+    <nav class="md-nav" aria-label="カナリア方式">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
-    ▼ 料金体系の種類
+    ▼ カナリア方式とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istioctl" class="md-nav__link">
+    ▼ istioctlコマンドの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    ▼ helmコマンドの場合
   </a>
   
 </li>
@@ -6328,17 +6356,57 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ses" class="md-nav__link">
-    SES
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. アーキテクチャ特性
   </a>
   
-    <nav class="md-nav" aria-label="SES">
+    <nav class="md-nav" aria-label="04. アーキテクチャ特性">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    ▼ 送受信数
+    性能
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-ci" class="md-nav__link">
+    05. CI
+  </a>
+  
+    <nav class="md-nav" aria-label="05. CI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab" class="md-nav__link">
+    GitLab
+  </a>
+  
+    <nav class="md-nav" aria-label="GitLab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitlab-ciyml" class="md-nav__link">
+    ▼ .gitlab-ci.ymlファイル
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    ▼ .setup-asdf.shファイル
   </a>
   
 </li>
@@ -6371,7 +6439,7 @@
   
 
 
-<h1 id="aws">金銭的コスト最適化＠AWS<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
+<h1 id="istio">プラクティス集＠Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6380,219 +6448,492 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. 金銭的コスト最適化戦略<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">金銭的コスト最適化の項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>スペック、時間単価、数量、月額料金</p>
-<p><br></p>
-<h3 id="_3">項目の選び方<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ビジネスドメインの性質に応じて、戦略を考える。</p>
-<p>例えばChatWorkのビジネスドメイン (ビジネスチャットツール) では、夜間や土日にトラフィックが減少する傾向があるため、それに応じた料金体系を選んでいる。</p>
+<h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">少ないコントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>クラウドプロバイダーでIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを<code>1</code>個だけセットアップし、できるだけ多くのアプリコンテナのサービスメッシュとなるようにする。</p>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8">https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-service-quotas">02. Service Quotas<a class="headerlink" href="#02-service-quotas" title="Permanent link">&para;</a></h2>
-<h3 id="service-quotast">Service Quotastとは<a class="headerlink" href="#service-quotast" title="Permanent link">&para;</a></h3>
-<p>各種AWSリソースの設定の上限値を上げられる。</p>
+<h3 id="_3">冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="aws_1">各種AWSリソースの上限値<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
+<h3 id="pod">サービスメッシュに登録しないPodの選定 (サイドカープロキシメッシュの場合)<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="pod_1">▼ 監視系のPod<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
+<p>サイドカープロキシメッシュに登録するPodが増えると、その分<code>istio-proxy</code>コンテナが増える。</p>
+<p>そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。</p>
+<p>テレメトリーを収集する必要のないPod (例：監視を責務に持つPod) は、サイドカープロキシメッシュに登録しないようにする。</p>
+<h4 id="jobpod">▼ Job配下のPod<a class="headerlink" href="#jobpod" title="Permanent link">&para;</a></h4>
+<p>Job配下のPodに<code>istio-proxy</code>コンテナを挿入した場合、Pod内のコンテナが終了しても<code>istio-proxy</code>コンテナが終了せず、Pod自体が削除されない問題がある。</p>
+<p>Job配下のPodは、サイドカープロキシメッシュに登録しないようにする。</p>
+<p>どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、<code>istio-proxy</code>コンテナの『<code>localhost:15020/quitquitquit</code>』をコールするようなシェルスクリプトを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-job</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-job</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
+<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">              </span><span class="no">until curl -fsI http://localhost:15021/healthz/ready; do</span>
+<span class="w">                </span><span class="no">echo &quot;Waiting for Sidecar to be healthy&quot;;</span>
+<span class="w">                </span><span class="no">sleep 3;</span>
+<span class="w">              </span><span class="no">done;</span>
+<span class="w">              </span><span class="no">echo &quot;Sidecar available. Running job command...&quot; &amp;&amp;</span>
+<span class="w">              </span><span class="no">&lt;CronJobのコマンド&gt; &amp;&amp;</span>
+<span class="w">              </span><span class="no">x=$(echo $?) &amp;&amp;</span>
+<span class="w">              </span><span class="no">curl -fsI -X POST http://localhost:15020/quitquitquit &amp;&amp; </span>
+<span class="w">              </span><span class="no">exit $x</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html">https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html</a></li>
+<li><a href="https://www.kabegiwablog.com/entry/2020/08/31/224827">https://www.kabegiwablog.com/entry/2020/08/31/224827</a></li>
+<li><a href="https://github.com/istio/istio/issues/6324#issuecomment-760156652">https://github.com/istio/istio/issues/6324#issuecomment-760156652</a></li>
+<li><a href="https://youtu.be/2_Nan81j03o?t=1915">https://youtu.be/2_Nan81j03o?t=1915</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="ingressgateway">IngressGatewayに関して<a class="headerlink" href="#ingressgateway" title="Permanent link">&para;</a></h3>
+<h4 id="istiodnamespace">▼ Istiodコントロールプレーンとは異なるNamespaceにおく<a class="headerlink" href="#istiodnamespace" title="Permanent link">&para;</a></h4>
+<p>セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html">https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html</a></li>
+<li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway</a></li>
+</ul>
+</blockquote>
+<h4 id="nodeport-service">▼ NodePort Serviceを選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
+<p>IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。</p>
+<p>NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。</p>
+<p>一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
+<p>そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。</p>
+<p>LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。</p>
+<p>補足として、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。</p>
+<p>NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/issues/28310#issuecomment-733079966">https://github.com/istio/istio/issues/28310#issuecomment-733079966</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39">https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39</a></li>
+</ul>
+</blockquote>
+<h4 id="_4">▼ アプリコンテナごとに作成する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>単一障害点になることを防ぐために、<code>1</code>個のIngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。</p>
+<p><br></p>
+<h3 id="1">サブセット名を<code>1</code>個にする<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>Istioリソースで設定するサブセット名は<code>1</code>個だけにする。</p>
+<p>これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviews</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">reviews</span>
+<span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services">https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. リソース別の金銭的コスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="cloudfront">CloudFront<a class="headerlink" href="#cloudfront" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ 転送<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>オリジンに転送する前にキャッシュを使用してレスポンスを返信できる。</p>
-<p>そのため、オリジンでかかる料金を抑えられる。</p>
-<p><br></p>
-<h3 id="ebs">EBS<a class="headerlink" href="#ebs" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 料金体系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>EBSボリュームは、ボリュームの使用率に関わらず、最大サイズに基づいて料金が発生する。</p>
-<p>また、複数のEBSボリュームをEC2に紐付けている場合は、その合計サイズで料金が発生する。</p>
-<p>そのため、必要最低限のサイズを選択するように、過剰なサイズを選択してはいけない。</p>
-<p>その他、ボリュームタイプによっては、IOPSやスループットの設定値が課金対象になっている。</p>
-<p>汎用SSD (gp2タイプ) であれば、EBSボリュームの最大サイズのみを考慮すれば良い。</p>
-<p>また、注意点として、リージョンごとに料金体系が異なる。</p>
+<h3 id="istio_1">Istioリソースの使用可能範囲を限定する<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
+<p>Istioリソースの<code>.spec.exportTo</code>キーでは『<code>.</code> (ドット) 』を設定する。</p>
+<p>これにより、DestinationRuleを想定外のNamespaceで使用してしまうことを防ぐ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-virtual-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;.&quot;</span>
+<span class="w">  </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myservice</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/</a></li>
-<li><a href="https://aws.amazon.com/jp/ebs/pricing/">https://aws.amazon.com/jp/ebs/pricing/</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration">https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ec2">EC2<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ 料金体系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>使い方に応じた料金体系を選択できる。</p>
-<p>レスポンスの返信時に料金が発生する。</p>
-<table>
-<thead>
-<tr>
-<th>使い方名</th>
-<th>説明</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>オンデマンドインスタンス</td>
-<td>EC2インスタンスの使用期間に応じて使用料金を支払う。</td>
-<td>- <a href="https://aws.amazon.com/jp/ec2/pricing/on-demand/">https://aws.amazon.com/jp/ec2/pricing/on-demand/</a></td>
-</tr>
-<tr>
-<td>Savings Plans</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>リザーブドインスタンス</td>
-<td>EC2インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。</td>
-<td></td>
-</tr>
-<tr>
-<td>スポットインスタンス</td>
-<td>休止しているEC2インスタンスを使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。</td>
-<td>- <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html</a></td>
-</tr>
-</tbody>
-</table>
+<h3 id="destinationrule">DestinationRuleを最初に更新する<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
+<p>新しいサブセットを追加する場合、DestinationRuleを最初に更新する。</p>
+<p>これにより、ダウンタイムなしでサブセットを追加できる。</p>
+<p>DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、<code>503</code>ステータスを返信してしまう。</p>
+<p>DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing</a></li>
-<li><a href="https://tech.nri-net.com/entry/2021/04/21/094600">https://tech.nri-net.com/entry/2021/04/21/094600</a></li>
-</ul>
-</blockquote>
-<h4 id="_8">▼ 実行時間<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>インスタンスのライフサイクルのフェーズに応じて、料金が発生する。</p>
-<p>EC2インスタンスを実行している時間分だけ料金がかかる。</p>
-<p>インスタンスを使用せずに配置しているのみであれば、料金はかからない。</p>
-<table>
-<thead>
-<tr>
-<th>フェーズ名</th>
-<th>料金発生の有無</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pending</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>running</td>
-<td>あり</td>
-<td></td>
-</tr>
-<tr>
-<td>stopping</td>
-<td>条件付きでなし</td>
-<td>停止準備中の間は料金が発生し、休止準備中の間は発生しない。</td>
-</tr>
-<tr>
-<td>stopped</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>shutting-down</td>
-<td>なし</td>
-<td></td>
-</tr>
-<tr>
-<td>terminated</td>
-<td>なし</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html</a></li>
+<li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes">https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ecr">ECR<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ 合計サイズ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ECRに保存されたイメージの合計サイズが<code>500MB</code>を超えると、請求が発生するため、古いイメージを定期的に削除する必要がある。</p>
-<p><br></p>
-<h3 id="fargate">Fargate<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ リソースサイズ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Fargateでは、FargateワーカーNode内でPodが使用したリソースサイズによって、料金が決まる。</p>
-<p>そのため、冗長化するPod数を減らすことにより、料金を抑えられる。</p>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/fargate/pricing/">https://aws.amazon.com/jp/fargate/pricing/</a></li>
-</ul>
-</blockquote>
+<h2 id="02-02">02-02. 通信ルーティングのパターン<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
+<h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
+<p>LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。</p>
 <p><strong>＊例＊</strong></p>
-<p>バージニア北部のFargateワーカーNode内で、Podが<code>10</code>個を毎日<code>1</code>時間稼働させ、Podが<code>0.25</code>vCPUと<code>1</code>GiBメモリを使用したとする。</p>
-<p>この場合、１ヶ月の請求額は以下のようになる。</p>
-<div class="highlight"><pre><span></span><code>CPU の月額料金
-合計 vCPU 料金 = (ポッド数) × (vCPU 数) × (CPU 秒あたりの料金) × (秒単位の 1 日あたりの CPU 使用時間) × (日数)
-合計 vCPU 料金 = 10 × 0.25 × 0.000011244 × 3600 × 30 = 3.04 USD
-
-メモリの月額料金
-合計メモリ料金 = (ポッド数) × (メモリGB) × (1 GB あたりの料金) × (秒単位の 1 日あたりのメモリ使用時間) × (日数)
-合計メモリ料金 = 10 × 1 × 0.000001235 × 3600 × 30 = 1.33 USD
-
-Fargate のコンピューティングの月額料金
-Fargate のコンピューティングの月額料金 = (CPU 月額料金) + (メモリの月額料金)
-Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.37 USD
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">LoadBalancer Service (Istio IngressGateway) によるAWS NLB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="lambda">Lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ 実行時間<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>関数を実行している時間分だけ料金がかかる。</p>
-<p>関数を使用せずに配置しているのみであれば、料金はかからない。</p>
+<h3 id="nodeport-service_1">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h3>
+<h4 id="l7">▼ <code>L7</code>ロードバランサーがない場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
+<p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
+<h4 id="l7_1">▼ <code>L7</code>ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
+<p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に置く。</p>
+<p><strong>＊例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">AWS ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">NodePort Service (Istio IngressGateway)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ClusterIP Service</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Pod</span>
+</code></pre></div>
 <p><br></p>
-<h3 id="rds">RDS<a class="headerlink" href="#rds" title="Permanent link">&para;</a></h3>
-<h4 id="_12">▼ 料金体系の種類<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">使い方名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">オンデマンドインスタンス</td>
-<td>- <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html</a></td>
-</tr>
-<tr>
-<td style="text-align: left;">リザーブドインスタンス</td>
-<td>RDSインスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>- <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html</a></td>
-</tr>
-</tbody>
-</table>
+<h2 id="03">03. アップグレード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_5">設計規約<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ サポート期間<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>Istioでは、マイナーバージョンごとのアップグレードを推奨しており、またマイナーバージョンのサポートが半年ごとに終了する。</p>
+<p>実質的に半年ごとにアップグレード工数が発生する。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html</a></li>
+<li><a href="https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases">https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Istioの開発プロジェクトでは、マイナーバージョンを<code>1</code>個ずつ新しくするアップグレードしか検証していない。</p>
+<p>そのため、マイナーバージョンを<code>2</code>個以上跨いだアップグレードを推奨していない。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/setup/upgrade/">https://istio.io/latest/docs/setup/upgrade/</a></li>
+<li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
+</ul>
+</blockquote>
+<h4 id="istiod">▼ Istiodコントロールプレーンでダウンタイムを発生させない<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h4>
+<p>Istiodコントロールプレーンでダウンタイムが発生すると、<code>istio-proxy</code>コンテナ内のpilot-agentが最新の宛先情報を取得できなくなる。</p>
+<p>そのため、古いバージョンのアプリコンテナの宛先情報を使用してしまう。</p>
+<p>Istiodコントロールプレーンをカナリアアップグレードを採用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
+</ul>
+</blockquote>
+<h4 id="ingressgateway_1">▼ IngressGatewayでダウンタイムを発生させない<a class="headerlink" href="#ingressgateway_1" title="Permanent link">&para;</a></h4>
+<p>IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 送受信数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>送受信数分だけ料金がかかる。</p>
-<p>受信は<code>1000件/月</code>まで、送信は<code>62000/月</code>まで無料である。</p>
+<h3 id="_8">インプレース方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">▼ インプレース方式とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。</p>
+<h4 id="_10">▼ 手順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>CRDを更新する。</p>
+<p>必要なCRDのマニフェストは、リポジトリで確認する必要がある。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/istio/istio.git
+
+$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>manifests/charts/base/crds
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>upgrade
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>データプレーンの<code>istio-proxy</code>コンテナを再インジェクションする。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment<span class="w"> </span>app-deployment<span class="w"> </span>-n<span class="w"> </span>app
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/setup/upgrade/in-place/">https://istio.io/latest/docs/setup/upgrade/in-place/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_11">カナリア方式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ カナリア方式とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
+</ul>
+</blockquote>
+<h4 id="istioctl">▼ <code>istioctl</code>コマンドの場合<a class="headerlink" href="#istioctl" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548</a></li>
+</ul>
+</blockquote>
+<h4 id="helm">▼ <code>helm</code>コマンドの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>HelmではCRDを管理しないようにし、<code>kubectl</code>コマンドでこれを作成する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
+</code></pre></div>
+<dl>
+<dt><code>(2)</code></dt>
+<dd>
+<p>istiodチャートを使用して、古いバージョンのMutatingWebhookConfigurationのみを削除する。</p>
+<p>この時、既存のリリースは古いリリースとして扱う。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;古いバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;古いバージョン&gt;<span class="w"> </span>--set<span class="w"> </span><span class="nv">revisionTags</span><span class="o">=</span>null
+</code></pre></div>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>istiodチャートを使用して、新しいバージョンのMutatingWebhookConfigurationを作成しつつ、Istiodコントロールプレーンに関するKubernetesリソースを変更する。</p>
+<p>この時、リリースを新しく命名する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;新しいバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;新しいバージョン&gt;
+</code></pre></div>
+<dl>
+<dt><code>(4)</code></dt>
+<dd>
+<p>特定のNamespaceをアップグレードする。</p>
+</dd>
+<dt><code>(5)</code></dt>
+<dd>
+<p>動作確認し、問題なければ、残りのNamespaceもアップグレードする。</p>
+</dd>
+<dt><code>(6)</code></dt>
+<dd>
+<p>istiodチャートを使用して、古いリリースで作成したIstiodコントロールプレーンに関するKubernetesリソースを削除する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;古いバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;古いバージョン&gt;<span class="w"> </span>--set<span class="w"> </span><span class="nv">revisionTags</span><span class="o">=</span>null
+</code></pre></div>
+<dl>
+<dt><code>(7)</code></dt>
+<dd>
+<p>istio-baseを使用して、Istioに関するCRDを変更する。</p>
+<p>この時、リリースを新しく命名する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;新しいバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/base<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;新しいバージョン&gt;
+</code></pre></div>
+<dl>
+<dt><code>(8)</code></dt>
+<dd>
+<p>gatewayチャートを使用して、IstioのIngressGatewayに関するKubernetesリソースを変更する。</p>
+<p>この時、リリースを新しく命名する。</p>
+</dd>
+</dl>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;新しいバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/gateway<span class="w"> </span>-n<span class="w"> </span>istio-ingress<span class="w"> </span>--version<span class="w"> </span>&lt;新しいバージョン&gt;
+</code></pre></div>
+<p><br></p>
+<h2 id="04">04. アーキテクチャ特性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="_13">性能<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://lib.jimmysong.io/blog/performance-and-scalability/">https://lib.jimmysong.io/blog/performance-and-scalability/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
+<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
+<h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code>ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
+<p>CI上でClusterを作成し、Istioをデプロイする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行環境名を切り替える</span>
+<span class="nt">workflow</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># masterブランチにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;master&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span>
+<span class="w">    </span><span class="c1"># developブランチにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == &#39;develop&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tes&quot;</span>
+<span class="w">    </span><span class="c1"># MRにて、任意の方法でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;merge_request_event&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span>
+<span class="w">    </span><span class="c1"># 上記以外で、webから手動でパイプラインを実行した場合</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &#39;web&#39;</span>
+<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span>
+
+<span class="nt">variables</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># EKSはK8sのマイナーバージョンを公開していないため、&quot;.0&quot;と仮定して処理する</span>
+<span class="w">  </span><span class="c1"># 現在のEKSのK8sバージョン</span>
+<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.24.0&quot;</span>
+<span class="w">  </span><span class="c1"># アップグレード後のEKSのK8sバージョン</span>
+<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.26.0&quot;</span>
+
+<span class="w">  </span><span class="c1"># 現在のIstioのバージョン</span>
+<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.15.3&quot;</span>
+<span class="w">  </span><span class="c1"># アップグレード後のIstioのバージョン</span>
+<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.17.5&quot;</span>
+
+<span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+
+<span class="c1"># 指定したバージョンのIstioを検証する</span>
+<span class="nt">test_istio</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
+<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># K3Dを使うことで Docker in Docker となるため、そのための環境変数を設定する</span>
+<span class="w">    </span><span class="c1"># @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300</span>
+<span class="w">    </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;overlay2&quot;</span>
+<span class="w">    </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tcp://docker:2375&quot;</span>
+<span class="w">    </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:dind</span>
+<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--tls=false&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="c1"># K3D Clusterは異なるJobに持ち越せないので、事前処理として実行する</span>
+<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk --update add bash curl git</span>
+<span class="w">    </span><span class="c1"># スクリプトでasdfをセットアップする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source setup-asdf.sh</span>
+<span class="w">    </span><span class="c1"># K3Dをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh</span>
+<span class="w">      </span><span class="no">k3d version</span>
+<span class="w">    </span><span class="c1"># kubectlコマンドをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">curl -kLO https://dl.k8s.io/release/v&quot;${K8S_NEXT_VERSION}&quot;/bin/linux/amd64/kubectl</span>
+<span class="w">      </span><span class="no">chmod +x ./kubectl</span>
+<span class="w">      </span><span class="no">mv ./kubectl /usr/local/bin/kubectl</span>
+<span class="w">      </span><span class="no">kubectl version</span>
+<span class="w">    </span><span class="c1"># Clusterを作成する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2</span>
+<span class="w">    </span><span class="c1"># Nodeにラベル付けする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-0 node.kubernetes.io/nodegroup=ingress</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodegroup=system</span>
+<span class="w">    </span><span class="c1"># 動作を確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get nodes --show-labels</span>
+<span class="w">  </span><span class="c1"># Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る</span>
+<span class="w">  </span><span class="c1"># @see https://istio.io/latest/docs/setup/upgrade/helm/</span>
+<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># CRDをインストールする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f https://raw.githubusercontent.com/istio/istio/&quot;${ISTIO_NEXT_VERSION}&quot;/manifests/charts/base/crds/crd-all.gen.yaml</span>
+<span class="w">    </span><span class="c1"># Namespaceを作成する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">kubectl create ns istio-ingress</span>
+<span class="w">      </span><span class="no">kubectl label ns istio-ingress istio.io/rev=default</span>
+<span class="w">      </span><span class="no">kubectl create ns istio-system</span>
+<span class="w">    </span><span class="c1"># Namespaceのラベルを確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get ns -L istio.io/rev</span>
+<span class="w">    </span><span class="c1"># istiodチャートをApplyする</span>
+<span class="w">    </span><span class="c1"># ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョン番号をつける</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istiod_&quot;${ISTIO_NEXT_VERSION//\./-}&quot;.yaml apply --skip-crds --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># istio-baseチャートをApplyする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># istio-ingressgatewayチャートをApplyする</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e &quot;${ENV}&quot; -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
+<span class="w">    </span><span class="c1"># 動作を確認する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl version</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl proxy-status</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-ingress</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-system</span>
+<span class="w">    </span><span class="c1"># Clusterを削除する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete $CI_PIPELINE_ID</span>
+</code></pre></div>
+<h4 id="setup-asdfsh">▼ <code>.setup-asdf.sh</code>ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># asdfをインストールする</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/asdf-vm/asdf.git<span class="w"> </span>~/.asdf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;. &quot;$HOME/.asdf/asdf.sh&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_DIR</span><span class="o">=</span>~/.asdf
+<span class="nb">source</span><span class="w"> </span>~/.bashrc
+
+<span class="c1"># コマンドをインストールする</span>
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helm<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helmfile<span class="w"> </span>https://github.com/feniix/asdf-helmfile.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>istioctl<span class="w"> </span>https://github.com/virtualstaticvoid/asdf-istioctl.git
+asdf<span class="w"> </span>install
+asdf<span class="w"> </span>list
+
+<span class="c1"># 正しいバージョンをインストールできていることを確認する</span>
+helm<span class="w"> </span>version
+helmfile<span class="w"> </span>version
+istioctl<span class="w"> </span>version
+</code></pre></div>
 <p><br></p>
 
   <hr>
@@ -6600,7 +6941,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
       
     
   </small>
