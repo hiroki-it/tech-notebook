@@ -30,7 +30,7 @@
 
 * #### <u>認可</u>
   > * ##### [︎認可](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization.html)
-  > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_policy_agent.html)
+  > * ##### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/security/security_auth_authorization_open_practices_agent.html)
 
 * #### <u>SSO</u>
   > * ##### [SSO](https://hiroki-it.github.io/tech-notebook/security/security_auth_sso.html)

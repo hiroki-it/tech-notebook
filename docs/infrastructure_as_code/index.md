@@ -21,7 +21,7 @@
 * #### <u>Docker</u>
   > * ##### [︎Dockerfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)
   > * ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_command.html)
-  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_policy.html)
+  > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_practices.html)
 
 <br>
 
@@ -52,9 +52,9 @@
   > > * ##### [︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)
   > > * ##### [︎Kubernetesプロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)
   > * ##### [︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
-  > * ##### <u>設計規約</u>
-  > > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy.html)
-  > > * ##### [tfstateファイル分割](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_policy_tfstate.html)
+  > * ##### <u>プラクティス集</u>
+  > > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices.html)
+  > > * ##### [tfstateファイル分割](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html)
 
 * #### <u>Vagrant</u>
   > * ##### [Vagrantfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html)

@@ -24,7 +24,7 @@
   > * ##### [︎CircleCI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html)
   > * ##### [︎config.yml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_config_yml.html)
   > * ##### [︎orbs](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_orbs.html)
-  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_policy.html)
+  > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_practices.html)
 
 * #### <u>Skaffold</u>
   > * ##### [︎skaffold.yaml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_skaffold_yaml.html)

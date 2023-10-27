@@ -59,11 +59,11 @@
   > * ##### [VPC](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_vpc.html)
   > * ##### [WAF](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_waf.html)
   > * ##### [WorkMail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_work_mail.html)
-* #### <u>設計規約</u>
-  > * ##### [︎可用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_availability.html)
-  > * ##### [︎信頼性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_reliability.html)
-  > * ##### [︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_security.html)
-  > * ##### [︎コスト最適化](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_policy_cost_optimization.html)
+* #### <u>プラクティス集</u>
+  > * ##### [︎可用性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_availability.html)
+  > * ##### [︎信頼性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_reliability.html)
+  > * ##### [︎安全性](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_security.html)
+  > * ##### [︎コスト最適化](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_practices_cost_optimization.html)
 * #### [︎ツール](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_tools.html)
 
 <br>

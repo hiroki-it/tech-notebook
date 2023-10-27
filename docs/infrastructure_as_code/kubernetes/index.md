@@ -22,12 +22,12 @@
 
 * #### [ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)
 
-* #### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html)
+* #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html)
 
 * #### <u>アーキテクチャ特性</u>
-> * ##### [K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_cluster.html)
-> * ##### [K8sコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_component.html)
-> * ##### [K8sリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_architecture_characteristics_resource.html)
+> * ##### [K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html)
+> * ##### [K8sコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html)
+> * ##### [K8sリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html)
 
 <br>
 
@@ -90,7 +90,7 @@
   > > * ##### [チャート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html)
   > > * ##### [関数](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html)
   > > * ##### [共通項目](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_common.html)
-  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_policy.html)
+  > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_practices.html)
   > * ##### <u>Helmfile</u>
   > > * ##### [︎Helmfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html)
   > > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_helmfile_command.html)
@@ -98,7 +98,7 @@
 * #### <u>Kustomize</u>
   > * ##### [Kustomize](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize.html)
   > * ##### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_command.html)
-  > * ##### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_policy.html)
+  > * ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_kustomize_practices.html)
 
 <br>
 

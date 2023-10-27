@@ -14,9 +14,9 @@
 
 * #### [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.html)
 
-* #### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html)
+* #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.html)
 
-* #### [アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_architecture_characteristics.html)
+* #### [アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.html)
 
 * #### ︎<u>リソース定義</u>
   > * ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.html)
@@ -75,7 +75,7 @@
 
 * #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_command.html)
 
-* #### [︎設計規約](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_policy.html)
+* #### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_practices.html)
 
 * #### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_istio_operator_resource_definition.html)
 
@@ -105,7 +105,7 @@
 
 ### OpenPolicyAgent
 
-* #### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_policy_agent.html)
+* #### [OpenPolicyAgent](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_open_practices_agent.html)
 
 <br>
 

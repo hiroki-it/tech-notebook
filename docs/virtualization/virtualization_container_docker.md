@@ -165,7 +165,14 @@ SysV IPCオブジェクト、POSIXメッセージキュー、を分離する。
 
 各コンテナが独立したUIDやGIDを持てるようになる。
 
+ただし、Dockerでは機能が制限されることを嫌って、User Namespaceをデフォルトで無効化している。
+
+そのため、コンテナとホストのUID/GIDが同じになっている。
+
+これに伴い、コンテナをrootユーザーで実行することに脆弱性がある。
+
 > - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8
+> - https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations
 
 <br>
 

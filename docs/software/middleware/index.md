@@ -43,7 +43,7 @@
 * #### <u>RDB</u>
   > * ##### <u>RDBMS</u>
   > > * ##### [︎RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
-  > > * ##### [設計規約](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_policy.html)
+  > > * ##### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html)
   > > * ##### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
   > * ##### <u>MySQL</u>
   > > * ##### [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html)
