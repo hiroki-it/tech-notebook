@@ -31,9 +31,9 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 #### ▼ 仕組み
 
-記入中...
+各マイクロサービスは、SSOのIDプロバイダーに認証を委譲する。
 
-![micro-auth_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_sso.png)
+![micro-authentication_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_sso.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -48,13 +48,13 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 #### ▼ 仕組み
 
-各マイクロサービスはセッションデータに基づいてユーザーを認証する。
+各マイクロサービスは、セッションデータに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、セッションデータを保存できるストレージを`1`個だけ配置する。
 
 耐障害性のあるセッションストレージが必要になるというデメリットがある。
 
-![micro-auth_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_centralization.png)
+![micro-authentication_type_centralization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_centralization.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -69,13 +69,13 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 #### ▼ 仕組み
 
-各マイクロサービスはJWTに基づいてユーザーを認証する。
+各マイクロサービスは、JWTに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込み、クライアント側にJWTを保存させる。
 
 クライアント側に保存されたJWTの失効が難しいというデメリットがある。
 
-![micro-auth_type_distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_distribution.png)
+![micro-authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -90,7 +90,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 #### ▼ 仕組み
 
-各マイクロサービスはJWTに基づいてユーザーを認証する。
+各マイクロサービスは、JWTとOpaqueトークンに基づいてユーザーを認証する。
 
 `1`個のセッション中の認証情報をマイクロサービス間で共有するために、リクエスト/レスポンスのヘッダーにJWTを埋め込む。
 
@@ -98,7 +98,7 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 また、API Gatewayやロードバランサーで、OpaqueトークンとJWTの間の相互変換を通信のたびに実行する。
 
-![micro-auth_type_gateway-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-auth_type_gateway-distribution.png)
+![micro-authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_opaque-token.png)
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 > - https://engineer.retty.me/entry/2019/12/21/171549
@@ -109,31 +109,25 @@ description: 認証/認可＠マイクロサービスアーキテクチャの知
 
 ### SSOパターン
 
+#### ▼ SSOパターンとは
+
 サーバー側に、認可スコープを定義する認可マイクロサービス (例：自前、OpenPolicyAgent、など) を`1`個だけ配置し、認可処理を実行する。
 
 <br>
 
 ### JWTパターン
 
-マイクロサービスが個別に認可を担う。
+#### ▼ JWTパターンとは
 
-各マイクロサービスで認可処理が重複する可能性がある。
-
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
-
-<br>
-
-### 中央集権パターン
-
-サーバー側に、認可スコープを定義する認可マイクロサービス (例：自前、OpenPolicyAgent、など) を`1`個だけ配置し、認可処理を実行する。
-
-各マイクロサービスの認可処理が密結合になる可能性がある。
+サーバー側に、認可マイクロサービス (例：自前、Keycloak、など) を`1`個だけ配置し、認可処理を実行する。
 
 > - https://please-sleep.cou929.nu/microservices-auth-design.html
 
-<br>
+#### ▼ サイドカーサービスメッシュ
 
-### サイドカーサービスメッシュパターン
+サイドカーサービスメッシュを使用し、JWTパターンを実装する。
+
+![micro-authentication_type_jwt_service-mesh.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/micro-authentication_type_jwt_service-mesh.png)
 
 > - https://thinkit.co.jp/article/22484
 > - https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/

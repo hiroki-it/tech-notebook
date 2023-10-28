@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】アーキテクチャ特性＠Java
-description: アーキテクチャ特性＠Javaの知見を記録しています。
+title: 【IT技術の知見】プラクティス集＠Java
+description: プラクティス集＠Javaの知見を記録しています。
 ---
 
-# アーキテクチャ特性＠Java
+# プラクティス集＠Java
 
 ## はじめに
 
