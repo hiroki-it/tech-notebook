@@ -4142,6 +4142,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#chart" class="md-nav__link">
+    ▼ chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createnamespace" class="md-nav__link">
+    ▼ createNamespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    ▼ dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    ▼ set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#name" class="md-nav__link">
     ▼ name
   </a>
@@ -4156,27 +4184,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#createnamespace" class="md-nav__link">
-    ▼ createNamespace
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart" class="md-nav__link">
-    ▼ chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    ▼ version
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#values_1" class="md-nav__link">
     ▼ values
   </a>
@@ -4184,8 +4191,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set" class="md-nav__link">
-    ▼ set
+  <a href="#version" class="md-nav__link">
+    ▼ version
   </a>
   
 </li>
@@ -6325,6 +6332,34 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#chart" class="md-nav__link">
+    ▼ chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createnamespace" class="md-nav__link">
+    ▼ createNamespace
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    ▼ dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    ▼ set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#name" class="md-nav__link">
     ▼ name
   </a>
@@ -6339,27 +6374,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#createnamespace" class="md-nav__link">
-    ▼ createNamespace
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart" class="md-nav__link">
-    ▼ chart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#version" class="md-nav__link">
-    ▼ version
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#values_1" class="md-nav__link">
     ▼ values
   </a>
@@ -6367,8 +6381,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#set" class="md-nav__link">
-    ▼ set
+  <a href="#version" class="md-nav__link">
+    ▼ version
   </a>
   
 </li>
@@ -6695,6 +6709,44 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">atomic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
+<h4 id="chart">▼ chart<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
+<p>Helmリリース対象のチャートへのパスを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
+</code></pre></div>
+<h4 id="createnamespace">▼ createNamespace<a class="headerlink" href="#createnamespace" title="Permanent link">&para;</a></h4>
+<p><code>helm install</code>コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。</p>
+<p>デフォルトで<code>true</code>になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。</p>
+<p>ただし、Namespaceので出どころがわからなくなるため、Helmfileの<code>createNamespace</code>オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">createNamespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<h4 id="dependencies">▼ dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h4>
+<p>依存先のチャートを設定する。</p>
+<p>公式チャートに追加してマニフェストを作成したい場合、<code>values</code>ファイルの<code>extraTemplates</code>キーや<code>extraTemplates</code>キーを使用することになる。</p>
+<p>しかし、公式チャートでこれを用意していないことがある。</p>
+<p>その場合、自前でサブチャートを作成し、依存先のチャートとしてインストールする必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
+<span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- chart</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart">https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart</a></li>
+</ul>
+</blockquote>
+<h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
+<p>Helmの実行時に出力する<code>values</code>の値を設定する。</p>
+<p>キー名にドットを含む場合、エスケープする必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">set</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar\.enabled</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
 <p>Helmリリース名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
@@ -6706,23 +6758,6 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <p>ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
-</code></pre></div>
-<h4 id="createnamespace">▼ createNamespace<a class="headerlink" href="#createnamespace" title="Permanent link">&para;</a></h4>
-<p><code>helm install</code>コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。</p>
-<p>デフォルトで<code>true</code>になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。</p>
-<p>ただし、Namespaceので出どころがわからなくなるため、Helmfileの<code>createNamespace</code>オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">createNamespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</code></pre></div>
-<h4 id="chart">▼ chart<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
-<p>Helmリリース対象のチャートへのパスを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
-</code></pre></div>
-<h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
-<p>Helmリリースのバージョンを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
 <h4 id="values_1">▼ values<a class="headerlink" href="#values_1" title="Permanent link">&para;</a></h4>
 <p>Helmの実行時に復号化する<code>values</code>ファイルを設定する。</p>
@@ -6738,15 +6773,10 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 
 <span class="nt">releases</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
-<p>Helmの実行時に出力する<code>values</code>の値を設定する。</p>
-<p>キー名にドットを含む場合、エスケープする必要がある。</p>
+<h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
+<p>Helmリリースのバージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">set</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar\.enabled</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="repositories">repositories<a class="headerlink" href="#repositories" title="Permanent link">&para;</a></h3>
@@ -6881,7 +6911,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
       
     
   </small>
