@@ -6724,19 +6724,28 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <h4 id="dependencies">▼ dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h4>
 <p>依存先のチャートを設定する。</p>
 <p>公式チャートに追加してマニフェストを作成したい場合、<code>values</code>ファイルの<code>extraTemplates</code>キーや<code>extraTemplates</code>キーを使用することになる。</p>
-<p>しかし、公式チャートでこれを用意していないことがある。</p>
+<p>しかし、公式チャートでこれらを用意していないことがある。</p>
 <p>その場合、自前でサブチャートを作成し、依存先のチャートとしてインストールする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
-<span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">- chart</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
-<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart">https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart</a></li>
 </ul>
 </blockquote>
+<p>リリースを別にしてサブチャートをインストールすることもできるが、リリースが<code>1</code>個だけで十分ある点がよい。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-release</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-sub-release</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</code></pre></div>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
 <p>Helmの実行時に出力する<code>values</code>の値を設定する。</p>
 <p>キー名にドットを含む場合、エスケープする必要がある。</p>

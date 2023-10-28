@@ -7026,8 +7026,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h3 id="appversion">appVersion<a class="headerlink" href="#appversion" title="Permanent link">&para;</a></h3>
 <h4 id="appversion_1">▼ appVersionとは<a class="headerlink" href="#appversion_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。</p>
-<p>リリースバージョンは、GitHubのリリースタグで管理した方がよく、<code>appVersion</code>キーの値は特に変更しなくても良い。</p>
+<p>Kubernetes上で稼働するアプリケーションのHelmリリースバージョンを設定する。</p>
+<p>Helmリリースバージョンは、GitHubのHelmリリースタグで管理した方がよく、<code>appVersion</code>キーの値は特に変更しなくても良い。</p>
 <p>公式チャートでは、チャート内で使用しているコンテナのイメージタグが<code>appVersion</code>キーに設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">appVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
@@ -7131,7 +7131,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <h4 id="version_1">▼ versionとは<a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h4>
-<p>チャートアーカイブ (<code>.tgz</code>形式ファイル) のリリースバージョンを設定する。</p>
+<p>チャートアーカイブ (<code>.tgz</code>形式ファイル) のHelmリリースバージョンを設定する。</p>
 <p><code>template</code>ディレクトリ配下のファイルを変更した場合に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
@@ -7155,7 +7155,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><code>_helpers.tpl</code>ファイルで<code>.metadata.labels</code>キーのセットをテンプレートとして定義しておく。</p>
 <p>マニフェストで、これらをまとめて出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- define &quot;global.template.labels&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
-<span class="c1"># リリース名</span>
+<span class="c1"># Helmリリース名</span>
 <span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Release.Name</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="c1"># ツール名 (v2ならTiller、v3ならHelm)</span>
 <span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="w"> </span><span class="nv">.Release.Service</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -7207,7 +7207,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">  </span><span class="nt">install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <h4 id="fullnameoverride">▼ fullnameOverride<a class="headerlink" href="#fullnameoverride" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『<code>＜リリース名＞-＜Chart名＞</code>』になる。</p>
+<p>デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <p>もし、<code>fullnameOverride</code>オプションを設定していた場合、Kubernetesリソース名は『<code>＜fullnameOverrideオプションの値＞</code>』になる。</p>
@@ -7263,8 +7263,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="nameoverride">▼ nameOverride<a class="headerlink" href="#nameoverride" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
-<p>デフォルトでは、チャートによって作成されるKubernetesリソース名は、『<code>＜リリース名＞-＜Chart名＞</code>』になる。</p>
-<p>もし、<code>nameOverride</code>オプションを設定していた場合、Kubernetesリソース名は『<code>＜リリース名＞-＜nameOverrideオプションの値＞</code>』になる。</p>
+<p>デフォルトでは、チャートによって作成されるKubernetesリソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
+<p>もし、<code>nameOverride</code>オプションを設定していた場合、Kubernetesリソース名は『<code>＜Helmリリース名＞-＜nameOverrideオプションの値＞</code>』になる。</p>
 <p>補足としてチャートごとに、Kubernetesリソース名の前後に特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) がつくことがある。</p>
 <p><code>fullnameOverride</code>オプションとは独立しており、<code>fullnameOverride</code>オプションでチャートをインストールした後に<code>nameOverride</code>オプションに移行したい場合、<code>fullnameOverride</code>オプションによるチャートを一度アンインストールする必要がある。</p>
 <p>しかし、そのまま<code>nameOverride</code>オプションに移行してしまうと、<code>fullnameOverride</code>オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。</p>
@@ -7329,7 +7329,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
       
     
   </small>
