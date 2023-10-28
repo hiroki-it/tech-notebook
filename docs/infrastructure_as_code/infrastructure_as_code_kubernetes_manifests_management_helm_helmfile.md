@@ -284,19 +284,31 @@ releases:
 
 公式チャートに追加してマニフェストを作成したい場合、`values`ファイルの`extraTemplates`キーや`extraTemplates`キーを使用することになる。
 
-しかし、公式チャートでこれを用意していないことがある。
+しかし、公式チャートでこれらを用意していないことがある。
 
 その場合、自前でサブチャートを作成し、依存先のチャートとしてインストールする必要がある。
 
 ```yaml
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
-    dependencies: true
+    dependencies:
       - chart: <チャートリポジトリ名>/foo-subchart
         version: 1.0
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
+
+リリースを別にしてサブチャートをインストールすることもできるが、リリースが`1`個だけで十分ある点がよい。
+
+```yaml
+releases:
+  - chart: <チャートリポジトリ名>/foo-chart
+    name: foo-release
+    version: 1.0
+  - chart: <チャートリポジトリ名>/foo-subchart
+    name: foo-sub-release
+    version: 1.0
+```
 
 #### ▼ set
 

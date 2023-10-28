@@ -94,9 +94,9 @@ apiVersion: v2
 
 #### ▼ appVersionとは
 
-Kubernetes上で稼働するアプリケーションのリリースバージョンを設定する。
+Kubernetes上で稼働するアプリケーションのHelmリリースバージョンを設定する。
 
-リリースバージョンは、GitHubのリリースタグで管理した方がよく、`appVersion`キーの値は特に変更しなくても良い。
+Helmリリースバージョンは、GitHubのHelmリリースタグで管理した方がよく、`appVersion`キーの値は特に変更しなくても良い。
 
 公式チャートでは、チャート内で使用しているコンテナのイメージタグが`appVersion`キーに設定されている。
 
@@ -235,7 +235,7 @@ type: application
 
 #### ▼ versionとは
 
-チャートアーカイブ (`.tgz`形式ファイル) のリリースバージョンを設定する。
+チャートアーカイブ (`.tgz`形式ファイル) のHelmリリースバージョンを設定する。
 
 `template`ディレクトリ配下のファイルを変更した場合に更新する。
 
@@ -267,7 +267,7 @@ version: <バージョンタグ>
 
 ```yaml
 {{- define "global.template.labels" }}
-# リリース名
+# Helmリリース名
 app.kubernetes.io/instance: {{ .Release.Name }}
 # ツール名 (v2ならTiller、v3ならHelm)
 app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -334,7 +334,7 @@ crds:
 
 #### ▼ fullnameOverride
 
-デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『`＜リリース名＞-＜Chart名＞`』になる。
+デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
 
 ```yaml
 fullnameOverride: foo
@@ -435,9 +435,9 @@ ingress:
 nameOverride: foo
 ```
 
-デフォルトでは、チャートによって作成されるKubernetesリソース名は、『`＜リリース名＞-＜Chart名＞`』になる。
+デフォルトでは、チャートによって作成されるKubernetesリソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
 
-もし、`nameOverride`オプションを設定していた場合、Kubernetesリソース名は『`＜リリース名＞-＜nameOverrideオプションの値＞`』になる。
+もし、`nameOverride`オプションを設定していた場合、Kubernetesリソース名は『`＜Helmリリース名＞-＜nameOverrideオプションの値＞`』になる。
 
 補足としてチャートごとに、Kubernetesリソース名の前後に特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) がつくことがある。
 

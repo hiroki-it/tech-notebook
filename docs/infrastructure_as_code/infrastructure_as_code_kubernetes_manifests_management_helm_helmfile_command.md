@@ -146,16 +146,16 @@ $ helmfile -e dev destroy
 
 > - https://helmfile.readthedocs.io/en/latest/#destroy
 
-#### ▼ 特定のリリースのみ`destroy`したい
+#### ▼ 特定のHelmリリースのみ`destroy`したい
 
-`helmfile`コマンドで複数のリリースを一緒に管理している場合、特定のリリースのみ`destroy`できない。
+`helmfile`コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ`destroy`できない。
 
-代わりに、`helm uninstall`コマンドで特定のリリースを削除する。
+代わりに、`helm uninstall`コマンドで特定のHelmリリースを削除する。
 
 ```bash
-$ helm uninstall <リリース名>
+$ helm uninstall <Helmリリース名>
 
-# 削除したリリースのみが差分として出力される
+# 削除したHelmリリースのみが差分として出力される
 $ helmfile -e dev diff
 ```
 
