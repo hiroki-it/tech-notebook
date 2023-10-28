@@ -988,7 +988,7 @@ istio-initコンテナとかまさにその例
 
 特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。
 
-|      | 両方      | Podのみ                                                        | コンテナのみ                       |
+|      | 両方      | Podのみ                                                        | コンテナのみ                       |                                                              |
 | ---- | --------- | -------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
 | キー | runAsUser | runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など | fsGroup、fsGroupChangePolicy、など | privileged、allowPrivilegeEscalation、readOnlyRootFilesystem |
 
@@ -1098,19 +1098,14 @@ istio-initコンテナとかまさにその例
 
 小規模なアプリほど、メンバーは複数の役割を兼備することになる。
 
-|                | UserAccount | Roleの認可スコープ                     |
-| -------------- | ----------- | -------------------------------------- |
-| アプリメンバー | Reporter    | 担当するNamespace内のK8sリソースのRead |
-
-| インフラ寄り
-アプリメンバー | AppDeveloper | 担当するNamespace内のK8sリソースのRead/Write |
-| アプリ寄り
-インフラメンバー | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write |
-| インフラメンバー | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write |
-| チームリーダー | Maintainer | ・全てのNamespace内のK8sリソースのRead/Write
-・ClusterのRead/Write |
-| Cluster管理者
-(一時的に使用できる) | Administrator | Cluster、Cluster内の全てのK8sリソースのRead/Write |
+|                                   | UserAccount    | Roleの認可スコープ                                                |
+| --------------------------------- | -------------- | ----------------------------------------------------------------- |
+| アプリメンバー                    | Reporter       | 担当するNamespace内のK8sリソースのRead                            |
+| インフラ寄りアプリメンバー        | AppDeveloper   | 担当するNamespace内のK8sリソースのRead/Write                      |
+| アプリ寄りインフラメンバー        | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write                        |
+| インフラメンバー                  | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write                        |
+| チームリーダー                    | Maintainer     | ・全てのNamespace内のK8sリソースのRead/Write・ClusterのRead/Write |
+| Cluster管理者(一時的に使用できる) | Administrator  | Cluster、Cluster内の全てのK8sリソースのRead/Write                 |
 
 ### ■ リリース時以外は本番環境はReadのみとする
 
@@ -1352,7 +1347,7 @@ K8sリソースをグルーピングしたテナントを作成し、影響範�
 
 監視したいログを収集する。
 
-| パターン | DaemonSetパターン                        | Pod内サイドカーパターン                                                                                                                                  |
+| パターン | DaemonSetパターン                        | Pod内サイドカーパターン                                                                                                                                  |                                                                                                                                                                                                                   |
 | -------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 説明     | ログ収集ツールのPodをDaemonSetで動かす。 | Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保管する。FluentdやFluentBitを使用して、Node上のログを監視バックエンドに送信する。 | ログ収集ツールをPod内のサイドカーで動かす。ログ収集ツールが提供するドライバーを使用して、Pod内のアプリコンテナからログ収集コンテナにログを渡す。Pod内のログ収集コンテナから監視バックエンドにログを直接送信する。 |
 | …        |                                          |                                                                                                                                                          |
