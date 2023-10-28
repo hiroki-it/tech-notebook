@@ -5533,11 +5533,9 @@
 <p><br></p>
 <h1 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h1>
 <h2 id="_2">バックアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<hr />
 <p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に行う。</p>
 <p>もし単純に新しいKubernetesクラスターにビルド可能なmanifestsを再インストール(kubectl aplly)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
 <h2 id="dr">クラスターのDR構成<a class="headerlink" href="#dr" title="Permanent link">&para;</a></h2>
-<hr />
 <p>特定のリージョンのみにシステムを置いてしまうと、大規模な障害 (例：災害によるデータセンター大爆発！) があった場合に、システムのダウンタイムとなる。</p>
 <p>システムに持たせたい耐障害性などにもよるが、こういったリージョン単位での障害に備える場合は複数リージョンでKubernetesクラスターを構成することで耐障害性を高めることができる。</p>
 <p>複数リージョンでの構成には主に以下のパターンがある。</p>
@@ -5564,7 +5562,6 @@
 </table>
 <p>上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行った上で必要に応じてDR構成を検討する。</p>
 <h2 id="_3">ハードウェアをサイジングする<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="cpu">■ CPU / メモリをサイジングする<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <p>性能目標値に基づいて、Nodeのスペック/数を適切に選び、Cluster全体のCPU / メモリをサイジングする。</p>
 <p>ロードテストを実施して、実地的な状況 (例：平常時、ピーク時、障害時) な負荷を再現し、性能目標を達成できるかを検証する。</p>
@@ -5627,37 +5624,49 @@
 <h3 id="_4">■ ストレージをサイジングする<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>…</p>
 <h2 id="_5">適切な方法でアップグレードする<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_6">■ 適切なアップグレードを採用する<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>アップグレード以下のいずれかを採用する。</p>
-<p>| | インプレース方式 | ローリング方式
-(サージ方式、ライブ方式) | NodeグループB/G方式
-(マイグレーション方式) | Cluster B/G方式
-(マイグレーション方式) |
-| --- | --- | --- | --- | --- |
-| 説明 | 新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。</p>
-<p>既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。</p>
-<p>また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。 | アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。</p>
-<p>クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。</p>
-<p>例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。
-新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。</p>
-<p>GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。 | 現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。</p>
-<p>ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。
-一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。</p>
-<p>GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。 | 現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。</p>
-<p>開発者は、新Cluster上のコンテナの動作を確認する。
-問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。
-一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。
-|
-| 採用可能なオーケストレーター
-(2023/10時点) | kubeadm | AWS EKS、Google GKE | AWS EKS、Google GKE | AWS EKS、Google GKE |
-| 金銭コスト | 既存のNodeをそのまま使う。
-そのため、既存のコストと変わらない。
-| 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。</p>
-<p>そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。 | 新Nodeグループを作成することでNodeが二倍になる。</p>
-<p>そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。 | 新Clusterを作成することでNodeが二倍になる。</p>
-<p>そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。 |
-| 切り戻ししやすさ | しにくい | しにくい | しやすい | しやすい |</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>インプレース方式</th>
+<th>ローリング方式(サージ方式、ライブ方式)</th>
+<th>NodeグループB/G方式(マイグレーション方式)</th>
+<th>Cluster B/G方式(マイグレーション方式)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明</td>
+<td>新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。</td>
+<td>アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。 GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。</td>
+<td>現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。</td>
+<td>現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。開発者は、新Cluster上のコンテナの動作を確認する。問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。</td>
+</tr>
+<tr>
+<td>採用可能なオーケストレーター(2023/10時点)</td>
+<td>kubeadm</td>
+<td>AWS EKS、Google GKE</td>
+<td>AWS EKS、Google GKE</td>
+<td>AWS EKS、Google GKE</td>
+</tr>
+<tr>
+<td>金銭コスト</td>
+<td>既存のNodeをそのまま使う。そのため、既存のコストと変わらない。</td>
+<td>使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。</td>
+<td>新Nodeグループを作成することでNodeが二倍になる。そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。</td>
+<td>新Clusterを作成することでNodeが二倍になる。そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。</td>
+</tr>
+<tr>
+<td>切り戻ししやすさ</td>
+<td>しにくい</td>
+<td>しにくい</td>
+<td>しやすい</td>
+<td>しやすい</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">Control Plane - EKS Best Practices Guides</a></p>
 <p><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html">マネージド型ノードの更新動作 - Amazon EKS</a></p>
@@ -5694,14 +5703,12 @@
 </ul>
 <h1 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h1>
 <h2 id="_8">冗長化する<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<hr />
 <p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を行う。</p>
 <blockquote>
 <p><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">Why should a Kubernetes control plane be three nodes? - Sidero Labs</a></p>
 <p><a href="https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/">https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/</a></p>
 </blockquote>
 <h2 id="_9">ロードバランシングする<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<hr />
 <p>オンプレ環境などでkube-apiserverへのリクエストエンドポイントを手動で設定する必要がある場合、ロードバランサーを設定してkube-apiserverのPodへの負荷分散ができるようにする。</p>
 <p>ロードバランサーにはIPアドレスを付与してKubernetesクラスター内部と、Kubernetesクラスターのオペレーションが必要なIPアドレスからのリクエストを受け付けられるようにする。</p>
 <p>冗長化されたkube-apiserverに適切にインバウンドな通信を振り分けることにより、kube-apiserverの負荷を分散させる。</p>
@@ -5730,14 +5737,12 @@
 <p><a href="https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s">https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s</a></p>
 </blockquote>
 <h2 id="node_1">コントロールプレーンNodeを異なるトポロジーに分散させる<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h2>
-<hr />
 <p>冗長化したコントロールプレーンNodeを特定のトポロジー偏らせてに配置すると、その特定のトポロジーで障害が起こった場合に、コントロールプレーンNodeが全滅してしまう。</p>
 <p>そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/setup/best-practices/multiple-zones/">https://kubernetes.io/docs/setup/best-practices/multiple-zones/</a></p>
 </blockquote>
 <h2 id="kube-apiserver">kube-apiserverへのインバウンド通信を制限する<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h2>
-<hr />
 <p>kube-apiserverに対して、誰でもアクセスできてしまうことは危険である。</p>
 <p>そのため、必要最低限の開発者のみがアクセスできるように、インバウンド通信を制限する。</p>
 <ul>
@@ -5748,7 +5753,6 @@
 <li>必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。</li>
 </ul>
 <h2 id="_10">ハードウェアをサイジングする<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_11">■ ストレージをサイジングする<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンにetcdを作成する場合、etcdのディスクアクセスがクラスタ全体のパフォーマンスや安全性に影響するためSSDを利用する。
 ストレージ容量は最低限40GiB程度割り当てる。</p>
@@ -5758,13 +5762,11 @@
 </blockquote>
 <h1 id="etcd">Etcd<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h1>
 <h2 id="_12">バックアップする<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<hr />
 <p>障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/">https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/</a></p>
 </blockquote>
 <h2 id="_13">冗長化する<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<hr />
 <p>etcd Nodeは3台に冗長化する。</p>
 <blockquote>
 <p><a href="https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members">https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members</a></p>
@@ -5772,20 +5774,17 @@
 <p><a href="https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance">https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance</a></p>
 </blockquote>
 <h2 id="_14">高性能ストレージを利用する<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。</p>
 <blockquote>
 <p><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></p>
 </blockquote>
 <h2 id="raid">RAIDのミラーリングやパリティを利用しない<a class="headerlink" href="#raid" title="Permanent link">&para;</a></h2>
-<hr />
 <p>etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。</p>
 <blockquote>
 <p><a href="https://etcd.io/docs/v3.5/op-guide/hardware/#disks">https://etcd.io/docs/v3.5/op-guide/hardware/#disks</a></p>
 </blockquote>
 <h1 id="node_2">ワーカーNode<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h1>
 <h2 id="_15">冗長化する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<hr />
 <p>ワーカーNodeはPodの特性 (アプリ系、監視系、ロードバランサー系、バッチ系、サービスメッシュ系、など) ごとに作成する。</p>
 <p>また、ワーカーNodeをグループ化し、Nodeグループごとに冗長化の程度を設計する。</p>
 <p>Nodeグループの特徴に合った数だけ冗長化しつつ、N+1にすると良い。</p>
@@ -5878,14 +5877,11 @@
 </tbody>
 </table>
 <h2 id="_17">自動スケーリング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<hr />
 <p>IaaS環境でNode数をスケールさせることができる余地がある環境では動的にNode数をスケールさせることで処理量の増加に対して柔軟に対応することができるようになる。</p>
 <p>KubernetesではNodeに対する動的なスケール手段としてcluster autoscaler、Karpenterといったアプリケーションが用意されているため、これらを利用して自動スケーリングできるようにする。</p>
 <h2 id="oscpu">適切なOS、CPUアーキテクチャを選ぶ<a class="headerlink" href="#oscpu" title="Permanent link">&para;</a></h2>
-<hr />
 <p>コントロールプレーンNodeと重複するため、省略する。</p>
 <h2 id="_18">ハードウェアをサイジングする<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="cpu_1">■ CPU/メモリをサイジングする<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h3>
 <p>Nodeグループ内のPod数やCPU/メモリ要求の特徴に合った量を割り当てる。</p>
 <p>Cluster全体に割り当てられたハードウェアリソースを適切に分配できるように設計する。</p>
@@ -5994,11 +5990,9 @@
 <p>一方で、PrometheusはメトリクスをNodeのストレージに保管する (外部TSDBを使うにしても数日分は保管することになる)。</p>
 <h1 id="nodenode">コントロールプレーンNodeとワーカーNodeで共通のプラクティス<a class="headerlink" href="#nodenode" title="Permanent link">&para;</a></h1>
 <h2 id="_20">異なるゾーンに分散させる<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
-<hr />
 <p>冗長化したコントロールNodeとワーカーNodeを特定のゾーンに配置すると、そのゾーンのデータセンターで障害が起こった場合に、Nodeが全滅してしまう。</p>
 <p>異なるゾーンに分散させるように配置する。</p>
 <h2 id="oscpu_1">適切なOS、CPUアーキテクチャを選ぶ<a class="headerlink" href="#oscpu_1" title="Permanent link">&para;</a></h2>
-<hr />
 <ul>
 <li>OSは適切なの、くらいな表現になる</li>
 <li>CPUアーキテクチャ</li>
@@ -6008,7 +6002,6 @@
 </ul>
 <h1 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h1>
 <h2 id="ingress_1">Ingressインバウンド通信を制限する<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h2>
-<hr />
 <p>社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。</p>
 <p>Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Load Balancerコントローラー、GCE L7 load balancerコントローラー、など) が提供する機能を使用して、インバウンド通信を制限する。</p>
 <p>なお、Ingressのインバウンド通信を制限することはあっても、Egressのアウトバウンド通信を制限するとむしろ不便になるので、Egressのアウトバウンド通信は全て許可しておく。</p>
@@ -6019,7 +6012,6 @@
 <p><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/</a></p>
 </blockquote>
 <h2 id="ingressssltls">IngressをSSL/TLS終端にする<a class="headerlink" href="#ingressssltls" title="Permanent link">&para;</a></h2>
-<hr />
 <p>PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、様々な対処事項 (例：SSL証明書管理、相互TLSの有無) で実装難易度が上がる。</p>
 <p>仮にサービスメッシュを採用すれば対処しやすくなるが、採用しないのであれば自前での対処は大変である。</p>
 <p>IngressをSSL/TLS終端にすると、Podへの通信はHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。</p>
@@ -6027,7 +6019,6 @@
 <p><a href="https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/">https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/</a></p>
 </blockquote>
 <h2 id="ingressclassingressclassname">IngressClassの指定にingressClassnameを使用する<a class="headerlink" href="#ingressclassingressclassname" title="Permanent link">&para;</a></h2>
-<hr />
 <p>IngressClassの指定方法には、<code>.spec.ingressClassname</code> キーと<code>.metadata.annotations.kubernetes.io/ingress.class</code> キーがある。</p>
 <p><code>.spec.ingressClassname</code> キーの指定方法が推奨である。</p>
 <blockquote>
@@ -6035,14 +6026,12 @@
 </blockquote>
 <h1 id="cronjob">CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h1>
 <h2 id="failedjobshistorylimit">failedJobsHistoryLimitを設定する<a class="headerlink" href="#failedjobshistorylimit" title="Permanent link">&para;</a></h2>
-<hr />
 <p>CronJobでJobが失敗した時、CronJobはデフォルトで過去<code>1</code>回分の失敗しか履歴に残さない。</p>
 <p>トラブルシューティングしやすくするために、<code>.spec.startingDeadlineSeconds</code>キーで<code>3</code>回分以上を設定しておく。</p>
 <blockquote>
 <p><a href="https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk">https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk</a></p>
 </blockquote>
 <h2 id="startingdeadlineseconds">startingDeadlineSecondsを設定する<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h2>
-<hr />
 <p>CronJobのデフォルトの仕様として、Jobが<code>100</code>回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
 <p>この時、<code>.spec.startingDeadlineSeconds</code>キーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
 <p>そのため、Jobが再実行不可になりにくくなる。</p>
@@ -6051,18 +6040,15 @@
 </blockquote>
 <h1 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h1>
 <h2 id="ttlsecondsafterfinished">ttlSecondsAfterFinishedを設定する<a class="headerlink" href="#ttlsecondsafterfinished" title="Permanent link">&para;</a></h2>
-<hr />
 <p>デフォルトでは、失敗したJobはそのまま残る。</p>
 <p>ただ、監視ツールがこの失敗したJobのステータスをメトリクスとして収集し続けるため、アラートを発火し続けてしまう。</p>
 <p>この時、<code>.spec.ttlSecondsAfterFinished</code>キーを設定しておくと、Jobの成功/失敗にかかわらず、実行後のJob自体を自動的に削除できるようになる。</p>
 <p><code>.spec.ttlSecondsAfterFinished</code>キーには、Jobの実行終了後に何秒経過してからJob自体を削除するのかを設定する。</p>
 <h1 id="pod">Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h1>
 <h2 id="_21">冗長化する<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Workload (例：Deployment、StatefulSet、など) でPodを冗長化する。</p>
 <p>N+1個にすると良い。</p>
 <h2 id="_22">水平スケーリングする<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
-<hr />
 <p>HorizontalPodAutoscalerでPodを水平スケーリングする。</p>
 <p>水平スケーリングは、Podの負荷が高くなると Pod の台数を増やし、システム全体が高負荷で機能しなくなる状況を避けることができる。</p>
 <p>ただし、突発的な高負荷には弱く、Podの台数の増強が間に合わないことがある。突発的な負荷のタイミングが事前に分かっているなら、事前に最小台数を高めに設定しておく。</p>
@@ -6073,7 +6059,6 @@
 <p><a href="https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33">https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33</a></p>
 </blockquote>
 <h2 id="_23">ロードバランシングする<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="l7">L7のプロトコルの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
 <p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの上流にIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使わないIstio Ingress Gateway) を置く。</p>
 <p>L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。</p>
@@ -6086,13 +6071,11 @@
 <p><a href="https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods">https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods</a></p>
 </blockquote>
 <h2 id="pod_1">Podのインバウンド通信を制限する<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Podのインバウンド通信を全て許可することは危険である。</p>
 <p>そのため、NetworkPolicyを用いて特定のNamespace内のPodに一括して通信の制限する。</p>
 <p>ただし、Podの通信に関する様々な要件が上がるたびにNetworkPolicyを変更するのは大変なので、採用するかどうかはプロダクトの方針による。</p>
 <p>なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるので、アウトバウンド通信は全て許可しておく。</p>
 <h2 id="prestopterminationgraceperiodsecondspod">preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する<a class="headerlink" href="#prestopterminationgraceperiodsecondspod" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Podの終了プロセスが始まると、以下の一連のプロセスも開始する。</p>
 <ul>
 <li>Workload (例：Deployment、StatefulSet、など) が古いPodを切り離す。</li>
@@ -6110,7 +6093,6 @@
 <p><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></p>
 </blockquote>
 <h2 id="_24">ハードウェアをサイジングする<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="cpu_2">■ CPU/メモリをサイジングする<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h3>
 <p>Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。</p>
 <p>また、NodeのCPU/メモリの割り当てに関係するため、Podの合計数やPod当たりのCPU/メモリ要求量を算出しておく。</p>
@@ -6122,19 +6104,16 @@
 <h3 id="_25">■ ストレージをサイジングする<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>…</p>
 <h2 id="daemonsetstatefulsetpod">DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる<a class="headerlink" href="#daemonsetstatefulsetpod" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。</p>
 <p>この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。</p>
 <p>DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングすることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。</p>
 <p>また、StatefulSet配下のPodには状態を持たせることが多く、NodeからStatefulSet配下のPodが退避させられると、書き込み中のデータが欠損する可能性がある。</p>
 <p>そこで、<code>.spec.priorityClassName</code>キーを使用すると、Podのスケジューリング優先度を設定できる。</p>
 <h2 id="deploymentstatefulsetpoddisruptionbudge">DeploymentやStatefulSetを使用する場合はPodDisruptionBudgeも合わせて作成する<a class="headerlink" href="#deploymentstatefulsetpoddisruptionbudge" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。</p>
 <p>この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。</p>
 <p>そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</p>
 <h2 id="podnode-node">Podを異なるNodeに分散させる / 特定のNodeにスケジューリングする<a class="headerlink" href="#podnode-node" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Workload配下のPodを異なるNodeに分散させ、障害を防ぐ。</p>
 <p>また、NodeやNodeグループを指定してスケジューリングさせる。</p>
 <p>kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジューリングする。</p>
@@ -6203,7 +6182,6 @@
 <p><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/</a></p>
 </blockquote>
 <h2 id="_26">適切なストレージの種類を選ぶ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="generic-ephemeral-volumes">■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する<a class="headerlink" href="#generic-ephemeral-volumes" title="Permanent link">&para;</a></h3>
 <p>Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。</p>
 <p>大量の一時データを保管したい場合 (例：画像処理中間データ、音声処理中間データ、など) に役立つ。</p>
@@ -6245,7 +6223,6 @@
 <p><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></p>
 </blockquote>
 <h2 id="_27">適切なボリュームアクセスモードを選択する<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
-<hr />
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes</a></p>
 </blockquote>
@@ -6268,7 +6245,6 @@
 <li>例 機械学習モデルのパラメータストア</li>
 </ul>
 <h2 id="_28">ラベルを利用して目的に合ったストレージを選択する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h2>
-<hr />
 <p>アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。</p>
 <p>そこでストレージクラスやPersistentVolumeのラベルに<code>.metadata.label.storage-type=ssd</code>のようにストレージの種類などを設定し、<strong><code>spec.selector.matchLabels: storage-type: ssd</code></strong>のように指定することで利用用途に合ったストレージを選択することが出来る。</p>
 <blockquote>
@@ -6276,7 +6252,6 @@
 <p><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html</a></p>
 </blockquote>
 <h2 id="reclaim-policy">利用用途に合ったReclaim Policyを設定する<a class="headerlink" href="#reclaim-policy" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="delete">■ 特別な理由がない限りDeleteを指定する<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
 <p>KubernetesのデフォルトではReclaim PolicyがDeleteに指定されている。</p>
 <p>Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。</p>
@@ -6297,12 +6272,10 @@
 <p><a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle">https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle</a></p>
 </blockquote>
 <h2 id="podnode">ストレージをPodと同じNodeに作成する<a class="headerlink" href="#podnode" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Nodeを冗長化している場合、Workloadは配下のPodを各NodeにスケジューリングされるためPodがアクセスするストレージも同様のNodeに作成する必要がある。</p>
 <p>ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。</p>
 <p>そこで<code>topologySpreadConstraints</code>キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。</p>
 <h2 id="storageclasspersistentvolume">StorageClassやPersistentVolumeに適切なラベルを設定する<a class="headerlink" href="#storageclasspersistentvolume" title="Permanent link">&para;</a></h2>
-<hr />
 <p>PodからPersistentVolumeClaimを利用する場合ラベルなどがついていないと、適切なボリューム選択が困難になってしまう。</p>
 <p>そのためStorageClassやPersistentVolumeの<code>metadata.label</code>に<code>storage-type=ssd</code>や<code>iops=3000</code>、<code>environment=prd</code>などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>
 <blockquote>
@@ -6310,7 +6283,6 @@
 <p><a href="https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define">https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define</a></p>
 </blockquote>
 <h2 id="pod-node">Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する<a class="headerlink" href="#pod-node" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="hostipc">■ hostIPCを無効化する<a class="headerlink" href="#hostipc" title="Permanent link">&para;</a></h3>
 <p>Podの<code>.spec.hostIPC</code>キー有効化すると、Pod内のコンテナのホスト (Node) 間で同じIPC名前空間を使用するようになる。</p>
 <p>コンテナのプロセスは、同じIPC名前空間に属する任意のプロセスと通信できるようになる。</p>
@@ -6332,7 +6304,6 @@
 </blockquote>
 <h1 id="_29">コンテナ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h1>
 <h2 id="startupprobereadinessprobelivenessprobe">startupProbe、readinessProbe、livenessProbe、を設定する<a class="headerlink" href="#startupprobereadinessprobelivenessprobe" title="Permanent link">&para;</a></h2>
-<hr />
 <p>コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) する。</p>
 <table>
 <thead>
@@ -6390,7 +6361,6 @@
 <p><a href="https://thinkit.co.jp/article/17500">https://thinkit.co.jp/article/17500</a></p>
 </blockquote>
 <h2 id="cluster-dns">Cluster DNS に対する無駄な名前解決のリクエストを減らす<a class="headerlink" href="#cluster-dns" title="Permanent link">&para;</a></h2>
-<hr />
 <p>Cluster DNSとして<a href="https://coredns.io/">CoreDNS</a>などを利用している場合、無駄な名前解決のリクエストを減らすことで名前解決の安定性の向上やパフォーマンスを改善できる。</p>
 <p>Cluster外へのリクエストでは、ドメインの末尾にドットをつける。</p>
 <p>○: <code>www.google.com.</code></p>
@@ -6434,7 +6404,6 @@ options ndots:5
 <p><a href="https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/">https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/</a></p>
 </blockquote>
 <h2 id="_30">機密性の高い情報を守る<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="envconfigmap">■ env変数やConfigMapに機密性の高い情報を設定しない<a class="headerlink" href="#envconfigmap" title="Permanent link">&para;</a></h3>
 <p>env変数やConfigMapでは情報を平文で保持することになる。</p>
 <p>機密性の高い情報を保持することは危険であり、Secretで保持する方が良い。</p>
@@ -6479,7 +6448,6 @@ options ndots:5
 </tbody>
 </table>
 <h2 id="_31">ハードウェアリソース要求量の上限下限値は設定する<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
-<hr />
 <p>ハードウェアリソース要求量の上限 (<code>limits</code>) / 下限 (<code>requests</code>) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。</p>
 <p><code>.spec.containers[*].resources</code>キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
 <p>なお、コンテナの特性に合わせて、上限下限値を設定すると良い。</p>
@@ -6501,22 +6469,18 @@ options ndots:5
 <p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable">https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable</a></p>
 </blockquote>
 <h2 id="latest">イメージタグにlatestを設定しない<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h2>
-<hr />
 <p>イメージタグにlatestを指定すると、むやみに新しいバージョンのイメージタグをプルしてしまい、障害が起こりかねない。</p>
 <p>そこで、イメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。</p>
 <p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
 <h2 id="_32">イメージが更新された場合のみイメージレジストリからプルする<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
-<hr />
 <p>コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。</p>
 <p>そこで、<code>pullPolicy</code>キーに<code>IfNotPresent</code>を使用し、Node上にイメージのキャッシュがない場合のみプルできるようにする。</p>
 <p>K8sでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用することができる。</p>
 <p>デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。</p>
 <h2 id="node_3">Nodeに永続化データを持たせない<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h2>
-<hr />
 <p>StatefulSetを使用してNodeに永続化データを持たせた場合、Nodeの障害が永続化データにも影響を与えかねない。</p>
 <p>そこで、Nodeに永続化データを持たせずに、外部のサーバー (例：AWS RDS、MySQL) を使用する。</p>
 <h2 id="_33">コンテナにセッションデータを持たせない<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
-<hr />
 <p>StatefulSetを使用してコンテナにセッションデータを持たせた場合、以下が起こると、コンテナが入れ替わってコンテナ上のセッションデータを削除してしまう。</p>
 <ul>
 <li>Podが再起動する</li>
@@ -6533,7 +6497,6 @@ options ndots:5
 <p><a href="https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05">https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05</a></p>
 </blockquote>
 <h2 id="initcontainer">InitContainerを適切に使う<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="initcontainerpod">■ InitContainerで他のPodのコンテナの起動を待機する<a class="headerlink" href="#initcontainerpod" title="Permanent link">&para;</a></h3>
 <p>…</p>
 <h3 id="initcontainerdb">■ InitContainerで初期データをDBに挿入する<a class="headerlink" href="#initcontainerdb" title="Permanent link">&para;</a></h3>
@@ -6550,7 +6513,6 @@ options ndots:5
 <p>…</p>
 <h1 id="pod_2">Podとコンテナで共通のプラクティス<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h1>
 <h2 id="securitycontext">securityContextを適切に使い分ける<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="podsecuritycontext">■ PodとコンテナのsecurityContextを使い分ける<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h3>
 <p><code>securityContext</code>キーは、Podとコンテナのいずれかまたは両方に設定できるキーを持つ。</p>
 <p>特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。</p>
@@ -6619,7 +6581,6 @@ options ndots:5
 </blockquote>
 <h1 id="useraccount-role-clusterrole">UserAccount とRole / ClusterRole<a class="headerlink" href="#useraccount-role-clusterrole" title="Permanent link">&para;</a></h1>
 <h2 id="useraccountrole">UserAccountと最小権限のRoleを作成する<a class="headerlink" href="#useraccountrole" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="useraccount-clusterrole">■ UserAccount にはClusterRoleを紐付けない<a class="headerlink" href="#useraccount-clusterrole" title="Permanent link">&para;</a></h3>
 <p>最小権限にするため、UserAccountにはClusterRoleを紐付けない。</p>
 <p>代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにアクセスできるようにする。</p>
@@ -6657,7 +6618,6 @@ options ndots:5
 <h3 id="read">■ リリース時以外は本番環境はReadのみとする<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <p>実行環境の誤選択や悪意のある人のアクセスを防ぐために、リリース時以外は全てのUserAccountの本番環境の認可スコープをReadにする。</p>
 <h2 id="useraccount">本番環境ではUserAccountに不必要に権限を割り当てない<a class="headerlink" href="#useraccount" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="podsexecpodsattach">■ <code>pods/exec</code>や<code>pods/attach</code>を設定しない<a class="headerlink" href="#podsexecpodsattach" title="Permanent link">&para;</a></h3>
 <p>RoleやClusterRoleに設定できる<code>pods/exec</code>や<code>pods/attach</code> といった権限は、Pod内のコンテナに接続するために使用する。</p>
 <p>コンテナへの接続を許可してしまうと、コンテナ内から悪意のある人がサイバー攻撃を実施したり、あるいは悪意がない人が本来不必要な作業を実施するかもしれない。</p>
@@ -6673,7 +6633,6 @@ options ndots:5
 <p>…</p>
 <h1 id="_34">テスト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h1>
 <h2 id="_35">マニフェストのホワイトボックステスト<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_36">■ 文法の誤りをテストする<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <p>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検証する。</p>
 <table>
@@ -6815,7 +6774,6 @@ options ndots:5
 <p>RedHat上のOSSのCVE：<a href="https://access.redhat.com/security/security-updates/">https://access.redhat.com/security/security-updates/</a></p>
 </blockquote>
 <h2 id="helm">Helmチャートのホワイトボックステスト<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h2>
-<hr />
 <p>特に、マニフェストをHelmチャートから作成している場合に、以下のプラクティスを採用すべきである。</p>
 <h3 id="_40">■ 構造の誤りをテストする<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <p>チャートの公式ルールに基づいて、構造の誤り (valuesファイルがあるか、Chart.yamlがあるか、など) を検証する。</p>
@@ -6828,13 +6786,11 @@ options ndots:5
 <li>nova</li>
 </ul>
 <h2 id="_42">ブラックボックステスト<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_43">■ ロードテストを実施する<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
 <p>過去 (平常時、ピーク時、障害時) から予想できる負荷をClusterにかける。</p>
 <p>この時の性能が、非機能要件の期待値を満たしているかを検証する。</p>
 <h1 id="_44">運用<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h1>
 <h2 id="_45">運用しやすいチームを作る<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_46">■ チームを体制する<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
 <p>K8s Clusterを使用したプロダクトのチームメンバー構成の例を挙げる。</p>
 <p>前提として、実Clusterをマルチテナントの単位とし、テナントごとにClusterを管理しているとする。</p>
@@ -6954,21 +6910,44 @@ options ndots:5
 </tbody>
 </table>
 <h2 id="_48">運用しやすいテナントに分割する<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_49">■ マルチテナントパターン<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
 <p>K8sリソースをグルーピングしたテナントを作成し、影響範囲を小さくする。</p>
 <p>テナントには作成パターンがあり、それぞれのパターンでテナントに役割 (例：プロダクト、実行環境、など) を割り当てる。</p>
-<p>| パターン | Clusters
-as a Service | Control Plances
-as a Service | Namespaces
-as a Service | ツール固有
-テナント |
-| --- | --- | --- | --- | --- |
-| テナントの単位 | 実Clusterテナント | 仮想Cluster | Namespaceテナント | カスタムリソーステナント |
-| ツール | 実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
-| … | | | | |</p>
+<table>
+<thead>
+<tr>
+<th>パターン</th>
+<th>Clusters as a Service</th>
+<th>Control Plances as a Service</th>
+<th>Namespaces as a Service</th>
+<th>ツール固有テナント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>テナントの単位</td>
+<td>実Clusterテナント</td>
+<td>仮想Cluster</td>
+<td>Namespaceテナント</td>
+<td>カスタムリソーステナント</td>
+</tr>
+<tr>
+<td>ツール</td>
+<td>実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など)</td>
+<td>仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など)</td>
+<td>Namespaceを増やすだけなのでツール不要</td>
+<td>ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="_50">マニフェストを管理しやすくする<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="k8s">■ K8sリソースのラベル付けする<a class="headerlink" href="#k8s" title="Permanent link">&para;</a></h3>
 <p>マニフェストに意味付けするために、ラベルを付与する。</p>
 <table>
@@ -7018,7 +6997,6 @@ as a Service | ツール固有
 </ul>
 <h1 id="_52">監視<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h1>
 <h2 id="_53">監視したいデータを決める<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_54">■ ログを選ぶ<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
 <p>監視したいログを決める。</p>
 <p>むやみやたらにログを収集すると、保管が大変なため、必要最低限のログにする。</p>
@@ -7057,7 +7035,6 @@ as a Service | ツール固有
 </tbody>
 </table>
 <h2 id="_56">対象のデータを収集する<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h2>
-<hr />
 <h3 id="_57">■ ログを収集する<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
 <p>監視したいログを収集する。</p>
 <p>| パターン | DaemonSetパターン                        | Pod内サイドカーパターン                                                                                                                                  |
@@ -7068,7 +7045,6 @@ as a Service | ツール固有
 <p>監視したいメトリクスを収集する。</p>
 <p>ここにメトリクス収集の設計パターンを書く…</p>
 <h2 id="_59">収集したログ/メトリクスを保管する<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h2>
-<hr />
 <p>収集したログ/メトリクスをストレージに保管する。</p>
 <table>
 <thead>
