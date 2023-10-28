@@ -43,7 +43,7 @@ $ sudo apt-get install helm
 
 <br>
 
-### .apiVersion
+### apiVersion
 
 #### ▼ apiVersionとは
 
@@ -71,7 +71,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 <br>
 
-## 03. Chart.`.yaml`ファイル
+## 03. `Chart.yaml`ファイル
 
 ### apiVersion
 

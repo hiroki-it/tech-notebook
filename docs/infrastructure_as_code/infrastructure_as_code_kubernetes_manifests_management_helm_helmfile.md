@@ -292,23 +292,23 @@ releases:
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
     dependencies:
-      - chart: <チャートリポジトリ名>/foo-subchart
+      - chart: extra
         version: 1.0
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
-
-リリースを別にしてサブチャートをインストールすることもできるが、リリースが`1`個だけで十分ある点がよい。
+リリースを別にしてサブチャートをインストールすることもできるが、別のリリースを設定しなければならない。
 
 ```yaml
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
     name: foo-release
     version: 1.0
-  - chart: <チャートリポジトリ名>/foo-subchart
-    name: foo-sub-release
+  - chart: extra
+    name: extra-release
     version: 1.0
 ```
+
+> - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
 
 #### ▼ set
 
@@ -333,6 +333,28 @@ Helmリリース名を設定する。
 releases:
   - name: foo
 ```
+
+#### ▼ needs
+
+Helmリリースのインストール/アンインストールの順番を明示的に設定する。
+
+```yaml
+releases:
+  - name: foo
+    chart: <チャートリポジトリ名>/foo-chart
+  - name: bar
+    chart: <チャートリポジトリ名>/bar-chart
+    needs:
+      # fooリリースの次にインストールする
+      - foo
+  - name: baz
+    chart: <チャートリポジトリ名>/baz-chart
+    needs:
+      # barリリースの次にインストールする
+      - bar
+```
+
+> - https://helmfile.readthedocs.io/en/latest/#dag-aware-installationdeletion-ordering-with-needs
 
 #### ▼ namespace
 
