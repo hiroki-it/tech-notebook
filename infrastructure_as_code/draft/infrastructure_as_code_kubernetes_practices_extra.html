@@ -6516,9 +6516,26 @@ options ndots:5
 <h3 id="podsecuritycontext">■ PodとコンテナのsecurityContextを使い分ける<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h3>
 <p><code>securityContext</code>キーは、Podとコンテナのいずれかまたは両方に設定できるキーを持つ。</p>
 <p>特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。</p>
-<p>|      | 両方      | Podのみ                                                        | コンテナのみ                       |
-| ---- | --------- | -------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| キー | runAsUser | runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など | fsGroup、fsGroupChangePolicy、など | privileged、allowPrivilegeEscalation、readOnlyRootFilesystem |</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>両方</th>
+<th>Podのみ</th>
+<th>コンテナのみ</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>キー</td>
+<td>runAsUser</td>
+<td>runAsGroup、runAsNonRoot、seLinuxOptions、seccompProfile、など</td>
+<td>fsGroup、fsGroupChangePolicy、など</td>
+<td>privileged、allowPrivilegeEscalation、readOnlyRootFilesystem</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/">https://kubernetes.io/docs/concepts/security/pod-security-standards/</a></p>
 <p><a href="https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/">https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/</a></p>
@@ -6604,17 +6621,33 @@ options ndots:5
 <td>Reporter</td>
 <td>担当するNamespace内のK8sリソースのRead</td>
 </tr>
+<tr>
+<td>インフラ寄りアプリメンバー</td>
+<td>AppDeveloper</td>
+<td>担当するNamespace内のK8sリソースのRead/Write</td>
+</tr>
+<tr>
+<td>アプリ寄りインフラメンバー</td>
+<td>InfraDeveloper</td>
+<td>全てのNamespace内のK8sリソースのRead/Write</td>
+</tr>
+<tr>
+<td>インフラメンバー</td>
+<td>InfraDeveloper</td>
+<td>全てのNamespace内のK8sリソースのRead/Write</td>
+</tr>
+<tr>
+<td>チームリーダー</td>
+<td>Maintainer</td>
+<td>・全てのNamespace内のK8sリソースのRead/Write・ClusterのRead/Write</td>
+</tr>
+<tr>
+<td>Cluster管理者(一時的に使用できる)</td>
+<td>Administrator</td>
+<td>Cluster、Cluster内の全てのK8sリソースのRead/Write</td>
+</tr>
 </tbody>
 </table>
-<p>| インフラ寄り
-アプリメンバー | AppDeveloper | 担当するNamespace内のK8sリソースのRead/Write |
-| アプリ寄り
-インフラメンバー | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write |
-| インフラメンバー | InfraDeveloper | 全てのNamespace内のK8sリソースのRead/Write |
-| チームリーダー | Maintainer | ・全てのNamespace内のK8sリソースのRead/Write
-・ClusterのRead/Write |
-| Cluster管理者
-(一時的に使用できる) | Administrator | Cluster、Cluster内の全てのK8sリソースのRead/Write |</p>
 <h3 id="read">■ リリース時以外は本番環境はReadのみとする<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <p>実行環境の誤選択や悪意のある人のアクセスを防ぐために、リリース時以外は全てのUserAccountの本番環境の認可スコープをReadにする。</p>
 <h2 id="useraccount">本番環境ではUserAccountに不必要に権限を割り当てない<a class="headerlink" href="#useraccount" title="Permanent link">&para;</a></h2>
@@ -7037,10 +7070,30 @@ options ndots:5
 <h2 id="_56">対象のデータを収集する<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h2>
 <h3 id="_57">■ ログを収集する<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
 <p>監視したいログを収集する。</p>
-<p>| パターン | DaemonSetパターン                        | Pod内サイドカーパターン                                                                                                                                  |
-| -------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 説明     | ログ収集ツールのPodをDaemonSetで動かす。 | Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保管する。FluentdやFluentBitを使用して、Node上のログを監視バックエンドに送信する。 | ログ収集ツールをPod内のサイドカーで動かす。ログ収集ツールが提供するドライバーを使用して、Pod内のアプリコンテナからログ収集コンテナにログを渡す。Pod内のログ収集コンテナから監視バックエンドにログを直接送信する。 |
-| …        |                                          |                                                                                                                                                          |</p>
+<table>
+<thead>
+<tr>
+<th>パターン</th>
+<th>DaemonSetパターン</th>
+<th>Pod内サイドカーパターン</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>説明</td>
+<td>ログ収集ツールのPodをDaemonSetで動かす。</td>
+<td>Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保管する。FluentdやFluentBitを使用して、Node上のログを監視バックエンドに送信する。</td>
+<td>ログ収集ツールをPod内のサイドカーで動かす。ログ収集ツールが提供するドライバーを使用して、Pod内のアプリコンテナからログ収集コンテナにログを渡す。Pod内のログ収集コンテナから監視バックエンドにログを直接送信する。</td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="_58">■ メトリクスを収集する<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h3>
 <p>監視したいメトリクスを収集する。</p>
 <p>ここにメトリクス収集の設計パターンを書く…</p>
