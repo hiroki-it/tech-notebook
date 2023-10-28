@@ -542,8 +542,8 @@ nav:
           - Nodeコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_command.md
           - ネットワーク: infrastructure_as_code/infrastructure_as_code_kubernetes_network.md
+      - ■ プラクティス集:
           - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_practices.md
-      - ■ アーキテクチャ特性:
           - K8s Cluster: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.md
           - K8sコンポーネント: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.md
           - K8sリソース: infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.md
@@ -624,7 +624,6 @@ nav:
           - ArgoCD: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd.md
           - コマンド: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_command.md
           - プラクティス集: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.md
-          - アーキテクチャ特性: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_practices.md
           - ■ リソース定義:
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition.md
               - 共通項目: infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_resource_definition_common.md
