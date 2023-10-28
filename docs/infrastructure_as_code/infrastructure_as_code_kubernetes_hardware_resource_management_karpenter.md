@@ -389,7 +389,7 @@ spec:
 
 ### subnetSelector
 
-EC2ワーカーNodeがあるサブネットを設定する。
+EC2ワーカーNodeをプロビジョニングするサブネットを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
@@ -402,6 +402,7 @@ spec:
 ```
 
 > - https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 
 <br>
 
@@ -420,5 +421,6 @@ spec:
 ```
 
 > - https://karpenter.sh/docs/concepts/node-templates/#spectags
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 
 <br>

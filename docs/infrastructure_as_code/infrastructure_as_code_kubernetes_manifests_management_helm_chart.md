@@ -223,8 +223,22 @@ name: foo
 
 チャートのタイプを設定する。
 
+#### ▼ application
+
+Kubernetesリソースを含むチャートであることを表す。
+
 ```yaml
 type: application
+```
+
+> - https://helm.sh/docs/topics/charts/#chart-types
+
+#### ▼ library
+
+Kubernetesリソースを含まず、関数のみを含むチャートであることを表す。
+
+```yaml
+type: library
 ```
 
 > - https://helm.sh/docs/topics/charts/#chart-types
