@@ -538,7 +538,7 @@ GitHub Actionsであれば、CI上にCluster構築するActionが提供されて
 
 ### デプロイ
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+Kubernetesのプラクティスになるため、ここでは省略する。
 
 <br>
 
@@ -550,7 +550,7 @@ GitHub Actionsであれば、CI上にCluster構築するActionが提供されて
 
 #### ▼ Helm以外を使用する場合
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_policy.html
+Kubernetesのプラクティスになるため、ここでは省略する。
 
 <br>
 
@@ -558,6 +558,6 @@ GitHub Actionsであれば、CI上にCluster構築するActionが提供されて
 
 ### デプロイの通知
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_cncf_project_argocd_policy.html
+Kubernetesのプラクティスになるため、ここでは省略する。
 
 <br>

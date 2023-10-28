@@ -279,8 +279,6 @@ func main() {
 
 詳しくは、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
-
 ```go
 package main
 
@@ -332,6 +330,8 @@ func main() {
 	fmt.Printf("%#v\n", person.getName().fullName()) // "Hiroki Hasegawa"
 }
 ```
+
+> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 #### ▼ 埋め込みによる委譲
 

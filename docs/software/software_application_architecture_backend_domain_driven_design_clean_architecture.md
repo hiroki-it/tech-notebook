@@ -198,8 +198,6 @@ CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。
 
 ユースケース図については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
-
 **＊実装例＊**
 
 バックエンドをAPIとして使用する場合、プレゼンターは不要となる。
@@ -326,6 +324,8 @@ class FooInteractor
     }
 }
 ```
+
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
 
 <br>
 

@@ -17,9 +17,9 @@ description: クラス＠PHPの知見を記録しています。
 
 ### has-one、has-manyな関係性とは
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
-
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
+
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
 
 <br>
 
@@ -243,9 +243,11 @@ $car = new Car();
 
 ### is-a-kind-ofな関係性とは
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
-
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
+
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
+
+<br>
 
 ### Generalization (汎化)
 
@@ -905,7 +907,7 @@ class Bar
 
 ### useな関係とは
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_analysis_and_design.html
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
 
 <br>
 

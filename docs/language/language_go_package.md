@@ -505,10 +505,6 @@ db.Save(&user)
 
 Goではオブジェクトの概念がないため、モックオブジェクトとは言わない。
 
-モックとスタブについては、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
-
 <br>
 
 ### mock、assert
@@ -593,10 +589,6 @@ func (mock *MockedAmplifyAPI) GetBranch(ctx context.Context, params *aws_amplify
 テスト関数を実行する直前に、事前処理を実行する。
 
 モックの作成のために使用すると良い。
-
-PHPUnitにおける事前処理と事後処理については、以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_php.html
 
 事前処理と事後処理については、以下のリンクを参考にせよ。
 
