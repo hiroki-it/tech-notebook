@@ -256,6 +256,63 @@ releases:
   - atomic: true
 ```
 
+#### ▼ chart
+
+Helmリリース対象のチャートへのパスを設定する。
+
+```yaml
+releases:
+  - chart: <チャートリポジトリ名>/foo-chart
+```
+
+#### ▼ createNamespace
+
+`helm install`コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
+
+デフォルトで`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
+
+ただし、Namespaceので出どころがわからなくなるため、Helmfileの`createNamespace`オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
+
+```yaml
+releases:
+  - createNamespace: false
+```
+
+#### ▼ dependencies
+
+依存先のチャートを設定する。
+
+公式チャートに追加してマニフェストを作成したい場合、`values`ファイルの`extraTemplates`キーや`extraTemplates`キーを使用することになる。
+
+しかし、公式チャートでこれを用意していないことがある。
+
+その場合、自前でサブチャートを作成し、依存先のチャートとしてインストールする必要がある。
+
+```yaml
+releases:
+  - chart: <チャートリポジトリ名>/foo-chart
+    dependencies: true
+      - chart: <チャートリポジトリ名>/foo-subchart
+        version: 1.0
+```
+
+> - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
+
+#### ▼ set
+
+Helmの実行時に出力する`values`の値を設定する。
+
+キー名にドットを含む場合、エスケープする必要がある。
+
+```yaml
+releases:
+  - set:
+      - name: foo
+        value: FOO
+      - name: bar\.enabled
+        value: true
+```
+
 #### ▼ name
 
 Helmリリース名を設定する。
@@ -276,37 +333,6 @@ releases:
 ```yaml
 releases:
   - namespace: foo-namespace
-```
-
-#### ▼ createNamespace
-
-`helm install`コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
-
-デフォルトで`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
-
-ただし、Namespaceので出どころがわからなくなるため、Helmfileの`createNamespace`オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
-
-```yaml
-releases:
-  - createNamespace: false
-```
-
-#### ▼ chart
-
-Helmリリース対象のチャートへのパスを設定する。
-
-```yaml
-releases:
-  - chart: <チャートリポジトリ名>/foo-chart
-```
-
-#### ▼ version
-
-Helmリリースのバージョンを設定する。
-
-```yaml
-releases:
-  - version: <バージョンタグ>
 ```
 
 #### ▼ values
@@ -330,19 +356,13 @@ environments:
 releases: ...
 ```
 
-#### ▼ set
+#### ▼ version
 
-Helmの実行時に出力する`values`の値を設定する。
-
-キー名にドットを含む場合、エスケープする必要がある。
+Helmリリースのバージョンを設定する。
 
 ```yaml
 releases:
-  - set:
-      - name: foo
-        value: FOO
-      - name: bar\.enabled
-        value: true
+  - version: <バージョンタグ>
 ```
 
 <br>
