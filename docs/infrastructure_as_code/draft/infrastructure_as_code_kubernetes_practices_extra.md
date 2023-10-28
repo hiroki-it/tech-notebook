@@ -17,15 +17,11 @@ description: 追加のプラクティス集＠Kubernetesの知見を記録して
 
 ## バックアップ
 
----
-
 例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：[velero](https://velero.io/)) を使用してクラスターバックアップを定期的に行う。
 
 もし単純に新しいKubernetesクラスターにビルド可能なmanifestsを再インストール(kubectl aplly)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。
 
 ## クラスターのDR構成
-
----
 
 特定のリージョンのみにシステムを置いてしまうと、大規模な障害 (例：災害によるデータセンター大爆発！) があった場合に、システムのダウンタイムとなる。
 
@@ -41,8 +37,6 @@ description: 追加のプラクティス集＠Kubernetesの知見を記録して
 上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行った上で必要に応じてDR構成を検討する。
 
 ## ハードウェアをサイジングする
-
----
 
 ### ■ CPU / メモリをサイジングする
 
@@ -81,51 +75,16 @@ description: 追加のプラクティス集＠Kubernetesの知見を記録して
 
 ## 適切な方法でアップグレードする
 
----
-
 ### ■ 適切なアップグレードを採用する
 
 アップグレード以下のいずれかを採用する。
 
-| | インプレース方式 | ローリング方式
-(サージ方式、ライブ方式) | NodeグループB/G方式
-(マイグレーション方式) | Cluster B/G方式
-(マイグレーション方式) |
-| --- | --- | --- | --- | --- |
-| 説明 | 新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。
-
-既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。
-
-また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。 | アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。
-
-クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。
-
-例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。
-新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。
-
-GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。 | 現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。
-
-ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。
-一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。
-
-GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。 | 現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。
-
-開発者は、新Cluster上のコンテナの動作を確認する。
-問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。
-一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。
-|
-| 採用可能なオーケストレーター
-(2023/10時点) | kubeadm | AWS EKS、Google GKE | AWS EKS、Google GKE | AWS EKS、Google GKE |
-| 金銭コスト | 既存のNodeをそのまま使う。
-そのため、既存のコストと変わらない。
-| 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。
-
-そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。 | 新Nodeグループを作成することでNodeが二倍になる。
-
-そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。 | 新Clusterを作成することでNodeが二倍になる。
-
-そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。 |
-| 切り戻ししやすさ | しにくい | しにくい | しやすい | しやすい |
+|                                           | インプレース方式                                                                                                                                                                                                                                                                    | ローリング方式(サージ方式、ライブ方式)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | NodeグループB/G方式(マイグレーション方式)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Cluster B/G方式(マイグレーション方式)                                                                                                                                                                                                                                                     |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 説明                                      | 新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。 | アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。 GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。 | 現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。 | 現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。開発者は、新Cluster上のコンテナの動作を確認する。問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。 |
+| 採用可能なオーケストレーター(2023/10時点) | kubeadm                                                                                                                                                                                                                                                                             | AWS EKS、Google GKE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | AWS EKS、Google GKE                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | AWS EKS、Google GKE                                                                                                                                                                                                                                                                       |
+| 金銭コスト                                | 既存のNodeをそのまま使う。そのため、既存のコストと変わらない。                                                                                                                                                                                                                      | 使用するマネージドサービスや、アップデート設定にもよるが、新Nodeを作成するような設定の場合は新Nodeを作成した後に旧Nodeをドレインするまでの間、Nodeの台数が増えることになるのでコストが多く発生することになる。そのため、アップグレードの際に増えるNode台数を予め計測しておきアップグレードにかかるコストについて見積もりをとっておくようにする。                                                                                                                                                                                           | 新Nodeグループを作成することでNodeが二倍になる。そのため、金銭コスト見積もりでは各Nodeグループのアップグレードの間、平常時の2倍コストがかかることを想定しておく。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 新Clusterを作成することでNodeが二倍になる。そのため、金銭コスト見積もりではクラスターアップグレードを実施~動作確認などを経て旧クラスター削除するまでの間、平常時の2倍コストがかかることを想定しておく。                                                                                   |
+| 切り戻ししやすさ                          | しにくい                                                                                                                                                                                                                                                                            | しにくい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | しやすい                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | しやすい                                                                                                                                                                                                                                                                                  |
 
 > [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
 
@@ -168,8 +127,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 
 ## 冗長化する
 
----
-
 オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは`3`台以上に設定して冗長化を行う。
 
 > [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/)
@@ -177,8 +134,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 > [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
 
 ## ロードバランシングする
-
----
 
 オンプレ環境などでkube-apiserverへのリクエストエンドポイントを手動で設定する必要がある場合、ロードバランサーを設定してkube-apiserverのPodへの負荷分散ができるようにする。
 
@@ -195,8 +150,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 
 ## コントロールプレーンNodeを異なるトポロジーに分散させる
 
----
-
 冗長化したコントロールプレーンNodeを特定のトポロジー偏らせてに配置すると、その特定のトポロジーで障害が起こった場合に、コントロールプレーンNodeが全滅してしまう。
 
 そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。
@@ -204,8 +157,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 > [https://kubernetes.io/docs/setup/best-practices/multiple-zones/](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)
 
 ## kube-apiserverへのインバウンド通信を制限する
-
----
 
 kube-apiserverに対して、誰でもアクセスできてしまうことは危険である。
 
@@ -218,8 +169,6 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
   - 必要最低限の開発者にのみアカウントを発行する。この時にSSOの仕組みを採用し、kube-apiserverの認証をIDプロバイダー (例：Keycloak、Okta) に委譲すると、kube-apiserverで大量のUserAccountを管理する必要がなくなる。
 
 ## ハードウェアをサイジングする
-
----
 
 ### ■ ストレージをサイジングする
 
@@ -234,15 +183,11 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 
 ## バックアップする
 
----
-
 障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。
 
 > [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
 
 ## 冗長化する
-
----
 
 etcd Nodeは3台に冗長化する。
 
@@ -254,15 +199,11 @@ etcd Nodeは3台に冗長化する。
 
 ## 高性能ストレージを利用する
 
----
-
 Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。
 
 > [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
 
 ## RAIDのミラーリングやパリティを利用しない
-
----
 
 etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。
 
@@ -271,8 +212,6 @@ etcdはRaft合意アルゴリズムを利用しており、3台以上のクラ�
 # ワーカーNode
 
 ## 冗長化する
-
----
 
 ワーカーNodeはPodの特性 (アプリ系、監視系、ロードバランサー系、バッチ系、サービスメッシュ系、など) ごとに作成する。
 
@@ -307,21 +246,15 @@ Nodeグループの特徴に合った数だけ冗長化しつつ、N+1にする�
 
 ## 自動スケーリング
 
----
-
 IaaS環境でNode数をスケールさせることができる余地がある環境では動的にNode数をスケールさせることで処理量の増加に対して柔軟に対応することができるようになる。
 
 KubernetesではNodeに対する動的なスケール手段としてcluster autoscaler、Karpenterといったアプリケーションが用意されているため、これらを利用して自動スケーリングできるようにする。
 
 ## 適切なOS、CPUアーキテクチャを選ぶ
 
----
-
 コントロールプレーンNodeと重複するため、省略する。
 
 ## ハードウェアをサイジングする
-
----
 
 ### ■ CPU/メモリをサイジングする
 
@@ -362,15 +295,11 @@ Nodeグループにあったストレージを割り当てる。
 
 ## 異なるゾーンに分散させる
 
----
-
 冗長化したコントロールNodeとワーカーNodeを特定のゾーンに配置すると、そのゾーンのデータセンターで障害が起こった場合に、Nodeが全滅してしまう。
 
 異なるゾーンに分散させるように配置する。
 
 ## 適切なOS、CPUアーキテクチャを選ぶ
-
----
 
 - OSは適切なの、くらいな表現になる
 - CPUアーキテクチャ
@@ -381,8 +310,6 @@ Nodeグループにあったストレージを割り当てる。
 # Ingress
 
 ## Ingressインバウンド通信を制限する
-
----
 
 社内向けアプリケーションやテスト環境で、インバウンドな通信を全て許可することは危険である。
 
@@ -400,8 +327,6 @@ Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Loa
 
 ## IngressをSSL/TLS終端にする
 
----
-
 PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用することになるため、様々な対処事項 (例：SSL証明書管理、相互TLSの有無) で実装難易度が上がる。
 
 仮にサービスメッシュを採用すれば対処しやすくなるが、採用しないのであれば自前での対処は大変である。
@@ -411,8 +336,6 @@ IngressをSSL/TLS終端にすると、Podへの通信はHTTP通信になって�
 > [https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/](https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/)
 
 ## IngressClassの指定にingressClassnameを使用する
-
----
 
 IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata.annotations.kubernetes.io/ingress.class` キーがある。
 
@@ -424,8 +347,6 @@ IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata
 
 ## failedJobsHistoryLimitを設定する
 
----
-
 CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の失敗しか履歴に残さない。
 
 トラブルシューティングしやすくするために、`.spec.startingDeadlineSeconds`キーで`3`回分以上を設定しておく。
@@ -433,8 +354,6 @@ CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の
 > [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
 
 ## startingDeadlineSecondsを設定する
-
----
 
 CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。
 
@@ -448,8 +367,6 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 
 ## ttlSecondsAfterFinishedを設定する
 
----
-
 デフォルトでは、失敗したJobはそのまま残る。
 
 ただ、監視ツールがこの失敗したJobのステータスをメトリクスとして収集し続けるため、アラートを発火し続けてしまう。
@@ -462,15 +379,11 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 
 ## 冗長化する
 
----
-
 Workload (例：Deployment、StatefulSet、など) でPodを冗長化する。
 
 N+1個にすると良い。
 
 ## 水平スケーリングする
-
----
 
 HorizontalPodAutoscalerでPodを水平スケーリングする。
 
@@ -488,8 +401,6 @@ metrics-serverはデフォルトでClusterに存在していないので、別�
 
 ## ロードバランシングする
 
----
-
 ### L7のプロトコルの場合
 
 冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの上流にIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使わないIstio Ingress Gateway) を置く。
@@ -506,8 +417,6 @@ L7ロードバランサーが冗長化されたNodeに適切にインバウン�
 
 ## Podのインバウンド通信を制限する
 
----
-
 Podのインバウンド通信を全て許可することは危険である。
 
 そのため、NetworkPolicyを用いて特定のNamespace内のPodに一括して通信の制限する。
@@ -517,8 +426,6 @@ Podのインバウンド通信を全て許可することは危険である。
 なお、Podのインバウンド通信を制限することはあっても、アウトバウンド通信を制限するとむしろ不便になるので、アウトバウンド通信は全て許可しておく。
 
 ## preStopとterminationGracePeriodSecondsを組み合わせてPodを安全に終了する
-
----
 
 Podの終了プロセスが始まると、以下の一連のプロセスも開始する。
 
@@ -544,8 +451,6 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 
 ## ハードウェアをサイジングする
 
----
-
 ### ■ CPU/メモリをサイジングする
 
 Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモリを割り当てる。
@@ -564,8 +469,6 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 
 ## DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる
 
----
-
 Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。
 
 この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。
@@ -578,8 +481,6 @@ DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリング�
 
 ## DeploymentやStatefulSetを使用する場合はPodDisruptionBudgeも合わせて作成する
 
----
-
 Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。
 
 この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。
@@ -587,8 +488,6 @@ Nodeのスケールインやアップグレード時に、Nodeはドレイン処
 そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。
 
 ## Podを異なるNodeに分散させる / 特定のNodeにスケジューリングする
-
----
 
 Workload配下のPodを異なるNodeに分散させ、障害を防ぐ。
 
@@ -690,8 +589,6 @@ spec:
 
 ## 適切なストレージの種類を選ぶ
 
----
-
 ### ■ 大規模な一時的ストレージを必要とする場合はGeneric Ephemeral Volumesを使用する
 
 Generic Ephemeral Volumesを使用して、PodのデータをK8s外部のストレージ (例：AWS EBS) に一時的に保管できる。
@@ -758,8 +655,6 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 
 ## 適切なボリュームアクセスモードを選択する
 
----
-
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
 
 ### ■ 独自ファイルシステムやファイルのロックが影響する場合は`.spec.accessMode=ReadWriteOnce`を割り当てる
@@ -787,8 +682,6 @@ ConfigMapに保存するには大きすぎる設定ファイルや共通デー�
 
 ## ラベルを利用して目的に合ったストレージを選択する
 
----
-
 アプリケーションによってストレージに求める性能は異なるため、利用用途に合わせて適したスペックのストレージを割り当てる必要がある。
 
 そこでストレージクラスやPersistentVolumeのラベルに`.metadata.label.storage-type=ssd`のようにストレージの種類などを設定し、**`spec.selector.matchLabels: storage-type: ssd`**のように指定することで利用用途に合ったストレージを選択することが出来る。
@@ -798,8 +691,6 @@ ConfigMapに保存するには大きすぎる設定ファイルや共通デー�
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html)
 
 ## 利用用途に合ったReclaim Policyを設定する
-
----
 
 ### ■ 特別な理由がない限りDeleteを指定する
 
@@ -829,8 +720,6 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 
 ## ストレージをPodと同じNodeに作成する
 
----
-
 Nodeを冗長化している場合、Workloadは配下のPodを各NodeにスケジューリングされるためPodがアクセスするストレージも同様のNodeに作成する必要がある。
 
 ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。
@@ -838,8 +727,6 @@ Nodeを冗長化している場合、Workloadは配下のPodを各Nodeにスケ�
 そこで`topologySpreadConstraints`キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。
 
 ## StorageClassやPersistentVolumeに適切なラベルを設定する
-
----
 
 PodからPersistentVolumeClaimを利用する場合ラベルなどがついていないと、適切なボリューム選択が困難になってしまう。
 
@@ -850,8 +737,6 @@ PodからPersistentVolumeClaimを利用する場合ラベルなどがついて�
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define)
 
 ## Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する
-
----
 
 ### ■ hostIPCを無効化する
 
@@ -887,8 +772,6 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 ## startupProbe、readinessProbe、livenessProbe、を設定する
 
----
-
 コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) する。
 
 |                                                                                  | StartupProbe                                                                                                                                                       | LivenessProbe                                                                                                                                                                                                                                                                                                                   | ReadinessProbe                                                                                                 |
@@ -911,8 +794,6 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 > [https://thinkit.co.jp/article/17500](https://thinkit.co.jp/article/17500)
 
 ## Cluster DNS に対する無駄な名前解決のリクエストを減らす
-
----
 
 Cluster DNSとして[CoreDNS](https://coredns.io/)などを利用している場合、無駄な名前解決のリクエストを減らすことで名前解決の安定性の向上やパフォーマンスを改善できる。
 
@@ -975,8 +856,6 @@ Podは、Cluster DNSに名前解決のリクエストを送信する前に、一
 
 ## 機密性の高い情報を守る
 
----
-
 ### ■ env変数やConfigMapに機密性の高い情報を設定しない
 
 env変数やConfigMapでは情報を平文で保持することになる。
@@ -1000,8 +879,6 @@ Secretは、base64方式のエンコード値を保持する。
 | Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。 |
 
 ## ハードウェアリソース要求量の上限下限値は設定する
-
----
 
 ハードウェアリソース要求量の上限 (`limits`) / 下限 (`requests`) 値を設定しないと、コンテナはハードウェアリソースを自由に要求してしまい、Nodeのハードウェアリソース不足になりかねない。
 
@@ -1037,8 +914,6 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように設
 
 ## イメージタグにlatestを設定しない
 
----
-
 イメージタグにlatestを指定すると、むやみに新しいバージョンのイメージタグをプルしてしまい、障害が起こりかねない。
 
 そこで、イメージはセマンティックバージョニングでタグ付けし、特定のバージョンをプルする。
@@ -1046,8 +921,6 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように設
 なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定することもできるが、K8sがNodeのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。
 
 ## イメージが更新された場合のみイメージレジストリからプルする
-
----
 
 コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。
 
@@ -1059,15 +932,11 @@ K8sでは、一度プルしたコンテナイメージを基本的に削除し�
 
 ## Nodeに永続化データを持たせない
 
----
-
 StatefulSetを使用してNodeに永続化データを持たせた場合、Nodeの障害が永続化データにも影響を与えかねない。
 
 そこで、Nodeに永続化データを持たせずに、外部のサーバー (例：AWS RDS、MySQL) を使用する。
 
 ## コンテナにセッションデータを持たせない
-
----
 
 StatefulSetを使用してコンテナにセッションデータを持たせた場合、以下が起こると、コンテナが入れ替わってコンテナ上のセッションデータを削除してしまう。
 
@@ -1088,8 +957,6 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 > [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
 
 ## InitContainerを適切に使う
-
----
 
 ### ■ InitContainerで他のPodのコンテナの起動を待機する
 
@@ -1114,8 +981,6 @@ istio-initコンテナとかまさにその例
 # Podとコンテナで共通のプラクティス
 
 ## securityContextを適切に使い分ける
-
----
 
 ### ■ PodとコンテナのsecurityContextを使い分ける
 
@@ -1219,8 +1084,6 @@ istio-initコンテナとかまさにその例
 
 ## UserAccountと最小権限のRoleを作成する
 
----
-
 ### ■ UserAccount にはClusterRoleを紐付けない
 
 最小権限にするため、UserAccountにはClusterRoleを紐付けない。
@@ -1255,8 +1118,6 @@ istio-initコンテナとかまさにその例
 
 ## 本番環境ではUserAccountに不必要に権限を割り当てない
 
----
-
 ### ■ `pods/exec`や`pods/attach`を設定しない
 
 RoleやClusterRoleに設定できる`pods/exec`や`pods/attach` といった権限は、Pod内のコンテナに接続するために使用する。
@@ -1282,8 +1143,6 @@ RoleやClusterRoleに設定できる`pods/exec`や`pods/attach` といった権�
 # テスト
 
 ## マニフェストのホワイトボックステスト
-
----
 
 ### ■ 文法の誤りをテストする
 
@@ -1356,8 +1215,6 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 ## Helmチャートのホワイトボックステスト
 
----
-
 特に、マニフェストをHelmチャートから作成している場合に、以下のプラクティスを採用すべきである。
 
 ### ■ 構造の誤りをテストする
@@ -1374,8 +1231,6 @@ Helmチャートのバージョンを検証する。
 
 ## ブラックボックステスト
 
----
-
 ### ■ ロードテストを実施する
 
 過去 (平常時、ピーク時、障害時) から予想できる負荷をClusterにかける。
@@ -1385,8 +1240,6 @@ Helmチャートのバージョンを検証する。
 # 運用
 
 ## 運用しやすいチームを作る
-
----
 
 ### ■ チームを体制する
 
@@ -1426,27 +1279,19 @@ K8s Clusterを使用したプロダクトのチームメンバー構成の例を
 
 ## 運用しやすいテナントに分割する
 
----
-
 ### ■ マルチテナントパターン
 
 K8sリソースをグルーピングしたテナントを作成し、影響範囲を小さくする。
 
 テナントには作成パターンがあり、それぞれのパターンでテナントに役割 (例：プロダクト、実行環境、など) を割り当てる。
 
-| パターン | Clusters
-as a Service | Control Plances
-as a Service | Namespaces
-as a Service | ツール固有
-テナント |
-| --- | --- | --- | --- | --- |
-| テナントの単位 | 実Clusterテナント | 仮想Cluster | Namespaceテナント | カスタムリソーステナント |
-| ツール | 実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
-| … | | | | |
+| パターン       | Clusters as a Service                                            | Control Plances as a Service                                              | Namespaces as a Service               | ツール固有テナント                                                         |
+| -------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------- |
+| テナントの単位 | 実Clusterテナント                                                | 仮想Cluster                                                               | Namespaceテナント                     | カスタムリソーステナント                                                   |
+| ツール         | 実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
+| …              |                                                                  |                                                                           |                                       |                                                                            |
 
 ## マニフェストを管理しやすくする
-
----
 
 ### ■ K8sリソースのラベル付けする
 
@@ -1472,8 +1317,6 @@ as a Service | ツール固有
 # 監視
 
 ## 監視したいデータを決める
-
----
 
 ### ■ ログを選ぶ
 
@@ -1505,8 +1348,6 @@ as a Service | ツール固有
 
 ## 対象のデータを収集する
 
----
-
 ### ■ ログを収集する
 
 監視したいログを収集する。
@@ -1523,8 +1364,6 @@ as a Service | ツール固有
 ここにメトリクス収集の設計パターンを書く…
 
 ## 収集したログ/メトリクスを保管する
-
----
 
 収集したログ/メトリクスをストレージに保管する。
 
