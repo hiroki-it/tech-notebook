@@ -4177,6 +4177,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#needs" class="md-nav__link">
+    ▼ needs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#namespace" class="md-nav__link">
     ▼ namespace
   </a>
@@ -6367,6 +6374,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#needs" class="md-nav__link">
+    ▼ needs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#namespace" class="md-nav__link">
     ▼ namespace
   </a>
@@ -6729,23 +6743,23 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
 <span class="w">    </span><span class="nt">dependencies</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra</span>
 <span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+</code></pre></div>
+<p>リリースを別にしてサブチャートをインストールすることもできるが、別のリリースを設定しなければならない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-release</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extra-release</span>
+<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart">https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart</a></li>
 </ul>
 </blockquote>
-<p>リリースを別にしてサブチャートをインストールすることもできるが、リリースが<code>1</code>個だけで十分ある点がよい。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-release</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-subchart</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-sub-release</span>
-<span class="w">    </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-</code></pre></div>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
 <p>Helmの実行時に出力する<code>values</code>の値を設定する。</p>
 <p>キー名にドットを含む場合、エスケープする必要がある。</p>
@@ -6761,6 +6775,27 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
+<h4 id="needs">▼ needs<a class="headerlink" href="#needs" title="Permanent link">&para;</a></h4>
+<p>Helmリリースのインストール/アンインストールの順番を明示的に設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">releases</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/foo-chart</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/bar-chart</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># fooリリースの次にインストールする</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;チャートリポジトリ名&gt;/baz-chart</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># barリリースの次にインストールする</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helmfile.readthedocs.io/en/latest/#dag-aware-installationdeletion-ordering-with-needs">https://helmfile.readthedocs.io/en/latest/#dag-aware-installationdeletion-ordering-with-needs</a></li>
+</ul>
+</blockquote>
 <h4 id="namespace">▼ namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
 <p>チャートをインストールするNamespaceを設定する。</p>
 <p>各マニフェストで定義できるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。</p>
