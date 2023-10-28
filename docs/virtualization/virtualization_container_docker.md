@@ -74,6 +74,38 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 > - https://blog.codecamp.jp/programming-docker-image-container
 
+<br>
+
+### 権限別コンテナの種類
+
+#### ▼ 特権コンテナ
+
+rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE、など) の全て持つユーザーで実行したコンテナのこと。
+
+例えば、特権コンテナの実行ユーザーはルートファイルシステムにある`/proc`に書き込みする権限を持つ。
+
+/proc配下にはNodeへのアクセスを仲介するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。
+
+> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - https://zenn.dev/mizuba/articles/f37889a137e28d
+
+#### ▼ 通常コンテナ
+
+rootユーザーで実行したコンテナのこと。
+
+> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
+
+#### ▼ 非rootコンテナ
+
+コンテナランタイムとコンテナ自体の両方を非rootユーザーで実行したコンテナのこと。
+
+これらのユーザーは、Capabilityを全く持たない。
+
+> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - https://rootlesscontaine.rs/
+
+<br>
+
 ## 02. Dockerクライアント
 
 ### dockerクライアント

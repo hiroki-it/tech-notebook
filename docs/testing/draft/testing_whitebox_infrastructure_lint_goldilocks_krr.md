@@ -19,10 +19,23 @@ description: krr＠ベストプラクティス違反の知見を記録してい�
 
 Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。
 
-CPUの`.spec.containers[*].resources.limits`キー値の設定はアンチパターンとして扱っており、未設定を推奨している。
-
 > - https://github.com/robusta-dev/krr
+
+<br>
+
+### 設計思想
+
+krrでは、CPUの`.spec.containers[*].resources.limits`キー値の設定はアンチパターンとして扱っている。
+
+そのため、未設定を推奨している。
+
+理由として、CPUを制限してしまうと、コンテナがどんな状況であってもコンテナにCPUを割り当てない。
+
+これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。
+
 > - https://home.robusta.dev/blog/stop-using-cpu-limits
+> - https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718
+> - https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/
 
 <br>
 
