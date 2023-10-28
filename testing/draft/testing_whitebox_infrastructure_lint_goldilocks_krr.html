@@ -3405,8 +3405,6 @@
       
         
       
-        
-      
     
     
     
@@ -3453,6 +3451,8 @@
       
         
       
+        
+      
     
     
     
@@ -3465,11 +3465,11 @@
         
   
   
-    <a href="../../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+    <a href="../../infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ アーキテクチャ特性
+    ■ プラクティス集
   </span>
   
 
@@ -4109,8 +4109,6 @@
   
     
     
-      
-        
       
         
       
@@ -5521,6 +5519,13 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    設計思想
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     アルゴリズム
   </a>
   
@@ -5581,15 +5586,26 @@
 <h2 id="01-krr">01. krrの仕組み<a class="headerlink" href="#01-krr" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。</p>
-<p>CPUの<code>.spec.containers[*].resources.limits</code>キー値の設定はアンチパターンとして扱っており、未設定を推奨している。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/robusta-dev/krr">https://github.com/robusta-dev/krr</a></li>
-<li><a href="https://home.robusta.dev/blog/stop-using-cpu-limits">https://home.robusta.dev/blog/stop-using-cpu-limits</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">アルゴリズム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_3">設計思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>krrでは、CPUの<code>.spec.containers[*].resources.limits</code>キー値の設定はアンチパターンとして扱っている。</p>
+<p>そのため、未設定を推奨している。</p>
+<p>理由として、CPUを制限してしまうと、コンテナがどんな状況であってもコンテナにCPUを割り当てない。</p>
+<p>これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。</p>
+<blockquote>
+<ul>
+<li><a href="https://home.robusta.dev/blog/stop-using-cpu-limits">https://home.robusta.dev/blog/stop-using-cpu-limits</a></li>
+<li><a href="https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718">https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718</a></li>
+<li><a href="https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/">https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">アルゴリズム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>CPUに関して、<code>99</code>%のCPU処理が余裕を持てるように数値を算出する。</p>
 <p>メモリに関して、過去一週間の最大値に<code>5</code>%のバッファーを加えて、数値を算出する。</p>
 <blockquote>
@@ -5623,7 +5639,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
       
     
   </small>

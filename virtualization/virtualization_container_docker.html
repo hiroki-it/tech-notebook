@@ -3286,6 +3286,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    権限別コンテナの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="権限別コンテナの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 特権コンテナ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 通常コンテナ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ▼ 非rootコンテナ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3415,7 +3449,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ロギングドライバー
   </a>
   
@@ -3423,7 +3457,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ ロギングドライバーとは
   </a>
   
@@ -3470,7 +3504,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     各ベンダーのコンテナイメージのログ出力先
   </a>
   
@@ -3478,7 +3512,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     ▼ コンテナの標準出力/標準エラー出力
   </a>
   
@@ -3923,8 +3957,6 @@
       
         
       
-        
-      
     
     
     
@@ -3971,6 +4003,8 @@
       
         
       
+        
+      
     
     
     
@@ -3983,11 +4017,11 @@
         
   
   
-    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html" class="md-nav__link">
+    <a href="../infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ アーキテクチャ特性
+    ■ プラクティス集
   </span>
   
 
@@ -4627,8 +4661,6 @@
   
     
     
-      
-        
       
         
       
@@ -6078,6 +6110,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    権限別コンテナの種類
+  </a>
+  
+    <nav class="md-nav" aria-label="権限別コンテナの種類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 特権コンテナ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ 通常コンテナ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ▼ 非rootコンテナ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6207,7 +6273,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ロギングドライバー
   </a>
   
@@ -6215,7 +6281,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ ロギングドライバーとは
   </a>
   
@@ -6262,7 +6328,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     各ベンダーのコンテナイメージのログ出力先
   </a>
   
@@ -6270,7 +6336,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     ▼ コンテナの標準出力/標準エラー出力
   </a>
   
@@ -6378,6 +6444,35 @@
 <li><a href="https://blog.codecamp.jp/programming-docker-image-container">https://blog.codecamp.jp/programming-docker-image-container</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="_6">権限別コンテナの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 特権コンテナ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE、など) の全て持つユーザーで実行したコンテナのこと。</p>
+<p>例えば、特権コンテナの実行ユーザーはルートファイルシステムにある<code>/proc</code>に書き込みする権限を持つ。</p>
+<p>/proc配下にはNodeへのアクセスを仲介するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li><a href="https://zenn.dev/mizuba/articles/f37889a137e28d">https://zenn.dev/mizuba/articles/f37889a137e28d</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ 通常コンテナ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>rootユーザーで実行したコンテナのこと。</p>
+<blockquote>
+<ul>
+<li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+</ul>
+</blockquote>
+<h4 id="root">▼ 非rootコンテナ<a class="headerlink" href="#root" title="Permanent link">&para;</a></h4>
+<p>コンテナランタイムとコンテナ自体の両方を非rootユーザーで実行したコンテナのこと。</p>
+<p>これらのユーザーは、Capabilityを全く持たない。</p>
+<blockquote>
+<ul>
+<li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
+<li><a href="https://rootlesscontaine.rs/">https://rootlesscontaine.rs/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h2 id="02-docker">02. Dockerクライアント<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
 <h3 id="docker_3">dockerクライアント<a class="headerlink" href="#docker_3" title="Permanent link">&para;</a></h3>
 <h4 id="docker_4">▼ dockerクライアントとは<a class="headerlink" href="#docker_4" title="Permanent link">&para;</a></h4>
@@ -6468,8 +6563,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. ロギング<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_6">ロギングドライバー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ ロギングドライバーとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_9">ロギングドライバー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ ロギングドライバーとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>コンテナ内の標準出力 (<code>/dev/stdout</code>) と標準エラー出力 (<code>/dev/stderr</code>) に出力されたログを、ファイルやAPIに対して転送する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--log-driver<span class="w"> </span>&lt;ロギングドライバー名&gt;<span class="w"> </span>--name<span class="w">  </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
@@ -6541,8 +6636,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">各ベンダーのコンテナイメージのログ出力先<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ コンテナの標準出力/標準エラー出力<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h3 id="_11">各ベンダーのコンテナイメージのログ出力先<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ コンテナの標準出力/標準エラー出力<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>Linuxでは、標準出力は『<code>/proc/&lt;プロセスID&gt;/fd/1</code>』、標準エラー出力は『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』である。</p>
 <p>コンテナでは、『<code>/dev/stdout</code>』が『<code>/proc/self/fd/1</code>』のシンボリックリンク、また『<code>/dev/stderr</code>』が『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』のシンボリックリンクとして設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>root@&lt;コンテナID&gt;:/dev<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
@@ -6584,7 +6679,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
       
     
   </small>
