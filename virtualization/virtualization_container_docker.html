@@ -3379,11 +3379,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-namespace" class="md-nav__link">
-    03. namespace
+  <a href="#03-cgroups" class="md-nav__link">
+    03. cgroups
   </a>
   
-    <nav class="md-nav" aria-label="03. namespace">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-namespace" class="md-nav__link">
+    04. namespace
+  </a>
+  
+    <nav class="md-nav" aria-label="04. namespace">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6203,11 +6210,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-namespace" class="md-nav__link">
-    03. namespace
+  <a href="#03-cgroups" class="md-nav__link">
+    03. cgroups
   </a>
   
-    <nav class="md-nav" aria-label="03. namespace">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-namespace" class="md-nav__link">
+    04. namespace
+  </a>
+  
+    <nav class="md-nav" aria-label="04. namespace">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6491,15 +6505,20 @@
 <p>クライアントが<code>docker</code>コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。</p>
 <p><img alt="docker-daemon" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png" /></p>
 <p><br></p>
-<h2 id="03-namespace">03. namespace<a class="headerlink" href="#03-namespace" title="Permanent link">&para;</a></h2>
+<h2 id="03-cgroups">03. cgroups<a class="headerlink" href="#03-cgroups" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="04-namespace">04. namespace<a class="headerlink" href="#04-namespace" title="Permanent link">&para;</a></h2>
 <h3 id="namespace">namespaceとは<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
-<p>カーネルは、Dockerのネットワークをnamespaceで分離している。</p>
-<p>異なるnamespaceのコンテナ間では、ハードウェアリソース要求やプロセス間通信を分離できる。</p>
+<p>各namespaceを使用して、ホストのカーネルを論理的に分離する。</p>
+<p>論理的に分離された各領域をコンテナとして使用する。</p>
+<p>コンテナ間では、ハードウェアリソース要求やプロセス間通信が独立している。</p>
 <p>注意点として、Kubernetesとはnamespaceの種類が異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4</a></li>
 <li><a href="https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway">https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway</a></li>
+<li><a href="https://tech-lab.sios.jp/archives/18811">https://tech-lab.sios.jp/archives/18811</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6580,9 +6599,8 @@
 <span class="w">    </span><span class="s">&quot;max-file&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;3&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="c1"># JSONに付与する属性キー</span>
 <span class="w">    </span><span class="s">&quot;labels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;app,env&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">}</span>
-<span class="w">  </span><span class="p p-Indicator">}</span><span class="err">,</span>
-<span class="err">}</span>
+<span class="w">  </span><span class="p p-Indicator">}</span>
+<span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6679,7 +6697,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-29</span>
       
     
   </small>
