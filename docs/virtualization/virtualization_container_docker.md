@@ -252,11 +252,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
   "log-driver": "json-file",
   # ドライバーのオプション
   "log-opts": {
-    "max-size": "10m",
-    "max-file": "3",
-    # JSONに付与する属性キー
-    "labels": "app,env"
-  }
+      "max-size": "10m",
+      "max-file": "3",
+      # JSONに付与する属性キー
+      "labels": "app,env",
+    },
 }
 ```
 

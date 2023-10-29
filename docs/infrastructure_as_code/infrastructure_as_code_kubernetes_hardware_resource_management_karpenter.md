@@ -187,7 +187,7 @@ metadata:
   name: foo-provisioner
 spec:
   annotations:
-    example.com/owner: "my-team"
+    example.com/owner: my-team
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -206,40 +206,42 @@ metadata:
   name: foo-provisioner
 spec:
   requirements:
-    - key: "karpenter.k8s.aws/instance-category"
+    - key: karpenter.k8s.aws/instance-category
       operator: In
       values:
-        - "c"
-        - "m"
-        - "r"
-    - key: "karpenter.k8s.aws/instance-cpu"
+        - c
+        - m
+        - r
+    - key: karpenter.k8s.aws/instance-cpu
       operator: In
       values:
-        - "4"
-        - "8"
-        - "16"
-        - "32"
-    - key: "karpenter.k8s.aws/instance-hypervisor"
+        - 4
+        - 8
+        - 16
+        - 32
+    - key: karpenter.k8s.aws/instance-hypervisor
       operator: In
       values:
-        - "nitro"
-    - key: "karpenter.k8s.aws/instance-generation"
+        - nitro
+    - key: karpenter.k8s.aws/instance-generation
       operator: Gt
       values:
-        - "2"
-    - key: "topology.kubernetes.io/zone"
+        - 2
+    - key: topology.kubernetes.io/zone
       operator: In
       values:
-        - "us-west-2a", "us-west-2b"
-    - key: "kubernetes.io/arch"
+        - us-west-2a
+        - us-west-2b
+    - key: kubernetes.io/arch
       operator: In
       values:
-        - "arm64", "amd64"
-    - key: "karpenter.sh/capacity-type"
+        - arm64
+        - amd64
+    - key: karpenter.sh/capacity-type
       operator: In
       values:
-        - "spot"
-        - "on-demand"
+        - spot
+        - on-demand
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -387,9 +389,27 @@ spec:
 
 ## 04. AWSNodeTemplate
 
+### securityGroupSelector
+
+EC2ワーカーNodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  securityGroupSelector:
+    Name: foo-private-sg
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector
+
+<br>
+
 ### subnetSelector
 
-EC2ワーカーNodeをプロビジョニングするサブネットを設定する。
+EC2ワーカーNodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
