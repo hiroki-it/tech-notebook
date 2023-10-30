@@ -435,6 +435,19 @@ releases:
       - values.yaml
 ```
 
+#### ▼ oci
+
+OCIリポジトリをチャートリポジトリとして使用する場合に、これを有効化する。
+
+```yaml
+repositories:
+  - name: foo
+    url: public.ecr.aws/karpenter
+    oci: true
+```
+
+> - https://helmfile.readthedocs.io/en/latest/#oci-registries
+
 #### ▼ url
 
 Helmリリース対象のチャートリポジトリのURLを設定する。

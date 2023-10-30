@@ -80,8 +80,6 @@ EC2を冗長化している場合は、ユーザーに影響を与えずに対�
 
 AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。
 
-例えば、CentOS 6系のAMIでは、`t3.small`を選択できない。
-
 | <nobr>`<ファミリー><世代><追加機能>.<サイズ>`</nobr><br>(例: `c5d.xlarge`) | 説明                                                         | 例                                                            |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------- |
 | インスタンスファミリー                                                     | 適するアプリケーションのドメインやハードウェアの種類を表す。 | `t`,`a`、など                                                 |
@@ -89,8 +87,11 @@ AMIのOSのバージョンによっては、新しく登場したインスタン
 | 属性                                                                       | CPUの種類を表す。                                            | `a` (AMD CPU)、`g` (Graviton CPU) 、`i`(Intel CPU) など       |
 | インスタンスサイズ                                                         | インスタンスのハードウェアリソースの大きさを表す。           | `nano`、`small`、`medium`、`large`、`xlarge`、`2xlarge`、など |
 
-> - https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24
+
+例えば、CentOS 6系のAMIでは、`t3.small`を選択できない。
+
+> - https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow
 
 #### ▼ CPUバーストモード
 
