@@ -100,7 +100,7 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 <br>
 
-## 03. Provisioner
+## 02. Provisioner
 
 ### providerRef
 
@@ -262,7 +262,7 @@ metadata:
 spec:
   kubeletConfiguration:
     clusterDNS:
-      - "10.0.1.100"
+      - 10.0.1.100
     containerRuntime: containerd
     systemReserved:
       cpu: 100m
@@ -389,7 +389,26 @@ spec:
 
 <br>
 
-## 04. AWSNodeTemplate
+## 03. AWSNodeTemplate
+
+### amiSelector
+
+EC2ワーカーNodeのAMIを設定する。
+
+設定しない場合、Karpenterは最適化AMIを自動的に選択する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  amiSelector: AL
+```
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
 
 ### securityGroupSelector
 
@@ -430,7 +449,7 @@ spec:
 
 ### tags
 
-全てのEC2ワーカーNodeに挿入するタグを設定する。
+全てのEC2ワーカーNodeやEBSボリュームに挿入するタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
@@ -444,5 +463,86 @@ spec:
 
 > - https://karpenter.sh/docs/concepts/node-templates/#spectags
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
+
+## 04. 専用ConfigMap
+
+### aws.interruptionQueueName
+
+割り込み処理を有効にする場合に、AWS SQSの名前を設定する。
+
+別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karpenter-global-settings
+  namespace: karpenter
+data:
+  aws.interruptionQueueName: foo-queue
+```
+
+> - https://karpenter.sh/preview/concepts/disruption/#interruption
+> - https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional
+
+<br>
+
+### aws.clusterName
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karpenter-global-settings
+  namespace: karpenter
+data:
+  aws.clusterName: foo-cluster
+```
+
+<br>
+
+### aws.clusterEndpoint
+
+AWS EKS Clusterのkube-apiserverのURLを設定する。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karpenter-global-settings
+  namespace: karpenter
+data:
+  aws.clusterEndpoint: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
+```
+
+<br>
+
+### batchMaxDuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karpenter-global-settings
+  namespace: karpenter
+data:
+  batchMaxDuration: 10s
+```
+
+<br>
+
+### batchIdleDuration
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karpenter-global-settings
+  namespace: karpenter
+data:
+  batchIdleDuration: 1s
+```
 
 <br>

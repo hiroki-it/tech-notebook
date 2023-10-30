@@ -297,7 +297,15 @@ releases:
     dependencies:
       - chart: extra
         version: 1.0
-        # valuesファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
+```
+
+依存先チャートで`values`ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
+
+```yaml
+# extraチャートのデフォルト値
+
+foo: ""
+bar: ""
 ```
 
 リリースを別にしてサブチャートをインストールすることもできるが、別のリリースを設定しなければならない。
@@ -312,9 +320,8 @@ releases:
   - chart: extra
     name: extra-release
     version: 1.0
-    # fooチャートと同じvaluesファイルを使用する
     values:
-      - foo-values.yaml
+      - extra-values.yaml
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
