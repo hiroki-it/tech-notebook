@@ -4225,6 +4225,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#oci" class="md-nav__link">
+    ▼ oci
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#url" class="md-nav__link">
     ▼ url
   </a>
@@ -6422,6 +6429,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#oci" class="md-nav__link">
+    ▼ oci
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#url" class="md-nav__link">
     ▼ url
   </a>
@@ -6849,6 +6863,18 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <span class="w">    </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values.yaml</span>
 </code></pre></div>
+<h4 id="oci">▼ oci<a class="headerlink" href="#oci" title="Permanent link">&para;</a></h4>
+<p>OCIリポジトリをチャートリポジトリとして使用する場合に、これを有効化する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">repositories</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">public.ecr.aws/karpenter</span>
+<span class="w">    </span><span class="nt">oci</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://helmfile.readthedocs.io/en/latest/#oci-registries">https://helmfile.readthedocs.io/en/latest/#oci-registries</a></li>
+</ul>
+</blockquote>
 <h4 id="url">▼ url<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
 <p>Helmリリース対象のチャートリポジトリのURLを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">repositories</span><span class="p">:</span>
