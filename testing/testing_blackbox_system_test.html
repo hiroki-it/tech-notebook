@@ -7226,72 +7226,79 @@
 <tbody>
 <tr>
 <td>Nodeの停止障害</td>
-<td>AWS EC2が停止する。</td>
+<td>AWS EC2を停止させる。</td>
 <td>Node内でroot権限でカーネルパニックを意図的に起こし、その状態でもシステム全体として稼働し続けられるか否かを確認する。</td>
 <td>・<code>aws ec2 stop-instances --instance-ids &lt;インスタンスID&gt;</code><br>・<code>echo 1 &gt; /proc/sys/kernel/sysrq &amp;&amp; echo c &gt; /proc/sysrq-trigger</code></td>
 <td>・冗長化された稼働中のNode上で、レプリカ数を維持できるだけのPodが起動する。<br>・オートスケーリングによって、停止したNodeに代わり新しいNodeが起動する。<br>・Nodeのヘルスチェックが正常である。</td>
 </tr>
 <tr>
 <td>Podの停止障害</td>
-<td>GoのPodが停止する。</td>
+<td>GoのPodを停止させる。</td>
 <td><code>kubectl</code>コマンドでPodを強制的に終了し、その状態でもシステム全体として稼働し続けられるか否かを確認する。</td>
 <td>・<code>kubectl delete pod &lt;Pod名&gt; --grace-period=0 --force</code></td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・アプリケーションが正しく動作している。</td>
 </tr>
 <tr>
 <td></td>
-<td>NginxのPodが停止する。</td>
+<td>NginxのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・アプリケーションが正しく動作している。</td>
 </tr>
 <tr>
 <td></td>
-<td>kube-state-metricsのPodが停止する。</td>
+<td>kube-state-metricsのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・データを全て収集できている。</td>
 </tr>
 <tr>
 <td></td>
-<td>PrometheusのPodが停止する。</td>
+<td>PrometheusのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・データを全て収集できている。</td>
 </tr>
 <tr>
 <td></td>
-<td>FluentdのPodが停止する。</td>
+<td>FluentdのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ログを正しくルーティングできている。</td>
 </tr>
 <tr>
 <td></td>
-<td>GrafanaのPodが停止する。</td>
+<td>GrafanaのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ダッシュボードにログインできる。<br>・データを正しく可視化できている。</td>
 </tr>
 <tr>
 <td></td>
-<td>AlertmanagerのPodが停止する。</td>
+<td>AlertmanagerのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ダッシュボードにログインできる。<br>・アラートを正しくルーティングできている。</td>
 </tr>
 <tr>
 <td></td>
-<td>KialiのPodが停止する。</td>
+<td>KialiのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ダッシュボードにログインできる。<br>・アラートを正しくルーティングできている。</td>
 </tr>
 <tr>
 <td></td>
-<td>JaegerのPodが停止する。</td>
+<td>JaegerのPodを停止させる。</td>
 <td>同上</td>
 <td>同上</td>
+<td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ダッシュボードにログインできる。<br>・アラートを正しくルーティングできている。</td>
+</tr>
+<tr>
+<td></td>
+<td>Istioでフォールトインジェクションを実施する。</td>
+<td>Istioの機能を使用する。</td>
+<td>可用性テストの時だけ、マニフェストにフォールトインジェクションの設定を追加する。</td>
 <td>・オートスケーリングによって、停止したPodに代わり新しいPodが起動する。<br>・ダッシュボードにログインできる。<br>・アラートを正しくルーティングできている。</td>
 </tr>
 </tbody>
@@ -7372,7 +7379,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
       
     
   </small>

@@ -3823,17 +3823,24 @@
       
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
-    06. 適切なネットワークを使用する
+    06. イメージレジストリ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#07-ci" class="md-nav__link">
-    07. CIパイプライン上でコンテナイメージを用意する
+  <a href="#07" class="md-nav__link">
+    07. 適切なネットワークを使用する
   </a>
   
-    <nav class="md-nav" aria-label="07. CIパイプライン上でコンテナイメージを用意する">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ci" class="md-nav__link">
+    08. CIパイプライン上でコンテナイメージを用意する
+  </a>
+  
+    <nav class="md-nav" aria-label="08. CIパイプライン上でコンテナイメージを用意する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6535,17 +6542,24 @@
       
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
-    06. 適切なネットワークを使用する
+    06. イメージレジストリ
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#07-ci" class="md-nav__link">
-    07. CIパイプライン上でコンテナイメージを用意する
+  <a href="#07" class="md-nav__link">
+    07. 適切なネットワークを使用する
   </a>
   
-    <nav class="md-nav" aria-label="07. CIパイプライン上でコンテナイメージを用意する">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-ci" class="md-nav__link">
+    08. CIパイプライン上でコンテナイメージを用意する
+  </a>
+  
+    <nav class="md-nav" aria-label="08. CIパイプライン上でコンテナイメージを用意する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7252,7 +7266,27 @@ EOF
 <p>ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。</p>
 <p>そのため、構造化ログ (例：JSON) として出力する。</p>
 <p><br></p>
-<h2 id="06">06. 適切なネットワークを使用する<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="06">06. イメージレジストリ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>要件</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ストレージ容量</td>
+<td>イメージレジストリのストレージのサイズを決める。</td>
+</tr>
+<tr>
+<td>世代数</td>
+<td>イメージストリを残しておく世代数 (例：5) をポリシーとして決めておくと良い。世代数を超えた場合、古いイメージレジストリから削除していく。</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="07">07. 適切なネットワークを使用する<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <p>状況に応じて、ネットワークタイプを選ぶ。</p>
 <table>
 <thead>
@@ -7282,7 +7316,7 @@ EOF
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="07-ci">07. CIパイプライン上でコンテナイメージを用意する<a class="headerlink" href="#07-ci" title="Permanent link">&para;</a></h2>
+<h2 id="08-ci">08. CIパイプライン上でコンテナイメージを用意する<a class="headerlink" href="#08-ci" title="Permanent link">&para;</a></h2>
 <h3 id="ci">CIパイプラインに適切なステップを用意する<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
 <ul>
 <li>コンテナイメージの静的解析を実施する</li>
@@ -7320,7 +7354,7 @@ EOF
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
       
     
   </small>
