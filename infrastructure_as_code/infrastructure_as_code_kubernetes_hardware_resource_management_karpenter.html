@@ -6485,7 +6485,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>プロビジョニング可能なNodeの最大スペックを設定する。</p>
+<p>Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。</p>
+<p>Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6498,6 +6499,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/">https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/</a></li>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
 <li><a href="https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources">https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources</a></li>
 </ul>
 </blockquote>
