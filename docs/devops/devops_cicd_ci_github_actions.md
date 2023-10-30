@@ -45,6 +45,16 @@ GitHub Actionsのパイプラインをサーバー (例：オンプレサーバ�
 
 <br>
 
+### GitHub Apps
+
+GitHubとは別の環境で稼働し、GitHubのAPIをコールする。
+
+![github_apps.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_apps.png)
+
+> - https://zenn.dev/takamin55/articles/569875e8346948
+
+<br>
+
 ### ビルトインの静的解析
 
 #### ▼ 脆弱性診断

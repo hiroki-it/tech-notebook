@@ -246,6 +246,7 @@ spec:
 
 > - https://karpenter.sh/docs/concepts/provisioners/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#provisioner%E4%BD%9C%E6%88%90
 
 <br>
 
