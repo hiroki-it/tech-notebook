@@ -131,7 +131,41 @@ Deploymentは、Cluster内のPodのレプリカ数を指定された数だけ維
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
 > - https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8
 
-#### ▼ CronJob
+#### ▼ DBマイグレーション
+
+Jobを使用して、DBにマイグレーションを実行する。
+
+GitOpsツール (例：ArgoCDなど) によっては、アノテーションを使用してApply前にJobをフックさせられる。
+
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: foo
+  name: foo-migration-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: foo-app
+          image: foo-app:1.0.0
+          command: ["<マイグレーションを実行するためのコマンド>"]
+          envFrom:
+            - secretRef:
+                # DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。
+                name: foo-secret
+      restartPolicy: Never
+```
+
+> - https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/
+> - https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
+
+<br>
+
+### CronJob
+
+#### ▼ CronJobとは
 
 定期的なバッチ処理を定義したい場合、CronJobを使用する。
 

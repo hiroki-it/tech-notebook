@@ -59,12 +59,16 @@ Jobに、ArgoCDの`Sync`フェーズを設定する。
 
 **＊実行例＊**
 
+DBマイグレーションを実行するJobを定義しておき、これをArgoCDのSync前にフックする。
+
+フックのタイミングは、`argocd.argoproj.io/hook`キーで設定する。
+
 ```yaml
 apiVersion: batch/v1
 kind: Job
 metadata:
   namespace: argocd
-  name: foo-job
+  name: foo-migration-job
   annotations:
     # Syncの前に実行する。
     argocd.argoproj.io/hook: PreSync
@@ -79,7 +83,7 @@ spec:
       containers:
         - name: foo-app
           image: foo-app:1.0.0
-          args: ["<マイグレーションを実行するためのコマンド>"]
+          command: ["<マイグレーションを実行するためのコマンド>"]
           envFrom:
             - secretRef:
                 # DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。
@@ -88,6 +92,7 @@ spec:
 ```
 
 > - https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
+> - https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/
 
 #### ▼ argocd.argoproj.io/sync-wave
 
