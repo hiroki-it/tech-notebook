@@ -3723,8 +3723,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBマイグレーション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cronjob" class="md-nav__link">
-    ▼ CronJob
+    CronJob
+  </a>
+  
+    <nav class="md-nav" aria-label="CronJob">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cronjob_1" class="md-nav__link">
+    ▼ CronJobとは
   </a>
   
 </li>
@@ -6890,8 +6910,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    ▼ DBマイグレーション
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cronjob" class="md-nav__link">
-    ▼ CronJob
+    CronJob
+  </a>
+  
+    <nav class="md-nav" aria-label="CronJob">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cronjob_1" class="md-nav__link">
+    ▼ CronJobとは
   </a>
   
 </li>
@@ -8031,7 +8071,37 @@
 <li><a href="https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8">https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8</a></li>
 </ul>
 </blockquote>
-<h4 id="cronjob">▼ CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
+<h4 id="db">▼ DBマイグレーション<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>Jobを使用して、DBにマイグレーションを実行する。</p>
+<p>GitOpsツール (例：ArgoCDなど) によっては、アノテーションを使用してApply前にJobをフックさせられる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-migration-job</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app:1.0.0</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;マイグレーションを実行するためのコマンド&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/">https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/</a></li>
+<li><a href="https://qiita.com/butterv/items/65d8663dfa3a69f1bc55">https://qiita.com/butterv/items/65d8663dfa3a69f1bc55</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cronjob">CronJob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h3>
+<h4 id="cronjob_1">▼ CronJobとは<a class="headerlink" href="#cronjob_1" title="Permanent link">&para;</a></h4>
 <p>定期的なバッチ処理を定義したい場合、CronJobを使用する。</p>
 <p>CronJob配下のJobは、決まった時間にならないと実行されない。</p>
 <p>任意の時間に実行するためには、CronJobを指定し、これの配下で一時的にJobを作成する。</p>
@@ -9462,7 +9532,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
       
     
   </small>

@@ -6030,11 +6030,13 @@
 </ul>
 </blockquote>
 <p><strong>＊実行例＊</strong></p>
+<p>DBマイグレーションを実行するJobを定義しておき、これをArgoCDのSync前にフックする。</p>
+<p>フックのタイミングは、<code>argocd.argoproj.io/hook</code>キーで設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-job</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-migration-job</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Syncの前に実行する。</span>
 <span class="w">    </span><span class="nt">argocd.argoproj.io/hook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PreSync</span>
@@ -6049,7 +6051,7 @@
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-app:1.0.0</span>
-<span class="w">          </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;マイグレーションを実行するためのコマンド&gt;&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;マイグレーションを実行するためのコマンド&gt;&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
 <span class="w">                </span><span class="c1"># DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。</span>
@@ -6059,6 +6061,7 @@
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/butterv/items/65d8663dfa3a69f1bc55">https://qiita.com/butterv/items/65d8663dfa3a69f1bc55</a></li>
+<li><a href="https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/">https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/</a></li>
 </ul>
 </blockquote>
 <h4 id="argocdargoprojiosync-wave">▼ argocd.argoproj.io/sync-wave<a class="headerlink" href="#argocdargoprojiosync-wave" title="Permanent link">&para;</a></h4>
@@ -6106,7 +6109,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
       
     
   </small>
