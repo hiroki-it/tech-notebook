@@ -291,9 +291,13 @@ releases:
 ```yaml
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
+    # 依存先の設定値は同じvaluesファイルで一括して管理する
+    values:
+      - values.yaml
     dependencies:
       - chart: extra
         version: 1.0
+        # valuesファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
 ```
 
 リリースを別にしてサブチャートをインストールすることもできるが、別のリリースを設定しなければならない。
@@ -303,9 +307,14 @@ releases:
   - chart: <チャートリポジトリ名>/foo-chart
     name: foo-release
     version: 1.0
+    values:
+      - foo-values.yaml
   - chart: extra
     name: extra-release
     version: 1.0
+    # fooチャートと同じvaluesファイルを使用する
+    values:
+      - foo-values.yaml
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart

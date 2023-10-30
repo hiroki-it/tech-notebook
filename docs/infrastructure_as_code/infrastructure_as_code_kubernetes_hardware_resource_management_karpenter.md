@@ -354,6 +354,8 @@ spec:
 
 ### ttlSecondsAfterEmpty
 
+NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
+
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
 kind: Provisioner
@@ -363,8 +365,7 @@ spec:
   ttlSecondsAfterEmpty: 30
 ```
 
-> - https://karpenter.sh/docs/concepts/provisioners/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
 
 <br>
 
