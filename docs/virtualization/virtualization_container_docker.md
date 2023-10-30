@@ -136,7 +136,9 @@ dockerクライアントにdockerデーモンAPIを公開する。
 
 ## 03. cgroups
 
-記入中...
+コンテナが使用できるハードウェアリソースを分離する。
+
+> - https://www.itbook.info/network/docker06.html
 
 <br>
 
