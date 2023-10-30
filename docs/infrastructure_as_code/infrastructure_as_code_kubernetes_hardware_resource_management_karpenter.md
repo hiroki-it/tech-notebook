@@ -299,7 +299,9 @@ spec:
 
 ### limits
 
-プロビジョニング可能なNodeの最大スペックを設定する。
+Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。
+
+Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -313,6 +315,8 @@ spec:
       memory: 1000Gi
 ```
 
+> - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 > - https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources
 
 <br>
