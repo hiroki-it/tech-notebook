@@ -3945,6 +3945,19 @@
     requirements
   </a>
   
+    <nav class="md-nav" aria-label="requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    ▼ requirementsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6049,6 +6062,19 @@
     requirements
   </a>
   
+    <nav class="md-nav" aria-label="requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements_1" class="md-nav__link">
+    ▼ requirementsとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6265,7 +6291,7 @@
 <h3 id="consolidation">consolidation<a class="headerlink" href="#consolidation" title="Permanent link">&para;</a></h3>
 <p>コストを考慮するかどうかを設定する。</p>
 <p>Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。</p>
-<p><code>.spec.ttlSecondsAfterEmpty</code>キーとは競合する。</p>
+<p><code>.spec.ttlSecondsAfterEmpty</code>キーとは競合し、どちらか一方しか設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6383,7 +6409,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="requirements">requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
+<h4 id="requirements_1">▼ requirementsとは<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h4>
 <p>プロビジョニングするNodeのハードウェアリソースを設定する。</p>
+<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6425,6 +6453,36 @@
 <span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">      </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spot</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on-demand</span>
+</code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">requirements</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/arch</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/instance-family</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">t3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/instance-size</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">large</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xlarge</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/os</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/capacity-type</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">on-demand</span>
 </code></pre></div>
 <blockquote>
@@ -6471,7 +6529,7 @@
 <p><br></p>
 <h3 id="ttlsecondsafterempty">ttlSecondsAfterEmpty<a class="headerlink" href="#ttlsecondsafterempty" title="Permanent link">&para;</a></h3>
 <p>NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。</p>
-<p><code>.spec.consolidation</code>キーとは競合する。</p>
+<p><code>.spec.consolidation</code>キーとは競合し、どちらか一方しか設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
