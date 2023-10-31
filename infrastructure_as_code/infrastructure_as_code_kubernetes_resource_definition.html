@@ -6316,6 +6316,53 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#globaldefault" class="md-nav__link">
+    globalDefault
+  </a>
+  
+    <nav class="md-nav" aria-label="globalDefault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globaldefault_1" class="md-nav__link">
+    ▼ globalDefaultとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptionpolicy" class="md-nav__link">
+    preemptionPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label="preemptionPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preemptionpolicy_1" class="md-nav__link">
+    ▼ preemptionPolicyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#never_1" class="md-nav__link">
+    ▼ Never
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#value" class="md-nav__link">
     value
   </a>
@@ -6326,6 +6373,13 @@
           <li class="md-nav__item">
   <a href="#value_1" class="md-nav__link">
     ▼ valueとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    ▼ -1
   </a>
   
 </li>
@@ -11731,6 +11785,53 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#globaldefault" class="md-nav__link">
+    globalDefault
+  </a>
+  
+    <nav class="md-nav" aria-label="globalDefault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globaldefault_1" class="md-nav__link">
+    ▼ globalDefaultとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptionpolicy" class="md-nav__link">
+    preemptionPolicy
+  </a>
+  
+    <nav class="md-nav" aria-label="preemptionPolicy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preemptionpolicy_1" class="md-nav__link">
+    ▼ preemptionPolicyとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#never_1" class="md-nav__link">
+    ▼ Never
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#value" class="md-nav__link">
     value
   </a>
@@ -11741,6 +11842,13 @@
           <li class="md-nav__item">
   <a href="#value_1" class="md-nav__link">
     ▼ valueとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    ▼ -1
   </a>
   
 </li>
@@ -16224,6 +16332,34 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <p><br></p>
 <h2 id="priorityclass">PriorityClass<a class="headerlink" href="#priorityclass" title="Permanent link">&para;</a></h2>
+<h3 id="globaldefault">globalDefault<a class="headerlink" href="#globaldefault" title="Permanent link">&para;</a></h3>
+<h4 id="globaldefault_1">▼ globalDefaultとは<a class="headerlink" href="#globaldefault_1" title="Permanent link">&para;</a></h4>
+<p>グローバルスコープにするかどうかを設定する。</p>
+<p><code>true</code>の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-priority-class</span>
+<span class="nt">globalDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="preemptionpolicy">preemptionPolicy<a class="headerlink" href="#preemptionpolicy" title="Permanent link">&para;</a></h3>
+<h4 id="preemptionpolicy_1">▼ preemptionPolicyとは<a class="headerlink" href="#preemptionpolicy_1" title="Permanent link">&para;</a></h4>
+<p>スケジューリングの優先度が競合した場合に、どのような優先度にするかを設定する。</p>
+<h4 id="never_1">▼ <code>Never</code><a class="headerlink" href="#never_1" title="Permanent link">&para;</a></h4>
+<p><code>Never</code>とすると、必ず他のPodのスケジューリングを優先するようになる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-priority-class</span>
+<span class="nt">preemptionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#non-preempting-priority-class">https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#non-preempting-priority-class</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="value">value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h3>
 <h4 id="value_1">▼ valueとは<a class="headerlink" href="#value_1" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のPriorityClassで優先度を設定する。</p>
@@ -16238,6 +16374,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption">https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption</a></li>
 </ul>
 </blockquote>
+<h4 id="-1">▼ <code>-1</code><a class="headerlink" href="#-1" title="Permanent link">&para;</a></h4>
+<p><code>-1</code>とすると、優先度が最低になる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scheduling.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PriorityClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-priority-class</span>
+<span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000000</span>
+</code></pre></div>
 <p><br></p>
 <h2 id="replicacontroller">ReplicaController<a class="headerlink" href="#replicacontroller" title="Permanent link">&para;</a></h2>
 <p>旧Deployment。</p>

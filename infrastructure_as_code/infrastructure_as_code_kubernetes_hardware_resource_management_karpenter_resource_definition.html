@@ -3877,18 +3877,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-nodepool" class="md-nav__link">
-    02. NodePool
+  <a href="#02-ec2nodeclass" class="md-nav__link">
+    02. EC2NodeClass
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-provisioner" class="md-nav__link">
-    03. Provisioner
+  <a href="#03-nodepool" class="md-nav__link">
+    03. NodePool
   </a>
   
-    <nav class="md-nav" aria-label="03. Provisioner">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-provisioner" class="md-nav__link">
+    04. Provisioner
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Provisioner">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3981,11 +3988,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-configmap" class="md-nav__link">
-    04. 専用ConfigMap
+  <a href="#05-configmap" class="md-nav__link">
+    05. 専用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="04. 専用ConfigMap">
+    <nav class="md-nav" aria-label="05. 専用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5974,18 +5981,25 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-nodepool" class="md-nav__link">
-    02. NodePool
+  <a href="#02-ec2nodeclass" class="md-nav__link">
+    02. EC2NodeClass
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-provisioner" class="md-nav__link">
-    03. Provisioner
+  <a href="#03-nodepool" class="md-nav__link">
+    03. NodePool
   </a>
   
-    <nav class="md-nav" aria-label="03. Provisioner">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-provisioner" class="md-nav__link">
+    04. Provisioner
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Provisioner">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6078,11 +6092,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-configmap" class="md-nav__link">
-    04. 専用ConfigMap
+  <a href="#05-configmap" class="md-nav__link">
+    05. 専用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="04. 専用ConfigMap">
+    <nav class="md-nav" aria-label="05. 専用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6219,7 +6233,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
+<h2 id="02-ec2nodeclass">02. EC2NodeClass<a class="headerlink" href="#02-ec2nodeclass" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="03-nodepool">03. NodePool<a class="headerlink" href="#03-nodepool" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
 <blockquote>
 <ul>
@@ -6227,7 +6244,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-provisioner">03. Provisioner<a class="headerlink" href="#03-provisioner" title="Permanent link">&para;</a></h2>
+<h2 id="04-provisioner">04. Provisioner<a class="headerlink" href="#04-provisioner" title="Permanent link">&para;</a></h2>
 <h3 id="providerref">providerRef<a class="headerlink" href="#providerref" title="Permanent link">&para;</a></h3>
 <p>Provisionerで使用するNodeテンプレートを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
@@ -6496,7 +6513,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-configmap">04. 専用ConfigMap<a class="headerlink" href="#04-configmap" title="Permanent link">&para;</a></h2>
+<h2 id="05-configmap">05. 専用ConfigMap<a class="headerlink" href="#05-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="awsinterruptionqueuename">aws.interruptionQueueName<a class="headerlink" href="#awsinterruptionqueuename" title="Permanent link">&para;</a></h3>
 <p>割り込み処理を有効にする場合に、AWS SQSの名前を設定する。</p>
 <p>別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。</p>
