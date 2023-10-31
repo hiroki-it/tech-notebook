@@ -135,33 +135,33 @@ nav:
       - プラクティス集: software/software_practices.md
 
   - 🚀 アプリ:
-        - software/application/index.md
-        - アーキテクチャ: software/software_application_architecture.md
-        - ■ バックエンドアーキテクチャ:
-              - ■ オブジェクト指向:
-                    - オブジェクト指向: software/software_application_architecture_backend_object_orientation.md
-                    - オブジェクト指向分析: software/software_application_architecture_backend_object_orientation_analysis.md
-                    - オブジェクト指向設計: software/software_application_architecture_backend_object_orientation_design.md
-              - ドメイン駆動設計: software/software_application_architecture_backend_domain_driven_design.md
-              - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
-              - CQRS: software/software_application_architecture_backend_cqrs.md
-        - ■ フロントエンドアーキテクチャ:
-              - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
-        - ■ マイクロサービスアーキテクチャ:
-              - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
-              - 認証/認可: software/software_application_architecture_microservices_auth.md
-              - DB: software/software_application_architecture_microservices_database.md
-              - ネットワーク: software/software_application_architecture_microservices_network.md
-        - ■ アプリケーション間連携:
-              - アプリケーション間通信: software/software_application_collaboration_communication.md
-              - ■ RESTful-API:
-                    - RESTful-API: software/software_application_collaboration_api_restful.md
-                    - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
-              - ■ RPC-API:
-                    - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
-                    - クライアントパッケージ: software/software_application_collaboration_api_rpc_api_grpc_client_package.md
-              - ■ GraphQL-API:
-                    - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
+      - software/application/index.md
+      - アーキテクチャ: software/software_application_architecture.md
+      - ■ バックエンドアーキテクチャ:
+          - ■ オブジェクト指向:
+              - オブジェクト指向: software/software_application_architecture_backend_object_orientation.md
+              - オブジェクト指向分析: software/software_application_architecture_backend_object_orientation_analysis.md
+              - オブジェクト指向設計: software/software_application_architecture_backend_object_orientation_design.md
+          - ドメイン駆動設計: software/software_application_architecture_backend_domain_driven_design.md
+          - クリーンアーキテクチャ: software/software_application_architecture_backend_domain_driven_design_clean_architecture.md
+          - CQRS: software/software_application_architecture_backend_cqrs.md
+      - ■ フロントエンドアーキテクチャ:
+          - フロントエンドアーキテクチャ: software/software_application_architecture_frontend.md
+      - ■ マイクロサービスアーキテクチャ:
+          - マイクロサービスアーキテクチャ: software/software_application_architecture_microservices.md
+          - 認証/認可: software/software_application_architecture_microservices_auth.md
+          - DB: software/software_application_architecture_microservices_database.md
+          - ネットワーク: software/software_application_architecture_microservices_network.md
+      - ■ アプリケーション間連携:
+          - アプリケーション間通信: software/software_application_collaboration_communication.md
+          - ■ RESTful-API:
+              - RESTful-API: software/software_application_collaboration_api_restful.md
+              - API仕様書: software/software_application_collaboration_api_restful_api_specification.md
+          - ■ RPC-API:
+              - gRPC: software/software_application_collaboration_api_rpc_api_grpc.md
+              - クライアントパッケージ: software/software_application_collaboration_api_rpc_api_grpc_client_package.md
+          - ■ GraphQL-API:
+              - GraphQL: software/software_application_collaboration_api_graphql_api_graphql.md
   - 🤝🏻 ミドルウェア:
       - software/middleware/index.md
       - ■ Web系:
@@ -562,8 +562,8 @@ nav:
           - descheduler: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_descheduler.md
           - metrics-server: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_metrics_server.md
           - ■ Karpenter:
-            - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.md
-            - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter_resource_definition.md
+              - Karpenter: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_hardware_resource_management_karpenter_resource_definition.md
       - ■ 開発:
           - クライアントパッケージ: infrastructure_as_code/infrastructure_as_code_kubernetes_development_client_package.md
           - ■ 開発環境:
@@ -603,8 +603,8 @@ nav:
               - AWS Load Balancerコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.md
           - ■ Nginx Ingressコントローラー:
-                - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
-                - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
+              - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
+              - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
       - ■ ネットワークアドオン:
           - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
