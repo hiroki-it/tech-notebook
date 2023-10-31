@@ -6168,7 +6168,7 @@
 <p><br></p>
 <h2 id="01-awsnodetemplate">01. AWSNodeTemplate<a class="headerlink" href="#01-awsnodetemplate" title="Permanent link">&para;</a></h2>
 <h3 id="amiselector">amiSelector<a class="headerlink" href="#amiselector" title="Permanent link">&para;</a></h3>
-<p>EC2ワーカーNodeのAMIを設定する。</p>
+<p>NodeのAMIを設定する。</p>
 <p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
@@ -6184,7 +6184,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="securitygroupselector">securityGroupSelector<a class="headerlink" href="#securitygroupselector" title="Permanent link">&para;</a></h3>
-<p>EC2ワーカーNodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。</p>
+<p>Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6200,7 +6200,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="subnetselector">subnetSelector<a class="headerlink" href="#subnetselector" title="Permanent link">&para;</a></h3>
-<p>EC2ワーカーNodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。</p>
+<p>Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6217,7 +6217,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
-<p>全てのEC2ワーカーNodeやEBSボリュームに挿入するタグを設定する。</p>
+<p>全てのNodeやEBSボリュームに挿入するタグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSNodeTemplate</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6263,7 +6263,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="consolidation">consolidation<a class="headerlink" href="#consolidation" title="Permanent link">&para;</a></h3>
-<p>コスト削減のため、既存のNodeのスペックを下げるプロビジョニングを実行するかどうかを設定する。</p>
+<p>コストを考慮するかどうかを設定する。</p>
+<p>Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。</p>
+<p><code>.spec.ttlSecondsAfterEmpty</code>キーとは競合する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6276,6 +6278,7 @@
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/provisioners/">https://karpenter.sh/docs/concepts/provisioners/</a></li>
 <li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6342,8 +6345,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。</p>
-<p>Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。</p>
+<p>Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。</p>
+<p>Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6468,6 +6471,7 @@
 <p><br></p>
 <h3 id="ttlsecondsafterempty">ttlSecondsAfterEmpty<a class="headerlink" href="#ttlsecondsafterempty" title="Permanent link">&para;</a></h3>
 <p>NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。</p>
+<p><code>.spec.consolidation</code>キーとは競合する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Provisioner</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6478,6 +6482,7 @@
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/">https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/</a></li>
+<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
