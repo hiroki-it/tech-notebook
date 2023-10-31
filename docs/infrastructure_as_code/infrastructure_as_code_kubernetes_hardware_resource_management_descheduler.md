@@ -100,7 +100,7 @@ spec:
 
 ### ConfigMap
 
-deschedulerで有効化するポリシーを設定する。
+DeschedulerPolicyのマニフェストを設定する。
 
 ```yaml
 apiVersion: v1
@@ -153,9 +153,9 @@ data:
 
 <br>
 
-## 02. ポリシー
+## 02. DeschedulerPolicy
 
-### ポリシーとは
+### DeschedulerPolicyとは
 
 再スケジューリングの対象とするPodの選定ルールを設定する。
 
@@ -163,7 +163,7 @@ data:
 
 <br>
 
-### ポリシーの種類
+### DeschedulerPolicy
 
 #### ▼ LowNodeUtilization
 
@@ -273,5 +273,15 @@ strategies:
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+
+<br>
+
+### グローバルオプション
+
+#### ▼ nodeFit
+
+Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity、など) であるかを検証する。
+
+> - https://github.com/kubernetes-sigs/descheduler#node-fit-filtering
 
 <br>
