@@ -186,7 +186,7 @@ strategies:
           cpu: 70
           memory: 70
           pods: 70
-        # 閾値 (この値を超過していないNodeにPodを再スケジューリングする)
+        # 閾値 (この値を超過していないNodeにPodを再スケジューリングさせる)
         thresholds:
           cpu: 20
           memory: 20
@@ -200,6 +200,8 @@ strategies:
 
 Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。
 
+該当するNodeがない場合、再スケジューリングしない。
+
 ```yaml
 apiVersion: descheduler/v1alpha1
 kind: DeschedulerPolicy
@@ -209,10 +211,11 @@ strategies:
 ```
 
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
+> - https://sreake.com/blog/kubernetes-descheduler/
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
-記入中...
+再起動を繰り返しているPodを再スケジューリングさせるよう、再起動の閾値を設定する。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -244,7 +247,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
-記入中...
+`.spec.affinity.podAffinity`キにいの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -255,10 +258,15 @@ strategies:
 ```
 
 > - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> - https://sreake.com/blog/kubernetes-descheduler/
+
+#### ▼ RemovePodsViolatingNodeTaints
+
+taintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
 
 #### ▼ RemovePodsViolatingTopologySpreadConstraint
 
-記入中...
+TopologySpreadConstraintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
