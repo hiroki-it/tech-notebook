@@ -100,7 +100,124 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 <br>
 
-## 02. Provisioner
+## 02. セットアップ
+
+### AWS側
+
+#### ▼ Terraformの公式モジュールの場合
+
+Kapenterのセットアップのうち、AWS側で必要なものをまとめる。
+
+ここでは、Terraformの公式モジュールを使用する。
+
+コマンド (例：`eksctl`コマンド) を使用しても良い。
+
+```terraform
+module "iam_assumable_role_with_oidc_karpenter_controller" {
+
+  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
+
+  version                       = "<モジュールのバージョン>"
+
+  # karpenterコントローラーのPodに紐付けるIAMロール
+  create_role                   = true
+  role_name                     = "foo-karpenter-controller"
+
+  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
+
+  # AWS IAMロールに紐付けるIAMポリシー
+  role_policy_arns              = [
+    "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+  ]
+
+  # karpenterコントローラーのPodのServiceAccount名
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  oidc_fully_qualified_subjects = [
+    "system:serviceaccount:karpenter:karpenter"
+  ]
+}
+
+resource "aws_iam_policy" "karpenter_controller" {
+  name   = "foo-karpenter-controller-policy"
+  policy = data.aws_iam_policy_document.karpenter_controller_policy.json
+}
+
+data "aws_iam_policy_document" "karpenter_controller_policy" {
+
+  statement {
+    actions = [
+      "ssm:GetParameter",
+      "ec2:DescribeImages",
+      "ec2:RunInstances",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSecurityGroups",
+      "ec2:DescribeLaunchTemplates",
+      "ec2:DescribeInstances",
+      "ec2:DescribeInstanceTypes",
+      "ec2:DescribeInstanceTypeOfferings",
+      "ec2:DescribeAvailabilityZones",
+      "ec2:DeleteLaunchTemplate",
+      "ec2:CreateTags",
+      "ec2:CreateLaunchTemplate",
+      "ec2:CreateFleet",
+      "ec2:DescribeSpotPriceHistory",
+      "pricing:GetProducts"
+    ]
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
+    sid = "Karpenter"
+  }
+
+  statement {
+    actions = [
+      "ec2:TerminateInstances"
+    ]
+    condition {
+      test     = "StringLike"
+      variable = "ec2:ResourceTag/karpenter.sh/provisioner-name"
+      values = [
+        "*"
+      ]
+    }
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
+    sid = "ConditionalEC2Termination"
+  }
+
+  statement {
+    actions = [
+      "iam:PassRole"
+    ]
+    effect = "Allow"
+    resources = [
+      module.eks_managed_node_group.iam_role_arn
+    ]
+    sid = "PassNodeIAMRole"
+  }
+
+  statement {
+    actions = [
+      "eks:DescribeCluster"
+    ]
+    effect = "Allow"
+    resources = [
+      module.eks.cluster_arn
+    ]
+    sid = "EKSClusterEndpointLookup"
+  }
+}
+```
+
+> - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
+
+<br>
+
+## 03. Provisioner
 
 ### providerRef
 
@@ -393,7 +510,7 @@ spec:
 
 <br>
 
-## 03. AWSNodeTemplate
+## 04. AWSNodeTemplate
 
 ### amiSelector
 
@@ -470,7 +587,7 @@ spec:
 
 <br>
 
-## 04. 専用ConfigMap
+## 05. 専用ConfigMap
 
 ### aws.interruptionQueueName
 

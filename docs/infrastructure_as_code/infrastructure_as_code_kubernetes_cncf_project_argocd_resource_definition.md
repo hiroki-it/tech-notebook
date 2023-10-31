@@ -58,7 +58,7 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
   ]
 
   # ArgoCDのrepo-serverのPodのServiceAccount名
-  # Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:argocd:foo-argocd-repo-server",
     ...

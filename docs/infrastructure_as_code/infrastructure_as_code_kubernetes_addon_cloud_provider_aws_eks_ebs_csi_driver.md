@@ -74,7 +74,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
   ]
 
   # AWS EBS CSIコントローラーのPodのServiceAccount名
-  # Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:kube-system:foo-ebs-csi-controller"
   ]
