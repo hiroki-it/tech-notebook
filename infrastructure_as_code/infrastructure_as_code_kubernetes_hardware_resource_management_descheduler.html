@@ -3844,6 +3844,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#removepodsviolatingnodetaints" class="md-nav__link">
+    ▼ RemovePodsViolatingNodeTaints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
     ▼ RemovePodsViolatingTopologySpreadConstraint
   </a>
@@ -5929,6 +5936,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#removepodsviolatingnodetaints" class="md-nav__link">
+    ▼ RemovePodsViolatingNodeTaints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
     ▼ RemovePodsViolatingTopologySpreadConstraint
   </a>
@@ -6136,7 +6150,7 @@
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">        </span><span class="c1"># 閾値 (この値を超過していないNodeにPodを再スケジューリングする)</span>
+<span class="w">        </span><span class="c1"># 閾値 (この値を超過していないNodeにPodを再スケジューリングさせる)</span>
 <span class="w">        </span><span class="nt">thresholds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
@@ -6150,6 +6164,7 @@
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
 <p>Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。</p>
+<p>該当するNodeがない場合、再スケジューリングしない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6159,10 +6174,11 @@
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18</a></li>
+<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
 </ul>
 </blockquote>
 <h4 id="removepodshavingtoomanyrestarts">▼ RemovePodsHavingTooManyRestarts<a class="headerlink" href="#removepodshavingtoomanyrestarts" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>再起動を繰り返しているPodを再スケジューリングさせるよう、再起動の閾値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6192,7 +6208,7 @@
 </ul>
 </blockquote>
 <h4 id="removepodsviolatinginterpodantiaffinity">▼ RemovePodsViolatingInterPodAntiAffinity<a class="headerlink" href="#removepodsviolatinginterpodantiaffinity" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p><code>.spec.affinity.podAffinity</code>キにいの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6202,10 +6218,13 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
+<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
 </ul>
 </blockquote>
+<h4 id="removepodsviolatingnodetaints">▼ RemovePodsViolatingNodeTaints<a class="headerlink" href="#removepodsviolatingnodetaints" title="Permanent link">&para;</a></h4>
+<p>taintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
 <h4 id="removepodsviolatingtopologyspreadconstraint">▼ RemovePodsViolatingTopologySpreadConstraint<a class="headerlink" href="#removepodsviolatingtopologyspreadconstraint" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>TopologySpreadConstraintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
