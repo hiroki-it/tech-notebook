@@ -9174,7 +9174,7 @@
 <li>EC2ワーカーNodeのOSやミドルウェアの各種アップグレード</li>
 </ul>
 <p>を自動化する。</p>
-<p>Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングするように、AutoScalingグループに各AZを自動的に設定する。</p>
+<p>Nodeグループは、EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AutoScalingグループに各AZを自動的に設定する。</p>
 <p>AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自動的な起動/停止を設定できる。</p>
 <p>ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。</p>
 <blockquote>
@@ -9216,7 +9216,7 @@
 <p>任意のEC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
 <p>このAMIには、EC2がEKSと連携するために必要なソフトウェアがプリインストールされており、EC2ワーカーNodeをセットアップする手間が省ける。</p>
 <p>必ずしも、全てのEC2ワーカーNodeを同じAMIで構築する必要はない。</p>
-<p>EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングする (例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす) といった方法でもよい。</p>
+<p>EC2ワーカーNodeを種類ごとに異なるAMIで作成し、特定のアプリを含むPodは特定のEC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはEKS最適化高速AMIのEC2ワーカーNode上で動かす) といった方法でもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html</a></li>
@@ -9340,7 +9340,7 @@
 </ul>
 </blockquote>
 <h4 id="ec2node_3">▼ 安全なEC2ワーカーNodeシャットダウン<a class="headerlink" href="#ec2node_3" title="Permanent link">&para;</a></h4>
-<p>kubeletを使用してワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeを退避する) までの時間を稼ぐ。</p>
+<p>kubeletを使用してワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeを退避させる) までの時間を稼ぐ。</p>
 <p>ワーカーNodeの停止までの待機中に終了できたPodは、<code>Failed</code>ステータスとなる。</p>
 <p>kubeletの<code>--shutdown-grace-period</code>オプション (<code>shutdownGracePeriod</code>) で、ワーカーNodeの停止を待機する期間を設定する。</p>
 <p>また<code>--shutdown-grace-period-critical-pods</code>オプション (<code>shutdownGracePeriodCriticalPods</code>) で、特に重要なPodの終了のために待機する時間を設定する。</p>
@@ -9746,12 +9746,12 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </tr>
 <tr>
 <td>ポッドセレクタ (Namespace)</td>
-<td>EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、PodのNamespaceの値を設定する。</td>
+<td>EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、PodのNamespaceの値を設定する。</td>
 <td>・<code>kube-system</code>や<code>default</code>を指定するKubernetesリソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・IstioやArgoCDを、それ専用のNamespaceで稼働させる場合は、そのNamespaceのためのプロファイルを作成しておく必要がある。</td>
 </tr>
 <tr>
 <td>ポッドセレクタ (Label)</td>
-<td>EKS FargateワーカーNodeにスケジューリングするPodを固定できるように、Podの任意のlabelキーの値を設定する。</td>
+<td>EKS FargateワーカーNodeにスケジューリングさせるPodを固定できるように、Podの任意のlabelキーの値を設定する。</td>
 <td></td>
 </tr>
 </tbody>
@@ -9801,7 +9801,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>新ワーカーNode上でPodをスケジューリングし直し、旧ワーカーNodeを削除する。</p>
+<p>新ワーカーNode上でPodをスケジューリングさせ直し、旧ワーカーNodeを削除する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
@@ -9844,7 +9844,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
       
     
   </small>

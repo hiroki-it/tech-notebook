@@ -8367,7 +8367,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>PodがCrashLoopBackOffになっている場合、以下を確認すると良い。</p>
 <ul>
 <li><code>kubectl logs</code>コマンドで、該当のコンテナのエラーログを確認する。</li>
-<li><code>kubectl describe nodes</code>コマンドで、PodがスケジューリングされているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。</li>
+<li><code>kubectl describe nodes</code>コマンドで、PodをスケジューリングさせているNodeを指定し、該当のPodがCPUとメモリの要求量に異常がないかを確認する。</li>
 <li><code>kubectl describe pods</code>コマンドで、該当のPodがCrashLoopBackOffになる原因を確認する。ContainersのLastStateの項目で、メッセージを確認できる。これは、<code>kubectl logs</code>コマンドと同じ内容である。</li>
 </ul>
 <blockquote>
@@ -8507,10 +8507,10 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </code></pre></div>
 <h4 id="pod-overprovisioning-pod">▼ バルーンPod (OverProvisioning Pod)<a class="headerlink" href="#pod-overprovisioning-pod" title="Permanent link">&para;</a></h4>
 <p>『OverProvisioning Pod』ともいう。</p>
-<p>NodeにバルーンPodをスケジューリングし、Nodeが常に余剰リソース (例：<code>N+1</code>、CPU/メモリの容量) を持たせられる。</p>
+<p>NodeにバルーンPodをスケジューリングさせ、Nodeが常に余剰リソース (例：<code>N+1</code>、CPU/メモリの容量) を持たせられる。</p>
 <p>優先順位の最も低いPod (バルーンPod) を<code>N+1</code>個作成し、またバルーンPodが余剰リソースを要求するように設定しておく。</p>
 <p>これを各Nodeに<code>1</code>個ずつスケジューリングさせる。</p>
-<p>バルーンPodは優先度が低いため、他のPodをスケジューリングさせる時にNodeから退避する。</p>
+<p>バルーンPodは優先度が低いため、他のPodをスケジューリングさせる時にNodeから退避させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://wdenniss.com/gke-autopilot-spare-capacity">https://wdenniss.com/gke-autopilot-spare-capacity</a></li>
@@ -9262,7 +9262,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <h4 id="node-affinity-conflict">▼ node affinity conflict<a class="headerlink" href="#node-affinity-conflict" title="Permanent link">&para;</a></h4>
 <p>PersistentVolumeClaimは、<code>annotation</code>キー配下の<code>volume.kubernetes.io/selected-node</code>キーで、紐づくPersistentVolumeが配置されているNode名を指定している。</p>
 <p>PersistentVolumeClaimは、条件に応じてPersistentVolumeを探す。</p>
-<p>しかし、PersistentVolumeClaimが <code>volume.kubernetes.io/selected-node</code> キーで指定するNodeと、PodがスケジューリングされているNodeが異なるAZであると、以下のエラーになってしまう。</p>
+<p>しかし、PersistentVolumeClaimが <code>volume.kubernetes.io/selected-node</code> キーで指定するNodeと、PodをスケジューリングさせているNodeが異なるAZであると、以下のエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>had<span class="w"> </span>volume<span class="w"> </span>node<span class="w"> </span>affinity<span class="w"> </span>conflict,<span class="w"> </span>N<span class="w"> </span>node<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>didn<span class="s1">&#39;t match Pod&#39;</span>s<span class="w"> </span>node<span class="w"> </span>affinity/selector
 </code></pre></div>
 <p>これが起こる原因は様々ある (例：Nodeの再作成時にPodのあるNodeのAZが変わる、AWSのスポットインスタンスで特定のAZにしかNodeが作成されない)。</p>
@@ -9276,7 +9276,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>起動できないPodをいずれのNodeでスケジューリングしようとしているのか確認する。</p>
+<p>起動できないPodをいずれのNodeでスケジューリングさせようとしているのか確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Node:
@@ -9532,7 +9532,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
       
     
   </small>

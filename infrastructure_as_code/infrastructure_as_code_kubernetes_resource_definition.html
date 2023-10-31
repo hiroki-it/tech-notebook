@@ -13222,7 +13222,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">      </span><span class="nt">terminating</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <h4 id="nodename">▼ nodeName<a class="headerlink" href="#nodename" title="Permanent link">&para;</a></h4>
-<p>Podが現在スケジューリングされているNode名を設定する。</p>
+<p>PodをスケジューリングさせているNode名を設定する。</p>
 <p>これにより、Serviceとそのルーティング先のPodが異なるNode上に存在していたとしても、ServiceはPodにルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EndpointSlice</span>
@@ -13244,7 +13244,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
 </code></pre></div>
 <h4 id="zone">▼ zone<a class="headerlink" href="#zone" title="Permanent link">&para;</a></h4>
-<p>Podが現在スケジューリングされているAZを設定する。</p>
+<p>PodをスケジューリングさせているAZを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">discovery.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EndpointSlice</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -14419,7 +14419,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">      </span><span class="nt">requiredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># PodをスケジューリングしたいNodeのmetadata.labelsキー</span>
+<span class="w">              </span><span class="c1"># PodをスケジューリングさせたいNodeのmetadata.labelsキー</span>
 <span class="w">              </span><span class="c1"># ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodegroup</span>
 <span class="w">                </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
@@ -15703,7 +15703,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="noschedule">▼ NoSchedule<a class="headerlink" href="#noschedule" title="Permanent link">&para;</a></h4>
 <p>指定した条件に合致するNodeにはスケジューリングさせない。</p>
-<p>なお、実行中のPodが違反していた場合でも、再スケジューリングしない。</p>
+<p>なお、実行中のPodが違反していた場合でも、再スケジューリングさせない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">group</span><span class="o">=</span>monitoring:NoSchedule
 </code></pre></div>

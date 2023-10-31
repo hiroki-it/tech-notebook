@@ -6104,26 +6104,26 @@
 <h2 id="daemonsetstatefulsetpod">DaemonSetやStatefulSet配下のPodのスケジューリング優先度を上げる<a class="headerlink" href="#daemonsetstatefulsetpod" title="Permanent link">&para;</a></h2>
 <p>Nodeでハードウェアリソース不足が起こった場合、Nodeは一部のPodを退避させてこれを解消しようとする。</p>
 <p>この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。</p>
-<p>DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングすることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。</p>
+<p>DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングさせることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。</p>
 <p>また、StatefulSet配下のPodには状態を持たせることが多く、NodeからStatefulSet配下のPodが退避させられると、書き込み中のデータが欠損する可能性がある。</p>
 <p>そこで、<code>.spec.priorityClassName</code>キーを使用すると、Podのスケジューリング優先度を設定できる。</p>
 <h2 id="deploymentstatefulsetpoddisruptionbudge">DeploymentやStatefulSetを使用する場合はPodDisruptionBudgeも合わせて作成する<a class="headerlink" href="#deploymentstatefulsetpoddisruptionbudge" title="Permanent link">&para;</a></h2>
 <p>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。</p>
 <p>この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。</p>
 <p>そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</p>
-<h2 id="podnode-node">Podを異なるNodeに分散させる / 特定のNodeにスケジューリングする<a class="headerlink" href="#podnode-node" title="Permanent link">&para;</a></h2>
+<h2 id="podnode-node">Podを異なるNodeに分散させる / 特定のNodeにスケジューリングさせる<a class="headerlink" href="#podnode-node" title="Permanent link">&para;</a></h2>
 <p>Workload配下のPodを異なるNodeに分散させ、障害を防ぐ。</p>
 <p>また、NodeやNodeグループを指定してスケジューリングさせる。</p>
-<p>kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジューリングする。</p>
+<p>kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジューリングさせる。</p>
 <p>障害が起こったNodeにWorkload配下のPodが偏っていると、冗長化したPodが全て停止し、サービスに影響する可能性がある。</p>
 <p>そのため、Podが特定のNodeに偏らないようにする必要がある。</p>
 <p>なお、以降の設定値はPodのスケジューリング時にのみ考慮される。</p>
-<p>スケジューリング後に条件と合致しなくなっても、kube-scheduleはPodを再スケジューリングしない。</p>
+<p>スケジューリング後に条件と合致しなくなっても、kube-scheduleはPodを再スケジューリングさせない。</p>
 <p>例えば、一時的な負荷でPodがスケールアウトした場合を考える。</p>
-<p>Podをスケジューリングする時は、条件を考慮してPodを分散して配置する。</p>
+<p>Podをスケジューリングさせる時は、条件を考慮してPodを分散して配置する。</p>
 <p>しかし、一時的な負荷が収まってPodがスケールインする時は、条件を考慮してPodを削除する訳ではない。</p>
 <p>そのため、Podの分散配置が保証されなくなる。</p>
-<p>Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。</p>
+<p>Nodeにスケジュール後のPodを定期的に再スケジューリングさせるために、deschedulerを合わせて使用するとよい。</p>
 <p>deschedulerは条件に一致しないPodをEvictするだけで、Podの再スケジューリングはkube-schedulerが行う。</p>
 <blockquote>
 <p><a href="https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity">https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity</a></p>
@@ -6272,7 +6272,7 @@
 <h2 id="podnode">ストレージをPodと同じNodeに作成する<a class="headerlink" href="#podnode" title="Permanent link">&para;</a></h2>
 <p>Nodeを冗長化している場合、Workloadは配下のPodを各NodeにスケジューリングされるためPodがアクセスするストレージも同様のNodeに作成する必要がある。</p>
 <p>ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。</p>
-<p>そこで<code>topologySpreadConstraints</code>キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。</p>
+<p>そこで<code>topologySpreadConstraints</code>キーを使用することで、Podと同じNodeにストレージをスケジューリングさせることができる。</p>
 <h2 id="storageclasspersistentvolume">StorageClassやPersistentVolumeに適切なラベルを設定する<a class="headerlink" href="#storageclasspersistentvolume" title="Permanent link">&para;</a></h2>
 <p>PodからPersistentVolumeClaimを利用する場合ラベルなどがついていないと、適切なボリューム選択が困難になってしまう。</p>
 <p>そのためStorageClassやPersistentVolumeの<code>metadata.label</code>に<code>storage-type=ssd</code>や<code>iops=3000</code>、<code>environment=prd</code>などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。</p>

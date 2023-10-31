@@ -6023,7 +6023,7 @@
 35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
 </code></pre></div>
 <p>類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。</p>
-<p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。</p>
+<p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
 <p><code>kubectl rollout restart</code>コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。</p>
 <p>deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。</p>
@@ -6158,7 +6158,7 @@
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">nodeResourceUtilizationThresholds</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># ターゲット閾値 (この値を超過したNodeからPodが退避する)</span>
+<span class="w">        </span><span class="c1"># ターゲット閾値 (この値を超過したNodeからPodを退避させる)</span>
 <span class="w">        </span><span class="nt">targetThresholds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
@@ -6177,7 +6177,7 @@
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
 <p>Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。</p>
-<p>該当するNodeがない場合、再スケジューリングしない。</p>
+<p>該当するNodeがない場合、再スケジューリングさせない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
