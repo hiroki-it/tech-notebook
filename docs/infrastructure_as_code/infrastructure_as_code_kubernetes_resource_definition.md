@@ -4315,6 +4315,46 @@ spec:
 
 ## PriorityClass
 
+### globalDefault
+
+#### ▼ globalDefaultとは
+
+グローバルスコープにするかどうかを設定する。
+
+`true`の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: foo-priority-class
+globalDefault: false
+```
+
+<br>
+
+### preemptionPolicy
+
+#### ▼ preemptionPolicyとは
+
+スケジューリングの優先度が競合した場合に、どのような優先度にするかを設定する。
+
+#### ▼ `Never`
+
+`Never`とすると、必ず他のPodのスケジューリングを優先するようになる。
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: foo-priority-class
+preemptionPolicy: Never
+```
+
+> - https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#non-preempting-priority-class
+
+<br>
+
 ### value
 
 #### ▼ valueとは
@@ -4330,6 +4370,18 @@ value: 1000000
 ```
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#how-to-use-priority-and-preemption
+
+#### ▼ `-1`
+
+`-1`とすると、優先度が最低になる。
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: foo-priority-class
+value: 1000000
+```
 
 <br>
 

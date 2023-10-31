@@ -90,7 +90,13 @@ spec:
 
 <br>
 
-## 02. NodePool
+## 02. EC2NodeClass
+
+記入中...
+
+<br>
+
+## 03. NodePool
 
 記入中...
 
@@ -98,7 +104,7 @@ spec:
 
 <br>
 
-## 03. Provisioner
+## 04. Provisioner
 
 ### providerRef
 
@@ -391,7 +397,7 @@ spec:
 
 <br>
 
-## 04. 専用ConfigMap
+## 05. 専用ConfigMap
 
 ### aws.interruptionQueueName
 
