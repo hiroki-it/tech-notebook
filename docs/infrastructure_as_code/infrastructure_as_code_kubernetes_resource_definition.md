@@ -571,11 +571,18 @@ spec:
 
 CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。
 
-この時、.spec.startingDeadlineSecondsキーを設定しておくと、これの期間に`100`回連続で失敗した時のみ、Jobを再実行できなくなる。
+1時間にJobを1回実行すると仮定すると、簡単に`100`回を超過してしまう。
 
-そのため、Jobが再実行不可になりにくくなる。
+```bash
+停止時間 (8h) * 実行間隔 (60/h) = 480回
+```
+
+この時、`.spec.startingDeadlineSeconds`キーを設定しておくと、これの期間に`100`回連続で失敗した時のみ、Jobを再実行できなくなる。
+
+`100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
 > - https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/
+> - https://qiita.com/sekinet/items/c717104fbb9bd74872f0#%E3%81%AA%E3%81%9C%E5%95%8F%E9%A1%8C%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%8B
 
 <br>
 

@@ -19,6 +19,21 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。
 
+```bash
+$ kubectl get events -n foo
+
+# 退避
+35m         Normal   LowNodeUtilization       pod/foo-5c844554c5-6nk2r            pod evicted from ip-*-*-*-*.ap-northeast-1.compute.internal node by sigs.k8s.io/descheduler
+35m         Normal   Killing                  pod/foo-5c844554c5-6nk2r            Stopping container foo
+
+# 再スケジューリング
+35m         Normal   Scheduled                pod/foo-5c844554c5-vgdjl            Successfully assigned foo-5c844554c5-vgdjl to ip-*-*-*-*.ap-northeast-1.compute.internal
+35m         Normal   Pulled                   pod/foo-5c844554c5-vgdjl            Container image "public.ecr.aws/docker/library/foo:*.*.*" already present on machine
+35m         Normal   Created                  pod/foo-5c844554c5-vgdjl            Created container foo
+35m         Normal   Started                  pod/foo-5c844554c5-vgdjl            Started container foo
+35m         Normal   SuccessfulCreate         replicaset/foo-5c844554c5           Created pod: foo-5c844554c5-vgdjl
+```
+
 類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。
 
 そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。
