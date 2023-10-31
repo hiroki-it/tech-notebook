@@ -3786,26 +3786,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ポリシー
+  <a href="#02-deschedulerpolicy" class="md-nav__link">
+    02. DeschedulerPolicy
   </a>
   
-    <nav class="md-nav" aria-label="02. ポリシー">
+    <nav class="md-nav" aria-label="02. DeschedulerPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ポリシーとは
+  <a href="#deschedulerpolicy" class="md-nav__link">
+    DeschedulerPolicyとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ポリシーの種類
+  <a href="#deschedulerpolicy_1" class="md-nav__link">
+    DeschedulerPolicy
   </a>
   
-    <nav class="md-nav" aria-label="ポリシーの種類">
+    <nav class="md-nav" aria-label="DeschedulerPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3846,6 +3846,26 @@
           <li class="md-nav__item">
   <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
     ▼ RemovePodsViolatingTopologySpreadConstraint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    グローバルオプション
+  </a>
+  
+    <nav class="md-nav" aria-label="グローバルオプション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodefit" class="md-nav__link">
+    ▼ nodeFit
   </a>
   
 </li>
@@ -5851,26 +5871,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. ポリシー
+  <a href="#02-deschedulerpolicy" class="md-nav__link">
+    02. DeschedulerPolicy
   </a>
   
-    <nav class="md-nav" aria-label="02. ポリシー">
+    <nav class="md-nav" aria-label="02. DeschedulerPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ポリシーとは
+  <a href="#deschedulerpolicy" class="md-nav__link">
+    DeschedulerPolicyとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ポリシーの種類
+  <a href="#deschedulerpolicy_1" class="md-nav__link">
+    DeschedulerPolicy
   </a>
   
-    <nav class="md-nav" aria-label="ポリシーの種類">
+    <nav class="md-nav" aria-label="DeschedulerPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5911,6 +5931,26 @@
           <li class="md-nav__item">
   <a href="#removepodsviolatingtopologyspreadconstraint" class="md-nav__link">
     ▼ RemovePodsViolatingTopologySpreadConstraint
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    グローバルオプション
+  </a>
+  
+    <nav class="md-nav" aria-label="グローバルオプション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodefit" class="md-nav__link">
+    ▼ nodeFit
   </a>
   
 </li>
@@ -6021,7 +6061,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="configmap">ConfigMap<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
-<p>deschedulerで有効化するポリシーを設定する。</p>
+<p>DeschedulerPolicyのマニフェストを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6070,8 +6110,8 @@
 <span class="w">        </span><span class="no">enabled: true</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="02">02. ポリシー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_4">ポリシーとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h2 id="02-deschedulerpolicy">02. DeschedulerPolicy<a class="headerlink" href="#02-deschedulerpolicy" title="Permanent link">&para;</a></h2>
+<h3 id="deschedulerpolicy">DeschedulerPolicyとは<a class="headerlink" href="#deschedulerpolicy" title="Permanent link">&para;</a></h3>
 <p>再スケジューリングの対象とするPodの選定ルールを設定する。</p>
 <blockquote>
 <ul>
@@ -6079,7 +6119,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">ポリシーの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
 <p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、使用量が閾値 (thresholds) を超過していないNodeにPodを再スケジューリングさせる。</p>
 <p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避と再スケジューリングを繰り返す状態になってしまう。</p>
@@ -6179,6 +6219,15 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml">https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">グローバルオプション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="nodefit">▼ nodeFit<a class="headerlink" href="#nodefit" title="Permanent link">&para;</a></h4>
+<p>Podを退避させる前に、他のNodeがPodを再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity、など) であるかを検証する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/descheduler#node-fit-filtering">https://github.com/kubernetes-sigs/descheduler#node-fit-filtering</a></li>
 </ul>
 </blockquote>
 <p><br></p>
