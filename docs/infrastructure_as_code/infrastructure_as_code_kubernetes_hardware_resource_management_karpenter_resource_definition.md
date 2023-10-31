@@ -106,26 +106,9 @@ spec:
 
 ## 04. Provisioner
 
-### providerRef
+### annotations
 
-Provisionerで使用するNodeテンプレートを設定する。
-
-```yaml
-apiVersion: karpenter.sh/v1alpha5
-kind: Provisioner
-metadata:
-  name: foo-node-provisioner
-spec:
-  providerRef:
-    name: foo-template
-```
-
-> - https://karpenter.sh/docs/concepts/provisioners/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
-
-<br>
-
-### taints
+全てのNodeに挿入するアノテーションを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -133,9 +116,8 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  taints:
-    - key: example.com/special-taint
-      effect: NoSchedule
+  annotations:
+    example.com/owner: my-team
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -143,7 +125,9 @@ spec:
 
 <br>
 
-### startupTaints
+### consolidation
+
+コスト削減のため、既存のNodeのスペックを下げるプロビジョニングを実行するかどうかを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -151,13 +135,59 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  startupTaints:
-    - key: example.com/another-taint
-      effect: NoSchedule
+  consolidation:
+    enabled: true
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+### kubeletConfiguration
+
+Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  kubeletConfiguration:
+    clusterDNS:
+      - 10.0.1.100
+    containerRuntime: containerd
+    systemReserved:
+      cpu: 100m
+      memory: 100Mi
+      ephemeral-storage: 1Gi
+    kubeReserved:
+      cpu: 200m
+      memory: 100Mi
+      ephemeral-storage: 3Gi
+    evictionHard:
+      memory.available: 5%
+      nodefs.available: 10%
+      nodefs.inodesFree: 10%
+    evictionSoft:
+      memory.available: 500Mi
+      nodefs.available: 15%
+      nodefs.inodesFree: 15%
+    evictionSoftGracePeriod:
+      memory.available: 1m
+      nodefs.available: 1m30s
+      nodefs.inodesFree: 2m
+    evictionMaxPodGracePeriod: 60
+    imageGCHighThresholdPercent: 85
+    imageGCLowThresholdPercent: 80
+    cpuCFSQuota: true
+    podsPerCore: 2
+    maxPods: 20
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/#speckubeletconfiguration
+> - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
 
 <br>
 
@@ -180,9 +210,11 @@ spec:
 
 <br>
 
-### annotations
+### limits
 
-全てのNodeに挿入するアノテーションを設定する。
+Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。
+
+Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -190,8 +222,30 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  annotations:
-    example.com/owner: my-team
+  limits:
+    resources:
+      cpu: 1000
+      memory: 1000Gi
+```
+
+> - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+> - https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources
+
+<br>
+
+### providerRef
+
+Provisionerで使用するNodeテンプレートを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-node-provisioner
+spec:
+  providerRef:
+    name: foo-template
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -254,9 +308,7 @@ spec:
 
 <br>
 
-### kubeletConfiguration
-
-Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
+### startupTaints
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -264,79 +316,9 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  kubeletConfiguration:
-    clusterDNS:
-      - 10.0.1.100
-    containerRuntime: containerd
-    systemReserved:
-      cpu: 100m
-      memory: 100Mi
-      ephemeral-storage: 1Gi
-    kubeReserved:
-      cpu: 200m
-      memory: 100Mi
-      ephemeral-storage: 3Gi
-    evictionHard:
-      memory.available: 5%
-      nodefs.available: 10%
-      nodefs.inodesFree: 10%
-    evictionSoft:
-      memory.available: 500Mi
-      nodefs.available: 15%
-      nodefs.inodesFree: 15%
-    evictionSoftGracePeriod:
-      memory.available: 1m
-      nodefs.available: 1m30s
-      nodefs.inodesFree: 2m
-    evictionMaxPodGracePeriod: 60
-    imageGCHighThresholdPercent: 85
-    imageGCLowThresholdPercent: 80
-    cpuCFSQuota: true
-    podsPerCore: 2
-    maxPods: 20
-```
-
-> - https://karpenter.sh/docs/concepts/provisioners/#speckubeletconfiguration
-> - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
-
-<br>
-
-### limits
-
-Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。
-
-Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。
-
-```yaml
-apiVersion: karpenter.sh/v1alpha5
-kind: Provisioner
-metadata:
-  name: foo-provisioner
-spec:
-  limits:
-    resources:
-      cpu: 1000
-      memory: 1000Gi
-```
-
-> - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-> - https://karpenter.sh/docs/concepts/provisioners/#speclimitsresources
-
-<br>
-
-### consolidation
-
-コスト削減のため、既存のNodeのスペックを下げるプロビジョニングを実行するかどうかを設定する。
-
-```yaml
-apiVersion: karpenter.sh/v1alpha5
-kind: Provisioner
-metadata:
-  name: foo-provisioner
-spec:
-  consolidation:
-    enabled: true
+  startupTaints:
+    - key: example.com/another-taint
+      effect: NoSchedule
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -344,7 +326,7 @@ spec:
 
 <br>
 
-### ttlSecondsUntilExpired
+### taints
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -352,7 +334,9 @@ kind: Provisioner
 metadata:
   name: foo-provisioner
 spec:
-  ttlSecondsUntilExpired: 2592000
+  taints:
+    - key: example.com/special-taint
+      effect: NoSchedule
 ```
 
 > - https://karpenter.sh/docs/concepts/provisioners/
@@ -374,6 +358,22 @@ spec:
 ```
 
 > - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
+
+<br>
+
+### ttlSecondsUntilExpired
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  ttlSecondsUntilExpired: 2592000
+```
+
+> - https://karpenter.sh/docs/concepts/provisioners/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
 
 <br>
 
