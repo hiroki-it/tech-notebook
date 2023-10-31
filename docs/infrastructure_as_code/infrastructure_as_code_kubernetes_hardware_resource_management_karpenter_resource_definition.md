@@ -17,7 +17,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ### amiSelector
 
-EC2ワーカーNodeのAMIを設定する。
+NodeのAMIを設定する。
 
 設定しない場合、Karpenterは最適化AMIを自動的に選択する。
 
@@ -36,7 +36,7 @@ spec:
 
 ### securityGroupSelector
 
-EC2ワーカーNodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
+Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
@@ -54,7 +54,7 @@ spec:
 
 ### subnetSelector
 
-EC2ワーカーNodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
+Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
@@ -73,7 +73,7 @@ spec:
 
 ### tags
 
-全てのEC2ワーカーNodeやEBSボリュームに挿入するタグを設定する。
+全てのNodeやEBSボリュームに挿入するタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1alpha1
@@ -127,7 +127,11 @@ spec:
 
 ### consolidation
 
-コスト削減のため、既存のNodeのスペックを下げるプロビジョニングを実行するかどうかを設定する。
+コストを考慮するかどうかを設定する。
+
+Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。
+
+`.spec.ttlSecondsAfterEmpty`キーとは競合する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -141,6 +145,7 @@ spec:
 
 > - https://karpenter.sh/docs/concepts/provisioners/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
 
 <br>
 
@@ -212,9 +217,9 @@ spec:
 
 ### limits
 
-Karpenterがプロビジョニング可能なEC2ワーカーNodeをハードウェアリソース合計量で設定する。
+Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。
 
-Karpenter配下のEC2ワーカーNodeのハードウェアリソースがこれを超過した場合に、既存のEC2ワーカーNodeを削除しないと、新しいものをプロビジョニングできない。
+Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -348,6 +353,8 @@ spec:
 
 NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
 
+`.spec.consolidation`キーとは競合する。
+
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
 kind: Provisioner
@@ -358,6 +365,7 @@ spec:
 ```
 
 > - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
+> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
 
 <br>
 
