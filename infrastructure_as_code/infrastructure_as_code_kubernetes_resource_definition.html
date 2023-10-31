@@ -12933,11 +12933,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <p>CronJobのデフォルトの仕様として、Jobが<code>100</code>回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。</p>
-<p>この時、.spec.startingDeadlineSecondsキーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
-<p>そのため、Jobが再実行不可になりにくくなる。</p>
+<p>1時間にJobを1回実行すると仮定すると、簡単に<code>100</code>回を超過してしまう。</p>
+<div class="highlight"><pre><span></span><code>停止時間<span class="w"> </span><span class="o">(</span>8h<span class="o">)</span><span class="w"> </span>*<span class="w"> </span>実行間隔<span class="w"> </span><span class="o">(</span><span class="m">60</span>/h<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>480回
+</code></pre></div>
+<p>この時、<code>.spec.startingDeadlineSeconds</code>キーを設定しておくと、これの期間に<code>100</code>回連続で失敗した時のみ、Jobを再実行できなくなる。</p>
+<p><code>100</code>回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/">https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/</a></li>
+<li><a href="https://qiita.com/sekinet/items/c717104fbb9bd74872f0#%E3%81%AA%E3%81%9C%E5%95%8F%E9%A1%8C%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%8B">https://qiita.com/sekinet/items/c717104fbb9bd74872f0#%E3%81%AA%E3%81%9C%E5%95%8F%E9%A1%8C%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%8B</a></li>
 </ul>
 </blockquote>
 <p><br></p>

@@ -6009,6 +6009,19 @@
 <h2 id="01-descheduler">01. descheduler<a class="headerlink" href="#01-descheduler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>foo
+
+<span class="c1"># 退避</span>
+35m<span class="w">         </span>Normal<span class="w">   </span>LowNodeUtilization<span class="w">       </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>pod<span class="w"> </span>evicted<span class="w"> </span>from<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal<span class="w"> </span>node<span class="w"> </span>by<span class="w"> </span>sigs.k8s.io/descheduler
+35m<span class="w">         </span>Normal<span class="w">   </span>Killing<span class="w">                  </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>Stopping<span class="w"> </span>container<span class="w"> </span>foo
+
+<span class="c1"># 再スケジューリング</span>
+35m<span class="w">         </span>Normal<span class="w">   </span>Scheduled<span class="w">                </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Successfully<span class="w"> </span>assigned<span class="w"> </span>foo-5c844554c5-vgdjl<span class="w"> </span>to<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal
+35m<span class="w">         </span>Normal<span class="w">   </span>Pulled<span class="w">                   </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Container<span class="w"> </span>image<span class="w"> </span><span class="s2">&quot;public.ecr.aws/docker/library/foo:*.*.*&quot;</span><span class="w"> </span>already<span class="w"> </span>present<span class="w"> </span>on<span class="w"> </span>machine
+35m<span class="w">         </span>Normal<span class="w">   </span>Created<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Created<span class="w"> </span>container<span class="w"> </span>foo
+35m<span class="w">         </span>Normal<span class="w">   </span>Started<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Started<span class="w"> </span>container<span class="w"> </span>foo
+35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
+</code></pre></div>
 <p>類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。</p>
 <p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
