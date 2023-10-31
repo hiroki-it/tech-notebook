@@ -441,9 +441,18 @@ OCIリポジトリをチャートリポジトリとして使用する場合に�
 
 ```yaml
 repositories:
-  - name: foo
+  - name: karpenter
     url: public.ecr.aws/karpenter
     oci: true
+
+releases:
+  - name: karpenter
+    namespace: karpenter
+    chart: karpenter/karpenter
+    version: v0.31.0
+    atomic: true
+    values:
+      - values.yaml
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#oci-registries

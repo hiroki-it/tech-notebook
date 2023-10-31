@@ -490,6 +490,7 @@ data:
 
 > - https://karpenter.sh/preview/concepts/disruption/#interruption
 > - https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional
+> - https://karpenter.sh/v0.31/concepts/settings/#configmap
 
 <br>
 
@@ -504,6 +505,8 @@ metadata:
 data:
   aws.clusterName: foo-cluster
 ```
+
+> - https://karpenter.sh/v0.31/concepts/settings/#configmap
 
 <br>
 
@@ -521,6 +524,8 @@ data:
   aws.clusterEndpoint: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
+> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+
 <br>
 
 ### batchMaxDuration
@@ -535,6 +540,8 @@ data:
   batchMaxDuration: 10s
 ```
 
+> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+
 <br>
 
 ### batchIdleDuration
@@ -548,5 +555,7 @@ metadata:
 data:
   batchIdleDuration: 1s
 ```
+
+> - https://karpenter.sh/v0.31/concepts/settings/#configmap
 
 <br>

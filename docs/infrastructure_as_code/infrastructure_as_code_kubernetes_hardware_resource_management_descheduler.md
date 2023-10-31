@@ -167,7 +167,11 @@ data:
 
 #### ▼ LowNodeUtilization
 
-Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングさせる。
+Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、使用量が閾値 (thresholds) を超過していないNodeにPodを再スケジューリングさせる。
+
+注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避と再スケジューリングを繰り返す状態になってしまう。
+
+Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -177,17 +181,20 @@ strategies:
     enabled: true
     params:
       nodeResourceUtilizationThresholds:
+        # ターゲット閾値 (この値を超過したNodeからPodが退避する)
+        targetThresholds:
+          cpu: 70
+          memory: 70
+          pods: 70
+        # 閾値 (この値を超過していないNodeにPodを再スケジューリングする)
         thresholds:
           cpu: 20
           memory: 20
           pods: 20
-        targetThresholds:
-          cpu: 50
-          memory: 50
-          pods: 50
 ```
 
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
+> - https://sreake.com/blog/kubernetes-descheduler/
 
 #### ▼ RemoveDuplicates
 

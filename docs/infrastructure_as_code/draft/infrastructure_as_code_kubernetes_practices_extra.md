@@ -623,7 +623,7 @@ Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容�
 
 > [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
 
-Podのリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限することができる。
+Podのハードウェアリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限することができる。
 
 これにより、schedulerが Nodeのストレージのキャパシティを考慮してPodを配置してくれる。
 
