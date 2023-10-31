@@ -6081,7 +6081,9 @@
 <p><br></p>
 <h3 id="_5">ポリシーの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのリソース (例：CPU、メモリ、など) が指定した閾値以上消費された場合に、閾値に達していないNodeにPodを再スケジューリングさせる。</p>
+<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、使用量が閾値 (thresholds) を超過していないNodeにPodを再スケジューリングさせる。</p>
+<p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避と再スケジューリングを繰り返す状態になってしまう。</p>
+<p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6089,18 +6091,21 @@
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">params</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">nodeResourceUtilizationThresholds</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># ターゲット閾値 (この値を超過したNodeからPodが退避する)</span>
+<span class="w">        </span><span class="nt">targetThresholds</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
+<span class="w">        </span><span class="c1"># 閾値 (この値を超過していないNodeにPodを再スケジューリングする)</span>
 <span class="w">        </span><span class="nt">thresholds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
-<span class="w">        </span><span class="nt">targetThresholds</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
-<span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23</a></li>
+<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
 </ul>
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
@@ -6183,7 +6188,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
       
     
   </small>
