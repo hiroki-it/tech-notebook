@@ -11,7 +11,94 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 > - https://hiroki-it.github.io/tech-notebook/
 
-## 01. Provisioner
+<br>
+
+## 01. AWSNodeTemplate
+
+### amiSelector
+
+EC2ワーカーNodeのAMIを設定する。
+
+設定しない場合、Karpenterは最適化AMIを自動的に選択する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  amiSelector: AL
+```
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
+
+### securityGroupSelector
+
+EC2ワーカーNodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  securityGroupSelector:
+    Name: foo-private-sg
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector
+
+<br>
+
+### subnetSelector
+
+EC2ワーカーNodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  subnetSelector:
+    Name: foo-private-subnet
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
+
+### tags
+
+全てのEC2ワーカーNodeやEBSボリュームに挿入するタグを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: foo-node-template
+spec:
+  tags:
+    karpenter.template: foo-node-template
+```
+
+> - https://karpenter.sh/docs/concepts/node-templates/#spectags
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
+
+## 02. NodePool
+
+記入中...
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+
+<br>
+
+## 03. Provisioner
 
 ### providerRef
 
@@ -304,84 +391,7 @@ spec:
 
 <br>
 
-## 02. AWSNodeTemplate
-
-### amiSelector
-
-EC2ワーカーNodeのAMIを設定する。
-
-設定しない場合、Karpenterは最適化AMIを自動的に選択する。
-
-```yaml
-apiVersion: karpenter.k8s.aws/v1alpha1
-kind: AWSNodeTemplate
-metadata:
-  name: foo-node-template
-spec:
-  amiSelector: AL
-```
-
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-
-<br>
-
-### securityGroupSelector
-
-EC2ワーカーNodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
-
-```yaml
-apiVersion: karpenter.k8s.aws/v1alpha1
-kind: AWSNodeTemplate
-metadata:
-  name: foo-node-template
-spec:
-  securityGroupSelector:
-    Name: foo-private-sg
-```
-
-> - https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector
-
-<br>
-
-### subnetSelector
-
-EC2ワーカーNodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
-
-```yaml
-apiVersion: karpenter.k8s.aws/v1alpha1
-kind: AWSNodeTemplate
-metadata:
-  name: foo-node-template
-spec:
-  subnetSelector:
-    Name: foo-private-subnet
-```
-
-> - https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-
-<br>
-
-### tags
-
-全てのEC2ワーカーNodeやEBSボリュームに挿入するタグを設定する。
-
-```yaml
-apiVersion: karpenter.k8s.aws/v1alpha1
-kind: AWSNodeTemplate
-metadata:
-  name: foo-node-template
-spec:
-  tags:
-    karpenter.template: foo-node-template
-```
-
-> - https://karpenter.sh/docs/concepts/node-templates/#spectags
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-
-<br>
-
-## 03. 専用ConfigMap
+## 04. 専用ConfigMap
 
 ### aws.interruptionQueueName
 
