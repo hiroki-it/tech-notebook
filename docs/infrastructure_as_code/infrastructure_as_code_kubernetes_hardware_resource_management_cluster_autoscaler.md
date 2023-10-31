@@ -56,9 +56,9 @@ Kubernetes以外のメトリクス (例：AWS CloudWatch、GCP CloudMonitoring) 
 
 <br>
 
-### karpenterとの違い
+### Karpenterとの違い
 
-karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
+Karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
 
 一方でcluster-autoscalerは、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールする。
 

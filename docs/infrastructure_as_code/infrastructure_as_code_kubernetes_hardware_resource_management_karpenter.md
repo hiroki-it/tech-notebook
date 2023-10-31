@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】karpenter＠ハードウェアリソース管理
-description: karpenter＠ハードウェアリソース管理の知見を記録しています。
+title: 【IT技術の知見】Karpenter＠ハードウェアリソース管理
+description: Karpenter＠ハードウェアリソース管理の知見を記録しています。
 ---
 
-# karpenter＠ハードウェアリソース管理
+# Karpenter＠ハードウェアリソース管理
 
 ## はじめに
 
@@ -13,17 +13,17 @@ description: karpenter＠ハードウェアリソース管理の知見を記録�
 
 <br>
 
-## 01. karpenterの仕組み
+## 01. Karpenterの仕組み
 
 ### アーキテクチャ
 
-karpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
+KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
-karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
+Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
 
-AWSの場合のみ、cluster-autoscalerの代わりにkarpenterを使用できる。
+AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。
 
-karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
+Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
 
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
 
@@ -38,11 +38,11 @@ karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 ### cluster-autoscalerとの違い
 
-cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
+cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
 
 そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
 
-一方でkarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
+一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
 
 ![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
@@ -56,7 +56,7 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 #### ▼ Pod上限数
 
-karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
+Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
 
 > - https://karpenter.sh/docs/concepts/provisioners/#max-pods
 
