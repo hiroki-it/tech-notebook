@@ -131,7 +131,7 @@ spec:
 
 Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。
 
-`.spec.ttlSecondsAfterEmpty`キーとは競合する。
+`.spec.ttlSecondsAfterEmpty`キーとは競合し、どちらか一方しか設定できない。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -260,7 +260,11 @@ spec:
 
 ### requirements
 
+#### ▼ requirementsとは
+
 プロビジョニングするNodeのハードウェアリソースを設定する。
+
+**＊実装例＊**
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -304,6 +308,39 @@ spec:
       operator: In
       values:
         - spot
+        - on-demand
+```
+
+**＊実装例＊**
+
+```yaml
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: foo-provisioner
+spec:
+  requirements:
+    - key: kubernetes.io/arch
+      operator: In
+      values:
+        - amd64
+    - key: karpenter.k8s.aws/instance-family
+      operator: In
+      values:
+        - t3
+    - key: karpenter.k8s.aws/instance-size
+      operator: In
+      values:
+        - medium
+        - large
+        - xlarge
+    - key: kubernetes.io/os
+      operator: In
+      values:
+        - linux
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values:
         - on-demand
 ```
 
@@ -353,7 +390,7 @@ spec:
 
 NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
 
-`.spec.consolidation`キーとは競合する。
+`.spec.consolidation`キーとは競合し、どちらか一方しか設定できない。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
