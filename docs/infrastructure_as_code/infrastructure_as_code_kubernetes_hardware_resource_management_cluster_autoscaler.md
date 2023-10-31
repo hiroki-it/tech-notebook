@@ -219,7 +219,7 @@ NodeGroups:
 
 `(4)`
 
-: 結果として、`2`台それぞれで`70`%を消費するPodがスケジューリングされている。
+: 結果として、`2`台それぞれで`70`%を消費するPodをスケジューリングさせている。
 
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=44
 
@@ -245,7 +245,7 @@ NodeGroups:
 
 `(4)`
 
-: 結果として、`1`台で`60`%を消費するPodがスケジューリングされている。
+: 結果として、`1`台で`60`%を消費するPodをスケジューリングさせている。
 
 <br>
 

@@ -460,7 +460,7 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 $ kubectl describe node
 ```
 
-`grep`コマンドを使用して、PodがスケジューリングされているNodeを取得する。
+`grep`コマンドを使用して、PodをスケジューリングさせているNodeを取得する。
 
 ```bash
 $ kubectl describe pod <Pod名> | grep Node:

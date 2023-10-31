@@ -36,7 +36,7 @@ $ kubectl get events -n foo
 
 類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。
 
-そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングしてくれない。
+そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。
 
 他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。
 
@@ -196,7 +196,7 @@ strategies:
     enabled: true
     params:
       nodeResourceUtilizationThresholds:
-        # ターゲット閾値 (この値を超過したNodeからPodが退避する)
+        # ターゲット閾値 (この値を超過したNodeからPodを退避させる)
         targetThresholds:
           cpu: 70
           memory: 70
@@ -215,7 +215,7 @@ strategies:
 
 Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。
 
-該当するNodeがない場合、再スケジューリングしない。
+該当するNodeがない場合、再スケジューリングさせない。
 
 ```yaml
 apiVersion: descheduler/v1alpha1

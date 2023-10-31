@@ -473,7 +473,7 @@ Nodeでハードウェアリソース不足が起こった場合、Nodeは一部
 
 この時に優先度を設定しないと、DaemonSet配下のPodのスケジューリング優先度が低くなる。
 
-DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングすることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。
+DaemonSet配下のPodは、各Nodeの最低一つずつスケジューリングさせることが望ましく、NodeからDaemonSet配下のPodが退避させられると、障害が起こる可能性がある。
 
 また、StatefulSet配下のPodには状態を持たせることが多く、NodeからStatefulSet配下のPodが退避させられると、書き込み中のデータが欠損する可能性がある。
 
@@ -487,13 +487,13 @@ Nodeのスケールインやアップグレード時に、Nodeはドレイン処
 
 そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。
 
-## Podを異なるNodeに分散させる / 特定のNodeにスケジューリングする
+## Podを異なるNodeに分散させる / 特定のNodeにスケジューリングさせる
 
 Workload配下のPodを異なるNodeに分散させ、障害を防ぐ。
 
 また、NodeやNodeグループを指定してスケジューリングさせる。
 
-kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジューリングする。
+kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジューリングさせる。
 
 障害が起こったNodeにWorkload配下のPodが偏っていると、冗長化したPodが全て停止し、サービスに影響する可能性がある。
 
@@ -501,17 +501,17 @@ kube-schedulerは、Workload配下のPodを条件に応じてNodeにスケジュ
 
 なお、以降の設定値はPodのスケジューリング時にのみ考慮される。
 
-スケジューリング後に条件と合致しなくなっても、kube-scheduleはPodを再スケジューリングしない。
+スケジューリング後に条件と合致しなくなっても、kube-scheduleはPodを再スケジューリングさせない。
 
 例えば、一時的な負荷でPodがスケールアウトした場合を考える。
 
-Podをスケジューリングする時は、条件を考慮してPodを分散して配置する。
+Podをスケジューリングさせる時は、条件を考慮してPodを分散して配置する。
 
 しかし、一時的な負荷が収まってPodがスケールインする時は、条件を考慮してPodを削除する訳ではない。
 
 そのため、Podの分散配置が保証されなくなる。
 
-Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。
+Nodeにスケジュール後のPodを定期的に再スケジューリングさせるために、deschedulerを合わせて使用するとよい。
 
 deschedulerは条件に一致しないPodをEvictするだけで、Podの再スケジューリングはkube-schedulerが行う。
 
@@ -724,7 +724,7 @@ Nodeを冗長化している場合、Workloadは配下のPodを各Nodeにスケ�
 
 ストレージがPodと異なるNodeに作成された場合、ほかNodeの障害によりストレージを利用できなくなりNodeを超えて障害が伝搬してしまう。
 
-そこで`topologySpreadConstraints`キーを使用することで、Podと同じNodeにストレージをスケジューリングすることができる。
+そこで`topologySpreadConstraints`キーを使用することで、Podと同じNodeにストレージをスケジューリングさせることができる。
 
 ## StorageClassやPersistentVolumeに適切なラベルを設定する
 

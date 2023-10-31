@@ -111,7 +111,7 @@ SHOW variables LIKE '%version%';
 
 #### ▼ メンテナンスウインドウ
 
-DBクラスター/DBインスタンスの設定の変更をスケジューリングする。
+DBクラスター/DBインスタンスの設定の変更をスケジューリングさせる。
 
 > - https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
 

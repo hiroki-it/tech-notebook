@@ -910,7 +910,7 @@ endpoints:
 
 #### ▼ nodeName
 
-Podが現在スケジューリングされているNode名を設定する。
+PodをスケジューリングさせているNode名を設定する。
 
 これにより、Serviceとそのルーティング先のPodが異なるNode上に存在していたとしても、ServiceはPodにルーティングできる。
 
@@ -941,7 +941,7 @@ endpoints:
 
 #### ▼ zone
 
-Podが現在スケジューリングされているAZを設定する。
+PodをスケジューリングさせているAZを設定する。
 
 ```yaml
 apiVersion: discovery.k8s.io/v1
@@ -2284,7 +2284,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              # PodをスケジューリングしたいNodeのmetadata.labelsキー
+              # PodをスケジューリングさせたいNodeのmetadata.labelsキー
               # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。
               - key: node.kubernetes.io/nodegroup
                 operator: In
@@ -3703,7 +3703,7 @@ spec:
 
 指定した条件に合致するNodeにはスケジューリングさせない。
 
-なお、実行中のPodが違反していた場合でも、再スケジューリングしない。
+なお、実行中のPodが違反していた場合でも、再スケジューリングさせない。
 
 **＊実装例＊**
 
