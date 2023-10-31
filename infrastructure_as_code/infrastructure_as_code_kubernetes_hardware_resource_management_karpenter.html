@@ -3833,11 +3833,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-provisioner" class="md-nav__link">
-    02. Provisioner
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
   </a>
   
-    <nav class="md-nav" aria-label="02. Provisioner">
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS側
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS側">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    ▼ Terraformの公式モジュールの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-provisioner" class="md-nav__link">
+    03. Provisioner
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Provisioner">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3930,11 +3963,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-awsnodetemplate" class="md-nav__link">
-    03. AWSNodeTemplate
+  <a href="#04-awsnodetemplate" class="md-nav__link">
+    04. AWSNodeTemplate
   </a>
   
-    <nav class="md-nav" aria-label="03. AWSNodeTemplate">
+    <nav class="md-nav" aria-label="04. AWSNodeTemplate">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3971,11 +4004,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-configmap" class="md-nav__link">
-    04. 専用ConfigMap
+  <a href="#05-configmap" class="md-nav__link">
+    05. 専用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="04. 専用ConfigMap">
+    <nav class="md-nav" aria-label="05. 専用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6016,11 +6049,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-provisioner" class="md-nav__link">
-    02. Provisioner
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
   </a>
   
-    <nav class="md-nav" aria-label="02. Provisioner">
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    AWS側
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS側">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    ▼ Terraformの公式モジュールの場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-provisioner" class="md-nav__link">
+    03. Provisioner
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Provisioner">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6113,11 +6179,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-awsnodetemplate" class="md-nav__link">
-    03. AWSNodeTemplate
+  <a href="#04-awsnodetemplate" class="md-nav__link">
+    04. AWSNodeTemplate
   </a>
   
-    <nav class="md-nav" aria-label="03. AWSNodeTemplate">
+    <nav class="md-nav" aria-label="04. AWSNodeTemplate">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6154,11 +6220,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-configmap" class="md-nav__link">
-    04. 専用ConfigMap
+  <a href="#05-configmap" class="md-nav__link">
+    05. 専用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="04. 専用ConfigMap">
+    <nav class="md-nav" aria-label="05. 専用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6300,7 +6366,118 @@
 <h4 id="_7">▼ スケールインの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="02-provisioner">02. Provisioner<a class="headerlink" href="#02-provisioner" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h4 id="terraform">▼ Terraformの公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
+<p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
+<p>ここでは、Terraformの公式モジュールを使用する。</p>
+<p>コマンド (例：<code>eksctl</code>コマンド) を使用しても良い。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
+
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;モジュールのバージョン&gt;&quot;</span>
+
+<span class="c1">  # karpenterコントローラーのPodに紐付けるIAMロール</span>
+<span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller&quot;</span>
+
+<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
+<span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
+<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
+<span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
+<span class="w">  </span><span class="na">oidc_fully_qualified_subjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;system:serviceaccount:karpenter:karpenter&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-karpenter-controller-policy&quot;</span>
+<span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
+<span class="p">}</span>
+
+<span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSubnets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeLaunchTemplates&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypes&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypeOfferings&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeAvailabilityZones&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSpotPriceHistory&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Karpenter&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringLike&quot;</span>
+<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/provisioner-name&quot;</span>
+<span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;*&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ConditionalEC2Termination&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;iam:PassRole&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nv">module.eks_managed_node_group.iam_role_arn</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;PassNodeIAMRole&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;eks:DescribeCluster&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="nv">module.eks.cluster_arn</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;EKSClusterEndpointLookup&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-provisioner">03. Provisioner<a class="headerlink" href="#03-provisioner" title="Permanent link">&para;</a></h2>
 <h3 id="providerref">providerRef<a class="headerlink" href="#providerref" title="Permanent link">&para;</a></h3>
 <p>Provisionerで使用するNodeテンプレートを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1alpha5</span>
@@ -6569,7 +6746,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-awsnodetemplate">03. AWSNodeTemplate<a class="headerlink" href="#03-awsnodetemplate" title="Permanent link">&para;</a></h2>
+<h2 id="04-awsnodetemplate">04. AWSNodeTemplate<a class="headerlink" href="#04-awsnodetemplate" title="Permanent link">&para;</a></h2>
 <h3 id="amiselector">amiSelector<a class="headerlink" href="#amiselector" title="Permanent link">&para;</a></h3>
 <p>EC2ワーカーNodeのAMIを設定する。</p>
 <p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
@@ -6636,7 +6813,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-configmap">04. 専用ConfigMap<a class="headerlink" href="#04-configmap" title="Permanent link">&para;</a></h2>
+<h2 id="05-configmap">05. 専用ConfigMap<a class="headerlink" href="#05-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="awsinterruptionqueuename">aws.interruptionQueueName<a class="headerlink" href="#awsinterruptionqueuename" title="Permanent link">&para;</a></h3>
 <p>割り込み処理を有効にする場合に、AWS SQSの名前を設定する。</p>
 <p>別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。</p>
