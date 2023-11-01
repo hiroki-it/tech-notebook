@@ -6358,7 +6358,6 @@
 <h4 id="consolidationpolicy">▼ consolidationPolicy<a class="headerlink" href="#consolidationpolicy" title="Permanent link">&para;</a></h4>
 <p>コストを考慮するかどうかを設定する。</p>
 <p>Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。</p>
-<p><code>.spec.ttlSecondsAfterEmpty</code>キーとは競合し、どちらか一方しか設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6375,7 +6374,6 @@
 </blockquote>
 <h4 id="consolidateafter">▼ consolidateAfter<a class="headerlink" href="#consolidateafter" title="Permanent link">&para;</a></h4>
 <p>NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。</p>
-<p><code>.spec.consolidation</code>キーとは競合し、どちらか一方しか設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6498,7 +6496,7 @@
 <p><br></p>
 <h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
 <h4 id="annotations">▼ annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h4>
-<p>全てのNodeに挿入するアノテーションを設定する。</p>
+<p>Nodeに付与するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6516,7 +6514,7 @@
 </ul>
 </blockquote>
 <h4 id="labels">▼ labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
-<p>Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。</p>
+<p>Nodeに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
