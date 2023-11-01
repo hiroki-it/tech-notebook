@@ -15,6 +15,22 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ## 01. EC2NodeClass
 
+### amiFamily
+
+AMIの種類を設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  # 最適化 Amazon Linux 2 を指定する
+  amiFamily: AL2
+```
+
+<br>
+
 ### amiSelectorTerms
 
 NodeのAMIを設定する。
@@ -156,6 +172,56 @@ spec:
 
 <br>
 
+### limits
+
+Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。
+
+Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  template:
+    spec:
+      limits:
+        resources:
+          cpu: 1000
+          memory: 1000Gi
+```
+
+> - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
+> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+> - https://karpenter.sh/preview/concepts/nodepools/
+
+<br>
+
+### weight
+
+複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。
+
+デフォルトでは、重みが`0`である。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  template:
+    spec:
+      weight: 10
+```
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+## 02-02. template
+
 ### kubelet
 
 Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
@@ -202,32 +268,6 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 > - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
-
-<br>
-
-### limits
-
-Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。
-
-Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      limits:
-        resources:
-          cpu: 1000
-          memory: 1000Gi
-```
-
-> - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-> - https://karpenter.sh/preview/concepts/nodepools/
 
 <br>
 
@@ -430,26 +470,6 @@ spec:
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
 
 <br>
-
-### weight
-
-複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。
-
-デフォルトでは、重みが`0`である。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      weight: 10
-```
-
-> - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
 
 <br>
 
