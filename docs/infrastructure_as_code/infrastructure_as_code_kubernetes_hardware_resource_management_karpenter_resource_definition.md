@@ -103,7 +103,7 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    karpenter.template: foo-node-class
+    template.name: foo-node-class
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags

@@ -3851,6 +3851,7 @@ spec:
       image: app:1.0.0
   topologySpreadConstraints:
     - maxSkew: 1
+      # 異なるゾーンに分散させる
       topologyKey: topology.kubernetes.io/zone
 ```
 
@@ -3874,6 +3875,7 @@ spec:
     - name: app
       image: app:1.0.0
   topologySpreadConstraints:
+    # 異なるゾーンに分散させる
     - topologyKey: topology.kubernetes.io/zone
 ```
 
