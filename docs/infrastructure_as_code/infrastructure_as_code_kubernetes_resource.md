@@ -482,6 +482,55 @@ NodeにバルーンPodをスケジューリングさせ、Nodeが常に余剰リ
 
 バルーンPodは優先度が低いため、他のPodをスケジューリングさせる時にNodeから退避させる。
 
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-balloon
+spec:
+  # ゾーンが3つあるため、ゾーン間で移動するようにレプリカ数を3つにする
+  replicas: 3
+  selector:
+    matchLabels:
+      app: balloon
+  template:
+    metadata:
+      labels:
+        app: balloon
+    spec:
+      containers:
+        - args:
+            - infinity
+          command:
+            - sleep
+          image: ubuntu
+          name: ubuntu
+          resources:
+            requests:
+              cpu: "1"
+              memory: 3000Mi
+      priorityClassName: foo-balloon
+      terminationGracePeriodSeconds: 0
+      # Podを同じゾーンにスケジューリングさせない
+      topologySpreadConstraints:
+        - labelSelector:
+            matchLabels:
+              app: balloon
+          maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+```
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: foo-balloon
+preemptionPolicy: Never
+value: -10
+description: Priority class for balloon
+```
+
 > - https://wdenniss.com/gke-autopilot-spare-capacity
 > - https://qiita.com/Morix1500/items/5ea47755bb04f6b08a2a#%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0%E3%81%AE%E5%AE%9F%E7%8F%BE%E6%96%B9%E6%B3%95
 

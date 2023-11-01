@@ -153,6 +153,10 @@ spec:
 
 #### ▼ expireAfter
 
+Nodeを削除し、再作成するまでの期間を設定する。
+
+Nodeを定期的に再作成するよことにより、脆弱性やコスト削減につながる。
+
 ```yaml
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
@@ -323,7 +327,9 @@ spec:
   template:
     spec:
       nodeClassRef:
-        name: foo-classs
+        apiVersion: karpenter.k8s.aws/v1beta1
+        kind: EC2NodeClass
+        name: foo-node-class
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
@@ -399,10 +405,12 @@ spec:
       requirements:
         - key: kubernetes.io/arch
           operator: In
+          # ARM製よりAMD製に対応したベースイメージの方が多いので、AMD製を指定する
           values:
             - amd64
         - key: karpenter.k8s.aws/instance-family
           operator: In
+          # ハードウェアリソース要求量が瞬間的に増える場合、T系を指定する
           values:
             - t3
         - key: karpenter.k8s.aws/instance-size
