@@ -97,28 +97,9 @@ spec:
 
 ## 02. NodePool
 
-### annotations
+### disruption
 
-全てのNodeに挿入するアノテーションを設定する。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      annotations:
-        example.com/owner: my-team
-```
-
-> - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
-
-<br>
-
-### consolidation
+#### ▼ consolidationPolicy
 
 コストを考慮するかどうかを設定する。
 
@@ -132,19 +113,50 @@ kind: NodePool
 metadata:
   name: foo-node-pool
 spec:
-  template:
-    spec:
-      consolidation:
-        enabled: true
+  disruption:
+    consolidationPolicy: WhenUnderutilized
+```
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
+
+#### ▼ consolidateAfter
+
+NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
+
+`.spec.consolidation`キーとは競合し、どちらか一方しか設定できない。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  disruption:
+    consolidateAfter: 30s
+```
+
+> - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
+> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
+
+#### ▼ expireAfter
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  disruption:
+    expireAfter: 720h
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
-> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
 
 <br>
 
-### kubeletConfiguration
+### kubelet
 
 Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
 
@@ -156,7 +168,7 @@ metadata:
 spec:
   template:
     spec:
-      kubeletConfiguration:
+      kubelet:
         clusterDNS:
           - 10.0.1.100
         containerRuntime: containerd
@@ -193,28 +205,6 @@ spec:
 
 <br>
 
-### labels
-
-Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      labels:
-        node.kubernetes.io/nodegroup: system
-```
-
-> - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
-> - https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31
-
-<br>
-
 ### limits
 
 Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。
@@ -238,6 +228,49 @@ spec:
 > - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 > - https://karpenter.sh/preview/concepts/nodepools/
+
+<br>
+
+### metadata
+
+#### ▼ annotations
+
+全てのNodeに挿入するアノテーションを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  template:
+    metadata:
+      annotations:
+        example.com/owner: my-team
+```
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+#### ▼ labels
+
+Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-node-pool
+spec:
+  template:
+    metadata:
+      labels:
+        node.kubernetes.io/nodegroup: system
+```
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31
 
 <br>
 
@@ -391,46 +424,6 @@ spec:
       taints:
         - key: example.com/special-taint
           effect: NoSchedule
-```
-
-> - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
-
-<br>
-
-### ttlSecondsAfterEmpty
-
-NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
-
-`.spec.consolidation`キーとは競合し、どちらか一方しか設定できない。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      ttlSecondsAfterEmpty: 30
-```
-
-> - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
-> - https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html
-
-<br>
-
-### ttlSecondsUntilExpired
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-node-pool
-spec:
-  template:
-    spec:
-      ttlSecondsUntilExpired: 2592000
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
