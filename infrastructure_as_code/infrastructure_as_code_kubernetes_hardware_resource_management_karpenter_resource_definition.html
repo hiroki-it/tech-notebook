@@ -3844,8 +3844,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#amiselector" class="md-nav__link">
-    amiSelector
+  <a href="#amiselectorterms" class="md-nav__link">
+    amiSelectorTerms
   </a>
   
 </li>
@@ -3920,8 +3920,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#providerref" class="md-nav__link">
-    providerRef
+  <a href="#nodeclassref" class="md-nav__link">
+    nodeClassRef
   </a>
   
 </li>
@@ -5947,8 +5947,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#amiselector" class="md-nav__link">
-    amiSelector
+  <a href="#amiselectorterms" class="md-nav__link">
+    amiSelectorTerms
   </a>
   
 </li>
@@ -6023,8 +6023,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#providerref" class="md-nav__link">
-    providerRef
+  <a href="#nodeclassref" class="md-nav__link">
+    nodeClassRef
   </a>
   
 </li>
@@ -6165,18 +6165,21 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
-<h3 id="amiselector">amiSelector<a class="headerlink" href="#amiselector" title="Permanent link">&para;</a></h3>
+<h3 id="amiselectorterms">amiSelectorTerms<a class="headerlink" href="#amiselectorterms" title="Permanent link">&para;</a></h3>
 <p>NodeのAMIを設定する。</p>
 <p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">amiSelector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AL</span>
+<span class="w">  </span><span class="nt">amiSelectorTerms</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ami-*****</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms">https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
 </ul>
 </blockquote>
@@ -6186,7 +6189,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">securityGroupSelectorTerms</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tags</span><span class="p">:</span>
@@ -6194,7 +6197,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector">https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#specsecuritygroupselectorterms">https://karpenter.sh/preview/concepts/nodeclasses/#specsecuritygroupselectorterms</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6203,7 +6206,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">subnetSelectorTerms</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tags</span><span class="p">:</span>
@@ -6211,7 +6214,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector">https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#specsubnetselectorterms">https://karpenter.sh/preview/concepts/nodeclasses/#specsubnetselectorterms</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
 </ul>
 </blockquote>
@@ -6221,14 +6224,14 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">karpenter.template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-template</span>
+<span class="w">    </span><span class="nt">karpenter.template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/docs/concepts/node-templates/#spectags">https://karpenter.sh/docs/concepts/node-templates/#spectags</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#spectags">https://karpenter.sh/preview/concepts/nodeclasses/#spectags</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
 </ul>
 </blockquote>
@@ -6239,7 +6242,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6260,7 +6263,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6280,7 +6283,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6317,7 +6320,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/#speckubeletconfiguration">https://karpenter.sh/preview/concepts/nodepools/#speckubeletconfiguration</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
 <li><a href="https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration">https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration</a></li>
 </ul>
 </blockquote>
@@ -6327,7 +6330,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6348,7 +6351,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6361,21 +6364,21 @@
 <ul>
 <li><a href="https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/">https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/#speclimitsresources">https://karpenter.sh/preview/concepts/nodepools/#speclimitsresources</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="providerref">providerRef<a class="headerlink" href="#providerref" title="Permanent link">&para;</a></h3>
+<h3 id="nodeclassref">nodeClassRef<a class="headerlink" href="#nodeclassref" title="Permanent link">&para;</a></h3>
 <p>Provisionerで使用するNodeテンプレートを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">providerRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-template</span>
+<span class="w">      </span><span class="nt">nodeClassRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-classs</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6391,7 +6394,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6437,7 +6440,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6477,7 +6480,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6496,7 +6499,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6517,7 +6520,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6534,7 +6537,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6553,7 +6556,7 @@
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-provisioner</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -6580,9 +6583,8 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/preview/concepts/disruption/#interruption">https://karpenter.sh/preview/concepts/disruption/#interruption</a></li>
+<li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 <li><a href="https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional">https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional</a></li>
-<li><a href="https://karpenter.sh/v0.31/concepts/settings/#configmap">https://karpenter.sh/v0.31/concepts/settings/#configmap</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6597,7 +6599,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/v0.31/concepts/settings/#configmap">https://karpenter.sh/v0.31/concepts/settings/#configmap</a></li>
+<li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6613,7 +6615,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/v0.31/concepts/settings/#configmap">https://karpenter.sh/v0.31/concepts/settings/#configmap</a></li>
+<li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6628,7 +6630,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/v0.31/concepts/settings/#configmap">https://karpenter.sh/v0.31/concepts/settings/#configmap</a></li>
+<li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6643,7 +6645,7 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/v0.31/concepts/settings/#configmap">https://karpenter.sh/v0.31/concepts/settings/#configmap</a></li>
+<li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
