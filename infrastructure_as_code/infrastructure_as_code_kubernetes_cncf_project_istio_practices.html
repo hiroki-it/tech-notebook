@@ -6883,7 +6883,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodegroup=system</span>
 <span class="w">    </span><span class="c1"># 動作を確認する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get nodes --show-labels</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get node --show-labels</span>
 <span class="w">  </span><span class="c1"># Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る</span>
 <span class="w">  </span><span class="c1"># @see https://istio.io/latest/docs/setup/upgrade/helm/</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -6939,7 +6939,7 @@ istioctl<span class="w"> </span>version
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
       
     
   </small>
