@@ -15,7 +15,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ## 01. EC2NodeClass
 
-### amiSelector
+### amiSelectorTerms
 
 NodeのAMIを設定する。
 
@@ -25,11 +25,14 @@ NodeのAMIを設定する。
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
-  name: foo-node-template
+  name: foo-node-class
 spec:
-  amiSelector: AL
+  amiSelectorTerms:
+    - tags:
+        Name: ami-*****
 ```
 
+> - https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 
 <br>
@@ -42,14 +45,14 @@ Nodeに紐づけるセキュリティグループを動的に検出するため�
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
-  name: foo-node-template
+  name: foo-node-class
 spec:
   securityGroupSelectorTerms:
     - tags:
         Name: foo-private-sg
 ```
 
-> - https://karpenter.sh/docs/concepts/node-templates/#specsecuritygroupselector
+> - https://karpenter.sh/preview/concepts/nodeclasses/#specsecuritygroupselectorterms
 
 <br>
 
@@ -61,14 +64,14 @@ Nodeをプロビジョニングするサブネットを動的に検出するた�
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
-  name: foo-node-template
+  name: foo-node-class
 spec:
   subnetSelectorTerms:
     - tags:
         Name: foo-private-subnet
 ```
 
-> - https://karpenter.sh/docs/concepts/node-templates/#specsubnetselector
+> - https://karpenter.sh/preview/concepts/nodeclasses/#specsubnetselectorterms
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 
 <br>
@@ -81,13 +84,13 @@ spec:
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
-  name: foo-node-template
+  name: foo-node-class
 spec:
   tags:
-    karpenter.template: foo-node-template
+    karpenter.template: foo-node-class
 ```
 
-> - https://karpenter.sh/docs/concepts/node-templates/#spectags
+> - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
 
 <br>
@@ -102,7 +105,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -127,7 +130,7 @@ Nodeを削除できる状況では不要なNodeを削除し、また削除でき
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -149,7 +152,7 @@ Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -185,7 +188,7 @@ spec:
         maxPods: 20
 ```
 
-> - https://karpenter.sh/preview/concepts/nodepools/#speckubeletconfiguration
+> - https://karpenter.sh/preview/concepts/nodepools/
 > - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
 
 <br>
@@ -198,7 +201,7 @@ Karpenterがハードウェアリソースを監視するNodeのラベルを設�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -222,7 +225,7 @@ Karpenter配下のNodeのハードウェアリソースがこれを超過した�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -234,11 +237,11 @@ spec:
 
 > - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
-> - https://karpenter.sh/preview/concepts/nodepools/#speclimitsresources
+> - https://karpenter.sh/preview/concepts/nodepools/
 
 <br>
 
-### providerRef
+### nodeClassRef
 
 Provisionerで使用するNodeテンプレートを設定する。
 
@@ -246,12 +249,12 @@ Provisionerで使用するNodeテンプレートを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-provisioner
+  name: foo-foo-node-pool
 spec:
   template:
     spec:
-      providerRef:
-        name: foo-template
+      nodeClassRef:
+        name: foo-classs
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
@@ -271,7 +274,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -320,7 +323,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -361,7 +364,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -381,7 +384,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -405,7 +408,7 @@ NodeからPodが全て退避した後にNodeを削除するまでの待機時間
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -423,7 +426,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -445,7 +448,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-provisioner
+  name: foo-node-pool
 spec:
   template:
     spec:
@@ -475,9 +478,8 @@ data:
   aws.interruptionQueueName: foo-queue
 ```
 
-> - https://karpenter.sh/preview/concepts/disruption/#interruption
+> - https://karpenter.sh/preview/reference/settings/
 > - https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional
-> - https://karpenter.sh/v0.31/concepts/settings/#configmap
 
 <br>
 
@@ -493,7 +495,7 @@ data:
   aws.clusterName: foo-cluster
 ```
 
-> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+> - https://karpenter.sh/preview/reference/settings/
 
 <br>
 
@@ -511,7 +513,7 @@ data:
   aws.clusterEndpoint: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+> - https://karpenter.sh/preview/reference/settings/
 
 <br>
 
@@ -527,7 +529,7 @@ data:
   batchMaxDuration: 10s
 ```
 
-> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+> - https://karpenter.sh/preview/reference/settings/
 
 <br>
 
@@ -543,6 +545,6 @@ data:
   batchIdleDuration: 1s
 ```
 
-> - https://karpenter.sh/v0.31/concepts/settings/#configmap
+> - https://karpenter.sh/preview/reference/settings/
 
 <br>
