@@ -3844,6 +3844,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#amifamily" class="md-nav__link">
+    amiFamily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#amiselectorterms" class="md-nav__link">
     amiSelectorTerms
   </a>
@@ -3919,15 +3926,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubelet" class="md-nav__link">
-    kubelet
+  <a href="#limits" class="md-nav__link">
+    limits
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#limits" class="md-nav__link">
-    limits
+  <a href="#weight" class="md-nav__link">
+    weight
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-template" class="md-nav__link">
+    02-02. template
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubelet" class="md-nav__link">
+    kubelet
   </a>
   
 </li>
@@ -3996,13 +4023,6 @@
           <li class="md-nav__item">
   <a href="#taints" class="md-nav__link">
     taints
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weight" class="md-nav__link">
-    weight
   </a>
   
 </li>
@@ -5973,6 +5993,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#amifamily" class="md-nav__link">
+    amiFamily
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#amiselectorterms" class="md-nav__link">
     amiSelectorTerms
   </a>
@@ -6048,15 +6075,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubelet" class="md-nav__link">
-    kubelet
+  <a href="#limits" class="md-nav__link">
+    limits
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#limits" class="md-nav__link">
-    limits
+  <a href="#weight" class="md-nav__link">
+    weight
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-02-template" class="md-nav__link">
+    02-02. template
+  </a>
+  
+    <nav class="md-nav" aria-label="02-02. template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubelet" class="md-nav__link">
+    kubelet
   </a>
   
 </li>
@@ -6125,13 +6172,6 @@
           <li class="md-nav__item">
   <a href="#taints" class="md-nav__link">
     taints
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#weight" class="md-nav__link">
-    weight
   </a>
   
 </li>
@@ -6217,6 +6257,17 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
+<h3 id="amifamily">amiFamily<a class="headerlink" href="#amifamily" title="Permanent link">&para;</a></h3>
+<p>AMIの種類を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 最適化 Amazon Linux 2 を指定する</span>
+<span class="w">  </span><span class="nt">amiFamily</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AL2</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="amiselectorterms">amiSelectorTerms<a class="headerlink" href="#amiselectorterms" title="Permanent link">&para;</a></h3>
 <p>NodeのAMIを設定する。</p>
 <p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
@@ -6341,6 +6392,49 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
+<p>Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。</p>
+<p>Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000Gi</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/">https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/</a></li>
+<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="weight">weight<a class="headerlink" href="#weight" title="Permanent link">&para;</a></h3>
+<p>複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。</p>
+<p>デフォルトでは、重みが<code>0</code>である。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-02-template">02-02. template<a class="headerlink" href="#02-02-template" title="Permanent link">&para;</a></h2>
 <h3 id="kubelet">kubelet<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <p>Kubeletの<code>KubeletConfiguration</code>オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
@@ -6385,29 +6479,6 @@
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
 <li><a href="https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration">https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。</p>
-<p>Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000Gi</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/">https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/</a></li>
-<li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6596,24 +6667,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="weight">weight<a class="headerlink" href="#weight" title="Permanent link">&para;</a></h3>
-<p>複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。</p>
-<p>デフォルトでは、重みが<code>0</code>である。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h2 id="03-configmap">03. 専用ConfigMap<a class="headerlink" href="#03-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="awsinterruptionqueuename">aws.interruptionQueueName<a class="headerlink" href="#awsinterruptionqueuename" title="Permanent link">&para;</a></h3>
