@@ -121,8 +121,6 @@ spec:
 
 Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。
 
-`.spec.ttlSecondsAfterEmpty`キーとは競合し、どちらか一方しか設定できない。
-
 ```yaml
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
@@ -139,8 +137,6 @@ spec:
 #### ▼ consolidateAfter
 
 NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
-
-`.spec.consolidation`キーとは競合し、どちらか一方しか設定できない。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -275,7 +271,7 @@ spec:
 
 #### ▼ annotations
 
-全てのNodeに挿入するアノテーションを設定する。
+Nodeに付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -294,7 +290,7 @@ spec:
 
 #### ▼ labels
 
-Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。
+Nodeに付与するラベルを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1

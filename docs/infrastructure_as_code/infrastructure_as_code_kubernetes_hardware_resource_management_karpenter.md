@@ -41,18 +41,38 @@ KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPI�
 
 Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
 
-AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。
-
-Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
-
-そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
-
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
 > - https://sreake.com/blog/learn-about-karpenter/
 > - https://blog.inductor.me/entry/2021/12/06/165743
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
 > - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
+
+<br>
+
+### Karpenterとcluster-autoscaler
+
+#### ▼ Karpenterのいいところ
+
+AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。
+
+Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
+
+そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
+
+#### ▼ cluster-autoscalerのいいところ
+
+cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
+
+そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
+
+一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
+
+![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+
+> - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
+> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html
 
 <br>
 
@@ -72,9 +92,11 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 `(1)`
 
-: Podが、Nodeの`70`%にあたるリソースを要求する。
+: Podが、Nodeの`70`%にあたるハードウェアリソースを要求する。
 
      しかし、Nodeが`1`台では足りない。`70 + 70 = 140%`になるため、既存のNodeの少なくとも`1.4`倍のスペックが必要となる。
+
+     つまり、予測されるハードウェアリソース要求量が既存のNodeの限界を超過しそうになって始めて、スケールアウトを実行する。
 
 `(2)`
 
@@ -88,25 +110,11 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 : 結果として、`1`台で`2`個のPodをスケジューリングさせている。
 
+> - https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88
+
 #### ▼ スケールインの場合
 
 記入中...
-
-<br>
-
-### cluster-autoscalerとの違い
-
-cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
-
-そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
-
-一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
-
-![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
-
-> - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
-> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html
 
 <br>
 
