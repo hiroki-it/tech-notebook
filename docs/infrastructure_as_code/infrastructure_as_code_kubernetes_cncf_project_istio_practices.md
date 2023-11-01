@@ -512,7 +512,7 @@ test_istio:
       kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodegroup=system
     # 動作を確認する
     - k3d cluster list
-    - kubectl get nodes --show-labels
+    - kubectl get node --show-labels
   # Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る
   # @see https://istio.io/latest/docs/setup/upgrade/helm/
   script:

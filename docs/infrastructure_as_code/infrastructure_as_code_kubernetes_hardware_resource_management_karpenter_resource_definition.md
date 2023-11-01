@@ -198,7 +198,7 @@ spec:
 
 ### labels
 
-全てのNodeに挿入するラベルを設定する。
+Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1alpha5
@@ -212,6 +212,7 @@ spec:
 
 > - https://karpenter.sh/docs/concepts/provisioners/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
+> - https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31
 
 <br>
 

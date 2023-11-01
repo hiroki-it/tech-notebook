@@ -90,7 +90,11 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 #### ▼ acm-operatorの仕組み
 
-一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
+一連のacm-operator (cluster-operator、など) は、組み合わさって動作する。
+
+Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。
+
+注意点として、対応しているのはACMカスタムリソースのみで、通常のKubernetesリソースをデプロイできない。
 
 ![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management_gitops.png)
 
