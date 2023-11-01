@@ -3885,29 +3885,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    annotations
+  <a href="#disruption" class="md-nav__link">
+    disruption
+  </a>
+  
+    <nav class="md-nav" aria-label="disruption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolidationpolicy" class="md-nav__link">
+    ▼ consolidationPolicy
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#consolidation" class="md-nav__link">
-    consolidation
+  <a href="#consolidateafter" class="md-nav__link">
+    ▼ consolidateAfter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubeletconfiguration" class="md-nav__link">
-    kubeletConfiguration
+  <a href="#expireafter" class="md-nav__link">
+    ▼ expireAfter
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#labels" class="md-nav__link">
-    labels
+  <a href="#kubelet" class="md-nav__link">
+    kubelet
   </a>
   
 </li>
@@ -3916,6 +3929,33 @@
   <a href="#limits" class="md-nav__link">
     limits
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    ▼ annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    ▼ labels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3956,20 +3996,6 @@
           <li class="md-nav__item">
   <a href="#taints" class="md-nav__link">
     taints
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ttlsecondsafterempty" class="md-nav__link">
-    ttlSecondsAfterEmpty
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ttlsecondsuntilexpired" class="md-nav__link">
-    ttlSecondsUntilExpired
   </a>
   
 </li>
@@ -5988,29 +6014,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    annotations
+  <a href="#disruption" class="md-nav__link">
+    disruption
+  </a>
+  
+    <nav class="md-nav" aria-label="disruption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolidationpolicy" class="md-nav__link">
+    ▼ consolidationPolicy
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#consolidation" class="md-nav__link">
-    consolidation
+  <a href="#consolidateafter" class="md-nav__link">
+    ▼ consolidateAfter
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#kubeletconfiguration" class="md-nav__link">
-    kubeletConfiguration
+  <a href="#expireafter" class="md-nav__link">
+    ▼ expireAfter
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#labels" class="md-nav__link">
-    labels
+  <a href="#kubelet" class="md-nav__link">
+    kubelet
   </a>
   
 </li>
@@ -6019,6 +6058,33 @@
   <a href="#limits" class="md-nav__link">
     limits
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    metadata
+  </a>
+  
+    <nav class="md-nav" aria-label="metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    ▼ annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    ▼ labels
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6059,20 +6125,6 @@
           <li class="md-nav__item">
   <a href="#taints" class="md-nav__link">
     taints
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ttlsecondsafterempty" class="md-nav__link">
-    ttlSecondsAfterEmpty
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ttlsecondsuntilexpired" class="md-nav__link">
-    ttlSecondsUntilExpired
   </a>
   
 </li>
@@ -6237,26 +6289,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
-<h3 id="annotations">annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
-<p>全てのNodeに挿入するアノテーションを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">example.com/owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-team</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="consolidation">consolidation<a class="headerlink" href="#consolidation" title="Permanent link">&para;</a></h3>
+<h3 id="disruption">disruption<a class="headerlink" href="#disruption" title="Permanent link">&para;</a></h3>
+<h4 id="consolidationpolicy">▼ consolidationPolicy<a class="headerlink" href="#consolidationpolicy" title="Permanent link">&para;</a></h4>
 <p>コストを考慮するかどうかを設定する。</p>
 <p>Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。</p>
 <p><code>.spec.ttlSecondsAfterEmpty</code>キーとは競合し、どちらか一方しか設定できない。</p>
@@ -6265,20 +6299,49 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">consolidation</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">disruption</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">consolidationPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WhenUnderutilized</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
+</ul>
+</blockquote>
+<h4 id="consolidateafter">▼ consolidateAfter<a class="headerlink" href="#consolidateafter" title="Permanent link">&para;</a></h4>
+<p>NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。</p>
+<p><code>.spec.consolidation</code>キーとは競合し、どちらか一方しか設定できない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disruption</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">consolidateAfter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/">https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/</a></li>
+<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
+</ul>
+</blockquote>
+<h4 id="expireafter">▼ expireAfter<a class="headerlink" href="#expireafter" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">disruption</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">expireAfter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720h</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
 <li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="kubeletconfiguration">kubeletConfiguration<a class="headerlink" href="#kubeletconfiguration" title="Permanent link">&para;</a></h3>
+<h3 id="kubelet">kubelet<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <p>Kubeletの<code>KubeletConfiguration</code>オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
@@ -6287,7 +6350,7 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kubeletConfiguration</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kubelet</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterDNS</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.1.100</span>
 <span class="w">        </span><span class="nt">containerRuntime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">containerd</span>
@@ -6325,26 +6388,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="labels">labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h3>
-<p>Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-<li><a href="https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31">https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
 <p>Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。</p>
 <p>Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
@@ -6365,6 +6408,45 @@
 <li><a href="https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/">https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<h4 id="annotations">▼ annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h4>
+<p>全てのNodeに挿入するアノテーションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">example.com/owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-team</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+</ul>
+</blockquote>
+<h4 id="labels">▼ labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
+<p>Karpenterがハードウェアリソースを監視するNodeのラベルを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+<li><a href="https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31">https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6506,42 +6588,6 @@
 <span class="w">      </span><span class="nt">taints</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com/special-taint</span>
 <span class="w">          </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="ttlsecondsafterempty">ttlSecondsAfterEmpty<a class="headerlink" href="#ttlsecondsafterempty" title="Permanent link">&para;</a></h3>
-<p>NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。</p>
-<p><code>.spec.consolidation</code>キーとは競合し、どちらか一方しか設定できない。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ttlSecondsAfterEmpty</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/">https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/</a></li>
-<li><a href="https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html">https://ec2spotworkshops.com/karpenter/050_karpenter/consolidation.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="ttlsecondsuntilexpired">ttlSecondsUntilExpired<a class="headerlink" href="#ttlsecondsuntilexpired" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-pool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ttlSecondsUntilExpired</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2592000</span>
 </code></pre></div>
 <blockquote>
 <ul>
