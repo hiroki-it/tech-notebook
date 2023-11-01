@@ -17,6 +17,26 @@ description: Karpenter＠ハードウェアリソース管理の知見を記録�
 
 ### アーキテクチャ
 
+> - https://karpenter.sh/preview/reference/threat-model/
+
+### アーキテクチャ
+
+<br>
+
+### パラメーター
+
+#### ▼ Pod上限数
+
+Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
+
+> - https://karpenter.sh/docs/concepts/provisioners/#max-pods
+
+<br>
+
+## 02. スケーリング
+
+### スケーリングの仕組み
+
 KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
@@ -36,33 +56,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 <br>
 
-### cluster-autoscalerとの違い
-
-cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
-
-そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
-
-一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
-
-![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
-
-> - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
-> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html
-
-<br>
-
-### パラメーター
-
-#### ▼ Pod上限数
-
-Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
-
-> - https://karpenter.sh/docs/concepts/provisioners/#max-pods
-
-<br>
-
-### スケーリングの仕組み
+### 水平/垂直スケーリング
 
 #### ▼ 対応するスケーリング
 
@@ -100,7 +94,23 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 <br>
 
-## 02. セットアップ
+### cluster-autoscalerとの違い
+
+cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
+
+そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
+
+一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
+
+![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+
+> - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
+> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html
+
+<br>
+
+## 03. セットアップ
 
 ### AWS側
 
