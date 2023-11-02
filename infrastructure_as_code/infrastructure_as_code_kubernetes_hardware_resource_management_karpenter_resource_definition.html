@@ -6300,7 +6300,7 @@
 <p><br></p>
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
 <h3 id="ec2nodeclass">EC2NodeClass<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
-<p>特定のクラウドプロバイダーに特化して、プロビジョニングするNodeを制限する。</p>
+<p>NodePool内の各Nodeの仕様を設定する。</p>
 <p><br></p>
 <h3 id="amifamily">amiFamily<a class="headerlink" href="#amifamily" title="Permanent link">&para;</a></h3>
 <p>AWS AMIの種類を設定する。</p>
@@ -6376,10 +6376,11 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># デフォルトで挿入するタグ</span>
-<span class="w">  </span><span class="nt">tags:Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
-<span class="w">  </span><span class="nt">karpenter.sh/nodeclaim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodeclaim</span>
-<span class="w">  </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
-<span class="w">  </span><span class="nt">kubernetes.io/cluster/foo-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owned</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
+<span class="w">    </span><span class="nt">karpenter.sh/nodeclaim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodeclaim</span>
+<span class="w">    </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
+<span class="w">    </span><span class="nt">kubernetes.io/cluster/foo-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owned</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6390,7 +6391,7 @@
 <p><br></p>
 <h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
 <h3 id="nodepool">NodePoolとは<a class="headerlink" href="#nodepool" title="Permanent link">&para;</a></h3>
-<p>KapenterでプロビジョニングするNodeやPodを制限する。</p>
+<p>KapenterでプロビジョニングするNodeをグループ単位で設定する。</p>
 <p>Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。</p>
 <blockquote>
 <ul>
@@ -6569,7 +6570,8 @@
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
+<span class="w">        </span><span class="c1"># マネージドNodeグループがNodeに挿入するラベルを、Karpenterも挿入する</span>
+<span class="w">        </span><span class="nt">eks.amazonaws.com/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6602,7 +6604,8 @@
 <p><br></p>
 <h3 id="requirements">requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
 <h4 id="requirements_1">▼ requirementsとは<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h4>
-<p>プロビジョニングするNodeのハードウェアリソースを設定する。</p>
+<p>プロビジョニングするNodeのハードウェアリソースを制限する。</p>
+<p>制限しなかった項目は、Karpenterがよしなに設定値を選ぶ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
