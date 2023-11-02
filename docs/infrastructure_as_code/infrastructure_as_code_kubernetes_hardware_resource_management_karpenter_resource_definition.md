@@ -15,9 +15,15 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ## 01. EC2NodeClass
 
+### EC2NodeClass
+
+特定のクラウドプロバイダーに特化して、プロビジョニングするNodeを制限する。
+
+<br>
+
 ### amiFamily
 
-AMIの種類を設定する。
+AWS AMIの種類を設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -118,6 +124,16 @@ spec:
 
 ## 02. NodePool
 
+### NodePoolとは
+
+KapenterでプロビジョニングするNodeやPodを制限する。
+
+Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+
+<br>
+
 ### disruption
 
 #### ▼ consolidationPolicy
@@ -130,7 +146,7 @@ Nodeを削除できる状況では不要なNodeを削除し、また削除でき
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
@@ -147,7 +163,7 @@ NodeからPodが全て退避した後にNodeを削除するまでの待機時間
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   disruption:
     consolidateAfter: 30s
@@ -166,7 +182,7 @@ Nodeを定期的に再作成することにより、最適なスペックを再�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   disruption:
     expireAfter: 720h
@@ -187,7 +203,7 @@ Karpenter配下のNodeのハードウェアリソースがこれを超過した�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -213,7 +229,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -235,7 +251,7 @@ Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -286,7 +302,7 @@ Nodeに付与するアノテーションを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     metadata:
@@ -305,7 +321,7 @@ Nodeに付与するラベルを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     metadata:
@@ -327,7 +343,7 @@ Provisionerで使用するNodeテンプレートを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-foo-node-pool
+  name: foo-foo-nodegroup
 spec:
   template:
     spec:
@@ -354,7 +370,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -403,7 +419,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -450,7 +466,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:
@@ -470,7 +486,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-node-pool
+  name: foo-nodegroup
 spec:
   template:
     spec:

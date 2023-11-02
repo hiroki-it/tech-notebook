@@ -400,7 +400,7 @@ metadata:
 
 #### ▼ rangeとは
 
-同じ階層にある他の`.yaml`ファイルのキーとその値を格納し、foreach関数のように出力する。
+同じ階層にある他の`.yaml`ファイルのキーとその値を格納し、`foreach`関数のように出力する。
 
 > - https://helm.sh/docs/chart_template_guide/control_structures/
 
