@@ -32,7 +32,7 @@ Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる
 
 #### ▼ Exporter
 
-スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google Cloud CloudTrace、otelコレクター、など) を決める処理を持つ。
+スパンの宛先とするスパン収集ツール (例：AWS Distro for otelコレクター、Google CloudTrace、otelコレクター、など) を決める処理を持つ。
 
 具体的には、`WithEndpoint`関数を使用して、宛先 (例：`localhost:4317`、`opentelemetry-collector.tracing.svc.cluster.local`、など) を設定できる。
 
@@ -196,7 +196,7 @@ func initProvider() {
 > - https://github.com/aws/aws-xray-sdk-go
 > - https://github.com/aws-samples/aws-xray-sdk-go-sample
 
-#### ▼ Google Cloud CloudTrace
+#### ▼ Google CloudTrace
 
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go
 
@@ -1074,7 +1074,7 @@ func getXrayTraceID(span trace.Span) string {
 
 <br>
 
-### 宛先がGoogle Cloud CloudTraceの場合
+### 宛先がGoogle CloudTraceの場合
 
 #### ▼ パッケージの初期化
 
@@ -1445,7 +1445,7 @@ func main() {
 
 ## 03-02. スパンの送信
 
-### 宛先がGoogle Cloud CloudTraceの場合
+### 宛先がGoogle CloudTraceの場合
 
 #### ▼ パッケージの初期化
 
@@ -1478,7 +1478,7 @@ resource = Resource.create({
 
 tracer_provider = TracerProvider()
 
-# スパンの宛先として、Google Cloud CloudTraceを設定する。
+# スパンの宛先として、Google CloudTraceを設定する。
 cloud_trace_exporter = CloudTraceSpanExporter()
 
 tracer_provider.add_span_processor(BatchSpanProcessor(cloud_trace_exporter))

@@ -138,7 +138,7 @@ module "iam_assumable_role_with_oidc_karpenter_controller" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
-  version                       = "<モジュールのバージョン>"
+  version                       = "<バージョン>"
 
   # karpenterコントローラーのPodに紐付けるIAMロール
   create_role                   = true

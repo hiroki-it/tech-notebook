@@ -195,7 +195,7 @@ IPアドレスを指定した送信できる宛先のこと。
 
 Istio 1.3以降で、デフォルトで全てのアウトバウンド通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
 
-AWS RDS、Google Cloud CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。
+AWS RDS、Google CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。
 
 そのため、アウトバウンド通信はPassthroughClusterに属する。
 

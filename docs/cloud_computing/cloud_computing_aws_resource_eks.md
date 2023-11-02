@@ -454,7 +454,9 @@ spec:
 
 `(3)`
 
-: ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定することにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+: ServiceAccountの`.metadata.annotations.eks.amazonaws.com/role-arn`キーでIAMロールのARNを設定する。
+
+     これにより、EKSで認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
      `automountServiceAccountToken`キーが有効化されていることを確認する。
 

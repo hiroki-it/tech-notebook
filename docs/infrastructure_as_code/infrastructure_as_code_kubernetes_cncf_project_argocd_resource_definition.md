@@ -305,7 +305,7 @@ spec:
 
 IngressClassを作成する。
 
-本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、GCP CLB) を使用する。
+本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google Cloud CLB) を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -316,7 +316,7 @@ spec:
   controller: ingress.k8s.aws/alb
 ```
 
-また、IngressClass (AWS ALB、GCP CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。
+また、IngressClass (AWS ALB、Google Cloud CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。
 
 <br>
 

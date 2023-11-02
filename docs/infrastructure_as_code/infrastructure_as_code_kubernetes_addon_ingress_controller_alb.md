@@ -81,7 +81,7 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 
 プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) を設定する。
 
-またいずれの場合であっても`kubernetes.io/cluster/<EKS Clusterの名前>` (値は、複数のEKS Clusterで共有するサブネットの場合は`shared`、単一のEKS Clusterの場合は`owned`とする) を設定する。
+またいずれの場合であっても`kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は`shared`、単一のAWS EKS Clusterの場合は`owned`とする) を設定する。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
@@ -99,7 +99,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
 
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
 
-  version                       = "<モジュールのバージョン>"
+  version                       = "<バージョン>"
 
   # AWS Load BalancerコントローラーのPodに紐付けるIAMロール
   create_role                   = true
@@ -183,9 +183,9 @@ $ aws iam create-policy \
 
 `(3)`
 
-: EKS ClusterをOIDCプロバイダーとして使用する。
+: AWS EKS ClusterをOIDCプロバイダーとして使用する。
 
-     これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+     これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \

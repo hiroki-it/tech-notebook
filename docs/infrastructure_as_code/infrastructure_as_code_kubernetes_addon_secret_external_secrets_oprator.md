@@ -34,7 +34,7 @@ ExternalSecretsOperatorは、external-secrets、external-secrets-controller、�
 
 ### external-secrets-controller
 
-external-secrets-controllerは、プロバイダー (例：AWS、GCP、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS SecretManager、GCP SecretManager、Vault SecretsEngine) から変数を取得する。
+external-secrets-controllerは、プロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS SecretManager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
 
 その後、取得した変数をSecretのデータとして注入する。
 

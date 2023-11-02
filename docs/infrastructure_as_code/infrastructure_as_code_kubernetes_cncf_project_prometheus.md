@@ -205,7 +205,7 @@ Prometheusでは、TSDB (`data`ディレクトリ配下) を採用している�
 
 ### リモートストレージとは
 
-Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、GCP Bigquery、VictoriaMetrics、...) に保管できる。
+Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、Google Cloud Bigquery、VictoriaMetrics、...) に保管できる。
 
 remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『`https://<IPアドレス>/api/v1/write`』になる (ポート番号はリモートストレージごとに異なる) 。
 

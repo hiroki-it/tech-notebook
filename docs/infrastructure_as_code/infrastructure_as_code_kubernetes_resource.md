@@ -842,7 +842,7 @@ ClusterIP Service (実体はNodePort Service)
 Pod
 ```
 
-NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。
+NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、Google Cloud GCE、VMWare) に応じて、確認方法が異なる。
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
