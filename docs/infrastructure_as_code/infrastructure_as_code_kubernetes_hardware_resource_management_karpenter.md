@@ -114,7 +114,10 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 #### ▼ スケールインの場合
 
-記入中...
+Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能なNodeを選ぶ。
+
+> - https://karpenter.sh/preview/concepts/disruption/
+> - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 
 <br>
 
@@ -165,22 +168,29 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
     actions = [
-      "ssm:GetParameter",
-      "ec2:DescribeImages",
-      "ec2:RunInstances",
-      "ec2:DescribeSubnets",
+      "ec2:CreateTags",
+      "ec2:CreateLaunchTemplate",
+      "ec2:CreateFleet",
       "ec2:DescribeSecurityGroups",
+      "ec2:DescribeSubnets",
+      "ec2:DescribeSpotPriceHistory",
       "ec2:DescribeLaunchTemplates",
+      "ec2:DescribeImages",
       "ec2:DescribeInstances",
       "ec2:DescribeInstanceTypes",
       "ec2:DescribeInstanceTypeOfferings",
       "ec2:DescribeAvailabilityZones",
       "ec2:DeleteLaunchTemplate",
-      "ec2:CreateTags",
-      "ec2:CreateLaunchTemplate",
-      "ec2:CreateFleet",
-      "ec2:DescribeSpotPriceHistory",
-      "pricing:GetProducts"
+      "ec2:RunInstances",
+      "ec2:TerminateInstances",
+      "iam:AddRoleToInstanceProfile",
+      "iam:CreateInstanceProfile",
+      "iam:DeleteInstanceProfile",
+      "iam:GetInstanceProfile",
+      "iam:RemoveRoleFromInstanceProfile",
+      "iam:TagInstanceProfile",
+      "pricing:GetProducts",
+      "ssm:GetParameter",
     ]
     effect = "Allow"
     resources = [
@@ -195,7 +205,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     ]
     condition {
       test     = "StringLike"
-      variable = "ec2:ResourceTag/karpenter.sh/provisioner-name"
+      variable = "aws:RequestTag/karpenter.sh/nodepool"
       values = [
         "*"
       ]
