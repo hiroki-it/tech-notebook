@@ -17,7 +17,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ### EC2NodeClass
 
-特定のクラウドプロバイダーに特化して、プロビジョニングするNodeを制限する。
+NodePool内の各Nodeの仕様を設定する。
 
 <br>
 
@@ -111,10 +111,11 @@ metadata:
   name: foo-node-class
 spec:
   # デフォルトで挿入するタグ
-  tags:Name: foo-node
-  karpenter.sh/nodeclaim: foo-nodeclaim
-  karpenter.sh/nodepool: foo-nodepool
-  kubernetes.io/cluster/foo-cluster: owned
+  tags:
+    Name: foo-node
+    karpenter.sh/nodeclaim: foo-nodeclaim
+    karpenter.sh/nodepool: foo-nodepool
+    kubernetes.io/cluster/foo-cluster: owned
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
@@ -126,7 +127,7 @@ spec:
 
 ### NodePoolとは
 
-KapenterでプロビジョニングするNodeやPodを制限する。
+KapenterでプロビジョニングするNodeをグループ単位で設定する。
 
 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
 
@@ -326,7 +327,8 @@ spec:
   template:
     metadata:
       labels:
-        node.kubernetes.io/nodegroup: system
+        # マネージドNodeグループがNodeに挿入するラベルを、Karpenterも挿入する
+        eks.amazonaws.com/nodegroup: app
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
@@ -362,7 +364,9 @@ spec:
 
 #### ▼ requirementsとは
 
-プロビジョニングするNodeのハードウェアリソースを設定する。
+プロビジョニングするNodeのハードウェアリソースを制限する。
+
+制限しなかった項目は、Karpenterがよしなに設定値を選ぶ。
 
 **＊実装例＊**
 
