@@ -206,12 +206,9 @@ kind: NodePool
 metadata:
   name: foo-nodegroup
 spec:
-  template:
-    spec:
-      limits:
-        resources:
-          cpu: 1000
-          memory: 1000Gi
+  limits:
+    cpu: 1000
+    memory: 1000Gi
 ```
 
 > - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/
@@ -232,9 +229,7 @@ kind: NodePool
 metadata:
   name: foo-nodegroup
 spec:
-  template:
-    spec:
-      weight: 10
+  weight: 10
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
