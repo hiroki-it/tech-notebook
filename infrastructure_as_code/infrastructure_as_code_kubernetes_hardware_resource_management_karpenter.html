@@ -6175,7 +6175,13 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ スケールインの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能なNodeを選ぶ。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/">https://karpenter.sh/preview/concepts/disruption/</a></li>
+<li><a href="https://karpenter.sh/preview/concepts/disruption/#automated-methods">https://karpenter.sh/preview/concepts/disruption/#automated-methods</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
@@ -6217,22 +6223,29 @@
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSubnets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSubnets&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSpotPriceHistory&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeLaunchTemplates&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypes&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypeOfferings&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeAvailabilityZones&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSpotPriceHistory&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span>
+<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:AddRoleToInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:CreateInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:DeleteInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:GetInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:RemoveRoleFromInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:TagInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -6247,7 +6260,7 @@
 <span class="w">    </span><span class="p">]</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringLike&quot;</span>
-<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/provisioner-name&quot;</span>
+<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws:RequestTag/karpenter.sh/nodepool&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="s2">&quot;*&quot;</span>
 <span class="w">      </span><span class="p">]</span>
@@ -6294,7 +6307,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>
