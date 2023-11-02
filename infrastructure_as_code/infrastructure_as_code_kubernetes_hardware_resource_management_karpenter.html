@@ -3878,6 +3878,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2フリートについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#karpentercluster-autoscaler" class="md-nav__link">
     Karpenterとcluster-autoscaler
   </a>
@@ -5963,6 +5970,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    EC2フリートについて
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#karpentercluster-autoscaler" class="md-nav__link">
     Karpenterとcluster-autoscaler
   </a>
@@ -6109,13 +6123,20 @@
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">スケーリングの仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
+<p>そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。</p>
 <p>Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
 <p><img alt="karpenter_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://sreake.com/blog/learn-about-karpenter/">https://sreake.com/blog/learn-about-karpenter/</a></li>
-<li><a href="https://blog.inductor.me/entry/2021/12/06/165743">https://blog.inductor.me/entry/2021/12/06/165743</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs">https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs</a></li>
+<li><a href="https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/">https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/</a></li>
 <li><a href="https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010">https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="ec2">EC2フリートについて<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
 <li><a href="https://qiita.com/o2346/items/6277a7ff6b1826d8de11">https://qiita.com/o2346/items/6277a7ff6b1826d8de11</a></li>
 </ul>
 </blockquote>
