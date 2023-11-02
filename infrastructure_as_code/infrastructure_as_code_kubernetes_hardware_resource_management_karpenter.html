@@ -6149,12 +6149,12 @@
 </blockquote>
 <h4 id="_8">▼ スケールアウトの場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。</p>
+<p>Karpenterは、スケジューリングできない保留中Podが出現して始めて、スケールアウトを検討する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
 <p>Podが、Nodeの<code>70</code>%にあたるハードウェアリソースを要求する。</p>
 <p>しかし、Nodeが<code>1</code>台では足りない。<code>70 + 70 = 140%</code>になるため、既存のNodeの少なくとも<code>1.4</code>倍のスペックが必要となる。</p>
-<p>つまり、予測されるハードウェアリソース要求量が既存のNodeの限界を超過しそうになって始めて、スケールアウトを実行する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -6172,6 +6172,7 @@
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88">https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88</a></li>
+<li><a href="https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382">https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382</a></li>
 </ul>
 </blockquote>
 <h4 id="_9">▼ スケールインの場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -6308,7 +6309,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
     
   </small>
