@@ -3544,6 +3544,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#healthcheck" class="md-nav__link">
+    healthcheck
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostname" class="md-nav__link">
     hostname
   </a>
@@ -6251,6 +6258,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#healthcheck" class="md-nav__link">
+    healthcheck
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#hostname" class="md-nav__link">
     hostname
   </a>
@@ -6653,6 +6667,37 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <span class="m">172</span>.23.0.3<span class="w">      </span>c9bd8ace335d
 </code></pre></div>
 <p><br></p>
+<h3 id="healthcheck"><code>healthcheck</code><a class="headerlink" href="#healthcheck" title="Permanent link">&para;</a></h3>
+<p>コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまで待機する。</p>
+<p><code>wait</code>コマンドを実行することに相当する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;root&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-p$MYSQL_ROOT_PASSWORD&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md">https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="hostname"><code>hostname</code><a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。</p>
@@ -7006,7 +7051,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <p>NFSプラグインを使用することにより、永続化データを<code>/var/lib/docker/volumes</code>ディレクトリではなく、NFSストレージに保存する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下にdocker-composeを使用した場合を示す。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.7&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -7038,7 +7083,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、<code>docker-compose.yml</code>ファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.7&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.9&quot;</span>
 
 <span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
@@ -7083,7 +7128,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>

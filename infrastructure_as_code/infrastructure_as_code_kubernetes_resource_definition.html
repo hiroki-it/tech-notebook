@@ -15150,7 +15150,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。</p>
 <p>コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。</p>
-<p>readinessProbeに失敗する場合、コンテナは稼働しているが準備ができていない状態である。</p>
+<p>readinessProbeに失敗する場合、コンテナは稼働しているがトラフィック処理の準備ができていない状態である。</p>
 <p>そのため、<code>READY</code>は<code>0</code>で、<code>STATUS</code>は<code>Running</code>になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
@@ -17426,7 +17426,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>

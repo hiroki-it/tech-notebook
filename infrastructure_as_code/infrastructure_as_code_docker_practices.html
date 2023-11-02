@@ -3823,7 +3823,7 @@
       
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
-    06. イメージレジストリ
+    06. イメージレジストリを設定する
   </a>
   
 </li>
@@ -3895,6 +3895,26 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. 単体テストと機能テストを実施する
+  </a>
+  
+    <nav class="md-nav" aria-label="09. 単体テストと機能テストを実施する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBコンテナが起動するまで待つ
+  </a>
   
 </li>
         
@@ -6542,7 +6562,7 @@
       
         <li class="md-nav__item">
   <a href="#06" class="md-nav__link">
-    06. イメージレジストリ
+    06. イメージレジストリを設定する
   </a>
   
 </li>
@@ -6614,6 +6634,26 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#09" class="md-nav__link">
+    09. 単体テストと機能テストを実施する
+  </a>
+  
+    <nav class="md-nav" aria-label="09. 単体テストと機能テストを実施する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    DBコンテナが起動するまで待つ
+  </a>
   
 </li>
         
@@ -7266,7 +7306,7 @@ EOF
 <p>ログの分析ツール (例：Grafana Loki、ElasticSearch) では、ログが構造化されていることが前提になっている。</p>
 <p>そのため、構造化ログ (例：JSON) として出力する。</p>
 <p><br></p>
-<h2 id="06">06. イメージレジストリ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h2 id="06">06. イメージレジストリを設定する<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -7348,13 +7388,47 @@ EOF
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="09">09. 単体テストと機能テストを実施する<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
+<h3 id="db">DBコンテナが起動するまで待つ<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p>コンテナの起動と、トラフィック処理可能な準備のタイミングが一致しない場合がある。</p>
+<p>その場合、トラフィック処理可能になるまで待機する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-mysql</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:5.7</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">[</span>
+<span class="w">          </span><span class="s">&quot;CMD&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;mysqladmin&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;ping&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-h&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;localhost&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-u&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;root&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">          </span><span class="s">&quot;-p$MYSQL_ROOT_PASSWORD&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/a/41854997">https://stackoverflow.com/a/41854997</a></li>
+<li><a href="https://zenn.dev/sun_asterisk/articles/b4b17681d08018">https://zenn.dev/sun_asterisk/articles/b4b17681d08018</a></li>
+<li><a href="https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md">https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>

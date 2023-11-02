@@ -6258,6 +6258,7 @@
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span>
 <span class="w">    </span><span class="p">]</span>
+<span class="c1">    # Karpenterは、karpenter.sh/nodepoolタグの付いたNodeのみを削除できる</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringLike&quot;</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws:RequestTag/karpenter.sh/nodepool&quot;</span>
