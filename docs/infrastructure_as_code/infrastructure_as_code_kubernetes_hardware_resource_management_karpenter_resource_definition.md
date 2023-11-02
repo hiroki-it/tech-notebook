@@ -96,14 +96,19 @@ spec:
 
 全てのNodeやEBSボリュームに挿入するタグを設定する。
 
+AWS IAMポリシーでは、ここで設定したタグに基づいて、操作の認可スコープを制御している。
+
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
   name: foo-node-class
 spec:
-  tags:
-    template.name: foo-node-class
+  # デフォルトで挿入するタグ
+  tags:Name: foo-node
+  karpenter.sh/nodeclaim: foo-nodeclaim
+  karpenter.sh/nodepool: foo-nodepool
+  kubernetes.io/cluster/foo-cluster: owned
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags

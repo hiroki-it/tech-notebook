@@ -636,7 +636,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
-## 06. イメージレジストリ
+## 06. イメージレジストリを設定する
 
 | 要件           | 説明                                                                                                                                    |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -706,5 +706,43 @@ Dockerfileの文法の誤りを検証する。
 報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) 。
 
 > - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
+
+<br>
+
+## 09. 単体テストと機能テストを実施する
+
+### DBコンテナが起動するまで待つ
+
+コンテナの起動と、トラフィック処理可能な準備のタイミングが一致しない場合がある。
+
+その場合、トラフィック処理可能になるまで待機する必要がある。
+
+```yaml
+services:
+  app: ...
+
+  db:
+    container_name: foo-mysql
+    image: mysql:5.7
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$MYSQL_ROOT_PASSWORD",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+```
+
+> - https://stackoverflow.com/a/41854997
+> - https://zenn.dev/sun_asterisk/articles/b4b17681d08018
+> - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
 
 <br>

@@ -203,6 +203,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     actions = [
       "ec2:TerminateInstances"
     ]
+    # Karpenterは、karpenter.sh/nodepoolタグの付いたNodeのみを削除できる
     condition {
       test     = "StringLike"
       variable = "aws:RequestTag/karpenter.sh/nodepool"

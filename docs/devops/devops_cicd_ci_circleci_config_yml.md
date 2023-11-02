@@ -1357,9 +1357,9 @@ jobs:
       - docker/install-dockerize:
           version: v0.6.1
       - run:
+          # waitコマンドの代わりにsleepコマンドでも良い。
           name: Wait for MySQL to be ready
           command: |
-            # 代わりにsleepコマンドでも良い。
             dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
       # コンテナに対してDBマイグレーションコマンドを送信
       - run:
@@ -1370,7 +1370,7 @@ jobs:
       - run:
           name: Run unit test
           command: |
-            dockercompose exec laravel-container ./vendor/bin/phpunit
+            docker-compose exec laravel-container ./vendor/bin/phpunit
       # コンテナに対してPHP-Stanコマンドを送信
       - run:
           name: Run static test

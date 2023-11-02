@@ -270,6 +270,40 @@ ff02::2 ip6-allrouters
 
 <br>
 
+### `healthcheck`
+
+コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまで待機する。
+
+`wait`コマンドを実行することに相当する。
+
+```yaml
+services:
+  app: ...
+
+  db:
+    container_name: foo-mysql
+    image: mysql:5.7
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "root",
+          "-p$MYSQL_ROOT_PASSWORD",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+```
+
+> - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
+
+<br>
+
 ### `hostname`
 
 **＊実装例＊**
@@ -743,7 +777,7 @@ NFSプラグインを使用することにより、永続化データを`/var/li
 以下にdocker-composeを使用した場合を示す。
 
 ```yaml
-version: "3.7"
+version: "3.9"
 
 services:
   app:
@@ -784,7 +818,7 @@ mysqlコンテナには`docker-entrypoint-initdb.d`ディレクトリがある�
 mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、`docker-compose.yml`ファイルを作成する。
 
 ```yaml
-version: "3.7"
+version: "3.9"
 
 services:
   db:
