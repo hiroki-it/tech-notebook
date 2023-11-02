@@ -5638,7 +5638,7 @@
 <tr>
 <td>説明</td>
 <td>新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。</td>
-<td>アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。 GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。</td>
+<td>アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、Google Cloud) ではローリング方式をサポートしている場合がある。例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。 GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。</td>
 <td>現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。</td>
 <td>現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。開発者は、新Cluster上のコンテナの動作を確認する。問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。</td>
 </tr>
@@ -6425,8 +6425,8 @@ options ndots:5
 </tr>
 <tr>
 <td>暗号化</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
 </tr>
 <tr>
 <td>Secretストア</td>
@@ -6435,7 +6435,7 @@ options ndots:5
 </tr>
 <tr>
 <td>Apply時にbase64方式エンコード値に復号化する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud SecretManager、など) で管理する。</td>
 <td></td>
 </tr>
 <tr>
@@ -6964,7 +6964,7 @@ options ndots:5
 </tr>
 <tr>
 <td>ツール</td>
-<td>実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など)</td>
+<td>実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadm、など)</td>
 <td>仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など)</td>
 <td>Namespaceを増やすだけなのでツール不要</td>
 <td>ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など</td>
@@ -7133,7 +7133,7 @@ options ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>

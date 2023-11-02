@@ -8787,7 +8787,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<p>NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、GCP GCE、VMWare) に応じて、確認方法が異なる。</p>
+<p>NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、Google Cloud GCE、VMWare) に応じて、確認方法が異なる。</p>
 <p>Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。</p>
 <p><code>1</code>個のNodeのポート番号につき、<code>1</code>個のServiceとしか紐付けられず、Serviceが増えていってしまうため、実際の運用にやや不向きである。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>

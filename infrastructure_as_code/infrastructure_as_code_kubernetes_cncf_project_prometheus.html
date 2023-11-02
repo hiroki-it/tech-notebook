@@ -6502,7 +6502,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 <p><br></p>
 <h2 id="02-05">02-05. リモートストレージ<a class="headerlink" href="#02-05" title="Permanent link">&para;</a></h2>
 <h3 id="_8">リモートストレージとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、GCP Bigquery、VictoriaMetrics、...) に保管できる。</p>
+<p>Prometheusは、ローカルストレージにメトリクスを保管する代わりに、TSDBとして動作するリモートストレージ (AWS Timestream、Google Cloud Bigquery、VictoriaMetrics、...) に保管できる。</p>
 <p>remote-write-receiverを有効化すると、リモートストレージの種類によらず、エンドポイントが『<code>https://&lt;IPアドレス&gt;/api/v1/write</code>』になる (ポート番号はリモートストレージごとに異なる) 。</p>
 <p>Prometheusと外部のTSDBの両方を冗長化する場合、冗長化されたPrometheusでは、片方のデータベースのみに送信しないと、メトリクスが重複してしまうGrafanaのようにリアルタイムにデータを取得し続けることはできない。</p>
 <p>リモート読み出しを使用する場合、Prometheusのダッシュボード上でPromQLを使うことなく、Grafanaのようにリアルタイムにデータを取得できるようになる。</p>
@@ -6606,7 +6606,7 @@ $<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/v
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>

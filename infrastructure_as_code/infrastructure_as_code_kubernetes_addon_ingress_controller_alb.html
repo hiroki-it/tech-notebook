@@ -6137,7 +6137,7 @@
 <p>AWS Load Balancerコントローラーは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。</p>
 <p>Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、<code>kubernetes.io/role/elb</code>というタグ (値は<code>1</code>または空文字) を全てのAWS VPCサブネットに設定する。</p>
 <p>プライベートサブネットで作成する場合、<code>kubernetes.io/role/internal-elb</code>というタグ (値は<code>1</code>または空文字) を設定する。</p>
-<p>またいずれの場合であっても<code>kubernetes.io/cluster/&lt;EKS Clusterの名前&gt;</code> (値は、複数のEKS Clusterで共有するサブネットの場合は<code>shared</code>、単一のEKS Clusterの場合は<code>owned</code>とする) を設定する。</p>
+<p>またいずれの場合であっても<code>kubernetes.io/cluster/&lt;AWS EKS Clusterの名前&gt;</code> (値は、複数のAWS EKS Clusterで共有するサブネットの場合は<code>shared</code>、単一のAWS EKS Clusterの場合は<code>owned</code>とする) を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/</a></li>
@@ -6152,7 +6152,7 @@
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
 
-<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;モジュールのバージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">version</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 
 <span class="c1">  # AWS Load BalancerコントローラーのPodに紐付けるIAMロール</span>
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
@@ -6237,8 +6237,8 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>EKS ClusterをOIDCプロバイダーとして使用する。</p>
-<p>これにより、EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。</p>
+<p>AWS EKS ClusterをOIDCプロバイダーとして使用する。</p>
+<p>これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>eksctl<span class="w"> </span>utils<span class="w"> </span>associate-iam-oidc-provider<span class="w"> </span><span class="se">\</span>
@@ -6576,7 +6576,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>
