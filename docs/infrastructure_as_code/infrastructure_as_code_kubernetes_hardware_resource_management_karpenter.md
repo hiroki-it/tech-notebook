@@ -39,13 +39,20 @@ Karpenterは、インスタンスタイプのPod上限数をスケーリング�
 
 KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
+そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。
+
 Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
 
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
-> - https://sreake.com/blog/learn-about-karpenter/
-> - https://blog.inductor.me/entry/2021/12/06/165743
+> - https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs
+> - https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
+
+<br>
+
+### EC2フリートについて
+
 > - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 
 <br>
