@@ -6443,17 +6443,15 @@
 <table>
 <thead>
 <tr>
-<th>場合</th>
-<th>VirtualService数</th>
+<th></th>
+<th>API GatewayをIstioで管理する場合</th>
+<th>API GatewayをIstioで管理しない場合</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>API GatewayをIstioで管理する場合</td>
+<td>VirtualServiceの数</td>
 <td>外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。</td>
-</tr>
-<tr>
-<td>API GatewayをIstioで管理しない場合</td>
 <td>API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。</td>
 </tr>
 </tbody>
@@ -6542,7 +6540,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
       
     
   </small>
