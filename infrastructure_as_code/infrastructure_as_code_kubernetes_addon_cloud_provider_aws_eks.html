@@ -6808,11 +6808,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <dt><code>(2)</code></dt>
 <dd>
 <p>Node当たり<code>12</code>個のセカンダリープライベートIPアドレスを確保する。</p>
+<p>さらに追加で、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
+<p>結果、最初<code>12</code>個のPodをスケジューリングできる。</p>
 </dd>
-</dl>
-<p>​     さらに追加で、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
-<p>​     結果、最初<code>12</code>個のPodをスケジューリングできる。</p>
-<dl>
 <dt><code>(3)</code></dt>
 <dd>
 <p>Podが<code>12</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
