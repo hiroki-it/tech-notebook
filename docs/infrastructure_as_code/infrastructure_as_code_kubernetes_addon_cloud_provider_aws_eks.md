@@ -314,7 +314,7 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 : L-IPAMデーモンはCNIプラグインを参照する。
 
      また、CNIプラグイン上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。
-
+    
      反対に、NodeのENIを解放し、ENIのプールに戻す。
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_1.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
@@ -347,9 +347,11 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 
 そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
-`MINIMUM_IP_TARGET` (Node当たり最低限セカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
+`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
 
-`MINIMUM_IP_TARGET`にはスケーリングも加味して予想されるPod数分プラスアルファ、`WARM_IP_TARGET`にはウォーム状態のセカンダリープライベートIPアドレスを設定する。
+`MINIMUM_IP_TARGET`には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
+
+また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
 
 例えば、スケーリングも加味して、Node当たりにスケジューリングされるPod数の最大数が`10`個だとする。
 
