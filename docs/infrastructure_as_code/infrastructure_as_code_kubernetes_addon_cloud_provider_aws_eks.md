@@ -367,7 +367,8 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#aws-node-%E3%81%AE%E8%A8%AD%E5%AE%9A%E5%80%A4
+> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
+> - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
 
 <br>
 
