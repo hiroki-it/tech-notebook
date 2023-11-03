@@ -4377,9 +4377,29 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
-    ▼ Podの上限数を上げる
+    Podの上限数を上げる
+  </a>
+  
+    <nav class="md-nav" aria-label="Podの上限数を上げる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    ▼ Podの上限数の決まり方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ シナリオ
   </a>
   
 </li>
@@ -6195,9 +6215,29 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#pod" class="md-nav__link">
-    ▼ Podの上限数を上げる
+    Podの上限数を上げる
+  </a>
+  
+    <nav class="md-nav" aria-label="Podの上限数を上げる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod_1" class="md-nav__link">
+    ▼ Podの上限数の決まり方
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ シナリオ
   </a>
   
 </li>
@@ -6693,7 +6733,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
-<h4 id="pod">▼ Podの上限数を上げる<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p><br></p>
+<h3 id="pod">Podの上限数を上げる<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="pod_1">▼ Podの上限数の決まり方<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
 <p>Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。</p>
 <table>
 <thead>
@@ -6755,12 +6797,27 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。</p>
 <p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
 <p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
+<p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
+<h4 id="_13">▼ シナリオ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code>個だとする。</p>
-<p>この場合、Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
-<p>これにより、Node当たり<code>15</code>個のセカンダリープライベートIPアドレスを確保する。</p>
-<p>すると、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
-<p>そのため、Podが<code>10</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
-<p>なお、Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>Node当たり<code>12</code>個のセカンダリープライベートIPアドレスを確保する。</p>
+</dd>
+</dl>
+<p>​     さらに追加で、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
+<p>​     結果、最初<code>12</code>個のPodをスケジューリングできる。</p>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>Podが<code>12</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
+</dd>
+</dl>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md</a></li>
