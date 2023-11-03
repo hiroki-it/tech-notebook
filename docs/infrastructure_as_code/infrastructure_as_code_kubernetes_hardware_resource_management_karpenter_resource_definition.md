@@ -100,11 +100,11 @@ spec:
 
 ### tags
 
-KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、EC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
+#### ▼ tags
 
-AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
 
-Karpenterがデフォルトで挿入するタグは上書きしないように、設定しないようにする
+Karpenterがデフォルトで挿入するタグは上書きしないように、設定しないようにする。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -114,7 +114,7 @@ metadata:
 spec:
   tags:
     # ユーザー定義のタグ
-    karpenter.sh/discovery: foo
+    karpenter.sh/foo: foo
     # デフォルトで挿入するタグ
     # 上書きしないように設定しない
     karpenter.sh/nodepool: foo-nodepool
@@ -124,15 +124,18 @@ spec:
     karpenter.sh/managed-by: foo-cluster
 ```
 
+AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+
 ```yaml
 {
   "Statement": [
+
         {
             "Action": "ec2:RunInstances",
             "Condition": {
                 "StringEquals": {
                     # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
-                    "ec2:ResourceTag/karpenter.sh/discovery": [
+                    "ec2:ResourceTag/karpenter.sh/foo": [
                         "foo",
                         "bar"
                     ]
@@ -149,6 +152,8 @@ spec:
   ]
 }
 ```
+
+Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
