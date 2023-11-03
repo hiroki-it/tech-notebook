@@ -3865,6 +3865,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#metadataoptions" class="md-nav__link">
+    metadataOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#securitygroupselectorterms" class="md-nav__link">
     securityGroupSelectorTerms
   </a>
@@ -6048,6 +6055,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#metadataoptions" class="md-nav__link">
+    metadataOptions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#securitygroupselectorterms" class="md-nav__link">
     securityGroupSelectorTerms
   </a>
@@ -6327,6 +6341,18 @@
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
 <h3 id="ec2nodeclass">EC2NodeClass<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
 <p>NodePool内の各EC2 Nodeの仕様を設定する。</p>
+<p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
+<p>Terraformの<code>aws_launch_template</code>ブロックと競合する。</p>
+<blockquote>
+<ul>
+<li>
+<p><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048">https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048</a></p>
+</li>
+<li>
+<p><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template</a></p>
+</li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="amifamily">amiFamily<a class="headerlink" href="#amifamily" title="Permanent link">&para;</a></h3>
 <p>AWS AMIの種類を設定する。</p>
@@ -6355,6 +6381,26 @@
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms">https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms</a></li>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21">https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="metadataoptions">metadataOptions<a class="headerlink" href="#metadataoptions" title="Permanent link">&para;</a></h3>
+<p>起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metadataOptions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">httpEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+<span class="w">    </span><span class="nt">httpProtocolIPv6</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">disabled</span>
+<span class="w">    </span><span class="nt">httpPutResponseHopLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">httpTokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">required</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#specmetadataoptions">https://karpenter.sh/preview/concepts/nodeclasses/#specmetadataoptions</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6396,24 +6442,32 @@
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <h4 id="tags_1">▼ tags<a class="headerlink" href="#tags_1" title="Permanent link">&para;</a></h4>
 <p>KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。</p>
-<p>Karpenterがデフォルトで挿入するタグは上書きしないように、設定しないようにする。</p>
+<p>Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># ユーザー定義のタグ</span>
-<span class="w">    </span><span class="nt">karpenter.sh/foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
-<span class="w">    </span><span class="c1"># デフォルトで挿入するタグ</span>
+<span class="w">    </span><span class="c1"># デフォルトで挿入するリソースタグ</span>
 <span class="w">    </span><span class="c1"># 上書きしないように設定しない</span>
+<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
 <span class="w">    </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
-<span class="w">    </span><span class="nt">karpenter.k8s.aws/ec2nodeclass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodeclass</span>
+<span class="w">    </span><span class="nt">karpenter.k8s.aws/ec2nodeclass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="w">    </span><span class="nt">karpenter.k8s.aws/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 <span class="w">    </span><span class="nt">kubernetes.io/cluster/foo-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owned</span>
 <span class="w">    </span><span class="nt">karpenter.sh/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
+<span class="w">    </span><span class="c1"># ユーザー定義のリソースタグ</span>
+<span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
+<span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
 </code></pre></div>
-<p>AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#spectags">https://karpenter.sh/preview/concepts/nodeclasses/#spectags</a></li>
+<li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
+</ul>
+</blockquote>
+<p>ここで挿入するタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 
@@ -6422,9 +6476,8 @@
 <span class="w">            </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                    </span><span class="c1"># KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
-<span class="w">                    </span><span class="s">&quot;ec2:ResourceTag/karpenter.sh/foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">                        </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">                        </span><span class="s">&quot;bar&quot;</span>
+<span class="w">                    </span><span class="s">&quot;ec2:ResourceTag/Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                        </span><span class="s">&quot;foo-node&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">                    </span><span class="p p-Indicator">]</span>
 <span class="w">                </span><span class="p p-Indicator">}</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
@@ -6439,18 +6492,13 @@
 <span class="w">  </span><span class="p p-Indicator">]</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。</p>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#spectags">https://karpenter.sh/preview/concepts/nodeclasses/#spectags</a></li>
-<li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
-</ul>
-</blockquote>
+<p>もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。</p>
 <p><br></p>
 <h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
 <h3 id="nodepool">NodePoolとは<a class="headerlink" href="#nodepool" title="Permanent link">&para;</a></h3>
 <p>KapenterでプロビジョニングするEC2 Nodeをグループ単位で設定する。</p>
 <p>EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。</p>
+<p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
@@ -6878,7 +6926,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>
