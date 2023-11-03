@@ -3865,6 +3865,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#blockdevicemappings" class="md-nav__link">
+    blockDeviceMappings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailedmonitoring" class="md-nav__link">
+    detailedMonitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#metadataoptions" class="md-nav__link">
     metadataOptions
   </a>
@@ -3902,6 +3916,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdata" class="md-nav__link">
+    userData
+  </a>
   
 </li>
         
@@ -6055,6 +6076,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#blockdevicemappings" class="md-nav__link">
+    blockDeviceMappings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailedmonitoring" class="md-nav__link">
+    detailedMonitoring
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#metadataoptions" class="md-nav__link">
     metadataOptions
   </a>
@@ -6092,6 +6127,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdata" class="md-nav__link">
+    userData
+  </a>
   
 </li>
         
@@ -6384,6 +6426,22 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="blockdevicemappings">blockDeviceMappings<a class="headerlink" href="#blockdevicemappings" title="Permanent link">&para;</a></h3>
+<p>プロビジョニングするEC2 Nodeのブロックデバイスを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="detailedmonitoring">detailedMonitoring<a class="headerlink" href="#detailedmonitoring" title="Permanent link">&para;</a></h3>
+<p>プロビジョニングするEC2 NodeのCloudWatchによる監視を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="metadataoptions">metadataOptions<a class="headerlink" href="#metadataoptions" title="Permanent link">&para;</a></h3>
 <p>起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
@@ -6467,7 +6525,7 @@
 <li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
 </ul>
 </blockquote>
-<p>ここで挿入するタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
+<p>ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 
@@ -6493,6 +6551,14 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。</p>
+<p><br></p>
+<h3 id="userdata">userData<a class="headerlink" href="#userdata" title="Permanent link">&para;</a></h3>
+<p>プロビジョニングするEC2 Nodeのユーザーデータを設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
 <h3 id="nodepool">NodePoolとは<a class="headerlink" href="#nodepool" title="Permanent link">&para;</a></h3>
