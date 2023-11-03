@@ -61,7 +61,7 @@ spec:
 
 ### securityGroupSelectorTerms
 
-EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
+EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのリソースを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -80,7 +80,7 @@ spec:
 
 ### subnetSelectorTerms
 
-EC2 Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
+EC2 Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのリソースを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -100,9 +100,11 @@ spec:
 
 ### tags
 
-KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、EC2 Node、EBSボリューム、など) に挿入するタグを設定する。
+KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、EC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
 
-AWS IAMポリシーでは、ここで設定したタグに基づいて、操作の認可スコープを制御している。
+AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+
+Karpenterがデフォルトで挿入するタグは上書きしないように、設定しないようにする
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -110,16 +112,46 @@ kind: EC2NodeClass
 metadata:
   name: foo-node-class
 spec:
-  # デフォルトで挿入するタグ
   tags:
-    Name: foo-node
-    karpenter.sh/nodeclaim: foo-nodeclaim
+    # ユーザー定義のタグ
+    karpenter.sh/discovery: foo
+    # デフォルトで挿入するタグ
+    # 上書きしないように設定しない
     karpenter.sh/nodepool: foo-nodepool
+    karpenter.k8s.aws/ec2nodeclass: foo-nodeclass
+    karpenter.k8s.aws/cluster: foo-cluster
     kubernetes.io/cluster/foo-cluster: owned
+    karpenter.sh/managed-by: foo-cluster
+```
+
+```yaml
+{
+  "Statement": [
+        {
+            "Action": "ec2:RunInstances",
+            "Condition": {
+                "StringEquals": {
+                    # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
+                    "ec2:ResourceTag/karpenter.sh/discovery": [
+                        "foo",
+                        "bar"
+                    ]
+                }
+            },
+            "Effect": "Allow",
+            "Resource": "arn:aws:ec2:*:<アカウントID>:launch-template/*",
+            "Sid": ""
+        },
+
+  ...
+
+  "Version": "2012-10-17"
+  ]
+}
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
-> - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+> - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
 
 <br>
 
@@ -147,7 +179,7 @@ EC2 Nodeを削除できる状況では不要なEC2 Nodeを削除し、また削�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   disruption:
     consolidationPolicy: WhenUnderutilized
@@ -164,7 +196,7 @@ EC2 NodeからPodが全て退避した後にEC2 Nodeを削除するまでの待�
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   disruption:
     consolidateAfter: 30s
@@ -183,7 +215,7 @@ EC2 Nodeを定期的に再作成することにより、最適なスペックを
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   disruption:
     expireAfter: 720h
@@ -204,7 +236,7 @@ Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過し
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   limits:
     cpu: 1000
@@ -227,7 +259,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   weight: 10
 ```
@@ -247,7 +279,7 @@ Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
@@ -298,7 +330,7 @@ EC2 Nodeに付与するアノテーションを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     metadata:
@@ -317,13 +349,13 @@ EC2 Nodeに付与するラベルを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     metadata:
       labels:
-        # マネージドNodeグループがEC2 Nodeに挿入するラベルを、Karpenterも挿入する
-        eks.amazonaws.com/nodegroup: app
+        # EC2 NodeにNodeプール名のラベルを挿入する
+        karpenter.sh/nodepool: app
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
@@ -340,7 +372,7 @@ Provisionerで使用するEC2 Nodeテンプレートを設定する。
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
@@ -369,7 +401,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
@@ -418,7 +450,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
@@ -465,7 +497,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
@@ -485,7 +517,7 @@ spec:
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
 metadata:
-  name: foo-nodegroup
+  name: foo-nodepool
 spec:
   template:
     spec:
