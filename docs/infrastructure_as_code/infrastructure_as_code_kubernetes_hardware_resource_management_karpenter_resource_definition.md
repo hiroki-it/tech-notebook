@@ -19,6 +19,14 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 NodePool内の各EC2 Nodeの仕様を設定する。
 
+ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
+
+Terraformの`aws_launch_template`ブロックと競合する。
+
+> - https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048
+
+> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
+
 <br>
 
 ### amiFamily
@@ -56,6 +64,28 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms
 > - https://pages.awscloud.com/rs/112-TZM-766/images/4_ECS_EKS_multiarch_deployment.pdf#page=21
+
+<br>
+
+### metadataOptions
+
+起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  metadataOptions:
+    httpEndpoint: enabled
+    httpProtocolIPv6: disabled
+    httpPutResponseHopLimit: 2
+    httpTokens: required
+```
+
+> - https://karpenter.sh/preview/concepts/nodeclasses/#specmetadataoptions
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
 
 <br>
 
@@ -104,7 +134,7 @@ spec:
 
 KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
 
-Karpenterがデフォルトで挿入するタグは上書きしないように、設定しないようにする。
+Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しないようにする。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -113,18 +143,23 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # ユーザー定義のタグ
-    karpenter.sh/foo: foo
-    # デフォルトで挿入するタグ
+    # デフォルトで挿入するリソースタグ
     # 上書きしないように設定しない
+    Name: foo-node
     karpenter.sh/nodepool: foo-nodepool
-    karpenter.k8s.aws/ec2nodeclass: foo-nodeclass
+    karpenter.k8s.aws/ec2nodeclass: foo-node-class
     karpenter.k8s.aws/cluster: foo-cluster
     kubernetes.io/cluster/foo-cluster: owned
     karpenter.sh/managed-by: foo-cluster
+    # ユーザー定義のリソースタグ
+    Env: prd
+    ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
 ```
 
-AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+> - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
+> - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
+
+ここで挿入するタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
 
 ```yaml
 {
@@ -135,9 +170,8 @@ AWS IAMポリシーの条件で指定するリソースタグと一致させる�
             "Condition": {
                 "StringEquals": {
                     # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
-                    "ec2:ResourceTag/karpenter.sh/foo": [
-                        "foo",
-                        "bar"
+                    "ec2:ResourceTag/Name": [
+                        "foo-node",
                     ]
                 }
             },
@@ -153,10 +187,7 @@ AWS IAMポリシーの条件で指定するリソースタグと一致させる�
 }
 ```
 
-Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
-
-> - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
-> - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
+もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
 
 <br>
 
@@ -167,6 +198,8 @@ Karpenter以外の方法 (例：Terraform、など) で挿入したリソース�
 KapenterでプロビジョニングするEC2 Nodeをグループ単位で設定する。
 
 EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
+
+ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 
