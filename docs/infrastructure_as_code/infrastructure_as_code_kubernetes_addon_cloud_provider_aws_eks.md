@@ -371,15 +371,13 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 
 : Node当たり`12`個のセカンダリープライベートIPアドレスを確保する。
 
-​     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
 
-​     結果、最初`12`個のPodをスケジューリングできる。
+     結果、最初`12`個のPodをスケジューリングできる。
 
 `(3)`
 
 : Podが`12`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
-
-
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
