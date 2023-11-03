@@ -17,7 +17,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ### EC2NodeClass
 
-NodePool内の各Nodeの仕様を設定する。
+NodePool内の各EC2 Nodeの仕様を設定する。
 
 <br>
 
@@ -39,7 +39,7 @@ spec:
 
 ### amiSelectorTerms
 
-NodeのAMIを設定する。
+EC2 NodeのAMIを設定する。
 
 設定しない場合、Karpenterは最適化AMIを自動的に選択する。
 
@@ -61,7 +61,7 @@ spec:
 
 ### securityGroupSelectorTerms
 
-Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
+EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -80,7 +80,7 @@ spec:
 
 ### subnetSelectorTerms
 
-Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
+EC2 Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのタグを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -100,7 +100,7 @@ spec:
 
 ### tags
 
-全てのNodeやEBSボリュームに挿入するタグを設定する。
+KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、EC2 Node、EBSボリューム、など) に挿入するタグを設定する。
 
 AWS IAMポリシーでは、ここで設定したタグに基づいて、操作の認可スコープを制御している。
 
@@ -127,9 +127,9 @@ spec:
 
 ### NodePoolとは
 
-KapenterでプロビジョニングするNodeをグループ単位で設定する。
+KapenterでプロビジョニングするEC2 Nodeをグループ単位で設定する。
 
-Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
+EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール、など) に合わせて、複数作成すると良い。
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 
@@ -141,7 +141,7 @@ Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプール
 
 コストを考慮するかどうかを設定する。
 
-Nodeを削除できる状況では不要なNodeを削除し、また削除できない状況ではNodeのスペックをスケールインする。
+EC2 Nodeを削除できる状況では不要なEC2 Nodeを削除し、また削除できない状況ではEC2 Nodeのスペックをスケールインする。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -158,7 +158,7 @@ spec:
 
 #### ▼ consolidateAfter
 
-NodeからPodが全て退避した後にNodeを削除するまでの待機時間を設定する。
+EC2 NodeからPodが全て退避した後にEC2 Nodeを削除するまでの待機時間を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -175,9 +175,9 @@ spec:
 
 #### ▼ expireAfter
 
-Nodeを削除し、再作成するまでの期間を設定する。
+EC2 Nodeを削除し、再作成するまでの期間を設定する。
 
-Nodeを定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。
+EC2 Nodeを定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -196,9 +196,9 @@ spec:
 
 ### limits
 
-Karpenterがプロビジョニング可能なNodeをハードウェアリソース合計量で設定する。
+Karpenterがプロビジョニング可能なEC2 Nodeをハードウェアリソース合計量で設定する。
 
-Karpenter配下のNodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
+Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -292,7 +292,7 @@ spec:
 
 #### ▼ annotations
 
-Nodeに付与するアノテーションを設定する。
+EC2 Nodeに付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -311,7 +311,7 @@ spec:
 
 #### ▼ labels
 
-Nodeに付与するラベルを設定する。
+EC2 Nodeに付与するラベルを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -322,7 +322,7 @@ spec:
   template:
     metadata:
       labels:
-        # マネージドNodeグループがNodeに挿入するラベルを、Karpenterも挿入する
+        # マネージドNodeグループがEC2 Nodeに挿入するラベルを、Karpenterも挿入する
         eks.amazonaws.com/nodegroup: app
 ```
 
@@ -334,7 +334,7 @@ spec:
 
 ### nodeClassRef
 
-Provisionerで使用するNodeテンプレートを設定する。
+Provisionerで使用するEC2 Nodeテンプレートを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -359,7 +359,7 @@ spec:
 
 #### ▼ requirementsとは
 
-プロビジョニングするNodeのハードウェアリソースを制限する。
+プロビジョニングするEC2 Nodeのハードウェアリソースを制限する。
 
 制限しなかった項目は、Karpenterがよしなに設定値を選ぶ。
 

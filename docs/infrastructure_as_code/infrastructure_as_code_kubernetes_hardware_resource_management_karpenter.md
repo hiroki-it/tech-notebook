@@ -57,7 +57,10 @@ Karpenterは、マネージドNodeグループの有無に関係なく、Nodeを
 
 マネージドNodeグループは静的キャパシティであり、これを動的キャパシティのKarpenterと組み合わせることになる。
 
+ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
+
 > - https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features
+> - https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas
 
 #### ▼ EC2フリートについて
 
