@@ -6163,9 +6163,11 @@
 <h4 id="node">▼ マネージドNodeグループとの連携<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
 <p>マネージドNodeグループは静的キャパシティであり、これを動的キャパシティのKarpenterと組み合わせることになる。</p>
+<p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features">https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features</a></li>
+<li><a href="https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas">https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas</a></li>
 </ul>
 </blockquote>
 <h4 id="ec2">▼ EC2フリートについて<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
