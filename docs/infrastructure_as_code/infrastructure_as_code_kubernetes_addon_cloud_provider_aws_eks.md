@@ -369,6 +369,7 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 > - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
 > - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
+> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
 
 <br>
 
