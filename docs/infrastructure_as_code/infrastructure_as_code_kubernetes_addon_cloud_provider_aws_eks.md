@@ -334,7 +334,11 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
-#### ▼ Podの上限数を上げる
+<br>
+
+### Podの上限数を上げる
+
+#### ▼ Podの上限数の決まり方
 
 Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。
 
@@ -353,17 +357,29 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 
 また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
 
+Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
+
+####  ▼ シナリオ
+
 例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10`個だとする。
 
-この場合、Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定する。
+`(1)`
 
-これにより、Node当たり`15`個のセカンダリープライベートIPアドレスを確保する。
+: Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定する。
 
-すると、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+`(2)`
 
-そのため、Podが`10`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
+: Node当たり`12`個のセカンダリープライベートIPアドレスを確保する。
 
-なお、Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
+​     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+
+​     結果、最初`12`個のPodをスケジューリングできる。
+
+`(3)`
+
+: Podが`12`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
+
+
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
