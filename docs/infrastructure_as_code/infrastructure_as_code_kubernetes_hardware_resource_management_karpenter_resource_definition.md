@@ -67,6 +67,22 @@ spec:
 
 <br>
 
+### blockDeviceMappings
+
+プロビジョニングするEC2 Nodeのブロックデバイスを設定する。
+
+> - https://karpenter.sh/preview/concepts/nodeclasses/
+
+<br>
+
+### detailedMonitoring
+
+プロビジョニングするEC2 NodeのCloudWatchによる監視を設定する。
+
+> - https://karpenter.sh/preview/concepts/nodeclasses/
+
+<br>
+
 ### metadataOptions
 
 起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。
@@ -159,7 +175,7 @@ spec:
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
 
-ここで挿入するタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
 
 ```yaml
 {
@@ -188,6 +204,14 @@ spec:
 ```
 
 もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
+
+<br>
+
+### userData
+
+プロビジョニングするEC2 Nodeのユーザーデータを設定する。
+
+> - https://karpenter.sh/preview/concepts/nodeclasses/
 
 <br>
 
