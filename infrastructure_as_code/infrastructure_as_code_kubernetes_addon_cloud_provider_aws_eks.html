@@ -6755,8 +6755,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限セカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。</p>
 <p><code>MINIMUM_IP_TARGET</code>にはスケーリングも加味して予想されるPod数分プラスアルファ、<code>WARM_IP_TARGET</code>にはウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>例えば、スケーリングも加味して、Node当たりにスケジューリングされるPod数の最大数が<code>10</code>個だとする。</p>
-<p>この場合、Nodeで小さめのインスタンスサイズを洗濯しつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
-<p>これにyり、Node当たり<code>15</code>個のセカンダリープライベートIPアドレスを確保する。</p>
+<p>この場合、Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
+<p>これにより、Node当たり<code>15</code>個のセカンダリープライベートIPアドレスを確保する。</p>
 <p>すると、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
 <p>そのため、Podが<code>10</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
 <p>なお、Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
@@ -6784,7 +6784,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>
