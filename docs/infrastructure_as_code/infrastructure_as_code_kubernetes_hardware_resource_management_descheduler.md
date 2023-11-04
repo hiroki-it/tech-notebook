@@ -36,6 +36,15 @@ $ kubectl get events -n foo
 35m         Normal   SuccessfulCreate         replicaset/foo-5c844554c5           Created pod: foo-5c844554c5-vgdjl
 ```
 
+> - https://sreake.com/blog/kubernetes-descheduler/
+> - https://torumakabe.github.io/post/k8s_descheduler/
+> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
+> - https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31
+
+<br>
+
+### kube-schedulerだけでは足りない理由
+
 kube-schedulerは、既存のPodを退避させられない。
 
 そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。
@@ -51,9 +60,6 @@ deschedulerをCronJobとして定期的に起動させ、Podを自動的に退�
 ![descheduler_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
 > - https://sreake.com/blog/kubernetes-descheduler/
-> - https://torumakabe.github.io/post/k8s_descheduler/
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8>
-> - https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31
 
 <br>
 
