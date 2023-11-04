@@ -247,7 +247,7 @@ webサーバーのIPアドレスがDNSサーバーに登録されていない時
 ```bash
 127.0.0.1 localhost
 255.255.255.255	broadcasthost
-::1             localhost
+:   :1             localhost
 *.*.*.* example.com
 <IPアドレス> <ドメイン名>
 ```
