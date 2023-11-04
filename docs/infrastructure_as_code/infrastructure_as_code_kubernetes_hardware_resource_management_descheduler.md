@@ -17,7 +17,9 @@ description: descheduler＠ハードウェアリソース管理の知見を記�
 
 ### アーキテクチャ
 
-deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。
+deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させる。
+
+その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。
 
 ```bash
 $ kubectl get events -n foo
@@ -34,7 +36,7 @@ $ kubectl get events -n foo
 35m         Normal   SuccessfulCreate         replicaset/foo-5c844554c5           Created pod: foo-5c844554c5-vgdjl
 ```
 
-類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。
+kube-schedulerは、既存のPodを退避させられない。
 
 そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。
 
@@ -42,7 +44,7 @@ $ kubectl get events -n foo
 
 `kubectl rollout restart`コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
 
-deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。
+deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。
 
 このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。
 
@@ -172,7 +174,7 @@ data:
 
 ### DeschedulerPolicyとは
 
-再スケジューリングの対象とするPodの選定ルールを設定する。
+退避の対象とするPodの選定ルールを設定する。
 
 > - https://github.com/kubernetes-sigs/descheduler#policy-and-strategies>
 
@@ -182,9 +184,11 @@ data:
 
 #### ▼ LowNodeUtilization
 
-Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、使用量が閾値 (thresholds) を超過していないNodeにPodを再スケジューリングさせる。
+Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避する。
 
-注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避と再スケジューリングを繰り返す状態になってしまう。
+さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。
+
+注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。
 
 Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。
 
@@ -201,7 +205,7 @@ strategies:
           cpu: 70
           memory: 70
           pods: 70
-        # 閾値 (この値を超過していないNodeにPodを再スケジューリングさせる)
+        # 閾値 (kube-schedulerを使用して、この値を超過していないNodeにPodを再スケジューリングさせる)
         thresholds:
           cpu: 20
           memory: 20
@@ -213,9 +217,9 @@ strategies:
 
 #### ▼ RemoveDuplicates
 
-Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。
+Workload (例：Deployment、StatefulSet、Job) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。
 
-該当するNodeがない場合、再スケジューリングさせない。
+該当するNodeがない場合、退避させない。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -230,7 +234,9 @@ strategies:
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
-再起動を繰り返しているPodを再スケジューリングさせるよう、再起動の閾値を設定する。
+再起動を繰り返しているPodがある場合に、このPodをNodeから退避させる。
+
+再起動の回数の閾値を設定できる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -248,7 +254,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
-`.spec.nodeAffinity`キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
+`.spec.nodeAffinity`キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -262,7 +268,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
-`.spec.affinity.podAffinity`キにいの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
+`.spec.affinity.podAffinity`キにいの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -277,11 +283,11 @@ strategies:
 
 #### ▼ RemovePodsViolatingNodeTaints
 
-taintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
+taintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 #### ▼ RemovePodsViolatingTopologySpreadConstraint
 
-TopologySpreadConstraintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。
+TopologySpreadConstraintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
