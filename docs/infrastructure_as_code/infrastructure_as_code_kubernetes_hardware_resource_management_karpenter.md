@@ -17,17 +17,19 @@ description: Karpenter＠ハードウェアリソース管理の知見を記録�
 
 ### アーキテクチャ
 
+Karpenterは、karpenterコントローラーから構成される。
+
 > - https://karpenter.sh/preview/reference/threat-model/
+
+![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
 <br>
 
-### パラメーター
+### karpenterコントローラー
 
-#### ▼ Pod上限数
+karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。
 
-Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
-
-> - https://karpenter.sh/docs/concepts/provisioners/#max-pods
+また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
 <br>
 
@@ -35,17 +37,33 @@ Karpenterは、インスタンスタイプのPod上限数をスケーリング�
 
 ### スケーリングの仕組み
 
-KarpenterはAWS EC2のグループ (例：AWS EC2フリート) に関するAPIをコールし、Nodeの自動水平スケーリングを実行する。
+KarpenterはAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。
 
 Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。
 
-![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
-
 > - https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs
 > - https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
+
+<br>
+
+### スケーリングパラメーター
+
+#### ▼ Pod上限数
+
+Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
+
+> - https://karpenter.sh/docs/concepts/provisioners/#max-pods
+
+#### ▼ コスト
+
+記入中...
+
+#### ▼ ハードウェアリソース消費量
+
+記入中...
 
 <br>
 
@@ -77,6 +95,8 @@ AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用でき�
 Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。
 
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
+
+![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
 #### ▼ cluster-autoscalerのいいところ
 
@@ -144,7 +164,7 @@ Expiration、Drift、Consolidation、の順にNodeを検証し、削除可能な
 
 ### AWS側
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraformの公式モジュール (`terraform-aws-modules/iam-assumable-role-with-oidc`) の場合
 
 Kapenterのセットアップのうち、AWS側で必要なものをまとめる。
 
@@ -181,8 +201,8 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
-# Karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする
-# EC2NodeClassでユーザー定義のリソースタグを設定し、Karpenterコントローラーが起動テンプレートを操作できるようにしておく
+# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする
+# EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーが起動テンプレートを操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
@@ -314,6 +334,56 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     ]
     sid = ""
   }
+}
+```
+
+> - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
+> - https://github.com/aws/karpenter/pull/1332#issue-1135967441
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+
+#### ▼ Terraformの公式モジュール (`terraform-aws-modules/karpenter`) の場合
+
+```terraform
+module "eks_iam_karpenter_controller" {
+  source  = "terraform-aws-modules/eks/aws//modules/karpenter"
+  version = "~> 19.18.0"
+
+  cluster_name = module.eks.cluster_name
+
+  create_iam_role = false
+
+  create_instance_profile = false
+
+  enable_karpenter_instance_profile_creation = true
+
+  enable_spot_termination = false
+
+  queue_managed_sse_enabled = false
+
+  irsa_oidc_provider_arn = module.eks.oidc_provider_arn
+
+  irsa_name = "foo-karpenter-controller"
+
+  irsa_use_name_prefix = false
+
+  # karpenterコントローラーのPodのServiceAccount名
+  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  irsa_namespace_service_accounts = [
+    "karpenter:karpenter"
+  ]
+
+  # 特定のリソースタグを持つ起動テンプレートしか指定できない
+  irsa_tag_key = "karpenter.sh/discovery"
+
+  irsa_tag_values = [
+    module.eks.cluster_name
+  ]
+
+  iam_role_additional_policies = {
+    AmazonSSMManagedInstanceCore = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  }
+
+  iam_role_arn = module.eks_managed_node_group.worker_iam_role_arn
 }
 ```
 
