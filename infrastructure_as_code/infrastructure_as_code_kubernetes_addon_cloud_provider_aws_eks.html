@@ -4399,6 +4399,13 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    ▼ 現在の上限数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6237,6 +6244,13 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
+    ▼ 現在の上限数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6799,7 +6813,31 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
 <p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
-<h4 id="_13">▼ シナリオ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h4 id="_13">▼ 現在の上限数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p><code>kubectl describe</code>コマンドで、現在のPodの上限数を確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;<span class="w">   </span>
+
+
+Name:<span class="w"> </span>&lt;Node名&gt;
+
+...
+
+Allocatable:
+<span class="w">  </span>cpu:<span class="w">                </span>1930m
+<span class="w">  </span>ephemeral-storage:<span class="w">  </span><span class="m">18242267924</span>
+<span class="w">  </span>hugepages-1Gi:<span class="w">      </span><span class="m">0</span>
+<span class="w">  </span>hugepages-2Mi:<span class="w">      </span><span class="m">0</span>
+<span class="w">  </span>memory:<span class="w">             </span>7265232Ki
+<span class="w">  </span>pods:<span class="w">               </span><span class="m">35</span><span class="w"> </span><span class="c1"># Podの上限数</span>
+
+<span class="w"> </span>...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/okubot55/items/2c25d75bd72bac629829">https://qiita.com/okubot55/items/2c25d75bd72bac629829</a></li>
+</ul>
+</blockquote>
+<h4 id="_14">▼ シナリオ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code>個だとする。</p>
 <dl>
 <dt><code>(1)</code></dt>

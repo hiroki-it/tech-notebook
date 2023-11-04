@@ -6187,17 +6187,25 @@
 <h2 id="01-karpenter">01. Karpenterの仕組み<a class="headerlink" href="#01-karpenter" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Karpenterは、karpenterコントローラーから構成される。</p>
+<p><img alt="karpenter_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/preview/reference/threat-model/">https://karpenter.sh/preview/reference/threat-model/</a></li>
+<li><a href="https://karpenter.sh/preview/reference/threat-model/#karpenter-controller">https://karpenter.sh/preview/reference/threat-model/#karpenter-controller</a></li>
 </ul>
 </blockquote>
-<p><img alt="karpenter_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <p><br></p>
 <h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
 <p>karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
+<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラー以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
 <p><img alt="karpenter_controller.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/reference/threat-model/#karpenter-controller">https://karpenter.sh/preview/reference/threat-model/#karpenter-controller</a></li>
+<li><a href="https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md">https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md</a></li>
+<li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547">https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -6482,6 +6490,7 @@
 <li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
 <li><a href="https://github.com/aws/karpenter/pull/1332#issue-1135967441">https://github.com/aws/karpenter/pull/1332#issue-1135967441</a></li>
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
+<li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
 </ul>
 </blockquote>
 <h4 id="terraform-terraform-aws-moduleskarpenter">▼ Terraformの公式モジュール (<code>terraform-aws-modules/karpenter</code>) の場合<a class="headerlink" href="#terraform-terraform-aws-moduleskarpenter" title="Permanent link">&para;</a></h4>
@@ -6532,6 +6541,7 @@
 <li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
 <li><a href="https://github.com/aws/karpenter/pull/1332#issue-1135967441">https://github.com/aws/karpenter/pull/1332#issue-1135967441</a></li>
 <li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
+<li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
 </ul>
 </blockquote>
 <p><br></p>
