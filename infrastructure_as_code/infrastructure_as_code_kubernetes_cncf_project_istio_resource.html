@@ -4695,15 +4695,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#404_1" class="md-nav__link">
-    ▼ 404ステータス
+  <a href="#envoy" class="md-nav__link">
+    ▼ Envoyの設定値として
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
-    ▼ Envoyの設定値として
+  <a href="#404_1" class="md-nav__link">
+    ▼ 404ステータス
   </a>
   
 </li>
@@ -6127,15 +6127,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#404_1" class="md-nav__link">
-    ▼ 404ステータス
+  <a href="#envoy" class="md-nav__link">
+    ▼ Envoyの設定値として
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
-    ▼ Envoyの設定値として
+  <a href="#404_1" class="md-nav__link">
+    ▼ 404ステータス
   </a>
   
 </li>
@@ -6420,7 +6420,7 @@
 <h3 id="virtualservice">VirtualService<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="virtualservice_1">▼ VirtualServiceとは<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
 <p>IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。</p>
-<p>宛先のServiceは、Istioのコンポーネントではないに注意する。</p>
+<p>またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。</p>
 <p><img alt="istio_gateway_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -6428,10 +6428,9 @@
 <li><a href="https://knowledge.sakura.ad.jp/20489/">https://knowledge.sakura.ad.jp/20489/</a></li>
 </ul>
 </blockquote>
-<h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayから受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <h4 id="envoy">▼ Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
-<p>VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioリソースに適用される。</p>
+<p>Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルーティングに変換する。</p>
+<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/traffic-management/">https://istio.io/latest/docs/concepts/traffic-management/</a></li>
@@ -6439,6 +6438,8 @@
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
 </ul>
 </blockquote>
+<h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
+<p>Gatewayから受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <h4 id="virtualservice_2">▼ VirtualService数<a class="headerlink" href="#virtualservice_2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -6508,7 +6509,8 @@
 </tbody>
 </table>
 <h4 id="envoy_1">▼ Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
-<p>DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として<code>istio-proxy</code>コンテナに適用される。</p>
+<p>Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。</p>
+<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/traffic-management/">https://istio.io/latest/docs/concepts/traffic-management/</a></li>
@@ -6540,7 +6542,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>

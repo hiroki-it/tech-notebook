@@ -7658,7 +7658,10 @@
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">            </span><span class="c1"># OR条件</span>
-<span class="w">            </span><span class="s">&quot;StringEqual&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">]},</span>
+<span class="w">            </span><span class="s">&quot;StringEqual&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># リスト型にすることでOR上限になる</span>
+<span class="w">                </span><span class="s">&quot;sts:ExternalId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span>
+<span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">],</span>
@@ -7685,6 +7688,25 @@
 <ul>
 <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html</a></li>
 <li><a href="https://zenn.dev/toshikish/articles/2d9274783acbae">https://zenn.dev/toshikish/articles/2d9274783acbae</a></li>
+</ul>
+</blockquote>
+<p>リソースタグを条件として使用することもできる。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="p p-Indicator">{</span>
+<span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="c1"># EC2を起動する</span>
+<span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ec2:RunInstances&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:ec2:*:account-id:launch-template/*&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">                </span><span class="c1"># 特定のリソースタグを持つ起動テンプレートのみを指定できる</span>
+<span class="w">                </span><span class="s">&quot;ec2:ResourceTag/foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">              </span><span class="p p-Indicator">}},</span>
+<span class="w">      </span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">]}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7750,7 +7772,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>

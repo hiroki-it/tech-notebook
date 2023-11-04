@@ -6261,9 +6261,7 @@
 <span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
 
 <span class="c1">  # AWS IAMロールに紐付けるIAMポリシー</span>
-<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy&quot;</span>
-<span class="w">  </span><span class="p">]</span>
+<span class="w">  </span><span class="na">role_policy_arns</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_policy.karpenter_controller.arn</span>
 
 <span class="c1">  # karpenterコントローラーのPodのServiceAccount名</span>
 <span class="c1">  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い</span>
@@ -6277,58 +6275,100 @@
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
 <span class="p">}</span>
 
+<span class="c1"># Karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする</span>
+<span class="c1"># EC2NodeClassでユーザー定義のリソースタグを設定し、Karpenterコントローラーが起動テンプレートを操作できるようにしておく</span>
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeSubnets&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeSpotPriceHistory&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeSecurityGroups&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeLaunchTemplates&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypes&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeInstanceTypeOfferings&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DescribeImages&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DescribeAvailabilityZones&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:AddRoleToInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:CreateInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:DeleteInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:GetInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:RemoveRoleFromInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;iam:TagInstanceProfile&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;pricing:GetProducts&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateTags&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateLaunchTemplate&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:CreateFleet&quot;</span>
 <span class="w">    </span><span class="p">]</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;*&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Karpenter&quot;</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span>
+<span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="c1">    # Karpenterは、karpenter.sh/nodepoolタグの付いたNodeのみを削除できる</span>
+<span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringLike&quot;</span>
-<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aws:RequestTag/karpenter.sh/nodepool&quot;</span>
+<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
+<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="nv">module.eks.cluster_name</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;*&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ConditionalEC2Termination&quot;</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
+<span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
+<span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
+<span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nv">module.eks.cluster_name</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="c1">    # 起動テンプレートを指定してEC2 Nodeを起動する</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:launch-template/*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*::snapshot/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*::image/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:volume/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:subnet/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:spot-instances-request/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:security-group/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:network-interface/*&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:instance/*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;ssm:GetParameter&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;arn:aws:ssm:*:*:parameter/aws/service/*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
@@ -6339,7 +6379,7 @@
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="nv">module.eks_managed_node_group.iam_role_arn</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;PassNodeIAMRole&quot;</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
@@ -6350,13 +6390,31 @@
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="nv">module.eks.cluster_arn</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;EKSClusterEndpointLookup&quot;</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;iam:TagInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:RemoveRoleFromInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:GetInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:DeleteInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:CreateInstanceProfile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;iam:AddRoleToInstanceProfile&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
+<span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;*&quot;</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">    </span><span class="na">sid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles">https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles</a></li>
+<li><a href="https://github.com/aws/karpenter/pull/1332#issue-1135967441">https://github.com/aws/karpenter/pull/1332#issue-1135967441</a></li>
+<li><a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1">https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6366,7 +6424,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>

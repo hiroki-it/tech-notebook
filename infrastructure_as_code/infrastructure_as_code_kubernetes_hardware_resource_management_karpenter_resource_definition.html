@@ -3914,6 +3914,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#irsaiam" class="md-nav__link">
+    ▼ IRSA用IAMロールの条件と一致させる
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4096,10 +4103,10 @@
       
         <li class="md-nav__item">
   <a href="#03-configmap" class="md-nav__link">
-    03. 専用ConfigMap
+    03. グローバル設定用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="03. 専用ConfigMap">
+    <nav class="md-nav" aria-label="03. グローバル設定用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4133,6 +4140,40 @@
           <li class="md-nav__item">
   <a href="#batchidleduration" class="md-nav__link">
     batchIdleDuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-configmap" class="md-nav__link">
+    04. ロギング設定用のConfigMap
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ロギング設定用のConfigMap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zap-logger-config" class="md-nav__link">
+    zap-logger-config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loglevelcontroller" class="md-nav__link">
+    loglevel.controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loglevelwebhook" class="md-nav__link">
+    loglevel.webhook
   </a>
   
 </li>
@@ -6125,6 +6166,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#irsaiam" class="md-nav__link">
+    ▼ IRSA用IAMロールの条件と一致させる
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6307,10 +6355,10 @@
       
         <li class="md-nav__item">
   <a href="#03-configmap" class="md-nav__link">
-    03. 専用ConfigMap
+    03. グローバル設定用ConfigMap
   </a>
   
-    <nav class="md-nav" aria-label="03. 専用ConfigMap">
+    <nav class="md-nav" aria-label="03. グローバル設定用ConfigMap">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6344,6 +6392,40 @@
           <li class="md-nav__item">
   <a href="#batchidleduration" class="md-nav__link">
     batchIdleDuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-configmap" class="md-nav__link">
+    04. ロギング設定用のConfigMap
+  </a>
+  
+    <nav class="md-nav" aria-label="04. ロギング設定用のConfigMap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#zap-logger-config" class="md-nav__link">
+    zap-logger-config
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loglevelcontroller" class="md-nav__link">
+    loglevel.controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loglevelwebhook" class="md-nav__link">
+    loglevel.webhook
   </a>
   
 </li>
@@ -6518,6 +6600,7 @@
 <span class="w">    </span><span class="c1"># ユーザー定義のリソースタグ</span>
 <span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
+<span class="w">    </span><span class="nt">karpenter.sh/discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6525,6 +6608,7 @@
 <li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
 </ul>
 </blockquote>
+<h4 id="irsaiam">▼ IRSA用IAMロールの条件と一致させる<a class="headerlink" href="#irsaiam" title="Permanent link">&para;</a></h4>
 <p>ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
@@ -6534,8 +6618,8 @@
 <span class="w">            </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                    </span><span class="c1"># KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
-<span class="w">                    </span><span class="s">&quot;ec2:ResourceTag/Name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
-<span class="w">                        </span><span class="s">&quot;foo-node&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">                    </span><span class="s">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
+<span class="w">                        </span><span class="s">&quot;foo-cluster&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">                    </span><span class="p p-Indicator">]</span>
 <span class="w">                </span><span class="p p-Indicator">}</span>
 <span class="w">            </span><span class="p p-Indicator">},</span>
@@ -6551,6 +6635,11 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053">https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="userdata">userData<a class="headerlink" href="#userdata" title="Permanent link">&para;</a></h3>
 <p>プロビジョニングするEC2 Nodeのユーザーデータを設定する。</p>
@@ -6737,8 +6826,8 @@
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># EC2 NodeにNodeプール名のラベルを挿入する</span>
-<span class="w">        </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">        </span><span class="c1"># Karpenterの管理するEC2 Nodeにラベルを挿入する</span>
+<span class="w">        </span><span class="nt">nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6906,7 +6995,7 @@
 </blockquote>
 <p><br></p>
 <p><br></p>
-<h2 id="03-configmap">03. 専用ConfigMap<a class="headerlink" href="#03-configmap" title="Permanent link">&para;</a></h2>
+<h2 id="03-configmap">03. グローバル設定用ConfigMap<a class="headerlink" href="#03-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="awsinterruptionqueuename">aws.interruptionQueueName<a class="headerlink" href="#awsinterruptionqueuename" title="Permanent link">&para;</a></h3>
 <p>割り込み処理を有効にする場合に、AWS SQSの名前を設定する。</p>
 <p>別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。</p>
@@ -6985,6 +7074,67 @@
 <li><a href="https://karpenter.sh/preview/reference/settings/">https://karpenter.sh/preview/reference/settings/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h2 id="04-configmap">04. ロギング設定用のConfigMap<a class="headerlink" href="#04-configmap" title="Permanent link">&para;</a></h2>
+<h3 id="zap-logger-config">zap-logger-config<a class="headerlink" href="#zap-logger-config" title="Permanent link">&para;</a></h3>
+<p>ロギングを設定する。</p>
+<p>zapパッケージを使用しているため、設定値の種類はzapパッケージのものである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-logging</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">zap-logger-config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">{</span>
+<span class="w">      </span><span class="no">&quot;level&quot;: &quot;debug&quot;,</span>
+<span class="w">      </span><span class="no">&quot;development&quot;: false,</span>
+<span class="w">      </span><span class="no">&quot;disableStacktrace&quot;: true,</span>
+<span class="w">      </span><span class="no">&quot;disableCaller&quot;: true,</span>
+<span class="w">      </span><span class="no">&quot;sampling&quot;: {</span>
+<span class="w">        </span><span class="no">&quot;initial&quot;: 100,</span>
+<span class="w">        </span><span class="no">&quot;thereafter&quot;: 100</span>
+<span class="w">      </span><span class="no">},</span>
+<span class="w">      </span><span class="no">&quot;outputPaths&quot;: [&quot;stdout&quot;],</span>
+<span class="w">      </span><span class="no">&quot;errorOutputPaths&quot;: [&quot;stderr&quot;],</span>
+<span class="w">      </span><span class="no"># 見やすいログ形式にする</span>
+<span class="w">      </span><span class="no">&quot;encoding&quot;: &quot;console&quot;,</span>
+<span class="w">      </span><span class="no">&quot;encoderConfig&quot;: {</span>
+<span class="w">        </span><span class="no">&quot;timeKey&quot;: &quot;time&quot;,</span>
+<span class="w">        </span><span class="no">&quot;levelKey&quot;: &quot;level&quot;,</span>
+<span class="w">        </span><span class="no">&quot;nameKey&quot;: &quot;logger&quot;,</span>
+<span class="w">        </span><span class="no">&quot;callerKey&quot;: &quot;caller&quot;,</span>
+<span class="w">        </span><span class="no">&quot;messageKey&quot;: &quot;message&quot;,</span>
+<span class="w">        </span><span class="no">&quot;stacktraceKey&quot;: &quot;stacktrace&quot;,</span>
+<span class="w">        </span><span class="no">&quot;levelEncoder&quot;: &quot;capital&quot;,</span>
+<span class="w">        </span><span class="no">&quot;timeEncoder&quot;: &quot;iso8601&quot;</span>
+<span class="w">      </span><span class="no">}</span>
+<span class="w">    </span><span class="no">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/uber-go/zap/blob/aa3e73ec0896f8b066ddf668597a02f89628ee50/config.go#L58-L94">https://github.com/uber-go/zap/blob/aa3e73ec0896f8b066ddf668597a02f89628ee50/config.go#L58-L94</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="loglevelcontroller">loglevel.controller<a class="headerlink" href="#loglevelcontroller" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-logging</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">loglevel.controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="loglevelwebhook">loglevel.webhook<a class="headerlink" href="#loglevelwebhook" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config-logging</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">loglevel.webhook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error</span>
+</code></pre></div>
 <p><br></p>
 
   <hr>
