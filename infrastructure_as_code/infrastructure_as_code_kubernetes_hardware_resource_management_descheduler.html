@@ -6032,7 +6032,8 @@
 <p><br></p>
 <h2 id="01-descheduler">01. descheduler<a class="headerlink" href="#01-descheduler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させ、より適切なNodeにこれを再スケジューリングさせる。</p>
+<p>deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避させる。</p>
+<p>その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>foo
 
 <span class="c1"># 退避</span>
@@ -6046,11 +6047,11 @@
 35m<span class="w">         </span>Normal<span class="w">   </span>Started<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Started<span class="w"> </span>container<span class="w"> </span>foo
 35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
 </code></pre></div>
-<p>類似するkube-schedulerでは、既存のPodを退避させて別のNodeに再スケジューリングさせることはない。</p>
+<p>kube-schedulerは、既存のPodを退避させられない。</p>
 <p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
 <p><code>kubectl rollout restart</code>コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。</p>
-<p>deschedulerをCronJobとして定期的に起動させ、Podを自動的に再スケジュールする。</p>
+<p>deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。</p>
 <p>このことからもわかるように、障害復旧後すぐにdeschedulerが起動するわけではなく、CronJobの実行を待つ必要がある。</p>
 <p><img alt="descheduler_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png" /></p>
 <blockquote>
@@ -6163,7 +6164,7 @@
 <p><br></p>
 <h2 id="02-deschedulerpolicy">02. DeschedulerPolicy<a class="headerlink" href="#02-deschedulerpolicy" title="Permanent link">&para;</a></h2>
 <h3 id="deschedulerpolicy">DeschedulerPolicyとは<a class="headerlink" href="#deschedulerpolicy" title="Permanent link">&para;</a></h3>
-<p>再スケジューリングの対象とするPodの選定ルールを設定する。</p>
+<p>退避の対象とするPodの選定ルールを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/descheduler#policy-and-strategies">https://github.com/kubernetes-sigs/descheduler#policy-and-strategies</a>&gt;</li>
@@ -6172,8 +6173,9 @@
 <p><br></p>
 <h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、使用量が閾値 (thresholds) を超過していないNodeにPodを再スケジューリングさせる。</p>
-<p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避と再スケジューリングを繰り返す状態になってしまう。</p>
+<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避する。</p>
+<p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。</p>
+<p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。</p>
 <p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
@@ -6187,7 +6189,7 @@
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">          </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
-<span class="w">        </span><span class="c1"># 閾値 (この値を超過していないNodeにPodを再スケジューリングさせる)</span>
+<span class="w">        </span><span class="c1"># 閾値 (kube-schedulerを使用して、この値を超過していないNodeにPodを再スケジューリングさせる)</span>
 <span class="w">        </span><span class="nt">thresholds</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
@@ -6200,8 +6202,8 @@
 </ul>
 </blockquote>
 <h4 id="removeduplicates">▼ RemoveDuplicates<a class="headerlink" href="#removeduplicates" title="Permanent link">&para;</a></h4>
-<p>Deployment、StatefulSet、Job、の配下にあるPodが、同じNode上でスケーリングされている場合、これらを他のNodeに再スケジューリングさせる。</p>
-<p>該当するNodeがない場合、再スケジューリングさせない。</p>
+<p>Workload (例：Deployment、StatefulSet、Job) の配下にあるPodが同じNode上でスケーリングされている場合に、このPodをNodeから退避させる。</p>
+<p>該当するNodeがない場合、退避させない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6215,7 +6217,8 @@
 </ul>
 </blockquote>
 <h4 id="removepodshavingtoomanyrestarts">▼ RemovePodsHavingTooManyRestarts<a class="headerlink" href="#removepodshavingtoomanyrestarts" title="Permanent link">&para;</a></h4>
-<p>再起動を繰り返しているPodを再スケジューリングさせるよう、再起動の閾値を設定する。</p>
+<p>再起動を繰り返しているPodがある場合に、このPodをNodeから退避させる。</p>
+<p>再起動の回数の閾値を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6232,7 +6235,7 @@
 </ul>
 </blockquote>
 <h4 id="removepodsviolatingnodeaffinity">▼ RemovePodsViolatingNodeAffinity<a class="headerlink" href="#removepodsviolatingnodeaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.spec.nodeAffinity</code>キーの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
+<p><code>.spec.nodeAffinity</code>キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6245,7 +6248,7 @@
 </ul>
 </blockquote>
 <h4 id="removepodsviolatinginterpodantiaffinity">▼ RemovePodsViolatingInterPodAntiAffinity<a class="headerlink" href="#removepodsviolatinginterpodantiaffinity" title="Permanent link">&para;</a></h4>
-<p><code>.spec.affinity.podAffinity</code>キにいの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
+<p><code>.spec.affinity.podAffinity</code>キにいの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6259,9 +6262,9 @@
 </ul>
 </blockquote>
 <h4 id="removepodsviolatingnodetaints">▼ RemovePodsViolatingNodeTaints<a class="headerlink" href="#removepodsviolatingnodetaints" title="Permanent link">&para;</a></h4>
-<p>taintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
+<p>taintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
 <h4 id="removepodsviolatingtopologyspreadconstraint">▼ RemovePodsViolatingTopologySpreadConstraint<a class="headerlink" href="#removepodsviolatingtopologyspreadconstraint" title="Permanent link">&para;</a></h4>
-<p>TopologySpreadConstraintsの設定に違反しているPodがある場合に、適切なNodeに再スケジューリングさせる。</p>
+<p>TopologySpreadConstraintsの設定に違反しているPodがある場合に、このPodをNodeから退避させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
 <span class="nt">strategies</span><span class="p">:</span>
@@ -6293,7 +6296,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-31</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
       
     
   </small>
