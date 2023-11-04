@@ -268,7 +268,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
-`.spec.affinity.podAffinity`キにいの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
+`.spec.affinity.podAffinity`キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1

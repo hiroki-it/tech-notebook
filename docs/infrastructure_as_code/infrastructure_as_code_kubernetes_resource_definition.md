@@ -496,7 +496,8 @@ kind: CronJob
 metadata:
   name: hello
 spec:
-  schedule: "00 * * * *"
+  # 毎日 00:00 (JST) に実行する
+  schedule: "0 15 * * *"
   jobTemplate:
     spec:
       template:
@@ -544,8 +545,25 @@ kind: CronJob
 metadata:
   name: hello
 spec:
-  schedule: "00 * * * *" # 一時間ごとに実行する。
+  # 1時間ごとに実行する
+  schedule: "00 * * * *"
 ```
+
+なお、タイムゾーンはKubernetes Clusterの設定による。
+
+例えば、AWS EKS ClusterはUTCで時間を管理しているため、9時間分ずらす必要がある。
+
+```yaml
+apiVersion: io.k8s.api.batch.v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  # 毎日 00:00 (JST) に実行する
+  schedule: "0 15 * * *"
+```
+
+> - https://zenn.dev/k8shiro/articles/k8s-cron-timezone#eks%E3%81%AE%E5%A0%B4%E5%90%88
 
 <br>
 
