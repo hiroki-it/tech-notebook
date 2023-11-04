@@ -175,6 +175,7 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
+> - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 #### ▼ IRSA用IAMロールの条件と一致させる
 

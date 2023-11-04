@@ -265,7 +265,7 @@ description: テレメトリー収集ツール＠可観測性の知見を記録�
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#065
 
-#### `(12)` Evictionの発生
+#### `(12)` Evictionの発生 (Podの予期せぬ退避)
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#066
 

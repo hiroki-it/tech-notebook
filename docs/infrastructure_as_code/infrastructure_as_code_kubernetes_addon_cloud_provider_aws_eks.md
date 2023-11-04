@@ -360,6 +360,33 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 
 Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
 
+#### ▼ 現在の上限数
+
+`kubectl describe`コマンドで、現在のPodの上限数を確認できる。
+
+```bash
+$ kubectl describe node <Node名>   
+
+
+Name: <Node名>
+
+...
+
+Allocatable:
+  cpu:                1930m
+  ephemeral-storage:  18242267924
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             7265232Ki
+  pods:               35 # Podの上限数
+ 
+ ...
+ 
+```
+
+
+> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
+
 #### ▼ シナリオ
 
 例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10`個だとする。

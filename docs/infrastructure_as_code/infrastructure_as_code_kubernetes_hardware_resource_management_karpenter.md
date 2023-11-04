@@ -19,9 +19,11 @@ description: Karpenter＠ハードウェアリソース管理の知見を記録�
 
 Karpenterは、karpenterコントローラーから構成される。
 
-> - https://karpenter.sh/preview/reference/threat-model/
 
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
+
+> - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
+
 
 <br>
 
@@ -31,7 +33,13 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
+執筆時点 (2023/11/04) 時点では、karpenterコントローラー以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
+
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
+
+> - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
+> - https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md
+> - https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547
 
 <br>
 
@@ -342,6 +350,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
 > - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
 > - https://github.com/aws/karpenter/pull/1332#issue-1135967441
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+> - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 #### ▼ Terraformの公式モジュール (`terraform-aws-modules/karpenter`) の場合
 
@@ -392,5 +401,6 @@ module "eks_iam_karpenter_controller" {
 > - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
 > - https://github.com/aws/karpenter/pull/1332#issue-1135967441
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+> - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 <br>

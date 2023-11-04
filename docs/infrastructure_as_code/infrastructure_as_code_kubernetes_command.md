@@ -535,7 +535,7 @@ $ curl "https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crd
 
 #### ▼ drainとは
 
-Nodeへの新しいPodのスケジューリングを無効化 (`kubectl cordon`コマンドを実行) し、加えて既存のPodをEvictさせる。
+Nodeへの新しいPodのスケジューリングを無効化 (`kubectl cordon`コマンドを実行) し、加えて既存のPodを退避させる。
 
 Nodeが他に存在すれば、そのNode上でPodが再作成される。
 
