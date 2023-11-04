@@ -78,7 +78,9 @@ metadata:
   name: descheduler
   namespace: descheduler
 spec:
-  schedule: <Cronのルール>
+  # 毎日 00:00 (JST) にdeschedulerを実行する
+  # AWS EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある
+  schedule: "0 15 * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
