@@ -376,7 +376,10 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
         "Action": "sts:AssumeRole",
         "Condition": {
             # OR条件
-            "StringEqual": {"sts:ExternalId": ["foo", "bar"]},
+            "StringEqual": {
+                # リスト型にすることでOR上限になる
+                "sts:ExternalId": ["foo", "bar"],
+              },
           },
       },
     ],
@@ -404,6 +407,25 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 > - https://zenn.dev/toshikish/articles/2d9274783acbae
+
+リソースタグを条件として使用することもできる。
+
+```yaml
+{"Version": "2012-10-17", "Statement": [
+      {
+        "Effect": "Allow",
+        # EC2を起動する
+        "Action": "ec2:RunInstances",
+        "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
+        "Condition": {"StringEquals": {
+                # 特定のリソースタグを持つ起動テンプレートのみを指定できる
+                "ec2:ResourceTag/foo": "foo",
+              }},
+      },
+    ]}
+```
+
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
 
 <br>
 

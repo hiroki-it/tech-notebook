@@ -147,24 +147,26 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
 
-宛先のServiceは、Istioのコンポーネントではないに注意する。
+またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
 
-#### ▼ `404`ステータス
-
-Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
-
 #### ▼ Envoyの設定値として
 
-VirtualServiceの設定値は、Envoyのフロントプロキシの設定値としてIstioリソースに適用される。
+Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルーティングに変換する。
+
+つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
 > - https://sreake.com/blog/istio/
+
+#### ▼ `404`ステータス
+
+Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
 #### ▼ VirtualService数
 
@@ -215,7 +217,9 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ Envoyの設定値として
 
-DestinationRuleの設定値は、Envoyのリバースプロキシコンテナの設定値として`istio-proxy`コンテナに適用される。
+Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。
+
+つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
 > - https://istio.io/latest/docs/concepts/traffic-management/
 > - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/

@@ -167,9 +167,7 @@ module "iam_assumable_role_with_oidc_karpenter_controller" {
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
-  role_policy_arns              = [
-    "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
-  ]
+  role_policy_arns              = aws_iam_policy.karpenter_controller.arn
 
   # karpenterコントローラーのPodのServiceAccount名
   # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
@@ -183,58 +181,100 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
+# Karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする
+# EC2NodeClassでユーザー定義のリソースタグを設定し、Karpenterコントローラーが起動テンプレートを操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
     actions = [
-      "ec2:CreateTags",
-      "ec2:CreateLaunchTemplate",
-      "ec2:CreateFleet",
-      "ec2:DescribeSecurityGroups",
+      "pricing:GetProducts",
       "ec2:DescribeSubnets",
       "ec2:DescribeSpotPriceHistory",
+      "ec2:DescribeSecurityGroups",
       "ec2:DescribeLaunchTemplates",
-      "ec2:DescribeImages",
       "ec2:DescribeInstances",
       "ec2:DescribeInstanceTypes",
       "ec2:DescribeInstanceTypeOfferings",
+      "ec2:DescribeImages",
       "ec2:DescribeAvailabilityZones",
-      "ec2:DeleteLaunchTemplate",
-      "ec2:RunInstances",
-      "ec2:TerminateInstances",
-      "iam:AddRoleToInstanceProfile",
-      "iam:CreateInstanceProfile",
-      "iam:DeleteInstanceProfile",
-      "iam:GetInstanceProfile",
-      "iam:RemoveRoleFromInstanceProfile",
-      "iam:TagInstanceProfile",
-      "pricing:GetProducts",
-      "ssm:GetParameter",
+      "ec2:CreateTags",
+      "ec2:CreateLaunchTemplate",
+      "ec2:CreateFleet"
     ]
     effect = "Allow"
     resources = [
       "*"
     ]
-    sid = "Karpenter"
+    sid = ""
   }
 
   statement {
     actions = [
-      "ec2:TerminateInstances"
+      "ec2:TerminateInstances",
+      "ec2:DeleteLaunchTemplate"
     ]
-    # Karpenterは、karpenter.sh/nodepoolタグの付いたNodeのみを削除できる
+    # 特定のリソースタグを持つ起動テンプレートしか指定できない
     condition {
-      test     = "StringLike"
-      variable = "aws:RequestTag/karpenter.sh/nodepool"
+      test     = "StringEquals"
+      variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
-        "*"
+        module.eks.cluster_name
       ]
     }
     effect = "Allow"
     resources = [
       "*"
     ]
-    sid = "ConditionalEC2Termination"
+    sid = ""
+  }
+
+  statement {
+    actions = [
+      "ec2:RunInstances"
+    ]
+    # 特定のリソースタグを持つ起動テンプレートしか指定できない
+    condition {
+      test     = "StringEquals"
+      variable = "ec2:ResourceTag/karpenter.sh/discovery"
+      values = [
+        module.eks.cluster_name
+      ]
+    }
+    effect = "Allow"
+    # 起動テンプレートを指定してEC2 Nodeを起動する
+    resources = [
+      "arn:aws:ec2:*:<アカウントID>:launch-template/*"
+    ]
+    sid = ""
+  }
+
+  statement {
+    actions = [
+      "ec2:RunInstances"
+    ]
+    effect = "Allow"
+    resources = [
+      "arn:aws:ec2:*::snapshot/*",
+      "arn:aws:ec2:*::image/*",
+      "arn:aws:ec2:*:<アカウントID>:volume/*",
+      "arn:aws:ec2:*:<アカウントID>:subnet/*",
+      "arn:aws:ec2:*:<アカウントID>:spot-instances-request/*",
+      "arn:aws:ec2:*:<アカウントID>:security-group/*",
+      "arn:aws:ec2:*:<アカウントID>:network-interface/*",
+      "arn:aws:ec2:*:<アカウントID>:instance/*"
+    ]
+    sid = ""
+  }
+
+  statement {
+    actions = [
+      "ssm:GetParameter"
+    ]
+    effect = "Allow"
+    resources = [
+      "arn:aws:ssm:*:*:parameter/aws/service/*"
+    ]
+    sid = ""
   }
 
   statement {
@@ -245,7 +285,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     resources = [
       module.eks_managed_node_group.iam_role_arn
     ]
-    sid = "PassNodeIAMRole"
+    sid = ""
   }
 
   statement {
@@ -256,11 +296,29 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     resources = [
       module.eks.cluster_arn
     ]
-    sid = "EKSClusterEndpointLookup"
+    sid = ""
+  }
+
+  statement {
+    actions = [
+      "iam:TagInstanceProfile",
+      "iam:RemoveRoleFromInstanceProfile",
+      "iam:GetInstanceProfile",
+      "iam:DeleteInstanceProfile",
+      "iam:CreateInstanceProfile",
+      "iam:AddRoleToInstanceProfile"
+    ]
+    effect = "Allow"
+    resources = [
+      "*"
+    ]
+    sid = ""
   }
 }
 ```
 
 > - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
+> - https://github.com/aws/karpenter/pull/1332#issue-1135967441
+> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
 
 <br>

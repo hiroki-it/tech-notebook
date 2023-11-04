@@ -170,10 +170,13 @@ spec:
     # ユーザー定義のリソースタグ
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
+    karpenter.sh/discovery: foo-cluster
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
+
+#### ▼ IRSA用IAMロールの条件と一致させる
 
 ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
 
@@ -186,8 +189,8 @@ spec:
             "Condition": {
                 "StringEquals": {
                     # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
-                    "ec2:ResourceTag/Name": [
-                        "foo-node",
+                    "ec2:ResourceTag/karpenter.sh/discovery": [
+                        "foo-cluster",
                     ]
                 }
             },
@@ -204,6 +207,8 @@ spec:
 ```
 
 もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
+
+> - https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053
 
 <br>
 
@@ -416,8 +421,8 @@ spec:
   template:
     metadata:
       labels:
-        # EC2 NodeにNodeプール名のラベルを挿入する
-        karpenter.sh/nodepool: app
+        # Karpenterの管理するEC2 Nodeにラベルを挿入する
+        nodepool: foo-nodepool
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
@@ -595,7 +600,7 @@ spec:
 
 <br>
 
-## 03. 専用ConfigMap
+## 03. グローバル設定用ConfigMap
 
 ### aws.interruptionQueueName
 
@@ -681,5 +686,80 @@ data:
 ```
 
 > - https://karpenter.sh/preview/reference/settings/
+
+<br>
+
+## 04. ロギング設定用のConfigMap
+
+### zap-logger-config
+
+ロギングを設定する。
+
+zapパッケージを使用しているため、設定値の種類はzapパッケージのものである。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-logging
+data:
+  zap-logger-config: |
+    {
+      "level": "debug",
+      "development": false,
+      "disableStacktrace": true,
+      "disableCaller": true,
+      "sampling": {
+        "initial": 100,
+        "thereafter": 100
+      },
+      "outputPaths": ["stdout"],
+      "errorOutputPaths": ["stderr"],
+      # 見やすいログ形式にする
+      "encoding": "console",
+      "encoderConfig": {
+        "timeKey": "time",
+        "levelKey": "level",
+        "nameKey": "logger",
+        "callerKey": "caller",
+        "messageKey": "message",
+        "stacktraceKey": "stacktrace",
+        "levelEncoder": "capital",
+        "timeEncoder": "iso8601"
+      }
+    }
+```
+
+> - https://github.com/uber-go/zap/blob/aa3e73ec0896f8b066ddf668597a02f89628ee50/config.go#L58-L94
+
+<br>
+
+### loglevel.controller
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-logging
+data:
+  loglevel.controller: debug
+```
+
+<br>
+
+### loglevel.webhook
+
+記入中...
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-logging
+data:
+  loglevel.webhook: error
+```
 
 <br>
