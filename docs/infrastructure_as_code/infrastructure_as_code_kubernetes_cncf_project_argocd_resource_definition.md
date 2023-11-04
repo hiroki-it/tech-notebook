@@ -2003,7 +2003,7 @@ metadata:
   generateName: foo-workflow
 spec:
   workflowTemplateRef:
-    name: hello-world-workflow-template
+    name: foo-workflow
 ```
 
 > - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
@@ -2023,7 +2023,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   namespace: argocd
-  name: hello-world-workflow-template
+  name: foo-workflow
 spec:
   templates:
     - name: foo-template
@@ -2044,7 +2044,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: WorkflowTemplate
 metadata:
   namespace: argocd
-  name: hello-world-workflow-template
+  name: foo-workflow
 spec:
   templates:
     - name: foo-template

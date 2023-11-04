@@ -477,10 +477,10 @@ Deploymentが正しくPodを作成できない場合、それだけでHelloWorld
 apiVersion: v1
 kind: Pod
 metadata:
-  name: helloworld-pod
+  name: foo
 spec:
   containers:
-    - name: hello-world
+    - name: foo
       image: paulbouwer/hello-kubernetes:1.10
       ports:
         - containerPort: 8080
