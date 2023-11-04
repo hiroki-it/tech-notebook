@@ -3746,6 +3746,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kube-scheduler" class="md-nav__link">
+    kube-schedulerだけでは足りない理由
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5862,6 +5869,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kube-scheduler" class="md-nav__link">
+    kube-schedulerだけでは足りない理由
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6047,6 +6061,16 @@
 35m<span class="w">         </span>Normal<span class="w">   </span>Started<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Started<span class="w"> </span>container<span class="w"> </span>foo
 35m<span class="w">         </span>Normal<span class="w">   </span>SuccessfulCreate<span class="w">         </span>replicaset/foo-5c844554c5<span class="w">           </span>Created<span class="w"> </span>pod:<span class="w"> </span>foo-5c844554c5-vgdjl
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
+<li><a href="https://torumakabe.github.io/post/k8s_descheduler/">https://torumakabe.github.io/post/k8s_descheduler/</a></li>
+<li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8</a></li>
+<li><a href="https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31">https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kube-scheduler">kube-schedulerだけでは足りない理由<a class="headerlink" href="#kube-scheduler" title="Permanent link">&para;</a></h3>
 <p>kube-schedulerは、既存のPodを退避させられない。</p>
 <p>そのため、Nodeのハードウェアリソースの消費量が動的に高まった場合に、Podを再スケジューリングさせてくれない。</p>
 <p>他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが復旧したとしても、Podが元のNodeに戻ることはない。</p>
@@ -6057,9 +6081,6 @@
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
-<li><a href="https://torumakabe.github.io/post/k8s_descheduler/">https://torumakabe.github.io/post/k8s_descheduler/</a></li>
-<li><a href="https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8">https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8</a>&gt;</li>
-<li><a href="https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31">https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31</a></li>
 </ul>
 </blockquote>
 <p><br></p>
