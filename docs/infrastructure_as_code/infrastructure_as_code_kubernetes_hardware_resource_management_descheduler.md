@@ -69,6 +69,10 @@ deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストか
 
 ここでは、CronJob配下で定義したとする。
 
+Deschedulerの実行頻度が高すぎるとパフォーマンスが低下するため、システムの特徴に合わせて実行頻度を設定する。
+
+例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に`1`回だけ実行する。
+
 ```yaml
 apiVersion: batch/v1
 kind: CronJob
