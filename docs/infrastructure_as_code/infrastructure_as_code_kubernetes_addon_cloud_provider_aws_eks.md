@@ -281,9 +281,9 @@ $ kubectl get daemonset aws-node \
 
 <br>
 
-### 通常のIPアドレス割り当てモード
+### セカンダリーIPアドレス割り当てモード
 
-#### ▼ 通常のIPアドレス割り当てモードとは
+#### ▼ セカンダリーIPアドレス割り当てモードとは
 
 L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
 
@@ -304,7 +304,7 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 : L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報を、CNIプラグインにプールする。
 
-      プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
+     プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
 
 `(2)`
 
@@ -342,6 +342,8 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 #### ▼ Prefix Delegationモードとは
 
 L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+
+ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確保できる。
 
 Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
 
@@ -391,11 +393,13 @@ Capacity:
 
 <br>
 
-### 通常のIPアドレスの割り当てモードの場合
+### セカンダリーIP割り当てモードの場合
 
 #### ▼ 設定方法
 
-`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
+`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+
+他にも設定可能な変数があるが、ここではこの2つを使用する。
 
 `MINIMUM_IP_TARGET`には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
 
@@ -428,5 +432,19 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 > - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
 > - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
 > - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
+
+<br>
+
+### Prefix Delegationモードの場合
+
+#### ▼ 設定方法
+
+`MINIMUM_IP_TARGET` (Node当たりの`/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+
+他にも設定可能な変数があるが、ここではこの2つを使用する。
+
+#### ▼ シナリオ
+
+> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md
 
 <br>
