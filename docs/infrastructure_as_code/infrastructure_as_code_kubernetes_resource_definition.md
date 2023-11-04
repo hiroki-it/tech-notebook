@@ -494,7 +494,7 @@ CronJobで、定期的に実行するJobを設定する。
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   # 毎日 00:00 (JST) に実行する
   schedule: "0 15 * * *"
@@ -526,7 +526,7 @@ spec:
 apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   failedJobsHistoryLimit: 2
 ```
@@ -543,7 +543,7 @@ Cronのルールを設定する。
 apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   # 1時間ごとに実行する
   schedule: "00 * * * *"
@@ -557,7 +557,7 @@ spec:
 apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   # 毎日 00:00 (JST) に実行する
   schedule: "0 15 * * *"
@@ -579,7 +579,7 @@ JobがCronのスケジュール通りに実行されなかった場合に、実�
 apiVersion: io.k8s.api.batch.v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   startingDeadlineSeconds: 100
 ```
@@ -614,7 +614,7 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: foo-cronjob
 spec:
   successfulJobsHistoryLimit: 2
 ```
