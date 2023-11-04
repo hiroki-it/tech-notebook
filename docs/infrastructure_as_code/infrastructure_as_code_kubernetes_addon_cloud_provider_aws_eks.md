@@ -337,11 +337,27 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 <br>
 
-### Podの上限数を上げる
+### Prefix Delegationモード
 
-#### ▼ Podの上限数の決まり方
+#### ▼ Prefix Delegationモードとは
+
+L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+
+Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
+
+> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
+
+<br>
+
+## 05-03. Podの上限数を上げる
+
+### Podの上限数
+
+#### ▼ 上限数の決まり方
 
 Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。
+
+そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
 |            | t3.nano | t3.micro | t3.small | t3.medium | t3.large | t3.xlarge | t3.2xlarge |
 | ---------- | ------- | -------- | -------- | --------- | -------- | --------- | ---------- |
@@ -350,7 +366,34 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 | `3`個      | 12      | 12       | 33       | 51        | 105      | 174       | 174        |
 | `4`個      | 16      | 16       | 44       | 68        | 140      | 232       | 232        |
 
-そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
+#### ▼ 現在の上限数
+
+`kubectl describe`コマンドの`Capacity`項目で、現在のPodの上限数を確認できる。
+
+```bash
+$ kubectl describe node <Node名>
+
+...
+
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20959212Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             8022992Ki
+  pods:               35 # Podの上限数
+
+ ...
+
+```
+
+> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
+
+<br>
+
+### 通常のIPアドレスの割り当てモードの場合
+
+#### ▼ 設定方法
 
 `MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。
 
@@ -359,33 +402,6 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
 
 Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
-
-#### ▼ 現在の上限数
-
-`kubectl describe`コマンドで、現在のPodの上限数を確認できる。
-
-```bash
-$ kubectl describe node <Node名>   
-
-
-Name: <Node名>
-
-...
-
-Allocatable:
-  cpu:                1930m
-  ephemeral-storage:  18242267924
-  hugepages-1Gi:      0
-  hugepages-2Mi:      0
-  memory:             7265232Ki
-  pods:               35 # Podの上限数
- 
- ...
- 
-```
-
-
-> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
 
 #### ▼ シナリオ
 
@@ -412,17 +428,5 @@ Allocatable:
 > - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
 > - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
 > - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
-
-<br>
-
-### Prefix Delegationモード
-
-#### ▼ Prefix Delegationモードとは
-
-L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
-
-Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
-
-> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
 
 <br>

@@ -19,11 +19,9 @@ description: Karpenter＠ハードウェアリソース管理の知見を記録�
 
 Karpenterは、karpenterコントローラーから構成される。
 
-
 ![karpenter_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
-
 
 <br>
 
