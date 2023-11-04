@@ -4357,15 +4357,15 @@
         
           <li class="md-nav__item">
   <a href="#ip" class="md-nav__link">
-    通常のIPアドレス割り当てモード
+    セカンダリーIPアドレス割り当てモード
   </a>
   
-    <nav class="md-nav" aria-label="通常のIPアドレス割り当てモード">
+    <nav class="md-nav" aria-label="セカンダリーIPアドレス割り当てモード">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ip_1" class="md-nav__link">
-    ▼ 通常のIPアドレス割り当てモードとは
+    ▼ セカンダリーIPアドレス割り当てモードとは
   </a>
   
 </li>
@@ -4444,10 +4444,10 @@
         
           <li class="md-nav__item">
   <a href="#ip_3" class="md-nav__link">
-    通常のIPアドレスの割り当てモードの場合
+    セカンダリーIP割り当てモードの場合
   </a>
   
-    <nav class="md-nav" aria-label="通常のIPアドレスの割り当てモードの場合">
+    <nav class="md-nav" aria-label="セカンダリーIP割り当てモードの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4459,6 +4459,33 @@
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
+    ▼ シナリオ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-delegation_2" class="md-nav__link">
+    Prefix Delegationモードの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefix Delegationモードの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 設定方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6235,15 +6262,15 @@
         
           <li class="md-nav__item">
   <a href="#ip" class="md-nav__link">
-    通常のIPアドレス割り当てモード
+    セカンダリーIPアドレス割り当てモード
   </a>
   
-    <nav class="md-nav" aria-label="通常のIPアドレス割り当てモード">
+    <nav class="md-nav" aria-label="セカンダリーIPアドレス割り当てモード">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ip_1" class="md-nav__link">
-    ▼ 通常のIPアドレス割り当てモードとは
+    ▼ セカンダリーIPアドレス割り当てモードとは
   </a>
   
 </li>
@@ -6322,10 +6349,10 @@
         
           <li class="md-nav__item">
   <a href="#ip_3" class="md-nav__link">
-    通常のIPアドレスの割り当てモードの場合
+    セカンダリーIP割り当てモードの場合
   </a>
   
-    <nav class="md-nav" aria-label="通常のIPアドレスの割り当てモードの場合">
+    <nav class="md-nav" aria-label="セカンダリーIP割り当てモードの場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6337,6 +6364,33 @@
         
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
+    ▼ シナリオ
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-delegation_2" class="md-nav__link">
+    Prefix Delegationモードの場合
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefix Delegationモードの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    ▼ 設定方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6763,8 +6817,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 </code></pre></div>
 <p><br></p>
-<h3 id="ip">通常のIPアドレス割り当てモード<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
-<h4 id="ip_1">▼ 通常のIPアドレス割り当てモードとは<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
+<h3 id="ip">セカンダリーIPアドレス割り当てモード<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<h4 id="ip_1">▼ セカンダリーIPアドレス割り当てモードとは<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
 <p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
 <p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
@@ -6818,6 +6872,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="prefix-delegation">Prefix Delegationモード<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h3>
 <h4 id="prefix-delegation_1">▼ Prefix Delegationモードとは<a class="headerlink" href="#prefix-delegation_1" title="Permanent link">&para;</a></h4>
 <p>L-IPAMデーモンは、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>/28</code>) を確保できる。</p>
 <p>Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>/28</code>よりも大きくしておく必要がある。</p>
 <blockquote>
 <ul>
@@ -6908,9 +6963,10 @@ Capacity:
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ip_3">通常のIPアドレスの割り当てモードの場合<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h3>
+<h3 id="ip_3">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 設定方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数が決まる。</p>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
 <p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
 <p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
@@ -6942,13 +6998,24 @@ Capacity:
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="prefix-delegation_2">Prefix Delegationモードの場合<a class="headerlink" href="#prefix-delegation_2" title="Permanent link">&para;</a></h3>
+<h4 id="_17">▼ 設定方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
+<h4 id="_18">▼ シナリオ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
       
     
   </small>
