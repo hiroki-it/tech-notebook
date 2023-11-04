@@ -19,7 +19,7 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01-02. インバウンド通信
+## 01-02. Cluster外からの通信
 
 ### IngressGateway
 
@@ -141,44 +141,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 <br>
 
-### VirtualService
-
-#### ▼ VirtualServiceとは
-
-IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
-
-またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
-
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
-
-> - https://tech.uzabase.com/entry/2018/11/26/110407
-> - https://knowledge.sakura.ad.jp/20489/
-
-#### ▼ Envoyの設定値として
-
-Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルーティングに変換する。
-
-つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
-
-> - https://istio.io/latest/docs/concepts/traffic-management/
-> - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
-> - https://sreake.com/blog/istio/
-
-#### ▼ `404`ステータス
-
-Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
-
-#### ▼ VirtualService数
-
-|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
-
-> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
-
-<br>
-
-## 01-03. アウトバウンド通信
+## 01-03. Cluster外への通信
 
 ### EgressGateway
 
@@ -204,7 +167,43 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 <br>
 
-## 01-04. 両方向通信に関するリソース
+## 01-04. Cluster内外の通信、Pod間通信
+
+### VirtualService
+
+#### ▼ VirtualServiceとは
+
+IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
+
+またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
+
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
+
+> - https://tech.uzabase.com/entry/2018/11/26/110407
+> - https://knowledge.sakura.ad.jp/20489/
+
+#### ▼ Envoyの設定値として
+
+Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルート値に変換する。
+
+つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
+
+> - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
+> - https://sreake.com/blog/istio/
+
+#### ▼ `404`ステータス
+
+Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+#### ▼ VirtualService数
+
+|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
+
+> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+
+<br>
 
 ### DestinationRule
 
@@ -221,11 +220,8 @@ Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンド�
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
-> - https://istio.io/latest/docs/concepts/traffic-management/
-> - http://blog.fujimisakari.com/service_mesh_and_routing_and_lb/
-> - https://sreake.com/blog/istio/
-
-<br>
+> - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
+> - https://sreake.com/blog/istio/ > <br>
 
 ## 02. 認証系リソース
 
