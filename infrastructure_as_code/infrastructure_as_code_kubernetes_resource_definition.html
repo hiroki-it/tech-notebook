@@ -12984,7 +12984,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+<span class="w">  </span><span class="c1"># 毎日 00:00 (JST) に実行する</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
 <span class="w">  </span><span class="nt">jobTemplate</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">template</span><span class="p">:</span>
@@ -13020,8 +13021,24 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># 一時間ごとに実行する。</span>
+<span class="w">  </span><span class="c1"># 1時間ごとに実行する</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;00</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
 </code></pre></div>
+<p>なお、タイムゾーンはKubernetes Clusterの設定による。</p>
+<p>例えば、AWS EKS ClusterはUTCで時間を管理しているため、9時間分ずらす必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.batch.v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 毎日 00:00 (JST) に実行する</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/k8shiro/articles/k8s-cron-timezone#eks%E3%81%AE%E5%A0%B4%E5%90%88">https://zenn.dev/k8shiro/articles/k8s-cron-timezone#eks%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specstartingdeadlineseconds">.spec.startingDeadlineSeconds<a class="headerlink" href="#specstartingdeadlineseconds" title="Permanent link">&para;</a></h3>
 <h4 id="startingdeadlineseconds">▼ startingDeadlineSeconds<a class="headerlink" href="#startingdeadlineseconds" title="Permanent link">&para;</a></h4>
@@ -17426,7 +17443,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
       
     
   </small>
