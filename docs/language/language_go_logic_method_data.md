@@ -2057,7 +2057,7 @@ func main() {
 **＊実装例＊**
 
 ```go
-
+...
 ```
 
 <br>
@@ -2104,6 +2104,53 @@ func main() {
 	fmt.Println(value)
 }
 ```
+
+#### ▼ Done
+
+`cancel`関数による並列処理の中断を検知する。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+)
+
+func main() {
+
+	ctx, cancel := context.WithCancel(context.Background())
+
+	// チャンネルを作成
+	channel := make(chan string)
+
+	go func() {
+		// チャンネルに値を送信する。
+		channel <- "ping"
+		// 並列処理を中断する
+		cancel()
+	}()
+
+	for {
+		select {
+
+		// チャンネルから値を受信した場合
+		case value := <-channel:
+			fmt.Println(value)
+
+		// cancel関数を実行した場合
+		case <-ctx.Done():
+			log.Printf("並列処理が完了しました")
+			return
+		}
+	}
+}
+```
+
+> - https://dev.to/mcaci/how-to-use-the-context-done-method-in-go-22me
+> - https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips
+> - https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20
 
 #### ▼ WaitGroup
 
