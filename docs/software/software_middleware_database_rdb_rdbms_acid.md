@@ -68,8 +68,6 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### 一連の流れ
 
-> - https://www.amazon.co.jp/dp/4297124513
-
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
 | RDBの書き込み系の操作                                      | よくあるメソッド名 (例：PDO)                                   | ラッピング            | 障害からの復旧                       |
@@ -85,6 +83,8 @@ description: ACID＠RDBMSの知見を記録しています。
 | ⬇︎                                                        | ⬇︎                                                            | ⬇︎                   | ⬇︎ _Roll forward_                   |
 | ⬇︎                                                        | ⬇︎                                                            | ⬇︎                   | ⬇︎                                  |
 | チェックポイントによる更新後ログのDB反映                   | `commit`メソッド終了                                           | `execute`メソッド終了 |                                      |
+
+> - https://www.amazon.co.jp/dp/4297124513
 
 <br>
 
@@ -178,9 +178,9 @@ try{
 
 この時、チェックポイントは、自動実行または手動実行で作成する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
-
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg)
+
+> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
 <br>
 
@@ -209,7 +209,9 @@ try{
 
 #### ▼ ロールフォワードとは
 
-障害によって、トランザクションの終了後に一連のステートメントの更新結果がストレージに反映されなかった場合、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
+仮に、障害によって、トランザクションの終了後に一連のステートメントの更新結果がストレージに反映されなかったとする。
+
+この時、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上のデータベースファイルに更新結果を反映させる。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
 
@@ -304,13 +306,13 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 結果として、ユーザBの`UPDATE`処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。
 
-> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
-
 ![排他制御-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png)
 
 ユーザAとユーザBの`UPDATE`処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。
 
 ![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
+
+> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
 
 #### ▼ 排他制御を採用しなくてもよい
 
@@ -458,7 +460,9 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 #### ▼ ツール
 
-ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除、などの作業を行っても良いが、煩雑な手順になるため、自動化ツールを使用した方が良い。
+ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除、などの作業を行っても良い。
+
+ただし、煩雑な手順になるため自動化ツールを使用した方が良い。
 
 SQLの種類に合わせてツールが用意されている。
 
