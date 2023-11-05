@@ -662,7 +662,41 @@ fastcgi_pass 127.0.0.1:9000;
 
 <br>
 
-## 03-07. http_proxy_module
+## 03-07. http_grpc_module
+
+### ディレクティブ
+
+#### ▼ grpc_pass
+
+gRPCの通信の宛先を設定する。
+
+HTTP/2を有効化する必要がある。
+
+**＊実装例＊**
+
+```nginx
+grpc_pass 127.0.0.1:80;
+```
+
+```nginx
+server {
+    listen 80      default_server;
+
+    # HTTP/2を有効化する
+    http2 on;
+
+    location / {
+        grpc_pass 127.0.0.1:80;
+    }
+}
+```
+
+> - https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass
+
+
+<br>
+
+## 03-08. http_proxy_module
 
 ### ディレクティブ
 
@@ -680,7 +714,7 @@ proxy_pass http://127.0.0.1:80;
 
 <br>
 
-## 03-08. http_stub_status_module
+## 03-09. http_stub_status_module
 
 ### ディレクティブ
 
@@ -694,7 +728,7 @@ location = /metrics {
 }
 ```
 
-```bashあ
+```bash
 $ curl localhost/metrics
 
 Active connections: 1

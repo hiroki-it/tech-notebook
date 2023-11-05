@@ -387,9 +387,13 @@ spec:
 
 #### ▼ connectionPool
 
-Podの同時接続数の制限数を設定する。
+Podの同時接続を設定する。
 
-制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
+同時接続の上限値は、サーキットブレイカーの閾値になる。
+
+上限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
+
+デフォルトでは上限はない。
 
 **＊実装例＊**
 
@@ -404,13 +408,15 @@ spec:
     connectionPool:
       http:
         http1MaxPendingRequests: 1
+        # 接続当たりで処理可能なリクエストの上限数を設定する
+        # 1とする場合、Envoyによるkeep-aliveを無効化する
         maxRequestsPerConnection: 1
       tcp:
         maxConnections: 100
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
-> - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
 
 #### ▼ outlierDetection
 
@@ -427,13 +433,18 @@ metadata:
 spec:
   trafficPolicy:
     outlierDetection:
-      interval: 10s # エラー検知の間隔
-      consecutiveGatewayErrors: 3 # サーキットブレイカーを実施するエラーの閾値数
-      baseEjectionTime: 30s # Podをルーティング先から切り離す秒数
+      # エラー検知の間隔
+      interval: 10s
+      # サーキットブレイカーを実施するエラーの閾値数
+      consecutiveGatewayErrors: 3
+      # Podをルーティング先から切り離す秒数
+      baseEjectionTime: 30s
       maxEjectionPercent: 99
 ```
 
 > - https://speakerdeck.com/nutslove/istioru-men?slide=25
+> - https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/
+> - https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers
 
 #### ▼ loadBalancer
 

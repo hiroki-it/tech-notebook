@@ -5057,7 +5057,7 @@ class RouteServiceProvider extends ServiceProvider
 
 `1`分間当たりに許容するリクエスト数とその制限名を`configureRateLimiting`メソッドで定義する。
 
-加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト数制限を適用させる、もし制限を超えた場合、`configureRateLimiting`メソッドによって、`429`ステータスでレスポンスが返信される。
+加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエストの上限数を適用させる、もし制限を超えた場合、`configureRateLimiting`メソッドによって、`429`ステータスでレスポンスが返信される。
 
 > - https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
