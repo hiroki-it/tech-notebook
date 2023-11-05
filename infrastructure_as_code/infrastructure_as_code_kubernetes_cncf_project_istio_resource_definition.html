@@ -4956,8 +4956,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connectionpool" class="md-nav__link">
-    ▼ connectionPool
+  <a href="#connectionpoolhttpmaxrequestsperconnection" class="md-nav__link">
+    ▼ connectionPool.http.maxRequestsPerConnection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionpoolhttphttp1maxpendingrequests" class="md-nav__link">
+    ▼ connectionPool.http.http1MaxPendingRequests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionpooltcpmaxconnections" class="md-nav__link">
+    ▼ connectionPool.tcp.maxConnections
   </a>
   
 </li>
@@ -7171,8 +7185,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#connectionpool" class="md-nav__link">
-    ▼ connectionPool
+  <a href="#connectionpoolhttpmaxrequestsperconnection" class="md-nav__link">
+    ▼ connectionPool.http.maxRequestsPerConnection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionpoolhttphttp1maxpendingrequests" class="md-nav__link">
+    ▼ connectionPool.http.http1MaxPendingRequests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionpooltcpmaxconnections" class="md-nav__link">
+    ▼ connectionPool.tcp.maxConnections
   </a>
   
 </li>
@@ -8219,11 +8247,31 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="spectrafficpolicy">.spec.trafficPolicy<a class="headerlink" href="#spectrafficpolicy" title="Permanent link">&para;</a></h3>
-<h4 id="connectionpool">▼ connectionPool<a class="headerlink" href="#connectionpool" title="Permanent link">&para;</a></h4>
-<p>Podの同時接続を設定する。</p>
-<p>同時接続の上限値は、サーキットブレイカーの閾値になる。</p>
+<h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
+<p>EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリクエストの上限値を設定する。</p>
+<p>デフォルトでは上限がない。</p>
+<p><code>1</code>とする場合、Envoyによるkeep-aliveを無効化する。</p>
+<p>また、サーキットブレイカーの閾値になる。</p>
 <p>上限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。</p>
-<p>デフォルトでは上限はない。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">http</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">maxRequestsPerConnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
+</ul>
+</blockquote>
+<h4 id="connectionpoolhttphttp1maxpendingrequests">▼ connectionPool.http.http1MaxPendingRequests<a class="headerlink" href="#connectionpoolhttphttp1maxpendingrequests" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -8235,15 +8283,27 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">http1MaxPendingRequests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">        </span><span class="c1"># 接続当たりで処理可能なリクエストの上限数を設定する</span>
-<span class="w">        </span><span class="c1"># 1とする場合、Envoyによるkeep-aliveを無効化する</span>
-<span class="w">        </span><span class="nt">maxRequestsPerConnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
+</ul>
+</blockquote>
+<h4 id="connectionpooltcpmaxconnections">▼ connectionPool.tcp.maxConnections<a class="headerlink" href="#connectionpooltcpmaxconnections" title="Permanent link">&para;</a></h4>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">maxConnections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings</a></li>
 </ul>
 </blockquote>
