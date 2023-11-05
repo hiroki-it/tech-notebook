@@ -3062,6 +3062,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#done" class="md-nav__link">
+    ▼ Done
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#waitgroup" class="md-nav__link">
     ▼ WaitGroup
   </a>
@@ -8001,6 +8008,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#done" class="md-nav__link">
+    ▼ Done
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#waitgroup" class="md-nav__link">
     ▼ WaitGroup
   </a>
@@ -10326,7 +10340,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code><span class="o">...</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_73">並列処理<a class="headerlink" href="#_73" title="Permanent link">&para;</a></h3>
@@ -10363,6 +10377,52 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
+<h4 id="done">▼ Done<a class="headerlink" href="#done" title="Permanent link">&para;</a></h4>
+<p><code>cancel</code>関数による並列処理の中断を検知する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;context&quot;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span>
+<span class="w">    </span><span class="s">&quot;log&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithCancel</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">())</span>
+
+<span class="w">    </span><span class="c1">// チャンネルを作成</span>
+<span class="w">    </span><span class="nx">channel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">go</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// チャンネルに値を送信する。</span>
+<span class="w">        </span><span class="nx">channel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;ping&quot;</span>
+<span class="w">        </span><span class="c1">// 並列処理を中断する</span>
+<span class="w">        </span><span class="nx">cancel</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}()</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">select</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">        </span><span class="c1">// チャンネルから値を受信した場合</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">channel</span><span class="p">:</span>
+<span class="w">            </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">// cancel関数を実行した場合</span>
+<span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">&lt;-</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Done</span><span class="p">():</span>
+<span class="w">            </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;並列処理が完了しました&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="k">return</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.to/mcaci/how-to-use-the-context-done-method-in-go-22me">https://dev.to/mcaci/how-to-use-the-context-done-method-in-go-22me</a></li>
+<li><a href="https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips">https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips</a></li>
+<li><a href="https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20">https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20</a></li>
+</ul>
+</blockquote>
 <h4 id="waitgroup">▼ WaitGroup<a class="headerlink" href="#waitgroup" title="Permanent link">&para;</a></h4>
 <p>1つまたは複数の関数でGoルーチンを宣言したい時に使用する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -11560,7 +11620,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
       
     
   </small>
