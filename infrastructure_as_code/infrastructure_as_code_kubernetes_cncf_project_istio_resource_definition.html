@@ -8220,8 +8220,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spectrafficpolicy">.spec.trafficPolicy<a class="headerlink" href="#spectrafficpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="connectionpool">▼ connectionPool<a class="headerlink" href="#connectionpool" title="Permanent link">&para;</a></h4>
-<p>Podの同時接続数の制限数を設定する。</p>
-<p>制限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。</p>
+<p>Podの同時接続を設定する。</p>
+<p>同時接続の上限値は、サーキットブレイカーの閾値になる。</p>
+<p>上限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。</p>
+<p>デフォルトでは上限はない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -8233,14 +8235,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">connectionPool</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">http1MaxPendingRequests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="c1"># 接続当たりで処理可能なリクエストの上限数を設定する</span>
+<span class="w">        </span><span class="c1"># 1とする場合、Envoyによるkeep-aliveを無効化する</span>
 <span class="w">        </span><span class="nt">maxRequestsPerConnection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">      </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">maxConnections</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/">https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/</a></li>
-<li><a href="https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers">https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings">https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings</a></li>
 </ul>
 </blockquote>
 <h4 id="outlierdetection">▼ outlierDetection<a class="headerlink" href="#outlierdetection" title="Permanent link">&para;</a></h4>
@@ -8254,14 +8258,19 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">trafficPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">outlierDetection</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span><span class="w"> </span><span class="c1"># エラー検知の間隔</span>
-<span class="w">      </span><span class="nt">consecutiveGatewayErrors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"> </span><span class="c1"># サーキットブレイカーを実施するエラーの閾値数</span>
-<span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span><span class="w"> </span><span class="c1"># Podをルーティング先から切り離す秒数</span>
+<span class="w">      </span><span class="c1"># エラー検知の間隔</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
+<span class="w">      </span><span class="c1"># サーキットブレイカーを実施するエラーの閾値数</span>
+<span class="w">      </span><span class="nt">consecutiveGatewayErrors</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="c1"># Podをルーティング先から切り離す秒数</span>
+<span class="w">      </span><span class="nt">baseEjectionTime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
 <span class="w">      </span><span class="nt">maxEjectionPercent</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">99</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=25">https://speakerdeck.com/nutslove/istioru-men?slide=25</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/">https://istio.io/latest/docs/tasks/traffic-management/circuit-breaking/</a></li>
+<li><a href="https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers">https://istio.io/latest/docs/concepts/traffic-management/#circuit-breakers</a></li>
 </ul>
 </blockquote>
 <h4 id="loadbalancer">▼ loadBalancer<a class="headerlink" href="#loadbalancer" title="Permanent link">&para;</a></h4>
@@ -9409,7 +9418,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
