@@ -1904,6 +1904,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    排他制御とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#update" class="md-nav__link">
     UPDATE処理競合問題
   </a>
@@ -1918,29 +1925,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    排他制御
-  </a>
-  
-    <nav class="md-nav" aria-label="排他制御">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
-    ▼ 排他制御の種類
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update_2" class="md-nav__link">
-    ▼ UPDATE処理競合問題の許容
+    ▼ 排他制御を採用しなくてもよい
   </a>
   
 </li>
@@ -1949,6 +1936,19 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. テーブルロックによる排他制御
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. テーブルロックによる排他制御">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
@@ -6628,6 +6628,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    排他制御とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#update" class="md-nav__link">
     UPDATE処理競合問題
   </a>
@@ -6642,29 +6649,9 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    排他制御
-  </a>
-  
-    <nav class="md-nav" aria-label="排他制御">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
-    ▼ 排他制御の種類
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update_2" class="md-nav__link">
-    ▼ UPDATE処理競合問題の許容
+    ▼ 排他制御を採用しなくてもよい
   </a>
   
 </li>
@@ -6673,6 +6660,19 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-02" class="md-nav__link">
+    03-02. テーブルロックによる排他制御
+  </a>
+  
+    <nav class="md-nav" aria-label="03-02. テーブルロックによる排他制御">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
@@ -7097,6 +7097,15 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 排他制御<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_17">排他制御とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p><code>UPDATE</code>処理競合問題を回避する仕組みのことである。</p>
+<p>排他制御にいくつかの手法 (テーブルロック、セマフォ、ミューテックス、など) がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/momotaro98/items/5e37eefc62d726a30aee">https://qiita.com/momotaro98/items/5e37eefc62d726a30aee</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="update"><code>UPDATE</code>処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ <code>UPDATE</code>処理競合問題とは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
 <p>アプリケーションのレコードの<code>UPDATE</code>処理が、レコードの取得と更新からなるとする。</p>
@@ -7111,51 +7120,29 @@
 <p><img alt="排他制御-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png" /></p>
 <p>ユーザAとユーザBの<code>UPDATE</code>処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
 <p><img alt="排他制御-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png" /></p>
-<p><br></p>
-<h3 id="_17">排他制御<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<h4 id="_18">▼ 排他制御の種類<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>ロック名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>共有/占有ロック</td>
-<td>DBによるロック機能。</td>
-</tr>
-<tr>
-<td>楽観的/悲観的ロック</td>
-<td>アプリケーションまたはDBによるロック機能。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/momotaro98/items/5e37eefc62d726a30aee">https://qiita.com/momotaro98/items/5e37eefc62d726a30aee</a></li>
-</ul>
-</blockquote>
-<h4 id="update_2">▼ <code>UPDATE</code>処理競合問題の許容<a class="headerlink" href="#update_2" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ 排他制御を採用しなくてもよい<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><code>UPDATE</code>処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
 <p><br></p>
+<h2 id="03-02">03-02. テーブルロックによる排他制御<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_19">共有/占有ロック<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <h4 id="_20">▼ 共有ロック<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>DBの機能を使用して、テーブルをロックする。</p>
 <p>DBで、CRUDの<code>READ</code>処理以外の処理を実行不可能にする。</p>
 <p>レコードの<code>READ</code>処理を実行する時に、他者によって<code>UPDATE</code>処理されたくない場合に使用する。</p>
 <p>『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。</p>
 <p>MySQLでは、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
+<p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_21">▼ 占有ロック<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>DBの機能を使用して、テーブルをロックする。</p>
 <p>DBで、CRUDの全ての処理を実行不可能にする。</p>
 <p>レコードの<code>UPDATE</code>処理を実行する時に、他者によってUPDATE/<code>READ</code>処理の両方を実行させない場合に使用する。</p>
 <p>MySQLでは、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
+<p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html</a></li>
@@ -7189,6 +7176,7 @@
 <p><br></p>
 <h3 id="_23">楽観的/悲観的ロック<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ 楽観的ロック<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>アプリケーションまたはDBの機能を使用して、テーブルをロックする。</p>
 <p>DBのレコードにはバージョンに関するカラム値 (最終更新日時など) が存在しているとする。</p>
 <p><code>UPDATE</code>処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。</p>
 <p>続けて更新する直前に、DBからバージョンの値を改めて取得する。</p>
@@ -7201,6 +7189,7 @@
 </ul>
 </blockquote>
 <h4 id="_25">▼ 悲観的ロック<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>アプリケーションまたはDBの機能を使用して、テーブルをロックする。</p>
 <p>ユーザAがDBのレコードを取得した時点でロックを起動し、ユーザBはレコードの取得すら不可能にする。</p>
 <p>ユーザAが更新を終えてロックが解除され、そこで初めてユーザBはレコードを取得できるようになる。</p>
 <p>アプリケーションで悲観的ロックを実装することは難易度が高く、基本的にはDBが提供するロックを使用する。</p>
