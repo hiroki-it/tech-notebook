@@ -75,7 +75,7 @@ deschedulerは、Job (descheduler) 、ConfigMap、などのマニフェストか
 
 ここでは、CronJob配下で定義したとする。
 
-Deschedulerの実行頻度が高すぎるとパフォーマンスが低下するため、システムの特徴に合わせて実行頻度を設定する。
+Deschedulerの実行頻度が高すぎると可用性が低下するため、システムの特徴に合わせて実行頻度を設定する。
 
 例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に`1`回だけ実行する。
 
@@ -91,6 +91,11 @@ spec:
   # 毎日 00:00 (JST) にdeschedulerを実行する
   # AWS EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある
   schedule: "0 15 * * *"
+
+  # その他の例
+  # 12:00 と 24:00 (JST) にdeschedulerを実行する
+  # schedule: "0 3,15 * * *"
+
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
