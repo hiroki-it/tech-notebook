@@ -6090,7 +6090,7 @@
 <p><br></p>
 <h3 id="job">Job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h3>
 <p>ここでは、CronJob配下で定義したとする。</p>
-<p>Deschedulerの実行頻度が高すぎるとパフォーマンスが低下するため、システムの特徴に合わせて実行頻度を設定する。</p>
+<p>Deschedulerの実行頻度が高すぎると可用性が低下するため、システムの特徴に合わせて実行頻度を設定する。</p>
 <p>例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に<code>1</code>回だけ実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CronJob</span>
@@ -6103,6 +6103,11 @@
 <span class="w">  </span><span class="c1"># 毎日 00:00 (JST) にdeschedulerを実行する</span>
 <span class="w">  </span><span class="c1"># AWS EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">15</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+
+<span class="w">  </span><span class="c1"># その他の例</span>
+<span class="w">  </span><span class="c1"># 12:00 と 24:00 (JST) にdeschedulerを実行する</span>
+<span class="w">  </span><span class="c1"># schedule: &quot;0 3,15 * * *&quot;</span>
+
 <span class="w">  </span><span class="nt">concurrencyPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Forbid</span>
 <span class="w">  </span><span class="nt">successfulJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">failedJobsHistoryLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
