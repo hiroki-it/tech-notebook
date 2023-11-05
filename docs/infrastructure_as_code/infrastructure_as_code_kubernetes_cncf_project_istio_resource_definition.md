@@ -1513,7 +1513,9 @@ spec:
 
 #### ▼ retries.attempt
 
-`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。
+`istio-proxy`コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。
+
+Serviceへのルーティングの失敗ではないことに注意する。
 
 **＊実装例＊**
 
@@ -1531,7 +1533,9 @@ spec:
 
 #### ▼ retries.retryOn
 
-再試行する失敗理由を設定する。`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
+再試行する失敗理由を設定する。
+
+`istio-proxy`コンテナは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
 
 > - https://sreake.com/blog/istio/
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
@@ -1598,7 +1602,7 @@ spec:
 
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
-IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングされる。
+IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 > - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html

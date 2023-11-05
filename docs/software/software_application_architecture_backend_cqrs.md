@@ -58,7 +58,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 #### ▼ Commandとは
 
-CREATE、UPDATE、DELETE処理を実行する処理フローのこと。
+`CREATE`処理、`UPDATE`処理、`DELETE`処理を実行する処理フローのこと。
 
 今回、クリーンアーキテクチャを前提としてCQRSを説明する。
 

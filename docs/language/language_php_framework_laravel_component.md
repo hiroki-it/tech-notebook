@@ -422,7 +422,7 @@ Eloquentモデルでは、DBアクセスに関するメソッドの実行開始�
 
 **＊実装例＊**
 
-プロパティにて、CREATE処理とDELETE処理に独自イベントクラスに紐付ける。
+プロパティにて、`CREATE`処理と`DELETE`処理に独自イベントクラスに紐付ける。
 
 ```php
 <?php
@@ -450,7 +450,7 @@ class User extends Authenticatable
 
 **＊実装例＊**
 
-クロージャーにて、CREATE処理に独自イベントクラスに紐付ける。
+クロージャーにて、`CREATE`処理に独自イベントクラスに紐付ける。
 
 ```php
 <?php
