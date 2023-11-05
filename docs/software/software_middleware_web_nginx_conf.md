@@ -693,7 +693,6 @@ server {
 
 > - https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass
 
-
 <br>
 
 ## 03-08. http_proxy_module

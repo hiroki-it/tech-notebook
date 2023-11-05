@@ -385,15 +385,38 @@ spec:
 
 ### .spec.trafficPolicy
 
-#### ▼ connectionPool
+#### ▼ connectionPool.http.maxRequestsPerConnection
 
-Podの同時接続を設定する。
+EnvoyがHTTPプロトコルを処理する場合に、接続当たりのリクエストの上限値を設定する。
 
-同時接続の上限値は、サーキットブレイカーの閾値になる。
+デフォルトでは上限がない。
+
+`1`とする場合、Envoyによるkeep-aliveを無効化する。
+
+また、サーキットブレイカーの閾値になる。
 
 上限を超過した場合、Podへのルーティングが停止し、直近の成功時の処理結果を返信する (サーキットブレイカー) 。
 
-デフォルトでは上限はない。
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
+      http:
+        maxRequestsPerConnection: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+
+#### ▼ connectionPool.http.http1MaxPendingRequests
+
+記入中...
 
 **＊実装例＊**
 
@@ -408,14 +431,27 @@ spec:
     connectionPool:
       http:
         http1MaxPendingRequests: 1
-        # 接続当たりで処理可能なリクエストの上限数を設定する
-        # 1とする場合、Envoyによるkeep-aliveを無効化する
-        maxRequestsPerConnection: 1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
+
+#### ▼ connectionPool.tcp.maxConnections
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    connectionPool:
       tcp:
         maxConnections: 100
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
 
 #### ▼ outlierDetection
