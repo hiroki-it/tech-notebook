@@ -282,6 +282,16 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 ## 03. 排他制御
 
+### 排他制御とは
+
+`UPDATE`処理競合問題を回避する仕組みのことである。
+
+排他制御にいくつかの手法 (テーブルロック、セマフォ、ミューテックス、など) がある。
+
+> - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+
+<br>
+
 ### `UPDATE`処理競合問題
 
 #### ▼ `UPDATE`処理競合問題とは
@@ -302,30 +312,19 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 ![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
 
-<br>
-
-### 排他制御
-
-#### ▼ 排他制御の種類
-
-| ロック名            | 説明                                       |
-| ------------------- | ------------------------------------------ |
-| 共有/占有ロック     | DBによるロック機能。                       |
-| 楽観的/悲観的ロック | アプリケーションまたはDBによるロック機能。 |
-
-> - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
-
-#### ▼ `UPDATE`処理競合問題の許容
+#### ▼ 排他制御を採用しなくてもよい
 
 `UPDATE`処理競合問題を許容し、排他制御を使用しない選択肢もある。
 
 <br>
 
+## 03-02. テーブルロックによる排他制御
+
 ### 共有/占有ロック
 
-![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
-
 #### ▼ 共有ロック
+
+DBの機能を使用して、テーブルをロックする。
 
 DBで、CRUDの`READ`処理以外の処理を実行不可能にする。
 
@@ -335,15 +334,21 @@ DBで、CRUDの`READ`処理以外の処理を実行不可能にする。
 
 MySQLでは、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 
+![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
+
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
 #### ▼ 占有ロック
+
+DBの機能を使用して、テーブルをロックする。
 
 DBで、CRUDの全ての処理を実行不可能にする。
 
 レコードの`UPDATE`処理を実行する時に、他者によってUPDATE/`READ`処理の両方を実行させない場合に使用する。
 
 MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
+
+![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 
@@ -366,6 +371,8 @@ MySQLでは、『`SELECT ... FOR UPDATE`』を使用する。
 
 #### ▼ 楽観的ロック
 
+アプリケーションまたはDBの機能を使用して、テーブルをロックする。
+
 DBのレコードにはバージョンに関するカラム値 (最終更新日時など) が存在しているとする。
 
 `UPDATE`処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。
@@ -380,6 +387,8 @@ DBのレコードにはバージョンに関するカラム値 (最終更新日�
 > - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
 
 #### ▼ 悲観的ロック
+
+アプリケーションまたはDBの機能を使用して、テーブルをロックする。
 
 ユーザAがDBのレコードを取得した時点でロックを起動し、ユーザBはレコードの取得すら不可能にする。
 
