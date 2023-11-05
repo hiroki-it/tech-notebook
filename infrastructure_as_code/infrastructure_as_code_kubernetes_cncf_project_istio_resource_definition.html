@@ -9215,7 +9215,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/foo</span>
 </code></pre></div>
 <h4 id="retriesattempt">▼ retries.attempt<a class="headerlink" href="#retriesattempt" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。Serviceへのルーティングの失敗ではないことに注意する。</p>
+<p><code>istio-proxy</code>コンテナのリバースプロキシに失敗した場合の再試行回数を設定する。</p>
+<p>Serviceへのルーティングの失敗ではないことに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -9228,7 +9229,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h4 id="retriesretryon">▼ retries.retryOn<a class="headerlink" href="#retriesretryon" title="Permanent link">&para;</a></h4>
-<p>再試行する失敗理由を設定する。<code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
+<p>再試行する失敗理由を設定する。</p>
+<p><code>istio-proxy</code>コンテナは、レスポンスの<code>x-envoy-retry-on</code>ヘッダーに割り当てるため、これの値を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
@@ -9287,7 +9289,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="routedestinationsubset">▼ route.destination.subset<a class="headerlink" href="#routedestinationsubset" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
 <p>紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。</p>
-<p>IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングされる。</p>
+<p>IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>

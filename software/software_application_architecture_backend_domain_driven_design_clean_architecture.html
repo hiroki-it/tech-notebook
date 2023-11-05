@@ -8191,7 +8191,7 @@
 <p>インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。</p>
 <p>そのため、メソッド名はユースケースを適切に表現した自由な英単語を使用する。</p>
 <p>フレームワークのLaravelの基本的なメソッド名 (index、store、create、show、update) が参考になる。</p>
-<p>CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。</p>
+<p><code>CREATE</code>処理と<code>UPDATE</code>処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -10036,7 +10036,7 @@
 <p>デザインパターンの一種。</p>
 <p>一例として、以下のメソッドを持つ。</p>
 <p>具体的な実装については、インターフェースリポジトリの実装を参考にせよ。</p>
-<p>CREATE処理とUPDATE処理をSAVE処理としてまとめても良い。</p>
+<p><code>CREATE</code>処理と<code>UPDATE</code>処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -10238,7 +10238,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>CREATE処理のため、DoctrineのQueryBuilderクラスの<code>insert</code>メソッドを実行する。</p>
+<p><code>CREATE</code>処理のため、DoctrineのQueryBuilderクラスの<code>insert</code>メソッドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -10274,7 +10274,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>UPDATE処理のため、DoctrineのQueryBuilderクラスの<code>update</code>メソッドを実行する。</p>
+<p><code>UPDATE</code>処理のため、DoctrineのQueryBuilderクラスの<code>update</code>メソッドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -10310,7 +10310,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DELETE処理 (論理削除) のため、DoctrineのQueryBuilderクラスの<code>update</code>メソッドを実行する。</p>
+<p><code>DELETE</code>処理 (論理削除) のため、DoctrineのQueryBuilderクラスの<code>update</code>メソッドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -10372,7 +10372,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>READ処理のため、DoctrineのQueryBuilderクラスの<code>select</code>メソッドを実行する。</p>
+<p><code>READ</code>処理のため、DoctrineのQueryBuilderクラスの<code>select</code>メソッドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -10583,7 +10583,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

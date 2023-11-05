@@ -7097,19 +7097,19 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. 排他制御<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="update">UPDATE処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
-<h4 id="update_1">▼ UPDATE処理競合問題とは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>アプリケーションのレコードのUPDATE処理が、レコードの取得と更新からなるとする。</p>
-<p>ソフトウェアのユーザAとBがおり、ユーザBがUPDATE処理時に取得しなければならないレコードの状態は、ユーザAがUPDATE処理を終えた後のものである。</p>
+<h3 id="update"><code>UPDATE</code>処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
+<h4 id="update_1">▼ <code>UPDATE</code>処理競合問題とは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
+<p>アプリケーションのレコードの<code>UPDATE</code>処理が、レコードの取得と更新からなるとする。</p>
+<p>ソフトウェアのユーザAとBがおり、ユーザBが<code>UPDATE</code>処理時に取得しなければならないレコードの状態は、ユーザAが<code>UPDATE</code>処理を終えた後のものである。</p>
 <p>しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。</p>
-<p>結果として、ユーザBのUPDATE処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。</p>
+<p>結果として、ユーザBの<code>UPDATE</code>処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc">https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc</a></li>
 </ul>
 </blockquote>
 <p><img alt="排他制御-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png" /></p>
-<p>ユーザAとユーザBのUPDATE処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
+<p>ユーザAとユーザBの<code>UPDATE</code>処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
 <p><img alt="排他制御-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png" /></p>
 <p><br></p>
 <h3 id="_17">排他制御<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
@@ -7137,14 +7137,14 @@
 <li><a href="https://qiita.com/momotaro98/items/5e37eefc62d726a30aee">https://qiita.com/momotaro98/items/5e37eefc62d726a30aee</a></li>
 </ul>
 </blockquote>
-<h4 id="update_2">▼ UPDATE処理競合問題の許容<a class="headerlink" href="#update_2" title="Permanent link">&para;</a></h4>
-<p>UPDATE処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
+<h4 id="update_2">▼ <code>UPDATE</code>処理競合問題の許容<a class="headerlink" href="#update_2" title="Permanent link">&para;</a></h4>
+<p><code>UPDATE</code>処理競合問題を許容し、排他制御を使用しない選択肢もある。</p>
 <p><br></p>
 <h3 id="_19">共有/占有ロック<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <h4 id="_20">▼ 共有ロック<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>DBで、CRUDのREAD処理以外の処理を実行不可能にする。</p>
-<p>レコードのREAD処理を実行する時に、他者によってUPDATE処理されたくない場合に使用する。</p>
+<p>DBで、CRUDの<code>READ</code>処理以外の処理を実行不可能にする。</p>
+<p>レコードの<code>READ</code>処理を実行する時に、他者によって<code>UPDATE</code>処理されたくない場合に使用する。</p>
 <p>『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。</p>
 <p>MySQLでは、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
 <blockquote>
@@ -7154,7 +7154,7 @@
 </blockquote>
 <h4 id="_21">▼ 占有ロック<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>DBで、CRUDの全ての処理を実行不可能にする。</p>
-<p>レコードのUPDATE処理を実行する時に、他者によってUPDATE/READ処理の両方を実行させない場合に使用する。</p>
+<p>レコードの<code>UPDATE</code>処理を実行する時に、他者によってUPDATE/<code>READ</code>処理の両方を実行させない場合に使用する。</p>
 <p>MySQLでは、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
 <blockquote>
 <ul>
@@ -7190,9 +7190,9 @@
 <h3 id="_23">楽観的/悲観的ロック<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ 楽観的ロック<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p>DBのレコードにはバージョンに関するカラム値 (最終更新日時など) が存在しているとする。</p>
-<p>UPDATE処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。</p>
+<p><code>UPDATE</code>処理のためにユーザAがDBのレコードを取得した時に、バージョン値を一時的に保持しておく。</p>
 <p>続けて更新する直前に、DBからバージョンの値を改めて取得する。</p>
-<p>保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、UPDATE処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
+<p>保持しておいたバージョン値とDBの値を比較し、DBの値の方がより新バージョンだった場合、<code>UPDATE</code>処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
 <p>競合によるエラーを表す<code>409</code>ステータスをレスポンスとして返信すると良い。</p>
 <blockquote>
 <ul>
@@ -7289,7 +7289,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

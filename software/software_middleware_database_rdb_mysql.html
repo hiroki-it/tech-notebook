@@ -6651,12 +6651,12 @@
 <tbody>
 <tr>
 <td>MySQLのAuto Increment機能によって増加する番号カラム</td>
-<td>プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。CREATE処理でドメインモデルを作成する時に、『<code>0</code>』または『<code>null</code>』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>- <a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
+<td>プライマリーキー制約を課したカラムのAuto Increment機能を有効化しておく。<code>CREATE</code>処理でドメインモデルを作成する時に、『<code>0</code>』または『<code>null</code>』をモデルのID値として割り当てる。これにより、処理によって新しいレコードが追加される時に、現在の最新番号に+１した番号が割り当てられるようになる。これはプライマリーキー制約を満たす。<br>- <a href="https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html">https://dev.mysql.com/doc/refman/8.0/en/example-auto-increment.html</a></td>
 <td>・ドメインモデルとDBがより密結合になり、Active Recordパターンと相性が良い。<br>MySQLの環境変数として『<code>NO_AUTO_VALUE_ON_ZERO</code>』を設定すると、『<code>0</code>』の割り当てによる自動連番が拒否されるようになる。</td>
 </tr>
 <tr>
 <td>UUID (例：<code>3cc807ab-8e31-3071-aee4-f8f03781cb91</code>)</td>
-<td>CREATE処理でモデルを作成する時に、アプケーションで作成したUUID値をドメインモデルのID値として割り当てる。UUID値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID値の作成関数は言語の標準パッケージとして用意されている。</td>
+<td><code>CREATE</code>処理でモデルを作成する時に、アプケーションで作成したUUID値をドメインモデルのID値として割り当てる。UUID値が重複することは基本的に発生し得ないため、プライマリーキー制約を満たす。UUID値の作成関数は言語の標準パッケージとして用意されている。</td>
 <td>・ドメインモデルとDBがより疎結合にでき、Repositoryパターンと相性が良い。<br>UUID値は文字列として管理されるため、DBアクセス処理の負荷が高まってしまう。<br>プライマリーキーを使用してソートできない。</td>
 </tr>
 </tbody>
@@ -6710,7 +6710,7 @@
 <span class="c1">-- 最初のレコードを手動で挿入する。</span>
 <span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">id_sequence</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-<p>CREATE処理時には、事前に、採番テーブルに新しくプライマリーキーを作成する。</p>
+<p><code>CREATE</code>処理時には、事前に、採番テーブルに新しくプライマリーキーを作成する。</p>
 <p>INSERT文のプライマリーキーに『<code>0</code>』や『<code>null</code>』を割り当てるのではなく、採番テーブルから取得したIDを割り当てるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 新しくプライマリーキーを作成する。</span>
 <span class="k">UPDATE</span><span class="w"> </span><span class="n">id_sequence</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
@@ -6725,7 +6725,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

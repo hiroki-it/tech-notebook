@@ -7696,8 +7696,8 @@
 <p>Eloquentモデルには<code>create</code>メソッドがないため、代わりにEloquentビルダーが持つ<code>create</code>メソッドがコールされる。</p>
 <p><code>create</code>メソッドに挿入先のカラムと値を渡し、これを実行する。</p>
 <p>別の方法として、Eloquentビルダーの<code>fill</code>メソッドで挿入先のカラムと値を設定し、<code>save</code>メソッドを実行しても良い。</p>
-<p><code>save</code>メソッドはUPDATE処理も実行できるが、<code>fill</code>メソッドでID値を割り当てない場合は、CREATE処理が実行される。</p>
-<p><code>create</code>メソッドまたは<code>save</code>メソッドによるCREATE処理では、レコードの挿入後に、<code>lastInsertId</code>メソッドに相当する処理が実行される。</p>
+<p><code>save</code>メソッドは<code>UPDATE</code>処理も実行できるが、<code>fill</code>メソッドでID値を割り当てない場合は、<code>CREATE</code>処理が実行される。</p>
+<p><code>create</code>メソッドまたは<code>save</code>メソッドによる<code>CREATE</code>処理では、レコードの挿入後に、<code>lastInsertId</code>メソッドに相当する処理が実行される。</p>
 <p>これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -8099,7 +8099,7 @@
 <h4 id="save">▼ <code>save</code>メソッド<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
 <p>UPDATE文を実行する。</p>
 <p>Eloquentビルダーの<code>fill</code>メソッドで挿入先のカラムと値を設定し、<code>save</code>メソッドを実行する。</p>
-<p><code>save</code>メソッドはCREATE処理も実行できるが、<code>fill</code>メソッドでID値を割り当てた場合は、UPDATE処理が実行される。</p>
+<p><code>save</code>メソッドは<code>CREATE</code>処理も実行できるが、<code>fill</code>メソッドでID値を割り当てた場合は、<code>UPDATE</code>処理が実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -8630,7 +8630,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
