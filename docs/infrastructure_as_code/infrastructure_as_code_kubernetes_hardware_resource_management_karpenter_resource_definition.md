@@ -24,7 +24,6 @@ ClusterスコープなKubernetesリソースであるため、Namespaceは設定
 Terraformの`aws_launch_template`ブロックと競合する。
 
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048
-
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
 
 <br>
