@@ -4019,8 +4019,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#-var-file_4" class="md-nav__link">
-    ▼ -var-file 
+  <a href="#taint_1" class="md-nav__link">
+    ▼ taintとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file-resource" class="md-nav__link">
+    ▼ -var-file &lt;resourceブロック&gt;
   </a>
   
 </li>
@@ -7050,8 +7057,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#-var-file_4" class="md-nav__link">
-    ▼ -var-file 
+  <a href="#taint_1" class="md-nav__link">
+    ▼ taintとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-var-file-resource" class="md-nav__link">
+    ▼ -var-file &lt;resourceブロック&gt;
   </a>
   
 </li>
@@ -7668,10 +7682,10 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 <h3 id="plan_2">planのプラクティス<a class="headerlink" href="#plan_2" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 出力内容の読み方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>リソースの作成 (<code>+</code>) 、更新 (<code>~</code>) 、削除 (<code>-</code>) 、再作成 (<code>-/+</code>) で表す。</p>
-<div class="highlight"><pre><span></span><code><span class="o">+</span><span class="w"> </span><span class="n">create</span>
-<span class="err">~</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="n">in</span><span class="o">-</span><span class="n">place</span>
-<span class="o">-</span><span class="w"> </span><span class="n">destroy</span>
-<span class="o">-/+</span><span class="w"> </span><span class="n">destroy</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">replacement</span>
+<div class="highlight"><pre><span></span><code>+<span class="w"> </span>create
+~<span class="w"> </span>update<span class="w"> </span><span class="k">in</span>-place
+-<span class="w"> </span>destroy
+-/+<span class="w"> </span>destroy<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>create<span class="w"> </span>replacement
 </code></pre></div>
 <p>前半部分と後半部分に区別されている。</p>
 <p>前半部分は、Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。</p>
@@ -7929,8 +7943,9 @@ $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> 
 </code></pre></div>
 <p><br></p>
 <h3 id="taint">taint<a class="headerlink" href="#taint" title="Permanent link">&para;</a></h3>
-<h4 id="-var-file_4">▼ -var-file <resourceブロック><a class="headerlink" href="#-var-file_4" title="Permanent link">&para;</a></h4>
+<h4 id="taint_1">▼ taintとは<a class="headerlink" href="#taint_1" title="Permanent link">&para;</a></h4>
 <p>バックエンドにある<code>tfstate</code>ファイルにて、指定された<code>resource</code>ブロックの<code>tainted</code>フラグを立てる。</p>
+<h4 id="-var-file-resource">▼ -var-file <code>&lt;resourceブロック&gt;</code><a class="headerlink" href="#-var-file-resource" title="Permanent link">&para;</a></h4>
 <p>例えば、<code>apply</code>したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。</p>
 <p>ここで、<code>tainted</code>を立てておくと、実インフラの<code>resource</code>ブロックを削除したと想定した<code>terraform plan</code>コマンドを実行できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>taint<span class="w"> </span><span class="se">\</span>
@@ -8192,7 +8207,7 @@ $<span class="w"> </span>rm<span class="w"> </span>terraform.tfstate.backup
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

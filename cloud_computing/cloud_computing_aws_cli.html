@@ -3510,12 +3510,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#eks" class="md-nav__link">
     EKS
   </a>
@@ -3525,8 +3520,13 @@
         
           <li class="md-nav__item">
   <a href="#update-addon" class="md-nav__link">
-    update-addon
+    ▼ update-addon
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3651,6 +3651,13 @@
   
     <nav class="md-nav" aria-label="STS">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decode-authorization-message" class="md-nav__link">
+    ▼ decode-authorization-message
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#get-caller-identity" class="md-nav__link">
@@ -7051,12 +7058,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#eks" class="md-nav__link">
     EKS
   </a>
@@ -7066,8 +7068,13 @@
         
           <li class="md-nav__item">
   <a href="#update-addon" class="md-nav__link">
-    update-addon
+    ▼ update-addon
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -7192,6 +7199,13 @@
   
     <nav class="md-nav" aria-label="STS">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#decode-authorization-message" class="md-nav__link">
+    ▼ decode-authorization-message
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#get-caller-identity" class="md-nav__link">
@@ -7677,8 +7691,8 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="eks">EKS<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h2>
-<h3 id="update-addon">update-addon<a class="headerlink" href="#update-addon" title="Permanent link">&para;</a></h3>
+<h3 id="eks">EKS<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h3>
+<h4 id="update-addon">▼ update-addon<a class="headerlink" href="#update-addon" title="Permanent link">&para;</a></h4>
 <p>コンフリクトでEKSアドオンの設定を更新できない場合に、変更できるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-addon<span class="w"> </span>--cluster-name<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--addon-name<span class="w"> </span>&lt;アドオン名&gt;<span class="w"> </span><span class="se">\</span>
@@ -7812,6 +7826,19 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 </blockquote>
 <p><br></p>
 <h3 id="sts">STS<a class="headerlink" href="#sts" title="Permanent link">&para;</a></h3>
+<h4 id="decode-authorization-message">▼ decode-authorization-message<a class="headerlink" href="#decode-authorization-message" title="Permanent link">&para;</a></h4>
+<p>STSでエンコードされたエラーメッセージをでコードする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>sts<span class="w"> </span>decode-authorization-message<span class="w"> </span>--encoded-message<span class="w"> </span>zAc3k...
+
+<span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;DecodedMessage&quot;</span>:<span class="w"> </span><span class="s2">&quot;{...}&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/chr_shiro_04/items/0e4dac730881a54500fe">https://qiita.com/chr_shiro_04/items/0e4dac730881a54500fe</a></li>
+</ul>
+</blockquote>
 <h4 id="get-caller-identity">▼ get-caller-identity<a class="headerlink" href="#get-caller-identity" title="Permanent link">&para;</a></h4>
 <p>一時的な認証情報を取得する。</p>
 <p><code>~/.aws/cli/cache</code>ディレクトリ配下に認証情報のキャッシュが作成される。</p>
@@ -7968,7 +7995,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

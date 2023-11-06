@@ -3892,23 +3892,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    グループレスについて
+  <a href="#aws" class="md-nav__link">
+    AWSリソースとの連携
   </a>
   
-    <nav class="md-nav" aria-label="グループレスについて">
+    <nav class="md-nav" aria-label="AWSリソースとの連携">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ▼ マネージドNodeグループとの連携
+  <a href="#_7" class="md-nav__link">
+    ▼ 起動テンプレート
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
-    ▼ EC2フリートについて
+    ▼ EC2フリート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ マネージドNodeグループ (有無に関係ない)
   </a>
   
 </li>
@@ -3993,7 +4000,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
+  <a href="#aws_1" class="md-nav__link">
     AWS側
   </a>
   
@@ -6025,23 +6032,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    グループレスについて
+  <a href="#aws" class="md-nav__link">
+    AWSリソースとの連携
   </a>
   
-    <nav class="md-nav" aria-label="グループレスについて">
+    <nav class="md-nav" aria-label="AWSリソースとの連携">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    ▼ マネージドNodeグループとの連携
+  <a href="#_7" class="md-nav__link">
+    ▼ 起動テンプレート
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
-    ▼ EC2フリートについて
+    ▼ EC2フリート
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    ▼ マネージドNodeグループ (有無に関係ない)
   </a>
   
 </li>
@@ -6126,7 +6140,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws" class="md-nav__link">
+  <a href="#aws_1" class="md-nav__link">
     AWS側
   </a>
   
@@ -6197,19 +6211,16 @@
 <h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
 <p>karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
-<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラー以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
 <p><img alt="karpenter_controller.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/threat-model/#karpenter-controller">https://karpenter.sh/preview/reference/threat-model/#karpenter-controller</a></li>
-<li><a href="https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md">https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md</a></li>
-<li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547">https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>KarpenterはAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
+<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
 <p>そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。</p>
 <p>Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
 <blockquote>
@@ -6233,21 +6244,31 @@
 <h4 id="_6">▼ ハードウェアリソース消費量<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="_7">グループレスについて<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="node">▼ マネージドNodeグループとの連携<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
+<h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成し、管理する。</p>
+<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
+<p>不都合があって廃止した経緯がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md">https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md</a></li>
+<li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547">https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547</a></li>
+</ul>
+</blockquote>
+<h4 id="ec2">▼ EC2フリート<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/o2346/items/6277a7ff6b1826d8de11">https://qiita.com/o2346/items/6277a7ff6b1826d8de11</a></li>
+</ul>
+</blockquote>
+<h4 id="node">▼ マネージドNodeグループ (有無に関係ない)<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
-<p>マネージドNodeグループは静的キャパシティであり、これを動的キャパシティのKarpenterと組み合わせることになる。</p>
+<p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートを動的にコールする。</p>
 <p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features">https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features</a></li>
 <li><a href="https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas">https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas</a></li>
-</ul>
-</blockquote>
-<h4 id="ec2">▼ EC2フリートについて<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/o2346/items/6277a7ff6b1826d8de11">https://qiita.com/o2346/items/6277a7ff6b1826d8de11</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6317,7 +6338,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h3 id="aws_1">AWS側<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
 <h4 id="terraform-terraform-aws-modulesiam-assumable-role-with-oidc">▼ Terraformの公式モジュール (<code>terraform-aws-modules/iam-assumable-role-with-oidc</code>) の場合<a class="headerlink" href="#terraform-terraform-aws-modulesiam-assumable-role-with-oidc" title="Permanent link">&para;</a></h4>
 <p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
 <p>ここでは、Terraformの公式モジュールを使用する。</p>
@@ -6551,7 +6572,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

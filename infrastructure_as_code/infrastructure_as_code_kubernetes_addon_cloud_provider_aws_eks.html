@@ -4397,6 +4397,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ip_3" class="md-nav__link">
+    ▼ セカンダリーIPアドレス割り当てモードとの比較
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4443,7 +4450,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ip_3" class="md-nav__link">
+  <a href="#ip_4" class="md-nav__link">
     セカンダリーIP割り当てモードの場合
   </a>
   
@@ -6302,6 +6309,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ip_3" class="md-nav__link">
+    ▼ セカンダリーIPアドレス割り当てモードとの比較
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6348,7 +6362,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ip_3" class="md-nav__link">
+  <a href="#ip_4" class="md-nav__link">
     セカンダリーIP割り当てモードの場合
   </a>
   
@@ -6879,6 +6893,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/</a></li>
 </ul>
 </blockquote>
+<h4 id="ip_3">▼ セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h4>
+<p>AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix Delegationモードの方が記載が充実している。</p>
+<p>AWSとしては、Prefix Delegationモードの方を使って欲しいのかもしれない。</p>
+<p>実際、セカンダリーIPアドレス割り当てモードでは、割り当てられるIPアドレスが劇的に増えないため、Prefix Delegationモードの方が良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="05-03-pod">05-03. Podの上限数を上げる<a class="headerlink" href="#05-03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod">Podの上限数<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
@@ -6963,7 +6986,7 @@ Capacity:
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ip_3">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h3>
+<h3 id="ip_4">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 設定方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
@@ -7015,7 +7038,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
