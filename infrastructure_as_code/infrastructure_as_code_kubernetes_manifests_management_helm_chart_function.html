@@ -7499,7 +7499,7 @@
 <tr>
 <td><code>.Values</code></td>
 <td></td>
-<td>values.yamlもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
+<td>valuesファイルもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能</td>
 </tr>
 <tr>
 <td><code>.Chart.ApiVersion</code></td>
@@ -7697,7 +7697,7 @@
 <h4 id="values_1">▼ Valuesとは<a class="headerlink" href="#values_1" title="Permanent link">&para;</a></h4>
 <p><code>values</code>ファイルの特定のキー値を出力する。</p>
 <p>特定の条件下で、<code>values</code>ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">global</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">  </span><span class="nt">appName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -7719,7 +7719,7 @@
 <p><code>values</code>ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。</p>
 <p>そのため、metadataキーの値にint型を出力しようとしてエラーになってしまう。</p>
 <p>int型にならないように、<code>values</code>ファイルの出力先をダブルクオーテーションで囲うと良い。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># マニフェストで、int型で出力しようとする。</span>
@@ -7775,7 +7775,7 @@
 <p><code>values</code>ファイルにmap型やlist型をそのまま出力する場合に使用する。</p>
 <h4 id="map">▼ map型の場合<a class="headerlink" href="#map" title="Permanent link">&para;</a></h4>
 <p>map型を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">parameters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
 <span class="w">  </span><span class="nt">bar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BAR</span>
@@ -7793,7 +7793,7 @@
 </blockquote>
 <h4 id="list">▼ list型の場合<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
 <p>list型を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">containers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:latest</span>
@@ -8123,7 +8123,7 @@
 <p><code>base64</code>方式でエンコードする。</p>
 <p>Secretの<code>.data</code>キーでは、他のKubernetesリソースへの出力時に自動的に<code>base64</code>方式でデコードするようになっており、相性が良い。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hiroki-it</span>
 <span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pass</span>
 </code></pre></div>
@@ -8176,7 +8176,7 @@
 </code></pre></div>
 <h4 id="_17">▼ 変化しない一意な名前<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
 <span class="nt">repositoryUrls</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/argoproj/argo-cd</span>
 </code></pre></div>

@@ -8718,7 +8718,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./charts</span>
 <span class="w">    </span><span class="nt">helm</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">valueFiles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/values.yaml</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./values/foo-values.yaml</span>
 </code></pre></div>
 <h4 id="repourl">▼ repoURL<a class="headerlink" href="#repourl" title="Permanent link">&para;</a></h4>
 <p>ポーリング対象のマニフェストリポジトリのURLを設定する。</p>
@@ -8904,7 +8904,7 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </code></pre></div>
 <p>ArgoCDは暗号化された<code>values</code>ファイルを復号化し、チャートをインストールする。</p>
 <p>補足としてArgoCD上では、Secretのdataキーは<code>base64</code>方式でエンコードされる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># values.yamlファイルの暗号化された値を出力するテンプレートファイル</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイルの暗号化された値を出力するテンプレートファイル</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -8922,9 +8922,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </ul>
 </blockquote>
 <p>ArgoCDを介してHelmを実行する場合、内部的には<code>helm template</code>コマンドとetcd上のマニフェストを<code>kubectl diff</code>コマンドで比較し、生じた差分を<code>kubectl apply</code>コマンドを使用してデプロイしている。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 
-$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <blockquote>
 <ul>
@@ -9768,7 +9768,7 @@ spec:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

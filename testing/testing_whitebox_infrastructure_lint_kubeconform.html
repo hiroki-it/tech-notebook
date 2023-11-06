@@ -6374,8 +6374,8 @@ JSON<span class="w"> </span>schema<span class="w"> </span>written<span class="w"
 <h3 id="_7">標準入力<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>標準入力からマニフェストを渡す。</p>
 <p>CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>foo-chart.<span class="w"> </span>--set<span class="w"> </span>secret.PASSWPRD<span class="o">=</span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="p">|</span><span class="w"> </span>kubeconform<span class="w"> </span>-kubernetes-version<span class="w"> </span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>kubeconform<span class="w"> </span>-kubernetes-version<span class="w"> </span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 </code></pre></div>
 <p><br></p>
 <h3 id="-kubernetes-version">-kubernetes-version<a class="headerlink" href="#-kubernetes-version" title="Permanent link">&para;</a></h3>
@@ -6432,7 +6432,7 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

@@ -6375,7 +6375,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>&lt;IaCファイル&gt;
 </code></pre></div>
 <p>マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>foo-chart.<span class="w"> </span>--set<span class="w"> </span>secret.PASSWORD<span class="o">=</span><span class="nb">test</span><span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
 
 $<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>manifest.yaml
 </code></pre></div>
@@ -6409,7 +6409,7 @@ $<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

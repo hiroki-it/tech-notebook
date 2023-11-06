@@ -6458,7 +6458,7 @@
 <h3 id="secrets_1">secretsサブコマンド無しの場合<a class="headerlink" href="#secrets_1" title="Permanent link">&para;</a></h3>
 <h4 id="secrets_2">▼ <code>secrets://</code><a class="headerlink" href="#secrets_2" title="Permanent link">&para;</a></h4>
 <p>SOPSの<code>secrets</code>ファイルを指定する時に<code>secrets://</code>を使用すると、サブコマンドの<code>secrets</code>が不要になる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>secrets://secrets.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>secrets://foo-secrets.yaml
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6474,7 +6474,7 @@
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>以下のようなSOPSの<code>secrets</code>ファイルがあるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># secrets.yaml</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># secretsファイル</span>
 <span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">F799Q8CQ...</span>
 
 <span class="nt">sops</span><span class="p">:</span>
@@ -6576,7 +6576,7 @@ db:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

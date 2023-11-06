@@ -6515,20 +6515,20 @@
 <h2 id="03">03. グローバルオプション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">標準入力<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>標準入力からマニフェストを渡す。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 
 NAME<span class="w">     </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
 foo-cj<span class="w">   </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect-helm<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 
 NAME<span class="w">    </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
 foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
 </code></pre></div>
 <p>CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>foo-chart<span class="w"> </span>.<span class="w"> </span>--set<span class="w"> </span>secret.GCP_CREDENTIALS<span class="o">=</span><span class="nb">test</span><span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 
 NAME<span class="w">    </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
@@ -6721,7 +6721,7 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

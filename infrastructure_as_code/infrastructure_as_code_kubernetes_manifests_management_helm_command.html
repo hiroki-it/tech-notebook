@@ -7726,7 +7726,7 @@ version:<span class="w"> </span>&lt;バージョンタグ&gt;
 <p>Kubernetesに作成されるリソースのマニフェストを出力する。</p>
 <p><code>.yaml</code>ファイルにリダイレクトするようにすると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># チャート名をreleasesとしている場合</span>
-$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
 </code></pre></div>
 <h4 id="-f_2">▼ -f<a class="headerlink" href="#-f_2" title="Permanent link">&para;</a></h4>
 <p>指定した<code>values</code>ファイル使用して、<code>helm template</code>コマンドを実行する。</p>
@@ -7845,7 +7845,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
