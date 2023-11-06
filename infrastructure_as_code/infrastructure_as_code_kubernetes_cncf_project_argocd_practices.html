@@ -5001,6 +5001,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    17. アクセスを制御する
+  </a>
+  
+    <nav class="md-nav" aria-label="17. アクセスを制御する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_6" class="md-nav__link">
+    ローカルマシン → (アクセス制御) → ArgoCD の部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd-cluster" class="md-nav__link">
+    ArgoCD → (アクセス制御) → Cluster の部分
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -7167,6 +7194,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    17. アクセスを制御する
+  </a>
+  
+    <nav class="md-nav" aria-label="17. アクセスを制御する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#argocd_6" class="md-nav__link">
+    ローカルマシン → (アクセス制御) → ArgoCD の部分
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd-cluster" class="md-nav__link">
+    ArgoCD → (アクセス制御) → Cluster の部分
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -8074,13 +8128,30 @@
 <p>テナントごとに異なる実Clusterを作成し、これを単位としてArgoCDを作成する。</p>
 <p>各テナントは、ArgoCDを共有しない。</p>
 <p><br></p>
+<h2 id="17">17. アクセスを制御する<a class="headerlink" href="#17" title="Permanent link">&para;</a></h2>
+<h3 id="argocd_6">ローカルマシン → (アクセス制御) → ArgoCD の部分<a class="headerlink" href="#argocd_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ローカルマシン<span class="w"> </span>→<span class="w"> </span><span class="o">(</span>アクセス制御<span class="o">)</span><span class="w"> </span>→<span class="w"> </span>ArgoCD<span class="w"> </span>→<span class="w"> </span><span class="o">(</span>アクセス制御<span class="o">)</span><span class="w"> </span>→<span class="w"> </span>Cluster
+</code></pre></div>
+<ul>
+<li>ArgoCDの前段のALBにWAFを紐づけ、特定のIPアドレス以外を <code>403</code> (認可エラー) にする。</li>
+<li>ArgoCDのログインにSSOを使用し、利用者以外を <code>401</code> (認証エラー) にする</li>
+</ul>
+<h3 id="argocd-cluster">ArgoCD → (アクセス制御) → Cluster の部分<a class="headerlink" href="#argocd-cluster" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>ローカルマシン<span class="w"> </span>→<span class="w"> </span><span class="o">(</span>アクセス制御<span class="o">)</span><span class="w"> </span>→<span class="w"> </span>ArgoCD<span class="w"> </span>→<span class="w"> </span><span class="o">(</span>アクセス制御<span class="o">)</span><span class="w"> </span>→<span class="w"> </span>Cluster
+</code></pre></div>
+<ul>
+<li><code>policy.csv</code>ファイルでArgoCD上の認可スコープを定義し、 <code>403</code> (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。</li>
+<li>Cluster側でArgoCDの送信元IPアドレス (AWSならNAT Gateway) を許可し、特定のArgoCD以外を <code>403</code> (認可エラー) にする。</li>
+<li>EKSクラスターのARNを登録しない場合は、<code>404</code>にする。 (これは、ArgoCDが<code>cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured</code>を返却してくれる)</li>
+</ul>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
