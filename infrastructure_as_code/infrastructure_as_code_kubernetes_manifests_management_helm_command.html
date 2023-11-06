@@ -7436,7 +7436,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--wait
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <blockquote>
 <ul>
@@ -7635,7 +7635,7 @@ Error:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> <
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>&lt;チャートへのパス&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>./foo-chart
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>.
 </code></pre></div>
 <h4 id="list_3">▼ list<a class="headerlink" href="#list_3" title="Permanent link">&para;</a></h4>
 <p>事前に<code>helm repo add</code>コマンドで追加しておいたチャートリポジトリの一覧を取得する。</p>
@@ -7726,36 +7726,45 @@ version:<span class="w"> </span>&lt;バージョンタグ&gt;
 <p>Kubernetesに作成されるリソースのマニフェストを出力する。</p>
 <p><code>.yaml</code>ファイルにリダイレクトするようにすると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># チャート名をreleasesとしている場合</span>
-$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
 </code></pre></div>
 <h4 id="-f_2">▼ -f<a class="headerlink" href="#-f_2" title="Permanent link">&para;</a></h4>
 <p>指定した<code>values</code>ファイル使用して、<code>helm template</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。</p>
-<p>暗号化されたままの文字列をマニフェストを展開すればよい。</p>
+<p><code>helm template</code>コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化ツールを使用せずにSecretを作成する</span>
-$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>&lt;暗号化されたYAMLファイル&gt;<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># valuesファイル</span>
-<span class="nt">user</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span><span class="w"> </span><span class="c1"># 上書きされる</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 暗号化されたYAMLファイル</span>
+<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="err">***</span>
+</code></pre></div>
+<p><code>helm template</code>コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
+<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># 暗号化されたままで展開される</span>
+<span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="err">***</span>
 </code></pre></div>
 <h4 id="-set">▼ -set<a class="headerlink" href="#-set" title="Permanent link">&para;</a></h4>
 <p>デフォルト値を上書きし、<code>helm template</code>コマンドを実行する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-set<span class="w"> </span>foo.test<span class="o">=</span>TEST<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-set<span class="w"> </span>foo.test<span class="o">=</span>TEST<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <h4 id="-include-crds">▼ --include-crds<a class="headerlink" href="#-include-crds" title="Permanent link">&para;</a></h4>
 <p>CRDを含めて、マニフェストを出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--include-crds<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--include-crds<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <h4 id="-show-only">▼ --show-only<a class="headerlink" href="#-show-only" title="Permanent link">&para;</a></h4>
 <p>特定のディレクトリのテンプレートを出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--show-only<span class="w"> </span>./foo-chart/templates/bar
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--show-only<span class="w"> </span>./templates/bar
 </code></pre></div>
 <blockquote>
 <ul>
@@ -7792,7 +7801,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--atomic<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>--atomic<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>--atomic<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <h4 id="-install">▼ --install<a class="headerlink" href="#-install" title="Permanent link">&para;</a></h4>
 <p>新しいリビジョン番号を作成し、インストール済のHelmリリースをアップグレードする。</p>
@@ -7819,7 +7828,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p><code>helm upgrade</code>コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <blockquote>
 <ul>
@@ -7831,7 +7840,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>foo-release<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>./values.yaml<span class="w"> </span>--wait
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <blockquote>
 <ul>

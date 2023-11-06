@@ -6280,7 +6280,7 @@
 <h2 id="04">04. オプション<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="score">score<a class="headerlink" href="#score" title="Permanent link">&para;</a></h3>
 <p>マニフェストを検査する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>kube-score<span class="w"> </span>score<span class="w"> </span>-
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>

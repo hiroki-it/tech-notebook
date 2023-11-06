@@ -6513,7 +6513,7 @@ vulnerabilities:
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;IaCファイル&gt;
 </code></pre></div>
 <p>マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
 
 $<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>manifest.yaml
 </code></pre></div>

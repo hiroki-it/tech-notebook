@@ -4090,15 +4090,15 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -f
+  </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#-f" class="md-nav__link">
-    -f
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -6293,15 +6293,15 @@
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -f
+  </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#-f" class="md-nav__link">
-    -f
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -6458,15 +6458,14 @@
 <h3 id="secrets_1">secretsサブコマンド無しの場合<a class="headerlink" href="#secrets_1" title="Permanent link">&para;</a></h3>
 <h4 id="secrets_2">▼ <code>secrets://</code><a class="headerlink" href="#secrets_2" title="Permanent link">&para;</a></h4>
 <p>SOPSの<code>secrets</code>ファイルを指定する時に<code>secrets://</code>を使用すると、サブコマンドの<code>secrets</code>が不要になる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>secrets://foo-secrets.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>secrets://foo-secrets.yaml
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler">https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="-f">-f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h3>
+<h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
 <p>暗号化された<code>values</code>ファイル (<code>secrets</code>ファイル) と、平文の<code>values</code>ファイルを使用して、<code>helm</code>コマンドを実行する。</p>
 <p>これにより、暗号化された値を<code>helm</code>コマンドの実行時のみ復号化し、マニフェストに出力できる。</p>
 <p>補足としてこの時、<code>values</code>ファイル側には<code>secrets</code>ファイルの値を設定しておく必要はない。</p>
@@ -6501,7 +6500,7 @@
 <p>この時、<code>helm secrets</code>コマンドで<code>secrets</code>ファイルを指定すると、復号化した上で<code>.Values</code>に出力してくれる。</p>
 <p>ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (<code>sops</code>キーの値) に合わせた方が良い。</p>
 <p>結果的に、base64方式でエンコードされ、マニフェストが作成される。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml
 
 apiVersion:<span class="w"> </span>v1
 kind:<span class="w"> </span>Secret

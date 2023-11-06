@@ -8922,9 +8922,9 @@ statefulset.apps/argocd-application-controller<span class="w">   </span><span cl
 </ul>
 </blockquote>
 <p>ArgoCDを介してHelmを実行する場合、内部的には<code>helm template</code>コマンドとetcd上のマニフェストを<code>kubectl diff</code>コマンドで比較し、生じた差分を<code>kubectl apply</code>コマンドを使用してデプロイしている。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 
-$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>./foo-chart<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
+$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>--include-crds<span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <blockquote>
 <ul>

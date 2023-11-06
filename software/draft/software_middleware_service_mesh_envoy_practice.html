@@ -5649,9 +5649,11 @@
 <p><br></p>
 <h3 id="upstream-request-timeout"><code>upstream request timeout</code>を解決する<a class="headerlink" href="#upstream-request-timeout" title="Permanent link">&para;</a></h3>
 <h4 id="upstream-request-timeout_1">▼ <code>upstream request timeout</code>とは<a class="headerlink" href="#upstream-request-timeout_1" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。</p>
-<p>インバウンド通信の場合、リバースプロキシ先のアプリが宛先となる。</p>
-<p>アウトバウンド通信の場合、Envoyや外部システムが宛先となる。</p>
+<p>送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。</p>
+<p>アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。</p>
+<p><img alt="envoy_upstream-request-timeout_outbound.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png" /></p>
+<p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、送信元Envoyからアプリへのリクエストがタイムアウトになっている。</p>
+<p><img alt="envoy_upstream-request-timeout_inbound.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/istio-and-envoy-errors">https://christina04.hatenablog.com/entry/istio-and-envoy-errors</a></li>
@@ -5670,9 +5672,9 @@
 <p><br></p>
 <h3 id="upstream-response-timeout"><code>upstream response timeout</code>を解決する<a class="headerlink" href="#upstream-response-timeout" title="Permanent link">&para;</a></h3>
 <h4 id="upstream-response-timeout_1">▼ <code>upstream response timeout</code>とは<a class="headerlink" href="#upstream-response-timeout_1" title="Permanent link">&para;</a></h4>
-<p>宛先のレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
-<p>インバウンド通信の場合、リバースプロキシ先のアプリが宛先となる。</p>
-<p>アウトバウンド通信の場合、Envoyや外部システムが宛先となる。</p>
+<p>宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
+<p>アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、他Envoyや外部システムからのレスポンスがタイムアウトになっている。</p>
+<p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/13068">https://github.com/envoyproxy/envoy/issues/13068</a></li>
@@ -5693,7 +5695,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

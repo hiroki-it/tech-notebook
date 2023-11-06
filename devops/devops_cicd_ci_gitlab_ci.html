@@ -7051,7 +7051,7 @@
 <span class="w">  </span><span class="c1"># ブランチ名に応じて、valuesファイルを切り替える</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm lint . -f &quot;${VALUES_FILE_PATH}&quot; -f &quot;${SECRETS_FILE_PATH}&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template ./foo-chart -f &quot;${VALUES_FILE_PATH}&quot; -f &quot;${SECRETS_FILE_PATH}&quot; &gt; manifest.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f &quot;${VALUES_FILE_PATH}&quot; -f &quot;${SECRETS_FILE_PATH}&quot; &gt; manifest.yaml</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat manifest.yaml</span>
 </code></pre></div>
 <blockquote>
@@ -7379,7 +7379,7 @@
 <p>プッシュ時に、指定したファイルやディレクトリで差分があれば、Jobを発火する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">gemerate_template</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml &gt; foo.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f foo-values.yaml -f foo-secrets.yaml &gt; foo.yaml</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># webイベント (パイプライン実行ボタン) の場合</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == &quot;web&quot;</span>
