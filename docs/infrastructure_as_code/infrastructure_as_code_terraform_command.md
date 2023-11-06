@@ -597,7 +597,7 @@ $ terraform plan \
 
 リソースの作成 (`+`) 、更新 (`~`) 、削除 (`-`) 、再作成 (`-/+`) で表す。
 
-```mathematica
+```bash
 + create
 ~ update in-place
 - destroy
@@ -891,9 +891,11 @@ $ terraform state show 'aws_instance.bastion'
 
 ### taint
 
-#### ▼ -var-file <resourceブロック>
+#### ▼ taintとは
 
 バックエンドにある`tfstate`ファイルにて、指定された`resource`ブロックの`tainted`フラグを立てる。
+
+#### ▼ -var-file `<resourceブロック>`
 
 例えば、`apply`したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。
 

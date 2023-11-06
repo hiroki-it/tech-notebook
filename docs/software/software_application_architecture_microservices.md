@@ -149,6 +149,7 @@ backend_mono_repository/
 │   │
 │   ├── bar/
 │   └── baz/
+│
 ```
 
 ```yaml
@@ -162,6 +163,7 @@ frontend_mono_repository/
 │   │
 │   ├── quux/
 │   └── corge/
+│
 ```
 
 #### ▼ エディタ
@@ -183,6 +185,7 @@ backend_mono_repository/
 │   │
 │   ├── bar/
 │   └── baz/
+│
 ```
 
 ```yaml
@@ -196,6 +199,7 @@ frontend_mono_repository/
 │   │
 │   ├── quux/
 │   └── corge/
+│
 ```
 
 <br>
@@ -236,6 +240,7 @@ infrastructure_repository/
 ├── modules/
 ├── prd/
 ├── stg/
+│
 ```
 
 <br>

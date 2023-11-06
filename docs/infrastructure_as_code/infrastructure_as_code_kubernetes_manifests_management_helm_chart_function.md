@@ -1123,6 +1123,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   {{ $dashboardName }}.json: {{ $.Files.Get $filePath }}
+---
 {{- end }}
 ```
 

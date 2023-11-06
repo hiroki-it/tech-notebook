@@ -31,13 +31,9 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
-執筆時点 (2023/11/04) 時点では、karpenterコントローラー以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
-
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
-> - https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md
-> - https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547
 
 <br>
 
@@ -45,7 +41,7 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 ### スケーリングの仕組み
 
-KarpenterはAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。
+Karpenterは、起動テンプレートを作成した上でAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。
 
@@ -75,22 +71,33 @@ Karpenterは、インスタンスタイプのPod上限数をスケーリング�
 
 <br>
 
-### グループレスについて
+### AWSリソースとの連携
 
-#### ▼ マネージドNodeグループとの連携
+#### ▼ 起動テンプレート
+
+Karpenterのkarpenterコントローラーは、起動テンプレートを作成し、管理する。
+
+執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
+
+不都合があって廃止した経緯がある。
+
+> - https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md
+> - https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547
+
+#### ▼ EC2フリート
+
+> - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
+
+#### ▼ マネージドNodeグループ (有無に関係ない)
 
 Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。
 
-マネージドNodeグループは静的キャパシティであり、これを動的キャパシティのKarpenterと組み合わせることになる。
+マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートを動的にコールする。
 
 ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
 
 > - https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features
 > - https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas
-
-#### ▼ EC2フリートについて
-
-> - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 
 <br>
 

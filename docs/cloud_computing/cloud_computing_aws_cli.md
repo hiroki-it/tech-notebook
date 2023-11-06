@@ -503,9 +503,9 @@ $ aws ecr get-login-password --region ap-northeast-1
 
 <br>
 
-## EKS
+### EKS
 
-### update-addon
+#### ▼ update-addon
 
 コンフリクトでEKSアドオンの設定を更新できない場合に、変更できるようにする。
 
@@ -698,6 +698,20 @@ $ aws secretsmanager get-secret-value \
 <br>
 
 ### STS
+
+#### ▼ decode-authorization-message
+
+STSでエンコードされたエラーメッセージをでコードする。
+
+```bash
+$ aws sts decode-authorization-message --encoded-message zAc3k...
+
+{
+    "DecodedMessage": "{...}"
+}
+```
+
+> - https://qiita.com/chr_shiro_04/items/0e4dac730881a54500fe
 
 #### ▼ get-caller-identity
 
