@@ -293,7 +293,7 @@ releases:
   - chart: <チャートリポジトリ名>/foo-chart
     # 依存先の設定値は同じvaluesファイルで一括して管理する
     values:
-      - values.yaml
+      - foo-values.yaml
     dependencies:
       - chart: extra
         version: 1.0
@@ -432,7 +432,7 @@ releases:
     chart: <チャートリポジトリ名>/foo-chart
     version: <バージョンタグ>
     values:
-      - values.yaml
+      - foo-values.yaml
 ```
 
 #### ▼ oci
@@ -452,7 +452,7 @@ releases:
     version: v0.31.0
     atomic: true
     values:
-      - values.yaml
+      - foo-values.yaml
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#oci-registries
@@ -470,7 +470,7 @@ releases:
     chart: ingress-nginx/foo-chart
     version: <バージョンタグ>
     values:
-      - values.yaml
+      - foo-values.yaml
 ```
 
 <br>
@@ -590,7 +590,7 @@ releases:
     version: <バージョンタグ>
     values:
       # 実行環境間で共有するvaluesファイル
-      - values.yaml.gotmpl
+      - foo-values.yaml.gotmpl
 ```
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values

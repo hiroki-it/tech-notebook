@@ -1042,7 +1042,7 @@ spec:
     path: ./charts
     helm:
       valueFiles:
-        - ./values/values.yaml
+        - ./values/foo-values.yaml
 ```
 
 #### ▼ repoURL
@@ -1232,7 +1232,7 @@ ArgoCDは暗号化された`values`ファイルを復号化し、チャートを
 補足としてArgoCD上では、Secretのdataキーは`base64`方式でエンコードされる。
 
 ```yaml
-# values.yamlファイルの暗号化された値を出力するテンプレートファイル
+# valuesファイルの暗号化された値を出力するテンプレートファイル
 apiVersion: v1
 kind: Secret
 metadata:
@@ -1252,9 +1252,9 @@ ArgoCDはHelmの`v2`と`v3`の両方を保持している。
 ArgoCDを介してHelmを実行する場合、内部的には`helm template`コマンドとetcd上のマニフェストを`kubectl diff`コマンドで比較し、生じた差分を`kubectl apply`コマンドを使用してデプロイしている。
 
 ```bash
-$ helm template . --include-crds | kubectl diff -f -
+$ helm template ./foo-chart --include-crds | kubectl diff -f -
 
-$ helm template . --include-crds | kubectl apply -f -
+$ helm template ./foo-chart --include-crds | kubectl apply -f -
 ```
 
 > - https://github.com/helm/helm/issues/6930#issuecomment-555242131

@@ -685,7 +685,7 @@ Kubernetesに作成されるリソースのマニフェストを出力する。
 
 ```bash
 # チャート名をreleasesとしている場合
-$ helm template . -f foo-values.yaml >| releases.yaml
+$ helm template ./foo-chart -f foo-values.yaml >| releases.yaml
 ```
 
 #### ▼ -f

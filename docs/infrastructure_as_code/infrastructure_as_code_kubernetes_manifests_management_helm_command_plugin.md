@@ -125,7 +125,7 @@ zendesk製を使用している場合、SOPSの`secrets`ファイルの名前を
 SOPSの`secrets`ファイルを指定する時に`secrets://`を使用すると、サブコマンドの`secrets`が不要になる。
 
 ```bash
-$ helm template ./foo-chart -f secrets://secrets.yaml
+$ helm template ./foo-chart -f secrets://foo-secrets.yaml
 ```
 
 > - https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
@@ -149,7 +149,7 @@ $ helm secrets template <チャートへのパス> -f <SOPSが作成したsecret
 以下のようなSOPSの`secrets`ファイルがあるとする。
 
 ```yaml
-# secrets.yaml
+# secretsファイル
 foo: F799Q8CQ...
 
 sops:

@@ -994,7 +994,7 @@ spec:
         - name: SOPS_SECRETS_FILE
           value: ./sops/secret.yaml
         - name: VALUES_FILE
-          value: ./values/values.yaml
+          value: ./values/foo-values.yaml
 ```
 
 <br>
@@ -1049,8 +1049,8 @@ spec:
     path: .
     helm:
       valueFiles:
-        - values.yaml
-        - secrets://secrets.yaml
+        - foo-values.yaml
+        - secrets://foo-secrets.yaml
 ```
 
 > - https://medium.com/@samuelbagattin/partial-helm-values-encryption-using-aws-kms-with-argocd-aca1c0d36323

@@ -28,7 +28,7 @@ description: アクション＠チャートの知見を記録しています。
 | `.Release.Revision`             |                        | リリースのリビジョン番号                                                                                                                                                                                                                                                                                                          |
 | `.Release.IsUpgrade`            |                        | upgradeかrollback操作の場合、trueがセットされる                                                                                                                                                                                                                                                                                   |
 | `.Release.IsInstall`            |                        | install操作の場合、trueがセットされる                                                                                                                                                                                                                                                                                             |
-| `.Values`                       |                        | values.yamlもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                                  |
+| `.Values`                       |                        | valuesファイルもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                               |
 | `.Chart.ApiVersion`             |                        | Chart.yamlに記載されるチャートAPIのバージョン                                                                                                                                                                                                                                                                                     |
 | `.Chart.Name`                   |                        | Chart.yamlに記載されるチャートの名前                                                                                                                                                                                                                                                                                              |
 | `.Chart.Version`                |                        | Chart.yamlに記載されるチャート自体のバージョン                                                                                                                                                                                                                                                                                    |
@@ -182,7 +182,7 @@ Helmのコメントの前に不要な改行が挿入されないように、`{{-
 特定の条件下で、`values`ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 global:
   env: prd
   appName: foo
@@ -210,7 +210,7 @@ metadata:
 int型にならないように、`values`ファイルの出力先をダブルクオーテーションで囲うと良い。
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 metadata:
   labels:
     # マニフェストで、int型で出力しようとする。
@@ -286,7 +286,7 @@ bar:
 map型を出力する。
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 parameters:
   foo: FOO
   bar: BAR
@@ -307,7 +307,7 @@ data: {{- toYaml .Values.parameters | nindent 2}}
 list型を出力する。
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 containers:
   - name: foo
     image: foo:latest
@@ -733,7 +733,7 @@ Secretの`.data`キーでは、他のKubernetesリソースへの出力時に自
 **＊実装例＊**
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 username: hiroki-it
 password: pass
 ```
@@ -796,7 +796,7 @@ data:
 セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。
 
 ```yaml
-# values.yamlファイル
+# valuesファイル
 repositoryUrls:
   - https://github.com/argoproj/argo-cd
 ```

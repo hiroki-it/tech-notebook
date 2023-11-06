@@ -50,7 +50,7 @@ $ brew install kube-score
 マニフェストを検査する。
 
 ```bash
-$ helm template foo-chart -f foo-values.yaml \
+$ helm template ./foo-chart -f foo-values.yaml \
     | kube-score score -
 ```
 
