@@ -123,7 +123,7 @@ $ trivy config --exit-code 1 <IaCファイル>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml > manifest.yaml
+$ helm template . -f foo-values.yaml -f foo-secrets.yaml > manifest.yaml
 
 $ trivy config --exit-code 1 manifest.yaml
 ```

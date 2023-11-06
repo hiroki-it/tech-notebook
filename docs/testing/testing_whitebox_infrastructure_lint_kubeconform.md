@@ -80,7 +80,7 @@ JSON schema written to foo-v1beta1.json
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
 ```bash
-$ helm template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml \
+$ helm template . -f foo-values.yaml -f foo-secrets.yaml \
     | kubeconform -kubernetes-version <Kubernetesのバージョン> -
 ```
 

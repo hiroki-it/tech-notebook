@@ -260,7 +260,7 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 **＊例＊**
 
 ```bash
-$ helm install foo-release ./foo-chart -f ./values.yaml --wait
+$ helm install foo-release . -f foo-values.yaml --wait
 ```
 
 > - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
@@ -550,7 +550,7 @@ $ helm repo index <チャートへのパス>
 **＊例＊**
 
 ```bash
-$ helm repo index ./foo-chart
+$ helm repo index .
 ```
 
 #### ▼ list
@@ -685,7 +685,7 @@ Kubernetesに作成されるリソースのマニフェストを出力する。
 
 ```bash
 # チャート名をreleasesとしている場合
-$ helm template ./foo-chart -f foo-values.yaml >| releases.yaml
+$ helm template . -f foo-values.yaml >| releases.yaml
 ```
 
 #### ▼ -f
@@ -693,30 +693,42 @@ $ helm template ./foo-chart -f foo-values.yaml >| releases.yaml
 指定した`values`ファイル使用して、`helm template`コマンドを実行する。
 
 ```bash
-$ helm template <チャートへのパス> -f foo-values.yaml >| <出力先ファイル>
+$ helm template . -f foo-values.yaml >| <出力先ファイル>
 ```
 
 **＊例＊**
 
 ```bash
-$ helm template ./foo-chart -f ./values.yaml >| release.yaml
+$ helm template . -f foo-values.yaml >| release.yaml
 ```
 
 **＊例＊**
 
 CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。
 
-暗号化されたままの文字列をマニフェストを展開すればよい。
+`helm template`コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。
 
 ```bash
 # 暗号化ツールを使用せずにSecretを作成する
-$ helm template <チャートへのパス> -f foo-values.yaml -f foo-secrets.yaml >| <出力先ファイル>
+$ helm template . -f foo-values.yaml -f <暗号化されたYAMLファイル> >| <出力先ファイル>
 ```
 
 ```yaml
-# valuesファイル
-user:
-  password: ***** # 上書きされる
+# 暗号化されたYAMLファイル
+foo: ***
+```
+
+`helm template`コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+type: Opaque
+data:
+  # 暗号化されたままで展開される
+  foo: ***
 ```
 
 #### ▼ -set
@@ -724,7 +736,7 @@ user:
 デフォルト値を上書きし、`helm template`コマンドを実行する。
 
 ```bash
-$ helm template ./foo-chart -f foo-values.yaml -set foo.test=TEST >| release.yaml
+$ helm template . -f foo-values.yaml -set foo.test=TEST >| release.yaml
 ```
 
 #### ▼ --include-crds
@@ -732,7 +744,7 @@ $ helm template ./foo-chart -f foo-values.yaml -set foo.test=TEST >| release.yam
 CRDを含めて、マニフェストを出力する。
 
 ```bash
-$ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
+$ helm template . -f foo-values.yaml --include-crds >| release.yaml
 ```
 
 #### ▼ --show-only
@@ -740,7 +752,7 @@ $ helm template ./foo-chart -f ./values.yaml --include-crds >| release.yaml
 特定のディレクトリのテンプレートを出力する。
 
 ```bash
-$ helm template ./foo-chart -f ./values.yaml --show-only ./foo-chart/templates/bar
+$ helm template . -f foo-values.yaml --show-only ./templates/bar
 ```
 
 > - https://stackoverflow.com/a/63159075
@@ -790,7 +802,7 @@ $ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f foo-
 **＊例＊**
 
 ```bash
-$ helm template --atomic ./foo-chart -f ./values.yaml >| release.yaml
+$ helm template --atomic . -f foo-values.yaml >| release.yaml
 ```
 
 #### ▼ --install
@@ -836,7 +848,7 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 `helm upgrade`コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。
 
 ```bash
-$ helm upgrade --skip-crds --install foo-release ./foo-chart -f ./values.yaml >| release.yaml
+$ helm upgrade --skip-crds --install foo-release . -f foo-values.yaml >| release.yaml
 ```
 
 > - https://helm.sh/docs/helm/helm_upgrade/
@@ -852,7 +864,7 @@ $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.ya
 **＊例＊**
 
 ```bash
-$ helm upgrade foo-release ./foo-chart -f ./values.yaml --wait
+$ helm upgrade foo-release . -f foo-values.yaml --wait
 ```
 
 > - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback

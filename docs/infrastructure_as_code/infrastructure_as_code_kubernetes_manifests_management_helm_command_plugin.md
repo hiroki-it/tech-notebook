@@ -125,14 +125,12 @@ zendesk製を使用している場合、SOPSの`secrets`ファイルの名前を
 SOPSの`secrets`ファイルを指定する時に`secrets://`を使用すると、サブコマンドの`secrets`が不要になる。
 
 ```bash
-$ helm template ./foo-chart -f secrets://foo-secrets.yaml
+$ helm template . -f secrets://foo-secrets.yaml
 ```
 
 > - https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
 
-<br>
-
-### -f
+#### ▼ -f
 
 暗号化された`values`ファイル (`secrets`ファイル) と、平文の`values`ファイルを使用して、`helm`コマンドを実行する。
 
@@ -184,7 +182,7 @@ ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPS
 結果的に、base64方式でエンコードされ、マニフェストが作成される。
 
 ```bash
-$ helm secrets template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml
+$ helm secrets template . -f foo-values.yaml -f foo-secrets.yaml
 
 apiVersion: v1
 kind: Secret

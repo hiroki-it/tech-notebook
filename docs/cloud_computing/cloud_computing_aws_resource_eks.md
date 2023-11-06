@@ -719,6 +719,15 @@ EKSのテスト環境の請求料金を節約するために、昼間に通常�
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
 
+#### ▼ 起動テンプレートとAutoScalingグループとの紐付け
+
+マネージドNodeグループは、あくまでEC2 Nodeのライフサイクルを管理するだけである。
+
+どのようなEC2 Nodeを管理するのかは起動テンプレートとAutoScalingグループを使用して定義する必要がある。
+
+> - https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/
+> - https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2
+
 <br>
 
 ### セルフマネージド

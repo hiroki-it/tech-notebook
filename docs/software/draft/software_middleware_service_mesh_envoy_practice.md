@@ -38,11 +38,15 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 #### ▼ `upstream request timeout`とは
 
-送信元Envoyのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。
+送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。
 
-インバウンド通信の場合、リバースプロキシ先のアプリが宛先となる。
+アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
 
-アウトバウンド通信の場合、Envoyや外部システムが宛先となる。
+![envoy_upstream-request-timeout_outbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
+
+インバウンド通信の場合、送信元Envoyの宛先はアプリであり、送信元Envoyからアプリへのリクエストがタイムアウトになっている。
+
+![envoy_upstream-request-timeout_inbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
 > - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
 
@@ -66,11 +70,11 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 #### ▼ `upstream response timeout`とは
 
-宛先のレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。
+宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。
 
-インバウンド通信の場合、リバースプロキシ先のアプリが宛先となる。
+アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、他Envoyや外部システムからのレスポンスがタイムアウトになっている。
 
-アウトバウンド通信の場合、Envoyや外部システムが宛先となる。
+インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。
 
 > - https://github.com/envoyproxy/envoy/issues/13068
 

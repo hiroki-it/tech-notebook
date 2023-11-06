@@ -94,7 +94,7 @@ $ checkov -f <IaCファイル>
 マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
 
 ```bash
-$ helm template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml > manifest.yaml
+$ helm template . -f foo-values.yaml -f foo-secrets.yaml > manifest.yaml
 
 $ checkov -f manifest.yaml
 ```

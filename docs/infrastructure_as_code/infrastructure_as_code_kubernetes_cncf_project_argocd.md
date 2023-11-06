@@ -186,7 +186,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 $ kubectl -it exec foo-argocd-repo-server \
     -c repo-server \
     -n foo \
-    -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template ./foo-chart -f foo-values.yaml | nl"
+    -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template . -f foo-values.yaml | nl"
 ```
 
 > - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992

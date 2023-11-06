@@ -391,7 +391,7 @@ setup-manifest:
   # ブランチ名に応じて、valuesファイルを切り替える
   script:
     - helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"
-    - helm template ./foo-chart -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
+    - helm template . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
     - cat manifest.yaml
 ```
 
@@ -768,7 +768,7 @@ check_tag:
 ```yaml
 gemerate_template:
   script:
-    - helm template ./foo-chart -f foo-values.yaml -f foo-secrets.yaml > foo.yaml
+    - helm template . -f foo-values.yaml -f foo-secrets.yaml > foo.yaml
   rules:
     # webイベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"
