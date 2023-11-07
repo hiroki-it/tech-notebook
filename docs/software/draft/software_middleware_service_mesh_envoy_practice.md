@@ -38,6 +38,8 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 #### ▼ `upstream request timeout`とは
 
+ステータスコードは`504`である。
+
 送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。
 
 アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
@@ -49,6 +51,8 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 ![envoy_upstream-request-timeout_inbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
 > - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
+
 
 #### ▼ 解決
 
@@ -59,6 +63,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 - 通常でも時間がかかりすぎる処理である
 
 これらを解決する。
+
 
 #### ▼ 解決
 

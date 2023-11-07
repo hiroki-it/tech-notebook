@@ -320,6 +320,10 @@ HorizontalPodAutoscalerを使用する場合、Deploymentのレプリカ数の�
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
 > - https://subscription.packtpub.com/book/cloud-and-networking/9781838647513/1/ch01lvl1sec05/to-replicas-or-not-to-replicas-in-deployments-and-statefulsets
 
+#### ▼ メトリクスでのPodの増減
+
+メトリクス上では、既存のPodが削除されて、新しいPodが作成されていることを確認できる。
+
 <br>
 
 ### VerticalPodAutoscaler
