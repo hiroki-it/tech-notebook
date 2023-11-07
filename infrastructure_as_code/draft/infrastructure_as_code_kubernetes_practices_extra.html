@@ -6590,6 +6590,7 @@ options ndots:5
 <p>この時に、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーが無効になっていると、コンテナのルートファイルシステムにRead/Writeの両方を実行できる。</p>
 <p>つまり、悪意のある人がこれを使用すると、任意のディレクトリ配下でファイルを作成変更できてしまう。</p>
 <p>そこで、<code>.containers[*].securityContext.readOnlyRootFilesystem</code>キーを有効化し、Readのみを実行できるようにしておく。</p>
+<p>アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。</p>
 <blockquote>
 <p><a href="https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/">https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Root_directory">https://en.wikipedia.org/wiki/Root_directory</a></p>
@@ -6730,11 +6731,11 @@ options ndots:5
 </tr>
 <tr>
 <td>goldilocks</td>
-<td>IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適値を算出できる。</td>
+<td>IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、サイジングの最適値を算出できる。</td>
 </tr>
 <tr>
 <td>krr</td>
-<td>Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。</td>
+<td>Prometheusのメトリクスから各コンテナにCPU/メモリのサイジングの最適値を算出できる。</td>
 </tr>
 <tr>
 <td>ただし、CPUのlimits値の設定はアンチパターンとして扱っており、未設定を推奨している。</td>
@@ -6812,7 +6813,7 @@ options ndots:5
 <li>helm lint</li>
 </ul>
 <h3 id="_41">■ バージョンをテストする<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
-<p>Helmチャートのバージョンを検証する。</p>
+<p>Helmチャートのバージョンが古くなっていないかを検証する。</p>
 <ul>
 <li>nova</li>
 </ul>
@@ -7133,7 +7134,7 @@ options ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
       
     
   </small>

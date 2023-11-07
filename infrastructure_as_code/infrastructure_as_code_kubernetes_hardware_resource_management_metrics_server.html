@@ -6399,7 +6399,7 @@ foo-pod<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;u
 <h2 id="03-pod">03. Podの自動水平スケーリング/自動垂直スケーリング<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h3>
 <h4 id="horizontalpodautoscaler_1">▼ HorizontalPodAutoscalerとは<a class="headerlink" href="#horizontalpodautoscaler_1" title="Permanent link">&para;</a></h4>
-<p>Podの自動水平スケーリングを実行する。</p>
+<p>Deployment、StatefulSet、ReplicaSet、の単位でPodの自動水平スケーリングを実行する。</p>
 <p>metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。</p>
 <p>設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。</p>
 <p>HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。</p>
@@ -6493,7 +6493,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
       
     
   </small>
