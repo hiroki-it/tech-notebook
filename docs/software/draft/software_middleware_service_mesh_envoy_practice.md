@@ -40,7 +40,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。
 
-アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
+アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。
 
 ![envoy_upstream-request-timeout_outbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
 
@@ -72,7 +72,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。
 
-アウトバウンド通信の場合、送信元Envoyの宛先は他Envoyや外部システムがであり、他Envoyや外部システムからのレスポンスがタイムアウトになっている。
+アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、サーバー側Envoyや外部システムからのレスポンスがタイムアウトになっている。
 
 インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。
 
