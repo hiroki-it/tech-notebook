@@ -4323,8 +4323,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxsurgemaxunavailable" class="md-nav__link">
-    ▼ maxSurge、maxUnavailable
+  <a href="#_4" class="md-nav__link">
+    ▼ ブルーグリーン方式 (パーセントの場合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ブルーグリーン方式 (絶対値の場合)
   </a>
   
 </li>
@@ -4945,7 +4952,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ 空
   </a>
   
@@ -5937,7 +5944,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     ▼ 起動の順番
   </a>
   
@@ -6572,14 +6579,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     ▼ 変数の管理
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ▼ 機密なファイルの管理
   </a>
   
@@ -6606,14 +6613,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ 機密な変数の管理
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     ▼ 機密なファイルの管理
   </a>
   
@@ -9813,8 +9820,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#maxsurgemaxunavailable" class="md-nav__link">
-    ▼ maxSurge、maxUnavailable
+  <a href="#_4" class="md-nav__link">
+    ▼ ブルーグリーン方式 (パーセントの場合)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ ブルーグリーン方式 (絶対値の場合)
   </a>
   
 </li>
@@ -10435,7 +10449,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     ▼ 空
   </a>
   
@@ -11427,7 +11441,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     ▼ 起動の順番
   </a>
   
@@ -12062,14 +12076,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     ▼ 変数の管理
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     ▼ 機密なファイルの管理
   </a>
   
@@ -12096,14 +12110,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     ▼ 機密な変数の管理
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     ▼ 機密なファイルの管理
   </a>
   
@@ -13296,16 +13310,21 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/">https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/</a></li>
 </ul>
 </blockquote>
+<h4 id="_4">▼ ブルーグリーン方式 (パーセントの場合)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>100</code>%、また<code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーを<code>0</code>%とすると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
 <span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100%</span><span class="w"> </span><span class="c1"># Podのレプリカ数と同じ数だけ新しいPodを作成する。</span>
-<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0%</span><span class="w"> </span><span class="c1"># Podの停止数がレプリカ数を下回らないようにする。</span>
+<span class="w">      </span><span class="c1"># デプロイ時に、Podのレプリカ数の50% (5個) だけ、新しいPodを並行的に作成する</span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100%</span>
+<span class="w">      </span><span class="c1"># デプロイ時に、Podのレプリカ数の0% (0個) が停止している状態にならないようにする</span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">00%</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
@@ -13316,18 +13335,46 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
-<h4 id="maxsurgemaxunavailable">▼ maxSurge、maxUnavailable<a class="headerlink" href="#maxsurgemaxunavailable" title="Permanent link">&para;</a></h4>
-<p>割合 / 絶対数を設定できる。</p>
-<p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>100</code>%、また<code>maxUnavailable</code>キーを<code>0</code>%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
-<p>つまり、<code>10</code>個のPodがあれば、<code>10</code>個の新しいPodを並行的に作成する。</p>
-<p>新しい<code>10</code>個Podで問題なければ、既存の<code>10</code>個のPodと入れ替える。</p>
+<p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならない (停止するPodがない) ようにする。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kakakakakku.hatenablog.com/entry/2021/09/06/173014">https://kakakakakku.hatenablog.com/entry/2021/09/06/173014</a></li>
+<li><a href="https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate">https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate</a></li>
 </ul>
 </blockquote>
+<h4 id="_5">▼ ブルーグリーン方式 (絶対値の場合)<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>もし<code>.spec.strategy.rollingUpdate.maxSurge</code>キーを<code>10</code>、また<code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーを<code>0</code>とすると仮定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># デプロイ時に、Podのレプリカ数の10個だけ、新しいPodを並行的に作成する</span>
+<span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="c1"># デプロイ時に、Podのレプリカ数の0個が停止している状態にならないようにする</span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+</code></pre></div>
+<p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならない (停止するPodがない) ようにする。</p>
+<p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><br></p>
 <h3 id="spectemplate">.spec.template<a class="headerlink" href="#spectemplate" title="Permanent link">&para;</a></h3>
 <h4 id="template-pod">▼ templateとは (設定項目はPodと同じ)<a class="headerlink" href="#template-pod" title="Permanent link">&para;</a></h4>
@@ -13495,6 +13542,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="type">▼ type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
 <p>メトリクスの種類を設定する。</p>
 <p>以下のタイプを設定できる。</p>
+<p>なお、カスタムメトリクスを収集するためには、別途ツール (例：prometheus-adapter) が必要である。</p>
 <table>
 <thead>
 <tr>
@@ -13526,7 +13574,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/masahata/items/062a2ee5762b108e8850">https://qiita.com/masahata/items/062a2ee5762b108e8850</a></li>
+</ul>
+</blockquote>
 <h4 id="resource">▼ Resourceの場合<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
+<p>Deploymentのリソースメトリクスを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -13545,7 +13599,18 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="pods">▼ Podsの場合<a class="headerlink" href="#pods" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<p>Podのカスタムメトリクスを指定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-horizontal-pod-autoscaler</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">metrics</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pods</span>
+<span class="w">      </span><span class="nt">resource</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpu</span>
+<span class="w">        </span><span class="nt">targetAverageUtilization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+</code></pre></div>
 <h4 id="object">▼ Objectの場合<a class="headerlink" href="#object" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="external">▼ Externalの場合<a class="headerlink" href="#external" title="Permanent link">&para;</a></h4>
@@ -14005,7 +14070,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource">https://kubernetes.io/docs/concepts/services-networking/network-policies/#networkpolicy-resource</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 空<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ 空<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>空 (<code>{}</code>) を設定し、いずれのPodも許可の対象としない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
@@ -15580,7 +15645,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers">https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ 起動の順番<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 起動の順番<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>InitContainerが複数個ある場合、定義した順番に起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -16579,7 +16644,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="data_2">data<a class="headerlink" href="#data_2" title="Permanent link">&para;</a></h3>
 <h4 id="data_3">▼ dataとは<a class="headerlink" href="#data_3" title="Permanent link">&para;</a></h4>
 <p>Kubernetesリソースに渡す機密な変数を設定する。</p>
-<h4 id="_6">▼ 変数の管理<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 変数の管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Secretで保持するstring型変数を設定する。</p>
 <p>使用時に<code>base64</code>方式で自動的にデコードされるため、あらかじめ<code>base64</code>方式でエンコードしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -16612,7 +16677,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap">https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ 機密なファイルの管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 機密なファイルの管理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>パイプ (<code>|</code>) を使用すれば、ファイルを変数として設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -16636,7 +16701,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="stringdata">stringData<a class="headerlink" href="#stringdata" title="Permanent link">&para;</a></h3>
 <h4 id="stringdata_1">▼ stringDataとは<a class="headerlink" href="#stringdata_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesリソースに渡す機密な変数を設定する。</p>
-<h4 id="_8">▼ 機密な変数の管理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_10">▼ 機密な変数の管理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Secretで保持するstring型の変数を設定する。</p>
 <p>平文で設定しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -16667,7 +16732,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap">https://stackoverflow.com/questions/63905890/kubernetes-how-to-set-boolean-type-variable-in-configmap</a></li>
 </ul>
 </blockquote>
-<h4 id="_9">▼ 機密なファイルの管理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h4 id="_11">▼ 機密なファイルの管理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>パイプ (<code>|</code>) を使用すれば、ファイルを変数として設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
