@@ -808,17 +808,24 @@ spec:
 
 > - https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
 
+#### ▼ ブルーグリーン方式 (パーセントの場合)
+
+もし`.spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`.spec.strategy.rollingUpdate.maxUnavailable`キーを`0`%とすると仮定する。
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: foo-deployment
 spec:
+  replicas: 10
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 100% # Podのレプリカ数と同じ数だけ新しいPodを作成する。
-      maxUnavailable: 0% # Podの停止数がレプリカ数を下回らないようにする。
+      # デプロイ時に、Podのレプリカ数の50% (5個) だけ、新しいPodを並行的に作成する
+      maxSurge: 100%
+      # デプロイ時に、Podのレプリカ数の0% (0個) が停止している状態にならないようにする
+      maxUnavailable: 00%
   selector:
     matchLabels:
       app.kubernetes.io/name: foo-pod
@@ -830,21 +837,55 @@ spec:
         app.kubernetes.io/component: app
 ```
 
-#### ▼ maxSurge、maxUnavailable
+この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
-割合 / 絶対数を設定できる。
+`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する。
 
-もし`.spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`maxUnavailable`キーを`0`%とすると、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
-
-つまり、`10`個のPodがあれば、`10`個の新しいPodを並行的に作成する。
-
-新しい`10`個Podで問題なければ、既存の`10`個のPodと入れ替える。
+`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならない (停止するPodがない) ようにする。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
 ![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png)
 
 > - https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
+> - https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate
+
+#### ▼ ブルーグリーン方式 (絶対値の場合)
+
+もし`.spec.strategy.rollingUpdate.maxSurge`キーを`10`、また`.spec.strategy.rollingUpdate.maxUnavailable`キーを`0`とすると仮定する。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foo-deployment
+spec:
+  replicas: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # デプロイ時に、Podのレプリカ数の10個だけ、新しいPodを並行的に作成する
+      maxSurge: 10
+      # デプロイ時に、Podのレプリカ数の0個が停止している状態にならないようにする
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: foo-pod
+      app.kubernetes.io/component: app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: foo-pod
+        app.kubernetes.io/component: app
+```
+
+この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
+
+`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する。
+
+`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならない (停止するPodがない) ようにする。
+
+また、Podの停止数がレプリカ数を下回らないようになる。
 
 <br>
 
@@ -1070,6 +1111,8 @@ spec:
 
 以下のタイプを設定できる。
 
+なお、カスタムメトリクスを収集するためには、別途ツール (例：prometheus-adapter) が必要である。
+
 | タイプ名   | 説明                                            | メトリクス例                                     |
 | ---------- | ----------------------------------------------- | ------------------------------------------------ |
 | `Resource` | リソースメトリクス                              | CPU使用率、メモリ使用率、など                    |
@@ -1077,7 +1120,11 @@ spec:
 | `Object`   | Pod以外のKubernetesリソースのカスタムメトリクス | Ingressに関するメトリクスなど                    |
 | `External` | Kubernetes以外の任意のメトリクス                | AWS、Google Cloud、Azureに固有のメトリクス       |
 
+> - https://qiita.com/masahata/items/062a2ee5762b108e8850
+
 #### ▼ Resourceの場合
+
+Deploymentのリソースメトリクスを指定する。
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1097,7 +1144,20 @@ spec:
 
 #### ▼ Podsの場合
 
-記入中...
+Podのカスタムメトリクスを指定する。
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: foo-horizontal-pod-autoscaler
+spec:
+  metrics:
+    - type: Pods
+      resource:
+        name: cpu
+        targetAverageUtilization: 60
+```
 
 #### ▼ Objectの場合
 
