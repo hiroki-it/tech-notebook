@@ -6400,7 +6400,7 @@
 <h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="gateway_1">▼ Gatewayとは<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
 <p>IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。</p>
-<p>そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、VirtualServiceとDestinationRuleは必要であるが、Gatewayは不要となる。</p>
+<p>そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、Gatewayは不要である。</p>
 <p><img alt="istio_gateway_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -6441,8 +6441,9 @@
 <h2 id="01-04-clusterpod">01-04. Cluster内外の通信、Pod間通信<a class="headerlink" href="#01-04-clusterpod" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualService<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="virtualservice_1">▼ VirtualServiceとは<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
-<p>IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。</p>
+<p>Cluster外からの通信では、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。</p>
 <p>またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。</p>
+<p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
 <p><img alt="istio_gateway_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -6496,30 +6497,17 @@ envoy<span class="w"> </span><span class="c1"># クライアント側Envoyから
 <p><br></p>
 <h3 id="destinationrule">DestinationRule<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
 <h4 id="destinationrule_1">▼ DestinationRuleとは<a class="headerlink" href="#destinationrule_1" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>通信方向</th>
-<th>能力</th>
-<th>補足</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>インバウンド</td>
-<td>IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。</td>
-<td></td>
-</tr>
-<tr>
-<td>アウトバウンド</td>
-<td><code>istio-proxy</code>コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。</td>
-<td>- <a href="https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars">https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars</a></td>
-</tr>
-</tbody>
-</table>
+<p>Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。</p>
+<p>またPod間通信では、<code>istio-proxy</code>コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars">https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars</a></li>
+</ul>
+</blockquote>
 <h4 id="envoy_1">▼ Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
 <p>Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。</p>
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。</p>
+<p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
 ⬇︎
 envoy
