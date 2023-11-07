@@ -222,6 +222,7 @@ nav:
               - envoy.yaml: software/software_middleware_service_mesh_envoy_envoy_yaml.md
               - テレメトリー: software/software_middleware_service_mesh_envoy_telemetry.md
               - API: software/software_middleware_service_mesh_envoy_api.md
+              - プラクティス: software/software_middleware_service_mesh_envoy_practice.md
 
   - 🐧 OS:
       - software/basic/index.md
