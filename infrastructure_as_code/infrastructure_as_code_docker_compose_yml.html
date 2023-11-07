@@ -6669,6 +6669,8 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <p><br></p>
 <h3 id="healthcheck"><code>healthcheck</code><a class="headerlink" href="#healthcheck" title="Permanent link">&para;</a></h3>
 <p>コンテナの起動時にヘルスチェックを実行し、トラフィックを処理可能になるまで待機する。</p>
+<p>トラフィックが処理可能になったらコンテナのビルドを終了し、次のコンテナのビルドを始める。</p>
+<p>データベースのような、コンテナの起動後にトラフィックが処理可能になるまで時間がかかるツールで役立つ。</p>
 <p><code>wait</code>コマンドを実行することに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -7128,7 +7130,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
       
     
   </small>
