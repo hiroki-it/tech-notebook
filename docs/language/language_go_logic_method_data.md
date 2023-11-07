@@ -2076,6 +2076,38 @@ func main() {
 
 方法には、以下の`3`個がある。
 
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+    // 6秒の待機後に、quitチャンネルにtrueを格納する
+	time.Sleep(time.Second * 6)
+	quit <- true
+
+	select {
+
+	// quitチャンネルへのtrueの格納を待機しつつ、Afterの完了も並列して待機する
+	// 先に終了した方のcaseを実行する
+	case <-time.After(time.Second * 5):
+		fmt.Println("timeout")
+
+	case <-quit:
+		fmt.Println("quit")
+	}
+
+	fmt.Println("done")
+}
+
+```
+
+> - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
+
 #### ▼ channel
 
 値を受信できるキューとして動作する。
@@ -2696,6 +2728,74 @@ func main() {
 	fmt.Printf("%#v\n", buffer.String()) // "Hello world!"
 }
 ```
+
+<br>
+
+### context
+
+#### ▼ contextとは
+
+HTTPコンテキストの仕組みで、リクエスト/レスポンスを処理する。
+
+#### ▼ タイムアウト
+
+リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"time"
+)
+
+func main() {
+
+
+	// タイムアウトを設定する
+	ctx, cancel := context.WithTimeout(
+		context.Background(),
+		// タイムアウト時間を1秒に設定する
+		1*time.Second,
+	)
+
+	defer cancel()
+
+	req, err := http.NewRequest("GET", "http://localhost:8080/example", nil)
+
+	if err != nil {
+		panic(err)
+	}
+
+	req = req.WithContext(ctx)
+
+	client := &http.Client{}
+
+	resp, err := client.Do(req)
+
+	if err != nil {
+		// context deadline exceeded エラーになる
+		fmt.Println("Request error:", err)
+		return
+	}
+
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Response:", string(body))
+}
+
+```
+
+> - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
 
 <br>
 
