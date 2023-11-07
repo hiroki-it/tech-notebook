@@ -1667,6 +1667,8 @@ spec:
 
 `istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
 
+指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -1691,6 +1693,8 @@ spec:
             subset: v1
           weight: 30
 ```
+
+> - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
 
 <br>
 

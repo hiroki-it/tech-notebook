@@ -125,7 +125,7 @@ spec:
 
 IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
-そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、VirtualServiceとDestinationRuleは必要であるが、Gatewayは不要となる。
+そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、Gatewayは不要である。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
@@ -173,9 +173,11 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ VirtualServiceとは
 
-IngressGatewayの能力のうち、IngressGatewayで受信したインバウンド通信をServiceを介してDestinationRuleにルーティングする能力を担う。
+Cluster外からの通信では、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
 またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
+
+Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
@@ -221,16 +223,25 @@ Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件�
 
 #### ▼ DestinationRuleとは
 
+Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
+
+またPod間通信では、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。
+
+
+
 | 通信方向       | 能力                                                                                                                                                                                   | 補足                                                                                            |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| インバウンド   | IngressGatewayの能力のうち、Serviceで受信したインバウンド通信をいずれのPodにルーティングするか、を決める能力を担う。Service自体の設定は、IstioではなくKubernetesで行うことに注意する。 |                                                                                                 |
-| アウトバウンド | `istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。                                                                                         | - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
+|    |  |                                                                                                 |
+| アウトバウンド |                                                                                      | - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars |
 
 #### ▼ Envoyの設定値として
 
 Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
+
+Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
+
 
 ```bash
 クライアント
