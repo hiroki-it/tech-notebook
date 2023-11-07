@@ -2103,7 +2103,6 @@ func main() {
 
 	fmt.Println("done")
 }
-
 ```
 
 > - https://build.yoku.co.jp/articles/r_0fovjatm7r#section_2_subsection_1
@@ -2737,6 +2736,8 @@ func main() {
 
 HTTPコンテキストの仕組みで、リクエスト/レスポンスを処理する。
 
+contextが持つ情報は、関数やコンテナ間で伝播できる。
+
 #### ▼ タイムアウト
 
 リクエスト/レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
@@ -2753,7 +2754,6 @@ import (
 )
 
 func main() {
-
 
 	// タイムアウトを設定する
 	ctx, cancel := context.WithTimeout(
@@ -2796,6 +2796,74 @@ func main() {
 ```
 
 > - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
+
+タイムアウト時間を伝播できる。
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func fn1(ctx context.Context) {
+	log("start fn1")
+	defer log("done fn1")
+	for i := 1; i <= 4; i++ {
+		select {
+		case <-ctx.Done():
+			return
+		default:
+			log("loop fn1")
+			time.Sleep(1 * time.Second)
+		}
+	}
+}
+
+func fn2(ctx context.Context) {
+	log("start fn2")
+	defer log("done fn2")
+	for i := 1; i <= 4; i++ {
+		select {
+		case <-ctx.Done():
+			return
+		default:
+			log("loop fn2")
+		}
+	}
+}
+
+func log(timing string) {
+	fmt.Printf("%s second:%v\n", timing, time.Now().Second())
+}
+
+func main() {
+	log("start main")
+	defer log("done main")
+	ctx := context.Background()
+
+	// タイムアウトを設定する
+	ctx, cancel := context.WithTimeout(
+		ctx,
+		// タイムアウト時間を2秒に設定する
+		2*time.Second,
+	)
+
+	defer cancel()
+
+	// タイムアウト時間をfn1に伝播する
+	go fn1(ctx)
+
+	// タイムアウト時間をfn1に伝播する
+	go fn2(ctx)
+
+	time.Sleep(5 * time.Second)
+}
+```
+
+> - https://www.wakuwakubank.com/posts/867-go-context/#index_id4
 
 <br>
 
