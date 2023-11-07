@@ -13317,6 +13317,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># レプリカ数は10とする</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
@@ -13336,8 +13337,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
-<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならない (停止するPodがない) ようにする。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある) 。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
 <p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
@@ -13353,6 +13354,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># レプリカ数は10とする</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">  </span><span class="nt">strategy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
@@ -13372,9 +13374,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <p>この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。</p>
-<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する。</p>
-<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならない (停止するPodがない) ようにする。</p>
+<p><code>.spec.strategy.rollingUpdate.maxSurge</code>キーにより、<code>10</code>個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計<code>20</code>個ある)。</p>
+<p><code>.spec.strategy.rollingUpdate.maxUnavailable</code>キーにより、<code>0</code>個が停止している状態にならないようにする (停止するPodがない)。</p>
 <p>また、Podの停止数がレプリカ数を下回らないようになる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate">https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="spectemplate">.spec.template<a class="headerlink" href="#spectemplate" title="Permanent link">&para;</a></h3>
 <h4 id="template-pod">▼ templateとは (設定項目はPodと同じ)<a class="headerlink" href="#template-pod" title="Permanent link">&para;</a></h4>
