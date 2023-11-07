@@ -2081,6 +2081,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html</loc>
+         <lastmod>2023-11-07</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_telemetry.html</loc>
          <lastmod>2023-11-07</lastmod>
          <changefreq>daily</changefreq>

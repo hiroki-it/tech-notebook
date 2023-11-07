@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="サービスメッシュ＠サービスメッシュ系ミドルウェアの知見を記録しています。">
+        <meta name="description" content="プラクティス@Envoyの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html">
       
       
-        <link rel="prev" href="software_middleware_security_falco_conf.html">
+        <link rel="prev" href="software_middleware_service_mesh_envoy_api.html">
       
       
-        <link rel="next" href="software_middleware_service_mesh_responsibility.html">
+        <link rel="next" href="basic/index.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】サービスメッシュ＠サービスメッシュ系ミドルウェア - 俺の技術ノート</title>
+        <title>【IT技術の知見】プラクティス@Envoy - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#envoy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】サービスメッシュ＠サービスメッシュ系ミドルウェア
+              【IT技術の知見】プラクティス@Envoy
             
           </span>
         </div>
@@ -1538,29 +1538,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    サービスメッシュ
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="software_middleware_service_mesh.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1569,277 +1549,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. マイクロサービス間通信の管理
-  </a>
-  
-    <nav class="md-nav" aria-label="01. マイクロサービス間通信の管理">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    非メッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="非メッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 非メッシュとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    メッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="メッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ メッシュとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. サービスメッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="02. サービスメッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    サービスメッシュとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    サービスメッシュの層
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    サイドカープロキシメッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="サイドカープロキシメッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ サイドカープロキシメッシュとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 適するリバースプロキシ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    Nodeエージェント型のメッシュ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    サービスメッシュの型の比較
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. サービスメッシュの実装
-  </a>
-  
-    <nav class="md-nav" aria-label="03. サービスメッシュの実装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    サービスメッシュのコンポーネント
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss" class="md-nav__link">
-    OSSごとの実装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. サービスディスカバリー
-  </a>
-  
-    <nav class="md-nav" aria-label="04. サービスディスカバリー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    サービスディスカバリーとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    サービスディスカバリーの要素
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    05. デザインパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="05. デザインパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    クライアントサイドパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="クライアントサイドパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ クライアントサイドパターン
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ 実装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    サーバーサイドパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="サーバーサイドパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ▼ サーバーサイドパターンとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ 実装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1869,46 +1578,304 @@
                 
   
   
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
-    <a href="software_middleware_service_mesh_envoy.html" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_6_3" id="__nav_6_6_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ Envoy
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ Envoy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_envoy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Envoy
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    envoy.yaml
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    テレメトリー
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    プラクティス
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_middleware_service_mesh_envoy_practice.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    プラクティス
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    01. エラー
+  </a>
+  
+    <nav class="md-nav" aria-label="01. エラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dial-tcp-lookup-timeout" class="md-nav__link">
+    dial tcp lookup timeoutを解決する
+  </a>
+  
+    <nav class="md-nav" aria-label="dial tcp lookup timeoutを解決する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dial-tcp-lookup-timeout_1" class="md-nav__link">
+    ▼ dial tcp lookup timeoutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-request-timeout" class="md-nav__link">
+    upstream request timeoutを解決する
+  </a>
+  
+    <nav class="md-nav" aria-label="upstream request timeoutを解決する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream-request-timeout_1" class="md-nav__link">
+    ▼ upstream request timeoutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-response-timeout" class="md-nav__link">
+    upstream response timeoutを解決する
+  </a>
+  
+    <nav class="md-nav" aria-label="upstream response timeoutを解決する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream-response-timeout_1" class="md-nav__link">
+    ▼ upstream response timeoutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -5893,7 +5860,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     はじめに
   </a>
   
@@ -5901,232 +5868,91 @@
       
         <li class="md-nav__item">
   <a href="#01" class="md-nav__link">
-    01. マイクロサービス間通信の管理
+    01. エラー
   </a>
   
-    <nav class="md-nav" aria-label="01. マイクロサービス間通信の管理">
+    <nav class="md-nav" aria-label="01. エラー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    非メッシュ
+  <a href="#dial-tcp-lookup-timeout" class="md-nav__link">
+    dial tcp lookup timeoutを解決する
   </a>
   
-    <nav class="md-nav" aria-label="非メッシュ">
+    <nav class="md-nav" aria-label="dial tcp lookup timeoutを解決する">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 非メッシュとは
+  <a href="#dial-tcp-lookup-timeout_1" class="md-nav__link">
+    ▼ dial tcp lookup timeoutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ 解決
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-request-timeout" class="md-nav__link">
+    upstream request timeoutを解決する
+  </a>
+  
+    <nav class="md-nav" aria-label="upstream request timeoutを解決する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream-request-timeout_1" class="md-nav__link">
+    ▼ upstream request timeoutとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 解決
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upstream-response-timeout" class="md-nav__link">
+    upstream response timeoutを解決する
+  </a>
+  
+    <nav class="md-nav" aria-label="upstream response timeoutを解決する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upstream-response-timeout_1" class="md-nav__link">
+    ▼ upstream response timeoutとは
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    メッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="メッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ メッシュとは
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    02. サービスメッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="02. サービスメッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    サービスメッシュとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    サービスメッシュの層
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    サイドカープロキシメッシュ
-  </a>
-  
-    <nav class="md-nav" aria-label="サイドカープロキシメッシュ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ サイドカープロキシメッシュとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 適するリバースプロキシ
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node" class="md-nav__link">
-    Nodeエージェント型のメッシュ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    サービスメッシュの型の比較
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. サービスメッシュの実装
-  </a>
-  
-    <nav class="md-nav" aria-label="03. サービスメッシュの実装">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    サービスメッシュのコンポーネント
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oss" class="md-nav__link">
-    OSSごとの実装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04" class="md-nav__link">
-    04. サービスディスカバリー
-  </a>
-  
-    <nav class="md-nav" aria-label="04. サービスディスカバリー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    サービスディスカバリーとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    サービスディスカバリーの要素
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
-    05. デザインパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="05. デザインパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    クライアントサイドパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="クライアントサイドパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ クライアントサイドパターン
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ 実装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    サーバーサイドパターン
-  </a>
-  
-    <nav class="md-nav" aria-label="サーバーサイドパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    ▼ サーバーサイドパターンとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ 実装方法
+    ▼ 解決
   </a>
   
 </li>
@@ -6159,8 +5985,8 @@
   
 
 
-<h1 id="_1">サービスメッシュ＠サービスメッシュ系ミドルウェア<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="envoy">プラクティス@Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -6168,272 +5994,66 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. マイクロサービス間通信の管理<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_3">非メッシュ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 非メッシュとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスアーキテクチャで、マイクロサービス間でパケットを直接的に送受信する。</p>
-<p>しかし、マイクロサービスアーキテクチャ固有のインフラ領域の課題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成、など) があり、非推奨である。</p>
+<h2 id="01">01. エラー<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="dial-tcp-lookup-timeout"><code>dial tcp lookup timeout</code>を解決する<a class="headerlink" href="#dial-tcp-lookup-timeout" title="Permanent link">&para;</a></h3>
+<h4 id="dial-tcp-lookup-timeout_1">▼ <code>dial tcp lookup timeout</code>とは<a class="headerlink" href="#dial-tcp-lookup-timeout_1" title="Permanent link">&para;</a></h4>
+<p>EnvoyがCoreDNSとの通信に失敗している可能性がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/">https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/istio-and-envoy-errors">https://christina04.hatenablog.com/entry/istio-and-envoy-errors</a></li>
 </ul>
 </blockquote>
+<h4 id="_2">▼ 解決<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>以下が原因である可能性がある。</p>
+<ul>
+<li>CoreDNSが停止している。</li>
+<li>CoreDNSへの通信経路のネットワークパフォーマンスが低い</li>
+</ul>
+<p>これらを解決する。</p>
 <p><br></p>
-<h3 id="_5">メッシュ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ メッシュとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p><img alt="mesh" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png" /></p>
-<p>マイクロサービスアーキテクチャで、マイクロサービス間の通信をメッシュで管理する。</p>
-<p>マイクロサービス間で直接的に通信を送受信する (サービスメッシュを導入しない) 場合と比較して、サービスメッシュを導入すると固有の課題を一括で制御しやすい。</p>
-<p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービスディスカバリーの必要性、マイクロサービス間通信の暗号化、テレメトリー作成、など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。</p>
+<h3 id="upstream-request-timeout"><code>upstream request timeout</code>を解決する<a class="headerlink" href="#upstream-request-timeout" title="Permanent link">&para;</a></h3>
+<h4 id="upstream-request-timeout_1">▼ <code>upstream request timeout</code>とは<a class="headerlink" href="#upstream-request-timeout_1" title="Permanent link">&para;</a></h4>
+<p>ステータスコードは<code>504</code>である。</p>
+<p>送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。</p>
+<p>アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。</p>
+<p><img alt="envoy_upstream-request-timeout_outbound.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png" /></p>
+<p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、送信元Envoyからアプリへのリクエストがタイムアウトになっている。</p>
+<p><img alt="envoy_upstream-request-timeout_inbound.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://solace.com/blog/event-mesh-service-mesh-for-microservices/">https://solace.com/blog/event-mesh-service-mesh-for-microservices/</a></li>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html">https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html</a></li>
-<li><a href="https://solace.com/what-is-an-event-mesh/">https://solace.com/what-is-an-event-mesh/</a></li>
+<li><a href="https://christina04.hatenablog.com/entry/istio-and-envoy-errors">https://christina04.hatenablog.com/entry/istio-and-envoy-errors</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage</a></li>
 </ul>
 </blockquote>
+<h4 id="_3">▼ 解決<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>以下が原因である可能性がある。</p>
+<ul>
+<li>送信元Envoyがハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>タイムアウト時間が短すぎる</li>
+<li>通常でも時間がかかりすぎる処理である</li>
+</ul>
+<p>これらを解決する。</p>
+<h4 id="_4">▼ 解決<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>送信元Envoyの正常性やネットワークの状況を確認し、エラーを解決する。</p>
 <p><br></p>
-<h2 id="02">02. サービスメッシュ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_7">サービスメッシュとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>マイクロサービス間の通信方式でリクエストリプライ方式を採用した場合に使用するメッシュ。</p>
-<p><br></p>
-<h3 id="_8">サービスメッシュの層<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャでは、マイクロサービスへのインバウンド通信ロジック、マイクロサービスからのアウトバウンド通信ロジック、マイクロサービスのテレメトリーの収集ロジック、必要になる。</p>
-<p>サービスメッシュの概念が提唱される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。</p>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:60%;"></p>
-<p>サービスメッシュの概念が提唱され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。</p>
-<p>サービスメッシュの概念により、アプリケーションエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。</p>
+<h3 id="upstream-response-timeout"><code>upstream response timeout</code>を解決する<a class="headerlink" href="#upstream-response-timeout" title="Permanent link">&para;</a></h3>
+<h4 id="upstream-response-timeout_1">▼ <code>upstream response timeout</code>とは<a class="headerlink" href="#upstream-response-timeout_1" title="Permanent link">&para;</a></h4>
+<p>宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
+<p>アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、サーバー側Envoyや外部システムからのレスポンスがタイムアウトになっている。</p>
+<p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。</p>
 <blockquote>
 <ul>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013">https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013</a></li>
-<li><a href="https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/">https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/13068">https://github.com/envoyproxy/envoy/issues/13068</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_9">サイドカープロキシメッシュ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ サイドカープロキシメッシュとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスのリバースプロキシをサイドカーパターンで配置し、このコンテナをコントロールプレーンで一括管理する。</p>
-<p>マイクロサービス間の通信を透過的にする (通信の存在を感じさせない) ことを思想としている。</p>
-<p><img alt="service-discovery_kubernetes_vs_istio" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png" /></p>
-<blockquote>
+<h4 id="_5">▼ 解決<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>以下が原因である可能性がある。</p>
 <ul>
-<li><a href="https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh">https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh</a></li>
-<li><a href="https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure">https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure</a></li>
+<li>宛先Envoyがハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>タイムアウト時間が短すぎる</li>
+<li>通常でも時間がかかりすぎる処理である</li>
 </ul>
-</blockquote>
-<h4 id="_11">▼ 適するリバースプロキシ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー (レスポンスタイム) が重要である。</p>
-<p>Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も短いとの結果が出ている。</p>
-<p><img alt="service-mesh_sidecar-proxy_reverse-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/">https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="node">Nodeエージェント型のメッシュ<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="_12">サービスメッシュの型の比較<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th></th>
-<th style="text-align: center;">サイドカープロキシメッシュ</th>
-<th style="text-align: center;">Nodeエージェント型のメッシュ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Nodeのハードウェアリソース消費量</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;"><code>⭕️</code></td>
-</tr>
-<tr>
-<td>Nodeのストレージ使用量</td>
-<td style="text-align: center;"><code>⭕️</code> (なし)</td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>データプレーンの冗長性</td>
-<td style="text-align: center;"><code>⭕️</code></td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>マイクロサービスごとの設定カスタマイズ</td>
-<td style="text-align: center;"><code>⭕️</code></td>
-<td style="text-align: center;">△</td>
-</tr>
-<tr>
-<td>単純性</td>
-<td style="text-align: center;">×</td>
-<td style="text-align: center;"><code>⭕️</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://codersociety.com/blog/articles/kubernetes-logging">https://codersociety.com/blog/articles/kubernetes-logging</a></li>
-<li><a href="https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411">https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411</a></li>
-<li><a href="https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/">https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03">03. サービスメッシュの実装<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_13">サービスメッシュのコンポーネント<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>概念としてのサービスメッシュを実装する必要がある。</p>
-<p>リバースプロキシとして動作するコンテナをサイドカーパターンで配置し、このコンテナを中央集権的に管理するように実装する。</p>
-<p>サイドカープロキシが稼働する領域を『データプレーン』、中央集権的に管理する領域を『コントロールプレーン』という。</p>
-<p><img alt="service-mesh_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/">https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="oss">OSSごとの実装方法<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h3>
-<p>データプレーンとコントロールプレーンの組み合わせには様々ある。</p>
-<table>
-<thead>
-<tr>
-<th>OSS名</th>
-<th>データプレーンの実装</th>
-<th>コントロールプレーンの実装</th>
-<th>サポートしているXDS-API</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Istio</td>
-<td>Envoy</td>
-<td>Istiod</td>
-<td>全てのXDS-API</td>
-</tr>
-<tr>
-<td>Linkerd</td>
-<td>ビルトインプロキシ (Linkerd2-proxy)</td>
-<td>Proxy Injector、Destination、Identity</td>
-<td>全てのXDS-API</td>
-</tr>
-<tr>
-<td>Consul</td>
-<td>ビルトインプロキシ、Envoy</td>
-<td>Consul-control-plane</td>
-<td>全てのXDS-API</td>
-</tr>
-<tr>
-<td>SPIRE</td>
-<td>Envoy</td>
-<td>SPIRE</td>
-<td>SDSのみ</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://www.amazon.co.jp/dp/1492043788">https://www.amazon.co.jp/dp/1492043788</a></li>
-<li><a href="https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20">https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20</a></li>
-<li><a href="https://qiita.com/ryysud/items/bbfc730e17f53be65ce0">https://qiita.com/ryysud/items/bbfc730e17f53be65ce0</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04">04. サービスディスカバリー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_14">サービスディスカバリーとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャにて、送信元マイクロサービスが宛先マイクロサービスの場所 (IPアドレス、ポート番号、完全修飾ドメイン名、など) を動的に検出し、また同時に名前解決できるようにする仕組みのこと。</p>
-<p><br></p>
-<h3 id="_15">サービスディスカバリーの要素<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;"></p>
-<p>サービスディスカバリーの仕組みは、次の要素からなる。</p>
-<ul>
-<li>送信元マイクロサービス</li>
-<li>宛先マイクロサービス</li>
-<li>サービスレジストリ</li>
-<li>ロードバランサー</li>
-<li>名前解決 (DNSベースのサービスディスカバリーの場合のみ)</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://www.baeldung.com/cs/service-discovery-microservices">https://www.baeldung.com/cs/service-discovery-microservices</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="05">05. デザインパターン<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_16">クライアントサイドパターン<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ クライアントサイドパターン<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_server-side.png" style="zoom:60%;"></p>
-<p>サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務は、リクエストの送信元マイクロサービスにある。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、宛先情報を取得する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>送信元マイクロサービスは、ロードバランサーを介して、宛先マイクロサービスにリクエストを送信する。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/client-side-discovery.html">https://microservices.io/patterns/client-side-discovery.html</a></li>
-<li><a href="https://www.baeldung.com/cs/service-discovery-microservices">https://www.baeldung.com/cs/service-discovery-microservices</a></li>
-<li><a href="https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509">https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509</a></li>
-<li><a href="https://iximiuz.com/en/posts/service-discovery-in-kubernetes/">https://iximiuz.com/en/posts/service-discovery-in-kubernetes/</a></li>
-</ul>
-</blockquote>
-<h4 id="_18">▼ 実装方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<ul>
-<li>NetflixのEureka</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://github.com/Netflix/eureka">https://github.com/Netflix/eureka</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_19">サーバーサイドパターン<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="_20">▼ サーバーサイドパターンとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_client-side.png" style="zoom:60%;"></p>
-<p>サービスレジストリ (例：etcd) に問い合わせ、またルーティングする責務が、リクエストの送信元から切り離されている。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>送信元マイクロサービスは、ロードバランサーにリクエストを送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>ロードバランサーは、宛先マイクロサービスの場所をサービスディスカバリーに問い合わせ、宛先情報を取得する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。</p>
-</dd>
-</dl>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/server-side-discovery.html">https://microservices.io/patterns/server-side-discovery.html</a></li>
-<li><a href="https://www.baeldung.com/cs/service-discovery-microservices">https://www.baeldung.com/cs/service-discovery-microservices</a></li>
-<li><a href="https://iximiuz.com/en/posts/service-discovery-in-kubernetes/">https://iximiuz.com/en/posts/service-discovery-in-kubernetes/</a></li>
-<li><a href="https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509">https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509</a></li>
-<li><a href="https://www.north-47.com/knowledge-base/service-discovery-in-a-microservices-architecture-client-vs-service-side-discovery/">https://www.north-47.com/knowledge-base/service-discovery-in-a-microservices-architecture-client-vs-service-side-discovery/</a></li>
-</ul>
-</blockquote>
-<h4 id="_21">▼ 実装方法<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<ul>
-<li>KubernetesのServiceとkube-proxy + CoreDNS (DNSベースのサービスディスカバリー)</li>
-<li>サービスメッシュツール (例：Istio、Linkerd、など) のサイドカー</li>
-<li>サービスディスカバリー機能を持つリバースプロキシ (例：素のEnvoy、Traefik、など)</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://traefik.io/glossary/service-discovery/">https://traefik.io/glossary/service-discovery/</a></li>
-</ul>
-</blockquote>
+<p>これらを解決する。</p>
 <p><br></p>
 
   <hr>
@@ -6441,7 +6061,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
       
     
   </small>
