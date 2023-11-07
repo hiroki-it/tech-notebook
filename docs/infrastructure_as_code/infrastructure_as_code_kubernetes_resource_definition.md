@@ -818,6 +818,7 @@ kind: Deployment
 metadata:
   name: foo-deployment
 spec:
+  # レプリカ数は10とする
   replicas: 10
   strategy:
     type: RollingUpdate
@@ -839,9 +840,9 @@ spec:
 
 この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
-`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する。
+`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある) 。
 
-`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならない (停止するPodがない) ようにする。
+`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならないようにする (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
@@ -860,6 +861,7 @@ kind: Deployment
 metadata:
   name: foo-deployment
 spec:
+  # レプリカ数は10とする
   replicas: 10
   strategy:
     type: RollingUpdate
@@ -881,11 +883,13 @@ spec:
 
 この場合、ローリングアップデート時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
-`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する。
+`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある)。
 
-`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならない (停止するPodがない) ようにする。
+`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならないようにする (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
+
+> - https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate
 
 <br>
 

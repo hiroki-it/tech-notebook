@@ -13,7 +13,7 @@ description: MySQL＠RDBの知見を記録しています。
 
 <br>
 
-## 01. DBエンジンの種類
+## 01. DBエンジン
 
 ### インメモリ方式
 
@@ -37,7 +37,20 @@ description: MySQL＠RDBの知見を記録しています。
 
 <br>
 
-## 02. テーブル
+## 02. エンドポイント
+
+### プロトコル
+
+MySQLは、TCPプロトコルで接続を確立し、MySQLプロトコルのクエリを受信する。
+
+つまり、アプリケーションはDBへの接続時にTCPプロトコルを使用し、MySQLにクエリを実行する時はMySQLプロコトルを使用することになる。
+
+> - https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078
+> - http://www.cybergarage.org/memo/rdbms_query_protocols/
+
+<br>
+
+## 03. テーブル
 
 ### エクスポート、インポート
 
