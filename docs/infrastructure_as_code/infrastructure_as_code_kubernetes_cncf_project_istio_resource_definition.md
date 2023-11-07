@@ -1663,6 +1663,35 @@ spec:
           weight: 30
 ```
 
+#### ▼ timeout
+
+`istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  namespace: istio-system
+  name: foo-virtual-service
+spec:
+  http:
+    # destinationにリクエストを送信する時のタイムアウト時間
+    - timeout: 40s
+      route:
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            port:
+              number: 80
+            subset: v1
+          weight: 70
+        - destination:
+            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            port:
+              number: 80
+            subset: v1
+          weight: 30
+```
+
 <br>
 
 ### .spec.tcp

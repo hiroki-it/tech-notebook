@@ -188,6 +188,18 @@ Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルート値�
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
+```bash
+クライアント
+⬇︎
+envoy
+⬇︎
+------------
+⬇︎
+envoy # 他Envoyからのリクエストをアプリが受信できるように、クラスター値とエンドポイント値になる
+⬇︎
+アプリ
+```
+
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
@@ -220,8 +232,22 @@ Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンド�
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
+```bash
+クライアント
+⬇︎
+envoy
+⬇︎
+------------
+⬇︎
+envoy # 他Envoyからのリクエストをアプリが受信できるように、クラスター値とエンドポイント値になる
+⬇︎
+アプリ
+```
+
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
-> - https://sreake.com/blog/istio/ > <br>
+> - https://sreake.com/blog/istio/
+
+> - <br>
 
 ## 02. 認証系リソース
 
