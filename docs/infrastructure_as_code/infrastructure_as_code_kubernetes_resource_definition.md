@@ -1129,6 +1129,18 @@ spec:
 
 > - https://qiita.com/sheepland/items/37ea0b77df9a4b4c9d80
 
+#### ▼ Deploymentの場合
+
+デプロイ戦略に基づいて、新しいReplicaSetを作成し、Podを自動水平スケーリングする。
+
+#### ▼ ReplicaSetの場合
+
+既存のReplicaSet配下でPodを自動水平スケーリングする。
+
+#### ▼ StatefulSetの場合
+
+デプロイ戦略に基づいて、新しいPodを自動水平スケーリングする。
+
 <br>
 
 ## Ingress

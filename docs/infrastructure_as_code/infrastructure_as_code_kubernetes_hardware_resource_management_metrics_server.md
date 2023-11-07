@@ -262,7 +262,7 @@ foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
 
 #### ▼ HorizontalPodAutoscalerとは
 
-Podの自動水平スケーリングを実行する。
+Deployment、StatefulSet、ReplicaSet、の単位でPodの自動水平スケーリングを実行する。
 
 metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。
 
