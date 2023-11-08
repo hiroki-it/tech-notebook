@@ -13,7 +13,15 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 <br>
 
-## 01. TCP階層モデル
+## 01. OSI階層モデルへの移行
+
+基本的に、OSI階層モデルに寄せて整理しているため、以下のノートを参照すること。
+
+> - https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
+
+<br>
+
+## 02. TCP階層モデル
 
 ### OSI参照モデルとは
 
@@ -33,10 +41,12 @@ TCP/IPモデルで使用されるプロトコルのうち、最も代表的な�
 
 <br>
 
-## 02. OSI階層モデルへの移行
+## 03. 通信機器との対応関係
 
-基本的に、OSI階層モデルに寄せて整理しているため、以下のノートを参照してください。
+送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。
 
-> - https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
+![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
+
+> - https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
 
 <br>
