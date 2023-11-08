@@ -29,13 +29,13 @@ description: ︎対策＠セキュリティの知見を記録しています。
 
 #### ▼ パケットフィルタリング型ファイアウォールとは
 
-![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
-
 パケットのヘッダー情報の送信元IPアドレスやポート番号などに基づいて、パケットを許可する必要があるか否かを決める。
 
-パケットのデータは検査しない。
+パケットのペイロードは検査しない。
 
 ファイアウォールとwebサーバーの間には、NATルーターやNAPTルーターが配置されている。
+
+![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
 
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 > - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
@@ -131,7 +131,7 @@ Windowsファイアウォールは、Windowsにおけるファイアウォール
 
 ### ゲートウェイ型ファイアウォール (プロキシサーバー型)
 
-パケットのデータに基づいて、パケットを許可する必要があるか否かを決める。
+パケットのペイロードに基づいて、パケットを許可する必要があるか否かを決める。
 
 > - https://www.rworks.jp/system/system-column/sys-entry/21277/
 
