@@ -6307,7 +6307,7 @@
 <h2 id="02-http11grpc">02. HTTP/1.1とgRPCの違い<a class="headerlink" href="#02-http11grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_4">レスポンスタイムの決まり方<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="http11">▼ HTTP/1/1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
-<p>HTTP/1/1の場合、<code>1</code>個のリクエストを送信し、<code>1</code>個のレスポンスを受信する。</p>
+<p>HTTP/1/1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
@@ -6315,15 +6315,17 @@
 </ul>
 </blockquote>
 <h4 id="rpc">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p>単項RPCの場合、<code>1</code>個のリクエストを送信し、<code>1</code>個のレスポンスを受信する。</p>
+<p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
-<p>一方でストリーミングRPCの場合、複数個のリクエストを並行的に送信する。</p>
+<p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
+<p>この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
 <p><img alt="grpc_streaming-rpc_response-time.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
 <li><a href="https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6">https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6</a></li>
+<li><a href="https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96">https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96</a></li>
 </ul>
 </blockquote>
 <p><br></p>
