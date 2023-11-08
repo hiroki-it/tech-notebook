@@ -2741,7 +2741,7 @@
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
-    02. 各レイヤーの責務
+    02. 各層の責務
   </a>
   
 </li>
@@ -2777,7 +2777,7 @@
         
           <li class="md-nav__item">
   <a href="#osi_2" class="md-nav__link">
-    OSI参照モデルの各レイヤーのヘッダー情報認識
+    OSI参照モデルの各層のヘッダー情報認識
   </a>
   
 </li>
@@ -5940,7 +5940,7 @@
       
         <li class="md-nav__item">
   <a href="#02" class="md-nav__link">
-    02. 各レイヤーの責務
+    02. 各層の責務
   </a>
   
 </li>
@@ -5976,7 +5976,7 @@
         
           <li class="md-nav__item">
   <a href="#osi_2" class="md-nav__link">
-    OSI参照モデルの各レイヤーのヘッダー情報認識
+    OSI参照モデルの各層のヘッダー情報認識
   </a>
   
 </li>
@@ -6026,10 +6026,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. 各レイヤーの責務<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<p>各レイヤーで異なるプロトコルを処理する。</p>
+<h2 id="02">02. 各層の責務<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<p>各層で異なるプロトコルを処理する。</p>
 <p>プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。</p>
-<p>レイヤー名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。</p>
+<p>層名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。</p>
 <p><img alt="encryption_protocol" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png" /></p>
 <blockquote>
 <ul>
@@ -6048,7 +6048,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">アプリケーションへの操作がパケットになるまで<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>アプリケーション層でパケットのペイロードを作成し、レイヤーを経るたびにヘッダーを追加していく。</p>
+<p>アプリケーション層で、アプリケーションがパケットのペイロードを作成する。</p>
+<p>ペイロードは、OSIの層を経るたびにヘッダーを追加していく。</p>
 <p>パケット自体が暗号化されているため、実際の中身を確認することは難しい。</p>
 <p><img alt="osi-reference-model_packet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_packet.png" /></p>
 <dl>
@@ -6095,7 +6096,7 @@
 <p><br></p>
 <h3 id="_5">通信機器との対応関係<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><img alt="OSI参照モデルと通信機器.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデルと通信機器.jpg" /></p>
-<p>OSI参照モデルの各レイヤーと通信機器の間の対応関係は以下の通りである。</p>
+<p>OSI参照モデルの各層と通信機器の間の対応関係は以下の通りである。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -6140,7 +6141,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="osi_2">OSI参照モデルの各レイヤーのヘッダー情報認識<a class="headerlink" href="#osi_2" title="Permanent link">&para;</a></h3>
+<h3 id="osi_2">OSI参照モデルの各層のヘッダー情報認識<a class="headerlink" href="#osi_2" title="Permanent link">&para;</a></h3>
 <p>送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。</p>
 <p><img alt="tcp-ip_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png" /></p>
 <blockquote>
