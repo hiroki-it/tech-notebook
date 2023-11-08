@@ -1464,14 +1464,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    ▼ 単項RPCの場合
+  <a href="#http11" class="md-nav__link">
+    ▼ HTTP/1/1の場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
+  <a href="#rpc" class="md-nav__link">
     ▼ ストリーミングRPCの場合
   </a>
   
@@ -1491,7 +1491,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http11" class="md-nav__link">
+  <a href="#http11_1" class="md-nav__link">
     ▼ HTTP/1.1での表記
   </a>
   
@@ -6052,14 +6052,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    ▼ 単項RPCの場合
+  <a href="#http11" class="md-nav__link">
+    ▼ HTTP/1/1の場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc_1" class="md-nav__link">
+  <a href="#rpc" class="md-nav__link">
     ▼ ストリーミングRPCの場合
   </a>
   
@@ -6079,7 +6079,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http11" class="md-nav__link">
+  <a href="#http11_1" class="md-nav__link">
     ▼ HTTP/1.1での表記
   </a>
   
@@ -6306,11 +6306,18 @@
 <p><br></p>
 <h2 id="02-http11grpc">02. HTTP/1.1とgRPCの違い<a class="headerlink" href="#02-http11grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_4">レスポンスタイムの決まり方<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="rpc">▼ 単項RPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p>単項RPCの場合、<code>1</code>個のリクエストを送信する。</p>
+<h4 id="http11">▼ HTTP/1/1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<p>HTTP/1/1の場合、<code>1</code>個のリクエストを送信し、<code>1</code>個のレスポンスを受信する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
+<li><a href="https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6">https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6</a></li>
+</ul>
+</blockquote>
+<h4 id="rpc">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
+<p>単項RPCの場合、<code>1</code>個のリクエストを送信し、<code>1</code>個のレスポンスを受信する。</p>
 <p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
-<h4 id="rpc_1">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
-<p>ストリーミングRPCの場合、複数個のリクエストを並行的に送信する。</p>
+<p>一方でストリーミングRPCの場合、複数個のリクエストを並行的に送信する。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
 <p><img alt="grpc_streaming-rpc_response-time.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png" /></p>
 <blockquote>
@@ -6321,7 +6328,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">ステータスコードの決まり方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="http11">▼ HTTP/1.1での表記<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<h4 id="http11_1">▼ HTTP/1.1での表記<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
