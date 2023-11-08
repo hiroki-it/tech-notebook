@@ -223,11 +223,12 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ アップストリーム/ダウンストリーム
 
-アップストリームは、Envoyのリクエストの宛先を表す。
+アップストリームは、Envoyのレスポンスの送信元を表す。
 
-ダウンストリームは、Envoyへのリクエストの送信元を表す。
+ダウンストリームは、Envoyのレスポンスの宛先を表す。
 
 > - https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933
+> - https://stackoverflow.com/a/32365658
 
 #### ▼ XDS-APIとの通信の仕組み
 

@@ -510,7 +510,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 | `destination_workload_namespace` | リクエストの送信元のNamespace名を表す。                                           |                                                                        |
 | `reporter`                       | メトリクスの収集者を表す。`istio-proxy`コンテナかIngressGatewayのいずれかである。 | ・`destination` (`istio-proxy`コンテナ)<br>・`source` (IngressGateway) |
 | `response_flags`                 | Envoyの`%RESPONSE_FLAGS%`変数を表す。                                             | `-` (値なし)                                                           |
-| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0` (タイムアウトの場合)                                 |
+| `response_code`                  | `istio-proxy`コンテナが返信したレスポンスコードの値を表す。                       | `200`、`404`、`0` (クライアントが切断した場合)                         |
 | `source_app`                     | リクエストの送信元のコンテナ名を表す。                                            | `foo-container`                                                        |
 | `source_cluster`                 | リクエストの送信元のCluster名を表す。                                             | `Kubernetes`                                                           |
 | `source_workload`                | リクエストの送信元のDeployment名を表す。                                          | `foo-deployment`                                                       |
