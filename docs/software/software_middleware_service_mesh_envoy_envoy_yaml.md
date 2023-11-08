@@ -99,7 +99,7 @@ admin:
 
 <br>
 
-## 02-02. admin.address
+## 03. admin.address
 
 ### addressとは
 
@@ -152,7 +152,7 @@ admin:
 
 <br>
 
-## 03. static_resources
+## 04. static_resources
 
 ### static_resourcesとは
 
@@ -165,7 +165,7 @@ admin:
 
 <br>
 
-## 03-02. listeners
+## 05. static_resources.listeners
 
 ### listenersとは
 
@@ -379,7 +379,7 @@ static_resources:
 
 <br>
 
-## 03-03. clusters
+## 06. static_resources.clusters
 
 ### clustersとは
 
@@ -634,7 +634,62 @@ static_resources:
 
 <br>
 
-## 04. dynamic_resources
+## 06-02. clusters.typed_extension_protocol_options
+
+### envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+
+#### ▼ common_http_protocol_options
+
+```yaml
+static_resources:
+  clusters:
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          common_http_protocol_options:
+            idle_timeout: 1s
+```
+
+#### ▼ connect_timeout
+
+```yaml
+static_resources:
+  clusters:
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          connect_timeout: 5s
+```
+
+#### ▼ http2_protocol_options
+
+HTTP/2 (例：gRPCなど) について設定する。
+
+```yaml
+static_resources:
+  clusters:
+    - http2_protocol_options:
+        # ストリーミングRPCの最大同時接続数を設定する
+        max_concurrent_streams: 100
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/upstreams/http/v3/http_protocol_options.proto#extensions-upstreams-http-v3-httpprotocoloptions
+
+#### ▼ upstream_http_protocol_options
+
+```yaml
+static_resources:
+  clusters:
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          upstream_http_protocol_options:
+            auto_sni: true
+```
+
+<br>
+
+## 05. dynamic_resources
 
 ### dynamic_resourcesとは
 

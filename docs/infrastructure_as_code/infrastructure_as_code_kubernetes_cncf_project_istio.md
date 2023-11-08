@@ -541,12 +541,15 @@ Istio上のEnvoyは、アプリコンテナへのアクセスログ (インバ�
   "connection_termination_details": null,
   "downstream_local_address": "*.*.*.*:50010",
   "downstream_remote_address": "*.*.*.*:50011",
+  # ダウンストリームからアップストリームへリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間
+  # ダウンストリーム側で設定したタイムアウトになった場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウトとおおよそ同じになる
   "duration": 12,
   "method": null,
   "path": null,
   "protocol": null,
   "request_id": null,
   "requested_server_name": null,
+  # アップストリームからのレスポンスのステータスコード
   "response_code": 200,
   "response_code_details": null,
   # ステータスコードの補足情報

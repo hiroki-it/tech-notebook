@@ -102,6 +102,7 @@ OSI参照モデルの各層と通信機器の間の対応関係は以下の通�
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
 > - https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
+> - https://www.sophia-it.com/content/%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
 
 <br>
 
