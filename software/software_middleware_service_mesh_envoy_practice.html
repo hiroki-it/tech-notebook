@@ -1789,7 +1789,7 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    ▼ 解決
+    ▼ 解決方法
   </a>
   
 </li>
@@ -1816,14 +1816,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ 解決
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 解決
+    ▼ 解決方法
   </a>
   
 </li>
@@ -1849,8 +1842,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 解決
+  <a href="#_4" class="md-nav__link">
+    ▼ 解決方法
   </a>
   
 </li>
@@ -5891,7 +5884,7 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    ▼ 解決
+    ▼ 解決方法
   </a>
   
 </li>
@@ -5918,14 +5911,7 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ 解決
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 解決
+    ▼ 解決方法
   </a>
   
 </li>
@@ -5951,8 +5937,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 解決
+  <a href="#_4" class="md-nav__link">
+    ▼ 解決方法
   </a>
   
 </li>
@@ -6003,7 +5989,7 @@
 <li><a href="https://christina04.hatenablog.com/entry/istio-and-envoy-errors">https://christina04.hatenablog.com/entry/istio-and-envoy-errors</a></li>
 </ul>
 </blockquote>
-<h4 id="_2">▼ 解決<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="_2">▼ 解決方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>以下が原因である可能性がある。</p>
 <ul>
 <li>CoreDNSが停止している。</li>
@@ -6025,20 +6011,21 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage">https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage</a></li>
 </ul>
 </blockquote>
-<h4 id="_3">▼ 解決<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h4 id="_3">▼ 解決方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>以下が原因である可能性がある。</p>
 <ul>
 <li>送信元Envoyがハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
-<li>通常でも時間がかかりすぎる処理である</li>
+<li>ネットワークに問題がある。</li>
+<li>処理に時間がかかりすぎている。</li>
 </ul>
 <p>これらを解決する。</p>
-<h4 id="_4">▼ 解決<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyの正常性やネットワークの状況を確認し、エラーを解決する。</p>
 <p><br></p>
 <h3 id="upstream-response-timeout"><code>upstream response timeout</code>を解決する<a class="headerlink" href="#upstream-response-timeout" title="Permanent link">&para;</a></h3>
 <h4 id="upstream-response-timeout_1">▼ <code>upstream response timeout</code>とは<a class="headerlink" href="#upstream-response-timeout_1" title="Permanent link">&para;</a></h4>
-<p>宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
+<p>ステータスコードは<code>504</code>である。</p>
+<p>送信元Envoyから宛先にはリクエストを送信できている。</p>
+<p>しかし、宛先からのレスポンス処理がタイムアウト時間を超過し、送信元Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
 <p>アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、サーバー側Envoyや外部システムからのレスポンスがタイムアウトになっている。</p>
 <p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。</p>
 <blockquote>
@@ -6046,12 +6033,13 @@
 <li><a href="https://github.com/envoyproxy/envoy/issues/13068">https://github.com/envoyproxy/envoy/issues/13068</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ 解決<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 解決方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>以下が原因である可能性がある。</p>
 <ul>
 <li>宛先Envoyがハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
-<li>通常でも時間がかかりすぎる処理である</li>
+<li>ネットワークに問題がある。</li>
+<li>処理に時間がかかりすぎている。</li>
 </ul>
 <p>これらを解決する。</p>
 <p><br></p>
