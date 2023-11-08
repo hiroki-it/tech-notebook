@@ -2748,21 +2748,28 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. パケットの通信経路
+    03. パケット
   </a>
   
-    <nav class="md-nav" aria-label="03. パケットの通信経路">
+    <nav class="md-nav" aria-label="03. パケット">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アプリケーションへの操作がパケットになるまで
+    パケットとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    アプリケーションへの操作がパケットになるまで
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     通信機器との対応関係
   </a>
   
@@ -5940,21 +5947,28 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. パケットの通信経路
+    03. パケット
   </a>
   
-    <nav class="md-nav" aria-label="03. パケットの通信経路">
+    <nav class="md-nav" aria-label="03. パケット">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アプリケーションへの操作がパケットになるまで
+    パケットとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
+    アプリケーションへの操作がパケットになるまで
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
     通信機器との対応関係
   </a>
   
@@ -6023,15 +6037,24 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. パケットの通信経路<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_3">アプリケーションへの操作がパケットになるまで<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>アプリケーション層でパケットのメッセージ部分を作成し、レイヤーを経るたびにヘッダーを追加していく。</p>
+<h2 id="03">03. パケット<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_3">パケットとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>パケットは、ペイロード (データ)、ヘッダー情報、から構成される。</p>
+<p><img alt="パケットの構造" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/">https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_4">アプリケーションへの操作がパケットになるまで<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>アプリケーション層でパケットのペイロードを作成し、レイヤーを経るたびにヘッダーを追加していく。</p>
 <p>パケット自体が暗号化されているため、実際の中身を確認することは難しい。</p>
 <p><img alt="osi-reference-model_packet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_packet.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じて、パケットのメッセージ (データ) を作成し、<code>L7</code>ヘッダーを追加する。</p>
+<p>アプリケーション層 (<code>L7</code>) にて、アプリケーションの入力に応じて、パケットのペイロードを作成し、<code>L7</code>ヘッダーを追加する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -6070,7 +6093,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">通信機器との対応関係<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">通信機器との対応関係<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><img alt="OSI参照モデルと通信機器.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデルと通信機器.jpg" /></p>
 <p>OSI参照モデルの各レイヤーと通信機器の間の対応関係は以下の通りである。</p>
 <dl>
@@ -6132,7 +6155,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
       
     
   </small>
