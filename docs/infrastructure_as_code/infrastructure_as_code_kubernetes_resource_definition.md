@@ -1774,7 +1774,7 @@ spec:
 
 #### ▼ parallelismとは
 
-並列的に起動できるPod数を設定する。
+同時に起動できるPod数を設定する。
 
 ```yaml
 apiVersion: batch/v1
