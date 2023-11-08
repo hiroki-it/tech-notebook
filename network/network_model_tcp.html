@@ -2713,11 +2713,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-tcp" class="md-nav__link">
-    01. TCP階層モデル
+  <a href="#01-osi" class="md-nav__link">
+    01. OSI階層モデルへの移行
   </a>
   
-    <nav class="md-nav" aria-label="01. TCP階層モデル">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tcp" class="md-nav__link">
+    02. TCP階層モデル
+  </a>
+  
+    <nav class="md-nav" aria-label="02. TCP階層モデル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2740,8 +2747,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-osi" class="md-nav__link">
-    02. OSI階層モデルへの移行
+  <a href="#03" class="md-nav__link">
+    03. 通信機器との対応関係
   </a>
   
 </li>
@@ -5669,11 +5676,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-tcp" class="md-nav__link">
-    01. TCP階層モデル
+  <a href="#01-osi" class="md-nav__link">
+    01. OSI階層モデルへの移行
   </a>
   
-    <nav class="md-nav" aria-label="01. TCP階層モデル">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-tcp" class="md-nav__link">
+    02. TCP階層モデル
+  </a>
+  
+    <nav class="md-nav" aria-label="02. TCP階層モデル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5696,8 +5710,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-osi" class="md-nav__link">
-    02. OSI階層モデルへの移行
+  <a href="#03" class="md-nav__link">
+    03. 通信機器との対応関係
   </a>
   
 </li>
@@ -5729,7 +5743,15 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-tcp">01. TCP階層モデル<a class="headerlink" href="#01-tcp" title="Permanent link">&para;</a></h2>
+<h2 id="01-osi">01. OSI階層モデルへの移行<a class="headerlink" href="#01-osi" title="Permanent link">&para;</a></h2>
+<p>基本的に、OSI階層モデルに寄せて整理しているため、以下のノートを参照すること。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html">https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-tcp">02. TCP階層モデル<a class="headerlink" href="#02-tcp" title="Permanent link">&para;</a></h2>
 <h3 id="osi">OSI参照モデルとは<a class="headerlink" href="#osi" title="Permanent link">&para;</a></h3>
 <p>ネットワークで使用されているプロトコルを<code>4</code>階層に分類したモデルこと。</p>
 <p><br></p>
@@ -5739,11 +5761,12 @@
 <p>暗号化プロトコルを使用している場合は、各階層でそのプロトコルがパケットヘッダーを暗号化する。</p>
 <p><img alt="encryption_protocol" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png" /></p>
 <p><br></p>
-<h2 id="02-osi">02. OSI階層モデルへの移行<a class="headerlink" href="#02-osi" title="Permanent link">&para;</a></h2>
-<p>基本的に、OSI階層モデルに寄せて整理しているため、以下のノートを参照してください。</p>
+<h2 id="03">03. 通信機器との対応関係<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<p>送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。</p>
+<p><img alt="tcp-ip_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html">https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC">https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -5753,7 +5776,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
       
     
   </small>
