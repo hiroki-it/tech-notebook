@@ -142,15 +142,20 @@ service Chat {
 
 ### レスポンスタイムの決まり方
 
-#### ▼ 単項RPCの場合
+#### ▼ HTTP/1/1の場合
 
-単項RPCの場合、`1`個のリクエストを送信する。
+HTTP/1/1の場合、`1`個のリクエストを送信し、`1`個のレスポンスを受信する。
 
-そのため、従来のHTTP/1.1と同じレスポンスタイムである。
+> - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
+> - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
 
 #### ▼ ストリーミングRPCの場合
 
-ストリーミングRPCの場合、複数個のリクエストを並行的に送信する。
+単項RPCの場合、`1`個のリクエストを送信し、`1`個のレスポンスを受信する。
+
+そのため、従来のHTTP/1.1と同じレスポンスタイムである。
+
+一方でストリーミングRPCの場合、複数個のリクエストを並行的に送信する。
 
 そのため、重複しない通信時間が合計のレスポンスタイムになる。
 
