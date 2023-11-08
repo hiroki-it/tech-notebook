@@ -144,25 +144,28 @@ service Chat {
 
 #### ▼ HTTP/1/1の場合
 
-HTTP/1/1の場合、`1`個のリクエストを送信し、`1`個のレスポンスを受信する。
+HTTP/1/1の場合、`1`個のリクエストとレスポンスを送受信する。
 
 > - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
 
 #### ▼ ストリーミングRPCの場合
 
-単項RPCの場合、`1`個のリクエストを送信し、`1`個のレスポンスを受信する。
+単項RPCの場合、`1`個のリクエストとレスポンスを送受信する。
 
 そのため、従来のHTTP/1.1と同じレスポンスタイムである。
 
-一方でストリーミングRPCの場合、複数個のリクエストを並行的に送信する。
+一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。
 
 そのため、重複しない通信時間が合計のレスポンスタイムになる。
+
+この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。
 
 ![grpc_streaming-rpc_response-time.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png)
 
 > - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
+> - https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96
 
 <br>
 
