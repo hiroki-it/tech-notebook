@@ -7676,12 +7676,15 @@
 <span class="w">  </span><span class="s">&quot;connection_termination_details&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;downstream_local_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50010&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;downstream_remote_address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*.*.*.*:50011&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># ダウンストリームからアップストリームへリクエストをプロキシし、レスポンスを処理し終えるまでにかかった時間</span>
+<span class="w">  </span><span class="c1"># ダウンストリーム側で設定したタイムアウトになった場合は、Envoyはその時間の直前にプロキシをやめるため、Durationはタイムアウトとおおよそ同じになる</span>
 <span class="w">  </span><span class="s">&quot;duration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">12</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;method&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;path&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;protocol&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;request_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;requested_server_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="c1"># アップストリームからのレスポンスのステータスコード</span>
 <span class="w">  </span><span class="s">&quot;response_code&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;response_code_details&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ステータスコードの補足情報</span>
