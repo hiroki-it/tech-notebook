@@ -53,7 +53,6 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 > - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
 
-
 #### ▼ 解決
 
 以下が原因である可能性がある。
@@ -63,7 +62,6 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 - 通常でも時間がかかりすぎる処理である
 
 これらを解決する。
-
 
 #### ▼ 解決
 

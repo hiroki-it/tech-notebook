@@ -188,6 +188,104 @@ Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 
 Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルート値に変換する。
 
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+    # リスナー値
+    name: 0.0.0.0_50002
+    active_state:
+      version_info: 2022-11-24T12:13:05Z/468
+      listener:
+        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+        name: 0.0.0.0_50002
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 50002
+        filter_chains:
+          - filter_chain_match:
+              transport_protocol: raw_buffer
+              application_protocols:
+                - http/1.1
+                - h2c
+            filters:
+              - name: envoy.filters.network.http_connection_manager
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                  stat_prefix: outbound_0.0.0.0_50001
+                  rds:
+                    config_source:
+                      ads: {}
+                      initial_fetch_timeout: 0s
+                      resource_api_version: V3
+                    route_config_name: 50002
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+  ...
+```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
+
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+    # ルート値
+    version_info: 2022-11-24T12:13:05Z/468
+    route_config:
+      "@type": type.googleapis.com/envoy.config.route.v3.RouteConfiguration
+      name: 50002
+      virtual_hosts:
+        - name: bar-service.bar-namespace.svc.cluster.local:50002
+          domains:
+            - bar-service.bar-namespace.svc.cluster.local
+            - bar-service.bar-namespace.svc.cluster.local:50002
+            - bar-service
+            - bar-service:50002
+            - bar-service.bar-namespace.svc
+            - bar-service.bar-namespace.svc:50002
+            - bar-service.bar-namespace
+            - bar-service.bar-namespace:50002
+            - 172.16.0.2
+            - 172.16.0.2:50002
+          routes:
+            - match:
+                prefix: /
+              route:
+                cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+                timeout: 0s
+                retry_policy:
+                  retry_on: connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes
+                  num_retries: 2
+                  retry_host_predicate:
+                    - name: envoy.retry_host_predicates.previous_hosts
+                  host_selection_retry_max_attempts: "5"
+                  retriable_status_codes:
+                    - 503
+                max_stream_duration:
+                  max_stream_duration: 0s
+                  grpc_timeout_header_max: 0s
+              decorator:
+                operation: bar-service.bar-namespace.svc.cluster.local:50002/*
+
+  ...
+
+  - '@type': type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+
+  ...
+```
+
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
 ```bash
@@ -225,13 +323,120 @@ Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件�
 
 Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
 
-またPod間通信では、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否か、を決める能力を担う。
+またPod間通信では、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
 #### ▼ Envoyの設定値として
 
 Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
+
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
+    # クラスター値
+    version_info: 2022-11-24T12:13:05Z/468
+
+    cluster:
+      "@type": type.googleapis.com/envoy.config.cluster.v3.Cluster
+      name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+      type: EDS
+      eds_cluster_config:
+        eds_config:
+          ads: {}
+          initial_fetch_timeout: 0s
+          resource_api_version: V3
+        service_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
+
+  ...
+```
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
+
+configs:
+  # エンドポイント値
+  dynamic_endpoint_configs:
+    - endpoint_config:
+        "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
+        cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+        endpoints:
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1a
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 11.0.0.1
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: bar
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1d
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 11.0.0.2
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: bar
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+          - locality:
+              region: ap-northeast-1
+              zone: ap-northeast-1d
+            lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: 11.0.0.3
+                      port_value: 80
+                  health_check_config: {}
+                health_status: HEALTHY
+                metadata:
+                  filter_metadata:
+                    istio:
+                      workload: baz
+                    envoy.transport_socket_match:
+                      tlsMode: istio
+                load_balancing_weight: 1
+        policy:
+          overprovisioning_factor: 140
+
+    ...
+
+    - endpoint_config:
+
+    ...
+```
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
 
