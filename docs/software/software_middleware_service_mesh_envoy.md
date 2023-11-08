@@ -221,6 +221,14 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
+#### ▼ アップストリーム/ダウンストリーム
+
+アップストリームは、Envoyのリクエストの宛先を表す。
+
+ダウンストリームは、Envoyへのリクエストの送信元を表す。
+
+> - https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933
+
 #### ▼ XDS-APIとの通信の仕組み
 
 Envoyは、XDS-APIにリモートプロシージャーコールを一方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。
