@@ -6014,7 +6014,7 @@
 <h3 id="upstream-request-timeout"><code>upstream request timeout</code>を解決する<a class="headerlink" href="#upstream-request-timeout" title="Permanent link">&para;</a></h3>
 <h4 id="upstream-request-timeout_1">▼ <code>upstream request timeout</code>とは<a class="headerlink" href="#upstream-request-timeout_1" title="Permanent link">&para;</a></h4>
 <p>ステータスコードは<code>504</code>である。</p>
-<p>送信元Envoyからのリクエスト処理がタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。</p>
+<p>送信元Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、送信元Envoyから宛先にリクエストを送信できなかったことを表している。</p>
 <p>アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、送信元Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。</p>
 <p><img alt="envoy_upstream-request-timeout_outbound.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png" /></p>
 <p>インバウンド通信の場合、送信元Envoyの宛先はアプリであり、送信元Envoyからアプリへのリクエストがタイムアウトになっている。</p>
