@@ -6262,9 +6262,9 @@
 </code></pre></div>
 <p><br></p>
 <h4 id="response_flags">▼ <code>%RESPONSE_FLAGS%</code><a class="headerlink" href="#response_flags" title="Permanent link">&para;</a></h4>
-<p>インバウンド/アウトバウンド通信時に、アプリコンテナから受信したレスポンスの補足メッセージを表す。</p>
+<p>Cluster外からの通信/Pod間通信時のレスポンスの補足メッセージを表す。</p>
 <p>ステータスコードと合わせて、レスポンスのエラーや警告の理由を読み取ることに役立つ。</p>
-<p>アウトバウンド通信に関する補足メッセージは以下の通りである。</p>
+<p>アップストリームが原因のメッセージは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -6279,47 +6279,47 @@
 <td><code>NC</code></td>
 <td><code>NO_CLUSTER_FOUND</code></td>
 <td style="text-align: center;">なし</td>
-<td>アウトバウンド通信にて、クラスターの設定が見つからず、Envoyはアプリコンテナに接続できなかった。</td>
+<td>クラスターの設定が見つからず、Envoyはアップストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UC</code></td>
 <td><code>UPSTREAM_CONNECTION_TERMINATION</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>遭遇率が一番高い。アウトバウンド通信にて、Envoyは何らかの理由でアプリコンテナに接続できなかった。</td>
+<td>遭遇率が一番高い。Envoyは何らかの理由でアップストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UF</code></td>
 <td><code>UPSTREAM_CONNECTION_FAILURE</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>アウトバウンド通信にて、Envoyは通信障害でアプリコンテナに接続できなかった。</td>
+<td>Envoyは通信障害でアップストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UT</code></td>
 <td><code>UPSTREAM_REQUEST_TIMEOUT</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>アウトバウンド通信にて、Envoyはタイムアウトでアプリコンテナに接続できなかった。</td>
+<td>Envoyはタイムアウトでアップストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>UO</code></td>
 <td><code>UPSTREAM_OVERFLOW</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>アウトバウンド通信にて、サーキットブレイカーで、Envoyはアプリコンテナに接続できなかった。</td>
+<td>サーキットブレイカーで、Envoyはアップストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>URX</code></td>
 <td><code>UPSTREAM_RETRY_LIMIT_EXCEEDED</code></td>
 <td style="text-align: center;">なし</td>
-<td>アウトバウンド通信にて、アプリコンテナの通信試行回数制限の上限超過で、Envoyはアプリコンテナに接続拒否されてしまった。</td>
+<td>アップストリームの通信試行回数制限の上限超過で、Envoyはアップストリームに接続拒否されてしまった。</td>
 </tr>
 <tr>
 <td><code>UH</code></td>
 <td><code>NO_HEALTHY_UPSTREAM</code></td>
 <td style="text-align: center;"><code>503</code></td>
-<td>アウトバウンド通信にて、Envoyはアプリコンテナの異常で接続できなかった。</td>
+<td>Envoyはアップストリームの異常で接続できなかった。</td>
 </tr>
 </tbody>
 </table>
-<p>インバウンド通信に関する補足メッセージは以下の通りである。</p>
+<p>ダウンストリームが原因のメッセージは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -6334,19 +6334,19 @@
 <td><code>DC</code></td>
 <td><code>DOWNSTREAM_CONNECTION_TERMINATION</code></td>
 <td style="text-align: center;">なし</td>
-<td>インバウンド通信にて、Envoyのアプリコンテナへの通信が中断され、Envoyはレスポンスを受信できなかった。</td>
+<td>Envoyのダウンストリームへの通信が中断され、Envoyはレスポンスを受信できなかった。</td>
 </tr>
 <tr>
 <td><code>DPE</code></td>
 <td><code>DOWNSTREAM_PROTOCOL_ERROR</code></td>
 <td style="text-align: center;">なし</td>
-<td>インバウンド通信にて、EnvoyはHTTPプロトコルのエラーでアプリコンテナに接続できなかった。</td>
+<td>EnvoyはHTTPプロトコルのエラーでダウンストリームに接続できなかった。</td>
 </tr>
 <tr>
 <td><code>NR</code></td>
 <td><code>NO_ROUTE_FOUND</code></td>
 <td style="text-align: center;"><code>404</code></td>
-<td>インバウンド通信にて、ルートやフィルターチェーンの設定が見つからず、Envoyはアプリコンテナに接続できなかった。</td>
+<td>ルートやフィルターチェーンの設定が見つからず、Envoyはダウンストリームに接続できなかった。</td>
 </tr>
 </tbody>
 </table>
@@ -6496,7 +6496,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
       
     
   </small>
