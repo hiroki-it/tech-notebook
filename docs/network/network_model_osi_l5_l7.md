@@ -17,7 +17,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 ### アプリケーション層とは
 
-アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理するレイヤーである。
+アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3、など) を処理する層である。
 
 > - https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
 

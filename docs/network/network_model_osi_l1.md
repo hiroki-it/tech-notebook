@@ -17,7 +17,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 ### 物理層とは
 
-ケーブルや通信信号を処理するレイヤーである。
+ケーブルや通信信号を処理する層である。
 
 > - https://hogetech.info/network/osi/layer1
 
