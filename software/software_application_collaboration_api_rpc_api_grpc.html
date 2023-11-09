@@ -1487,26 +1487,6 @@
     ステータスコードの決まり方
   </a>
   
-    <nav class="md-nav" aria-label="ステータスコードの決まり方">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http11_1" class="md-nav__link">
-    ▼ HTTP/1.1での表記
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    ▼ gRPCでの表記
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -1538,7 +1518,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -1558,7 +1538,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6075,26 +6055,6 @@
     ステータスコードの決まり方
   </a>
   
-    <nav class="md-nav" aria-label="ステータスコードの決まり方">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#http11_1" class="md-nav__link">
-    ▼ HTTP/1.1での表記
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
-    ▼ gRPCでの表記
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -6126,7 +6086,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6146,7 +6106,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_4" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6330,139 +6290,114 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">ステータスコードの決まり方<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="http11_1">▼ HTTP/1.1での表記<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
+<th>HTTP/1.1のステータスコード</th>
+<th>gRPCのステータス番号</th>
 <th>ステータスコード</th>
-<th>メッセージ</th>
 <th>説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>200</code></td>
-<td><code>OK</code></td>
+<td><code>0</code></td>
+<td></td>
 <td>リクエストに成功した。</td>
 </tr>
 <tr>
-<td><code>400</code></td>
-<td><code>Bad Request</code></td>
-<td>リクエストのパラメーターが正しくない。</td>
-</tr>
-<tr>
-<td><code>404</code></td>
-<td><code>Not Found</code></td>
-<td>リクエストしたデータが存在しない。</td>
-</tr>
-<tr>
-<td><code>500</code></td>
-<td><code>Internal Server Error</code></td>
-<td>宛先がエラーを返却した。</td>
-</tr>
-<tr>
-<td><code>503</code></td>
-<td><code>Service Unavailable</code></td>
-<td>宛先がリクエストを受信する準備ができていなかった。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
-</ul>
-</blockquote>
-<h4 id="grpc_2">▼ gRPCでの表記<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>番号</th>
-<th>ステータスコード</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>0</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
+<td><code>499</code></td>
 <td><code>1</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>500</code></td>
 <td><code>2</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>400</code></td>
 <td><code>3</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>504</code></td>
 <td><code>4</code></td>
 <td><code>DeadlineExceeded</code></td>
 <td>タイムアウト時間内にgRPCサーバーに接続できなかった。</td>
 </tr>
 <tr>
+<td><code>404</code></td>
 <td><code>5</code></td>
 <td></td>
-<td></td>
+<td>リクエストしたデータが存在しない。</td>
 </tr>
 <tr>
+<td><code>409</code></td>
 <td><code>6</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>403</code></td>
 <td><code>7</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>429</code></td>
 <td><code>8</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>400</code></td>
 <td><code>9</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>499</code></td>
 <td><code>10</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>400</code></td>
 <td><code>11</code></td>
 <td></td>
-<td></td>
+<td>リクエストのパラメーターが正しくない。</td>
 </tr>
 <tr>
+<td><code>501</code></td>
 <td><code>12</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>500</code></td>
 <td><code>13</code></td>
 <td></td>
-<td></td>
+<td>宛先がエラーを返却した。</td>
 </tr>
 <tr>
+<td><code>503</code></td>
 <td><code>14</code></td>
 <td><code>Unavailable</code></td>
 <td>gRPCサーバー側で関数を実行する準備ができておらず、gRPCクライアント側で関数のコールに失敗した。</td>
 </tr>
 <tr>
+<td><code>500</code></td>
 <td><code>15</code></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td><code>401</code></td>
 <td><code>16</code></td>
 <td></td>
 <td></td>
@@ -6473,6 +6408,8 @@
 <ul>
 <li><a href="https://grpc.io/docs/guides/error/#error-status-codes">https://grpc.io/docs/guides/error/#error-status-codes</a></li>
 <li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
+<li><a href="https://qiita.com/Hiraku/items/0549e4cf7079d22b27e8">https://qiita.com/Hiraku/items/0549e4cf7079d22b27e8</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6489,7 +6426,7 @@ baz (Python製)
 </code></pre></div>
 <p><br></p>
 <h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>.proto</code>ファイルを置く。</p>
 <p><code>.pb</code>ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。</p>
 <ul>
@@ -6597,7 +6534,7 @@ baz (Python製)
 </blockquote>
 <p><br></p>
 <h3 id="protopb_go"><code>.proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_4">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
