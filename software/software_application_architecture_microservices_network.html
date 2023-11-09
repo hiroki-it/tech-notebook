@@ -1363,6 +1363,26 @@
     タイムアウト時間
   </a>
   
+    <nav class="md-nav" aria-label="タイムアウト時間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ マイクロサービスだけに着目する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ サイドカープロキシにも着目する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -5814,6 +5834,26 @@
     タイムアウト時間
   </a>
   
+    <nav class="md-nav" aria-label="タイムアウト時間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ マイクロサービスだけに着目する場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ サイドカープロキシにも着目する場合
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -5908,8 +5948,40 @@
 <p><br></p>
 <h2 id="02">02. 通信に伴う処理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">タイムアウト時間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ マイクロサービスだけに着目する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ダウンストリーム側マイクロサービスよりもアップストリーム側マイクロサービスのタイムアウト時間を短くする。</p>
-<div class="highlight"><pre><span></span><code>A (45秒) ---&gt; B (30秒) ---&gt; C (15秒)
+<div class="highlight"><pre><span></span><code>MS (45秒)
+⬇︎
+⬇︎︎︎
+MS (30秒)
+⬇︎
+⬇︎
+MS (15秒)
+</code></pre></div>
+<h4 id="_11">▼ サイドカープロキシにも着目する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>ダウンストリーム側マイクロサービスよりもサイドカーのタイムアウト時間を短くする。</p>
+<p>また、サイドカーよりもアップストリーム側マイクロサービスのサイドカーのタイムアウト時間を短くする。</p>
+<div class="highlight"><pre><span></span><code>MS (45秒)
+⬇︎
+⬇︎
+サイドカー (44秒)
+⬇︎
+--------------
+⬇︎
+サイドカー (31秒)
+⬇︎
+⬇︎
+MS (30秒)
+⬇︎
+⬇︎
+サイドカー (29秒)
+⬇︎
+--------------
+⬇︎
+サイドカー (16秒)
+⬇︎
+⬇︎
+MS (15秒)
 </code></pre></div>
 <p><br></p>
 
