@@ -5254,7 +5254,9 @@ Serviceのタイプを設定する。
 
 #### ▼ ClusterIPの場合
 
-ClusterIP Serviceを設定する。`.spec.clusterIP`キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
+ClusterIP Serviceを設定する。
+
+`.spec.clusterIP`キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
 
 ```yaml
 apiVersion: v1
@@ -5274,6 +5276,25 @@ spec:
 ```
 
 > - https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF
+
+#### ▼ ExternalNameの場合
+
+ExternalName Serviceを設定する。
+
+Cluster内のDNSと外部のCNAMEを紐づける。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foo-db-service
+spec:
+  type: ExternalName
+  # foo-db-service.default.svc.cluster.local を指定すると、*****.rds.amazonaws.comに問い合わせる
+  externalName: *****.rds.amazonaws.com
+```
+
+> - https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/
 
 #### ▼ NodePortの場合
 
