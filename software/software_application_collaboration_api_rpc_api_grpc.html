@@ -1465,14 +1465,14 @@
         
           <li class="md-nav__item">
   <a href="#http11" class="md-nav__link">
-    ▼ HTTP/1/1の場合
+    ▼ HTTP/1.1の場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    ▼ ストリーミングRPCの場合
+  <a href="#grpc_1" class="md-nav__link">
+    ▼ gRPCの場合
   </a>
   
 </li>
@@ -1498,7 +1498,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     ▼ gRPCでの表記
   </a>
   
@@ -1538,7 +1538,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -1558,7 +1558,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#grpc_4" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6053,14 +6053,14 @@
         
           <li class="md-nav__item">
   <a href="#http11" class="md-nav__link">
-    ▼ HTTP/1/1の場合
+    ▼ HTTP/1.1の場合
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rpc" class="md-nav__link">
-    ▼ ストリーミングRPCの場合
+  <a href="#grpc_1" class="md-nav__link">
+    ▼ gRPCの場合
   </a>
   
 </li>
@@ -6086,7 +6086,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#grpc_1" class="md-nav__link">
+  <a href="#grpc_2" class="md-nav__link">
     ▼ gRPCでの表記
   </a>
   
@@ -6126,7 +6126,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_2" class="md-nav__link">
+  <a href="#grpc_3" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6146,7 +6146,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grpc_3" class="md-nav__link">
+  <a href="#grpc_4" class="md-nav__link">
     ▼ gRPCクライアント/サーバーのリポジトリ
   </a>
   
@@ -6306,15 +6306,15 @@
 <p><br></p>
 <h2 id="02-http11grpc">02. HTTP/1.1とgRPCの違い<a class="headerlink" href="#02-http11grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_4">レスポンスタイムの決まり方<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="http11">▼ HTTP/1/1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
-<p>HTTP/1/1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<h4 id="http11">▼ HTTP/1.1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<p>HTTP/1.1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
 <li><a href="https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6">https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6</a></li>
 </ul>
 </blockquote>
-<h4 id="rpc">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_1">▼ gRPCの場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
 <p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
 <p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
@@ -6372,12 +6372,12 @@
 <li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84">https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84</a></li>
 </ul>
 </blockquote>
-<h4 id="grpc_1">▼ gRPCでの表記<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_2">▼ gRPCでの表記<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
 <th>番号</th>
-<th>コード</th>
+<th>ステータスコード</th>
 <th>説明</th>
 </tr>
 </thead>
@@ -6455,7 +6455,7 @@
 <tr>
 <td><code>14</code></td>
 <td><code>Unavailable</code></td>
-<td>RPCの宛先が関数を実行する準備ができておらず、クライアントからのRPCに失敗した。</td>
+<td>gRPCサーバー側で関数を実行する準備ができておらず、gRPCクライアント側で関数のコールに失敗した。</td>
 </tr>
 <tr>
 <td><code>15</code></td>
@@ -6488,7 +6488,7 @@ baz (Python製)
 </code></pre></div>
 <p><br></p>
 <h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>.proto</code>ファイルを置く。</p>
 <p><code>.pb</code>ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。</p>
 <ul>
@@ -6596,7 +6596,7 @@ baz (Python製)
 </blockquote>
 <p><br></p>
 <h3 id="protopb_go"><code>.proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
-<h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
+<h4 id="grpc_4">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -6686,7 +6686,7 @@ baz (Python製)
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

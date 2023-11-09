@@ -7276,7 +7276,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <p>分散トレースを収集すると、マイクロサービス間のレスポンスタイムを可視化できる。</p>
 <p>例えば、性能テストでシステム全体の性能劣化があったとする。</p>
 <p>分散トレースで特定のマイクロサービス間でレスポンスタイムを可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。</p>
-<p>その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。</p>
+<p>そのダウンストリーム側マイクロサービスのリクエストまたはアップストリーム側マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。</p>
 <p><img alt="distributed-trace_connection-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png" /></p>
 <blockquote>
 <ul>
@@ -7381,7 +7381,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <h3 id="carrier">ツールごとのCarrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
 <h4 id="carrier_1">▼ Carrierとは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
 <p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
-<p>コンテキストを下流マイクロサービスに伝播させる処理を持つ。</p>
+<p>コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。</p>
 <p>伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、など) を『Carrier』という。</p>
 <h4 id="_52">▼ 標準ヘッダー<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
 <table>
@@ -7481,8 +7481,8 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 <p>スパンが持つデータをデータポイントとして集計することにより、メトリクスのデータポイントを収集できる。</p>
 <p><br></p>
 <h3 id="_56">分散トレースの読み方<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
-<p>上から下に読むと、上流サービス (上位スパン) が下流サービス (下位スパン) を処理をコールしていることを確認できる。</p>
-<p>下から上に読むと、下流サービス (下位スパン) から上流サービス (上位スパン) に結果を返却していることを確認できる。</p>
+<p>上から下に読むと、ダウンストリーム側マイクロサービス (上位スパン) がアップストリーム側マイクロサービス (下位スパン) を処理をコールしていることを確認できる。</p>
+<p>下から上に読むと、アップストリーム側マイクロサービス (下位スパン) からダウンストリーム側マイクロサービス (上位スパン) に結果を返却していることを確認できる。</p>
 <p><img alt="distributed-trace_reading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png" /></p>
 <blockquote>
 <ul>
@@ -7564,7 +7564,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

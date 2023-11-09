@@ -6901,7 +6901,7 @@
 </blockquote>
 <h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
 <p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
-<p>コンテキストを下流マイクロサービスに伝播させる処理を持つ。</p>
+<p>コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。</p>
 <p>Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
 <table>
 <thead>
@@ -7098,13 +7098,13 @@
 <span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
+<span class="w">    </span><span class="c1">// ダウンストリーム側マイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。</span>
+<span class="w">    </span><span class="c1">// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。</span>
 <span class="w">    </span><span class="nx">cleanUp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">cancel</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">shutdownTimeout</span><span class="p">)</span>
 <span class="w">        </span><span class="k">defer</span><span class="w"> </span><span class="nx">cancel</span><span class="p">()</span>
@@ -8264,7 +8264,7 @@
 <span class="kn">from</span> <span class="nn">opentelemetry.exporter.cloud_trace</span> <span class="kn">import</span> <span class="n">CloudTraceSpanExporter</span>
 <span class="kn">from</span> <span class="nn">opentelemetry.propagators.cloud_trace_propagator</span> <span class="kn">import</span> <span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">,)</span>
 
-<span class="c1"># 上流のマイクロサービスのリクエストからコンテキストを抽出する。</span>
+<span class="c1"># ダウンストリーム側マイクロサービスのリクエストからコンテキストを抽出する。</span>
 <span class="n">set_global_textmap</span><span class="p">(</span><span class="n">CloudTraceFormatPropagator</span><span class="p">())</span>
 
 <span class="c1"># 任意のコンテキストを設定する</span>
@@ -8375,7 +8375,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

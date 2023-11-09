@@ -6728,7 +6728,7 @@
 <h4 id="_9">▼ 高頻度でリリース可能<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスを独立してデプロイできるため、高頻度でリリースできる。</p>
 <h4 id="_10">▼ 障害の影響が部分的<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>いずれかのマイクロサービスに障害が発生したとして、サーキットブレイカーを使用することにより、上流マイクロサービスへの障害の波及を食い止められる。</p>
+<p>いずれかのマイクロサービスに障害が発生したとして、サーキットブレイカーを使用することにより、ダウンストリーム側マイクロサービスへの障害の波及を食い止められる。</p>
 <p>そのため、障害の影響が部分的となり、アプリケーション全体が落ちてしまうことがない。</p>
 <h4 id="_11">▼ 複数の開発言語を使用可能<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>マイクロサービス間で、共通のデータ記述言語を使用してデータ通信を行えば、各マイクロサービスの開発言語が異なっていても問題ない。</p>
@@ -7140,7 +7140,7 @@
 <h4 id="_38">▼ サーキットブレイカー<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>マイクロサービス間に配置され、他のマイクロサービスに連鎖的に起こる障害 (カスケード障害) を吸収する仕組みのこと。</p>
 <p>blast-radiusを最小限にできる。</p>
-<p>下流マイクロサービスに障害が発生した時に、上流マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。</p>
+<p>アップストリーム側マイクロサービスに障害が発生した時に、ダウンストリーム側マイクロサービスにエラーを返してしまわないよう、一旦マイクロサービスへのルーティングを停止し、直近の成功時の処理結果を返信する。</p>
 <p><img alt="circuit-breaker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png" /></p>
 <blockquote>
 <ul>
@@ -7154,7 +7154,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

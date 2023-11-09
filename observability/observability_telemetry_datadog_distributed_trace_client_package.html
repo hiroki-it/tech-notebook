@@ -5846,7 +5846,7 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    ▼ 最上流のマイクロサービス
+    ▼ 最ダウンストリーム側マイクロサービス
   </a>
   
 </li>
@@ -6394,7 +6394,7 @@
         
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
-    ▼ 最上流のマイクロサービス
+    ▼ 最ダウンストリーム側マイクロサービス
   </a>
   
 </li>
@@ -6694,8 +6694,8 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 <p><br></p>
 <h2 id="03-go">03. Go用のクライアントパッケージ<a class="headerlink" href="#03-go" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCを使わない場合<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 最上流のマイクロサービス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>最上流のマイクロサービスでは、親スパンを作成する。</p>
+<h4 id="_13">▼ 最ダウンストリーム側マイクロサービス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>最ダウンストリーム側マイクロサービスでは、親スパンを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -6723,7 +6723,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
 
 <span class="w">    </span><span class="nx">req</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">WithContext</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 下流マイクロサービスにコンテキストを伝播する。</span>
+<span class="w">    </span><span class="c1">// アップストリーム側マイクロサービスにコンテキストを伝播する。</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">Inject</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">span</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span>
 <span class="w">        </span><span class="nx">tracer</span><span class="p">.</span><span class="nx">HTTPHeadersCarrier</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">),</span>
@@ -6891,7 +6891,7 @@ WARN<span class="w">  </span>DATADOG<span class="w"> </span>TRACER<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

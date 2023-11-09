@@ -1350,6 +1350,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 通信に伴う処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 通信に伴う処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    タイムアウト時間
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5781,6 +5801,26 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 通信に伴う処理
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 通信に伴う処理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    タイムアウト時間
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5856,8 +5896,8 @@
 <h4 id="_8">▼ メッセージキューを介した通信<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>イベント駆動方式では、メッセージキューを介してマイクロサービス間の通信を行う。</p>
 <p>メッセージキューにより、マイクロサービスの通信の方向が一方向になるように制限できる。</p>
-<p>特に、複数の上流マイクロサービスからの通信を集約するような下流マイクロサービスがある場合、その前段にメッセージキューを配置すれば、下流のマイクロサービスのレートリミットを超過しないように、一定の間隔で通信を転送できる。</p>
-<p>もしマイクロサービス間双方向に送信したい場合は、上流マイクロサービスからメッセージを受信するメッセージキューと、下流マイクロサービスから受信するメッセージキューを、別々に配置する。</p>
+<p>特に、複数のダウンストリーム側マイクロサービスからの通信を集約するようなアップストリーム側マイクロサービスがある場合、その前段にメッセージキューを配置すれば、下流のマイクロサービスのレートリミットを超過しないように、一定の間隔で通信を転送できる。</p>
+<p>もしマイクロサービス間双方向に送信したい場合は、ダウンストリーム側マイクロサービスからメッセージを受信するメッセージキューと、アップストリーム側マイクロサービスから受信するメッセージキューを、別々に配置する。</p>
 <p>メッセージキューはPub/Subデザインパターンで自前で実装するか、または外部サービス (例：AWS-SQS、Kafka、など) を使用する。</p>
 <blockquote>
 <ul>
@@ -5866,13 +5906,17 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="02">02. 通信に伴う処理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_9">タイムアウト時間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>ダウンストリーム側マイクロサービス</p>
+<p><br></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

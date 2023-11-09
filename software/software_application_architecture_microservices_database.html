@@ -6268,7 +6268,7 @@
 <h4 id="_5">▼ ローカルトランザクションとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><code>1</code>個のトランザクション処理によって、<code>1</code>個のマイクロサービスのDBを操作する。</p>
 <p>推奨される。</p>
-<p>上流のマイクロサービスでのトランザクションを、イベントととして、下流に伝える。</p>
+<p>ダウンストリーム側マイクロサービスでのトランザクションを、イベントととして、下流に伝える。</p>
 <p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に行う仕組みが必要になる。</p>
 <p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
 <blockquote>
@@ -6300,7 +6300,7 @@
 <h4 id="saga_1">▼ Sagaパターンとは<a class="headerlink" href="#saga_1" title="Permanent link">&para;</a></h4>
 <p><img alt="saga-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png" /></p>
 <p>複数のローカルトランザクションを非同期通信で連続的に実行する。</p>
-<p>上流マイクロサービスのローカルトランザクションの完了をイベントとして、下流マイクロサービスのDB処理を連続的にコールしていく。</p>
+<p>ダウンストリーム側マイクロサービスのローカルトランザクションの完了をイベントとして、アップストリーム側マイクロサービスのDB処理を連続的にコールしていく。</p>
 <p>ロールバックの代わりに、補償トランザクションという仕組みを実装する必要がある。</p>
 <p>補償トランザクションでは、いずれかのローカルトランザクションが失敗した時に、それ以前の各ローカルトランザクションの実行結果を元に戻すような逆順のクエリ処理が実行される。</p>
 <blockquote>
@@ -6355,7 +6355,7 @@
 <p><br></p>
 <h3 id="choreography">Choreography (コレオグラフィ)<a class="headerlink" href="#choreography" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ コレオグラフィとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>Sagaパターンにて、各マイクロサービスで下流マイクロサービスに連携する責務を持たせ、ローカルトランザクションを連続的に実行する。</p>
+<p>Sagaパターンにて、各マイクロサービスでアップストリーム側マイクロサービスに連携する責務を持たせ、ローカルトランザクションを連続的に実行する。</p>
 <p><code>1</code>個のリクエストが送信された時に、マイクロサービスからマイクロサービスに処理が繋がっていく。</p>
 <p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
 <blockquote>
@@ -6414,7 +6414,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>
