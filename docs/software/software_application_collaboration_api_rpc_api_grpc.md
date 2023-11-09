@@ -45,6 +45,7 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 ![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
 
 > - https://fintan.jp/page/1521/
+> - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
 
@@ -70,6 +71,7 @@ service Request {
 ```
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
+> - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
 
@@ -79,7 +81,7 @@ service Request {
 
 ![grpc_server-streaming.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
 
-クライアントが`1`個のリクエストを並行的に送信すると、サーバーは複数個のレスポンスを返信する。
+クライアントが`1`個のリクエストを送信すると、サーバーは複数個のレスポンスを並行的に返信する。
 
 任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。
 
@@ -95,6 +97,7 @@ service Notification {
 ```
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
+> - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
 
@@ -120,6 +123,7 @@ service Upload {
 ```
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
+> - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
 
@@ -159,6 +163,7 @@ service Chat {
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
 > - https://reboooot.net/post/hello-grpc/
 > - https://christina04.hatenablog.com/entry/2017/11/13/203000
+> - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
 

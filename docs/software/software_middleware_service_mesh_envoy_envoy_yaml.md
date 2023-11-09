@@ -661,6 +661,23 @@ static_resources:
           connect_timeout: 5s
 ```
 
+#### ▼ http_protocol_options
+
+```yaml
+static_resources:
+  clusters:
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          http_protocol_options:
+            # ストリーミングRPCの確立後のタイムアウト時間を設定する
+            max_connection_duration: 15
+            # ストリーミングRPC全体のタイムアウト時間を設定する
+            max_stream_duration: 30
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions
+
 #### ▼ http2_protocol_options
 
 HTTP/2 (例：gRPCなど) について設定する。
@@ -668,12 +685,15 @@ HTTP/2 (例：gRPCなど) について設定する。
 ```yaml
 static_resources:
   clusters:
-    - http2_protocol_options:
-        # ストリーミングRPCの最大同時接続数を設定する
-        max_concurrent_streams: 100
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          http2_protocol_options:
+            # ストリーミングRPCの最大同時接続数を設定する
+            max_concurrent_streams: 100
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/upstreams/http/v3/http_protocol_options.proto#extensions-upstreams-http-v3-httpprotocoloptions
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions
 
 #### ▼ upstream_http_protocol_options
 
