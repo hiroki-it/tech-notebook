@@ -6058,7 +6058,7 @@
 <p><strong>＊実装例＊</strong></p>
 <p>もし分散トレースを採用する場合、マイクロサービス間でコンテキストを伝播する必要がある。</p>
 <p>クライアント/サーバー側のリバースプロキシでコンテキストを伝播できるようにする。</p>
-<p>サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシが下流のコンテナにコンテキストを伝播してくれるが、Nginxであれば自前で実装する必要がある。</p>
+<p>サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシがアップストリーム側のコンテナにコンテキストを伝播してくれるが、Nginxであれば自前で実装する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># クライアント側</span>
 <span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># $_request_id</span>
@@ -6331,7 +6331,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

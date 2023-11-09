@@ -6058,13 +6058,13 @@
 </blockquote>
 <h2 id="_23">ロードバランシングする<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
 <h3 id="l7">L7のプロトコルの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
-<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeの上流にIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使わないIstio Ingress Gateway) を置く。</p>
+<p>冗長化したワーカーNodeに負荷分散できるように、ワーカーNodeのダウンストリームにIngressコントローラーの管理するL7ロードバランサー (例：Nginx、Envoy、Istio IngressGateway、AWS ALB、Google CLB、など) やこれに相当するもの (例：Gateway-APIを使わないIstio Ingress Gateway) を置く。</p>
 <p>L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。</p>
 <blockquote>
 <p><a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/</a></p>
 </blockquote>
 <h3 id="l4">L4のプロトコルの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
-<p>冗長化したPodに負荷分散できるように、Podの上流にL4ロードバランサーとしてServiceを置く。</p>
+<p>冗長化したPodに負荷分散できるように、PodのダウンストリームにL4ロードバランサーとしてServiceを置く。</p>
 <blockquote>
 <p><a href="https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods">https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods</a></p>
 </blockquote>
@@ -7134,7 +7134,7 @@ options ndots:5
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

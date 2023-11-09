@@ -6512,7 +6512,7 @@
 <p>また、エラーをメソッドコールしたクラスで検出し、例外としてスローしたとしても、ソフトウェア開発者にとっては理解できるが、ユーザーにとっては理解できない。</p>
 <p>そのため、例外スローを別の識別子 (例：bool値) に変えてメソッドコールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
 <p>これらは、サーバーサイドのtry-catch-finally文や、フロントエンドのポップアップ処理で実現する。</p>
-<p>注意点として、下流クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
+<p>注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。</p>
 <p><br></p>
 <h3 id="01-03">01-03. 例外の定義<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h3>
 <h3 id="_6">標準例外クラス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -6798,7 +6798,7 @@
     <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
 
-            <span class="c1">// 下流クラスによる例外スローを含む処理</span>
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
@@ -6839,7 +6839,7 @@
     <span class="p">{</span>
         <span class="k">try</span> <span class="p">{</span>
 
-            <span class="c1">// 下流クラスによる例外スローを含む処理</span>
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
@@ -6878,7 +6878,7 @@
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\HttpRequestErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// 下流クラスによる例外スローを含む処理</span>
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
             <span class="c1">// 外部APIとの接続失敗によるエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
@@ -6890,7 +6890,7 @@
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\ExternalApiErrorException</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// 下流クラスによる例外スローを含む処理</span>
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
             <span class="c1">// 外部APIのソフトウェアエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
@@ -6902,7 +6902,7 @@
 
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$exception</span><span class="p">)</span> <span class="p">{</span>
 
-            <span class="c1">// 下流クラスによる例外スローを含む処理</span>
+            <span class="c1">// 子クラスによる例外スローを含む処理</span>
 
             <span class="c1">// その他 (例：自社ソフトウェアなど) によるエラーをロギング</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nb">sprintf</span><span class="p">(</span>
@@ -6925,7 +6925,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>

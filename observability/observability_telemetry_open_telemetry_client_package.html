@@ -7098,7 +7098,7 @@
 <span class="w">    </span><span class="c1">// パッケージをセットアップする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTracerProvider</span><span class="p">(</span><span class="nx">tracerProvider</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// ダウンストリーム側マイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
+<span class="w">    </span><span class="c1">// ダウンストリーム側マイクロサービスからコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにコンテキストを注入できるようにする。</span>
 <span class="w">    </span><span class="nx">otel</span><span class="p">.</span><span class="nx">SetTextMapPropagator</span><span class="p">(</span>
 <span class="w">        </span><span class="c1">// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する</span>
 <span class="w">        </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TraceContext</span><span class="p">{},</span>
