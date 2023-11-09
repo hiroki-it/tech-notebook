@@ -2113,7 +2113,7 @@ func main() {
 
 キューに値を送信し、加えてキューから値を受信できる。
 
-> - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+![go_channel.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/go_channel.png)
 
 ```go
 package main
@@ -2135,6 +2135,8 @@ func main() {
 	fmt.Println(value)
 }
 ```
+
+> - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
 #### ▼ Done
 

@@ -949,7 +949,7 @@ service EndpointDiscoveryService {
 
 Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に`istio-proxy`コンテナをインジェクションする。
 
-```text
+```
 Envoy (istio-proxy)
 ⬇︎
 ⬇︎
@@ -965,7 +965,7 @@ Istioによって自動的に作成されるが、Istioリソースを使用し�
 
 その場合、Envoyの後ろに異なるリバースプロキシを置く必要があり、二重のリバースプロキシになってしまう。
 
-```text
+```
 Envoy (istio-proxy)
 ⬇︎
 ⬇︎ TCPプロトコル

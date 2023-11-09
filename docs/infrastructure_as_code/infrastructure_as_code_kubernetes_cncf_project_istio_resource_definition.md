@@ -1200,7 +1200,8 @@ kind: ServiceEntry
 metadata:
   name: foo-service-entry
 spec:
-  resolution: DNS # DNSサーバーから返信されたIPアドレスを許可する。
+  # DNSサーバーから返信されたIPアドレスを許可する
+  resolution: DNS
 ```
 
 <br>

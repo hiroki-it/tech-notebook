@@ -894,7 +894,7 @@ then
     sed -i '/"imageGCHigh*/a \ \ "imageGCLowThresholdPercent": 50,' /etc/kubernetes/kubelet/kubelet-config.json
 fi
 
-/etc/eks/bootstrap.sh your-cluster-name
+/etc/eks/bootstrap.sh <Cluster名>
 ```
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/

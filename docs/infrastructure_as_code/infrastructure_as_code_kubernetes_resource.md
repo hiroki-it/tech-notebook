@@ -646,7 +646,7 @@ Kubernetesのv1.6より前はEndpointsが使用されていた。
 
 #### ▼ Gatewayとは
 
-Gatewayは、`L4`/`L7`プロトコルのインバウンド通信の受信ルールを定義し、また`L4`/`L7`ロードバランサーとしてインバウンド通信をルーティングする。
+Gatewayは、`L4`/`L7`プロトコルの通信の受信ルールを定義し、また`L4`/`L7`ロードバランサーとして通信をルーティングする。
 
 > - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
 
@@ -670,11 +670,11 @@ Gatewayの実体として使用するツールを指定する。
 
 #### ▼ Ingressとは
 
-Ingressは、`L7`プロトコルのインバウンド通信の受信ルールを定義する。
+Ingressは、`L7`プロトコルの通信の受信ルールを定義する。
 
 Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。
 
-NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。
+NodePort ServiceやLoadBalancer Serviceと同様に、外部からの通信を受信する方法の1つである。
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
 
@@ -685,7 +685,7 @@ NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバ�
 
 #### ▼ Gatewayとの違い
 
-`L7`プロトコルのインバウンド通信のみを処理できる。
+`L7`プロトコルの通信のみを処理できる。
 
 また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。
 
@@ -721,7 +721,7 @@ Ingressコントローラーの実体として使用するツールを指定す�
 
 #### ▼ Ingressコントローラー
 
-IngressコントローラーはNode外からインバウンド通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
+IngressコントローラーはNode外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
 
 <br>
 
@@ -729,9 +729,9 @@ IngressコントローラーはNode外からインバウンド通信を受信し
 
 #### ▼ Serviceとは
 
-Serviceは、`L4`ロードバランサーとしてPodにインバウンド通信をルーティングする。
+Serviceは、`L4`ロードバランサーとしてPodに通信をルーティングする。
 
-kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。
+kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podに通信をルーティングする。
 
 マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
@@ -745,7 +745,7 @@ kube-proxyが更新したNode上で稼働するiptablesを使用し、またロ�
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
 
-`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、Cluster-IPを介してPodにルーティングする。
 
 Cluster-IPはServiceの`.spec.clusterIP`キーで指定しない限りランダムで決まり、Podの`/etc/resolv.conf `ファイルに記載されている。
 
@@ -761,7 +761,7 @@ search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5 # 名前解決時のローカルドメインの優先度
 ```
 
-Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。
+Cluster-IPはNode外から宛先として指定できないため、通信にIngressを必要とする。
 
 ```yaml
 パブリックネットワーク
@@ -795,9 +795,9 @@ Ingressが無いとClusterネットワーク内からのみしかアクセスで
 
 ![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
 
-`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。
 
-NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。
+NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。
 
 ```yaml
 パブリックネットワーク
@@ -828,7 +828,7 @@ Pod
 
 そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。
 
-この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。
+この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめた方が良い。
 
 ```yaml
 パブリックネットワーク
@@ -856,11 +856,11 @@ Serviceのポート番号と紐づくNodeのNICのポート番号はデフォル
 
 ![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
 
-`L4`ロードバランサーとして、Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。
+`L4`ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。
 
 External-IPはNode外から宛先IPアドレスとして指定できる。
 
-そのため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。
+そのため、通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。
 
 ```yaml
 パブリックネットワーク
@@ -886,13 +886,18 @@ Pod
 
 #### ▼ ExternalName Service
 
-Serviceに対するインバウンド通信をCNAMEレコードを介してPodにルーティングする。
+Cluster内外でのDNSとCluster外のCNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。
+
+CoreDNSの代わりとして使用できる。
+
+![kubernetes_externalname-service.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
 
 > - https://thinkit.co.jp/article/13739
+> - https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/
 
 #### ▼ Headless Service
 
-Serviceに対するインバウンド通信を、そのままPodにルーティングする。
+Serviceに対する通信を、そのままPodにルーティングする。
 
 StatefulSet配下のPodにルーティングする場合に特に役立つ。
 
@@ -1630,7 +1635,7 @@ Pod間通信でのインバウンド/アウトバウンド通信の送受信ル�
 
 #### ▼ Ingressの場合
 
-他のPodからの受信するインバウンド通信のルールを設定する。
+他のPodからの受信する通信のルールを設定する。
 
 Ingressとは関係がないことに注意する。
 
