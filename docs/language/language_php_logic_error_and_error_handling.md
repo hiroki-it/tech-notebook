@@ -75,7 +75,7 @@ DB更新系の処理の途中にエラーが発生すると、DBが中途半端�
 
 これらは、サーバーサイドのtry-catch-finally文や、フロントエンドのポップアップ処理で実現する。
 
-注意点として、下流クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。
+注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとしてメソッドコールしたクラスでロギングしておく。
 
 <br>
 
@@ -407,7 +407,7 @@ class Notification
     {
         try {
 
-            // 下流クラスによる例外スローを含む処理
+            // 子クラスによる例外スローを含む処理
 
         } catch (\exception $exception) {
 
@@ -448,7 +448,7 @@ class Notification
     {
         try {
 
-            // 下流クラスによる例外スローを含む処理
+            // 子クラスによる例外スローを含む処理
 
         } catch (\exception $exception) {
 
@@ -497,7 +497,7 @@ class Foo
 
         } catch (\HttpRequestErrorException $exception) {
 
-            // 下流クラスによる例外スローを含む処理
+            // 子クラスによる例外スローを含む処理
 
             // 外部APIとの接続失敗によるエラーをロギング
             $this->logger->error(sprintf(
@@ -509,7 +509,7 @@ class Foo
 
         } catch (\ExternalApiErrorException $exception) {
 
-            // 下流クラスによる例外スローを含む処理
+            // 子クラスによる例外スローを含む処理
 
             // 外部APIのソフトウェアエラーをロギング
             $this->logger->error(sprintf(
@@ -521,7 +521,7 @@ class Foo
 
         } catch (\Exception $exception) {
 
-            // 下流クラスによる例外スローを含む処理
+            // 子クラスによる例外スローを含む処理
 
             // その他 (例：自社ソフトウェアなど) によるエラーをロギング
             $this->logger->error(sprintf(

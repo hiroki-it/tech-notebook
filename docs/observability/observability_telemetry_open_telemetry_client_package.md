@@ -254,7 +254,7 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// ダウンストリーム側マイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスからコンテキストを抽出し、アップストリーム側マイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
