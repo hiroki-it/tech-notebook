@@ -8639,7 +8639,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="gateway">Gateway<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="gateway_1">▼ Gatewayとは<a class="headerlink" href="#gateway_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayは、<code>L4</code>/<code>L7</code>プロトコルのインバウンド通信の受信ルールを定義し、また<code>L4</code>/<code>L7</code>ロードバランサーとしてインバウンド通信をルーティングする。</p>
+<p>Gatewayは、<code>L4</code>/<code>L7</code>プロトコルの通信の受信ルールを定義し、また<code>L4</code>/<code>L7</code>ロードバランサーとして通信をルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
@@ -8655,9 +8655,9 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress_1">Ingress<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
 <h4 id="ingress_2">▼ Ingressとは<a class="headerlink" href="#ingress_2" title="Permanent link">&para;</a></h4>
-<p>Ingressは、<code>L7</code>プロトコルのインバウンド通信の受信ルールを定義する。</p>
+<p>Ingressは、<code>L7</code>プロトコルの通信の受信ルールを定義する。</p>
 <p>Ingressを使用する場合、宛先のServiceは、Cluster IP Serviceとする。</p>
-<p>NodePort ServiceやLoadBalancer Serviceと同様に、外部からのインバウンド通信を受信する方法の1つである。</p>
+<p>NodePort ServiceやLoadBalancer Serviceと同様に、外部からの通信を受信する方法の1つである。</p>
 <p><img alt="kubernetes_ingress" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png" /></p>
 <blockquote>
 <ul>
@@ -8668,7 +8668,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <h4 id="gateway_2">▼ Gatewayとの違い<a class="headerlink" href="#gateway_2" title="Permanent link">&para;</a></h4>
-<p><code>L7</code>プロトコルのインバウンド通信のみを処理できる。</p>
+<p><code>L7</code>プロトコルの通信のみを処理できる。</p>
 <p>また、Ingressそれ自体はルールのみを持ち、Ingressコントローラーがロードバランサーとして機能する。</p>
 <h4 id="_9">▼ パスベースルーティング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>パスの値に基づいて、Serviceにルーティングする。</p>
@@ -8694,12 +8694,12 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress_3">Ingressコントローラー<a class="headerlink" href="#ingress_3" title="Permanent link">&para;</a></h3>
 <h4 id="ingress_4">▼ Ingressコントローラー<a class="headerlink" href="#ingress_4" title="Permanent link">&para;</a></h4>
-<p>IngressコントローラーはNode外からインバウンド通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
+<p>IngressコントローラーはNode外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>Serviceは、<code>L4</code>ロードバランサーとしてPodにインバウンド通信をルーティングする。</p>
-<p>kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podにインバウンド通信をルーティングする。</p>
+<p>Serviceは、<code>L4</code>ロードバランサーとしてPodに通信をルーティングする。</p>
+<p>kube-proxyが更新したNode上で稼働するiptablesを使用し、またロードバランシングアルゴリズムによるルーティング先Podの決定に基づいて、Podに通信をルーティングする。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
 <p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png" /></p>
 <blockquote>
@@ -8711,7 +8711,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、Cluster-IPを介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、Cluster-IPを介してPodにルーティングする。</p>
 <p>Cluster-IPはServiceの<code>.spec.clusterIP</code>キーで指定しない限りランダムで決まり、Podの<code>/etc/resolv.conf</code>ファイルに記載されている。</p>
 <p>Pod内に複数のコンテナがある場合、各コンテナに同じ内容の<code>/etc/resolv.conf</code>ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
@@ -8722,7 +8722,7 @@ nameserver<span class="w"> </span>*.*.*.*<span class="w"> </span><span class="c1
 search<span class="w"> </span>default.svc.cluster.local<span class="w"> </span>svc.cluster.local<span class="w"> </span>cluster.local
 options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1"># 名前解決時のローカルドメインの優先度</span>
 </code></pre></div>
-<p>Cluster-IPはNode外から宛先として指定できないため、インバウンド通信にIngressを必要とする。</p>
+<p>Cluster-IPはNode外から宛先として指定できないため、通信にIngressを必要とする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
@@ -8752,8 +8752,8 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。</p>
-<p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、NodeのNICの宛先情報 (IPアドレス、ポート番号) 、Cluster-IP、を介してPodにルーティングする。</p>
+<p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、通信にIngressを必要としない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
@@ -8776,7 +8776,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </code></pre></div>
 <p>ただし、NodePort Serviceは内部的にCluster-IPを使っている。</p>
 <p>そのため、Ingressを作成するとNodePort ServiceのCluster-IPを介してPodにルーティングする。</p>
-<p>この場合、NodeのIPアドレスとIngressの両方がNodeのインバウンド通信の入り口となり、入口が無闇に増えるため、やめた方が良い。</p>
+<p>この場合、NodeのIPアドレスとIngressの両方がNodeの通信の入り口となり、入口が無闇に増えるため、やめた方が良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
@@ -8798,9 +8798,9 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </blockquote>
 <h4 id="loadbalancer-service">▼ LoadBalancer Service<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png" /></p>
-<p><code>L4</code>ロードバランサーとして、Serviceに対するインバウンド通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。</p>
+<p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、External-IP、NodeのNICの宛先情報 (IPアドレス、ポート番号)、Cluster-IPを介してPodにルーティングする。</p>
 <p>External-IPはNode外から宛先IPアドレスとして指定できる。</p>
-<p>そのため、インバウンド通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
+<p>そのため、通信にIngressを必要としないが、外部のロードバランサーのみが宛先IPアドレスを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
@@ -8822,14 +8822,17 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </ul>
 </blockquote>
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
-<p>Serviceに対するインバウンド通信をCNAMEレコードを介してPodにルーティングする。</p>
+<p>Cluster内外でのDNSとCluster外のCNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。</p>
+<p>CoreDNSの代わりとして使用できる。</p>
+<p><img alt="kubernetes_externalname-service.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13739">https://thinkit.co.jp/article/13739</a></li>
+<li><a href="https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/">https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/</a></li>
 </ul>
 </blockquote>
 <h4 id="headless-service">▼ Headless Service<a class="headerlink" href="#headless-service" title="Permanent link">&para;</a></h4>
-<p>Serviceに対するインバウンド通信を、そのままPodにルーティングする。</p>
+<p>Serviceに対する通信を、そのままPodにルーティングする。</p>
 <p>StatefulSet配下のPodにルーティングする場合に特に役立つ。</p>
 <p>Podが複数ある場合は、ラウンドロビン方式でIPアドレスが返却されるため、負荷の高いPodにルーティングされる可能性があり、負荷分散には向いていない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>dig<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名&gt;
@@ -9566,7 +9569,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="ingress_5">▼ Ingressの場合<a class="headerlink" href="#ingress_5" title="Permanent link">&para;</a></h4>
-<p>他のPodからの受信するインバウンド通信のルールを設定する。</p>
+<p>他のPodからの受信する通信のルールを設定する。</p>
 <p>Ingressとは関係がないことに注意する。</p>
 <h4 id="egress">▼ Egressの場合<a class="headerlink" href="#egress" title="Permanent link">&para;</a></h4>
 <p>他のPodに送信するアウトバウンド通信のルールを設定する。</p>
@@ -9577,7 +9580,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>
