@@ -2259,6 +2259,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http_protocol_options" class="md-nav__link">
+    ▼ http_protocol_options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#http2_protocol_options" class="md-nav__link">
     ▼ http2_protocol_options
   </a>
@@ -7013,6 +7020,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#http_protocol_options" class="md-nav__link">
+    ▼ http_protocol_options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#http2_protocol_options" class="md-nav__link">
     ▼ http2_protocol_options
   </a>
@@ -7690,17 +7704,37 @@
 <span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
 <span class="w">          </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
 </code></pre></div>
+<h4 id="http_protocol_options">▼ http_protocol_options<a class="headerlink" href="#http_protocol_options" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
+<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="nt">http_protocol_options</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ストリーミングRPCの確立後のタイムアウト時間を設定する</span>
+<span class="w">            </span><span class="nt">max_connection_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="w">            </span><span class="c1"># ストリーミングRPC全体のタイムアウト時間を設定する</span>
+<span class="w">            </span><span class="nt">max_stream_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions</a></li>
+</ul>
+</blockquote>
 <h4 id="http2_protocol_options">▼ http2_protocol_options<a class="headerlink" href="#http2_protocol_options" title="Permanent link">&para;</a></h4>
 <p>HTTP/2 (例：gRPCなど) について設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">http2_protocol_options</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># ストリーミングRPCの最大同時接続数を設定する</span>
-<span class="w">        </span><span class="nt">max_concurrent_streams</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span><span class="p">:</span>
+<span class="w">          </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions</span>
+<span class="w">          </span><span class="nt">http2_protocol_options</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ストリーミングRPCの最大同時接続数を設定する</span>
+<span class="w">            </span><span class="nt">max_concurrent_streams</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/upstreams/http/v3/http_protocol_options.proto#extensions-upstreams-http-v3-httpprotocoloptions">https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/upstreams/http/v3/http_protocol_options.proto#extensions-upstreams-http-v3-httpprotocoloptions</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions</a></li>
 </ul>
 </blockquote>
 <h4 id="upstream_http_protocol_options">▼ upstream_http_protocol_options<a class="headerlink" href="#upstream_http_protocol_options" title="Permanent link">&para;</a></h4>
@@ -7862,7 +7896,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>
