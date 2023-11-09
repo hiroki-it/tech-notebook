@@ -8822,8 +8822,10 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </ul>
 </blockquote>
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
-<p>Cluster内外でのDNSとCluster外のCNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。</p>
+<p>Cluster内外でのDNS名とCluster外のCNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。</p>
 <p>CoreDNSの代わりとして使用できる。</p>
+<p>例えば、<code>foo-db-service</code>というExternalName Serviceを作成したとする。</p>
+<p>ここ場合、<code>foo-db-service.default.svc.cluster.local</code>を指定すると、指定したCNAMEに問い合わせるようになる。</p>
 <p><img alt="kubernetes_externalname-service.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
 <ul>

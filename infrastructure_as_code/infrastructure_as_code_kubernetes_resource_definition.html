@@ -6905,6 +6905,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#externalname" class="md-nav__link">
+    ▼ ExternalNameの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nodeport" class="md-nav__link">
     ▼ NodePortの場合
   </a>
@@ -12402,6 +12409,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#externalname" class="md-nav__link">
+    ▼ ExternalNameの場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nodeport" class="md-nav__link">
     ▼ NodePortの場合
   </a>
@@ -17156,7 +17170,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="type_4">▼ typeとは<a class="headerlink" href="#type_4" title="Permanent link">&para;</a></h4>
 <p>Serviceのタイプを設定する。</p>
 <h4 id="clusterip">▼ ClusterIPの場合<a class="headerlink" href="#clusterip" title="Permanent link">&para;</a></h4>
-<p>ClusterIP Serviceを設定する。<code>.spec.clusterIP</code>キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。</p>
+<p>ClusterIP Serviceを設定する。</p>
+<p><code>.spec.clusterIP</code>キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -17175,6 +17190,23 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF">https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF</a></li>
+</ul>
+</blockquote>
+<h4 id="externalname">▼ ExternalNameの場合<a class="headerlink" href="#externalname" title="Permanent link">&para;</a></h4>
+<p>ExternalName Serviceを設定する。</p>
+<p>Cluster内のDNSと外部のCNAMEを紐づける。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-db-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalName</span>
+<span class="w">  </span><span class="c1"># foo-db-service.default.svc.cluster.local を指定すると、*****.rds.amazonaws.comに問い合わせる</span>
+<span class="w">  </span><span class="nt">externalName</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span><span class="l l-Scalar l-Scalar-Plain">.rds.amazonaws.com</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/">https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport">▼ NodePortの場合<a class="headerlink" href="#nodeport" title="Permanent link">&para;</a></h4>
@@ -17563,7 +17595,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
       
     
   </small>
