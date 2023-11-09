@@ -401,7 +401,7 @@ jsonPayload.traceId="<トレースID>"
 
 分散トレースで特定のマイクロサービス間でレスポンスタイムを可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。
 
-その上流マイクロサービスのリクエストまたは下流マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。
+そのダウンストリーム側マイクロサービスのリクエストまたはアップストリーム側マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
@@ -503,7 +503,7 @@ X-B3-Sampled: 1
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
-コンテキストを下流マイクロサービスに伝播させる処理を持つ。
+コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。
 
 伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、など) を『Carrier』という。
 
@@ -562,9 +562,9 @@ SaaSツールによってJSON型の構造が異なる。
 
 ### 分散トレースの読み方
 
-上から下に読むと、上流サービス (上位スパン) が下流サービス (下位スパン) を処理をコールしていることを確認できる。
+上から下に読むと、ダウンストリーム側マイクロサービス (上位スパン) がアップストリーム側マイクロサービス (下位スパン) を処理をコールしていることを確認できる。
 
-下から上に読むと、下流サービス (下位スパン) から上流サービス (上位スパン) に結果を返却していることを確認できる。
+下から上に読むと、アップストリーム側マイクロサービス (下位スパン) からダウンストリーム側マイクロサービス (上位スパン) に結果を返却していることを確認できる。
 
 ![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
 

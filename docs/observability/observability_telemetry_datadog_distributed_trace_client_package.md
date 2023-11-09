@@ -279,9 +279,9 @@ APMのマイクロサービスのタグ名に反映される。
 
 ### gRPCを使わない場合
 
-#### ▼ 最上流のマイクロサービス
+#### ▼ 最ダウンストリーム側マイクロサービス
 
-最上流のマイクロサービスでは、親スパンを作成する。
+最ダウンストリーム側マイクロサービスでは、親スパンを作成する。
 
 ```go
 package main
@@ -311,7 +311,7 @@ func initTracer(w http.ResponseWriter, r *http.Request) {
 
 	req = req.WithContext(ctx)
 
-	// 下流マイクロサービスにコンテキストを伝播する。
+	// アップストリーム側マイクロサービスにコンテキストを伝播する。
 	err = tracer.Inject(
 		span.Context(),
 		tracer.HTTPHeadersCarrier(req.Header),

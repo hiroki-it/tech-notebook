@@ -77,7 +77,7 @@ IDGeneratorを使用しない場合、IDGeneratorはotel形式のランダムな
 
 ![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
 
-コンテキストを下流マイクロサービスに伝播させる処理を持つ。
+コンテキストをアップストリーム側マイクロサービスに伝播させる処理を持つ。
 
 Carrierからコンテキストを注入する操作を『注入 (Inject)』、反対に取り出す操作を『抽出 (Extract) 』という。
 
@@ -254,13 +254,13 @@ func initTracer(shutdownTimeout time.Duration) (func(), error) {
 	// パッケージをセットアップする。
 	otel.SetTracerProvider(tracerProvider)
 
-	// 上流のマイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
+	// ダウンストリーム側マイクロサービスからコンテキストを抽出し、下流のマイクロサービスのリクエストにコンテキストを注入できるようにする。
 	otel.SetTextMapPropagator(
 		// W3C Trace Context仕様のコンテキストを伝播するためPropagatorを設定する
         propagation.TraceContext{},
     )
 
-	// 下流マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
+	// アップストリーム側マイクロサービスへのリクエストがタイムアウトだった場合に、分散トレースを削除する。
 	cleanUp := func() {
 		ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
 		defer cancel()
@@ -1466,7 +1466,7 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.exporter.cloud_trace import CloudTraceSpanExporter
 from opentelemetry.propagators.cloud_trace_propagator import (CloudTraceFormatPropagator,)
 
-# 上流のマイクロサービスのリクエストからコンテキストを抽出する。
+# ダウンストリーム側マイクロサービスのリクエストからコンテキストを抽出する。
 set_global_textmap(CloudTraceFormatPropagator())
 
 # 任意のコンテキストを設定する

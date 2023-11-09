@@ -747,8 +747,6 @@ exports.handler = (event, context, callback) => {
 
 /**
  * デバイスタイプを基に、オリジンを切り替える。
-
-
  *
  * @param   {Object} headers
  * @param   {string} env
