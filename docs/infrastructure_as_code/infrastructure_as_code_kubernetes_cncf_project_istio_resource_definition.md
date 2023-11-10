@@ -1667,6 +1667,9 @@ spec:
 #### ▼ timeout
 
 `istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+`0`秒の場合、タイムアウトは無制限になる。
+
+これは、Envoyのルート値の`max_grpc_timeout` (`grpc_timeout_header_max`) と`timeout`の両方に適用される。
 
 指定した時間以内に、`istio-proxy`コンテナの宛先からレスポンスがなければ、`istio-proxy`コンテナはタイムアウトとして処理する。
 
@@ -1696,6 +1699,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
 
 <br>
 

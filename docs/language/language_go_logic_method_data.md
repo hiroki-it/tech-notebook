@@ -2757,7 +2757,7 @@ import (
 
 func main() {
 
-	// タイムアウトを設定する
+	// タイムアウト時間を設定する
 	ctx, cancel := context.WithTimeout(
 		context.Background(),
 		// タイムアウト時間を1秒に設定する
@@ -2846,7 +2846,7 @@ func main() {
 	defer log("done main")
 	ctx := context.Background()
 
-	// タイムアウトを設定する
+	// タイムアウト時間を設定する
 	ctx, cancel := context.WithTimeout(
 		ctx,
 		// タイムアウト時間を2秒に設定する

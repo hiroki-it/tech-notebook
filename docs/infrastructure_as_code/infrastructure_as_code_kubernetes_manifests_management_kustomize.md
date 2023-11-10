@@ -232,3 +232,13 @@ $ curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scr
 > - https://github.com/viaduct-ai/kustomize-sops/tree/master#1-download-and-install-ksops
 
 <br>
+
+### Helmとの比較
+
+なお、どのような要件でもHelmを推奨する。
+
+Kustomizeは、変数や条件分岐の柔軟性が低いため、マニフェストが増えるにつれて共通化が大変になる。
+
+一方で、Helmは柔軟性が高く、共通化しやすい。
+
+<br>

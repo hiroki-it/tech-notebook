@@ -138,7 +138,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 # コンテナのresolv.confファイルの中身を確認する
 [root@<Pod名>] $ cat /etc/resolv.conf
 
-# 権威DNSサーバーのIPアドレス
+# 権威DNSサーバーのIPアドレス (ここではCoreDNSのServiceのIPアドレス)
 nameserver 10.96.0.10
 search default.svc.cluster.local svc.cluster.local cluster.local
 # 名前解決時のローカルドメインの優先度

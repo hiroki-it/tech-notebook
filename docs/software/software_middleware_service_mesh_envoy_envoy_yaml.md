@@ -312,10 +312,50 @@ static_resources:
                             prefix: "/"
                           route:
                             cluster: foo_cluster
+                            timeout: 30s
+                            max_stream_duration:
+                              # ストリーミングRPCの確立後のタイムアウト時間を設定する
+                              max_connection_duration: 15
+                              # ストリーミングRPC全体のタイムアウト時間を設定する
+                              max_stream_duration: 30
+                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する
+                              # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
+                              grpc_timeout_header_max: 30
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
 > - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
+
+なお、`max_stream_duration`は`max_grpc_timeout`の移行先として追加された設定である。
+
+> - https://github.com/envoyproxy/envoy/issues/12578
+
+Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
+
+具体的には、タイムアウト時に、EnvoyはgRPCサーバーからのレスポンスよりも先に通信を切断してしまう。
+
+そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
+
+しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
+
+そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
+
+> - https://github.com/istio/istio/issues/45141
+> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
+
+#### ▼ http_protocol_options
+
+```yaml
+static_resources:
+  clusters:
+    - typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          http_protocol_options:
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions
 
 #### ▼ typed_config.stat_prefix
 
@@ -660,23 +700,6 @@ static_resources:
           "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
           connect_timeout: 5s
 ```
-
-#### ▼ http_protocol_options
-
-```yaml
-static_resources:
-  clusters:
-    - typed_extension_protocol_options:
-        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
-          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
-          http_protocol_options:
-            # ストリーミングRPCの確立後のタイムアウト時間を設定する
-            max_connection_duration: 15
-            # ストリーミングRPC全体のタイムアウト時間を設定する
-            max_stream_duration: 30
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions
 
 #### ▼ http2_protocol_options
 
