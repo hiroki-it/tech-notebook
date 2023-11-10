@@ -2092,7 +2092,7 @@ func main() {
 
 	select {
 
-	// quitチャンネルへのtrueの格納を待機しつつ、Afterの完了も並列して待機する
+	// quitチャンネルへのtrueの格納を待機しつつ、Afterの完了も並列的に待機する
 	// 先に終了した方のcaseを実行する
 	case <-time.After(time.Second * 5):
 		fmt.Println("timeout")

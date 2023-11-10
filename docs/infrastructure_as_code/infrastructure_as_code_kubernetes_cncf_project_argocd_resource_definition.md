@@ -316,7 +316,7 @@ spec:
   controller: ingress.k8s.aws/alb
 ```
 
-また、IngressClass (AWS ALB、Google Cloud CLB) に接続できるように、ドメインレジストリ (Route53、CloudDNS) にArgoCDのドメインを登録する。
+また、IngressClass (AWS ALB、Google Cloud CLB) に接続できるように、ドメインレジラトリ (Route53、CloudDNS) にArgoCDのドメインを登録する。
 
 <br>
 

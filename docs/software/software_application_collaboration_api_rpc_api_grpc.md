@@ -55,6 +55,8 @@ gRPCでは、クライアントとサーバーの間の通信方式に種類が�
 
 ![grpc_unary-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
 
+`1`個のTCPコネクションを確立し、その中に`1`個のストリームを作成する。
+
 クライアントが`1`個のリクエストを送信すると、サーバーは`1`個のレスポンスを返信する。
 
 一番よく使用する。
@@ -72,6 +74,7 @@ service Request {
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
+> - https://kiririmode.hatenablog.jp/entry/20190623/1561247109
 
 <br>
 
@@ -80,6 +83,8 @@ service Request {
 #### ▼ サーバーストリーミングRPCとは
 
 ![grpc_server-streaming.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
+
+`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
 
 クライアントが`1`個のリクエストを送信すると、サーバーは複数個のレスポンスを並行的に返信する。
 
@@ -107,7 +112,9 @@ service Notification {
 
 ![grpc_client-streaming-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
-クライアントが複数個のリクエストを並行的に送信すると、サーバーは`1`個のレスポンスを返信する。
+`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
+
+この時、クライアントが複数個のリクエストを並行的に送信すると、サーバーは`1`個のレスポンスを返信する。
 
 クライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。
 
@@ -132,6 +139,8 @@ service Upload {
 #### ▼ 双方向ストリーミングRPCとは
 
 ![grpc_bidrectional-streaming-rpc.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
+
+`1`個のTCPコネクションを確立し、その中に複数のストリームを作成する。
 
 クライアントが複数個のリクエストを並行的に送信し、サーバーも複数個のレスポンスを並行的に返信する。
 

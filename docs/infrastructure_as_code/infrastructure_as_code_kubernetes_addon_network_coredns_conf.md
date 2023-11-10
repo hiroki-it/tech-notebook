@@ -32,7 +32,7 @@ CoreDNSのヘルスチェックを開始するまでの待機時間を設定す�
 ```bash
 .:53 {
   health {
-      lameduck 5s
+    lameduck 5s
   }
 }
 ```
@@ -46,6 +46,21 @@ CoreDNSのヘルスチェックを開始するまでの待機時間を設定す�
   ready
 }
 ```
+
+<br>
+
+### rewrite
+
+Cluster内のDNS名とドメインを紐づける。
+
+```bash
+.:53 {
+  # foo.default.svc.cluster.local を foo.example.com に紐づける
+  rewrite name foo.example.com foo.default.svc.cluster.local
+}
+```
+
+> - https://zenn.dev/toshikish/articles/7f555dbf1b4b7d
 
 <br>
 
@@ -82,6 +97,7 @@ CoreDNSのヘルスチェックを開始するまでの待機時間を設定す�
   forward . /etc/resolv.conf {
     prefer_udp
     max_concurrent 1000
+  }
 }
 ```
 
