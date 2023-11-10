@@ -257,14 +257,14 @@ HTTP/1.1の場合、`1`個のリクエストとレスポンスを送受信する
 
 ここでは、マイクロサービスが以下のような順で実行されるとする。
 
-```
-foo (Node.js製)
+```yaml
+foo # Node.js製
 ⬇︎
 ⬇︎
-bar (Go製)
+bar # Go製
 ⬇︎
 ⬇︎
-baz (Python製)
+baz # Python製
 ```
 
 <br>
