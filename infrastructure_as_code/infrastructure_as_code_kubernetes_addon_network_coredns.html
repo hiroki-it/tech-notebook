@@ -6279,7 +6279,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <span class="c1"># コンテナのresolv.confファイルの中身を確認する</span>
 <span class="o">[</span>root@&lt;Pod名&gt;<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>cat<span class="w"> </span>/etc/resolv.conf
 
-<span class="c1"># 権威DNSサーバーのIPアドレス</span>
+<span class="c1"># 権威DNSサーバーのIPアドレス (ここではCoreDNSのServiceのIPアドレス)</span>
 nameserver<span class="w"> </span><span class="m">10</span>.96.0.10
 search<span class="w"> </span>default.svc.cluster.local<span class="w"> </span>svc.cluster.local<span class="w"> </span>cluster.local
 <span class="c1"># 名前解決時のローカルドメインの優先度</span>
@@ -6470,7 +6470,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>

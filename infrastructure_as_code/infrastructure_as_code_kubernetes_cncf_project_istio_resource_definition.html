@@ -9362,7 +9362,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。</p>
+<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+<code>0</code>秒の場合、タイムアウトは無制限になる。</p>
+<p>これは、Envoyのルート値の<code>max_grpc_timeout</code> (<code>grpc_timeout_header_max</code>) と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -9390,6 +9392,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/">https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9526,7 +9529,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>
