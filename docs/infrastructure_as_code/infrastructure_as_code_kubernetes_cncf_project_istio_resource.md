@@ -161,9 +161,12 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
+類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
+
 ![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
+> - https://jimmysong.io/blog/externalname-and-serviceentry/
 
 <br>
 
