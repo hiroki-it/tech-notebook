@@ -337,6 +337,35 @@ Envoyは、gRPCのストリーミングのタイムアウトを適切に処理�
 
 そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
 
+```yaml
+# 期待する例外スロー
+gRPCクライアント # タイムアウト (DeadlineExceededを受信)
+⬇︎
+⬇︎
+Envoy
+⬇︎
+--------------
+⬇︎
+Envoy
+⬇︎
+⬇︎
+gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+```
+
+```yaml
+gRPCクライアント # タイムアウト (Unavailableを受信)
+⬇︎
+⬇︎
+Envoy
+⬇︎
+--------------
+⬇︎
+Envoy
+⬇︎
+⬇︎
+gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+```
+
 しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
 
 そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
