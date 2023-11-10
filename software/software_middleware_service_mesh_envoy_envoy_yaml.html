@@ -7458,6 +7458,31 @@
 <p>Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
 <p>具体的には、タイムアウト時に、EnvoyはgRPCサーバーからのレスポンスよりも先に通信を切断してしまう。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (Unavailableを受信)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
+</code></pre></div>
 <p>しかし、移行先の<code>max_stream_duration</code>にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。</p>
 <p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code>を使用し続けている。</p>
 <blockquote>
