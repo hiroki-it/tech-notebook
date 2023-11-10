@@ -607,9 +607,11 @@ nav:
               - Nginx Ingressコントローラー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.md
               - リソース定義: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.md
       - ■ ネットワークアドオン:
-          - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
           - CNI: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.md
           - ExternalDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.md
+          - ■ CoreDNS:
+              - CoreDNS: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns.md
+              - 設定ファイル: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.md
       - ■ Secretアドオン:
           - ■ SecretsストアCSIドライバー:
               - SecretsストアCSIドライバー: infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.md
