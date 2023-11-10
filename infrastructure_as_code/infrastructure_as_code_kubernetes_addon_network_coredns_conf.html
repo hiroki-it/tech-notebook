@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="helmプラグイン＠コマンドの知見を記録しています。">
+        <meta name="description" content="設定ファイル＠CoreDNSの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_coredns_conf.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html">
+        <link rel="prev" href="infrastructure_as_code_kubernetes_addon_network_coredns.html">
       
       
-        <link rel="next" href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html">
+        <link rel="next" href="infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】helmプラグイン＠コマンド - 俺の技術ノート</title>
+        <title>【IT技術の知見】設定ファイル＠CoreDNS - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#helm" class="md-skip">
+        <a href="#coredns" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】helmプラグイン＠コマンド
+              【IT技術の知見】設定ファイル＠CoreDNS
             
           </span>
         </div>
@@ -494,12 +494,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes/index.html" class="md-tabs__link">
           
   
@@ -516,10 +514,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
@@ -3328,8 +3328,6 @@
       
   
   
-    
-  
   
     
     
@@ -3359,12 +3357,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
         
           
           
@@ -3386,7 +3384,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             ☸️ K8s
@@ -3679,8 +3677,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3693,573 +3689,31 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_8" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_8" id="__nav_16_8_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ マニフェスト管理
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_16_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_8">
-            <span class="md-nav__icon md-icon"></span>
-            ■ マニフェスト管理
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_8_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_8_1" id="__nav_16_8_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ Helm
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_16_8_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_8_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ Helm
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Helm
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16_8_1_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_16_8_1_2" id="__nav_16_8_1_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ コマンド
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_16_8_1_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_16_8_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ コマンド
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    コマンド
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    helmプラグイン
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    helmプラグイン
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-helm-dashboard" class="md-nav__link">
-    01. helm-dashboard
-  </a>
-  
-    <nav class="md-nav" aria-label="01. helm-dashboard">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-dashboard" class="md-nav__link">
-    helm-dashboardとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ インストール
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 起動
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-helm-diff" class="md-nav__link">
-    02. helm-diff
-  </a>
-  
-    <nav class="md-nav" aria-label="02. helm-diff">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-diff" class="md-nav__link">
-    helm-diffとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ インストール
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-helm-secrets" class="md-nav__link">
-    03. helm-secrets
-  </a>
-  
-    <nav class="md-nav" aria-label="03. helm-secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-secrets" class="md-nav__link">
-    helm-secretsとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ インストール
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    使用可能なバックエンド
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-02-sops" class="md-nav__link">
-    03-02. バックエンドがSOPSの場合
-  </a>
-  
-    <nav class="md-nav" aria-label="03-02. バックエンドがSOPSの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    注意点
-  </a>
-  
-    <nav class="md-nav" aria-label="注意点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    ▼ secretsファイルの名前の制限
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets_1" class="md-nav__link">
-    secretsサブコマンド無しの場合
-  </a>
-  
-    <nav class="md-nav" aria-label="secretsサブコマンド無しの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secrets_2" class="md-nav__link">
-    ▼ secrets://
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-f" class="md-nav__link">
-    ▼ -f
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    サブコマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="サブコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#decrypt" class="md-nav__link">
-    ▼ decrypt
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#encrypt" class="md-nav__link">
-    ▼ encrypt
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#view" class="md-nav__link">
-    ▼ view
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_chart.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ チャート
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_manifests_management_helm_practices.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    プラクティス集
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_helm_helmfile.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Helmfile
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
   
 
       
@@ -4274,72 +3728,12 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="infrastructure_as_code_kubernetes_manifests_management_kustomize.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Kustomize
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
   
+  
+    
   
   
     
@@ -4366,12 +3760,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
         
           
           
@@ -4393,7 +3787,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             ⏬ K8sアドオン
@@ -4494,42 +3888,314 @@
                 
   
   
-  
     
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
+    
+    
       
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17_4" id="__nav_17_4_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ ネットワークアドオン
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17_4">
+            <span class="md-nav__icon md-icon"></span>
+            ■ ネットワークアドオン
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CNI
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_network_external_dns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ExternalDNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17_4_3" id="__nav_17_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ CoreDNS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            ■ CoreDNS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CoreDNS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="infrastructure_as_code_kubernetes_addon_network_coredns_conf.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    設定ファイル
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+    <nav class="md-nav" aria-label="はじめに">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errors" class="md-nav__link">
+    errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health" class="md-nav__link">
+    health
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ready" class="md-nav__link">
+    ready
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    kubernetes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    prometheus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#forward" class="md-nav__link">
+    forward
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop" class="md-nav__link">
+    loop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reload" class="md-nav__link">
+    reload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadbalance" class="md-nav__link">
+    loadbalance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    hosts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -6114,228 +5780,83 @@
     はじめに
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-helm-dashboard" class="md-nav__link">
-    01. helm-dashboard
-  </a>
-  
-    <nav class="md-nav" aria-label="01. helm-dashboard">
+    <nav class="md-nav" aria-label="はじめに">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#helm-dashboard" class="md-nav__link">
-    helm-dashboardとは
+  <a href="#errors" class="md-nav__link">
+    errors
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ インストール
+  <a href="#health" class="md-nav__link">
+    health
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 起動
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-helm-diff" class="md-nav__link">
-    02. helm-diff
-  </a>
-  
-    <nav class="md-nav" aria-label="02. helm-diff">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-diff" class="md-nav__link">
-    helm-diffとは
+  <a href="#ready" class="md-nav__link">
+    ready
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ インストール
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-helm-secrets" class="md-nav__link">
-    03. helm-secrets
-  </a>
-  
-    <nav class="md-nav" aria-label="03. helm-secrets">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm-secrets" class="md-nav__link">
-    helm-secretsとは
+  <a href="#kubernetes" class="md-nav__link">
+    kubernetes
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ インストール
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    使用可能なバックエンド
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-02-sops" class="md-nav__link">
-    03-02. バックエンドがSOPSの場合
-  </a>
-  
-    <nav class="md-nav" aria-label="03-02. バックエンドがSOPSの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    注意点
-  </a>
-  
-    <nav class="md-nav" aria-label="注意点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    ▼ secretsファイルの名前の制限
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets_1" class="md-nav__link">
-    secretsサブコマンド無しの場合
-  </a>
-  
-    <nav class="md-nav" aria-label="secretsサブコマンド無しの場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#secrets_2" class="md-nav__link">
-    ▼ secrets://
+  <a href="#prometheus" class="md-nav__link">
+    prometheus
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-f" class="md-nav__link">
-    ▼ -f
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    サブコマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="サブコマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#decrypt" class="md-nav__link">
-    ▼ decrypt
+  <a href="#forward" class="md-nav__link">
+    forward
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#encrypt" class="md-nav__link">
-    ▼ encrypt
+  <a href="#cache" class="md-nav__link">
+    cache
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#view" class="md-nav__link">
-    ▼ view
+  <a href="#loop" class="md-nav__link">
+    loop
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#reload" class="md-nav__link">
+    reload
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadbalance" class="md-nav__link">
+    loadbalance
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hosts" class="md-nav__link">
+    hosts
+  </a>
   
 </li>
         
@@ -6362,7 +5883,7 @@
   
 
 
-<h1 id="helm">helmプラグイン＠コマンド<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h1>
+<h1 id="coredns">設定ファイル＠CoreDNS<a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6371,203 +5892,85 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-helm-dashboard">01. helm-dashboard<a class="headerlink" href="#01-helm-dashboard" title="Permanent link">&para;</a></h2>
-<h3 id="helm-dashboard">helm-dashboardとは<a class="headerlink" href="#helm-dashboard" title="Permanent link">&para;</a></h3>
-<p><code>helm</code>コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴、など) をダッシュボードで表示する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/komodorio/helm-dashboard">https://github.com/komodorio/helm-dashboard</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>https://github.com/komodorio/helm-dashboard.git
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/komodorio/helm-dashboard#installing">https://github.com/komodorio/helm-dashboard#installing</a></li>
-</ul>
-</blockquote>
-<h4 id="_4">▼ 起動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>dashboard
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/komodorio/helm-dashboard#running">https://github.com/komodorio/helm-dashboard#running</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-helm-diff">02. helm-diff<a class="headerlink" href="#02-helm-diff" title="Permanent link">&para;</a></h2>
-<h3 id="helm-diff">helm-diffとは<a class="headerlink" href="#helm-diff" title="Permanent link">&para;</a></h3>
-<p>3方向の戦略的マージパッチを使用して、『<code>helm get</code>コマンドによる最新のリリースによるマニフェスト』『<code>helm template</code>コマンドによる現在のチャートによるマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』を比較する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>diff
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/databus23/helm-diff/pull/304">https://github.com/databus23/helm-diff/pull/304</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ インストール<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>https://github.com/databus23/helm-diff<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.0.0
+<h3 id="errors">errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h3>
+<p>エラーの出力先を設定する。</p>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>errors
+<span class="o">}</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="03-helm-secrets">03. helm-secrets<a class="headerlink" href="#03-helm-secrets" title="Permanent link">&para;</a></h2>
-<h3 id="helm-secrets">helm-secretsとは<a class="headerlink" href="#helm-secrets" title="Permanent link">&para;</a></h3>
-<p>暗号化ツールを使用して、<code>values</code>ファイルを復号化し、Secretのデータとして注入する。</p>
-<p>また反対に、Secretのデータを復号化する。</p>
-<blockquote>
-<ul>
-<li><a href="https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9">https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h4 id="_8">▼ インストール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>https://github.com/jkroepke/helm-secrets<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.0.0
+<h3 id="health">health<a class="headerlink" href="#health" title="Permanent link">&para;</a></h3>
+<p>CoreDNSのヘルスチェックを開始するまでの待機時間を設定する。</p>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>health<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span>lameduck<span class="w"> </span>5s
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_9">使用可能なバックエンド<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>Secretの元となるデータを管理するバックエンドとして、以下を選べる。</p>
-<ul>
-<li>SOPS</li>
-<li>vals</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends">https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends</a></li>
-<li><a href="https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends">https://github.com/jkroepke/helm-secrets/wiki/Secret-Backends#list-of-implemented-secret-backends</a></li>
-</ul>
-</blockquote>
+<h3 id="ready">ready<a class="headerlink" href="#ready" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>ready
+<span class="o">}</span>
+</code></pre></div>
 <p><br></p>
-<h2 id="03-02-sops">03-02. バックエンドがSOPSの場合<a class="headerlink" href="#03-02-sops" title="Permanent link">&para;</a></h2>
-<h3 id="_10">注意点<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h4 id="secrets">▼ <code>secrets</code>ファイルの名前の制限<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
-<p>helm-secretsには、zendesk製 (2022/11/29時点でメンテナンスされていない) と、zendesk製からフォークされたjkroepke製がある。</p>
-<p>zendesk製を使用している場合、SOPSの<code>secrets</code>ファイルの名前を『<code>secrets.yaml</code>』『<code>secrets.&lt;任意の名前&gt;.yaml</code>』とする必要がある。</p>
-<p>一方でjkeroepke製では、執筆時点 (2022/11/29) で、<code>secrets</code>ファイルの名前が任意である。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/zendesk/helm-secrets#usage-and-examples">https://github.com/zendesk/helm-secrets#usage-and-examples</a></li>
-<li><a href="https://github.com/jkroepke/helm-secrets/wiki/Usage">https://github.com/jkroepke/helm-secrets/wiki/Usage</a></li>
-</ul>
-</blockquote>
+<h3 id="kubernetes">kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>kubernetes<span class="w"> </span>cluster.local<span class="w"> </span><span class="k">in</span>-addr.arpa<span class="w"> </span>ip6.arpa<span class="w"> </span><span class="o">{</span>
+<span class="w">      </span>pods<span class="w"> </span>insecure
+<span class="w">       </span>fallthrough<span class="w"> </span><span class="k">in</span>-addr.arpa<span class="w"> </span>ip6.arpa
+<span class="w">       </span>ttl<span class="w"> </span><span class="m">30</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <p><br></p>
-<h3 id="secrets_1">secretsサブコマンド無しの場合<a class="headerlink" href="#secrets_1" title="Permanent link">&para;</a></h3>
-<h4 id="secrets_2">▼ <code>secrets://</code><a class="headerlink" href="#secrets_2" title="Permanent link">&para;</a></h4>
-<p>SOPSの<code>secrets</code>ファイルを指定する時に<code>secrets://</code>を使用すると、サブコマンドの<code>secrets</code>が不要になる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>secrets://foo-secrets.yaml
+<h3 id="prometheus">prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>prometheus<span class="w"> </span>:9153
+<span class="o">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler">https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler</a></li>
-</ul>
-</blockquote>
-<h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p>暗号化された<code>values</code>ファイル (<code>secrets</code>ファイル) と、平文の<code>values</code>ファイルを使用して、<code>helm</code>コマンドを実行する。</p>
-<p>これにより、暗号化された値を<code>helm</code>コマンドの実行時のみ復号化し、マニフェストに出力できる。</p>
-<p>補足としてこの時、<code>values</code>ファイル側には<code>secrets</code>ファイルの値を設定しておく必要はない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>&lt;SOPSが作成したsecretsファイルへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
-</code></pre></div>
-<p><strong>＊例＊</strong></p>
-<p>以下のようなSOPSの<code>secrets</code>ファイルがあるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># secretsファイル</span>
-<span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">F799Q8CQ...</span>
-
-<span class="nt">sops</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">kms</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:kms:ap-northeast-1:&lt;AWSアカウントID&gt;:key/&lt;KMSのID&gt;</span>
-<span class="w">      </span><span class="nt">created_at</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2017-12-19T11:02:39Z&#39;</span>
-<span class="w">      </span><span class="nt">enc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AQICA...</span>
-<span class="w">      </span><span class="nt">aws_profile</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-
-<span class="w">  </span><span class="c1"># 暗号化時に使用したSOPSのバージョン</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.7.0</span>
-</code></pre></div>
-<p>また、以下のようなSecretがあるとする。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-secret</span>
-<span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Opaque</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | b64enc</span><span class="p p-Indicator">}}</span>
-</code></pre></div>
-<p>この時、<code>helm secrets</code>コマンドで<code>secrets</code>ファイルを指定すると、復号化した上で<code>.Values</code>に出力してくれる。</p>
-<p>ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (<code>sops</code>キーの値) に合わせた方が良い。</p>
-<p>結果的に、base64方式でエンコードされ、マニフェストが作成される。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml
-
-apiVersion:<span class="w"> </span>v1
-kind:<span class="w"> </span>Secret
-metadata:
-<span class="w">  </span>name:<span class="w"> </span>foo-secret
-type:<span class="w"> </span>Opaque
-data:
-<span class="w">  </span>foo:<span class="w"> </span><span class="nv">Rjc5OVE4Q1E</span><span class="o">=</span>...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/">https://www.thorsten-hans.com/encrypted-secrets-in-helm-charts/</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="_11">サブコマンド<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="decrypt">▼ decrypt<a class="headerlink" href="#decrypt" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイルを復号化し、<code>.yaml.dec</code>ファイルに出力する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>decrypt<span class="w"> </span>&lt;暗号化されたvaluesファイル&gt;
-
-Decrypting<span class="w"> </span>./values/secrets.yaml
+<h3 id="forward">forward<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h3>
+<p>まずはUDPプロトコルによるルーティングを使用し、失敗した場合にTCPプロトコルを使用する。</p>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>forward<span class="w"> </span>.<span class="w"> </span>/etc/resolv.conf<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>prefer_udp
+<span class="w">    </span>max_concurrent<span class="w"> </span><span class="m">1000</span>
+<span class="o">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># .yaml.decファイル</span>
-<span class="nt">db</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
-<span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<p><br></p>
+<h3 id="cache">cache<a class="headerlink" href="#cache" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>cache<span class="w"> </span><span class="m">30</span>
+<span class="o">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62">https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62</a></li>
-</ul>
-</blockquote>
-<h4 id="encrypt">▼ encrypt<a class="headerlink" href="#encrypt" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイルを暗号化し、元の<code>values</code>ファイルを上書きする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>encrypt<span class="w"> </span>&lt;平文のvaluesファイル&gt;
-
-Encrypted<span class="w"> </span>./values/secrets.yaml
+<p><br></p>
+<h3 id="loop">loop<a class="headerlink" href="#loop" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>loop
+<span class="o">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>./values/secrets.yaml
-
-<span class="c1"># secretsファイル</span>
-db:
-<span class="w">  </span>user:<span class="w"> </span>*****
-<span class="w">  </span>password:<span class="w"> </span>*****
-
-<span class="c1"># SOPSキーが追記される。</span>
-sops:
-<span class="w">  </span>...
+<p><br></p>
+<h3 id="reload">reload<a class="headerlink" href="#reload" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>reload
+<span class="o">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62">https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62</a></li>
-</ul>
-</blockquote>
-<h4 id="view">▼ view<a class="headerlink" href="#view" title="Permanent link">&para;</a></h4>
-<p>指定した<code>values</code>ファイルを復号化して取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>secrets<span class="w"> </span>view<span class="w"> </span>&lt;暗号化されたvaluesファイル&gt;
-
-db:
-<span class="w">  </span>user:<span class="w"> </span>root
-<span class="w">  </span>password:<span class="w"> </span>password
+<p><br></p>
+<h3 id="loadbalance">loadbalance<a class="headerlink" href="#loadbalance" title="Permanent link">&para;</a></h3>
+<p>DNSロードバランシングを有効化する。</p>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>loadbalance
+<span class="o">}</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62">https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62</a></li>
-</ul>
-</blockquote>
+<p><br></p>
+<h3 id="hosts">hosts<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>hosts<span class="w"> </span><span class="o">{</span>
+<span class="w">     </span>*.*.*.*<span class="w"> </span>&lt;ホスト名&gt;
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <p><br></p>
 
   <hr>
@@ -6575,7 +5978,7 @@ db:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>

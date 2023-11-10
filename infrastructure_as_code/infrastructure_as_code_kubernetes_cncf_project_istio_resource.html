@@ -3908,7 +3908,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -6431,10 +6431,12 @@
 <h3 id="serviceentry">ServiceEntry<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <h4 id="serviceentry_1">▼ ServiceEntryとは<a class="headerlink" href="#serviceentry_1" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。</p>
+<p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
 <p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://tech.uzabase.com/entry/2018/11/26/110407">https://tech.uzabase.com/entry/2018/11/26/110407</a></li>
+<li><a href="https://jimmysong.io/blog/externalname-and-serviceentry/">https://jimmysong.io/blog/externalname-and-serviceentry/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6749,7 +6751,7 @@ envoy<span class="w"> </span><span class="c1"># クライアント側Envoyから
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>

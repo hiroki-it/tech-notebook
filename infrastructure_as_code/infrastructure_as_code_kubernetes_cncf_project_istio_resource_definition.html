@@ -3908,7 +3908,7 @@
         
   
   
-    <a href="infrastructure_as_code_kubernetes_addon_network_coredns.html" class="md-nav__link">
+    <a href="infrastructure_as_code_kubernetes_addon_network_cni.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -9364,7 +9364,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
 <code>0</code>秒の場合、タイムアウトは無制限になる。</p>
-<p>これは、Envoyのルート値の<code>max_grpc_timeout</code> (<code>grpc_timeout_header_max</code>) と<code>timeout</code>の両方に適用される。</p>
+<p>これは、Envoyのルート値の<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
