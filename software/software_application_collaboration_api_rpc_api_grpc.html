@@ -6319,6 +6319,7 @@
 <h3 id="unary-rpc-rpc">Unary RPC (単項RPC)<a class="headerlink" href="#unary-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_unary-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
+<p><code>1</code>個のTCPコネクションを確立し、その中に<code>1</code>個のストリームを作成する。</p>
 <p>クライアントが<code>1</code>個のリクエストを送信すると、サーバーは<code>1</code>個のレスポンスを返信する。</p>
 <p>一番よく使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
@@ -6334,12 +6335,14 @@
 <ul>
 <li><a href="https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc">https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc</a></li>
 <li><a href="https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html">https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html</a></li>
+<li><a href="https://kiririmode.hatenablog.jp/entry/20190623/1561247109">https://kiririmode.hatenablog.jp/entry/20190623/1561247109</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="server-streaming-rpc-rpc">Server Streaming RPC (サーバーストリーミングRPC)<a class="headerlink" href="#server-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_server-streaming.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
+<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
 <p>クライアントが<code>1</code>個のリクエストを送信すると、サーバーは複数個のレスポンスを並行的に返信する。</p>
 <p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
@@ -6361,7 +6364,8 @@
 <h3 id="client-streaming-rpc-rpc">Client Streaming RPC (クライアントストリーミングRPC)<a class="headerlink" href="#client-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_2">▼ クライアントストリーミングRPC とは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_client-streaming-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
-<p>クライアントが複数個のリクエストを並行的に送信すると、サーバーは<code>1</code>個のレスポンスを返信する。</p>
+<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>この時、クライアントが複数個のリクエストを並行的に送信すると、サーバーは<code>1</code>個のレスポンスを返信する。</p>
 <p>クライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
 
@@ -6382,6 +6386,7 @@
 <h3 id="bidirectional-streaming-rpc-rpc">Bidirectional Streaming RPC (双方向ストリーミングRPC)<a class="headerlink" href="#bidirectional-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_bidrectional-streaming-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
+<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
 <p>クライアントが複数個のリクエストを並行的に送信し、サーバーも複数個のレスポンスを並行的に返信する。</p>
 <p>また、双方向にリクエストを送信できる。</p>
 <p>クライアントとサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>

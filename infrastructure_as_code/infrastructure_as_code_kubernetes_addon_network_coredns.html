@@ -6305,32 +6305,7 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Corefile</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">.:53 {</span>
-<span class="w">        </span><span class="no"># エラーの出力先を設定する。</span>
-<span class="w">        </span><span class="no">errors</span>
-<span class="w">        </span><span class="no"># CoreDNSのヘルスチェックを開始するまでの待機時間を設定する。</span>
-<span class="w">        </span><span class="no">health {</span>
-<span class="w">            </span><span class="no">lameduck 5s</span>
-<span class="w">        </span><span class="no">}</span>
-<span class="w">        </span><span class="no">ready</span>
-<span class="w">        </span><span class="no">kubernetes cluster.local in-addr.arpa ip6.arpa {</span>
-<span class="w">            </span><span class="no">pods insecure</span>
-<span class="w">            </span><span class="no">fallthrough in-addr.arpa ip6.arpa</span>
-<span class="w">            </span><span class="no">ttl 30</span>
-<span class="w">        </span><span class="no">}</span>
-<span class="w">        </span><span class="no">prometheus :9153</span>
-<span class="w">        </span><span class="no">forward . /etc/resolv.conf {</span>
-<span class="w">          </span><span class="no"># まずはUDPプロトコルによるルーティングを使用し、失敗した場合にTCPプロトコルを使用する。</span>
-<span class="w">          </span><span class="no">prefer_udp</span>
-<span class="w">          </span><span class="no">max_concurrent 1000</span>
-<span class="w">        </span><span class="no">}</span>
-<span class="w">        </span><span class="no">cache 30</span>
-<span class="w">        </span><span class="no">loop</span>
-<span class="w">        </span><span class="no">reload</span>
-<span class="w">        </span><span class="no"># DNSロードバランシングを有効化する。</span>
-<span class="w">        </span><span class="no">loadbalance</span>
-<span class="w">        </span><span class="no">hosts {</span>
-<span class="w">          </span><span class="no">*.*.*.* &lt;ホスト名&gt;</span>
-<span class="w">        </span><span class="no">}</span>
+<span class="w">      </span><span class="no">...</span>
 <span class="w">    </span><span class="no">}</span>
 </code></pre></div>
 <blockquote>

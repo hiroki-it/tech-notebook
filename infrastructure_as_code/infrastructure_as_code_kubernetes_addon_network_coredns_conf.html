@@ -4117,6 +4117,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#rewrite" class="md-nav__link">
+    rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubernetes" class="md-nav__link">
     kubernetes
   </a>
@@ -5805,6 +5812,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#rewrite" class="md-nav__link">
+    rewrite
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#kubernetes" class="md-nav__link">
     kubernetes
   </a>
@@ -5903,7 +5917,7 @@
 <p>CoreDNSのヘルスチェックを開始するまでの待機時間を設定する。</p>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>health<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span>lameduck<span class="w"> </span>5s
+<span class="w">    </span>lameduck<span class="w"> </span>5s
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -5913,6 +5927,19 @@
 <span class="w">  </span>ready
 <span class="o">}</span>
 </code></pre></div>
+<p><br></p>
+<h3 id="rewrite">rewrite<a class="headerlink" href="#rewrite" title="Permanent link">&para;</a></h3>
+<p>Cluster内のDNS名とドメインを紐づける。</p>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="c1"># foo.default.svc.cluster.local を foo.example.com に紐づける</span>
+<span class="w">  </span>rewrite<span class="w"> </span>name<span class="w"> </span>foo.example.com<span class="w"> </span>foo.default.svc.cluster.local
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/toshikish/articles/7f555dbf1b4b7d">https://zenn.dev/toshikish/articles/7f555dbf1b4b7d</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="kubernetes">kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
@@ -5936,6 +5963,7 @@
 <span class="w">  </span>forward<span class="w"> </span>.<span class="w"> </span>/etc/resolv.conf<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>prefer_udp
 <span class="w">    </span>max_concurrent<span class="w"> </span><span class="m">1000</span>
+<span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><br></p>
