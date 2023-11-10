@@ -178,7 +178,9 @@ service Chat {
 
 ## 03. HTTP/1.1とgRPCの違い
 
-### リクエストヘッダーの構造
+### ヘッダーの構造
+
+#### ▼ リクエストヘッダー
 
 | ヘッダー名             | 説明                           |
 | ---------------------- | ------------------------------ |
@@ -194,9 +196,7 @@ service Chat {
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
 
-<br>
-
-### レスポンスヘッダーの構造
+#### ▼ レスポンスヘッダー
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses
 
@@ -257,6 +257,18 @@ HTTP/1.1の場合、`1`個のリクエストとレスポンスを送受信する
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
 > - https://qiita.com/Hiraku/items/0549e4cf7079d22b27e8
+
+<br>
+
+### タイムアウト
+
+#### ▼ 単項RPCの場合
+
+単一のストリーミングしかなく、そのストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。
+
+#### ▼ ストリーミングRPCの場合
+
+複数のストリーミングがあり、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。
 
 <br>
 
