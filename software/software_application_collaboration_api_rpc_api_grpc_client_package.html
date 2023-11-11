@@ -1471,7 +1471,7 @@
         
           <li class="md-nav__item">
   <a href="#proto" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -1600,7 +1600,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_1" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -1687,7 +1687,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_2" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -1774,7 +1774,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_3" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -1861,7 +1861,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_4" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6321,7 +6321,7 @@
         
           <li class="md-nav__item">
   <a href="#proto" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6450,7 +6450,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_1" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6537,7 +6537,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_2" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6624,7 +6624,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_3" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6711,7 +6711,7 @@
         
           <li class="md-nav__item">
   <a href="#proto_4" class="md-nav__link">
-    ▼ .protoファイル
+    ▼ protoファイル
   </a>
   
 </li>
@@ -6785,8 +6785,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="grpc_4">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h3>
-<h4 id="proto">▼ <code>.proto</code>ファイル<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
-<p>クライアント側とサーバー側の両方で、サービス定義ファイル (<code>.proto</code>ファイル) を作成する。</p>
+<h4 id="proto">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto" title="Permanent link">&para;</a></h4>
+<p>クライアント側とサーバー側の両方で、サービス定義ファイル (<code>proto</code>ファイル) を作成する。</p>
 <p>gRPCにおけるAPI仕様の実装であり、実装によりAPI仕様を説明する。</p>
 <p>サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから<code>pb.*</code>ファイルを自動作成する。</p>
 <blockquote>
@@ -6812,7 +6812,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="pb">▼ <code>pb.*</code>ファイル (拡張子は言語ごとに異なる)<a class="headerlink" href="#pb" title="Permanent link">&para;</a></h4>
-<p>クライアント側とサーバー側の両方で、<code>.proto</code>ファイルから<code>pb.*</code>ファイルを自動作成する。</p>
+<p>クライアント側とサーバー側の両方で、<code>proto</code>ファイルから<code>pb.*</code>ファイルを自動作成する。</p>
 <p><code>protoc</code>コマンドを使用して、<code>pb.*</code>ファイルを作成する。</p>
 <p>このファイルには、サーバー側とクライアント側の両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.pb.goファイルを作成する。</span>
@@ -6827,7 +6827,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </ul>
 </blockquote>
 <h4 id="rpc-api">▼ RPC-API仕様書<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h4>
-<p>gRPCにおけるAPI仕様書である。仕様の実装である<code>.proto</code>ファイルを使用して、RPC-API仕様書を作成できる。</p>
+<p>gRPCにおけるAPI仕様書である。仕様の実装である<code>proto</code>ファイルを使用して、RPC-API仕様書を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>--doc_out<span class="o">=</span>./<span class="w"> </span>--doc_opt<span class="o">=</span>html,index.html<span class="w"> </span>./*.proto
 </code></pre></div>
 <p><br></p>
@@ -7132,7 +7132,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="grpc_9">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_9" title="Permanent link">&para;</a></h3>
-<h4 id="proto_1">▼ <code>.proto</code>ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h4>
+<h4 id="proto_1">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto_1" title="Permanent link">&para;</a></h4>
 <p>クライアントからのコールで返信する構造体や関数を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// protoファイルの構文のバージョンを設定する。</span>
 <span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto3&quot;</span><span class="p">;</span>
@@ -7165,7 +7165,7 @@ $<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </spa
 </ul>
 </blockquote>
 <h4 id="pbgo">▼ <code>pb.go</code>ファイル<a class="headerlink" href="#pbgo" title="Permanent link">&para;</a></h4>
-<p>事前に用意した<code>.proto</code>ファイルを使用して、<code>pb.go</code>ファイルを自動作成する。</p>
+<p>事前に用意した<code>proto</code>ファイルを使用して、<code>pb.go</code>ファイルを自動作成する。</p>
 <p><code>pb.go</code>ファイルには、サーバー側とクライアント側の両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo.pb.goファイルを作成する。</span>
 $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="o">=</span>./foo/foo.proto<span class="w"> </span>--go_out<span class="o">=</span><span class="nv">plugins</span><span class="o">=</span>grpc:foo
@@ -7210,7 +7210,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </code></pre></div>
 <p><br></p>
 <h3 id="grpc_12">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_12" title="Permanent link">&para;</a></h3>
-<h4 id="proto_2">▼ <code>.proto</code>ファイル<a class="headerlink" href="#proto_2" title="Permanent link">&para;</a></h4>
+<h4 id="proto_2">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto_2" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="pbpy">▼ <code>pb.py</code>ファイル<a class="headerlink" href="#pbpy" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -7231,7 +7231,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </code></pre></div>
 <p><br></p>
 <h3 id="grpc_15">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_15" title="Permanent link">&para;</a></h3>
-<h4 id="proto_3">▼ <code>.proto</code>ファイル<a class="headerlink" href="#proto_3" title="Permanent link">&para;</a></h4>
+<h4 id="proto_3">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto_3" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="pbrb">▼ <code>pb.rb</code>ファイル<a class="headerlink" href="#pbrb" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -7252,7 +7252,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
 </code></pre></div>
 <p><br></p>
 <h3 id="grpc_18">gRPCサーバーとクライアントの両方<a class="headerlink" href="#grpc_18" title="Permanent link">&para;</a></h3>
-<h4 id="proto_4">▼ <code>.proto</code>ファイル<a class="headerlink" href="#proto_4" title="Permanent link">&para;</a></h4>
+<h4 id="proto_4">▼ <code>proto</code>ファイル<a class="headerlink" href="#proto_4" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="pbjs">▼ <code>pb.js</code>ファイル<a class="headerlink" href="#pbjs" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -7263,7 +7263,7 @@ $<span class="w"> </span>protoc<span class="w"> </span>--proto_path<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-11</span>
       
     
   </small>

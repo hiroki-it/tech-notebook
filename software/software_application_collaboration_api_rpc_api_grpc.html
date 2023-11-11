@@ -1577,6 +1577,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#http11_1" class="md-nav__link">
+    ▼ HTTP/1/1の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rpc_4" class="md-nav__link">
     ▼ 単項RPCの場合
   </a>
@@ -1617,10 +1624,10 @@
         
           <li class="md-nav__item">
   <a href="#protogrpc" class="md-nav__link">
-    .protoファイルをgRPCサーバー側に置く場合
+    protoファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label=".protoファイルをgRPCサーバー側に置く場合">
+    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1637,10 +1644,10 @@
         
           <li class="md-nav__item">
   <a href="#protopb_go" class="md-nav__link">
-    .protoファイルとpb_goファイルを専用リポジトリに置く場合
+    protoファイルとpb_goファイルを専用リポジトリに置く場合
   </a>
   
-    <nav class="md-nav" aria-label=".protoファイルとpb_goファイルを専用リポジトリに置く場合">
+    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6251,6 +6258,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#http11_1" class="md-nav__link">
+    ▼ HTTP/1/1の場合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#rpc_4" class="md-nav__link">
     ▼ 単項RPCの場合
   </a>
@@ -6291,10 +6305,10 @@
         
           <li class="md-nav__item">
   <a href="#protogrpc" class="md-nav__link">
-    .protoファイルをgRPCサーバー側に置く場合
+    protoファイルをgRPCサーバー側に置く場合
   </a>
   
-    <nav class="md-nav" aria-label=".protoファイルをgRPCサーバー側に置く場合">
+    <nav class="md-nav" aria-label="protoファイルをgRPCサーバー側に置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6311,10 +6325,10 @@
         
           <li class="md-nav__item">
   <a href="#protopb_go" class="md-nav__link">
-    .protoファイルとpb_goファイルを専用リポジトリに置く場合
+    protoファイルとpb_goファイルを専用リポジトリに置く場合
   </a>
   
-    <nav class="md-nav" aria-label=".protoファイルとpb_goファイルを専用リポジトリに置く場合">
+    <nav class="md-nav" aria-label="protoファイルとpb_goファイルを専用リポジトリに置く場合">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6387,7 +6401,7 @@
 <h2 id="02">02. 通信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCの通信方式とは<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
 <p>gRPCでは、クライアントとサーバーの間の通信方式に種類がある。</p>
-<p>通信方式は、<code>.proto</code>ファイルで定義する。</p>
+<p>通信方式は、<code>proto</code>ファイルで定義する。</p>
 <p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
 <blockquote>
 <ul>
@@ -6708,10 +6722,14 @@
 </blockquote>
 <p><br></p>
 <h3 id="_8">タイムアウト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="http11_1">▼ HTTP/1/1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
+<p>TCPコネクションをリクエスト/レスポンスにタイムアウト時間を適用する。</p>
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
-<p>単一のストリーミングしかなく、そのストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。</p>
+<p>TCPコネクション上に単一のストリーミングしかない。</p>
+<p>そのため、ストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。</p>
 <h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
-<p>複数のストリーミングがあり、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
+<p>TCPコネクション上に複数のストリーミングがある。</p>
+<p>そのため、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
 <p><br></p>
 <h2 id="04">04. ディレクトリ構成規約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">前提<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -6725,13 +6743,13 @@
 <span class="l l-Scalar l-Scalar-Plain">baz</span><span class="w"> </span><span class="c1"># Python製</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="protogrpc"><code>.proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
+<h3 id="protogrpc"><code>proto</code>ファイルをgRPCサーバー側に置く場合<a class="headerlink" href="#protogrpc" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_2">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>.proto</code>ファイルを置く。</p>
-<p><code>.pb</code>ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。</p>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層に<code>proto</code>ファイルを置く。</p>
+<p><code>pb</code>ファイルに関しては、gRPCサーバーがさらに後続のマイクロサービスをコールするgRPCクライアントにもなるので、以下の両方を同じリポジトリで管理する。</p>
 <ul>
-<li>gRPCサーバーとしてのprotoファイルから作った<code>.pb</code>ファイル</li>
-<li>gRPCクライアントとしての<code>.proto</code>ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った<code>.pb</code>ファイル</li>
+<li>gRPCサーバーとしての<code>proto</code>ファイルから作った<code>pb</code>ファイル</li>
+<li>gRPCクライアントとしての<code>proto</code>ファイル (これは後続のgRPCサーバーのリポジトリにある) から作った<code>pb</code>ファイル</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -6833,7 +6851,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="protopb_go"><code>.proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
+<h3 id="protopb_go"><code>proto</code>ファイルと<code>pb_go</code>ファイルを専用リポジトリに置く場合<a class="headerlink" href="#protopb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_3">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_3" title="Permanent link">&para;</a></h4>
 <p>各マイクロサービスのリポジトリでは、アプリケーションのインフラ層にgRPCクライアントとgRPCサーバーの定義を置く。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (Node.js製)</span>
@@ -6882,7 +6900,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ プロトコルバッファーのリポジトリ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>.proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
+<p>プロトコルバッファーのリポジトリでは、各マイクロサービスの<code>proto</code>ファイル、RPC-API仕様書、<code>.pb.*</code>ファイル、を同じリポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># プロトコルバッファー</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── proto/</span><span class="w"> </span><span class="c1"># サービス定義ファイル (.protoファイル)</span>
@@ -6924,7 +6942,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-11</span>
       
     
   </small>
