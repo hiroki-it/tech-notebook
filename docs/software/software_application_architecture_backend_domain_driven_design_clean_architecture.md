@@ -2725,7 +2725,7 @@ class DogComboFactory
 
 ### その他
 
-gRPCの`.proto`ファイルはインフラ層に配置すると良い。
+gRPCの`proto`ファイルはインフラ層に配置すると良い。
 
 > - https://stackoverflow.com/a/62703733
 
