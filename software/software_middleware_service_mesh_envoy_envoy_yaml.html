@@ -7464,7 +7464,7 @@
 
     foo-&gt;&gt;envoy (client): クライアントストリーミング (grpc-timeout: 25s)
     envoy (client)-&gt;&gt;envoy (server): 全ストリーミング送信後にタイムアウト計算
-    envoy (server)-&gt;&gt;bar:
+    envoy (server)-&gt;&gt;bar: 全ストリーミング送信後にタイムアウト計算
 
     foo-&gt;&gt;envoy (client):
     envoy (client)-&gt;&gt;envoy (server):
@@ -7482,6 +7482,15 @@
 <p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
 <p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
+<pre class="mermaid"><code>sequenceDiagram
+
+    foo-&gt;&gt;envoy (client): Unary (grpc-timeout: 25s)
+    envoy (client)-&gt;&gt;envoy (server): ストリーミング送信後にタイムアウト計算
+    envoy (server)-&gt;&gt;bar: ストリーミング送信後にタイムアウト計算
+
+    bar--&gt;&gt;envoy (server): DeadlineExceeded
+    envoy (client)--&gt;&gt;envoy (client): タイムアウト時間切れで通信を中断
+    envoy (client)--&gt;&gt;foo: Unavailable</code></pre>
 <div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
 <span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
