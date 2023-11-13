@@ -6610,7 +6610,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="05-aws-eks-vpc-cni">05. aws-eks-vpc-cniアドオン<a class="headerlink" href="#05-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
 <h3 id="aws-eks-vpc-cni">aws-eks-vpc-cniアドオンとは<a class="headerlink" href="#aws-eks-vpc-cni" title="Permanent link">&para;</a></h3>
 <p>EKSのNode上で、<code>aws-node</code>という名前のDaemonSetとして稼働する。</p>
-<p>aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できずに、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。</p>
+<p>aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
+<p>そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。</p>
 <p><img alt="aws_eks-vpc-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png" /></p>
 <blockquote>
 <ul>

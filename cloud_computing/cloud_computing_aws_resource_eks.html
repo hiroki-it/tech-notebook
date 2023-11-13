@@ -4086,6 +4086,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prefix-delegation" class="md-nav__link">
+    ▼ Prefix delegationモードのセットアップ
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8100,6 +8107,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prefix-delegation" class="md-nav__link">
+    ▼ Prefix delegationモードのセットアップ
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9293,6 +9307,8 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
+<span class="c1"># ユーザーデータ</span>
+
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
 <span class="c1"># 主要なパラメーターは以下の通り。</span>
@@ -9310,6 +9326,8 @@
 <p>ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。</p>
 <p>パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># ユーザーデータ</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9334,6 +9352,12 @@
 <li><a href="https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html">https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html</a></li>
 </ul>
 </blockquote>
+<p>なお、設定可能な全ての環境変数は、以下から確認できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh">https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh</a></li>
+</ul>
+</blockquote>
 <h4 id="ec2node_2">▼ EC2ワーカーNodeのイメージキャッシュ削除<a class="headerlink" href="#ec2node_2" title="Permanent link">&para;</a></h4>
 <p>kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。</p>
 <p><code>--image-gc-high-threshold</code>オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
@@ -9341,6 +9365,8 @@
 <p><strong>＊実装例＊</strong></p>
 <p>ディスク使用率が<code>70</code>%を超過した場合に、ディスク使用率<code>50</code>%分を解放する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># ユーザーデータ</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9374,6 +9400,8 @@
 <p>ワーカーNodeの停止を<code>6</code>分だけ待機し、その後に停止を始める。</p>
 <p><code>6</code>分のうち後半<code>2</code>分を重要なPodのために停止に割り当てる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># ユーザーデータ</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9414,6 +9442,46 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <blockquote>
 <ul>
 <li><a href="https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36">https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36</a></li>
+</ul>
+</blockquote>
+<h4 id="prefix-delegation">▼ Prefix delegationモードのセットアップ<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h4>
+<p>AWS VPC CNIの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-cni&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+
+<span class="c1">  # 環境変数を設定する</span>
+<span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">nodeSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="na">ENABLE_PREFIX_DELEGATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最適数を計算しておく。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
+
+$<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span>-<span class="se">\</span>
+<span class="w">    </span>-cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-prefix-delegation-enabled
+</code></pre></div>
+<p>ユーザーデータで、以下の環境変数を出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># ユーザーデータ</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_MAX_PODS</span><span class="o">=</span><span class="nb">false</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">KUBELET_EXTRA_ARGS</span><span class="o">=</span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最適数&gt;&quot;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9868,7 +9936,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>
