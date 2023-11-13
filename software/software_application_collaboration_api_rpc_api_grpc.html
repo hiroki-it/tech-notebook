@@ -6400,7 +6400,7 @@
 <p><br></p>
 <h2 id="02">02. 通信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCの通信方式とは<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
-<p>gRPCでは、クライアントとサーバーの間の通信方式に種類がある。</p>
+<p>gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に種類がある。</p>
 <p>通信方式は、<code>proto</code>ファイルで定義する。</p>
 <p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
 <blockquote>
@@ -6413,8 +6413,8 @@
 <h3 id="unary-rpc-rpc">Unary RPC (単項RPC)<a class="headerlink" href="#unary-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_unary-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
-<p><code>1</code>個のTCPコネクションを確立し、その中に<code>1</code>個のストリームを作成する。</p>
-<p>クライアントが<code>1</code>個のリクエストを送信すると、サーバーは<code>1</code>個のレスポンスを返信する。</p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に<code>1</code>個のストリームを作成する。</p>
+<p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えると受信後に<code>1</code>個のレスポンスを返信する。</p>
 <p>一番よく使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
 
@@ -6436,8 +6436,8 @@
 <h3 id="server-streaming-rpc-rpc">Server Streaming RPC (サーバーストリーミングRPC)<a class="headerlink" href="#server-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_server-streaming.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
-<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
-<p>クライアントが<code>1</code>個のリクエストを送信すると、サーバーは複数個のレスポンスを並行的に返信する。</p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが<code>1</code>個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
 <p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
 
@@ -6458,9 +6458,9 @@
 <h3 id="client-streaming-rpc-rpc">Client Streaming RPC (クライアントストリーミングRPC)<a class="headerlink" href="#client-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_2">▼ クライアントストリーミングRPC とは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_client-streaming-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
-<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
-<p>この時、クライアントが複数個のリクエストを並行的に送信すると、サーバーは<code>1</code>個のレスポンスを返信する。</p>
-<p>クライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーは<code>1</code>個のレスポンスを返信する。</p>
+<p>gRPCクライアントからのリクエストのデータサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">UploadRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">UploadResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -6480,20 +6480,19 @@
 <h3 id="bidirectional-streaming-rpc-rpc">Bidirectional Streaming RPC (双方向ストリーミングRPC)<a class="headerlink" href="#bidirectional-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_bidrectional-streaming-rpc.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
-<p><code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
-<p>クライアントが複数個のリクエストを並行的に送信し、サーバーも複数個のレスポンスを並行的に返信する。</p>
-<p>また、双方向にリクエストを送信できる。</p>
-<p>クライアントとサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
+<p>まず、<code>1</code>個のTCPコネクションを確立し、その中に複数のストリームを作成する。</p>
+<p>次に、gRPCクライアントが複数個のリクエストを並行的に送信し、これが終えるとサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。</p>
+<p>gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="c1">// クライアントからのリクエストを受信する。</span>
+<span class="w">    </span><span class="c1">// gRPCクライアントからのリクエストを受信する。</span>
 <span class="w">    </span><span class="n">in</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">stream.Recv</span><span class="p">()</span>
 
 <span class="w">    </span><span class="o">...</span>
 
-<span class="w">    </span><span class="c1">// クライアントにリクエストを送信する。</span>
+<span class="w">    </span><span class="c1">// gRPCクライアントにリクエストを送信する。</span>
 <span class="w">    </span><span class="n">stream.Send</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -6727,9 +6726,21 @@
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
 <p>TCPコネクション上に単一のストリーミングしかない。</p>
 <p>そのため、ストリーミングを通過するリクエスト/レスポンスにタイムアウト時間を適用する。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
+</ul>
+</blockquote>
 <h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
 <p>TCPコネクション上に複数のストリーミングがある。</p>
 <p>そのため、ストリーミングを通過するリクエスト/レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04">04. ディレクトリ構成規約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">前提<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -6798,7 +6809,7 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │   │   └── baz/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │       └── baz-client.pb.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCサーバーとクライアントの定義</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── grpc</span><span class="w"> </span><span class="c1"># gRPCクライアントとgRPCサーバーの定義</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       ├── bar/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       │   └── bar-server.go</span>
 <span class="l l-Scalar l-Scalar-Plain">│   │       │</span>
@@ -6942,7 +6953,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>

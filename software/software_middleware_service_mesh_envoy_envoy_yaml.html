@@ -7453,10 +7453,14 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578">https://github.com/envoyproxy/envoy/issues/12578</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/pull/13018">https://github.com/envoyproxy/envoy/pull/13018</a></li>
 </ul>
 </blockquote>
 <p>Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
-<p>具体的には、タイムアウト時に、EnvoyはgRPCサーバーからのレスポンスよりも先に通信を切断してしまう。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーを上書きする。</p>
+<p>これにより、クライアント側が想定しているタイムアウト時間よりも、実際のタイムアウト時間が大幅に短くなってしまう。</p>
+<p>結果、gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
 <span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
