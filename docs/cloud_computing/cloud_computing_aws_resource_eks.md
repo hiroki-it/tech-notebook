@@ -822,6 +822,8 @@ EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカ�
 ```bash
 #!/bin/bash
 
+# ユーザーデータ
+
 set -o xtrace
 
 # 主要なパラメーターは以下の通り。
@@ -844,6 +846,8 @@ set -o xtrace
 ```bash
 #!/bin/bash
 
+# ユーザーデータ
+
 set -o xtrace
 
 PARAMETERS=$(aws ssm get-parameters-by-path --with-decryption --path "/eks/foo-eks-cluster")
@@ -865,6 +869,10 @@ source "${EXPORT_ENVS}"
 > - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
 > - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
 
+なお、設定可能な全ての環境変数は、以下から確認できる。
+
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh
+
 #### ▼ EC2ワーカーNodeのイメージキャッシュ削除
 
 kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。
@@ -879,6 +887,8 @@ kubeletのガベージコレクションを使用して、イメージキャッ�
 
 ```bash
 #!/bin/bash
+
+# ユーザーデータ
 
 set -o xtrace
 
@@ -922,6 +932,8 @@ kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で�
 ```bash
 #!/bin/bash
 
+# ユーザーデータ
+
 set -o xtrace
 
 # --shutdown-grace-periodオプションに値が既に設定されていなければ、設定を挿入する。
@@ -960,6 +972,53 @@ done
 ```
 
 > - https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
+
+#### ▼ Prefix delegationモードのセットアップ
+
+AWS VPC CNIの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
+
+```terraform
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name                = aws_eks_cluster.foo.name
+  addon_version               = "<バージョン>"
+  addon_name                  = "vpc-cni"
+  resolve_conflicts_on_update = "OVERWRITE"
+  
+  # 環境変数を設定する
+  configuration_values = jsonencode(
+    {
+      nodeSelector = {
+        ENABLE_PREFIX_DELEGATION = "true"
+      }
+    }
+  )
+}
+```
+
+`max-pods-calculator.sh`ファイルを使用して、事前にPodの最適数を計算しておく。
+
+```bash
+$ curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
+
+$ ./max-pods-calculator.sh \
+    --instance-type <インスタンスタイプ> -\
+    -cni-version <AWS VPC CNIのバージョン> \
+    --cni-prefix-delegation-enabled
+```
+
+ユーザーデータで、以下の環境変数を出力する。
+
+```bash
+#!/bin/bash
+
+# ユーザーデータ
+
+export USE_MAX_PODS=false
+export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
+```
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
 <br>
 

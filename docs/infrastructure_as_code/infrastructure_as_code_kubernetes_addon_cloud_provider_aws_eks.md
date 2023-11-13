@@ -180,7 +180,9 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 EKSのNode上で、`aws-node`という名前のDaemonSetとして稼働する。
 
-aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できずに、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
+aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
+
+そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
