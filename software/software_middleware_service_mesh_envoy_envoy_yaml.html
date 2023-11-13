@@ -7463,16 +7463,16 @@
 <pre class="mermaid"><code>sequenceDiagram
 
     foo-&gt;&gt;envoy (client): クライアントストリーミング (grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): 全ストリーミング送信後にタイムアウト計算
-    envoy (server)-&gt;&gt;bar: 全ストリーミング送信後にタイムアウト計算
+    envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
+    envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
 
-    foo-&gt;&gt;envoy (client):
-    envoy (client)-&gt;&gt;envoy (server):
-    envoy (server)-&gt;&gt;bar:
+    foo-&gt;&gt;envoy (client): -
+    envoy (client)-&gt;&gt;envoy (server): -
+    envoy (server)-&gt;&gt;bar: -
 
-    foo-&gt;&gt;envoy (client):
-    envoy (client)-&gt;&gt;envoy (server):
-    envoy (server)-&gt;&gt;bar:
+    foo-&gt;&gt;envoy (client): -
+    envoy (client)-&gt;&gt;envoy (server): -
+    envoy (server)-&gt;&gt;bar: -
 
     bar--&gt;&gt;envoy (server): grpc-timeout: 残り25s
 
@@ -7485,8 +7485,8 @@
 <pre class="mermaid"><code>sequenceDiagram
 
     foo-&gt;&gt;envoy (client): Unary (grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): ストリーミング送信後にタイムアウト計算
-    envoy (server)-&gt;&gt;bar: ストリーミング送信後にタイムアウト計算
+    envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
+    envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
 
     bar--&gt;&gt;envoy (server): DeadlineExceeded
     envoy (client)--&gt;&gt;envoy (client): タイムアウト時間切れで通信を中断
