@@ -7465,16 +7465,18 @@
 <pre class="mermaid"><code>sequenceDiagram
 
     foo-&gt;&gt;envoy (client): クライアントストリーミング (grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
-    envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
-
-    foo-&gt;&gt;envoy (client): 
     envoy (client)-&gt;&gt;envoy (server): 
     envoy (server)-&gt;&gt;bar: 
 
     foo-&gt;&gt;envoy (client): 
     envoy (client)-&gt;&gt;envoy (server): 
     envoy (server)-&gt;&gt;bar: 
+
+    foo-&gt;&gt;envoy (client): 
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+
+    envoy (client)-&gt;&gt;envoy (client): 全てのストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
     bar--&gt;&gt;envoy (server): grpc-timeout: 残り25s
 
@@ -7486,15 +7488,20 @@
 <p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
 <p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
+<!-- prettier-ignore-start -->
+
 <pre class="mermaid"><code>sequenceDiagram
 
     foo-&gt;&gt;envoy (client): 単項ストリーミング (grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
-    envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+    envoy (client)--&gt;&gt;envoy (client): 全てのストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
     bar--&gt;&gt;envoy (server): DeadlineExceeded
-    envoy (client)--&gt;&gt;envoy (client): タイムアウト時間切れで通信を中断
+    envoy (client)--&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;レスポンスを受信せずに&lt;br&gt;通信を切断
     envoy (client)--&gt;&gt;foo: Unavailable</code></pre>
+<!-- prettier-ignore-end -->
+
 <div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
 <span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
