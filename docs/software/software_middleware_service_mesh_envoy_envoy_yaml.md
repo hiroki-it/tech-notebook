@@ -345,7 +345,7 @@ gRPCは、TCPコネクションの確立前にタイムアウト時間を開始�
 ```mermaid
 sequenceDiagram
 
-    foo->>envoy (client): クライアントストリーミング (grpc-timeout: 25s)
+    foo->>envoy (client): クライアントストリーミング<br>(grpc-timeout: 25s)
     envoy (client)->>envoy (server): 
     envoy (server)->>bar: 
 
@@ -359,11 +359,11 @@ sequenceDiagram
 
     envoy (client)->>envoy (client): 全てのストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
 
-    bar-->>envoy (server): grpc-timeout: 残り25s
+    bar-->>envoy (server): grpc-timeout<br>残り25s
 
-    envoy (server)-->>envoy (client): grpc-timeout: 残り10s
+    envoy (server)-->>envoy (client): grpc-timeout<br>残り10s
 
-    envoy (client)-->>foo: grpc-timeout: 残り5s
+    envoy (client)-->>foo: grpc-timeout<br>残り5s
 ```
 
 <!-- prettier-ignore-end -->
@@ -379,14 +379,16 @@ gRPCサーバーからのレスポンスよりも先に、gRPCクライアント
 ```mermaid
 sequenceDiagram
 
-    foo->>envoy (client): 単項ストリーミング (grpc-timeout: 25s)
+    foo->>envoy (client): 単項ストリーミング<br>(grpc-timeout: 25s)
     envoy (client)->>envoy (server): 
     envoy (server)->>bar: 
-    envoy (client)-->>envoy (client): 全てのストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+    envoy (client)-->>envoy (client): ストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
 
-    bar-->>envoy (server): DeadlineExceeded
-    envoy (client)-->>envoy (client): タイムアウト時間切れで<br>レスポンスを受信せずに<br>通信を切断
-    envoy (client)-->>foo: Unavailable
+    bar-->>bar: DeadlineExceeded
+    bar-->>envoy (server): タイムアウト
+    envoy (client)-->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
+    envoy (client)-->>foo: タイムアウト
+    foo-->>foo: Unavailable
 ```
 
 <!-- prettier-ignore-end -->
