@@ -7965,7 +7965,7 @@
 <h4 id="_3">▼ チャートとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
 <p>チャートは、<code>istioctl</code>コマンドインストール時に<code>manifests</code>ディレクトリ以下に同梱される。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># IstioOperatorのdemoをインストールし、リソースを作成する。</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># IstioOperatorのdemoをインストールし、リソースを作成する</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class="w"> </span><span class="nv">profile</span><span class="o">=</span>demo<span class="w"> </span><span class="nv">revision</span><span class="o">=</span><span class="m">1</span>-10-0
 
 <span class="c1"># 外部のチャートを使用する場合</span>
@@ -8578,22 +8578,22 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">socket_options</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
-<span class="w">              </span><span class="c1"># KeepAliveを有効にする。</span>
+<span class="w">              </span><span class="c1"># KeepAliveを有効にする</span>
 <span class="w">              </span><span class="nt">int_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="w">              </span><span class="c1"># 15秒間の無通信が発生したら、KeepAliveを実行する。</span>
+<span class="w">              </span><span class="c1"># 15秒間の無通信が発生したら、KeepAliveを実行する</span>
 <span class="w">              </span><span class="nt">int_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">              </span><span class="c1"># 15秒間隔で、KeepAliveを実行する。</span>
+<span class="w">              </span><span class="c1"># 15秒間隔で、KeepAliveを実行する</span>
 <span class="w">              </span><span class="nt">int_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
-<span class="w">              </span><span class="c1"># 3回応答がなければ終了する。</span>
+<span class="w">              </span><span class="c1"># 3回応答がなければ終了する</span>
 <span class="w">              </span><span class="nt">int_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">              </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STATE_PREBIND</span>
 </code></pre></div>
@@ -9172,9 +9172,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">abort</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">httpStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span><span class="w"> </span><span class="c1"># 発生させるエラー</span>
+<span class="w">            </span><span class="c1"># 発生させるエラー</span>
+<span class="w">            </span><span class="nt">httpStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span>
+<span class="w">            </span><span class="c1"># エラーを発生させる確率</span>
 <span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"> </span><span class="c1"># エラーを発生させる確率</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"> </span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -9191,9 +9193,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fault</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">delay</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22s</span><span class="w"> </span><span class="c1"># レスポンスの遅延時間</span>
+<span class="w">            </span><span class="c1"># レスポンスの遅延時間</span>
+<span class="w">            </span><span class="nt">fixedDelay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">22s</span>
+<span class="w">            </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
 <span class="w">            </span><span class="nt">percentage</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"> </span><span class="c1"># 遅延レスポンスを発生させる割合</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span><span class="w"> </span>
 </code></pre></div>
 <h4 id="match_1">▼ match<a class="headerlink" href="#match_1" title="Permanent link">&para;</a></h4>
 <p>受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
@@ -9321,12 +9325,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
@@ -9349,21 +9355,23 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
-<code>0</code>秒の場合、タイムアウトは無制限になる。</p>
+<p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。</p>
+<p><code>0</code>秒の場合、タイムアウトは無制限になる。</p>
 <p>これは、Envoyのルート値の<code>grpc_timeout_header_max</code>と<code>timeout</code>の両方に適用される。</p>
 <p>指定した時間以内に、<code>istio-proxy</code>コンテナの宛先からレスポンスがなければ、<code>istio-proxy</code>コンテナはタイムアウトとして処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
@@ -9377,13 +9385,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">40s</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">70</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -9428,7 +9438,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 </code></pre></div>
 <h4 id="routedestinationport_1">▼ route.destination.port<a class="headerlink" href="#routedestinationport_1" title="Permanent link">&para;</a></h4>
 <p><code>.spec.http</code>キーと同じ機能である。</p>
@@ -9458,12 +9469,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">tcp</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良い。</span>
+<span class="w">            </span><span class="c1"># Service名でも良い</span>
+<span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span><span class="w"> </span>
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9000</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
@@ -9529,7 +9542,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>

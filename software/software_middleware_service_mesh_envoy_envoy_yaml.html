@@ -7438,7 +7438,7 @@
 <span class="w">                              </span><span class="nt">max_connection_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
 <span class="w">                              </span><span class="c1"># ストリーミングRPC全体のタイムアウト時間を設定する</span>
 <span class="w">                              </span><span class="nt">max_stream_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">                              </span><span class="c1"># クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する</span>
+<span class="w">                              </span><span class="c1"># クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)</span>
 <span class="w">                              </span><span class="c1"># ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない</span>
 <span class="w">                              </span><span class="nt">grpc_timeout_header_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
@@ -7483,6 +7483,11 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
 <span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
+</ul>
+</blockquote>
 <p>しかし、移行先の<code>max_stream_duration</code>にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。</p>
 <p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code>を使用し続けている。</p>
 <blockquote>
@@ -7944,7 +7949,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>
