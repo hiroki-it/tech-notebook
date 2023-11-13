@@ -318,7 +318,7 @@ static_resources:
                               max_connection_duration: 15
                               # ストリーミングRPC全体のタイムアウト時間を設定する
                               max_stream_duration: 30
-                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する
+                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)
                               # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
                               grpc_timeout_header_max: 30
 ```
@@ -365,6 +365,8 @@ Envoy
 ⬇︎
 gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 ```
+
+> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
 
 しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
 

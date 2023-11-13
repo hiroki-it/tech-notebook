@@ -24,7 +24,7 @@ description: リソース定義＠Istioの知見を記録しています。
 チャートは、`istioctl`コマンドインストール時に`manifests`ディレクトリ以下に同梱される。
 
 ```bash
-# IstioOperatorのdemoをインストールし、リソースを作成する。
+# IstioOperatorのdemoをインストールし、リソースを作成する
 $ istioctl install --set profile=demo revision=1-10-0
 
 # 外部のチャートを使用する場合
@@ -747,22 +747,22 @@ spec:
           socket_options:
             - level: 1
               name: 9
-              # KeepAliveを有効にする。
+              # KeepAliveを有効にする
               int_value: 1
               state: STATE_PREBIND
             - level: 6
               name: 4
-              # 15秒間の無通信が発生したら、KeepAliveを実行する。
+              # 15秒間の無通信が発生したら、KeepAliveを実行する
               int_value: 15
               state: STATE_PREBIND
             - level: 6
               name: 5
-              # 15秒間隔で、KeepAliveを実行する。
+              # 15秒間隔で、KeepAliveを実行する
               int_value: 15
               state: STATE_PREBIND
             - level: 6
               name: 6
-              # 3回応答がなければ終了する。
+              # 3回応答がなければ終了する
               int_value: 3
               state: STATE_PREBIND
 ```
@@ -1448,9 +1448,11 @@ spec:
   http:
     - fault:
         - abort:
-            httpStatus: 503 # 発生させるエラー
+            # 発生させるエラー
+            httpStatus: 503
+            # エラーを発生させる確率
             percentage:
-              value: 100 # エラーを発生させる確率
+              value: 100 
 ```
 
 > - https://speakerdeck.com/nutslove/istioru-men?slide=19
@@ -1467,9 +1469,11 @@ spec:
   http:
     - fault:
         - delay:
-            fixedDelay: 22s # レスポンスの遅延時間
+            # レスポンスの遅延時間
+            fixedDelay: 22s
+            # 遅延レスポンスを発生させる割合
             percentage:
-              value: 100 # 遅延レスポンスを発生させる割合
+              value: 100 
 ```
 
 #### ▼ match
@@ -1620,12 +1624,14 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v2
@@ -1651,13 +1657,15 @@ spec:
   http:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v1
@@ -1667,6 +1675,7 @@ spec:
 #### ▼ timeout
 
 `istio-proxy`コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。
+
 `0`秒の場合、タイムアウトは無制限になる。
 
 これは、Envoyのルート値の`grpc_timeout_header_max`と`timeout`の両方に適用される。
@@ -1685,13 +1694,15 @@ spec:
     - timeout: 40s
       route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 80
             subset: v1
@@ -1743,7 +1754,8 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
 ```
 
 #### ▼ route.destination.port
@@ -1783,12 +1795,14 @@ spec:
   tcp:
     - route:
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 9000
             subset: v1
         - destination:
-            host: foo-service.foo-namespace.svc.cluster.local # Service名でも良い。
+            # Service名でも良い
+            host: foo-service.foo-namespace.svc.cluster.local 
             port:
               number: 9000
             subset: v2
