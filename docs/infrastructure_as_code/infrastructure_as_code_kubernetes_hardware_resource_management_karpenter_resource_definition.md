@@ -149,7 +149,9 @@ spec:
 
 KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
 
-Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しないようにする。
+#### ▼ デフォルトのタグ
+
+Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しない。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -158,22 +160,37 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # デフォルトで挿入するリソースタグ
-    # 上書きしないように設定しない
+    # 起動テンプレートの名前になる
     Name: foo-node
+    # Karpenterは、カスタムリソースと起動テンプレートの状態を紐づけるためのタグを挿入する
     karpenter.sh/nodepool: foo-nodepool
     karpenter.k8s.aws/ec2nodeclass: foo-node-class
     karpenter.k8s.aws/cluster: foo-cluster
+    # AWS EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる
     kubernetes.io/cluster/foo-cluster: owned
     karpenter.sh/managed-by: foo-cluster
-    # ユーザー定義のリソースタグ
+```
+
+> - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
+> - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
+> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+
+#### ▼ ユーザー定義のタグ
+
+ユーザー定義のタグを設定できる。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  tags:
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
     karpenter.sh/discovery: foo-cluster
 ```
 
-> - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
-> - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 #### ▼ IRSA用IAMロールの条件と一致させる
