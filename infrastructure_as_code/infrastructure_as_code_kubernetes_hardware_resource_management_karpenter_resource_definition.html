@@ -3915,6 +3915,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ デフォルトのタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ユーザー定義のタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#irsaiam" class="md-nav__link">
     ▼ IRSA用IAMロールの条件と一致させる
   </a>
@@ -4071,7 +4085,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ 指定できるキー名
   </a>
   
@@ -6167,6 +6181,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    ▼ デフォルトのタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    ▼ ユーザー定義のタグ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#irsaiam" class="md-nav__link">
     ▼ IRSA用IAMロールの条件と一致させる
   </a>
@@ -6323,7 +6351,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     ▼ 指定できるキー名
   </a>
   
@@ -6578,30 +6606,45 @@
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <h4 id="tags_1">▼ tags<a class="headerlink" href="#tags_1" title="Permanent link">&para;</a></h4>
 <p>KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。</p>
-<p>Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しないようにする。</p>
+<h4 id="_2">▼ デフォルトのタグ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># デフォルトで挿入するリソースタグ</span>
-<span class="w">    </span><span class="c1"># 上書きしないように設定しない</span>
+<span class="w">    </span><span class="c1"># 起動テンプレートの名前になる</span>
 <span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
+<span class="w">    </span><span class="c1"># Karpenterは、カスタムリソースと起動テンプレートの状態を紐づけるためのタグを挿入する</span>
 <span class="w">    </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
 <span class="w">    </span><span class="nt">karpenter.k8s.aws/ec2nodeclass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="w">    </span><span class="nt">karpenter.k8s.aws/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
+<span class="w">    </span><span class="c1"># AWS EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる</span>
 <span class="w">    </span><span class="nt">kubernetes.io/cluster/foo-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owned</span>
 <span class="w">    </span><span class="nt">karpenter.sh/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
-<span class="w">    </span><span class="c1"># ユーザー定義のリソースタグ</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#spectags">https://karpenter.sh/preview/concepts/nodeclasses/#spectags</a></li>
+<li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/worker.html">https://docs.aws.amazon.com/eks/latest/userguide/worker.html</a></li>
+</ul>
+</blockquote>
+<h4 id="_3">▼ ユーザー定義のタグ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>ユーザー定義のタグを設定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
 <span class="w">    </span><span class="nt">karpenter.sh/discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodeclasses/#spectags">https://karpenter.sh/preview/concepts/nodeclasses/#spectags</a></li>
-<li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter</a></li>
 <li><a href="https://github.com/aws/karpenter/issues/1919#issue-1267832624">https://github.com/aws/karpenter/issues/1919#issue-1267832624</a></li>
 </ul>
 </blockquote>
@@ -6946,7 +6989,7 @@
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#provisioner%E4%BD%9C%E6%88%90">https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#provisioner%E4%BD%9C%E6%88%90</a></li>
 </ul>
 </blockquote>
-<h4 id="_2">▼ 指定できるキー名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4 id="_4">▼ 指定できるキー名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/instance-types/">https://karpenter.sh/preview/reference/instance-types/</a></li>
@@ -7139,7 +7182,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>
