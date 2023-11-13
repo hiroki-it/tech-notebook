@@ -345,7 +345,7 @@ sequenceDiagram
 
     foo->>envoy (client): クライアントストリーミング (grpc-timeout: 25s)
     envoy (client)->>envoy (server): 全ストリーミング送信後にタイムアウト計算
-    envoy (server)->>bar:
+    envoy (server)->>bar: 全ストリーミング送信後にタイムアウト計算
 
     foo->>envoy (client):
     envoy (client)->>envoy (server):
@@ -367,6 +367,18 @@ sequenceDiagram
 gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。
 
 そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
+
+```mermaid
+sequenceDiagram
+
+    foo->>envoy (client): Unary (grpc-timeout: 25s)
+    envoy (client)->>envoy (server): ストリーミング送信後にタイムアウト計算
+    envoy (server)->>bar: ストリーミング送信後にタイムアウト計算
+
+    bar-->>envoy (server): DeadlineExceeded
+    envoy (client)-->>envoy (client): タイムアウト時間切れで通信を中断
+    envoy (client)-->>foo: Unavailable
+```
 
 ```yaml
 # 期待する例外スロー
