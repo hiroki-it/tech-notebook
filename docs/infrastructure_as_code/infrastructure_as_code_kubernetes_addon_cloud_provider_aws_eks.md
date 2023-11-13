@@ -185,7 +185,6 @@ aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカ�
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 > - https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e
 
@@ -347,7 +346,10 @@ ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確�
 
 Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
 
+![aws-eks-vpc-cni_prefix-delegation-mode.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
+
 > - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
+> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
 #### ▼ セカンダリーIPアドレス割り当てモードとの比較
 

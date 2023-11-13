@@ -382,13 +382,14 @@ sequenceDiagram
     foo->>envoy (client): 単項ストリーミング<br>(grpc-timeout: 25s)
     envoy (client)->>envoy (server): 
     envoy (server)->>bar: 
-    envoy (client)-->>envoy (client): ストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+    envoy (client)->>envoy (client): ストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
 
-    bar-->>bar: DeadlineExceeded
-    bar-->>envoy (server): タイムアウト
-    envoy (client)-->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
+    envoy (client)->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
     envoy (client)-->>foo: タイムアウト
-    foo-->>foo: Unavailable
+    foo->>foo: Unavailable
+
+    bar->>bar: DeadlineExceeded<br>(25s)
+    bar-->>envoy (server): タイムアウト
 ```
 
 <!-- prettier-ignore-end -->
