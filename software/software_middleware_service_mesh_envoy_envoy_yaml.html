@@ -7495,13 +7495,14 @@
     foo-&gt;&gt;envoy (client): 単項ストリーミング&lt;br&gt;(grpc-timeout: 25s)
     envoy (client)-&gt;&gt;envoy (server): 
     envoy (server)-&gt;&gt;bar: 
-    envoy (client)--&gt;&gt;envoy (client): ストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
+    envoy (client)-&gt;&gt;envoy (client): ストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
-    bar--&gt;&gt;bar: DeadlineExceeded
-    bar--&gt;&gt;envoy (server): タイムアウト
-    envoy (client)--&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;grpc-timeoutの前に通信を切断&lt;br&gt;(24.9s)
+    envoy (client)-&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;grpc-timeoutの前に通信を切断&lt;br&gt;(24.9s)
     envoy (client)--&gt;&gt;foo: タイムアウト
-    foo--&gt;&gt;foo: Unavailable</code></pre>
+    foo-&gt;&gt;foo: Unavailable
+
+    bar-&gt;&gt;bar: DeadlineExceeded&lt;br&gt;(25s)
+    bar--&gt;&gt;envoy (server): タイムアウト</code></pre>
 <!-- prettier-ignore-end -->
 
 <div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>

@@ -6615,7 +6615,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
-<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html</a></li>
 <li><a href="https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e">https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e</a></li>
 </ul>
@@ -6888,9 +6887,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>L-IPAMデーモンは、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
 <p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>/28</code>) を確保できる。</p>
 <p>Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>/28</code>よりも大きくしておく必要がある。</p>
+<p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 </ul>
 </blockquote>
 <h4 id="ip_3">▼ セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h4>
@@ -7038,7 +7039,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
       
     
   </small>
