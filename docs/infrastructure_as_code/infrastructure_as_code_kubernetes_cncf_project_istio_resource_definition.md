@@ -1452,7 +1452,7 @@ spec:
             httpStatus: 503
             # エラーを発生させる確率
             percentage:
-              value: 100 
+              value: 100
 ```
 
 > - https://speakerdeck.com/nutslove/istioru-men?slide=19
@@ -1473,7 +1473,7 @@ spec:
             fixedDelay: 22s
             # 遅延レスポンスを発生させる割合
             percentage:
-              value: 100 
+              value: 100
 ```
 
 #### ▼ match
@@ -1625,13 +1625,13 @@ spec:
     - route:
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v1
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v2
@@ -1658,14 +1658,14 @@ spec:
     - route:
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v1
@@ -1695,14 +1695,14 @@ spec:
       route:
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v1
           weight: 70
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
             subset: v1
@@ -1755,7 +1755,7 @@ spec:
     - route:
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
 ```
 
 #### ▼ route.destination.port
@@ -1796,13 +1796,13 @@ spec:
     - route:
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
             subset: v1
         - destination:
             # Service名でも良い
-            host: foo-service.foo-namespace.svc.cluster.local 
+            host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
             subset: v2

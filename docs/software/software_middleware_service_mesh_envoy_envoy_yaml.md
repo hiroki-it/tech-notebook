@@ -330,10 +330,17 @@ static_resources:
 なお、`max_stream_duration`は`max_grpc_timeout`の移行先として追加された設定である。
 
 > - https://github.com/envoyproxy/envoy/issues/12578
+> - https://github.com/envoyproxy/envoy/pull/13018
 
 Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
 
-具体的には、タイムアウト時に、EnvoyはgRPCサーバーからのレスポンスよりも先に通信を切断してしまう。
+gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を`grpc-timeout`ヘッダーに設定する。
+
+一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、`grpc-timeout`ヘッダーを上書きする。
+
+これにより、クライアント側が想定しているタイムアウト時間よりも、実際のタイムアウト時間が大幅に短くなってしまう。
+
+結果、gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。
 
 そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
 

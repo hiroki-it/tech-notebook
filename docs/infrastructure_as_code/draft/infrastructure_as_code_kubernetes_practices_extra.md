@@ -18,9 +18,9 @@
 
 複数リージョンでの構成には主に以下のパターンがある。
 
-|  | リージョン別Clusterパターン | リージョン横断Clusterパターン |
-| --- | --- | --- |
-| 説明 | リージョンごとに同一構成のClusterを配置する。 | Cluster内で、コントロールプレーンNodeとワーカーNodeを異なるリージョンに配置する。 |
+|      | リージョン別Clusterパターン                                                                                                                                | リージョン横断Clusterパターン                                                                                                                                                        |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 説明 | リージョンごとに同一構成のClusterを配置する。                                                                                                              | Cluster内で、コントロールプレーンNodeとワーカーNodeを異なるリージョンに配置する。                                                                                                    |
 | 備考 | リージョン間クラスターを構築する場合、当然リージョン内のクラスターと比べ通信の遅延が発生するため、リージョン間のetcd同期が遅くなったりといった影響がある。 | リージョンを横断する形でクラスターを構築した場合でも、データベースなどの永続化データを持つシステムは片方のリージョンだけで動かすか、あるいはリージョンをまたいで構築する必要がある。 |
 
 上記の通りそれぞれ一長一短があり、運用コストも当然増加することになるため、十分に検討を行った上で必要に応じてDR構成を検討する。
@@ -45,22 +45,20 @@
 この場合、平均スループットの目標値は`50` (個/秒) 、平均レスポンスタイムの目標値は`3`秒以内、となる。
 
 > [https://en.wikipedia.org/wiki/Load_testing](https://en.wikipedia.org/wiki/Load_testing)
->
 
 > [https://gihyo.jp/dev/serial/01/tech_station/0008](https://gihyo.jp/dev/serial/01/tech_station/0008)
->
 
 ロードテストの結果をメトリクスとして収集し、サイジングを最適化していく。
 
 この時、以下の設定値を調整し、Cluster全体をサイジングする。
 
-|  | AWS EKS | Google Cloud GKE |
-| --- | --- | --- |
-| 適するアプリケーションのドメインやハードウェアの種類 | インスタンスファミリーで決まる | マシンファミリーで決まる。 |
-| 同じインスタンスファミリー内での新しさ | インスタンス世代で決まる | マシンシリーズで決まる。 |
-| CPU/メモリのスペックの高さ | インスタンスサイズインスタンス世代で決まる | マシンサイズで決まる。 |
-| Nodeの数 | EC2 / Fargate の数で決まる。 | GKE Nodeの数で決まる。 |
-| NodeにスケジューリングできるPodの上限数 | インスタンスサイズで決まる |  |
+|                                                      | AWS EKS                                    | Google Cloud GKE           |
+| ---------------------------------------------------- | ------------------------------------------ | -------------------------- |
+| 適するアプリケーションのドメインやハードウェアの種類 | インスタンスファミリーで決まる             | マシンファミリーで決まる。 |
+| 同じインスタンスファミリー内での新しさ               | インスタンス世代で決まる                   | マシンシリーズで決まる。   |
+| CPU/メモリのスペックの高さ                           | インスタンスサイズインスタンス世代で決まる | マシンサイズで決まる。     |
+| Nodeの数                                             | EC2 / Fargate の数で決まる。               | GKE Nodeの数で決まる。     |
+| NodeにスケジューリングできるPodの上限数              | インスタンスサイズで決まる                 |                            |
 
 ### ■ ストレージをサイジングする
 
@@ -74,7 +72,7 @@
 
 アップグレード以下のいずれかを採用する。
 
-|  | インプレース方式 | ローリング方式
+| | インプレース方式 | ローリング方式
 (サージ方式、ライブ方式) | NodeグループB/G方式
 (マイグレーション方式) | Cluster B/G方式
 (マイグレーション方式) |
@@ -115,13 +113,10 @@ GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/
 | 切り戻ししやすさ | しにくい | しにくい | しやすい | しやすい |
 
 > [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
->
 
 > [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html)
->
 
 > [ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades)
->
 
 ### ■ クラスターアップグレードのルールを決める
 
@@ -163,10 +158,8 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは`3`台以上に設定して冗長化を行う。
 
 > [Why should a Kubernetes control plane be three nodes? - Sidero Labs](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/)
->
 
 > [https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
->
 
 ## ロードバランシングする
 
@@ -186,7 +179,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 | L4ロードバランサー | haproxy | kube-vip |
 
 > [https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s](https://speakerdeck.com/inductor/say-good-bye-to-haproxy-and-keepalived-with-kube-vip-on-your-k8s)
->
 
 ## コントロールプレーンNodeを異なるトポロジーに分散させる
 
@@ -197,7 +189,6 @@ Kubernetesクラスターの規模や運用しているシステム、アップ�
 そのため、例えばオンプレ環境であればコントロールプレーンNodeを配置するサーバーをラック単位で分けて別の電源を確保しているトポロジーに分散させたり、クラウドのVM環境で動作させる場合にはゾーンを分散させたり、マルチリージョンなデータセンターでKubernetesクラスターを動作させる際にはリージョン単位でコントロールプレーンNodeを分散配置させたりといった手法を取ることで冗長性を高めるようにする。
 
 > [https://kubernetes.io/docs/setup/best-practices/multiple-zones/](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)
->
 
 ## kube-apiserverへのインバウンド通信を制限する
 
@@ -223,10 +214,8 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 ストレージ容量は最低限40GiB程度割り当てる。
 
 > [第2章 システムおよび環境要件 OpenShift Container Platform 3.11 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/openshift_container_platform/3.11/html/installing_clusters/install-config-install-prerequisites)
->
 
 > [CPU、RAM、ストレージの要件  |  Anthos clusters on VMware  |  Google Cloud](https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/cpu-ram-storage?hl=ja)
->
 
 # Etcd
 
@@ -237,7 +226,6 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 障害でEtcd上のデータが損失することに備えて、Etcdを定期的にバックアップしておく。
 
 > [https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/)
->
 
 ## 冗長化する
 
@@ -246,13 +234,10 @@ kube-apiserverに対して、誰でもアクセスできてしまうことは危
 etcd Nodeは3台に冗長化する。
 
 > [https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-members)
->
 
 > [https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size](https://etcd.io/docs/v3.5/faq/#what-is-maximum-cluster-size)
->
 
 > [https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance](https://etcd.io/docs/v3.5/faq/#what-is-failure-tolerance)
->
 
 ## 高性能ストレージを利用する
 
@@ -261,7 +246,6 @@ etcd Nodeは3台に冗長化する。
 Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分なIOPSを担保できるストレージを利用する。
 
 > [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
->
 
 ## RAIDのミラーリングやパリティを利用しない
 
@@ -270,7 +254,6 @@ Disk I/Oはetcdのパフォーマンスに直結するため、SSDなど十分�
 etcdはRaft合意アルゴリズムを利用しており、3台以上のクラスタメンバーが高可用性を実現できるためストレージレイヤでの冗長化は行わない。
 
 > [https://etcd.io/docs/v3.5/op-guide/hardware/#disks](https://etcd.io/docs/v3.5/op-guide/hardware/#disks)
->
 
 # ワーカーNode
 
@@ -290,26 +273,26 @@ Nodeグループの特徴に合った数だけ冗長化しつつ、N+1にする�
 
 状態を持つPodとそうでないPodを異なるNodeグループ内で稼働させる。
 
-|  | Stateless系
+| | Stateless系
 (アプリ、バッチ、L7ロードバランサー、サービスメッシュ、など) | Stateful系
 (例：データベース、など) |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
+| | | |
+| | | |
 
 ### ■ プロダクトのサブコンポーネント別
 
 プロダクトの各サブコンポーネントのPodを異なるNodeグループ内で稼働させる。
 
-|  | アプリ系 | バッチ系 | L7ロードバランサー系 | 監視系、サービスメッシュ系 |
-| --- | --- | --- | --- | --- |
-| 要件例 | アプリ系Nodeグループはユーザーに影響がある。
-そのため、稼働時間を長くしたい。 | バッチ系Nodeグループはユーザーに影響がある。
-そのため、稼働時間を長くしたい。 | ロードバランサー系Nodeグループは単一障害点となりユーザーに影響が大きい。
-そのため、稼働時間は最も長くしたい。 | 監視系Nodeグループはユーザーに影響がない。
-そのため、稼働時間を短くても問題ない。 |
-|  | ↓ | ↓ | ↓ | ↓ |
-| Nodeの冗長化の程度 | Nodeを多く冗長化する。 | Nodeを多く冗長化する。 | Nodeを最も多く冗長化する。 | Nodeを少なく冗長化する。 |
+|                                        | アプリ系                                                                 | バッチ系               | L7ロードバランサー系       | 監視系、サービスメッシュ系 |
+| -------------------------------------- | ------------------------------------------------------------------------ | ---------------------- | -------------------------- | -------------------------- |
+| 要件例                                 | アプリ系Nodeグループはユーザーに影響がある。                             |
+| そのため、稼働時間を長くしたい。       | バッチ系Nodeグループはユーザーに影響がある。                             |
+| そのため、稼働時間を長くしたい。       | ロードバランサー系Nodeグループは単一障害点となりユーザーに影響が大きい。 |
+| そのため、稼働時間は最も長くしたい。   | 監視系Nodeグループはユーザーに影響がない。                               |
+| そのため、稼働時間を短くても問題ない。 |
+|                                        | ↓                                                                        | ↓                      | ↓                          | ↓                          |
+| Nodeの冗長化の程度                     | Nodeを多く冗長化する。                                                   | Nodeを多く冗長化する。 | Nodeを最も多く冗長化する。 | Nodeを少なく冗長化する。   |
 
 ## 自動スケーリング
 
@@ -337,26 +320,26 @@ Cluster全体に割り当てられたハードウェアリソースを適切に�
 
 (Nodeグループ例1)
 
-|  | Stateless系
+| | Stateless系
 (アプリ、バッチ、L7ロードバランサー、など) | Stateful系
 (例：監視ツール、など) |
 | --- | --- | --- |
-|  |  |  |
-|  |  |  |
+| | | |
+| | | |
 
 (Nodeグループ例2)
 
-|  | アプリ系 | バッチ系 | L7ロードバランサー系 | 監視ツール系 |
-| --- | --- | --- | --- | --- |
-| Pod数の要件例 | アプリの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。 | バッチの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。 | L7ロードバランサーは単一障害点になるため、Podの冗長化の程度をNodeグループ内で最も大きくしたい。 | 監視ツールの障害はユーザーに影響がないので、Podの冗長化の程度を他グループよりも小さくしたい。 |
-| ハードウェアリソースの要件例 | アプリは恒常的にCPU/メモリを必要とする。
-また、Nodeグループ当たりのPodの合計数が多い。 | バッチ系は瞬間的にCPU/メモリを必要とする。
-また、Nodeグループ当たりのPodの合計数が多い。 | L7ロードバランサー系は恒常的にCPU/メモリを必要とする。
-一方で、Nodeグループ当たりのPodの合計数が少ない | 監視ツールは恒常的にCPU/メモリを必要とする。
-一方で、Nodeグループ当たりのPodの合計数が少ない。 |
-|  | ↓ | ↓ | ↓ | ↓ |
-| 対処例 | アプリ系NodeグループにはCPU/メモリを他より多めに割り当てる。 | バッチ系Nodeグループには瞬間的な要求 (バースト) に適したCPU/メモリを選びつつ、多めに割り当てる。
-AWSであればT系のインスタンスタイプが瞬間的な要求に適している。 | L7ロードバランサー系NodeグループにはCPU/メモリを他より多めに割り当てる。 | 監視ツール系NodeグループにはCPU/メモリを少なめに割り当てる。 |
+|                                                                | アプリ系                                                                                  | バッチ系                                                                                         | L7ロードバランサー系                                                                            | 監視ツール系                                                                                  |
+| -------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Pod数の要件例                                                  | アプリの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。 | バッチの障害はユーザーに影響があるので、Podの冗長化の程度を他グループよりも大きくしたい。        | L7ロードバランサーは単一障害点になるため、Podの冗長化の程度をNodeグループ内で最も大きくしたい。 | 監視ツールの障害はユーザーに影響がないので、Podの冗長化の程度を他グループよりも小さくしたい。 |
+| ハードウェアリソースの要件例                                   | アプリは恒常的にCPU/メモリを必要とする。                                                  |
+| また、Nodeグループ当たりのPodの合計数が多い。                  | バッチ系は瞬間的にCPU/メモリを必要とする。                                                |
+| また、Nodeグループ当たりのPodの合計数が多い。                  | L7ロードバランサー系は恒常的にCPU/メモリを必要とする。                                    |
+| 一方で、Nodeグループ当たりのPodの合計数が少ない                | 監視ツールは恒常的にCPU/メモリを必要とする。                                              |
+| 一方で、Nodeグループ当たりのPodの合計数が少ない。              |
+|                                                                | ↓                                                                                         | ↓                                                                                                | ↓                                                                                               | ↓                                                                                             |
+| 対処例                                                         | アプリ系NodeグループにはCPU/メモリを他より多めに割り当てる。                              | バッチ系Nodeグループには瞬間的な要求 (バースト) に適したCPU/メモリを選びつつ、多めに割り当てる。 |
+| AWSであればT系のインスタンスタイプが瞬間的な要求に適している。 | L7ロードバランサー系NodeグループにはCPU/メモリを他より多めに割り当てる。                  | 監視ツール系NodeグループにはCPU/メモリを少なめに割り当てる。                                     |
 
 ### ■ ストレージをサイジングする
 
@@ -403,10 +386,8 @@ Ingressコントローラー (例：Nginx Ingressコントローラー、AWS Loa
 管理しやすいように、Ingressから切り離して設定すると良い。
 
 > [https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/)
->
 
 > [https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.6/guide/ingress/annotations/)
->
 
 ## IngressをSSL/TLS終端にする
 
@@ -419,7 +400,6 @@ PodをSSL/TLS終端にする場合、Cluster内でHTTPS通信を使用するこ�
 IngressをSSL/TLS終端にすると、Podへの通信はHTTP通信になってしまうが、Cluster内の通信で対処事項が減るため、安全性と利便性を両立できる。
 
 > [https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/](https://loft.sh/blog/advanced-guide-to-kubernetes-ingress-controllers/)
->
 
 ## IngressClassの指定にingressClassnameを使用する
 
@@ -430,7 +410,6 @@ IngressClassの指定方法には、`.spec.ingressClassname` キーと`.metadata
 `.spec.ingressClassname` キーの指定方法が推奨である。
 
 > [https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
->
 
 # CronJob
 
@@ -443,7 +422,6 @@ CronJobでJobが失敗した時、CronJobはデフォルトで過去`1`回分の
 トラブルシューティングしやすくするために、`.spec.startingDeadlineSeconds`キーで`3`回分以上を設定しておく。
 
 > [https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk](https://dev.to/drcloudycoder/kubernetes-cronjob-best-practices-4nlk)
->
 
 ## startingDeadlineSecondsを設定する
 
@@ -462,7 +440,6 @@ CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗す�
 `100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
 > [https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/](https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/)
->
 
 # Job
 
@@ -503,10 +480,8 @@ HorizontalPodAutoscalerは、metrics-serverの提供するメトリクス (例�
 metrics-serverはデフォルトでClusterに存在していないので、別途インストールしておく必要がある。
 
 > [https://github.com/kubernetes-sigs/metrics-server](https://github.com/kubernetes-sigs/metrics-server)
->
 
 > [https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33](https://speakerdeck.com/hhiroshell/a-practical-guide-to-horizontal-autoscaling-in-kubernetes?slide=33)
->
 
 ## ロードバランシングする
 
@@ -519,14 +494,12 @@ metrics-serverはデフォルトでClusterに存在していないので、別�
 L7ロードバランサーが冗長化されたNodeに適切にインバウンドな通信を振り分ける。
 
 > [https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/](https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/)
->
 
 ### L4のプロトコルの場合
 
 冗長化したPodに負荷分散できるように、Podの上流にL4ロードバランサーとしてServiceを置く。
 
 > [https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods](https://www.copado.com/devops-hub/blog/kubernetes-deployment-vs-service-managing-your-pods)
->
 
 ## Podのインバウンド通信を制限する
 
@@ -565,7 +538,6 @@ Podの終了プロセスが始まると、以下の一連のプロセスも開�
 長くとも`120`秒以内にするとよい。
 
 > [https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
->
 
 ## ハードウェアをサイジングする
 
@@ -580,10 +552,8 @@ Pod内のコンテナが要求する合計CPU/メモリに見合ったCPU/メモ
 なおLimitRangeを使用すれば、`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入してくれる。
 
 > [https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
->
 
 > [https://kubernetes.io/docs/concepts/policy/limit-range/](https://kubernetes.io/docs/concepts/policy/limit-range/)
->
 
 ### ■ ストレージをサイジングする
 
@@ -664,7 +634,6 @@ Nodeにスケジュール後のPodを定期的に再スケジューリングす�
 deschedulerは条件に一致しないPodを退避するだけで、Podの再スケジューリングはkube-schedulerが行う。
 
 > [https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity](https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity)
->
 
 ### ■ NodeSelectorを使用する
 
@@ -673,7 +642,6 @@ NodeSelectorを使用すると、Workload配下のPodを指定したNodeやNode�
 NodeやNodeグループを単純な条件 (例：Nodeのラベルと値の有無) で指定できる。
 
 > [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
->
 
 ### ■ NodeAffinityを使用する
 
@@ -682,10 +650,8 @@ NodeAffinityを使用すると、Workload配下のPodを指定したNodeやNode�
 NodeやNodeグループをNodeSelectorよりも複雑な条件 (例：Nodeのラベル自体の有無、Nodeのラベル値の有無) で指定できる。
 
 > [https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#set-based-requirement)
->
 
 > [https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/)
->
 
 ### ■ TopologySpreadConstraintsを使用する
 
@@ -694,7 +660,6 @@ TopologySpreadConstraintsを使用すると、ドメイン (例 ゾーン、リ�
 NodeSelectorやNodeAffinityとは異なり、特定のドメインにPodが偏らないようにすることで、障害の影響を一部のドメイン内のPodに抑えることができる。
 
 > [https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)
->
 
 ### ■ TaintsとTolerationsを使用する
 
@@ -739,7 +704,6 @@ spec:
 ```
 
 > [https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
->
 
 ## 適切なストレージの種類を選ぶ
 
@@ -760,10 +724,8 @@ EmptyDir Volumeとは異なり、NodeのストレージがVolumeの容量を制�
 一方で、外部ストレージを追加で使用することになるため、金銭的コストがEmptyDirよりも大きい。
 
 > [https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes](https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes)
->
 
 > [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
->
 
 ### ■ 小規模な一時的ストレージを必要とする場合はEmptyDir Volumeを使用する
 
@@ -778,10 +740,8 @@ Generic Ephemeral Volumeとは異なり、NodeのストレージがVolumeの容�
 一方で、Nodeのストレージをそのまま使用することになるため、金銭的コストがEphemeral Volumesよりも小さい。
 
 > [https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは](https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF)
->
 
 > [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
->
 
 Podのリソース要求やリソース制限に `ephemeral-storage` のフィールドを追加して、利用するディスク容量を制限することができる。
 
@@ -790,7 +750,6 @@ Podのリソース要求やリソース制限に `ephemeral-storage` のフィ�
 また、リソース制限で指定した `ephemeral-storage` を超えてディスク容量を使用した場合に、そのPodは退避されて再起動する。
 
 > [https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage](https://kubernetes.io/ja/docs/concepts/configuration/manage-resources-containers/#setting-requests-and-limits-for-local-ephemeral-storage)
->
 
 ### ■ 永続的ストレージを必要とする場合はPersistentVolume(Claim)を使用する
 
@@ -813,14 +772,12 @@ PersistentVolumeとは異なり、NodeのストレージがVolumeの容量を制
 そのため、外部ストレージの容量次第では、一時的に保管できるデータ量がPersistentVolumeよりも多い。
 
 > [https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/](https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/)
->
 
 ## 適切なボリュームアクセスモードを選択する
 
 ---
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
->
 
 ### ■ 独自ファイルシステムやファイルのロックが影響する場合は`.spec.accessMode=ReadWriteOnce`を割り当てる
 
@@ -854,10 +811,8 @@ ConfigMapに保存するには大きすぎる設定ファイルや共通デー�
 そこでストレージクラスやPersistentVolumeのラベルに`.metadata.label.storage-type=ssd`のようにストレージの種類などを設定し、**`spec.selector.matchLabels: storage-type: ssd`**のように指定することで利用用途に合ったストレージを選択することが出来る。
 
 > [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
->
 
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html)
->
 
 ## 利用用途に合ったReclaim Policyを設定する
 
@@ -870,7 +825,6 @@ KubernetesのデフォルトではReclaim PolicyがDeleteに指定されてい�
 Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVolume(PV)が使用されなくなった時点で自動削除され、PVの管理負荷を削減することができるためReclaim Policyは原則Deleteを利用する。
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#delete)
->
 
 ### ■ 重要なデータを含むPVCはRetainを指定する
 
@@ -879,10 +833,8 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 そのため重要なデータを保存するPVCはReclaim PolicyにRetainを指定し、PVが完全に削除されないよう保護することが出来る。
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#retain)
->
 
 > [https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention](https://access.crunchydata.com/documentation/postgres-operator/latest/guides/storage-retention)
->
 
 ### ■ RecycleポリシーではなくDynamic Provisioningを利用する
 
@@ -891,7 +843,6 @@ Deleteを指定することでPersistentVolumeClaim(PVC)を削除しPersistentVo
 そのためPVCのみ削除し、PVは削除しないようなユースケースではDynamic Provisioningを利用する。
 
 > [https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recycle)
->
 
 ## ストレージをPodと同じNodeに作成する
 
@@ -912,10 +863,8 @@ PodからPersistentVolumeClaimを利用する場合ラベルなどがついて�
 そのためStorageClassやPersistentVolumeの`metadata.label`に`storage-type=ssd`や`iops=3000`、`environment=prd`などストレージパフォーマンスや環境などボリューム選択に利用できるラベルを設定する。
 
 > [https://thinkit.co.jp/article/14195#h1-4-2-1](https://thinkit.co.jp/article/14195#h1-4-2-1)
->
 
 > [https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/selector_label_binding.html#selector-label-volume-define)
->
 
 ## Pod内のコンテナとホスト (Node) のネットワーク名前空間を分離する
 
@@ -932,10 +881,8 @@ Podの`.spec.hostIPC`キー有効化すると、Pod内のコンテナのホス�
 そのため、無効化しておく。
 
 > [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured)
->
 
 > [https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
->
 
 ### ■ hostPIDを無効化する
 
@@ -948,13 +895,10 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 そのため、無効化しておく。
 
 > [https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured)
->
 
 > [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896)
->
 
 > [https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
->
 
 # コンテナ
 
@@ -964,11 +908,12 @@ NodeとコンテナのプロセスIDが同じになるため、コンテナはNo
 
 コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぐ。
 
-|  | StartupProbe | LivenessProbe | ReadinessProbe |
-| --- | --- | --- | --- |
-| 説明 | ヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。ReadinessProbeよりも前に実行される。ReadinessProbeと違って起動時にしか実行されない。
-ウォームアップが必要なプロセスのチェックに役立つ。 | ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。
-注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。 | ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
+|                                                                                  | StartupProbe                                                                                                                                                       | LivenessProbe | ReadinessProbe |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | -------------- |
+| 説明                                                                             | ヘルスチェックを実行することで、アプリケーションの起動が完了したかを確認する。ReadinessProbeよりも前に実行される。ReadinessProbeと違って起動時にしか実行されない。 |
+| ウォームアップが必要なプロセスのチェックに役立つ。                               | ヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。                                                                                           |
+| 注意点として、LivenessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。 | ヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。                                                                                     |
+
 コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例: Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初のコネクション受信準備完了まで) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
 注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。 |
 | エンドポイント | ヘルスチェックエンドポイント
@@ -983,19 +928,14 @@ LivenessProbeと同じエンドポイント
 | 異常時 | LivenessProbeまたはReadinessProbeを実行しない。 | コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。 | コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。 |
 
 > [https://zenn.dev/toversus/articles/5d1292160f5035](https://zenn.dev/toversus/articles/5d1292160f5035)
->
 
 > [https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html](https://srcco.de/posts/kubernetes-liveness-probes-are-dangerous.html)
->
 
 > [https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready](https://stackoverflow.com/questions/42567475/docker-compose-check-if-mysql-connection-is-ready)
->
 
 > [https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status](https://docs.nginx.com/nginx-ingress-controller/configuration/global-configuration/command-line-arguments/#-ready-status)
->
 
 > [https://thinkit.co.jp/article/17500](https://thinkit.co.jp/article/17500)
->
 
 ## Cluster DNS に対する無駄な名前解決のリクエストを減らす
 
@@ -1014,7 +954,6 @@ Cluster外へのリクエストでは、ドメインの末尾にドットをつ�
 これにより、DNS の検索パスを補間しなくなるため、名前解決の無駄なリクエストが発生しない。
 
 > [https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#想定されるdns-qeuryと実際の動作の比較](https://qiita.com/corestate55/items/8cf2f713b10d0197c29e#%E6%83%B3%E5%AE%9A%E3%81%95%E3%82%8C%E3%82%8Bdns-qeury%E3%81%A8%E5%AE%9F%E9%9A%9B%E3%81%AE%E5%8B%95%E4%BD%9C%E3%81%AE%E6%AF%94%E8%BC%83)
->
 
 別の方法として、`/etc/resolv.conf`ファイルのndots値を`1`に変更してもよい。
 
@@ -1048,13 +987,10 @@ spec:
 ```
 
 > [https://zenn.dev/toversus/articles/d9faba80f68ea2](https://zenn.dev/toversus/articles/d9faba80f68ea2)
->
 
 > [https://developer.feedforce.jp/entry/2021/09/02/134725](https://developer.feedforce.jp/entry/2021/09/02/134725)
->
 
 > [https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config)
->
 
 前述の2つの対策を講じてもCluster DNSに必要以上の負荷がかかったり、ノード上の conntrack テーブルが溢れるなどの問題がある場合、NodeLocal DNSCacheの採用を検討する。
 
@@ -1063,7 +999,6 @@ Podは、Cluster DNSに名前解決のリクエストを送信する前に、一
 この時、名前解決のキャッシュがあると、Cluster DNSにリクエストを送信せずに名前解決できる。
 
 > [https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/](https://tech.griphone.co.jp/2020/06/12/kubernetes-dns-tuning/)
->
 
 ## 機密性の高い情報を守る
 
@@ -1085,13 +1020,13 @@ Secretは、base64方式のエンコード値を保持する。
 
 また、暗号化キーで暗号化した上で、Secretストアで管理するようにする。
 
-|  | リポジトリ + キーバリュー型ストア | リポジトリ + クラウドキーバリュー型ストア |
-| --- | --- | --- |
-| バージョン管理 | 管理できる。 | 管理できない。 |
-| 暗号化 | base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。 | base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。 |
-| Secretストア | リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。
-Apply時にbase64方式エンコード値に復号化する。 | クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。
-Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。 |
+|                                                                                                                                                              | リポジトリ + キーバリュー型ストア                                                                               | リポジトリ + クラウドキーバリュー型ストア                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| バージョン管理                                                                                                                                               | 管理できる。                                                                                                    | 管理できない。                                                                             |
+| 暗号化                                                                                                                                                       | base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。                      | base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。 |
+| Secretストア                                                                                                                                                 | リポジトリ上でキーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) で管理する。                            |
+| Apply時にbase64方式エンコード値に復号化する。                                                                                                                | クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。 |
+| Apply時に、ストア仲介ツール (例：SecretsStoreCSIDriver、External SecretsOperator) を使用してSecretのデータを取得しつつ、base64方式エンコード値に復号化する。 |
 
 ## ハードウェアリソース要求量の上限下限値は設定する
 
@@ -1116,7 +1051,6 @@ GuaranteedなQoSでは、上限 (`limits`) = 下限 (`requests`) のように、
 補足として、GuaranteedなQoSのPodはスケジューリングの優先度が最も高く、Node-pressure Evictionが発生した場合には、他のQoS (Burstable、BestEffort) よりも後に退避する。
 
 > [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-guaranteed)
->
 
 ### ■ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする
 
@@ -1135,7 +1069,6 @@ GuaranteedなQoSでは、上限 (`limits`) > 下限 (`requests`) のように、
 補足として、BurstableなQoSのPodはスケジューリングの優先度がGuaranteedの次に高く、Node-pressure Evictionが発生した場合には、Guaranteedの次に退避する。
 
 > [https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/#create-a-pod-that-gets-assigned-a-qos-class-of-burstable)
->
 
 ## イメージタグにlatestを設定しない
 
@@ -1186,10 +1119,8 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 コンテナが入れ替わっても、セッション管理サーバーからセッションデータを取得できるようにする。
 
 > [https://qiita.com/tomoyk/items/67722472a55b8dc7d01d](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d)
->
 
 > [https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05](https://pauldally.medium.com/session-affinity-and-kubernetes-proceed-with-caution-8e66fd5deb05)
->
 
 ## InitContainerを適切に使う
 
@@ -1204,14 +1135,12 @@ StatefulSetを使用してコンテナにセッションデータを持たせた
 …
 
 > [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
->
 
 ### ■ どうしても特権コンテナが必要ならInitContainerを使用する
 
 istio-initコンテナとかまさにその例
 
 > [https://loft.sh/blog/kubernetes-init-containers/](https://loft.sh/blog/kubernetes-init-containers/)
->
 
 ### ■ InitContainerでSSL証明書を準備する
 
@@ -1229,9 +1158,10 @@ istio-initコンテナとかまさにその例
 
 特にPodに設定できるキーは、Pod内の全てのコンテナに同じ設定を適用する。
 
-|  | 両方 | Podのみ | コンテナのみ |
-| --- | --- | --- | --- |
-| キー | runAsUser
+|      | 両方      | Podのみ | コンテナのみ |
+| ---- | --------- | ------- | ------------ |
+| キー | runAsUser |
+
 runAsGroup
 runAsNonRoot
 seLinuxOptions
@@ -1243,10 +1173,8 @@ allowPrivilegeEscalation
 readOnlyRootFilesystem |
 
 > [https://kubernetes.io/docs/concepts/security/pod-security-standards/](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
->
 
 > [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
->
 
 ### ■ runAsNonRoot、runAsUser / runAsGroup、を使用して、非rootユーザーでコンテナを実行する
 
@@ -1257,10 +1185,8 @@ readOnlyRootFilesystem |
 そのため、NodeとコンテナのUser IDやGroup IDのマッピングは同じになっている。
 
 > [https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/127-user-namespaces)
->
 
 > [https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations](https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations)
->
 
 コンテナをrootユーザーで実行すると、コンテナブレイクアウトのサイバー攻撃を受ける可能性が高くなる。
 
@@ -1269,10 +1195,8 @@ readOnlyRootFilesystem |
 よって、コンテナブレイクアウトの攻撃の可能性を小さくするために、できるだけコンテナをrootユーザーで実行しない方が良い。
 
 > [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
->
 
 > [https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/](https://unit42.paloaltonetworks.jp/non-root-containers-kubernetes-cve-2019-11245-care/)
->
 
 そこで、`.securityContext.runAsNonRoot`キーを有効化し、非rootユーザーでコンテナを実行するようにしておく。
 
@@ -1283,7 +1207,6 @@ readOnlyRootFilesystem |
 そのため、Dockerfile側にすでに設定があるかどうかに関わらず、実装規約としてマニフェスト側でも設定するようにする。
 
 > [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
->
 
 ### ■ privilegedを無効化する
 
@@ -1300,13 +1223,10 @@ readOnlyRootFilesystem |
 `.spec.containers[*].securityContext.privileged`キーで、コンテナに特権を付与するかどうかを設定できる。
 
 > [https://jpn.nec.com/cybersecurity/blog/210730/index.html](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
->
 
 > [https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896](https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896)
->
 
 > [https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/](https://snyk.io/blog/10-kubernetes-security-context-settings-you-should-understand/)
->
 
 ### ■ allowPrivilegeEscalationを無効化する
 
@@ -1319,15 +1239,12 @@ readOnlyRootFilesystem |
 つまり、悪意のある人がこれを使用すると、Node上の他のコンテナやNode自体にアクセスできてしまう。
 
 > [https://en.wikipedia.org/wiki/Setuid](https://en.wikipedia.org/wiki/Setuid)
->
 
 > [https://docs.docker.com/engine/security/userns-remap/](https://docs.docker.com/engine/security/userns-remap/)
->
 
 そこで、`.containers[*].securityContext.allowPrivilegeEscalation`キーを有効化し、権限フラグを使用できないようにしておく。
 
 > [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/)
->
 
 ### ■ readOnlyRootFilesystemを有効化する
 
@@ -1342,10 +1259,8 @@ readOnlyRootFilesystem |
 アプリでログの出力先をログファイルにしているとエラーになってしまうため、標準出力/標準エラー出力にログを出力する必要がある。
 
 > [https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/](https://fr.sysdig.com/blog/kubernetes-security-psp-network-policy/)
->
 
 > [https://en.wikipedia.org/wiki/Root_directory](https://en.wikipedia.org/wiki/Root_directory)
->
 
 # UserAccount とRole / ClusterRole
 
@@ -1360,7 +1275,6 @@ readOnlyRootFilesystem |
 代わりにRoleを紐づけることで、NamespaceスコープなK8sリソースのみにアクセスできるようにする。
 
 > [https://kubernetes.io/docs/concepts/security/rbac-good-practices/](https://kubernetes.io/docs/concepts/security/rbac-good-practices/)
->
 
 ### ■ チーム構成に合わせたUserAccountとRoleを作成する
 
@@ -1368,9 +1282,10 @@ readOnlyRootFilesystem |
 
 小規模なアプリほど、メンバーは複数の役割を兼備することになる。
 
-|  | UserAccount | Roleの認可スコープ |
-| --- | --- | --- |
-| アプリメンバー | Reporter | 担当するNamespace内のK8sリソースのRead |
+|                | UserAccount | Roleの認可スコープ                     |
+| -------------- | ----------- | -------------------------------------- |
+| アプリメンバー | Reporter    | 担当するNamespace内のK8sリソースのRead |
+
 | インフラ寄り
 アプリメンバー | AppDeveloper | 担当するNamespace内のK8sリソースのRead/Write |
 | アプリ寄り
@@ -1402,7 +1317,6 @@ RoleやClusterRoleに設定できる`pods/exec`や`pods/attach` といった権�
 また、テスト環境では基本的に設定しないが、必要であれば設定を許容する。
 
 > [https://www.baeldung.com/linux/kubectl-attach-exec](https://www.baeldung.com/linux/kubectl-attach-exec)
->
 
 ### ■ Secretに関する権限を設定しない
 
@@ -1443,25 +1357,25 @@ Kubernetesのマニフェストファイルに対する静的解析ツールが�
 ```yaml
 # 例：helmチャートから作成したマニフェストをplutoの標準入力に渡す
 $ helm template . -f foo-values.yaml \\
-    | pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
+| pluto detect -o wide -t k8s=<Kubernetesのバージョン> -
 ```
 
-| 観点 | ツール名 | 概要 | 推奨ツール | ★の理由 (2023/11時点) | 開発初期時点で採用推奨 |
-| --- | --- | --- | --- | --- | --- |
-| 文法チェック | https://github.com/yannh/kubeconform | Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検証する。 | ★ | kubevalの後継ツールであり、他にめぼしい競合ツールがない。 |  |
-| コード規約違反テスト | https://www.conftest.dev/ | Regoでコード規約を定義する。 |  |  |  |
-| コード規約違反テスト | https://open-policy-agent.github.io/gatekeeper/website/docs/gator/ | Regoでコード規約を定義する。 |  |  |  |
-| ベストプラクティス違反テスト | https://docs.kubelinter.io/#/ | 脆弱性、効率性、信頼性の観点で検証する。 |  |  |  |
-| ベストプラクティス違反テスト | https://kube-score.com/ | 脆弱性、信頼性の観点で検証する。 |  |  |  |
-| ベストプラクティス違反テスト | https://polaris.docs.fairwinds.com/checks/security/ | 脆弱性、効率性、信頼性の観点で検証する。 | ★ | 競合ツールと比較して、ベストプラクティス違反の検証項目が最も多い。 |  |
-| 脆弱性診断 | https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/ | マニフェストの設定値に起因する脆弱性を検証する | ★ | 他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、イメージ (コンテナイメージ、マシンイメージ) も検証できるため、他の場面でも知見を流用できる。
-いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHat、など) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。 |  |
-| サイジング最適値算出ツール | https://goldilocks.docs.fairwinds.com/ | IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適値を算出できる。 |  |  |  |
-| サイジング最適値算出ツール | https://github.com/robusta-dev/krr | Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。
-ただし、CPUのlimits値の設定はアンチパターンとして扱っており、未設定を推奨している。 |  |  |  |
-| 非推奨APIチェック | https://pluto.docs.fairwinds.com/ | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。 | ★ | 競合ツールの中で最もコントリビューター数が多くて開発が盛んである。また、GitHubのスター数が最も多い。 | ✅ |
-| 非推奨APIチェック | https://kubepug.xyz/ | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。 |  |  |  |
-| 非推奨APIチェック | https://github.com/doitintl/kube-no-trouble | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。 |  |  |  |
+| 観点                                                                                                                                               | ツール名                                                           | 概要                                                                                                                   | 推奨ツール | ★の理由 (2023/11時点)                                                                                                                                                 | 開発初期時点で採用推奨 |
+| -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| 文法チェック                                                                                                                                       | https://github.com/yannh/kubeconform                               | Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検証する。            | ★          | kubevalの後継ツールであり、他にめぼしい競合ツールがない。                                                                                                             |                        |
+| コード規約違反テスト                                                                                                                               | https://www.conftest.dev/                                          | Regoでコード規約を定義する。                                                                                           |            |                                                                                                                                                                       |                        |
+| コード規約違反テスト                                                                                                                               | https://open-policy-agent.github.io/gatekeeper/website/docs/gator/ | Regoでコード規約を定義する。                                                                                           |            |                                                                                                                                                                       |                        |
+| ベストプラクティス違反テスト                                                                                                                       | https://docs.kubelinter.io/#/                                      | 脆弱性、効率性、信頼性の観点で検証する。                                                                               |            |                                                                                                                                                                       |                        |
+| ベストプラクティス違反テスト                                                                                                                       | https://kube-score.com/                                            | 脆弱性、信頼性の観点で検証する。                                                                                       |            |                                                                                                                                                                       |                        |
+| ベストプラクティス違反テスト                                                                                                                       | https://polaris.docs.fairwinds.com/checks/security/                | 脆弱性、効率性、信頼性の観点で検証する。                                                                               | ★          | 競合ツールと比較して、ベストプラクティス違反の検証項目が最も多い。                                                                                                    |                        |
+| 脆弱性診断                                                                                                                                         | https://aquasecurity.github.io/trivy/dev/docs/target/kubernetes/   | マニフェストの設定値に起因する脆弱性を検証する                                                                         | ★          | 他の競合ツールとは異なり、K8s以外のIaCツール (Terraform、Dockerfile) や、イメージ (コンテナイメージ、マシンイメージ) も検証できるため、他の場面でも知見を流用できる。 |
+| いずれのツールも、おおよそ同じデータベース (例：GitHub、GitLab、RedHat、など) に基づいて検証するため、脆弱性診断の項目数で優劣を比べない方が良い。 |                                                                    |
+| サイジング最適値算出ツール                                                                                                                         | https://goldilocks.docs.fairwinds.com/                             | IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適値を算出できる。 |            |                                                                                                                                                                       |                        |
+| サイジング最適値算出ツール                                                                                                                         | https://github.com/robusta-dev/krr                                 | Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。                                           |
+| ただし、CPUのlimits値の設定はアンチパターンとして扱っており、未設定を推奨している。                                                                |                                                                    |                                                                                                                        |            |
+| 非推奨APIチェック                                                                                                                                  | https://pluto.docs.fairwinds.com/                                  | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。                                        | ★          | 競合ツールの中で最もコントリビューター数が多くて開発が盛んである。また、GitHubのスター数が最も多い。                                                                  | ✅                     |
+| 非推奨APIチェック                                                                                                                                  | https://kubepug.xyz/                                               | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。                                        |            |                                                                                                                                                                       |                        |
+| 非推奨APIチェック                                                                                                                                  | https://github.com/doitintl/kube-no-trouble                        | 指定したKubernetesのバージョンに基づいて、マニフェストの非推奨なAPIを検証する。                                        |            |                                                                                                                                                                       |                        |
 
 ## Helmチャートの静的解析ツールを使用する
 
@@ -1475,12 +1389,12 @@ Helmチャート専用の静的解析ツールが存在するため、必要に�
 
 最終的に、全ての観点を解析する必要はなく、例えば ”チャートのバージョン” の解析は紹介だけにとどめている。
 
-| 観点 | ツール名 | 概要 | 推奨ツール | ★の理由 (2023/11時点) | 開発初期時点で採用推奨 |
-| --- | --- | --- | --- | --- | --- |
-| Helmチャート構造 | https://helm.sh/docs/helm/helm_lint/ | チャートの公式ルールに基づいて、構造の誤り (valuesファイルがあるか、Chart.yamlがあるかなど) を検証する。
-Helm専用のツールであり、Helmチャートを渡す必要がある。 | ★ | Helmのビルトインツールであり、めぼしい競合ツールがない。 | ✅ |
-| チャートのバージョン | https://nova.docs.fairwinds.com/ | Helmチャートのバージョンが古くなっていないかを検証する。
-Helm専用のツールであり、Helmチャートを渡す必要がある。 |  |  |  |
+| 観点                                                   | ツール名                             | 概要                                                                                                     | 推奨ツール | ★の理由 (2023/11時点) | 開発初期時点で採用推奨 |
+| ------------------------------------------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------------- | ---------- | --------------------- | ---------------------- |
+| Helmチャート構造                                       | https://helm.sh/docs/helm/helm_lint/ | チャートの公式ルールに基づいて、構造の誤り (valuesファイルがあるか、Chart.yamlがあるかなど) を検証する。 |
+| Helm専用のツールであり、Helmチャートを渡す必要がある。 | ★                                    | Helmのビルトインツールであり、めぼしい競合ツールがない。                                                 | ✅         |
+| チャートのバージョン                                   | https://nova.docs.fairwinds.com/     | Helmチャートのバージョンが古くなっていないかを検証する。                                                 |
+| Helm専用のツールであり、Helmチャートを渡す必要がある。 |                                      |                                                                                                          |            |
 
 ## ブラックボックステスト
 
@@ -1494,15 +1408,15 @@ Helm専用のツールであり、Helmチャートを渡す必要がある。 | 
 
 ### ■ Kubernetesのアップグレード後には各Kubernetesリソースの動作確認する
 
-| 概要 | 内容 |
-| --- | --- |
-| Podが全滅していないことを確認する。 | PDBの設定によってWorkload (例：Deployment) で起動しているアプリケーションのPodが全滅しないかを確認する。
-PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるので、PDBの設定した内容に沿ってPodが保護されるかを確認する。 |
-| Podが正しくNodeに分散されていることを確認する。 | NodeAffinityの設定に基づいて適切にPodがNodeに分散配置されるかや、NodeLabelやTaintの設定に基づいたNodeが選定されているかなどを確認する。 |
-| Workloadのデプロイ戦略が正しく動作していることを確認する。 | Workload (例：Deployment) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。 |
-| WorkloadがPodのレプリカ数を維持できることを確認する。 | Workload (例：Deployment) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。 |
-| Podのスケーリングが正しく動作することを確認する。 | HPAやVPAを使用している場合、HPAやVPAの設定と使用しているメトリクスに応じたスケーリングが行われることを確認する。 |
-| Nodeのスケーリングが正しく動作することを確認する。 | Cluster AutoscalerやKarpenterを使用している場合、Cluster AutoscalerやKarpenterの設定とNodeのリソース状況応じたスケーリングが行われることを確認する。 |
+| 概要                                                                                                                                                                                                     | 内容                                                                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Podが全滅していないことを確認する。                                                                                                                                                                      | PDBの設定によってWorkload (例：Deployment) で起動しているアプリケーションのPodが全滅しないかを確認する。                                             |
+| PDBを適切に設定できていないと、例えばWebアプリケーションのコンテナが全てダウンしてしまいリクエストを受け付けられなくなるといったケースがあるので、PDBの設定した内容に沿ってPodが保護されるかを確認する。 |
+| Podが正しくNodeに分散されていることを確認する。                                                                                                                                                          | NodeAffinityの設定に基づいて適切にPodがNodeに分散配置されるかや、NodeLabelやTaintの設定に基づいたNodeが選定されているかなどを確認する。              |
+| Workloadのデプロイ戦略が正しく動作していることを確認する。                                                                                                                                               | Workload (例：Deployment) のデプロイ戦略 (例：Rolling Update) が設定に応じた割合で行われ、Podの入れ替えが行われていることを確認する。                |
+| WorkloadがPodのレプリカ数を維持できることを確認する。                                                                                                                                                    | Workload (例：Deployment) に属するPodが削除され、replica数を下回った際に時間経過で設定したレプリカ数になるように復旧されることを確認する。           |
+| Podのスケーリングが正しく動作することを確認する。                                                                                                                                                        | HPAやVPAを使用している場合、HPAやVPAの設定と使用しているメトリクスに応じたスケーリングが行われることを確認する。                                     |
+| Nodeのスケーリングが正しく動作することを確認する。                                                                                                                                                       | Cluster AutoscalerやKarpenterを使用している場合、Cluster AutoscalerやKarpenterの設定とNodeのリソース状況応じたスケーリングが行われることを確認する。 |
 
 # 運用
 
@@ -1534,28 +1448,28 @@ K8s Clusterを使用したプロダクトのチームメンバー構成の例を
 アプリメンバー | アプリ寄り
 インフラメンバー | インフラメンバー |
 | --- | --- | --- | --- | --- |
-| アプリのフロントエンドとバックエンド | ✅ | ✅ |  |  |
+| アプリのフロントエンドとバックエンド | ✅ | ✅ | | |
 | アプリのWorkload
-(Deployment、CronJob、など) | ✅ | ✅ |  |  |
+(Deployment、CronJob、など) | ✅ | ✅ | | |
 | インフラWorkloadの周辺K8sリソース
-(PDB、HPA、ConfigMap、Secret、など) |  |  |  |  |
+(PDB、HPA、ConfigMap、Secret、など) | | | | |
 | アプリCIツール
-(コンテナイメージビルド、アプリのホワイトボックステスト、イメージレジストリ格納、など) | ✅ | ✅ |  |  |
-| サービスメッシュのデータプレーン | ✅ | ✅ |  |  |
+(コンテナイメージビルド、アプリのホワイトボックステスト、イメージレジストリ格納、など) | ✅ | ✅ | | |
+| サービスメッシュのデータプレーン | ✅ | ✅ | | |
 | マニフェストCIツール
-(ホワイトボックステストなど) |  | ✅ | ✅ |  |
-| 分散トレーシング |  | ✅ | ✅ |  |
-| CDツール |  |  | ✅ |  |
-| サービスメッシュのコントロールプレーン |  |  | ✅ | ✅ |
+(ホワイトボックステストなど) | | ✅ | ✅ | |
+| 分散トレーシング | | ✅ | ✅ | |
+| CDツール | | | ✅ | |
+| サービスメッシュのコントロールプレーン | | | ✅ | ✅ |
 | インフラのWorkload
 (Deployment、CronJob、など)
 
 周辺K8sリソース
-(PDB、HPA、ConfigMap、Secret、など) |  |  | ✅ | ✅ |
+(PDB、HPA、ConfigMap、Secret、など) | | | ✅ | ✅ |
 | コントロールプレーンNode
-ワーカーNode |  |  | ✅ | ✅ |
-| K8s Clusterが依存する周辺インフラ |  | ✅ | ✅ | ✅ |
-| インフラの低レイヤー |  |  |  | ✅ |
+ワーカーNode | | | ✅ | ✅ |
+| K8s Clusterが依存する周辺インフラ | | ✅ | ✅ | ✅ |
+| インフラの低レイヤー | | | | ✅ |
 
 ## 運用しやすいテナントに分割する
 
@@ -1575,7 +1489,7 @@ as a Service | ツール固有
 | --- | --- | --- | --- | --- |
 | テナントの単位 | 実Clusterテナント | 仮想Cluster | Namespaceテナント | カスタムリソーステナント |
 | ツール | 実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
-| … |  |  |  |  |
+| … | | | | |
 
 ## マニフェストを管理しやすくする
 
@@ -1587,16 +1501,15 @@ as a Service | ツール固有
 
 適切にラベルを付与しておくと、仕様を理解する上での助けになる。
 
-| よくラベル | 説明 | 値の例 |
-| --- | --- | --- |
-| http://app.kubernetes.io/name | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus |
-| http://app.kubernetes.io/component | K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。 | app、database |
-| http://app.kubernetes.io/part-of | K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。 | argocd |
-| http://app.kubernetes.io/managed-by | K8sリソースの管理ツール名を設定する。 | helm、foo-operator |
-| … |  |  |
+| よくラベル                          | 説明                                                                       | 値の例             |
+| ----------------------------------- | -------------------------------------------------------------------------- | ------------------ |
+| http://app.kubernetes.io/name       | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 | prometheus         |
+| http://app.kubernetes.io/component  | K8sリソースをシステムの要素と捉えた時に、その役割名を設定する。            | app、database      |
+| http://app.kubernetes.io/part-of    | K8sリソースをシステムの要素と捉えた時に、その親のシステム名を設定する。    | argocd             |
+| http://app.kubernetes.io/managed-by | K8sリソースの管理ツール名を設定する。                                      | helm、foo-operator |
+| …                                   |                                                                            |                    |
 
 > [https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/](https://kubernetes.io/ja/docs/concepts/overview/working-with-objects/common-labels/)
->
 
 ### ■ マニフェスト管理ツールを使用する
 
@@ -1634,7 +1547,8 @@ as a Service | ツール固有
 むやみやたらにメトリクスを収集すると、収集対象に負荷がかかるため、必要最低限のメトリクスにする。
 
 | メトリクスの種類 | 収集ツール例 |
-| --- | --- |
+| ---------------- | ------------ |
+
 | ハードウェアリソース系
 (CPU使用量、メモリ使用量、など) | node-exporter、cAdvisor |
 | ネットワーク系
@@ -1650,14 +1564,15 @@ as a Service | ツール固有
 
 監視したいログを収集する。
 
-| パターン | DaemonSetパターン | Pod内サイドカーパターン |
-| --- | --- | --- |
-| 説明 | ログ収集ツールのPodをDaemonSetで動かす。
+| パターン | DaemonSetパターン                        | Pod内サイドカーパターン |
+| -------- | ---------------------------------------- | ----------------------- |
+| 説明     | ログ収集ツールのPodをDaemonSetで動かす。 |
+
 Pod内のアプリコンテナで、ログを標準出力/標準エラーに出力し、一度Nodeに保管する。
 FluentdやFluentBitを使用して、Node上のログを監視バックエンドに送信する。 | ログ収集ツールをPod内のサイドカーで動かす。
 ログ収集ツールが提供するドライバーを使用して、Pod内のアプリコンテナからログ収集コンテナにログを渡す。
 Pod内のログ収集コンテナから監視バックエンドにログを直接送信する。 |
-| … |  |  |
+| … | | |
 
 ### ■ メトリクスを収集する
 
@@ -1671,13 +1586,13 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
 
 収集したログ/メトリクスをストレージに保管する。
 
-| 要件 | 説明 |
-| --- | --- |
-| ストレージ容量 | ログファイルのメトリクスのストレージのサイズを決める。
-メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくすると良い。 |
-| バックアップしないログ | 全てのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくと良い。 |
-| バックアップの保管期間 (リテンション) | ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：3ヶ月) を決めておくと良い。 |
-| ローテーション | ログファイルやメトリクスのローテーション期間 (例：7日) をポリシーとして決めておくと良い。
-ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：-20220101) をつけておく。 |
-| 世代数 | ローテションの結果作成されるファイルの世代数 (例：5) をポリシーとして決めておくと良い。
-ただ、これは設定できないツールがある。 |
+| 要件                                                                                                                             | 説明                                                                                                                                     |
+| -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| ストレージ容量                                                                                                                   | ログファイルのメトリクスのストレージのサイズを決める。                                                                                   |
+| メトリクスの場合、データポイント数を抑えて (例：収集間隔の拡大、ダウンサンプリング、重複排除) 、データサイズを小さくすると良い。 |
+| バックアップしないログ                                                                                                           | 全てのログを保管するとストレージ容量を圧迫してしまうため、一部のログ (例：ヘルスチェックのアクセスログ) は捨てるように決めておくと良い。 |
+| バックアップの保管期間 (リテンション)                                                                                            | ログファイルのメトリクスのバックアップを実施し、また保管期間ポリシー (例：3ヶ月) を決めておくと良い。                                    |
+| ローテーション                                                                                                                   | ログファイルやメトリクスのローテーション期間 (例：7日) をポリシーとして決めておくと良い。                                                |
+| ローテションされた過去のログやメトリクスのファイルでは、ファイル名の末尾に最終日付 (例：-20220101) をつけておく。                |
+| 世代数                                                                                                                           | ローテションの結果作成されるファイルの世代数 (例：5) をポリシーとして決めておくと良い。                                                  |
+| ただ、これは設定できないツールがある。                                                                                           |
