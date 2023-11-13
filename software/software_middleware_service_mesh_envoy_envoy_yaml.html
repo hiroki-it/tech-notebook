@@ -7458,33 +7458,37 @@
 </blockquote>
 <p>Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
 <p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
-<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーを上書きする。</p>
-<p>これにより、クライアント側が想定しているタイムアウト時間よりも、実際のタイムアウト時間が大幅に短くなってしまう。</p>
+<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーとは別にタイムアウトを管理する。</p>
+<p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
+<!-- prettier-ignore-start -->
+
 <pre class="mermaid"><code>sequenceDiagram
 
     foo-&gt;&gt;envoy (client): クライアントストリーミング (grpc-timeout: 25s)
     envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
     envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
 
-    foo-&gt;&gt;envoy (client): -
-    envoy (client)-&gt;&gt;envoy (server): -
-    envoy (server)-&gt;&gt;bar: -
+    foo-&gt;&gt;envoy (client): 
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
 
-    foo-&gt;&gt;envoy (client): -
-    envoy (client)-&gt;&gt;envoy (server): -
-    envoy (server)-&gt;&gt;bar: -
+    foo-&gt;&gt;envoy (client): 
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
 
     bar--&gt;&gt;envoy (server): grpc-timeout: 残り25s
 
     envoy (server)--&gt;&gt;envoy (client): grpc-timeout: 残り10s
 
     envoy (client)--&gt;&gt;foo: grpc-timeout: 残り5s</code></pre>
+<!-- prettier-ignore-end -->
+
 <p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
 <p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
 <p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
 <pre class="mermaid"><code>sequenceDiagram
 
-    foo-&gt;&gt;envoy (client): Unary (grpc-timeout: 25s)
+    foo-&gt;&gt;envoy (client): 単項ストリーミング (grpc-timeout: 25s)
     envoy (client)-&gt;&gt;envoy (server): 全てのストリーミング送信後にタイムアウト計算
     envoy (server)-&gt;&gt;bar: 全てのストリーミング送信後にタイムアウト計算
 
