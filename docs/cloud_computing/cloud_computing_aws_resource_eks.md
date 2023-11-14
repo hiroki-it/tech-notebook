@@ -902,17 +902,25 @@ $ aws ssm get-parameter \
 
 EC2ワーカーNodeの最適化AMIではないAMIのこと。
 
-EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータファイル内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
+<br>
+
+### ユーザーデータファイル
+
+#### ▼ ユーザーデータファイルとは
+
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、または任意のAMIでカスタム起動テンプレートを使用する場合、これらのAMIに渡す必要がある。
+
+EC2ワーカーNode起動時のユーザーデータファイル内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
 
 注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
-#### ▼ ユーザーデータファイル
+#### ▼ `bootstrap.sh`ファイル
 
 EC2ワーカーNodeのカスタムAMIに必要なファイルである。
 
-ファイル内で、`bootstrap.sh`ファイルにパラメーターを渡す必要がある。
+ユーザーデータファイル内で、`bootstrap.sh`ファイルにパラメーターを渡す必要がある。
 
 ```bash
 #!/bin/bash
