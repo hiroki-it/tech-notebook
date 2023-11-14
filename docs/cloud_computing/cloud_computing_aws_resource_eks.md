@@ -749,6 +749,95 @@ AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自�
 
 <br>
 
+### EC2へのタグ付けの例
+
+#### ▼ マネージドNodeグループ
+
+| タグ   | 値                    | 説明                                                                                                                                                                                                                               |
+| ------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name` | EC2ワーカーNodeの名前 | Nodeグループで指定する起動テンプレートのリソースタグに、`Name`タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は`Name`タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。 |
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
+
+#### ▼ セルフマネージドNodeグループ
+
+| タグ                                    | 値                    | 説明                                                                                                                                         |
+| --------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name`                                  | EC2ワーカーNodeの名前 | EC2インスタンスの名前は`Name`タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの`Name`タグに、ワーカーNode名を設定しておく。 |
+| `kubernetes.io/cluster/<EKS Cluster名>` | `owned`               | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。           |
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+
+<br>
+
+### パブリックサブネット内のデータプレーンからのアウトバウンド通信
+
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するために特に必要なものは無い。
+
+この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
+
+> - https://note.com/tyrwzl/n/n715a8ef3c28a
+> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html
+
+<br>
+
+### プライベートサブネット内のデータプレーンからのアウトバウンド通信
+
+#### ▼ 宛先情報の管理方法
+
+アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントする。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: foo-secret
+data:
+  # RDS (Aurora) の宛先情報
+  DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
+  DB_HOST_READ: <リードレプリカのエンドポイント>
+  DB_USER: bar
+  DB_PASSWORD: baz
+  # SQSの宛先情報
+  SQS_QUEUE_NAME: foo-queue.fifo
+  SQS_REGION: ap-northeast-1
+```
+
+#### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
+
+Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
+
+この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
+
+以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
+
+また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
+
+```log
+Pod provisioning timed out (will retry) for pod
+```
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
+
+#### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
+
+EKS Clusterを作成すると、ENIも作成する。
+
+これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
+
+執筆時点 (2022/05/27) では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
+
+> - https://dev.classmethod.jp/articles/eks_basic/
+> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
+
+#### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
+
+VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
+
+<br>
+
+## 04-03. EC2 Node AMI
+
 ### EC2ワーカーNodeの最適化AMI
 
 #### ▼ EC2ワーカーNodeの最適化AMIとは
@@ -819,6 +908,12 @@ EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカ�
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 
+#### ▼ ユーザーデータファイル
+
+EC2ワーカーNodeのカスタムAMIに必要なファイルである。
+
+ファイル内で、`bootstrap.sh`ファイルにパラメーターを渡す必要がある。
+
 ```bash
 #!/bin/bash
 
@@ -838,6 +933,10 @@ set -o xtrace
   --apiserver-endpoint https://*****.gr7.ap-northeast-1.eks.amazonaws.com \
   --container-runtime containerd
 ```
+
+なお、設定可能な全ての環境変数は、以下から確認できる。
+
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh
 
 ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
 
@@ -868,10 +967,6 @@ source "${EXPORT_ENVS}"
 
 > - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
 > - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
-
-なお、設定可能な全ての環境変数は、以下から確認できる。
-
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh
 
 #### ▼ EC2ワーカーNodeのイメージキャッシュ削除
 
@@ -1032,94 +1127,7 @@ export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから�
 
 <br>
 
-### EC2へのタグ付けの例
-
-#### ▼ マネージドNodeグループ
-
-| タグ   | 値                    | 説明                                                                                                                                                                                                                               |
-| ------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Name` | EC2ワーカーNodeの名前 | Nodeグループで指定する起動テンプレートのリソースタグに、`Name`タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は`Name`タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。 |
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
-
-#### ▼ セルフマネージドNodeグループ
-
-| タグ                                    | 値                    | 説明                                                                                                                                         |
-| --------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Name`                                  | EC2ワーカーNodeの名前 | EC2インスタンスの名前は`Name`タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの`Name`タグに、ワーカーNode名を設定しておく。 |
-| `kubernetes.io/cluster/<EKS Cluster名>` | `owned`               | セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。           |
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-
-<br>
-
-### パブリックサブネット内のデータプレーンからのアウトバウンド通信
-
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するために特に必要なものは無い。
-
-この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
-
-> - https://note.com/tyrwzl/n/n715a8ef3c28a
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html
-
-<br>
-
-### プライベートサブネット内のデータプレーンからのアウトバウンド通信
-
-#### ▼ 宛先情報の管理方法
-
-アウトバウンド通信の宛先情報は、Secretで管理し、Podにマウントする。
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: foo-secret
-data:
-  # RDS (Aurora) の宛先情報
-  DB_HOST_PRIMARY: <プライマリーインスタンスのエンドポイント>
-  DB_HOST_READ: <リードレプリカのエンドポイント>
-  DB_USER: bar
-  DB_PASSWORD: baz
-  # SQSの宛先情報
-  SQS_QUEUE_NAME: foo-queue.fifo
-  SQS_REGION: ap-northeast-1
-```
-
-#### ▼ VPC外の他のAWSリソースへのアウトバウンド通信
-
-Podをプライベートサブネットに配置した場合に、パブリックネットワークやVPC外にあるAWSリソース (ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) に対してアウトバウンド通信を送信するためには、NAT GatewayまたはVPCエンドポイントを配置する必要がある。
-
-この時、Podのアウトバウンド通信の送信元IPアドレスは、NAT GatewayまたはVPCエンドポイントに紐づくIPアドレスになる。
-
-以下のようなエラーでPodが起動しない場合、Podが何らかの理由でイメージをプルできない可能性がある。
-
-また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。
-
-```log
-Pod provisioning timed out (will retry) for pod
-```
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html
-
-#### ▼ VPC外のコントロールプレーンへのアウトバウンド通信
-
-EKS Clusterを作成すると、ENIも作成する。
-
-これにより、データプレーンがVPC外のコントロールプレーンと通信できるようになる。
-
-執筆時点 (2022/05/27) では、データプレーンがコントロールプレーンとパケットを送受信するためには、VPCエンドポイントではなくNAT Gatewayを配置する必要がある。
-
-> - https://dev.classmethod.jp/articles/eks_basic/
-> - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
-
-#### ▼ VPC内の他のAWSリソースへのアウトバウンド通信
-
-VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。
-
-<br>
-
-## 04-03. セットアップ
+## 04-04. セットアップ
 
 ### コンソール画面の場合
 
