@@ -9011,11 +9011,11 @@
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html">https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html</a></li>
 <li><a href="https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1">https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1</a></li>
 <li><a href="https://onsd.hatenablog.com/entry/2019/09/21/015522">https://onsd.hatenablog.com/entry/2019/09/21/015522</a></li>
 <li><a href="https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242">https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242</a></li>
-<li><a href="https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html">https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html</a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html</a></li>
 </ul>
 </blockquote>
 <dl>
@@ -9267,7 +9267,7 @@
 <p><code>aws-node</code>のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに<code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html">https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html</a></li>
 <li><a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html">https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html</a></li>
 <li><a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html">https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html</a></li>
 <li><a href="https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html">https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html</a></li>
@@ -9288,7 +9288,7 @@
 <p>ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
 <li><a href="https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed">https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed</a></li>
 <li><a href="https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/">https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/</a></li>
 </ul>
@@ -9386,7 +9386,7 @@
 <blockquote>
 <ul>
 <li><a href="https://note.com/tyrwzl/n/n715a8ef3c28a">https://note.com/tyrwzl/n/n715a8ef3c28a</a></li>
-<li><a href="https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html">https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html">https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9485,16 +9485,18 @@
 <p><br></p>
 <h3 id="_27">ユーザーデータファイル<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="_28">▼ ユーザーデータファイルとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、または任意のAMIでカスタム起動テンプレートを使用する場合、これらのAMIに渡す必要がある。</p>
-<p>EC2ワーカーNode起動時のユーザーデータファイル内で、<code>bootstrap.sh</code>ファイルに決められたパラメーターを渡す必要がある。</p>
-<p>注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。</p>
+<p>EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
+<p>また、セルフマネージドNodeグループやマネージドNodeグループにて、EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (<code>bootstrap.sh</code>ファイル) を実行する必要がある。</p>
+<p>一方で、マネージドNodeグループにて、起動テンプレートを使用せずにEC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data">https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data</a></li>
 </ul>
 </blockquote>
 <h4 id="bootstrapsh">▼ <code>bootstrap.sh</code>ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
 <p>EC2ワーカーNodeのカスタムAMIに必要なファイルである。</p>
+<p>EC2ワーカーNode起動時のユーザーデータファイル内で、<code>bootstrap.sh</code>ファイルに決められたパラメーターを渡す必要がある。</p>
 <p>ユーザーデータファイル内で、<code>bootstrap.sh</code>ファイルにパラメーターを渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -9677,6 +9679,11 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">USE_MAX_PODS</span><span class="o">=</span><span class="nb">false</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">KUBELET_EXTRA_ARGS</span><span class="o">=</span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最適数&gt;&quot;</span>
+
+/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
 <blockquote>
 <ul>
