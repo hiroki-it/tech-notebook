@@ -699,11 +699,11 @@ Dockerfileの文法の誤りを検証する。
 
 補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。
 
-#### ▼ コンテナ構造テスト
+#### ▼ コンテナストラクチャテスト
 
-外部の脆弱性診断ツール (例：container-structure-test) を使用する。
+ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。
 
-報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) 。
+ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の`ENTRYPOINT`が正しく動作するか、など) が存在するかを検証する。
 
 > - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
 

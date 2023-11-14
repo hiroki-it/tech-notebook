@@ -1183,6 +1183,8 @@ resource "aws_autoscaling_group_tag" "foo" {
 ```terraform
 resource "aws_autoscaling_group" "foo" {
 
+  ...
+
   tag {
     key   = "Name"
     value = "foo-instance"

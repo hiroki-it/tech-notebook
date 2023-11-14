@@ -248,8 +248,8 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `DISABLE_NETWORK_RESOURCE_PROVISIONING` |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
 | `ENABLE_IPv4`                           |                                                                                                                                                                                                                                                                                      | `true`                                                                           |
 | `ENABLE_IPv6`                           |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
-| `ENABLE_POD_ENI`                        | Podにセキュリティグループを紐づける機能 (Security groups for Pods) を使用するかどうかを設定する。                                                                                                                                                                                    | `false`                                                                          |
-| `ENABLE_PREFIX_DELEGATION`              |                                                                                                                                                                                                                                                                                      | `false`                                                                          |
+| `ENABLE_POD_ENI`                        | Podにセキュリティグループを紐づける機能 (Security groups for Pods) を有効化するかどうかを設定する。                                                                                                                                                                                  | `false`                                                                          |
+| `ENABLE_PREFIX_DELEGATION`              | Prefix delegationモードを有効化するかを設定する。                                                                                                                                                                                                                                    | `false`                                                                          |
 | `MAX_ENI`                               | AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。                                                                                                                                                                                                                   | `20`                                                                             |
 | `MINIMUM_IP_TARGET`                     | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。                                                                                                                   | `20`                                                                             |
 | `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                         | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
@@ -338,15 +338,15 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 <br>
 
-### Prefix Delegationモード
+### Prefix delegationモード
 
-#### ▼ Prefix Delegationモードとは
+#### ▼ Prefix delegationモードとは
 
 L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
 
 ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確保できる。
 
-Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
+Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
 
 ![aws-eks-vpc-cni_prefix-delegation-mode.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
@@ -375,7 +375,9 @@ resource "aws_eks_addon" "vpc_cni" {
 }
 ```
 
-`v1.9`以上のaws-eks-vpc-cniアドオンでは、以降の手順は不要である。
+AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。
+
+一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のaws-eks-vpc-cniアドオン)。
 
 `max-pods-calculator.sh`ファイルを使用して、事前にPodの最適数を計算しておく。
 
@@ -388,20 +390,19 @@ $ ./max-pods-calculator.sh \
     --cni-prefix-delegation-enabled
 ```
 
-ユーザーデータファイルで、以下の環境変数を出力する。
+`bootstrap.sh`ファイルに必要なパラメーターを渡す。
 
 ```bash
 #!/bin/bash
 
 # ユーザーデータファイル
 
-export USE_MAX_PODS=false
-export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
-
 /etc/eks/bootstrap.sh foo-eks-cluster \
   --b64-cluster-ca $B64_CLUSTER_CA \
   --apiserver-endpoint $APISERVER_ENDPOINT \
-  --container-runtime containerd
+  --container-runtime containerd \
+  --use-max-pods false \
+  --kubelet-extra-args "--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
 ```
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
@@ -411,11 +412,11 @@ export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから�
 
 #### ▼ セカンダリーIPアドレス割り当てモードとの比較
 
-AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix Delegationモードの方が記載が充実している。
+AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix delegationモードの方が記載が充実している。
 
-AWSとしては、Prefix Delegationモードの方を使って欲しいのかもしれない。
+AWSとしては、Prefix delegationモードの方を使って欲しいのかもしれない。
 
-実際、セカンダリーIPアドレス割り当てモードでは、割り当てられるIPアドレスが劇的に増えないため、Prefix Delegationモードの方が良い。
+実際、セカンダリーIPアドレス割り当てモードでは、割り当てられるIPアドレスが劇的に増えないため、Prefix delegationモードの方が良い。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
 
@@ -505,7 +506,7 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 
 <br>
 
-### Prefix Delegationモードの場合
+### Prefix delegationモードの場合
 
 #### ▼ 設定方法
 
