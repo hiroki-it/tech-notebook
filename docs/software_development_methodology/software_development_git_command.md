@@ -879,7 +879,7 @@ $ git reset --soft <コミットID>
 $ git reset --mixed <コミットID>
 ```
 
-#### ▼ --hard <コミットID>
+#### ▼ --hard <コミットID> (ブランチ)
 
 作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=`add`後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
@@ -888,6 +888,12 @@ $ git reset --mixed <コミットID>
 ```bash
 $ git reset --hard <コミットID>
 ```
+
+```bash
+$ git reset --hard <ブランチ名>
+```
+
+> - https://blog.junpeko.com/git-reset
 
 #### ▼ resetの使用例
 

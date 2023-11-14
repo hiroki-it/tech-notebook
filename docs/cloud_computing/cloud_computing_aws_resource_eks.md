@@ -948,7 +948,7 @@ set -o xtrace
 
 なお、設定可能な全ての環境変数は、以下から確認できる。
 
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/bootstrap.sh
+> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41
 
 ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
 
