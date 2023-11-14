@@ -7476,7 +7476,7 @@
     envoy (client)-&gt;&gt;envoy (server): 
     envoy (server)-&gt;&gt;bar: 
 
-    envoy (client)-&gt;&gt;envoy (client): 全てのストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
+    envoy (client)-&gt;&gt;envoy (client): 全てのリクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
     bar--&gt;&gt;envoy (server): grpc-timeout&lt;br&gt;残り25s
 
@@ -7492,10 +7492,10 @@
 
 <pre class="mermaid"><code>sequenceDiagram
 
-    foo-&gt;&gt;envoy (client): 単項ストリーミング&lt;br&gt;(grpc-timeout: 25s)
+    foo-&gt;&gt;envoy (client): Unary RPC&lt;br&gt;(grpc-timeout: 25s)
     envoy (client)-&gt;&gt;envoy (server): 
     envoy (server)-&gt;&gt;bar: 
-    envoy (client)-&gt;&gt;envoy (client): ストリーミング送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
+    envoy (client)-&gt;&gt;envoy (client): リクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
 
     envoy (client)-&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;grpc-timeoutの前に通信を切断&lt;br&gt;(24.9s)
     envoy (client)--&gt;&gt;foo: タイムアウト
@@ -7536,11 +7536,18 @@
 </ul>
 </blockquote>
 <p>しかし、移行先の<code>max_stream_duration</code>にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/16129">https://github.com/envoyproxy/envoy/issues/16129</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029</a></li>
+</ul>
+</blockquote>
 <p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code>を使用し続けている。</p>
 <blockquote>
 <ul>
+<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
 <li><a href="https://github.com/istio/istio/issues/45141">https://github.com/istio/istio/issues/45141</a></li>
-<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029</a></li>
+<li><a href="https://github.com/istio/istio/pull/42049">https://github.com/istio/istio/pull/42049</a></li>
 </ul>
 </blockquote>
 <h4 id="http_protocol_options">▼ http_protocol_options<a class="headerlink" href="#http_protocol_options" title="Permanent link">&para;</a></h4>
@@ -7996,7 +8003,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>

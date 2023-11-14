@@ -9298,7 +9298,7 @@
 <h3 id="ec2nodeami_2">EC2ワーカーNodeのカスタムAMI<a class="headerlink" href="#ec2nodeami_2" title="Permanent link">&para;</a></h3>
 <h4 id="ec2nodeami_3">▼ EC2ワーカーNodeのカスタムAMIとは<a class="headerlink" href="#ec2nodeami_3" title="Permanent link">&para;</a></h4>
 <p>EC2ワーカーNodeの最適化AMIではないAMIのこと。</p>
-<p>EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、<code>bootstrap.sh</code>ファイルに決められたパラメーターを渡す必要がある。</p>
+<p>EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータファイル内で、<code>bootstrap.sh</code>ファイルに決められたパラメーターを渡す必要がある。</p>
 <p>注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。</p>
 <blockquote>
 <ul>
@@ -9307,7 +9307,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># ユーザーデータ</span>
+<span class="c1"># ユーザーデータファイル</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9323,11 +9323,11 @@
 <span class="w">  </span>--apiserver-endpoint<span class="w"> </span>https://*****.gr7.ap-northeast-1.eks.amazonaws.com<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
-<p>ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。</p>
-<p>パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力する。</p>
+<p>ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。</p>
+<p>パラメーターストアにパラメーターを永続化し、ユーザーデータファイル内に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># ユーザーデータ</span>
+<span class="c1"># ユーザーデータファイル</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9366,7 +9366,7 @@
 <p>ディスク使用率が<code>70</code>%を超過した場合に、ディスク使用率<code>50</code>%分を解放する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># ユーザーデータ</span>
+<span class="c1"># ユーザーデータファイル</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9382,7 +9382,10 @@
 <span class="w">    </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/&quot;imageGCHigh*/a \ \ &quot;imageGCLowThresholdPercent&quot;: 50,&#39;</span><span class="w"> </span>/etc/kubernetes/kubelet/kubelet-config.json
 <span class="k">fi</span>
 
-/etc/eks/bootstrap.sh<span class="w"> </span>&lt;Cluster名&gt;
+/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
 <blockquote>
 <ul>
@@ -9401,7 +9404,7 @@
 <p><code>6</code>分のうち後半<code>2</code>分を重要なPodのために停止に割り当てる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># ユーザーデータ</span>
+<span class="c1"># ユーザーデータファイル</span>
 
 <span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>xtrace
 
@@ -9424,6 +9427,11 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; /etc/systemd/logind
 <span class="s">EOF</span>
 
 sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>systemd-logind
+
+/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
 <blockquote>
 <ul>
@@ -9431,7 +9439,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <li><a href="https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown">https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown</a></li>
 </ul>
 </blockquote>
-<p><code>Failed</code>ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。</p>
+<p><code>Failed</code>ステータスなPodはそのままでは削除できない。</p>
+<p>そのため、<code>Failed</code>ステータスなPodを自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つCronJobを作成するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>ns<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span>/<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ns</span>
 <span class="w">  </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span><span class="nv">$ns</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
@@ -9466,14 +9475,14 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 
 $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span>-<span class="se">\</span>
-<span class="w">    </span>-cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--cni-prefix-delegation-enabled
 </code></pre></div>
-<p>ユーザーデータで、以下の環境変数を出力する。</p>
+<p>ユーザーデータファイルで、以下の環境変数を出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="c1"># ユーザーデータ</span>
+<span class="c1"># ユーザーデータファイル</span>
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">USE_MAX_PODS</span><span class="o">=</span><span class="nb">false</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">KUBELET_EXTRA_ARGS</span><span class="o">=</span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最適数&gt;&quot;</span>
@@ -9936,7 +9945,7 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>

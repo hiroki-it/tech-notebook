@@ -3830,6 +3830,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#removefailed" class="md-nav__link">
+    ▼ RemoveFailed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removepodshavingtoomanyrestarts" class="md-nav__link">
     ▼ RemovePodsHavingTooManyRestarts
   </a>
@@ -5953,6 +5960,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#removefailed" class="md-nav__link">
+    ▼ RemoveFailed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#removepodshavingtoomanyrestarts" class="md-nav__link">
     ▼ RemovePodsHavingTooManyRestarts
   </a>
@@ -6246,6 +6260,28 @@
 <li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
 </ul>
 </blockquote>
+<h4 id="removefailed">▼ RemoveFailed<a class="headerlink" href="#removefailed" title="Permanent link">&para;</a></h4>
+<p><code>Failed</code>ステータスなPodはそのままでは削除されない。</p>
+<p>そのため、<code>Failed</code>ステータスなPodがある場合は、このPodをNodeから削除する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">descheduler/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DeschedulerPolicy</span>
+<span class="nt">strategies</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">RemoveFailedPods</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">failedPods</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">minPodLifetimeSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3600</span>
+<span class="w">        </span><span class="c1"># Failedステータスになった理由でフィルタリングする</span>
+<span class="w">        </span><span class="nt">reasons</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodeAffinity</span>
+<span class="w">        </span><span class="nt">includingInitContainers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/descheduler#removefailedpods">https://github.com/kubernetes-sigs/descheduler#removefailedpods</a></li>
+<li><a href="https://sreake.com/blog/kubernetes-descheduler/">https://sreake.com/blog/kubernetes-descheduler/</a></li>
+</ul>
+</blockquote>
 <h4 id="removepodshavingtoomanyrestarts">▼ RemovePodsHavingTooManyRestarts<a class="headerlink" href="#removepodshavingtoomanyrestarts" title="Permanent link">&para;</a></h4>
 <p>再起動を繰り返しているPodがある場合に、このPodをNodeから退避させる。</p>
 <p>再起動の回数の閾値を設定できる。</p>
@@ -6326,7 +6362,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>
