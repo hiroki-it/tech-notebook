@@ -916,6 +916,7 @@ EC2 Nodeの起動時に任意のコマンドを実行できるようにする。
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
 > - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data
+> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md
 
 #### ▼ `bootstrap.sh`ファイル
 
@@ -1088,58 +1089,6 @@ done
 ```
 
 > - https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
-
-#### ▼ Prefix delegationモードのセットアップ
-
-AWS VPC CNIの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
-
-```terraform
-resource "aws_eks_addon" "vpc_cni" {
-  cluster_name                = aws_eks_cluster.foo.name
-  addon_version               = "<バージョン>"
-  addon_name                  = "vpc-cni"
-  resolve_conflicts_on_update = "OVERWRITE"
-
-  # 環境変数を設定する
-  configuration_values = jsonencode(
-    {
-      nodeSelector = {
-        ENABLE_PREFIX_DELEGATION = "true"
-      }
-    }
-  )
-}
-```
-
-`max-pods-calculator.sh`ファイルを使用して、事前にPodの最適数を計算しておく。
-
-```bash
-$ curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
-
-$ ./max-pods-calculator.sh \
-    --instance-type <インスタンスタイプ> \
-    --cni-version <AWS VPC CNIのバージョン> \
-    --cni-prefix-delegation-enabled
-```
-
-ユーザーデータファイルで、以下の環境変数を出力する。
-
-```bash
-#!/bin/bash
-
-# ユーザーデータファイル
-
-export USE_MAX_PODS=false
-export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
-
-/etc/eks/bootstrap.sh foo-eks-cluster \
-  --b64-cluster-ca $B64_CLUSTER_CA \
-  --apiserver-endpoint $APISERVER_ENDPOINT \
-  --container-runtime containerd
-```
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
 <br>
 

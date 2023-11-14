@@ -353,6 +353,62 @@ Prefix Delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 > - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
+#### ▼ セットアップ
+
+aws-eks-cの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
+
+```terraform
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name                = aws_eks_cluster.foo.name
+  addon_version               = "<バージョン>"
+  addon_name                  = "vpc-cni"
+  resolve_conflicts_on_update = "OVERWRITE"
+
+  # 環境変数を設定する
+  configuration_values = jsonencode(
+    {
+      env = {
+        ENABLE_PREFIX_DELEGATION = "true"
+      }
+    }
+  )
+}
+```
+
+`v1.9`以上のaws-eks-vpc-cniアドオンでは、以降の手順は不要である。
+
+`max-pods-calculator.sh`ファイルを使用して、事前にPodの最適数を計算しておく。
+
+```bash
+$ curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
+
+$ ./max-pods-calculator.sh \
+    --instance-type <インスタンスタイプ> \
+    --cni-version <aws-eks-vpc-cniのバージョン> \
+    --cni-prefix-delegation-enabled
+```
+
+ユーザーデータファイルで、以下の環境変数を出力する。
+
+```bash
+#!/bin/bash
+
+# ユーザーデータファイル
+
+export USE_MAX_PODS=false
+export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
+```
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+
+<br>
+
 #### ▼ セカンダリーIPアドレス割り当てモードとの比較
 
 AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix Delegationモードの方が記載が充実している。
