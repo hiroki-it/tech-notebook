@@ -3888,7 +3888,7 @@
         
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
-    ▼ コンテナ構造テスト
+    ▼ コンテナストラクチャテスト
   </a>
   
 </li>
@@ -6627,7 +6627,7 @@
         
           <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
-    ▼ コンテナ構造テスト
+    ▼ コンテナストラクチャテスト
   </a>
   
 </li>
@@ -7379,9 +7379,9 @@ EOF
 <p>外部の脆弱性診断ツール (例：hadolint) を使用する。</p>
 <p>報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
 <p>補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。</p>
-<h4 id="_30">▼ コンテナ構造テスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>外部の脆弱性診断ツール (例：container-structure-test) を使用する。</p>
-<p>報告されたCVEに基づいて、Dockerfileのコンテナの構造を検証する (例：期待するファイルが存在するか、コンテナ起動時の<code>ENTRYPOINT</code>が正しく動作するか、など) 。</p>
+<h4 id="_30">▼ コンテナストラクチャテスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p>ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。</p>
+<p>ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の<code>ENTRYPOINT</code>が正しく動作するか、など) が存在するかを検証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF">https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF</a></li>
@@ -7428,7 +7428,7 @@ EOF
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>

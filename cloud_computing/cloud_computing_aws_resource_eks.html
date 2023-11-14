@@ -9713,6 +9713,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p>任意のAutoScalingにて、起動テンプレートを使用してEC2ワーカーNodeを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
+<span class="w">  </span><span class="p">...</span>
+
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
