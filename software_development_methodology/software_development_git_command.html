@@ -6089,7 +6089,7 @@
         
           <li class="md-nav__item">
   <a href="#-hard-id" class="md-nav__link">
-    ▼ --hard &lt;コミットID&gt;
+    ▼ --hard &lt;コミットID&gt; (ブランチ)
   </a>
   
 </li>
@@ -6863,7 +6863,7 @@
         
           <li class="md-nav__item">
   <a href="#-hard-id" class="md-nav__link">
-    ▼ --hard &lt;コミットID&gt;
+    ▼ --hard &lt;コミットID&gt; (ブランチ)
   </a>
   
 </li>
@@ -7712,11 +7712,18 @@ $<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </spa
 <p><code>add</code>とコミットを取り消したい場合はこれ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--mixed<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
-<h4 id="-hard-id">▼ --hard &lt;コミットID&gt;<a class="headerlink" href="#-hard-id" title="Permanent link">&para;</a></h4>
+<h4 id="-hard-id">▼ --hard &lt;コミットID&gt; (ブランチ)<a class="headerlink" href="#-hard-id" title="Permanent link">&para;</a></h4>
 <p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=<code>add</code>後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
 <p><font color="red"><strong>ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！</strong></font></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;ブランチ名&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://blog.junpeko.com/git-reset">https://blog.junpeko.com/git-reset</a></li>
+</ul>
+</blockquote>
 <h4 id="reset_2">▼ resetの使用例<a class="headerlink" href="#reset_2" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
@@ -8051,7 +8058,7 @@ $<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>
