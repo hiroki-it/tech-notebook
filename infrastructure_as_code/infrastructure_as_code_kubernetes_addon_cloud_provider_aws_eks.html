@@ -4398,6 +4398,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ip_3" class="md-nav__link">
     ▼ セカンダリーIPアドレス割り当てモードとの比較
   </a>
@@ -4431,14 +4438,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     ▼ 上限数の決まり方
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     ▼ 現在の上限数
   </a>
   
@@ -4458,14 +4465,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ 設定方法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -4485,14 +4492,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ 設定方法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6310,6 +6317,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ セットアップ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ip_3" class="md-nav__link">
     ▼ セカンダリーIPアドレス割り当てモードとの比較
   </a>
@@ -6343,14 +6357,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     ▼ 上限数の決まり方
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     ▼ 現在の上限数
   </a>
   
@@ -6370,14 +6384,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     ▼ 設定方法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6397,14 +6411,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     ▼ 設定方法
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     ▼ シナリオ
   </a>
   
@@ -6895,6 +6909,53 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 </ul>
 </blockquote>
+<h4 id="_13">▼ セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>aws-eks-cの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
+<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
+<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-cni&quot;</span>
+<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+
+<span class="c1">  # 環境変数を設定する</span>
+<span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="na">ENABLE_PREFIX_DELEGATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>v1.9</code>以上のaws-eks-vpc-cniアドオンでは、以降の手順は不要である。</p>
+<p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最適数を計算しておく。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
+
+$<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-version<span class="w"> </span>&lt;aws-eks-vpc-cniのバージョン&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-prefix-delegation-enabled
+</code></pre></div>
+<p>ユーザーデータファイルで、以下の環境変数を出力する。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># ユーザーデータファイル</span>
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">USE_MAX_PODS</span><span class="o">=</span><span class="nb">false</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">KUBELET_EXTRA_ARGS</span><span class="o">=</span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最適数&gt;&quot;</span>
+
+/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--container-runtime<span class="w"> </span>containerd
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h4 id="ip_3">▼ セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h4>
 <p>AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix Delegationモードの方が記載が充実している。</p>
 <p>AWSとしては、Prefix Delegationモードの方を使って欲しいのかもしれない。</p>
@@ -6907,7 +6968,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="05-03-pod">05-03. Podの上限数を上げる<a class="headerlink" href="#05-03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod">Podの上限数<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ 上限数の決まり方<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h4 id="_14">▼ 上限数の決まり方<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。</p>
 <p>そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
 <table>
@@ -6966,7 +7027,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 </tbody>
 </table>
-<h4 id="_14">▼ 現在の上限数<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<h4 id="_15">▼ 現在の上限数<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><code>kubectl describe</code>コマンドの<code>Capacity</code>項目で、現在のPodの上限数を確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
 
@@ -6989,13 +7050,13 @@ Capacity:
 </blockquote>
 <p><br></p>
 <h3 id="ip_4">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ 設定方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_16">▼ 設定方法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
 <p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
 <p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
 <p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
-<h4 id="_16">▼ シナリオ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_17">▼ シナリオ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code>個だとする。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -7024,10 +7085,10 @@ Capacity:
 </blockquote>
 <p><br></p>
 <h3 id="prefix-delegation_2">Prefix Delegationモードの場合<a class="headerlink" href="#prefix-delegation_2" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ 設定方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ 設定方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
-<h4 id="_18">▼ シナリオ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_19">▼ シナリオ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md</a></li>
@@ -7040,7 +7101,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
     
   </small>

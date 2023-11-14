@@ -4201,13 +4201,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prefix-delegation" class="md-nav__link">
-    ▼ Prefix delegationモードのセットアップ
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -8262,13 +8255,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prefix-delegation" class="md-nav__link">
-    ▼ Prefix delegationモードのセットアップ
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -9492,6 +9478,7 @@
 <ul>
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/</a></li>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data">https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data</a></li>
+<li><a href="https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md">https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md</a></li>
 </ul>
 </blockquote>
 <h4 id="bootstrapsh">▼ <code>bootstrap.sh</code>ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
@@ -9644,51 +9631,6 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <blockquote>
 <ul>
 <li><a href="https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36">https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36</a></li>
-</ul>
-</blockquote>
-<h4 id="prefix-delegation">▼ Prefix delegationモードのセットアップ<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h4>
-<p>AWS VPC CNIの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-cni&quot;</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
-
-<span class="c1">  # 環境変数を設定する</span>
-<span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nb">nodeSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">ENABLE_PREFIX_DELEGATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最適数を計算しておく。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
-
-$<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cni-version<span class="w"> </span>&lt;AWS<span class="w"> </span>VPC<span class="w"> </span>CNIのバージョン&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cni-prefix-delegation-enabled
-</code></pre></div>
-<p>ユーザーデータファイルで、以下の環境変数を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># ユーザーデータファイル</span>
-
-<span class="nb">export</span><span class="w"> </span><span class="nv">USE_MAX_PODS</span><span class="o">=</span><span class="nb">false</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">KUBELET_EXTRA_ARGS</span><span class="o">=</span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最適数&gt;&quot;</span>
-
-/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--container-runtime<span class="w"> </span>containerd
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
-<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
