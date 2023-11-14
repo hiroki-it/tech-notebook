@@ -419,11 +419,11 @@ spec:
               path: token
 ```
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
 > - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
 > - https://onsd.hatenablog.com/entry/2019/09/21/015522
 > - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242
-> - https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
 
 `(2)`
 
@@ -681,7 +681,7 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 `aws-node`のPodがAWSのネットワーク系のAPIにアクセスできるように、IRSA用のServiceAccountに`AmazonEKS_CNI_Policy` (IPv4の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6の場合) を付与する必要がある。
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/create-node-role.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html
 > - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html
@@ -706,7 +706,7 @@ AutoScalingグループの機能を使用すれば、EC2ワーカーNodeの自�
 
 ただ、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenter、など) を使用しないと、AutoScalingグループのスケーリング機能を使用できない。
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-groups.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
 
@@ -777,7 +777,7 @@ Podをプライベートサブネットに配置した場合に、パブリッ�
 この時、`POD_SECURITY_GROUP_ENFORCING_MODE=standard`に設定されたaws-eks-vpc-cniアドオンはSNAT処理を実行し、Podのアウトバウンド通信の送信元IPアドレスをEC2ワーカーNodeのプライマリーENI (`eth0`) のIPアドレスに変換する。
 
 > - https://note.com/tyrwzl/n/n715a8ef3c28a
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/security-groups-for-pods.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
 
 <br>
 
@@ -908,17 +908,20 @@ EC2ワーカーNodeの最適化AMIではないAMIのこと。
 
 #### ▼ ユーザーデータファイルとは
 
-EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、または任意のAMIでカスタム起動テンプレートを使用する場合、これらのAMIに渡す必要がある。
+EC2 Nodeの起動時に任意のコマンドを実行できるようにする。
 
-EC2ワーカーNode起動時のユーザーデータファイル内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
+また、セルフマネージドNodeグループやマネージドNodeグループにて、EC2ワーカーNodeのAMIにカスタムAMIを使用したり、任意のAMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (`bootstrap.sh`ファイル) を実行する必要がある。
 
-注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
+一方で、マネージドNodeグループにて、起動テンプレートを使用せずにEC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
+> - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data
 
 #### ▼ `bootstrap.sh`ファイル
 
 EC2ワーカーNodeのカスタムAMIに必要なファイルである。
+
+EC2ワーカーNode起動時のユーザーデータファイル内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
 
 ユーザーデータファイル内で、`bootstrap.sh`ファイルにパラメーターを渡す必要がある。
 
@@ -1128,6 +1131,11 @@ $ ./max-pods-calculator.sh \
 
 export USE_MAX_PODS=false
 export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
 ```
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
