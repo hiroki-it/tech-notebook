@@ -813,7 +813,7 @@ $ aws ssm get-parameter \
 
 EC2ワーカーNodeの最適化AMIではないAMIのこと。
 
-EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータ内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
+EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカーNode起動時のユーザーデータファイル内で、`bootstrap.sh`ファイルに決められたパラメーターを渡す必要がある。
 
 注意点として、最適化AMIにはデフォルトでこれらのパラメーターが設定されているため、設定は不要である。
 
@@ -822,7 +822,7 @@ EC2ワーカーNodeのAMIにカスタムAMIを使用する場合、EC2ワーカ�
 ```bash
 #!/bin/bash
 
-# ユーザーデータ
+# ユーザーデータファイル
 
 set -o xtrace
 
@@ -839,14 +839,14 @@ set -o xtrace
   --container-runtime containerd
 ```
 
-ユーザーデータ内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
+ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
 
-パラメーターストアにパラメーターを永続化し、ユーザーデータ内に出力する。
+パラメーターストアにパラメーターを永続化し、ユーザーデータファイル内に出力する。
 
 ```bash
 #!/bin/bash
 
-# ユーザーデータ
+# ユーザーデータファイル
 
 set -o xtrace
 
@@ -888,7 +888,7 @@ kubeletのガベージコレクションを使用して、イメージキャッ�
 ```bash
 #!/bin/bash
 
-# ユーザーデータ
+# ユーザーデータファイル
 
 set -o xtrace
 
@@ -904,7 +904,10 @@ then
     sed -i '/"imageGCHigh*/a \ \ "imageGCLowThresholdPercent": 50,' /etc/kubernetes/kubelet/kubelet-config.json
 fi
 
-/etc/eks/bootstrap.sh <Cluster名>
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
 ```
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/
@@ -932,7 +935,7 @@ kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で�
 ```bash
 #!/bin/bash
 
-# ユーザーデータ
+# ユーザーデータファイル
 
 set -o xtrace
 
@@ -955,12 +958,19 @@ InhibitDelayMaxSec=360
 EOF
 
 sudo systemctl restart systemd-logind
+
+/etc/eks/bootstrap.sh foo-eks-cluster \
+  --b64-cluster-ca $B64_CLUSTER_CA \
+  --apiserver-endpoint $APISERVER_ENDPOINT \
+  --container-runtime containerd
 ```
 
 > - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
 
-`Failed`ステータスのPodはそのままでは削除できないため、以下のようなスクリプトを実行できるCronJobを作成するとよい。
+`Failed`ステータスなPodはそのままでは削除できない。
+
+そのため、`Failed`ステータスなPodを自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つCronJobを作成するとよい。
 
 ```bash
 for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
@@ -983,7 +993,7 @@ resource "aws_eks_addon" "vpc_cni" {
   addon_version               = "<バージョン>"
   addon_name                  = "vpc-cni"
   resolve_conflicts_on_update = "OVERWRITE"
-  
+
   # 環境変数を設定する
   configuration_values = jsonencode(
     {
@@ -1001,17 +1011,17 @@ resource "aws_eks_addon" "vpc_cni" {
 $ curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 
 $ ./max-pods-calculator.sh \
-    --instance-type <インスタンスタイプ> -\
-    -cni-version <AWS VPC CNIのバージョン> \
+    --instance-type <インスタンスタイプ> \
+    --cni-version <AWS VPC CNIのバージョン> \
     --cni-prefix-delegation-enabled
 ```
 
-ユーザーデータで、以下の環境変数を出力する。
+ユーザーデータファイルで、以下の環境変数を出力する。
 
 ```bash
 #!/bin/bash
 
-# ユーザーデータ
+# ユーザーデータファイル
 
 export USE_MAX_PODS=false
 export KUBELET_EXTRA_ARGS="--max-pods=<max-pods-calculator.shファイルから取得したPodの最適数>"

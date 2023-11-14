@@ -249,6 +249,30 @@ strategies:
 > - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
 > - https://sreake.com/blog/kubernetes-descheduler/
 
+#### ▼ RemoveFailed
+
+`Failed`ステータスなPodはそのままでは削除されない。
+
+そのため、`Failed`ステータスなPodがある場合は、このPodをNodeから削除する。
+
+```yaml
+apiVersion: descheduler/v1alpha1
+kind: DeschedulerPolicy
+strategies:
+  RemoveFailedPods:
+    enabled: true
+    params:
+      failedPods:
+        minPodLifetimeSeconds: 3600
+        # Failedステータスになった理由でフィルタリングする
+        reasons:
+          - NodeAffinity
+        includingInitContainers: true
+```
+
+> - https://github.com/kubernetes-sigs/descheduler#removefailedpods
+> - https://sreake.com/blog/kubernetes-descheduler/
+
 #### ▼ RemovePodsHavingTooManyRestarts
 
 再起動を繰り返しているPodがある場合に、このPodをNodeから退避させる。

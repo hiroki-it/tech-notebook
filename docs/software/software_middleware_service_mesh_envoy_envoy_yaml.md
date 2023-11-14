@@ -357,7 +357,7 @@ sequenceDiagram
     envoy (client)->>envoy (server): 
     envoy (server)->>bar: 
 
-    envoy (client)->>envoy (client): 全てのストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+    envoy (client)->>envoy (client): 全てのリクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
 
     bar-->>envoy (server): grpc-timeout<br>残り25s
 
@@ -379,10 +379,10 @@ gRPCサーバーからのレスポンスよりも先に、gRPCクライアント
 ```mermaid
 sequenceDiagram
 
-    foo->>envoy (client): 単項ストリーミング<br>(grpc-timeout: 25s)
+    foo->>envoy (client): Unary RPC<br>(grpc-timeout: 25s)
     envoy (client)->>envoy (server): 
     envoy (server)->>bar: 
-    envoy (client)->>envoy (client): ストリーミング送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+    envoy (client)->>envoy (client): リクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
 
     envoy (client)->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
     envoy (client)-->>foo: タイムアウト
@@ -427,10 +427,14 @@ gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 
 しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
 
+> - https://github.com/envoyproxy/envoy/issues/16129
+> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
+
 そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
 
+> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
 > - https://github.com/istio/istio/issues/45141
-> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
+> - https://github.com/istio/istio/pull/42049
 
 #### ▼ http_protocol_options
 
