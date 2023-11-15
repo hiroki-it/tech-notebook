@@ -515,7 +515,11 @@ $ kubectl get daemonset aws-node \
 
 #### ▼ セカンダリーIPアドレス割り当てモードとは
 
-L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
+AWSのENIには、セカンダリーIPアドレス割り当てという機能がある。
+
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP
+
+L-IPAMデーモンはこれを利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
 
 この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
@@ -567,11 +571,11 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 <br>
 
-### Prefix delegationモード
+### Prefix delegationモード (プレフィクス委任モード)
 
 #### ▼ Prefix delegationモードとは
 
-AWSのENIには、Prefix delegationという機能がある。
+AWSのENIには、Prefix delegation (プレフィクス委任) という機能がある。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
 

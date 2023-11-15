@@ -155,7 +155,7 @@ $ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statemen
 
 #### ▼ log_line_prefixとは
 
-ログのプリフィクスの形式を設定する。
+ログのプレフィクスの形式を設定する。
 
 ```
 log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
