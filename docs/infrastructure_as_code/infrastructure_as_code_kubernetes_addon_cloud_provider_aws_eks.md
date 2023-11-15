@@ -571,7 +571,11 @@ L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープ
 
 #### ▼ Prefix delegationモードとは
 
-L-IPAMデーモンは、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+AWSのENIには、Prefix delegationという機能がある。
+
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
+
+L-IPAMデーモンはこれを利用し、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
 
 ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確保できる。
 
