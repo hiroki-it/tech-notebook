@@ -4391,10 +4391,10 @@
         
           <li class="md-nav__item">
   <a href="#prefix-delegation" class="md-nav__link">
-    Prefix delegationモード
+    Prefix delegationモード (プレフィクス委任モード)
   </a>
   
-    <nav class="md-nav" aria-label="Prefix delegationモード">
+    <nav class="md-nav" aria-label="Prefix delegationモード (プレフィクス委任モード)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6317,10 +6317,10 @@
         
           <li class="md-nav__item">
   <a href="#prefix-delegation" class="md-nav__link">
-    Prefix delegationモード
+    Prefix delegationモード (プレフィクス委任モード)
   </a>
   
-    <nav class="md-nav" aria-label="Prefix delegationモード">
+    <nav class="md-nav" aria-label="Prefix delegationモード (プレフィクス委任モード)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7089,7 +7089,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="ip">セカンダリーIPアドレス割り当てモード<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
 <h4 id="ip_1">▼ セカンダリーIPアドレス割り当てモードとは<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
-<p>L-IPAMデーモンは、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
+<p>AWSのENIには、セカンダリーIPアドレス割り当てという機能がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP</a></li>
+</ul>
+</blockquote>
+<p>L-IPAMデーモンはこれを利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
 <p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
 <p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
@@ -7139,9 +7145,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="prefix-delegation">Prefix delegationモード<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h3>
+<h3 id="prefix-delegation">Prefix delegationモード (プレフィクス委任モード)<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h3>
 <h4 id="prefix-delegation_1">▼ Prefix delegationモードとは<a class="headerlink" href="#prefix-delegation_1" title="Permanent link">&para;</a></h4>
-<p>AWSのENIには、Prefix delegationという機能がある。</p>
+<p>AWSのENIには、Prefix delegation (プレフィクス委任) という機能がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
