@@ -7141,7 +7141,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="prefix-delegation">Prefix delegationモード<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h3>
 <h4 id="prefix-delegation_1">▼ Prefix delegationモードとは<a class="headerlink" href="#prefix-delegation_1" title="Permanent link">&para;</a></h4>
-<p>L-IPAMデーモンは、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>AWSのENIには、Prefix delegationという機能がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
+</ul>
+</blockquote>
+<p>L-IPAMデーモンはこれを利用し、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
 <p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>/28</code>) を確保できる。</p>
 <p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>/28</code>よりも大きくしておく必要がある。</p>
 <p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
@@ -7355,7 +7361,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
       
     
   </small>
