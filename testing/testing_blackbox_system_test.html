@@ -7212,7 +7212,8 @@
 </table>
 <h4 id="_40">▼ テストケース<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
 <p>各テストケースで、フォールトインジェクション (意図的な障害) を実施する。</p>
-<p>その時のシステムの可用性を確認する。</p>
+<p>障害発生時にシステムが高い可用性を発揮できるかを確認する。</p>
+<p>フォールトインジェクションツール (例：AWS Fault Injection Simulator、Chaos Mesh、など) やサービスメッシュのフォールトインジェクション機能を使用すると良い。</p>
 <table>
 <thead>
 <tr>
@@ -7326,9 +7327,10 @@
 <li><a href="https://www.optimizely.com/optimization-glossary/testing-in-production/">https://www.optimizely.com/optimization-glossary/testing-in-production/</a></li>
 </ul>
 </blockquote>
+<p><br></p>
 <h3 id="_42">カオスエンジニアリング<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
 <h4 id="_43">▼ カオスエンジニアリング<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
-<p>実験的に、本番環境のシステムに『カオス』を挿入し、高負荷な状態に至らせる。</p>
+<p>実験的に、本番環境のマイクロサービスアーキテクチャなシステムに『カオス』を意図的に挿入し (フォールトインジェクションを実施し) 、高負荷な状態に至らせる。</p>
 <p>そのテストレポートから、システムに潜む想定外の問題を表面化させる。</p>
 <p>カオスエンジニアリングは、実地的なテストであり (例：該当のエラーメトリクスが基準値を満たすか) 、今まさに実際のユーザーが使用しているソフトウェアに対して実施することになるため、ビジネスサイドの理解が必要になる。</p>
 <p>ただし、必ずしても本番環境でしか使用できないわけではなく、テスト環境で実施し、起こりうる障害を洗い出すように使用しても良い。</p>
@@ -7379,7 +7381,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
       
     
   </small>

@@ -6566,6 +6566,12 @@ envoy<span class="w"> </span><span class="c1"># クライアント側Envoyから
 <li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
 </ul>
 </blockquote>
+<p>Envoyのリスナー値とルート値を確認すれば、VirtualServiceの設定が正しく適用できているかを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>routes<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+NAME<span class="w">     </span>DOMAINS<span class="w">                                      </span>MATCH<span class="w">               </span>VIRTUAL<span class="w"> </span>SERVICE
+<span class="m">50001</span><span class="w">    </span>foo-service.foo-namespace.svc.cluster.local<span class="w">  </span>/*<span class="w">                  </span>foo-virtual-service.foo-namespace
+</code></pre></div>
 <h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
 <p>Gatewayから受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <h4 id="virtualservice_2">▼ VirtualService数<a class="headerlink" href="#virtualservice_2" title="Permanent link">&para;</a></h4>
@@ -6720,14 +6726,20 @@ envoy<span class="w"> </span><span class="c1"># クライアント側Envoyから
 <blockquote>
 <ul>
 <li><a href="https://taisho6339.hatenablog.com/entry/2020/05/11/235435">https://taisho6339.hatenablog.com/entry/2020/05/11/235435</a></li>
-<li>
-<p><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></p>
-</li>
-<li>
-<p><br></p>
-</li>
+<li><a href="https://sreake.com/blog/istio/">https://sreake.com/blog/istio/</a></li>
 </ul>
 </blockquote>
+<p>Envoyのクラスター値とエンドポイント値を確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
+
+SERVICE<span class="w"> </span>FQDN<span class="w">                                  </span>PORT<span class="w">                         </span>SUBSET<span class="w">        </span>DIRECTION<span class="w">   </span>TYPE<span class="w">                </span>DESTINATION<span class="w"> </span>RULE
+&lt;Serviceの完全修飾ドメイン名&gt;<span class="w">                     </span>&lt;Serviceが待ち受けるポート番号&gt;<span class="w">  </span>&lt;サブセット名&gt;<span class="w">  </span>&lt;通信の方向&gt;<span class="w">  </span>&lt;ディスカバリータイプ&gt;<span class="w">  </span>&lt;DestinationRule名&gt;.&lt;Namespace名&gt;
+
+foo-service.foo-namespace.svc.cluster.local<span class="w">   </span><span class="m">50001</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>foo-destination-rule.foo-namespace
+bar-service.bar-namespace.svc.cluster.local<span class="w">   </span><span class="m">50002</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>bar-destination-rule.bar-namespace
+baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class="m">50003</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>baz-destination-rule.baz-namespace
+</code></pre></div>
+<p><br></p>
 <h2 id="02">02. 認証系リソース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="peerauthentication">PeerAuthentication<a class="headerlink" href="#peerauthentication" title="Permanent link">&para;</a></h3>
 <p>Pod間通時に、相互TLS認証を実施する。</p>
@@ -6751,7 +6763,7 @@ envoy<span class="w"> </span><span class="c1"># クライアント側Envoyから
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
       
     
   </small>
