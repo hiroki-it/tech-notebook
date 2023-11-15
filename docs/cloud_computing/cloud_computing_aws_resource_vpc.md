@@ -23,9 +23,9 @@ description: VPC＠AWSリソースの知見を記録しています。
 
 VPCのパケット通信の仕組みについては、以下のリンクを参考にせよ。
 
-> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
-
 ![VPCが提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VPCが提供できるネットワークの範囲.png)
+
+> - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 
 <br>
 
