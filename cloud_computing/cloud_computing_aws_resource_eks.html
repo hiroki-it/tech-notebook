@@ -9503,10 +9503,48 @@
 <span class="w">  </span>--apiserver-endpoint<span class="w"> </span>https://*****.gr7.ap-northeast-1.eks.amazonaws.com<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
-<p>なお、設定可能な全ての環境変数は、以下から確認できる。</p>
+<p>なお、設定可能な全てのパラメーターは、以下から確認できる。</p>
+<p>よく使うパラメーター配下の通りである。</p>
+<table>
+<thead>
+<tr>
+<th>パラメーター</th>
+<th>例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--apiserver-endpoint</code></td>
+<td></td>
+<td>AWS EKS Clusterのkube-apiserverのエンドポイントを設定する。</td>
+</tr>
+<tr>
+<td><code>--b64-cluster-ca</code></td>
+<td></td>
+<td>kube-apiserverのエンドポイントを設定した場合に、HTTPSでリクエストするために、SSL証明書を設定する。</td>
+</tr>
+<tr>
+<td><code>--container-runtime</code></td>
+<td><code>containerd</code></td>
+<td>コンテナランタイムの種類を設定する。</td>
+</tr>
+<tr>
+<td><code>--kubelet-extra-args</code></td>
+<td><code>--max-pods=110</code></td>
+<td>KubeletConfigurationのデフォルト値を上書きする。</td>
+</tr>
+<tr>
+<td><code>--use-max-pods</code></td>
+<td><code>false</code></td>
+<td>Kubeletの<code>--max-pods</code>オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <ul>
 <li><a href="https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41">https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41</a></li>
+<li><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/">https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/</a></li>
 </ul>
 </blockquote>
 <p>ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。</p>
@@ -9984,7 +10022,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
       
     
   </small>
