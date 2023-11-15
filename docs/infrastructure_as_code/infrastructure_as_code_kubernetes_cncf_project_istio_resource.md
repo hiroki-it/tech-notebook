@@ -306,6 +306,15 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
+Envoyのリスナー値とルート値を確認すれば、VirtualServiceの設定が正しく適用できているかを確認できる。
+
+```bash
+$ istioctl proxy-config routes foo-pod -n foo-namespace
+
+NAME     DOMAINS                                      MATCH               VIRTUAL SERVICE
+50001    foo-service.foo-namespace.svc.cluster.local  /*                  foo-virtual-service.foo-namespace
+```
+
 #### ▼ `404`ステータス
 
 Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
@@ -460,7 +469,20 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
-> - <br>
+Envoyのクラスター値とエンドポイント値を確認すれば、DestinationRuleの設定が正しく適用できているかを確認できる。
+
+```bash
+$ istioctl proxy-config cluster foo-pod -n foo-namespace
+
+SERVICE FQDN                                  PORT                         SUBSET        DIRECTION   TYPE                DESTINATION RULE
+<Serviceの完全修飾ドメイン名>                     <Serviceが待ち受けるポート番号>  <サブセット名>  <通信の方向>  <ディスカバリータイプ>  <DestinationRule名>.<Namespace名>
+
+foo-service.foo-namespace.svc.cluster.local   50001                        v1            outbound     EDS                 foo-destination-rule.foo-namespace
+bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
+baz-service.baz-namespace.svc.cluster.local   50003                        v1            outbound     EDS                 baz-destination-rule.baz-namespace
+```
+
+<br>
 
 ## 02. 認証系リソース
 
