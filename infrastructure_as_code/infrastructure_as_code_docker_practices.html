@@ -6712,7 +6712,7 @@
 <p>この親プロセスは、子プロセスを実行する。</p>
 <p><img alt="container_processes.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png" /></p>
 <p>なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。</p>
-<p>プロセス管理ツール (例：supervisor) を使用すると、終了順序を考えやすくなる。</p>
+<p>プロセス管理ツール (例：systemd、supervisor) を使用すると、終了順序を考えやすくなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container</a></li>
@@ -7428,7 +7428,7 @@ EOF
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-16</span>
       
     
   </small>

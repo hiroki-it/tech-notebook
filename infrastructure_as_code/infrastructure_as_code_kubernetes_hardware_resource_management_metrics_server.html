@@ -6240,7 +6240,7 @@
 <p><br></p>
 <h3 id="api">拡張APIサーバー<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ 拡張APIサーバーとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。</p>
+<p>拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。</p>
 <p>データポイントはローカルストレージに保管している。</p>
 <blockquote>
 <ul>
@@ -6250,11 +6250,18 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ローカルストレージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。</p>
+<p>ローカルストレージは、クライアント (<code>kubectl top</code>コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。</p>
 <p><br></p>
 <h3 id="_4">スクレイパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>PodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。</p>
-<p>収集のために、ServiceAccountとClusterRoleを作成する必要がある。</p>
+<p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。</p>
+<p>kubeletのデーモンはメトリクス収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code>、など) を持ち、これがスクレイパーの収集対象になる。</p>
+<p>そのため、PodやNodeにメトリクス収集用エンドポイントを設ける必要はない。</p>
+<p><img alt="metrics-server_scraper.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/">https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
@@ -6509,7 +6516,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-16</span>
       
     
   </small>
