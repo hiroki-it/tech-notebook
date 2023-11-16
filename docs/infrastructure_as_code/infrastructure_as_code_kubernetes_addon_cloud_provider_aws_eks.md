@@ -656,8 +656,6 @@ $ ./max-pods-calculator.sh \
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
-<br>
-
 #### ▼ セカンダリーIPアドレス割り当てモードとの比較
 
 AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix delegationモードの方が記載が充実している。
@@ -667,6 +665,15 @@ AWSとしては、Prefix delegationモードの方を使って欲しいのかも
 実際、セカンダリーIPアドレス割り当てモードでは、割り当てられるIPアドレスが劇的に増えないため、Prefix delegationモードの方が良い。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+
+#### ▼ セカンダリーIPアドレス割り当てモードからの移行
+
+もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除した上で、Nodeを新規作成する。
+
+ローリングアップグレードで移行する場合、セカンダリーIPアドレス割り当てモードとPrefix delegationモードの両方をNodeに適用してしまう。
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation
 
 <br>
 
