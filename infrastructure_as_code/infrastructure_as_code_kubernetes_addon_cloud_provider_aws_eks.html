@@ -4418,6 +4418,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ip_4" class="md-nav__link">
+    ▼ セカンダリーIPアドレス割り当てモードからの移行
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4464,7 +4471,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ip_4" class="md-nav__link">
+  <a href="#ip_5" class="md-nav__link">
     セカンダリーIP割り当てモードの場合
   </a>
   
@@ -6344,6 +6351,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ip_4" class="md-nav__link">
+    ▼ セカンダリーIPアドレス割り当てモードからの移行
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6390,7 +6404,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ip_4" class="md-nav__link">
+  <a href="#ip_5" class="md-nav__link">
     セカンダリーIP割り当てモードの場合
   </a>
   
@@ -7221,7 +7235,6 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 <li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
 </ul>
 </blockquote>
-<p><br></p>
 <h4 id="ip_3">▼ セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h4>
 <p>AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix delegationモードの方が記載が充実している。</p>
 <p>AWSとしては、Prefix delegationモードの方を使って欲しいのかもしれない。</p>
@@ -7229,6 +7242,15 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+</ul>
+</blockquote>
+<h4 id="ip_4">▼ セカンダリーIPアドレス割り当てモードからの移行<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h4>
+<p>もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除した上で、Nodeを新規作成する。</p>
+<p>ローリングアップグレードで移行する場合、セカンダリーIPアドレス割り当てモードとPrefix delegationモードの両方をNodeに適用してしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7315,7 +7337,7 @@ Capacity:
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="ip_4">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h3>
+<h3 id="ip_5">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_5" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 設定方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
