@@ -69,7 +69,7 @@ $ pip3 install supervisor
 
 Python製のユーティリティである。
 
-メモリ上のプロセスをデーモン化し、一括で管理する。
+メモリ上の複数のプロセスをデーモン化し、一括で管理する。
 
 > - http://supervisord.org/index.html
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
@@ -94,13 +94,13 @@ supervisor自体のプロセスのこと。
 
 supervisorの`supervisord`プロセスのプールを設定する。
 
-> - http://supervisord.org/configuration.html#supervisord-section-settings
-
 ```ini
 [supervisord]
 
 ...
 ```
+
+> - http://supervisord.org/configuration.html#supervisord-section-settings
 
 #### ▼ directory
 
@@ -173,9 +173,6 @@ user=root
 
 デーモン化されたプロセスを設定する。
 
-> - http://supervisord.org/configuration.html#program-x-section-settings
-> - https://christina04.hatenablog.com/entry/2015/07/21/215525
-
 ```ini
 [program:<プログラム名>]
 
@@ -185,6 +182,9 @@ user=root
 
 ...
 ```
+
+> - http://supervisord.org/configuration.html#program-x-section-settings
+> - https://christina04.hatenablog.com/entry/2015/07/21/215525
 
 #### ▼ autorestart
 
@@ -239,8 +239,6 @@ startretries=10
 
 もし、`/dev/stdout`ディレクトリまたは`/dev/stderr`ディレクトリを使用する場合は、`logfile_maxbytes `オプションの値を`0` (無制限) とする必要がある。
 
-> - http://supervisord.org/configuration.html#supervisord-section-values
-
 ```ini
 [program:foo]
 
@@ -252,6 +250,8 @@ stdout_logfile_maxbytes=0
 stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 ```
+
+> - http://supervisord.org/configuration.html#supervisord-section-values
 
 #### ▼ stdout_logfile_backups
 
@@ -314,21 +314,21 @@ programs=bar,baz
 
 `all`とした場合は、全てを再起動する。
 
-> - http://supervisord.org/running.html#supervisorctl-actions
-
 ```bash
 $ supervisorctl restart <デーモン名>
 ```
+
+> - http://supervisord.org/running.html#supervisorctl-actions
 
 #### ▼ update
 
 もし`supervisord.conf`ファイルの設定を変更した場合、これを再読み出しする。
 
-> - http://supervisord.org/running.html#supervisorctl-actions
-
 ```bash
 $ supervisorctl update
 ```
+
+> - http://supervisord.org/running.html#supervisorctl-actions
 
 <br>
 
@@ -345,17 +345,19 @@ $ supervisorctl update
 
 #### ▼ systemd：system daemon
 
-ユニットファイルに基づいて、プロセスをユニット別に管理する。
+メモリ上の複数のプロセスをデーモン化し、一括で管理する。
+
+ユニットファイルに基づいて、プロセスをユニット別に操作する。
 
 ユニットは拡張子の違いで判別する。
-
-> - https://www.kabegiwablog.com/entry/2018/06/11/100000
 
 | ユニットタイプ  | ユニットの拡張子 | 説明                                         |
 | --------------- | ---------------- | -------------------------------------------- |
 | serviceユニット | `.service`       | プロセス起動停止に関するデーモン。           |
 | mountユニット   | `.mount`         | ファイルのマウントに関するデーモン。         |
 | socketユニット  | `.socket`        | ソケットとプロセスの紐付けに関するデーモン。 |
+
+> - https://www.kabegiwablog.com/entry/2018/06/11/100000
 
 <br>
 
@@ -406,8 +408,6 @@ OnFailure=notify-email@%i.service
 
 serviceユニットのオプションを設定する。
 
-> - https://serverfault.com/a/806620
-
 ```ini
 [Service]
 # デーモンの実行ユーザーを。もし設定しない場合、root権限の実行ユーザーを使用する。
@@ -431,6 +431,8 @@ PrivateTmp=true
 ```bash
 OPTIONS=foo
 ```
+
+> - https://serverfault.com/a/806620
 
 #### ▼ Installセクション
 
@@ -490,8 +492,6 @@ $ systemctl enable httpd.service
 
 `grep`と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得すると良い。
 
-> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
-
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
 ```
@@ -515,6 +515,8 @@ dev-hugepages.mount               loaded active mounted Huge Pages File System
 dev-mqueue.mount                  loaded active mounted POSIX Message Queue File System
 ...
 ```
+
+> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 #### ▼ list-unit-files
 
@@ -595,8 +597,6 @@ $ systemctl start nginx.service
 
 デーモン化されたプロセスの状態を確認する。
 
-> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
-
 ```bash
 $ systemctl status <ユニット名>
 ```
@@ -611,6 +611,8 @@ Main PID: 959 (rsyslogd)
 CGroup: /system.slice/rsyslog.service
 mq959 /usr/sbin/rsyslogd -n
 ```
+
+> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
 
 #### ▼ stop
 
@@ -638,11 +640,11 @@ systemで管理する全てのユニットのログを取得する。
 
 `grep`コマンドで特定のエラーログレベルに絞る必要がある。
 
-> - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
-
 ```bash
 $ journalctl | grep error
 ```
+
+> - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
 
 #### ▼ -u
 
@@ -661,9 +663,6 @@ $ journalctl -u foo.service | grep error
 デーモンが失敗状態になった時に、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure`オプションを使用する。
 
 この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に`%i`は不要である) 。
-
-> - https://serverfault.com/a/924434
-> - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
 
 ```ini
 [Unit]
@@ -690,13 +689,14 @@ ExecStart=/usr/bin/bash -c \
 WantedBy=multi-user.target
 ```
 
+> - https://serverfault.com/a/924434
+> - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
+
 #### ▼ アラートを間接的に通知する場合
 
 デーモンが失敗状態になった時に、出力したログを使用してアラートを送信するためには、`StandardOutput`オプションや`StandardError`オプションを使用する。
 
 一度、ログとして出力し、このログをCloudWatchログなどに送信する。
-
-> - https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 
 ```ini
 [Service]
@@ -706,6 +706,8 @@ WantedBy=multi-user.target
 StandardOutput=file:/var/log/foo-service/stdout.log
 StandardError=file:/var/log/foo-service/stderr.log
 ```
+
+> - https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
 
 <br>
 
@@ -767,8 +769,6 @@ $ ls -la | xclip -selection clipboard
 
 保持した内容をファイルに出力する。
 
-> - https://linuxfan.info/xclip
-
 **＊例＊**
 
 クリップボードの内容をファイルに出力する。
@@ -776,5 +776,7 @@ $ ls -la | xclip -selection clipboard
 ```bash
 $ xclip -selection clipboard -o > foo.txt
 ```
+
+> - https://linuxfan.info/xclip
 
 <br>
