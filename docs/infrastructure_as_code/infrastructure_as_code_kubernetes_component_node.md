@@ -236,20 +236,6 @@ $ journalctl -u kubelet.service
 ...
 ```
 
-ユニットファイルは以下の通りである。
-
-```ini
-[Service]
-Environment="KUBELET_KUBECONFIG_ARGS=--bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf"
-Environment="KUBELET_CONFIG_ARGS=--config=/var/lib/kubelet/config.yaml"
-EnvironmentFile=-/var/lib/kubelet/kubeadm-flags.env
-EnvironmentFile=-/etc/default/kubelet
-ExecStart=
-ExecStart=/usr/bin/kubelet $KUBELET_KUBECONFIG_ARGS $KUBELET_CONFIG_ARGS $KUBELET_KUBEADM_ARGS $KUBELET_EXTRA_ARGS
-```
-
-> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd
-
 #### ▼ kubeletのバージョン
 
 ログ内にkubeletのバージョンが定義されている。
@@ -259,6 +245,46 @@ $ journalctl -u kubelet.service | grep "Kubelet version"
 
 kubelet[405976]: I0421 14:22:01.838974  405976 server.go:440] "Kubelet version" kubeletVersion="v1.22"
 ```
+
+<br>
+
+### ユニットファイル
+
+#### ▼ `kubelet.service`ファイル
+
+おおよそ、`/etc/systemd/system`ディレクトリにある。
+
+ファイルの設定例は以下の通りである。
+
+```ini
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/kubernetes/kubernetes
+After=containerd.service sandbox-image.service
+Requires=containerd.service sandbox-image.service
+
+[Service]
+Slice=runtime.slice
+ExecStartPre=/sbin/iptables -P FORWARD ACCEPT -w 5
+ExecStart=/usr/bin/kubelet \
+          --config /etc/kubernetes/kubelet/kubelet-config.json \
+          --kubeconfig /var/lib/kubelet/kubeconfig \
+          --container-runtime-endpoint unix:///run/containerd/containerd.sock \
+          --image-credential-provider-config /etc/eks/image-credential-provider/config.json \
+          --image-credential-provider-bin-dir /etc/eks/image-credential-provider \
+          $KUBELET_ARGS \
+          $KUBELET_EXTRA_ARGS
+
+Restart=on-failure
+RestartForceExitStatus=SIGPIPE
+RestartSec=5
+KillMode=process
+CPUAccounting=true
+MemoryAccounting=true
+```
+
+> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd
+> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet.service
 
 <br>
 

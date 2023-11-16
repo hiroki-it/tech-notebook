@@ -519,7 +519,7 @@ AWSのENIには、セカンダリーIPアドレス割り当てという機能が
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP
 
-L-IPAMデーモンはこれを利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
+L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。
 
 この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
@@ -566,7 +566,7 @@ L-IPAMデーモンはこれを利用し、NodeのAWS ENIに紐づけられたセ
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
 > - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
@@ -579,7 +579,7 @@ AWSのENIには、Prefix delegation (プレフィクス委任) という機能�
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
 
-L-IPAMデーモンはこれを利用し、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
 
 ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確保できる。
 
