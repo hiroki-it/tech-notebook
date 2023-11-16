@@ -6255,7 +6255,7 @@
 <h3 id="_4">スクレイパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。</p>
 <p>kubeletのデーモンはメトリクス収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code>、など) を持ち、これがスクレイパーの収集対象になる。</p>
-<p>そのため、PodやNodeにメトリクス収集用エンドポイントを設ける必要はない。</p>
+<p>そのため、PodやNodeにメトリクス収集用エンドポイント (例：<code>/metrics</code>) を設ける必要はない。</p>
 <p><img alt="metrics-server_scraper.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png" /></p>
 <blockquote>
 <ul>
