@@ -7095,7 +7095,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP</a></li>
 </ul>
 </blockquote>
-<p>L-IPAMデーモンはこれを利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
 <p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
 <p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
@@ -7140,7 +7140,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#overview</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
 <li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
@@ -7153,7 +7153,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
 </ul>
 </blockquote>
-<p>L-IPAMデーモンはこれを利用し、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
 <p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>/28</code>) を確保できる。</p>
 <p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>/28</code>よりも大きくしておく必要がある。</p>
 <p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
@@ -7367,7 +7367,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-16</span>
       
     
   </small>
