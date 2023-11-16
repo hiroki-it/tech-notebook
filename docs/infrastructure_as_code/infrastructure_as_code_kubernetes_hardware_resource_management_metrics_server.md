@@ -55,7 +55,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 #### ▼ 拡張APIサーバーとは
 
-ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
+拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスのデータポイントを含むレスポンスを返信する。
 
 データポイントはローカルストレージに保管している。
 
@@ -66,15 +66,21 @@ ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド
 
 ### ローカルストレージ
 
-クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。
+ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスのデータポイントを保存する。
 
 <br>
 
 ### スクレイパー
 
-PodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。
+スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスのデータポイントを定期的に収集し、ローカルストレージに保存する。
 
-収集のために、ServiceAccountとClusterRoleを作成する必要がある。
+kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`、など) を持ち、これがスクレイパーの収集対象になる。
+
+そのため、PodやNodeにメトリクス収集用エンドポイントを設ける必要はない。
+
+![metrics-server_scraper.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
+
+> - https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
 
 <br>
 

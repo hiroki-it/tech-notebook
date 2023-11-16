@@ -44,7 +44,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。
 
-プロセス管理ツール (例：supervisor) を使用すると、終了順序を考えやすくなる。
+プロセス管理ツール (例：systemd、supervisor) を使用すると、終了順序を考えやすくなる。
 
 > - https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#package_a_single_app_per_container
 

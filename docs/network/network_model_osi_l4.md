@@ -115,7 +115,11 @@ unix://./etc/foo.sock
 
 ### プロセス間メッセージキュー
 
-記入中...
+同じOS上のプロセス間でメッセージを仲介する。
+
+異なるOS間のメッセージを仲介する時は、ミドルウェアとしてのメッセージキューを使用する。
+
+> - https://en.wikipedia.org/wiki/Message_queue
 
 <br>
 

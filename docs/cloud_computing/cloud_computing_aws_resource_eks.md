@@ -956,7 +956,7 @@ set -o xtrace
 | `--b64-cluster-ca`      |                                              | kube-apiserverのエンドポイントを設定した場合に、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                               |
 | `--container-runtime`   | `containerd`                                 | コンテナランタイムの種類を設定する。                                                                                                                                                             |
 | `--kubelet-extra-args`  | `--node-labels=nodegroup=foo --max-pods=110` | KubeletConfigurationのデフォルト値を上書きする。                                                                                                                                                 |
-| `--use-max-pods`        | `false`                                      | Kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
+| `--use-max-pods`        | `false`                                      | kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
 
 > - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41
 > - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/

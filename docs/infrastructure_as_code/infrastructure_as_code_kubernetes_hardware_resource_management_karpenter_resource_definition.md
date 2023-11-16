@@ -357,7 +357,7 @@ spec:
 
 ### kubelet
 
-Kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
+kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
