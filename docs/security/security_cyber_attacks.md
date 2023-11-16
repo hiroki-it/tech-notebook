@@ -48,9 +48,9 @@ GitLab上のOSSのCVEは、GitLab Advisory Databaseで検索できる。
 
 #### ▼ RedHat
 
-RedHat上のOSSのCVEは、Security Advisoriesで検索できる。
+RedHat上のOSSのCVEは、RedHat CVEデータベースで検索できる。
 
-> - https://access.redhat.com/security/security-updates/
+> - https://access.redhat.com/security/security-updates/cve
 
 <br>
 

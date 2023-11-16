@@ -76,7 +76,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 kubeletのデーモンはメトリクス収集用エンドポイント (例：`/metrics/resource`、`/stats`、など) を持ち、これがスクレイパーの収集対象になる。
 
-そのため、PodやNodeにメトリクス収集用エンドポイントを設ける必要はない。
+そのため、PodやNodeにメトリクス収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
 ![metrics-server_scraper.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
 
