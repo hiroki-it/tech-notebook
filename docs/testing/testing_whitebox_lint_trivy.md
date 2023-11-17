@@ -17,7 +17,7 @@ description: trivy＠脆弱性診断の知見を記録しています。
 
 ### 検出項目
 
-IaC (Kubernetes、Terraform、Dockerfile) や イメージ (コンテナイメージ、マシンイメージ) で報告されたCVEに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+アプリのパッケージ、IaC (Kubernetes、Terraform、Dockerfile) 、イメージ (コンテナイメージ、マシンイメージ) で報告されたCVEに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
 
 Regoでカスタムポリシーを実装できる。
 

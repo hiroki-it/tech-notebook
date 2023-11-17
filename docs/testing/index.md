@@ -33,7 +33,10 @@
 > > * ##### [checkov](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_checkov.html)
 > > * ##### [kics](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kics.html)
 > > * ##### [kube-score](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kube_score.html)
+
+* #### <u>アプリ/インフラ両方</u>
 > > * ##### [trivy](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_trivy.html)
+
 
 ### ブラックボックステスト
 
