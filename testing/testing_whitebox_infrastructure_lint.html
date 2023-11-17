@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="PHPのテストツール＠ホワイトボックステストの知見を記録しています。">
+        <meta name="description" content="静的解析＠インフラのホワイトボックステストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_php.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint.html">
       
       
-        <link rel="prev" href="testing_whitebox_microservices_test.html">
+        <link rel="prev" href="testing_whitebox_application_go.html">
       
       
-        <link rel="next" href="testing_whitebox_non_oss_php_lint.html">
+        <link rel="next" href="testing_whitebox_infrastructure_lint_kubeconform.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】PHPのテストツール＠ホワイトボックステスト - 俺の技術ノート</title>
+        <title>【IT技術の知見】静的解析＠インフラのホワイトボックステスト - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】PHPのテストツール＠ホワイトボックステスト
+              【IT技術の知見】静的解析＠インフラのホワイトボックステスト
             
           </span>
         </div>
@@ -2224,6 +2224,8 @@
       
         
       
+        
+      
     
     
     
@@ -2298,13 +2300,60 @@
                 
   
   
-    
-  
   
     
     
       
         
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="testing_whitebox_application_php.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ アプリ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
       
         
       
@@ -2317,24 +2366,24 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_4" id="__nav_9_2_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    ■ 非OSS対象
+    ■ インフラ
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ 非OSS対象
+            ■ インフラ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2354,6 +2403,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2363,24 +2418,24 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4_1" checked>
         
           
-          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9_2_4_1" id="__nav_9_2_4_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    ■ PHPのテストツール
+    ■ 静的解析
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_4_1">
             <span class="md-nav__icon md-icon"></span>
-            ■ PHPのテストツール
+            ■ 静的解析
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2403,18 +2458,18 @@
           
   
   <span class="md-ellipsis">
-    PHPのテストツール
+    静的解析ツール
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="testing_whitebox_non_oss_php.html" class="md-nav__link md-nav__link--active">
+      <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    PHPのテストツール
+    静的解析ツール
   </span>
   
 
@@ -2438,45 +2493,31 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     はじめに
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ホワイトボックステストのツール
+  <a href="#01-yamljson" class="md-nav__link">
+    01. YAML/JSONの静的解析
   </a>
   
-    <nav class="md-nav" aria-label="01. ホワイトボックステストのツール">
+    <nav class="md-nav" aria-label="01. YAML/JSONの静的解析">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    整形
+  <a href="#yaml" class="md-nav__link">
+    YAML
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="YAML">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 文法の誤り
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 脆弱性
+    ▼ 文法の誤りテスト
   </a>
   
 </li>
@@ -2487,9 +2528,239 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    単体テスト、機能テスト
+  <a href="#json" class="md-nav__link">
+    JSON
   </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-iac" class="md-nav__link">
+    02. IaCのソースコードの静的解析
+  </a>
+  
+    <nav class="md-nav" aria-label="02. IaCのソースコードの静的解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    マニフェスト
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ マニフェストの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コード規約違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ バージョンテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    Terraform
+  </a>
+  
+    <nav class="md-nav" aria-label="Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    ▼ 未IaC化テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    Helmチャート
+  </a>
+  
+    <nav class="md-nav" aria-label="Helmチャート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_1" class="md-nav__link">
+    ▼ Helmチャートの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 構造の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ バージョンテスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コンテナの静的解析
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コンテナの静的解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    コンテナイメージ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナイメージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンテナイメージの静的解析とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ コンテナの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2501,54 +2772,6 @@
     </ul>
   
 </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_non_oss_php_lint.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    静的解析
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_non_oss_php_unit.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    単体テスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2577,11 +2800,185 @@
         
   
   
-    <a href="testing_whitebox_non_oss_go.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_kubeconform.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ Goのテストツール
+    ■ 文法の誤りテスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_infrastructure_lint_confest.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コード規約違反テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_infrastructure_lint_polaris.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ ベストプラクティス違反テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_infrastructure_lint_pluto.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ バージョンテスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_infrastructure_lint_checkov.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ 脆弱性診断
   </span>
   
 
@@ -2605,6 +3002,14 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
@@ -2630,11 +3035,11 @@
     
   
   
-    <a href="testing_whitebox_oss_lint.html" class="md-nav__link">
+    <a href="testing_whitebox_lint_trivy.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ OSS対象
+    ■ アプリ/インフラ両方
   </span>
   
 
@@ -5910,45 +6315,31 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     はじめに
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ホワイトボックステストのツール
+  <a href="#01-yamljson" class="md-nav__link">
+    01. YAML/JSONの静的解析
   </a>
   
-    <nav class="md-nav" aria-label="01. ホワイトボックステストのツール">
+    <nav class="md-nav" aria-label="01. YAML/JSONの静的解析">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    整形
+  <a href="#yaml" class="md-nav__link">
+    YAML
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="YAML">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 文法の誤り
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 脆弱性
+    ▼ 文法の誤りテスト
   </a>
   
 </li>
@@ -5959,9 +6350,239 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    単体テスト、機能テスト
+  <a href="#json" class="md-nav__link">
+    JSON
   </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-iac" class="md-nav__link">
+    02. IaCのソースコードの静的解析
+  </a>
+  
+    <nav class="md-nav" aria-label="02. IaCのソースコードの静的解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    マニフェスト
+  </a>
+  
+    <nav class="md-nav" aria-label="マニフェスト">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    ▼ マニフェストの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    ▼ コード規約違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ バージョンテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    Terraform
+  </a>
+  
+    <nav class="md-nav" aria-label="Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    ▼ 文法の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iac" class="md-nav__link">
+    ▼ 未IaC化テスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    Helmチャート
+  </a>
+  
+    <nav class="md-nav" aria-label="Helmチャート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm_1" class="md-nav__link">
+    ▼ Helmチャートの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    ▼ 構造の誤りテスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    ▼ バージョンテスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. コンテナの静的解析
+  </a>
+  
+    <nav class="md-nav" aria-label="03. コンテナの静的解析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    コンテナイメージ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナイメージ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    ▼ コンテナイメージの静的解析とは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    ▼ ベストプラクティス違反テスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    コンテナ
+  </a>
+  
+    <nav class="md-nav" aria-label="コンテナ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    ▼ コンテナの静的解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    ▼ 脆弱性診断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5988,8 +6609,8 @@
   
 
 
-<h1 id="php">PHPのテストツール＠ホワイトボックステスト<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">静的解析＠インフラのホワイトボックステスト<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -5997,26 +6618,172 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ホワイトボックステストのツール<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">整形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="01-yamljson">01. YAML/JSONの静的解析<a class="headerlink" href="#01-yamljson" title="Permanent link">&para;</a></h2>
+<h3 id="yaml">YAML<a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ 文法の誤りテスト<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>PhpStorm</li>
-<li>PHP-CS-Fixer</li>
+<li>yamllint</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://github.com/sbaudoin/yamllint">https://github.com/sbaudoin/yamllint</a></li>
+</ul>
+</blockquote>
+<p>なお、YAMLの静的解析ツールでHelmチャートを検証したい場合、<code>Chart.yaml</code>ファイルや<code>values</code>ファイルは<code>.yaml</code>ファイルなので検証できるが、Helmテンプレートを検証できない。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/sbaudoin/yamllint/issues/16">https://github.com/sbaudoin/yamllint/issues/16</a></li>
+<li><a href="https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482">https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ 文法の誤りテスト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>jsonlint</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://github.com/zaach/jsonlint">https://github.com/zaach/jsonlint</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-iac">02. IaCのソースコードの静的解析<a class="headerlink" href="#02-iac" title="Permanent link">&para;</a></h2>
+<h3 id="_5">マニフェスト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ マニフェストの静的解析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>プロビジョニング前のIaCのソースコードを解析する。</p>
+<h4 id="_7">▼ 文法の誤りテスト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。</p>
+<ul>
+<li>kubeconform (新kubeval)</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ コード規約違反テスト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>ユーザー定義のコード規約に基づいて、マニフェストのコード規約違反を検証する。</p>
+<ul>
+<li>confest</li>
+</ul>
+<h4 id="_9">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反を検証する。</p>
+<p>脆弱性、効率性、信頼性、のいずれかの観点で検査するツールが多い。</p>
+<ul>
+<li>kube-linter</li>
+<li>kube-score</li>
+<li>kubevious</li>
+<li>krr (効率性)</li>
+<li>goldilocks (効率性)</li>
+<li>polaris</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
+<li><a href="https://github.com/kubevious/cli#-key-capabilities">https://github.com/kubevious/cli#-key-capabilities</a></li>
+<li><a href="https://tech.andpad.co.jp/entry/2022/08/30/100000">https://tech.andpad.co.jp/entry/2022/08/30/100000</a></li>
+<li><a href="https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6">https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6</a></li>
+<li><a href="https://github.com/robusta-dev">https://github.com/robusta-dev</a></li>
+</ul>
+</blockquote>
+<h4 id="_10">▼ バージョンテスト<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (<code>apiVersion</code>キー) を検証する。</p>
+<p><code>helm install</code>コマンドにも、マニフェストの<code>apiVersion</code>キーが非推奨かどうかを検証する。</p>
+<ul>
+<li>pluto</li>
+<li>kubeplug</li>
+<li>kube-no-trouble</li>
+<li><code>helm install</code>コマンド</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://helm.sh/docs/topics/kubernetes_apis/">https://helm.sh/docs/topics/kubernetes_apis/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h4 id="_11">▼ 脆弱性診断<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。</p>
+<ul>
+<li>checkov</li>
+<li>kics</li>
+<li>krane</li>
+<li>kubeaudit</li>
+<li>kube-bench</li>
+<li>kube-hunter</li>
+<li>kube-scan</li>
+<li>kube-score</li>
+<li>kubesec</li>
+<li>trivy</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners">https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners</a></li>
+<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
+<li><a href="https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6">https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="terraform">Terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 文法の誤りテスト<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>terraform validate</code>コマンド</li>
+</ul>
+<h4 id="_13">▼ 脆弱性診断<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>tfsec</li>
+<li>trivy</li>
+</ul>
+<h4 id="_14">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>tflint</li>
+</ul>
+<h4 id="iac">▼ 未IaC化テスト<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h4>
+<ul>
+<li>driftctl</li>
 </ul>
 <p><br></p>
-<h3 id="_3">静的解析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 文法の誤り<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="helm">Helmチャート<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
+<h4 id="helm_1">▼ Helmチャートの静的解析<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h4>
+<p>マニフェストになる前のHelmチャートを解析する。</p>
+<h4 id="_15">▼ 構造の誤りテスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>チャートの公式ルールに基づいて、構造の誤りを検出する。</p>
 <ul>
-<li>PHPStan</li>
+<li><code>helm lint</code>コマンド</li>
 </ul>
-<h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_16">▼ バージョンテスト<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>Helmチャートのバージョンを検証する。</p>
 <ul>
-<li>PHPStan</li>
+<li>nova</li>
 </ul>
 <p><br></p>
-<h3 id="_6">単体テスト、機能テスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. コンテナの静的解析<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_17">コンテナイメージ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="_18">▼ コンテナイメージの静的解析とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>コンテナのイメージレイヤーごとに解析する。</p>
+<h4 id="_19">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <ul>
-<li>PHPUnit</li>
+<li>hadolint</li>
+</ul>
+<h4 id="_20">▼ 脆弱性診断<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<ul>
+<li>dockle</li>
+<li>trivy</li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://snyk.io/learn/container-security/container-scanning/">https://snyk.io/learn/container-security/container-scanning/</a></li>
+<li><a href="https://thinkit.co.jp/article/17525">https://thinkit.co.jp/article/17525</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_21">コンテナ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">▼ コンテナの静的解析<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>稼働中のコンテナを解析する。</p>
+<h4 id="_23">▼ 脆弱性診断<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>起動中のコンテナを解析する。</p>
+<ul>
+<li>trivy</li>
 </ul>
 <p><br></p>
 
@@ -6025,7 +6792,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-30</span>
       
     
   </small>

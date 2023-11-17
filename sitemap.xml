@@ -2281,77 +2281,77 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_go.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_unit.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_checkov.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_confest.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kics.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kube_score.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_kubeconform.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_nova.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_pluto.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_polaris.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_lint_trivy.html</loc>
+         <lastmod>2023-11-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_microservices_test.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_go.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_php.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_php_lint.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_php_unit.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_checkov.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_confest.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_kics.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_kube_score.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_kubeconform.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_nova.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_pluto.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_polaris.html</loc>
-         <lastmod>2023-11-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_trivy.html</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -2361,22 +2361,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_e2e.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_e2e.html</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_non_oss_lint_goldilocks.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks.html</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_non_oss_lint_goldilocks_krr.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks_krr.html</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_non_oss_unit_terraform.html</loc>
+         <loc>https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_unit_terraform.html</loc>
          <lastmod>2023-11-17</lastmod>
          <changefreq>daily</changefreq>
     </url>

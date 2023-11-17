@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="静的解析＠PHPのテストツールの知見を記録しています。">
+        <meta name="description" content="trivy＠脆弱性診断の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_php_lint.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_lint_trivy.html">
       
       
-        <link rel="prev" href="testing_whitebox_non_oss_php.html">
+        <link rel="prev" href="testing_whitebox_infrastructure_lint_kube_score.html">
       
       
-        <link rel="next" href="testing_whitebox_non_oss_php_unit.html">
+        <link rel="next" href="testing_blackbox.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】静的解析＠PHPのテストツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】 trivy＠脆弱性診断 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#trivy" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】静的解析＠PHPのテストツール
+              【IT技術の知見】 trivy＠脆弱性診断
             
           </span>
         </div>
@@ -2224,6 +2224,8 @@
       
         
       
+        
+      
     
     
     
@@ -2298,8 +2300,6 @@
                 
   
   
-    
-  
   
     
     
@@ -2312,97 +2312,169 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    <a href="testing_whitebox_application_php.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
-    ■ 非OSS対象
+    ■ アプリ
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ 非OSS対象
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
       
-        
+        <span class="md-nav__icon md-icon"></span>
       
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ PHPのテストツール
-  </span>
+    </a>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ PHPのテストツール
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_non_oss_php.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    PHPのテストツール
-  </span>
   
 
-      </a>
+      
     </li>
   
 
               
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ インフラ
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_5" id="__nav_9_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ アプリ/インフラ両方
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ アプリ/インフラ両方
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_5_1" id="__nav_9_2_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 脆弱性診断
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 脆弱性診断
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -2423,18 +2495,18 @@
           
   
   <span class="md-ellipsis">
-    静的解析
+    trivy
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="testing_whitebox_non_oss_php_lint.html" class="md-nav__link md-nav__link--active">
+      <a href="testing_whitebox_lint_trivy.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    静的解析
+    trivy
   </span>
   
 
@@ -2465,31 +2537,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-phpstan" class="md-nav__link">
-    01. PHPStan
+  <a href="#01-trivy" class="md-nav__link">
+    01. trivyの仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. PHPStan">
+    <nav class="md-nav" aria-label="01. trivyの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    PHPStanとは
+  <a href="#_2" class="md-nav__link">
+    検出項目
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ バイナリとして
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    コマンド
+  <a href="#_5" class="md-nav__link">
+    ▼ コンテナとして
   </a>
   
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ オプション無し
+  <a href="#_6" class="md-nav__link">
+    ▼ チャートとして
   </a>
   
 </li>
@@ -2499,31 +2598,85 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#phpstanneon" class="md-nav__link">
-    phpstan.neonファイル
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 設定ファイル
   </a>
   
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
+    <nav class="md-nav" aria-label="03. 設定ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    ▼ phpstan.neonファイルとは
+  <a href="#trivyignore" class="md-nav__link">
+    .trivyignoreファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-trivy" class="md-nav__link">
+    04. trivyコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="04. trivyコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    ▼ configとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes" class="md-nav__link">
-    ▼ includes
+  <a href="#-debug" class="md-nav__link">
+    ▼ --debug
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    ▼ parameters
+  <a href="#-exit-code" class="md-nav__link">
+    ▼ --exit-code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-include-non-failures" class="md-nav__link">
+    ▼ --include-non-failures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-quiet" class="md-nav__link">
+    ▼ --quiet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-severity" class="md-nav__link">
+    ▼ --severity
   </a>
   
 </li>
@@ -2547,26 +2700,6 @@
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_non_oss_php_unit.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    単体テスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -2575,97 +2708,8 @@
 
               
             
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="testing_whitebox_non_oss_go.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Goのテストツール
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="testing_whitebox_oss_lint.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ OSS対象
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
       
     </li>
   
@@ -5937,31 +5981,58 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-phpstan" class="md-nav__link">
-    01. PHPStan
+  <a href="#01-trivy" class="md-nav__link">
+    01. trivyの仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. PHPStan">
+    <nav class="md-nav" aria-label="01. trivyの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    PHPStanとは
+  <a href="#_2" class="md-nav__link">
+    検出項目
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ バイナリとして
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    コマンド
+  <a href="#_5" class="md-nav__link">
+    ▼ コンテナとして
   </a>
   
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ オプション無し
+  <a href="#_6" class="md-nav__link">
+    ▼ チャートとして
   </a>
   
 </li>
@@ -5971,31 +6042,85 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#phpstanneon" class="md-nav__link">
-    phpstan.neonファイル
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 設定ファイル
   </a>
   
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
+    <nav class="md-nav" aria-label="03. 設定ファイル">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    ▼ phpstan.neonファイルとは
+  <a href="#trivyignore" class="md-nav__link">
+    .trivyignoreファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-trivy" class="md-nav__link">
+    04. trivyコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="04. trivyコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config
+  </a>
+  
+    <nav class="md-nav" aria-label="config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    ▼ configとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes" class="md-nav__link">
-    ▼ includes
+  <a href="#-debug" class="md-nav__link">
+    ▼ --debug
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    ▼ parameters
+  <a href="#-exit-code" class="md-nav__link">
+    ▼ --exit-code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-include-non-failures" class="md-nav__link">
+    ▼ --include-non-failures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-quiet" class="md-nav__link">
+    ▼ --quiet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-severity" class="md-nav__link">
+    ▼ --severity
   </a>
   
 </li>
@@ -6028,7 +6153,7 @@
   
 
 
-<h1 id="php">静的解析＠PHPのテストツール<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h1 id="trivy">trivy＠脆弱性診断<a class="headerlink" href="#trivy" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6037,50 +6162,138 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-phpstan">01. PHPStan<a class="headerlink" href="#01-phpstan" title="Permanent link">&para;</a></h2>
-<h3 id="phpstan">PHPStanとは<a class="headerlink" href="#phpstan" title="Permanent link">&para;</a></h3>
-<p>レベルに応じて、静的解析を実施する。</p>
-<p>最初は、必ず検出したい項目 (例：未定義関数、引数/戻り値の型の誤り) を決めて、これを検出できるレベルを設定すると良い。</p>
+<h2 id="01-trivy">01. trivyの仕組み<a class="headerlink" href="#01-trivy" title="Permanent link">&para;</a></h2>
+<h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>アプリのパッケージ、IaC (Kubernetes、Terraform、Dockerfile) 、イメージ (コンテナイメージ、マシンイメージ) で報告されたCVEに基づいて、ファイルの実装方法に起因する脆弱性を検証する。</p>
+<p>Regoでカスタムポリシーを実装できる。</p>
+<p><br></p>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ バイナリとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>trivy
+</code></pre></div>
+<h4 id="_5">▼ コンテナとして<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>aquasec/trivy
+</code></pre></div>
+<h4 id="_6">▼ チャートとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>trivy-operatorをインストールする。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://aquasecurity.github.io/helm-charts/
+
+$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
+
+$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>trivy
+
+$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/trivy-operator<span class="w"> </span>-n<span class="w"> </span>trivy
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://phpstan.org/user-guide/rule-levels">https://phpstan.org/user-guide/rule-levels</a></li>
-<li><a href="https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B">https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B</a></li>
+<li><a href="https://aquasecurity.github.io/trivy-operator/v0.15.1/getting-started/installation/helm/">https://aquasecurity.github.io/trivy-operator/v0.15.1/getting-started/installation/helm/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>全てのファイルを対象として、静的解析を実施する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpstan<span class="w"> </span>analyse
-</code></pre></div>
-<p><br></p>
-<h3 id="phpstanneon">phpstan.neonファイル<a class="headerlink" href="#phpstanneon" title="Permanent link">&para;</a></h3>
-<h4 id="phpstanneon_1">▼ <code>phpstan.neonファイル</code>とは<a class="headerlink" href="#phpstanneon_1" title="Permanent link">&para;</a></h4>
-<p>PHPStanの設定を行う。</p>
-<h4 id="includes">▼ <code>includes</code><a class="headerlink" href="#includes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">includes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/nunomaduro/larastan/extension.neon</span>
-</code></pre></div>
-<h4 id="parameters">▼ <code>parameters</code><a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
-<p>静的解析の設定を行う。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 解析対象のディレクトリ</span>
-<span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span>
-<span class="w">  </span><span class="c1"># 解析の厳格さ (最大レベルは８】。各レベルの解析項目については以下のリンクを参考にせよ。</span>
-<span class="w">  </span><span class="c1"># https://phpstan.org/user-guide/rule-levels</span>
-<span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">  </span><span class="c1"># 発生を無視するエラーメッセージ</span>
-<span class="w">  </span><span class="nt">ignoreErrors</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;#Unsafe</span><span class="nv"> </span><span class="s">usage</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">static#&quot;</span>
-<span class="w">  </span><span class="c1"># 解析対象として除外するディレクトリ</span>
-<span class="w">  </span><span class="nt">excludes_analyse</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src/Foo/*</span>
+<h2 id="03">03. 設定ファイル<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="trivyignore"><code>.trivyignore</code>ファイル<a class="headerlink" href="#trivyignore" title="Permanent link">&para;</a></h3>
+<p>検証したくないCVEの項目を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>.trivyignore.yaml
 
-<span class="w">  </span><span class="nt">checkMissingIterableValueType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">inferPrivatePropertyTypeFromConstructor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+vulnerabilities:
+<span class="w">  </span>-<span class="w"> </span>id:<span class="w"> </span>CVE-2022-40897
+...
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/configuration/filtering/#trivyignoreyaml">https://aquasecurity.github.io/trivy/v0.45/docs/configuration/filtering/#trivyignoreyaml</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="04-trivy">04. trivyコマンド<a class="headerlink" href="#04-trivy" title="Permanent link">&para;</a></h2>
+<h3 id="config">config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<h4 id="config_1">▼ configとは<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/">https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/</a></li>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/references/configuration/cli/trivy_config/">https://aquasecurity.github.io/trivy/v0.45/docs/references/configuration/cli/trivy_config/</a></li>
+</ul>
+</blockquote>
+<h4 id="-debug">▼ --debug<a class="headerlink" href="#-debug" title="Permanent link">&para;</a></h4>
+<p>デバッグモードを有効化する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--debug<span class="w"> </span>&lt;IaCファイル&gt;
+
+<span class="m">2023</span>-08-02T04:52:32.908Z<span class="w">    </span>DEBUG<span class="w">   </span>Severities:<span class="w"> </span><span class="o">[</span><span class="s2">&quot;HIGH&quot;</span><span class="w"> </span><span class="s2">&quot;CRITICAL&quot;</span><span class="o">]</span>
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>DEBUG<span class="w">   </span>cache<span class="w"> </span>dir:<span class="w">  </span>/root/.cache/trivy
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>INFO<span class="w">    </span>Misconfiguration<span class="w"> </span>scanning<span class="w"> </span>is<span class="w"> </span>enabled
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>DEBUG<span class="w">   </span>Failed<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span>the<span class="w"> </span>policy<span class="w"> </span>metadata:<span class="w"> </span>open<span class="w"> </span>/root/.cache/trivy/policy/metadata.json:<span class="w"> </span>no<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>INFO<span class="w">    </span>Need<span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>policies
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>INFO<span class="w">    </span>Downloading<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>policies...
+<span class="m">2023</span>-08-02T04:52:32.912Z<span class="w">    </span>DEBUG<span class="w">   </span>Using<span class="w"> </span>URL:<span class="w"> </span>ghcr.io/aquasecurity/defsec:0<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>policy<span class="w"> </span>bundle
+<span class="m">41</span>.66<span class="w"> </span>KiB<span class="w"> </span>/<span class="w"> </span><span class="m">41</span>.66<span class="w"> </span>KiB<span class="w"> </span><span class="o">[</span>-----------------------------------------------------------<span class="o">]</span><span class="w"> </span><span class="m">100</span>.00%<span class="w"> </span>?<span class="w"> </span>p/s<span class="w"> </span>0s2023-08-02T04:52:33.743Z<span class="w">    </span>DEBUG<span class="w">   </span>Digest<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>policies:<span class="w"> </span>sha256:*****
+<span class="m">2023</span>-08-02T04:52:33.743Z<span class="w">    </span>DEBUG<span class="w">   </span>Policies<span class="w"> </span>successfully<span class="w"> </span>loaded<span class="w"> </span>from<span class="w"> </span>disk
+<span class="m">2023</span>-08-02T04:52:33.776Z<span class="w">    </span>DEBUG<span class="w">   </span>Walk<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>tree<span class="w"> </span>rooted<span class="w"> </span>at<span class="w"> </span><span class="s1">&#39;&lt;IaCファイル&gt;&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>parallel
+<span class="m">2023</span>-08-02T04:52:33.776Z<span class="w">    </span>DEBUG<span class="w">   </span>Scanning<span class="w"> </span>Kubernetes<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>misconfigurations...
+<span class="m">2023</span>-08-02T04:52:36.173Z<span class="w">    </span>DEBUG<span class="w">   </span>Scanning<span class="w"> </span>Helm<span class="w"> </span>files<span class="w"> </span><span class="k">for</span><span class="w"> </span>misconfigurations...
+<span class="m">2023</span>-08-02T04:52:36.192Z<span class="w">    </span>DEBUG<span class="w">   </span>OS<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>detected.
+<span class="m">2023</span>-08-02T04:52:36.192Z<span class="w">    </span>INFO<span class="w">    </span>Detected<span class="w"> </span>config<span class="w"> </span>files:<span class="w"> </span><span class="m">1</span>
+<span class="m">2023</span>-08-02T04:52:36.192Z<span class="w">    </span>DEBUG<span class="w">   </span>Scanned<span class="w"> </span>config<span class="w"> </span>file:<span class="w"> </span>&lt;IaCファイル&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/">https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/</a></li>
+</ul>
+</blockquote>
+<h4 id="-exit-code">▼ --exit-code<a class="headerlink" href="#-exit-code" title="Permanent link">&para;</a></h4>
+<p>脆弱性が検出された時の終了コードを設定する。</p>
+<p>デフォルトでは、いずれの結果でも終了コードが<code>0</code>になる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>&lt;IaCファイル&gt;
+</code></pre></div>
+<p>マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
+
+$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--exit-code<span class="w"> </span><span class="m">1</span><span class="w"> </span>manifest.yaml
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/configuration/others/#exit-code">https://aquasecurity.github.io/trivy/v0.45/docs/configuration/others/#exit-code</a></li>
+</ul>
+</blockquote>
+<h4 id="-include-non-failures">▼ --include-non-failures<a class="headerlink" href="#-include-non-failures" title="Permanent link">&para;</a></h4>
+<p>もし解析結果に何も問題がなければ、成功したことを表示できるようにする。</p>
+<p>デフォルトであると、成功が表示されない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--include-non-failures<span class="w"> </span>&lt;IaCファイル&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/references/configuration/cli/trivy_config/">https://aquasecurity.github.io/trivy/v0.45/docs/references/configuration/cli/trivy_config/</a></li>
+</ul>
+</blockquote>
+<h4 id="-quiet">▼ --quiet<a class="headerlink" href="#-quiet" title="Permanent link">&para;</a></h4>
+<p>処理中のプログレスバー処理ログの両方を非表示にする。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 非表示の場合</span>
+$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--quiet<span class="w"> </span>&lt;IaCファイル&gt;
+
+<span class="c1"># 表示する場合</span>
+$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>&lt;IaCファイル&gt;
+
+<span class="m">2023</span>-08-02T04:50:04.261Z<span class="w">    </span>INFO<span class="w">    </span>Misconfiguration<span class="w"> </span>scanning<span class="w"> </span>is<span class="w"> </span>enabled
+<span class="m">2023</span>-08-02T04:50:04.261Z<span class="w">    </span>INFO<span class="w">    </span>Need<span class="w"> </span>to<span class="w"> </span>update<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>policies
+<span class="m">2023</span>-08-02T04:50:04.261Z<span class="w">    </span>INFO<span class="w">    </span>Downloading<span class="w"> </span>the<span class="w"> </span>built-in<span class="w"> </span>policies...
+<span class="m">41</span>.66<span class="w"> </span>KiB<span class="w"> </span>/<span class="w"> </span><span class="m">41</span>.66<span class="w"> </span>KiB<span class="w"> </span><span class="o">[</span>-----------------------------------------------------------<span class="o">]</span><span class="w"> </span><span class="m">100</span>.00%<span class="w"> </span>?<span class="w"> </span>p/s<span class="w"> </span>0s
+<span class="m">2023</span>-08-02T04:50:08.303Z<span class="w">    </span>INFO<span class="w">    </span>Detected<span class="w"> </span>config<span class="w"> </span>files:<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/">https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/</a></li>
+</ul>
+</blockquote>
+<h4 id="-severity">▼ --severity<a class="headerlink" href="#-severity" title="Permanent link">&para;</a></h4>
+<p>検出する下限の重要度レベル (UNKNOWN、LOW、MEDIUM、HIGH、CRITICAL) を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>trivy<span class="w"> </span>config<span class="w"> </span>--severity<span class="w"> </span>HIGH,CRITICAL<span class="w"> </span>&lt;IaCファイル&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://aquasecurity.github.io/trivy/v0.45/docs/configuration/filtering/#by-severity">https://aquasecurity.github.io/trivy/v0.45/docs/configuration/filtering/#by-severity</a></li>
+<li><a href="https://csblog.casareal.co.jp/archives/382">https://csblog.casareal.co.jp/archives/382</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>

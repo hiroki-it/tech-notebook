@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="静的解析＠OSS対象のホワイトボックステストの知見を記録しています。">
+        <meta name="description" content="pluto＠バージョンテストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_pluto.html">
       
       
-        <link rel="prev" href="testing_whitebox_non_oss_go.html">
+        <link rel="prev" href="testing_whitebox_infrastructure_lint_polaris.html">
       
       
-        <link rel="next" href="testing_whitebox_oss_lint_kubeconform.html">
+        <link rel="next" href="testing_whitebox_infrastructure_lint_nova.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】静的解析＠OSS対象のホワイトボックステスト - 俺の技術ノート</title>
+        <title>【IT技術の知見】 pluto＠バージョンテスト - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#oss" class="md-skip">
+        <a href="#pluto" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】静的解析＠OSS対象のホワイトボックステスト
+              【IT技術の知見】 pluto＠バージョンテスト
             
           </span>
         </div>
@@ -2224,6 +2224,8 @@
       
         
       
+        
+      
     
     
     
@@ -2321,11 +2323,11 @@
     
   
   
-    <a href="testing_whitebox_non_oss_php.html" class="md-nav__link">
+    <a href="testing_whitebox_application_php.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ 非OSS対象
+    ■ アプリ
   </span>
   
 
@@ -2371,7 +2373,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OSS対象
+    ■ インフラ
   </span>
   
 
@@ -2381,7 +2383,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9_2_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ OSS対象
+            ■ インフラ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2441,29 +2443,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    静的解析ツール
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="testing_whitebox_oss_lint.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2472,305 +2454,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-yamljson" class="md-nav__link">
-    01. YAML/JSONの静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="01. YAML/JSONの静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    YAML
-  </a>
-  
-    <nav class="md-nav" aria-label="YAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    JSON
-  </a>
-  
-    <nav class="md-nav" aria-label="JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-iac" class="md-nav__link">
-    02. IaCのソースコードの静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="02. IaCのソースコードの静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    マニフェスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ マニフェストの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ コード規約違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ バージョンテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
-    Terraform
-  </a>
-  
-    <nav class="md-nav" aria-label="Terraform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    ▼ 未IaC化テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    Helmチャート
-  </a>
-  
-    <nav class="md-nav" aria-label="Helmチャート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    ▼ Helmチャートの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    ▼ 構造の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    ▼ バージョンテスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    03. コンテナの静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="03. コンテナの静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    コンテナイメージ
-  </a>
-  
-    <nav class="md-nav" aria-label="コンテナイメージ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ コンテナイメージの静的解析とは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    コンテナ
-  </a>
-  
-    <nav class="md-nav" aria-label="コンテナ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ コンテナの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2798,7 +2481,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_kubeconform.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_kubeconform.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2840,7 +2523,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_confest.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_confest.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2882,7 +2565,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_polaris.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_polaris.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2906,6 +2589,8 @@
                 
   
   
+    
+  
   
     
     
@@ -2918,28 +2603,305 @@
     
     
     
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-    <a href="testing_whitebox_oss_lint_pluto.html" class="md-nav__link">
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4_1_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_4_1_5" id="__nav_9_2_4_1_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     ■ バージョンテスト
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            ■ バージョンテスト
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
-        <span class="md-nav__icon md-icon"></span>
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-    </a>
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    pluto
+  </span>
   
 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="testing_whitebox_infrastructure_lint_pluto.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    pluto
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-pluto" class="md-nav__link">
+    01. plutoの仕組み
+  </a>
+  
+    <nav class="md-nav" aria-label="01. plutoの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    検出項目
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    対応するKubernetesリソース
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    ▼ バイナリとして
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. グローバルオプション
+  </a>
+  
+    <nav class="md-nav" aria-label="03. グローバルオプション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    標準入力
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f-additional-versions" class="md-nav__link">
+    -f (--additional-versions)
+  </a>
+  
+    <nav class="md-nav" aria-label="-f (--additional-versions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -fとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-versionsyaml" class="md-nav__link">
+    ▼ additional-versions.yamlファイル
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-t" class="md-nav__link">
+    -t
+  </a>
+  
+    <nav class="md-nav" aria-label="-t">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-t_1" class="md-nav__link">
+    ▼ -tとは
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o" class="md-nav__link">
+    -o
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03_1" class="md-nav__link">
+    03. サブコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="03. サブコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    detect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-api-resources" class="md-nav__link">
+    detect-api-resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-files" class="md-nav__link">
+    detect-files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-helm" class="md-nav__link">
+    detect-helm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-versions" class="md-nav__link">
+    list-versions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_infrastructure_lint_nova.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nova
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -2960,8 +2922,6 @@
       
         
       
-        
-      
     
     
     
@@ -2974,7 +2934,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_checkov.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_checkov.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -3004,6 +2964,53 @@
             
           </ul>
         </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="testing_whitebox_lint_trivy.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ アプリ/インフラ両方
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
       
     </li>
   
@@ -6275,50 +6282,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-yamljson" class="md-nav__link">
-    01. YAML/JSONの静的解析
+  <a href="#01-pluto" class="md-nav__link">
+    01. plutoの仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. YAML/JSONの静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    YAML
-  </a>
-  
-    <nav class="md-nav" aria-label="YAML">
+    <nav class="md-nav" aria-label="01. plutoの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    ▼ 文法の誤りテスト
+    検出項目
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#json" class="md-nav__link">
-    JSON
+  <a href="#kubernetes" class="md-nav__link">
+    対応するKubernetesリソース
   </a>
-  
-    <nav class="md-nav" aria-label="JSON">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -6328,134 +6309,24 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-iac" class="md-nav__link">
-    02. IaCのソースコードの静的解析
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
   </a>
   
-    <nav class="md-nav" aria-label="02. IaCのソースコードの静的解析">
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+    <nav class="md-nav" aria-label="インストール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    マニフェスト
-  </a>
-  
-    <nav class="md-nav" aria-label="マニフェスト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ マニフェストの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    ▼ コード規約違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    ▼ バージョンテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
-    Terraform
-  </a>
-  
-    <nav class="md-nav" aria-label="Terraform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    ▼ 文法の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    ▼ 脆弱性診断
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#iac" class="md-nav__link">
-    ▼ 未IaC化テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    Helmチャート
-  </a>
-  
-    <nav class="md-nav" aria-label="Helmチャート">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#helm_1" class="md-nav__link">
-    ▼ Helmチャートの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    ▼ 構造の誤りテスト
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    ▼ バージョンテスト
+    ▼ バイナリとして
   </a>
   
 </li>
@@ -6472,37 +6343,37 @@
       
         <li class="md-nav__item">
   <a href="#03" class="md-nav__link">
-    03. コンテナの静的解析
+    03. グローバルオプション
   </a>
   
-    <nav class="md-nav" aria-label="03. コンテナの静的解析">
+    <nav class="md-nav" aria-label="03. グローバルオプション">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    コンテナイメージ
-  </a>
-  
-    <nav class="md-nav" aria-label="コンテナイメージ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    ▼ コンテナイメージの静的解析とは
+  <a href="#_5" class="md-nav__link">
+    標準入力
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    ▼ ベストプラクティス違反テスト
+  <a href="#-f-additional-versions" class="md-nav__link">
+    -f (--additional-versions)
+  </a>
+  
+    <nav class="md-nav" aria-label="-f (--additional-versions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    ▼ -fとは
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    ▼ 脆弱性診断
+  <a href="#additional-versionsyaml" class="md-nav__link">
+    ▼ additional-versions.yamlファイル
   </a>
   
 </li>
@@ -6513,29 +6384,77 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    コンテナ
+  <a href="#-t" class="md-nav__link">
+    -t
   </a>
   
-    <nav class="md-nav" aria-label="コンテナ">
+    <nav class="md-nav" aria-label="-t">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    ▼ コンテナの静的解析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
-    ▼ 脆弱性診断
+  <a href="#-t_1" class="md-nav__link">
+    ▼ -tとは
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-o" class="md-nav__link">
+    -o
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03_1" class="md-nav__link">
+    03. サブコマンド
+  </a>
+  
+    <nav class="md-nav" aria-label="03. サブコマンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detect" class="md-nav__link">
+    detect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-api-resources" class="md-nav__link">
+    detect-api-resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-files" class="md-nav__link">
+    detect-files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect-helm" class="md-nav__link">
+    detect-helm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-versions" class="md-nav__link">
+    list-versions
+  </a>
   
 </li>
         
@@ -6562,7 +6481,7 @@
   
 
 
-<h1 id="oss">静的解析＠OSS対象のホワイトボックステスト<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h1>
+<h1 id="pluto">pluto＠バージョンテスト<a class="headerlink" href="#pluto" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6571,173 +6490,277 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-yamljson">01. YAML/JSONの静的解析<a class="headerlink" href="#01-yamljson" title="Permanent link">&para;</a></h2>
-<h3 id="yaml">YAML<a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h3>
-<h4 id="_2">▼ 文法の誤りテスト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<ul>
-<li>yamllint</li>
-</ul>
+<h2 id="01-pluto">01. plutoの仕組み<a class="headerlink" href="#01-pluto" title="Permanent link">&para;</a></h2>
+<h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨なバージョン (apiVersion) を検証する。</p>
+<p>pluto以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨なAPIを確認できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/sbaudoin/yamllint">https://github.com/sbaudoin/yamllint</a></li>
-</ul>
-</blockquote>
-<p>なお、YAMLの静的解析ツールでHelmチャートを検証したい場合、<code>Chart.yaml</code>ファイルや<code>values</code>ファイルは<code>.yaml</code>ファイルなので検証できるが、Helmテンプレートを検証できない。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/sbaudoin/yamllint/issues/16">https://github.com/sbaudoin/yamllint/issues/16</a></li>
-<li><a href="https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482">https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482</a></li>
+<li><a href="https://kubernetes.io/docs/reference/using-api/deprecation-guide/">https://kubernetes.io/docs/reference/using-api/deprecation-guide/</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade</a></li>
+<li><a href="https://kubernetes.io/blog/2020/09/03/warnings/#metrics">https://kubernetes.io/blog/2020/09/03/warnings/#metrics</a></li>
+<li><a href="https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations">https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ 文法の誤りテスト<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<ul>
-<li>jsonlint</li>
-</ul>
+<h3 id="kubernetes">対応するKubernetesリソース<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
+<p>標準のKubernetesリソースだけでなく、CRDや一部のカスタムリソース (Istioも含む) も対応している。</p>
+<p>ただ、全てのカスタムリソースに対応しているわけではない。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">deprecated-versions</span><span class="p">:</span>
+
+<span class="w">  </span><span class="c1"># Deployment</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.9.0</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.16.0</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.9.0</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="c1"># CRD</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.16.0</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.22.0</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1</span>
+<span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.16.0</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="c1"># Istioのカスタムリソース</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.istio.io</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicies</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.4.0</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.4.0</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1beta1</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/zaach/jsonlint">https://github.com/zaach/jsonlint</a></li>
+<li><a href="https://github.com/FairwindsOps/pluto/blob/master/versions.yaml">https://github.com/FairwindsOps/pluto/blob/master/versions.yaml</a></li>
+<li><a href="https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks">https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks</a></li>
+<li><a href="https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates">https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-iac">02. IaCのソースコードの静的解析<a class="headerlink" href="#02-iac" title="Permanent link">&para;</a></h2>
-<h3 id="_4">マニフェスト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ マニフェストの静的解析<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>プロビジョニング前のIaCのソースコードを解析する。</p>
-<h4 id="_6">▼ 文法の誤りテスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストの文法の誤りを検出する。</p>
-<ul>
-<li>kubeconform (新kubeval)</li>
-</ul>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ バイナリとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>pluto
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ コード規約違反テスト<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ユーザー定義のコード規約に基づいて、マニフェストのコード規約違反を検証する。</p>
-<ul>
-<li>confest</li>
-</ul>
-<h4 id="_8">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反を検証する。</p>
-<p>脆弱性、効率性、信頼性、のいずれかの観点で検査するツールが多い。</p>
-<ul>
-<li>kube-linter</li>
-<li>kube-score</li>
-<li>kubevious</li>
-<li>krr (効率性)</li>
-<li>goldilocks (効率性)</li>
-<li>polaris</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
-<li><a href="https://github.com/kubevious/cli#-key-capabilities">https://github.com/kubevious/cli#-key-capabilities</a></li>
-<li><a href="https://tech.andpad.co.jp/entry/2022/08/30/100000">https://tech.andpad.co.jp/entry/2022/08/30/100000</a></li>
-<li><a href="https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6">https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6</a></li>
-<li><a href="https://github.com/robusta-dev">https://github.com/robusta-dev</a></li>
-</ul>
-</blockquote>
-<h4 id="_9">▼ バージョンテスト<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (<code>apiVersion</code>キー) を検証する。</p>
-<p><code>helm install</code>コマンドにも、マニフェストの<code>apiVersion</code>キーが非推奨かどうかを検証する。</p>
-<ul>
-<li>pluto</li>
-<li>kubeplug</li>
-<li>kube-no-trouble</li>
-<li><code>helm install</code>コマンド</li>
-</ul>
-<blockquote>
-<ul>
-<li><a href="https://helm.sh/docs/topics/kubernetes_apis/">https://helm.sh/docs/topics/kubernetes_apis/</a></li>
+<li><a href="https://pluto.docs.fairwinds.com/installation/">https://pluto.docs.fairwinds.com/installation/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h4 id="_10">▼ 脆弱性診断<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>報告されたCVEに基づいて、マニフェストの実装方法に起因する脆弱性を検証する。</p>
-<ul>
-<li>checkov</li>
-<li>kics</li>
-<li>krane</li>
-<li>kubeaudit</li>
-<li>kube-bench</li>
-<li>kube-hunter</li>
-<li>kube-scan</li>
-<li>kube-score</li>
-<li>kubesec</li>
-<li>trivy</li>
-</ul>
+<h2 id="03">03. グローバルオプション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_5">標準入力<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>標準入力からマニフェストを渡す。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
+
+NAME<span class="w">     </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-cj<span class="w">   </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect-helm<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
+
+NAME<span class="w">    </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+</code></pre></div>
+<p>CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
+
+NAME<span class="w">    </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+</code></pre></div>
+<p><br></p>
+<h3 id="-f-additional-versions">-f (--additional-versions)<a class="headerlink" href="#-f-additional-versions" title="Permanent link">&para;</a></h3>
+<h4 id="-f">▼ -fとは<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
+<p>plutoが検証可能なAPIグループを追加する。</p>
+<p>plutoはデフォルトで全てのKubernetesリソースを検証できるが、一方でカスタムリソースは一部にしか検証していない。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions<span class="w"> </span>-f<span class="w"> </span>additional-versions.yaml
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners">https://kubevious.io/blog/post/top-kubernetes-security-vulnerability-scanners</a></li>
-<li><a href="https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools">https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools</a></li>
-<li><a href="https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6">https://zenn.dev/tayusa/articles/9829faf765ab67#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E7%B6%B2%E7%BE%85%E5%BA%A6</a></li>
+<li><a href="https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks">https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks</a></li>
+<li><a href="https://github.com/FairwindsOps/pluto/blob/master/versions.yaml">https://github.com/FairwindsOps/pluto/blob/master/versions.yaml</a></li>
+</ul>
+</blockquote>
+<h4 id="additional-versionsyaml">▼ <code>additional-versions.yaml</code>ファイル<a class="headerlink" href="#additional-versionsyaml" title="Permanent link">&para;</a></h4>
+<p>追加で検証するAPIグループのルールを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># version: APIグループのバージョン</span>
+<span class="c1"># kind: カスタムリソース名</span>
+<span class="c1"># deprecated-in: APIグループの特定のバージョンが非推奨になる場合に、警告が出るようになるKubernetesバージョン</span>
+<span class="c1"># removed-in: APIグループの特定のバージョンが機能廃止になる場合に、使用できなくなるKubernetesバージョン</span>
+<span class="c1"># replacement-api: APIグループの特定のバージョンが機能廃止になる場合に、変更後のAPIグループのバージョン</span>
+<span class="c1"># replacement-available-in: APIグループのバージョンが新規追加される場合に、使用できるようになるKubernetesバージョン</span>
+<span class="c1"># component: APIグループを使用しているツール名</span>
+
+<span class="nt">deprecated-versions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
+<span class="w">    </span><span class="nt">deprecated-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">removed-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-api</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+</code></pre></div>
+<p>このファイルを<code>-f</code>オプションで渡すと、追加したAPIグループのルールを検証できるようになる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions<span class="w"> </span>-f<span class="w"> </span>additional-versions.yaml
+
+...
+
+DestinationRule<span class="w">                  </span>networking.istio.io/v1beta1<span class="w">            </span>n/a<span class="w">             </span>n/a<span class="w">          </span>n/a<span class="w">                                    </span>n/a<span class="w">             </span>istio
+Gateway<span class="w">                          </span>networking.istio.io/v1alpha3<span class="w">           </span>n/a<span class="w">             </span>n/a<span class="w">          </span>n/a<span class="w">                                    </span>n/a<span class="w">             </span>istio
+VirtualService<span class="w">                   </span>networking.istio.io/v1beta1<span class="w">            </span>n/a<span class="w">             </span>n/a<span class="w">          </span>n/a<span class="w">                                    </span>n/a<span class="w">             </span>istio
+</code></pre></div>
+<p><br></p>
+<h3 id="-t">-t<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
+<h4 id="-t_1">▼ -tとは<a class="headerlink" href="#-t_1" title="Permanent link">&para;</a></h4>
+<p>plutoで検証するターゲットコンポーネントのバージョン (<code>versions.yaml</code>ファイルの<code>target-versions</code>キー) を指定する。</p>
+<p>マイナーバージョン (例：<code>1.24.0</code>) まで指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioのバージョン&gt;
+</code></pre></div>
+<p>現在と次のバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。</p>
+<p>継続的に検出できるように、CI上で自動化すると良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの現在のバージョン&gt;
+
+$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの次のバージョン&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioの現在のバージョン&gt;
+
+$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioの次のバージョン&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571">https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="terraform">Terraform<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ 文法の誤りテスト<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<ul>
-<li><code>terraform validate</code>コマンド</li>
-</ul>
-<h4 id="_12">▼ 脆弱性診断<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<ul>
-<li>tfsec</li>
-<li>trivy</li>
-</ul>
-<h4 id="_13">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<ul>
-<li>tflint</li>
-</ul>
-<h4 id="iac">▼ 未IaC化テスト<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h4>
-<ul>
-<li>driftctl</li>
-</ul>
-<p><br></p>
-<h3 id="helm">Helmチャート<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
-<h4 id="helm_1">▼ Helmチャートの静的解析<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h4>
-<p>マニフェストになる前のHelmチャートを解析する。</p>
-<h4 id="_14">▼ 構造の誤りテスト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>チャートの公式ルールに基づいて、構造の誤りを検出する。</p>
-<ul>
-<li><code>helm lint</code>コマンド</li>
-</ul>
-<h4 id="_15">▼ バージョンテスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Helmチャートのバージョンを検証する。</p>
-<ul>
-<li>nova</li>
-</ul>
-<p><br></p>
-<h2 id="03">03. コンテナの静的解析<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_16">コンテナイメージ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<h4 id="_17">▼ コンテナイメージの静的解析とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>コンテナのイメージレイヤーごとに解析する。</p>
-<h4 id="_18">▼ ベストプラクティス違反テスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<ul>
-<li>hadolint</li>
-</ul>
-<h4 id="_19">▼ 脆弱性診断<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<ul>
-<li>dockle</li>
-<li>trivy</li>
-</ul>
+<h3 id="-o">-o<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h3>
+<p>出力形式を指定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://snyk.io/learn/container-security/container-scanning/">https://snyk.io/learn/container-security/container-scanning/</a></li>
-<li><a href="https://thinkit.co.jp/article/17525">https://thinkit.co.jp/article/17525</a></li>
+<li><a href="https://pluto.docs.fairwinds.com/advanced/#display-options">https://pluto.docs.fairwinds.com/advanced/#display-options</a></li>
+</ul>
+</blockquote>
+<p>マークダウン形式が一番見やすい。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>markdown
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pluto.docs.fairwinds.com/advanced/#display-options">https://pluto.docs.fairwinds.com/advanced/#display-options</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_20">コンテナ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<h4 id="_21">▼ コンテナの静的解析<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>稼働中のコンテナを解析する。</p>
-<h4 id="_22">▼ 脆弱性診断<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>起動中のコンテナを解析する。</p>
+<h2 id="03_1">03. サブコマンド<a class="headerlink" href="#03_1" title="Permanent link">&para;</a></h2>
+<h3 id="detect">detect<a class="headerlink" href="#detect" title="Permanent link">&para;</a></h3>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。</p>
+<p><code>pluto detect-api-resources</code>コマンドとの違いは記入中...</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
+
+NAME<span class="w">     </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-cj<span class="w">   </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+bar-pdb<span class="w">  </span>bar-namespace<span class="w">   </span>PodDisruptionBudget<span class="w">       </span>policy/v1beta1<span class="w">        </span>policy/v1<span class="w">        </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>HorizontalPodAutoscaler<span class="w">   </span>autoscaling/v2beta1<span class="w">   </span>autoscaling/v2<span class="w">   </span><span class="nb">true</span><span class="w">         </span>v1.22.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+...
+</code></pre></div>
+<blockquote>
 <ul>
-<li>trivy</li>
+<li><a href="https://kakakakakku.hatenablog.com/entry/2022/07/20/091424">https://kakakakakku.hatenablog.com/entry/2022/07/20/091424</a></li>
 </ul>
+</blockquote>
+<p><br></p>
+<h3 id="detect-api-resources">detect-api-resources<a class="headerlink" href="#detect-api-resources" title="Permanent link">&para;</a></h3>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨なAPIを検出する。</p>
+<p><code>pluto detect</code>コマンドとの違いは記入中...</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-api-resources<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
+
+NAME<span class="w">     </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-cj<span class="w">   </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+bar-pdb<span class="w">  </span>bar-namespace<span class="w">   </span>PodDisruptionBudget<span class="w">       </span>policy/v1beta1<span class="w">        </span>policy/v1<span class="w">        </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>HorizontalPodAutoscaler<span class="w">   </span>autoscaling/v2beta1<span class="w">   </span>autoscaling/v2<span class="w">   </span><span class="nb">true</span><span class="w">         </span>v1.22.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster">https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="detect-files">detect-files<a class="headerlink" href="#detect-files" title="Permanent link">&para;</a></h3>
+<p>ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨なAPIを検出する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-files<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory">https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory</a></li>
+<li><a href="https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC">https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="detect-helm">detect-helm<a class="headerlink" href="#detect-helm" title="Permanent link">&para;</a></h3>
+<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨なAPIを検出する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-helm<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
+
+NAME<span class="w">       </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
+foo-chart<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+bar-chart<span class="w">  </span>bar-namespace<span class="w">   </span>PodDisruptionBudget<span class="w">       </span>policy/v1beta1<span class="w">        </span>policy/v1<span class="w">        </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+baz-chart<span class="w">  </span>baz-namespace<span class="w">   </span>HorizontalPodAutoscaler<span class="w">   </span>autoscaling/v2beta1<span class="w">   </span>autoscaling/v2<span class="w">   </span><span class="nb">true</span><span class="w">         </span>v1.22.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory">https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="list-versions">list-versions<a class="headerlink" href="#list-versions" title="Permanent link">&para;</a></h3>
+<p>plutoで検証できるAPIグループの一覧を取得する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions
+
+KIND<span class="w">                             </span>NAME<span class="w">                                   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w"> </span>IN<span class="w">   </span>REPLACEMENT<span class="w">                            </span>COMPONENT
+Deployment<span class="w">                       </span>extensions/v1beta1<span class="w">                     </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+Deployment<span class="w">                       </span>apps/v1beta2<span class="w">                           </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+Deployment<span class="w">                       </span>apps/v1beta1<span class="w">                           </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+StatefulSet<span class="w">                      </span>apps/v1beta1<span class="w">                           </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+StatefulSet<span class="w">                      </span>apps/v1beta2<span class="w">                           </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+NetworkPolicy<span class="w">                    </span>extensions/v1beta1<span class="w">                     </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>networking.k8s.io/v1<span class="w">                   </span>k8s
+Ingress<span class="w">                          </span>extensions/v1beta1<span class="w">                     </span>v1.14.0<span class="w">         </span>v1.22.0<span class="w">      </span>networking.k8s.io/v1<span class="w">                   </span>k8s
+Ingress<span class="w">                          </span>networking.k8s.io/v1beta1<span class="w">              </span>v1.19.0<span class="w">         </span>v1.22.0<span class="w">      </span>networking.k8s.io/v1<span class="w">                   </span>k8s
+IngressClass<span class="w">                     </span>networking.k8s.io/v1beta1<span class="w">              </span>v1.19.0<span class="w">         </span>v1.22.0<span class="w">      </span>networking.k8s.io/v1<span class="w">                   </span>k8s
+DaemonSet<span class="w">                        </span>apps/v1beta2<span class="w">                           </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+DaemonSet<span class="w">                        </span>extensions/v1beta1<span class="w">                     </span>v1.9.0<span class="w">          </span>v1.16.0<span class="w">      </span>apps/v1<span class="w">                                </span>k8s
+PodSecurityPolicy<span class="w">                </span>extensions/v1beta1<span class="w">                     </span>v1.10.0<span class="w">         </span>v1.16.0<span class="w">      </span>policy/v1beta1<span class="w">                         </span>k8s
+PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span class="w">                         </span>v1.21.0<span class="w">         </span>v1.25.0<span class="w">      </span>n/a<span class="w">                                    </span>k8s
+...
+</code></pre></div>
 <p><br></p>
 
   <hr>
@@ -6745,7 +6768,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>

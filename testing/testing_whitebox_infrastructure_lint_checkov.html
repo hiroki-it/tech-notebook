@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="confest＠コード規約違反の知見を記録しています。">
+        <meta name="description" content="checkov＠脆弱性診断の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_confest.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_infrastructure_lint_checkov.html">
       
       
-        <link rel="prev" href="testing_whitebox_oss_lint_kubeconform.html">
+        <link rel="prev" href="testing_whitebox_infrastructure_lint_nova.html">
       
       
-        <link rel="next" href="testing_whitebox_oss_lint_polaris.html">
+        <link rel="next" href="testing_whitebox_infrastructure_lint_kics.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>【IT技術の知見】 confest＠コード規約違反 - 俺の技術ノート</title>
+        <title>【IT技術の知見】 checkov＠脆弱性診断 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#confest" class="md-skip">
+        <a href="#checkov" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】 confest＠コード規約違反
+              【IT技術の知見】 checkov＠脆弱性診断
             
           </span>
         </div>
@@ -2224,6 +2224,8 @@
       
         
       
+        
+      
     
     
     
@@ -2321,11 +2323,11 @@
     
   
   
-    <a href="testing_whitebox_non_oss_php.html" class="md-nav__link">
+    <a href="testing_whitebox_application_php.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ 非OSS対象
+    ■ アプリ
   </span>
   
 
@@ -2371,7 +2373,7 @@
             
   
   <span class="md-ellipsis">
-    ■ OSS対象
+    ■ インフラ
   </span>
   
 
@@ -2381,7 +2383,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9_2_4">
             <span class="md-nav__icon md-icon"></span>
-            ■ OSS対象
+            ■ インフラ
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2443,7 +2445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="testing_whitebox_oss_lint.html" class="md-nav__link">
+      <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2479,7 +2481,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_kubeconform.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_kubeconform.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2493,258 +2495,6 @@
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4_1_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_4_1_3" id="__nav_9_2_4_1_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ コード規約違反テスト
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_4_1_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ コード規約違反テスト
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    confest
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="testing_whitebox_oss_lint_confest.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    confest
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-confest" class="md-nav__link">
-    01. confestの仕組み
-  </a>
-  
-    <nav class="md-nav" aria-label="01. confestの仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    検出項目
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    セットアップ
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    インストール
-  </a>
-  
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#brew" class="md-nav__link">
-    ▼ brewリポジトリから
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    コード規約
-  </a>
-  
-    <nav class="md-nav" aria-label="コード規約">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    重要度レベル
-  </a>
-  
-    <nav class="md-nav" aria-label="重要度レベル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deny" class="md-nav__link">
-    ▼ deny
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#violation" class="md-nav__link">
-    ▼ violation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    コマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    test
-  </a>
-  
-    <nav class="md-nav" aria-label="test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test_1" class="md-nav__link">
-    ▼ testとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-p" class="md-nav__link">
-    ▼ -p
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2773,7 +2523,49 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_polaris.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_confest.html" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    ■ コード規約違反テスト
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="testing_whitebox_infrastructure_lint_polaris.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2817,7 +2609,7 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_pluto.html" class="md-nav__link">
+    <a href="testing_whitebox_infrastructure_lint_pluto.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -2841,6 +2633,8 @@
                 
   
   
+    
+  
   
     
     
@@ -2850,6 +2644,279 @@
         
       
         
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_4_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_2_4_1_6" id="__nav_9_2_4_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ■ 脆弱性診断
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_9_2_4_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_2_4_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            ■ 脆弱性診断
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    checkov
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="testing_whitebox_infrastructure_lint_checkov.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    checkov
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    はじめに
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-checkov" class="md-nav__link">
+    01. checkovの仕組み
+  </a>
+  
+    <nav class="md-nav" aria-label="01. checkovの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    検出内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    対象ツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. オプション
+  </a>
+  
+    <nav class="md-nav" aria-label="03. オプション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-compact" class="md-nav__link">
+    --compact
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-d" class="md-nav__link">
+    -d
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-framework" class="md-nav__link">
+    --framework
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    -f
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-quiet" class="md-nav__link">
+    --quiet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-skip-check" class="md-nav__link">
+    --skip-check
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_infrastructure_lint_kics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="testing_whitebox_infrastructure_lint_kube_score.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-score
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
       
         
       
@@ -2865,11 +2932,14 @@
         
   
   
-    <a href="testing_whitebox_oss_lint_checkov.html" class="md-nav__link">
+    
+  
+  
+    <a href="testing_whitebox_lint_trivy.html" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    ■ 脆弱性診断
+    ■ アプリ/インフラ両方
   </span>
   
 
@@ -2879,22 +2949,8 @@
     </a>
   
 
-      
-    </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -6166,16 +6222,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-confest" class="md-nav__link">
-    01. confestの仕組み
+  <a href="#01-checkov" class="md-nav__link">
+    01. checkovの仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. confestの仕組み">
+    <nav class="md-nav" aria-label="01. checkovの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    検出項目
+    検出内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    対象ツール
   </a>
   
 </li>
@@ -6186,11 +6249,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    セットアップ
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
   </a>
   
-    <nav class="md-nav" aria-label="セットアップ">
+    <nav class="md-nav" aria-label="02. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6198,19 +6261,6 @@
     インストール
   </a>
   
-    <nav class="md-nav" aria-label="インストール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#brew" class="md-nav__link">
-    ▼ brewリポジトリから
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -6219,77 +6269,52 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    コード規約
+  <a href="#03" class="md-nav__link">
+    03. オプション
   </a>
   
-    <nav class="md-nav" aria-label="コード規約">
+    <nav class="md-nav" aria-label="03. オプション">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    重要度レベル
-  </a>
-  
-    <nav class="md-nav" aria-label="重要度レベル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#deny" class="md-nav__link">
-    ▼ deny
+  <a href="#-compact" class="md-nav__link">
+    --compact
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#violation" class="md-nav__link">
-    ▼ violation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    コマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test" class="md-nav__link">
-    test
-  </a>
-  
-    <nav class="md-nav" aria-label="test">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#test_1" class="md-nav__link">
-    ▼ testとは
+  <a href="#-d" class="md-nav__link">
+    -d
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#-p" class="md-nav__link">
-    ▼ -p
+  <a href="#-framework" class="md-nav__link">
+    --framework
   </a>
   
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#-f" class="md-nav__link">
+    -f
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-quiet" class="md-nav__link">
+    --quiet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-skip-check" class="md-nav__link">
+    --skip-check
+  </a>
   
 </li>
         
@@ -6316,7 +6341,7 @@
   
 
 
-<h1 id="confest">confest＠コード規約違反<a class="headerlink" href="#confest" title="Permanent link">&para;</a></h1>
+<h1 id="checkov">checkov＠脆弱性診断<a class="headerlink" href="#checkov" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6325,77 +6350,83 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-confest">01. confestの仕組み<a class="headerlink" href="#01-confest" title="Permanent link">&para;</a></h2>
-<h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Regoのユーザー定義のポリシーに基づいて、様々なツールの設定ファイルのコード規約違反を検証する。</p>
-<p>自由にコード規約を定義できる。</p>
-<p>一方でビルトインのコード規約はなく、ユーザーがRegoで規約を実装しないといけない。</p>
+<h2 id="01-checkov">01. checkovの仕組み<a class="headerlink" href="#01-checkov" title="Permanent link">&para;</a></h2>
+<h3 id="_2">検出内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>IaC (Kubernetes、Terraform、Dockerfile) で報告されたCVEに基づいて、そのツールの設定ファイルの実装方法に起因する脆弱性を検証する。</p>
+<p>PythonやYAMLでカスタムポリシーを実装できる。</p>
+<p><br></p>
+<h3 id="_3">対象ツール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>検査できるツールは、<code>--framework</code>オプションの説明から確認できる。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-policy-agent/conftest">https://github.com/open-policy-agent/conftest</a></li>
-<li><a href="https://www.conftest.dev/examples/">https://www.conftest.dev/examples/</a></li>
+<li><a href="https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference">https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_3">セットアップ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">インストール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="brew">▼ brewリポジトリから<a class="headerlink" href="#brew" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>conftest
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>checkov
 </code></pre></div>
-<p><br></p>
-<h2 id="_5">コード規約<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h3 id="_6">重要度レベル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="deny">▼ deny<a class="headerlink" href="#deny" title="Permanent link">&para;</a></h4>
-<p>コード規約に違反した場合に、終了コード <code>1</code> を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">package</span><span class="w"> </span><span class="n">main</span>
-
-<span class="n">deny</span><span class="p">[</span><span class="n">msg</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Deployment&quot;</span>
-
-<span class="w">  </span><span class="ow">not</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">template</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">securityContext</span><span class="p">.</span><span class="n">runAsNonRoot</span>
-
-<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Containers must not run as root&quot;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>checkov
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/open-policy-agent/conftest">https://github.com/open-policy-agent/conftest</a></li>
-<li><a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></li>
-</ul>
-</blockquote>
-<h4 id="violation">▼ violation<a class="headerlink" href="#violation" title="Permanent link">&para;</a></h4>
-<p>コード規約に違反した場合に、終了コード <code>0</code> を出力する。</p>
-<div class="highlight"><pre><span></span><code><span class="n">package</span><span class="w"> </span><span class="n">main</span>
-
-<span class="n">violation</span><span class="p">[</span><span class="n">msg</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">input</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Deployment&quot;</span>
-
-<span class="w">  </span><span class="ow">not</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">template</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">securityContext</span><span class="p">.</span><span class="n">runAsNonRoot</span>
-
-<span class="w">  </span><span class="n">msg</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Containers must not run as root&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></li>
+<li><a href="https://www.checkov.io/2.Basics/Installing%20Checkov.html">https://www.checkov.io/2.Basics/Installing%20Checkov.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="_7">コマンド<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="test">test<a class="headerlink" href="#test" title="Permanent link">&para;</a></h3>
-<h4 id="test_1">▼ testとは<a class="headerlink" href="#test_1" title="Permanent link">&para;</a></h4>
-<p>設定ファイルを検査する。</p>
-<h4 id="-p">▼ -p<a class="headerlink" href="#-p" title="Permanent link">&para;</a></h4>
-<p>Regoファイルのあるディレクトリ名を設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>conftest<span class="w"> </span><span class="nb">test</span><span class="w"> </span>deployment.yaml<span class="w"> </span>-p<span class="w"> </span>./policies
-FAIL<span class="w"> </span>-<span class="w"> </span>deployment.yaml<span class="w"> </span>-<span class="w"> </span>Containers<span class="w"> </span>must<span class="w"> </span>not<span class="w"> </span>run<span class="w"> </span>as<span class="w"> </span>root
-FAIL<span class="w"> </span>-<span class="w"> </span>deployment.yaml<span class="w"> </span>-<span class="w"> </span>Containers<span class="w"> </span>must<span class="w"> </span>provide<span class="w"> </span>app<span class="w"> </span>label<span class="w"> </span><span class="k">for</span><span class="w"> </span>pod<span class="w"> </span>selectors
-
-<span class="m">2</span><span class="w"> </span>tests,<span class="w"> </span><span class="m">0</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>warnings,<span class="w"> </span><span class="m">2</span><span class="w"> </span>failures,<span class="w"> </span><span class="m">0</span><span class="w"> </span>exceptions
+<h2 id="03">03. オプション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="-compact">--compact<a class="headerlink" href="#-compact" title="Permanent link">&para;</a></h3>
+<p>問題のあるコード箇所を非表示にして、結果を表示する。</p>
+<p><code>--compact</code>オプションを有効化しない場合、問題のあるコード箇所を表示する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>&lt;IaCファイル&gt;<span class="w"> </span>--compact
+</code></pre></div>
+<p><br></p>
+<h3 id="-d">-d<a class="headerlink" href="#-d" title="Permanent link">&para;</a></h3>
+<p>ディレクトリ内のファイルを再帰的に処理する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-d<span class="w"> </span>&lt;ディレクトリ名&gt;
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.conftest.dev/">https://www.conftest.dev/</a></li>
+<li><a href="https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference">https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-framework">--framework<a class="headerlink" href="#-framework" title="Permanent link">&para;</a></h3>
+<p>検査するツール名を設定する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>--framework<span class="w"> </span>&lt;ツール名&gt;
+</code></pre></div>
+<p><br></p>
+<h3 id="-f">-f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h3>
+<p>単一のファイルを処理する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>&lt;IaCファイル&gt;
+</code></pre></div>
+<p>マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span>&gt;<span class="w"> </span>manifest.yaml
+
+$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>manifest.yaml
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference">https://www.checkov.io/2.Basics/CLI%20Command%20Reference.html#cli-command-reference</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="-quiet">--quiet<a class="headerlink" href="#-quiet" title="Permanent link">&para;</a></h3>
+<p>失敗した項目のみを結果として出力する。</p>
+<p><code>--quiet</code>オプションを有効化しない場合は、成功と失敗の両方の項目を出力する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>&lt;IaCファイル&gt;<span class="w"> </span>--quiet
+</code></pre></div>
+<p><br></p>
+<h3 id="-skip-check">--skip-check<a class="headerlink" href="#-skip-check" title="Permanent link">&para;</a></h3>
+<p>検出から除外する重要度レベル (LOW,MEDIUM,HIGH) やCVEのIDを設定する。</p>
+<p>BC-APIキーが必要で、これはBridgecrewダッシュボードから取得する必要がある。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>checkov<span class="w"> </span>-f<span class="w"> </span>&lt;IaCファイル&gt;<span class="w"> </span>--skip-check<span class="w"> </span>HIGH,CKV_***<span class="w"> </span>--bc-api-key<span class="w"> </span>&lt;BC-APIキー&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://bridgecrew.io/blog/checkov-iac-policy-severities-prioritize-skip-fail/">https://bridgecrew.io/blog/checkov-iac-policy-severities-prioritize-skip-fail/</a></li>
+<li><a href="https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html#platform-enforcement-rules">https://www.checkov.io/2.Basics/Suppressing%20and%20Skipping%20Policies.html#platform-enforcement-rules</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6405,7 +6436,7 @@ FAIL<span class="w"> </span>-<span class="w"> </span>deployment.yaml<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
       
     
   </small>
