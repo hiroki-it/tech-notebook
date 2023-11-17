@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.9">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.78cf6014.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
@@ -3179,14 +3179,18 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    はじめに
+    <span class="md-ellipsis">
+      はじめに
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#01-kubernetes" class="md-nav__link">
-    01. Kubernetesのアップグレード (ベアメタル環境の場合)
+    <span class="md-ellipsis">
+      01. Kubernetesのアップグレード (ベアメタル環境の場合)
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="01. Kubernetesのアップグレード (ベアメタル環境の場合)">
@@ -3194,28 +3198,36 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    アップグレードの仕組み
+    <span class="md-ellipsis">
+      アップグレードの仕組み
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#bmctl" class="md-nav__link">
-    bmctlコマンドのセットアップ
+    <span class="md-ellipsis">
+      bmctlコマンドのセットアップ
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アップグレードの実施
+    <span class="md-ellipsis">
+      アップグレードの実施
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    アップグレードの動作確認
+    <span class="md-ellipsis">
+      アップグレードの動作確認
+    </span>
   </a>
   
 </li>
@@ -3227,7 +3239,9 @@
       
         <li class="md-nav__item">
   <a href="#02-istio" class="md-nav__link">
-    02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
+    <span class="md-ellipsis">
+      02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)">
@@ -3235,21 +3249,27 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    注意!!!!
+    <span class="md-ellipsis">
+      注意!!!!
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#asmcli" class="md-nav__link">
-    asmcliコマンドのセットアップ
+    <span class="md-ellipsis">
+      asmcliコマンドのセットアップ
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    アップグレードの実施
+    <span class="md-ellipsis">
+      アップグレードの実施
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="アップグレードの実施">
@@ -3257,63 +3277,81 @@
         
           <li class="md-nav__item">
   <a href="#istiod" class="md-nav__link">
-    ▼ 新しいIstiodコントロールプレーンをインストール
+    <span class="md-ellipsis">
+      ▼ 新しいIstiodコントロールプレーンをインストール
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_1" class="md-nav__link">
-    ▼ 新しいIstiodコントロールプレーンを確認
+    <span class="md-ellipsis">
+      ▼ 新しいIstiodコントロールプレーンを確認
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#namespacemetadatalabels" class="md-nav__link">
-    ▼ Namespaceの.metadata.labelsキーを付け替える。
+    <span class="md-ellipsis">
+      ▼ Namespaceの.metadata.labelsキーを付け替える。
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ingressgatewayistio-proxy" class="md-nav__link">
-    ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+    <span class="md-ellipsis">
+      ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istio-proxy" class="md-nav__link">
-    ▼ アプリケーションのistio-proxyコンテナをアップグレード
+    <span class="md-ellipsis">
+      ▼ アプリケーションのistio-proxyコンテナをアップグレード
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#webhookistiod" class="md-nav__link">
-    ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
+    <span class="md-ellipsis">
+      ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_2" class="md-nav__link">
-    ▼ 古いIstiodコントロールプレーンを削除
+    <span class="md-ellipsis">
+      ▼ 古いIstiodコントロールプレーンを削除
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_3" class="md-nav__link">
-    ▼ 古いIstiodコントロールプレーンを削除を削除
+    <span class="md-ellipsis">
+      ▼ 古いIstiodコントロールプレーンを削除を削除
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiooperator" class="md-nav__link">
-    ▼ 古いIstioOperatorを削除を削除
+    <span class="md-ellipsis">
+      ▼ 古いIstioOperatorを削除を削除
+    </span>
   </a>
   
 </li>
@@ -3325,7 +3363,9 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    アップグレードの動作確認
+    <span class="md-ellipsis">
+      アップグレードの動作確認
+    </span>
   </a>
   
 </li>
@@ -3337,7 +3377,9 @@
       
         <li class="md-nav__item">
   <a href="#03-nodeos" class="md-nav__link">
-    03. NodeのOSのアップグレード (ベアメタル環境の場合)
+    <span class="md-ellipsis">
+      03. NodeのOSのアップグレード (ベアメタル環境の場合)
+    </span>
   </a>
   
 </li>
@@ -5928,14 +5970,18 @@
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    はじめに
+    <span class="md-ellipsis">
+      はじめに
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#01-kubernetes" class="md-nav__link">
-    01. Kubernetesのアップグレード (ベアメタル環境の場合)
+    <span class="md-ellipsis">
+      01. Kubernetesのアップグレード (ベアメタル環境の場合)
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="01. Kubernetesのアップグレード (ベアメタル環境の場合)">
@@ -5943,28 +5989,36 @@
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    アップグレードの仕組み
+    <span class="md-ellipsis">
+      アップグレードの仕組み
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#bmctl" class="md-nav__link">
-    bmctlコマンドのセットアップ
+    <span class="md-ellipsis">
+      bmctlコマンドのセットアップ
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    アップグレードの実施
+    <span class="md-ellipsis">
+      アップグレードの実施
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    アップグレードの動作確認
+    <span class="md-ellipsis">
+      アップグレードの動作確認
+    </span>
   </a>
   
 </li>
@@ -5976,7 +6030,9 @@
       
         <li class="md-nav__item">
   <a href="#02-istio" class="md-nav__link">
-    02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
+    <span class="md-ellipsis">
+      02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)">
@@ -5984,21 +6040,27 @@
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
-    注意!!!!
+    <span class="md-ellipsis">
+      注意!!!!
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#asmcli" class="md-nav__link">
-    asmcliコマンドのセットアップ
+    <span class="md-ellipsis">
+      asmcliコマンドのセットアップ
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    アップグレードの実施
+    <span class="md-ellipsis">
+      アップグレードの実施
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="アップグレードの実施">
@@ -6006,63 +6068,81 @@
         
           <li class="md-nav__item">
   <a href="#istiod" class="md-nav__link">
-    ▼ 新しいIstiodコントロールプレーンをインストール
+    <span class="md-ellipsis">
+      ▼ 新しいIstiodコントロールプレーンをインストール
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_1" class="md-nav__link">
-    ▼ 新しいIstiodコントロールプレーンを確認
+    <span class="md-ellipsis">
+      ▼ 新しいIstiodコントロールプレーンを確認
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#namespacemetadatalabels" class="md-nav__link">
-    ▼ Namespaceの.metadata.labelsキーを付け替える。
+    <span class="md-ellipsis">
+      ▼ Namespaceの.metadata.labelsキーを付け替える。
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#ingressgatewayistio-proxy" class="md-nav__link">
-    ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+    <span class="md-ellipsis">
+      ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istio-proxy" class="md-nav__link">
-    ▼ アプリケーションのistio-proxyコンテナをアップグレード
+    <span class="md-ellipsis">
+      ▼ アプリケーションのistio-proxyコンテナをアップグレード
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#webhookistiod" class="md-nav__link">
-    ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
+    <span class="md-ellipsis">
+      ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_2" class="md-nav__link">
-    ▼ 古いIstiodコントロールプレーンを削除
+    <span class="md-ellipsis">
+      ▼ 古いIstiodコントロールプレーンを削除
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiod_3" class="md-nav__link">
-    ▼ 古いIstiodコントロールプレーンを削除を削除
+    <span class="md-ellipsis">
+      ▼ 古いIstiodコントロールプレーンを削除を削除
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#istiooperator" class="md-nav__link">
-    ▼ 古いIstioOperatorを削除を削除
+    <span class="md-ellipsis">
+      ▼ 古いIstioOperatorを削除を削除
+    </span>
   </a>
   
 </li>
@@ -6074,7 +6154,9 @@
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
-    アップグレードの動作確認
+    <span class="md-ellipsis">
+      アップグレードの動作確認
+    </span>
   </a>
   
 </li>
@@ -6086,7 +6168,9 @@
       
         <li class="md-nav__item">
   <a href="#03-nodeos" class="md-nav__link">
-    03. NodeのOSのアップグレード (ベアメタル環境の場合)
+    <span class="md-ellipsis">
+      03. NodeのOSのアップグレード (ベアメタル環境の場合)
+    </span>
   </a>
   
 </li>
@@ -6787,7 +6871,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "navigation.prune", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
     
   </body>
