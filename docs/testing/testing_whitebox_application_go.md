@@ -30,8 +30,10 @@ description: Goのテストツール＠アプリのホワイトボックステ�
 #### ▼ 脆弱性
 
 - govulncheck
+- gosec
 
 > - https://go.dev/blog/vuln
+> - https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3
 
 <br>
 
