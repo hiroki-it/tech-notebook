@@ -5929,7 +5929,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="rewrite">rewrite<a class="headerlink" href="#rewrite" title="Permanent link">&para;</a></h3>
-<p>Cluster内のDNS名とドメインを紐づける。</p>
+<p>Cluster内のDNS名とCluster外のドメインを紐づける。</p>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
 <span class="w">  </span><span class="c1"># foo.default.svc.cluster.local を foo.example.com に紐づける</span>
 <span class="w">  </span>rewrite<span class="w"> </span>name<span class="w"> </span>foo.example.com<span class="w"> </span>foo.default.svc.cluster.local
@@ -6006,7 +6006,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
       
     
   </small>

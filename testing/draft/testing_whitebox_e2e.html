@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="krr＠ベストプラクティス違反の知見を記録しています。">
+        <meta name="description" content="E2Eテスト＠OSSのホワイトボックステストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_infrastructure_lint_goldilocks_krr.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/draft/testing_whitebox_e2e.html">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】 krr＠ベストプラクティス違反 - 俺の技術ノート</title>
+        <title>【IT技術の知見】E2Eテスト＠OSSのホワイトボックステスト - 俺の技術ノート</title>
       
     
     
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#krr" class="md-skip">
+        <a href="#e2eoss" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】 krr＠ベストプラクティス違反
+              【IT技術の知見】E2Eテスト＠OSSのホワイトボックステスト
             
           </span>
         </div>
@@ -5503,50 +5503,30 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-krr" class="md-nav__link">
-    01. krrの仕組み
+  <a href="#kubernetes-clustere2e" class="md-nav__link">
+    Kubernetes ClusterのE2Eテスト
   </a>
   
-    <nav class="md-nav" aria-label="01. krrの仕組み">
+    <nav class="md-nav" aria-label="Kubernetes ClusterのE2Eテスト">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-clustere2e_1" class="md-nav__link">
+    Kubernetes ClusterのE2Eテストとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm" class="md-nav__link">
+    helmコマンドを使う場合
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    アーキテクチャ
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    設計思想
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    アルゴリズム
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-cli" class="md-nav__link">
-    02. CLI
-  </a>
-  
-    <nav class="md-nav" aria-label="02. CLI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple" class="md-nav__link">
-    simple
+    テストパッケージ
   </a>
   
 </li>
@@ -5574,7 +5554,7 @@
   
 
 
-<h1 id="krr">krr＠ベストプラクティス違反<a class="headerlink" href="#krr" title="Permanent link">&para;</a></h1>
+<h1 id="e2eoss">E2Eテスト＠OSSのホワイトボックステスト<a class="headerlink" href="#e2eoss" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5583,55 +5563,26 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-krr">01. krrの仕組み<a class="headerlink" href="#01-krr" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Prometheusのメトリクスから各コンテナに最適なCPU/メモリの設定値を算出できる。</p>
+<h2 id="kubernetes-clustere2e">Kubernetes ClusterのE2Eテスト<a class="headerlink" href="#kubernetes-clustere2e" title="Permanent link">&para;</a></h2>
+<h3 id="kubernetes-clustere2e_1">Kubernetes ClusterのE2Eテストとは<a class="headerlink" href="#kubernetes-clustere2e_1" title="Permanent link">&para;</a></h3>
+<p>CI上にKubernetesの環境を構築して、これにマニフェストやHelmチャートをデプロイする。</p>
+<p>起動したコンテナに対してリクエストを送信し、コンテナが期待値を返却することを確認する。</p>
+<p><br></p>
+<h3 id="helm"><code>helm</code>コマンドを使う場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
+<p><code>helm</code>コマンドを使用するか、アプリから<code>helm</code>コマンドを実行す</p>
+<h3 id="_2">テストパッケージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>テストパッケージ (例：e2e-framework) を使用する。</p>
+<p>e2e-frameworkは、E2Eテストのために以下のような機能がある。</p>
+<ul>
+<li>Kubernetes Clusterを構築してくれる</li>
+<li>ソースコードから<code>helm</code>コマンドを実行できる</li>
+<li>E2Eテストの完了後にマニフェストを削除してくれるため、実Clusterでもテストできる。</li>
+</ul>
 <blockquote>
 <ul>
-<li><a href="https://github.com/robusta-dev/krr">https://github.com/robusta-dev/krr</a></li>
+<li><a href="https://github.com/kubernetes-sigs/e2e-framework/blob/main/examples/third_party_integration/helm/helm_test.go">https://github.com/kubernetes-sigs/e2e-framework/blob/main/examples/third_party_integration/helm/helm_test.go</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h3 id="_3">設計思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>krrでは、CPUの<code>.spec.containers[*].resources.limits</code>キー値の設定はアンチパターンとして扱っている。</p>
-<p>そのため、未設定を推奨している。</p>
-<p>理由として、CPUを制限してしまうと、コンテナがどんな状況であってもコンテナにCPUを割り当てない。</p>
-<p>これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。</p>
-<blockquote>
-<ul>
-<li><a href="https://home.robusta.dev/blog/stop-using-cpu-limits">https://home.robusta.dev/blog/stop-using-cpu-limits</a></li>
-<li><a href="https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718">https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718</a></li>
-<li><a href="https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/">https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_4">アルゴリズム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>CPUに関して、<code>99</code>%のCPU処理が余裕を持てるように数値を算出する。</p>
-<p>メモリに関して、過去一週間の最大値に<code>5</code>%のバッファーを加えて、数値を算出する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/robusta-dev/krr#algorithm">https://github.com/robusta-dev/krr#algorithm</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-cli">02. CLI<a class="headerlink" href="#02-cli" title="Permanent link">&para;</a></h2>
-<h3 id="simple">simple<a class="headerlink" href="#simple" title="Permanent link">&para;</a></h3>
-<p>シンプル戦略に基づいて、最適なCPU/メモリの設定値を算出する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>krr<span class="w"> </span>simple
-
-┏━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┓
-┃<span class="w"> </span>Number<span class="w"> </span>┃<span class="w"> </span>Namespace<span class="w">   </span>┃<span class="w"> </span>Name<span class="w">                                           </span>┃<span class="w"> </span>Pods<span class="w"> </span>┃<span class="w"> </span>Old<span class="w"> </span>Pods<span class="w"> </span>┃<span class="w"> </span>Type<span class="w">        </span>┃<span class="w"> </span>Container<span class="w">               </span>┃<span class="w"> </span>CPU<span class="w"> </span>Diff<span class="w"> </span>┃<span class="w"> </span>CPU<span class="w"> </span>Requests<span class="w">            </span>┃<span class="w"> </span>CPU<span class="w"> </span>Limits<span class="w">           </span>┃<span class="w"> </span>Memory<span class="w"> </span>Diff<span class="w"> </span>┃<span class="w"> </span>Memory<span class="w"> </span>Requests<span class="w">           </span>┃<span class="w"> </span>Memory<span class="w"> </span>Limits<span class="w">        </span>┃
-┡━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━┩
-│<span class="w">     </span><span class="m">1</span>.<span class="w"> </span>│<span class="w"> </span>foo<span class="w">         </span>│<span class="w"> </span>foo-pod<span class="w">                                        </span>│<span class="w"> </span><span class="m">0</span><span class="w">    </span>│<span class="w"> </span><span class="m">1</span><span class="w">        </span>│<span class="w"> </span>Job<span class="w">         </span>│<span class="w"> </span>foo<span class="w">                      </span>│<span class="w">          </span>│<span class="w"> </span>500m<span class="w"> </span>-&gt;<span class="w"> </span>?<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>data<span class="o">)</span><span class="w">     </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>?<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>data<span class="o">)</span><span class="w"> </span>│<span class="w">             </span>│<span class="w"> </span>256Mi<span class="w"> </span>-&gt;<span class="w"> </span>?<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>data<span class="o">)</span><span class="w">      </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>?<span class="w"> </span><span class="o">(</span>No<span class="w"> </span>data<span class="o">)</span><span class="w"> </span>│
-├────────┼─────────────┼────────────────────────────────────────────────┼──────┼──────────┼─────────────┼─────────────────────────┼──────────┼─────────────────────────┼──────────────────────┼─────────────┼───────────────────────────┼──────────────────────┤
-│<span class="w">     </span><span class="m">2</span>.<span class="w"> </span>│<span class="w"> </span>bar<span class="w">         </span>│<span class="w"> </span>bar-pod<span class="w">                                        </span>│<span class="w"> </span><span class="m">1</span><span class="w">    </span>│<span class="w"> </span><span class="m">0</span><span class="w">        </span>│<span class="w"> </span>Deployment<span class="w">  </span>│<span class="w"> </span>bar<span class="w">                     </span>│<span class="w"> </span>+10m<span class="w">     </span>│<span class="w"> </span><span class="o">(</span>+10m<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>10m<span class="w">     </span>│<span class="w"> </span><span class="nb">unset</span><span class="w">                </span>│<span class="w"> </span>+100Mi<span class="w">      </span>│<span class="w"> </span><span class="o">(</span>+100Mi<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">   </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">       </span>│
-├────────┼─────────────┼────────────────────────────────────────────────┼──────┼──────────┼─────────────┼─────────────────────────┼──────────┼─────────────────────────┼──────────────────────┼─────────────┼───────────────────────────┼──────────────────────┤
-│<span class="w">     </span><span class="m">3</span>.<span class="w"> </span>│<span class="w"> </span>baz<span class="w">         </span>│<span class="w"> </span>baz-pod<span class="w">                                        </span>│<span class="w"> </span><span class="m">2</span><span class="w">    </span>│<span class="w"> </span><span class="m">0</span><span class="w">        </span>│<span class="w"> </span>Deployment<span class="w">  </span>│<span class="w"> </span>baz-1<span class="w">                   </span>│<span class="w"> </span>+20m<span class="w">     </span>│<span class="w"> </span><span class="o">(</span>+10m<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>10m<span class="w">     </span>│<span class="w"> </span><span class="nb">unset</span><span class="w">                </span>│<span class="w"> </span>+200Mi<span class="w">      </span>│<span class="w"> </span><span class="o">(</span>+100Mi<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">   </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">       </span>│
-│<span class="w">     </span><span class="m">4</span>.<span class="w"> </span>│<span class="w">             </span>│<span class="w">                                                </span>│<span class="w">      </span>│<span class="w">          </span>│<span class="w">             </span>│<span class="w"> </span>baz-2<span class="w">                    </span>│<span class="w"> </span>+20m<span class="w">     </span>│<span class="w"> </span><span class="o">(</span>+10m<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>10m<span class="w">     </span>│<span class="w"> </span><span class="nb">unset</span><span class="w">                </span>│<span class="w"> </span>+200Mi<span class="w">      </span>│<span class="w"> </span><span class="o">(</span>+100Mi<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">   </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">       </span>│
-│<span class="w">     </span><span class="m">5</span>.<span class="w"> </span>│<span class="w">             </span>│<span class="w">                                                </span>│<span class="w">      </span>│<span class="w">          </span>│<span class="w">             </span>│<span class="w"> </span>baz-3<span class="w">                    </span>│<span class="w"> </span>+20m<span class="w">     </span>│<span class="w"> </span><span class="o">(</span>+10m<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>10m<span class="w">     </span>│<span class="w"> </span><span class="nb">unset</span><span class="w">                </span>│<span class="w"> </span>+200Mi<span class="w">      </span>│<span class="w"> </span><span class="o">(</span>+100Mi<span class="o">)</span><span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">   </span>│<span class="w"> </span><span class="nb">unset</span><span class="w"> </span>-&gt;<span class="w"> </span>100Mi<span class="w">       </span>│
-├────────┼─────────────┼────────────────────────────────────────────────┼──────┼──────────┼─────────────┼─────────────────────────┼──────────┼─────────────────────────┼──────────────────────┼─────────────┼───────────────────────────┼──────────────────────┤
-...
-</code></pre></div>
 <p><br></p>
 
   <hr>
@@ -5639,7 +5590,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
       
     
   </small>

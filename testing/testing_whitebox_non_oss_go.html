@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="静的解析＠PHPのテストツールの知見を記録しています。">
+        <meta name="description" content="Goのテストツール＠非OSSのホワイトボックステストの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php_lint.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_non_oss_go.html">
       
       
-        <link rel="prev" href="testing_whitebox_application_php.html">
-      
-      
-        <link rel="next" href="testing_whitebox_application_php_unit.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】静的解析＠PHPのテストツール - 俺の技術ノート</title>
+        <title>【IT技術の知見】Goのテストツール＠非OSSのホワイトボックステスト - 俺の技術ノート</title>
       
     
     
@@ -91,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#gooss" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】静的解析＠PHPのテストツール
+              【IT技術の知見】Goのテストツール＠非OSSのホワイトボックステスト
             
           </span>
         </div>
@@ -354,12 +350,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -2149,8 +2143,6 @@
       
   
   
-    
-  
   
     
     
@@ -2170,12 +2162,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           
@@ -2197,7 +2189,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             🧪 テスト
@@ -2210,8 +2202,6 @@
                 
   
   
-    
-  
   
     
     
@@ -2228,452 +2218,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
-            
+  
+  
+    <a href="testing_whitebox.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ ホワイトボックステスト
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ ホワイトボックステスト
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ホワイトボックステスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_microservices_test.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    マイクロサービスのテスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ アプリ
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ アプリ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ PHPのテストツール
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ PHPのテストツール
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_application_php.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    PHPのテストツール
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    静的解析
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="testing_whitebox_application_php_lint.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    静的解析
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-phpstan" class="md-nav__link">
-    01. PHPStan
-  </a>
-  
-    <nav class="md-nav" aria-label="01. PHPStan">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    PHPStanとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    コマンド
-  </a>
-  
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    ▼ オプション無し
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phpstanneon" class="md-nav__link">
-    phpstan.neonファイル
-  </a>
-  
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    ▼ phpstan.neonファイルとは
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#includes" class="md-nav__link">
-    ▼ includes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    ▼ parameters
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_application_php_unit.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    単体テスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="testing_whitebox_application_go.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Goのテストツール
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ インフラ
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -5937,71 +5503,132 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-phpstan" class="md-nav__link">
-    01. PHPStan
+  <a href="#01" class="md-nav__link">
+    01. ホワイトボックステストのツール
   </a>
   
-    <nav class="md-nav" aria-label="01. PHPStan">
+    <nav class="md-nav" aria-label="01. ホワイトボックステストのツール">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phpstan" class="md-nav__link">
-    PHPStanとは
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    コマンド
+    整形
   </a>
   
-    <nav class="md-nav" aria-label="コマンド">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
-    ▼ オプション無し
+    静的解析
   </a>
   
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#phpstanneon" class="md-nav__link">
-    phpstan.neonファイル
-  </a>
-  
-    <nav class="md-nav" aria-label="phpstan.neonファイル">
+    <nav class="md-nav" aria-label="静的解析">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phpstanneon_1" class="md-nav__link">
-    ▼ phpstan.neonファイルとは
+  <a href="#_4" class="md-nav__link">
+    ▼ ベストプラクティス
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#includes" class="md-nav__link">
-    ▼ includes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    ▼ parameters
+  <a href="#_5" class="md-nav__link">
+    ▼ 脆弱性
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    単体テスト、機能テストツール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. 標準のテストツール
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 標準のテストツール">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    標準のテストツールとは
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    網羅率
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. 設計規約
+  </a>
+  
+    <nav class="md-nav" aria-label="03. 設計規約">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    パッケージ名
+  </a>
+  
+    <nav class="md-nav" aria-label="パッケージ名">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    ▼ ホワイトボックステスト
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    ▼ ブラックボックス風のホワイトテスト
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    インターフェースの導入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    テーブル駆動テスト
+  </a>
   
 </li>
         
@@ -6028,7 +5655,7 @@
   
 
 
-<h1 id="php">静的解析＠PHPのテストツール<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h1 id="gooss">Goのテストツール＠非OSSのホワイトボックステスト<a class="headerlink" href="#gooss" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6037,50 +5664,119 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-phpstan">01. PHPStan<a class="headerlink" href="#01-phpstan" title="Permanent link">&para;</a></h2>
-<h3 id="phpstan">PHPStanとは<a class="headerlink" href="#phpstan" title="Permanent link">&para;</a></h3>
-<p>レベルに応じて、静的解析を実施する。</p>
-<p>最初は、必ず検出したい項目 (例：未定義関数、引数/戻り値の型の誤り) を決めて、これを検出できるレベルを設定すると良い。</p>
+<h2 id="01">01. ホワイトボックステストのツール<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="_2">整形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>標準の<code>go fmt</code>コマンド</li>
+</ul>
+<p><br></p>
+<h3 id="_3">静的解析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">▼ ベストプラクティス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>標準の<code>go vet</code>コマンド</li>
+</ul>
+<h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>govulncheck</li>
+</ul>
 <blockquote>
 <ul>
-<li><a href="https://phpstan.org/user-guide/rule-levels">https://phpstan.org/user-guide/rule-levels</a></li>
-<li><a href="https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B">https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B</a></li>
+<li><a href="https://go.dev/blog/vuln">https://go.dev/blog/vuln</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">コマンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ オプション無し<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>全てのファイルを対象として、静的解析を実施する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpstan<span class="w"> </span>analyse
-</code></pre></div>
+<h3 id="_6">単体テスト、機能テストツール<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>標準の<code>go fmt</code>コマンド</li>
+</ul>
 <p><br></p>
-<h3 id="phpstanneon">phpstan.neonファイル<a class="headerlink" href="#phpstanneon" title="Permanent link">&para;</a></h3>
-<h4 id="phpstanneon_1">▼ <code>phpstan.neonファイル</code>とは<a class="headerlink" href="#phpstanneon_1" title="Permanent link">&para;</a></h4>
-<p>PHPStanの設定を行う。</p>
-<h4 id="includes">▼ <code>includes</code><a class="headerlink" href="#includes" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">includes</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/nunomaduro/larastan/extension.neon</span>
-</code></pre></div>
-<h4 id="parameters">▼ <code>parameters</code><a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
-<p>静的解析の設定を行う。</p>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># 解析対象のディレクトリ</span>
-<span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span>
-<span class="w">  </span><span class="c1"># 解析の厳格さ (最大レベルは８】。各レベルの解析項目については以下のリンクを参考にせよ。</span>
-<span class="w">  </span><span class="c1"># https://phpstan.org/user-guide/rule-levels</span>
-<span class="w">  </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<span class="w">  </span><span class="c1"># 発生を無視するエラーメッセージ</span>
-<span class="w">  </span><span class="nt">ignoreErrors</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;#Unsafe</span><span class="nv"> </span><span class="s">usage</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">static#&quot;</span>
-<span class="w">  </span><span class="c1"># 解析対象として除外するディレクトリ</span>
-<span class="w">  </span><span class="nt">excludes_analyse</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src/Foo/*</span>
+<h2 id="02">02. 標準のテストツール<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_7">標準のテストツールとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>go</code>コマンドが提供するホワイトボックス機能のこと。</p>
+<p><br></p>
+<h3 id="_8">網羅率<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>網羅率はパッケージを単位として解析される。</p>
+<p><br></p>
+<h2 id="03">03. 設計規約<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_9">パッケージ名<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ ホワイトボックステスト<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルのパッケージ名と同じ場合、それはホワイトボックステストになる。</p>
+<h4 id="_11">▼ ブラックボックス風のホワイトテスト<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルに『<code>_test</code>』を加えたパッケージ名の場合、それはブラックボックステスト風のホワイトテストになる。</p>
+<p>補足として、Goでは1つのディレクトリ内に1つのパッケージ名しか宣言できないが、ブラックボックステストのために『<code>_test</code>』を加えることは許されている。</p>
+<blockquote>
+<ul>
+<li><a href="https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36">https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_12">インターフェースの導入<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>テストできない構造体はモックに差し替えられることなる。</p>
+<p>この時、あらかじめ実際の構造体をインターフェースの実装にしておく。</p>
+<p>テスト時に、モックもインターフェイスの実装とすれば、モックが実際の構造体と同じデータ型として認識されるようになる。</p>
+<p>これにより、モックに差し替えられるようになる。</p>
+<p><br></p>
+<h3 id="_13">テーブル駆動テスト<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>テストデータ (<code>data</code>、<code>in</code>) と期待値 (<code>expected</code>、<code>want</code>) をファイル (例：<code>.json</code>、<code>.yaml</code>) として用意しておく。</p>
+<p>これを<code>ReadFile</code>関数で読み出し、テストケースの構造体を定義する。</p>
+<p>テストケースの構造体を反復処理し、テストを実施する。</p>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
-<span class="w">  </span><span class="nt">checkMissingIterableValueType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">inferPrivatePropertyTypeFromConstructor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;io/ioutil&quot;</span>
+<span class="w">    </span><span class="s">&quot;testing&quot;</span>
+<span class="p">)</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * fooメソッドをテストします。</span>
+<span class="cm"> */</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">TestFoo</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1">// ファイルを読み込む。</span>
+<span class="w">    </span><span class="nx">expected_foo_succeed_status</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;../testdata/expected/foo_succeed_status.json&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">data_foo_succeed_status</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;../testdata/data/foo_succeed_status.json&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">expected_foo_failed_status</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;../testdata/expected/foo_succeed_status.json&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">data_foo_failed_status</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;../testdata/data/foo_succeed_status.json&quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c1">// テストケース</span>
+<span class="w">    </span><span class="nx">cases</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// テストケース名</span>
+<span class="w">        </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">        </span><span class="c1">// 期待値</span>
+<span class="w">        </span><span class="nx">expected</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">        </span><span class="c1">// テストデータ</span>
+<span class="w">        </span><span class="nx">data</span><span class="w"> </span><span class="p">[]</span><span class="kt">byte</span>
+<span class="w">    </span><span class="p">}{</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">name</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;TestFoo_SucceedStatus_ReturnOk&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">expected</span><span class="p">:</span><span class="w"> </span><span class="nx">expected_foo_succeed_status</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="p">:</span><span class="w">     </span><span class="nx">data_foo_succeed_status</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">name</span><span class="p">:</span><span class="w">     </span><span class="s">&quot;TestFoo_FailedStatus_ReturnOk&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">expected</span><span class="p">:</span><span class="w"> </span><span class="nx">expected_foo_failed_status</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="p">:</span><span class="w">     </span><span class="nx">data_foo_failed_status</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// テストケースを反復で処理する。</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">cases</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="c1">// fooメソッドを実行し、実際値を作成する。</span>
+
+<span class="w">            </span><span class="c1">// 期待値と実際値を比較する。</span>
+<span class="w">            </span><span class="nx">assert</span><span class="p">.</span><span class="nx">JSONEq</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">,</span><span class="w"> </span><span class="nx">actual</span><span class="p">)</span>
+<span class="w">        </span><span class="p">})</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/golang/go/wiki/TableDrivenTests">https://github.com/golang/go/wiki/TableDrivenTests</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -6088,7 +5784,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
       
     
   </small>

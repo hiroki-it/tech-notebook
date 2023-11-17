@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="PHPのテストツール＠ホワイトボックステストの知見を記録しています。">
+        <meta name="description" content="kube-score＠ベストプラクティス違反の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_oss_lint_kube_score.html">
       
       
-        <link rel="prev" href="testing_whitebox_microservices_test.html">
-      
-      
-        <link rel="next" href="testing_whitebox_application_php_lint.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】PHPのテストツール＠ホワイトボックステスト - 俺の技術ノート</title>
+        <title>【IT技術の知見】 kube-score＠ベストプラクティス違反 - 俺の技術ノート</title>
       
     
     
@@ -91,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#php" class="md-skip">
+        <a href="#kube-score" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】PHPのテストツール＠ホワイトボックステスト
+              【IT技術の知見】 kube-score＠ベストプラクティス違反
             
           </span>
         </div>
@@ -354,12 +350,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="index.html" class="md-tabs__link">
           
   
@@ -2149,8 +2143,6 @@
       
   
   
-    
-  
   
     
     
@@ -2170,12 +2162,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           
@@ -2197,7 +2189,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             🧪 テスト
@@ -2210,8 +2202,6 @@
                 
   
   
-    
-  
   
     
     
@@ -2228,432 +2218,28 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
-            
+  
+  
+    <a href="testing_whitebox.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ ホワイトボックステスト
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2">
-            <span class="md-nav__icon md-icon"></span>
-            ■ ホワイトボックステスト
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ホワイトボックステスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_microservices_test.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    マイクロサービスのテスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3" id="__nav_9_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ アプリ
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            ■ アプリ
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_9_2_3_1" id="__nav_9_2_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    ■ PHPのテストツール
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_9_2_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9_2_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ PHPのテストツール
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    PHPのテストツール
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="testing_whitebox_application_php.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    PHPのテストツール
-  </span>
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    はじめに
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ホワイトボックステストのツール
-  </a>
-  
-    <nav class="md-nav" aria-label="01. ホワイトボックステストのツール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    整形
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 文法の誤り
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 脆弱性
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    単体テスト、機能テスト
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_application_php_lint.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    静的解析
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="testing_whitebox_application_php_unit.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    単体テスト
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="testing_whitebox_application_go.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ Goのテストツール
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
     </a>
   
 
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-    
-      
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    
-  
-  
-    <a href="testing_whitebox_infrastructure_lint.html" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    ■ インフラ
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -5917,38 +5503,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01" class="md-nav__link">
-    01. ホワイトボックステストのツール
+  <a href="#01-kube-score" class="md-nav__link">
+    01. kube-scoreの仕組み
   </a>
   
-    <nav class="md-nav" aria-label="01. ホワイトボックステストのツール">
+    <nav class="md-nav" aria-label="01. kube-scoreの仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    整形
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    静的解析
-  </a>
-  
-    <nav class="md-nav" aria-label="静的解析">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    ▼ 文法の誤り
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    ▼ 脆弱性
+    検出項目
   </a>
   
 </li>
@@ -5957,10 +5521,45 @@
     </nav>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    02. セットアップ
+  </a>
+  
+    <nav class="md-nav" aria-label="02. セットアップ">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    単体テスト、機能テスト
+  <a href="#_3" class="md-nav__link">
+    インストール
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    03. グローバルオプション
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    04. オプション
+  </a>
+  
+    <nav class="md-nav" aria-label="04. オプション">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#score" class="md-nav__link">
+    score
   </a>
   
 </li>
@@ -5988,7 +5587,7 @@
   
 
 
-<h1 id="php">PHPのテストツール＠ホワイトボックステスト<a class="headerlink" href="#php" title="Permanent link">&para;</a></h1>
+<h1 id="kube-score">kube-score＠ベストプラクティス違反<a class="headerlink" href="#kube-score" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -5997,27 +5596,44 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. ホワイトボックステストのツール<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">整形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="01-kube-score">01. kube-scoreの仕組み<a class="headerlink" href="#01-kube-score" title="Permanent link">&para;</a></h2>
+<h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：設定漏れ、推奨値、脆弱性、など) を検証する。</p>
+<blockquote>
 <ul>
-<li>PhpStorm</li>
-<li>PHP-CS-Fixer</li>
+<li><a href="https://github.com/zegl/kube-score/blob/master/README_CHECKS.md">https://github.com/zegl/kube-score/blob/master/README_CHECKS.md</a></li>
+<li><a href="https://github.com/zegl/kube-score/blob/master/README_PROBES.md">https://github.com/zegl/kube-score/blob/master/README_PROBES.md</a></li>
+<li><a href="https://github.com/zegl/kube-score/blob/master/README_SECURITYCONTEXT.md">https://github.com/zegl/kube-score/blob/master/README_SECURITYCONTEXT.md</a></li>
 </ul>
+</blockquote>
 <p><br></p>
-<h3 id="_3">静的解析<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 文法の誤り<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>kube-score
+</code></pre></div>
+<blockquote>
 <ul>
-<li>PHPStan</li>
+<li><a href="https://github.com/zegl/kube-score/tree/master#installation">https://github.com/zegl/kube-score/tree/master#installation</a></li>
 </ul>
-<h4 id="_5">▼ 脆弱性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<ul>
-<li>PHPStan</li>
-</ul>
+</blockquote>
 <p><br></p>
-<h3 id="_6">単体テスト、機能テスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h2 id="03">03. グローバルオプション<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<p>記入中...</p>
+<p><br></p>
+<h2 id="04">04. オプション<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
+<h3 id="score">score<a class="headerlink" href="#score" title="Permanent link">&para;</a></h3>
+<p>マニフェストを検査する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>kube-score<span class="w"> </span>score<span class="w"> </span>-
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>kube-score<span class="w"> </span>score<span class="w"> </span>-
+</code></pre></div>
+<blockquote>
 <ul>
-<li>PHPUnit</li>
+<li><a href="https://github.com/zegl/kube-score/tree/master#usage-in-ci">https://github.com/zegl/kube-score/tree/master#usage-in-ci</a></li>
 </ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -6025,7 +5641,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
       
     
   </small>
