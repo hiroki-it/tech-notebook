@@ -352,7 +352,9 @@ nav:
                       - checkov: testing/testing_whitebox_infrastructure_lint_checkov.md
                       - kics: testing/testing_whitebox_infrastructure_lint_kics.md
                       - kube-score: testing/testing_whitebox_infrastructure_lint_kube_score.md
-                      - trivy: testing/testing_whitebox_infrastructure_lint_trivy.md
+          - ■ アプリ/インフラ両方:
+                  - ■ 脆弱性診断:
+                      - trivy: testing/testing_whitebox_lint_trivy.md
       - ■ ブラックボックステスト:
           - ブラックボックステスト: testing/testing_blackbox.md
           - ■ 総合テスト:
