@@ -5281,7 +5281,7 @@ spec:
 
 ExternalName Serviceを設定する。
 
-Cluster内のDNSと外部のCNAMEを紐づける。
+Cluster内DNS名とCluster外CNAMEを紐づける。
 
 ```yaml
 apiVersion: v1

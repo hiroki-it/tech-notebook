@@ -51,7 +51,7 @@ CoreDNSのヘルスチェックを開始するまでの待機時間を設定す�
 
 ### rewrite
 
-Cluster内のDNS名とドメインを紐づける。
+Cluster内のDNS名とCluster外のドメインを紐づける。
 
 ```bash
 .:53 {

@@ -886,13 +886,13 @@ Pod
 
 #### ▼ ExternalName Service
 
-Cluster内外でのDNS名とCluster外のCNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。
+Cluster内DNS名とCluster外CNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。
 
 CoreDNSの代わりとして使用できる。
 
 例えば、`foo-db-service`というExternalName Serviceを作成したとする。
 
-ここ場合、`foo-db-service.default.svc.cluster.local`を指定すると、指定したCNAMEに問い合わせるようになる。
+ここ場合、`foo-db-service.default.svc.cluster.local`を指定すると、指定したCNAMEレコードに問い合わせるようになる。
 
 ![kubernetes_externalname-service.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
 

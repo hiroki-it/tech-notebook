@@ -159,12 +159,12 @@ HTTPリクエストを使用する場合、受信するインバウンド通信�
 
 Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
-
 ```ini
 [uwsgi]
 http = 0.0.0.0:5000
 ```
+
+> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
 
 <br>
 
