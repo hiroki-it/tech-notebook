@@ -410,14 +410,12 @@ $ istioctl proxy-config all foo-pod \
 
 Envoyで、起動時に読み込まれる設定を取得する。
 
-```bash
-$ istioctl proxy-config bootstrap foo-pod \
-    -n foo-namespace \
-    -o yaml \
-    | yq
-```
-
 ```yaml
+$ istioctl proxy-config bootstrap foo-pod \
+-n foo-namespace \
+-o yaml \
+| yq
+---
 bootstrap:
   admin:
     accessLogPath: /dev/null

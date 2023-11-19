@@ -119,7 +119,24 @@ ztunnelが`L4` (トランスポート層) のプロトコル (例：TCP、UDP、
 
 waypoint-proxyが`L7` (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。
 
-実体はDeployment配下の`envoy`コンテナを含むPodであり、任意のNodeにスケジューリングされている。
+実体は、Gateway-APIで作成された`envoy`コンテナを含むPodであり、任意のNodeにスケジューリングされている。
+
+```yaml
+$ istioctl experimental waypoint generate
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: namespace
+spec:
+  gatewayClassName: istio-waypoint
+  listeners:
+    - name: mesh
+      port: 15008
+      protocol: HBONE
+```
+
+> - https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/
 
 <br>
 

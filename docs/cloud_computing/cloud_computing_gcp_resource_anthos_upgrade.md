@@ -38,11 +38,9 @@ $ chmod a+x bmctl-1.12.0
 
 : Anthos GKE Clusterの現在のバージョンを確認する。
 
-```bash
-$ kubectl get cluster -A -o yaml
-```
-
 ```yaml
+$ kubectl get cluster -A -o yaml
+---
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
@@ -121,11 +119,9 @@ $ tail -f ~/baremetal/<ログの出力先>
 
      Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
-```bash
-$ kubectl get cluster -A -o yaml
-```
-
 ```yaml
+$ kubectl get cluster -A -o yaml
+---
 apiVersion: baremetal.cluster.gke.io/v1
 kind: Cluster
 metadata:
@@ -337,11 +333,9 @@ NAME       STATUS    AGE     REV
 ingress    Active    2d18h   1130
 ```
 
-```bash
-$ kubectl get namespace app -o yaml
-```
-
 ```yaml
+$ kubectl get namespace app -o yaml
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -357,11 +351,9 @@ NAME   STATUS    AGE     REV
 app    Active    2d18h   1130
 ```
 
-```bash
-$ kubectl get namespace app -o yaml
-```
-
 ```yaml
+$ kubectl get namespace app -o yaml
+---
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -525,8 +517,9 @@ $ ./output/asm-1.14/istioctl tag list
 
 TAG     REVISION    NAMESPACES
 default asm-1130-0
+```
 
-
+```bash
 # アップグレード前に、マニフェストを確認してみる。
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
@@ -558,8 +551,9 @@ $ ./output/asm-1.14/istioctl tag list
 
 TAG     REVISION    NAMESPACES
 default asm-1140-0
+```
 
-
+```bash
 # アップグレード前に、マニフェストを確認してみる。
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:

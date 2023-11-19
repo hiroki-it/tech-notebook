@@ -232,11 +232,10 @@ NAMESPACE       NAME                                ROLE ARN
 kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
 ```
 
-```bash
-$ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
-```
-
 ```yaml
+$ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
+
+---
 # 作成されたServiceAccount
 apiVersion: v1
 kind: ServiceAccount
@@ -251,7 +250,7 @@ metadata:
   resourceVersion: "2103515"
   uid: *****
 secrets:
-- name: foo-aws-load-balancer-controller-token-****
+  - name: foo-aws-load-balancer-controller-token-****
 ```
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
