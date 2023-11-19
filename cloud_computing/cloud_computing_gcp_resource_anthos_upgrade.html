@@ -6645,11 +6645,11 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 <p>ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>./asm/istio/istiod-service.yaml
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl diff -f ./asm/istio/istiod-service.yaml</span>
 
-$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>./asm/istio/istiod-service.yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">$ kubectl apply -f ./asm/istio/istiod-service.yaml</span>
+<span class="nn">---</span>
+<span class="c1"># https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
