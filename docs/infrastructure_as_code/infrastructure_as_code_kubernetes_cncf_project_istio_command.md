@@ -380,9 +380,7 @@ $ istioctl proxy-config all foo-pod \
     -n foo-namespace \
     -o yaml \
     | yq '.configs[] | keys' | sort -f
-```
-
-```yaml
+---
 - "@type"
 - "@type"
 - "@type"
@@ -484,15 +482,13 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 `yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
-```bash
-$ istioctl proxy-config cluster foo-pod \
-    -n foo-namespace \
-    -o yaml \
-    --fqdn bar-service.bar-namespace.svc.cluster.local \
-    | yq
-```
-
 ```yaml
+$ istioctl proxy-config cluster foo-pod \
+-n foo-namespace \
+-o yaml \
+--fqdn bar-service.bar-namespace.svc.cluster.local \
+| yq
+---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   type: EDS
@@ -699,15 +695,13 @@ NAME                         DOMAINS                                     MATCH  
 
 `yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
-```bash
+```yaml
 $ istioctl proxy-config routes foo-pod \
     -n foo-namespace \
     --name 50001 \
     -o yaml \
     | yq
-```
-
-```yaml
+---
 # ルート名
 - name: '50001'
   # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
