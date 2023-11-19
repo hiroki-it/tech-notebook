@@ -688,6 +688,20 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 <br>
 
+### 監視
+
+#### ▼ ログ収集
+
+| Node上のログの場所                   | 説明                                                                       |
+| ------------------------------------ | -------------------------------------------------------------------------- |
+| `/var/log/containers	`                | このディレクトリに、そのEC2ワーカーNode上のPod内コンテナのログを出力する。 |
+| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、aws-vpc-cniアドオンのL-IPAMデーモンのログを出力する。  |
+| `/var/log/aws-routed-eni/plugin.log` | 同上                                                                       |
+
+> - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
+
+<br>
+
 ## 04-02. Nodeグループ (on EC2)
 
 ### マネージド
@@ -1225,28 +1239,23 @@ resource "aws_autoscaling_group" "foo" {
 
 ### on Fargate (FargateワーカーNode) とは
 
+記入中...
+
 <br>
 
-## 05-02. セットアップ
-
-### コンソール画面の場合
-
-#### ▼ 制約
-
-EC2にはない制約については、以下のリンクを参考にせよ。
-
-> - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
+### 監視
 
 #### ▼ メトリクス収集
 
-FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応のため、メトリクス収集コンテナをサイドカーコンテナとして配置する必要がある。
+FargateワーカーNode内のメトリクスのデータポイントを収集する上で、FargateワーカーNodeはDaemonSetに非対応である。
+
+そのため、メトリクス収集コンテナをサイドカーコンテナとして配置する必要がある。
 
 収集ツールとして、OpenTelemetryをサポートしている。
 
 > - https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/
 
-#### ▼ ログルーティング
+#### ▼ ログ収集
 
 FargateワーカーNode内のログを転送する上で、FargateはDaemonSetに非対応のため、ログ転送コンテナをサイドカーコンテナとして配置する必要がある。
 
@@ -1281,11 +1290,9 @@ metadata:
 
 > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
-```bash
-$ kubectl apply -f config-map.yaml
-```
-
 ```yaml
+$ kubectl apply -f config-map.yaml
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -1317,6 +1324,21 @@ data:
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html
 > - https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
 > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
+
+<br>
+
+<br>
+
+## 05-02. セットアップ
+
+### コンソール画面の場合
+
+#### ▼ 制約
+
+EC2にはない制約については、以下のリンクを参考にせよ。
+
+> - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
+> - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
 
 <br>
 

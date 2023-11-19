@@ -466,13 +466,11 @@ $ istioctl proxy-status
 
      ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
-```bash
+```yaml
 $ kubectl diff -f ./asm/istio/istiod-service.yaml
 
 $ kubectl apply -f ./asm/istio/istiod-service.yaml
-```
-
-```yaml
+---
 # https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml
 apiVersion: v1
 kind: Service
