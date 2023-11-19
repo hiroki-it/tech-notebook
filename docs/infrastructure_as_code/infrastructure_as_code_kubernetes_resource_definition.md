@@ -2909,19 +2909,35 @@ ReadinessProbeチェックよりもヘルスチェックの意味合いが強い
 > - https://www.ianlewis.org/jp/kubernetes-health-check
 > - https://amateur-engineer-blog.com/livenessprobe-readinessprobe/
 
+#### ▼ exec
+
+コンテナのLivenessProbeヘルスチェックで、ユーザー定義のヘルスチェックを実行する。
+
+LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPC) 以外で、ヘルスチェックを実行したい場合に役立つ。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      livenessProbe:
+        exec:
+          command:
+            - source
+            - healthcheck.sh
+```
+
+> - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command
+
 #### ▼ httpGet
 
-コンテナのLivenessProbeヘルスチェックのエンドポイントを設定する。
+コンテナのLivenessProbeヘルスチェックで、`L7`チェックを実行する。
 
-自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
-
-| ツール       | エンドポイント   |
-| ------------ | ---------------- |
-| Alertmaanger | `/-/healthy`     |
-| Grafana      | `/healthz`       |
-| Kiali        | `/kiali/healthz` |
-| Prometheus   | `/-/healthy`     |
-| ...          | ...              |
+具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。
 
 ```yaml
 apiVersion: v1
@@ -2937,6 +2953,16 @@ spec:
           port: 80
           path: /healthcheck
 ```
+
+自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。
+
+| ツール       | エンドポイント   |
+| ------------ | ---------------- |
+| Alertmaanger | `/-/healthy`     |
+| Grafana      | `/healthz`       |
+| Kiali        | `/kiali/healthz` |
+| Prometheus   | `/-/healthy`     |
+| ...          | ...              |
 
 #### ▼ failureThreshold
 
@@ -3001,6 +3027,25 @@ spec:
       livenessProbe:
         # 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。
         initialDelaySeconds: 5
+```
+
+#### ▼ tcpSocket
+
+コンテナのLivenessProbeヘルスチェックで、`L4`チェックを実行する。
+
+具体的には、コンテナにTCPリクエストを送信し、TCPレスポンスを検証する。
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo-pod
+spec:
+  containers:
+    - name: app
+      image: app:1.0.0
+      tcpSocket:
+        port: 8080
 ```
 
 #### ▼ timeoutSeconds

@@ -185,7 +185,7 @@ Pragma: no-cache
 {
   "access_token": "<アクセストークン>", # 必須
   "token_type": " <トークンタイプ>", # 必須
-  "expires_in": <有効秒数>, # 任意
+  "expires_in": <失効秒数>, # 任意
   "refresh_token": "<リフレッシュトークン>", # 任意
   "scope": "<認可スコープ>", # 要求したスコープ群と差異があれば必須
 }

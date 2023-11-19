@@ -31,13 +31,13 @@ description: Googleサーチコンソール＠テレメトリー収集ツール�
 
 クローラーには以下の種類がいる。
 
-| クローラー名 | 検索エンジン |
-| :----------- | :----------- |
-| Googlebot    | Google       |
-| Bingbot      | Bing検索     |
-| YandexBot    | YANDEX       |
-| Baiduspider  | Baidu        |
-| Mail.RU_Bot  | Mail.ru      |
+| クローラーの種類 | 検索エンジン |
+| :--------------- | :----------- |
+| Googlebot        | Google       |
+| Bingbot          | Bing検索     |
+| YandexBot        | YANDEX       |
+| Baiduspider      | Baidu        |
+| Mail.RU_Bot      | Mail.ru      |
 
 > - https://technical-seo.jp/crawler/
 

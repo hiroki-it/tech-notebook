@@ -183,11 +183,11 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 **＊例＊**
 
-| 方法 | 中間認証局名       | ルート認証局名 |
-| ---- | ------------------ | -------------- |
-| 自前 | Vault              | 記入中...      |
-| AWS  | AWS Trust Services | Starfield社    |
-| GCP  | GCP Trust Services | 記入中...      |
+| 方法の種類 | 中間認証局名       | ルート認証局名 |
+| ---------- | ------------------ | -------------- |
+| 自前       | Vault              | 記入中...      |
+| AWS        | AWS Trust Services | Starfield社    |
+| GCP        | GCP Trust Services | 記入中...      |
 
 > - https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
 
