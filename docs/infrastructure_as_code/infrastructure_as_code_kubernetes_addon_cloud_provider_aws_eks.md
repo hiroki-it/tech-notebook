@@ -202,6 +202,30 @@ AWS EKS Cluster内にネットワークを作成する。
 
 <br>
 
+### CNIプラグイン
+
+記入中...
+
+<br>
+
+### L-IPAMデーモン：Local IP Address Manager Daemon
+
+#### ▼ L-IPAMデーモンとは
+
+NodeやPodにIPアドレスを割り当てる。
+
+#### ▼ ログ
+
+L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log`ファイルと`/var/log/aws-routed-eni/plugin.log`ファイルにログを出力する。
+
+aws-eks-vpc-cniアドオンが正しく動作しない場合、CNIプラグインのDaemonSet (`aws-node`) よりもL-IPAMデーモンのログを確認した方が良い。
+
+> - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
+
+<br>
+
+## 05-03. セットアップ
+
 ### マニフェスト
 
 ```yaml
@@ -430,30 +454,6 @@ spec:
 > - https://github.com/aws/aws-network-policy-agent
 
 <br>
-
-### CNIプラグイン
-
-記入中...
-
-<br>
-
-### L-IPAMデーモン：Local IP Address Manager Daemon
-
-#### ▼ L-IPAMデーモンとは
-
-NodeやPodにIPアドレスを割り当てる。
-
-#### ▼ ログ
-
-L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log`ファイルと`/var/log/aws-routed-eni/plugin.log`ファイルにログを出力する。
-
-aws-eks-vpc-cniアドオンが正しく動作しない場合、CNIプラグインのDaemonSet (`aws-node`) よりもL-IPAMデーモンのログを確認した方が良い。
-
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
-
-<br>
-
-## 05-03. セットアップ
 
 ### 設定
 
