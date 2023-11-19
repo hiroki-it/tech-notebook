@@ -7878,13 +7878,13 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 </ul>
 </blockquote>
 <p><code>yaml</code>形式で取得すれば、より詳細な設定値を確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>endpoints<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--cluster<span class="w"> </span><span class="s2">&quot;outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># クラスター名</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config endpoints foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--cluster &quot;outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local&quot; \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
+<span class="nn">---</span>
+<span class="c1"># クラスター名</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">  </span><span class="nt">addedViaApi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">observabilityName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
