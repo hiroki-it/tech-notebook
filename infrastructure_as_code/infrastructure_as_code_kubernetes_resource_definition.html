@@ -6148,6 +6148,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ exec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#httpget" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ httpGet
@@ -6178,6 +6187,15 @@
   <a href="#initialdelayseconds" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpsocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tcpSocket
     </span>
   </a>
   
@@ -6262,7 +6280,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcpsocket" class="md-nav__link">
+  <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
     </span>
@@ -12436,6 +12454,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ exec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#httpget" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ httpGet
@@ -12466,6 +12493,15 @@
   <a href="#initialdelayseconds" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ initialDelaySeconds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcpsocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tcpSocket
     </span>
   </a>
   
@@ -12550,7 +12586,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcpsocket" class="md-nav__link">
+  <a href="#tcpsocket_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tcpSocket
     </span>
@@ -16760,8 +16796,44 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <li><a href="https://amateur-engineer-blog.com/livenessprobe-readinessprobe/">https://amateur-engineer-blog.com/livenessprobe-readinessprobe/</a></li>
 </ul>
 </blockquote>
+<h4 id="exec">▼ exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h4>
+<p>コンテナのLivenessProbeヘルスチェックで、ユーザー定義のヘルスチェックを実行する。</p>
+<p>LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPC) 以外で、ヘルスチェックを実行したい場合に役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">healthcheck.sh</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-liveness-command</a></li>
+</ul>
+</blockquote>
 <h4 id="httpget">▼ httpGet<a class="headerlink" href="#httpget" title="Permanent link">&para;</a></h4>
-<p>コンテナのLivenessProbeヘルスチェックのエンドポイントを設定する。</p>
+<p>コンテナのLivenessProbeヘルスチェックで、<code>L7</code>チェックを実行する。</p>
+<p>具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthcheck</span>
+</code></pre></div>
 <p>自身のアプリケーションではエンドポイントを実装する必要があるが、OSSではすでに用意されていることが多い。</p>
 <table>
 <thead>
@@ -16793,19 +16865,6 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
-<span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/healthcheck</span>
-</code></pre></div>
 <h4 id="failurethreshold">▼ failureThreshold<a class="headerlink" href="#failurethreshold" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -16852,6 +16911,20 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># 初回以降のLivenessProbeヘルスチェックを実行するまでに5秒間待機する。</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div>
+<h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
+<p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
+<p>具体的には、コンテナにTCPリクエストを送信し、TCPレスポンスを検証する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
+<span class="w">      </span><span class="nt">tcpSocket</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
 </code></pre></div>
 <h4 id="timeoutseconds">▼ timeoutSeconds<a class="headerlink" href="#timeoutseconds" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。</p>
@@ -16963,7 +17036,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
 </code></pre></div>
-<h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
+<h4 id="tcpsocket_1">▼ tcpSocket<a class="headerlink" href="#tcpsocket_1" title="Permanent link">&para;</a></h4>
 <p>ReadinessProbeチェックのTCPプロトコルのポート番号を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>

@@ -6921,7 +6921,12 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="cni">CNIプラグイン<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>CNIプラグインは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="l-ipamlocal-ip-address-manager-daemon">L-IPAMデーモン：Local IP Address Manager Daemon<a class="headerlink" href="#l-ipamlocal-ip-address-manager-daemon" title="Permanent link">&para;</a></h3>
 <h4 id="l-ipam">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h4>
@@ -6986,7 +6991,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
 <span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># aws-eks-vpc-cniの実体</span>
+<span class="w">        </span><span class="c1"># CNIプラグインの実体</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon-k8s-cni:v1.15.3</span>
 <span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
@@ -7404,7 +7409,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>CNIプラグインは、L-IPAMデーモンのプールからIPアドレスを取得し、Podを割り当てる。</p>
+<p>CNIプラグインは、L-IPAMデーモンのプールからIPアドレスを取得し、Podにこれを割り当てる。</p>
 <p>反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。</p>
 </dd>
 </dl>
@@ -7520,18 +7525,18 @@ $<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span c
 <thead>
 <tr>
 <th></th>
-<th>t3.nano</th>
-<th>t3.micro</th>
-<th>t3.small</th>
-<th>t3.medium</th>
-<th>t3.large</th>
-<th>t3.xlarge</th>
-<th>t3.2xlarge</th>
+<th><code>t3.nano</code></th>
+<th><code>t3.micro</code></th>
+<th><code>t3.small</code></th>
+<th><code>t3.medium</code></th>
+<th><code>t3.large</code></th>
+<th><code>t3.xlarge</code></th>
+<th><code>t3.2xlarge</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Node <code>1</code>個</td>
+<td>Node<code>1</code>個</td>
 <td>4</td>
 <td>4</td>
 <td>11</td>

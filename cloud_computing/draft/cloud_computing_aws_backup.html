@@ -5979,12 +5979,12 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_default_region<span class="w"> </span><span class="s2">&quot;ap-northeast-1&quot;</span>
 
 <span class="c1"># https://sts.amazonaws.com に、ロールの紐付けをリクエストする。</span>
-<span class="c1"># セッションの有効秒数を少なくすればより安全</span>
+<span class="c1"># セッションの失効秒数を少なくすればより安全</span>
 <span class="nv">aws_sts_credentials</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--role-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::</span><span class="si">${</span><span class="nv">aws_access_key_id</span><span class="si">}</span><span class="s2">:role/&quot;</span><span class="si">${</span><span class="nv">ENV</span><span class="si">}</span><span class="s2">&quot;-&lt;紐付けしたいIAMロール名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--role-session-name<span class="w"> </span><span class="s2">&quot;&lt;任意のセッション名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--external-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$aws_iam_role_external_id</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">&quot;&lt;セッションの有効秒数&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--duration-seconds<span class="w"> </span><span class="s2">&quot;&lt;セッションの失効秒数&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Credentials&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--output<span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
@@ -5994,7 +5994,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>
