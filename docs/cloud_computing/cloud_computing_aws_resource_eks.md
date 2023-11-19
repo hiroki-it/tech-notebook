@@ -197,6 +197,12 @@ $ kubectl get pod
 
 <br>
 
+### コントロールプレーンNode
+
+記入中...
+
+<br>
+
 ### kube-apiserver
 
 #### ▼ Kubernetes RBACとの連携
@@ -277,6 +283,12 @@ kube-apiserverのインターネットへの公開範囲を設定できる。
 プライベートアクセスの場合、VPC内部からのみアクセスできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。
 
 > - https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
+
+<br>
+
+### NLB
+
+記入中...
 
 <br>
 
@@ -692,11 +704,11 @@ EC2ワーカーNode内のPodがECRからコンテナイメージをプルでき�
 
 #### ▼ ログ収集
 
-| Node上のログの場所                   | 説明                                                                       |
-| ------------------------------------ | -------------------------------------------------------------------------- |
-| `/var/log/containers	`                | このディレクトリに、そのEC2ワーカーNode上のPod内コンテナのログを出力する。 |
-| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、aws-vpc-cniアドオンのL-IPAMデーモンのログを出力する。  |
-| `/var/log/aws-routed-eni/plugin.log` | 同上                                                                       |
+| Node上のログの場所                   | 説明                                                                                                   |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `/var/log/containers	`                | このディレクトリに、そのEC2ワーカーNode上のPod内コンテナのログファイルのシンボリックリンクを作成する。 |
+| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、aws-vpc-cniアドオンのL-IPAMデーモンのログを出力する。                              |
+| `/var/log/aws-routed-eni/plugin.log` | 同上                                                                                                   |
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
 
@@ -1333,9 +1345,9 @@ data:
 
 ### コンソール画面の場合
 
-#### ▼ 制約
+#### ▼ EC2ワーカーNodeとの比較
 
-EC2にはない制約については、以下のリンクを参考にせよ。
+EC2ワーカーNodeと比較して、使用できない機能については、以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
