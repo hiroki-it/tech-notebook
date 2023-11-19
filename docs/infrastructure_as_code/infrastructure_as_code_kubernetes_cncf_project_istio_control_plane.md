@@ -263,16 +263,37 @@ webhooks:
 
 ### `discovery`コンテナの仕組み
 
-Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、といった要素からなる。
+Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。
+
+![istio_control-plane_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png)
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/
 
 <br>
 
-### XDS-API
+### Config Ingestionレイヤー
 
-#### ▼ XDS-APIとは
+記入中...
+
+<br>
+
+### Core Data Modelレイヤー
+
+記入中...
+
+<br>
+
+### Proxy Servingレイヤー
+
+#### ▼ Proxy Servingレイヤーとは
+
+XDS-APIを持つ。
+
+> - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
+> - https://zhonghua.io/2019/05/12/istio-analysis-4/
+
+#### ▼ XDS-API
 
 pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。
 
