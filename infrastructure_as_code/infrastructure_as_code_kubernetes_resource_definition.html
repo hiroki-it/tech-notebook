@@ -5076,6 +5076,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istioの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-waypoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-waypointの場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5134,7 +5152,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio" class="md-nav__link">
+  <a href="#istio_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Istioの場合
     </span>
@@ -11346,6 +11364,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istioの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#istio-waypoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ istio-waypointの場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -11404,7 +11440,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio" class="md-nav__link">
+  <a href="#istio_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Istioの場合
     </span>
@@ -15428,19 +15464,35 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specgatewayclassname">spec.gatewayClassName<a class="headerlink" href="#specgatewayclassname" title="Permanent link">&para;</a></h3>
 <h4 id="gatewayclassname">▼ gatewayClassNameとは<a class="headerlink" href="#gatewayclassname" title="Permanent link">&para;</a></h4>
 <p>GatewayClassの<code>.metadata.name</code>キーの値を設定する。</p>
+<h4 id="istio">▼ istioの場合<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
+<p>IstioのIngressGatewayを作成する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># IstioのIngressGatewayを作成する</span>
 <span class="w">  </span><span class="nt">gatewayClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://gateway-api.sigs.k8s.io/api-types/gateway/">https://gateway-api.sigs.k8s.io/api-types/gateway/</a></li>
 <li><a href="https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/">https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/</a></li>
+</ul>
+</blockquote>
+<h4 id="istio-waypoint">▼ istio-waypointの場合<a class="headerlink" href="#istio-waypoint" title="Permanent link">&para;</a></h4>
+<p>IstioのWaypointを作成する</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gatewayClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/">https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -15503,7 +15555,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://github.com/envoyproxy/gateway/blob/v0.5.0/examples/kubernetes/quickstart.yaml#L1-L6">https://github.com/envoyproxy/gateway/blob/v0.5.0/examples/kubernetes/quickstart.yaml#L1-L6</a></li>
 </ul>
 </blockquote>
-<h4 id="istio">▼ Istioの場合<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
+<h4 id="istio_1">▼ Istioの場合<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1alpha2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GatewayClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -19129,7 +19181,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

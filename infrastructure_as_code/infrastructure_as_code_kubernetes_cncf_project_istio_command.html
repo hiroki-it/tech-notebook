@@ -7585,6 +7585,7 @@ istio-sidecar-injector<span class="w">            </span><span class="m">4</span
 <p>インストールするIstioは<code>istioctl</code>コマンドのバージョンで決まるため、<code>revision</code>キーのリビジョン番号と実際にインストールするIstioのバージョンは無関係である。</p>
 <p>執筆時点 (2023/02/23) で、<code>istioctl</code>コマンドを使用してエイリアスを設定する方法はなく、自動的に<code>default</code>になってしまう。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration
+
 NAME<span class="w">                              </span>WEBHOOKS<span class="w">   </span>AGE
 istio-revision-tag-default<span class="w">        </span><span class="m">4</span><span class="w">          </span>9m52s
 istio-sidecar-injector-1-10-0<span class="w">     </span><span class="m">2</span><span class="w">          </span>9m58s
@@ -7601,6 +7602,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 istio.io/rev:<span class="w"> </span><span class="m">1</span>-10-0
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>istio-system
+
 NAME<span class="w">                                        </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
 pod/istio-ingressgateway-*****<span class="w">              </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>35m
 pod/istiod-1-10-0-*****<span class="w">                     </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>35m
@@ -8171,9 +8173,8 @@ $<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </s
 
 TAG<span class="w">       </span>REVISION<span class="w">   </span>NAMESPACES
 default<span class="w">    </span><span class="m">1</span>-10-0<span class="w">      </span>app
-
-
-<span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>istio-revision-tag-&lt;エイリアス&gt;<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>istio.io/rev:<span class="w"> </span>-e<span class="w"> </span>istio.io/tag:
 
@@ -8238,14 +8239,13 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 NAME<span class="w">                 </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
 istiod-1-10-0<span class="w">        </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>1m<span class="w">  </span><span class="c1"># 1-10-0</span>
 istiod-1-11-0<span class="w">        </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>1m<span class="w">  </span><span class="c1"># 1-11-0 (今回のアップグレード先)</span>
-
-
-<span class="c1"># Service</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Service</span>
 NAME<span class="w">             </span>TYPE<span class="w">         </span>CLUSTER-IP<span class="w">    </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">                                                </span>AGE
 istiod-1-10-0<span class="w">    </span>ClusterIP<span class="w">    </span><span class="m">10</span>.32.6.58<span class="w">    </span>&lt;none&gt;<span class="w">        </span><span class="m">15010</span>/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP<span class="w">   </span>12m
 istiod-1-11-0<span class="w">    </span>ClusterIP<span class="w">    </span><span class="m">10</span>.32.6.58<span class="w">    </span>&lt;none&gt;<span class="w">        </span><span class="m">15010</span>/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP<span class="w">   </span>12m<span class="w"> </span><span class="c1"># 新しい方</span>
-
-<span class="c1"># MutatingWebhookConfiguration</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># MutatingWebhookConfiguration</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
 NAME<span class="w">                                </span>WEBHOOKS<span class="w">   </span>AGE
@@ -8261,8 +8261,8 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>default<span class="w"> </span>--revision<span class="w"> </span><span class="m">1</span>-11-0<span class="w"> </span>--overwrite
-
-<span class="c1"># MutatingWebhookConfiguration</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># MutatingWebhookConfiguration</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
 NAME<span class="w">                                </span>WEBHOOKS<span class="w">   </span>AGE
@@ -8280,8 +8280,8 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 
 TAG<span class="w">       </span>REVISION<span class="w">  </span>NAMESPACES
 default<span class="w">   </span><span class="m">1</span>-11-0<span class="w">     </span>app
-
-$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>istio-revision-tag-default<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>istio-revision-tag-default<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>istio.io/rev:<span class="w"> </span>-e<span class="w"> </span>istio.io/tag:
 
 istio.io/rev:<span class="w"> </span><span class="m">1</span>-11-0

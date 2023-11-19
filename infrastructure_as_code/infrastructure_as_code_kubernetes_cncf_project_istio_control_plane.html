@@ -4619,6 +4619,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      discoveryコンテナの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#xds-api" class="md-nav__link">
     <span class="md-ellipsis">
       XDS-API
@@ -6159,6 +6168,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      discoveryコンテナの仕組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#xds-api" class="md-nav__link">
     <span class="md-ellipsis">
       XDS-API
@@ -6524,6 +6542,15 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="02-discovery">02. <code>discovery</code>コンテナ<a class="headerlink" href="#02-discovery" title="Permanent link">&para;</a></h2>
+<h3 id="discovery"><code>discovery</code>コンテナの仕組み<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
+<p>Istio (<code>v1.1</code>) の<code>discovery</code>コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、といった要素からなる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
+<li><a href="https://zhonghua.io/2019/05/12/istio-analysis-4/">https://zhonghua.io/2019/05/12/istio-analysis-4/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="xds-api">XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h3>
 <h4 id="xds-api_1">▼ XDS-APIとは<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
 <p>pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。</p>
@@ -6700,7 +6727,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>
