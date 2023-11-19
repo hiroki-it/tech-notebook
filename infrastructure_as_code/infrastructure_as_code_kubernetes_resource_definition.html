@@ -16914,7 +16914,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 </code></pre></div>
 <h4 id="tcpsocket">▼ tcpSocket<a class="headerlink" href="#tcpsocket" title="Permanent link">&para;</a></h4>
 <p>コンテナのLivenessProbeヘルスチェックで、<code>L4</code>チェックを実行する。</p>
-<p>具体的には、コンテナにTCPリクエストを送信し、TCPレスポンスを検証する。</p>
+<p>具体的には、コンテナにTCPハンドシェイクを実行し、TCPコネクションを確立できるかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>

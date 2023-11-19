@@ -6807,7 +6807,7 @@
 :INPUT<span class="w"> </span>DROP<span class="w"> </span><span class="o">[</span><span class="m">5</span>:300<span class="o">]</span>
 :FORWARD<span class="w"> </span>DROP<span class="w"> </span><span class="o">[</span><span class="m">0</span>:0<span class="o">]</span>
 :OUTPUT<span class="w"> </span>ACCEPT<span class="w"> </span><span class="o">[</span><span class="m">32</span>:3205<span class="o">]</span>
-<span class="c1"># 22番ポートと80番ポート宛てのTCPプロトコルのインバウンド通信を許可する。</span>
+<span class="c1"># 22番ポートと80番ポート宛てのTCPハンドシェイクを許可する。</span>
 -A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>-m<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
 -A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>-m<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">80</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
 COMMIT
@@ -7299,7 +7299,7 @@ public
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

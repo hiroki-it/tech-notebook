@@ -7406,7 +7406,8 @@ traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span clas
 </code></pre></div>
 <p><br></p>
 <h3 id="-t">-T<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
-<p>宛先にTCPプロトコル (例：HTTP、HTTPS) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。</p>
+<p>宛先にTCPハンドシェイクを実行したり、HTTPプロトコル (HTTP、HTTPS) でパケットを送信する。</p>
+<p>その後、通信の送信元から宛先までに通過するルーターの送信元IPアドレスを取得する。</p>
 <p><code>traceroute</code>コマンドではUDPプロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>traceroute<span class="w"> </span>google.com<span class="w"> </span>-T<span class="w"> </span>-p<span class="w"> </span><span class="m">443</span>
@@ -7456,7 +7457,7 @@ $<span class="w"> </span>traceroute<span class="w"> </span>*.*.*.*<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>
