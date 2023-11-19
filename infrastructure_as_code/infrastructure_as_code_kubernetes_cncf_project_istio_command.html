@@ -7743,12 +7743,12 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <h3 id="bootstrap">bootstrap<a class="headerlink" href="#bootstrap" title="Permanent link">&para;</a></h3>
 <h4 id="bootstrap_1">▼ bootstrapとは<a class="headerlink" href="#bootstrap_1" title="Permanent link">&para;</a></h4>
 <p>Envoyで、起動時に読み込まれる設定を取得する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>bootstrap<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="p">|</span><span class="w"> </span>yq
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">bootstrap</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config bootstrap foo-pod \</span>
+<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
+<span class="l l-Scalar l-Scalar-Plain">| yq</span>
+<span class="nn">---</span>
+<span class="nt">bootstrap</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">admin</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">accessLogPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/null</span>
 <span class="w">    </span><span class="nt">address</span><span class="p">:</span>
@@ -8369,7 +8369,7 @@ data<span class="w"> </span>plane<span class="w"> </span>version:<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

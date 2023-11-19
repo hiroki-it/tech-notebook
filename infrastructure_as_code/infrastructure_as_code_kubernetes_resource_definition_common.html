@@ -7347,9 +7347,9 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>--show-managed-fields
 </code></pre></div>
 <p>もし、特定のキーが管理下にあるか否かを調べる場合、<code>grep</code>コマンドと組み合わせる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>--show-managed-fields<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>manager<span class="w"> </span>-e<span class="w"> </span>f:&lt;マニフェストのキー&gt;
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get deployment foo-deployment -o yaml --show-managed-fields | grep -e manager -e f:&lt;マニフェストのキー&gt;</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">managedFields</span><span class="p">:</span>
@@ -7521,7 +7521,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

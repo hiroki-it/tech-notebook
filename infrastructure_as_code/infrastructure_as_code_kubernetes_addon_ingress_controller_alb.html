@@ -6368,9 +6368,10 @@
 NAMESPACE<span class="w">       </span>NAME<span class="w">                                </span>ROLE<span class="w"> </span>ARN
 kube-system<span class="w">     </span>foo-aws-load-balancer-controller<span class="w">    </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/eksctl-foo-eks-cluster-addon-i-Role1-****
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccount<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>foo-aws-load-balancer-controller<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># 作成されたServiceAccount</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml</span>
+
+<span class="nn">---</span>
+<span class="c1"># 作成されたServiceAccount</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6384,7 +6385,7 @@ kube-system<span class="w">     </span>foo-aws-load-balancer-controller<span cla
 <span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2103515&quot;</span>
 <span class="w">  </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 <span class="nt">secrets</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-aws-load-balancer-controller-token-****</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-aws-load-balancer-controller-token-****</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6658,7 +6659,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

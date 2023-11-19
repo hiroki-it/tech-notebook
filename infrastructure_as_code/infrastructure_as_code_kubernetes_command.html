@@ -8445,9 +8445,10 @@ baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span cl
 <p><strong>＊例＊</strong></p>
 <p>指定したSecretを<code>yaml</code>形式で取得する。</p>
 <p>正規表現と同様に、一部の文字列ではエスケープする必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;Secret名&gt;<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get secret &lt;Secret名&gt; -o yaml</span>
+
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2021-12-00T00:00:00Z&quot;</span>
@@ -8919,7 +8920,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

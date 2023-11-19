@@ -6223,9 +6223,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <p>Anthos GKE Clusterの現在のバージョンを確認する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>cluster<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baremetal.cluster.gke.io/v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get cluster -A -o yaml</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baremetal.cluster.gke.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-anthos-cluster</span>
@@ -6318,9 +6318,9 @@ $<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>upgrade<span c
 <p>Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>cluster<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baremetal.cluster.gke.io/v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get cluster -A -o yaml</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baremetal.cluster.gke.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-anthos-cluster</span>
@@ -6521,9 +6521,9 @@ istiod-asm-1140-0<span class="w">    </span><span class="m">1</span>/1<span clas
 NAME<span class="w">       </span>STATUS<span class="w">    </span>AGE<span class="w">     </span>REV
 ingress<span class="w">    </span>Active<span class="w">    </span>2d18h<span class="w">   </span><span class="m">1130</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>app<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get namespace app -o yaml</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingress</span>
@@ -6535,9 +6535,9 @@ ingress<span class="w">    </span>Active<span class="w">    </span>2d18h<span cl
 NAME<span class="w">   </span>STATUS<span class="w">    </span>AGE<span class="w">     </span>REV
 app<span class="w">    </span>Active<span class="w">    </span>2d18h<span class="w">   </span><span class="m">1130</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>app<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get namespace app -o yaml</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -6693,9 +6693,8 @@ $<span class="w"> </span>./output/asm-1.14/istioctl<span class="w"> </span>tag<s
 
 TAG<span class="w">     </span>REVISION<span class="w">    </span>NAMESPACES
 default<span class="w"> </span>asm-1130-0
-
-
-<span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>istio-revision-tag-default<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>istio.io/rev:<span class="w"> </span>-e<span class="w"> </span>istio.io/tag:
 
@@ -6724,9 +6723,8 @@ $<span class="w"> </span>./output/asm-1.14/istioctl<span class="w"> </span>tag<s
 
 TAG<span class="w">     </span>REVISION<span class="w">    </span>NAMESPACES
 default<span class="w"> </span>asm-1140-0
-
-
-<span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、マニフェストを確認してみる。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>istio-revision-tag-default<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>istio.io/rev:<span class="w"> </span>-e<span class="w"> </span>istio.io/tag:
 
@@ -6802,7 +6800,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>

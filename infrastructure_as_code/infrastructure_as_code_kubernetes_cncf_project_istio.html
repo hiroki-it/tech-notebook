@@ -7384,7 +7384,25 @@
 <p>実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。</p>
 <h4 id="waypoint-proxy">▼ waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h4>
 <p>waypoint-proxyが<code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPS、など) を処理できる。</p>
-<p>実体はDeployment配下の<code>envoy</code>コンテナを含むPodであり、任意のNodeにスケジューリングされている。</p>
+<p>実体は、Gateway-APIで作成された<code>envoy</code>コンテナを含むPodであり、任意のNodeにスケジューリングされている。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl experimental waypoint generate</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.networking.k8s.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gatewayClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-waypoint</span>
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15008</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HBONE</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/">https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_6">デザインパターンの比較<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
@@ -8060,7 +8078,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
       
     
   </small>
