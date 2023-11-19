@@ -254,7 +254,6 @@ spec:
 
 ```yaml
 $ kubectl get service istio-ingressgateway -o yaml -n istio-system
-
 ---
 apiVersion: v1
 kind: Service

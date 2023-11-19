@@ -564,15 +564,13 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 
 `yaml`形式で取得すれば、より詳細な設定値を確認できる。
 
-```bash
+```yaml
 $ istioctl proxy-config endpoints foo-pod \
     -n foo-namespace \
     --cluster "outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local" \
     -o yaml \
     | yq
-```
-
-```yaml
+---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   addedViaApi: true

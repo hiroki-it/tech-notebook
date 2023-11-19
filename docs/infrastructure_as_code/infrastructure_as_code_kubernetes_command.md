@@ -1094,7 +1094,6 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 
 ```yaml
 $ kubectl get secret <Secret名> -o yaml
-
 ---
 apiVersion: v1
 kind: Secret
