@@ -4628,26 +4628,53 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xds-api" class="md-nav__link">
+  <a href="#config-ingestion" class="md-nav__link">
     <span class="md-ellipsis">
-      XDS-API
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="XDS-API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xds-api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-APIとは
+      Config Ingestionレイヤー
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#xds-api_2" class="md-nav__link">
+  <a href="#core-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Data Modelレイヤー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy Servingレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy Servingレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-serving_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Proxy Servingレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xds-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ XDS-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xds-api_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ XDS-APIの実装
     </span>
@@ -6177,26 +6204,53 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#xds-api" class="md-nav__link">
+  <a href="#config-ingestion" class="md-nav__link">
     <span class="md-ellipsis">
-      XDS-API
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="XDS-API">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xds-api_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ XDS-APIとは
+      Config Ingestionレイヤー
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#xds-api_2" class="md-nav__link">
+  <a href="#core-data-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Data Modelレイヤー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy Servingレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proxy Servingレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-serving_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Proxy Servingレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xds-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ XDS-API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xds-api_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ XDS-APIの実装
     </span>
@@ -6543,7 +6597,8 @@
 <p><br></p>
 <h2 id="02-discovery">02. <code>discovery</code>コンテナ<a class="headerlink" href="#02-discovery" title="Permanent link">&para;</a></h2>
 <h3 id="discovery"><code>discovery</code>コンテナの仕組み<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
-<p>Istio (<code>v1.1</code>) の<code>discovery</code>コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、といった要素からなる。</p>
+<p>Istio (<code>v1.1</code>) の<code>discovery</code>コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。</p>
+<p><img alt="istio_control-plane_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
@@ -6551,8 +6606,22 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="xds-api">XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h3>
-<h4 id="xds-api_1">▼ XDS-APIとは<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
+<h3 id="config-ingestion">Config Ingestionレイヤー<a class="headerlink" href="#config-ingestion" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="core-data-model">Core Data Modelレイヤー<a class="headerlink" href="#core-data-model" title="Permanent link">&para;</a></h3>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="proxy-serving">Proxy Servingレイヤー<a class="headerlink" href="#proxy-serving" title="Permanent link">&para;</a></h3>
+<h4 id="proxy-serving_1">▼ Proxy Servingレイヤーとは<a class="headerlink" href="#proxy-serving_1" title="Permanent link">&para;</a></h4>
+<p>XDS-APIを持つ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
+<li><a href="https://zhonghua.io/2019/05/12/istio-analysis-4/">https://zhonghua.io/2019/05/12/istio-analysis-4/</a></li>
+</ul>
+</blockquote>
+<h4 id="xds-api">▼ XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h4>
 <p>pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。</p>
 <blockquote>
 <ul>
@@ -6562,7 +6631,7 @@
 <li><a href="https://www.cnblogs.com/luozhiyun/p/14088989.html">https://www.cnblogs.com/luozhiyun/p/14088989.html</a></li>
 </ul>
 </blockquote>
-<h4 id="xds-api_2">▼ XDS-APIの実装<a class="headerlink" href="#xds-api_2" title="Permanent link">&para;</a></h4>
+<h4 id="xds-api_1">▼ XDS-APIの実装<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">xds</span>
 
 <span class="o">...</span>
