@@ -131,7 +131,7 @@ GmailでPOPかIMAPを設定できる。
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
 
-#### ▼ 仕組み
+#### ▼ IMAP4の仕組み
 
 IMAPのリクエストは、`<タグ> <リクエストコマンド> <引数>`からなる。
 

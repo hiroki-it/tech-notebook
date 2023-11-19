@@ -25,7 +25,7 @@ description: EKS＠AWSリソースの知見を記録しています。
 
 > - https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
 
-#### ▼ 仕組み
+#### ▼ コントロールプレーンの仕組み
 
 EKSのコントロールプレーンは、開発者や他のAWSリソースからのアクセスを待ち受けるAPI、アクセスをAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。
 
@@ -1381,7 +1381,9 @@ AWSはIaaSのため、AMIを指定すれば、NodeのOSのアップグレード�
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
 > - https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateNodegroupConfig.html#API_UpdateNodegroupConfig_RequestSyntax
 
-### 仕組み
+<br>
+
+### アップグレードの仕組み
 
 #### ▼ データプレーンの場合
 

@@ -187,7 +187,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ### ブルー/グリーンデプロイメント
 
-#### ▼ 仕組み
+#### ▼ ブルー/グリーンデプロイメントの仕組み
 
 ![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpeg)
 

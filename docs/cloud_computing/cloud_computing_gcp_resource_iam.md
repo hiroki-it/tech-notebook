@@ -171,7 +171,7 @@ GoogleCloud外のリソース (例：AWS、Azure、Kubernetes、など) からGo
 
 <br>
 
-### 仕組み
+### Workload Identityの仕組み
 
 1. GoogleCloudリソース外で認証を実行する。
 2. 認証が成功する。

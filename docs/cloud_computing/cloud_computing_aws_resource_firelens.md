@@ -13,7 +13,7 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. FireLens
+## 01. FireLensの仕組み
 
 ### アーキテクチャ
 

@@ -1465,6 +1465,10 @@ spec:
 
 GatewayClassの`.metadata.name`キーの値を設定する。
 
+#### ▼ istioの場合
+
+IstioのIngressGatewayを作成する
+
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
@@ -1472,12 +1476,27 @@ metadata:
   name: gateway
   namespace: istio-ingress
 spec:
-  # IstioのIngressGatewayを作成する
   gatewayClassName: istio
 ```
 
 > - https://gateway-api.sigs.k8s.io/api-types/gateway/
 > - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
+
+#### ▼ istio-waypointの場合
+
+IstioのWaypointを作成する
+
+```yaml
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+metadata:
+  name: gateway
+  namespace: istio-ingress
+spec:
+  gatewayClassName: istio-waypoint
+```
+
+> - https://istio.io/latest/blog/2023/waypoint-proxy-made-simple/
 
 <br>
 

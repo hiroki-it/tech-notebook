@@ -27,7 +27,7 @@ description: Istio＠CNCFの知見を記録しています。
 > - https://speakerdeck.com/16yuki0702/distributed-tracing-at-openshift-meetup-tokyo20191018?slide=35
 > - https://zenn.dev/riita10069/articles/service-mesh
 
-#### ▼ 仕組み
+#### ▼ サイドカープロキシメッシュの仕組み
 
 ![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
 
@@ -54,7 +54,7 @@ description: Istio＠CNCFの知見を記録しています。
 > - https://blog.csdn.net/cr7258/article/details/126870859
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
 
-#### ▼ 仕組み
+#### ▼ アンビエントメッシュの仕組み
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png)
 

@@ -389,7 +389,7 @@ HTTPはステートレスなプロトコルであるが、Cookie情報により�
 $_COOKIE = ["Cookie名" => "値"]
 ```
 
-#### ▼ 仕組み
+#### ▼ 擬似ステートフル化の仕組み
 
 ![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png)
 
@@ -537,7 +537,7 @@ session.gc_divisor = 1
 
 > - https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
 
-#### ▼ 仕組み
+#### ▼ セッションの仕組み
 
 ![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png)
 

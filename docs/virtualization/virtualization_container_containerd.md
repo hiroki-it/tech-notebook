@@ -13,7 +13,7 @@ description: Containerd＠仮想化の知見を記録しています。
 
 <br>
 
-## 01. 仕組み
+## 01. Containerdの仕組み
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 

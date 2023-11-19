@@ -205,6 +205,7 @@ istio-sidecar-injector            4          23s
 
 ```bash
 $ kubectl get mutatingwebhookconfiguration
+
 NAME                              WEBHOOKS   AGE
 istio-revision-tag-default        4          9m52s
 istio-sidecar-injector-1-10-0     2          9m58s
@@ -223,6 +224,7 @@ istio.io/rev: 1-10-0
 
 ```bash
 kubectl get all -n istio-system
+
 NAME                                        READY   STATUS    RESTARTS   AGE
 pod/istio-ingressgateway-*****              1/1     Running   0          35m
 pod/istiod-1-10-0-*****                     1/1     Running   0          35m
@@ -897,8 +899,9 @@ $ istioctl tag list
 
 TAG       REVISION   NAMESPACES
 default    1-10-0      app
+```
 
-
+```bash
 # アップグレード前に、マニフェストを確認してみる。
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-<エイリアス> -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
@@ -970,13 +973,16 @@ $ istioctl install --set revision=1-11-0
 NAME                 READY   STATUS    RESTARTS   AGE
 istiod-1-10-0        1/1     Running   0          1m  # 1-10-0
 istiod-1-11-0        1/1     Running   0          1m  # 1-11-0 (今回のアップグレード先)
+```
 
-
+```bash
 # Service
 NAME             TYPE         CLUSTER-IP    EXTERNAL-IP   PORT(S)                                                AGE
 istiod-1-10-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m
 istiod-1-11-0    ClusterIP    10.32.6.58    <none>        15010/TCP,15012/TCP,443/TCP,15014/TCP,53/UDP,853/TCP   12m # 新しい方
+```
 
+```bash
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
 
@@ -994,7 +1000,9 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン�
 
 ```bash
 $ istioctl tag set default --revision 1-11-0 --overwrite
+```
 
+```bash
 # MutatingWebhookConfiguration
 $ kubectl get mutatingwebhookconfigurations
 
@@ -1013,7 +1021,9 @@ $ istioctl tag list
 
 TAG       REVISION  NAMESPACES
 default   1-11-0     app
+```
 
+```bash
 $ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
     | grep -e istio.io/rev: -e istio.io/tag:
 
