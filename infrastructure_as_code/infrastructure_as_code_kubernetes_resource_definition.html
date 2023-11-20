@@ -18556,6 +18556,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-imap-service</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">externalIPs</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># 複数のIPアドレスを設定できる</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
 </code></pre></div>
 <blockquote>
@@ -19254,7 +19257,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

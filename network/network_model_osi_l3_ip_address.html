@@ -6988,17 +6988,18 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 <p>キャッシュDNSサーバーは、IPアドレスのキャッシュを検索する。</p>
 <p>キャッシュが無ければ、キャッシュDNSサーバーはドメイン名をドメインレジストラにあるDNSサーバーに問い合わせる。</p>
 </dd>
-<dt><code>(3)</code></dt>
+<dt><code>(3)-(9)</code></dt>
 <dd>
 <p>ドメインレジストラにあるDNSサーバーは、IPアドレスを検索する。</p>
-<p>また、キャッシュDNSサーバーにこれを返却する。</p>
+<p>検索してもIPアドレスが無かった場合、次のDNSサーバーに委任する。</p>
+<p>最終的に、IPアドレスを持つDNSサーバーは、キャッシュDNSサーバーにIPアドレスを返却する。</p>
 </dd>
 </dl>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">完全修飾ドメイン名</th>
-<th style="text-align: center;">DNSサーバー</th>
+<th style="text-align: center;">DNSサーバーによる変換</th>
 <th style="text-align: center;">IPアドレス</th>
 </tr>
 </thead>
@@ -7011,16 +7012,13 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 </tbody>
 </table>
 <dl>
-<dt><code>(4)</code></dt>
+<dt><code>(10)</code></dt>
 <dd>
 <p>キャッシュDNSサーバーは、IPアドレスをNATルーターに返却する。</p>
 <p>この時、IPv4アドレスのネットワーク間変換が起こる。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
 <p>NATルーターは、IPアドレスをクライアントPCに返却する。</p>
 </dd>
-<dt><code>(6)</code></dt>
+<dt><code>(11)</code></dt>
 <dd>
 <p>クライアントPCは、返却されたIPアドレスを基にWebページにリクエストを送信する。</p>
 </dd>
@@ -7032,7 +7030,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>
