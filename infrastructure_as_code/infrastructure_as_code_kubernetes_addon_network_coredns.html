@@ -6370,7 +6370,7 @@
 <p><br></p>
 <h2 id="01-coredns-kube-dns">01. CoreDNSアドオン (新kube-dns)<a class="headerlink" href="#01-coredns-kube-dns" title="Permanent link">&para;</a></h2>
 <h3 id="coredns_1">CoreDNSアドオンとは<a class="headerlink" href="#coredns_1" title="Permanent link">&para;</a></h3>
-<p>Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。</p>
+<p>Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を実行する。</p>
 <p><img alt="kubernetes_coredns" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png" /></p>
 <blockquote>
 <ul>
@@ -6501,7 +6501,7 @@ kube-dns<span class="w">   </span>ClusterIP<span class="w">   </span><span class
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
-<span class="c1"># Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を行う</span>
+<span class="c1"># Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を実行する</span>
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>nslookup<span class="w"> </span>&lt;Service名&gt;
 
 Server:<span class="w">         </span><span class="m">10</span>.96.0.10
@@ -6510,8 +6510,8 @@ Address:<span class="w">        </span><span class="m">10</span>.96.0.10#53
 Name:<span class="w">  </span>&lt;Serviceの完全修飾ドメイン名&gt;
 Address:<span class="w">  </span><span class="m">10</span>.105.157.184
 </code></pre></div>
-<p>補足として、異なるNamespaceに所属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナから正引きの名前解決を行う。</span>
+<p>補足として、異なるNamespaceに所属するServiceの名前解決を実行する場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナから正引きの名前解決を実行する。</span>
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>nslookup<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名&gt;
 </code></pre></div>
 <blockquote>
@@ -6635,7 +6635,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

@@ -4121,7 +4121,7 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 委譲しない場合
+      ▼ . (委任しない場合)
     </span>
   </a>
   
@@ -4130,7 +4130,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 委譲する場合
+      ▼ &lt;接尾辞&gt; (委任する場合)
     </span>
   </a>
   
@@ -5899,7 +5899,7 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 委譲しない場合
+      ▼ . (委任しない場合)
     </span>
   </a>
   
@@ -5908,7 +5908,7 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ 委譲する場合
+      ▼ &lt;接尾辞&gt; (委任する場合)
     </span>
   </a>
   
@@ -6076,17 +6076,32 @@
 <p><br></p>
 <h3 id="53"><code>:53</code><a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
 <h4 id="53_1">▼ <code>:53</code><a class="headerlink" href="#53_1" title="Permanent link">&para;</a></h4>
-<p>名前解決</p>
-<h4 id="_2">▼ 委譲しない場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>名前解決時のドメイン名を設定する。</p>
+<h4 id="_2">▼ <code>.</code> (委任しない場合)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>CoreDNSで名前解決を実行する。</p>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>...
 <span class="o">}</span>
 </code></pre></div>
-<h4 id="_3">▼ 委譲する場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
-<span class="w">  </span>errors
+<h4 id="_3">▼ <code>&lt;接尾辞&gt;</code> (委任する場合)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>CoreDNSで名前解決を実行せずに、他のDNSサーバーに名前解決を委任する。</p>
+<p>委任用のドメインを『スタブドメイン』という。</p>
+<div class="highlight"><pre><span></span><code>&lt;接尾辞&gt;:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>...
 <span class="o">}</span>
 </code></pre></div>
+<p>例えば、<code>consul.local</code>という接尾辞をつけてドメインを指定すると、<code>10.150.0.1</code>にあるDNSサーバーに名前解決を委任できる。</p>
+<div class="highlight"><pre><span></span><code>consul.local:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>errors
+<span class="w">  </span>cache<span class="w"> </span><span class="m">30</span>
+<span class="w">  </span>forward<span class="w"> </span>.<span class="w"> </span><span class="m">10</span>.150.0.1
+<span class="o">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#configuration-of-stub-domain-and-upstream-nameserver-using-coredns">https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#configuration-of-stub-domain-and-upstream-nameserver-using-coredns</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="errors">errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h3>
 <p>エラーの出力先を設定する。</p>

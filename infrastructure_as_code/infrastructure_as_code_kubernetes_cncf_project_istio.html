@@ -7450,7 +7450,7 @@
 <h2 id="01-02-istio">01-02. Istioを採用するのか否か<a class="headerlink" href="#01-02-istio" title="Permanent link">&para;</a></h2>
 <h3 id="_7">設定方法の対応関係<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>KubernetesとIstioには重複する能力がいくつか (例：サービスディスカバリー) ある。全てのPodの<code>istio-proxy</code>コンテナをインジェクションする場合、kube-proxyとServiceによるサービスメッシュは不要になる。</p>
-<p>ただし、実際の運用場面ではこれを行うことはなく、アプリコンテナの稼働するPodのみでこれを行えばよい。</p>
+<p>ただし、実際の運用場面ではこれを実行することはなく、アプリコンテナの稼働するPodのみでこれを行えばよい。</p>
 <p>そのため、<code>istio-proxy</code>コンテナをインジェクションしないPodでは、Istioではなく、従来のkube-proxyとServiceによるサービスディスカバリーを使用することになる。</p>
 <table>
 <thead>
@@ -8078,7 +8078,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

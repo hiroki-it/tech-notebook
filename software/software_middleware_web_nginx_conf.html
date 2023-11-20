@@ -7603,8 +7603,8 @@
 </blockquote>
 <h4 id="sendfile">▼ sendfile<a class="headerlink" href="#sendfile" title="Permanent link">&para;</a></h4>
 <p>クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。</p>
-<p>ファイル返信処理をOS内で行うため、処理が速くなる。</p>
-<p>使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を行う。</p>
+<p>ファイル返信処理をOS内で実行するため、処理が速くなる。</p>
+<p>使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
@@ -7869,7 +7869,7 @@ Reading:<span class="w"> </span><span class="m">0</span><span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

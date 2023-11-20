@@ -8474,7 +8474,7 @@
 <h4 id="static_1">▼ <code>static</code>とは<a class="headerlink" href="#static_1" title="Permanent link">&para;</a></h4>
 <p>別ファイルでのメソッドの呼び出しにはインスタンス化が必要である。</p>
 <p>しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
-<p>データ値は使用せず (静的) 、引数の値のみを使用して処理を行うメソッドに対して使用する。</p>
+<p>データ値は使用せず (静的) 、引数の値のみを使用して処理を実行するメソッドに対して使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -8594,7 +8594,7 @@
 <h3 id="getter_1">マジックメソッド (Getter系)<a class="headerlink" href="#getter_1" title="Permanent link">&para;</a></h3>
 <p>オブジェクトに対して特定の操作が行われた時に自動的にコールされる特殊なメソッドのこと。</p>
 <p>自動的に呼び出される仕組みは謎。</p>
-<p>共通の処理を行うGetter (例：値を取得するだけのGetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>共通の処理を実行するGetter (例：値を取得するだけのGetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
 <p>PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。</p>
 <h4 id="__get">▼ <code>__get</code>メソッド<a class="headerlink" href="#__get" title="Permanent link">&para;</a></h4>
 <p>定義されていないデータや、アクセス権のないデータを取得しようとした時に、代わりに呼び出される。</p>
@@ -8629,7 +8629,7 @@
 <h3 id="setter_1">マジックメソッド (Setter系)<a class="headerlink" href="#setter_1" title="Permanent link">&para;</a></h3>
 <p>定義されていない静的メソッドや、アクセス権のない静的メソッドを取得しようとした時に、代わりに呼び出される。</p>
 <p>自動的にコールされる仕組みは謎。</p>
-<p>共通の処理を行うSetter (例：値を設定するだけのSetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>共通の処理を実行するSetter (例：値を設定するだけのSetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
 <p>PHPには最初からマジックメソッドは組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。</p>
 <h4 id="__set">▼ <code>__set</code>メソッド<a class="headerlink" href="#__set" title="Permanent link">&para;</a></h4>
 <p>定義されていないデータや、アクセス権のないデータに値を設定しようとした時に、代わりにコールされる。</p>
@@ -9791,7 +9791,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-12</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

@@ -16787,7 +16787,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <p><br></p>
 <h3 id="speccontainerslivenessprobe">.spec.containers[*].livenessProbe<a class="headerlink" href="#speccontainerslivenessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="livenessprobe">▼ livenessProbeとは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
-<p>kubeletは、Pod内のコンテナが稼働しているか否かのヘルスチェックを行う。</p>
+<p>kubeletは、Pod内のコンテナが稼働しているか否かのヘルスチェックを実行する。</p>
 <p>ReadinessProbeチェックよりもヘルスチェックの意味合いが強い。</p>
 <p>コンテナのLivenessProbeヘルスチェックに失敗すると、Podはコンテナを自動的に再起動する。</p>
 <blockquote>
@@ -16958,7 +16958,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <p><br></p>
 <h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbeとは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
-<p>kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを行う。</p>
+<p>kubeletは、Pod内ですでに起動中のコンテナが仕様上正しく稼働しているか否かのチェックを実行する。</p>
 <p>コンテナが起動してもプロセスの起動に時間がかかる場合 (例：DB) などで使用する。</p>
 <p>readinessProbeに失敗する場合、コンテナは稼働しているがトラフィック処理の準備ができていない状態である。</p>
 <p>そのため、<code>READY</code>は<code>0</code>で、<code>STATUS</code>は<code>Running</code>になる。</p>

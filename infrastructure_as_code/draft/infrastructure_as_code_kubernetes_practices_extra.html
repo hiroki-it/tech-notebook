@@ -5602,7 +5602,7 @@
 <h1 id="cluster">Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h1>
 <h2 id="_1">バックアップ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <hr />
-<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に行う。</p>
+<p>例えば永続ボリュームを使用しているなど、クラスターのetcdの現在の状態の復旧が必要な場合、障害でクラスター上のデータが損失することに備え、バックアップツール (例：<a href="https://velero.io/">velero</a>) を使用してクラスターバックアップを定期的に実行する。</p>
 <p>もし単純に新しいKubernetesクラスターにビルド可能なmanifestsを再インストール(kubectl apply)するだけで問題無く復旧できるようなケースでは必ずしもクラスターバックアップは必要ない。</p>
 <h2 id="dr">クラスターのDR構成<a class="headerlink" href="#dr" title="Permanent link">&para;</a></h2>
 <hr />
@@ -5698,12 +5698,12 @@
 (マイグレーション方式) |
 | --- | --- | --- | --- | --- |
 | 説明 | 新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。</p>
-<p>既存のNodeを一定台数ごとに更新を行うため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。</p>
+<p>既存のNodeを一定台数ごとに更新を実行するため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。</p>
 <p>また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。 | アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。</p>
 <p>クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。</p>
 <p>例えばAWS EC2AutoScalingは、アップグレードを開始すると、新旧の起動テンプレートを更新する。
 新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。</p>
-<p>GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを行う。 | 現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。</p>
+<p>GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを実行する。 | 現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。</p>
 <p>ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。
 一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。</p>
 <p>GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。 | 現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。</p>
@@ -5738,18 +5738,18 @@
 <li>監視ツールなどで廃止されるメトリクスを使用したクエリロジックが無いかを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorが対象のクラスターバージョンで正常に動作するか or サポートしているかを確認する</li>
 <li>クラスターバージョンのアップグレード戦略</li>
-<li>Kubernetesの「<strong><a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">Version Skew Policy</a></strong>」と「Kubernetes Release Versioning』に沿ったバージョンアップを行う</li>
+<li>Kubernetesの「<strong><a href="https://kubernetes.io/releases/version-skew-policy/#supported-component-upgrade-order">Version Skew Policy</a></strong>」と「Kubernetes Release Versioning』に沿ったバージョンアップを実行する</li>
 <li>パッチバージョンのアップグレードについてはCHANGELOGに基づいて修正されたバグの影響度に応じて実施する</li>
 <li>マイナーバージョンのアップグレードについては1バージョンずつアップグレードを実施する</li>
 <li>約4ヶ月毎のマイナーバージョンのリリース毎にマイナーバージョンのアップグレードを実施する or xヶ月毎(12ヶ月以内)にそのタイミングの最新バージョンまでアップグレードを実施する</li>
 <li>ローリングアップグレードやB/G方式などクラスターバージョンのアップグレード方法を決める</li>
 <li>アップグレード手順</li>
 <li>アップグレードの手順や動作確認方法、必要に応じてアップグレード完了後の旧クラスターの削除方法などをドキュメント化する</li>
-<li>また、アップグレードに失敗した際の切り戻し手順のドキュメント化を行う</li>
+<li>また、アップグレードに失敗した際の切り戻し手順のドキュメント化を実行する</li>
 <li>アップグレード後の動作確認ではPodだけでなくWorkloadのコンディションとステータスを確認する</li>
 <li>クラスターにインストールしてる各種Helm ChartやOperatorなどが正常に動作しているかを確認する</li>
 <li>クラスター側の設定</li>
-<li>コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を行う<ul>
+<li>コントロールプレーンNodeでダウンタイムを発生させないために必要に応じてetcdとkube-apiserverのPodにPod Disruption Budgetの設定を実行する<ul>
 <li>コントロールプレーンがマネージドなGKEやEKSなどでは考慮不要</li>
 </ul>
 </li>
@@ -5757,7 +5757,7 @@
 <h1 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h1>
 <h2 id="_7">冗長化する<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <hr />
-<p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を行う。</p>
+<p>オンプレ環境などでコントロールプレーンNodeを管理する必要がある場合、コントロールプレーンNodeは<code>3</code>台以上に設定して冗長化を実行する。</p>
 <blockquote>
 <p><a href="https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/">Why should a Kubernetes control plane be three nodes? - Sidero Labs</a></p>
 <p><a href="https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/">https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/</a></p>
@@ -6177,7 +6177,7 @@
 <p>しかし、一時的な負荷が収まってPodがスケールインする時は、条件を考慮してPodを削除する訳ではない。</p>
 <p>そのため、Podの分散配置が保証されなくなる。</p>
 <p>Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。</p>
-<p>deschedulerは条件に一致しないPodを退避するだけで、Podの再スケジューリングはkube-schedulerが行う。</p>
+<p>deschedulerは条件に一致しないPodを退避するだけで、Podの再スケジューリングはkube-schedulerが実行する。</p>
 <blockquote>
 <p><a href="https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity">https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity</a></p>
 </blockquote>
@@ -7189,7 +7189,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

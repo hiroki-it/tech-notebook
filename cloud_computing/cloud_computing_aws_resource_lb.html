@@ -7453,7 +7453,7 @@
 <p><img alt="ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png" /></p>
 <p>ALBを経由したリクエストには、リクエストヘッダーに<code>HTTP_X_FORWARDED_PROTO</code>ヘッダーが付与される。</p>
 <p>これには、ALBに対するリクエストのプロトコルの種類が文字列で代入されている。</p>
-<p>そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションに対するリクエストもHTTPSプロトコルであるとみなすように、<code>index.php</code>に追加実装を行う (こちらを行った場合は、webサーバー側の対応不要) 。</p>
+<p>そのため、もしALBに対するリクエストがHTTPSプロトコルだった場合は、ALBからアプリケーションに対するリクエストもHTTPSプロトコルであるとみなすように、<code>index.php</code>に追加実装を実行する (こちらを行った場合は、webサーバー側の対応不要) 。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -7506,7 +7506,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>
