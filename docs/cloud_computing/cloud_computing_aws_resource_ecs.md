@@ -63,7 +63,7 @@ ECSサービスの管理グループ単位のこと。
 
 ECSタスクの管理グループ単位のこと。
 
-ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。
+ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を実行する。
 
 マイクロサービスは、ECSサービスを単位として作成する。
 
@@ -491,7 +491,7 @@ ECSタスク内のコンテナ1つに対して、環境を設定する。
 | image                           |                                     | ECRのURLを設定する。                                                                                                                                                                                                                                                         | 指定できるURLの記法は、Dockerfileの`FROM`処理と同じである。<br>- https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html                         |
 | logConfiguration<br>(logDriver) | `--log-driver`                      | ログドライバーを指定することにより、ログの出力先を設定する。                                                                                                                                                                                                                 | Dockerのログドライバーにおおよそ対応しており、Fargateであれば『awslogs、awsfirelens、splunk』に設定できる。EC2であれば『awslogs、json-file、syslog、journald、fluentd、gelf、logentries』を設定できる。 |
 | logConfiguration<br>(options)   | `--log-opt`                         | 各ログドライバーのオプションを設定する。                                                                                                                                                                                                                                     |                                                                                                                                                                                                         |
-| portMapping                     | `--publish`<br>`--expose`           | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。                                                                                                                                                                                  | `containerPort`のみを設定し、`hostPort`は設定しなければ、EXPOSEとして定義できる。<br>- https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                   |
+| portMapping                     | `--publish`<br>`--expose`           | ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。                                                                                                                                                                              | `containerPort`のみを設定し、`hostPort`は設定しなければ、EXPOSEとして定義できる。<br>- https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html                                   |
 | secrets<br>(volumesFrom)        |                                     | パラメーターストアから出力する変数を設定する。                                                                                                                                                                                                                               |                                                                                                                                                                                                         |
 | memory                          | `--memory`                          | コンテナのメモリサイズの閾値を設定し、これを超えた場合にコンテナを停止する『ハード制限』ともいう。                                                                                                                                                                           | - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                               |
 | memoryReservation               | `--memory-reservation`              | タスク全体に割り当てられたメモリ (タスクメモリ) のうち、該当のコンテナに最低限割り当てるメモリ分を設定する。『ソフト制限』ともいう。                                                                                                                                         | - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_memory                                                                               |
@@ -518,7 +518,7 @@ ECSサービスを増えるたびにサイドカーの横展開していく。
 
 ECSタスクごとに異なるプライベートIPが割り当てられる。
 
-このIPアドレスに対して、ALBはルーティングを行う。
+このIPアドレスに対して、ALBはルーティングを実行する。
 
 #### ▼ FargateのIPアドレス
 
@@ -679,7 +679,7 @@ CodeDeployを使用してデプロイする。
 | Systems Manager           | `ssm.ap-northeast-1.amazonaws.com`                                                 | Systems ManagerのパラメーターストアにGETリクエストを送信するため。 |
 | Secrets Manager           | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Managerを使用するため。                                    |
 
-プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。
+プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。
 
 NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。
 

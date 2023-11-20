@@ -583,11 +583,11 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 <br>
 
-### Prefix delegationモード (プレフィクス委任モード)
+### Prefix delegationモード (プレフィクス委譲モード)
 
 #### ▼ Prefix delegationモードとは
 
-AWSのENIには、Prefix delegation (プレフィクス委任) という機能がある。
+AWSのENIには、Prefix delegation (プレフィクス委譲) という機能がある。
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
 

@@ -33,7 +33,7 @@ description: 統計分析＠Rの知見を記録しています。
 
 データに、どの程度の直線的関係があるかを検出する分析手法。
 
-回帰分析を行うか否かの判断材料になる。
+回帰分析を実行するか否かの判断材料になる。
 
 ![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png)
 
@@ -50,7 +50,7 @@ g <- g + geom_point()
 plot(g)
 
 
-# 純広告とCV_純広告の相関分析を行う。
+# 純広告とCV_純広告の相関分析を実行する。
 ts<-ts(sample[,2:5])
 cor(ts, method = "pearson")
 
@@ -94,7 +94,7 @@ ts <- ts(sample[,2:5])
 df <- data.frame(ts)
 
 
-# CV_純広告と純広告に基づく線形回帰分析を行う。
+# CV_純広告と純広告に基づく線形回帰分析を実行する。
 Reg <- lm(CV_純広告 ~ 純広告,df)
 
 
@@ -152,7 +152,7 @@ ts1 <- cbind(sample, days2)
 df <- data.frame(ts1)
 
 
-# 重回帰分析を行う。
+# 重回帰分析を実行する。
 Reg<-lm(CV_純広告 ~ days.月曜日+days.火曜日+days.水曜日+days.木曜日+days.金曜日,df)
 
 

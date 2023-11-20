@@ -1046,7 +1046,7 @@ class FooSpecification
 
 リクエストのパスパラメーターとクエリパラメーターを引数として、検索条件のオブジェクトを作成する。
 
-ビジネスルールのバリデーションを行うSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。
+ビジネスルールのバリデーションを実行するSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。
 
 **＊実装例＊**
 
@@ -1476,7 +1476,7 @@ abstract class Id
 
 #### ▼ 金額
 
-金額データの計算をInteractor内処理やエンティティ内メソッドで行うのではなく、金額計算を行う値オブジェクトのメソッドとして分割する。
+金額データの計算をInteractor内処理やエンティティ内メソッドで実行するのではなく、金額計算を実行する値オブジェクトのメソッドとして分割する。
 
 **＊実装例＊**
 
@@ -1563,7 +1563,7 @@ class MoneyVO extends ValueObject
 
 #### ▼ 所要時間
 
-所要時間データの計算をInteractorクラス内処理やエンティティ内メソッドで行うのではなく、所要時間計算を行う値オブジェクトのメソッドとして分割する。
+所要時間データの計算をInteractorクラス内処理やエンティティ内メソッドで実行するのではなく、所要時間計算を実行する値オブジェクトのメソッドとして分割する。
 
 **＊実装例＊**
 
@@ -2378,7 +2378,7 @@ interface FooRepository extends Repository
 
 ![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
 
-DBに対する書き込み操作を行う。
+DBに対する書き込み操作を実行する。
 
 `(1)`
 
@@ -2517,7 +2517,7 @@ class DogToyRepository
 
 ![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
 
-DBに対する書き込み操作を行う。
+DBに対する書き込み操作を実行する。
 
 `(1)`
 

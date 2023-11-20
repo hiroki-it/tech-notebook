@@ -42,7 +42,7 @@ $ vendor/bin/phpstan analyse
 
 #### ▼ `phpstan.neonファイル`とは
 
-PHPStanの設定を行う。
+PHPStanの設定を実行する。
 
 #### ▼ `includes`
 
@@ -53,7 +53,7 @@ includes:
 
 #### ▼ `parameters`
 
-静的解析の設定を行う。
+静的解析の設定を実行する。
 
 **＊実装例＊**
 

@@ -102,7 +102,7 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP
 
-#### ▼ Prefix delegation (プレフィクス委任)
+#### ▼ Prefix delegation (プレフィクス委譲)
 
 プライベートIPアドレスの範囲を予約し、これをENIに割り当てる。
 

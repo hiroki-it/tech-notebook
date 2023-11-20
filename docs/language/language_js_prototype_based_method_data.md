@@ -127,7 +127,7 @@ asyncFunc(test, (err, data) => {
 
 **＊実装例＊**
 
-関数の定義と`export`の宣言を同時に行う。
+関数の定義と`export`の宣言を同時に実行する。
 
 ```javascript
 export function foo() {
@@ -135,7 +135,7 @@ export function foo() {
 }
 ```
 
-あるいは、別々に行う。
+あるいは、別々に実行する。
 
 ```javascript
 const foo = () => {
@@ -331,7 +331,7 @@ var foo = function () {
 
 #### ▼ `var`使用時の対策
 
-意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に行うようにする。
+意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に実行するようにする。
 
 ```javascript
 var foo = "foo"; // スコープの最初に宣言する。

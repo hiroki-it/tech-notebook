@@ -13,6 +13,30 @@ description: 設定ファイル＠CoreDNSの知見を記録しています。
 
 <br>
 
+### `:53`
+
+#### ▼ `:53`
+
+名前解決
+
+#### ▼ 委譲しない場合
+
+```bash
+.:53 {
+  ...
+}
+```
+
+#### ▼ 委譲する場合
+
+```bash
+.:53 {
+  errors
+}
+```
+
+<br>
+
 ### errors
 
 エラーの出力先を設定する。
@@ -69,9 +93,9 @@ Cluster内のDNS名とCluster外のドメインを紐づける。
 ```bash
 .:53 {
   kubernetes cluster.local in-addr.arpa ip6.arpa {
-      pods insecure
-       fallthrough in-addr.arpa ip6.arpa
-       ttl 30
+    pods insecure
+    fallthrough in-addr.arpa ip6.arpa
+    ttl 30
   }
 }
 ```
@@ -89,6 +113,8 @@ Cluster内のDNS名とCluster外のドメインを紐づける。
 <br>
 
 ### forward
+
+#### ▼ prefer_udp
 
 まずはUDPプロトコルによるルーティングを使用し、失敗した場合にTCPプロトコルを使用する。
 

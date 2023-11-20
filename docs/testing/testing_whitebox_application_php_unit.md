@@ -72,7 +72,7 @@ Available test(s):
 
 #### ▼ `phpunit.xml`ファイルとは
 
-PHPUnitの設定を行う。
+PHPUnitの設定を実行する。
 
 デフォルトの設定では、あらかじめルートディレクトリに`tests`ディレクトリを配置し、これを`Units`ディレクトリまたは`Feature`ディレクトリに分割しておく。
 
@@ -912,7 +912,7 @@ class FooTest extends TestCase
             ->find($fooId)
             ->thenReturn(new User(1));
 
-        // 上層クラスに対して、下層クラスのモックのインジェクションを行う
+        // 上層クラスに対して、下層クラスのモックのインジェクションを実行する
         $foo = new Foo($mockFooRepository);
 
         // 上層クラスの内部にある下層モックのfindメソッドをコールする

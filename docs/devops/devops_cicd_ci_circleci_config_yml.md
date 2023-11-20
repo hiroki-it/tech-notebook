@@ -407,7 +407,7 @@ jobを実行する仮想環境を選択できる。
 
 これを選択したうえで、コンテナイメージのビルド (Docker composeを含む) を実行する場合、Docker in Docker問題 (実行環境コンテナの中でコンテナを作成するという入れ子構造) になる。
 
-これは非推奨のため、`setup_remote_docker`を使用して、実行環境コンテナとは別の環境で`jobs`キーを行う必要がある。
+これは非推奨のため、`setup_remote_docker`を使用して、実行環境コンテナとは別の環境で`jobs`キーを実行する必要がある。
 
 また、`docker`コマンドがプリインストールされていないイメージであった場合、`setup_remote_docker`を有効化すると、これを使用できるようになる。
 
@@ -878,12 +878,12 @@ workflows:
   build:
     jobs:
       - bar:
-          # Workspace前に行う処理
+          # Workspace前に実行する処理
           pre-steps:
             - run:
                 command: |
                   echo "install custom dependency"
-          # Workspace後に行う処理
+          # Workspace後に実行する処理
           post-steps:
             - run:
                 command: |
@@ -899,12 +899,12 @@ workflows:
   build:
     jobs:
       - aws-foo/build-push-yyy:
-          # Workspace前に行う処理
+          # Workspace前に実行する処理
           pre-steps:
             - run:
                 command: |
                   echo "FOO"
-          # Workspace後に行う処理
+          # Workspace後に実行する処理
           post-steps:
             - run:
                 command: |
@@ -1288,7 +1288,7 @@ Docker Composeは、コンテナの作成の順番を制御できるものの、
 
 これにより、プロセスが完全に起動していないコンテナに対して、次に作成されたコンテナが接続処理を行ってしまうことがある。
 
-これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。
+これを防ぐために、プロセスの起動を待機してから、接続処理を実行するようにする。
 
 代わりに、sleepコマンドを使用しても良い。
 

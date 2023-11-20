@@ -328,7 +328,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 : ドメインレジストラにあるDNSサーバーは、IPアドレスを検索する。
 
-     検索してもIPアドレスが無かった場合、次のDNSサーバーに委任する。
+     検索してもIPアドレスが無かった場合、次のDNSサーバーに委譲する。
 
      最終的に、IPアドレスを持つDNSサーバーは、キャッシュDNSサーバーにIPアドレスを返却する。
 
@@ -347,5 +347,8 @@ $ nslookup example # 実際には、example.fooとなる
 `(11)`
 
 : クライアントPCは、返却されたIPアドレスを基にWebページにリクエストを送信する。
+
+> - https://dev.classmethod.jp/articles/forbeginners-from-dns-to-tcp/
+> - https://jprs.jp/glossary/index.php?ID=0152
 
 <br>

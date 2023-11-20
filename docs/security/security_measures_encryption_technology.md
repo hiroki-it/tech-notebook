@@ -57,7 +57,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ![デジタル署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名.png)
 
-**＊サーバーが行うこと＊**
+**＊サーバーが実行すること＊**
 
 `(1)`
 
@@ -75,7 +75,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 : 『平文』、『暗号ダイジェスト (デジタル署名) 』を送信する。
 
-**＊受信者 (クライアント) が行うこと＊**
+**＊受信者 (クライアント) が実行すること＊**
 
 `(1)`
 
@@ -149,7 +149,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 ![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.gif)
 
-**＊サーバーが行うこと＊**
+**＊サーバーが実行すること＊**
 
 `(1)`
 
@@ -163,7 +163,7 @@ description: 通信データの暗号化技術＠セキュリティの知見を�
 
 : 受信者 (クライアント) にメール、暗号ダイジェスト (デジタル署名) を含むデジタル証明書を送信する。
 
-**＊受信者 (クライアント) が行うこと＊**
+**＊受信者 (クライアント) が実行すること＊**
 
 `(1)`
 

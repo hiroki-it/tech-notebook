@@ -162,7 +162,7 @@ localNum
 
 ```javascript
 // sample.js
-// 無名関数の即時実行。定義と呼び出しを同時に行う。
+// 無名関数の即時実行。定義と呼び出しを同時に実行する。
 (function () {
   // 外側の変数 (foo) を参照できる。
   if (foo) {
@@ -195,7 +195,7 @@ localNum
   document.write("<p>結果は" + num + "です</p>");
   var foo = true;
 
-  // 無名関数の即時実行。定義と呼び出しを同時に行う。
+  // 無名関数の即時実行。定義と呼び出しを同時に実行する。
   (function () {
     // 外側の変数 (foo) を参照できる。
     if (foo) {
@@ -439,7 +439,7 @@ JavaScriptエンジンは、これを機械語に翻訳し、ハードウェア�
 
 #### ▼ 機械語翻訳
 
-JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード１行ずつに対し、繰り返し行う。
+JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード１行ずつに対し、繰り返し実行する。
 
 ## 03-02. イベント
 
@@ -490,7 +490,7 @@ JavaScriptエンジンは、コードを、字句解析、構造解析、意味�
 **＊実装例＊**
 
 ```javascript
-// 指定したIDで、クリックイベントが発火した時に、処理を行う。
+// 指定したIDで、クリックイベントが発火した時に、処理を実行する。
 document.getElementById("btn").onclick = () => {
   console.log("イベントが発火しました");
 };
@@ -522,7 +522,7 @@ document.getElementById("btn").onclick = () => {
 ```
 
 ```javascript
-// DOMContentLoadedイベントが発火した時に、処理を行う。
+// DOMContentLoadedイベントが発火した時に、処理を実行する。
 document.addEventListener("DOMContentLoaded", () => {
   console.log("イベントが発火しました");
 });
