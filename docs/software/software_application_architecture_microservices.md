@@ -277,7 +277,7 @@ CQRSでは、これはプロセスマネージャパターンとして知られ�
 
 ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。
 
-この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を行う。
+この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を実行する。
 
 ![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png)
 

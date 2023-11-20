@@ -26,7 +26,7 @@ description: フロントエンドアーキテクチャ＠アーキテクチャ�
 
 1つのWebページの中で、サーバーとデータを非同期通信し、ブラウザ側で部分的に静的ファイルを作成する。
 
-クライアント側でレンダリングを行うため、SSRと比較してCSR：Client Server side Renderingともいう。
+クライアント側でレンダリングを実行するため、SSRと比較してCSR：Client Server side Renderingともいう。
 
 非同期通信は、Ajaxの手法を使用して実現される。
 

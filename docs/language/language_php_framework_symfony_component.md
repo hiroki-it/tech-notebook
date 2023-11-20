@@ -234,7 +234,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 ```bash
 #!/bin/bash
 
-# txtファイルを変数fに繰り返し格納し、処理を行う。
+# txtファイルを変数fに繰り返し格納し、処理を実行する。
 for f in *txt; do
   echo "$f"
 done
@@ -325,7 +325,7 @@ $kernel->terminate($request, $response);
 
 上記の`handle`メソッドが定義されているファイル。
 
-ここで定義された`handle`メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを行う。
+ここで定義された`handle`メソッドが、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを実行する。
 
 ```php
 <?php

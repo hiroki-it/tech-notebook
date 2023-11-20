@@ -724,7 +724,7 @@ return [
 
 `(2)`
 
-: OAuth (認証フェーズ + 認可フェーズ) を行うために、`auth.php`ファイルで、`driver`キーにpassportドライバを設定する。また、`provider`キーで、`users`を設定する。
+: OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php`ファイルで、`driver`キーにpassportドライバを設定する。また、`provider`キーで、`users`を設定する。
 
 **＊実装例＊**
 
@@ -784,7 +784,7 @@ return [
 
 `(4)`
 
-: Userへのルーティング時に、`middleware`メソッドによる認証ガードを行う。
+: Userへのルーティング時に、`middleware`メソッドによる認証ガードを実行する。
 
      これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 

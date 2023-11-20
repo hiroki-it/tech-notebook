@@ -81,11 +81,11 @@ jobs:
 
 #### ▼ insta
 
-aws-cliコマンドのインストールを行う。
+aws-cliコマンドのインストールを実行する。
 
 #### ▼ setup
 
-aws-cliコマンドのインストールと、Credentials情報の設定を行う。
+aws-cliコマンドのインストールと、Credentials情報の設定を実行する。
 
 AWSリソースを操作するために使用する。
 

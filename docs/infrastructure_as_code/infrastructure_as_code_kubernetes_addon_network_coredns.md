@@ -17,7 +17,7 @@ description: CoreDNS＠ネットワークアドオンの知見を記録してい
 
 ### CoreDNSアドオンとは
 
-Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を行う。
+Node内の権威DNSサーバーとして、Kubernetesリソースの名前解決を実行する。
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
@@ -185,7 +185,7 @@ Serviceに`.metadata.name`キーが設定されている場合、Serviceの完�
 # Pod内のコンテナに接続する。
 $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
-# Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を行う
+# Pod内のコンテナから宛先のServiceに対して、正引きの名前解決を実行する
 [root@<Pod名>:~] $ nslookup <Service名>
 
 Server:         10.96.0.10
@@ -195,10 +195,10 @@ Name:  <Serviceの完全修飾ドメイン名>
 Address:  10.105.157.184
 ```
 
-補足として、異なるNamespaceに所属するServiceの名前解決を行う場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
+補足として、異なるNamespaceに所属するServiceの名前解決を実行する場合は、Serviceの完全修飾ドメイン名の後にNamespaceを指定する必要がある。
 
 ```bash
-# Pod内のコンテナから正引きの名前解決を行う。
+# Pod内のコンテナから正引きの名前解決を実行する。
 [root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 

@@ -58,7 +58,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 `(1)`
 
-: ドメインエキスパートと話し合い、境界付けられたコンテキストに含まれる要件をヒアリングを行う。この時、ビジネスのルール/制約を十分にヒアリングする。
+: ドメインエキスパートと話し合い、境界付けられたコンテキストに含まれる要件をヒアリングを実行する。この時、ビジネスのルール/制約を十分にヒアリングする。
 
 `(2)`
 
@@ -437,7 +437,7 @@ Modelの肥大化は、Modelが持つビジネスロジックをドメイン層�
 
 #### ▼ コアドメイン/サブドメインのモデリング
 
-ドメインモデル図を基に、コアドメイン/サブドメインのモデリングを行う。
+ドメインモデル図を基に、コアドメイン/サブドメインのモデリングを実行する。
 
 ![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 

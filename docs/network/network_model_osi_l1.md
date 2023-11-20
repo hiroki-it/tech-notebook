@@ -95,7 +95,7 @@ WAN内では、各LANはグローバルIPアドレスで識別されている。
 
 WANを介したプライベートな通信で、データの送信元と宛先が決まっており、特定のユーザーがアクセス回線を専有する。
 
-他のLANから閉じられた専用のアクセス回線であり、特定のLAN間のみでデータ通信を行う。
+他のLANから閉じられた専用のアクセス回線であり、特定のLAN間のみでデータ通信を実行する。
 
 > - http://makiyamashinji.web.fc2.com/emprus/design/wan.html
 
@@ -105,7 +105,7 @@ WANを介したプライベートな通信で、データの送信元と宛先�
 
 ただし、特定のユーザーのデータがアクセス回線を通過している間、他のユーザーはアクセス回線を使用できない。
 
-少数対少数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報は不要である。
+少数対少数でデータ通信を実行するため、送信時に、送信者と受信者の宛先情報は不要である。
 
 ![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
 
@@ -118,7 +118,7 @@ WANを介したプライベートな通信で、パケット化されたデー�
 
 複数のユーザーでアクセス回線を同時に使用できる。
 
-対多数でデータ通信を行うため、送信時に、送信者と受信者の宛先情報が必要になる。
+対多数でデータ通信を実行するため、送信時に、送信者と受信者の宛先情報が必要になる。
 
 ![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
 

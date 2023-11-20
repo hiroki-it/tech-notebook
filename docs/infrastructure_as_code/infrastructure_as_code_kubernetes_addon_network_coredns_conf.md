@@ -17,9 +17,11 @@ description: 設定ファイル＠CoreDNSの知見を記録しています。
 
 #### ▼ `:53`
 
-名前解決
+名前解決時のドメイン名を設定する。
 
-#### ▼ 委譲しない場合
+#### ▼ `.` (委任しない場合)
+
+CoreDNSで名前解決を実行する。
 
 ```bash
 .:53 {
@@ -27,13 +29,29 @@ description: 設定ファイル＠CoreDNSの知見を記録しています。
 }
 ```
 
-#### ▼ 委譲する場合
+#### ▼ `<接尾辞>` (委任する場合)
+
+CoreDNSで名前解決を実行せずに、他のDNSサーバーに名前解決を委任する。
+
+委任用のドメインを『スタブドメイン』という。
 
 ```bash
-.:53 {
-  errors
+<接尾辞>:53 {
+  ...
 }
 ```
+
+例えば、`consul.local`という接尾辞をつけてドメインを指定すると、`10.150.0.1`にあるDNSサーバーに名前解決を委任できる。
+
+```bash
+consul.local:53 {
+  errors
+  cache 30
+  forward . 10.150.0.1
+}
+```
+
+> - https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#configuration-of-stub-domain-and-upstream-nameserver-using-coredns
 
 <br>
 

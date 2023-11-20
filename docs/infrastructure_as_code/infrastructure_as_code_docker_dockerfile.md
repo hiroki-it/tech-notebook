@@ -392,7 +392,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 ### VOLUMEとは
 
-ボリュームマウントを行う。
+ボリュームマウントを実行する。
 
 > - https://docs.docker.com/engine/reference/builder/#volume
 > - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d

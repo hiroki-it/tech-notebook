@@ -133,7 +133,7 @@ log_routerという名前以外を設定できないことに注意する。
     "image": "<イメージリポジトリURL>:<バージョンタグ>", # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": false,
     "logConfiguration": {
-        # FluentBitの設定はconfファイルで行うため、optionsキーは何も設定しない。
+        # FluentBitの設定はconfファイルで実行するため、optionsキーは何も設定しない。
         "logDriver": "awsfirelens",
       },
   },
