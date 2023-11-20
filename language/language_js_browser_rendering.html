@@ -7409,7 +7409,7 @@
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">// sample.js</span>
-<span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に行う。</span>
+<span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
 <span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -7439,7 +7439,7 @@
 <span class="w">  </span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">&quot;&lt;p&gt;結果は&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;です&lt;/p&gt;&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
-<span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に行う。</span>
+<span class="w">  </span><span class="c1">// 無名関数の即時実行。定義と呼び出しを同時に実行する。</span>
 <span class="w">  </span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 外側の変数 (foo) を参照できる。</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -7608,7 +7608,7 @@
 <p>JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。</p>
 <p><img alt="JavascriptEngine" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png" /></p>
 <h4 id="_13">▼ 機械語翻訳<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード１行ずつに対し、繰り返し行う。</p>
+<p>JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行、をコード１行ずつに対し、繰り返し実行する。</p>
 <h2 id="03-02">03-02. イベント<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_14">イベント<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ イベントとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -7640,7 +7640,7 @@
 <h4 id="documentgetelementbyidonclick">▼ <code>document.getElementById.onclick</code>関数<a class="headerlink" href="#documentgetelementbyidonclick" title="Permanent link">&para;</a></h4>
 <p>指定したIDに対して、<code>1</code>個のイベントと<code>1</code>個のイベントハンドラ関数を紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を行う。</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を実行する。</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
 <span class="p">};</span>
@@ -7663,7 +7663,7 @@
 <span class="w">  </span><span class="p">);</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を行う。</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// DOMContentLoadedイベントが発火した時に、処理を実行する。</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;DOMContentLoaded&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;イベントが発火しました&quot;</span><span class="p">);</span>
 <span class="p">});</span>
@@ -7716,7 +7716,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

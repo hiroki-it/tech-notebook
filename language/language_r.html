@@ -5994,7 +5994,7 @@
 <p><br></p>
 <h2 id="01">01. 相関分析<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>データに、どの程度の直線的関係があるかを検出する分析手法。</p>
-<p>回帰分析を行うか否かの判断材料になる。</p>
+<p>回帰分析を実行するか否かの判断材料になる。</p>
 <p><img alt="相関分析" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># データを読み込む。</span>
@@ -6007,7 +6007,7 @@
 <span class="nf">plot</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 
 
-<span class="c1"># 純広告とCV_純広告の相関分析を行う。</span>
+<span class="c1"># 純広告とCV_純広告の相関分析を実行する。</span>
 <span class="n">ts</span><span class="o">&lt;-</span><span class="nf">ts</span><span class="p">(</span><span class="n">sample</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">])</span>
 <span class="nf">cor</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pearson&quot;</span><span class="p">)</span>
 
@@ -6039,7 +6039,7 @@
 <span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
 
 
-<span class="c1"># CV_純広告と純広告に基づく線形回帰分析を行う。</span>
+<span class="c1"># CV_純広告と純広告に基づく線形回帰分析を実行する。</span>
 <span class="n">Reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">CV_純広告</span><span class="w"> </span><span class="o">~</span><span class="w"> </span>純広告<span class="p">,</span><span class="n">df</span><span class="p">)</span>
 
 
@@ -6087,7 +6087,7 @@
 <span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">ts1</span><span class="p">)</span>
 
 
-<span class="c1"># 重回帰分析を行う。</span>
+<span class="c1"># 重回帰分析を実行する。</span>
 <span class="n">Reg</span><span class="o">&lt;-</span><span class="nf">lm</span><span class="p">(</span><span class="n">CV_純広告</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">days.月曜日</span><span class="o">+</span><span class="n">days.火曜日</span><span class="o">+</span><span class="n">days.水曜日</span><span class="o">+</span><span class="n">days.木曜日</span><span class="o">+</span><span class="n">days.金曜日</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
 
 
@@ -6219,7 +6219,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

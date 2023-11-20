@@ -5942,8 +5942,8 @@
 <h3 id="_3">リクエストリプライ方式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リクエストリプライ方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="service_request_reply" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_reply.png" /></p>
-<p>マイクロサービス間で相互通信を行う。</p>
-<p>送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を行うことになる。</p>
+<p>マイクロサービス間で相互通信を実行する。</p>
+<p>送信側と受信側で通信処理が同時に実行されるため、HTTPやgRPCによる同期通信を実行することになる。</p>
 <p>また、マイクロサービス間で直接的にリクエストを送受信することになる。</p>
 <blockquote>
 <ul>
@@ -5951,7 +5951,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ 直接的な通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>リクエストリプライ方式では、直接的にマイクロサービス間の通信を行う。</p>
+<p>リクエストリプライ方式では、直接的にマイクロサービス間の通信を実行する。</p>
 <p>使用することのできる通信プロトコルは以下の通りである。</p>
 <table>
 <thead>
@@ -5975,8 +5975,8 @@
 <h3 id="_6">イベント駆動方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ イベント駆動方式とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="service_event_driven" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png" /></p>
-<p>マイクロサービスからマイクロサービスに一方通行の通信を行う。</p>
-<p>送信側と受信側で通信処理が独立して実行されるため、メッセージキューを介した非同期通信を行うことになる。</p>
+<p>マイクロサービスからマイクロサービスに一方通行の通信を実行する。</p>
+<p>送信側と受信側で通信処理が独立して実行されるため、メッセージキューを介した非同期通信を実行することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Message_queue">https://en.wikipedia.org/wiki/Message_queue</a></li>
@@ -5984,7 +5984,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ メッセージキューを介した通信<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>イベント駆動方式では、メッセージキューを介してマイクロサービス間の通信を行う。</p>
+<p>イベント駆動方式では、メッセージキューを介してマイクロサービス間の通信を実行する。</p>
 <p>メッセージキューにより、マイクロサービスの通信の方向が一方向になるように制限できる。</p>
 <p>特に、複数のダウンストリーム側マイクロサービスからの通信を集約するようなアップストリーム側マイクロサービスがある場合、その前段にメッセージキューを配置すれば、アップストリーム側のマイクロサービスのレートリミットを超過しないように、一定の間隔で通信を転送できる。</p>
 <p>もしマイクロサービス間双方向に送信したい場合は、ダウンストリーム側マイクロサービスからメッセージを受信するメッセージキューと、アップストリーム側マイクロサービスから受信するメッセージキューを、別々に配置する。</p>
@@ -6040,7 +6040,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

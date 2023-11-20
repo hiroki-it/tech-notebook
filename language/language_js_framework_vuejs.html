@@ -2313,7 +2313,7 @@
           <li class="md-nav__item">
   <a href="#1-2-viewmodelvue-indexjs" class="md-nav__link">
     <span class="md-ellipsis">
-      (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (index.js)
+      (1-2) 【ViewModel層】データの初期化を実行するVueコンストラクタ関数 (index.js)
     </span>
   </a>
   
@@ -6637,7 +6637,7 @@
           <li class="md-nav__item">
   <a href="#1-2-viewmodelvue-indexjs" class="md-nav__link">
     <span class="md-ellipsis">
-      (1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (index.js)
+      (1-2) 【ViewModel層】データの初期化を実行するVueコンストラクタ関数 (index.js)
     </span>
   </a>
   
@@ -7364,12 +7364,12 @@
 
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="cm">&lt;!-- ルートVueインスタンスの作成は外部スクリプトで行う。 --&gt;</span>
+<span class="cm">&lt;!-- ルートVueインスタンスの作成は外部スクリプトで実行する。 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span>
     <span class="err">&lt;</span><span class="na">src</span><span class="o">=</span><span class="s">{{</span> <span class="na">asset</span><span class="err">(&quot;.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<h4 id="1-2-viewmodelvue-indexjs">(1-2) 【ViewModel層】データの初期化を行うVueコンストラクタ関数 (<code>index.js</code>)<a class="headerlink" href="#1-2-viewmodelvue-indexjs" title="Permanent link">&para;</a></h4>
+<h4 id="1-2-viewmodelvue-indexjs">(1-2) 【ViewModel層】データの初期化を実行するVueコンストラクタ関数 (<code>index.js</code>)<a class="headerlink" href="#1-2-viewmodelvue-indexjs" title="Permanent link">&para;</a></h4>
 <p><img alt="vue-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png" /></p>
 <p>Vueコンストラクタ関数を使用して、インスタンス化することによって、ルートVueインスタンスが作成される。</p>
 <p>インスタンスの変数名<code>vm</code>はVIewModelの意味である。</p>
@@ -7487,7 +7487,7 @@
 <span class="cm">  --&gt;</span>
   <span class="p">&lt;</span><span class="nt">v-foo-component-4</span> <span class="na">:aaa</span><span class="o">=</span><span class="s">&quot;a&quot;</span> <span class="na">:bbb</span><span class="o">=</span><span class="s">&quot;b&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-4</span><span class="p">&gt;</span>
 
-  <span class="cm">&lt;!-- 条件付きレンダリングを行うディレクション --&gt;</span>
+  <span class="cm">&lt;!-- 条件付きレンダリングを実行するディレクション --&gt;</span>
   <span class="p">&lt;</span><span class="nt">template</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;foo.isOk()&quot;</span><span class="p">&gt;</span>
     <span class="cm">&lt;!-- 孫コンポーネントタグを記述 --&gt;</span>
     <span class="p">&lt;</span><span class="nt">v-foo-component-5</span> <span class="na">:ccc</span><span class="o">=</span><span class="s">&quot;c&quot;</span> <span class="na">:ddd</span><span class="o">=</span><span class="s">&quot;d&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">v-foo-component-5</span><span class="p">&gt;</span>
@@ -7608,7 +7608,7 @@
   <span class="p">&gt;&lt;/</span><span class="nt">v-foo-component</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 
-<span class="cm">&lt;!-- Vueインスタンスの作成は外部スクリプトで行う。 --&gt;</span>
+<span class="cm">&lt;!-- Vueインスタンスの作成は外部スクリプトで実行する。 --&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;{{ asset(&quot;</span><span class="err">.../</span><span class="na">index</span><span class="err">.</span><span class="na">js</span><span class="err">&quot;)</span> <span class="err">}}&quot;</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
@@ -7668,7 +7668,7 @@
 <p><br></p>
 <h3 id="_4">条件付きレンダリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="v-showv-if">▼ <code>v-show</code>/<code>v-if</code>とは<a class="headerlink" href="#v-showv-if" title="Permanent link">&para;</a></h4>
-<p>条件分岐を行うタグであり、<code>v-show</code>または<code>v-if</code>を使用して、プロパティ名を指定する。親テンプレートから渡された<code>props</code>内のプロパティ名が持つ値が<code>TRUE</code>の時に表示し、<code>FALSE</code>の時に非表示にする。もし頻繁に表示と非表示の切り替えを行うようなら、<code>v-if</code>の方が、描画コストが重たくなるリスクが高くなる為、<code>v-show</code>推奨である。</p>
+<p>条件分岐を実行するタグであり、<code>v-show</code>または<code>v-if</code>を使用して、プロパティ名を指定する。親テンプレートから渡された<code>props</code>内のプロパティ名が持つ値が<code>TRUE</code>の時に表示し、<code>FALSE</code>の時に非表示にする。もし頻繁に表示と非表示の切り替えを実行するようなら、<code>v-if</code>の方が、描画コストが重たくなるリスクが高くなる為、<code>v-show</code>推奨である。</p>
 <table>
 <thead>
 <tr>
@@ -7797,7 +7797,7 @@
 </code></pre></div>
 <h4 id="router-router">▼ <code>$router</code> (Routerインスタンス)<a class="headerlink" href="#router-router" title="Permanent link">&para;</a></h4>
 <p>Webアプリケーション全体に1つ存在し、全体的なRouter機能を管理しているインスタンス。</p>
-<p>スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移を行う。</p>
+<p>スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移を実行する。</p>
 <table>
 <thead>
 <tr>
@@ -8304,7 +8304,7 @@ undefined
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

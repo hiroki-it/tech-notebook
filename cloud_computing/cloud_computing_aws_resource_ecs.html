@@ -8095,7 +8095,7 @@
 <p><br></p>
 <h3 id="ecs_1">ECSサービス<a class="headerlink" href="#ecs_1" title="Permanent link">&para;</a></h3>
 <p>ECSタスクの管理グループ単位のこと。</p>
-<p>ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を行う。</p>
+<p>ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を実行する。</p>
 <p>マイクロサービスは、ECSサービスを単位として作成する。</p>
 <blockquote>
 <ul>
@@ -8741,7 +8741,7 @@
 <tr>
 <td>portMapping</td>
 <td><code>--publish</code><br><code>--expose</code></td>
-<td>ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを行う。</td>
+<td>ホストとFargateのアプリケーションのポート番号をマッピングし、ポートフォワーディングを実行する。</td>
 <td><code>containerPort</code>のみを設定し、<code>hostPort</code>は設定しなければ、EXPOSEとして定義できる。<br>- <a href="https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html">https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html</a></td>
 </tr>
 <tr>
@@ -8790,7 +8790,7 @@
 <h3 id="ip">IPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
 <h4 id="ecsip">▼ ECSタスクのIPアドレス<a class="headerlink" href="#ecsip" title="Permanent link">&para;</a></h4>
 <p>ECSタスクごとに異なるプライベートIPが割り当てられる。</p>
-<p>このIPアドレスに対して、ALBはルーティングを行う。</p>
+<p>このIPアドレスに対して、ALBはルーティングを実行する。</p>
 <h4 id="fargateip">▼ FargateのIPアドレス<a class="headerlink" href="#fargateip" title="Permanent link">&para;</a></h4>
 <p>Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。</p>
 <p>アウトバウンド通信の先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、アウトバウンド通信 (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。</p>
@@ -8956,7 +8956,7 @@
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を行うようにすると良い。</p>
+<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、ECR、S3、Systems Manager、CloudWatch、DynamoDB、など) にアクセスする場合、専用のVPCエンドポイントを設け、これに対してアウトバウンド通信を実行するようにすると良い。</p>
 <p>NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのアウトバウンド通信の方が優先される。</p>
 <p>そのため、NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
 <p>注意点として、パブリックネットワークにアウトバウンド通信を送信する場合は、VPCエンドポイントのみでなくNAT Gatewayも作成する必要がある。</p>
@@ -9086,7 +9086,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

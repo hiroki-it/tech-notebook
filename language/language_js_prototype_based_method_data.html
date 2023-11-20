@@ -6851,12 +6851,12 @@
 <h4 id="_8">▼ ファイル外で読み込む<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>関数の前で<code>export</code>を宣言する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>関数の定義と<code>export</code>の宣言を同時に行う。</p>
+<p>関数の定義と<code>export</code>の宣言を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>あるいは、別々に行う。</p>
+<p>あるいは、別々に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">};</span>
@@ -7030,7 +7030,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="var_1">▼ <code>var</code>使用時の対策<a class="headerlink" href="#var_1" title="Permanent link">&para;</a></h4>
-<p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に行うようにする。</p>
+<p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に実行するようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// スコープの最初に宣言する。</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo</span>
@@ -7228,7 +7228,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

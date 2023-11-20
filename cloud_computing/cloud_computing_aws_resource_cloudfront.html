@@ -7504,7 +7504,7 @@
 <p>VPCの外側 (パブリックネットワーク) に配置されている。</p>
 <p>オリジンサーバー (コンテンツ提供元) をS3とした場合、動的コンテンツに対するリクエストをEC2に振り分ける。</p>
 <p>また、静的コンテンツに対するリクエストをキャッシュし、その上でS3へ振り分ける。</p>
-<p>次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを行う。</p>
+<p>次回以降の静的コンテンツのリンクエストは、CloudFrontがレンスポンスを実行する。</p>
 <p><img alt="AWSのクラウドデザイン一例" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CloudFrontによるリクエストの振り分け.png" /></p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -7626,7 +7626,7 @@
 <tr>
 <td>Origin Access Identity</td>
 <td>リクエストのルーティング先となるAWSリソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先のAWSリソースでは、アクセスポリシーを紐付ける。</td>
-<td>CloudFrontがS3に対して読み出しを行うために必要。</td>
+<td>CloudFrontがS3に対して読み出しを実行するために必要。</td>
 </tr>
 <tr>
 <td>Origin Protocol Policy</td>
@@ -7662,12 +7662,12 @@
 </tr>
 <tr>
 <td>Path pattern</td>
-<td>Behaviorを行うパスを設定する。</td>
+<td>Behaviorを実行するパスを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td>Origin and Origin Group</td>
-<td>Behaviorを行うオリジンを設定する。</td>
+<td>Behaviorを実行するオリジンを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -7988,7 +7988,7 @@ The document tree is shown below.
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

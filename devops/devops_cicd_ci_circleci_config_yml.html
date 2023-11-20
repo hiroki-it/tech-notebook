@@ -7818,7 +7818,7 @@
 <h4 id="docker">▼ dockerタイプとは<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h4>
 <p>コンテナを実行環境として設定する。</p>
 <p>これを選択したうえで、コンテナイメージのビルド (Docker composeを含む) を実行する場合、Docker in Docker問題 (実行環境コンテナの中でコンテナを作成するという入れ子構造) になる。</p>
-<p>これは非推奨のため、<code>setup_remote_docker</code>を使用して、実行環境コンテナとは別の環境で<code>jobs</code>キーを行う必要がある。</p>
+<p>これは非推奨のため、<code>setup_remote_docker</code>を使用して、実行環境コンテナとは別の環境で<code>jobs</code>キーを実行する必要がある。</p>
 <p>また、<code>docker</code>コマンドがプリインストールされていないイメージであった場合、<code>setup_remote_docker</code>を有効化すると、これを使用できるようになる。</p>
 <p><code>machine</code>タイプを選択した場合、<code>setup_remote_docker</code>は不要である。</p>
 <p>ただし、ボリュームマウントを使用できなくなるので注意する。</p>
@@ -8204,12 +8204,12 @@
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bar</span><span class="p">:</span>
-<span class="w">          </span><span class="c1"># Workspace前に行う処理</span>
+<span class="w">          </span><span class="c1"># Workspace前に実行する処理</span>
 <span class="w">          </span><span class="nt">pre-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                  </span><span class="no">echo &quot;install custom dependency&quot;</span>
-<span class="w">          </span><span class="c1"># Workspace後に行う処理</span>
+<span class="w">          </span><span class="c1"># Workspace後に実行する処理</span>
 <span class="w">          </span><span class="nt">post-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -8221,12 +8221,12 @@
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">aws-foo/build-push-yyy</span><span class="p">:</span>
-<span class="w">          </span><span class="c1"># Workspace前に行う処理</span>
+<span class="w">          </span><span class="c1"># Workspace前に実行する処理</span>
 <span class="w">          </span><span class="nt">pre-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">                  </span><span class="no">echo &quot;FOO&quot;</span>
-<span class="w">          </span><span class="c1"># Workspace後に行う処理</span>
+<span class="w">          </span><span class="c1"># Workspace後に実行する処理</span>
 <span class="w">          </span><span class="nt">post-steps</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -8579,7 +8579,7 @@
 <p>Docker Composeは、コンテナの作成の順番を制御できるものの、コンテナ内のプロセスの状態を気にしない。</p>
 <p>そのため、コンテナの作成後に、プロセスが完全に起動していないのにも関わらず、次のコンテナの作成を開始してしまう。</p>
 <p>これにより、プロセスが完全に起動していないコンテナに対して、次に作成されたコンテナが接続処理を行ってしまうことがある。</p>
-<p>これを防ぐために、プロセスの起動を待機してから、接続処理を行うようにする。</p>
+<p>これを防ぐために、プロセスの起動を待機してから、接続処理を実行するようにする。</p>
 <p>代わりに、sleepコマンドを使用しても良い。</p>
 <blockquote>
 <ul>
@@ -8729,7 +8729,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

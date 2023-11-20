@@ -8278,7 +8278,7 @@
 </code></pre></div>
 <h4 id="_11">▼ 共通セット別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>WAFで使用するIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。</p>
-<p>Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共有できるため、共通セットとしてディレクトリ分割を行う。</p>
+<p>Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共有できるため、共通セットとしてディレクトリ分割を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
@@ -8896,10 +8896,10 @@ crash.*.log
 <p>しかし、高いバージョンのTerraformに対して、より低いバージョンをデプロイできない。</p>
 <p>そのため、アップグレードしてしまうと、それ以外のTerraformバージョンの異なる作業に影響が出る。</p>
 <h4 id="3"><code>(3)</code> マイナーバージョン単位でアップグレード<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>Terraformでは、マイナーバージョン単位でアップグレードを行うことが推奨である。</p>
+<p>Terraformでは、マイナーバージョン単位でアップグレードを実行することが推奨である。</p>
 <p>そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず<code>1</code>個ずつマイナーバージョンをアップグレードするように気をつける。</p>
 <p>この時、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが<code>v0.13.0</code>であれば、<code>0.14</code>系の最新にアップグレード) 。</p>
-<p>また、アップグレードの都度、リリースを行う。</p>
+<p>また、アップグレードの都度、リリースを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.terraform.io/upgrade-guides/1-0.html">https://www.terraform.io/upgrade-guides/1-0.html</a></li>
@@ -9128,7 +9128,7 @@ crash.*.log
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

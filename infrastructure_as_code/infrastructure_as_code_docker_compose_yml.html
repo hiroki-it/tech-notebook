@@ -6652,7 +6652,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-docker-composeyml">01. docker-compose.ymlとは<a class="headerlink" href="#01-docker-composeyml" title="Permanent link">&para;</a></h2>
-<p>コンテナを宣言的に定義し、コンテナのプロビジョニングを行う。</p>
+<p>コンテナを宣言的に定義し、コンテナのプロビジョニングを実行する。</p>
 <p>プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -7060,7 +7060,7 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><br></p>
 <h3 id="volumes_1"><code>volumes</code> (ボリュームマウント)<a class="headerlink" href="#volumes_1" title="Permanent link">&para;</a></h3>
 <p>最上層と<code>service</code>内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。</p>
-<p>dockerエリアにVolumeが作成され、<code>service</code>オプション内に設定した<code>volumes</code>オプションでボリュームマウントを行う。</p>
+<p>dockerエリアにVolumeが作成され、<code>service</code>オプション内に設定した<code>volumes</code>オプションでボリュームマウントを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c">https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c</a></li>
@@ -7254,7 +7254,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3307:3306&quot;</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql_volume:/var/lib/mysql</span>
-<span class="w">      </span><span class="c1"># docker-entrypoint-initdb.dディレクトリにバインドマウントを行う。</span>
+<span class="w">      </span><span class="c1"># docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./infra/docker/mysql/init:/docker-entrypoint-initdb.d</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -7288,7 +7288,7 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

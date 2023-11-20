@@ -4100,6 +4100,48 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      :53
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=":53">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#53_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ :53
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 委譲しない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 委譲する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#errors" class="md-nav__link">
     <span class="md-ellipsis">
       errors
@@ -4159,6 +4201,21 @@
       forward
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefer_udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ prefer_udp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5821,6 +5878,48 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      :53
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label=":53">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#53_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ :53
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 委譲しない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 委譲する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#errors" class="md-nav__link">
     <span class="md-ellipsis">
       errors
@@ -5880,6 +5979,21 @@
       forward
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="forward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefer_udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ prefer_udp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5960,6 +6074,20 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h3 id="53"><code>:53</code><a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<h4 id="53_1">▼ <code>:53</code><a class="headerlink" href="#53_1" title="Permanent link">&para;</a></h4>
+<p>名前解決</p>
+<h4 id="_2">▼ 委譲しない場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>...
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="_3">▼ 委譲する場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>errors
+<span class="o">}</span>
+</code></pre></div>
+<p><br></p>
 <h3 id="errors">errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h3>
 <p>エラーの出力先を設定する。</p>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
@@ -5998,9 +6126,9 @@
 <h3 id="kubernetes">kubernetes<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>kubernetes<span class="w"> </span>cluster.local<span class="w"> </span><span class="k">in</span>-addr.arpa<span class="w"> </span>ip6.arpa<span class="w"> </span><span class="o">{</span>
-<span class="w">      </span>pods<span class="w"> </span>insecure
-<span class="w">       </span>fallthrough<span class="w"> </span><span class="k">in</span>-addr.arpa<span class="w"> </span>ip6.arpa
-<span class="w">       </span>ttl<span class="w"> </span><span class="m">30</span>
+<span class="w">    </span>pods<span class="w"> </span>insecure
+<span class="w">    </span>fallthrough<span class="w"> </span><span class="k">in</span>-addr.arpa<span class="w"> </span>ip6.arpa
+<span class="w">    </span>ttl<span class="w"> </span><span class="m">30</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -6012,6 +6140,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="forward">forward<a class="headerlink" href="#forward" title="Permanent link">&para;</a></h3>
+<h4 id="prefer_udp">▼ prefer_udp<a class="headerlink" href="#prefer_udp" title="Permanent link">&para;</a></h4>
 <p>まずはUDPプロトコルによるルーティングを使用し、失敗した場合にTCPプロトコルを使用する。</p>
 <div class="highlight"><pre><span></span><code>.:53<span class="w"> </span><span class="o">{</span>
 <span class="w">  </span>forward<span class="w"> </span>.<span class="w"> </span>/etc/resolv.conf<span class="w"> </span><span class="o">{</span>
@@ -6060,7 +6189,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

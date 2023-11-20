@@ -12027,7 +12027,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
     <span class="s2">&quot;Foo&quot;</span> <span class="o">=&gt;</span> <span class="nx">App\Models\Foo</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
 <span class="p">]</span>
 </code></pre></div>
-<p>インスタンス化とメソッドコールを行う。</p>
+<p>インスタンス化とメソッドコールを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Support\Facades\Foo</span><span class="p">;</span>
@@ -12294,7 +12294,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>例外が発生しなかった場合、無名関数の返却値が、そのまま<code>transaction</code>メソッドの返却値になる。</p>
 <p>加えて<code>transaction</code>メソッドの返却値を返却するようにすれば、無名関数の返却値をそのまま使用できる。</p>
 <p>補足として、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。</p>
-<p>参考リンクによると、MongoDBに対してトランザクション処理を行う/行わない場合を比較して、処理時間が17%弱長くなったとのこと。</p>
+<p>参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5">https://rightcode.co.jp/blog/information-technology/node-js-mongodb-transaction-function-use#i-5</a></li>
@@ -12725,7 +12725,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p>FormRequestクラスの<code>validated</code>メソッドや<code>validate</code>メソッドの代わりとして、Validatorファサードを使用しても良い。</p>
 <h4 id="validatorfails">▼ Validatorクラス、<code>fails</code>メソッド<a class="headerlink" href="#validatorfails" title="Permanent link">&para;</a></h4>
 <p>Validateファサードの<code>make</code>メソッドを使用して、ルールを定義する。</p>
-<p>この時、第一引数で、バリデーションを行うリクエストデータを渡す。</p>
+<p>この時、第一引数で、バリデーションを実行するリクエストデータを渡す。</p>
 <p>ルールに反すると、1つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code>ファイルから対応するエラーメッセージを自動的に選択する。</p>
 <p>次に、<code>fails</code>メソッドを使用して、バリデーションでエラーが発生した場合の処理を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -13609,7 +13609,7 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p><br></p>
 <h3 id="_41">認証<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
 <h4 id="authorize">▼ <code>authorize</code>メソッド<a class="headerlink" href="#authorize" title="Permanent link">&para;</a></h4>
-<p>ユーザーがリソースに対してCRUDを行う権限を持っているかを、コントローラーのメソッドを実行する前に、判定する。</p>
+<p>ユーザーがリソースに対してCRUDを実行する権限を持っているかを、コントローラーのメソッドを実行する前に、判定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">/**</span>
 <span class="x"> * ユーザーがこのリクエストの権限を持っているかを判断する</span>
@@ -16129,7 +16129,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-17</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

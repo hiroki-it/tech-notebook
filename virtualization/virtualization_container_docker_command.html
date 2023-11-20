@@ -7172,7 +7172,7 @@ $<span class="w"> </span>docker<span class="w"> </span>commit<span class="w"> </
 <p><br></p>
 <h3 id="cp">cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
 <h4 id="cp_1">▼ cpとは<a class="headerlink" href="#cp_1" title="Permanent link">&para;</a></h4>
-<p>Dockerfileの<code>COPY</code>コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを行うことは面倒のため、ホストからコンテナにコピーし、再読み出しを行う。</p>
+<p>Dockerfileの<code>COPY</code>コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。</p>
 <p>ただし、コンテナを再作成すると元に戻ってしまうことに注意。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホスト側のファイルをコンテナにコピー</span>
@@ -7534,9 +7534,9 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,<span class="w"> </span><span class="nv">src</span><span class="o">=</span>&lt;ホストボリューム名&gt;<span class="w"> </span>volume-driver<span class="o">=</span>local,<span class="w"> </span><span class="nv">dst</span><span class="o">=</span>&lt;コンテナ側ディレクトリ&gt;
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Dockerfileでボリュームマウントを行う場合、コンテナ側のマウントポイントを設定する。</p>
+<p>Dockerfileでボリュームマウントを実行する場合、コンテナ側のマウントポイントを設定する。</p>
 <p>dockerエリアのマウントポイントは、自動的に作成される。</p>
-<p>Docker Composeで行うことが推奨である。</p>
+<p>Docker Composeで実行することが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu</span>
 <span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/myvol
 <span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/myvol/greeting
@@ -7551,7 +7551,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

@@ -9757,7 +9757,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_16">▼ 無名構造体<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>構造体の定義と初期化を同時に行う。</p>
+<p>構造体の定義と初期化を同時に実行する。</p>
 <p>構造体に名前がなく、データ型を割り当てられないため、返却値としては使用できないことに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -9860,7 +9860,7 @@
 <h4 id="_19">▼ 宣言と代入<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>配列を宣言し、変数に代入する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>宣言と代入を別々に行う。</p>
+<p>宣言と代入を別々に実行する。</p>
 <p>また、要素数の定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -9876,7 +9876,7 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>宣言と代入を同時に行う。</p>
+<p>宣言と代入を同時に実行する。</p>
 <p>また、要素数の定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -9890,8 +9890,8 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// [2]string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>宣言と代入を同時に行う。</p>
-<p>また、型推論と要素数省略を行う。</p>
+<p>宣言と代入を同時に実行する。</p>
+<p>また、型推論と要素数省略を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10012,7 +10012,7 @@
 </blockquote>
 <h4 id="_28">▼ 宣言と代入<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>宣言と代入を同時に行う。</p>
+<p>宣言と代入を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10025,8 +10025,8 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>文字列の宣言と代入を同時に行う。</p>
-<p>また、型推論を行う。</p>
+<p>文字列の宣言と代入を同時に実行する。</p>
+<p>また、型推論を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10039,8 +10039,8 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []string{&quot;Hiroki&quot;, &quot;Gopher&quot;}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>バイト文字列の宣言と代入を同時に行う。</p>
-<p>また、型推論を行う。</p>
+<p>バイト文字列の宣言と代入を同時に実行する。</p>
+<p>また、型推論を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10052,8 +10052,8 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []byte{0x61, 0x62, 0x63}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>構造体のスライスの宣言と代入を同時に行う。</p>
-<p>また、型推論を行う。</p>
+<p>構造体のスライスの宣言と代入を同時に実行する。</p>
+<p>また、型推論を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10117,7 +10117,7 @@
 <p><br></p>
 <h3 id="_31">マップ<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ 単一のプリミティブ型を値に持つマップ<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
-<p>マップの定義と代入を同時に行う。</p>
+<p>マップの定義と代入を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10133,7 +10133,7 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>定義と代入を別々に行う。</p>
+<p>定義と代入を別々に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -10883,7 +10883,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%#v\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>変数に対する代入は関数内でしかできないため、宣言と代入を同時に行う型推論を使用するとエラーになってしまう。</p>
+<p>変数に対する代入は関数内でしかできないため、宣言と代入を同時に実行する型推論を使用するとエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -11721,7 +11721,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h3 id="encodingjson">encoding/json<a class="headerlink" href="#encodingjson" title="Permanent link">&para;</a></h3>
 <h4 id="marshal">▼ <code>Marshal</code>関数<a class="headerlink" href="#marshal" title="Permanent link">&para;</a></h4>
 <p>構造体をJSONに変換する。</p>
-<p>変換前に、マッピングを行うようにする。</p>
+<p>変換前に、マッピングを実行するようにする。</p>
 <p>引数のデータ型は、ポインタ型または非ポインタ型のいずれでも問題ない。</p>
 <p>ただし、他の多くの関数がポインタ型を引数型としていることから、それに合わせてポインタ型で渡すことが多い。</p>
 <blockquote>
@@ -12483,7 +12483,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

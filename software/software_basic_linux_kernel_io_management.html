@@ -6596,7 +6596,7 @@ ls:<span class="w"> </span>cannot<span class="w"> </span>access<span class="w"> 
 <p><br></p>
 <h3 id="_15">標準入力に対する入力例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="awk">▼ awkプロセスに対する入力<a class="headerlink" href="#awk" title="Permanent link">&para;</a></h4>
-<p>コマンドの出力結果に対して、<code>awk</code>コマンドを行う。</p>
+<p>コマンドの出力結果に対して、<code>awk</code>コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索で取得されたファイルのサイズを合計する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.js&quot;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-printf<span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -6627,14 +6627,14 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;任意のコマンド&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 </code></pre></div>
 <p>▼ grepプロセスに対する入力</p>
-<p>コマンドの出力結果を<code>grep</code>コマンドに渡し、フィルタリングを行う。</p>
+<p>コマンドの出力結果を<code>grep</code>コマンドに渡し、フィルタリングを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索されたファイル内で、加えて文字列を検索する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-type<span class="w"> </span>f<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;&lt;検索文字&gt;&quot;</span>
 </code></pre></div>
 <h4 id="kill">▼ killプロセスに対する入力<a class="headerlink" href="#kill" title="Permanent link">&para;</a></h4>
-<p>コマンドの出力結果に対して、<code>kill</code>コマンドを行う。</p>
+<p>コマンドの出力結果に対して、<code>kill</code>コマンドを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>フィルタリングされたプロセスを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>pgrep<span class="w"> </span><span class="se">\</span>
@@ -6726,7 +6726,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-07</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>

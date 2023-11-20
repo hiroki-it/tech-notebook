@@ -8395,7 +8395,7 @@
 <h2 id="06">06. 収集されたログの送信<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="ec2">EC2におけるログの送信<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
 <h4 id="php-monolog">▼ PHP Monologの場合<a class="headerlink" href="#php-monolog" title="Permanent link">&para;</a></h4>
-<p>LogパッケージにMonologを採用している場合、<code>/etc/datadog-agent/conf.d/php.d</code>ディレクトリ配下に<code>conf.yaml</code>ファイルを作成する。ここに、Datadogにログを送信するための設定を行う。</p>
+<p>LogパッケージにMonologを採用している場合、<code>/etc/datadog-agent/conf.d/php.d</code>ディレクトリ配下に<code>conf.yaml</code>ファイルを作成する。ここに、Datadogにログを送信するための設定を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">init_config</span><span class="p">:</span>
 
@@ -8618,7 +8618,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <tbody>
 <tr>
 <td>マッチャー名</td>
-<td>パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を行う。</td>
+<td>パース対象の文字列を検出できるマッチャー関数を設定する。それぞれマッチャーは、検出後に何らかの処理を実行する。</td>
 <td>- <a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#matcher-and-filter</a></td>
 </tr>
 <tr>
@@ -8628,7 +8628,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </tr>
 <tr>
 <td>フィルター名</td>
-<td>マッチャーの追加処理を行うフィルター関数を設定する。</td>
+<td>マッチャーの追加処理を実行するフィルター関数を設定する。</td>
 <td>- <a href="https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter">https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=filters#matcher-and-filter</a></td>
 </tr>
 </tbody>
@@ -9184,7 +9184,7 @@ autoFilledRule3<span class="w"> </span>...
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
       
     
   </small>
