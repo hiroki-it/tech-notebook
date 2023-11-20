@@ -485,9 +485,9 @@ module "alb" {
 }
 ```
 
-サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ (`//`) つけ、その後にパスを続ける。
+**＊実装例＊**
 
-> - https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+サブディレクトリを指定することもできる。リポジトリ以下にスラッシュを２つ (`//`) つけ、その後にパスを続ける。
 
 ```terraform
 # @ルートモジュール
@@ -504,6 +504,48 @@ module "alb" {
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
+
+> - https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
+
+**＊実装例＊**
+
+特定のタグやブランチを指定できる。
+
+```terraform
+# @ルートモジュール
+
+# ---------------------------------------------
+# ALB
+# ---------------------------------------------
+module "alb" {
+  # リモートモジュールを参照する
+  # タグを指定する
+  source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=v1.2.0"
+
+  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+> - https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision
+
+```terraform
+# @ルートモジュール
+
+# ---------------------------------------------
+# ALB
+# ---------------------------------------------
+module "alb" {
+  # リモートモジュールを参照する
+  # ブランチを指定する
+  source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=foo_branch"
+
+  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+> - https://stackoverflow.com/a/55100821
 
 <br>
 

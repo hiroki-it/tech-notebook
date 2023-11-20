@@ -4973,6 +4973,9 @@ metadata:
   name: foo-imap-service
 spec:
   externalIPs:
+    # 複数のIPアドレスを設定できる
+    - *.*.*.*
+    - *.*.*.*
     - *.*.*.*
 ```
 
