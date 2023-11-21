@@ -5767,7 +5767,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gcr.io/kaniko-project/executor:debug</span>
 <span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&quot;</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;{\&quot;auths\&quot;:{\&quot;https://index.docker.io/v2/\&quot;:{\&quot;auth\&quot;:\&quot;${DOCKERHUB_TOKEN}\&quot;}}}&quot; &gt; /kaniko/.docker/config.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &#39;{\&quot;auths\&quot;:{\&quot;https://index.docker.io/v2/\&quot;:{\&quot;auth\&quot;:\&quot;${DOCKERHUB_TOKEN}\&quot;}}}&#39; &gt; /kaniko/.docker/config.json</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG</span>
 </code></pre></div>
 <blockquote>
@@ -5786,7 +5786,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ECR_URL</span><span class="p">:</span><span class="w"> </span><span class="err">****</span><span class="l l-Scalar l-Scalar-Plain">.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;{\&quot;credsStore\&quot;:\&quot;ecr-login\&quot;}&quot; &gt; /kaniko/.docker/config.json</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &#39;{\&quot;credsStore\&quot;:\&quot;ecr-login\&quot;}&#39; &gt; /kaniko/.docker/config.json</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG</span>
 </code></pre></div>
 <blockquote>
@@ -5822,7 +5822,7 @@ $<span class="w"> </span>cat<span class="w"> </span>&gt;<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
     
   </small>
