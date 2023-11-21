@@ -545,7 +545,7 @@ module "alb" {
 }
 ```
 
-> - https://stackoverflow.com/a/55100821
+> - https://stackoverflow.com/a/69226878
 
 <br>
 

@@ -599,7 +599,7 @@ Prefix delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 
 ![aws-eks-vpc-cni_prefix-delegation-mode.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/
+> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
 #### ▼ セットアップ
