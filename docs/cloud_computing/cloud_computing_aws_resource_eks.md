@@ -599,9 +599,9 @@ GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:
 
 ## 03-02. Cluster内のIPアドレス
 
-### Service (Service IP範囲)
+### ServiceのためのIPアドレス
 
-Clusterは、Serviceに割り当てるIPアドレスのCIDRを確保する。
+Serviceに割り当てるIPアドレスは、Service IP範囲によって決まる。
 
 `10.100.0.0/16`または`172.20.0.0/16`のいずれかになる。
 
@@ -616,6 +616,18 @@ $ kubectl get service -A jsonpath='{.spec.clusterIP}'
 ```
 
 > - https://repost.aws/questions/QU1ppbhrVsQJaFSuT3Gr0u6A/what-is-service-ipv4-range-in-eks-console
+> - https://marcincuber.medium.com/amazon-eks-with-custom-service-ipv4-cidr-a698cece481
+
+<br>
+
+### PodのためのIPアドレス
+
+PodのIPアドレスは、EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。
+
+aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIプラグインにプールする。
+
+> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 
 <br>
 
