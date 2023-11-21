@@ -3904,9 +3904,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service-service-ip" class="md-nav__link">
+  <a href="#serviceip" class="md-nav__link">
     <span class="md-ellipsis">
-      Service (Service IP範囲)
+      ServiceのためのIPアドレス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podip" class="md-nav__link">
+    <span class="md-ellipsis">
+      PodのためのIPアドレス
     </span>
   </a>
   
@@ -8235,9 +8244,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service-service-ip" class="md-nav__link">
+  <a href="#serviceip" class="md-nav__link">
     <span class="md-ellipsis">
-      Service (Service IP範囲)
+      ServiceのためのIPアドレス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#podip" class="md-nav__link">
+    <span class="md-ellipsis">
+      PodのためのIPアドレス
     </span>
   </a>
   
@@ -9726,8 +9744,8 @@
 <p>セッションマネージャーを使用して、ワーカーNodeのEC2やFargateに接続できる。</p>
 <p><br></p>
 <h2 id="03-02-clusterip">03-02. Cluster内のIPアドレス<a class="headerlink" href="#03-02-clusterip" title="Permanent link">&para;</a></h2>
-<h3 id="service-service-ip">Service (Service IP範囲)<a class="headerlink" href="#service-service-ip" title="Permanent link">&para;</a></h3>
-<p>Clusterは、Serviceに割り当てるIPアドレスのCIDRを確保する。</p>
+<h3 id="serviceip">ServiceのためのIPアドレス<a class="headerlink" href="#serviceip" title="Permanent link">&para;</a></h3>
+<p>Serviceに割り当てるIPアドレスは、Service IP範囲によって決まる。</p>
 <p><code>10.100.0.0/16</code>または<code>172.20.0.0/16</code>のいずれかになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-A<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.clusterIP}&#39;</span>
 
@@ -9740,6 +9758,17 @@
 <blockquote>
 <ul>
 <li><a href="https://repost.aws/questions/QU1ppbhrVsQJaFSuT3Gr0u6A/what-is-service-ipv4-range-in-eks-console">https://repost.aws/questions/QU1ppbhrVsQJaFSuT3Gr0u6A/what-is-service-ipv4-range-in-eks-console</a></li>
+<li><a href="https://marcincuber.medium.com/amazon-eks-with-custom-service-ipv4-cidr-a698cece481">https://marcincuber.medium.com/amazon-eks-with-custom-service-ipv4-cidr-a698cece481</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="podip">PodのためのIPアドレス<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
+<p>PodのIPアドレスは、EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。</p>
+<p>aws-vpc-cniアドオン内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIプラグインにプールする。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+<li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
 </ul>
 </blockquote>
 <p><br></p>
