@@ -136,7 +136,7 @@ build:
     name: gcr.io/kaniko-project/executor:debug
     entrypoint: [""]
   script:
-    - echo "{\"auths\":{\"https://index.docker.io/v2/\":{\"auth\":\"${DOCKERHUB_TOKEN}\"}}}" > /kaniko/.docker/config.json
+    - echo '{\"auths\":{\"https://index.docker.io/v2/\":{\"auth\":\"${DOCKERHUB_TOKEN}\"}}}' > /kaniko/.docker/config.json
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG
 ```
 
@@ -157,7 +157,7 @@ build:
   variables:
     ECR_URL: ****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
   script:
-    - echo "{\"credsStore\":\"ecr-login\"}" > /kaniko/.docker/config.json
+    - echo '{\"credsStore\":\"ecr-login\"}' > /kaniko/.docker/config.json
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG
 ```
 
