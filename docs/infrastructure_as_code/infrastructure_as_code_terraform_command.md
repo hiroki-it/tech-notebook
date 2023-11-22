@@ -258,7 +258,7 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 合わせて、`.terraform.lock.hcl`ファイルを更新する。
 
-リモートモジュールやプラグインのバージョンを固定していない場合、`-upgrade`で毎回最新のバージョンをインストールすることになる。
+リモートモジュールやプラグインのバージョンを固定していない場合、`upgrade`オプションによって、最新のバージョンを毎回インストールすることになる。
 
 ```bash
 $ terraform init -upgrade

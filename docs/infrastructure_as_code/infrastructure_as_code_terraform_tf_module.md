@@ -509,7 +509,7 @@ module "alb" {
 
 **＊実装例＊**
 
-特定のタグやブランチを指定できる。
+特定のタグを指定できる。
 
 ```terraform
 # @ルートモジュール
@@ -529,6 +529,8 @@ module "alb" {
 
 > - https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision
 
+特定のブランチを指定できる。
+
 ```terraform
 # @ルートモジュール
 
@@ -546,6 +548,26 @@ module "alb" {
 ```
 
 > - https://stackoverflow.com/a/69226878
+
+特定のコミットIDを指定できる。
+
+```terraform
+# @ルートモジュール
+
+# ---------------------------------------------
+# ALB
+# ---------------------------------------------
+module "alb" {
+  # リモートモジュールを参照する
+  # コミットIDを指定する
+  source = "git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=51d462976d84fdea54b47d80dcabbf680badcdb8"
+
+  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す
+  acm_certificate_api_arn = module.acm.acm_certificate_api_arn
+}
+```
+
+> - https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision
 
 <br>
 

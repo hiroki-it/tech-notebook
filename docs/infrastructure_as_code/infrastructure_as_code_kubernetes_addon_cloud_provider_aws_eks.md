@@ -636,6 +636,10 @@ AWSのセルフマネージドNodeグループで任意のAMIを使用してい�
 
 なお、vCPUが`30`未満のインスタンスタイプの場合に最大数は`110`個になり、それ以外の場合は`250`個になる。
 
+設定した上限に合わせて、CIDR (`/28`) の予約が必要になる。
+
+例えば、`48`個のPodを乗せたいなら、CIDR (`/28`) 当たりで`16`個のIPアドレスを使用できるようになるので、CIDR (`/28`) は`3`個予約する必要がある。
+
 ```bash
 # ファイルをダウンロードする
 $ curl -O https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
