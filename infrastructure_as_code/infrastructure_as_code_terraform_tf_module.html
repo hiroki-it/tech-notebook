@@ -7119,7 +7119,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>特定のタグやブランチを指定できる。</p>
+<p>特定のタグを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -7139,6 +7139,7 @@
 <li><a href="https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision">https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision</a></li>
 </ul>
 </blockquote>
+<p>特定のブランチを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -7156,6 +7157,26 @@
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/69226878">https://stackoverflow.com/a/69226878</a></li>
+</ul>
+</blockquote>
+<p>特定のコミットIDを指定できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># ALB</span>
+<span class="c1"># ---------------------------------------------</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">  # リモートモジュールを参照する</span>
+<span class="c1">  # コミットIDを指定する</span>
+<span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;git::https://github.com/hiroki-hasegawa/terraform-alb-modules.git?ref=51d462976d84fdea54b47d80dcabbf680badcdb8&quot;</span>
+
+<span class="c1">  # ローカルモジュールに、他のリモートモジュールのoutputブロックを渡す</span>
+<span class="w">  </span><span class="na">acm_certificate_api_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.acm.acm_certificate_api_arn</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision">https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7273,7 +7294,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-22</span>
       
     
   </small>
