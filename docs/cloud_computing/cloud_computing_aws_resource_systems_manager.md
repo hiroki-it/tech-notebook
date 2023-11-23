@@ -77,11 +77,11 @@ AWSリソースを変更するためには『ランブック (ドキュメント
 
 ランブックには、AWSがあらかじめ用意してくれるものとユーザー定義のものがある。
 
-| タイプ           | 説明                                                                                                                                                                                                | 補足                                                                                                                                                                                                                                                                  |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                            |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types   | ・EC2インスタンス内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
-| Sessionタイプ    |                                                                                                                                                                                                     |                                                                                                                                                                                                                                                                       |
+| タイプ           | 説明                                                                                                                                                                                                | 補足                                                                                                                                                                                                                                          |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2を起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                |
+| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types   | ・EC2内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Sessionタイプ    |                                                                                                                                                                                                     |                                                                                                                                                                                                                                               |
 
 <br>
 
@@ -129,7 +129,7 @@ Kubernetesのシークレットの概念が取り入れられている。
 
 KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。
 
-パラメーターストア上で変数は暗号化されており、EC2インスタンス (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。
+パラメーターストア上で変数は暗号化されており、EC2 (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。
 
 セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。
 
@@ -153,7 +153,7 @@ SMパラメーター名は、『`/<リソース名>/<変数名>`』とすると�
 
 ### セッションマネージャーとは
 
-EC2インスタンス (ECSやEKSのコンテナのホストを含む) に通信できるようにする。
+EC2 (ECSやEKSのコンテナのホストを含む) に通信できるようにする。
 
 SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。
 

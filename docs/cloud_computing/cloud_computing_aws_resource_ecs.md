@@ -183,7 +183,7 @@ FargateとEC2の両方で使用できるawsの独自ネットワークモード�
 
 タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。
 
-Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる) 。
+Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。
 
 これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (`127.0.0.1`) 』で指定すれば良い。
 
@@ -385,24 +385,24 @@ datadogエージェントがECSクラスターやコンテナにアクセスで�
 
 ### on EC2とは
 
-EC2インスタンスをホストとして、コンテナを作成する。
+EC2をホストとして、コンテナを作成する。
 
 <br>
 
-### EC2インスタンスの最適化AMI
+### EC2の最適化AMI
 
-任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
+任意のEC2を使用できるが、AWSが用意している最適化AMIを選んだ方が良い。
 
-このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。
+このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2をセットアップする手間が省ける。
 
-| AMI名                          | 説明                                                                                                                                            | 特に相性の良いアプリ                                                   |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| ECS最適化 Amazon Linux 2       | ECSのための標準的なEC2インスタンスを作成できる。最も推奨。                                                                                      |                                                                        |
-| ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>- https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                                        |
-| ECS最適化 Amazon Linux         | ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。                                                |                                                                        |
-| ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。                                                                      |                                                                        |
-| ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2インスタンスを作成できる。                                                                                                    | GPUが必要なアプリケーション (計算処理系、機械学習系のアプリケーション) |
-| ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                                                                                                       |                                                                        |
+| AMI名                          | 説明                                                                                                                                | 特に相性の良いアプリ                                                   |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| ECS最適化 Amazon Linux 2       | ECSのための標準的なEC2を作成できる。最も推奨。                                                                                      |                                                                        |
+| ECS最適化 Amazon Linux 2022    | Amazon Linux 2よりも先進的な機能を持つEC2を作成できる。<br>- https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                                        |
+| ECS最適化 Amazon Linux         | ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。                                                |                                                                        |
+| ECS最適化 Amazon Linux 2 arm64 | arm64ベースのGravitonプロセッサーが搭載されたEC2を作成できる。                                                                      |                                                                        |
+| ECS最適化 Amazon Linux 2 GPU   | GPUが搭載されたEC2を作成できる。                                                                                                    | GPUが必要なアプリケーション (計算処理系、機械学習系のアプリケーション) |
+| ECS最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1インスタンスを作成できる。                                                                                           |                                                                        |
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 
@@ -426,7 +426,7 @@ ECSタスクをECSクラスターに配置する時のアルゴリズムを選�
 
 Fargateをホストとして、コンテナを作成する。
 
-Fargateの実体はEC2インスタンスである (ドキュメントに記載がないが、AWSサポートに確認済み) 。
+Fargateの実体はEC2である (ドキュメントに記載がないが、AWSサポートに確認済み) 。
 
 ![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png)
 
@@ -703,7 +703,7 @@ NAT GatewayとVPCエンドポイントの両方を作成している場合、ル
 
 Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。
 
-ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。
+ただし、FargateとしてのEC2には、systems-managerエージェントがプリインストールされているため、これは不要である。
 
 `(1)`
 

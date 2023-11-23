@@ -381,7 +381,7 @@ cloudwatchエージェントのオプションを設定する。セットアッ�
 
 **＊例＊**
 
-設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。
+設定ファイルを読み込み、EC2上のcloudwatchエージェントを起動/再起動する。
 
 ```bash
 $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
@@ -568,9 +568,9 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
 ### IAMロール
 
-#### ▼ EC2インスタンスの場合
+#### ▼ EC2の場合
 
-EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。
+EC2でcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html
 

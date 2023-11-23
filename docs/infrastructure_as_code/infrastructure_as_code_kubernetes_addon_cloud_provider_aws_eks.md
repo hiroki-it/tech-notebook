@@ -591,11 +591,11 @@ AWSのENIには、Prefix delegation (プレフィクス委譲) という機能�
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
 
-L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (`/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (`*.*.*.*/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
 
-ENIの個数を増やすごとに、`16`個分のIPアドレス (`/28`) を確保できる。
+ENIの個数を増やすごとに、`16`個分のIPアドレス (`*.*.*.*/28`) を確保できる。
 
-Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`/28`よりも大きくしておく必要がある。
+Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを`*.*.*.*/28`よりも大きくしておく必要がある。
 
 ![aws-eks-vpc-cni_prefix-delegation-mode.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
@@ -636,9 +636,9 @@ AWSのセルフマネージドNodeグループで任意のAMIを使用してい�
 
 なお、vCPUが`30`未満のインスタンスタイプの場合に最大数は`110`個になり、それ以外の場合は`250`個になる。
 
-設定した上限に合わせて、CIDR (`/28`) の予約が必要になる。
+設定した上限に合わせて、CIDR (`*.*.*.*/28`) の予約が必要になる。
 
-例えば、`48`個のPodを乗せたいなら、CIDR (`/28`) 当たりで`16`個のIPアドレスを使用できるようになるので、CIDR (`/28`) は`3`個予約する必要がある。
+例えば、`48`個のPodを乗せたいなら、CIDR (`*.*.*.*/28`) 当たりで`16`個のIPアドレスを使用できるようになるので、CIDR (`*.*.*.*/28`) は`3`個予約する必要がある。
 
 ```bash
 # ファイルをダウンロードする
@@ -781,7 +781,7 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 
 #### ▼ 設定方法
 
-`MINIMUM_IP_TARGET` (Node当たりの`/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+`MINIMUM_IP_TARGET` (Node当たりの`*.*.*.*/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
 
 他にも設定可能な変数があるが、ここではこの2つを使用する。
 

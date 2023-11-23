@@ -83,7 +83,7 @@ AMIの名前を設定する。
 
 #### ▼ ssh_username
 
-EC2インスタンスへのSSH公開鍵認証時に使用するユーザー名を設定する。
+EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
 
 ```yaml
 {"builders": [{"type": "amazon-ebs", "ssh_username": "ec2-user"}]}
@@ -117,7 +117,7 @@ Packerの作成するマシンイメージの名前は、ランダム値をつ�
 
 #### ▼ launch_block_device_mappings
 
-EC2インスタンスに紐付けるルートデバイスボリュームを設定する。
+EC2に紐付けるルートデバイスボリュームを設定する。
 
 ```yaml
 {

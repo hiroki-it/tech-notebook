@@ -49,7 +49,7 @@ description: Terratest＠単体テストの知見を記録しています。
 
 #### ▼ 正常系テストの場合
 
-EC2インスタンスの動作が正しいかを検証する。
+EC2の動作が正しいかを検証する。
 
 ```go
 package test
@@ -78,7 +78,7 @@ func TestTerraformAwsHelloWorldExample(t *testing.T) {
     // terraform initコマンドとterraform applyコマンドを実行する。
 	terraform.InitAndApply(t, terraformOptions)
 
-    // 作成したEC2インスタンスからパブリックIPアドレスを参照する。
+    // 作成したEC2からパブリックIPアドレスを参照する。
 	publicIp := terraform.Output(t, terraformOptions, "public_ip")
 
 	url := fmt.Sprintf("http://%s:8080", publicIp)
