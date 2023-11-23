@@ -222,7 +222,7 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none>   73m     v1.25.7-eks-***
 ```
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
 > - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
 

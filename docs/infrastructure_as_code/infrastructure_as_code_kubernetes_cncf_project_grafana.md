@@ -45,6 +45,6 @@ Grafanaのコンポーネントを部分的にマネージドにしたサービ�
 
 執筆時点 (2023/05/16時点) では、フルマネージドにしてくれる。
 
-> - https://docs.aws.amazon.com/ja_jp/grafana/latest/userguide/AMG-configure-vpc.html
+> - https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-vpc.html
 
 <br>

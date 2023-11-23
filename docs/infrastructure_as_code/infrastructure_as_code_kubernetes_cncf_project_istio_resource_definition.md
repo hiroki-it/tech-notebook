@@ -1718,7 +1718,7 @@ spec:
 
 #### ▼ tcpとは
 
-TCP/IPのプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+TCPスリーウェイハンドシェイクの通信を、Serviceを介してDestinationRuleにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 

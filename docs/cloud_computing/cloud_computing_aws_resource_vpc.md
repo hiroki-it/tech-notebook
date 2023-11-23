@@ -293,7 +293,7 @@ API GatewayのVPCリンクは、VPCエンドポイントサービスに相当す
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 
-> - https://docs.aws.amazon.com/ja_jp/vpc/latest/tgw/tgw-best-design-practices.html
+> - https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html
 
 <br>
 

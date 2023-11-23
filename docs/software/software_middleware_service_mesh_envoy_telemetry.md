@@ -102,7 +102,7 @@ Envoyのメトリクスには、、
 `envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) のメトリクスがある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats
-> - https://docs.aws.amazon.com/ja_jp/app-mesh/latest/userguide/envoy-metrics.html
+> - https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy-metrics.html
 
 #### ▼ Envoy自身系
 

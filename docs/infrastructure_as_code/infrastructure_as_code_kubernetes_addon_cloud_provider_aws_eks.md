@@ -136,7 +136,7 @@ aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サー�
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-coredns.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
 
 <br>
 
@@ -170,7 +170,7 @@ aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内の�
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-kube-proxy.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
 
 <br>
 
@@ -463,7 +463,7 @@ spec:
 
 Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
+> - https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
 
 #### ▼ 環境変数
 
@@ -606,7 +606,7 @@ Prefix delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 
 Prefix delegationモードを採用可能なインスタンスタイプを選ぶ。
 
-> - https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
 
 aws-eks-cの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
 

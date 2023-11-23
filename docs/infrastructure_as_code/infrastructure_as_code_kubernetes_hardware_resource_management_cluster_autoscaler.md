@@ -191,7 +191,7 @@ NodeGroups:
 | cluster-autoscaler | `k8s.io/cluster-autoscaler/<AWS EKS Cluster名>` | `owned` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
 | 同上               | `k8s.io/cluster-autoscaler/enabled`             | `true`  | 同上                                                                                                                                                                     |
 
-> - https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/autoscaling.html
+> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
 
 <br>
 

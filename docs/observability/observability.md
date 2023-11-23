@@ -535,8 +535,8 @@ AWS X-Rayが使用するヘッダーを追加する。
 | ----------------- | ----------------------------------------------------------- | ------------------------------------- |
 | `X-AMZN-TRACE-ID` | トレースIDが割り当てられている。トレースIDはALBで作られる。 | `1-5759e988-bd862e3fe1be46a994272793` |
 
-> - https://docs.aws.amazon.com/ja_jp/xray/latest/devguide/xray-concepts.html
-> - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+> - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html
+> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
 
 ### スパン
 

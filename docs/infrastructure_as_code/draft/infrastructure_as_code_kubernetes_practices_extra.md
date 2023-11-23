@@ -114,7 +114,7 @@ GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/
 
 > [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
 
-> [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/ja_jp/eks/latest/userguide/managed-node-update-behavior.html)
+> [マネージド型ノードの更新動作 - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
 
 > [ノードプールのアップグレード戦略 | Google Kubernetes Engine（GKE） | Google Cloud](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#choose-blue-green-upgrades)
 

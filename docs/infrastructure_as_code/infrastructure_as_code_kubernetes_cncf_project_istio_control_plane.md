@@ -274,13 +274,17 @@ Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Co
 
 ### Config Ingestionレイヤー
 
-記入中...
+Clusterで作成されたIstioのカスタムリソースを取得する。
+
+> - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
 <br>
 
 ### Core Data Modelレイヤー
 
-記入中...
+取得したカスタムリソースをEnvoyの設定値に変換する。
+
+> - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
 <br>
 
@@ -288,10 +292,11 @@ Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Co
 
 #### ▼ Proxy Servingレイヤーとは
 
-XDS-APIを持つ。
+Envoyの設定値に基づいて、`istio-proxy`コンテナをCluster内に提供する。
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/
+> - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
 #### ▼ XDS-API
 

@@ -116,7 +116,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ![code-deploy_agent.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
 
-> - https://docs.aws.amazon.com/ja_jp/codedeploy/latest/userguide/instances-on-premises.html
+> - https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html
 > - https://inokara.hateblo.jp/entry/2015/07/15/175955
 
 <br>
