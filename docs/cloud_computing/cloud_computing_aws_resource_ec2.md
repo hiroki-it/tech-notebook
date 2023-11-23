@@ -631,3 +631,133 @@ Systems Managerを使用してEC2インスタンスに接続する場合、EC2�
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
 
 <br>
+
+## 05. ENI：Elastic Network Interface
+
+### ENIとは
+
+クラウドネットワークインターフェースとして働く。
+
+ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。
+
+物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
+
+> - https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+
+<br>
+
+### セットアップ
+
+#### ▼ IPv4プレフィクス委任
+
+IPv4プレフィクスをENIに割り当てる。
+
+別途、CIDRを予約しておく必要がある。
+
+| 項目         | 説明                                                                  |
+| ------------ | --------------------------------------------------------------------- |
+| 自動割り当て | 予約の有無に関係なく、`/28`のCIDRの数を指定し、その数だけ割り当てる。 |
+| 手動割り当て | あらかじめサブネットに予約しておいた`/28`のCIDRを指定し、割り当てる。 |
+
+<br>
+
+### ENIの種類
+
+#### ▼ プライマリーENI (`eth0`)
+
+ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。
+
+これを解除することはできない。
+
+> - https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+
+#### ▼ セカンダリーENI (`eth1`)
+
+プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。
+
+> - https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html
+
+<br>
+
+### 割り当てられるIPアドレス数
+
+#### ▼ セカンダリーIPアドレス割り当て
+
+|      | パブリック                                                                                                                                                    | プライベート                                                                                                                                                                                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 説明 | ENIには、パブリックIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`1`個のパブリックIPアドレスを追加できる。 | ENIには、プライマリープライベートIPアドレスとセカンダリープライベートIPアドレスを割り当てられる。これらが割り当てられたENIをAWSリソースに紐付ければ、そのAWSリソースに`2`個のプライベートIPアドレスを追加できる。 |
+
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP
+
+#### ▼ Prefix delegation (プレフィクス委譲)
+
+プライベートIPアドレスの範囲を予約し、これをENIに割り当てる。
+
+> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
+
+<br>
+
+### 紐付けられるリソース
+
+#### ▼ ALB
+
+ENIに紐付けられたIPアドレスを、ALBに割り当てる。
+
+#### ▼ EC2
+
+ENIに紐付けられたIPアドレスを、EC2に割り当てる。
+
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+
+#### ▼ Fargate環境のEC2
+
+明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのEC2インスタンスに紐付けられる。
+
+Fargate環境のホストがEC2とは明言されていない。
+
+- https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/
+
+#### ▼ Elastic IP
+
+ENIにElastic IPアドレスが紐付けられる。
+
+このENIを他のAWSリソースに紐付けることにより、ENIを介して、Elastic IPを紐付けられる。
+
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses
+
+#### ▼ GlobalAccelerator
+
+記入中...
+
+#### ▼ NAT Gateway
+
+ENIに紐付けられたパブリックIPアドレスを、NAT Gatewayに割り当てる。
+
+#### ▼ RDS
+
+記入中...
+
+#### ▼ セキュリティグループ
+
+ENIにセキュリティグループが紐付けられる。
+
+このENIを他のAWSリソースに紐付けることにより、ENIを介して、セキュリティグループを紐付けられる。
+
+#### ▼ VPCエンドポイント
+
+Interface型のVPCエンドポイントとして動作する。
+
+<br>
+
+### VPCトラフィックミラーリング
+
+ENIを介して、同じVPC内のインスタンスなどに、パケットのコピーを送信する。
+
+VPCエンドポイントを経由すれば異なるVPCに送信することもできる。
+
+![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
+
+> - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
+> - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
+
+<br>
