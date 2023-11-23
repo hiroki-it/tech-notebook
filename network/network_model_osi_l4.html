@@ -2891,13 +2891,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#02-tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ソケット
+      02. TCP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ソケット">
+    <nav class="md-nav" aria-label="02. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCPスリーウェイハンドシェイク
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ソケット
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ソケット">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2957,13 +2981,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. プロセス間メッセージキュー
+      04. プロセス間メッセージキュー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. プロセス間メッセージキュー">
+    <nav class="md-nav" aria-label="04. プロセス間メッセージキュー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2990,13 +3014,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-l4" class="md-nav__link">
+  <a href="#05-l4" class="md-nav__link">
     <span class="md-ellipsis">
-      04. L4ロードバランサー
+      05. L4ロードバランサー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. L4ロードバランサー">
+    <nav class="md-nav" aria-label="05. L4ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6146,13 +6170,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
+  <a href="#02-tcp" class="md-nav__link">
     <span class="md-ellipsis">
-      02. ソケット
+      02. TCP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. ソケット">
+    <nav class="md-nav" aria-label="02. TCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCPスリーウェイハンドシェイク
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03" class="md-nav__link">
+    <span class="md-ellipsis">
+      03. ソケット
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. ソケット">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6212,13 +6260,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      03. プロセス間メッセージキュー
+      04. プロセス間メッセージキュー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. プロセス間メッセージキュー">
+    <nav class="md-nav" aria-label="04. プロセス間メッセージキュー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6245,13 +6293,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-l4" class="md-nav__link">
+  <a href="#05-l4" class="md-nav__link">
     <span class="md-ellipsis">
-      04. L4ロードバランサー
+      05. L4ロードバランサー
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. L4ロードバランサー">
+    <nav class="md-nav" aria-label="05. L4ロードバランサー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6337,7 +6385,11 @@
 </dd>
 </dl>
 <p><br></p>
-<h2 id="02">02. ソケット<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="02-tcp">02. TCP<a class="headerlink" href="#02-tcp" title="Permanent link">&para;</a></h2>
+<h3 id="tcp">TCPスリーウェイハンドシェイク<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h3>
+<p>リクエストとレスポンスの送受信の前後に行われるTCPコネクションの確立のこと。</p>
+<p><br></p>
+<h2 id="03">03. ソケット<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_7">ソケットとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>トランスポート層に存在し、受信した通信をアプリケーション層の各プロセスに振り分ける受け口をソケットという。</p>
 <p>送信元のサーバーが宛先に対して、『<code>192.168.1.1:50001</code> (送信元IPアドレス:送信ポート) 』『<code>10.0.0.1:80</code> (宛先IPアドレス:宛先ポート) 』といったように、IPアドレスとポート番号の組合せで指定する。</p>
@@ -6369,7 +6421,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03">03. プロセス間メッセージキュー<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. プロセス間メッセージキュー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_10">プロセス間メッセージキュー<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>同じOS上のプロセス間でメッセージを仲介する。</p>
 <p>異なるOS間のメッセージを仲介する時は、ミドルウェアとしてのメッセージキューを使用する。</p>
@@ -6382,7 +6434,7 @@
 <h3 id="posix">posixメッセージキュー<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h2 id="04-l4">04. <code>L4</code>ロードバランサー<a class="headerlink" href="#04-l4" title="Permanent link">&para;</a></h2>
+<h2 id="05-l4">05. <code>L4</code>ロードバランサー<a class="headerlink" href="#05-l4" title="Permanent link">&para;</a></h2>
 <h3 id="l4"><code>L4</code>ロードバランサーとは<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
 <p><code>L4</code>プロトコル (例：UDP、TCP) の通信のヘッダー情報に基づいて、通信をロードバランシングする。</p>
 <p><code>L4</code>プロトコルは、ヘッダーに宛先の情報 (例：IPアドレス、ポート番号) をもっている。</p>
@@ -6400,7 +6452,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

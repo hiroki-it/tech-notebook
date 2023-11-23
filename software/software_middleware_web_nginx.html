@@ -6326,11 +6326,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </ul>
 </blockquote>
 <h4 id="l4">▼ <code>L4</code>ロードバランサーの場合<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
-<p>Nginxは、TCPハンドシェイクを複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。</p>
+<p>Nginxは、TCPスリーウェイハンドシェイクを複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。</p>
 <p><code>L4</code>ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
-<span class="c1"># TCPハンドシェイク</span>
+<span class="c1"># TCPスリーウェイハンドシェイク</span>
 <span class="c1">#-------------------------------------</span>
 <span class="k">stream</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">error_log</span><span class="w"> </span><span class="s">/var/log/nginx/stream.log</span><span class="w"> </span><span class="s">info</span><span class="p">;</span>
@@ -6393,7 +6393,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

@@ -7253,7 +7253,7 @@
 <td>ALB：Application Load Balancer</td>
 <td><code>L7</code> (アプリケーション層)</td>
 <td>HTTP、HTTPS、gRPC</td>
-<td>IPアドレス、インスタンス、Lambda</td>
+<td>IPアドレス、EC2インスタンス、Lambda</td>
 <td>URL、HTTPヘッダー</td>
 <td>ポート番号フィールド</td>
 <td>可</td>
@@ -7262,7 +7262,7 @@
 <td>NLB：Network Load Balancer</td>
 <td><code>L4</code> (トランスポート層)</td>
 <td>TCP、UDP、TLS</td>
-<td>IPアドレス、インスタンス、ALB</td>
+<td>IPアドレス、EC2インスタンス、ALB</td>
 <td>不可</td>
 <td>IPアドレスフィールド、ポート番号フィールド</td>
 <td>不可</td>
@@ -7271,7 +7271,7 @@
 <td>GLB：Gateway Load Balancer</td>
 <td><code>L3</code> (ネットワーク層) 、<code>L4</code></td>
 <td>IP</td>
-<td>IPアドレス、インスタンス</td>
+<td>IPアドレス、EC2インスタンス</td>
 <td>不可</td>
 <td>IPアドレスフィールド、ポート番号フィールド</td>
 <td>不可</td>
@@ -7361,16 +7361,16 @@
 </thead>
 <tbody>
 <tr>
-<td>インスタンス</td>
-<td>ターゲットが、EC2でなければならない。</td>
+<td>EC2インスタンス</td>
+<td>ターゲットはEC2である必要がある。</td>
 </tr>
 <tr>
 <td>IPアドレス</td>
-<td>ターゲットのパブリックIPアドレスが、静的でなければならない。</td>
+<td>ターゲットのパブリックIPアドレスは静的である必要がある。</td>
 </tr>
 <tr>
 <td>Lambda</td>
-<td>ターゲットが、Lambdaでなければならない。</td>
+<td>ターゲットはLambdaである必要がある。</td>
 </tr>
 </tbody>
 </table>

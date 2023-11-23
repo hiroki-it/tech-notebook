@@ -7688,7 +7688,7 @@
 <tr>
 <td>TTL</td>
 <td>CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。</td>
-<td>・Min、Max、Default、の全てを0秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロでなければならない。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダーの値の組み合わせによって決まる。</td>
+<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダーの値の組み合わせによって決まる。</td>
 </tr>
 <tr>
 <td>Whitelist Header</td>
@@ -7988,7 +7988,7 @@ The document tree is shown below.
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>
