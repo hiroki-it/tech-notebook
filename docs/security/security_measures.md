@@ -61,7 +61,7 @@ $ cat /etc/sysconfig/iptables
 :INPUT DROP [5:300]
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [32:3205]
-# 22番ポートと80番ポート宛てのTCPハンドシェイクを許可する。
+# 22番ポートと80番ポート宛てのTCPスリーウェイハンドシェイクを許可する。
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 COMMIT
