@@ -6607,18 +6607,29 @@
 </blockquote>
 <p><br></p>
 <h3 id="config-ingestion">Config Ingestionレイヤー<a class="headerlink" href="#config-ingestion" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Clusterで作成されたIstioのカスタムリソースを取得する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="core-data-model">Core Data Modelレイヤー<a class="headerlink" href="#core-data-model" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>取得したカスタムリソースをEnvoyの設定値に変換する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="proxy-serving">Proxy Servingレイヤー<a class="headerlink" href="#proxy-serving" title="Permanent link">&para;</a></h3>
 <h4 id="proxy-serving_1">▼ Proxy Servingレイヤーとは<a class="headerlink" href="#proxy-serving_1" title="Permanent link">&para;</a></h4>
-<p>XDS-APIを持つ。</p>
+<p>Envoyの設定値に基づいて、<code>istio-proxy</code>コンテナをCluster内に提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
 <li><a href="https://zhonghua.io/2019/05/12/istio-analysis-4/">https://zhonghua.io/2019/05/12/istio-analysis-4/</a></li>
+<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
 </ul>
 </blockquote>
 <h4 id="xds-api">▼ XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h4>
@@ -6796,7 +6807,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

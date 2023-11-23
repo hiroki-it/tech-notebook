@@ -9343,14 +9343,14 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p>これを解除することはできない。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics">https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/using-eni.html#eni-basics</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics</a></li>
 </ul>
 </blockquote>
 <h4 id="eni-eth1">▼ セカンダリーENI (<code>eth1</code>)<a class="headerlink" href="#eni-eth1" title="Permanent link">&para;</a></h4>
 <p>プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。</p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html">https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/scenarios-enis.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9446,6 +9446,11 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </tr>
 </tbody>
 </table>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="ip_2">IPアドレス数<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h3>
 <p>ENIに割り当てるCIDR (サブネット内の<code>*.*.*.*/28</code>) は、<code>18</code>個のIPアドレスを持つ。</p>
@@ -9462,6 +9467,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みIPアドレスの分布を確認する方法がない。</p>
 <p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、IPが解放されるのを待つとよい。</p>
 <p>CIDR内のIPアドレスが使用中であってもCIDRを予約でき、予約したCIDR内のIPアドレスが一度解放されれば、そのIPアドレスを自動で再割り当てない仕組みになっている。</p>
+<p>もちろん、サブネットを新しく作成すれば使用中のIPアドレスがないため、IPアドレスの解放を待つ必要はない。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/containers/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/blogs/containers/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
