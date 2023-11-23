@@ -6452,7 +6452,7 @@
 <p>各アプリケーション間でTransit Gatewayやピアリング接続を実行する可能性がある場合は。</p>
 <p>拡張性を考慮して、アプリケーション間のCIDRブロックは重ならないようにしておく必要がある。</p>
 <p>例えば、以前に開発したアプリケーションが<code>10.200.47.0</code>までを使用していた場合、<code>10.200.48.0</code>から使用を始める。</p>
-<p>また、VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>/28</code>) であり、実際は<code>512</code>個 (<code>/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
+<p>また、VPCで許可されるIPアドレスの個数は最多<code>65536</code>個 (<code>/16</code>) で最少16個 (<code>*.*.*.*/28</code>) であり、実際は<code>512</code>個 (<code>*.*.*.*/23</code>) ほどあれば問題ないため、<code>10.200.48.0/23</code>を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting</a></li>
@@ -6853,13 +6853,13 @@
 <tr>
 <td><code>CPUUtilization</code></td>
 <td>%</td>
-<td>EC2インスタンスで使用されているCPU使用率をデータポイントとする。</td>
+<td>EC2で使用されているCPU使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
 <td><code>MemoryUtilization</code></td>
 <td>%</td>
-<td>EC2インスタンスで使用されているメモリ使用率をデータポイントとする。</td>
+<td>EC2で使用されているメモリ使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code>分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
@@ -7130,7 +7130,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

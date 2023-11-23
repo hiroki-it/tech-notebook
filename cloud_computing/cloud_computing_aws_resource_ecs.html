@@ -3920,7 +3920,7 @@
           <li class="md-nav__item">
   <a href="#ec2ami" class="md-nav__link">
     <span class="md-ellipsis">
-      EC2インスタンスの最適化AMI
+      EC2の最適化AMI
     </span>
   </a>
   
@@ -7787,7 +7787,7 @@
           <li class="md-nav__item">
   <a href="#ec2ami" class="md-nav__link">
     <span class="md-ellipsis">
-      EC2インスタンスの最適化AMI
+      EC2の最適化AMI
     </span>
   </a>
   
@@ -8230,7 +8230,7 @@
 <h4 id="awsvpc">▼ awsvpcモード<a class="headerlink" href="#awsvpc" title="Permanent link">&para;</a></h4>
 <p>FargateとEC2の両方で使用できるawsの独自ネットワークモード。</p>
 <p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
-<p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2インスタンスにlocalhostインターフェースが紐付けられる) 。</p>
+<p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。</p>
 <p>これにより、コンテナ間でパケットを送受信する時 (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
 <p>また、awsvpcモードの独自の仕組みとして、同じECSタスク内であれば、互いにコンテナポートを開放せずとも、インバウンド通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
 <p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが<code>9000</code>番ポートでインバウンド通信を受信し、加えてコンテナが<code>9000</code>番ポートを開放する必要がある。</p>
@@ -8417,11 +8417,11 @@
 <p><br></p>
 <h2 id="04-on-ec2">04. on EC2<a class="headerlink" href="#04-on-ec2" title="Permanent link">&para;</a></h2>
 <h3 id="on-ec2">on EC2とは<a class="headerlink" href="#on-ec2" title="Permanent link">&para;</a></h3>
-<p>EC2インスタンスをホストとして、コンテナを作成する。</p>
+<p>EC2をホストとして、コンテナを作成する。</p>
 <p><br></p>
-<h3 id="ec2ami">EC2インスタンスの最適化AMI<a class="headerlink" href="#ec2ami" title="Permanent link">&para;</a></h3>
-<p>任意のEC2インスタンスを使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
-<p>このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2インスタンスをセットアップする手間が省ける。</p>
+<h3 id="ec2ami">EC2の最適化AMI<a class="headerlink" href="#ec2ami" title="Permanent link">&para;</a></h3>
+<p>任意のEC2を使用できるが、AWSが用意している最適化AMIを選んだ方が良い。</p>
+<p>このAMIには、EC2がECSと連携するために必要なソフトウェアがプリインストールされており、EC2をセットアップする手間が省ける。</p>
 <table>
 <thead>
 <tr>
@@ -8433,27 +8433,27 @@
 <tbody>
 <tr>
 <td>ECS最適化 Amazon Linux 2</td>
-<td>ECSのための標準的なEC2インスタンスを作成できる。最も推奨。</td>
+<td>ECSのための標準的なEC2を作成できる。最も推奨。</td>
 <td></td>
 </tr>
 <tr>
 <td>ECS最適化 Amazon Linux 2022</td>
-<td>Amazon Linux 2よりも先進的な機能を持つEC2インスタンスを作成できる。<br>- <a href="https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html">https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html</a></td>
+<td>Amazon Linux 2よりも先進的な機能を持つEC2を作成できる。<br>- <a href="https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html">https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html</a></td>
 <td></td>
 </tr>
 <tr>
 <td>ECS最適化 Amazon Linux</td>
-<td>ECSのための標準的なEC2インスタンスを作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。</td>
+<td>ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用した方が良い。</td>
 <td></td>
 </tr>
 <tr>
 <td>ECS最適化 Amazon Linux 2 arm64</td>
-<td>arm64ベースのGravitonプロセッサーが搭載されたEC2インスタンスを作成できる。</td>
+<td>arm64ベースのGravitonプロセッサーが搭載されたEC2を作成できる。</td>
 <td></td>
 </tr>
 <tr>
 <td>ECS最適化 Amazon Linux 2 GPU</td>
-<td>GPUが搭載されたEC2インスタンスを作成できる。</td>
+<td>GPUが搭載されたEC2を作成できる。</td>
 <td>GPUが必要なアプリケーション (計算処理系、機械学習系のアプリケーション)</td>
 </tr>
 <tr>
@@ -8497,7 +8497,7 @@
 <h2 id="05-on-fargate">05. on Fargate<a class="headerlink" href="#05-on-fargate" title="Permanent link">&para;</a></h2>
 <h3 id="on-fargate">on Fargateとは<a class="headerlink" href="#on-fargate" title="Permanent link">&para;</a></h3>
 <p>Fargateをホストとして、コンテナを作成する。</p>
-<p>Fargateの実体はEC2インスタンスである (ドキュメントに記載がないが、AWSサポートに確認済み) 。</p>
+<p>Fargateの実体はEC2である (ドキュメントに記載がないが、AWSサポートに確認済み) 。</p>
 <p><img alt="fargate_data-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png" /></p>
 <blockquote>
 <ul>
@@ -8973,7 +8973,7 @@
 <p><img alt="fargate_ecs-exec" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png" /></p>
 <p>セッションマネージャーを使用してECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。</p>
 <p>Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。</p>
-<p>ただし、FargateとしてのEC2インスタンスには、systems-managerエージェントがプリインストールされているため、これは不要である。</p>
+<p>ただし、FargateとしてのEC2には、systems-managerエージェントがプリインストールされているため、これは不要である。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -9086,7 +9086,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

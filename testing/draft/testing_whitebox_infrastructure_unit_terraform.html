@@ -5667,7 +5667,7 @@
 <h2 id="02-02">02-02. テストケース<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">単体テストの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 正常系テストの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>EC2インスタンスの動作が正しいかを検証する。</p>
+<p>EC2の動作が正しいかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -5694,7 +5694,7 @@
 <span class="w">    </span><span class="c1">// terraform initコマンドとterraform applyコマンドを実行する。</span>
 <span class="w">    </span><span class="nx">terraform</span><span class="p">.</span><span class="nx">InitAndApply</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">terraformOptions</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// 作成したEC2インスタンスからパブリックIPアドレスを参照する。</span>
+<span class="w">    </span><span class="c1">// 作成したEC2からパブリックIPアドレスを参照する。</span>
 <span class="w">    </span><span class="nx">publicIp</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">terraform</span><span class="p">.</span><span class="nx">Output</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="nx">terraformOptions</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;public_ip&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="nx">url</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;http://%s:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">publicIp</span><span class="p">)</span>
@@ -5716,7 +5716,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

@@ -9823,7 +9823,7 @@
 <td>セッションマネージャー</td>
 </tr>
 <tr>
-<td>VPC内の踏み台EC2インスタンス</td>
+<td>VPC内の踏み台EC2</td>
 <td>セッションマネージャー、SSH</td>
 </tr>
 <tr>
@@ -9967,7 +9967,7 @@
 <tr>
 <td><code>Name</code></td>
 <td>EC2ワーカーNodeの名前</td>
-<td>Nodeグループで指定する起動テンプレートのリソースタグに、<code>Name</code>タグを設定しておく。起動するEC2ワーカーNodeにEC2インスタンスの名前は<code>Name</code>タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。</td>
+<td>Nodeグループで指定する起動テンプレートのリソースタグに、<code>Name</code>タグを設定しておく。起動するEC2ワーカーNodeにEC2の名前は<code>Name</code>タグで決まる仕組みのため、起動テンプレートによってワーカーNode名を設定させることができる。</td>
 </tr>
 </tbody>
 </table>
@@ -9989,12 +9989,12 @@
 <tr>
 <td><code>Name</code></td>
 <td>EC2ワーカーNodeの名前</td>
-<td>EC2インスタンスの名前は<code>Name</code>タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの<code>Name</code>タグに、ワーカーNode名を設定しておく。</td>
+<td>EC2の名前は<code>Name</code>タグで決まる仕組みのため、Nodeグループに参加させるEC2ワーカーNodeの<code>Name</code>タグに、ワーカーNode名を設定しておく。</td>
 </tr>
 <tr>
 <td><code>kubernetes.io/cluster/&lt;EKS Cluster名&gt;</code></td>
 <td><code>owned</code></td>
-<td>セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2インスタンスをNodeグループに参加させるために、必要である。</td>
+<td>セルフマネージド型のEC2ワーカーNodeを使用する場合、ユーザーが作成したEC2をNodeグループに参加させるために、必要である。</td>
 </tr>
 </tbody>
 </table>
@@ -10069,7 +10069,7 @@
 </ul>
 </blockquote>
 <h4 id="eks-amazon-linux">▼ EKS 最適化 Amazon Linux<a class="headerlink" href="#eks-amazon-linux" title="Permanent link">&para;</a></h4>
-<p>EKSのための標準的なEC2インスタンスを作成できる。最も推奨である。</p>
+<p>EKSのための標準的なEC2を作成できる。最も推奨である。</p>
 <p><code>aws ssm get-parameter</code>コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/&lt;バージョン&gt;/amazon-linux-2/recommended/image_id<span class="w"> </span><span class="se">\</span>
@@ -10084,12 +10084,12 @@
 </ul>
 </blockquote>
 <h4 id="eks-amazon-linux_1">▼ EKS 最適化高速 Amazon Linux<a class="headerlink" href="#eks-amazon-linux_1" title="Permanent link">&para;</a></h4>
-<p>GPUが搭載されたEC2インスタンスやAmazon EC2 Inf1インスタンスを作成できる。</p>
+<p>GPUが搭載されたEC2やAmazon EC2 Inf1インスタンスを作成できる。</p>
 <p>GPUが必要なアプリケーションの含むPod (計算処理系、機械学習系のアプリケーション) と相性が良い。</p>
 <h4 id="eks-arm-amazon-linux">▼ EKS 最適化 ARM Amazon Linux<a class="headerlink" href="#eks-arm-amazon-linux" title="Permanent link">&para;</a></h4>
-<p>ARMベースのプロセッサーが搭載されたEC2インスタンスを作成できる。</p>
+<p>ARMベースのプロセッサーが搭載されたEC2を作成できる。</p>
 <h4 id="eks-bottlerocket-ami">▼ EKS 最適化 Bottlerocket AMI<a class="headerlink" href="#eks-bottlerocket-ami" title="Permanent link">&para;</a></h4>
-<p>コンテナに特化したEC2インスタンスを作成できる。</p>
+<p>コンテナに特化したEC2を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/bottlerocket/aws-k8s-&lt;バージョン&gt;/x86_64/latest/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
@@ -10666,7 +10666,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

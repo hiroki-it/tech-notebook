@@ -3861,7 +3861,7 @@
           <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EC2インスタンスの場合
+      ▼ EC2の場合
     </span>
   </a>
   
@@ -7791,7 +7791,7 @@
           <li class="md-nav__item">
   <a href="#ec2" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ EC2インスタンスの場合
+      ▼ EC2の場合
     </span>
   </a>
   
@@ -8284,7 +8284,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>設定ファイルを読み込み、EC2インスタンス上のcloudwatchエージェントを起動/再起動する。</p>
+<p>設定ファイルを読み込み、EC2上のcloudwatchエージェントを起動/再起動する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-a<span class="w"> </span>fetch-config<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-m<span class="w"> </span>ec2<span class="w"> </span><span class="se">\</span>
@@ -8441,8 +8441,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h3 id="iam">IAMロール<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
-<h4 id="ec2">▼ EC2インスタンスの場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
-<p>EC2インスタンスでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。</p>
+<h4 id="ec2">▼ EC2の場合<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<p>EC2でcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたIAMロールをEC2に紐付ける必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
@@ -8528,7 +8528,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

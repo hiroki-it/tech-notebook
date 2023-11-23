@@ -7429,9 +7429,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
 </ul>
 </blockquote>
-<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (<code>/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
-<p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>/28</code>) を確保できる。</p>
-<p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>/28</code>よりも大きくしておく必要がある。</p>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (<code>*.*.*.*/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (<code>*.*.*.*/28</code>) を確保できる。</p>
+<p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>*.*.*.*/28</code>よりも大きくしておく必要がある。</p>
 <p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
 <blockquote>
 <ul>
@@ -7467,8 +7467,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のaws-eks-vpc-cniアドオン)。</p>
 <p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最大数を計算しておく。</p>
 <p>なお、vCPUが<code>30</code>未満のインスタンスタイプの場合に最大数は<code>110</code>個になり、それ以外の場合は<code>250</code>個になる。</p>
-<p>設定した上限に合わせて、CIDR (<code>/28</code>) の予約が必要になる。</p>
-<p>例えば、<code>48</code>個のPodを乗せたいなら、CIDR (<code>/28</code>) 当たりで<code>16</code>個のIPアドレスを使用できるようになるので、CIDR (<code>/28</code>) は<code>3</code>個予約する必要がある。</p>
+<p>設定した上限に合わせて、CIDR (<code>*.*.*.*/28</code>) の予約が必要になる。</p>
+<p>例えば、<code>48</code>個のPodを乗せたいなら、CIDR (<code>*.*.*.*/28</code>) 当たりで<code>16</code>個のIPアドレスを使用できるようになるので、CIDR (<code>*.*.*.*/28</code>) は<code>3</code>個予約する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ファイルをダウンロードする</span>
 $<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 
@@ -7638,7 +7638,7 @@ Capacity:
 <p><br></p>
 <h3 id="prefix-delegation_2">Prefix delegationモードの場合<a class="headerlink" href="#prefix-delegation_2" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 設定方法<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>*.*.*.*/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
 <p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
 <h4 id="_21">▼ シナリオ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -7653,7 +7653,7 @@ Capacity:
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-22</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

@@ -7299,7 +7299,7 @@
 <h2 id="02-albapplication-load-balancing">02. ALB：Application Load Balancing<a class="headerlink" href="#02-albapplication-load-balancing" title="Permanent link">&para;</a></h2>
 <h3 id="alb">ALBとは<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h3>
 <p>クラウドリバースプロキシサーバー、かつクラウド<code>L7</code>ロードバランサーとして働く。</p>
-<p>EC2インスタンスへのリクエストをバランスよく分配することによって、サーバーへの負荷を緩和する。</p>
+<p>EC2へのリクエストをバランスよく分配することによって、サーバーへの負荷を緩和する。</p>
 <p><img alt="aws_alb" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png" /></p>
 <blockquote>
 <ul>
@@ -7362,7 +7362,7 @@
 <tbody>
 <tr>
 <td>インスタンス</td>
-<td>ターゲットが、EC2インスタンスでなければならない。</td>
+<td>ターゲットが、EC2でなければならない。</td>
 </tr>
 <tr>
 <td>IPアドレス</td>
@@ -7413,7 +7413,7 @@
 </blockquote>
 <h4 id="ip">▼ 割り当てられるIPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
 <p>ALBに割り当てられるIPアドレスには、VPCのものが適用される。</p>
-<p>そのため、EC2インスタンスのセキュリティグループでは、VPCのCIDRブロックを許可するように設定する必要がある。</p>
+<p>そのため、EC2のセキュリティグループでは、VPCのCIDRブロックを許可するように設定する必要がある。</p>
 <h4 id="_6">▼ 自動スケーリング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>単一障害点にならないように、負荷が高まるとALBインスタンスが増えるように自動スケールアウトする仕組みを持つ。</p>
 <h4 id="500">▼ <code>500</code>系ステータスコードの原因<a class="headerlink" href="#500" title="Permanent link">&para;</a></h4>
@@ -7506,7 +7506,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

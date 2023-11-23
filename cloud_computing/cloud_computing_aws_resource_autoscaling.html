@@ -7169,7 +7169,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-autoscaling">01. AutoScalingとは<a class="headerlink" href="#01-autoscaling" title="Permanent link">&para;</a></h2>
-<p>ALBを使用して、起動テンプレートを基にしたEC2インスタンスの自動水平スケーリングを実行する。</p>
+<p>ALBを使用して、起動テンプレートを基にしたEC2の自動水平スケーリングを実行する。</p>
 <p>注意点として、AutoScalingに紐付けるALBでは、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。</p>
 <p>言い換えると、AutoScalingにターゲットグループを紐付けて初めて、ターゲットにルーティングできるようになる。</p>
 <p><img alt="Auto-scaling" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png" /></p>
@@ -7204,7 +7204,7 @@
 <tr>
 <td>ネットワーク</td>
 <td>いずれのAZのサブネットでインスタンスを作成するかを設定する。</td>
-<td>選択したAZの個数よりも少ない個数のEC2インスタンスを作成する場合、作成先のAZをランダムに選択する。</td>
+<td>選択したAZの個数よりも少ない個数のEC2を作成する場合、作成先のAZをランダムに選択する。</td>
 </tr>
 <tr>
 <td>スケーリングポリシー</td>
@@ -7254,21 +7254,21 @@
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2インスタンスにタグを伝搬する</span>
+<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Service&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2インスタンスにタグを伝搬する</span>
+<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">key</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Env&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;prd&quot;</span>
-<span class="c1">    # AutoScalingで起動したEC2インスタンスにタグを伝搬する</span>
+<span class="c1">    # AutoScalingで起動したEC2にタグを伝搬する</span>
 <span class="w">    </span><span class="na">propagate_at_launch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -7416,9 +7416,9 @@
 <p><strong>＊例＊</strong></p>
 <p>CPU平均使用率に段階的な閾値を設定する。</p>
 <ul>
-<li>40%の時にEC2インスタンスが1つスケールアウト</li>
-<li><code>70</code>%の時にEC2インスタンスを2つスケールアウト</li>
-<li><code>90</code>%の時にEC2インスタンスを<code>3</code>個スケールアウト</li>
+<li>40%の時にEC2が1つスケールアウト</li>
+<li><code>70</code>%の時にEC2を2つスケールアウト</li>
+<li><code>90</code>%の時にEC2を<code>3</code>個スケールアウト</li>
 </ul>
 <h4 id="ecs">▼ ECSの場合<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -7530,7 +7530,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>

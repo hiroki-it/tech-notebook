@@ -7082,12 +7082,12 @@ EC2、RDS
 <tr>
 <td>Automationタイプ</td>
 <td>サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のLambdaが使用されている (たぶん) 。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html</a></td>
-<td>EC2インスタンスを起動し、状態がOKになるまで監視する手順を自動化した例： <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html</a></td>
+<td>EC2を起動し、状態がOKになるまで監視する手順を自動化した例： <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html</a></td>
 </tr>
 <tr>
 <td>Commandタイプ</td>
 <td>サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types">https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types</a></td>
-<td>・EC2インスタンス内で実行するlinuxコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/">https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/</a> <br>・EC2インスタンス内で実行するawscliコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/">https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/</a></td>
+<td>・EC2内で実行するlinuxコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/">https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/</a> <br>・EC2内で実行するawscliコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/">https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/</a></td>
 </tr>
 <tr>
 <td>Sessionタイプ</td>
@@ -7131,7 +7131,7 @@ EC2、RDS
 <p><br></p>
 <h3 id="_7">変数の暗号化と復号化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号化できる。</p>
-<p>パラメーターストア上で変数は暗号化されており、EC2インスタンス (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。</p>
+<p>パラメーターストア上で変数は暗号化されており、EC2 (ECSやEKSのコンテナのホストを含む) で参照する時に復号化される。</p>
 <p>セキュリティ上の理由で、本来はできないSecretのバージョン管理が、KMSで暗号化することにより、可能になる。</p>
 <p>たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなど様々な要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。</p>
 <p><img alt="parameter-store_kms" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png" /></p>
@@ -7148,7 +7148,7 @@ EC2、RDS
 <p><br></p>
 <h2 id="04">04. セッションマネージャー<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">セッションマネージャーとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>EC2インスタンス (ECSやEKSのコンテナのホストを含む) に通信できるようにする。</p>
+<p>EC2 (ECSやEKSのコンテナのホストを含む) に通信できるようにする。</p>
 <p>SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスにアクセスできる。</p>
 <p>接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。</p>
 <blockquote>
@@ -7180,7 +7180,7 @@ An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-08-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
       
     
   </small>
