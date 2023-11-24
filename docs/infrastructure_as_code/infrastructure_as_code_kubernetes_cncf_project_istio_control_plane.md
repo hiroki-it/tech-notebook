@@ -274,25 +274,29 @@ Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Co
 
 ### Config Ingestionレイヤー
 
-Clusterで作成されたIstioのカスタムリソースを取得する。
+#### ▼ Config Ingestionレイヤーとは
+
+Clusterで作成されたIstioのカスタムリソースの状態を取得する。
 
 > - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
 <br>
 
-### Core Data Modelレイヤー
+### Config translationレイヤー
 
-取得したカスタムリソースをEnvoyの設定値に変換する。
+#### ▼ Config translationレイヤーとは
+
+取得したカスタムリソースの状態をEnvoyの設定値に変換する。
 
 > - https://github.com/istio/istio/blob/master/architecture/networking/pilot.md
 
 <br>
 
-### Proxy Servingレイヤー
+### Config servingレイヤー
 
-#### ▼ Proxy Servingレイヤーとは
+#### ▼ Config servingレイヤーとは
 
-Envoyの設定値に基づいて、`istio-proxy`コンテナをCluster内に提供する。
+Envoyの設定値に基づいて、istio-proxyコンテナをPodに提供する。
 
 > - https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1
 > - https://zhonghua.io/2019/05/12/istio-analysis-4/
