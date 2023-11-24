@@ -13,9 +13,7 @@ description: AWS VPC CNI＠AWS EKSアドオンの知見を記録しています�
 
 <br>
 
-
 ## 01. aws-eks-vpc-cniアドオンとは
-
 
 aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。
 

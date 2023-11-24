@@ -780,14 +780,44 @@ ENIにCIDRを自動/手動で割り当てる時、サブネット内に断片化
 
 そこで、サブネットにCIDR (`*.*.*.*/28`) を予約しておき、これをIPv4 Prefix delegationのために使用する。
 
-ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みIPアドレスの分布を確認する方法がない。
+ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。
 
 サブネット内にCIDR (`*.*.*.*/28`) を一旦予約しておいて、IPが解放されるのを待つとよい。
 
-CIDR内のIPアドレスが使用中であってもCIDRを予約でき、予約したCIDR内のIPアドレスが一度解放されれば、そのIPアドレスを自動で再割り当てない仕組みになっている。
+CIDR内のセカンダリープライベートIPアドレスが使用中であってもCIDRを予約できる。
 
-もちろん、サブネットを新しく作成すれば使用中のIPアドレスがないため、IPアドレスの解放を待つ必要はない。
+予約したCIDR内のセカンダリープライベートIPアドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。
 
-> - https://aws.amazon.com/blogs/containers/amazon-vpc-cni-increases-pods-per-node-limits/
+もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。
+
+> - https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/subnet-cidr-reservation.html
+
+<br>
+
+### CIDRの断片化の確認
+
+ツールを使用して、CIDRが断片化されているかを確認するとよい。
+
+```bash
+$ python3 describe_unused_ips.py subnet-***
+
+subnet_id='subnet-***' mode='normal'
+cidr='*.*.*.*/*'
+cidr_ips=['*.*.*.*', '*.*.*.*', ...]
+
+-----------
+# サブネットで予約済みのIPアドレス
+reserved_ips=['*.*.*.*', '*.*.*.*', ...]
+-----------
+# サブネット内で使用中のIPアドレス
+used_ips=['*.*.*.*', '*.*.*.*', ...]
+-----------
+# サブネット内で未使用のIPアドレス
+unused_ips=['*.*.*.*', '*.*.*.*', ...]
+-----------
+cidr=*.*.*.*/* cidr_ips=<全てのIPアドレス数> reserved=<予約されたIPアドレス数> used=<使用中のIPアドレス数> unused=<未使用のIPアドレス数>
+```
+
+> - https://github.com/shu85t/aws_describe_unused_ips
 
 <br>
