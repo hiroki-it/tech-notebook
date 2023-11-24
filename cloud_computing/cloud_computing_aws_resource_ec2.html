@@ -4303,6 +4303,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIDRの断片化の確認
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8390,6 +8399,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      CIDRの断片化の確認
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9464,13 +9482,40 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="cidr-28">CIDR (サブネット内の<code>*.*.*.*/28</code>) の事前予約<a class="headerlink" href="#cidr-28" title="Permanent link">&para;</a></h3>
 <p>ENIにCIDRを自動/手動で割り当てる時、サブネット内に断片化されていない<code>*.*.*.*/28</code>が無いと、<code>InsufficientCidr</code>というエラーになる。</p>
 <p>そこで、サブネットにCIDR (<code>*.*.*.*/28</code>) を予約しておき、これをIPv4 Prefix delegationのために使用する。</p>
-<p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みIPアドレスの分布を確認する方法がない。</p>
+<p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。</p>
 <p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、IPが解放されるのを待つとよい。</p>
-<p>CIDR内のIPアドレスが使用中であってもCIDRを予約でき、予約したCIDR内のIPアドレスが一度解放されれば、そのIPアドレスを自動で再割り当てない仕組みになっている。</p>
-<p>もちろん、サブネットを新しく作成すれば使用中のIPアドレスがないため、IPアドレスの解放を待つ必要はない。</p>
+<p>CIDR内のセカンダリープライベートIPアドレスが使用中であってもCIDRを予約できる。</p>
+<p>予約したCIDR内のセカンダリープライベートIPアドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。</p>
+<p>もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。</p>
 <blockquote>
 <ul>
-<li><a href="https://aws.amazon.com/blogs/containers/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/blogs/containers/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
+<li><a href="https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/subnet-cidr-reservation.html">https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/subnet-cidr-reservation.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cidr">CIDRの断片化の確認<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
+<p>ツールを使用して、CIDRが断片化されているかを確認するとよい。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>describe_unused_ips.py<span class="w"> </span>subnet-***
+
+<span class="nv">subnet_id</span><span class="o">=</span><span class="s1">&#39;subnet-***&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span>
+<span class="nv">cidr</span><span class="o">=</span><span class="s1">&#39;*.*.*.*/*&#39;</span>
+<span class="nv">cidr_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+
+-----------
+<span class="c1"># サブネットで予約済みのIPアドレス</span>
+<span class="nv">reserved_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+-----------
+<span class="c1"># サブネット内で使用中のIPアドレス</span>
+<span class="nv">used_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+-----------
+<span class="c1"># サブネット内で未使用のIPアドレス</span>
+<span class="nv">unused_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
+-----------
+<span class="nv">cidr</span><span class="o">=</span>*.*.*.*/*<span class="w"> </span><span class="nv">cidr_ips</span><span class="o">=</span>&lt;全てのIPアドレス数&gt;<span class="w"> </span><span class="nv">reserved</span><span class="o">=</span>&lt;予約されたIPアドレス数&gt;<span class="w"> </span><span class="nv">used</span><span class="o">=</span>&lt;使用中のIPアドレス数&gt;<span class="w"> </span><span class="nv">unused</span><span class="o">=</span>&lt;未使用のIPアドレス数&gt;
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/shu85t/aws_describe_unused_ips">https://github.com/shu85t/aws_describe_unused_ips</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9480,7 +9525,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-24</span>
       
     
   </small>
