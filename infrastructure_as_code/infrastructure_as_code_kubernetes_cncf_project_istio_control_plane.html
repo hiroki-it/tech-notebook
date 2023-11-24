@@ -4634,31 +4634,61 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#core-data-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Data Modelレイヤー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proxy-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proxy Servingレイヤー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Proxy Servingレイヤー">
+    <nav class="md-nav" aria-label="Config Ingestionレイヤー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proxy-serving_1" class="md-nav__link">
+  <a href="#config-ingestion_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Proxy Servingレイヤーとは
+      ▼ Config Ingestionレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config translationレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config translationレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-translation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Config translationレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config servingレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config servingレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-serving_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Config servingレイヤーとは
     </span>
   </a>
   
@@ -6210,31 +6240,61 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#core-data-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Data Modelレイヤー
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#proxy-serving" class="md-nav__link">
-    <span class="md-ellipsis">
-      Proxy Servingレイヤー
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Proxy Servingレイヤー">
+    <nav class="md-nav" aria-label="Config Ingestionレイヤー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#proxy-serving_1" class="md-nav__link">
+  <a href="#config-ingestion_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Proxy Servingレイヤーとは
+      ▼ Config Ingestionレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-translation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config translationレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config translationレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-translation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Config translationレイヤーとは
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config servingレイヤー
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Config servingレイヤー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-serving_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Config servingレイヤーとは
     </span>
   </a>
   
@@ -6607,24 +6667,26 @@
 </blockquote>
 <p><br></p>
 <h3 id="config-ingestion">Config Ingestionレイヤー<a class="headerlink" href="#config-ingestion" title="Permanent link">&para;</a></h3>
-<p>Clusterで作成されたIstioのカスタムリソースを取得する。</p>
+<h4 id="config-ingestion_1">▼ Config Ingestionレイヤーとは<a class="headerlink" href="#config-ingestion_1" title="Permanent link">&para;</a></h4>
+<p>Clusterで作成されたIstioのカスタムリソースの状態を取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="core-data-model">Core Data Modelレイヤー<a class="headerlink" href="#core-data-model" title="Permanent link">&para;</a></h3>
-<p>取得したカスタムリソースをEnvoyの設定値に変換する。</p>
+<h3 id="config-translation">Config translationレイヤー<a class="headerlink" href="#config-translation" title="Permanent link">&para;</a></h3>
+<h4 id="config-translation_1">▼ Config translationレイヤーとは<a class="headerlink" href="#config-translation_1" title="Permanent link">&para;</a></h4>
+<p>取得したカスタムリソースの状態をEnvoyの設定値に変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="proxy-serving">Proxy Servingレイヤー<a class="headerlink" href="#proxy-serving" title="Permanent link">&para;</a></h3>
-<h4 id="proxy-serving_1">▼ Proxy Servingレイヤーとは<a class="headerlink" href="#proxy-serving_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの設定値に基づいて、<code>istio-proxy</code>コンテナをCluster内に提供する。</p>
+<h3 id="config-serving">Config servingレイヤー<a class="headerlink" href="#config-serving" title="Permanent link">&para;</a></h3>
+<h4 id="config-serving_1">▼ Config servingレイヤーとは<a class="headerlink" href="#config-serving_1" title="Permanent link">&para;</a></h4>
+<p>Envoyの設定値に基づいて、istio-proxyコンテナをPodに提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
@@ -6807,7 +6869,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-24</span>
       
     
   </small>

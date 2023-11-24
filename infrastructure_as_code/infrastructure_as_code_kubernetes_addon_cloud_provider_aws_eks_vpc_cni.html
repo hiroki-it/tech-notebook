@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="AWS EKSアドオン＠クラウドプロバイダーアドオンの知見を記録しています。">
+        <meta name="description" content="AWS VPC CNI＠AWS EKSアドオンの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html">
       
       
-        <link rel="prev" href="infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html">
-      
-      
-        <link rel="next" href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html">
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
@@ -26,7 +22,7 @@
     
     
       
-        <title>【IT技術の知見】AWS EKSアドオン＠クラウドプロバイダーアドオン - 俺の技術ノート</title>
+        <title>【IT技術の知見】AWS VPC CNI＠AWS EKSアドオン - 俺の技術ノート</title>
       
     
     
@@ -91,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-eks" class="md-skip">
+        <a href="#aws-vpc-cniaws-eks" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -126,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】AWS EKSアドオン＠クラウドプロバイダーアドオン
+              【IT技術の知見】AWS VPC CNI＠AWS EKSアドオン
             
           </span>
         </div>
@@ -514,12 +510,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="kubernetes_addon/index.html" class="md-tabs__link">
           
   
@@ -3735,8 +3729,6 @@
       
   
   
-    
-  
   
     
     
@@ -3762,12 +3754,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
         
           
           
@@ -3789,7 +3781,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_17">
             <span class="md-nav__icon md-icon"></span>
             ⏬ K8sアドオン
@@ -3985,8 +3977,6 @@
                 
   
   
-    
-  
   
     
     
@@ -3997,348 +3987,33 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_17_6" id="__nav_17_6_label" tabindex="0">
-            
+  
+  
+    
+  
+  
+    <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     ■ クラウドプロバイダーアドオン
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_17_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_17_6">
-            <span class="md-nav__icon md-icon"></span>
-            ■ クラウドプロバイダーアドオン
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
       
-        
+        <span class="md-nav__icon md-icon"></span>
       
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17_6_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_17_6_1" id="__nav_17_6_1_label" tabindex="0">
-            
+    </a>
   
-  <span class="md-ellipsis">
-    ■ AWS EKSアドオン
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_17_6_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_17_6_1">
-            <span class="md-nav__icon md-icon"></span>
-            ■ AWS EKSアドオン
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    AWS EKSアドオン
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    AWS EKSアドオン
-  </span>
-  
-
-      </a>
-      
-        
 
   
 
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      はじめに
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-aws-eks" class="md-nav__link">
-    <span class="md-ellipsis">
-      01. AWS EKSアドオン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. AWS EKSアドオン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS EKSアドオンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      セットアップ
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ コンソール画面から
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Terraformの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Helmの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-aws-eks-codedns" class="md-nav__link">
-    <span class="md-ellipsis">
-      02. aws-eks-codednsアドオン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. aws-eks-codednsアドオン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks-codedns" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-eks-codednsアドオンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      設定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="設定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バージョン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-aws-eks-distro-for-opentelemetry" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. aws-eks-distro-for-opentelemetry
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-aws-eks-kube-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. aws-eks-kube-proxy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. aws-eks-kube-proxy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks-kube-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-eks-kube-proxyアドオンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      設定
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="設定">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ バージョン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AWS EBS CSIドライバー
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -5832,56 +5507,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-eks" class="md-nav__link">
+  <a href="#01-aws-eks-vpc-cni" class="md-nav__link">
     <span class="md-ellipsis">
-      01. AWS EKSアドオン
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. AWS EKSアドオン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      AWS EKSアドオンとは
+      01. aws-eks-vpc-cniアドオンとは
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#02-aws-eks-vpc-cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. aws-eks-vpc-cniアドオンの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. aws-eks-vpc-cniアドオンの仕組み">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      セットアップ
+      アーキテクチャ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="セットアップ">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cni" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNIプラグイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l-ipamlocal-ip-address-manager-daemon" class="md-nav__link">
+    <span class="md-ellipsis">
+      L-IPAMデーモン：Local IP Address Manager Daemon
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="L-IPAMデーモン：Local IP Address Manager Daemon">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l-ipam" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ L-IPAMデーモンとは
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コンソール画面から
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#terraform" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Terraformの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Helmの場合
+      ▼ ログ
     </span>
   </a>
   
@@ -5898,84 +5582,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-aws-eks-codedns" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
-      02. aws-eks-codednsアドオン
+      03. セットアップ
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. aws-eks-codednsアドオン">
+    <nav class="md-nav" aria-label="03. セットアップ">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks-codedns" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-eks-codednsアドオンとは
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      設定
+      マニフェスト
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="設定">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ バージョン
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-aws-eks-distro-for-opentelemetry" class="md-nav__link">
-    <span class="md-ellipsis">
-      03. aws-eks-distro-for-opentelemetry
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-aws-eks-kube-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      04. aws-eks-kube-proxy
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. aws-eks-kube-proxy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-eks-kube-proxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      aws-eks-kube-proxyアドオンとは
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
       設定
     </span>
   </a>
@@ -5984,9 +5611,225 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ バージョン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 環境変数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 確認方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      セカンダリーIPアドレス割り当てモード
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セカンダリーIPアドレス割り当てモード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ip_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セカンダリーIPアドレス割り当てモードとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ IPアドレス割り当ての仕組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-delegation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefix delegationモード (プレフィクス委譲モード)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefix delegationモード (プレフィクス委譲モード)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefix-delegation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Prefix delegationモードとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セットアップ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セカンダリーIPアドレス割り当てモードとの比較
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ セカンダリーIPアドレス割り当てモードからの移行
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      04. Podの上限数を上げる
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Podの上限数を上げる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Podの上限数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Podの上限数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 上限数の決まり方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 現在の上限数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      セカンダリーIP割り当てモードの場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セカンダリーIP割り当てモードの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 設定方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ シナリオ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-delegation_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefix delegationモードの場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prefix delegationモードの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 設定方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ シナリオ
     </span>
   </a>
   
@@ -6020,7 +5863,7 @@
   
 
 
-<h1 id="aws-eks">AWS EKSアドオン＠クラウドプロバイダーアドオン<a class="headerlink" href="#aws-eks" title="Permanent link">&para;</a></h1>
+<h1 id="aws-vpc-cniaws-eks">AWS VPC CNI＠AWS EKSアドオン<a class="headerlink" href="#aws-vpc-cniaws-eks" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -6029,163 +5872,752 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-eks">01. AWS EKSアドオン<a class="headerlink" href="#01-aws-eks" title="Permanent link">&para;</a></h2>
-<h3 id="aws-eks_1">AWS EKSアドオンとは<a class="headerlink" href="#aws-eks_1" title="Permanent link">&para;</a></h3>
-<p>EKSのコントロールプレーンとデータプレーン上でKubernetesを稼働させるために必要なアドオン。</p>
-<p>マネージドタイプとセルフマネージドタイプがあり、マネージドタイプではアドオンの設定値をAWSが管理し、ユーザーの設定を強制的に上書きする。</p>
-<p>一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。</p>
+<h2 id="01-aws-eks-vpc-cni">01. aws-eks-vpc-cniアドオンとは<a class="headerlink" href="#01-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
+<p>aws-eks-vpc-cniアドオンがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタッチされるはずのAWS ENIを作成できない。</p>
+<p>そのため、何も通信ができなくなるため、PodやServiceにIPアドレスが自動的に割り当てられないため、必須である。</p>
+<p><img alt="aws_eks-vpc-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png" /></p>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html">https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html</a></li>
-<li><a href="https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9">https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html</a></li>
+<li><a href="https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e">https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ コンソール画面から<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<h2 id="02-aws-eks-vpc-cni">02. aws-eks-vpc-cniアドオンの仕組み<a class="headerlink" href="#02-aws-eks-vpc-cni" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>aws-eks-vpc-cniアドオンは、L-IPAMデーモン (ipamd) 、CNIプラグイン (<code>aws-node</code>という名前のDaemonSet) 、といったコンポーネントから構成されている。</p>
+<p>AWS EKS Cluster内にネットワークを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="cni">CNIプラグイン<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h3>
+<p>CNIプラグインは、割り当てモードに応じて、IPアドレスをPodに割り当てる。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="l-ipamlocal-ip-address-manager-daemon">L-IPAMデーモン：Local IP Address Manager Daemon<a class="headerlink" href="#l-ipamlocal-ip-address-manager-daemon" title="Permanent link">&para;</a></h3>
+<h4 id="l-ipam">▼ L-IPAMデーモンとは<a class="headerlink" href="#l-ipam" title="Permanent link">&para;</a></h4>
+<p>NodeやPodにIPアドレスを割り当てる。</p>
+<h4 id="_3">▼ ログ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p>L-IPAMデーモンは、<code>var/log/aws-routed-eni/ipamd.log</code>ファイルと<code>/var/log/aws-routed-eni/plugin.log</code>ファイルにログを出力する。</p>
+<p>aws-eks-vpc-cniアドオンが正しく動作しない場合、CNIプラグインのDaemonSet (<code>aws-node</code>) よりもL-IPAMデーモンのログを確認した方が良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging">https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="_4">マニフェスト<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DaemonSet</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-vpc-cni</span>
+<span class="w">    </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1.15.3&quot;</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">updateStrategy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10%</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RollingUpdate</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/instance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-vpc-cni</span>
+<span class="w">        </span><span class="nt">k8s-app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;system-node-critical&quot;</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">      </span><span class="nt">hostNetwork</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">initContainers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-vpc-cni-init</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon-k8s-cni-init:v1.15.3</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_TCP_EARLY_DEMUX</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_IPv6</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25m</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host/opt/cni/bin</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-bin-dir</span>
+<span class="w">      </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">      </span><span class="nt">tolerations</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># CNIプラグインの実体</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-node</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon-k8s-cni:v1.15.3</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">61678</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metrics</span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/grpc-health-probe</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-addr=:50051</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-connect-timeout=5s</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-rpc-timeout=5s</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">exec</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">command</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/grpc-health-probe</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-addr=:50051</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-connect-timeout=5s</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-rpc-timeout=5s</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ADDITIONAL_ENI_TAGS</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{}&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_CNI_NODE_PORT_SUPPORT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_ENI_MTU</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;9001&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_EXTERNALSNAT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_LOGLEVEL</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEBUG&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_LOG_FILE</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/host/var/log/aws-routed-eni/ipamd.log&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_RANDOMIZESNAT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;prng&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_CNI_VETHPREFIX</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eni&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_PLUGIN_LOG_FILE</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/var/log/aws-routed-eni/plugin.log&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_VPC_K8S_PLUGIN_LOG_LEVEL</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DEBUG&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_INTROSPECTION</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_METRICS</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DISABLE_NETWORK_RESOURCE_PROVISIONING</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_IPv4</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_IPv6</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_POD_ENI</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_PREFIX_DELEGATION</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VPC_CNI_VERSION</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1.15.3&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WARM_ENI_TARGET</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WARM_PREFIX_TARGET</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_NODE_NAME</span>
+<span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">fieldRef</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">                  </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec.nodeName</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_POD_NAME</span>
+<span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">fieldRef</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">                  </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metadata.name</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25m</span>
+<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">add</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_RAW</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host/opt/cni/bin</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-bin-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host/etc/cni/net.d</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-net-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host/var/log/aws-routed-eni</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/aws-node</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/xtables.lock</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xtables-lock</span>
+<span class="w">        </span><span class="c1"># Node Agent (aws-network-policy-agent)</span>
+<span class="w">        </span><span class="c1"># NetworkPolicyをCluster全体に適用する</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-eks-nodeagent</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-network-policy-agent:v1.0.5</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_NODE_NAME</span>
+<span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">fieldRef</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">                  </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec.nodeName</span>
+<span class="w">          </span><span class="nt">args</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-ipv6=false</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-network-policy=false</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-cloudwatch-logs=false</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--enable-policy-event-logs=false</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metrics-bind-addr=:8162</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--health-probe-bind-addr=:8163</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25m</span>
+<span class="w">          </span><span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">add</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+<span class="w">            </span><span class="nt">privileged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/host/opt/cni/bin</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-bin-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys/fs/bpf</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bpf-pin-path</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/aws-routed-eni</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log-dir</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/aws-node</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run-dir</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bpf-pin-path</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/sys/fs/bpf</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-bin-dir</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/cni/bin</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cni-net-dir</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/cni/net.d</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log-dir</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/aws-routed-eni</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DirectoryOrCreate</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run-dir</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/aws-node</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DirectoryOrCreate</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xtables-lock</span>
+<span class="w">          </span><span class="nt">hostPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/xtables.lock</span>
+<span class="w">      </span><span class="nt">affinity</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">nodeAffinity</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requiredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/os</span>
+<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/arch</span>
+<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm64</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eks.amazonaws.com/compute-type</span>
+<span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NotIn</span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fargate</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/v1.15.3/config/master/aws-k8s-cni.yaml#L351-L567">https://github.com/aws/amazon-vpc-cni-k8s/blob/v1.15.3/config/master/aws-k8s-cni.yaml#L351-L567</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-now-supports-kubernetes-network-policies/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-now-supports-kubernetes-network-policies/</a></li>
+<li><a href="https://github.com/aws/aws-network-policy-agent">https://github.com/aws/aws-network-policy-agent</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_5">設定<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ バージョン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update">https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ 環境変数<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
-<th>設定項目</th>
+<th>環境変数名</th>
 <th>説明</th>
+<th>設定例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>バージョン</td>
-<td>AWS EKSアドオンのバージョンを設定する。</td>
+<td><code>ADDITIONAL_ENI_TAGS</code></td>
+<td></td>
+<td><code>{}</code></td>
 </tr>
 <tr>
-<td>オプション</td>
-<td>AWS EKSアドオンのパラメーターを設定する。</td>
+<td><code>ANNOTATE_POD_IP</code></td>
+<td></td>
+<td><code>true</code></td>
 </tr>
 <tr>
-<td>継承</td>
-<td>AWS EKSのNodeのIAMロールをEKSアドオンにも適用するか否かを設定する。</td>
+<td><code>AWS_VPC_CNI_NODE_PORT_SUPPORT</code></td>
+<td></td>
+<td><code>true</code></td>
 </tr>
 <tr>
-<td>コンフリクトの解決方法</td>
-<td>既存のAWS EKSアドオンが存在している場合に、上書きするかそのままとするかを設定する。</td>
+<td><code>AWS_VPC_ENI_MTU</code></td>
+<td></td>
+<td><code>9001</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_CONFIGURE_RPFILTER</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_EXTERNALSNAT</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_LOGLEVEL</code></td>
+<td>aws-eks-vpcアドオンのログレベルを設定する。</td>
+<td><code>DEBUG</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_LOG_FILE</code></td>
+<td>aws-eks-vpcアドオンのログファイルの保管先を設定する。</td>
+<td><code>/host/var/log/aws-routed-eni/ipamd.log</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_RANDOMIZESNAT</code></td>
+<td></td>
+<td><code>prng</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_CNI_VETHPREFIX</code></td>
+<td></td>
+<td><code>eni</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_PLUGIN_LOG_FILE</code></td>
+<td>aws-eks-vpcアドオンのプラグインのログファイルの保管先を設定する。</td>
+<td><code>/var/log/aws-routed-eni/plugin.log</code></td>
+</tr>
+<tr>
+<td><code>AWS_VPC_K8S_PLUGIN_LOG_LEVEL</code></td>
+<td>aws-eks-vpcアドオンのプラグインのログレベルを設定する。</td>
+<td><code>DEBUG</code></td>
+</tr>
+<tr>
+<td><code>CLUSTER_ENDPOINT</code></td>
+<td>AWS EKS ClusterのエンドポイントのURLを設定する。</td>
+<td><code>https://*****.sk1.ap-northeast-1.eks.amazonaws.com</code></td>
+</tr>
+<tr>
+<td><code>CLUSTER_NAME</code></td>
+<td>AWS EKS Clusterの名前を設定する。</td>
+<td><code>foo-cluster</code></td>
+</tr>
+<tr>
+<td><code>DISABLE_INTROSPECTION</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>DISABLE_METRICS</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>DISABLE_NETWORK_RESOURCE_PROVISIONING</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_IPv4</code></td>
+<td></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_IPv6</code></td>
+<td></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_POD_ENI</code></td>
+<td>Podにセキュリティグループを紐づける機能 (Security groups for Pods) を有効化するかどうかを設定する。</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>ENABLE_PREFIX_DELEGATION</code></td>
+<td>Prefix delegationモードを有効化するかを設定する。</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>MAX_ENI</code></td>
+<td>AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>MINIMUM_IP_TARGET</code></td>
+<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。</td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td><code>MY_NODE_NAME</code></td>
+<td>ワーカーNode名が設定されているマニフェストのキーを設定する。</td>
+<td><code>"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}</code></td>
+</tr>
+<tr>
+<td><code>MY_POD_NAME</code></td>
+<td>Pod名が設定されているマニフェストのキーを設定する。</td>
+<td><code>"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}</code></td>
+</tr>
+<tr>
+<td><code>POD_SECURITY_GROUP_ENFORCING_MODE</code></td>
+<td>Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。</td>
+<td><code>standard</code> (<code>standard</code>の場合は、プライマリーENIのセキュリティグループを適用する)</td>
+</tr>
+<tr>
+<td><code>VPC_ID</code></td>
+<td>AWS VPCのIDを設定する。</td>
+<td><code>vpc-*****</code></td>
+</tr>
+<tr>
+<td><code>WARM_ENI_TARGET</code></td>
+<td>AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>WARM_PREFIX_TARGET</code></td>
+<td></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>WARM_IP_TARGET</code></td>
+<td><code>WARM_ENI_TARGET</code>と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。<code>WARM_ENI_TARGET</code>の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。</td>
+<td><code>2</code></td>
 </tr>
 </tbody>
 </table>
-<h4 id="terraform">▼ Terraformの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>Terraformを使用する。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># aws-eks-corednsアドオン</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;coredns&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;coredns&quot;</span>
-<span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
-<span class="c1">  # スケジューリングさせるNodeを設定する</span>
-<span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nb">nodeSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">&quot;node.kubernetes.io/nodegroup&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;system&quot;</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">)</span>
-<span class="p">}</span>
-
-
-<span class="c1"># aws-kube-proxyアドオン</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;kube_proxy&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
-<span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
-<span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kube-proxy&quot;</span>
-<span class="c1">  # Terraformで設定を上書きできるようにする</span>
-<span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
-<span class="p">}</span>
-
-
-<span class="c1"># aws-vpc-cniアドオン</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
+<blockquote>
+<ul>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables">https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments</a></li>
+<li><a href="https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address">https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address</a></li>
+<li><a href="https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress">https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress</a></li>
+<li><a href="https://zenn.dev/nshmura/articles/fbb53aaf6fed8c">https://zenn.dev/nshmura/articles/fbb53aaf6fed8c</a></li>
+<li><a href="https://www.grugrut.net/posts/202107250958/">https://www.grugrut.net/posts/202107250958/</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ 確認方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>aws-eks-vpc-cniアドオンは、<code>aws-node</code>というDaemonSetとして稼働している。</p>
+<p>これのコンテナの環境変数で、アドオンの設定が管理されている。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>daemonset<span class="w"> </span>aws-node<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span>-o<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.template.spec.containers[*].env}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</code></pre></div>
+<p><br></p>
+<h3 id="ip">セカンダリーIPアドレス割り当てモード<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<h4 id="ip_1">▼ セカンダリーIPアドレス割り当てモードとは<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h4>
+<p>AWSのENIには、セカンダリーIPアドレス割り当てという機能がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/MultipleIP.html#ManageMultipleIP</a></li>
+</ul>
+</blockquote>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENIに紐づけられたセカンダリープライベートIPアドレスをPodに割り当てる。</p>
+<p>この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
+<p>執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり<code>1</code>個しかPodをスケジューリングさせられない。</p>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+<li><a href="https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965">https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965</a></li>
+<li><a href="https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d">https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d</a></li>
+<li><a href="https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt">https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt</a></li>
+</ul>
+</blockquote>
+<h4 id="ip_2">▼ IPアドレス割り当ての仕組み<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h4>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>L-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報を、CNIプラグインにプールする。</p>
+<p>プールのENIとセカンダリープライベートIPアドレスの数は、<code>MINIMUM_IP_TARGET</code>と<code>WARM_IP_TARGET</code> (または<code>WARM_ENI_TARGET</code>) の合計数で決まる。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>kubeletは、ENIに関する<code>ADD</code>/<code>DEL</code>の命令をCNIプラグインに送信する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>L-IPAMデーモンはCNIプラグインを参照する。</p>
+<p>また、CNIプラグイン上の情報に応じてEC2-APIをコールする。 ENIをNodeに割り当てる。</p>
+<p>反対に、NodeのENIを解放し、ENIのプールに戻す。</p>
+</dd>
+</dl>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png" /></p>
+<dl>
+<dt><code>(3)</code></dt>
+<dd>
+<p>kubeletは、セカンダリープライベートIPアドレスに関する<code>ADD</code>/<code>DEL</code>の命令を、CNIプラグインに送信する。</p>
+</dd>
+<dt><code>(4)</code></dt>
+<dd>
+<p>CNIプラグインは、L-IPAMデーモンのプールからIPアドレスを取得し、Podにこれを割り当てる。</p>
+<p>反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。</p>
+</dd>
+</dl>
+<p><img alt="aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
+<li><a href="https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="prefix-delegation">Prefix delegationモード (プレフィクス委譲モード)<a class="headerlink" href="#prefix-delegation" title="Permanent link">&para;</a></h3>
+<h4 id="prefix-delegation_1">▼ Prefix delegationモードとは<a class="headerlink" href="#prefix-delegation_1" title="Permanent link">&para;</a></h4>
+<p>AWSのENIには、Prefix delegation (プレフィクス委譲) という機能がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
+</ul>
+</blockquote>
+<p>L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の<code>*.*.*.*/28</code>) を割り当て、これから取得したIPアドレスをPodに割り当てる。</p>
+<p>ENIの個数を増やすごとに、<code>16</code>個分のIPアドレス (サブネット内の<code>*.*.*.*/28</code>) を確保できる。</p>
+<p>Prefix delegationモードを使用する場合、Nodeを置くAWSサブネットのCIDRを<code>*.*.*.*/28</code>よりも大きくしておく必要がある。</p>
+<p><img alt="aws-eks-vpc-cni_prefix-delegation-mode.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
+</ul>
+</blockquote>
+<h4 id="_9">▼ セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>Prefix delegationモードを採用可能なインスタンスタイプを選ぶ。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances</a></li>
+</ul>
+</blockquote>
+<p>aws-eks-cの環境変数の<code>ENABLE_PREFIX_DELEGATION</code>に<code>true</code>を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_addon&quot;</span><span class="w"> </span><span class="nv">&quot;vpc_cni&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo.name</span>
 <span class="w">  </span><span class="na">addon_version</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バージョン&gt;&quot;</span>
 <span class="w">  </span><span class="na">addon_name</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-cni&quot;</span>
-<span class="c1">  # Terraformで設定を上書きできるようにする</span>
 <span class="w">  </span><span class="na">resolve_conflicts_on_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OVERWRITE&quot;</span>
+
 <span class="c1">  # 環境変数を設定する</span>
 <span class="w">  </span><span class="na">configuration_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">(</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nb">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="c1">        # Podの上限数を変更する</span>
-<span class="w">        </span><span class="na">MINIMUM_IP_TARGET</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;10&quot;</span>
-<span class="w">        </span><span class="na">WARM_IP_TARGET</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;5&quot;</span>
+<span class="w">        </span><span class="na">ENABLE_PREFIX_DELEGATION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="helm">▼ Helmの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://aws.github.io/eks-charts
+<p>AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。</p>
+<p>一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (<code>v1.9</code>以上のaws-eks-vpc-cniアドオン)。</p>
+<p><code>max-pods-calculator.sh</code>ファイルを使用して、事前にPodの最大数を計算しておく。</p>
+<p>なお、vCPUが<code>30</code>未満のインスタンスタイプの場合に最大数は<code>110</code>個になり、それ以外の場合は<code>250</code>個になる。</p>
+<p>設定した上限に合わせて、CIDR (サブネット内の<code>*.*.*.*/28</code>) の予約が必要になる。</p>
+<p>例えば、<code>48</code>個のPodを乗せたいなら、CIDR (サブネット内の<code>*.*.*.*/28</code>) 当たりで<code>16</code>個のIPアドレスを使用できるようになるので、CIDR (サブネット内の<code>*.*.*.*/28</code>) は<code>3</code>個予約する必要がある。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ファイルをダウンロードする</span>
+$<span class="w"> </span>curl<span class="w"> </span>-O<span class="w"> </span>https://raw.githubusercontent.com/awslabs/amazon-eks-ami/master/files/max-pods-calculator.sh
 
+<span class="c1"># 権限を変更する</span>
+$<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>max-pods-calculator.sh
 
-<span class="c1"># aws-eks-corednsアドオン</span>
-<span class="c1"># 執筆時点 (2023/03/02) 時点でチャートなし</span>
+<span class="c1"># --cni-prefix-delegation-enabledオプションを有効化した上でPod最大数を計算する</span>
+$<span class="w"> </span>./max-pods-calculator.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--instance-type<span class="w"> </span>&lt;インスタンスタイプ&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-version<span class="w"> </span>&lt;aws-eks-vpc-cniのバージョン&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cni-prefix-delegation-enabled
+</code></pre></div>
+<p><code>bootstrap.sh</code>ファイルに必要なパラメーターを渡す。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
+<span class="c1"># ユーザーデータファイル</span>
 
-<span class="c1"># aws-kube-proxyアドオン</span>
-<span class="c1"># 執筆時点 (2023/03/02) 時点でチャートなし</span>
-
-
-<span class="c1"># aws-vpc-cniアドオン</span>
-$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/aws-vpc-cni<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
+/etc/eks/bootstrap.sh<span class="w"> </span>foo-eks-cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--b64-cluster-ca<span class="w"> </span><span class="nv">$B64_CLUSTER_CA</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apiserver-endpoint<span class="w"> </span><span class="nv">$APISERVER_ENDPOINT</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--container-runtime<span class="w"> </span>containerd<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--use-max-pods<span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--kubelet-extra-args<span class="w"> </span><span class="s2">&quot;--max-pods=&lt;max-pods-calculator.shファイルから取得したPodの最大数&gt;&quot;</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/aws/eks-charts/tree/master/stable">https://github.com/aws/eks-charts/tree/master/stable</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+<li><a href="https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/">https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/</a></li>
+</ul>
+</blockquote>
+<h4 id="ip_3">▼ セカンダリーIPアドレス割り当てモードとの比較<a class="headerlink" href="#ip_3" title="Permanent link">&para;</a></h4>
+<p>AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix delegationモードの方が記載が充実している。</p>
+<p>AWSとしては、Prefix delegationモードの方を使って欲しいのかもしれない。</p>
+<p>実際、セカンダリーIPアドレス割り当てモードでは、割り当てられるIPアドレスが劇的に増えないため、Prefix delegationモードの方が良い。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+</ul>
+</blockquote>
+<h4 id="ip_4">▼ セカンダリーIPアドレス割り当てモードからの移行<a class="headerlink" href="#ip_4" title="Permanent link">&para;</a></h4>
+<p>もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除した上で、Nodeを新規作成する。</p>
+<p>ローリングアップグレードで移行する場合、セカンダリーIPアドレス割り当てモードとPrefix delegationモードの両方をNodeに適用してしまう。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html">https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html</a></li>
+<li><a href="https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation">https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-aws-eks-codedns">02. aws-eks-codednsアドオン<a class="headerlink" href="#02-aws-eks-codedns" title="Permanent link">&para;</a></h2>
-<h3 id="aws-eks-codedns">aws-eks-codednsアドオンとは<a class="headerlink" href="#aws-eks-codedns" title="Permanent link">&para;</a></h3>
-<p>EKSの各Node上で、<code>kube-dns</code>という名前のDeploymentとして稼働する。</p>
-<p>同じCluster内の全てのPodの名前解決を行う。</p>
-<p>aws-eks-corednsアドオンがAWS EKS Cluster内に無い場合、外部サービス (例：SSOのIDプロバイダーなど) の名前解決を実行できなくなるため、必須である。</p>
+<h2 id="04-pod">04. Podの上限数を上げる<a class="headerlink" href="#04-pod" title="Permanent link">&para;</a></h2>
+<h3 id="pod">Podの上限数<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ 上限数の決まり方<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。</p>
+<p>そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>t3.nano</code></th>
+<th><code>t3.micro</code></th>
+<th><code>t3.small</code></th>
+<th><code>t3.medium</code></th>
+<th><code>t3.large</code></th>
+<th><code>t3.xlarge</code></th>
+<th><code>t3.2xlarge</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node<code>1</code>個</td>
+<td>4</td>
+<td>4</td>
+<td>11</td>
+<td>17</td>
+<td>35</td>
+<td>58</td>
+<td>58</td>
+</tr>
+<tr>
+<td><code>2</code>個</td>
+<td>8</td>
+<td>8</td>
+<td>22</td>
+<td>34</td>
+<td>70</td>
+<td>116</td>
+<td>116</td>
+</tr>
+<tr>
+<td><code>3</code>個</td>
+<td>12</td>
+<td>12</td>
+<td>33</td>
+<td>51</td>
+<td>105</td>
+<td>174</td>
+<td>174</td>
+</tr>
+<tr>
+<td><code>4</code>個</td>
+<td>16</td>
+<td>16</td>
+<td>44</td>
+<td>68</td>
+<td>140</td>
+<td>232</td>
+<td>232</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_11">▼ 現在の上限数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p><code>kubectl describe</code>コマンドの<code>Capacity</code>項目で、現在のPodの上限数を確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;Node名&gt;
+
+...
+
+Capacity:
+<span class="w">  </span>cpu:<span class="w">                </span><span class="m">2</span>
+<span class="w">  </span>ephemeral-storage:<span class="w">  </span>20959212Ki
+<span class="w">  </span>hugepages-1Gi:<span class="w">      </span><span class="m">0</span>
+<span class="w">  </span>hugepages-2Mi:<span class="w">      </span><span class="m">0</span>
+<span class="w">  </span>memory:<span class="w">             </span>8022992Ki
+<span class="w">  </span>pods:<span class="w">               </span><span class="m">35</span><span class="w"> </span><span class="c1"># Podの上限数</span>
+
+<span class="w"> </span>...
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html</a></li>
+<li><a href="https://qiita.com/okubot55/items/2c25d75bd72bac629829">https://qiita.com/okubot55/items/2c25d75bd72bac629829</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_4">設定<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ バージョン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。</p>
+<h3 id="ip_5">セカンダリーIP割り当てモードの場合<a class="headerlink" href="#ip_5" title="Permanent link">&para;</a></h3>
+<h4 id="_12">▼ 設定方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たり最低限のセカンダリープライベートIPアドレス数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
+<p><code>MINIMUM_IP_TARGET</code>には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。</p>
+<p>また、<code>WARM_IP_TARGET</code>には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。</p>
+<p>Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。</p>
+<h4 id="_13">▼ シナリオ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、<code>10</code>個だとする。</p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>Nodeで小さめのインスタンスサイズを選びつつ、<code>MINIMUM_IP_TARGET=10+2</code>と<code>WARM_IP_TARGET=2</code>を設定する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>Node当たり<code>12</code>個のセカンダリープライベートIPアドレスを確保する。</p>
+<p>さらに追加で、常に<code>2</code>個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。</p>
+<p>結果、最初<code>12</code>個のPodをスケジューリングできる。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>Podが<code>12</code>個を超えた段階で、合計のセカンダリープライベートIPアドレス数は<code>2</code>個のウォーム状態数を維持しながら増えていく。</p>
+</dd>
+</dl>
 <blockquote>
 <ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html</a></li>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md</a></li>
+<li><a href="https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt">https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt</a></li>
+<li><a href="https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress">https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress</a></li>
+<li><a href="https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99">https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99</a></li>
+<li><a href="https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B">https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-aws-eks-distro-for-opentelemetry">03. aws-eks-distro-for-opentelemetry<a class="headerlink" href="#03-aws-eks-distro-for-opentelemetry" title="Permanent link">&para;</a></h2>
-<p>テレメトリーの収集をマネージドにする。</p>
-<p>メトリクスの場合、ストレージとアラートをマネージドにしたManaged Prometheusと組み合わせると、データの収集 (プル型のみ) から保管までをマネージドにできる。</p>
+<h3 id="prefix-delegation_2">Prefix delegationモードの場合<a class="headerlink" href="#prefix-delegation_2" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ 設定方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p><code>MINIMUM_IP_TARGET</code> (Node当たりの<code>*.*.*.*/28</code>を持つENIの個数) または<code>WARM_IP_TARGET</code> (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。</p>
+<p>他にも設定可能な変数があるが、ここではこの2つを使用する。</p>
+<h4 id="_15">▼ シナリオ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
-<li><a href="https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13">https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-aws-eks-kube-proxy">04. aws-eks-kube-proxy<a class="headerlink" href="#04-aws-eks-kube-proxy" title="Permanent link">&para;</a></h2>
-<h3 id="aws-eks-kube-proxy">aws-eks-kube-proxyアドオンとは<a class="headerlink" href="#aws-eks-kube-proxy" title="Permanent link">&para;</a></h3>
-<p>EKSの各Node上で、<code>kube-proxy</code>という名前のDaemonSetとして稼働する。</p>
-<p>EKSのコントロールプレーン上のkube-apiserverが、Node外からPodにインバウンド通信をルーティングできるようにする。</p>
-<p>aws-eks-kube-proxyアドオンがAWS EKS Cluster内に無い場合、Pod内のコンテナのライフサイクルを何も管理できなくなるため、必須である。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="_6">設定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ バージョン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Kubernetesのバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html">https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html</a></li>
+<li><a href="https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md">https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md</a></li>
 </ul>
 </blockquote>
 <p><br></p>
