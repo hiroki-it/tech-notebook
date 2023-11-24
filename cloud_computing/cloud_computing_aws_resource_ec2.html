@@ -9446,6 +9446,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="ipv4-prefix-delegation">IPv4 Prefix delegationとは<a class="headerlink" href="#ipv4-prefix-delegation" title="Permanent link">&para;</a></h3>
 <p>ENIに複数のCIDR (サブネット内の<code>*.*.*.*/28</code>) を割り当て、このENIをEC2に紐づける。</p>
 <p>EC2に紐づけたCIDRからIPアドレスを取得する。</p>
+<p>セカンダリーIPアドレス割り当てとは異なり、IPアドレスではなくCIDRを丸ごとENIに割り当てられるため、EC2内で使用可能なIPアドレス数を大きく増やせる。</p>
 <table>
 <thead>
 <tr>
@@ -9483,7 +9484,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p>ENIにCIDRを自動/手動で割り当てる時、サブネット内に断片化されていない<code>*.*.*.*/28</code>が無いと、<code>InsufficientCidr</code>というエラーになる。</p>
 <p>そこで、サブネットにCIDR (<code>*.*.*.*/28</code>) を予約しておき、これをIPv4 Prefix delegationのために使用する。</p>
 <p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。</p>
-<p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、IPが解放されるのを待つとよい。</p>
+<p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、EC2の再作成によるセカンダリープライベートIPアドレス解放を待つとよい。</p>
 <p>CIDR内のセカンダリープライベートIPアドレスが使用中であってもCIDRを予約できる。</p>
 <p>予約したCIDR内のセカンダリープライベートIPアドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。</p>
 <p>もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。</p>
@@ -9502,15 +9503,19 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <span class="nv">cidr_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
 
 -----------
-<span class="c1"># サブネットで予約済みのIPアドレス</span>
+
+<span class="c1"># サブネットで予約したCIDRのうちで、実際に予約済みのIPアドレス</span>
 <span class="nv">reserved_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
+
 <span class="c1"># サブネット内で使用中のIPアドレス</span>
 <span class="nv">used_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
+
 <span class="c1"># サブネット内で未使用のIPアドレス</span>
 <span class="nv">unused_ips</span><span class="o">=[</span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span><span class="s1">&#39;*.*.*.*&#39;</span>,<span class="w"> </span>...<span class="o">]</span>
 -----------
+
 <span class="nv">cidr</span><span class="o">=</span>*.*.*.*/*<span class="w"> </span><span class="nv">cidr_ips</span><span class="o">=</span>&lt;全てのIPアドレス数&gt;<span class="w"> </span><span class="nv">reserved</span><span class="o">=</span>&lt;予約されたIPアドレス数&gt;<span class="w"> </span><span class="nv">used</span><span class="o">=</span>&lt;使用中のIPアドレス数&gt;<span class="w"> </span><span class="nv">unused</span><span class="o">=</span>&lt;未使用のIPアドレス数&gt;
 </code></pre></div>
 <blockquote>
