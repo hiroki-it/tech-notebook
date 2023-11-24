@@ -360,9 +360,51 @@ $ kubectl get daemonset aws-node \
 
 <br>
 
-### セカンダリーIPアドレス割り当てモード
+## 04. Podの上限数を上げる
 
-#### ▼ セカンダリーIPアドレス割り当てモードとは
+### 上限数の決まり方
+
+Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。
+
+そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
+
+|           | `t3.nano` | `t3.micro` | `t3.small` | `t3.medium` | `t3.large` | `t3.xlarge` | `t3.2xlarge` |
+| --------- | --------- | ---------- | ---------- | ----------- | ---------- | ----------- | ------------ |
+| Node`1`個 | 4         | 4          | 11         | 17          | 35         | 58          | 58           |
+| `2`個     | 8         | 8          | 22         | 34          | 70         | 116         | 116          |
+| `3`個     | 12        | 12         | 33         | 51          | 105        | 174         | 174          |
+| `4`個     | 16        | 16         | 44         | 68          | 140        | 232         | 232          |
+
+<br>
+
+### 現在の上限数
+
+`kubectl describe`コマンドの`Capacity`項目で、現在のPodの上限数を確認できる。
+
+```bash
+$ kubectl describe node <Node名>
+
+...
+
+Capacity:
+  cpu:                2
+  ephemeral-storage:  20959212Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             8022992Ki
+  pods:               35 # Podの上限数
+
+ ...
+
+```
+
+> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
+
+<br>
+
+## 04-02. セカンダリーIP割り当てモードの場合
+
+### セカンダリーIPアドレス割り当てモードとは
 
 AWSのENIには、セカンダリーIPアドレス割り当てという機能がある。
 
@@ -381,7 +423,9 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 
-#### ▼ IPアドレス割り当ての仕組み
+<br>
+
+### IPアドレス割り当ての仕組み
 
 `(1)`
 
@@ -420,9 +464,53 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 <br>
 
-### Prefix delegationモード (プレフィクス委譲モード)
+### セットアップ
 
-#### ▼ Prefix delegationモードとは
+#### ▼ 環境変数
+
+`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+
+他にも設定可能な変数があるが、ここではこの2つを使用する。
+
+`MINIMUM_IP_TARGET`には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
+
+また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
+
+Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
+
+<br>
+
+### シナリオ
+
+例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10`個だとする。
+
+`(1)`
+
+: Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定する。
+
+`(2)`
+
+: Node当たり`12`個のセカンダリープライベートIPアドレスを確保する。
+
+     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+
+     結果、最初`12`個のPodをスケジューリングできる。
+
+`(3)`
+
+: Podが`12`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
+
+> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
+> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
+> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
+> - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
+> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
+
+<br>
+
+## 04-03. Prefix delegationモードの場合
+
+### Prefix delegationモード (プレフィクス委譲モード) とは
 
 AWSのENIには、Prefix delegation (プレフィクス委譲) という機能がある。
 
@@ -439,7 +527,11 @@ Prefix delegationモードを使用する場合、Nodeを置くAWSサブネッ�
 > - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
-#### ▼ セットアップ
+<br>
+
+### セットアップ
+
+#### ▼ CNIプラグイン
 
 Prefix delegationモードを採用可能なインスタンスタイプを選ぶ。
 
@@ -464,6 +556,8 @@ resource "aws_eks_addon" "vpc_cni" {
   )
 }
 ```
+
+#### ▼ `bootstrap.sh`ファイル
 
 AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。
 
@@ -509,7 +603,17 @@ $ ./max-pods-calculator.sh \
 > - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
 
-#### ▼ セカンダリーIPアドレス割り当てモードとの比較
+#### ▼ 環境変数
+
+`MINIMUM_IP_TARGET` (Node当たりの`*.*.*.*/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+
+他にも設定可能な変数があるが、ここではこの2つを使用する。
+
+<br>
+
+### セカンダリーIPアドレス割り当てモードとの比較
+
+#### ▼ IPアドレス数
 
 AWSドキュメントでEC2 Nodeに割り当てられるIPアドレスを増やす調べると、従来のセカンダリーIPアドレス割り当てモードではなく、Prefix delegationモードの方が記載が充実している。
 
@@ -530,99 +634,7 @@ AWSとしては、Prefix delegationモードの方を使って欲しいのかも
 
 <br>
 
-## 04. Podの上限数を上げる
-
-### Podの上限数
-
-#### ▼ 上限数の決まり方
-
-Nodeのインスタンスタイプごとに紐付けられるセカンダリーIPアドレス数に制限がある。
-
-そのため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
-
-|           | `t3.nano` | `t3.micro` | `t3.small` | `t3.medium` | `t3.large` | `t3.xlarge` | `t3.2xlarge` |
-| --------- | --------- | ---------- | ---------- | ----------- | ---------- | ----------- | ------------ |
-| Node`1`個 | 4         | 4          | 11         | 17          | 35         | 58          | 58           |
-| `2`個     | 8         | 8          | 22         | 34          | 70         | 116         | 116          |
-| `3`個     | 12        | 12         | 33         | 51          | 105        | 174         | 174          |
-| `4`個     | 16        | 16         | 44         | 68          | 140        | 232         | 232          |
-
-#### ▼ 現在の上限数
-
-`kubectl describe`コマンドの`Capacity`項目で、現在のPodの上限数を確認できる。
-
-```bash
-$ kubectl describe node <Node名>
-
-...
-
-Capacity:
-  cpu:                2
-  ephemeral-storage:  20959212Ki
-  hugepages-1Gi:      0
-  hugepages-2Mi:      0
-  memory:             8022992Ki
-  pods:               35 # Podの上限数
-
- ...
-
-```
-
-> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
-
-<br>
-
-### セカンダリーIP割り当てモードの場合
-
-#### ▼ 設定方法
-
-`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
-
-他にも設定可能な変数があるが、ここではこの2つを使用する。
-
-`MINIMUM_IP_TARGET`には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
-
-また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
-
-Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
-
-#### ▼ シナリオ
-
-例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10`個だとする。
-
-`(1)`
-
-: Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定する。
-
-`(2)`
-
-: Node当たり`12`個のセカンダリープライベートIPアドレスを確保する。
-
-     さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
-
-     結果、最初`12`個のPodをスケジューリングできる。
-
-`(3)`
-
-: Podが`12`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
-
-> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
-> - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
-> - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
-> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
-
-<br>
-
-### Prefix delegationモードの場合
-
-#### ▼ 設定方法
-
-`MINIMUM_IP_TARGET` (Node当たりの`*.*.*.*/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
-
-他にも設定可能な変数があるが、ここではこの2つを使用する。
-
-#### ▼ シナリオ
+### シナリオ
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md
 
