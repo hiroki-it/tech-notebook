@@ -640,10 +640,6 @@ Systems Managerを使用してEC2に接続する場合、EC2自体にsystems-man
 
 ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。
 
-物理ネットワークにおけるNICについては以下のリンクを参考にせよ。
-
-> - https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
-
 <br>
 
 ### ENIの種類
@@ -654,13 +650,19 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 
 これを解除することはできない。
 
+![aws_eni_primary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
+
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+> - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
 
 #### ▼ セカンダリーENI (`eth1`)
 
 プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。
 
+![aws_eni_secondary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
+
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html
+> - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
 
 <br>
 
