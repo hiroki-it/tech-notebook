@@ -640,6 +640,10 @@ Systems Managerを使用してEC2に接続する場合、EC2自体にsystems-man
 
 ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。
 
+また、EC2のセキュリティグループもENIに紐づいている。
+
+ENIを再作成した場合、ENIはIPアドレスをサブネット内に一度解放し、新しいIPアドレスをENIに紐づける。
+
 <br>
 
 ### ENIの種類
@@ -648,7 +652,7 @@ ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけ
 
 ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。
 
-これを解除することはできない。
+プライマリーENIは、EC2から解除できない。
 
 ![aws_eni_primary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
 
@@ -658,6 +662,8 @@ ENIが必要なAWSリソースには、デフォルトでプライマリーENI�
 #### ▼ セカンダリーENI (`eth1`)
 
 プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。
+
+セカンダリーENIは、EC2から解除できる。
 
 ![aws_eni_secondary-eni.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
 
