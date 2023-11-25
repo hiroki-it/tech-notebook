@@ -23,9 +23,11 @@ description: リソース＠Istioの知見を記録しています。
 
 ### Gatewayとは
 
+#### ▼ IngressGatewayの場合
+
 IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
 
-そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、Gatewayは不要である。
+そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podの場合、Gatewayは不要である。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
@@ -178,13 +180,6 @@ spec:
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
-#### ▼ `404`ステータス
-
-受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
-
-> - https://stackoverflow.com/a/73824193
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
-
 <br>
 
 ### EgressGateway
@@ -196,6 +191,17 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
 > - https://knowledge.sakura.ad.jp/20489/
+
+<br>
+
+### プラクティス
+
+#### ▼ `404`ステータス
+
+受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+> - https://stackoverflow.com/a/73824193
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
 <br>
 
@@ -224,28 +230,20 @@ Istioは、ServiceEntryの設定値をEnvoyのクラスター値に変換する�
 
 ### VirtualServiceとは
 
-Cluster外からの通信では、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+#### ▼ IngressGatewayの場合
 
-またPod間通信では、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
-
-Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
+Cluster外からの通信の場合、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
 
-#### ▼ `404`ステータス
+#### ▼ Pod間通信の場合
 
-Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+Pod間通信の場合、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
 
-#### ▼ VirtualService数
-
-|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
-
-> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+この時、VirtualServiceとDestinationのみを使用する。
 
 <br>
 
@@ -335,15 +333,37 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 <br>
 
+### プラクティス
+
+#### ▼ `404`ステータス
+
+Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+#### ▼ VirtualService数
+
+|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
+
+> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+
+<br>
+
+<br>
+
 ## 04. DestinationRule
 
 ### DestinationRuleとは
 
-Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
+#### ▼ IngressGatewayの場合
 
-またPod間通信では、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
+Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
+
+#### ▼ Pod間通信の場合
+
+Pod間通信の場合、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
 
 <br>
 
