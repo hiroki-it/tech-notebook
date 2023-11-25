@@ -1428,7 +1428,7 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
@@ -1478,11 +1478,11 @@ spec:
 
 #### ▼ match
 
-受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。
+受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
 **＊実装例＊**
 
-受信したインバウンド通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
+受信した通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -1498,7 +1498,7 @@ spec:
               exact: bar
 ```
 
-受信したインバウンド通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
+受信した通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
 
 > - https://istiobyexample.dev/path-based-routing/
 
@@ -1561,7 +1561,7 @@ spec:
 
 #### ▼ route.destination.host
 
-受信したインバウンド通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
+受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
@@ -1607,7 +1607,7 @@ spec:
 
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
-IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングする。
+DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 > - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
@@ -1718,7 +1718,7 @@ spec:
 
 #### ▼ tcpとは
 
-TCPスリーウェイハンドシェイクの通信を、Serviceを介してDestinationRuleにルーティングする。
+TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 

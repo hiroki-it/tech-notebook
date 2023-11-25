@@ -122,7 +122,7 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 
 Istioリソースで設定するサブセット名は`1`個だけにする。
 
-これにより、IngressGatewayで受信したインバウンド通信を、特定のバージョンのPodにルーティングできる。
+これにより、IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

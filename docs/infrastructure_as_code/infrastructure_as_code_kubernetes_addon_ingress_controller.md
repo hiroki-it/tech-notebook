@@ -19,7 +19,7 @@ description: Ingressコントローラー＠Ingressコントローラーアド�
 
 Ingressコントローラーは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、
 
-これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信したインバウンド通信をServiceにルーティングする。
+これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信した通信をServiceにルーティングする。
 
 注意点として、IngressコントローラーがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。
 

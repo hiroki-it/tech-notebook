@@ -25,7 +25,7 @@ description: リソース＠Istioの知見を記録しています。
 
 #### ▼ IngressGatewayの場合
 
-IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
+IngressGatewayの能力のうち、Node外から受信した通信をフィルタリングする能力を担う。
 
 そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podの場合、Gatewayは不要である。
 
@@ -198,7 +198,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 #### ▼ `404`ステータス
 
-受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
 > - https://stackoverflow.com/a/73824193
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -232,7 +232,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 #### ▼ IngressGatewayの場合
 
-Cluster外からの通信の場合、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
+Cluster外からの通信の場合、IngressGatewayで受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
 ![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
 
@@ -305,7 +305,7 @@ configs:
   ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。
 
 ```bash
 クライアント
@@ -337,7 +337,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 #### ▼ `404`ステータス
 
-Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+Gatewayから受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
 
 #### ▼ VirtualService数
 
@@ -357,7 +357,7 @@ Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件�
 
 #### ▼ IngressGatewayの場合
 
-Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
+Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
@@ -371,7 +371,7 @@ Pod間通信の場合、`istio-proxy`コンテナの送信するアウトバウ�
 
 Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。
 
-なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから割り当てる。
+なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから動的に取得する。
 
 そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。
 
@@ -482,7 +482,7 @@ configs:
     ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。
 
 Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 
