@@ -280,7 +280,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 #### ▼ ドメイン
 
-ドメインレジストラ (例：AWS Route53、GCP CloudDNS、お名前ドットコム) によって管理される。
+ドメインレジストラ (例：AWS Route53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-

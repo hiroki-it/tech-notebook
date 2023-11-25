@@ -165,7 +165,7 @@ build:
 
 <br>
 
-### Google Cloud GCR
+### Google Container Registry
 
 Google Cloudのクレデンシャルファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
 

@@ -40,7 +40,7 @@ namespaceでは、カーネルを分離できるため、カーネルの要素 (
 
 ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
 
-各イメージレジストリ (例：DockerHub、AWS ECR、GCP GCR、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harbor、など) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
 
 #### ▼ イメージレイヤー
 
@@ -305,7 +305,7 @@ AWS ECSコンテナのawsfirelensドライバーは、fluentdドライバーを�
 
 #### ▼ gcplogs
 
-標準出力/標準エラー出力に出力されたログを、GCP CloudLoggingのAPIに転送する。
+標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIに転送する。
 
 ```yaml
 {
