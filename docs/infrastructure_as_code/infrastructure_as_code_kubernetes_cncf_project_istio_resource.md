@@ -209,28 +209,13 @@ Clusterネットワーク内から通信を受信し、フィルタリングし�
 
 <br>
 
-## 02. ServiceEntry
-
-### ServiceEntryとは
-
-コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
-
-類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
-
-![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
-
-> - https://tech.uzabase.com/entry/2018/11/26/110407
-> - https://jimmysong.io/blog/externalname-and-serviceentry/
-
-<br>
-
 ### Envoyの設定値として
 
 Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。
 
 <br>
 
-## 03. VirtualService
+## 02. VirtualService
 
 ### VirtualServiceとは
 
@@ -353,9 +338,7 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 <br>
 
-<br>
-
-## 04. DestinationRule
+## 03. DestinationRule
 
 ### DestinationRuleとは
 
@@ -521,6 +504,21 @@ foo-service.foo-namespace.svc.cluster.local   50001                        v1   
 bar-service.bar-namespace.svc.cluster.local   50002                        v1            outbound     EDS                 bar-destination-rule.bar-namespace
 baz-service.baz-namespace.svc.cluster.local   50003                        v1            outbound     EDS                 baz-destination-rule.baz-namespace
 ```
+
+<br>
+
+## 04. ServiceEntry
+
+### ServiceEntryとは
+
+コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
+
+類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
+
+![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
+
+> - https://tech.uzabase.com/entry/2018/11/26/110407
+> - https://jimmysong.io/blog/externalname-and-serviceentry/
 
 <br>
 
