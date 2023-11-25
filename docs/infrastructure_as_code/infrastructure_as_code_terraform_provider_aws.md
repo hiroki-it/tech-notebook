@@ -150,6 +150,7 @@ data "aws_ami" "bastion" {
 
   # 後述の説明を参考にせよ。(2)
   owners      = ["amazon"]
+
   filter {
     name   = "name"
     values = ["amzn-ami-hvm-2018.03.0.20201028.0-x86_64-gp2"]
@@ -164,6 +165,7 @@ data "aws_ami" "bastion" {
 # 後述の説明を参考にせよ。(3)
 
 data "aws_ami" "backuped" {
+
   most_recent = true
 
   owners      = ["self"]

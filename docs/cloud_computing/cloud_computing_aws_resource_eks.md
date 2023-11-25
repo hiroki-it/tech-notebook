@@ -916,6 +916,12 @@ EKSのための標準的なEC2を作成できる。最も推奨である。
 
 `aws ssm get-parameter`コマンドを使用すると、公式が提供するマシンイメージのIDを確認できる。
 
+注意点として、AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。
+
+そのため、パッチバージョンがアップグレードされる度に、AMIのIDは変わる。
+
+AMIのIDを固定するためには、AMIをダウンロードして自前で管理する必要がある。
+
 ```bash
 $ aws ssm get-parameter \
     --name /aws/service/eks/optimized-ami/<バージョン>/amazon-linux-2/recommended/image_id \

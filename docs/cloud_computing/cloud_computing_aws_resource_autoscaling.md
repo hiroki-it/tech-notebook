@@ -141,7 +141,8 @@ resource "aws_launch_template" "foo" {
   }
 
   # 最適化AMIを使用する
-  image_id = "ami-*****"
+  # AMIのバージョンを固定するために、SSMから取得したAMI IDを自前で管理する
+  image_id = data.aws_ami.eks_node.image_id
 
   instance_market_options {
     market_type = "spot"

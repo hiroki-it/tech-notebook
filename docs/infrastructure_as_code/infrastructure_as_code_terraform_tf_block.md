@@ -85,7 +85,9 @@ data "aws_ecs_task_definition" "this" {
 # Data AMI
 # ---------------------------------------------
 data "aws_ami" "bastion" {
+
   most_recent = true
+
   owners      = ["amazon"]
 
   filter {
