@@ -27,9 +27,11 @@ description: リソース＠Istioの知見を記録しています。
 
 IngressGatewayの能力のうち、Node外から受信した通信をフィルタリングする能力を担う。
 
-そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podの場合、Gatewayは不要である。
+そのため、Pod間通信の場合、Gatewayは不要である。
 
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
+
+
 
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
@@ -96,6 +98,7 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
 > - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
+> - https://youtu.be/TW9XivfIFAY?t=330
 
 #### ▼ IngressGatewayの仕組み
 
@@ -177,6 +180,8 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
+> - https://stackoverflow.com/questions/68711365/why-isnt-the-circuit-breaking-of-istio-working
+> - https://bcho.tistory.com/1367
 > - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
@@ -191,10 +196,9 @@ Cluster外宛ての通信をロードバランシングする`L4`/`L7`ロード�
 
 Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。
 
-![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
-
 > - https://knowledge.sakura.ad.jp/20489/
 > - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
+> - https://youtu.be/TW9XivfIFAY?t=330
 
 <br>
 
@@ -238,7 +242,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 Cluster外からの通信の場合、IngressGatewayで受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
+![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
@@ -364,6 +368,9 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
+
+![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
+
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
