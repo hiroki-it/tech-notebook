@@ -4686,6 +4686,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoyの設定値として
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#404" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 404ステータス
@@ -4797,7 +4806,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
+  <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyの設定値として
     </span>
@@ -4848,7 +4857,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
+  <a href="#envoy_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyの設定値として
     </span>
@@ -6170,6 +6179,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Envoyの設定値として
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#404" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ 404ステータス
@@ -6281,7 +6299,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy" class="md-nav__link">
+  <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyの設定値として
     </span>
@@ -6332,7 +6350,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
+  <a href="#envoy_2" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Envoyの設定値として
     </span>
@@ -6514,6 +6532,50 @@
 <li><a href="https://micpsm.hatenablog.com/entry/k8s-istio-dx">https://micpsm.hatenablog.com/entry/k8s-istio-dx</a></li>
 </ul>
 </blockquote>
+<h4 id="envoy">▼ Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
+<p>Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
+
+configs:
+<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+<span class="w">    </span><span class="c1"># リスナー値</span>
+<span class="w">    </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
+<span class="w">    </span>active_state:
+<span class="w">      </span>version_info:<span class="w"> </span><span class="m">2022</span>-11-24T12:13:05Z/468
+<span class="w">      </span>listener:
+<span class="w">        </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.listener.v3.Listener
+<span class="w">        </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
+<span class="w">        </span>address:
+<span class="w">          </span>socket_address:
+<span class="w">            </span>address:<span class="w"> </span><span class="m">0</span>.0.0.0
+<span class="w">            </span>port_value:<span class="w"> </span><span class="m">50002</span>
+<span class="w">        </span>filter_chains:
+<span class="w">          </span>-<span class="w"> </span>filter_chain_match:
+<span class="w">              </span>transport_protocol:<span class="w"> </span>raw_buffer
+<span class="w">              </span>application_protocols:
+<span class="w">                </span>-<span class="w"> </span>http/1.1
+<span class="w">                </span>-<span class="w"> </span>h2c
+<span class="w">            </span>filters:
+<span class="w">              </span>-<span class="w"> </span>name:<span class="w"> </span>envoy.filters.network.http_connection_manager
+<span class="w">                </span>typed_config:
+<span class="w">                  </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+<span class="w">                  </span>stat_prefix:<span class="w"> </span>outbound_0.0.0.0_50001
+<span class="w">                  </span>rds:
+<span class="w">                    </span>config_source:
+<span class="w">                      </span>ads:<span class="w"> </span><span class="o">{}</span>
+<span class="w">                      </span>initial_fetch_timeout:<span class="w"> </span>0s
+<span class="w">                      </span>resource_api_version:<span class="w"> </span>V3
+<span class="w">                    </span>route_config_name:<span class="w"> </span><span class="m">50002</span>
+<span class="w">  </span>...
+
+<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+<span class="w">  </span>...
+</code></pre></div>
 <h4 id="404">▼ <code>404</code>ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
 <p>受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <blockquote>
@@ -6559,50 +6621,8 @@
 <li><a href="https://knowledge.sakura.ad.jp/20489/">https://knowledge.sakura.ad.jp/20489/</a></li>
 </ul>
 </blockquote>
-<h4 id="envoy">▼ Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
-<p>Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルート値に変換する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
-
-configs:
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-<span class="w">    </span><span class="c1"># リスナー値</span>
-<span class="w">    </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
-<span class="w">    </span>active_state:
-<span class="w">      </span>version_info:<span class="w"> </span><span class="m">2022</span>-11-24T12:13:05Z/468
-<span class="w">      </span>listener:
-<span class="w">        </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.listener.v3.Listener
-<span class="w">        </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
-<span class="w">        </span>address:
-<span class="w">          </span>socket_address:
-<span class="w">            </span>address:<span class="w"> </span><span class="m">0</span>.0.0.0
-<span class="w">            </span>port_value:<span class="w"> </span><span class="m">50002</span>
-<span class="w">        </span>filter_chains:
-<span class="w">          </span>-<span class="w"> </span>filter_chain_match:
-<span class="w">              </span>transport_protocol:<span class="w"> </span>raw_buffer
-<span class="w">              </span>application_protocols:
-<span class="w">                </span>-<span class="w"> </span>http/1.1
-<span class="w">                </span>-<span class="w"> </span>h2c
-<span class="w">            </span>filters:
-<span class="w">              </span>-<span class="w"> </span>name:<span class="w"> </span>envoy.filters.network.http_connection_manager
-<span class="w">                </span>typed_config:
-<span class="w">                  </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-<span class="w">                  </span>stat_prefix:<span class="w"> </span>outbound_0.0.0.0_50001
-<span class="w">                  </span>rds:
-<span class="w">                    </span>config_source:
-<span class="w">                      </span>ads:<span class="w"> </span><span class="o">{}</span>
-<span class="w">                      </span>initial_fetch_timeout:<span class="w"> </span>0s
-<span class="w">                      </span>resource_api_version:<span class="w"> </span>V3
-<span class="w">                    </span>route_config_name:<span class="w"> </span><span class="m">50002</span>
-<span class="w">  </span>...
-
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-
-<span class="w">  </span>...
-</code></pre></div>
+<h4 id="envoy_1">▼ Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
+<p>Istioは、VirtualServiceの設定値をEnvoyのルート値に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -6712,7 +6732,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars">https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars</a></li>
 </ul>
 </blockquote>
-<h4 id="envoy_1">▼ Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
+<h4 id="envoy_2">▼ Envoyの設定値として<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h4>
 <p>Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
@@ -6869,7 +6889,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-15</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
       
     
   </small>

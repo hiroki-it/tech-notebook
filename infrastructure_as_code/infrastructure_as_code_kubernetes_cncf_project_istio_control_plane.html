@@ -6752,7 +6752,8 @@
 <p>取得したカスタムリソースの状態をEnvoyの設定値に変換する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md">https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/discovery.go#L529-L565">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/discovery.go#L529-L565</a></li>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55</a></li>
 </ul>
 </blockquote>
@@ -6760,20 +6761,23 @@
 <p>IstioのカスタムリソースをEnvoyのリスナー値に変換する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L97-L118">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L97-L118</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118</a></li>
 </ul>
 </blockquote>
 <h4 id="_6">▼ ルート値の場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>IstioのカスタムリソースをEnvoyのルート値に変換する。</p>
 <blockquote>
 <ul>
-<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/route/route_test.go">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/route/route_test.go</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ クラスター値の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>IstioのカスタムリソースをEnvoyのクラスター値に変換する。</p>
 <blockquote>
 <ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81</a></li>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269</a></li>
 </ul>
 </blockquote>
@@ -6781,6 +6785,7 @@
 <p>IstioのカスタムリソースをEnvoyのエンドポイント値に変換する。</p>
 <blockquote>
 <ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124</a></li>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245</a></li>
 </ul>
 </blockquote>
