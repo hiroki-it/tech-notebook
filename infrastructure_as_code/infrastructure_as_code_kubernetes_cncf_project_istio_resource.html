@@ -6574,12 +6574,13 @@ configs:
 </code></pre></div>
 <h3 id="ingressgateway_1">IngressGateway<a class="headerlink" href="#ingressgateway_1" title="Permanent link">&para;</a></h3>
 <h4 id="ingressgateway_2">▼ IngressGatewayとは<a class="headerlink" href="#ingressgateway_2" title="Permanent link">&para;</a></h4>
-<p><code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
+<p>Cluster内宛の通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
 <p>Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。</p>
 <p>KubernetesリソースのIngressの代わりとして使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/">https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/</a></li>
+<li><a href="https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html">https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html</a></li>
 </ul>
 </blockquote>
 <h4 id="ingressgateway_3">▼ IngressGatewayの仕組み<a class="headerlink" href="#ingressgateway_3" title="Permanent link">&para;</a></h4>
@@ -6663,11 +6664,13 @@ configs:
 <p><br></p>
 <h3 id="egressgateway">EgressGateway<a class="headerlink" href="#egressgateway" title="Permanent link">&para;</a></h3>
 <h4 id="egressgateway_1">▼ EgressGatewayとは<a class="headerlink" href="#egressgateway_1" title="Permanent link">&para;</a></h4>
-<p>Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。</p>
+<p>Cluster外宛ての通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
+<p>Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。</p>
 <p><img alt="istio_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://knowledge.sakura.ad.jp/20489/">https://knowledge.sakura.ad.jp/20489/</a></li>
+<li><a href="https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html">https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -6820,6 +6823,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <h3 id="destinationrule">DestinationRuleとは<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
 <h4 id="ingressgateway_5">▼ IngressGatewayの場合<a class="headerlink" href="#ingressgateway_5" title="Permanent link">&para;</a></h4>
 <p>Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。</p>
+<p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars">https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars</a></li>
