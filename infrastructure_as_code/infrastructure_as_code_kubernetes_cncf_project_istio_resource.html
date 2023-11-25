@@ -6529,7 +6529,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="envoy">Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
-<p>Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
+<p>Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -6694,7 +6694,7 @@ configs:
 </blockquote>
 <p><br></p>
 <h3 id="envoy_1">Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h3>
-<p>Istioは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。</p>
+<p>Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。</p>
 <p><br></p>
 <h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
@@ -6712,7 +6712,7 @@ configs:
 <p>この時、VirtualServiceとDestinationのみを使用する。</p>
 <p><br></p>
 <h3 id="envoy_2">Envoyの設定値として<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h3>
-<p>Istioは、VirtualServiceの設定値をEnvoyのルート値に変換する。</p>
+<p>Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -6829,7 +6829,9 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p>Pod間通信の場合、<code>istio-proxy</code>コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。</p>
 <p><br></p>
 <h3 id="envoy_3">Envoyの設定値として<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h3>
-<p>Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。</p>
+<p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。</p>
+<p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから取得する。</p>
+<p>そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -6984,7 +6986,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>
