@@ -7314,7 +7314,8 @@
 <span class="w">  </span><span class="p">}</span>
 
 <span class="c1">  # 最適化AMIを使用する</span>
-<span class="w">  </span><span class="na">image_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-*****&quot;</span>
+<span class="c1">  # AMIのバージョンを固定するために、SSMから取得したAMI IDを自前で管理する</span>
+<span class="w">  </span><span class="na">image_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_ami.eks_node.image_id</span>
 
 <span class="w">  </span><span class="nb">instance_market_options</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">market_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;spot&quot;</span>
@@ -7530,7 +7531,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
       
     
   </small>
