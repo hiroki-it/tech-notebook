@@ -132,6 +132,54 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
+#### ▼ Envoyの設定値として
+
+Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+    # リスナー値
+    name: 0.0.0.0_50002
+    active_state:
+      version_info: 2022-11-24T12:13:05Z/468
+      listener:
+        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+        name: 0.0.0.0_50002
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 50002
+        filter_chains:
+          - filter_chain_match:
+              transport_protocol: raw_buffer
+              application_protocols:
+                - http/1.1
+                - h2c
+            filters:
+              - name: envoy.filters.network.http_connection_manager
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                  stat_prefix: outbound_0.0.0.0_50001
+                  rds:
+                    config_source:
+                      ads: {}
+                      initial_fetch_timeout: 0s
+                      resource_api_version: V3
+                    route_config_name: 50002
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+  ...
+```
+
 #### ▼ `404`ステータス
 
 受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
@@ -189,51 +237,7 @@ Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 
 #### ▼ Envoyの設定値として
 
-Istioは、VirtualServiceの設定値をEnvoyのリスナー値とルート値に変換する。
-
-```bash
-$ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
-
-configs:
-  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-    # リスナー値
-    name: 0.0.0.0_50002
-    active_state:
-      version_info: 2022-11-24T12:13:05Z/468
-      listener:
-        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
-        name: 0.0.0.0_50002
-        address:
-          socket_address:
-            address: 0.0.0.0
-            port_value: 50002
-        filter_chains:
-          - filter_chain_match:
-              transport_protocol: raw_buffer
-              application_protocols:
-                - http/1.1
-                - h2c
-            filters:
-              - name: envoy.filters.network.http_connection_manager
-                typed_config:
-                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-                  stat_prefix: outbound_0.0.0.0_50001
-                  rds:
-                    config_source:
-                      ads: {}
-                      initial_fetch_timeout: 0s
-                      resource_api_version: V3
-                    route_config_name: 50002
-  ...
-
-  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-
-  ...
-```
+Istioは、VirtualServiceの設定値をEnvoyのルート値に変換する。
 
 ```bash
 $ kubectl exec \
