@@ -5843,7 +5843,7 @@
 <h2 id="01-ingress">01. Ingressコントローラー<a class="headerlink" href="#01-ingress" title="Permanent link">&para;</a></h2>
 <h3 id="ingress">Ingressコントローラーとは<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
 <p>Ingressコントローラーは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、</p>
-<p>これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信したインバウンド通信をServiceにルーティングする。</p>
+<p>これのルールに応じたリバースプロキシやロードバランサー (Ingressコントローラーの種類による) を作成し、Node外からの受信した通信をServiceにルーティングする。</p>
 <p>注意点として、IngressコントローラーがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。</p>
 <p>Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD、など) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。</p>
 <p><img alt="kubernetes_ingress-controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png" /></p>
@@ -5954,7 +5954,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

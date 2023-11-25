@@ -6273,7 +6273,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <h4 id="l7">▼ <code>L7</code>ロードバランサーの場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
 <p><code>L7</code>ロードバランサーとして使用できる。</p>
 <p>Nginxは、HTTPプロコトルのインバウンド通信を複数のwebサーバーに負荷分散的に振り分ける。</p>
-<p>受信したインバウンド通信がHTTPプロトコルであった場合、HTTPSリクエストにリダイレクトすると良い。</p>
+<p>受信した通信がHTTPプロトコルであった場合、HTTPSリクエストにリダイレクトすると良い。</p>
 <p>また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。</p>
 <p>ただし、HTTPSプロトコルのインバウンド通信を受信するために、NginxにSSL証明書を設定する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -6358,7 +6358,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p>NginxをAPI Gatewayとして使用する。</p>
 <p>API Gatewayのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。</p>
 <ul>
-<li>受信したインバウンド通信を適切なマイクロサービスのAPIにルーティング</li>
+<li>受信した通信を適切なマイクロサービスのAPIにルーティング</li>
 <li>認証</li>
 <li>トレースIDの付与</li>
 <li>キャッシュの作成</li>
@@ -6393,7 +6393,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

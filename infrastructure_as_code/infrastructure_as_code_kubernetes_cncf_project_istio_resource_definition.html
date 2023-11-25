@@ -9612,7 +9612,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spechttp">.spec.http<a class="headerlink" href="#spechttp" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ httpとは<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。</p>
+<p>HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute</a></li>
@@ -9658,9 +9658,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
 <h4 id="match_1">▼ match<a class="headerlink" href="#match_1" title="Permanent link">&para;</a></h4>
-<p>受信したインバウンド通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
+<p>受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>受信したインバウンド通信のうち、<code>x-foo</code>ヘッダーに<code>bar</code>が割り当てられたものだけにルールを適用する。</p>
+<p>受信した通信のうち、<code>x-foo</code>ヘッダーに<code>bar</code>が割り当てられたものだけにルールを適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9673,7 +9673,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">x-foo</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
 </code></pre></div>
-<p>受信したインバウンド通信のうち、URLの接頭辞が<code>/foo</code>のものだけにルールを適用する。</p>
+<p>受信した通信のうち、URLの接頭辞が<code>/foo</code>のものだけにルールを適用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istiobyexample.dev/path-based-routing/">https://istiobyexample.dev/path-based-routing/</a></li>
@@ -9726,7 +9726,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;connect-failure,refused-stream,unavailable,503&quot;</span>
 </code></pre></div>
 <h4 id="routedestinationhost">▼ route.destination.host<a class="headerlink" href="#routedestinationhost" title="Permanent link">&para;</a></h4>
-<p>受信したインバウンド通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。</p>
+<p>受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
@@ -9766,7 +9766,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="routedestinationsubset">▼ route.destination.subset<a class="headerlink" href="#routedestinationsubset" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
 <p>紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。</p>
-<p>IngressGatewayで受信したインバウンド通信を、Serviceを介して、紐付けたDestinationRuleのサブセットにルーティングする。</p>
+<p>DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
@@ -9866,7 +9866,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spectcp">.spec.tcp<a class="headerlink" href="#spectcp" title="Permanent link">&para;</a></h3>
 <h4 id="tcp">▼ tcpとは<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>TCPスリーウェイハンドシェイクの通信を、Serviceを介してDestinationRuleにルーティングする。</p>
+<p>TCPスリーウェイハンドシェイクの通信を、DestinationRuleに紐づくPodにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute</a></li>
@@ -10000,7 +10000,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

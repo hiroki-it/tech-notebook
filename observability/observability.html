@@ -7677,7 +7677,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
 </ul>
 </blockquote>
 <h4 id="_51">▼ コンテキスト伝播 (分散コンテキスト伝播)<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスで、受信したインバウンド通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。</p>
+<p>マイクロサービスで、受信した通信のヘッダーから分散トレースのコンテキストを取得し、アウトバウンド通信のヘッダーにコンテキストを渡すような、実装が必要である。</p>
 <p>分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからコンテキストを簡単に取り出せるパッケージを使用すると良い。</p>
 <p>インバウンド通信がHTTPプロコトルでアウトバウンド通信がRPC通信である場合も、ヘッダー間での受け渡しが必要である。</p>
 <blockquote>
@@ -7874,7 +7874,7 @@ jsonPayload.traceId<span class="o">=</span><span class="s2">&quot;&lt;トレー�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

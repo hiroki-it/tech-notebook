@@ -6518,7 +6518,7 @@
 <h2 id="01-gateway">01. Gateway<a class="headerlink" href="#01-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="gateway">Gatewayとは<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="ingressgateway">▼ IngressGatewayの場合<a class="headerlink" href="#ingressgateway" title="Permanent link">&para;</a></h4>
-<p>IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。</p>
+<p>IngressGatewayの能力のうち、Node外から受信した通信をフィルタリングする能力を担う。</p>
 <p>そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podの場合、Gatewayは不要である。</p>
 <p><img alt="istio_gateway_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png" /></p>
 <blockquote>
@@ -6673,7 +6673,7 @@ configs:
 <p><br></p>
 <h3 id="_2">プラクティス<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="404">▼ <code>404</code>ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
-<p>受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p>受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/73824193">https://stackoverflow.com/a/73824193</a></li>
@@ -6699,7 +6699,7 @@ configs:
 <h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="ingressgateway_4">▼ IngressGatewayの場合<a class="headerlink" href="#ingressgateway_4" title="Permanent link">&para;</a></h4>
-<p>Cluster外からの通信の場合、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。</p>
+<p>Cluster外からの通信の場合、IngressGatewayで受信した通信をDestinationRuleに紐づくPodにルーティングする。</p>
 <p><img alt="istio_gateway_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -6765,7 +6765,7 @@ configs:
 
 <span class="w">  </span>...
 </code></pre></div>
-<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。</p>
+<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
 ⬇︎
 envoy
@@ -6791,7 +6791,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="_3">プラクティス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
-<p>Gatewayから受信したインバウンド通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
+<p>Gatewayから受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <h4 id="virtualservice_1">▼ VirtualService数<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -6819,7 +6819,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <h2 id="04-destinationrule">04. DestinationRule<a class="headerlink" href="#04-destinationrule" title="Permanent link">&para;</a></h2>
 <h3 id="destinationrule">DestinationRuleとは<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
 <h4 id="ingressgateway_5">▼ IngressGatewayの場合<a class="headerlink" href="#ingressgateway_5" title="Permanent link">&para;</a></h4>
-<p>Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。</p>
+<p>Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars">https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars</a></li>
@@ -6830,7 +6830,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="envoy_3">Envoyの設定値として<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。</p>
-<p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから割り当てる。</p>
+<p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから動的に取得する。</p>
 <p>そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
@@ -6935,7 +6935,7 @@ configs:
 
 <span class="w">    </span>...
 </code></pre></div>
-<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信したインバウンド通信とPod間通信の両方を実施する。</p>
+<p>つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
 <p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
 ⬇︎
