@@ -4670,6 +4670,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ルート値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラスター値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エンドポイント値の場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4718,7 +4754,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       インメモリストレージ
     </span>
@@ -4742,7 +4778,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ポート番号の確認
     </span>
@@ -6276,6 +6312,42 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ルート値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラスター値の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ エンドポイント値の場合
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6324,7 +6396,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       インメモリストレージ
     </span>
@@ -6348,7 +6420,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       ポート番号の確認
     </span>
@@ -6681,12 +6753,41 @@
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/configgen.go#L29-L55</a></li>
+</ul>
+</blockquote>
+<h4 id="_5">▼ リスナー値の場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>IstioのカスタムリソースをEnvoyのリスナー値に変換する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L97-L118">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L97-L118</a></li>
+</ul>
+</blockquote>
+<h4 id="_6">▼ ルート値の場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>IstioのカスタムリソースをEnvoyのルート値に変換する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/route/route_test.go">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/route/route_test.go</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ クラスター値の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>IstioのカスタムリソースをEnvoyのクラスター値に変換する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269</a></li>
+</ul>
+</blockquote>
+<h4 id="_8">▼ エンドポイント値の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>IstioのカスタムリソースをEnvoyのエンドポイント値に変換する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L183-L245</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="config-serving">Config servingレイヤー<a class="headerlink" href="#config-serving" title="Permanent link">&para;</a></h3>
 <h4 id="config-serving_1">▼ Config servingレイヤーとは<a class="headerlink" href="#config-serving_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの設定値に基づいて、istio-proxyコンテナをPodに提供する。</p>
+<p>Envoyの設定値に基づいて、<code>istio-proxy</code>コンテナをPodに提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
@@ -6761,11 +6862,11 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">インメモリストレージ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_9">インメモリストレージ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h2 id="02-02">02-02. 待ち受けるポート番号<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="_6">ポート番号の確認<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_10">ポート番号の確認<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--<span class="w"> </span>netstat<span class="w"> </span>-tulpn
 
 Active<span class="w"> </span>Internet<span class="w"> </span>connections<span class="w"> </span><span class="o">(</span>only<span class="w"> </span>servers<span class="o">)</span>
@@ -6869,7 +6970,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
       
     
   </small>
