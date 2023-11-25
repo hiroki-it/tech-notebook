@@ -13,12 +13,6 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01. トラフィック管理系リソース
-
-記入中...
-
-<br>
-
 ## 01. Gateway
 
 ### Gatewayとは
@@ -84,9 +78,22 @@ configs:
   ...
 ```
 
-### IngressGateway
+<br>
 
-#### ▼ IngressGatewayとは
+### プラクティス
+
+#### ▼ `404`ステータス
+
+受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+> - https://stackoverflow.com/a/73824193
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+
+<br>
+
+## 01-02. IngressGateway
+
+### IngressGatewayとは
 
 Cluster内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
@@ -98,7 +105,9 @@ KubernetesリソースのIngressの代わりとして使用できる。
 > - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
 > - https://youtu.be/TW9XivfIFAY?t=330
 
-#### ▼ IngressGatewayの仕組み
+<br>
+
+### IngressGatewayの仕組み
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
@@ -186,9 +195,9 @@ spec:
 
 <br>
 
-### EgressGateway
+## 01-03. EgressGateway
 
-#### ▼ EgressGatewayとは
+### EgressGatewayとは
 
 Cluster外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
@@ -197,17 +206,6 @@ Clusterネットワーク内から通信を受信し、フィルタリングし�
 > - https://knowledge.sakura.ad.jp/20489/
 > - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
 > - https://youtu.be/TW9XivfIFAY?t=330
-
-<br>
-
-### プラクティス
-
-#### ▼ `404`ステータス
-
-受信した通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
-
-> - https://stackoverflow.com/a/73824193
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
 <br>
 
