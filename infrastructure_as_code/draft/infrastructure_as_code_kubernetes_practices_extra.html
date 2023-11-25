@@ -6480,8 +6480,8 @@ options ndots:5
 </tr>
 <tr>
 <td>暗号化</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
-<td>base64方式エンコード値を暗号化キー (例：AWS KMS、GCP CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
+<td>base64方式エンコード値を暗号化キー (例：AWS KMS、Google Cloud CKM、GnuPG、PGP、など) で暗号化する。</td>
 </tr>
 <tr>
 <td>Secretストア</td>
@@ -6490,7 +6490,7 @@ options ndots:5
 </tr>
 <tr>
 <td>Apply時にbase64方式エンコード値に復号化する。</td>
-<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、GCP SecretManager、など) で管理する。</td>
+<td>クラウドプロバイダー内のキーバリュー型ストア (例：AWS パラメーターストア、Google Cloud SecretManager、など) で管理する。</td>
 <td></td>
 </tr>
 <tr>
@@ -7020,7 +7020,7 @@ as a Service | ツール固有
 テナント |
 | --- | --- | --- | --- | --- |
 | テナントの単位 | 実Clusterテナント | 仮想Cluster | Namespaceテナント | カスタムリソーステナント |
-| ツール | 実Cluster管理ツール (AWS EKS、GCP GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
+| ツール | 実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadm、など) | 仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualCluster、など) | Namespaceを増やすだけなのでツール不要 | ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenant、など |
 | … | | | | |</p>
 <h2 id="_46">マニフェストを管理しやすくする<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h2>
 <hr />
@@ -7189,7 +7189,7 @@ Pod内のログ収集コンテナから監視バックエンドにログを直�
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>
