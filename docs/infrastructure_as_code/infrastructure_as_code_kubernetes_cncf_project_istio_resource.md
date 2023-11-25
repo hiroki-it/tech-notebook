@@ -371,7 +371,7 @@ Pod間通信の場合、`istio-proxy`コンテナの送信するアウトバウ�
 
 Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。
 
-なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから取得する。
+なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから割り当てる。
 
 そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。
 
