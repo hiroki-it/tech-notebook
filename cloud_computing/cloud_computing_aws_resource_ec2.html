@@ -9348,11 +9348,13 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="eni">ENIとは<a class="headerlink" href="#eni" title="Permanent link">&para;</a></h3>
 <p>クラウドネットワークインターフェースとして働く。</p>
 <p>ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。</p>
+<p>また、EC2のセキュリティグループもENIに紐づいている。</p>
+<p>ENIを再作成した場合、ENIはIPアドレスをサブネット内に一度解放し、新しいIPアドレスをENIに紐づける。</p>
 <p><br></p>
 <h3 id="eni_1">ENIの種類<a class="headerlink" href="#eni_1" title="Permanent link">&para;</a></h3>
 <h4 id="eni-eth0">▼ プライマリーENI (<code>eth0</code>)<a class="headerlink" href="#eni-eth0" title="Permanent link">&para;</a></h4>
 <p>ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。</p>
-<p>これを解除することはできない。</p>
+<p>プライマリーENIは、EC2から解除できない。</p>
 <p><img alt="aws_eni_primary-eni.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png" /></p>
 <blockquote>
 <ul>
@@ -9362,6 +9364,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <h4 id="eni-eth1">▼ セカンダリーENI (<code>eth1</code>)<a class="headerlink" href="#eni-eth1" title="Permanent link">&para;</a></h4>
 <p>プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。</p>
+<p>セカンダリーENIは、EC2から解除できる。</p>
 <p><img alt="aws_eni_secondary-eni.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png" /></p>
 <blockquote>
 <ul>
