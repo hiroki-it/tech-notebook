@@ -19,7 +19,68 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01-02. Cluster外からの通信
+## 01. Gateway
+
+### Gatewayとは
+
+IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
+
+そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、Gatewayは不要である。
+
+![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
+
+> - https://istio.io/latest/blog/2018/v1alpha3-routing/
+> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+
+<br>
+
+### Envoyの設定値として
+
+Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+
+```bash
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+    # リスナー値
+    name: 0.0.0.0_50002
+    active_state:
+      version_info: 2022-11-24T12:13:05Z/468
+      listener:
+        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+        name: 0.0.0.0_50002
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 50002
+        filter_chains:
+          - filter_chain_match:
+              transport_protocol: raw_buffer
+              application_protocols:
+                - http/1.1
+                - h2c
+            filters:
+              - name: envoy.filters.network.http_connection_manager
+                typed_config:
+                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                  stat_prefix: outbound_0.0.0.0_50001
+                  rds:
+                    config_source:
+                      ads: {}
+                      initial_fetch_timeout: 0s
+                      resource_api_version: V3
+                    route_config_name: 50002
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+  ...
+```
 
 ### IngressGateway
 
@@ -117,69 +178,6 @@ spec:
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
-<br>
-
-### Gateway
-
-#### ▼ Gatewayとは
-
-IngressGatewayの能力のうち、Node外から受信したインバウンド通信をフィルタリングする能力を担う。
-
-そのため、Node外からインバウンド通信を受信するわけではない (例：サービスディスカバリーによるインバウンド通信のみを受信) Podでは、Gatewayは不要である。
-
-![istio_gateway_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway_virtual-service.png)
-
-> - https://istio.io/latest/blog/2018/v1alpha3-routing/
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
-
-#### ▼ Envoyの設定値として
-
-Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。
-
-```bash
-$ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
-
-configs:
-  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-    # リスナー値
-    name: 0.0.0.0_50002
-    active_state:
-      version_info: 2022-11-24T12:13:05Z/468
-      listener:
-        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
-        name: 0.0.0.0_50002
-        address:
-          socket_address:
-            address: 0.0.0.0
-            port_value: 50002
-        filter_chains:
-          - filter_chain_match:
-              transport_protocol: raw_buffer
-              application_protocols:
-                - http/1.1
-                - h2c
-            filters:
-              - name: envoy.filters.network.http_connection_manager
-                typed_config:
-                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-                  stat_prefix: outbound_0.0.0.0_50001
-                  rds:
-                    config_source:
-                      ads: {}
-                      initial_fetch_timeout: 0s
-                      resource_api_version: V3
-                    route_config_name: 50002
-  ...
-
-  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-
-  ...
-```
-
 #### ▼ `404`ステータス
 
 受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
@@ -188,8 +186,6 @@ configs:
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
 <br>
-
-## 01-03. Cluster外への通信
 
 ### EgressGateway
 
@@ -203,9 +199,9 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 <br>
 
-### ServiceEntry
+## 02. ServiceEntry
 
-#### ▼ ServiceEntryとは
+### ServiceEntryとは
 
 コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
@@ -218,11 +214,15 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 <br>
 
-## 01-04. Cluster内外の通信、Pod間通信
+### Envoyの設定値として
 
-### VirtualService
+Istioは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。
 
-#### ▼ VirtualServiceとは
+<br>
+
+## 03. VirtualService
+
+### VirtualServiceとは
 
 Cluster外からの通信では、IngressGatewayで受信したインバウンド通信を、Serviceを介してDestinationRuleにルーティングする。
 
@@ -235,7 +235,21 @@ Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
 
-#### ▼ Envoyの設定値として
+#### ▼ `404`ステータス
+
+Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
+
+#### ▼ VirtualService数
+
+|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
+
+> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+
+<br>
+
+### Envoyの設定値として
 
 Istioは、VirtualServiceの設定値をEnvoyのルート値に変換する。
 
@@ -319,23 +333,11 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 50001    foo-service.foo-namespace.svc.cluster.local  /*                  foo-virtual-service.foo-namespace
 ```
 
-#### ▼ `404`ステータス
-
-Gatewayから受信したインバウンド通信の`Host`ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、`404`ステータスを返信する。
-
-#### ▼ VirtualService数
-
-|                    | API GatewayをIstioで管理する場合                                                                     | API GatewayをIstioで管理しない場合                                                                                                      |
-| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualServiceの数 | 外部からのインバウンド通信をAPI GatewayにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | API Gatewayから全てのアプリコンテナにルーティングできるように、各アプリコンテナにルーティングできるVirtualServiceを定義する必要がある。 |
-
-> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
-
 <br>
 
-### DestinationRule
+## 04. DestinationRule
 
-#### ▼ DestinationRuleとは
+### DestinationRuleとは
 
 Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受信したインバウンド通信を、いずれのPodにルーティングするかを決める。
 
@@ -343,7 +345,9 @@ Cluster外からの通信では、IngressGatewayに紐づくVirtualServiceで受
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
-#### ▼ Envoyの設定値として
+<br>
+
+### Envoyの設定値として
 
 Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。
 
@@ -488,9 +492,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 <br>
 
-## 02. 認証系リソース
-
-### PeerAuthentication
+## 05. PeerAuthentication
 
 Pod間通時に、相互TLS認証を実施する。
 
@@ -498,7 +500,7 @@ Pod間通時に、相互TLS認証を実施する。
 
 <br>
 
-### RequestAuthentication
+## 06. RequestAuthentication
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 
