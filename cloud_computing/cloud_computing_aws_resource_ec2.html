@@ -9483,7 +9483,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="cidr-28">CIDR (サブネット内の<code>*.*.*.*/28</code>) の事前予約<a class="headerlink" href="#cidr-28" title="Permanent link">&para;</a></h3>
-<p>ENIにCIDRを自動/手動で割り当てる時、サブネット内に断片化されていない<code>*.*.*.*/28</code>が無いと、<code>InsufficientCidr</code>というエラーになる。</p>
+<p>ENIにCIDRを手動/自動で割り当てる時、サブネット内に断片化されていない<code>*.*.*.*/28</code>が無いと、<code>InsufficientCidr</code>というエラーになる。</p>
 <p>そこで、サブネットにCIDR (<code>*.*.*.*/28</code>) を予約しておき、これをIPv4 Prefix delegationのために使用する。</p>
 <p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。</p>
 <p>サブネット内にCIDR (<code>*.*.*.*/28</code>) を一旦予約しておいて、EC2の再作成によるセカンダリープライベートIPアドレス解放を待つとよい。</p>
@@ -9532,7 +9532,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

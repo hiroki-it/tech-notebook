@@ -6830,7 +6830,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="envoy_3">Envoyの設定値として<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。</p>
-<p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから取得する。</p>
+<p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから割り当てる。</p>
 <p>そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
