@@ -38,7 +38,7 @@ IngressGatewayの能力のうち、Node外から受信したインバウンド�
 
 ### Envoyの設定値として
 
-Istioは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
 
 ```bash
 $ kubectl exec \
@@ -222,7 +222,7 @@ Clusterネットワーク内からアウトバウンド通信を受信し、フ�
 
 ### Envoyの設定値として
 
-Istioは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。
+Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。
 
 <br>
 
@@ -249,7 +249,7 @@ Pod間通信の場合、宛先Podに紐づくVirtualServiceから情報を取得
 
 ### Envoyの設定値として
 
-Istioは、VirtualServiceの設定値をEnvoyのルート値に変換する。
+Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。
 
 ```bash
 $ kubectl exec \
@@ -369,7 +369,11 @@ Pod間通信の場合、`istio-proxy`コンテナの送信するアウトバウ�
 
 ### Envoyの設定値として
 
-Istioは、DestinationRuleの設定値をEnvoyのクラスター値とエンドポイント値に変換する。
+Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。
+
+なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから取得する。
+
+そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。
 
 ```bash
 $ kubectl exec \
