@@ -88,13 +88,14 @@ configs:
 
 #### ▼ IngressGatewayとは
 
-`L4`/`L7`ロードバランサーを作成する。
+Cluster内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
 Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。
 
 KubernetesリソースのIngressの代わりとして使用できる。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
+> - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
 
 #### ▼ IngressGatewayの仕組み
 
@@ -186,11 +187,14 @@ spec:
 
 #### ▼ EgressGatewayとは
 
-Clusterネットワーク内からアウトバウンド通信を受信し、フィルタリングした後、パブリックネットワークにルーティングする。
+Cluster外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
+
+Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
 > - https://knowledge.sakura.ad.jp/20489/
+> - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
 
 <br>
 
@@ -358,6 +362,8 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 #### ▼ IngressGatewayの場合
 
 Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
+
+Podの宛先情報は、KubernetesのServiceから取得する。
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
