@@ -31,8 +31,6 @@ IngressGatewayの能力のうち、Node外から受信した通信をフィル�
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
-
-
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
@@ -370,7 +368,6 @@ Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで
 Podの宛先情報は、KubernetesのServiceから取得する。
 
 ![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
-
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
