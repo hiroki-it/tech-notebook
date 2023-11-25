@@ -9348,27 +9348,25 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h3 id="eni">ENIとは<a class="headerlink" href="#eni" title="Permanent link">&para;</a></h3>
 <p>クラウドネットワークインターフェースとして働く。</p>
 <p>ENIにはIPアドレスが紐づいており、ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。</p>
-<p>物理ネットワークにおけるNICについては以下のリンクを参考にせよ。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html">https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="eni_1">ENIの種類<a class="headerlink" href="#eni_1" title="Permanent link">&para;</a></h3>
 <h4 id="eni-eth0">▼ プライマリーENI (<code>eth0</code>)<a class="headerlink" href="#eni-eth0" title="Permanent link">&para;</a></h4>
 <p>ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。</p>
 <p>これを解除することはできない。</p>
+<p><img alt="aws_eni_primary-eni.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics</a></li>
+<li><a href="https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0">https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0</a></li>
 </ul>
 </blockquote>
 <h4 id="eni-eth1">▼ セカンダリーENI (<code>eth1</code>)<a class="headerlink" href="#eni-eth1" title="Permanent link">&para;</a></h4>
 <p>プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。</p>
+<p><img alt="aws_eni_secondary-eni.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html</a></li>
+<li><a href="https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0">https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -9530,7 +9528,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
       
     
   </small>
