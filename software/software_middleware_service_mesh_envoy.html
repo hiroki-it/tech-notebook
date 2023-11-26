@@ -2118,27 +2118,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ingress-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 外からインバウンド通信から待ち受ける (ingress listener)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#egress-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリから待ち受ける (egress listener)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリにプロキシする
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 他のEnvoyから待ち受ける
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アプリから待ち受ける
     </span>
   </a>
   
@@ -6680,27 +6680,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ingress-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 外からインバウンド通信から待ち受ける (ingress listener)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#egress-listener" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリから待ち受ける (egress listener)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ アプリにプロキシする
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 他のEnvoyから待ち受ける
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ アプリから待ち受ける
     </span>
   </a>
   
@@ -7608,8 +7608,24 @@
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_27">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="ingress-listener">▼ 外からインバウンド通信から待ち受ける (ingress listener)<a class="headerlink" href="#ingress-listener" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、外 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。</p>
+<p><img alt="envoy_ingress-listener.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
+</ul>
+</blockquote>
+<h4 id="egress-listener">▼ アプリから待ち受ける (egress listener)<a class="headerlink" href="#egress-listener" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。</p>
+<p><img alt="envoy_egress-listener.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener</a></li>
+</ul>
+</blockquote>
 <h4 id="_28">▼ アプリにプロキシする<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、アプリにインバウンド通信をプロキシする</p>
+<p>Envoyは、リバースプロキシとして、アプリに通信をプロキシする</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># HTTP/TCPプロトコル</span>
@@ -7635,23 +7651,10 @@
 <li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=33">https://speakerdeck.com/kurochan/ru-men-envoy?slide=33</a></li>
 </ul>
 </blockquote>
-<h4 id="envoy_1">▼ 他のEnvoyから待ち受ける<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、他のEnvoyからインバウンド通信を待ち受ける。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
-</ul>
-</blockquote>
-<h4 id="_29">▼ アプリから待ち受ける<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="l4l7"><code>L4</code>/<code>L7</code>ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
 <p>Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。</p>
+<p><img alt="envoy_loadbalancer.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy</a></li>
