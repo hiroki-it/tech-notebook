@@ -161,13 +161,14 @@ Envoyの稼働するサーバー/コンテナからローカルホストにリ�
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
 
+---
 - '@type'
 - '@type'
 - '@type'
@@ -201,13 +202,14 @@ $ kubectl exec \
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?include_eds
 ```
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
 
+---
 - '@type'
 - '@type'
 - '@type'
@@ -242,13 +244,14 @@ $ kubectl exec \
 
 foo-podに登録されているbar-podの`endpoint`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
 
+---
 configs:
   dynamic_endpoint_configs:
     - endpoint_config:
@@ -364,13 +367,14 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 foo-podに登録されているbar-podの`dynamic_active_clusters`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
     version_info: 2022-11-24T12:13:05Z/468
@@ -418,13 +422,14 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 foo-podに登録されているbar-podの`dynamic_warming_clusters`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
 
+---
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```
 
@@ -452,13 +457,14 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 foo-podに登録されているbar-podの`dynamic_listeners`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
     # リスナー名
@@ -514,13 +520,14 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 foo-podに登録されているbar-podの`dynamic_route_configs`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
     version_info: 2022-11-24T12:13:05Z/468
@@ -584,13 +591,14 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={sta
 
 foo-podに登録されているbar-podの`static_listeners`値を確認してみる。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={static_listeners}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.StaticListener
     listener:

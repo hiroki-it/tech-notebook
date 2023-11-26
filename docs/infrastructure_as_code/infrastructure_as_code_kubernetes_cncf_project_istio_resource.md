@@ -41,13 +41,14 @@ Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリス�
 
 なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
     # リスナー値
@@ -257,13 +258,14 @@ VirtualServiceは、宛先Podに紐づくVirtualServiceから情報を取得し�
 
 Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
     # ルート値
@@ -391,13 +393,14 @@ Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyの
 
 そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
 
+---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
     # クラスター値
@@ -420,13 +423,14 @@ configs:
   ...
 ```
 
-```bash
+```yaml
 $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c istio-proxy \
     -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
 
+---
 configs:
   # エンドポイント値
   dynamic_endpoint_configs:
