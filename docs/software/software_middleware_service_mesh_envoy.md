@@ -939,9 +939,25 @@ service EndpointDiscoveryService {
 
 ### リバースプロキシのミドルウェアとして
 
+#### ▼ 外からインバウンド通信から待ち受ける (ingress listener)
+
+Envoyは、リバースプロキシとして、外 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
+
+![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
+
+#### ▼ アプリから待ち受ける (egress listener)
+
+Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。
+
+![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
+
 #### ▼ アプリにプロキシする
 
-Envoyは、リバースプロキシとして、アプリにインバウンド通信をプロキシする
+Envoyは、リバースプロキシとして、アプリに通信をプロキシする
 
 ```yaml
 Envoy
@@ -971,23 +987,13 @@ Nginx
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
-#### ▼ 他のEnvoyから待ち受ける
-
-Envoyは、リバースプロキシとして、他のEnvoyからインバウンド通信を待ち受ける。
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
-
-#### ▼ アプリから待ち受ける
-
-Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
-
 <br>
 
 ### `L4`/`L7`ロードバランサーのミドルウェアとして
 
 Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。
+
+![envoy_loadbalancer.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy
