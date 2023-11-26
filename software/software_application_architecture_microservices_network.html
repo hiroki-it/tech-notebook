@@ -6001,36 +6001,36 @@
 <h4 id="_10">▼ マイクロサービスだけに着目する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ダウンストリーム側マイクロサービスよりもアップストリーム側マイクロサービスのタイムアウト時間を短くする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 45秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 30秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 15秒</span>
 </code></pre></div>
 <h4 id="_11">▼ サイドカープロキシにも着目する場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>ダウンストリーム側マイクロサービスよりもサイドカーのタイムアウト時間を短くする。</p>
 <p>また、サイドカーよりもアップストリーム側マイクロサービスのサイドカーのタイムアウト時間を短くする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 45秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 44秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">--------------</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 31秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 30秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 29秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">--------------</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 16秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">MS</span><span class="w"> </span><span class="c1"># 15秒</span>
 </code></pre></div>
 <p><br></p>
@@ -6040,7 +6040,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

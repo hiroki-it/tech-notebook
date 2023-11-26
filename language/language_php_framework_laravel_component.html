@@ -12417,11 +12417,11 @@ DB_HOST_READ=&lt;リードレプリカのエンドポイント&gt;
 <p><strong>＊実装例＊</strong></p>
 <p>以下のような構成があるとする。</p>
 <p>webサーバーではヘルスチェックエンドポイントを設けず、appサーバー側にヘルスエンドポイント (例：<code>/healthcheck</code>) を設ける。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">webサーバー</span><span class="w"> </span><span class="c1">#</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">appサーバー</span><span class="w"> </span><span class="c1"># /healthcheckで、00を返却する</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -16129,7 +16129,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

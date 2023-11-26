@@ -7345,15 +7345,15 @@
 <p>ハードウェアリソースの消費量の少ない<code>L4</code>プロトコルと、消費量の多い<code>L7</code>プロトコルのプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、<code>L4</code>プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。</p>
 <p>インバウンド時の通信の経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">リダイレクト</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">ztunnelのPod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">waypointのPod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリコンテナのPod</span>
 </code></pre></div>
 <p>アウトバウンド時の通信の経路は以下の通りである。</p>
@@ -8078,7 +8078,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

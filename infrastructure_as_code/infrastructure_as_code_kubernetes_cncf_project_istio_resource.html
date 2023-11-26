@@ -6784,15 +6784,15 @@ configs:
 <span class="w">  </span>...
 </code></pre></div>
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
-<div class="highlight"><pre><span></span><code>クライアント
-⬇︎
-envoy
-⬇︎
-------------
-⬇︎
-envoy<span class="w"> </span><span class="c1"># クライアント側Envoyからのリクエストをアプリが受信できるように、リスナー値とルート値になる</span>
-⬇︎
-アプリ
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">クライアント</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">------------</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">envoy</span><span class="w"> </span><span class="c1"># クライアント側Envoyからのリクエストをアプリが受信できるように、リスナー値とルート値になる</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">アプリ</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6966,13 +6966,13 @@ configs:
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
 <p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
-⬇︎
+⬇⬆︎︎
 envoy
-⬇︎
+⬇⬆︎︎
 ------------
-⬇︎
+⬇⬆︎︎
 envoy<span class="w"> </span><span class="c1"># クライアント側Envoyからのリクエストをアプリが受信できるように、クラスター値とエンドポイント値になる</span>
-⬇︎
+⬇⬆︎︎
 アプリ
 </code></pre></div>
 <blockquote>

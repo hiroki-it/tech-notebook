@@ -6195,15 +6195,15 @@
 <p>AWS Load Balancerコントローラーを使用しない場合と、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。</p>
 <p>AWS Load Balancerコントローラーを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancerコントローラーがプロビジョニングしてくれる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Route53</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">AWS Load BalancerコントローラーによるAWS ALB</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
 <span class="l l-Scalar l-Scalar-Plain">NodePort Service (ポート番号はランダムでよい)</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
 <blockquote>
@@ -6658,7 +6658,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

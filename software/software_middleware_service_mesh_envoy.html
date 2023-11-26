@@ -2114,54 +2114,12 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リバースプロキシのミドルウェアとして">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 構成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Envoy ➡︎ アプリの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy-envoy" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Envoy ➡︎ Envoyの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
   <a href="#l4l7" class="md-nav__link">
     <span class="md-ellipsis">
       L4/L7ロードバランサーのミドルウェアとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      フォワードプロキシ (フロントプロキシ) のミドルウェアとして
     </span>
   </a>
   
@@ -6685,54 +6643,12 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="リバースプロキシのミドルウェアとして">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ 構成
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Envoy ➡︎ アプリの場合
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envoy-envoy" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ Envoy ➡︎ Envoyの場合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
   <a href="#l4l7" class="md-nav__link">
     <span class="md-ellipsis">
       L4/L7ロードバランサーのミドルウェアとして
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
-    <span class="md-ellipsis">
-      フォワードプロキシ (フロントプロキシ) のミドルウェアとして
     </span>
   </a>
   
@@ -7626,15 +7542,12 @@
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_27">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<h4 id="_28">▼ 構成<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>リバースプロキシのミドルウェアとして使用できる。</p>
 <p>この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。</p>
-<h4 id="envoy_1">▼ Envoy ➡︎ アプリの場合<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
 <p>Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に<code>istio-proxy</code>コンテナをインジェクションする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span><span class="w"> </span><span class="c1"># istio-proxy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリ</span>
 </code></pre></div>
 <p>Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。</p>
@@ -7642,13 +7555,13 @@
 <p>なお、他のリバースプロキシ (例：Nginx、Apache) が転送可能なプロトコル (例：FastCGIプロトコル) で、Envoyが対応していないことがある。</p>
 <p>その場合、Envoyの後ろに異なるリバースプロキシを置く必要があり、二重のリバースプロキシになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span><span class="w"> </span><span class="c1"># istio-proxy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span><span class="w"> </span><span class="c1"># TCPプロトコル</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># TCPプロトコル</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Nginx</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span><span class="w"> </span><span class="c1"># FastCGIプロトコル</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># FastCGIプロトコル</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリ</span>
 </code></pre></div>
 <blockquote>
@@ -7658,21 +7571,12 @@
 <li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=33">https://speakerdeck.com/kurochan/ru-men-envoy?slide=33</a></li>
 </ul>
 </blockquote>
-<h4 id="envoy-envoy">▼ Envoy ➡︎ Envoyの場合<a class="headerlink" href="#envoy-envoy" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
-</ul>
-</blockquote>
 <p><br></p>
 <h3 id="l4l7"><code>L4</code>/<code>L7</code>ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
-<p><br></p>
-<h3 id="_29">フォワードプロキシ (フロントプロキシ) のミドルウェアとして<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
-<p>記入中...</p>
+<p>Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。</p>
 <blockquote>
 <ul>
-<li><a href="https://tech.uzabase.com/entry/2020/09/28/140046">https://tech.uzabase.com/entry/2020/09/28/140046</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy">https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy</a></li>
 </ul>
 </blockquote>
 <p><br></p>
