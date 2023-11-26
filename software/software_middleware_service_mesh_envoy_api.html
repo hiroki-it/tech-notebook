@@ -6353,17 +6353,16 @@ outbound<span class="p">|</span><span class="m">50001</span><span class="p">|</s
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump&quot; | yq -P &#39;.configs[] | keys&#39; | sort -f</span>
-
+<span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump&quot; | yq -P &#39;.configs[] | keys&#39; | sort -f</span>
 <span class="nn">---</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic_active_clusters</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic_active_secrets</span>
@@ -6389,19 +6388,18 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?include_eds
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?include_eds&quot; | yq -P &#39;.configs[] | keys&#39; | sort -f</span>
-
+<span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?include_eds&quot; | yq -P &#39;.configs[] | keys&#39; | sort -f</span>
 <span class="nn">---</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bootstrap</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic_active_clusters</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamic_active_secrets</span>
@@ -6595,11 +6593,10 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <p><strong>＊例＊</strong></p>
 <p>foo-podに登録されているbar-podの<code>dynamic_warming_clusters</code>値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}&quot; | yq -P</span>
-
+<span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}&quot; | yq -P</span>
 <span class="nn">---</span>
 <span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># ウォーミングアップ中のクラスター値が無ければ、空配列になる。</span>
 </code></pre></div>
