@@ -46,7 +46,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 ![envoy_upstream-request-timeout_outbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
 
-インバウンド通信の場合、送信元Envoyの宛先はアプリであり、送信元Envoyからアプリへのリクエストがタイムアウトになっている。
+インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスであり、送信元Envoyからマイクロサービスへのリクエストがタイムアウトになっている。
 
 ![envoy_upstream-request-timeout_inbound.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
@@ -78,7 +78,7 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 アウトバウンド通信の場合、送信元Envoyの宛先はサーバー側Envoyや外部システムがであり、サーバー側Envoyや外部システムからのレスポンスがタイムアウトになっている。
 
-インバウンド通信の場合、送信元Envoyの宛先はアプリであり、アプリからのレスポンスがタイムアウトになっている。
+インバウンド通信の場合、送信元Envoyの宛先はマイクロサービスであり、マイクロサービスからのレスポンスがタイムアウトになっている。
 
 > - https://github.com/envoyproxy/envoy/issues/13068
 

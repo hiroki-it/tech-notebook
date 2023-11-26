@@ -947,24 +947,24 @@ Envoyは、リバースプロキシとして、外 (例：ロードバランサ�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 
-#### ▼ アプリから待ち受ける (egress listener)
+#### ▼ マイクロサービスから待ち受ける (egress listener)
 
-Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。
+Envoyは、リバースプロキシとして、マイクロサービスからアウトバウンド通信を待ち受ける。
 
 ![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
 
-#### ▼ アプリにプロキシする
+#### ▼ マイクロサービスにプロキシする
 
-Envoyは、リバースプロキシとして、アプリに通信をプロキシする
+Envoyは、リバースプロキシとして、マイクロサービスに通信をプロキシする
 
 ```yaml
 Envoy
 ⬇⬆︎
 ⬇⬆︎ # HTTP/TCPプロトコル
 ⬇⬆︎
-アプリ
+マイクロサービス
 ```
 
 なお、Envoyは一部のプロトコル (例：FastCGIプロトコル) に対応していない。
@@ -980,7 +980,7 @@ Nginx
 ⬇⬆︎
 ⬇⬆︎ # FastCGIプロトコル
 ⬇⬆︎
-アプリ
+マイクロサービス
 ```
 
 > - https://blog.linkode.co.jp/entry/2020/07/06/162915
