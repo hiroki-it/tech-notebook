@@ -7746,9 +7746,9 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <h4 id="bootstrap_1">▼ bootstrapとは<a class="headerlink" href="#bootstrap_1" title="Permanent link">&para;</a></h4>
 <p>Envoyで、起動時に読み込まれる設定を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config bootstrap foo-pod \</span>
-<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
-<span class="l l-Scalar l-Scalar-Plain">| yq</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
 <span class="nn">---</span>
 <span class="nt">bootstrap</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">admin</span><span class="p">:</span>
@@ -7812,10 +7812,10 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </blockquote>
 <p><code>yaml</code>形式で取得すれば、より詳細な設定値を確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config cluster foo-pod \</span>
-<span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
-<span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
-<span class="l l-Scalar l-Scalar-Plain">--fqdn bar-service.bar-namespace.svc.cluster.local \</span>
-<span class="l l-Scalar l-Scalar-Plain">| yq</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-o yaml \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">--fqdn bar-service.bar-namespace.svc.cluster.local \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">| yq</span>
 <span class="nn">---</span>
 <span class="c1"># クラスター名</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
