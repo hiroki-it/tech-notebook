@@ -2127,18 +2127,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod内の場合
+      ▼ Envoy ➡︎ アプリの場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod_1" class="md-nav__link">
+  <a href="#envoy-envoy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod外の場合 (フロントプロキシ)
+      ▼ Envoy ➡︎ Envoyの場合
     </span>
   </a>
   
@@ -2161,7 +2161,7 @@
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      フォワードプロキシのミドルウェアとして
+      フォワードプロキシ (フロントプロキシ) のミドルウェアとして
     </span>
   </a>
   
@@ -6698,18 +6698,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#envoy_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod内の場合
+      ▼ Envoy ➡︎ アプリの場合
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pod_1" class="md-nav__link">
+  <a href="#envoy-envoy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod外の場合 (フロントプロキシ)
+      ▼ Envoy ➡︎ Envoyの場合
     </span>
   </a>
   
@@ -6732,7 +6732,7 @@
           <li class="md-nav__item">
   <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
-      フォワードプロキシのミドルウェアとして
+      フォワードプロキシ (フロントプロキシ) のミドルウェアとして
     </span>
   </a>
   
@@ -7629,7 +7629,7 @@
 <h4 id="_28">▼ 構成<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>リバースプロキシのミドルウェアとして使用できる。</p>
 <p>この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。</p>
-<h4 id="pod">▼ Pod内の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<h4 id="envoy_1">▼ Envoy ➡︎ アプリの場合<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
 <p>Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に<code>istio-proxy</code>コンテナをインジェクションする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span><span class="w"> </span><span class="c1"># istio-proxy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇︎</span>
@@ -7658,19 +7658,23 @@
 <li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=33">https://speakerdeck.com/kurochan/ru-men-envoy?slide=33</a></li>
 </ul>
 </blockquote>
-<h4 id="pod_1">▼ Pod外の場合 (フロントプロキシ)<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>フロントプロキシと呼ばれている。</p>
+<h4 id="envoy-envoy">▼ Envoy ➡︎ Envoyの場合<a class="headerlink" href="#envoy-envoy" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
-<li><a href="https://tech.uzabase.com/entry/2020/09/28/140046">https://tech.uzabase.com/entry/2020/09/28/140046</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
 </ul>
 </blockquote>
 <p><br></p>
 <h3 id="l4l7"><code>L4</code>/<code>L7</code>ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
-<h3 id="_29">フォワードプロキシのミドルウェアとして<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<h3 id="_29">フォワードプロキシ (フロントプロキシ) のミドルウェアとして<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://tech.uzabase.com/entry/2020/09/28/140046">https://tech.uzabase.com/entry/2020/09/28/140046</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 
   <hr>
@@ -7678,7 +7682,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>
