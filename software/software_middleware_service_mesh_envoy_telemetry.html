@@ -6347,7 +6347,7 @@
 <h2 id="01">01. ログ (アクセスログのみ)<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アクセスログ形式と変数<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ アクセスログ形式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Envoyは、アプリコンテナへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
+<p>Envoyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>デフォルトで以下の形式でアクセスログを出力する。</p>
 <div class="highlight"><pre><span></span><code>[%START_TIME%] &quot;%REQ(:METHOD)% %REQ(X-ENVOY-ORIGINAL-PATH?:PATH)% %PROTOCOL%&quot;
 %RESPONSE_CODE% %RESPONSE_FLAGS% %BYTES_RECEIVED% %BYTES_SENT% %DURATION%
@@ -6559,9 +6559,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <h3 id="_13">監視バックエンドへのスパン送信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ スパン送信<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>Envoyは、Exporterとしてコンテキストを監視バックエンドに送信する。</p>
-<p>これにより、アプリ側でExporterを実装する必要がなくなる。</p>
-<p>ただし、もしアプリ側でExporterを設定しないとEnvoyとアプリの処理時間を合計したスパンを送信する。</p>
-<p>アプリとEnvoyの両方で設定すると、Envoyとアプリコンテナをちゃんと区別したスパンになる。</p>
+<p>これにより、マイクロサービス側でExporterを実装する必要がなくなる。</p>
+<p>ただし、もしマイクロサービス側でExporterを設定しないとEnvoyとマイクロサービスの処理時間を合計したスパンを送信する。</p>
+<p>マイクロサービスとEnvoyの両方で設定すると、Envoyとマイクロサービスをちゃんと区別したスパンになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation</a></li>
@@ -6602,7 +6602,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

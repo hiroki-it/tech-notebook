@@ -2129,7 +2129,7 @@
           <li class="md-nav__item">
   <a href="#egress-listener" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリから待ち受ける (egress listener)
+      ▼ マイクロサービスから待ち受ける (egress listener)
     </span>
   </a>
   
@@ -2138,7 +2138,7 @@
           <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリにプロキシする
+      ▼ マイクロサービスにプロキシする
     </span>
   </a>
   
@@ -6691,7 +6691,7 @@
           <li class="md-nav__item">
   <a href="#egress-listener" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリから待ち受ける (egress listener)
+      ▼ マイクロサービスから待ち受ける (egress listener)
     </span>
   </a>
   
@@ -6700,7 +6700,7 @@
           <li class="md-nav__item">
   <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ アプリにプロキシする
+      ▼ マイクロサービスにプロキシする
     </span>
   </a>
   
@@ -7616,21 +7616,21 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
 </ul>
 </blockquote>
-<h4 id="egress-listener">▼ アプリから待ち受ける (egress listener)<a class="headerlink" href="#egress-listener" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。</p>
+<h4 id="egress-listener">▼ マイクロサービスから待ち受ける (egress listener)<a class="headerlink" href="#egress-listener" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、マイクロサービスからアウトバウンド通信を待ち受ける。</p>
 <p><img alt="envoy_egress-listener.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener</a></li>
 </ul>
 </blockquote>
-<h4 id="_28">▼ アプリにプロキシする<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、アプリに通信をプロキシする</p>
+<h4 id="_28">▼ マイクロサービスにプロキシする<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、マイクロサービスに通信をプロキシする</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># HTTP/TCPプロトコル</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
-<span class="l l-Scalar l-Scalar-Plain">アプリ</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span>
 </code></pre></div>
 <p>なお、Envoyは一部のプロトコル (例：FastCGIプロトコル) に対応していない。</p>
 <p>その場合、そのプロトコルに対応可能なリバースプロキシ (例：Nginx、Apache) を置く必要があり、二重のリバースプロキシになる。</p>
@@ -7642,7 +7642,7 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># FastCGIプロトコル</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
-<span class="l l-Scalar l-Scalar-Plain">アプリ</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span>
 </code></pre></div>
 <blockquote>
 <ul>
