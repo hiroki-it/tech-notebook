@@ -17,7 +17,7 @@ description: リソース＠Istioの知見を記録しています。
 
 ### Gatewayとは
 
-#### ▼ IngressGatewayで使用する場合
+#### ▼ フォワードプロキシで使用する場合
 
 Gatewayは、IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
 
@@ -27,6 +27,10 @@ Gatewayは、IngressGatewayの一部として、Node外から受信した通信�
 
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+
+#### ▼ Pod間通信で使用する場合
+
+Pod間通信には不要である。
 
 <br>
 
@@ -223,7 +227,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 ### VirtualServiceとは
 
-#### ▼ IngressGatewayで使用する場合
+#### ▼ フォワードプロキシで使用する場合
 
 VirtualServiceは、IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
@@ -347,19 +351,19 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 ### DestinationRuleとは
 
-#### ▼ IngressGatewayで使用する場合
+#### ▼ フォワードプロキシで使用する場合
 
-DestinationRuleは、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
+フォワードプロキシには不要である。
+
+#### ▼ Pod間通信で使用する場合
+
+DestinationRuleは、VirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
 ![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
-
-#### ▼ Pod間通信で使用する場合
-
-DestinationRuleは、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
 
 <br>
 
