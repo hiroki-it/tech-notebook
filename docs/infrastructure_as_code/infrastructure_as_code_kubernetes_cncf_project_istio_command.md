@@ -412,9 +412,9 @@ Envoyで、起動時に読み込まれる設定を取得する。
 
 ```yaml
 $ istioctl proxy-config bootstrap foo-pod \
--n foo-namespace \
--o yaml \
-| yq
+    -n foo-namespace \
+    -o yaml \
+    | yq
 ---
 bootstrap:
   admin:
@@ -486,10 +486,10 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ```yaml
 $ istioctl proxy-config cluster foo-pod \
--n foo-namespace \
--o yaml \
---fqdn bar-service.bar-namespace.svc.cluster.local \
-| yq
+    -n foo-namespace \
+    -o yaml \
+    --fqdn bar-service.bar-namespace.svc.cluster.local \
+    | yq
 ---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
