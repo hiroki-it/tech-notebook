@@ -376,7 +376,6 @@ DestinationRuleは、VirtualServiceで受信した通信を、いずれのPodに
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
-
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
 
