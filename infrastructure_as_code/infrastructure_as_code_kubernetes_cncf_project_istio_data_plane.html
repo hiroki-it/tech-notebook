@@ -6682,8 +6682,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="c"># The pilot-agent will bootstrap Envoy.</span>
 <span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-agent&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p><code>istio-proxy</code>コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。</p>
-<p>Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の<code>istio-proxy</code>コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。</p>
+<p><code>istio-proxy</code>コンテナは、アプリコンテナのあるPodのみでなく、Istio IngressGatewayのPod内にも存在している。</p>
+<p>Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio IngressGateway内の<code>istio-proxy</code>コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。</p>
 <p>一方で、アプリコンテナを持つPod間通信では、Pod内の<code>istio-proxy</code>コンテナに登録されたものに基づいて、Pod間で直接的に通信している。</p>
 <p>仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが<code>2</code>個ある構成になってしまうことに注意する。</p>
 <blockquote>
@@ -7058,7 +7058,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

@@ -4607,13 +4607,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingressgateway" class="md-nav__link">
+  <a href="#istio-ingressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      IngressGatewayに関して
+      Istio IngressGatewayに関して
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IngressGatewayに関して">
+    <nav class="md-nav" aria-label="Istio IngressGatewayに関して">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4785,9 +4785,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingressgateway_1" class="md-nav__link">
+  <a href="#istio-ingressgateway_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IngressGatewayでダウンタイムを発生させない
+      ▼ Istio IngressGatewayでダウンタイムを発生させない
     </span>
   </a>
   
@@ -6234,13 +6234,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ingressgateway" class="md-nav__link">
+  <a href="#istio-ingressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      IngressGatewayに関して
+      Istio IngressGatewayに関して
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="IngressGatewayに関して">
+    <nav class="md-nav" aria-label="Istio IngressGatewayに関して">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6412,9 +6412,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingressgateway_1" class="md-nav__link">
+  <a href="#istio-ingressgateway_1" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IngressGatewayでダウンタイムを発生させない
+      ▼ Istio IngressGatewayでダウンタイムを発生させない
     </span>
   </a>
   
@@ -6665,22 +6665,22 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="ingressgateway">IngressGatewayに関して<a class="headerlink" href="#ingressgateway" title="Permanent link">&para;</a></h3>
+<h3 id="istio-ingressgateway">Istio IngressGatewayに関して<a class="headerlink" href="#istio-ingressgateway" title="Permanent link">&para;</a></h3>
 <h4 id="istiodnamespace">▼ Istiodコントロールプレーンとは異なるNamespaceにおく<a class="headerlink" href="#istiodnamespace" title="Permanent link">&para;</a></h4>
-<p>セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。</p>
+<p>セキュリティ上の理由から、Istio IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Serviceを選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
-<p>IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。</p>
+<p>Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。</p>
 <p>NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。</p>
 <p>一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
 <p>そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。</p>
 <p>LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。</p>
-<p>補足として、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。</p>
-<p>NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。</p>
+<p>補足として、デフォルトではIstio IngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。</p>
+<p>NodePort Serviceを選ぶためには、Istio IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、Istio IngressGatewayを作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/issues/28310#issuecomment-733079966">https://github.com/istio/istio/issues/28310#issuecomment-733079966</a></li>
@@ -6688,11 +6688,11 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ アプリコンテナごとに作成する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>単一障害点になることを防ぐために、<code>1</code>個のIngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。</p>
+<p>単一障害点になることを防ぐために、<code>1</code>個のIstio IngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。</p>
 <p><br></p>
 <h3 id="1">サブセット名を<code>1</code>個にする<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>Istioリソースで設定するサブセット名は<code>1</code>個だけにする。</p>
-<p>これにより、IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。</p>
+<p>これにより、Istio IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6836,8 +6836,8 @@
 <li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
 </ul>
 </blockquote>
-<h4 id="ingressgateway_1">▼ IngressGatewayでダウンタイムを発生させない<a class="headerlink" href="#ingressgateway_1" title="Permanent link">&para;</a></h4>
-<p>IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。</p>
+<h4 id="istio-ingressgateway_1">▼ Istio IngressGatewayでダウンタイムを発生させない<a class="headerlink" href="#istio-ingressgateway_1" title="Permanent link">&para;</a></h4>
+<p>Istio IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
@@ -6846,7 +6846,7 @@
 <p><br></p>
 <h3 id="_8">インプレース方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ インプレース方式とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。</p>
+<p>既存のIstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。</p>
 <h4 id="_10">▼ 手順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
@@ -6862,7 +6862,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。</p>
+<p>IstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>upgrade
@@ -6949,7 +6949,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>gatewayチャートを使用して、IstioのIngressGatewayに関するKubernetesリソースを変更する。</p>
+<p>gatewayチャートを使用して、Istio IngressGatewayに関するKubernetesリソースを変更する。</p>
 <p>この時、リリースを新しく命名する。</p>
 </dd>
 </dl>

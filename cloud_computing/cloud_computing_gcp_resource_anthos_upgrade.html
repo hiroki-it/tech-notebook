@@ -3303,9 +3303,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingressgatewayistio-proxy" class="md-nav__link">
+  <a href="#istio-ingressgatewayistio-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+      ▼ Istio IngressGatewayのistio-proxyコンテナをアップグレード
     </span>
   </a>
   
@@ -6094,9 +6094,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ingressgatewayistio-proxy" class="md-nav__link">
+  <a href="#istio-ingressgatewayistio-proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ IngressGatewayのistio-proxyコンテナをアップグレード
+      ▼ Istio IngressGatewayのistio-proxyコンテナをアップグレード
     </span>
   </a>
   
@@ -6548,12 +6548,12 @@ app<span class="w">    </span>Active<span class="w">    </span>2d18h<span class=
 <dt><code>(9)</code></dt>
 <dd>
 <p>Istioの<code>istio.io/rev</code>キーを使用して、特定のNamespaceの<code>istio-injection</code>キーを上書きする。</p>
-<p>多くの場合、<code>istio-proxy</code>コンテナはIngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。</p>
+<p>多くの場合、<code>istio-proxy</code>コンテナはIstio IngressGatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。</p>
 <p>これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは<code>istio.io/rev</code>キーを推奨している。</p>
 <p>もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、<code>kubectl label</code>コマンドの代わりに、GitHub上でリビジョン番号を変更することになる。</p>
 </dd>
 </dl>
-<div class="highlight"><pre><span></span><code><span class="c1"># IngressGatewayの特定のNamespace</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Istio IngressGatewayの特定のNamespace</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class="w"> </span>ingress<span class="w"> </span>istio.io/rev<span class="o">=</span>asm-1140-0<span class="w"> </span>istio-injection-<span class="w"> </span>--overwrite
 
 <span class="c1"># アプリの特定のNamespace</span>
@@ -6573,11 +6573,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <li><a href="https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane">https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane</a></li>
 </ul>
 </blockquote>
-<h4 id="ingressgatewayistio-proxy">▼ IngressGatewayの<code>istio-proxy</code>コンテナをアップグレード<a class="headerlink" href="#ingressgatewayistio-proxy" title="Permanent link">&para;</a></h4>
+<h4 id="istio-ingressgatewayistio-proxy">▼ Istio IngressGatewayの<code>istio-proxy</code>コンテナをアップグレード<a class="headerlink" href="#istio-ingressgatewayistio-proxy" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(11)</code></dt>
 <dd>
-<p>IngressGatewayのPodを再作成し、新バージョンの<code>istio-proxy</code>コンテナを自動的にインジェクションする。</p>
+<p>Istio IngressGatewayのPodを再作成し、新バージョンの<code>istio-proxy</code>コンテナを自動的にインジェクションする。</p>
 <p>カナリア方式のため、webhook-serviceがそのままで新しい<code>istio-proxy</code>コンテナをインジェクションできる。</p>
 </dd>
 </dl>
@@ -6800,7 +6800,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>

@@ -6721,7 +6721,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </code></pre></div>
 <h4 id="ingressgateways">▼ ingressGateways<a class="headerlink" href="#ingressgateways" title="Permanent link">&para;</a></h4>
 <p>ingressGatewaysコンポーネントのオプションを設定する。</p>
-<p>IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
+<p>Istio IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6733,7 +6733,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p><code>.spec.ingressGateways.k8s</code>キーでIngressGatewayを設定できるが、これは非推奨である。</p>
+<p><code>.spec.ingressGateways.k8s</code>キーでIstio IngressGatewayを設定できるが、これは非推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022">https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022</a></li>
@@ -6757,7 +6757,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">                </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 <span class="w">                </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
-<p>補足として、以下の方法でユーザー定義のIngressGatewayを作成できる (かなり大変) 。</p>
+<p>補足として、以下の方法でユーザー定義のIstio IngressGatewayを作成できる (かなり大変) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d">https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d</a></li>
@@ -7011,7 +7011,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># IngressGateway</span>
+<span class="w">      </span><span class="c1"># Istio IngressGateway</span>
 <span class="w">      </span><span class="nt">istio-ingressgateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">        </span><span class="c1"># IstioOperatorをroot権限の実行ユーザーを使用する</span>
@@ -7101,7 +7101,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
       
     
   </small>
