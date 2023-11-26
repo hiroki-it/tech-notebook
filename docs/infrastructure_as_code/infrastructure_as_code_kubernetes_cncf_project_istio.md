@@ -74,15 +74,15 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 
 ```yaml
 パブリックネットワーク
-⬇︎
+⬇⬆︎︎
 リダイレクト
-⬇︎
+⬇⬆︎︎
 # L4ロードバランサー
 ztunnelのPod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
-⬇︎
+⬇⬆︎︎
 # L7ロードバランサー
 waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
-⬇︎
+⬇⬆︎︎
 アプリコンテナのPod
 ```
 

@@ -52,15 +52,15 @@ AWS Load Balancerコントローラーを使用する場合は、NodePort Servic
 
 ```yaml
 パブリックネットワーク
-⬇︎
+⬇⬆︎︎
 AWS Route53
-⬇︎
+⬇⬆︎︎
 # L7ロードバランサー
 AWS Load BalancerコントローラーによるAWS ALB
-⬇︎
+⬇⬆︎︎
 # L4ロードバランサー
 NodePort Service (ポート番号はランダムでよい)
-⬇︎
+⬇⬆︎︎
 Pod
 ```
 

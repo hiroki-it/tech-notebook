@@ -397,29 +397,29 @@ sequenceDiagram
 ```yaml
 # 期待する例外スロー
 gRPCクライアント # タイムアウト (DeadlineExceededを受信)
-⬇︎
-⬇︎
+⬇⬆︎︎
+⬇⬆︎︎
 Envoy
-⬇︎
+⬇⬆︎︎
 --------------
-⬇︎
+⬇⬆︎︎
 Envoy
-⬇︎
-⬇︎
+⬇⬆︎︎
+⬇⬆︎︎
 gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 ```
 
 ```yaml
 gRPCクライアント # タイムアウト (Unavailableを受信)
-⬇︎
-⬇︎
+⬇⬆︎︎
+⬇⬆︎︎
 Envoy
-⬇︎
+⬇⬆︎︎
 --------------
-⬇︎
+⬇⬆︎︎
 Envoy
-⬇︎
-⬇︎
+⬇⬆︎︎
+⬇⬆︎︎
 gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 ```
 
