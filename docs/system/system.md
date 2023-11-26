@@ -138,7 +138,7 @@ Go、Node.js、ではwebサーバーとappサーバーがいらない。
 
 #### ▼ 物理サーバーの場合
 
-フォワードプロキシサーバーはプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに配置されている。
+フォワードプロキシサーバー (フロントプロキシ) はプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに配置されている。
 
 ![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server.png)
 

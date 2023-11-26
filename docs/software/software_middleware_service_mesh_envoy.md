@@ -945,7 +945,7 @@ service EndpointDiscoveryService {
 
 この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。
 
-#### ▼ Pod内の場合
+#### ▼ Envoy ➡︎ アプリの場合
 
 Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に`istio-proxy`コンテナをインジェクションする。
 
@@ -981,11 +981,9 @@ Nginx
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
-#### ▼ Pod外の場合 (フロントプロキシ)
+#### ▼ Envoy ➡︎ Envoyの場合
 
-フロントプロキシと呼ばれている。
-
-> - https://tech.uzabase.com/entry/2020/09/28/140046
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 
 <br>
 
@@ -995,8 +993,10 @@ Nginx
 
 <br>
 
-### フォワードプロキシのミドルウェアとして
+### フォワードプロキシ (フロントプロキシ) のミドルウェアとして
 
 記入中...
+
+> - https://tech.uzabase.com/entry/2020/09/28/140046
 
 <br>

@@ -17,9 +17,9 @@ description: リソース＠Istioの知見を記録しています。
 
 ### Gatewayとは
 
-#### ▼ IngressGatewayの場合
+#### ▼ IngressGatewayで使用する場合
 
-IngressGatewayの能力のうち、Node外から受信した通信をフィルタリングする能力を担う。
+Gatewayは、IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
 
 そのため、Pod間通信の場合、Gatewayは不要である。
 
@@ -33,6 +33,8 @@ IngressGatewayの能力のうち、Node外から受信した通信をフィル�
 ### Envoyの設定値として
 
 Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+
+なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。
 
 ```bash
 $ kubectl exec \
@@ -77,6 +79,8 @@ configs:
 
   ...
 ```
+
+> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
 
 <br>
 
@@ -199,7 +203,7 @@ spec:
 
 ### EgressGatewayとは
 
-Cluster外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
+EgressGatewayは、Cluster外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
 Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。
 
@@ -219,18 +223,18 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 ### VirtualServiceとは
 
-#### ▼ IngressGatewayの場合
+#### ▼ IngressGatewayで使用する場合
 
-Cluster外からの通信の場合、IngressGatewayで受信した通信をDestinationRuleに紐づくPodにルーティングする。
+VirtualServiceは、IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
 
-#### ▼ Pod間通信の場合
+#### ▼ Pod間通信で使用する場合
 
-Pod間通信の場合、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
+VirtualServiceは、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
 
 この時、VirtualServiceとDestinationのみを使用する。
 
@@ -308,6 +312,7 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 アプリ
 ```
 
+> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
@@ -342,9 +347,9 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 ### DestinationRuleとは
 
-#### ▼ IngressGatewayの場合
+#### ▼ IngressGatewayで使用する場合
 
-Cluster外からの通信の場合、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
+DestinationRuleは、IngressGatewayに紐づくVirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
@@ -352,9 +357,9 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
 
-#### ▼ Pod間通信の場合
+#### ▼ Pod間通信で使用する場合
 
-Pod間通信の場合、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
+DestinationRuleは、`istio-proxy`コンテナの送信するアウトバウンド通信をTLSで暗号化するか否かを決める。
 
 <br>
 
@@ -489,6 +494,7 @@ envoy # クライアント側Envoyからのリクエストをアプリが受信�
 アプリ
 ```
 
+> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
 > - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
 > - https://sreake.com/blog/istio/
 
@@ -511,7 +517,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ### ServiceEntryとは
 
-コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
+ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
 類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
 
