@@ -6535,47 +6535,48 @@
 <h3 id="envoy">Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
 <p>なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot; | yq -P</span>
 
-configs:
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+<span class="nn">---</span>
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 <span class="w">    </span><span class="c1"># リスナー値</span>
-<span class="w">    </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
-<span class="w">    </span>active_state:
-<span class="w">      </span>version_info:<span class="w"> </span><span class="m">2022</span>-11-24T12:13:05Z/468
-<span class="w">      </span>listener:
-<span class="w">        </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.listener.v3.Listener
-<span class="w">        </span>name:<span class="w"> </span><span class="m">0</span>.0.0.0_50002
-<span class="w">        </span>address:
-<span class="w">          </span>socket_address:
-<span class="w">            </span>address:<span class="w"> </span><span class="m">0</span>.0.0.0
-<span class="w">            </span>port_value:<span class="w"> </span><span class="m">50002</span>
-<span class="w">        </span>filter_chains:
-<span class="w">          </span>-<span class="w"> </span>filter_chain_match:
-<span class="w">              </span>transport_protocol:<span class="w"> </span>raw_buffer
-<span class="w">              </span>application_protocols:
-<span class="w">                </span>-<span class="w"> </span>http/1.1
-<span class="w">                </span>-<span class="w"> </span>h2c
-<span class="w">            </span>filters:
-<span class="w">              </span>-<span class="w"> </span>name:<span class="w"> </span>envoy.filters.network.http_connection_manager
-<span class="w">                </span>typed_config:
-<span class="w">                  </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-<span class="w">                  </span>stat_prefix:<span class="w"> </span>outbound_0.0.0.0_50001
-<span class="w">                  </span>rds:
-<span class="w">                    </span>config_source:
-<span class="w">                      </span>ads:<span class="w"> </span><span class="o">{}</span>
-<span class="w">                      </span>initial_fetch_timeout:<span class="w"> </span>0s
-<span class="w">                      </span>resource_api_version:<span class="w"> </span>V3
-<span class="w">                    </span>route_config_name:<span class="w"> </span><span class="m">50002</span>
-<span class="w">  </span>...
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
+<span class="w">    </span><span class="nt">active_state</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
+<span class="w">      </span><span class="nt">listener</span><span class="p">:</span>
+<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">socket_address</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">            </span><span class="nt">port_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">        </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chain_match</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">transport_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">raw_buffer</span>
+<span class="w">              </span><span class="nt">application_protocols</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http/1.1</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">h2c</span>
+<span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
+<span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
+<span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">config_source</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">ads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">                      </span><span class="nt">initial_fetch_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">                      </span><span class="nt">resource_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
+<span class="w">                    </span><span class="nt">route_config_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
 
-<span class="w">  </span>...
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6731,57 +6732,58 @@ configs:
 <p><br></p>
 <h3 id="envoy_2">Envoyの設定値として<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}&quot; | yq -P</span>
 
-configs:
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+<span class="nn">---</span>
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
 <span class="w">    </span><span class="c1"># ルート値</span>
-<span class="w">    </span>version_info:<span class="w"> </span><span class="m">2022</span>-11-24T12:13:05Z/468
-<span class="w">    </span>route_config:
-<span class="w">      </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.route.v3.RouteConfiguration
-<span class="w">      </span>name:<span class="w"> </span><span class="m">50002</span>
-<span class="w">      </span>virtual_hosts:
-<span class="w">        </span>-<span class="w"> </span>name:<span class="w"> </span>bar-service.bar-namespace.svc.cluster.local:50002
-<span class="w">          </span>domains:
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace.svc.cluster.local
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace.svc.cluster.local:50002
-<span class="w">            </span>-<span class="w"> </span>bar-service
-<span class="w">            </span>-<span class="w"> </span>bar-service:50002
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace.svc
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace.svc:50002
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace
-<span class="w">            </span>-<span class="w"> </span>bar-service.bar-namespace:50002
-<span class="w">            </span>-<span class="w"> </span><span class="m">172</span>.16.0.2
-<span class="w">            </span>-<span class="w"> </span><span class="m">172</span>.16.0.2:50002
-<span class="w">          </span>routes:
-<span class="w">            </span>-<span class="w"> </span>match:
-<span class="w">                </span>prefix:<span class="w"> </span>/
-<span class="w">              </span>route:
-<span class="w">                </span>cluster:<span class="w"> </span>outbound<span class="p">|</span><span class="m">50002</span><span class="p">|</span>v1<span class="p">|</span>bar-service.bar-namespace.svc.cluster.local
-<span class="w">                </span>timeout:<span class="w"> </span>0s
-<span class="w">                </span>retry_policy:
-<span class="w">                  </span>retry_on:<span class="w"> </span>connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes
-<span class="w">                  </span>num_retries:<span class="w"> </span><span class="m">2</span>
-<span class="w">                  </span>retry_host_predicate:
-<span class="w">                    </span>-<span class="w"> </span>name:<span class="w"> </span>envoy.retry_host_predicates.previous_hosts
-<span class="w">                  </span>host_selection_retry_max_attempts:<span class="w"> </span><span class="s2">&quot;5&quot;</span>
-<span class="w">                  </span>retriable_status_codes:
-<span class="w">                    </span>-<span class="w"> </span><span class="m">503</span>
-<span class="w">                </span>max_stream_duration:
-<span class="w">                  </span>max_stream_duration:<span class="w"> </span>0s
-<span class="w">                  </span>grpc_timeout_header_max:<span class="w"> </span>0s
-<span class="w">              </span>decorator:
-<span class="w">                </span>operation:<span class="w"> </span>bar-service.bar-namespace.svc.cluster.local:50002/*
+<span class="w">    </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
+<span class="w">    </span><span class="nt">route_config</span><span class="p">:</span>
+<span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.route.v3.RouteConfiguration</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">      </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
+<span class="w">          </span><span class="nt">domains</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service:50002</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc:50002</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace:50002</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.2</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.2:50002</span>
+<span class="w">          </span><span class="nt">routes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">              </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">                </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">                </span><span class="nt">retry_policy</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">retry_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes</span>
+<span class="w">                  </span><span class="nt">num_retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">                  </span><span class="nt">retry_host_predicate</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.retry_host_predicates.previous_hosts</span>
+<span class="w">                  </span><span class="nt">host_selection_retry_max_attempts</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
+<span class="w">                  </span><span class="nt">retriable_status_codes</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">503</span>
+<span class="w">                </span><span class="nt">max_stream_duration</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">max_stream_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">                  </span><span class="nt">grpc_timeout_header_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">              </span><span class="nt">decorator</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002/*</span>
 
-<span class="w">  </span>...
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span>-<span class="w"> </span><span class="s1">&#39;@type&#39;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;@type&#39;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig</span>
 
-<span class="w">  </span>...
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">クライアント</span>
@@ -6860,108 +6862,110 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。</p>
 <p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから動的に取得する。</p>
 <p>そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}&quot; | yq -P</span>
 
-configs:
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
+<span class="nn">---</span>
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
 <span class="w">    </span><span class="c1"># クラスター値</span>
-<span class="w">    </span>version_info:<span class="w"> </span><span class="m">2022</span>-11-24T12:13:05Z/468
+<span class="w">    </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
 
-<span class="w">    </span>cluster:
-<span class="w">      </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.cluster.v3.Cluster
-<span class="w">      </span>name:<span class="w"> </span>outbound<span class="p">|</span><span class="m">50002</span><span class="p">|</span>v1<span class="p">|</span>bar-service.bar-namespace.svc.cluster.local
-<span class="w">      </span>type:<span class="w"> </span>EDS
-<span class="w">      </span>eds_cluster_config:
-<span class="w">        </span>eds_config:
-<span class="w">          </span>ads:<span class="w"> </span><span class="o">{}</span>
-<span class="w">          </span>initial_fetch_timeout:<span class="w"> </span>0s
-<span class="w">          </span>resource_api_version:<span class="w"> </span>V3
-<span class="w">        </span>service_name:<span class="w"> </span>outbound<span class="p">|</span><span class="m">50002</span><span class="p">|</span>v1<span class="p">|</span>bar-service.bar-namespace.svc.cluster.local
-<span class="w">  </span>...
+<span class="w">    </span><span class="nt">cluster</span><span class="p">:</span>
+<span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.cluster.v3.Cluster</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EDS</span>
+<span class="w">      </span><span class="nt">eds_cluster_config</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">eds_config</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">ads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">          </span><span class="nt">initial_fetch_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">          </span><span class="nt">resource_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
+<span class="w">        </span><span class="nt">service_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">  </span>-<span class="w"> </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster</span>
 
-<span class="w">  </span>...
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-c<span class="w"> </span>istio-proxy<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;curl http://127.0.0.1:15000/config_dump?include_eds&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span>-P
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?include_eds&quot; | yq -P</span>
 
-configs:
+<span class="nn">---</span>
+<span class="nt">configs</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># エンドポイント値</span>
-<span class="w">  </span>dynamic_endpoint_configs:
-<span class="w">    </span>-<span class="w"> </span>endpoint_config:
-<span class="w">        </span><span class="s2">&quot;@type&quot;</span>:<span class="w"> </span>type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
-<span class="w">        </span>cluster_name:<span class="w"> </span>outbound<span class="p">|</span><span class="m">50002</span><span class="p">|</span>v1<span class="p">|</span>bar-service.bar-namespace.svc.cluster.local
-<span class="w">        </span>endpoints:
-<span class="w">          </span>-<span class="w"> </span>locality:
-<span class="w">              </span>region:<span class="w"> </span>ap-northeast-1
-<span class="w">              </span>zone:<span class="w"> </span>ap-northeast-1a
-<span class="w">            </span>lb_endpoints:
-<span class="w">              </span>-<span class="w"> </span>endpoint:
-<span class="w">                  </span>address:
-<span class="w">                    </span>socket_address:
-<span class="w">                      </span>address:<span class="w"> </span><span class="m">11</span>.0.0.1
-<span class="w">                      </span>port_value:<span class="w"> </span><span class="m">80</span>
-<span class="w">                  </span>health_check_config:<span class="w"> </span><span class="o">{}</span>
-<span class="w">                </span>health_status:<span class="w"> </span>HEALTHY
-<span class="w">                </span>metadata:
-<span class="w">                  </span>filter_metadata:
-<span class="w">                    </span>istio:
-<span class="w">                      </span>workload:<span class="w"> </span>bar
-<span class="w">                    </span>envoy.transport_socket_match:
-<span class="w">                      </span>tlsMode:<span class="w"> </span>istio
-<span class="w">                </span>load_balancing_weight:<span class="w"> </span><span class="m">1</span>
-<span class="w">          </span>-<span class="w"> </span>locality:
-<span class="w">              </span>region:<span class="w"> </span>ap-northeast-1
-<span class="w">              </span>zone:<span class="w"> </span>ap-northeast-1d
-<span class="w">            </span>lb_endpoints:
-<span class="w">              </span>-<span class="w"> </span>endpoint:
-<span class="w">                  </span>address:
-<span class="w">                    </span>socket_address:
-<span class="w">                      </span>address:<span class="w"> </span><span class="m">11</span>.0.0.2
-<span class="w">                      </span>port_value:<span class="w"> </span><span class="m">80</span>
-<span class="w">                  </span>health_check_config:<span class="w"> </span><span class="o">{}</span>
-<span class="w">                </span>health_status:<span class="w"> </span>HEALTHY
-<span class="w">                </span>metadata:
-<span class="w">                  </span>filter_metadata:
-<span class="w">                    </span>istio:
-<span class="w">                      </span>workload:<span class="w"> </span>bar
-<span class="w">                    </span>envoy.transport_socket_match:
-<span class="w">                      </span>tlsMode:<span class="w"> </span>istio
-<span class="w">                </span>load_balancing_weight:<span class="w"> </span><span class="m">1</span>
-<span class="w">          </span>-<span class="w"> </span>locality:
-<span class="w">              </span>region:<span class="w"> </span>ap-northeast-1
-<span class="w">              </span>zone:<span class="w"> </span>ap-northeast-1d
-<span class="w">            </span>lb_endpoints:
-<span class="w">              </span>-<span class="w"> </span>endpoint:
-<span class="w">                  </span>address:
-<span class="w">                    </span>socket_address:
-<span class="w">                      </span>address:<span class="w"> </span><span class="m">11</span>.0.0.3
-<span class="w">                      </span>port_value:<span class="w"> </span><span class="m">80</span>
-<span class="w">                  </span>health_check_config:<span class="w"> </span><span class="o">{}</span>
-<span class="w">                </span>health_status:<span class="w"> </span>HEALTHY
-<span class="w">                </span>metadata:
-<span class="w">                  </span>filter_metadata:
-<span class="w">                    </span>istio:
-<span class="w">                      </span>workload:<span class="w"> </span>baz
-<span class="w">                    </span>envoy.transport_socket_match:
-<span class="w">                      </span>tlsMode:<span class="w"> </span>istio
-<span class="w">                </span>load_balancing_weight:<span class="w"> </span><span class="m">1</span>
-<span class="w">        </span>policy:
-<span class="w">          </span>overprovisioning_factor:<span class="w"> </span><span class="m">140</span>
+<span class="w">  </span><span class="nt">dynamic_endpoint_configs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_config</span><span class="p">:</span>
+<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment</span>
+<span class="w">        </span><span class="nt">cluster_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">        </span><span class="nt">endpoints</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
+<span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1a</span>
+<span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">socket_address</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11.0.0.1</span>
+<span class="w">                      </span><span class="nt">port_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">                  </span><span class="nt">health_check_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">                </span><span class="nt">health_status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEALTHY</span>
+<span class="w">                </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">filter_metadata</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">workload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">                    </span><span class="nt">envoy.transport_socket_match</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">tlsMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+<span class="w">                </span><span class="nt">load_balancing_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
+<span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1d</span>
+<span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">socket_address</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11.0.0.2</span>
+<span class="w">                      </span><span class="nt">port_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">                  </span><span class="nt">health_check_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">                </span><span class="nt">health_status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEALTHY</span>
+<span class="w">                </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">filter_metadata</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">workload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
+<span class="w">                    </span><span class="nt">envoy.transport_socket_match</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">tlsMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+<span class="w">                </span><span class="nt">load_balancing_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
+<span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1d</span>
+<span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">socket_address</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11.0.0.3</span>
+<span class="w">                      </span><span class="nt">port_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">                  </span><span class="nt">health_check_config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">                </span><span class="nt">health_status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEALTHY</span>
+<span class="w">                </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">filter_metadata</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">istio</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">workload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz</span>
+<span class="w">                    </span><span class="nt">envoy.transport_socket_match</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">tlsMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
+<span class="w">                </span><span class="nt">load_balancing_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">policy</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">overprovisioning_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">140</span>
 
-<span class="w">    </span>...
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
-<span class="w">    </span>-<span class="w"> </span>endpoint_config:
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint_config</span><span class="p">:</span>
 
-<span class="w">    </span>...
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
 <p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
