@@ -163,17 +163,16 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump
 
 ```yaml
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
-
+-it foo-pod \
+-n foo-namespace \
+-c istio-proxy \
+-- bash -c "curl http://127.0.0.1:15000/config_dump" | yq -P '.configs[] | keys' | sort -f
 ---
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
 - bootstrap
 - dynamic_active_clusters
 - dynamic_active_secrets
@@ -204,19 +203,18 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?include_eds
 
 ```yaml
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
-
+-it foo-pod \
+-n foo-namespace \
+-c istio-proxy \
+-- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P '.configs[] | keys' | sort -f
 ---
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
-- '@type'
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
+- "@type"
 - bootstrap
 - dynamic_active_clusters
 - dynamic_active_secrets
@@ -424,11 +422,10 @@ foo-podに登録されているbar-podの`dynamic_warming_clusters`値を確認�
 
 ```yaml
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
-
+-it foo-pod \
+-n foo-namespace \
+-c istio-proxy \
+-- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}" | yq -P
 ---
 {} # ウォーミングアップ中のクラスター値が無ければ、空配列になる。
 ```

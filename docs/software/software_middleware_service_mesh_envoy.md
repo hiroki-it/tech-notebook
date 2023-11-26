@@ -49,6 +49,20 @@ Envoyは、通信を切断することなく、コントロールプレーンか
 
 <br>
 
+### ダブルプロキシ
+
+コントロールプレーンを持たないリバースプロキシの場合、通信の送信元と宛先にいるリバースプロキシは独立している。
+
+一方で、マイクロサービスにおけるEnvoyでは、Envoyのコントロールプレーンが通信の送信元と宛先の両方のリバースプロキシを一緒に管理する。
+
+このようなリバースプロキシの配置方法をダブルプロキシといい、サイドカープロキシメッシュとして機能する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/double_proxy
+> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/double-proxy#install-sandboxes-double-proxy
+> - https://engineers.ntt.com/entry/2021/12/04/131157
+
+<br>
+
 ## 01-02. コントロールプレーン
 
 ### コントロールプレーンとは
@@ -941,23 +955,23 @@ service EndpointDiscoveryService {
 
 #### ▼ 外からインバウンド通信から待ち受ける (ingress listener)
 
-Envoyは、リバースプロキシとして、外 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
+Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
 ![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 
-#### ▼ マイクロサービスから待ち受ける (egress listener)
+#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (egress listener)
 
-Envoyは、リバースプロキシとして、マイクロサービスからアウトバウンド通信を待ち受ける。
+Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
 ![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
 
-#### ▼ マイクロサービスにプロキシする
+#### ▼ ローカルホスト外にあるマイクロサービスにプロキシする
 
-Envoyは、リバースプロキシとして、マイクロサービスに通信をプロキシする
+Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信をプロキシする
 
 ```yaml
 Envoy
@@ -991,7 +1005,7 @@ Nginx
 
 ### `L4`/`L7`ロードバランサーのミドルウェアとして
 
-Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。
+Envoyの文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。
 
 ![envoy_loadbalancer.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
 
