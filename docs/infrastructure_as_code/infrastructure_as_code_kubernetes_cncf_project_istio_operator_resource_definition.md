@@ -187,7 +187,7 @@ spec:
 
 egressGatewaysコンポーネントのオプションを設定する。
 
-EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -507,7 +507,7 @@ metadata:
 spec:
   values:
     gateways:
-      # EgressGateway
+      # Istio EgressGateway
       istio-egressgateway:
         env: {}
         autoscaleEnabled: true
