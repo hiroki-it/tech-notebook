@@ -6707,7 +6707,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </code></pre></div>
 <h4 id="egressgateways">▼ egressGateways<a class="headerlink" href="#egressgateways" title="Permanent link">&para;</a></h4>
 <p>egressGatewaysコンポーネントのオプションを設定する。</p>
-<p>EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
+<p>Istio EgressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6987,7 +6987,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># EgressGateway</span>
+<span class="w">      </span><span class="c1"># Istio EgressGateway</span>
 <span class="w">      </span><span class="nt">istio-egressgateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">        </span><span class="nt">autoscaleEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
