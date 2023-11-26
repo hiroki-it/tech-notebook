@@ -2114,6 +2114,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="リバースプロキシのミドルウェアとして">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリにプロキシする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 他のEnvoyから待ち受ける
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリから待ち受ける
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6643,6 +6676,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="リバースプロキシのミドルウェアとして">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリにプロキシする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envoy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ 他のEnvoyから待ち受ける
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ アプリから待ち受ける
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -7542,19 +7608,17 @@
 <p><br></p>
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_27">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。</p>
-<p>Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に<code>istio-proxy</code>コンテナをインジェクションする。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span><span class="w"> </span><span class="c1"># istio-proxy</span>
+<h4 id="_28">▼ アプリにプロキシする<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、アプリにインバウンド通信をプロキシする</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># HTTP/TCPプロトコル</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">アプリ</span>
 </code></pre></div>
-<p>Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。</p>
-<p>マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト宛先マイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。</p>
-<p>なお、他のリバースプロキシ (例：Nginx、Apache) が転送可能なプロトコル (例：FastCGIプロトコル) で、Envoyが対応していないことがある。</p>
-<p>その場合、Envoyの後ろに異なるリバースプロキシを置く必要があり、二重のリバースプロキシになってしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span><span class="w"> </span><span class="c1"># istio-proxy</span>
+<p>なお、Envoyは一部のプロトコル (例：FastCGIプロトコル) に対応していない。</p>
+<p>その場合、そのプロトコルに対応可能なリバースプロキシ (例：Nginx、Apache) を置く必要があり、二重のリバースプロキシになる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span><span class="w"> </span><span class="c1"># TCPプロトコル</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆︎</span>
@@ -7571,11 +7635,26 @@
 <li><a href="https://speakerdeck.com/kurochan/ru-men-envoy?slide=33">https://speakerdeck.com/kurochan/ru-men-envoy?slide=33</a></li>
 </ul>
 </blockquote>
+<h4 id="envoy_1">▼ 他のEnvoyから待ち受ける<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、他のEnvoyからインバウンド通信を待ち受ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener</a></li>
+</ul>
+</blockquote>
+<h4 id="_29">▼ アプリから待ち受ける<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p>Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="l4l7"><code>L4</code>/<code>L7</code>ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
 <p>Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。</p>
 <blockquote>
 <ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy">https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy">https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy</a></li>
 </ul>
 </blockquote>
