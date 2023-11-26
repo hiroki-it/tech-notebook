@@ -206,7 +206,7 @@ spec:
 
 ingressGatewaysコンポーネントのオプションを設定する。
 
-IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio IngressGatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -221,7 +221,7 @@ spec:
         enabled: true
 ```
 
-`.spec.ingressGateways.k8s`キーでIngressGatewayを設定できるが、これは非推奨である。
+`.spec.ingressGateways.k8s`キーでIstio IngressGatewayを設定できるが、これは非推奨である。
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
@@ -245,7 +245,7 @@ spec:
                 targetPort: 80
 ```
 
-補足として、以下の方法でユーザー定義のIngressGatewayを作成できる (かなり大変) 。
+補足として、以下の方法でユーザー定義のIstio IngressGatewayを作成できる (かなり大変) 。
 
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
@@ -535,7 +535,7 @@ metadata:
 spec:
   values:
     gateways:
-      # IngressGateway
+      # Istio IngressGateway
       istio-ingressgateway:
         env: {}
         # IstioOperatorをroot権限の実行ユーザーを使用する

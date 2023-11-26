@@ -19,7 +19,7 @@ description: リソース＠Istioの知見を記録しています。
 
 #### ▼ フォワードプロキシで使用する場合
 
-Gatewayは、IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
+Gatewayは、Istio IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
@@ -100,9 +100,9 @@ configs:
 
 <br>
 
-## 01-02. IngressGateway
+## 01-02. Istio IngressGateway
 
-### IngressGatewayとは
+### Istio IngressGatewayとは
 
 Cluster内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
@@ -116,11 +116,11 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 <br>
 
-### IngressGatewayの仕組み
+### Istio IngressGatewayの仕組み
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
-IngressGatewayは、以下から構成される。
+Istio IngressGatewayは、以下から構成される。
 
 - `istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service)
 - Deployment配下の`istio-ingressgateway-*****`というPod (`istio-proxy`コンテナのみが稼働)
@@ -233,7 +233,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 #### ▼ フォワードプロキシで使用する場合
 
-VirtualServiceは、IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
+VirtualServiceは、Istio IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -309,7 +309,7 @@ configs:
   ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。
 
 ```bash
 クライアント
@@ -360,9 +360,9 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 #### ▼ フォワードプロキシで使用する場合
 
-DestinationRuleは、IngressGateway (VirtualService + DestinationRule) で受信した通信を、いずれのPodにルーティングするかを決める。
+DestinationRuleは、Istio IngressGateway (VirtualService + DestinationRule) で受信した通信を、いずれのPodにルーティングするかを決める。
 
-IngressGatewayの実体はPodのため、フォワードプロキシというよりは実際はPod間通信で使用していると言える。
+Istio IngressGatewayの実体はPodのため、フォワードプロキシというよりは実際はPod間通信で使用していると言える。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
@@ -496,7 +496,7 @@ configs:
     ...
 ```
 
-つまり、VirtualServiceとDestinationRuleの情報を使用し、IngressGatewayで受信した通信とPod間通信の両方を実施する。
+つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。
 
 Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
 

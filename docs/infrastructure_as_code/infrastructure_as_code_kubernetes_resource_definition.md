@@ -1467,7 +1467,7 @@ GatewayClassの`.metadata.name`キーの値を設定する。
 
 #### ▼ istioの場合
 
-IstioのIngressGatewayを作成する
+Istio IngressGatewayを作成する
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
@@ -1509,7 +1509,7 @@ metadata:
   name: gateway
   namespace: istio-ingress
 spec:
-  # IstioのIngressGatewayを作成する
+  # Istio IngressGatewayを作成する
   gatewayClassName: istio
   listeners:
     - name: default

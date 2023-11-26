@@ -280,7 +280,7 @@ $ minikube service <NodePort Service名> --url -n foo-namespace
 $ curl http://127.0.0.1:<自動的に発行されたポート番号>
 ```
 
-これは、IstioのIngressGatewayをNodePort Serviceで作成している場合も使える。
+これは、Istio IngressGatewayをNodePort Serviceで作成している場合も使える。
 
 ```bash
 $ minikube service istio-ingressgateway --url -n istio-ingress

@@ -76,7 +76,7 @@ Ingressコントローラーには種類があり、コントローラーごと�
 | minikubeのingressアドオン (実体はNginx Ingressコントローラー) | Nginx                              |    ✅    |          |
 | AWS Load Balancerコントローラー                               | AWS ALB                            |          |    ✅    |
 | Google Cloud CLBコントローラー                                | Google Cloud CLB                   |          |    ✅    |
-| Istio Ingressコントローラー                                   | Istio IngressGateway (Envoy)       |    ✅    |    ✅    |
+| Istio Ingressコントローラー                                   | Istio IngressGateway (実体はEnvoy) |    ✅    |    ✅    |
 | Contourコントローラー                                         | Envoy                              |    ✅    |    ✅    |
 | ...                                                           | ...                                |   ...    |   ...    |
 

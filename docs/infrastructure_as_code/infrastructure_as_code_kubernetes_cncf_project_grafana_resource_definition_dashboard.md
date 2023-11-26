@@ -464,14 +464,14 @@ IstioのPodからデータポイントを収集する。
 
 `istioctl dashboard grafana`コマンドでもインストールできる。
 
-| ダッシュボード名                 | 監視対象                              | 説明                                                                      |
-| -------------------------------- | ------------------------------------- | ------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                       |                                                                           |
-| `Istio Mesh Dashboard`           |                                       | HTTPとTCPのメトリクスを確認したい場合に役立つ。                           |
-| `Istio Control Plane Dashboard`  | IstiodのPod                           |                                                                           |
-| `Istio Performance Dashboard`    | IngressGateway、`istio-proxy`コンテナ |                                                                           |
-| `Istio Workload Dashboard`       | Istioのカスタムリソース               |                                                                           |
-| `Istio Service Dashboard`        | IstioのVirtualService                 | IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。 |
+| ダッシュボード名                 | 監視対象                                    | 説明                                                                            |
+| -------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------- |
+| `Istio Wasm Extension Dashboard` |                                             |                                                                                 |
+| `Istio Mesh Dashboard`           |                                             | HTTPとTCPのメトリクスを確認したい場合に役立つ。                                 |
+| `Istio Control Plane Dashboard`  | IstiodのPod                                 |                                                                                 |
+| `Istio Performance Dashboard`    | Istio IngressGateway、`istio-proxy`コンテナ |                                                                                 |
+| `Istio Workload Dashboard`       | Istioのカスタムリソース                     |                                                                                 |
+| `Istio Service Dashboard`        | Istio VirtualService                        | Istio IngressGatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。 |
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards

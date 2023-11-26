@@ -845,7 +845,7 @@ spec:
 
 #### ▼ selectorとは
 
-Gatewayの適用対象のIngressGatewayに付与された`.metadata.labels`キーを設定する。
+IngressGatewayに付与された`.metadata.labels`キーを設定する。
 
 デフォルトでは、IngressGatewayには`istio`ラベルがあり、値は`ingressgateway`である。
 

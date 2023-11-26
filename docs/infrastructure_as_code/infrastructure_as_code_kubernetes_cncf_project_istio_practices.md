@@ -85,17 +85,17 @@ spec:
 
 ## 02. トラフィック管理
 
-### IngressGatewayに関して
+### Istio IngressGatewayに関して
 
 #### ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
 
-セキュリティ上の理由から、IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
+セキュリティ上の理由から、Istio IngressGatewayとIstiodコントロールプレーンは異なるNamespaceにおく方が良い。
 
 > - https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
 
 #### ▼ NodePort Serviceを選ぶ
 
-IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。
+Istio IngressGatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、LoadBalancer Service) を選べる。
 
 NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。
 
@@ -105,16 +105,16 @@ NodePort Serviceを選ぶ場合、Nodeの前段に開発者がロードバラン
 
 LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
 
-補足として、デフォルトではIngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
+補足として、デフォルトではIstio IngressGatewayの内部ではLoadBalancer Serviceを作成されてしまう。
 
-NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、IngressGatewayを作成する必要がある。
+NodePort Serviceを選ぶためには、Istio IngressGatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、Istio IngressGatewayを作成する必要がある。
 
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
 
 #### ▼ アプリコンテナごとに作成する
 
-単一障害点になることを防ぐために、`1`個のIngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。
+単一障害点になることを防ぐために、`1`個のIstio IngressGatewayで全てのアプリコンテナにルーティングするのではなく、アプリコンテナことに用意する。
 
 <br>
 
@@ -122,7 +122,7 @@ NodePort Serviceを選ぶためには、IngressGatewayではなく、IstioOperat
 
 Istioリソースで設定するサブセット名は`1`個だけにする。
 
-これにより、IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。
+これにより、Istio IngressGatewayで受信した通信を、特定のバージョンのPodにルーティングできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -295,9 +295,9 @@ Istiodコントロールプレーンをカナリアアップグレードを採�
 
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
-#### ▼ IngressGatewayでダウンタイムを発生させない
+#### ▼ Istio IngressGatewayでダウンタイムを発生させない
 
-IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
+Istio IngressGatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
@@ -307,7 +307,7 @@ IngressGatewayでダウンタイムが発生すると、アプリへのインバ
 
 #### ▼ インプレース方式とは
 
-既存のIstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+既存のIstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。
 
 #### ▼ 手順
 
@@ -325,7 +325,7 @@ $ kubectl apply -f manifests/charts/base/crds
 
 `(2)`
 
-: IstiodコントロールプレーンとIngressGatewayの両方をインプレース方式でアップグレードする。
+: IstiodコントロールプレーンとIstio IngressGatewayの両方をインプレース方式でアップグレードする。
 
 ```bash
 $ istioctl upgrade
@@ -411,7 +411,7 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 
 `(8)`
 
-: gatewayチャートを使用して、IstioのIngressGatewayに関するKubernetesリソースを変更する。
+: gatewayチャートを使用して、Istio IngressGatewayに関するKubernetesリソースを変更する。
 
      この時、リリースを新しく命名する。
 

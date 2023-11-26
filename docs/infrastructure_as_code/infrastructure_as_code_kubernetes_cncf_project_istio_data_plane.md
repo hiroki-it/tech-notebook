@@ -201,9 +201,9 @@ COPY ${TARGETARCH:-amd64}/${SIDECAR} /usr/local/bin/${SIDECAR}
 ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 ```
 
-`istio-proxy`コンテナは、アプリコンテナのあるPodのみでなく、IngressGatewayのPod内にも存在している。
+`istio-proxy`コンテナは、アプリコンテナのあるPodのみでなく、Istio IngressGatewayのPod内にも存在している。
 
-Istioのサービスメッシュ外のネットワークからのインバウンド通信では、IngressGateway内の`istio-proxy`コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
+Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio IngressGateway内の`istio-proxy`コンテナにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
 
 一方で、アプリコンテナを持つPod間通信では、Pod内の`istio-proxy`コンテナに登録されたものに基づいて、Pod間で直接的に通信している。
 

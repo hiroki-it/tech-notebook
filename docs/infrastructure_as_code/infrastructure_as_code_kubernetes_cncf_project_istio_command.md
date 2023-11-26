@@ -1039,7 +1039,7 @@ istio.io/tag: default
 
 ### proxy-statusとは
 
-IngressGateway、EgressGateway、`istio-proxy`コンテナのステータスを取得する。
+Istio IngressGateway、EgressGateway、`istio-proxy`コンテナのステータスを取得する。
 
 ```bash
 $ istioctl proxy-status
