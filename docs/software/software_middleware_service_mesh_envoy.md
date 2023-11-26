@@ -939,28 +939,24 @@ service EndpointDiscoveryService {
 
 ### リバースプロキシのミドルウェアとして
 
-この場合、Envoyをパブリックネットワークに公開しさえすれば、パブリックネットワークからEnvoyを介して、後段のwebサーバーにアクセスできるようになる。
+#### ▼ アプリにプロキシする
 
-Istioは、マイクロサービスのリバースプロキシコンテナとして、Pod内に`istio-proxy`コンテナをインジェクションする。
+Envoyは、リバースプロキシとして、アプリにインバウンド通信をプロキシする
 
 ```yaml
-Envoy # istio-proxy
+Envoy
 ⬇⬆︎
-⬇⬆︎
+⬇⬆︎ # HTTP/TCPプロトコル
 ⬇⬆︎
 アプリ
 ```
 
-Istioによって自動的に作成されるが、Istioリソースを使用しなくとも作成できる。
+なお、Envoyは一部のプロトコル (例：FastCGIプロトコル) に対応していない。
 
-マイクロサービスからネットワークに関する責務を分離することを目標としており、各マイクロサービスはリクエスト宛先マイクロサービスのIPアドレスを知らなくとも、これをEnvoyが解決してくれる。
-
-なお、他のリバースプロキシ (例：Nginx、Apache) が転送可能なプロトコル (例：FastCGIプロトコル) で、Envoyが対応していないことがある。
-
-その場合、Envoyの後ろに異なるリバースプロキシを置く必要があり、二重のリバースプロキシになってしまう。
+その場合、そのプロトコルに対応可能なリバースプロキシ (例：Nginx、Apache) を置く必要があり、二重のリバースプロキシになる。
 
 ```yaml
-Envoy # istio-proxy
+Envoy
 ⬇⬆︎
 ⬇⬆︎ # TCPプロトコル
 ⬇⬆︎
@@ -975,12 +971,25 @@ Nginx
 > - https://openstandia.jp/oss_info/envoy/
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
+#### ▼ 他のEnvoyから待ち受ける
+
+Envoyは、リバースプロキシとして、他のEnvoyからインバウンド通信を待ち受ける。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
+
+#### ▼ アプリから待ち受ける
+
+Envoyは、リバースプロキシとして、アプリからアウトバウンド通信を待ち受ける。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
+
 <br>
 
 ### `L4`/`L7`ロードバランサーのミドルウェアとして
 
 Envoyの文脈では、ロードバランサーをフロントプロキシと呼んでいる。
 
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy
 
 <br>
