@@ -17,7 +17,7 @@ description: リソース＠Istioの知見を記録しています。
 
 ### Gatewayとは
 
-#### ▼ フォワードプロキシで使用する場合
+#### ▼ フォワードプロキシとPod間通信の両方で使用する場合
 
 Gatewayは、IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。
 
@@ -27,10 +27,13 @@ Gatewayは、IngressGatewayの一部として、Node外から受信した通信�
 
 > - https://istio.io/latest/blog/2018/v1alpha3-routing/
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 
-#### ▼ Pod間通信で使用する場合
+#### ▼ Pod間通信のみで使用する場合
 
 Pod間通信には不要である。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
 
 <br>
 
@@ -105,7 +108,7 @@ configs:
 
 Cluster内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
 
-Gateway、VirtualService、DestinationRuleの設定を基に、Node外からインバウンド通信を受信し、Podにルーティングする。
+GatewayとVirtualServiceの設定値に基づいて、Node外からインバウンド通信を受信し、Podにルーティングする。
 
 KubernetesリソースのIngressの代わりとして使用できる。
 
@@ -119,7 +122,10 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
-IngressGatewayは、`istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service) と、Deployment配下の`istio-ingressgateway-*****`というPod (`istio-proxy`コンテナのみが稼働) 、から構成される。
+IngressGatewayは、以下から構成される。
+
+- `istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service)
+- Deployment配下の`istio-ingressgateway-*****`というPod (`istio-proxy`コンテナのみが稼働)
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -227,7 +233,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 ### VirtualServiceとは
 
-#### ▼ フォワードプロキシで使用する場合
+#### ▼ フォワードプロキシとPod間通信の両方で使用する場合
 
 VirtualServiceは、IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。
 
@@ -235,12 +241,15 @@ VirtualServiceは、IngressGatewayの一部として、受信した通信をDest
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://knowledge.sakura.ad.jp/20489/
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 
-#### ▼ Pod間通信で使用する場合
+#### ▼ Pod間通信のみで使用する場合
 
 VirtualServiceは、宛先Podに紐づくVirtualServiceから情報を取得し、これを宛先とする。
 
 この時、VirtualServiceとDestinationのみを使用する。
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
 
 <br>
 
@@ -351,11 +360,13 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 ### DestinationRuleとは
 
-#### ▼ フォワードプロキシで使用する場合
+#### ▼ フォワードプロキシとPod間通信の両方で使用する場合
 
 フォワードプロキシには不要である。
 
-#### ▼ Pod間通信で使用する場合
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
+
+#### ▼ Pod間通信のみで使用する場合
 
 DestinationRuleは、VirtualServiceで受信した通信を、いずれのPodにルーティングするかを決める。
 
@@ -364,6 +375,7 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 ![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
 
 <br>
 
