@@ -960,6 +960,7 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 ![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
+> - https://blog.51cto.com/wangguishe/5789228
 
 #### ▼ ローカルホストにあるマイクロサービスから待ち受ける (egress listener)
 
@@ -968,6 +969,8 @@ Envoyは、リバースプロキシとして、ローカルホストにあるマ
 ![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
+> - https://blog.51cto.com/wangguishe/5789228
+
 
 #### ▼ ローカルホスト外にあるマイクロサービスにプロキシする
 
@@ -1011,5 +1014,6 @@ Envoyの文脈では、ロードバランサーとしての使い方を『フロ
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy
+> - https://blog.51cto.com/wangguishe/5789228
 
 <br>
