@@ -11,12 +11,12 @@ mergedeep==1.3.4
 mkdocs==1.5.3
 mkdocs-exclude-search==0.6.5
 mkdocs-git-revision-date-localized-plugin==1.2.1
-mkdocs-material==9.4.12
+mkdocs-material==9.4.14
 mkdocs-material-extensions==1.3.1
 mkdocs-redirects==1.2.1
 packaging==22.0
 Pygments==2.17.2
-pymdown-extensions==10.4
+pymdown-extensions==10.5
 pyparsing==3.1.1
 python-dateutil==2.8.2
 pytz==2023.3.post1
