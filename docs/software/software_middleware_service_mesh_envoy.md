@@ -971,7 +971,6 @@ Envoyは、リバースプロキシとして、ローカルホストにあるマ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
 > - https://blog.51cto.com/wangguishe/5789228
 
-
 #### ▼ ローカルホスト外にあるマイクロサービスにプロキシする
 
 Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスに通信をプロキシする
