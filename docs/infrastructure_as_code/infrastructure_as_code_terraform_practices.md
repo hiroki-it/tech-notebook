@@ -1124,7 +1124,7 @@ $ terraform plan -var-file=foo.tfvars -no-color \
 
 例えば、
 
-```bash
+```yaml
 ALB
 ⬇︎⬆︎
 ⬇︎⬆︎
@@ -1138,6 +1138,19 @@ RDS
 
 - AWSリソース間の疎通がうまくいくか
 - ALBにリクエストを飛ばしてRDSが期待値を返却するか
+
+```yaml
+リクエストを送信
+⬇︎⬆︎
+⬇︎⬆︎
+ALB
+⬇︎⬆︎
+⬇︎⬆︎
+EC2
+⬇︎⬆︎
+⬇︎⬆︎
+RDS
+```
 
 > - https://www.infracloud.io/blogs/testing-iac-terratest/
 

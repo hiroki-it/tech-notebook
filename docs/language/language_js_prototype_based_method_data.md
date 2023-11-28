@@ -167,7 +167,7 @@ console.log(b);  // undefied
 
 #### ▼ null
 
-nullは、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
+`null`は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
 
 **＊実装例＊**
 
