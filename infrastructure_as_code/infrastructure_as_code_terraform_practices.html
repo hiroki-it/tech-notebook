@@ -9066,19 +9066,30 @@ crash.*.log
 <h4 id="_41">▼ 結合テスト<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p>ステージング環境に対して<code>terraform apply</code>コマンドを実行することにより、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する</p>
 <p>例えば、</p>
-<div class="highlight"><pre><span></span><code>ALB
-⬇︎⬆︎
-⬇︎⬆︎
-EC2
-⬇︎⬆︎
-⬇︎⬆︎
-RDS
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">EC2</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">RDS</span>
 </code></pre></div>
 <p>といった構成のインフラがあった時に、AWSリソース単体の細かい設定値まではテストせずに、以下の観点で結合テストを実施する。</p>
 <ul>
 <li>AWSリソース間の疎通がうまくいくか</li>
 <li>ALBにリクエストを飛ばしてRDSが期待値を返却するか</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">リクエストを送信</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">ALB</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">EC2</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇︎⬆︎</span>
+<span class="l l-Scalar l-Scalar-Plain">RDS</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.infracloud.io/blogs/testing-iac-terratest/">https://www.infracloud.io/blogs/testing-iac-terratest/</a></li>
