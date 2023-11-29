@@ -143,6 +143,48 @@ spec:
 
 <br>
 
+### status
+
+karpenter-controllerがEC2 Nodeを作成するために取得した情報を自動的に設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+status:
+  amis:
+    - id: ami-*****
+      name: foo-ami
+      requirements:
+        - key: kubernetes.io/arch
+          operator: In
+          values:
+            - arm64
+        - key: karpenter.k8s.aws/instance-gpu-count
+          operator: DoesNotExist
+        - key: karpenter.k8s.aws/instance-accelerator-count
+          operator: DoesNotExist
+  instanceProfile: foo-cluster-*****
+  securityGroups:
+    - id: sg-*****
+      name: foo-cluster*****
+  subnets:
+    - id: subnet-*****
+      zone: ap-northeast-1c
+    - id: subnet-*****
+      zone: ap-northeast-1d
+    - id: subnet-*****
+      zone: ap-northeast-1a
+```
+
+> - https://karpenter.sh/docs/concepts/nodeclasses/#statussubnets
+> - https://karpenter.sh/docs/concepts/nodeclasses/#statussecuritygroups
+> - https://karpenter.sh/docs/concepts/nodeclasses/#statusamis
+> - https://karpenter.sh/docs/concepts/nodeclasses/#statusamis
+
+<br>
+
 ### tags
 
 #### ▼ tags
@@ -463,8 +505,6 @@ spec:
   template:
     spec:
       nodeClassRef:
-        apiVersion: karpenter.k8s.aws/v1beta1
-        kind: EC2NodeClass
         name: foo-node-class
 ```
 

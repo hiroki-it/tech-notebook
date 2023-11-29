@@ -33,7 +33,7 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
-> - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
+> - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 
 <br>
 
