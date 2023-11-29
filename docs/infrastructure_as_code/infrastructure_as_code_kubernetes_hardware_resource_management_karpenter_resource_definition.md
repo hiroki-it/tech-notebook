@@ -76,7 +76,7 @@ spec:
 
 ### detailedMonitoring
 
-プロビジョニングするEC2 NodeのCloudWatchによる監視を設定する。
+EC2 NodeのCloudWatchによる監視を設定する。
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/
 
@@ -84,7 +84,7 @@ spec:
 
 ### metadataOptions
 
-起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。
+EC2 Nodeのメタデータへのアクセスを制御する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -101,6 +101,40 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#specmetadataoptions
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+
+<br>
+
+### instanceProfile
+
+IAMロールの代わりに使用するIAMインスタンスプロファイル名を設定する。
+
+プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  instanceProfile: foo-instance-profile
+```
+
+> - https://karpenter.sh/docs/concepts/nodeclasses/#specinstanceprofile
+
+<br>
+
+### role
+
+IAMプロファイル名の代わりに使用するIAMロールを設定する。
+
+```yaml
+apiVersion: karpenter.k8s.aws/v1beta1
+kind: EC2NodeClass
+metadata:
+  name: foo-node-class
+spec:
+  role: foo-node-role
+```
 
 <br>
 
@@ -189,9 +223,9 @@ status:
 
 #### ▼ tags
 
-KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するタグを設定する。
+NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリューム、など) に挿入するタグを設定する。
 
-起動テンプレートの場合、テンプレートタグに相当する。
+なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
 
 #### ▼ デフォルトのタグ
 
@@ -204,13 +238,19 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # Karpenterは、カスタムリソースと起動テンプレートの状態を紐づけるためのタグを挿入する
+    # AWSはKarpenterがプロビジョニングしたAWSリソースにタグを挿入する
+    aws:ec2:fleet-id: fleet-*****
+    aws:ec2launchtemplate:id: lt-*****
+    aws:ec2launchtemplate:version: 1
+    aws:eks:cluster-name: foo-cluster
+    # Karpenterは、カスタムリソースとEC2の状態を紐づけるためのタグを挿入する
+    karpenter.sh/managed-by: foo-cluster
+    karpenter.sh/nodeclaim: foo-claim-*****
     karpenter.sh/nodepool: foo-nodepool
     karpenter.k8s.aws/ec2nodeclass: foo-node-class
     karpenter.k8s.aws/cluster: foo-cluster
     # AWS EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる
     kubernetes.io/cluster/foo-cluster: owned
-    karpenter.sh/managed-by: foo-cluster
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
@@ -228,7 +268,6 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # 起動テンプレートの名前を設定する
     Name: foo-node
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
@@ -494,7 +533,7 @@ spec:
 
 ### nodeClassRef
 
-Provisionerで使用するEC2 Nodeテンプレートを設定する。
+Provisionerで使用するEC2 NodeClass名を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1

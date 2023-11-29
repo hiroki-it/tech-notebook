@@ -31,6 +31,8 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
 
+なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。
+
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
@@ -41,7 +43,9 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 ### スケーリングの仕組み
 
-Karpenterは、起動テンプレートを作成した上でAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。
+Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeを作成/削除する。
+
+Nodeの自動水平スケーリングを実行する。
 
 そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。
 
@@ -75,9 +79,9 @@ Karpenterは、インスタンスタイプのPod上限数をスケーリング�
 
 #### ▼ 起動テンプレート
 
-Karpenterのkarpenterコントローラーは、起動テンプレートを作成し、管理する。
+Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。
 
-執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
+執筆時点 (2023/11/04) 時点では、kaArpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
 
 不都合があって廃止した経緯がある。
 
@@ -92,7 +96,7 @@ Karpenterのkarpenterコントローラーは、起動テンプレートを作�
 
 Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。
 
-マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートを動的にコールする。
+マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートAPIを動的にコールする。
 
 ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
 
@@ -216,8 +220,8 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
-# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする
-# EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーが起動テンプレートを操作できるようにしておく
+# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つEC2を指定できるようにする
+# EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
@@ -248,10 +252,10 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
       "ec2:TerminateInstances",
       "ec2:DeleteLaunchTemplate"
     ]
-    # 特定のリソースタグを持つ起動テンプレートしか指定できない
+    # 特定のリソースタグを持つEC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
+      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name
@@ -268,17 +272,17 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     actions = [
       "ec2:RunInstances"
     ]
-    # 特定のリソースタグを持つ起動テンプレートしか指定できない
+    # 特定のリソースタグを持つEC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
+      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name
       ]
     }
     effect = "Allow"
-    # 起動テンプレートを指定してEC2 Nodeを起動する
+    # 起動テンプレートからEC2 Nodeを作成する
     resources = [
       "arn:aws:ec2:*:<アカウントID>:launch-template/*"
     ]
@@ -390,7 +394,7 @@ module "eks_iam_karpenter_controller" {
     "karpenter:karpenter"
   ]
 
-  # 特定のリソースタグを持つ起動テンプレートしか指定できない
+  # 特定のリソースタグを持つEC2しか指定できない
   irsa_tag_key = "karpenter.sh/discovery"
 
   irsa_tag_values = [
