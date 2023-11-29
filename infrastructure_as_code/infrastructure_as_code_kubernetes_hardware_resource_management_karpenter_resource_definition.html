@@ -7070,7 +7070,7 @@
 </ul>
 </blockquote>
 <h4 id="irsaiam">▼ IRSA用IAMロールの条件と一致させる<a class="headerlink" href="#irsaiam" title="Permanent link">&para;</a></h4>
-<p>ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。</p>
+<p>ここで挿入するタグと、AWS IAMポリシーの条件で指定するタグと一致させる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 
@@ -7078,7 +7078,7 @@
 <span class="w">            </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ec2:RunInstances&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">            </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
 <span class="w">                </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">                    </span><span class="c1"># KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
+<span class="w">                    </span><span class="c1"># KarpenterのEC2NodeClassで挿入した起動テンプレートのタグを指定する</span>
 <span class="w">                    </span><span class="s">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">                        </span><span class="s">&quot;foo-cluster&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">                    </span><span class="p p-Indicator">]</span>
@@ -7095,7 +7095,7 @@
 <span class="w">  </span><span class="p p-Indicator">]</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。</p>
+<p>もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したタグを使用しても良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053">https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053</a></li>

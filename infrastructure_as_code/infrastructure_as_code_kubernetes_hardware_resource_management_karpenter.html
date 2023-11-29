@@ -6588,8 +6588,8 @@
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
 <span class="p">}</span>
 
-<span class="c1"># karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つEC2を指定できるようにする</span>
-<span class="c1"># EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく</span>
+<span class="c1"># karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のタグのみを持つEC2を指定できるようにする</span>
+<span class="c1"># EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく</span>
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
@@ -6620,10 +6620,10 @@
 <span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のリソースタグを持つEC2しか指定できない</span>
+<span class="c1">    # 特定のタグを持つEC2しか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
@@ -6640,10 +6640,10 @@
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のリソースタグを持つEC2しか指定できない</span>
+<span class="c1">    # 特定のタグを持つEC2しか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
@@ -6762,7 +6762,7 @@
 <span class="w">    </span><span class="s2">&quot;karpenter:karpenter&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 
-<span class="c1">  # 特定のリソースタグを持つEC2しか指定できない</span>
+<span class="c1">  # 特定のタグを持つEC2しか指定できない</span>
 <span class="w">  </span><span class="na">irsa_tag_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;karpenter.sh/discovery&quot;</span>
 
 <span class="w">  </span><span class="na">irsa_tag_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
