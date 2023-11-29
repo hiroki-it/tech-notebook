@@ -9598,9 +9598,10 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h2 id="05-03-ipv4-prefix-delegation">05-03. IPv4 Prefix delegation<a class="headerlink" href="#05-03-ipv4-prefix-delegation" title="Permanent link">&para;</a></h2>
 <h3 id="ipv4-prefix-delegation">IPv4 Prefix delegationとは<a class="headerlink" href="#ipv4-prefix-delegation" title="Permanent link">&para;</a></h3>
-<p>ENIに複数のCIDR (サブネット内の<code>*.*.*.*/28</code>) を割り当て、このENIをEC2に紐づける。</p>
+<p>複数のCIDR (サブネット内の<code>*.*.*.*/28</code>) をENIに割り当て、このENIをEC2に紐づける。</p>
 <p>EC2に紐づけたCIDRからIPアドレスを取得する。</p>
-<p>これらのため、サブネットで<code>18</code>個 (<code>*.*.*.*/28</code>) の連続したIPアドレスの範囲が空いている必要がある。</p>
+<p>使用できるIPアドレスを<code>16</code>個の倍数で増やせる。</p>
+<p>そのため、サブネットで<code>16</code>個 (<code>*.*.*.*/28</code>) の連続したIPアドレスの範囲が空いている必要がある。</p>
 <p>セカンダリーIPアドレス割り当てとは異なり、IPアドレスではなくCIDRを丸ごとENIに割り当てられるため、EC2内で使用可能なIPアドレス数を大きく増やせる。</p>
 <table>
 <thead>
@@ -9627,8 +9628,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="ip_2">IPアドレス数<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h3>
-<p>ENIに割り当てるCIDR (サブネット内の<code>*.*.*.*/28</code>) は、<code>18</code>個のIPアドレスを持つ。</p>
-<p>ENIには複数のCIDRを紐づけられるため、<code>18</code>個の倍数だけ、EC2内で取得できるIPアドレスが増える。</p>
+<p>ENIに割り当てるCIDR (サブネット内の<code>*.*.*.*/28</code>) は、<code>16</code>個のIPアドレスを持つ。</p>
+<p>ENIには複数のCIDRを紐づけられるため、<code>16</code>個の倍数だけ、EC2内で取得できるIPアドレスが増える。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
@@ -9685,7 +9686,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-29</span>
       
     
   </small>
