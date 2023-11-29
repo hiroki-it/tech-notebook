@@ -6621,6 +6621,7 @@
 <span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
@@ -6640,6 +6641,7 @@
 <span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
@@ -6787,7 +6789,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-06</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-29</span>
       
     
   </small>

@@ -8012,10 +8012,10 @@
 <span class="w">        </span><span class="c1"># EC2を起動する</span>
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;ec2:RunInstances&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:ec2:*:account-id:launch-template/*&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="c1"># 特定のリソースタグを持つ起動テンプレートのみを指定できる</span>
-<span class="w">                </span><span class="s">&quot;ec2:ResourceTag/foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
-<span class="w">              </span><span class="p p-Indicator">}},</span>
+<span class="w">        </span><span class="s">&quot;Condition&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
+<span class="w">            </span><span class="c1"># 特定のリソースタグを持つ起動テンプレートのみを指定できる</span>
+<span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;ec2:ResourceTag/foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">]}</span>
 </code></pre></div>
@@ -8087,7 +8087,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-29</span>
       
     
   </small>
