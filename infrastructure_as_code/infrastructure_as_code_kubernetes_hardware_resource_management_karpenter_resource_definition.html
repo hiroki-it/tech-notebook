@@ -3977,6 +3977,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#instanceprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      instanceProfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role" class="md-nav__link">
+    <span class="md-ellipsis">
+      role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#securitygroupselectorterms" class="md-nav__link">
     <span class="md-ellipsis">
       securityGroupSelectorTerms
@@ -6382,6 +6400,24 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#instanceprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      instanceProfile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#role" class="md-nav__link">
+    <span class="md-ellipsis">
+      role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#securitygroupselectorterms" class="md-nav__link">
     <span class="md-ellipsis">
       securityGroupSelectorTerms
@@ -6854,7 +6890,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="detailedmonitoring">detailedMonitoring<a class="headerlink" href="#detailedmonitoring" title="Permanent link">&para;</a></h3>
-<p>プロビジョニングするEC2 NodeのCloudWatchによる監視を設定する。</p>
+<p>EC2 NodeのCloudWatchによる監視を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
@@ -6862,7 +6898,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="metadataoptions">metadataOptions<a class="headerlink" href="#metadataoptions" title="Permanent link">&para;</a></h3>
-<p>起動テンプレートからプロビジョニングしたEC2 Nodeのメタデータへのアクセスを制御する。</p>
+<p>EC2 Nodeのメタデータへのアクセスを制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -6880,6 +6916,32 @@
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="instanceprofile">instanceProfile<a class="headerlink" href="#instanceprofile" title="Permanent link">&para;</a></h3>
+<p>IAMロールの代わりに使用するIAMインスタンスプロファイル名を設定する。</p>
+<p>プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">instanceProfile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-instance-profile</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/nodeclasses/#specinstanceprofile">https://karpenter.sh/docs/concepts/nodeclasses/#specinstanceprofile</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="role">role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
+<p>IAMプロファイル名の代わりに使用するIAMロールを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-role</span>
+</code></pre></div>
 <p><br></p>
 <h3 id="securitygroupselectorterms">securityGroupSelectorTerms<a class="headerlink" href="#securitygroupselectorterms" title="Permanent link">&para;</a></h3>
 <p>EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、セキュリティグループのリソースを設定する。</p>
@@ -6958,8 +7020,8 @@
 <p><br></p>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <h4 id="tags_1">▼ tags<a class="headerlink" href="#tags_1" title="Permanent link">&para;</a></h4>
-<p>KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するタグを設定する。</p>
-<p>起動テンプレートの場合、テンプレートタグに相当する。</p>
+<p>NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリューム、など) に挿入するタグを設定する。</p>
+<p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
 <h4 id="_2">▼ デフォルトのタグ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>Karpenterがデフォルトで挿入するタグは上書きしないように、設定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
@@ -6968,13 +7030,19 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Karpenterは、カスタムリソースと起動テンプレートの状態を紐づけるためのタグを挿入する</span>
+<span class="w">    </span><span class="c1"># AWSはKarpenterがプロビジョニングしたAWSリソースにタグを挿入する</span>
+<span class="w">    </span><span class="nt">aws:ec2:fleet-id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fleet-*****</span>
+<span class="w">    </span><span class="nt">aws:ec2launchtemplate:id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lt-*****</span>
+<span class="w">    </span><span class="nt">aws:ec2launchtemplate:version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">aws:eks:cluster-name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
+<span class="w">    </span><span class="c1"># Karpenterは、カスタムリソースとEC2の状態を紐づけるためのタグを挿入する</span>
+<span class="w">    </span><span class="nt">karpenter.sh/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
+<span class="w">    </span><span class="nt">karpenter.sh/nodeclaim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-claim-*****</span>
 <span class="w">    </span><span class="nt">karpenter.sh/nodepool</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
 <span class="w">    </span><span class="nt">karpenter.k8s.aws/ec2nodeclass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="w">    </span><span class="nt">karpenter.k8s.aws/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 <span class="w">    </span><span class="c1"># AWS EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる</span>
 <span class="w">    </span><span class="nt">kubernetes.io/cluster/foo-cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owned</span>
-<span class="w">    </span><span class="nt">karpenter.sh/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6991,7 +7059,6 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># 起動テンプレートの名前を設定する</span>
 <span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
 <span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
@@ -7232,7 +7299,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="nodeclassref">nodeClassRef<a class="headerlink" href="#nodeclassref" title="Permanent link">&para;</a></h3>
-<p>Provisionerで使用するEC2 Nodeテンプレートを設定する。</p>
+<p>Provisionerで使用するEC2 NodeClass名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7534,7 +7601,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
       
     
   </small>

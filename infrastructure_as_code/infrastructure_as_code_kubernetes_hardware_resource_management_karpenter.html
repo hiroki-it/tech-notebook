@@ -6426,6 +6426,7 @@
 <h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
 <p>karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
+<p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
 <p><img alt="karpenter_controller.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
 <blockquote>
 <ul>
@@ -6435,7 +6436,8 @@
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートのAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
+<p>Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeを作成/削除する。</p>
+<p>Nodeの自動水平スケーリングを実行する。</p>
 <p>そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。</p>
 <p>Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
 <blockquote>
@@ -6461,8 +6463,8 @@
 <p><br></p>
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成し、管理する。</p>
-<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
+<p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。</p>
+<p>執筆時点 (2023/11/04) 時点では、kaArpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
 <p>不都合があって廃止した経緯がある。</p>
 <blockquote>
 <ul>
@@ -6478,7 +6480,7 @@
 </blockquote>
 <h4 id="node">▼ マネージドNodeグループ (有無に関係ない)<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
-<p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートを動的にコールする。</p>
+<p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のEC2のEC2フリートAPIを動的にコールする。</p>
 <p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
 <blockquote>
 <ul>
@@ -6586,8 +6588,8 @@
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">data.aws_iam_policy_document.karpenter_controller_policy.json</span>
 <span class="p">}</span>
 
-<span class="c1"># karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つ起動テンプレートを指定できるようにする</span>
-<span class="c1"># EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーが起動テンプレートを操作できるようにしておく</span>
+<span class="c1"># karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つEC2を指定できるようにする</span>
+<span class="c1"># EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく</span>
 <span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_iam_policy_document&quot;</span><span class="w"> </span><span class="nv">&quot;karpenter_controller_policy&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">statement</span><span class="w"> </span><span class="p">{</span>
@@ -6618,10 +6620,10 @@
 <span class="w">      </span><span class="s2">&quot;ec2:TerminateInstances&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;ec2:DeleteLaunchTemplate&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
+<span class="c1">    # 特定のリソースタグを持つEC2しか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
@@ -6638,17 +6640,17 @@
 <span class="w">    </span><span class="na">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;ec2:RunInstances&quot;</span>
 <span class="w">    </span><span class="p">]</span>
-<span class="c1">    # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
+<span class="c1">    # 特定のリソースタグを持つEC2しか指定できない</span>
 <span class="w">    </span><span class="nb">condition</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
-<span class="c1">      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する</span>
+<span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="nv">module.eks.cluster_name</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
-<span class="c1">    # 起動テンプレートを指定してEC2 Nodeを起動する</span>
+<span class="c1">    # 起動テンプレートからEC2 Nodeを作成する</span>
 <span class="w">    </span><span class="na">resources</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">      </span><span class="s2">&quot;arn:aws:ec2:*:&lt;アカウントID&gt;:launch-template/*&quot;</span>
 <span class="w">    </span><span class="p">]</span>
@@ -6760,7 +6762,7 @@
 <span class="w">    </span><span class="s2">&quot;karpenter:karpenter&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 
-<span class="c1">  # 特定のリソースタグを持つ起動テンプレートしか指定できない</span>
+<span class="c1">  # 特定のリソースタグを持つEC2しか指定できない</span>
 <span class="w">  </span><span class="na">irsa_tag_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;karpenter.sh/discovery&quot;</span>
 
 <span class="w">  </span><span class="na">irsa_tag_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -6789,7 +6791,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
       
     
   </small>
