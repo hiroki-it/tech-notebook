@@ -278,7 +278,7 @@ spec:
 
 #### ▼ IRSA用IAMロールの条件と一致させる
 
-ここで挿入するリソースタグと、AWS IAMポリシーの条件で指定するリソースタグと一致させる必要がある。
+ここで挿入するタグと、AWS IAMポリシーの条件で指定するタグと一致させる必要がある。
 
 ```yaml
 {
@@ -288,7 +288,7 @@ spec:
             "Action": "ec2:RunInstances",
             "Condition": {
                 "StringEquals": {
-                    # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
+                    # KarpenterのEC2NodeClassで挿入した起動テンプレートのタグを指定する
                     "ec2:ResourceTag/karpenter.sh/discovery": [
                         "foo-cluster",
                     ]
@@ -306,7 +306,7 @@ spec:
 }
 ```
 
-もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したリソースタグを使用しても良い。
+もちろん、Karpenter以外の方法 (例：Terraform、など) で挿入したタグを使用しても良い。
 
 > - https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053
 

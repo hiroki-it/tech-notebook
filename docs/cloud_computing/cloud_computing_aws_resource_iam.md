@@ -408,7 +408,7 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
 > - https://zenn.dev/toshikish/articles/2d9274783acbae
 
-リソースタグを条件として使用することもできる。
+タグを条件として使用することもできる。
 
 ```yaml
 {"Version": "2012-10-17", "Statement": [
@@ -418,7 +418,7 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
         "Action": "ec2:RunInstances",
         "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
         "Condition": {
-            # 特定のリソースタグを持つ起動テンプレートのみを指定できる
+            # 特定のタグを持つ起動テンプレートのみを指定できる
             "StringEquals": {"ec2:ResourceTag/foo": "foo"},
           },
       },

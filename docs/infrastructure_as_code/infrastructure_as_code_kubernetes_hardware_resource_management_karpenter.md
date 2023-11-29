@@ -220,8 +220,8 @@ resource "aws_iam_policy" "karpenter_controller" {
   policy = data.aws_iam_policy_document.karpenter_controller_policy.json
 }
 
-# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のリソースタグのみを持つEC2を指定できるようにする
-# EC2NodeClassでユーザー定義のリソースタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく
+# karpenterコントローラーが操作できるEC2 Nodeを最小限にするために、特定のタグのみを持つEC2を指定できるようにする
+# EC2NodeClassでユーザー定義のタグを設定し、karpenterコントローラーがEC2を操作できるようにしておく
 data "aws_iam_policy_document" "karpenter_controller_policy" {
 
   statement {
@@ -252,10 +252,10 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
       "ec2:TerminateInstances",
       "ec2:DeleteLaunchTemplate"
     ]
-    # 特定のリソースタグを持つEC2しか指定できない
+    # 特定のタグを持つEC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する
+      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name
@@ -272,10 +272,10 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     actions = [
       "ec2:RunInstances"
     ]
-    # 特定のリソースタグを持つEC2しか指定できない
+    # 特定のタグを持つEC2しか指定できない
     condition {
       test     = "StringEquals"
-      # KarpenterのEC2NodeClassで挿入したEC2のリソースタグを指定する
+      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name
@@ -394,7 +394,7 @@ module "eks_iam_karpenter_controller" {
     "karpenter:karpenter"
   ]
 
-  # 特定のリソースタグを持つEC2しか指定できない
+  # 特定のタグを持つEC2しか指定できない
   irsa_tag_key = "karpenter.sh/discovery"
 
   irsa_tag_values = [
