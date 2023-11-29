@@ -251,6 +251,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     # 特定のリソースタグを持つ起動テンプレートしか指定できない
     condition {
       test     = "StringEquals"
+      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name
@@ -270,6 +271,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
     # 特定のリソースタグを持つ起動テンプレートしか指定できない
     condition {
       test     = "StringEquals"
+      # KarpenterのEC2NodeClassで挿入した起動テンプレートのリソースタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
         module.eks.cluster_name

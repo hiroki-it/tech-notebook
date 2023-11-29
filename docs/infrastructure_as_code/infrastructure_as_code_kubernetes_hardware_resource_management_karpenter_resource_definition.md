@@ -147,11 +147,13 @@ spec:
 
 #### ▼ tags
 
-KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するリソースを設定する。
+KarpenterがプロビジョニングするAWSリソース (例：起動テンプレート、全てのNodePool配下のEC2 Node、EBSボリューム、など) に挿入するタグを設定する。
+
+起動テンプレートの場合、テンプレートタグに相当する。
 
 #### ▼ デフォルトのタグ
 
-Karpenterがデフォルトで挿入するリソースタグは上書きしないように、設定しない。
+Karpenterがデフォルトで挿入するタグは上書きしないように、設定しない。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -160,8 +162,6 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # 起動テンプレートの名前になる
-    Name: foo-node
     # Karpenterは、カスタムリソースと起動テンプレートの状態を紐づけるためのタグを挿入する
     karpenter.sh/nodepool: foo-nodepool
     karpenter.k8s.aws/ec2nodeclass: foo-node-class
@@ -186,6 +186,8 @@ metadata:
   name: foo-node-class
 spec:
   tags:
+    # 起動テンプレートの名前を設定する
+    Name: foo-node
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
     karpenter.sh/discovery: foo-cluster

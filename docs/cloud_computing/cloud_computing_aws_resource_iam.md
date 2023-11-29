@@ -417,10 +417,10 @@ IAMポリシーの取得に使用する文字列の条件の厳格さを設定�
         # EC2を起動する
         "Action": "ec2:RunInstances",
         "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
-        "Condition": {"StringEquals": {
-                # 特定のリソースタグを持つ起動テンプレートのみを指定できる
-                "ec2:ResourceTag/foo": "foo",
-              }},
+        "Condition": {
+            # 特定のリソースタグを持つ起動テンプレートのみを指定できる
+            "StringEquals": {"ec2:ResourceTag/foo": "foo"},
+          },
       },
     ]}
 ```
