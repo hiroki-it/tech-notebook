@@ -70,7 +70,7 @@ ztunnelのPodを経由した段階でHTTPSプロトコルになる。
 
 ハードウェアリソースの消費量の少ない`L4`プロトコルと、消費量の多い`L7`プロトコルのプロコトルの処理の責務が分離されているため、サイドカープロキシメッシュと比較して、`L4`プロトコルのみを処理する場合に、Nodeのハードウェアリソース消費量を節約できる。
 
-インバウンド時の通信の経路は以下の通りである。
+メッシュ内への通信の経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -86,7 +86,7 @@ waypointのPod (L7) # Deployment配下のPodなので、任意のNodeにいる
 アプリコンテナのPod
 ```
 
-アウトバウンド時の通信の経路は以下の通りである。
+メッシュ外への通信の経路は以下の通りである。
 
 ```yaml
 パブリックネットワーク
@@ -204,19 +204,32 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 ## 02. トラフィック管理
 
-### アウトバウンド通信の監視
+### パケット処理の仕組み
+
+1. `istio-proxy`コンテナにて、リスナー値でリクエストを受信する。
+2. EnvoyFilterがあれば、これを適用する。
+3. ルート値でリクエストを受け取る。
+4. クラスター値でリクエストを受け取る。
+5. クラスター値配下のエンドポイント値にリクエストをプロキシする。
+
+> - https://github.com/istio/istio/issues/34030#issuecomment-880012551
+> - https://qiita.com/DaichiSasak1/items/1fb781e5dd2fa549ac48#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%87%A6%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC
+
+<br>
+
+### メッシュ外への通信
 
 #### ▼ PassthroughCluster
 
 IPアドレスを指定した送信できる宛先のこと。
 
-Istio 1.3以降で、デフォルトで全てのアウトバウンド通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
+Istio `v1.3`以降で、デフォルトで全てのメッシュ外への通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
 
-AWS RDS、Google CloudSQL、などの外部DBを使う場合、アプリからDBへのアウトバウンド通信ではDBのエンドポイントを指定することになる。
+メッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。
 
-そのため、アウトバウンド通信はPassthroughClusterに属する。
+そのため、メッシュ外への通信はPassthroughClusterに属する。
 
-注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外への全てのアウトバウンド通信がBlackHoleClusterになってしまう
+注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信がBlackHoleClusterになってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
@@ -226,7 +239,7 @@ AWS RDS、Google CloudSQL、などの外部DBを使う場合、アプリからDB
 
 IPアドレスを指定して送信できない宛先のこと。
 
-基本的に、アウトバウンド通信は失敗し、`502`ステータスになる。
+基本的に、メッシュ外への通信は失敗し、`502`ステータスになる。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 

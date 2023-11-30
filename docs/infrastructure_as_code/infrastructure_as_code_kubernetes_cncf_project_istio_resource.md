@@ -504,7 +504,7 @@ configs:
 
 つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。
 
-Pod間通信の時は、VirtualServiceとDestinationのみを使用する。
+Pod間通信時には、VirtualServiceとDestinationのみを使用する。
 
 ```bash
 クライアント
@@ -554,7 +554,7 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 ## 05. PeerAuthentication
 
-Pod間通時に、相互TLS認証を実施する。
+Pod間通信時に、相互TLS認証を実施する。
 
 > - https://news.mynavi.jp/techplus/article/kubernetes-30/
 
