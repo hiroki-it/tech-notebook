@@ -6898,7 +6898,7 @@
 <h2 id="03-node">03. Nodeグループ<a class="headerlink" href="#03-node" title="Permanent link">&para;</a></h2>
 <h3 id="node_2">Nodeグループとは<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
 <p>KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできない。</p>
-<p>ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループを実現できる。</p>
+<p>ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2AutoScaling) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。</p>
 <p>同じ設定値 (<code>.metadata.labels</code>キー、CPU、メモリ、など) や同じ役割を持ったNodeのグループのこと。</p>
 <p>基本的には、Nodeグループは冗長化されたワーカーNodeで構成されており、IDは違えど、ワーカーNode名は全て同じである。</p>
 <p>Nodeグループをターゲットとする<code>L7</code>ロードバランサーでは、Nodeグループ内で冗長化ワーカーNodeのいずれかに対してルーティングすることになる。</p>
@@ -7491,7 +7491,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
       
     
   </small>

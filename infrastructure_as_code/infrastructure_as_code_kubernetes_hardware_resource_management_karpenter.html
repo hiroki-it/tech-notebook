@@ -3917,6 +3917,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="karpenterコントローラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karpenter_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ karpenterコントローラーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Finalizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Expiration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -4038,7 +4071,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
+  <a href="#karpenter_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Karpenterのいいところ
     </span>
@@ -6148,6 +6181,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="karpenterコントローラー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#karpenter_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ karpenterコントローラーとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Finalizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Expiration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -6269,7 +6335,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#karpenter_2" class="md-nav__link">
+  <a href="#karpenter_3" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ Karpenterのいいところ
     </span>
@@ -6424,6 +6490,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="karpenter_1">karpenterコントローラー<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h3>
+<h4 id="karpenter_2">▼ karpenterコントローラーとは<a class="headerlink" href="#karpenter_2" title="Permanent link">&para;</a></h4>
 <p>karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。</p>
 <p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。</p>
 <p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
@@ -6433,6 +6500,11 @@
 <li><a href="https://karpenter.sh/preview/reference/threat-model/#architecture--actors">https://karpenter.sh/preview/reference/threat-model/#architecture--actors</a></li>
 </ul>
 </blockquote>
+<h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
+<p>Nodeの削除はKarpenterが管理する。</p>
+<p>Karpenter外から削除操作 (例：<code>kubectl delete</code>コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
+<h4 id="expiration">▼ Expiration<a class="headerlink" href="#expiration" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -6466,7 +6538,7 @@
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。</p>
-<p>執筆時点 (2023/11/04) 時点では、kaArpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
+<p>執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。</p>
 <p>不都合があって廃止した経緯がある。</p>
 <blockquote>
 <ul>
@@ -6492,7 +6564,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="karpentercluster-autoscaler">Karpenterとcluster-autoscaler<a class="headerlink" href="#karpentercluster-autoscaler" title="Permanent link">&para;</a></h3>
-<h4 id="karpenter_2">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_2" title="Permanent link">&para;</a></h4>
+<h4 id="karpenter_3">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_3" title="Permanent link">&para;</a></h4>
 <p>AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。</p>
 <p>Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。</p>
 <p>そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。</p>

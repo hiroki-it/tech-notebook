@@ -6275,7 +6275,7 @@
 <p><br></p>
 <h2 id="01-cluster-autoscaler">01. cluster-autoscaler<a class="headerlink" href="#01-cluster-autoscaler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
+<p>cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) のAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
 <p>cluster-autoscalerを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
 <p>自動水平スケーリングの条件を何にするかに応じて、アーキテクチャが異なる。</p>
 <p>コントロールプレーンNodeに配置することが推奨である。</p>
@@ -6309,7 +6309,7 @@
 <p><br></p>
 <h3 id="karpenter">Karpenterとの違い<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h3>
 <p>Karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。</p>
-<p>一方でcluster-autoscalerは、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールする。</p>
+<p>一方でcluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) に関するAPIをコールする。</p>
 <p><img alt="karpenter_vs_cluster-autoscaler.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
 <ul>
@@ -6524,7 +6524,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
       
     
   </small>
