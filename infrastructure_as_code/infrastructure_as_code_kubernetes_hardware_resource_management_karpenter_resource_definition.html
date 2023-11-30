@@ -4171,13 +4171,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02-template" class="md-nav__link">
+  <a href="#02-02-templatemetadata" class="md-nav__link">
     <span class="md-ellipsis">
-      02-02. template
+      02-02. .template.metadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. template">
+    <nav class="md-nav" aria-label="02-02. .template.metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      annotations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-templatespec" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-03. .template.spec
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. .template.spec">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4187,26 +4211,8 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      metadata
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="metadata">
+    <nav class="md-nav" aria-label="kubelet">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#labels" class="md-nav__link">
@@ -6594,13 +6600,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02-template" class="md-nav__link">
+  <a href="#02-02-templatemetadata" class="md-nav__link">
     <span class="md-ellipsis">
-      02-02. template
+      02-02. .template.metadata
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. template">
+    <nav class="md-nav" aria-label="02-02. .template.metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      annotations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-03-templatespec" class="md-nav__link">
+    <span class="md-ellipsis">
+      02-03. .template.spec
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02-03. .template.spec">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6610,26 +6640,8 @@
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      metadata
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="metadata">
+    <nav class="md-nav" aria-label="kubelet">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#labels" class="md-nav__link">
@@ -6935,6 +6947,7 @@
 <p><br></p>
 <h3 id="role">role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
 <p>IAMプロファイル名の代わりに使用するIAMロールを設定する。</p>
+<p>プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7023,7 +7036,7 @@
 <p>NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリューム、など) に挿入するタグを設定する。</p>
 <p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はEC2 Nodeの作成後に削除するようになっている。</p>
 <h4 id="_2">▼ デフォルトのタグ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>Karpenterがデフォルトで挿入するタグは上書きしないように、設定しない。</p>
+<p>KarpenterがEC2 Nodeにデフォルトで挿入するタグは上書きしないように、設定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7052,16 +7065,16 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ユーザー定義のタグ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ユーザー定義のタグを設定できる。</p>
+<p>EC2 Nodeに挿入するユーザー定義のタグを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
 <span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
+<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
 <span class="w">    </span><span class="nt">karpenter.sh/discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <blockquote>
@@ -7210,7 +7223,27 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-02-template">02-02. template<a class="headerlink" href="#02-02-template" title="Permanent link">&para;</a></h2>
+<h2 id="02-02-templatemetadata">02-02. .template.metadata<a class="headerlink" href="#02-02-templatemetadata" title="Permanent link">&para;</a></h2>
+<h3 id="annotations">annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
+<p>EC2 Nodeに付与するアノテーションを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">example.com/owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-team</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
+<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-03-templatespec">02-03. .template.spec<a class="headerlink" href="#02-03-templatespec" title="Permanent link">&para;</a></h2>
 <h3 id="kubelet">kubelet<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <p>kubeletの<code>KubeletConfiguration</code>オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
@@ -7258,25 +7291,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
-<h4 id="annotations">▼ annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h4>
-<p>EC2 Nodeに付与するアノテーションを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-nodepool</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">example.com/owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-team</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
-<li><a href="https://github.com/aws/karpenter/tree/main/examples/provisioner">https://github.com/aws/karpenter/tree/main/examples/provisioner</a></li>
-</ul>
-</blockquote>
 <h4 id="labels">▼ labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
 <p>EC2 Nodeに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
@@ -7392,6 +7406,7 @@
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">large</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xlarge</span>
+<span class="w">          </span><span class="c1"># オンデマンドなインスタンスを指定する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/os</span>
 <span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">          </span><span class="nt">values</span><span class="p">:</span>
