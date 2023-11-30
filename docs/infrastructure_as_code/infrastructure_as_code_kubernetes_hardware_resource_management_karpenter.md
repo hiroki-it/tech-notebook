@@ -45,9 +45,31 @@ Nodeの削除はKarpenterが管理する。
 
 Karpenter外から削除操作 (例：`kubectl delete`コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。
 
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
 #### ▼ Expiration
 
 記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Consolidation
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Drift
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Interruption
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
 
 <br>
 
@@ -64,6 +86,8 @@ Karpenterはバージョニングされてない独立した起動テンプレ�
 そのため、残骸として残らないように、その都度起動テンプレートを削除する。
 
 ```bash
+...
+
 2023-11-30T08:28:56.735Z	INFO	controller.provisioner	found provisionable pod(s)	{...}
 2023-11-30T08:28:56.735Z	INFO	controller.provisioner	computed new nodeclaim(s) to fit pod(s)	{...}
 2023-11-30T08:28:56.748Z	INFO	controller.provisioner	created nodeclaim	{...}
@@ -73,7 +97,7 @@ Karpenterはバージョニングされてない独立した起動テンプレ�
 2023-11-30T08:28:57.121Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
 2023-11-30T08:28:57.297Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
 
-# EC2作成
+# EC2 Node作成
 2023-11-30T08:28:59.211Z	INFO	controller.nodeclaim.lifecycle	launched nodeclaim	{...}
 2023-11-30T08:29:14.009Z	DEBUG	controller.disruption	discovered subnets	{...}
 2023-11-30T08:29:33.910Z	DEBUG	controller.nodeclaim.lifecycle	registered nodeclaim	{...}
@@ -84,6 +108,8 @@ Karpenterはバージョニングされてない独立した起動テンプレ�
 2023-11-30T08:32:58.872Z	DEBUG	controller	deleted launch template	{...}
 2023-11-30T08:32:59.027Z	DEBUG	controller	deleted launch template	{...}
 2023-11-30T08:32:59.299Z	DEBUG	controller	deleted launch template	{...}
+
+...
 ```
 
 > - https://github.com/aws/karpenter/pull/1278
@@ -106,7 +132,7 @@ Karpenterは、様々な情報に基づいて、Nodeをスケーリングする�
 
 #### ▼ Podのスケジューリングの可否
 
-kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできる否かに基づいて、Podをスケジューリングする。
+kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (`Pending`状態) を検知し、Nodeのスケジューリングを検討する。
 
 新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。
 
@@ -193,7 +219,7 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。
 
-Karpenterは、スケジューリングできない保留中Pod (`Pending`状態) が出現して始めて、スケールアウトを検討する。
+Karpenterは、スケジューリングできないPod (`Pending`状態) が出現すると、スケールアウトを検討する。
 
 `(1)`
 
@@ -303,8 +329,9 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
       test     = "StringEquals"
       # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
+      # 起動テンプレートからEC2 Nodeを作成する
       values = [
-        module.eks.cluster_name
+        "${module.eks.cluster_name}-karpenter"
       ]
     }
     effect = "Allow"
@@ -324,7 +351,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
       # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する
       variable = "ec2:ResourceTag/karpenter.sh/discovery"
       values = [
-        module.eks.cluster_name
+        "${module.eks.cluster_name}-karpenter"
       ]
     }
     effect = "Allow"
@@ -444,7 +471,7 @@ module "eks_iam_karpenter_controller" {
   irsa_tag_key = "karpenter.sh/discovery"
 
   irsa_tag_values = [
-    module.eks.cluster_name
+    "${module.eks.cluster_name}-karpenter"
   ]
 
   iam_role_additional_policies = {

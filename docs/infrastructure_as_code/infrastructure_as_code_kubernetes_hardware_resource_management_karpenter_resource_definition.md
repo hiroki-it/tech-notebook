@@ -15,7 +15,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ## 01. EC2NodeClass
 
-### EC2NodeClass
+### EC2NodeClassとは
 
 NodePool内の各EC2 Nodeの仕様を設定する。
 
@@ -48,6 +48,8 @@ spec:
 
 EC2 NodeのAMIを設定する。
 
+AMIのバージョンを固定したい場合に役立つ。
+
 設定しない場合、Karpenterは最適化AMIを自動的に選択する。
 
 ```yaml
@@ -57,8 +59,7 @@ metadata:
   name: foo-node-class
 spec:
   amiSelectorTerms:
-    - tags:
-        Name: ami-*****
+    - name: ami-*****
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#specamiselectorterms
@@ -272,7 +273,7 @@ spec:
   tags:
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
-    Name: foo-node
+    Name: foo-node-karpenter
     karpenter.sh/discovery: foo-cluster
 ```
 

@@ -24,11 +24,11 @@ deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避さ�
 ```bash
 $ kubectl get events -n foo
 
-# 退避
+# deschedulerがPodを退避する
 35m         Normal   LowNodeUtilization       pod/foo-5c844554c5-6nk2r            pod evicted from ip-*-*-*-*.ap-northeast-1.compute.internal node by sigs.k8s.io/descheduler
 35m         Normal   Killing                  pod/foo-5c844554c5-6nk2r            Stopping container foo
 
-# 再スケジューリング
+# kube-schedulerがPodを再スケジューリングする
 35m         Normal   Scheduled                pod/foo-5c844554c5-vgdjl            Successfully assigned foo-5c844554c5-vgdjl to ip-*-*-*-*.ap-northeast-1.compute.internal
 35m         Normal   Pulled                   pod/foo-5c844554c5-vgdjl            Container image "public.ecr.aws/docker/library/foo:*.*.*" already present on machine
 35m         Normal   Created                  pod/foo-5c844554c5-vgdjl            Created container foo
