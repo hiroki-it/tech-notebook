@@ -3925,7 +3925,7 @@
           <li class="md-nav__item">
   <a href="#ec2nodeclass" class="md-nav__link">
     <span class="md-ellipsis">
-      EC2NodeClass
+      EC2NodeClassとは
     </span>
   </a>
   
@@ -6354,7 +6354,7 @@
           <li class="md-nav__item">
   <a href="#ec2nodeclass" class="md-nav__link">
     <span class="md-ellipsis">
-      EC2NodeClass
+      EC2NodeClassとは
     </span>
   </a>
   
@@ -6852,7 +6852,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
-<h3 id="ec2nodeclass">EC2NodeClass<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
+<h3 id="ec2nodeclass">EC2NodeClassとは<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
 <p>NodePool内の各EC2 Nodeの仕様を設定する。</p>
 <p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
 <p>Terraformの<code>aws_launch_template</code>ブロックと競合する。</p>
@@ -6876,6 +6876,7 @@
 <p><br></p>
 <h3 id="amiselectorterms">amiSelectorTerms<a class="headerlink" href="#amiselectorterms" title="Permanent link">&para;</a></h3>
 <p>EC2 NodeのAMIを設定する。</p>
+<p>AMIのバージョンを固定したい場合に役立つ。</p>
 <p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
@@ -6883,8 +6884,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-class</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">amiSelectorTerms</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tags</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ami-*****</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ami-*****</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -7074,7 +7074,7 @@
 <span class="w">  </span><span class="nt">tags</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">Env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prd</span>
 <span class="w">    </span><span class="nt">ManagedBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-karpenter.git</span>
-<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node</span>
+<span class="w">    </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-karpenter</span>
 <span class="w">    </span><span class="nt">karpenter.sh/discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <blockquote>

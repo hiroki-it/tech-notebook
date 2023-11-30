@@ -3947,6 +3947,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#consolidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Consolidation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Drift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Interruption
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6211,6 +6238,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#consolidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Consolidation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Drift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ Interruption
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6503,8 +6557,39 @@
 <h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
 <p>Nodeの削除はKarpenterが管理する。</p>
 <p>Karpenter外から削除操作 (例：<code>kubectl delete</code>コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
+</ul>
+</blockquote>
 <h4 id="expiration">▼ Expiration<a class="headerlink" href="#expiration" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
+</ul>
+</blockquote>
+<h4 id="consolidation">▼ Consolidation<a class="headerlink" href="#consolidation" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
+</ul>
+</blockquote>
+<h4 id="drift">▼ Drift<a class="headerlink" href="#drift" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
+</ul>
+</blockquote>
+<h4 id="interruption">▼ Interruption<a class="headerlink" href="#interruption" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<blockquote>
+<ul>
+<li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -6512,7 +6597,9 @@
 <p>また反対に、EC2 Nodeをスケールインする。</p>
 <p>Karpenterはバージョニングされてない独立した起動テンプレートを作成する。</p>
 <p>そのため、残骸として残らないように、その都度起動テンプレートを削除する。</p>
-<div class="highlight"><pre><span></span><code><span class="m">2023</span>-11-30T08:28:56.735Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>found<span class="w"> </span>provisionable<span class="w"> </span>pod<span class="o">(</span>s<span class="o">)</span><span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
+<div class="highlight"><pre><span></span><code>...
+
+<span class="m">2023</span>-11-30T08:28:56.735Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>found<span class="w"> </span>provisionable<span class="w"> </span>pod<span class="o">(</span>s<span class="o">)</span><span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:28:56.735Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>computed<span class="w"> </span>new<span class="w"> </span>nodeclaim<span class="o">(</span>s<span class="o">)</span><span class="w"> </span>to<span class="w"> </span>fit<span class="w"> </span>pod<span class="o">(</span>s<span class="o">)</span><span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:28:56.748Z<span class="w">    </span>INFO<span class="w">    </span>controller.provisioner<span class="w">  </span>created<span class="w"> </span>nodeclaim<span class="w">   </span><span class="o">{</span>...<span class="o">}</span>
 
@@ -6521,7 +6608,7 @@
 <span class="m">2023</span>-11-30T08:28:57.121Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>created<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:28:57.297Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>created<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
 
-<span class="c1"># EC2作成</span>
+<span class="c1"># EC2 Node作成</span>
 <span class="m">2023</span>-11-30T08:28:59.211Z<span class="w">    </span>INFO<span class="w">    </span>controller.nodeclaim.lifecycle<span class="w">  </span>launched<span class="w"> </span>nodeclaim<span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:29:14.009Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.disruption<span class="w">   </span>discovered<span class="w"> </span>subnets<span class="w">  </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:29:33.910Z<span class="w">    </span>DEBUG<span class="w">   </span>controller.nodeclaim.lifecycle<span class="w">  </span>registered<span class="w"> </span>nodeclaim<span class="w">    </span><span class="o">{</span>...<span class="o">}</span>
@@ -6532,6 +6619,8 @@
 <span class="m">2023</span>-11-30T08:32:58.872Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:32:59.027Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
 <span class="m">2023</span>-11-30T08:32:59.299Z<span class="w">    </span>DEBUG<span class="w">   </span>controller<span class="w">  </span>deleted<span class="w"> </span>launch<span class="w"> </span>template<span class="w"> </span><span class="o">{</span>...<span class="o">}</span>
+
+...
 </code></pre></div>
 <blockquote>
 <ul>
@@ -6552,7 +6641,7 @@
 <h4 id="_5">▼ スケーリングパラメーターとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Karpenterは、様々な情報に基づいて、Nodeをスケーリングするか否かを決定する。</p>
 <h4 id="pod">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできる否かに基づいて、Podをスケジューリングする。</p>
+<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code>状態) を検知し、Nodeのスケジューリングを検討する。</p>
 <p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
 <blockquote>
 <ul>
@@ -6622,7 +6711,7 @@
 </blockquote>
 <h4 id="_10">▼ スケールアウトの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。</p>
-<p>Karpenterは、スケジューリングできない保留中Pod (<code>Pending</code>状態) が出現して始めて、スケールアウトを検討する。</p>
+<p>Karpenterは、スケジューリングできないPod (<code>Pending</code>状態) が出現すると、スケールアウトを検討する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -6728,8 +6817,9 @@
 <span class="w">      </span><span class="na">test</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;StringEquals&quot;</span>
 <span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
+<span class="c1">      # 起動テンプレートからEC2 Nodeを作成する</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="nv">module.eks.cluster_name</span>
+<span class="w">        </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
@@ -6749,7 +6839,7 @@
 <span class="c1">      # KarpenterのEC2NodeClassで挿入したEC2のタグを指定する</span>
 <span class="w">      </span><span class="na">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ec2:ResourceTag/karpenter.sh/discovery&quot;</span>
 <span class="w">      </span><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="nv">module.eks.cluster_name</span>
+<span class="w">        </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="na">effect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span>
@@ -6869,7 +6959,7 @@
 <span class="w">  </span><span class="na">irsa_tag_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;karpenter.sh/discovery&quot;</span>
 
 <span class="w">  </span><span class="na">irsa_tag_values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nv">module.eks.cluster_name</span>
+<span class="w">    </span><span class="s2">&quot;${module.eks.cluster_name}-karpenter&quot;</span>
 <span class="w">  </span><span class="p">]</span>
 
 <span class="w">  </span><span class="nb">iam_role_additional_policies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
