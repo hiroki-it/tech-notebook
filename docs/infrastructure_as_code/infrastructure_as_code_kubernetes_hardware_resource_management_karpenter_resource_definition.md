@@ -127,6 +127,8 @@ spec:
 
 IAMプロファイル名の代わりに使用するIAMロールを設定する。
 
+プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。
+
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
@@ -229,7 +231,7 @@ NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBS�
 
 #### ▼ デフォルトのタグ
 
-Karpenterがデフォルトで挿入するタグは上書きしないように、設定しない。
+KarpenterがEC2 Nodeにデフォルトで挿入するタグは上書きしないように、設定しない。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -259,7 +261,7 @@ spec:
 
 #### ▼ ユーザー定義のタグ
 
-ユーザー定義のタグを設定できる。
+EC2 Nodeに挿入するユーザー定義のタグを設定できる。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -268,9 +270,9 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    Name: foo-node
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
+    Name: foo-node
     karpenter.sh/discovery: foo-cluster
 ```
 
@@ -436,7 +438,30 @@ spec:
 
 <br>
 
-## 02-02. template
+## 02-02. .template.metadata
+
+### annotations
+
+EC2 Nodeに付与するアノテーションを設定する。
+
+```yaml
+apiVersion: karpenter.sh/v1beta1
+kind: NodePool
+metadata:
+  name: foo-nodepool
+spec:
+  template:
+    metadata:
+      annotations:
+        example.com/owner: my-team
+```
+
+> - https://karpenter.sh/preview/concepts/nodepools/
+> - https://github.com/aws/karpenter/tree/main/examples/provisioner
+
+<br>
+
+## 02-03. .template.spec
 
 ### kubelet
 
@@ -486,27 +511,6 @@ spec:
 > - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
 
 <br>
-
-### metadata
-
-#### ▼ annotations
-
-EC2 Nodeに付与するアノテーションを設定する。
-
-```yaml
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
-metadata:
-  name: foo-nodepool
-spec:
-  template:
-    metadata:
-      annotations:
-        example.com/owner: my-team
-```
-
-> - https://karpenter.sh/preview/concepts/nodepools/
-> - https://github.com/aws/karpenter/tree/main/examples/provisioner
 
 #### ▼ labels
 
@@ -636,6 +640,7 @@ spec:
             - medium
             - large
             - xlarge
+          # オンデマンドなインスタンスを指定する
         - key: kubernetes.io/os
           operator: In
           values:

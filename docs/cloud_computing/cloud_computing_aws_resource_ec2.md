@@ -808,6 +808,12 @@ CIDR内のセカンダリープライベートIPアドレスが使用中であ�
 
 <br>
 
+### 外部のサブネットからIPアドレスを拝借する
+
+> - https://aws.github.io/aws-eks-best-practices/networking/custom-networking/
+
+<br>
+
 ### CIDRの断片化の確認
 
 ツールを使用して、CIDRが断片化されているかを確認するとよい。
