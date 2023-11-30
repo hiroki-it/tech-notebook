@@ -3954,18 +3954,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod上限数
+      ▼ スケーリングパラメーターとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コスト
+      ▼ Podのスケジューリングの可否
     </span>
   </a>
   
@@ -3974,7 +3974,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ハードウェアリソース消費量
+      ▼ コスト
     </span>
   </a>
   
@@ -6185,18 +6185,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pod" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ Pod上限数
+      ▼ スケーリングパラメーターとは
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ コスト
+      ▼ Podのスケジューリングの可否
     </span>
   </a>
   
@@ -6205,7 +6205,7 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ ハードウェアリソース消費量
+      ▼ コスト
     </span>
   </a>
   
@@ -6449,17 +6449,19 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">スケーリングパラメーター<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="pod">▼ Pod上限数<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。</p>
+<h4 id="_5">▼ スケーリングパラメーターとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>Karpenterは、様々な情報に基づいて、Nodeをスケーリングするか否かを決定する。</p>
+<h4 id="pod">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできる否かに基づいて、Podをスケジューリングする。</p>
+<p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
 <blockquote>
 <ul>
+<li><a href="https://karpenter.sh/docs/concepts/#scheduling">https://karpenter.sh/docs/concepts/#scheduling</a></li>
 <li><a href="https://karpenter.sh/docs/concepts/provisioners/#max-pods">https://karpenter.sh/docs/concepts/provisioners/#max-pods</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ コスト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
-<h4 id="_6">▼ ハードウェアリソース消費量<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>記入中...</p>
+<h4 id="_6">▼ コスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>ハードウェアリソースが過剰に余っている場合、より低いインスタンスタイプのNodeにスケールインする。</p>
 <p><br></p>
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
