@@ -7083,7 +7083,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>つまり、VirtualServiceとDestinationRuleの情報を使用し、Istio IngressGatewayで受信した通信とPod間通信の両方を実施する。</p>
-<p>Pod間通信の時は、VirtualServiceとDestinationのみを使用する。</p>
+<p>Pod間通信時には、VirtualServiceとDestinationのみを使用する。</p>
 <div class="highlight"><pre><span></span><code>クライアント
 ⬇⬆︎︎
 envoy
@@ -7125,7 +7125,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </blockquote>
 <p><br></p>
 <h2 id="05-peerauthentication">05. PeerAuthentication<a class="headerlink" href="#05-peerauthentication" title="Permanent link">&para;</a></h2>
-<p>Pod間通時に、相互TLS認証を実施する。</p>
+<p>Pod間通信時に、相互TLS認証を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://news.mynavi.jp/techplus/article/kubernetes-30/">https://news.mynavi.jp/techplus/article/kubernetes-30/</a></li>
@@ -7146,7 +7146,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
       
     
   </small>
