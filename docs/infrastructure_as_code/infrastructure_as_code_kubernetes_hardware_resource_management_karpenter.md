@@ -59,19 +59,22 @@ Karpenterを使用しない場合、クラウドプロバイダーのNode数は�
 
 ### スケーリングパラメーター
 
-#### ▼ Pod上限数
+#### ▼ スケーリングパラメーターとは
 
-Karpenterは、インスタンスタイプのPod上限数をスケーリングのパラメーターとする。
+Karpenterは、様々な情報に基づいて、Nodeをスケーリングするか否かを決定する。
 
+#### ▼ Podのスケジューリングの可否
+
+kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできる否かに基づいて、Podをスケジューリングする。
+
+新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。
+
+> - https://karpenter.sh/docs/concepts/#scheduling
 > - https://karpenter.sh/docs/concepts/provisioners/#max-pods
 
 #### ▼ コスト
 
-記入中...
-
-#### ▼ ハードウェアリソース消費量
-
-記入中...
+ハードウェアリソースが過剰に余っている場合、より低いインスタンスタイプのNodeにスケールインする。
 
 <br>
 
