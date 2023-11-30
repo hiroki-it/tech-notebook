@@ -27,6 +27,8 @@ Karpenterは、karpenterコントローラーから構成される。
 
 ### karpenterコントローラー
 
+#### ▼ karpenterコントローラーとは
+
 karpenterコントローラーは、Karpenterのカスタムコントローラーとして、カスタムリソースを作成/変更する。
 
 また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、EC2フリート) をコールし、AWSリソース (例：起動テンプレート、EC2) をプロビジョニングする。
@@ -36,6 +38,16 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 ![karpenter_controller.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
+
+#### ▼ Finalizer
+
+Nodeの削除はKarpenterが管理する。
+
+Karpenter外から削除操作 (例：`kubectl delete`コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。
+
+#### ▼ Expiration
+
+記入中...
 
 <br>
 
@@ -84,7 +96,7 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 
 Karpenterのkarpenterコントローラーは、起動テンプレートを作成した上で、EC2フリートAPIからEC2 Nodeを作成する。
 
-執筆時点 (2023/11/04) 時点では、kaArpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
+執筆時点 (2023/11/04) 時点では、karpenterコントローラーは自身以外 (例：Terraform、など) で作成した起動テンプレートを参照できない。
 
 不都合があって廃止した経緯がある。
 

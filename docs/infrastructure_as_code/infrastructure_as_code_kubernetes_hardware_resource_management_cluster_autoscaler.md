@@ -17,7 +17,7 @@ description: cluster-autoscaler＠ハードウェアリソース管理の知見�
 
 ### アーキテクチャ
 
-cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) と自動スケーリンググループ (例：AWS EC2AutoScalingGroup) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
+cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) のAPIをコールし、Nodeの自動水平スケーリングを実行する。
 
 cluster-autoscalerを使用しない場合、クラウドプロバイダーのNode数は固定である。
 
@@ -60,7 +60,7 @@ Kubernetes以外のメトリクス (例：AWS CloudWatch、Google Cloud Monitori
 
 Karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
 
-一方でcluster-autoscalerは、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールする。
+一方でcluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) に関するAPIをコールする。
 
 ![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
