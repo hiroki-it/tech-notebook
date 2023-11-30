@@ -55,9 +55,38 @@ Karpenter外から削除操作 (例：`kubectl delete`コマンド) があった
 
 ### スケーリングの仕組み
 
-Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeを作成/削除する。
+Karpenterは、起動テンプレートを作成した上でAWS EC2フリートAPIをコールし、EC2 Nodeをスケールアウトする。
 
-Nodeの自動水平スケーリングを実行する。
+また反対に、EC2 Nodeをスケールインする。
+
+Karpenterはバージョニングされてない独立した起動テンプレートを作成する。
+
+そのため、残骸として残らないように、その都度起動テンプレートを削除する。
+
+```bash
+2023-11-30T08:28:56.735Z	INFO	controller.provisioner	found provisionable pod(s)	{...}
+2023-11-30T08:28:56.735Z	INFO	controller.provisioner	computed new nodeclaim(s) to fit pod(s)	{...}
+2023-11-30T08:28:56.748Z	INFO	controller.provisioner	created nodeclaim	{...}
+
+# 起動テンプレート作成
+2023-11-30T08:28:56.957Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
+2023-11-30T08:28:57.121Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
+2023-11-30T08:28:57.297Z	DEBUG	controller.nodeclaim.lifecycle	created launch template	{...}
+
+# EC2作成
+2023-11-30T08:28:59.211Z	INFO	controller.nodeclaim.lifecycle	launched nodeclaim	{...}
+2023-11-30T08:29:14.009Z	DEBUG	controller.disruption	discovered subnets	{...}
+2023-11-30T08:29:33.910Z	DEBUG	controller.nodeclaim.lifecycle	registered nodeclaim	{...}
+2023-11-30T08:29:46.264Z	INFO	controller.nodeclaim.lifecycle	initialized nodeclaim	{...}
+2023-11-30T08:30:15.505Z	DEBUG	controller.disruption	discovered subnets	{...}
+
+# 起動テンプレート削除
+2023-11-30T08:32:58.872Z	DEBUG	controller	deleted launch template	{...}
+2023-11-30T08:32:59.027Z	DEBUG	controller	deleted launch template	{...}
+2023-11-30T08:32:59.299Z	DEBUG	controller	deleted launch template	{...}
+```
+
+> - https://github.com/aws/karpenter/pull/1278
 
 そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。
 
@@ -138,7 +167,9 @@ cluster-autoscalerはクラウドプロバイダーによらずに使用でき�
 
 そのため、クラウドプロバイダーの自動スケーリング (例：AWS EC2AutoScaling) に関するAPIをコールすることになり、その機能が自動スケーリングに関するAPIに依存する。
 
-一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールするため、より柔軟なNode数にスケーリングできる。
+一方でKarpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。
+
+そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。
 
 ![karpenter_vs_cluster-autoscaler.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
@@ -162,7 +193,7 @@ Karpenterは、現在のハードウェアリソースの使用量に応じて�
 
 例えば、以下のような仕組みで、Nodeの水平/垂直スケーリングのスケールアウトを実行する。
 
-Karpenterは、スケジューリングできない保留中Podが出現して始めて、スケールアウトを検討する。
+Karpenterは、スケジューリングできない保留中Pod (`Pending`状態) が出現して始めて、スケールアウトを検討する。
 
 `(1)`
 
