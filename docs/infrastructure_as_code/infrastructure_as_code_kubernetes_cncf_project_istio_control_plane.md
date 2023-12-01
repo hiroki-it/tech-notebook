@@ -305,6 +305,7 @@ IstioのカスタムリソースをEnvoyのリスナー値に変換する。
 IstioのカスタムリソースをEnvoyのルート値に変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68
+> - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113
 
 #### ▼ クラスター値の場合
@@ -312,6 +313,7 @@ IstioのカスタムリソースをEnvoyのルート値に変換する。
 IstioのカスタムリソースをEnvoyのクラスター値に変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81
+> - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/cds.go#L35-L60
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/cluster.go#L198-L269
 
 #### ▼ エンドポイント値の場合
