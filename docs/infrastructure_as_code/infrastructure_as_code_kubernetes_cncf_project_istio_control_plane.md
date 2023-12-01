@@ -297,6 +297,7 @@ Clusterで作成されたIstioのカスタムリソースの状態を取得す�
 IstioのカスタムリソースをEnvoyのリスナー値に変換する。
 
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105
+> - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71
 > - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118
 
 #### ▼ ルート値の場合
