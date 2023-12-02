@@ -486,7 +486,7 @@ configs:
             filters:
               - name: envoy.filters.network.http_connection_manager
                 typed_config:
-                  # HTTPフィルターを指定する
+                  # ネットワークフィルターを指定する
                   "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                   stat_prefix: outbound_0.0.0.0_50001
                   rds:

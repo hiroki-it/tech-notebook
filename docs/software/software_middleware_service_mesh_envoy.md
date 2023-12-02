@@ -337,13 +337,14 @@ static_resources:
         - filters:
             - name: envoy.filters.network.http_connection_manager
               typed_config:
-                # HTTPフィルターを指定する
+                # ネットワークフィルターを指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                 stat_prefix: ingress_http
                 codec_type: AUTO
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
+                      # HTTPフィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
                 route_config:
                   - name: "50001"
@@ -481,14 +482,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # TCP Proxyフィルターを指定する
+            # TCP Proxyネットワークフィルターを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる
+            # TCP Proxyネットワークフィルターの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50001|v1|foo-service.foo.svc.cluster.local
             statPrefix: outbound|50001|v1|foo-service.foo.svc.cluster.local
   # アウトバウンド通信のみをこのリスナーで処理する。
@@ -517,14 +518,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # TCP Proxyフィルターを指定する
+            # TCP Proxyネットワークフィルターを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる
+            # TCP Proxyネットワークフィルターの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50002|v1|bar-service.bar.svc.cluster.local
             statPrefix: outbound|50002|v1|bar-service.bar.svc.cluster.local
   trafficDirection: OUTBOUND
@@ -552,14 +553,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # TCP Proxyフィルターを指定する
+            # TCP Proxyネットワークフィルターを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる
+            # TCP Proxyネットワークフィルターの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50003|v1|baz-service.baz.svc.cluster.local
             statPrefix: outbound|50003|v1|baz-service.baz.svc.cluster.local
   trafficDirection: OUTBOUND

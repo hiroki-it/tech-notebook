@@ -276,7 +276,7 @@ static_resources:
         - filters:
             - typed_config:
                 http_filters:
-                  - name: envoy.filters.http.router
+                  - name: envoy.filters.network.http_connection_manager
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
@@ -469,15 +469,36 @@ static_resources:
 
 #### ▼ typed_config."@type"
 
-使用する拡張機能名を設定する。
+使用する拡張機能名を (例：フィルターなど) 設定する。
 
 拡張機能名を指定することにより、その拡張機能の設定を定義できるようになる。
 
-これは、Envoy特有の機能ではなく、gRPCの機能である。
+これは、Envoyではなく、gRPCの機能の由来している。
 
 RPCでは、JSON内のデータのデータ型を指定するために使用する。
 
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
+> - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
+
 **＊実装例＊**
+
+ネットワークフィルターの一種である`http_connection_manager`を指定する。
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - typed_config:
+                # ネットワークフィルターを指定する
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+
+**＊実装例＊**
+
+HTTPフィルターの一種である`router`を指定する。
 
 ```yaml
 static_resources:
@@ -486,11 +507,10 @@ static_resources:
         - filters:
             - typed_config:
                 # HTTPフィルターを指定する
-                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
-> - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http
 
 <br>
 
