@@ -7687,7 +7687,7 @@
 <h3 id="_10">パケット処理の仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ol>
 <li><code>istio-proxy</code>コンテナにて、リスナー値でリクエストを受信する。</li>
-<li>EnvoyFilterがあれば、これを適用する。</li>
+<li>EnvoyFilterがあれば、これをリスナーフィルターとしてEnvoyに適用する。</li>
 <li>ルート値でリクエストを受け取る。</li>
 <li>クラスター値でリクエストを受け取る。</li>
 <li>クラスター値配下のエンドポイント値にリクエストをプロキシする。</li>
@@ -8224,7 +8224,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
       
     
   </small>
