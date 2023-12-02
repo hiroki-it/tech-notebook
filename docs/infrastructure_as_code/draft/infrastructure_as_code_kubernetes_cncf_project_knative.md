@@ -39,13 +39,12 @@ func Handle(ctx context.Context, res http.ResponseWriter, req *http.Request) {
 	http.Error(res, err.Error(), 500)
 	return
   }
-  
+
   ...
 }
 ```
 
 > - https://github.com/knative/func/blob/main/docs/function-templates/golang.md
-
 
 <br>
 

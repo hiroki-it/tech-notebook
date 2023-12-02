@@ -953,7 +953,7 @@ service EndpointDiscoveryService {
 
 ### リバースプロキシのミドルウェアとして
 
-#### ▼ 外からインバウンド通信から待ち受ける (ingress listener)
+#### ▼ 外からインバウンド通信から待ち受ける (Ingressリスナー / インバウンドリスナー)
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
@@ -962,7 +962,7 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 > - https://blog.51cto.com/wangguishe/5789228
 
-#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (egress listener)
+#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
