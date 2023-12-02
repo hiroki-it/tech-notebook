@@ -198,7 +198,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 > - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
 > - https://logmi.jp/tech/articles/323032
 
-> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
+> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata#44
 
 #### ▼ マネージドなローリング方式
 

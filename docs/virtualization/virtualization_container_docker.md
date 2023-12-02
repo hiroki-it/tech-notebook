@@ -116,7 +116,7 @@ dockerクライアントは、`docker`コマンドを使用してdockerデーモ
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
 
-> - https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle/8
+> - https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle#8
 
 <br>
 

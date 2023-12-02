@@ -41,7 +41,7 @@ EC2へのリクエストをバランスよく分配することによって、�
 
 ![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png)
 
-> - https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer/24
+> - https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer#24
 
 <br>
 

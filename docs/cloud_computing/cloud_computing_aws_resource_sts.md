@@ -220,7 +220,7 @@ Trusted Entityを使って、必要なIAMロールをSTSから発行し、一時
 
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
-> - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role/10
+> - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10
 
 ### IAMユーザーの自動更新
 

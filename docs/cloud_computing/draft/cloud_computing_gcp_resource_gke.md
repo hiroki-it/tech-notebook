@@ -26,7 +26,7 @@ GKEではコントロールプレーンのみが、またGKE Autopilotでは、�
 #### ▼ ローリング方式 (サージ方式、ライブ方式)
 
 > - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
-> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata/44
+> - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata#44
 
 #### ▼ ブルー/グリーン方式
 

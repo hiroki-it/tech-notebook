@@ -104,7 +104,7 @@ RUN mkdir -p /usr/src/things \
 ```
 
 > - https://qiita.com/zembutsu/items/a96b68277d699f79418d
-> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles/44
+> - https://www.slideshare.net/zembutsu/explaining-best-practices-for-writing-dockerfiles#44
 
 <br>
 

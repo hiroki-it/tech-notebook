@@ -45,7 +45,7 @@ CNIアドオンは、kubeletによるPodの起動時に有効化される。
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
 > - https://www.netstars.co.jp/kubestarblog/k8s-3/
 > - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
-> - https://www.slideshare.net/ThomasGraf5/cilium-bringing-the-bpf-revolution-to-kubernetes-networking-and-security/28
+> - https://www.slideshare.net/ThomasGraf5/cilium-bringing-the-bpf-revolution-to-kubernetes-networking-and-security#28
 > - https://caddi.tech/archives/3864
 
 <br>
