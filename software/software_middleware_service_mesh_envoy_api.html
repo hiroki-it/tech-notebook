@@ -6740,7 +6740,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="nn">---</span>
 <span class="nt">configs</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
-<span class="w">    </span><span class="c1"># リスナー名</span>
+<span class="w">    </span><span class="c1"># 仮想リスナー名</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
 <span class="w">    </span><span class="nt">active_state</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
@@ -6762,6 +6762,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="c1"># HTTPリスナーを指定する</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
@@ -6889,7 +6890,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
       
     
   </small>
