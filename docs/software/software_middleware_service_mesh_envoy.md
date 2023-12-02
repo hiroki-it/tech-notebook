@@ -316,7 +316,9 @@ message DiscoveryResponse {
 
 #### ▼ リスナーとは
 
-リスナーでは、Envoyに対する通信を待ち受ける。
+リスナーでは、Envoyに対する通信をIPアドレスとポートで待ち受ける。
+
+#### ▼ 仮想リスナー
 
 #### ▼ リスナーの静的な登録
 
@@ -335,6 +337,7 @@ static_resources:
         - filters:
             - name: envoy.filters.network.http_connection_manager
               typed_config:
+                # HTTPリスナーを指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                 stat_prefix: ingress_http
                 codec_type: AUTO
@@ -451,6 +454,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 ```yaml
 # foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
+# 仮想アウトバウンドリスナー
 - name: 172.16.0.1_50001
   accessLog:
     - filter:
@@ -477,16 +481,19 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
+            # TCPリスナーを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
+            # TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50001|v1|foo-service.foo.svc.cluster.local
             statPrefix: outbound|50001|v1|foo-service.foo.svc.cluster.local
   # アウトバウンド通信のみをこのリスナーで処理する。
   trafficDirection: OUTBOUND
+# 仮想アウトバウンドリスナー
 - name: 172.16.0.2_50002
   accessLog:
     - filter:
@@ -510,15 +517,18 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
+            # TCPリスナーを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
+            # TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50002|v1|bar-service.bar.svc.cluster.local
             statPrefix: outbound|50002|v1|bar-service.bar.svc.cluster.local
   trafficDirection: OUTBOUND
+# 仮想アウトバウンドリスナー
 - name: 172.16.0.3_50003
   accessLog:
     - filter:
@@ -542,12 +552,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
+            # TCPリスナーを指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
+            # TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50003|v1|baz-service.baz.svc.cluster.local
             statPrefix: outbound|50003|v1|baz-service.baz.svc.cluster.local
   trafficDirection: OUTBOUND
@@ -561,7 +573,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 リスナーのサブセットである。
 
-ルートでは、リスナーで処理した通信を受け取り、特定のクラスターにルーティングする。
+ルートでは、リスナーで処理した通信を受け取り、特定のクラスターのIPアドレスとポートにルーティングする。
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -711,7 +723,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 #### ▼ クラスターとは
 
-クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントにロードバランシングする。
+クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントのIPアドレスとポートにロードバランシングする。
 
 #### ▼ クラスター値の静的な登録
 
@@ -957,18 +969,24 @@ service EndpointDiscoveryService {
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
+サービスメッシュ外や他のPodからリクエストを受信するために使用する。
+
 ![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
 > - https://blog.51cto.com/wangguishe/5789228
 
 #### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
+サービスメッシュ外や他のPodにリクエストを送信するために使用する。
+
 ![envoy_egress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
 > - https://blog.51cto.com/wangguishe/5789228
 
 #### ▼ ローカルホスト外にあるマイクロサービスにプロキシする

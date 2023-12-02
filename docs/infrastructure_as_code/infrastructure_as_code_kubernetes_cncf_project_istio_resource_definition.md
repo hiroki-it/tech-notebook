@@ -668,7 +668,7 @@ spec:
         listener:
           filterChain:
             filter:
-              name: "envoy.filters.network.http_connection_manager"
+              name: envoy.filters.network.http_connection_manager
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
@@ -710,9 +710,10 @@ spec:
     - patch:
         operation: MERGE
         value:
-          name: "envoy.filters.network.http_connection_manager"
+          name: envoy.filters.network.http_connection_manager
           typed_config:
-            "@type": "type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager"
+            # HTTPリスナーを指定する
+            "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch

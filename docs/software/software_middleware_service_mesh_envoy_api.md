@@ -464,7 +464,7 @@ $ kubectl exec \
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
-    # リスナー名
+    # 仮想リスナー名
     name: 0.0.0.0_50002
     active_state:
       version_info: 2022-11-24T12:13:05Z/468
@@ -486,6 +486,7 @@ configs:
             filters:
               - name: envoy.filters.network.http_connection_manager
                 typed_config:
+                  # HTTPリスナーを指定する
                   "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                   stat_prefix: outbound_0.0.0.0_50001
                   rds:

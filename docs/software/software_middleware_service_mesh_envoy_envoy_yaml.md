@@ -485,6 +485,7 @@ static_resources:
     - filter_chains:
         - filters:
             - typed_config:
+                # HTTPリスナーを指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
