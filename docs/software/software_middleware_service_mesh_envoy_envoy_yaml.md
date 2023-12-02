@@ -490,8 +490,24 @@ static_resources:
     - filter_chains:
         - filters:
             - typed_config:
-                # ネットワークフィルターを指定する
+                # ネットワークフィルター (HTTPコネクションマネージャー) を指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+
+**＊実装例＊**
+
+ネットワークフィルターの一種である`tcp_proxy`を指定する。
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - typed_config:
+                # ネットワークフィルター (TCP Proxy) を指定する
+                "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
