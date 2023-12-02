@@ -6759,6 +6759,7 @@
 <tr>
 <th>K8sリソース / Istioカスタムリソース</th>
 <th style="text-align: center;">リスナー値</th>
+<th style="text-align: center;">フィルターチェイン値</th>
 <th style="text-align: center;">ルート値</th>
 <th style="text-align: center;">クラスター値</th>
 <th style="text-align: center;">エンドポイント値</th>
@@ -6768,12 +6769,14 @@
 <tr>
 <td>Kubernetes Service</td>
 <td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Kubernetes Endpoints / EndpointSlice</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -6785,16 +6788,19 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Istio VirtualService</td>
 <td style="text-align: center;">✅<br>(TCP / HTTPの場合)</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅<br>(HTTPの場合のみ)</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Istio DestinationRule</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
@@ -6804,12 +6810,14 @@
 <td>Istio ServiceEntry</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 </tr>
 <tr>
 <td>Istio PeerAuthentication</td>
 <td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;"></td>
@@ -6820,10 +6828,12 @@
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>Istio AuthorizationPolicies</td>
 <td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -6832,12 +6842,14 @@
 <td>Istio EnvoyFilter</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 </tr>
 <tr>
 <td>Istio Sidecar</td>
 <td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
 <td style="text-align: center;">✅</td>
@@ -6904,7 +6916,7 @@
 <span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="c1"># HTTPリスナーを指定する</span>
+<span class="w">                  </span><span class="c1"># HTTPフィルターを指定する</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
@@ -7104,7 +7116,7 @@
 <span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="c1"># HTTPリスナーを指定する</span>
+<span class="w">                  </span><span class="c1"># HTTPフィルターを指定する</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>

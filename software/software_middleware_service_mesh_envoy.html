@@ -7192,7 +7192,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># HTTPリスナーを指定する</span>
+<span class="w">                </span><span class="c1"># HTTPフィルターを指定する</span>
 <span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingress_http</span>
 <span class="w">                </span><span class="nt">codec_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AUTO</span>
@@ -7330,14 +7330,14 @@
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># TCPリスナーを指定する</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターを指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
-<span class="w">            </span><span class="c1"># TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50001|v1|foo-service.foo.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">statPrefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50001|v1|foo-service.foo.svc.cluster.local</span>
 <span class="w">  </span><span class="c1"># アウトバウンド通信のみをこのリスナーで処理する。</span>
@@ -7366,14 +7366,14 @@
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># TCPリスナーを指定する</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターを指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
-<span class="w">            </span><span class="c1"># TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">statPrefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar.svc.cluster.local</span>
 <span class="w">  </span><span class="nt">trafficDirection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OUTBOUND</span>
@@ -7401,14 +7401,14 @@
 <span class="w">            </span><span class="nt">typeUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">          </span><span class="nt">typedConfig</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># TCPリスナーを指定する</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターを指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 <span class="w">            </span><span class="nt">accessLog</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.access_loggers.file</span>
 <span class="w">                </span><span class="nt">typedConfig</span><span class="p">:</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/stdout</span>
-<span class="w">            </span><span class="c1"># TCPリスナーの場合、ルートがなく、直接クラスターを指定することになる</span>
+<span class="w">            </span><span class="c1"># TCP Proxyフィルターの場合、ルートがなく、直接クラスターを指定することになる</span>
 <span class="w">            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50003|v1|baz-service.baz.svc.cluster.local</span>
 <span class="w">            </span><span class="nt">statPrefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50003|v1|baz-service.baz.svc.cluster.local</span>
 <span class="w">  </span><span class="nt">trafficDirection</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OUTBOUND</span>
