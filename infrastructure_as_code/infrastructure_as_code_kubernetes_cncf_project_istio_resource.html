@@ -4704,13 +4704,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-gateway" class="md-nav__link">
+  <a href="#01-k8sistioenvoy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Gateway
+      01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. Gateway">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4753,10 +4762,25 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       プラクティス
     </span>
@@ -4785,13 +4809,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02-istio-ingressgateway" class="md-nav__link">
+  <a href="#02-02-istio-ingressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. Istio IngressGateway
+      02-02. Istio IngressGateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. Istio IngressGateway">
+    <nav class="md-nav" aria-label="02-02. Istio IngressGateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4818,13 +4842,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-03-istio-egressgateway" class="md-nav__link">
+  <a href="#02-03-istio-egressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. Istio EgressGateway
+      02-03. Istio EgressGateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. Istio EgressGateway">
+    <nav class="md-nav" aria-label="02-03. Istio EgressGateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4851,13 +4875,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-virtualservice" class="md-nav__link">
+  <a href="#03-virtualservice" class="md-nav__link">
     <span class="md-ellipsis">
-      02. VirtualService
+      03. VirtualService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. VirtualService">
+    <nav class="md-nav" aria-label="03. VirtualService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4871,7 +4895,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ロードバランサーで使用する場合
     </span>
@@ -4900,10 +4924,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値として
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ルート値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       プラクティス
     </span>
@@ -4941,13 +4989,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-destinationrule" class="md-nav__link">
+  <a href="#04-destinationrule" class="md-nav__link">
     <span class="md-ellipsis">
-      03. DestinationRule
+      04. DestinationRule
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. DestinationRule">
+    <nav class="md-nav" aria-label="04. DestinationRule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4961,7 +5009,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ロードバランサーで使用する場合
     </span>
@@ -4990,6 +5038,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラスター値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -4998,13 +5061,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-serviceentry" class="md-nav__link">
+  <a href="#05-serviceentry" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ServiceEntry
+      05. ServiceEntry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ServiceEntry">
+    <nav class="md-nav" aria-label="05. ServiceEntry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5022,18 +5085,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-peerauthentication" class="md-nav__link">
+  <a href="#06-peerauthentication" class="md-nav__link">
     <span class="md-ellipsis">
-      05. PeerAuthentication
+      06. PeerAuthentication
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-requestauthentication" class="md-nav__link">
+  <a href="#07-requestauthentication" class="md-nav__link">
     <span class="md-ellipsis">
-      06. RequestAuthentication
+      07. RequestAuthentication
     </span>
   </a>
   
@@ -6265,13 +6328,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-gateway" class="md-nav__link">
+  <a href="#01-k8sistioenvoy" class="md-nav__link">
     <span class="md-ellipsis">
-      01. Gateway
+      01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. Gateway">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      02. Gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. Gateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6314,10 +6386,25 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       プラクティス
     </span>
@@ -6346,13 +6433,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-02-istio-ingressgateway" class="md-nav__link">
+  <a href="#02-02-istio-ingressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01-02. Istio IngressGateway
+      02-02. Istio IngressGateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-02. Istio IngressGateway">
+    <nav class="md-nav" aria-label="02-02. Istio IngressGateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6379,13 +6466,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-03-istio-egressgateway" class="md-nav__link">
+  <a href="#02-03-istio-egressgateway" class="md-nav__link">
     <span class="md-ellipsis">
-      01-03. Istio EgressGateway
+      02-03. Istio EgressGateway
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01-03. Istio EgressGateway">
+    <nav class="md-nav" aria-label="02-03. Istio EgressGateway">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6412,13 +6499,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-virtualservice" class="md-nav__link">
+  <a href="#03-virtualservice" class="md-nav__link">
     <span class="md-ellipsis">
-      02. VirtualService
+      03. VirtualService
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. VirtualService">
+    <nav class="md-nav" aria-label="03. VirtualService">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6432,7 +6519,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ロードバランサーで使用する場合
     </span>
@@ -6461,10 +6548,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ リスナー値として
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ルート値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       プラクティス
     </span>
@@ -6502,13 +6613,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-destinationrule" class="md-nav__link">
+  <a href="#04-destinationrule" class="md-nav__link">
     <span class="md-ellipsis">
-      03. DestinationRule
+      04. DestinationRule
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="03. DestinationRule">
+    <nav class="md-nav" aria-label="04. DestinationRule">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6522,7 +6633,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ロードバランサーで使用する場合
     </span>
@@ -6551,6 +6662,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Envoyの設定値として">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ クラスター値として
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -6559,13 +6685,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-serviceentry" class="md-nav__link">
+  <a href="#05-serviceentry" class="md-nav__link">
     <span class="md-ellipsis">
-      04. ServiceEntry
+      05. ServiceEntry
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04. ServiceEntry">
+    <nav class="md-nav" aria-label="05. ServiceEntry">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6583,18 +6709,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05-peerauthentication" class="md-nav__link">
+  <a href="#06-peerauthentication" class="md-nav__link">
     <span class="md-ellipsis">
-      05. PeerAuthentication
+      06. PeerAuthentication
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#06-requestauthentication" class="md-nav__link">
+  <a href="#07-requestauthentication" class="md-nav__link">
     <span class="md-ellipsis">
-      06. RequestAuthentication
+      07. RequestAuthentication
     </span>
   </a>
   
@@ -6627,7 +6753,99 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-gateway">01. Gateway<a class="headerlink" href="#01-gateway" title="Permanent link">&para;</a></h2>
+<h2 id="01-k8sistioenvoy">01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係<a class="headerlink" href="#01-k8sistioenvoy" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>K8sリソース/Istioカスタムリソース</th>
+<th style="text-align: center;">リスナー値</th>
+<th style="text-align: center;">ルート値</th>
+<th style="text-align: center;">クラスター値</th>
+<th style="text-align: center;">エンドポイント値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kubernetes Service</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Kubernetes Endpoints / EndpointSlice</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Istio Gateway</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Istio VirtualService</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Istio DestinationRule</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Istio ServiceEntry</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Istio PeerAuthentication</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Istio RequestAuthentication</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Istio AuthorizationPolicies</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>Istio EnvoyFilter</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>Istio Sidecar</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<h2 id="02-gateway">02. Gateway<a class="headerlink" href="#02-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="gateway">Gatewayとは<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p>Gatewayは、Istio IngressGatewayの一部として、Node外から受信した通信をフィルタリングする能力を担う。</p>
@@ -6648,6 +6866,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="envoy">Envoyの設定値として<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
+<h4 id="_3">▼ リスナー値として<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
 <p>なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
@@ -6700,7 +6919,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">プラクティス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">プラクティス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="404">▼ <code>404</code>ステータス<a class="headerlink" href="#404" title="Permanent link">&para;</a></h4>
 <p>受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <blockquote>
@@ -6710,7 +6929,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-02-istio-ingressgateway">01-02. Istio IngressGateway<a class="headerlink" href="#01-02-istio-ingressgateway" title="Permanent link">&para;</a></h2>
+<h2 id="02-02-istio-ingressgateway">02-02. Istio IngressGateway<a class="headerlink" href="#02-02-istio-ingressgateway" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ingressgateway">Istio IngressGatewayとは<a class="headerlink" href="#istio-ingressgateway" title="Permanent link">&para;</a></h3>
 <p>サービスメッシュ内宛の通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
 <p>GatewayとVirtualServiceの設定値に基づいて、Node外からインバウンド通信を受信し、Podにルーティングする。</p>
@@ -6809,7 +7028,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-03-istio-egressgateway">01-03. Istio EgressGateway<a class="headerlink" href="#01-03-istio-egressgateway" title="Permanent link">&para;</a></h2>
+<h2 id="02-03-istio-egressgateway">02-03. Istio EgressGateway<a class="headerlink" href="#02-03-istio-egressgateway" title="Permanent link">&para;</a></h2>
 <h3 id="istio-egressgateway">Istio EgressGatewayとは<a class="headerlink" href="#istio-egressgateway" title="Permanent link">&para;</a></h3>
 <p>Istio EgressGatewayは、サービスメッシュ外宛ての通信をロードバランシングする<code>L4</code>/<code>L7</code>ロードバランサーを作成する。</p>
 <p>Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外にルーティングする。</p>
@@ -6825,9 +7044,9 @@
 <h3 id="envoy_1">Envoyの設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h3>
 <p>Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのクラスター値に変換する。</p>
 <p><br></p>
-<h2 id="02-virtualservice">02. VirtualService<a class="headerlink" href="#02-virtualservice" title="Permanent link">&para;</a></h2>
+<h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>VirtualServiceは、Istio IngressGatewayの一部として、受信した通信をDestinationRuleに紐づくPodにルーティングする。</p>
 <p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png" /></p>
 <blockquote>
@@ -6847,6 +7066,59 @@
 </blockquote>
 <p><br></p>
 <h3 id="envoy_2">Envoyの設定値として<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h3>
+<h4 id="_6">▼ リスナー値として<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p>Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。</p>
+<p>なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-c istio-proxy \</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-- bash -c &quot;curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}&quot; | yq -P</span>
+
+<span class="nn">---</span>
+<span class="nt">configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+<span class="w">    </span><span class="c1"># リスナー値</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
+<span class="w">    </span><span class="nt">active_state</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">version_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2022-11-24T12:13:05Z/468</span>
+<span class="w">      </span><span class="nt">listener</span><span class="p">:</span>
+<span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.listener.v3.Listener</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_50002</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">socket_address</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">            </span><span class="nt">port_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">        </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chain_match</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">transport_protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">raw_buffer</span>
+<span class="w">              </span><span class="nt">application_protocols</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http/1.1</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">h2c</span>
+<span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
+<span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="c1"># HTTPリスナーを指定する</span>
+<span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
+<span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">config_source</span><span class="p">:</span>
+<span class="w">                      </span><span class="nt">ads</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">                      </span><span class="nt">initial_fetch_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
+<span class="w">                      </span><span class="nt">resource_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
+<span class="w">                    </span><span class="nt">route_config_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99">https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99</a></li>
+</ul>
+</blockquote>
+<h4 id="_7">▼ ルート値として<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
@@ -6862,6 +7134,7 @@
 <span class="w">    </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.route.v3.RouteConfiguration</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
+<span class="w">      </span><span class="c1"># VirtualService配下のServiceの設定値が変わると、virtual_hostsキーの設定値も変わる</span>
 <span class="w">      </span><span class="nt">virtual_hosts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
 <span class="w">          </span><span class="nt">domains</span><span class="p">:</span>
@@ -6926,7 +7199,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <span class="m">50001</span><span class="w">    </span>foo-service.foo-namespace.svc.cluster.local<span class="w">  </span>/*<span class="w">                  </span>foo-virtual-service.foo-namespace
 </code></pre></div>
 <p><br></p>
-<h3 id="_5">プラクティス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_8">プラクティス<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="404_1">▼ <code>404</code>ステータス<a class="headerlink" href="#404_1" title="Permanent link">&para;</a></h4>
 <p>Gatewayから受信した通信の<code>Host</code>ヘッダーが条件に合致していなかったり、ルーティング先のVirtualServiceが見つからなかったりすると、<code>404</code>ステータスを返信する。</p>
 <h4 id="virtualservice_1">▼ VirtualService数<a class="headerlink" href="#virtualservice_1" title="Permanent link">&para;</a></h4>
@@ -6952,9 +7225,9 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-destinationrule">03. DestinationRule<a class="headerlink" href="#03-destinationrule" title="Permanent link">&para;</a></h2>
+<h2 id="04-destinationrule">04. DestinationRule<a class="headerlink" href="#04-destinationrule" title="Permanent link">&para;</a></h2>
 <h3 id="destinationrule">DestinationRuleとは<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>DestinationRuleは、Istio IngressGateway (VirtualService + DestinationRule) で受信した通信を、いずれのPodにルーティングするかを決める。</p>
 <p>Istio IngressGatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。</p>
 <p>Podの宛先情報は、KubernetesのServiceから取得する。</p>
@@ -6975,6 +7248,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 </blockquote>
 <p><br></p>
 <h3 id="envoy_3">Envoyの設定値として<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h3>
+<h4 id="_10">▼ クラスター値として<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。</p>
 <p>なお、クラスター値配下のエンドポイント値は、KubernetesのServiceから動的に取得する。</p>
 <p>そのため、Envoyのエンドポイント値に相当するIstioのカスタムリソースはない。</p>
@@ -7113,7 +7387,7 @@ bar-service.bar-namespace.svc.cluster.local<span class="w">   </span><span class
 baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class="m">50003</span><span class="w">                        </span>v1<span class="w">            </span>outbound<span class="w">     </span>EDS<span class="w">                 </span>baz-destination-rule.baz-namespace
 </code></pre></div>
 <p><br></p>
-<h2 id="04-serviceentry">04. ServiceEntry<a class="headerlink" href="#04-serviceentry" title="Permanent link">&para;</a></h2>
+<h2 id="05-serviceentry">05. ServiceEntry<a class="headerlink" href="#05-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="serviceentry">ServiceEntryとは<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <p>ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。</p>
 <p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
@@ -7125,7 +7399,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="05-peerauthentication">05. PeerAuthentication<a class="headerlink" href="#05-peerauthentication" title="Permanent link">&para;</a></h2>
+<h2 id="06-peerauthentication">06. PeerAuthentication<a class="headerlink" href="#06-peerauthentication" title="Permanent link">&para;</a></h2>
 <p>Pod間通信時に、相互TLS認証を実施する。</p>
 <blockquote>
 <ul>
@@ -7133,7 +7407,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="06-requestauthentication">06. RequestAuthentication<a class="headerlink" href="#06-requestauthentication" title="Permanent link">&para;</a></h2>
+<h2 id="07-requestauthentication">07. RequestAuthentication<a class="headerlink" href="#07-requestauthentication" title="Permanent link">&para;</a></h2>
 <p>Pod間通信時に、JWTによるBearer認証を実施する。</p>
 <blockquote>
 <ul>
