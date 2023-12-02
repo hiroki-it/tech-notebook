@@ -1151,6 +1151,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_knative.html</loc>
+         <lastmod>2023-12-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/draft/infrastructure_as_code_kubernetes_cncf_project_kubevirt.html</loc>
          <lastmod>2023-12-02</lastmod>
          <changefreq>daily</changefreq>
