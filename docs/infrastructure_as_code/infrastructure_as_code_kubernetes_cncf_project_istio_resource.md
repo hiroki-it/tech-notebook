@@ -13,7 +13,25 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01. Gateway
+## 01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
+
+| K8sリソース/Istioカスタムリソース    | リスナー値 | ルート値 | クラスター値 | エンドポイント値 |
+| ------------------------------------ | :--------: | :------: | :----------: | :--------------: |
+| Kubernetes Service                   |     ✅     |    ✅    |      ✅      |                  |
+| Kubernetes Endpoints / EndpointSlice |            |          |              |        ✅        |
+| Istio Gateway                        |     ✅     |          |              |                  |
+| Istio VirtualService                 |     ✅     |    ✅    |              |                  |
+| Istio DestinationRule                |            |          |      ✅      |        ✅        |
+| Istio ServiceEntry                   |            |          |      ✅      |        ✅        |
+| Istio PeerAuthentication             |     ✅     |          |      ✅      |                  |
+| Istio RequestAuthentication          |     ✅     |          |              |                  |
+| Istio AuthorizationPolicies          |     ✅     |          |              |                  |
+| Istio EnvoyFilter                    |     ✅     |    ✅    |      ✅      |        ✅        |
+| Istio Sidecar                        |     ✅     |    ✅    |      ✅      |        ✅        |
+
+<br>
+
+## 02. Gateway
 
 ### Gatewayとは
 
@@ -36,6 +54,8 @@ Pod間通信には不要である。
 <br>
 
 ### Envoyの設定値として
+
+#### ▼ リスナー値として
 
 Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
 
@@ -102,7 +122,7 @@ configs:
 
 <br>
 
-## 01-02. Istio IngressGateway
+## 02-02. Istio IngressGateway
 
 ### Istio IngressGatewayとは
 
@@ -210,7 +230,7 @@ spec:
 
 <br>
 
-## 01-03. Istio EgressGateway
+## 02-03. Istio EgressGateway
 
 ### Istio EgressGatewayとは
 
@@ -231,7 +251,7 @@ Istiodコントロールプレーンは、ServiceEntryの設定値をEnvoyのク
 
 <br>
 
-## 02. VirtualService
+## 03. VirtualService
 
 ### VirtualServiceとは
 
@@ -257,6 +277,62 @@ VirtualServiceは、宛先Podに紐づくVirtualServiceから情報を取得し�
 
 ### Envoyの設定値として
 
+#### ▼ リスナー値として
+
+Istiodコントロールプレーンは、Gatewayの設定値をEnvoyのリスナー値に変換する。
+
+なお、KubernetesのGatewayもEnvoyのリスナー値と同等である。
+
+```yaml
+$ kubectl exec \
+    -it foo-pod \
+    -n foo-namespace \
+    -c istio-proxy \
+    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+
+---
+configs:
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+    # リスナー値
+    name: 0.0.0.0_50002
+    active_state:
+      version_info: 2022-11-24T12:13:05Z/468
+      listener:
+        "@type": type.googleapis.com/envoy.config.listener.v3.Listener
+        name: 0.0.0.0_50002
+        address:
+          socket_address:
+            address: 0.0.0.0
+            port_value: 50002
+        filter_chains:
+          - filter_chain_match:
+              transport_protocol: raw_buffer
+              application_protocols:
+                - http/1.1
+                - h2c
+            filters:
+              - name: envoy.filters.network.http_connection_manager
+                typed_config:
+                  # HTTPリスナーを指定する
+                  "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                  stat_prefix: outbound_0.0.0.0_50001
+                  rds:
+                    config_source:
+                      ads: {}
+                      initial_fetch_timeout: 0s
+                      resource_api_version: V3
+                    route_config_name: 50002
+  ...
+
+  - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
+
+  ...
+```
+
+> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
+
+#### ▼ ルート値として
+
 Istiodコントロールプレーンは、VirtualServiceの設定値をEnvoyのルート値に変換する。
 
 ```yaml
@@ -274,6 +350,7 @@ configs:
     route_config:
       "@type": type.googleapis.com/envoy.config.route.v3.RouteConfiguration
       name: 50002
+      # VirtualService配下のServiceの設定値が変わると、virtual_hostsキーの設定値も変わる
       virtual_hosts:
         - name: bar-service.bar-namespace.svc.cluster.local:50002
           domains:
@@ -359,7 +436,7 @@ Gatewayから受信した通信の`Host`ヘッダーが条件に合致してい�
 
 <br>
 
-## 03. DestinationRule
+## 04. DestinationRule
 
 ### DestinationRuleとは
 
@@ -387,6 +464,8 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 <br>
 
 ### Envoyの設定値として
+
+#### ▼ クラスター値として
 
 Istiodコントロールプレーンは、DestinationRuleの設定値をEnvoyのクラスター値に変換する。
 
@@ -538,7 +617,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 <br>
 
-## 04. ServiceEntry
+## 05. ServiceEntry
 
 ### ServiceEntryとは
 
@@ -553,7 +632,7 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 <br>
 
-## 05. PeerAuthentication
+## 06. PeerAuthentication
 
 Pod間通信時に、相互TLS認証を実施する。
 
@@ -561,7 +640,7 @@ Pod間通信時に、相互TLS認証を実施する。
 
 <br>
 
-## 06. RequestAuthentication
+## 07. RequestAuthentication
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 
