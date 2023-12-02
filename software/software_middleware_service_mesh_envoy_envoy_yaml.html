@@ -7809,7 +7809,7 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -8004,23 +8004,44 @@
 </ul>
 </blockquote>
 <h4 id="typed_configtype">▼ typed_config."@type"<a class="headerlink" href="#typed_configtype" title="Permanent link">&para;</a></h4>
-<p>使用する拡張機能名を設定する。</p>
+<p>使用する拡張機能名を (例：フィルターなど) 設定する。</p>
 <p>拡張機能名を指定することにより、その拡張機能の設定を定義できるようになる。</p>
-<p>これは、Envoy特有の機能ではなく、gRPCの機能である。</p>
+<p>これは、Envoyではなく、gRPCの機能の由来している。</p>
 <p>RPCでは、JSON内のデータのデータ型を指定するために使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration</a></li>
+<li><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any">https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any</a></li>
+</ul>
+</blockquote>
 <p><strong>＊実装例＊</strong></p>
+<p>ネットワークフィルターの一種である<code>http_connection_manager</code>を指定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># ネットワークフィルターを指定する</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>HTTPフィルターの一種である<code>router</code>を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_config</span><span class="p">:</span>
 <span class="w">                </span><span class="c1"># HTTPフィルターを指定する</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration</a></li>
-<li><a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any">https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -8428,7 +8449,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-03</span>
       
     
   </small>
