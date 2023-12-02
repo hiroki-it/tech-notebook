@@ -8021,8 +8021,23 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># ネットワークフィルターを指定する</span>
+<span class="w">                </span><span class="c1"># ネットワークフィルター (HTTPコネクションマネージャー) を指定する</span>
 <span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>ネットワークフィルターの一種である<code>tcp_proxy</code>を指定する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                </span><span class="c1"># ネットワークフィルター (TCP Proxy) を指定する</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy</span>
 </code></pre></div>
 <blockquote>
 <ul>
