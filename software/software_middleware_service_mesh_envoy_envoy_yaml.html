@@ -7768,8 +7768,9 @@
 <p><br></p>
 <h3 id="filter_chainsfilters">filter_chains.filters<a class="headerlink" href="#filter_chainsfilters" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
-<p>特定のインバウンド通信を処理するフィルターを設定する。</p>
+<p>使用するフィルターを設定する</p>
 <p><strong>＊実装例＊</strong></p>
+<p>HTTPフィルターの一種である<code>http_connection_manager</code>を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
