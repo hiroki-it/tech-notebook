@@ -9380,7 +9380,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="specconfigpatchespriority">.spec.configPatches.priority<a class="headerlink" href="#specconfigpatchespriority" title="Permanent link">&para;</a></h3>
-<p><code>envoy.yaml</code>ファイルの変更方法と変更内容を設定する。</p>
+<p>フィルターの適用タイミングを設定する。</p>
+<p>マイナス値の場合、デフォルトのフィルターよりも先に適用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9388,15 +9389,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
-<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
-<span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
-<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="04-02-envoyfilter">04-02. EnvoyFilter例<a class="headerlink" href="#04-02-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="keepalive">KeepAliveの設定<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h3>

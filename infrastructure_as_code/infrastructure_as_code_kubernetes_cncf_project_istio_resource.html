@@ -7516,7 +7516,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="06-envoyfilter">06. EnvoyFilter<a class="headerlink" href="#06-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ネットワークフィルター<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="http_connection_manager">▼ <code>http_connection_manager</code>の場合<a class="headerlink" href="#http_connection_manager" title="Permanent link">&para;</a></h4>
-<p>例えば、Istioの<code>v1.17.5</code>の<code>istio-proxy</code>コンテナに</p>
+<p>例えば、Istioの<code>v1.17.5</code>の<code>istio-proxy</code>コンテナのフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7541,6 +7541,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7563,6 +7564,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7586,6 +7588,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7594,6 +7597,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="c1"># デフォルトのフィルターよりも先に適用する</span>
 <span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 </code></pre></div>
 <blockquote>
@@ -7604,6 +7608,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <h4 id="tcp">▼ TCPプロキシの場合<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
+<p>例えば、Istioの<code>v1.17.5</code>の<code>istio-proxy</code>コンテナのフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7626,6 +7631,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7646,6 +7652,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7666,6 +7673,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7673,6 +7681,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="c1"># デフォルトのフィルターよりも先に適用する</span>
 <span class="w">  </span><span class="nt">priority</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-1</span>
 </code></pre></div>
 <blockquote>
