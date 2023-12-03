@@ -641,9 +641,9 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 ### ネットワークフィルター
 
-#### ▼ `http_connection_manager`の場合
+#### ▼ `http_connection_manager`をマッチ対象とする場合
 
-`http_connection_manager`を使用すると、Envoyは`L7`プロトコルを処理できるようになる。
+`http_connection_manager`をマッチ対象として、フィルターを変更する。
 
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
@@ -739,9 +739,9 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 
-#### ▼ `tcp_proxy`の場合
+#### ▼ `tcp_proxy`をマッチ対象とする場合
 
-`tcp_proxy`を使用すると、Envoyは`L4`プロトコルを処理できるようになる。
+`tcp_proxy`をマッチ対象として、フィルターを変更する。
 
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 

@@ -265,9 +265,11 @@ static_resources:
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
-#### ▼ typed_config.http_filters
+#### ▼ typed_config.@type (`tcp_proxy`)
 
-記入中...
+`tcp_proxy`はデフォルトで有効になっているフィルターである。
+
+Envoyが`L4`プロトコルを処理できるようになる。
 
 **＊実装例＊**
 
@@ -276,13 +278,32 @@ static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - typed_config:
-                http_filters:
-                  - name: envoy.filters.network.http_connection_manager
+            - name: envoy.filters.network.tcp_proxy
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
-> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
+
+#### ▼ typed_config.@type (`http_connection_manager`)
+
+`http_connection_manager`はデフォルトで有効になっているフィルターである。
+
+Envoyが`L7`プロトコルを処理できるようになる。
+
+**＊実装例＊**
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
 
 #### ▼ typed_config.route_config
 
