@@ -663,7 +663,7 @@ spec:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # 使用するHTTPフィルターを指定する
+                # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
           proxyVersion: ^1\.17.*
@@ -685,7 +685,7 @@ spec:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # 使用するHTTPフィルターを指定する
+                # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
           proxyVersion: ^1\.17.*
@@ -708,7 +708,7 @@ spec:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # 使用するHTTPフィルターを指定する
+                # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
           proxyVersion: ^1\.17.*

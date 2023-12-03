@@ -671,7 +671,13 @@ spec:
 
 #### ▼ matchとは
 
-変更したい`envoy.yaml`ファイルのCluster項目を設定する。
+フィルターの設定値の変更処理条件を設定する。
+
+変更条件を満たした場合、`.spec.configPatches.patch`キーで設定した内容の変更処理を実施する。
+
+#### ▼ cluster
+
+指定したクラスター値が存在する場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -690,7 +696,7 @@ spec:
 
 #### ▼ listener
 
-変更したい`envoy.yaml`ファイルのListener項目を設定する。
+指定したリスナー値が存在する場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -713,7 +719,7 @@ spec:
 
 #### ▼ context
 
-フィルターの設定値を変更するワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) を設定する。
+指定したワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) の場合に、フィルターの設定値を変更する。
 
 **＊実装例＊**
 
@@ -777,7 +783,7 @@ spec:
 
 ### .spec.configPatches.patch
 
-`envoy.yaml`ファイルの変更方法と変更内容を設定する。
+`.spec.configPatches.match`キーに設定した変更処理条件を満たした場合、その変更内容を設定する。
 
 **＊実装例＊**
 
@@ -790,7 +796,6 @@ metadata:
 spec:
   configPatches:
     - patch:
-        #
         operation: MERGE
         value:
           name: envoy.filters.network.http_connection_manager
