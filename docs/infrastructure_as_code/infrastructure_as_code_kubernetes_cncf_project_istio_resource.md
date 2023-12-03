@@ -85,6 +85,7 @@ configs:
           socket_address:
             address: 0.0.0.0
             port_value: 50002
+        # 使用するフィルターを設定する
         filter_chains:
           - filter_chain_match:
               transport_protocol: raw_buffer
@@ -307,6 +308,7 @@ configs:
           socket_address:
             address: 0.0.0.0
             port_value: 50002
+        # 使用するフィルターを設定する
         filter_chains:
           - filter_chain_match:
               transport_protocol: raw_buffer
@@ -641,6 +643,8 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 #### ▼ `http_connection_manager`の場合
 
+`http_connection_manager`を使用すると、Envoyは`L7`プロトコルを処理できるようになる。
+
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
 ```yaml
@@ -666,6 +670,7 @@ spec:
                 # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # http_connection_managerの直前に指定したフィルターを挿入する
@@ -689,6 +694,7 @@ spec:
                 # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # http_connection_managerの直前に指定したフィルターを挿入する
@@ -713,6 +719,7 @@ spec:
                 # マッチ対象のHTTPフィルターを指定する
                 name: envoy.filters.http.router
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # http_connection_managerの直前に指定したフィルターを挿入する
@@ -733,6 +740,8 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 
 #### ▼ `tcp_proxy`の場合
+
+`tcp_proxy`を使用すると、Envoyは`L4`プロトコルを処理できるようになる。
 
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
@@ -757,6 +766,7 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # tcp_proxyの直前に指定したフィルターを挿入する
@@ -778,6 +788,7 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # tcp_proxyの直前に指定したフィルターを挿入する
@@ -799,6 +810,7 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
+          # istio-proxyコンテナが1.17系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
         # tcp_proxyの直前に指定したフィルターを挿入する

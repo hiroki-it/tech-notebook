@@ -333,6 +333,7 @@ static_resources:
         socket_address:
           address: 127.0.0.1
           port_value: 10000
+      # 使用するフィルターを設定する
       filter_chains:
         - filters:
             - name: envoy.filters.network.http_connection_manager

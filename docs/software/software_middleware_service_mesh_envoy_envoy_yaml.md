@@ -227,9 +227,11 @@ static_resources:
 
 #### ▼ name
 
-特定のインバウンド通信を処理するフィルターを設定する。
+使用するフィルターを設定する
 
 **＊実装例＊**
+
+HTTPフィルターの一種である`http_connection_manager`を指定する。
 
 ```yaml
 static_resources:

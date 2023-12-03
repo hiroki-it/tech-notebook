@@ -483,6 +483,7 @@ configs:
               application_protocols:
                 - http/1.1
                 - h2c
+            # 使用するフィルターを設定する
             filters:
               - name: envoy.filters.network.http_connection_manager
                 typed_config:
