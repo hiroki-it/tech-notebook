@@ -5114,9 +5114,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcp" class="md-nav__link">
+  <a href="#tcp_proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ TCPプロキシの場合
+      ▼ tcp_proxyの場合
     </span>
   </a>
   
@@ -6786,9 +6786,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tcp" class="md-nav__link">
+  <a href="#tcp_proxy" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ TCPプロキシの場合
+      ▼ tcp_proxyの場合
     </span>
   </a>
   
@@ -7607,7 +7607,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
 </ul>
 </blockquote>
-<h4 id="tcp">▼ TCPプロキシの場合<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
+<h4 id="tcp_proxy">▼ <code>tcp_proxy</code>の場合<a class="headerlink" href="#tcp_proxy" title="Permanent link">&para;</a></h4>
 <p>例えば、Istioの<code>v1.17.5</code>の<code>istio-proxy</code>コンテナのフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -7626,12 +7626,12 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># 使用するネットワークフィルターを指定する</span>
+<span class="w">              </span><span class="c1"># マッチ対象のネットワークフィルターを指定する</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
+<span class="w">        </span><span class="c1"># tcp_proxyの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7647,12 +7647,12 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># 使用するネットワークフィルターを指定する</span>
+<span class="w">              </span><span class="c1"># マッチ対象のネットワークフィルターを指定する</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
+<span class="w">        </span><span class="c1"># tcp_proxyの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
@@ -7668,12 +7668,12 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">filter</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># 使用するネットワークフィルターを指定する</span>
+<span class="w">              </span><span class="c1"># マッチ対象のネットワークフィルターを指定する</span>
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.tcp_proxy</span>
 <span class="w">        </span><span class="nt">proxy</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">proxyVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^1\.17.*</span>
 <span class="w">      </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># http_connection_managerの直前に指定したフィルターを挿入する</span>
+<span class="w">        </span><span class="c1"># tcp_proxyの直前に指定したフィルターを挿入する</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INSERT_BEFORE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio.stats</span>
