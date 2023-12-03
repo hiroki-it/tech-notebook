@@ -39,12 +39,12 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 サービスメッシュは、任意のプロトコルを扱える。
 
-| 責務         | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | AWS App Mesh |
-|------------| ---------------------------------------- | :---: | :-----: | :----: | :----------: |
-| TCP        | Service + kube-proxy                     | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
-| HTTP/`1.1` | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
-| HTTP/`2.0`  (例：gRPCなど) | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
-| gRPC       | Ingress、Service + kube-proxy            | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
+| 責務                      | Kubernetes<br>(サービスメッシュ採用せず) | Istio | Linkerd | Consul | AWS App Mesh |
+| ------------------------- | ---------------------------------------- | :---: | :-----: | :----: | :----------: |
+| TCP                       | Service + kube-proxy                     | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
+| HTTP/`1.1`                | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
+| HTTP/`2.0` (例：gRPCなど) | Ingress                                  | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
+| gRPC                      | Ingress、Service + kube-proxy            | `⭕️`  |  `⭕️`   |  `⭕️`  |     `⭕️`     |
 
 <br>
 

@@ -993,6 +993,8 @@ service EndpointDiscoveryService {
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
+この時に外部が指定するURLは、`http://localhost:<ポート番号>`である。
+
 サービスメッシュ外や他のPodからリクエストを受信するために使用する。
 
 ![envoy_ingress-listener.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
@@ -1004,6 +1006,8 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 #### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
+
+この時にローカルホストにあるマイクロサービスが指定するURLは、`http://<マイクロサービスのホスト>:<ポート番号>`である。
 
 サービスメッシュ外や他のPodにリクエストを送信するために使用する。
 

@@ -306,8 +306,15 @@ static_resources:
                               # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)
                               # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
                               grpc_timeout_header_max: 30
+
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      # HTTPフィルターを指定する
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
 > - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
@@ -533,19 +540,33 @@ static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - name: envoy.filters.http.router
+            - name: envoy.filters.network.http_connection_manager
               typed_config:
-                # HTTPフィルターを指定する
-                "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                route_config:
+                  name: foo_route
+                  virtual_hosts:
+                    - name: foo_service
+
+                      ...
+
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      # HTTPフィルターを指定する
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
 
 #### ▼ `http.grpc_web`
 
 `http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
 
-受信したHTTP/`1.1`リクエストをHTTP/`2.0` (例：gRPCなど) やHTTP/`3.0`に変換し、gRPCサーバーにプロキシする。
+受信したHTTP/`1.1`をHTTP/`2.0` (例：gRPCなど) やHTTP/`3.0`に変換し、gRPCサーバーにプロキシする。
+
+また、gRPCサーバーからのHTTP/`2.0`のレスポンスをHTTP/`1.1`に変換する。
 
 `http.grpc_http1_bridge`の後継でもある。
 
@@ -554,14 +575,26 @@ static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - name: envoy.filters.http.grpc_web
+            - name: envoy.filters.network.http_connection_manager
               typed_config:
-                # HTTPフィルターを指定する
-                "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                route_config:
+                  name: foo_route
+                  virtual_hosts:
+                    - name: foo_service
+
+                      ...
+
+                http_filters:
+                  - name: envoy.filters.http.grpc_web
+                    typed_config:
+                      # HTTPフィルターを指定する
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
 
 <br>
 
@@ -760,25 +793,27 @@ HTTPSリクエストを送受信する場合に、証明書を設定する。
 ```yaml
 static_resources:
   clusters:
-    ...
     - connect_timeout: 0.25s
       load_assignment:
         cluster_name: local_service_tls
         transport_socket:
           name: envoy.transport_sockets.tls
           typed_config:
+            # transport_sockets.tlsを指定する
             "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
             common_tls_context:
               # static_resources.secretsキーで定義したクライアント証明書を設定する。
               tls_certificate_sds_secret_configs:
                 - name: client-cert
 
-  listeners:
     ...
+
+  listeners:
     - filter_chains:
         transport_socket:
           name: envoy.transport_sockets.tls
           typed_config:
+            # transport_sockets.tlsを指定する
             "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
             common_tls_context:
               # static_resources.secretsキーで定義したSSL証明書を設定する。
@@ -786,6 +821,8 @@ static_resources:
                 - name: server-cert
               validation_context_sds_secret_config:
                 name: validation_context
+
+    ...
 
   secrets:
     ## SSL証明書
