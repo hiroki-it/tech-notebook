@@ -656,7 +656,7 @@ spec:
     # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # サイドカーのistio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -678,7 +678,7 @@ spec:
     # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # サイドカーのistio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -724,8 +724,9 @@ spec:
   priority: -1
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
-> - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 #### ▼ TCPプロキシの場合
 
@@ -739,10 +740,10 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # サイドカーのistio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -759,10 +760,10 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # サイドカーのistio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -779,7 +780,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
         # istio-ingressgateway内のistio-proxyコンテナ
@@ -802,8 +803,9 @@ spec:
   priority: -1
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
-> - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 <br>
 

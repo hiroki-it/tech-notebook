@@ -671,7 +671,7 @@ spec:
 
 #### ▼ matchとは
 
-上書きしたい`envoy.yaml`ファイルのCluster項目を設定する。
+変更したい`envoy.yaml`ファイルのCluster項目を設定する。
 
 **＊実装例＊**
 
@@ -690,7 +690,7 @@ spec:
 
 #### ▼ listener
 
-上書きしたい`envoy.yaml`ファイルのListener項目を設定する。
+変更したい`envoy.yaml`ファイルのListener項目を設定する。
 
 **＊実装例＊**
 
@@ -765,7 +765,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # サイドカーのistio-proxyコンテナのEgressリスナー後のフィルターに適用する
+        # サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
         - context: SIDECAR_OUTBOUND
 ```
 
@@ -775,9 +775,39 @@ spec:
 
 <br>
 
-### patch
+### .spec.configPatches.patch
 
-`envoy.yaml`ファイルの上書き方法と上書き内容を設定する。
+`envoy.yaml`ファイルの変更方法と変更内容を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - patch:
+        #
+        operation: MERGE
+        value:
+          name: envoy.filters.network.http_connection_manager
+          typed_config:
+            # ネットワークフィルター (http_connection_manager) を指定する
+            "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
+
+<br>
+
+### .spec.configPatches.priority
+
+`envoy.yaml`ファイルの変更方法と変更内容を設定する。
 
 **＊実装例＊**
 
@@ -798,15 +828,11 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
-
 <br>
 
-### EnvoyFilter例
+## 04-02. EnvoyFilter例
 
-#### ▼ KeepAliveの設定
+### KeepAliveの設定
 
 istio-ingressgateway内の`istio-proxy`コンテナで、KeepAliveを実行できるようにする。
 
@@ -819,8 +845,8 @@ metadata:
 spec:
   configPatches:
     - applyTo: LISTENER
-
       match:
+        # istio-ingressgatewayのフィルターの設定値を変更する
         context: GATEWAY
         listener:
           name: 0.0.0.0_8443
@@ -855,7 +881,7 @@ spec:
 
 <br>
 
-## 04-02. EnvoyFilter以外のカスタマイズ方法
+## 04-03. EnvoyFilter以外のカスタマイズ方法
 
 ### VirtualService、DestinationRuleの定義
 
@@ -877,7 +903,7 @@ DeploymentやPodの`.metadata.anontations`キーにて、`istio-proxy`コンテ�
 
 ### `istio-proxy`コンテナの定義
 
-DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を上書きできる。
+DeploymentやPodで`istio-proxy`コンテナを定義することにより設定を変更できる。
 
 **＊実装例＊**
 
@@ -895,7 +921,7 @@ spec:
       containers:
         - name: app
           image: app
-        # istio-proxyコンテナの設定を上書きする。
+        # istio-proxyコンテナの設定を変更する。
         - name: istio-proxy
           lifecycle:
             # istio-proxyコンテナ終了直前の処理
