@@ -265,57 +265,6 @@ static_resources:
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
-#### ▼ typed_config.@type (`tcp_proxy`)
-
-`tcp_proxy`はデフォルトで有効になっているフィルターである。
-
-Envoyが`L4`プロトコルを処理できるようになる。
-
-`http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
-
-**＊実装例＊**
-
-```yaml
-static_resources:
-  listeners:
-    - filter_chains:
-        - filters:
-            - name: envoy.filters.network.tcp_proxy
-              typed_config:
-                "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
-                # クラスター値
-                cluster: foo_cluster
-                ...
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
-
-#### ▼ typed_config.@type (`http_connection_manager`)
-
-`http_connection_manager`はデフォルトで有効になっているフィルターである。
-
-Envoyが`L7`プロトコルを処理できるようになる。
-
-`tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
-
-**＊実装例＊**
-
-```yaml
-static_resources:
-  listeners:
-    - filter_chains:
-        - filters:
-            - name: envoy.filters.network.http_connection_manager
-              typed_config:
-                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-                # ルート値
-                route_config:
-                   name: foo_route
-                   ...
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
-
 #### ▼ typed_config.route_config
 
 特定のルーティング先に関する処理を設定する。
@@ -503,7 +452,11 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
 > - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
 
-#### ▼ typed_config."@type"
+<br>
+
+### filter_chains.filters.typed_config.@type
+
+#### ▼ typed_config.@type
 
 使用する拡張機能名を (例：フィルターなど) 設定する。
 
@@ -516,53 +469,92 @@ RPCでは、JSON内のデータのデータ型を指定するために使用す�
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
 > - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
 
-**＊実装例＊**
+#### ▼ `tcp_proxy`
 
-ネットワークフィルターの一種である`http_connection_manager`を指定する。
+`tcp_proxy`はデフォルトで有効になっているネットワークフィルターである。
+
+Envoyが`L4`プロトコルを処理できるようになる。
+
+`http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - typed_config:
-                # ネットワークフィルター (http_connection_manager) を指定する
-                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
-
-**＊実装例＊**
-
-ネットワークフィルターの一種である`tcp_proxy`を指定する。
-
-```yaml
-static_resources:
-  listeners:
-    - filter_chains:
-        - filters:
-            - typed_config:
-                # ネットワークフィルター (tcp_proxy) を指定する
+            - name: envoy.filters.network.tcp_proxy
+              typed_config:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+                # クラスター値
+                cluster: foo_cluster
+                ...
 ```
 
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
-**＊実装例＊**
+#### ▼ `http_connection_manager`
 
-HTTPフィルターの一種である`router`を指定する。
+`http_connection_manager`はデフォルトで有効になっているネットワークフィルターである。
+
+Envoyが`L7`プロトコルを処理できるようになる。
+
+`tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
+
+**＊実装例＊**
 
 ```yaml
 static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - typed_config:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                # ルート値
+                route_config:
+                   name: foo_route
+                   ...
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+
+#### ▼ `router`
+
+`router`はデフォルトで有効になっているHTTPフィルターである。
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - name: envoy.filters.http.router
+              typed_config:
                 # HTTPフィルターを指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
+
+#### ▼ `grpc_web`
+
+`grpc_web`はデフォルトで有効になっているHTTPフィルターである。
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - name: envoy.filters.http.grpc_web
+              typed_config:
+                # HTTPフィルターを指定する
+                "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter
 
 <br>
 
