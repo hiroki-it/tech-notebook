@@ -5220,6 +5220,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#match" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ match
@@ -7712,6 +7721,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ context
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#match" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ match
@@ -9039,8 +9057,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="04-envoyfilter">04. EnvoyFilter<a class="headerlink" href="#04-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="specconfigpatches">.spec.configPatches<a class="headerlink" href="#specconfigpatches" title="Permanent link">&para;</a></h3>
 <h4 id="applyto">▼ applyTo<a class="headerlink" href="#applyto" title="Permanent link">&para;</a></h4>
-<p>上書きしたい<code>envoy.yaml</code>ファイルの項目を設定する。</p>
+<p>適用したいフィルターを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
+<p>ネットワークフィルターを適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9053,6 +9072,55 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo</a></li>
+</ul>
+</blockquote>
+<h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
+<p>フィルターを適用する対象 (例：istio-ingressgateway内の<code>istio-proxy</code>コンテナ、サイドカーの<code>istio-proxy</code>コンテナ) を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># 何も設定しない場合、istio-ingressgatewayとサイドカーの両方に適用する</span>
+<span class="w">    </span><span class="c1"># - context: &quot;&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># サイドカーのistio-proxyコンテナのIngressリスナー後のフィルターに適用する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># istio-ingressgateway内のistio-proxyコンテナに適用する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GATEWAY</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># サイドカーのistio-proxyコンテナのEgressリスナー後のフィルターに適用する</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter">https://istio.io/latest/docs/reference/config/networking/envoy-filter</a></li>
+<li><a href="https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29">https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29</a></li>
 </ul>
 </blockquote>
 <h4 id="match">▼ match<a class="headerlink" href="#match" title="Permanent link">&para;</a></h4>

@@ -7529,7 +7529,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-proxyコンテナ</span>
+<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -7551,7 +7551,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-proxyコンテナ</span>
+<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -7599,6 +7599,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
+<li><a href="https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29">https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29</a></li>
 </ul>
 </blockquote>
 <h4 id="tcp">▼ TCPプロキシの場合<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
@@ -7614,7 +7615,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-proxyコンテナ</span>
+<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_INBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -7634,7 +7635,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">    </span><span class="c1"># Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-proxyコンテナ</span>
+<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">filterChain</span><span class="p">:</span>
@@ -7676,6 +7677,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
+<li><a href="https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29">https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29</a></li>
 </ul>
 </blockquote>
 <p><br></p>
