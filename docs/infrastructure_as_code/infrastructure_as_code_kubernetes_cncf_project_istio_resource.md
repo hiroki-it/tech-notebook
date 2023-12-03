@@ -641,7 +641,7 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 #### ▼ `http_connection_manager`の場合
 
-例えば、Istioの`v1.17.5`の`istio-proxy`コンテナに
+例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -668,6 +668,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -690,6 +691,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -713,6 +715,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -721,6 +724,7 @@ spec:
             type_url: type.googleapis.com/stats.PluginConfig
             value:
               disable_host_header_fallback: true
+  # デフォルトのフィルターよりも先に適用する
   priority: -1
 ```
 
@@ -729,6 +733,8 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 
 #### ▼ TCPプロキシの場合
+
+例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -753,6 +759,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -773,6 +780,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -793,6 +801,7 @@ spec:
         proxy:
           proxyVersion: ^1\.17.*
       patch:
+        # http_connection_managerの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -800,6 +809,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
+  # デフォルトのフィルターよりも先に適用する
   priority: -1
 ```
 

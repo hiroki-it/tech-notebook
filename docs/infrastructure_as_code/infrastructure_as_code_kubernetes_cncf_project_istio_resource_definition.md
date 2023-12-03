@@ -888,7 +888,9 @@ spec:
 
 ### .spec.configPatches.priority
 
-`envoy.yaml`ファイルの変更方法と変更内容を設定する。
+フィルターの適用タイミングを設定する。
+
+マイナス値の場合、デフォルトのフィルターよりも先に適用する。
 
 **＊実装例＊**
 
@@ -899,15 +901,10 @@ metadata:
   namespace: istio-system
   name: foo-envoy-filter
 spec:
-  configPatches:
-    - patch:
-        operation: MERGE
-        value:
-          name: envoy.filters.network.http_connection_manager
-          typed_config:
-            # ネットワークフィルター (http_connection_manager) を指定する
-            "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+  priority: -1
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter
 
 <br>
 
