@@ -5229,6 +5229,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listener" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ listener
@@ -7730,6 +7739,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#listener" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ listener
@@ -9108,7 +9126,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specconfigpatchesmatch">.spec.configPatches.match<a class="headerlink" href="#specconfigpatchesmatch" title="Permanent link">&para;</a></h3>
 <h4 id="match">▼ matchとは<a class="headerlink" href="#match" title="Permanent link">&para;</a></h4>
-<p>変更したい<code>envoy.yaml</code>ファイルのCluster項目を設定する。</p>
+<p>フィルターの設定値の変更処理条件を設定する。</p>
+<p>変更条件を満たした場合、<code>.spec.configPatches.patch</code>キーで設定した内容の変更処理を実施する。</p>
+<h4 id="cluster">▼ cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
+<p>指定したクラスター値が存在する場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9122,7 +9143,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <h4 id="listener">▼ listener<a class="headerlink" href="#listener" title="Permanent link">&para;</a></h4>
-<p>変更したい<code>envoy.yaml</code>ファイルのListener項目を設定する。</p>
+<p>指定したリスナー値が存在する場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9143,7 +9164,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
-<p>フィルターの設定値を変更するワークロードタイプ (例：istio-ingressgateway内の<code>istio-proxy</code>コンテナ、サイドカーの<code>istio-proxy</code>コンテナ) を設定する。</p>
+<p>指定したワークロードタイプ (例：istio-ingressgateway内の<code>istio-proxy</code>コンテナ、サイドカーの<code>istio-proxy</code>コンテナ) の場合に、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9198,7 +9219,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="specconfigpatchespatch">.spec.configPatches.patch<a class="headerlink" href="#specconfigpatchespatch" title="Permanent link">&para;</a></h3>
-<p><code>envoy.yaml</code>ファイルの変更方法と変更内容を設定する。</p>
+<p><code>.spec.configPatches.match</code>キーに設定した変更処理条件を満たした場合、その変更内容を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9208,7 +9229,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span>
-<span class="w">        </span><span class="c1">#</span>
 <span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
 <span class="w">        </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
