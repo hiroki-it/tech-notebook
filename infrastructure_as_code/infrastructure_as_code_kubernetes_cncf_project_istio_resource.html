@@ -5105,9 +5105,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
+  <a href="#http_connection_manager" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTPコネクションマネージャーの場合
+      ▼ http_connection_managerの場合
     </span>
   </a>
   
@@ -6777,9 +6777,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http" class="md-nav__link">
+  <a href="#http_connection_manager" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ HTTPコネクションマネージャーの場合
+      ▼ http_connection_managerの場合
     </span>
   </a>
   
@@ -7012,7 +7012,7 @@
 <span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="c1"># ネットワークフィルター (HTTPコネクションマネージャー) を指定する</span>
+<span class="w">                  </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
@@ -7212,7 +7212,7 @@
 <span class="w">            </span><span class="nt">filters</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">                </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="c1"># ネットワークフィルター (HTTPコネクションマネージャー) を指定する</span>
+<span class="w">                  </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
 <span class="w">                  </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 <span class="w">                  </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound_0.0.0.0_50001</span>
 <span class="w">                  </span><span class="nt">rds</span><span class="p">:</span>
@@ -7515,7 +7515,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h2 id="06-envoyfilter">06. EnvoyFilter<a class="headerlink" href="#06-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ネットワークフィルター<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="http">▼ HTTPコネクションマネージャーの場合<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
+<h4 id="http_connection_manager">▼ <code>http_connection_manager</code>の場合<a class="headerlink" href="#http_connection_manager" title="Permanent link">&para;</a></h4>
 <p>例えば、Istioの<code>v1.17.5</code>の<code>istio-proxy</code>コンテナに</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -7526,7 +7526,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
@@ -7548,7 +7548,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
@@ -7571,7 +7571,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">disable_host_header_fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># istio-ingressgateway内のistio-proxyコンテナ</span>
@@ -7612,7 +7612,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
@@ -7632,7 +7632,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="c1"># Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナ</span>
@@ -7652,7 +7652,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/udpa.type.v1.TypedStruct</span>
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/stats.PluginConfig</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="c1"># Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する</span>
+<span class="w">    </span><span class="c1"># HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NETWORK_FILTER</span>
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># istio-ingressgateway内のistio-proxyコンテナ</span>
