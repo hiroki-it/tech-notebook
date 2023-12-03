@@ -671,9 +671,9 @@ spec:
 
 #### ▼ matchとは
 
-フィルターの設定値の変更処理条件を設定する。
+フィルターの設定値を変更する場合に、その実行条件を設定する。
 
-変更条件を満たした場合、`.spec.configPatches.patch`キーで設定した内容の変更処理を実施する。
+条件に合致する設定値があった場合、`.spec.configPatches.patch`キーで設定した内容の変更処理を実施する。
 
 #### ▼ cluster
 
@@ -783,7 +783,85 @@ spec:
 
 ### .spec.configPatches.patch
 
-`.spec.configPatches.match`キーに設定した変更処理条件を満たした場合、その変更内容を設定する。
+#### ▼ patchとは
+
+`.spec.configPatches.match`キーに設定した設定値があった場合、フィルターの設定値の変更内容を設定する。
+
+#### ▼ operation
+
+フィルターの設定値の変更方法を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - patch:
+        operation: MERGE
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+**＊実装例＊**
+
+`.spec.configPatches.match`キーに合致したフィルターの直前に挿入する。
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - patch:
+        operation: INSERT_BEFORE
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+**＊実装例＊**
+
+フィルターの一番最初に挿入する。
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - patch:
+        operation: INSERT_FIRST
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - patch:
+        operation: MERGE
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+#### ▼ value
+
+既存のフィルターに適用したいフィルターを設定する。
 
 **＊実装例＊**
 
@@ -804,8 +882,6 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
 
 <br>
