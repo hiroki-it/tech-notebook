@@ -526,6 +526,8 @@ static_resources:
 
 `http.router`はデフォルトで有効になっているHTTPフィルターである。
 
+`typed_config.route_config`を使用できるようにする。
+
 ```yaml
 static_resources:
   listeners:
@@ -543,6 +545,10 @@ static_resources:
 
 `http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
 
+受信したHTTP/`1.1`リクエストをHTTP/`2.0` (例：gRPCなど) やHTTP/`3.0`に変換し、gRPCサーバーにプロキシする。
+
+`http.grpc_http1_bridge`の後継でもある。
+
 ```yaml
 static_resources:
   listeners:
@@ -555,6 +561,7 @@ static_resources:
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter
+> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge
 
 <br>
 
@@ -860,7 +867,7 @@ static_resources:
 
 #### ▼ http2_protocol_options
 
-HTTP/2 (例：gRPCなど) について設定する。
+HTTP/`2.0` (例：gRPCなど) について設定する。
 
 ```yaml
 static_resources:

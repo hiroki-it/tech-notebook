@@ -1616,7 +1616,7 @@ spec:
 
 #### ▼ httpとは
 
-HTTP/1.1、HTTP/2 (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。
+HTTP/`1.1`、HTTP/`2.0` (例：gRPCなど) 、のプロトコルによるインバウンド通信をDestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
