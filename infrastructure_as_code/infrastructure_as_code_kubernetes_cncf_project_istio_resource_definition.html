@@ -5252,35 +5252,20 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#patch" class="md-nav__link">
+  <a href="#specconfigpatchespatch" class="md-nav__link">
     <span class="md-ellipsis">
-      patch
+      .spec.configPatches.patch
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoyfilter" class="md-nav__link">
+  <a href="#specconfigpatchespriority" class="md-nav__link">
     <span class="md-ellipsis">
-      EnvoyFilter例
+      .spec.configPatches.priority
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="EnvoyFilter例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#keepalive" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ KeepAliveの設定
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -5292,11 +5277,35 @@
         <li class="md-nav__item">
   <a href="#04-02-envoyfilter" class="md-nav__link">
     <span class="md-ellipsis">
-      04-02. EnvoyFilter以外のカスタマイズ方法
+      04-02. EnvoyFilter例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. EnvoyFilter以外のカスタマイズ方法">
+    <nav class="md-nav" aria-label="04-02. EnvoyFilter例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keepalive" class="md-nav__link">
+    <span class="md-ellipsis">
+      KeepAliveの設定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-envoyfilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. EnvoyFilter以外のカスタマイズ方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. EnvoyFilter以外のカスタマイズ方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7744,35 +7753,20 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#patch" class="md-nav__link">
+  <a href="#specconfigpatchespatch" class="md-nav__link">
     <span class="md-ellipsis">
-      patch
+      .spec.configPatches.patch
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#envoyfilter" class="md-nav__link">
+  <a href="#specconfigpatchespriority" class="md-nav__link">
     <span class="md-ellipsis">
-      EnvoyFilter例
+      .spec.configPatches.priority
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="EnvoyFilter例">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#keepalive" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ KeepAliveの設定
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -7784,11 +7778,35 @@
         <li class="md-nav__item">
   <a href="#04-02-envoyfilter" class="md-nav__link">
     <span class="md-ellipsis">
-      04-02. EnvoyFilter以外のカスタマイズ方法
+      04-02. EnvoyFilter例
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-02. EnvoyFilter以外のカスタマイズ方法">
+    <nav class="md-nav" aria-label="04-02. EnvoyFilter例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keepalive" class="md-nav__link">
+    <span class="md-ellipsis">
+      KeepAliveの設定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-03-envoyfilter" class="md-nav__link">
+    <span class="md-ellipsis">
+      04-03. EnvoyFilter以外のカスタマイズ方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04-03. EnvoyFilter以外のカスタマイズ方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -9090,7 +9108,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specconfigpatchesmatch">.spec.configPatches.match<a class="headerlink" href="#specconfigpatchesmatch" title="Permanent link">&para;</a></h3>
 <h4 id="match">▼ matchとは<a class="headerlink" href="#match" title="Permanent link">&para;</a></h4>
-<p>上書きしたい<code>envoy.yaml</code>ファイルのCluster項目を設定する。</p>
+<p>変更したい<code>envoy.yaml</code>ファイルのCluster項目を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9104,7 +9122,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 </code></pre></div>
 <h4 id="listener">▼ listener<a class="headerlink" href="#listener" title="Permanent link">&para;</a></h4>
-<p>上書きしたい<code>envoy.yaml</code>ファイルのListener項目を設定する。</p>
+<p>変更したい<code>envoy.yaml</code>ファイルのListener項目を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9168,7 +9186,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのEgressリスナー後のフィルターに適用する</span>
+<span class="w">        </span><span class="c1"># サイドカーのistio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIDECAR_OUTBOUND</span>
 </code></pre></div>
 <blockquote>
@@ -9179,8 +9197,35 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="patch">patch<a class="headerlink" href="#patch" title="Permanent link">&para;</a></h3>
-<p><code>envoy.yaml</code>ファイルの上書き方法と上書き内容を設定する。</p>
+<h3 id="specconfigpatchespatch">.spec.configPatches.patch<a class="headerlink" href="#specconfigpatchespatch" title="Permanent link">&para;</a></h3>
+<p><code>envoy.yaml</code>ファイルの変更方法と変更内容を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-envoy-filter</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">patch</span><span class="p">:</span>
+<span class="w">        </span><span class="c1">#</span>
+<span class="w">        </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MERGE</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
+<span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
+<span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="specconfigpatchespriority">.spec.configPatches.priority<a class="headerlink" href="#specconfigpatchespriority" title="Permanent link">&para;</a></h3>
+<p><code>envoy.yaml</code>ファイルの変更方法と変更内容を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9197,16 +9242,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># ネットワークフィルター (http_connection_manager) を指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation</a></li>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass">https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="envoyfilter">EnvoyFilter例<a class="headerlink" href="#envoyfilter" title="Permanent link">&para;</a></h3>
-<h4 id="keepalive">▼ KeepAliveの設定<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h4>
+<h2 id="04-02-envoyfilter">04-02. EnvoyFilter例<a class="headerlink" href="#04-02-envoyfilter" title="Permanent link">&para;</a></h2>
+<h3 id="keepalive">KeepAliveの設定<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h3>
 <p>istio-ingressgateway内の<code>istio-proxy</code>コンテナで、KeepAliveを実行できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -9216,8 +9254,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LISTENER</span>
-
 <span class="w">      </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># istio-ingressgatewayのフィルターの設定値を変更する</span>
 <span class="w">        </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GATEWAY</span>
 <span class="w">        </span><span class="nt">listener</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0_8443</span>
@@ -9253,7 +9291,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-02-envoyfilter">04-02. EnvoyFilter以外のカスタマイズ方法<a class="headerlink" href="#04-02-envoyfilter" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-envoyfilter">04-03. EnvoyFilter以外のカスタマイズ方法<a class="headerlink" href="#04-03-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservicedestinationrule">VirtualService、DestinationRuleの定義<a class="headerlink" href="#virtualservicedestinationrule" title="Permanent link">&para;</a></h3>
 <p>VirtualServiceとDestinationRuleの設定値は、<code>istio-proxy</code>コンテナに適用される。</p>
 <blockquote>
@@ -9273,7 +9311,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="istio-proxy"><code>istio-proxy</code>コンテナの定義<a class="headerlink" href="#istio-proxy" title="Permanent link">&para;</a></h3>
-<p>DeploymentやPodで<code>istio-proxy</code>コンテナを定義することにより設定を上書きできる。</p>
+<p>DeploymentやPodで<code>istio-proxy</code>コンテナを定義することにより設定を変更できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -9288,7 +9326,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<span class="w">        </span><span class="c1"># istio-proxyコンテナの設定を上書きする。</span>
+<span class="w">        </span><span class="c1"># istio-proxyコンテナの設定を変更する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-proxy</span>
 <span class="w">          </span><span class="nt">lifecycle</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># istio-proxyコンテナ終了直前の処理</span>
@@ -10192,7 +10230,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-04</span>
       
     
   </small>
