@@ -8133,6 +8133,7 @@
 </blockquote>
 <h4 id="httprouter">▼ <code>http.router</code><a class="headerlink" href="#httprouter" title="Permanent link">&para;</a></h4>
 <p><code>http.router</code>はデフォルトで有効になっているHTTPフィルターである。</p>
+<p><code>typed_config.route_config</code>を使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -8149,6 +8150,8 @@
 </blockquote>
 <h4 id="httpgrpc_web">▼ <code>http.grpc_web</code><a class="headerlink" href="#httpgrpc_web" title="Permanent link">&para;</a></h4>
 <p><code>http.grpc_web</code>はデフォルトで有効になっているHTTPフィルターである。</p>
+<p>受信したHTTP/<code>1.1</code>リクエストをHTTP/<code>2.0</code> (例：gRPCなど) やHTTP/<code>3.0</code>に変換し、gRPCサーバーにプロキシする。</p>
+<p><code>http.grpc_http1_bridge</code>の後継でもある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -8161,6 +8164,7 @@
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -8394,7 +8398,7 @@
 <span class="w">          </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
 </code></pre></div>
 <h4 id="http2_protocol_options">▼ http2_protocol_options<a class="headerlink" href="#http2_protocol_options" title="Permanent link">&para;</a></h4>
-<p>HTTP/2 (例：gRPCなど) について設定する。</p>
+<p>HTTP/<code>2.0</code> (例：gRPCなど) について設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>

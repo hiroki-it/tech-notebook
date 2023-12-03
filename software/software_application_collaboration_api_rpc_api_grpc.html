@@ -6627,7 +6627,7 @@
 <h2 id="01-grpc">01. gRPCの仕組み<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>RPCフレームワークの一つで、プロトコルバッファーを使用してRPC (リモートプロシージャーコール) を実行する。</p>
-<p>従来のHTTP/1.0ではなく、HTTP/2.0プロトコルを使用する。</p>
+<p>従来のHTTP/<code>1.1</code>ではなく、HTTP/<code>2.0</code> (例：gRPCなど) を使用する。</p>
 <p>RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
 <p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
 <p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png" /></p>
@@ -6753,7 +6753,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-http11grpc">03. HTTP/1.1とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
+<h2 id="03-http11grpc">03. HTTP/<code>1.1</code>とgRPCの違い<a class="headerlink" href="#03-http11grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ヘッダーの構造<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リクエストヘッダー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
@@ -6815,8 +6815,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_6">レスポンスタイム<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="http11">▼ HTTP/1.1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
+<h4 id="http11">▼ HTTP/<code>1.1</code>の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
+<p>HTTP/<code>1.1</code>の場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
@@ -6825,7 +6825,7 @@
 </blockquote>
 <h4 id="grpc_1">▼ gRPCの場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
 <p>単項RPCの場合、<code>1</code>個のリクエストとレスポンスを送受信する。</p>
-<p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
+<p>そのため、従来のHTTP/<code>1.1</code>と同じレスポンスタイムである。</p>
 <p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
 <p>この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
@@ -6842,7 +6842,7 @@
 <table>
 <thead>
 <tr>
-<th>HTTP/1.1のステータスコード</th>
+<th>HTTP/<code>1.1</code>のステータスコード</th>
 <th>gRPCのステータス番号</th>
 <th>ステータスコード</th>
 <th>説明</th>
@@ -7195,7 +7195,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-04</span>
       
     
   </small>
