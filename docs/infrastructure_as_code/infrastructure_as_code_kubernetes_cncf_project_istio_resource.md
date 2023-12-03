@@ -732,7 +732,7 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 
-#### ▼ TCPプロキシの場合
+#### ▼ `tcp_proxy`の場合
 
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナのフィルターの設定値を変更する。
 
@@ -754,12 +754,12 @@ spec:
         listener:
           filterChain:
             filter:
-              # 使用するネットワークフィルターを指定する
+              # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # tcp_proxyの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -775,12 +775,12 @@ spec:
         listener:
           filterChain:
             filter:
-              # 使用するネットワークフィルターを指定する
+              # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # tcp_proxyの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -796,12 +796,12 @@ spec:
         listener:
           filterChain:
             filter:
-              # 使用するネットワークフィルターを指定する
+              # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # tcp_proxyの直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats

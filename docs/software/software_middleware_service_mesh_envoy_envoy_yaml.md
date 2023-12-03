@@ -506,7 +506,7 @@ static_resources:
     - filter_chains:
         - filters:
             - typed_config:
-                # ネットワークフィルター (TCPプロキシ) を指定する
+                # ネットワークフィルター (tcp_proxy) を指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
 ```
 
