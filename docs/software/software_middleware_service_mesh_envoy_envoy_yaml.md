@@ -231,7 +231,7 @@ static_resources:
 
 **＊実装例＊**
 
-HTTPフィルターの一種である`http_connection_manager`を指定する。
+HTTPフィルターの一種である`network.http_connection_manager`を指定する。
 
 ```yaml
 static_resources:
@@ -469,13 +469,13 @@ RPCでは、JSON内のデータのデータ型を指定するために使用す�
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
 > - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
 
-#### ▼ `tcp_proxy`
+#### ▼ `network.tcp_proxy`
 
-`tcp_proxy`はデフォルトで有効になっているネットワークフィルターである。
+`network.tcp_proxy`はデフォルトで有効になっているネットワークフィルターである。
 
 Envoyが`L4`プロトコルを処理できるようになる。
 
-`http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
+`network.http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -495,13 +495,13 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
-#### ▼ `http_connection_manager`
+#### ▼ `network.http_connection_manager`
 
-`http_connection_manager`はデフォルトで有効になっているネットワークフィルターである。
+`network.http_connection_manager`はデフォルトで有効になっているネットワークフィルターである。
 
 Envoyが`L7`プロトコルを処理できるようになる。
 
-`tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
+`network.tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -522,9 +522,9 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
 
-#### ▼ `router`
+#### ▼ `http.router`
 
-`router`はデフォルトで有効になっているHTTPフィルターである。
+`http.router`はデフォルトで有効になっているHTTPフィルターである。
 
 ```yaml
 static_resources:
@@ -539,9 +539,9 @@ static_resources:
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
 
-#### ▼ `grpc_web`
+#### ▼ `http.grpc_web`
 
-`grpc_web`はデフォルトで有効になっているHTTPフィルターである。
+`http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
 
 ```yaml
 static_resources:
