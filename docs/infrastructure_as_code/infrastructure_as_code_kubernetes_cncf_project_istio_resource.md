@@ -656,7 +656,7 @@ spec:
     # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナ
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -678,7 +678,7 @@ spec:
     # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナ
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -725,6 +725,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 #### ▼ TCPプロキシの場合
 
@@ -741,7 +742,7 @@ spec:
     # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
     - applyTo: NETWORK_FILTER
       match:
-        # istio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナ
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -761,7 +762,7 @@ spec:
     # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
     - applyTo: NETWORK_FILTER
       match:
-        # istio-proxyコンテナ
+        # サイドカーのistio-proxyコンテナ
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -802,6 +803,7 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 <br>
 

@@ -614,9 +614,11 @@ spec:
 
 #### ▼ applyTo
 
-上書きしたい`envoy.yaml`ファイルの項目を設定する。
+適用したいフィルターを設定する。
 
 **＊実装例＊**
+
+ネットワークフィルターを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -630,6 +632,63 @@ spec:
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+
+#### ▼ context
+
+フィルターを適用する対象 (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) を設定する。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    # 何も設定しない場合、istio-ingressgatewayとサイドカーの両方に適用する
+    # - context: ""
+```
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    # サイドカーのistio-proxyコンテナのIngressリスナー後のフィルターに適用する
+    - context: SIDECAR_INBOUND
+```
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    # istio-ingressgateway内のistio-proxyコンテナに適用する
+    - context: GATEWAY
+```
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    # サイドカーのistio-proxyコンテナのEgressリスナー後のフィルターに適用する
+    - context: SIDECAR_OUTBOUND
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter
+> - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 #### ▼ match
 
