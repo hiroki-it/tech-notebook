@@ -94,7 +94,7 @@ configs:
             filters:
               - name: envoy.filters.network.http_connection_manager
                 typed_config:
-                  # ネットワークフィルター (HTTPコネクションマネージャー) を指定する
+                  # ネットワークフィルター (http_connection_manager) を指定する
                   "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                   stat_prefix: outbound_0.0.0.0_50001
                   rds:
@@ -316,7 +316,7 @@ configs:
             filters:
               - name: envoy.filters.network.http_connection_manager
                 typed_config:
-                  # ネットワークフィルター (HTTPコネクションマネージャー) を指定する
+                  # ネットワークフィルター (http_connection_manager) を指定する
                   "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                   stat_prefix: outbound_0.0.0.0_50001
                   rds:
@@ -639,7 +639,7 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 ### ネットワークフィルター
 
-#### ▼ HTTPコネクションマネージャーの場合
+#### ▼ `http_connection_manager`の場合
 
 例えば、Istioの`v1.17.5`の`istio-proxy`コンテナに
 
@@ -653,7 +653,7 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # サイドカーのistio-proxyコンテナ
@@ -675,7 +675,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # サイドカーのistio-proxyコンテナ
@@ -698,7 +698,7 @@ spec:
             type_url: type.googleapis.com/stats.PluginConfig
             value:
               disable_host_header_fallback: true
-    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: HTTP_FILTER
       match:
         # istio-ingressgateway内のistio-proxyコンテナ
@@ -739,7 +739,7 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
         # サイドカーのistio-proxyコンテナ
@@ -759,7 +759,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
         # サイドカーのistio-proxyコンテナ
@@ -779,7 +779,7 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    # HTTPフィルターの一種であるhttp_connection_managerの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
         # istio-ingressgateway内のistio-proxyコンテナ

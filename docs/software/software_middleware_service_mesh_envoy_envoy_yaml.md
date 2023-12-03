@@ -490,7 +490,7 @@ static_resources:
     - filter_chains:
         - filters:
             - typed_config:
-                # ネットワークフィルター (HTTPコネクションマネージャー) を指定する
+                # ネットワークフィルター (http_connection_manager) を指定する
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 

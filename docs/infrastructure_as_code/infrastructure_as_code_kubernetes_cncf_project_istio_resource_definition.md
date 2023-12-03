@@ -612,11 +612,11 @@ spec:
 
 ### .spec.configPatches.applyTo
 
-適用したいフィルターを設定する。
+適用したいフィルター名を設定する。
 
 **＊実装例＊**
 
-ネットワークフィルターを適用する。
+ネットワークフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -627,6 +627,40 @@ metadata:
 spec:
   configPatches:
     - applyTo: NETWORK_FILTER
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+
+**＊実装例＊**
+
+HTTPフィルターの一種である`http_connection_manager`の設定値を変更する。
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - applyTo: HTTP_FILTER
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+
+**＊実装例＊**
+
+リスナーフィルターの設定値を変更する。
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  namespace: istio-system
+  name: foo-envoy-filter
+spec:
+  configPatches:
+    - applyTo: LISTENER_FILTER
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
@@ -679,7 +713,7 @@ spec:
 
 #### ▼ context
 
-フィルターを適用する対象 (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) を設定する。
+フィルターの設定値を変更するワークロードタイプ (例：istio-ingressgateway内の`istio-proxy`コンテナ、サイドカーの`istio-proxy`コンテナ) を設定する。
 
 **＊実装例＊**
 
@@ -692,8 +726,8 @@ metadata:
 spec:
   configPatches:
     - match:
-      # 何も設定しない場合、istio-ingressgatewayとサイドカーの両方に適用する
-      # - context: ""
+        # istio-ingressgatewayとサイドカーの両方に適用する
+        - context: ANY
 ```
 
 ```yaml
@@ -760,7 +794,7 @@ spec:
         value:
           name: envoy.filters.network.http_connection_manager
           typed_config:
-            # ネットワークフィルター (HTTPコネクションマネージャー) を指定する
+            # ネットワークフィルター (http_connection_manager) を指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
