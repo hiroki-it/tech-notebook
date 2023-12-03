@@ -271,6 +271,8 @@ static_resources:
 
 Envoyが`L4`プロトコルを処理できるようになる。
 
+`http_connection_manager`とは異なり、ルート値ではなくクラスター値に処理を繋ぐ。
+
 **＊実装例＊**
 
 ```yaml
@@ -281,6 +283,9 @@ static_resources:
             - name: envoy.filters.network.tcp_proxy
               typed_config:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
+                # クラスター値
+                cluster: foo_cluster
+                ...
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
@@ -290,6 +295,8 @@ static_resources:
 `http_connection_manager`はデフォルトで有効になっているフィルターである。
 
 Envoyが`L7`プロトコルを処理できるようになる。
+
+`tcp_proxy`とは異なり、ルート値に処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -301,6 +308,10 @@ static_resources:
             - name: envoy.filters.network.http_connection_manager
               typed_config:
                 "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                # ルート値
+                route_config:
+                   name: foo_route
+                   ...
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
@@ -321,7 +332,9 @@ static_resources:
   listeners:
     - filter_chains:
         - filters:
-            - typed_config:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
                 route_config:
                   name: foo_route
                   virtual_hosts:
