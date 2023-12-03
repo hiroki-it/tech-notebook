@@ -15,19 +15,19 @@ description: リソース＠Istioの知見を記録しています。
 
 ## 01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
 
-| K8sリソース / Istioカスタムリソース  |        リスナー値        | フィルターチェイン値 |        ルート値        | クラスター値 | エンドポイント値 |
-| ------------------------------------ | :----------------------: | :------------------: | :--------------------: | :----------: | :--------------: |
-| Kubernetes Service                   |            ✅            |                      |           ✅           |      ✅      |                  |
-| Kubernetes Endpoints / EndpointSlice |                          |                      |                        |              |        ✅        |
-| Istio Gateway                        |            ✅            |                      |                        |              |                  |
-| Istio VirtualService                 | ✅<br>(TCP / HTTPの場合) |                      | ✅<br>(HTTPの場合のみ) |              |                  |
-| Istio DestinationRule                |                          |                      |                        |      ✅      |        ✅        |
-| Istio ServiceEntry                   |                          |                      |                        |      ✅      |        ✅        |
-| Istio PeerAuthentication             |            ✅            |                      |                        |      ✅      |                  |
-| Istio RequestAuthentication          |            ✅            |                      |                        |              |                  |
-| Istio AuthorizationPolicies          |            ✅            |                      |                        |              |                  |
-| Istio EnvoyFilter                    |            ✅            |          ✅          |                        |      ✅      |        ✅        |
-| Istio Sidecar                        |            ✅            |                      |           ✅           |      ✅      |        ✅        |
+| K8sリソース / Istioカスタムリソース  |        リスナー値        | フィルター値 |        ルート値        | クラスター値 | エンドポイント値 |
+| ------------------------------------ | :----------------------: | :----------: | :--------------------: | :----------: | :--------------: |
+| Kubernetes Service                   |            ✅            |              |           ✅           |      ✅      |                  |
+| Kubernetes Endpoints / EndpointSlice |                          |              |                        |              |        ✅        |
+| Istio Gateway                        |            ✅            |              |                        |              |                  |
+| Istio VirtualService                 | ✅<br>(TCP / HTTPの場合) |              | ✅<br>(HTTPの場合のみ) |              |                  |
+| Istio DestinationRule                |                          |              |                        |      ✅      |        ✅        |
+| Istio ServiceEntry                   |                          |              |                        |      ✅      |        ✅        |
+| Istio PeerAuthentication             |            ✅            |              |                        |      ✅      |                  |
+| Istio RequestAuthentication          |            ✅            |              |                        |              |                  |
+| Istio AuthorizationPolicies          |            ✅            |              |                        |              |                  |
+| Istio EnvoyFilter                    |            ✅            |      ✅      |                        |      ✅      |        ✅        |
+| Istio Sidecar                        |            ✅            |              |           ✅           |      ✅      |        ✅        |
 
 > - https://www.slideshare.net/AspenMesh/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down#19
 > - https://youtu.be/XAKY24b7XjQ?t=1131
@@ -635,7 +635,177 @@ ServiceEntryは、コンフィグストレージにサービスメッシュ外�
 
 <br>
 
-## 06. PeerAuthentication
+## 06. EnvoyFilter
+
+### ネットワークフィルター
+
+#### ▼ HTTPコネクションマネージャーの場合
+
+例えば、Istioの`v1.17.5`の`istio-proxy`コンテナに
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  labels:
+    istio.io/rev: 1-17-5
+  name: stats-filter-1.17-1-17-5
+  namespace: istio-system
+spec:
+  configPatches:
+    # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: HTTP_FILTER
+      match:
+        # istio-proxyコンテナ
+        context: SIDECAR_OUTBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+              subFilter:
+                # 使用するHTTPフィルターを指定する
+                name: envoy.filters.http.router
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value: {}
+    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: HTTP_FILTER
+      match:
+        # istio-proxyコンテナ
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+              subFilter:
+                # 使用するHTTPフィルターを指定する
+                name: envoy.filters.http.router
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value:
+              disable_host_header_fallback: true
+    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: HTTP_FILTER
+      match:
+        # istio-ingressgateway内のistio-proxyコンテナ
+        context: GATEWAY
+        listener:
+          filterChain:
+            filter:
+              name: envoy.filters.network.http_connection_manager
+              subFilter:
+                # 使用するHTTPフィルターを指定する
+                name: envoy.filters.http.router
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value:
+              disable_host_header_fallback: true
+  priority: -1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+#### ▼ TCPプロキシの場合
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  labels:
+    istio.io/rev: 1-17-5
+  name: tcp-stats-filter-1.17-1-17-5
+  namespace: istio-system
+spec:
+  configPatches:
+    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: NETWORK_FILTER
+      match:
+        # istio-proxyコンテナ
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              # 使用するネットワークフィルターを指定する
+              name: envoy.filters.network.tcp_proxy
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value: {}
+    # Egressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: NETWORK_FILTER
+      match:
+        # istio-proxyコンテナ
+        context: SIDECAR_OUTBOUND
+        listener:
+          filterChain:
+            filter:
+              # 使用するネットワークフィルターを指定する
+              name: envoy.filters.network.tcp_proxy
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value: {}
+    # Ingressリスナー配下のフィルターチェインにHTTPフィルターを適用する
+    - applyTo: NETWORK_FILTER
+      match:
+        # istio-ingressgateway内のistio-proxyコンテナ
+        context: GATEWAY
+        listener:
+          filterChain:
+            filter:
+              # 使用するネットワークフィルターを指定する
+              name: envoy.filters.network.tcp_proxy
+        proxy:
+          proxyVersion: ^1\.17.*
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: istio.stats
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/stats.PluginConfig
+            value: {}
+  priority: -1
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+
+<br>
+
+## 07. PeerAuthentication
 
 Pod間通信時に、相互TLS認証を実施する。
 
@@ -643,7 +813,7 @@ Pod間通信時に、相互TLS認証を実施する。
 
 <br>
 
-## 07. RequestAuthentication
+## 08. RequestAuthentication
 
 Pod間通信時に、JWTによるBearer認証を実施する。
 

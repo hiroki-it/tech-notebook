@@ -482,14 +482,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # ネットワークフィルター (TCP Proxy) を指定する
+            # ネットワークフィルター (TCPプロキシ) を指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # ネットワークフィルター (TCP Proxy) の場合、ルートがなく、直接クラスターを指定することになる
+            # ネットワークフィルター (TCPプロキシ) の場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50001|v1|foo-service.foo.svc.cluster.local
             statPrefix: outbound|50001|v1|foo-service.foo.svc.cluster.local
   # アウトバウンド通信のみをこのリスナーで処理する。
@@ -518,14 +518,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # ネットワークフィルター (TCP Proxy) を指定する
+            # ネットワークフィルター (TCPプロキシ) を指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # ネットワークフィルター (TCP Proxy) の場合、ルートがなく、直接クラスターを指定することになる
+            # ネットワークフィルター (TCPプロキシ) の場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50002|v1|bar-service.bar.svc.cluster.local
             statPrefix: outbound|50002|v1|bar-service.bar.svc.cluster.local
   trafficDirection: OUTBOUND
@@ -553,14 +553,14 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
             typeUrl: type.googleapis.com/envoy.extensions.filters.network.wasm.v3.Wasm
         - name: envoy.filters.network.tcp_proxy
           typedConfig:
-            # ネットワークフィルター (TCP Proxy) を指定する
+            # ネットワークフィルター (TCPプロキシ) を指定する
             "@type": type.googleapis.com/envoy.extensions.filters.network.tcp_proxy.v3.TcpProxy
             accessLog:
               - name: envoy.access_loggers.file
                 typedConfig:
                   "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
                   path: /dev/stdout
-            # ネットワークフィルター (TCP Proxy) の場合、ルートがなく、直接クラスターを指定することになる
+            # ネットワークフィルター (TCPプロキシ) の場合、ルートがなく、直接クラスターを指定することになる
             cluster: outbound|50003|v1|baz-service.baz.svc.cluster.local
             statPrefix: outbound|50003|v1|baz-service.baz.svc.cluster.local
   trafficDirection: OUTBOUND
