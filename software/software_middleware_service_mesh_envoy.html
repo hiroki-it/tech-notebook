@@ -7915,6 +7915,7 @@
 <h3 id="_32">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="ingress">▼ 外からインバウンド通信から待ち受ける (Ingressリスナー / インバウンドリスナー)<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。</p>
+<p>この時に外部が指定するURLは、<code>http://localhost:&lt;ポート番号&gt;</code>である。</p>
 <p>サービスメッシュ外や他のPodからリクエストを受信するために使用する。</p>
 <p><img alt="envoy_ingress-listener.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png" /></p>
 <blockquote>
@@ -7926,6 +7927,7 @@
 </blockquote>
 <h4 id="egress">▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)<a class="headerlink" href="#egress" title="Permanent link">&para;</a></h4>
 <p>Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。</p>
+<p>この時にローカルホストにあるマイクロサービスが指定するURLは、<code>http://&lt;マイクロサービスのホスト&gt;:&lt;ポート番号&gt;</code>である。</p>
 <p>サービスメッシュ外や他のPodにリクエストを送信するために使用する。</p>
 <p><img alt="envoy_egress-listener.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png" /></p>
 <blockquote>

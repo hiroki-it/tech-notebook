@@ -7935,9 +7935,16 @@
 <span class="w">                              </span><span class="c1"># クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)</span>
 <span class="w">                              </span><span class="c1"># ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない</span>
 <span class="w">                              </span><span class="nt">grpc_timeout_header_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+
+<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
+<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto</a></li>
 <li><a href="https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/">https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration</a></li>
@@ -8138,33 +8145,58 @@
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># HTTPフィルターを指定する</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
+<span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
+
+<span class="w">                      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
+<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
 </ul>
 </blockquote>
 <h4 id="httpgrpc_web">▼ <code>http.grpc_web</code><a class="headerlink" href="#httpgrpc_web" title="Permanent link">&para;</a></h4>
 <p><code>http.grpc_web</code>はデフォルトで有効になっているHTTPフィルターである。</p>
-<p>受信したHTTP/<code>1.1</code>リクエストをHTTP/<code>2.0</code> (例：gRPCなど) やHTTP/<code>3.0</code>に変換し、gRPCサーバーにプロキシする。</p>
+<p>受信したHTTP/<code>1.1</code>をHTTP/<code>2.0</code> (例：gRPCなど) やHTTP/<code>3.0</code>に変換し、gRPCサーバーにプロキシする。</p>
+<p>また、gRPCサーバーからのHTTP/<code>2.0</code>のレスポンスをHTTP/<code>1.1</code>に変換する。</p>
 <p><code>http.grpc_http1_bridge</code>の後継でもある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.grpc_web</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
 <span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># HTTPフィルターを指定する</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
+<span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
+
+<span class="w">                      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.grpc_web</span>
+<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
+<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb</span>
 </code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -8306,25 +8338,27 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">- connect_timeout</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25s</span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">load_assignment</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.25s</span>
+<span class="w">      </span><span class="nt">load_assignment</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">cluster_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local_service_tls</span>
 <span class="w">        </span><span class="nt">transport_socket</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.transport_sockets.tls</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># transport_sockets.tlsを指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext</span>
 <span class="w">            </span><span class="nt">common_tls_context</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># static_resources.secretsキーで定義したクライアント証明書を設定する。</span>
 <span class="w">              </span><span class="nt">tls_certificate_sds_secret_configs</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client-cert</span>
 
-<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">- filter_chains</span><span class="p p-Indicator">:</span>
+
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">transport_socket</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.transport_sockets.tls</span>
 <span class="w">          </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># transport_sockets.tlsを指定する</span>
 <span class="w">            </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext</span>
 <span class="w">            </span><span class="nt">common_tls_context</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># static_resources.secretsキーで定義したSSL証明書を設定する。</span>
@@ -8332,6 +8366,8 @@
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">server-cert</span>
 <span class="w">              </span><span class="nt">validation_context_sds_secret_config</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">validation_context</span>
+
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 
 <span class="w">  </span><span class="nt">secrets</span><span class="p">:</span>
 <span class="w">    </span><span class="c1">## SSL証明書</span>
