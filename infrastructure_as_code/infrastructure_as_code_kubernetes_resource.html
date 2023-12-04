@@ -9332,7 +9332,16 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p><br></p>
 <h3 id="ingress_3">Ingressコントローラー<a class="headerlink" href="#ingress_3" title="Permanent link">&para;</a></h3>
 <h4 id="ingress_4">▼ Ingressコントローラー<a class="headerlink" href="#ingress_4" title="Permanent link">&para;</a></h4>
-<p>IngressコントローラーはNode外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
+<p>Ingressコントローラーは、<code>L7</code>ロードバランサーとしてPodに通信をルーティングする。</p>
+<p>Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
+<p>クラウドプロバイダー (例：AWS) では、Ingressコントローラー状況下でIngressを作成すると、Ingressの設定値に応じた<code>L7</code>ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
+<p>ただし、クラウドプロバイダーによっては、IngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。</p>
+<p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8">https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="service_1">▼ Serviceとは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
@@ -9379,13 +9388,6 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <li><a href="https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/">https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/</a></li>
 <li><a href="https://thinkit.co.jp/article/18263">https://thinkit.co.jp/article/18263</a></li>
 <li><a href="https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF">https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF</a></li>
-</ul>
-</blockquote>
-<p>ただし、クラウドプロバイダーによってはIngressコントローラーとClusterIP Serviceを仲介するカスタムリソース (例：AWS TargetGroupBindings、など) を提供している場合がある。</p>
-<p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8">https://qiita.com/k-sasaki-hisys-biz/items/895cd2e3dd9baff45bd8</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
@@ -10220,7 +10222,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>
