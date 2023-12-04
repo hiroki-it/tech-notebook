@@ -235,6 +235,16 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
+#### ▼ インバウンド通信 / アウトバウンド通信 の場合
+
+インバウンド通信 / アウトバウンド通信であっても、同じである。
+
+インバウンド通信の場合はリスナーはIngressリスナーとして、アウトバウンド通信も場合はEgressリスナーとして、同じ構成の処理を辿る。
+
+> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
+> - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=10
+> - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=12
+
 #### ▼ アップストリーム/ダウンストリーム
 
 アップストリームは、Envoyのレスポンスの送信元を表す。
@@ -993,7 +1003,7 @@ service EndpointDiscoveryService {
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
-この時に外部が指定するURLは、`http://localhost:<ポート番号>`である。
+この時、Envoyは`http://localhost:<ポート番号>`で待ち受け、一方で外部が指定するURLも`http://localhost:<ポート番号>`である。
 
 サービスメッシュ外や他のPodからリクエストを受信するために使用する。
 
@@ -1002,12 +1012,13 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
 > - https://blog.51cto.com/wangguishe/5789228
+> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 
 #### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー / アウトバウンドリスナー)
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
-この時にローカルホストにあるマイクロサービスが指定するURLは、`http://<マイクロサービスのホスト>:<ポート番号>`である。
+この時、Envoyは`http://0.0.0.0:<ポート番号>`で待ち受け、一方でローカルホストにあるマイクロサービスが指定するURLは`http://<マイクロサービスのホスト>:<ポート番号>`である。
 
 サービスメッシュ外や他のPodにリクエストを送信するために使用する。
 
@@ -1016,6 +1027,7 @@ Envoyは、リバースプロキシとして、ローカルホストにあるマ
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
 > - https://blog.51cto.com/wangguishe/5789228
+> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 
 #### ▼ ローカルホスト外にあるマイクロサービスにプロキシする
 
