@@ -606,6 +606,29 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
 
+#### ▼ tls.certificate系
+
+相互TLSの場合に、使用するSSL証明書を設定する。
+
+設定しない場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てる。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  namespace: istio-system
+  name: foo-destination-rule
+spec:
+  trafficPolicy:
+    tls:
+      mode: MUTUAL
+      clientCertificate: /etc/certs/myclientcert.pem
+      privateKey: /etc/certs/client_private_key.pem
+      caCertificates: /etc/certs/rootcacerts.pem
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+
 <br>
 
 ## 04. EnvoyFilter
