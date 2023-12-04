@@ -7539,6 +7539,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 <h2 id="06-l7">06. <code>L7</code>ロードバランサー<a class="headerlink" href="#06-l7" title="Permanent link">&para;</a></h2>
 <h3 id="l7"><code>L7</code>ロードバランサーとは<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h3>
 <p><code>L7</code>プロトコル (例：HTTP、TCP) の通信のヘッダー情報に基づいて、通信をロードバランシングする。</p>
+<p><code>L4</code>のヘッダー情報を失うわけではなく、あくまでパケットの<code>L7</code>プロトコルの情報を使用するだけである。</p>
 <p><code>L7</code>プロトコルは、ヘッダーに宛先の情報 (例：完全修飾ドメイン名、パス) をもっている。</p>
 <p><code>L7</code>ロードバランサーは、これらの情報に基づいて通信を待ち受けているサーバーに、通信をロードバランシングする。</p>
 <blockquote>
@@ -7554,7 +7555,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>
