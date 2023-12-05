@@ -7594,7 +7594,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <span class="w">    </span><span class="nt">requiredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodegroup</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodetype</span>
 <span class="w">              </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -7672,7 +7672,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h4 id="nodeselector">▼ nodeSelector<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h4>
 <p>チャート内のDeploymentの<code>.spec.template.spec.nodeSelector</code>キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">nodeSelector</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-group</span>
+<span class="w">  </span><span class="nt">node.kubernetes.io/nodetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <h4 id="podsecuritycontext">▼ podSecurityContext<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h4>
 <p>チャート内のDeploymentの<code>.spec.template.spec.securityContext</code>キーに値を設定する。</p>
@@ -7730,7 +7730,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>

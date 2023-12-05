@@ -15926,7 +15926,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo Hello World</span>
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnFailure</span>
 <span class="w">      </span><span class="nt">nodeSelector</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-group</span>
+<span class="w">        </span><span class="nt">node.kubernetes.io/nodetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -16193,9 +16193,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodegroup</span><span class="w"> </span><span class="c1"># metadata.labelsキー</span>
+<span class="w">            </span><span class="c1"># metadata.labelsキー</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodetype</span>
 <span class="w">              </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">              </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="c1"># metadata.labelsキーの値</span>
+<span class="w">              </span><span class="c1"># metadata.labelsキーの値</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-group</span>
 <span class="w">              </span><span class="c1"># 開発環境であれば minikubeを指定する。</span>
 <span class="w">              </span><span class="c1"># - minikube</span>
@@ -16413,7 +16415,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
 <span class="w">              </span><span class="c1"># PodをスケジューリングさせたいNodeのmetadata.labelsキー</span>
 <span class="w">              </span><span class="c1"># ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodegroup</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodetype</span>
 <span class="w">                </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">                </span><span class="c1"># 指定した値をキーに持つNodeに、Podをスケジューリングさせる。</span>
 <span class="w">                </span><span class="nt">values</span><span class="p">:</span>
@@ -17543,7 +17545,7 @@ app-*****<span class="w">   </span>init-1,init-2<span class="w">   </span>app
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">  </span><span class="nt">nodeSelector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-node-group</span>
+<span class="w">    </span><span class="nt">node.kubernetes.io/nodetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -19368,7 +19370,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>

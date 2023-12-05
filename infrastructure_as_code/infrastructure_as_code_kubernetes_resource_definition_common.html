@@ -7348,10 +7348,23 @@
 <p><br></p>
 <h3 id="node">Nodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="nodekubernetesio">▼ <code>node.kubernetes.io</code>キー<a class="headerlink" href="#nodekubernetesio" title="Permanent link">&para;</a></h4>
-<p>Nodeの情報を設定する。
-| キー | 値の例 | 説明 |
-|--------------------------------| ---------------------------- | -------------------------------------------------------------------------- |
-| <code>node.kubernetes.io/nodegroup</code> | <code>batch</code>、<code>ingress</code>、<code>master</code> | コンテナを持つPodのスケジューリング先とするNodeグループを設定する。 |</p>
+<p>Nodeの情報を設定する。</p>
+<table>
+<thead>
+<tr>
+<th>キー</th>
+<th>値の例</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>node.kubernetes.io/nodetype</code></td>
+<td><code>batch</code>、<code>ingress</code>、<code>master</code></td>
+<td>コンテナを持つPodのスケジューリング先とするNodeグループを設定する。</td>
+</tr>
+</tbody>
+</table>
 <h4 id="node-rolekubernetesio">▼ <code>node-role.kubernetes.io</code>キー<a class="headerlink" href="#node-rolekubernetesio" title="Permanent link">&para;</a></h4>
 <p>Nodeのtaintsを設定する。</p>
 <table>
@@ -7632,7 +7645,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>

@@ -7150,8 +7150,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster create &quot;${CI_PIPELINE_ID}&quot; --image rancher/k3s:v&quot;${K8S_NEXT_VERSION}&quot;-k3s1 --agents 2</span>
 <span class="w">    </span><span class="c1"># Nodeにラベル付けする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-0 node.kubernetes.io/nodegroup=ingress</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodegroup=system</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-0 node.kubernetes.io/nodetype=ingress</span>
+<span class="w">      </span><span class="no">kubectl label node k3d-&quot;${CI_PIPELINE_ID}&quot;-agent-1 node.kubernetes.io/nodetype=system</span>
 <span class="w">    </span><span class="c1"># 動作を確認する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get node --show-labels</span>
@@ -7210,7 +7210,7 @@ istioctl<span class="w"> </span>version
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>

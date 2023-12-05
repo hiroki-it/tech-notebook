@@ -6911,7 +6911,7 @@
 <p><br></p>
 <h3 id="node_3">Nodeグループの粒度<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h3>
 <p>node affinityやnode selectorを実施できるように、<code>.metadata.labels</code>キーにNodeグループ名を設定しておく。</p>
-<p>キー名は、<code>node.kubernetes.io/nodegroup</code>とする。</p>
+<p>キー名は、<code>node.kubernetes.io/nodetype</code>とする。</p>
 <table>
 <thead>
 <tr>
@@ -6951,7 +6951,7 @@
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">node.kubernetes.io/nodegroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch</span>
+<span class="w">    </span><span class="nt">node.kubernetes.io/nodetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <blockquote>
@@ -7491,7 +7491,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>
