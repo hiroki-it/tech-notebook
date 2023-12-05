@@ -4454,6 +4454,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubelet-configjson-kubeletconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubelet-config.jsonファイル (KubeletConfiguration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザーデータファイル
@@ -8874,6 +8883,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#kubelet-configjson-kubeletconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubelet-config.jsonファイル (KubeletConfiguration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       ユーザーデータファイル
@@ -10263,6 +10281,51 @@
 <h4 id="ec2nodeami_3">▼ EC2ワーカーNodeのカスタムAMIとは<a class="headerlink" href="#ec2nodeami_3" title="Permanent link">&para;</a></h4>
 <p>EC2ワーカーNodeの最適化AMIではないAMIのこと。</p>
 <p><br></p>
+<h3 id="kubelet-configjson-kubeletconfiguration"><code>kubelet-config.json</code>ファイル (KubeletConfiguration)<a class="headerlink" href="#kubelet-configjson-kubeletconfiguration" title="Permanent link">&para;</a></h3>
+<p>EC2ワーカーNodeのkubeletを設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;KubeletConfiguration&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;kubelet.config.k8s.io/v1beta1&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;address&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;authentication&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;anonymous&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;enabled&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">&quot;x509&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;clientCAFile&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/etc/kubernetes/pki/ca.crt&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;authorization&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">&quot;mode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Webhook&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;webhook&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;cacheAuthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;5m0s&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;cacheUnauthorizedTTL&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;30s&quot;</span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;clusterDomain&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cluster.local&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;hairpinMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hairpin-veth&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;readOnlyPort&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;cgroupDriver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cgroupfs&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;cgroupRoot&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;featureGates&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;RotateKubeletServerCertificate&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">&quot;protectKernelDefaults&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;serializeImagePulls&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">false</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;serverTLSBootstrap&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">true</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">&quot;tlsCipherSuites&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">[</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_256_GCM_SHA384&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">      </span><span class="s">&quot;TLS_RSA_WITH_AES_128_GCM_SHA256&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">    </span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet-config.json">https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet-config.json</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="_30">ユーザーデータファイル<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="_31">▼ ユーザーデータファイルとは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <p>EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
@@ -10372,7 +10435,7 @@
 </blockquote>
 <h4 id="ec2node_2">▼ EC2ワーカーNodeのイメージキャッシュ削除<a class="headerlink" href="#ec2node_2" title="Permanent link">&para;</a></h4>
 <p>kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。</p>
-<p><code>--image-gc-high-threshold</code>オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
+<p>KubeletConfigurationの<code>--image-gc-high-threshold</code>オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
 <p><code>--image-gc-low-threshold</code>オプションで、解放しようとするディスク使用率を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ディスク使用率が<code>70</code>%を超過した場合に、ディスク使用率<code>50</code>%分を解放する。</p>
@@ -10408,7 +10471,7 @@
 <p>デフォルトでは、EC2ワーカーNodeは新しいPodのスケジューリングを禁止した後、Podの退避を待たずに停止してしまう。</p>
 <p>kubeletを使用してEC2ワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeから退避させる) までの時間を稼ぐ。</p>
 <p>ワーカーNodeの停止までの待機中に終了できたPodは、<code>Failed</code>ステータスとなる。</p>
-<p>kubeletの<code>--shutdown-grace-period</code>オプション (<code>shutdownGracePeriod</code>) で、ワーカーNodeの停止を待機する期間を設定する。</p>
+<p>KubeletConfigurationの<code>--shutdown-grace-period</code>オプション (<code>shutdownGracePeriod</code>) で、ワーカーNodeの停止を待機する期間を設定する。</p>
 <p>また<code>--shutdown-grace-period-critical-pods</code>オプション (<code>shutdownGracePeriodCriticalPods</code>) で、特に重要なPodの終了のために待機する時間を設定する。</p>
 <p><code>InhibitDelayMaxSec</code>には、<code>--shutdown-grace-period</code>オプションと同じ秒数 (単位は不要) を設定する。</p>
 <p>注意点として、この時間が長すぎると、ワーカーNodeの停止の全体時間が長くなるため、結果的にローリングアップグレードでNodeの所要時間も長くなってしまう。</p>
