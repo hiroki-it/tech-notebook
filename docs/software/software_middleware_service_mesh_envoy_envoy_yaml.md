@@ -265,170 +265,6 @@ static_resources:
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
 
-#### ▼ typed_config.route_config
-
-特定のルーティング先に関する処理を設定する。
-
-| 項目            | 説明                                                                                                                                                                                                      |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`          | ルート名を設定する。                                                                                                                                                                                      |
-| `virtual_hosts` | ルーティング先を設定する。特に`domains`キーには、受信するインバウンド通信の`Host`ヘッダーの値を設定する。補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。 |
-
-**＊実装例＊**
-
-```yaml
-static_resources:
-  listeners:
-    - filter_chains:
-        - filters:
-            - name: envoy.filters.network.http_connection_manager
-              typed_config:
-                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
-                route_config:
-                  name: foo_route
-                  virtual_hosts:
-                    # 仮想ホスト名
-                    - name: foo_service
-                      # ホストベースルーティング
-                      domains:
-                        - "*"
-                      routes:
-                        - match:
-                            # パスベースルーティング
-                            prefix: "/"
-                          route:
-                            cluster: foo_cluster
-                            timeout: 30s
-                            max_stream_duration:
-                              # ストリーミングRPCの確立後のタイムアウト時間を設定する
-                              max_connection_duration: 15
-                              # ストリーミングRPC全体のタイムアウト時間を設定する
-                              max_stream_duration: 30
-                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)
-                              # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
-                              grpc_timeout_header_max: 30
-
-                http_filters:
-                  - name: envoy.filters.http.router
-                    typed_config:
-                      # HTTPフィルターを指定する
-                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
-```
-
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
-> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
-
-なお、`max_stream_duration`は`max_grpc_timeout`の移行先として追加された設定である。
-
-> - https://github.com/envoyproxy/envoy/issues/12578
-> - https://github.com/envoyproxy/envoy/pull/13018
-
-Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
-
-gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を`grpc-timeout`ヘッダーに設定する。
-
-一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、`grpc-timeout`ヘッダーとは別にタイムアウトを管理する。
-
-これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。
-
-<!-- prettier-ignore-start -->
-
-```mermaid
-sequenceDiagram
-
-    foo->>envoy (client): クライアントストリーミング<br>(grpc-timeout: 25s)
-    envoy (client)->>envoy (server): 
-    envoy (server)->>bar: 
-
-    foo->>envoy (client): 
-    envoy (client)->>envoy (server): 
-    envoy (server)->>bar: 
-
-    foo->>envoy (client): 
-    envoy (client)->>envoy (server): 
-    envoy (server)->>bar: 
-
-    envoy (client)->>envoy (client): 全てのリクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
-
-    bar-->>envoy (server): grpc-timeout<br>残り25s
-
-    envoy (server)-->>envoy (client): grpc-timeout<br>残り10s
-
-    envoy (client)-->>foo: grpc-timeout<br>残り5s
-```
-
-<!-- prettier-ignore-end -->
-
-例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。
-
-gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。
-
-そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
-
-<!-- prettier-ignore-start -->
-
-```mermaid
-sequenceDiagram
-
-    foo->>envoy (client): Unary RPC<br>(grpc-timeout: 25s)
-    envoy (client)->>envoy (server): 
-    envoy (server)->>bar: 
-    envoy (client)->>envoy (client): リクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
-
-    envoy (client)->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
-    envoy (client)-->>foo: タイムアウト
-    foo->>foo: Unavailable
-
-    bar->>bar: DeadlineExceeded<br>(25s)
-    bar-->>envoy (server): タイムアウト
-```
-
-<!-- prettier-ignore-end -->
-
-```yaml
-# 期待する例外スロー
-gRPCクライアント # タイムアウト (DeadlineExceededを受信)
-⬇⬆︎︎
-⬇⬆︎︎
-Envoy
-⬇⬆︎︎
---------------
-⬇⬆︎︎
-Envoy
-⬇⬆︎︎
-⬇⬆︎︎
-gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
-```
-
-```yaml
-gRPCクライアント # タイムアウト (Unavailableを受信)
-⬇⬆︎︎
-⬇⬆︎︎
-Envoy
-⬇⬆︎︎
---------------
-⬇⬆︎︎
-Envoy
-⬇⬆︎︎
-⬇⬆︎︎
-gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
-```
-
-> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
-
-しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
-
-> - https://github.com/envoyproxy/envoy/issues/16129
-> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
-
-そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
-
-> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
-> - https://github.com/istio/istio/issues/45141
-> - https://github.com/istio/istio/pull/42049
-
 #### ▼ http_protocol_options
 
 ```yaml
@@ -598,6 +434,215 @@ static_resources:
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
+
+<br>
+
+### filter_chains.filters.typed_config.route_config
+
+#### ▼ route_configとは
+
+特定のルーティング先に関する処理を設定する。
+
+#### ▼ `virtual_hosts`
+
+仮想ホスト名を設定する。
+
+Envoyが、複数のドメインを仮想的に持ち、ホストヘッダーで合致した条件に応じて分岐できる。
+
+特に`domains`キーには、受信するインバウンド通信の`Host`ヘッダーの値を設定する。
+
+補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
+
+**＊実装例＊**
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                route_config:
+                  name: foo_route
+                  virtual_hosts:
+                    # 仮想ホスト名
+                    - name: foo_service
+                      # ホストベースルーティング
+                      domains:
+                        - "*"
+                      routes:
+                        - match:
+                            # パスベースルーティング
+                            prefix: "/"
+                          route:
+                            cluster: foo_cluster
+
+                            ...
+
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      # HTTPフィルターを指定する
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+```
+
+> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
+> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
+
+#### ▼ `virtual_hosts.routes.route.max_stream_duration`
+
+`max_stream_duration`は`max_grpc_timeout`の移行先として追加された設定である。
+
+**＊実装例＊**
+
+```yaml
+static_resources:
+  listeners:
+    - filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                route_config:
+                  name: foo_route
+                  virtual_hosts:
+                    # 仮想ホスト名
+                    - name: foo_service
+                      # ホストベースルーティング
+                      domains:
+                        - "*"
+                      routes:
+                        - match:
+                            # パスベースルーティング
+                            prefix: "/"
+                          route:
+                            cluster: foo_cluster
+                            timeout: 30s
+                            max_stream_duration:
+                              # ストリーミングRPCの確立後のタイムアウト時間を設定する
+                              max_connection_duration: 15
+                              # ストリーミングRPC全体のタイムアウト時間を設定する
+                              max_stream_duration: 30
+                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)
+                              # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
+                              grpc_timeout_header_max: 30
+
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      # HTTPフィルターを指定する
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+```
+
+> - https://github.com/envoyproxy/envoy/issues/12578
+> - https://github.com/envoyproxy/envoy/pull/13018
+
+Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
+
+gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を`grpc-timeout`ヘッダーに設定する。
+
+一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、`grpc-timeout`ヘッダーとは別にタイムアウトを管理する。
+
+これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。
+
+<!-- prettier-ignore-start -->
+
+```mermaid
+sequenceDiagram
+
+    foo->>envoy (client): クライアントストリーミング<br>(grpc-timeout: 25s)
+    envoy (client)->>envoy (server): 
+    envoy (server)->>bar: 
+
+    foo->>envoy (client): 
+    envoy (client)->>envoy (server): 
+    envoy (server)->>bar: 
+
+    foo->>envoy (client): 
+    envoy (client)->>envoy (server): 
+    envoy (server)->>bar: 
+
+    envoy (client)->>envoy (client): 全てのリクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+
+    bar-->>envoy (server): grpc-timeout<br>残り25s
+
+    envoy (server)-->>envoy (client): grpc-timeout<br>残り10s
+
+    envoy (client)-->>foo: grpc-timeout<br>残り5s
+```
+
+<!-- prettier-ignore-end -->
+
+例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。
+
+gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。
+
+そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
+
+<!-- prettier-ignore-start -->
+
+```mermaid
+sequenceDiagram
+
+    foo->>envoy (client): Unary RPC<br>(grpc-timeout: 25s)
+    envoy (client)->>envoy (server): 
+    envoy (server)->>bar: 
+    envoy (client)->>envoy (client): リクエスト送信後に<br>grpc-timeoutとは別に<br>タイムアウト時間を管理
+
+    envoy (client)->>envoy (client): タイムアウト時間切れで<br>grpc-timeoutの前に通信を切断<br>(24.9s)
+    envoy (client)-->>foo: タイムアウト
+    foo->>foo: Unavailable
+
+    bar->>bar: DeadlineExceeded<br>(25s)
+    bar-->>envoy (server): タイムアウト
+```
+
+<!-- prettier-ignore-end -->
+
+```yaml
+# 期待する例外スロー
+gRPCクライアント # タイムアウト (DeadlineExceededを受信)
+⬇⬆︎︎
+⬇⬆︎︎
+Envoy
+⬇⬆︎︎
+--------------
+⬇⬆︎︎
+Envoy
+⬇⬆︎︎
+⬇⬆︎︎
+gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+```
+
+```yaml
+gRPCクライアント # タイムアウト (Unavailableを受信)
+⬇⬆︎︎
+⬇⬆︎︎
+Envoy
+⬇⬆︎︎
+--------------
+⬇⬆︎︎
+Envoy
+⬇⬆︎︎
+⬇⬆︎︎
+gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+```
+
+> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
+
+しかし、移行先の`max_stream_duration`にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。
+
+> - https://github.com/envoyproxy/envoy/issues/16129
+> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
+
+そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
+
+> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
+> - https://github.com/istio/istio/issues/45141
+> - https://github.com/istio/istio/pull/42049
 
 <br>
 
@@ -1035,7 +1080,7 @@ staticResources:
       http2ProtocolOptions: {}
       name: xdsCluster
       type: static
-      # xds-apiの宛先情報を設定する。
+      # xds-apiの宛先情報を設定する
       loadAssignment:
         clusterName: xdsCluster
         endpoints:
@@ -1043,8 +1088,8 @@ staticResources:
               - endpoint:
                   address:
                     pipe:
-                      # ここではソケットファイルを指定している。
-                      # envoyとxds-apiのプロセス間で、パケットを送受信する。
+                      # ここではソケットファイルを指定する
+                      # envoyとxds-apiのプロセス間で、パケットを送受信する
                       path: ./etc/istio/proxy/xds
 ```
 

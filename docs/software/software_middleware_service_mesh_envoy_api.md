@@ -254,7 +254,7 @@ configs:
   dynamic_endpoint_configs:
     - endpoint_config:
         "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
-        # エンドポイントの親クラスター名を指定している。
+        # エンドポイントの親クラスター名を指定する
         cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
         endpoints:
            # bar-podのあるリージョン
@@ -386,7 +386,7 @@ configs:
           ads: {}
           initial_fetch_timeout: 0s
           resource_api_version: V3
-        # 本クラスターに紐づくエンドポイントの親クラスター名を指定している。
+        # 本クラスターに紐づくエンドポイントの親クラスター名を指定する
         # https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/cluster/v3/cluster.proto#envoy-v3-api-field-config-cluster-v3-cluster-edsclusterconfig-service-name
         service_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
   ...
@@ -495,7 +495,7 @@ configs:
                       ads: {}
                       initial_fetch_timeout: 0s
                       resource_api_version: V3
-                    # 本リスナーに紐づくルート名を指定している。
+                    # 本リスナーに紐づくルート名を指定する
                     route_config_name: 50002
   ...
 
@@ -540,7 +540,6 @@ configs:
         # Kubernetes上では、Serviecの完全修飾ドメイン名が仮想ホスト名になる
         - name: bar-service.bar-namespace.svc.cluster.local:50002
           # ホストベースルーティング
-          # 仮想ホストにより、複数のホストヘッダーを条件にできる
           domains:
             - bar-service.bar-namespace.svc.cluster.local
             - bar-service.bar-namespace.svc.cluster.local:50002
@@ -556,7 +555,7 @@ configs:
             - match:
                 prefix: /
               route:
-                # 本ルートに紐づくクラスター名を指定している
+                # 本ルートに紐づくクラスター名を指定する
                 cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
                 timeout: 0s
                 retry_policy:

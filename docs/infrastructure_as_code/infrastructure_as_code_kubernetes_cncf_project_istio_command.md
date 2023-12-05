@@ -557,7 +557,7 @@ ENDPOINT                                              STATUS      OUTLIER CHECK 
 127.0.0.1:15000                                      HEALTHY     OK                prometheus_stats
 127.0.0.1:15020                                      HEALTHY     OK                agent
 
-# Unixドメインソケットでソケットファイルを指定している。
+# Unixドメインソケットでソケットファイルを指定する
 unix://./etc/istio/proxy/SDS                         HEALTHY     OK                sds-grpc
 unix://./etc/istio/proxy/XDS                         HEALTHY     OK                xds-grpc
 ```

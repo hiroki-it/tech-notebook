@@ -672,7 +672,6 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
   virtualHosts:
     - name: foo-service.foo-namespace.svc.cluster.local:50001
       # ホストベースルーティング
-      # 仮想ホストにより、複数のホストヘッダーを条件にできる
       domains:
         - foo-service.foo-namespace.svc.cluster.local
         - foo-service.foo-namespace.svc.cluster.local:50001
@@ -705,7 +704,6 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
   virtualHosts:
     - name: bar-service.bar-namespace.svc.cluster.local:50002
       # ホストベースルーティング
-      # 仮想ホストにより、複数のホストヘッダーを条件にできる
       domains:
         - bar-service.bar-namespace.svc.cluster.local
         - bar-service.bar-namespace.svc.cluster.local:50002
@@ -734,7 +732,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 - name: "50003"
   virtualHosts:
     - name: baz-service.baz-namespace.svc.cluster.local:50003
-      # 仮想ホストにより、複数のホストヘッダーを条件にできる
+      # ホストベースルーティング
       domains:
         - baz-service.baz-namespace.svc.cluster.local
         - baz-service.baz-namespace.svc.cluster.local:50003
