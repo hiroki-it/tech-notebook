@@ -39,37 +39,25 @@ karpenterコントローラーは、Karpenterのカスタムコントローラ�
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 
-#### ▼ Finalizer
+<br>
 
-Nodeの削除はKarpenterが管理する。
-
-Karpenter外から削除操作 (例：`kubectl delete`コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。
-
-> - https://karpenter.sh/docs/concepts/#disrupting-nodes
-
-#### ▼ Expiration
+### disruption-controller
 
 記入中...
 
-> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+<br>
 
-#### ▼ Consolidation
+### termination-controller
 
-記入中...
+EC2ワーカーNodeの削除命令を検知し、EC2ワーカーNodeのGraceful Shutdownから削除までを行う。
 
-> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。
 
-#### ▼ Drift
+そのため、`kubelet-config.json`ファイル (KubeletConfiguration)の`--shutdown-grace-period`オプションを使用する必要がある。
 
-記入中...
+一方で、Karpenterを使用すると、termination-controllerがGraceful Shutdownを実施してくれる。
 
-> - https://karpenter.sh/docs/concepts/#disrupting-nodes
-
-#### ▼ Interruption
-
-記入中...
-
-> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+> - https://karpenter.sh/docs/concepts/disruption/#termination-controller
 
 <br>
 
@@ -142,6 +130,42 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 #### ▼ コスト
 
 ハードウェアリソースが過剰に余っている場合、より低いインスタンスタイプのNodeにスケールインする。
+
+<br>
+
+### 削除対象のNode選定
+
+#### ▼ Finalizer
+
+Nodeの削除はKarpenterが管理する。
+
+Karpenter外から削除操作 (例：`kubectl delete`コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Expiration
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Consolidation
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Drift
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
+
+#### ▼ Interruption
+
+記入中...
+
+> - https://karpenter.sh/docs/concepts/#disrupting-nodes
 
 <br>
 
