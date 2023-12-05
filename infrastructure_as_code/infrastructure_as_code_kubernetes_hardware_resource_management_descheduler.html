@@ -6261,11 +6261,11 @@
 <p>その後、kube-schedulerがより適切なNodeにPodを再スケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>-n<span class="w"> </span>foo
 
-<span class="c1"># deschedulerがPodを退避する</span>
+<span class="c1"># deschedulerがPodを退避させる</span>
 35m<span class="w">         </span>Normal<span class="w">   </span>LowNodeUtilization<span class="w">       </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>pod<span class="w"> </span>evicted<span class="w"> </span>from<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal<span class="w"> </span>node<span class="w"> </span>by<span class="w"> </span>sigs.k8s.io/descheduler
 35m<span class="w">         </span>Normal<span class="w">   </span>Killing<span class="w">                  </span>pod/foo-5c844554c5-6nk2r<span class="w">            </span>Stopping<span class="w"> </span>container<span class="w"> </span>foo
 
-<span class="c1"># kube-schedulerがPodを再スケジューリングする</span>
+<span class="c1"># kube-schedulerがPodを再スケジューリングさせる</span>
 35m<span class="w">         </span>Normal<span class="w">   </span>Scheduled<span class="w">                </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Successfully<span class="w"> </span>assigned<span class="w"> </span>foo-5c844554c5-vgdjl<span class="w"> </span>to<span class="w"> </span>ip-*-*-*-*.ap-northeast-1.compute.internal
 35m<span class="w">         </span>Normal<span class="w">   </span>Pulled<span class="w">                   </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Container<span class="w"> </span>image<span class="w"> </span><span class="s2">&quot;public.ecr.aws/docker/library/foo:*.*.*&quot;</span><span class="w"> </span>already<span class="w"> </span>present<span class="w"> </span>on<span class="w"> </span>machine
 35m<span class="w">         </span>Normal<span class="w">   </span>Created<span class="w">                  </span>pod/foo-5c844554c5-vgdjl<span class="w">            </span>Created<span class="w"> </span>container<span class="w"> </span>foo
@@ -6414,7 +6414,7 @@
 <p><br></p>
 <h3 id="deschedulerpolicy_1">DeschedulerPolicy<a class="headerlink" href="#deschedulerpolicy_1" title="Permanent link">&para;</a></h3>
 <h4 id="lownodeutilization">▼ LowNodeUtilization<a class="headerlink" href="#lownodeutilization" title="Permanent link">&para;</a></h4>
-<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避する。</p>
+<p>Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。</p>
 <p>さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。</p>
 <p>注意点として、ターゲット閾値と閾値が近いと、Node間でPodが退避 (descheduler) と再スケジューリング (kube-scheduler) を繰り返す状態になってしまう。</p>
 <p>Nodeのハードウェアリソース使用量とPod数がターゲット閾値と閾値の間にある場合、つまりターゲット閾値を超過するNodeが存在せず、閾値よりも低いNodeが存在しない場合、deschedulerは何もしない。</p>
@@ -6559,7 +6559,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>

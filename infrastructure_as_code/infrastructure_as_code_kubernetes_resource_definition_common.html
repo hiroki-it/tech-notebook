@@ -4079,6 +4079,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ラベルの設定方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nodekubernetesio" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ node.kubernetes.ioキー
@@ -4159,7 +4168,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       確認方法
     </span>
@@ -4192,7 +4201,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       名前は変更不可
     </span>
@@ -6727,6 +6736,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ ラベルの設定方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nodekubernetesio" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ node.kubernetes.ioキー
@@ -6807,7 +6825,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       確認方法
     </span>
@@ -6840,7 +6858,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       名前は変更不可
     </span>
@@ -7347,6 +7365,15 @@
 </table>
 <p><br></p>
 <h3 id="node">Nodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ ラベルの設定方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>kubeletの<code>--node-labels</code>オプションを使用すると、Nodeにラベルを設定できる。</p>
+<div class="highlight"><pre><span></span><code>--node-labels<span class="o">=</span><span class="nv">nodetype</span><span class="o">=</span>foo
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/">https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/</a></li>
+</ul>
+</blockquote>
 <h4 id="nodekubernetesio">▼ <code>node.kubernetes.io</code>キー<a class="headerlink" href="#nodekubernetesio" title="Permanent link">&para;</a></h4>
 <p>Nodeの情報を設定する。</p>
 <table>
@@ -7466,7 +7493,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_5">確認方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">確認方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><code>.metadata.managedFields</code>キーを確認する場合、<code>kubectl get</code>コマンドで<code>-o</code>オプションと<code>--show-managed-fields</code>オプションを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>--show-managed-fields
 </code></pre></div>
@@ -7535,7 +7562,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_6">名前は変更不可<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">名前は変更不可<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>Kubernetesにとって<code>.metadata.name</code>キーはIDであり、後から変更できない。</p>
 <p>もし別の名前に変更したい場合は、再作成する必要がある。</p>
 <blockquote>
