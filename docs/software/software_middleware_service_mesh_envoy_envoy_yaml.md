@@ -287,13 +287,14 @@ static_resources:
                 route_config:
                   name: foo_route
                   virtual_hosts:
+                    # 仮想ホスト名
                     - name: foo_service
-                      # ホストベース
+                      # ホストベースルーティング
                       domains:
                         - "*"
                       routes:
                         - match:
-                            # パスベース
+                            # パスベースルーティング
                             prefix: "/"
                           route:
                             cluster: foo_cluster
@@ -546,6 +547,7 @@ static_resources:
                 route_config:
                   name: foo_route
                   virtual_hosts:
+                    # 仮想ホスト名
                     - name: foo_service
 
                       ...
@@ -581,6 +583,7 @@ static_resources:
                 route_config:
                   name: foo_route
                   virtual_hosts:
+                    # 仮想ホスト名
                     - name: foo_service
 
                       ...

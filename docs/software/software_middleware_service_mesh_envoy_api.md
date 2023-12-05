@@ -536,8 +536,11 @@ configs:
       name: 50002
       virtual_hosts:
         # 仮想ホスト名
-        # foo-podからbar-podにリクエストを送信する時に選ばれる。
+        # foo-podからbar-podにリクエストを送信する時に選ばれる
+        # Kubernetes上では、Serviecの完全修飾ドメイン名が仮想ホスト名になる
         - name: bar-service.bar-namespace.svc.cluster.local:50002
+          # ホストベースルーティング
+          # 仮想ホストにより、複数のホストヘッダーを条件にできる
           domains:
             - bar-service.bar-namespace.svc.cluster.local
             - bar-service.bar-namespace.svc.cluster.local:50002
@@ -553,7 +556,7 @@ configs:
             - match:
                 prefix: /
               route:
-                # 本ルートに紐づくクラスター名を指定している。
+                # 本ルートに紐づくクラスター名を指定している
                 cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
                 timeout: 0s
                 retry_policy:

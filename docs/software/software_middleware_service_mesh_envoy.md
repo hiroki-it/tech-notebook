@@ -360,19 +360,21 @@ static_resources:
                 route_config:
                   - name: "50001"
                     virtual_hosts:
-                      - name: foo-host
-                        # ホストベース
+                      # 仮想ホスト名
+                      - name: foo_service
+                        # ホストベースルーティング
                         domains:
                           - "*"
                         # ルートのリスト
                         routes:
                           - match:
-                              # パスベース
+                              # パスベースルーティング
                               prefix: /
                             route:
                               # クラスター
                               cluster: foo-cluster
                       - name: allow_any
+                        # ホストベースルーティング
                         domains:
                           - "*"
                         routes:
@@ -382,7 +384,8 @@ static_resources:
                               cluster: PassthroughCluster
                   - name: "50002"
                     virtual_hosts:
-                      - name: bar-host
+                      # 仮想ホスト名
+                      - name: bar_service
                         domains:
                           - "*"
                         routes:
@@ -400,7 +403,9 @@ static_resources:
                               cluster: PassthroughCluster
                   - name: "50003"
                     virtual_hosts:
-                      - name: baz-host
+                      # 仮想ホスト名
+                      - name: baz_service
+                        # ホストベースルーティング
                         domains:
                           - "*"
                         routes:
@@ -409,6 +414,7 @@ static_resources:
                             route:
                               cluster: baz-cluster
                       - name: allow_any
+                        # ホストベースルーティング
                         domains:
                           - "*"
                         routes:
@@ -665,7 +671,8 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 - name: "50001"
   virtualHosts:
     - name: foo-service.foo-namespace.svc.cluster.local:50001
-      # ホストベース
+      # ホストベースルーティング
+      # 仮想ホストにより、複数のホストヘッダーを条件にできる
       domains:
         - foo-service.foo-namespace.svc.cluster.local
         - foo-service.foo-namespace.svc.cluster.local:50001
@@ -680,7 +687,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
       # ルートのリスト
       routes:
         - match:
-            # パスベース
+            # パスベースルーティング
             prefix: /
           route:
             # クラスター (ここではKubernetesのService)
@@ -697,6 +704,8 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 - name: "50002"
   virtualHosts:
     - name: bar-service.bar-namespace.svc.cluster.local:50002
+      # ホストベースルーティング
+      # 仮想ホストにより、複数のホストヘッダーを条件にできる
       domains:
         - bar-service.bar-namespace.svc.cluster.local
         - bar-service.bar-namespace.svc.cluster.local:50002
@@ -725,6 +734,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 - name: "50003"
   virtualHosts:
     - name: baz-service.baz-namespace.svc.cluster.local:50003
+      # 仮想ホストにより、複数のホストヘッダーを条件にできる
       domains:
         - baz-service.baz-namespace.svc.cluster.local
         - baz-service.baz-namespace.svc.cluster.local:50003
