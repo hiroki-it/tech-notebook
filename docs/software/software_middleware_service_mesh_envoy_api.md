@@ -256,11 +256,13 @@ configs:
         "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
         # エンドポイントの親クラスター名を指定する
         cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+        # いずれかのエンドポイントにロードバランシング
         endpoints:
            # bar-podのあるリージョン
           - locality:
               region: ap-northeast-1
               zone: ap-northeast-1a
+            # いずれかのエンドポイントにロードバランシング
             lb_endpoints:
               - endpoint:
                   address:
@@ -281,6 +283,7 @@ configs:
           - locality:
               region: ap-northeast-1
               zone: ap-northeast-1d
+            # いずれかのエンドポイントにロードバランシング
             lb_endpoints:
               - endpoint:
                   address:
@@ -301,6 +304,7 @@ configs:
           - locality:
               region: ap-northeast-1
               zone: ap-northeast-1d
+            # いずれかのエンドポイントにロードバランシング
             lb_endpoints:
               - endpoint:
                   address:

@@ -37,7 +37,7 @@ Envoyは、マイクロサービスへのアクセスログ (インバウンド�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
 
-なお、`%REQ()`を使用して、好きなリクエストヘッダーの値を出力できる。
+なお、`%REQ()`を使用して、好きなリクエストヘッダー値を出力できる。
 
 これは、例えばユーザー定義のIDを使用している場合に役立つ。
 

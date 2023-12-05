@@ -708,7 +708,7 @@ $ istioctl proxy-config routes foo-pod \
   virtualHosts:
     # Node外からfoo-podにインバウンド通信を送信する時に選ばれる。
     - name: foo-service.foo-namespace.svc.cluster.local:50001
-      # Hostヘッダーの値を指定する。合致した場合に、この仮想ホストが選ばれる。
+      # Hostヘッダー値を指定する。合致した場合に、この仮想ホストが選ばれる。
       # 網羅的に検知できるように、色々なパターンを指定する。
       domains:
         - foo-service.foo-namespace.svc.cluster.local

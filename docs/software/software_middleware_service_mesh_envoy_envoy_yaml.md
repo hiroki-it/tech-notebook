@@ -447,9 +447,9 @@ static_resources:
 
 仮想ホスト名を設定する。
 
-Envoyが、複数のドメインを仮想的に持ち、ホストヘッダーで合致した条件に応じて分岐できる。
+Envoyが、複数のドメインを仮想的に持ち、`Host`ヘッダー値で合致した条件に応じて分岐できる。
 
-特に`domains`キーには、受信するインバウンド通信の`Host`ヘッダーの値を設定する。
+特に`domains`キーには、受信するインバウンド通信の`Host`ヘッダー値を設定する。
 
 補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
@@ -768,6 +768,7 @@ static_resources:
   clusters:
     - load_assignment:
         endpoints:
+          # いずれかのエンドポイントにロードバランシング
           - lb_endpoints:
               - endpoint:
                   address: 192.168.0.1 # クラスターのIPアドレス
@@ -1027,11 +1028,13 @@ static_resources:
     # XDS-APIをクラスターとする。
     - name: xds_cluster
       connect_timeout: 0.25s
+      # ロードバランシングアルゴリズム
       lb_policy: ROUND_ROBIN
       http2_protocol_options: {}
       load_assignment:
         cluster_name: xds_cluster
         endpoints:
+          # いずれかのエンドポイントにロードバランシング
           - lb_endpoints:
               - endpoint:
                   address:
@@ -1043,6 +1046,7 @@ static_resources:
     - name: services_cluster
       type: EDS
       connect_timeout: 0.25s
+      # ロードバランシングアルゴリズム
       lb_policy: ROUND_ROBIN
       eds_cluster_config:
         eds_config:

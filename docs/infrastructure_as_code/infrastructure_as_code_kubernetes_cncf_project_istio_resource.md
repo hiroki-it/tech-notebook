@@ -522,6 +522,7 @@ configs:
     - endpoint_config:
         "@type": type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment
         cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
+        # いずれかのエンドポイントにロードバランシング
         endpoints:
           - locality:
               region: ap-northeast-1

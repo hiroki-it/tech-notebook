@@ -1854,7 +1854,7 @@ class FooController extends Controller
 
 返却されるResponseFactoryクラスの`view`メソッドに、レンダリングしたいデータ (テンプレート、array型データ、ステータスコードなど) を設定する。
 
-また、Viewクラスの`header`メソッドにHTTPヘッダーの値を設定する。
+また、Viewクラスの`header`メソッドにHTTPヘッダー値を設定する。
 
 `response`ヘルパーは初期値として`200`ステータスが設定されているが、`view`メソッドや`setStatusCode`メソッドを使用して、明示的に設定しても良い。
 

@@ -779,6 +779,7 @@ static_resources:
     - name: foo-cluster
       connect_timeout: 0.25s
       type: STATIC
+      # ロードバランシングアルゴリズム
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: foo-cluster
@@ -800,9 +801,11 @@ static_resources:
     - name: bar-cluster
       connect_timeout: 0.25s
       type: STATIC
+      # ロードバランシングアルゴリズム
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: bar-cluster
+        # いずれかのエンドポイントにロードバランシング
         endpoints:
           - lb_endpoints:
               - endpoint:
@@ -819,9 +822,11 @@ static_resources:
     - name: baz-cluster
       connect_timeout: 0.25s
       type: STATIC
+      # ロードバランシングアルゴリズム
       lb_policy: ROUND_ROBIN
       load_assignment:
         cluster_name: baz-cluster
+        # いずれかのエンドポイントにロードバランシング
         endpoints:
           - lb_endpoints:
               - endpoint:
