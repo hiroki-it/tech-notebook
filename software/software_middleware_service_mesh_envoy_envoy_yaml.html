@@ -2064,15 +2064,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#typed_configroute_config" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ typed_config.route_config
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#http_protocol_options" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ http_protocol_options
@@ -2145,6 +2136,48 @@
   <a href="#httpgrpc_web" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ http.grpc_web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter_chainsfilterstyped_configroute_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter_chains.filters.typed_config.route_config
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="filter_chains.filters.typed_config.route_config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#route_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ route_configとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ virtual_hosts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_hostsroutesroutemax_stream_duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ virtual_hosts.routes.route.max_stream_duration
     </span>
   </a>
   
@@ -7112,15 +7145,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#typed_configroute_config" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ typed_config.route_config
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#http_protocol_options" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ http_protocol_options
@@ -7193,6 +7217,48 @@
   <a href="#httpgrpc_web" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ http.grpc_web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filter_chainsfilterstyped_configroute_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      filter_chains.filters.typed_config.route_config
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="filter_chains.filters.typed_config.route_config">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#route_config" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ route_configとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ virtual_hosts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_hostsroutesroutemax_stream_duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ virtual_hosts.routes.route.max_stream_duration
     </span>
   </a>
   
@@ -7885,173 +7951,6 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto</a></li>
 </ul>
 </blockquote>
-<h4 id="typed_configroute_config">▼ typed_config.route_config<a class="headerlink" href="#typed_configroute_config" title="Permanent link">&para;</a></h4>
-<p>特定のルーティング先に関する処理を設定する。</p>
-<table>
-<thead>
-<tr>
-<th>項目</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code></td>
-<td>ルート名を設定する。</td>
-</tr>
-<tr>
-<td><code>virtual_hosts</code></td>
-<td>ルーティング先を設定する。特に<code>domains</code>キーには、受信するインバウンド通信の<code>Host</code>ヘッダーの値を設定する。補足として<code>Host</code>ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>＊実装例＊</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
-<span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
-<span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
-<span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
-<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
-<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
-<span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
-<span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
-<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
-<span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
-<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">                            </span><span class="c1"># パスベースルーティング</span>
-<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
-<span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
-<span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
-<span class="w">                            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
-<span class="w">                            </span><span class="nt">max_stream_duration</span><span class="p">:</span>
-<span class="w">                              </span><span class="c1"># ストリーミングRPCの確立後のタイムアウト時間を設定する</span>
-<span class="w">                              </span><span class="nt">max_connection_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
-<span class="w">                              </span><span class="c1"># ストリーミングRPC全体のタイムアウト時間を設定する</span>
-<span class="w">                              </span><span class="nt">max_stream_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-<span class="w">                              </span><span class="c1"># クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)</span>
-<span class="w">                              </span><span class="c1"># ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない</span>
-<span class="w">                              </span><span class="nt">grpc_timeout_header_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
-
-<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
-<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
-<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
-<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
-<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto</a></li>
-<li><a href="https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/">https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/</a></li>
-<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration</a></li>
-</ul>
-</blockquote>
-<p>なお、<code>max_stream_duration</code>は<code>max_grpc_timeout</code>の移行先として追加された設定である。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/envoyproxy/envoy/issues/12578">https://github.com/envoyproxy/envoy/issues/12578</a></li>
-<li><a href="https://github.com/envoyproxy/envoy/pull/13018">https://github.com/envoyproxy/envoy/pull/13018</a></li>
-</ul>
-</blockquote>
-<p>Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
-<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
-<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーとは別にタイムアウトを管理する。</p>
-<p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
-<!-- prettier-ignore-start -->
-
-<pre class="mermaid"><code>sequenceDiagram
-
-    foo-&gt;&gt;envoy (client): クライアントストリーミング&lt;br&gt;(grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): 
-    envoy (server)-&gt;&gt;bar: 
-
-    foo-&gt;&gt;envoy (client): 
-    envoy (client)-&gt;&gt;envoy (server): 
-    envoy (server)-&gt;&gt;bar: 
-
-    foo-&gt;&gt;envoy (client): 
-    envoy (client)-&gt;&gt;envoy (server): 
-    envoy (server)-&gt;&gt;bar: 
-
-    envoy (client)-&gt;&gt;envoy (client): 全てのリクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
-
-    bar--&gt;&gt;envoy (server): grpc-timeout&lt;br&gt;残り25s
-
-    envoy (server)--&gt;&gt;envoy (client): grpc-timeout&lt;br&gt;残り10s
-
-    envoy (client)--&gt;&gt;foo: grpc-timeout&lt;br&gt;残り5s</code></pre>
-<!-- prettier-ignore-end -->
-
-<p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
-<p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
-<p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
-<!-- prettier-ignore-start -->
-
-<pre class="mermaid"><code>sequenceDiagram
-
-    foo-&gt;&gt;envoy (client): Unary RPC&lt;br&gt;(grpc-timeout: 25s)
-    envoy (client)-&gt;&gt;envoy (server): 
-    envoy (server)-&gt;&gt;bar: 
-    envoy (client)-&gt;&gt;envoy (client): リクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
-
-    envoy (client)-&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;grpc-timeoutの前に通信を切断&lt;br&gt;(24.9s)
-    envoy (client)--&gt;&gt;foo: タイムアウト
-    foo-&gt;&gt;foo: Unavailable
-
-    bar-&gt;&gt;bar: DeadlineExceeded&lt;br&gt;(25s)
-    bar--&gt;&gt;envoy (server): タイムアウト</code></pre>
-<!-- prettier-ignore-end -->
-
-<div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
-<span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">--------------</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (Unavailableを受信)</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">--------------</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
-</ul>
-</blockquote>
-<p>しかし、移行先の<code>max_stream_duration</code>にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/envoyproxy/envoy/issues/16129">https://github.com/envoyproxy/envoy/issues/16129</a></li>
-<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029</a></li>
-</ul>
-</blockquote>
-<p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code>を使用し続けている。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
-<li><a href="https://github.com/istio/istio/issues/45141">https://github.com/istio/istio/issues/45141</a></li>
-<li><a href="https://github.com/istio/istio/pull/42049">https://github.com/istio/istio/pull/42049</a></li>
-</ul>
-</blockquote>
 <h4 id="http_protocol_options">▼ http_protocol_options<a class="headerlink" href="#http_protocol_options" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
@@ -8200,6 +8099,194 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge</a></li>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="filter_chainsfilterstyped_configroute_config">filter_chains.filters.typed_config.route_config<a class="headerlink" href="#filter_chainsfilterstyped_configroute_config" title="Permanent link">&para;</a></h3>
+<h4 id="route_config">▼ route_configとは<a class="headerlink" href="#route_config" title="Permanent link">&para;</a></h4>
+<p>特定のルーティング先に関する処理を設定する。</p>
+<h4 id="virtual_hosts">▼ <code>virtual_hosts</code><a class="headerlink" href="#virtual_hosts" title="Permanent link">&para;</a></h4>
+<p>仮想ホスト名を設定する。</p>
+<p>Envoyが、複数のドメインを仮想的に持ち、ホストヘッダーで合致した条件に応じて分岐できる。</p>
+<p>特に<code>domains</code>キーには、受信するインバウンド通信の<code>Host</code>ヘッダーの値を設定する。</p>
+<p>補足として<code>Host</code>ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
+<span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
+<span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
+<span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
+<span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">                            </span><span class="c1"># パスベースルーティング</span>
+<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
+
+<span class="w">                            </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
+<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration">https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto</a></li>
+<li><a href="https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/">https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/</a></li>
+<li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration</a></li>
+</ul>
+</blockquote>
+<h4 id="virtual_hostsroutesroutemax_stream_duration">▼ <code>virtual_hosts.routes.route.max_stream_duration</code><a class="headerlink" href="#virtual_hostsroutesroutemax_stream_duration" title="Permanent link">&para;</a></h4>
+<p><code>max_stream_duration</code>は<code>max_grpc_timeout</code>の移行先として追加された設定である。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filters</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.network.http_connection_manager</span>
+<span class="w">              </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager</span>
+<span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
+<span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
+<span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
+<span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
+<span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
+<span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
+<span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
+<span class="w">                            </span><span class="c1"># パスベースルーティング</span>
+<span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
+<span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
+<span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
+<span class="w">                            </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+<span class="w">                            </span><span class="nt">max_stream_duration</span><span class="p">:</span>
+<span class="w">                              </span><span class="c1"># ストリーミングRPCの確立後のタイムアウト時間を設定する</span>
+<span class="w">                              </span><span class="nt">max_connection_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="w">                              </span><span class="c1"># ストリーミングRPC全体のタイムアウト時間を設定する</span>
+<span class="w">                              </span><span class="nt">max_stream_duration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">                              </span><span class="c1"># クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)</span>
+<span class="w">                              </span><span class="c1"># ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない</span>
+<span class="w">                              </span><span class="nt">grpc_timeout_header_max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+
+<span class="w">                </span><span class="nt">http_filters</span><span class="p">:</span>
+<span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.filters.http.router</span>
+<span class="w">                    </span><span class="nt">typed_config</span><span class="p">:</span>
+<span class="w">                      </span><span class="c1"># HTTPフィルターを指定する</span>
+<span class="w">                      </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.router.v3.Router</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/12578">https://github.com/envoyproxy/envoy/issues/12578</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/pull/13018">https://github.com/envoyproxy/envoy/pull/13018</a></li>
+</ul>
+</blockquote>
+<p>Envoyは、gRPCのストリーミングのタイムアウトを適切に処理できておらず、<code>max_grpc_timeout</code>は非推奨となった。</p>
+<p>gRPCは、TCPコネクションの確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を<code>grpc-timeout</code>ヘッダーに設定する。</p>
+<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウトを開始し、<code>grpc-timeout</code>ヘッダーとは別にタイムアウトを管理する。</p>
+<p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
+<!-- prettier-ignore-start -->
+
+<pre class="mermaid"><code>sequenceDiagram
+
+    foo-&gt;&gt;envoy (client): クライアントストリーミング&lt;br&gt;(grpc-timeout: 25s)
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+
+    foo-&gt;&gt;envoy (client): 
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+
+    foo-&gt;&gt;envoy (client): 
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+
+    envoy (client)-&gt;&gt;envoy (client): 全てのリクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
+
+    bar--&gt;&gt;envoy (server): grpc-timeout&lt;br&gt;残り25s
+
+    envoy (server)--&gt;&gt;envoy (client): grpc-timeout&lt;br&gt;残り10s
+
+    envoy (client)--&gt;&gt;foo: grpc-timeout&lt;br&gt;残り5s</code></pre>
+<!-- prettier-ignore-end -->
+
+<p>例えば、gRPCサーバーでタイムアウトが起こった時、適切にエラーを処理できない。</p>
+<p>gRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまう。</p>
+<p>そのため、gRPCクライアントにて、ステータスコードを<code>DeadlineExceeded</code>ではなく、<code>Unavailable</code>としてしまう。</p>
+<!-- prettier-ignore-start -->
+
+<pre class="mermaid"><code>sequenceDiagram
+
+    foo-&gt;&gt;envoy (client): Unary RPC&lt;br&gt;(grpc-timeout: 25s)
+    envoy (client)-&gt;&gt;envoy (server): 
+    envoy (server)-&gt;&gt;bar: 
+    envoy (client)-&gt;&gt;envoy (client): リクエスト送信後に&lt;br&gt;grpc-timeoutとは別に&lt;br&gt;タイムアウト時間を管理
+
+    envoy (client)-&gt;&gt;envoy (client): タイムアウト時間切れで&lt;br&gt;grpc-timeoutの前に通信を切断&lt;br&gt;(24.9s)
+    envoy (client)--&gt;&gt;foo: タイムアウト
+    foo-&gt;&gt;foo: Unavailable
+
+    bar-&gt;&gt;bar: DeadlineExceeded&lt;br&gt;(25s)
+    bar--&gt;&gt;envoy (server): タイムアウト</code></pre>
+<!-- prettier-ignore-end -->
+
+<div class="highlight"><pre><span></span><code><span class="c1"># 期待する例外スロー</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを受信)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">gRPCクライアント</span><span class="w"> </span><span class="c1"># タイムアウト (Unavailableを受信)</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">Envoy</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆︎︎</span>
+<span class="l l-Scalar l-Scalar-Plain">gRPCサーバー</span><span class="w"> </span><span class="c1"># タイムアウト (DeadlineExceededを投げる)</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
+</ul>
+</blockquote>
+<p>しかし、移行先の<code>max_stream_duration</code>にもgRPCストリーミングのレスポンスの送信とタイムアウトの切断のタイミングに問題がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/envoyproxy/envoy/issues/16129">https://github.com/envoyproxy/envoy/issues/16129</a></li>
+<li><a href="https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029">https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029</a></li>
+</ul>
+</blockquote>
+<p>そこで、サービスメッシュツール (例：Istio) では、<code>max_grpc_timeout</code>を使用し続けている。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
+<li><a href="https://github.com/istio/istio/issues/45141">https://github.com/istio/istio/issues/45141</a></li>
+<li><a href="https://github.com/istio/istio/pull/42049">https://github.com/istio/istio/pull/42049</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -8556,7 +8643,7 @@
 <span class="w">      </span><span class="nt">http2ProtocolOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xdsCluster</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">static</span>
-<span class="w">      </span><span class="c1"># xds-apiの宛先情報を設定する。</span>
+<span class="w">      </span><span class="c1"># xds-apiの宛先情報を設定する</span>
 <span class="w">      </span><span class="nt">loadAssignment</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xdsCluster</span>
 <span class="w">        </span><span class="nt">endpoints</span><span class="p">:</span>
@@ -8564,8 +8651,8 @@
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">                    </span><span class="nt">pipe</span><span class="p">:</span>
-<span class="w">                      </span><span class="c1"># ここではソケットファイルを指定している。</span>
-<span class="w">                      </span><span class="c1"># envoyとxds-apiのプロセス間で、パケットを送受信する。</span>
+<span class="w">                      </span><span class="c1"># ここではソケットファイルを指定する</span>
+<span class="w">                      </span><span class="c1"># envoyとxds-apiのプロセス間で、パケットを送受信する</span>
 <span class="w">                      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./etc/istio/proxy/xds</span>
 </code></pre></div>
 <h4 id="set_node_on_first_message_only">▼ set_node_on_first_message_only<a class="headerlink" href="#set_node_on_first_message_only" title="Permanent link">&para;</a></h4>

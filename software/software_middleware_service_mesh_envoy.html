@@ -7637,7 +7637,6 @@
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
 <span class="w">      </span><span class="c1"># ホストベースルーティング</span>
-<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
@@ -7670,7 +7669,6 @@
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
 <span class="w">      </span><span class="c1"># ホストベースルーティング</span>
-<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
@@ -7699,7 +7697,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50003&quot;</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
-<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
+<span class="w">      </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
