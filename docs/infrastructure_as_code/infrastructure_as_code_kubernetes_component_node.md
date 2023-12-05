@@ -144,7 +144,7 @@ $ kubelet \
 
 > - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
 
-#### ▼ kubelet-config.jsonファイル
+#### ▼ `kubelet-config.json`ファイル (KubeletConfiguration)
 
 kubeletを設定する。
 

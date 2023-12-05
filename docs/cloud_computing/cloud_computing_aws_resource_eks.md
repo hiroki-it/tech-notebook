@@ -968,6 +968,53 @@ EC2ワーカーNodeの最適化AMIではないAMIのこと。
 
 <br>
 
+### `kubelet-config.json`ファイル (KubeletConfiguration)
+
+EC2ワーカーNodeのkubeletを設定する。
+
+```yaml
+{
+  "kind": "KubeletConfiguration",
+  "apiVersion": "kubelet.config.k8s.io/v1beta1",
+  "address": "0.0.0.0",
+  "authentication":
+    {
+      "anonymous": {"enabled": false},
+      "webhook": {"cacheTTL": "2m0s", "enabled": true},
+      "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
+    },
+  "authorization":
+    {
+      "mode": "Webhook",
+      "webhook": {"cacheAuthorizedTTL": "5m0s", "cacheUnauthorizedTTL": "30s"},
+    },
+  "clusterDomain": "cluster.local",
+  "hairpinMode": "hairpin-veth",
+  "readOnlyPort": 0,
+  "cgroupDriver": "cgroupfs",
+  "cgroupRoot": "/",
+  "featureGates": {"RotateKubeletServerCertificate": true},
+  "protectKernelDefaults": true,
+  "serializeImagePulls": false,
+  "serverTLSBootstrap": true,
+  "tlsCipherSuites":
+    [
+      "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+      "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+      "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+      "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+      "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+      "TLS_RSA_WITH_AES_256_GCM_SHA384",
+      "TLS_RSA_WITH_AES_128_GCM_SHA256",
+    ],
+}
+```
+
+> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet-config.json
+
+<br>
+
 ### ユーザーデータファイル
 
 #### ▼ ユーザーデータファイルとは
@@ -1059,7 +1106,7 @@ source "${EXPORT_ENVS}"
 
 kubeletのガベージコレクションを使用して、イメージキャッシュを削除する。
 
-`--image-gc-high-threshold`オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。
+KubeletConfigurationの`--image-gc-high-threshold`オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。
 
 `--image-gc-low-threshold`オプションで、解放しようとするディスク使用率を設定する。
 
@@ -1102,7 +1149,7 @@ kubeletを使用してEC2ワーカーNodeの停止を待機し、Podが終了す
 
 ワーカーNodeの停止までの待機中に終了できたPodは、`Failed`ステータスとなる。
 
-kubeletの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で、ワーカーNodeの停止を待機する期間を設定する。
+KubeletConfigurationの`--shutdown-grace-period`オプション (`shutdownGracePeriod`) で、ワーカーNodeの停止を待機する期間を設定する。
 
 また`--shutdown-grace-period-critical-pods`オプション (`shutdownGracePeriodCriticalPods`) で、特に重要なPodの終了のために待機する時間を設定する。
 
