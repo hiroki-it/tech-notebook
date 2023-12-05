@@ -507,8 +507,8 @@ spec:
           name: ubuntu
           resources:
             requests:
-              cpu: 1000
-              memory: 2000Mi
+              cpu: 1000m
+              memory: 2048Mi
       priorityClassName: foo-balloon
       terminationGracePeriodSeconds: 0
       # Podを同じゾーンにスケジューリングさせない

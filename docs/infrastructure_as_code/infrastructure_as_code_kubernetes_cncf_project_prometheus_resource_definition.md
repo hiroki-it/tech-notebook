@@ -433,8 +433,8 @@ spec:
           - "ReadWriteOnce"
         resources:
           limits:
-            cpu: "1"
-            memory: 1Gi
+            cpu: 1
+            memory: 1024Mi
           requests:
             cpu: 50m
             memory: 400Mi

@@ -409,8 +409,8 @@ metadata:
   name: foo-nodepool
 spec:
   limits:
-    cpu: 1000
-    memory: 1000Gi
+    cpu: 1000m
+    memory: 1024Mi
 ```
 
 > - https://www.eksworkshop.com/docs/autoscaling/compute/karpenter/setup-provisioner/

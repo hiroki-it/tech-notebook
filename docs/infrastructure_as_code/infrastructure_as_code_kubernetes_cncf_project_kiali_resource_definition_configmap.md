@@ -95,8 +95,8 @@ data:
     replicas: 1
     resources:
       limits:
-        cpu: "1"
-        memory: 1000Mi
+        cpu: 1000m
+        memory: 1024Mi
       requests:
         cpu: 200m
         memory: 128Mi
