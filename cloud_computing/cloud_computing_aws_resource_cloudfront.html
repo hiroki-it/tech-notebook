@@ -7841,7 +7841,7 @@
 <tr>
 <td>TTL</td>
 <td>CloudFrontにキャッシュを保存しておく秒数を詳細に設定する。</td>
-<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダーの値の組み合わせによって決まる。</td>
+<td>・Min、Max、Default、の全てを<code>0</code>秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小TTLはゼロである必要がある。<br>・キャッシュの最終的な有効期間は、CloudFrontのTTL秒の設定、<code>Cache-Control</code>ヘッダー、<code>Expires</code>ヘッダー値の組み合わせによって決まる。</td>
 </tr>
 <tr>
 <td>Whitelist Header</td>
@@ -7899,7 +7899,7 @@
 <p>CloudFrontとオリジン間でHTTPSプロトコルを使用する場合、両方にSSL証明書を割り当てる必要がある。</p>
 <p>割り当てたとしても、以下の条件を満たさないとHTTPSプロトコルを使用することはできない。</p>
 <p>CLoudFrontからオリジンに<code>Host</code>ヘッダーをルーティングしない設定の場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれている必要がある。</p>
-<p>一方で、<code>Host</code>ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、<code>Host</code>ヘッダーの値と一致するドメイン名が含まれている必要がある。</p>
+<p>一方で、<code>Host</code>ヘッダーをルーティングしない場合、オリジンが返却する証明書に『Origin Domain Name』と一致するドメイン名が含まれているか、またはオリジンが返却する証明書に、<code>Host</code>ヘッダー値と一致するドメイン名が含まれている必要がある。</p>
 <p><br></p>
 <h3 id="reports-analytics">Reports &amp; analytics<a class="headerlink" href="#reports-analytics" title="Permanent link">&para;</a></h3>
 <h4 id="cache-statistics">▼ Cache statistics<a class="headerlink" href="#cache-statistics" title="Permanent link">&para;</a></h4>
@@ -8141,7 +8141,7 @@ The document tree is shown below.
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>

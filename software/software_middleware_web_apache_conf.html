@@ -7510,8 +7510,8 @@
 <h4 id="virtualhost_1">▼ VirtualHostとは<a class="headerlink" href="#virtualhost_1" title="Permanent link">&para;</a></h4>
 <p>ディレクティブを囲うディレクティブの一種。</p>
 <p>特定のホスト名やIPアドレスにリクエストがあった時に実行するディレクティブを設定する。</p>
-<p>Apacheの稼働するサーバーが、複数のドメインを仮想的に持ち、ホストヘッダーで合致した条件に応じて分岐できる。</p>
-<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、リクエストの<code>Host</code>ヘッダー値がいずれのServerName値と一致するかで決まる。</p>
+<p>Apacheの稼働するサーバーが、複数のドメインを仮想的に持ち、リクエストの<code>Host</code>ヘッダー値で合致した条件に応じて分岐できる。</p>
+<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、<code>Host</code>ヘッダー値がいずれのServerName値と一致するかで決まる。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html">https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html</a></li>

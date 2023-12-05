@@ -6551,11 +6551,13 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">        </span><span class="s">&quot;@type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.config.endpoint.v3.ClusterLoadAssignment</span>
 <span class="w">        </span><span class="c1"># エンドポイントの親クラスター名を指定する</span>
 <span class="w">        </span><span class="nt">cluster_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
+<span class="w">        </span><span class="c1"># いずれかのエンドポイントにロードバランシング</span>
 <span class="w">        </span><span class="nt">endpoints</span><span class="p">:</span>
 <span class="w">           </span><span class="c1"># bar-podのあるリージョン</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 <span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1a</span>
+<span class="w">            </span><span class="c1"># いずれかのエンドポイントにロードバランシング</span>
 <span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
@@ -6576,6 +6578,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 <span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1d</span>
+<span class="w">            </span><span class="c1"># いずれかのエンドポイントにロードバランシング</span>
 <span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
@@ -6596,6 +6599,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">locality</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 <span class="w">              </span><span class="nt">zone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1d</span>
+<span class="w">            </span><span class="c1"># いずれかのエンドポイントにロードバランシング</span>
 <span class="w">            </span><span class="nt">lb_endpoints</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">endpoint</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">address</span><span class="p">:</span>
