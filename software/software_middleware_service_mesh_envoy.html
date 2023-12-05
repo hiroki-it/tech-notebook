@@ -7335,19 +7335,21 @@
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50001&quot;</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
-<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-host</span>
-<span class="w">                        </span><span class="c1"># ホストベース</span>
+<span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
+<span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                        </span><span class="c1"># ルートのリスト</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">                              </span><span class="c1"># パスベース</span>
+<span class="w">                              </span><span class="c1"># パスベースルーティング</span>
 <span class="w">                              </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">                            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                              </span><span class="c1"># クラスター</span>
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-cluster</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
+<span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
@@ -7357,7 +7359,8 @@
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50002&quot;</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
-<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-host</span>
+<span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar_service</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
@@ -7375,7 +7378,9 @@
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PassthroughCluster</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50003&quot;</span>
 <span class="w">                    </span><span class="nt">virtual_hosts</span><span class="p">:</span>
-<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-host</span>
+<span class="w">                      </span><span class="c1"># 仮想ホスト名</span>
+<span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz_service</span>
+<span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
@@ -7384,6 +7389,7 @@
 <span class="w">                            </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                              </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-cluster</span>
 <span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow_any</span>
+<span class="w">                        </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                        </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                        </span><span class="nt">routes</span><span class="p">:</span>
@@ -7630,7 +7636,8 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50001&quot;</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
-<span class="w">      </span><span class="c1"># ホストベース</span>
+<span class="w">      </span><span class="c1"># ホストベースルーティング</span>
+<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
@@ -7645,7 +7652,7 @@
 <span class="w">      </span><span class="c1"># ルートのリスト</span>
 <span class="w">      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># パスベース</span>
+<span class="w">            </span><span class="c1"># パスベースルーティング</span>
 <span class="w">            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">            </span><span class="c1"># クラスター (ここではKubernetesのService)</span>
@@ -7662,6 +7669,8 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50002&quot;</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
+<span class="w">      </span><span class="c1"># ホストベースルーティング</span>
+<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
@@ -7690,6 +7699,7 @@
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50003&quot;</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
+<span class="w">      </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baz-service.baz-namespace.svc.cluster.local:50003</span>
@@ -8012,7 +8022,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>

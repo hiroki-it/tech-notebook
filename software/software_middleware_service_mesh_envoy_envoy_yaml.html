@@ -7916,13 +7916,14 @@
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
-<span class="w">                      </span><span class="c1"># ホストベース</span>
+<span class="w">                      </span><span class="c1"># ホストベースルーティング</span>
 <span class="w">                      </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">                      </span><span class="nt">routes</span><span class="p">:</span>
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">                            </span><span class="c1"># パスベース</span>
+<span class="w">                            </span><span class="c1"># パスベースルーティング</span>
 <span class="w">                            </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/&quot;</span>
 <span class="w">                          </span><span class="nt">route</span><span class="p">:</span>
 <span class="w">                            </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
@@ -8151,6 +8152,7 @@
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
 
 <span class="w">                      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -8182,6 +8184,7 @@
 <span class="w">                </span><span class="nt">route_config</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_route</span>
 <span class="w">                  </span><span class="nt">virtual_hosts</span><span class="p">:</span>
+<span class="w">                    </span><span class="c1"># 仮想ホスト名</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_service</span>
 
 <span class="w">                      </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -8608,7 +8611,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>

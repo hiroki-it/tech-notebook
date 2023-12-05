@@ -6807,8 +6807,11 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50002</span>
 <span class="w">      </span><span class="nt">virtual_hosts</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># 仮想ホスト名</span>
-<span class="w">        </span><span class="c1"># foo-podからbar-podにリクエストを送信する時に選ばれる。</span>
+<span class="w">        </span><span class="c1"># foo-podからbar-podにリクエストを送信する時に選ばれる</span>
+<span class="w">        </span><span class="c1"># Kubernetes上では、Serviecの完全修飾ドメイン名が仮想ホスト名になる</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
+<span class="w">          </span><span class="c1"># ホストベースルーティング</span>
+<span class="w">          </span><span class="c1"># 仮想ホストにより、複数のホストヘッダーを条件にできる</span>
 <span class="w">          </span><span class="nt">domains</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar-service.bar-namespace.svc.cluster.local:50002</span>
@@ -6824,7 +6827,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">              </span><span class="nt">route</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># 本ルートに紐づくクラスター名を指定している。</span>
+<span class="w">                </span><span class="c1"># 本ルートに紐づくクラスター名を指定している</span>
 <span class="w">                </span><span class="nt">cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local</span>
 <span class="w">                </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0s</span>
 <span class="w">                </span><span class="nt">retry_policy</span><span class="p">:</span>
@@ -6891,7 +6894,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>
