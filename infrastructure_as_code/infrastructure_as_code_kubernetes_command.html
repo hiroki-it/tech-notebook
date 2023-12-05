@@ -8055,7 +8055,7 @@ secret/foo-secret<span class="w"> </span>created
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p>Podを終了する。</p>
-<p>Podの場合、オプションの無い<code>kubectl delete</code>コマンドが安全な削除となる。</p>
+<p>Podの場合、オプションの無い<code>kubectl delete</code>コマンドがGraceful Shutdownとなる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>foo-pod
 </code></pre></div>
 <blockquote>
@@ -8909,15 +8909,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <tbody>
 <tr>
 <td>NoExecute</td>
-<td>Tolerationが付与されたPodしかスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングさせる。</td>
+<td>Tolerationが付与されたPodしか、そのNodeにスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングさせる。</td>
 </tr>
 <tr>
 <td>NoSchedule</td>
-<td>Tolerationが付与されたPodしかスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングさせない。</td>
+<td>Tolerationが付与されたPodしか、そのNodeにスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングさせない。</td>
 </tr>
 <tr>
 <td>PreferNoSchedule</td>
-<td>Tolerationが付与されたPodをスケジューリングさせるが、いずれのPodにもこれが付与されていなければ、付与されていないPodもスケジューリングさせる。付与したPodがすでにスケジューリングされている場合、そのPodは再スケジューリングさせない。</td>
+<td>Tolerationが付与されたPodをそのNodeにスケジューリングさせる。ただし、いずれのPodにもTolerationが付与されていなければ、付与されていないPodもそのNodeにスケジューリングさせる。Tolerationが付与されたPodがすでにスケジューリングをさせている場合、そのPodは再スケジューリングさせない。</td>
 </tr>
 </tbody>
 </table>
@@ -9030,7 +9030,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
       
     
   </small>
