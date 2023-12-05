@@ -631,7 +631,7 @@ Podをスケジューリングする時は、条件を考慮してPodを分散�
 
 Nodeにスケジュール後のPodを定期的に再スケジューリングするために、deschedulerを合わせて使用するとよい。
 
-deschedulerは条件に一致しないPodを退避するだけで、Podの再スケジューリングはkube-schedulerが実行する。
+deschedulerは条件に一致しないPodを退避させるだけで、Podの再スケジューリングはkube-schedulerが実行する。
 
 > [https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity](https://garafu.blogspot.com/2019/06/pod-assign-strategy-1.html#podaffinity)
 

@@ -591,9 +591,9 @@ $ kubectl proxy
 GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1
 ```
 
-#### ▼ ワーカーNodeへの接続
+#### ▼ ワーカーNode (例：EC2、Fargate) への接続
 
-セッションマネージャーを使用して、ワーカーNodeのEC2やFargateに接続できる。
+セッションマネージャーを使用して、ワーカーNode (例：EC2、Fargate) に接続できる。
 
 <br>
 
@@ -1014,13 +1014,13 @@ set -o xtrace
 
 よく使うパラメーター配下の通りである。
 
-| パラメーター            | 例                                           | 説明                                                                                                                                                                                             |
-| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--apiserver-endpoint ` |                                              | AWS EKS Clusterのkube-apiserverのエンドポイントを設定する。                                                                                                                                      |
-| `--b64-cluster-ca`      |                                              | kube-apiserverのエンドポイントを設定した場合に、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                               |
-| `--container-runtime`   | `containerd`                                 | コンテナランタイムの種類を設定する。                                                                                                                                                             |
-| `--kubelet-extra-args`  | `--node-labels=nodegroup=foo --max-pods=110` | KubeletConfigurationのデフォルト値を上書きする。                                                                                                                                                 |
-| `--use-max-pods`        | `false`                                      | kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
+| パラメーター            | 例                                          | 説明                                                                                                                                                                                             |
+| ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `--apiserver-endpoint ` |                                             | AWS EKS Clusterのkube-apiserverのエンドポイントを設定する。                                                                                                                                      |
+| `--b64-cluster-ca`      |                                             | kube-apiserverのエンドポイントを設定した場合に、HTTPSでリクエストするために、SSL証明書を設定する。                                                                                               |
+| `--container-runtime`   | `containerd`                                | コンテナランタイムの種類を設定する。                                                                                                                                                             |
+| `--kubelet-extra-args`  | `--node-labels=nodetype=foo --max-pods=110` | KubeletConfigurationのデフォルト値を上書きする。                                                                                                                                                 |
+| `--use-max-pods`        | `false`                                     | kubeletの`--max-pods`オプションを有効化するかどうかを設定する。Kubeletが実行可能なPod数を設定する。Kubeletではこのオプションは非推奨になっており、代わりにKubeletConfigurationに渡すようにする。 |
 
 > - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41
 > - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
@@ -1096,7 +1096,9 @@ fi
 
 #### ▼ 安全なEC2ワーカーNodeシャットダウン
 
-kubeletを使用してワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeを退避させる) までの時間を稼ぐ。
+デフォルトでは、EC2ワーカーNodeは新しいPodのスケジューリングを禁止した後、Podの退避を待たずに停止してしまう。
+
+kubeletを使用してEC2ワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeから退避させる) までの時間を稼ぐ。
 
 ワーカーNodeの停止までの待機中に終了できたPodは、`Failed`ステータスとなる。
 

@@ -24,11 +24,11 @@ deschedulerは、ポリシーに応じて現在のNodeにあるPodを退避さ�
 ```bash
 $ kubectl get events -n foo
 
-# deschedulerがPodを退避する
+# deschedulerがPodを退避させる
 35m         Normal   LowNodeUtilization       pod/foo-5c844554c5-6nk2r            pod evicted from ip-*-*-*-*.ap-northeast-1.compute.internal node by sigs.k8s.io/descheduler
 35m         Normal   Killing                  pod/foo-5c844554c5-6nk2r            Stopping container foo
 
-# kube-schedulerがPodを再スケジューリングする
+# kube-schedulerがPodを再スケジューリングさせる
 35m         Normal   Scheduled                pod/foo-5c844554c5-vgdjl            Successfully assigned foo-5c844554c5-vgdjl to ip-*-*-*-*.ap-northeast-1.compute.internal
 35m         Normal   Pulled                   pod/foo-5c844554c5-vgdjl            Container image "public.ecr.aws/docker/library/foo:*.*.*" already present on machine
 35m         Normal   Created                  pod/foo-5c844554c5-vgdjl            Created container foo
@@ -201,7 +201,7 @@ data:
 
 #### ▼ LowNodeUtilization
 
-Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避する。
+Nodeのハードウェアリソース使用量 (例：CPU、メモリ、など) やPod数が指定したターゲット閾値 (targetThresholds) を超過した場合に、このNode上のPodを退避させる。
 
 さらに、kube-schedulerを使用して、使用量が閾値 (thresholds) を超過していないNodeにPodを退避させる。
 

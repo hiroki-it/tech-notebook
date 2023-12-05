@@ -293,6 +293,16 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 
 ### Nodeの場合
 
+#### ▼ ラベルの設定方法
+
+kubeletの`--node-labels`オプションを使用すると、Nodeにラベルを設定できる。
+
+```bash
+--node-labels=nodetype=foo
+```
+
+> - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+
 #### ▼ `node.kubernetes.io`キー
 
 Nodeの情報を設定する。
