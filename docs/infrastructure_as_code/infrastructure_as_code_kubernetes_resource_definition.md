@@ -1832,7 +1832,7 @@ spec:
             - echo Hello World
       restartPolicy: OnFailure
       nodeSelector:
-        node.kubernetes.io/nodegroup: foo-node-group
+        node.kubernetes.io/nodetype: foo
 ```
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-template
@@ -2145,9 +2145,11 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: node.kubernetes.io/nodegroup # metadata.labelsキー
+            # metadata.labelsキー
+            - key: node.kubernetes.io/nodetype
               operator: In
-              values: # metadata.labelsキーの値
+              # metadata.labelsキーの値
+              values:
                 - bar-group
               # 開発環境であれば minikubeを指定する。
               # - minikube
@@ -2399,7 +2401,7 @@ spec:
           - matchExpressions:
               # PodをスケジューリングさせたいNodeのmetadata.labelsキー
               # ここでNodeグループのキーを指定しておけば、Nodeグループ単位でスケジューリングさせられる。
-              - key: node.kubernetes.io/nodegroup
+              - key: node.kubernetes.io/nodetype
                 operator: In
                 # 指定した値をキーに持つNodeに、Podをスケジューリングさせる。
                 values:
@@ -3635,7 +3637,7 @@ spec:
     - name: app
       image: app:1.0.0
   nodeSelector:
-    node.kubernetes.io/nodegroup: foo-node-group
+    node.kubernetes.io/nodetype: foo
 ```
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity

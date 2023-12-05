@@ -55,7 +55,7 @@ resource "aws_eks_addon" "coredns" {
   configuration_values = jsonencode(
     {
       nodeSelector = {
-        "node.kubernetes.io/nodegroup" = "system"
+        "node.kubernetes.io/nodetype" = "system"
       }
     }
   )

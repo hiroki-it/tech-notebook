@@ -527,7 +527,7 @@ spec:
     metadata:
       labels:
         # Karpenterの管理するEC2 Nodeにラベルを挿入する
-        nodepool: foo-nodepool
+        node.kubernetes.io/nodetype: foo
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/

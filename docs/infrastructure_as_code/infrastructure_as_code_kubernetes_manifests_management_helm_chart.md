@@ -325,7 +325,7 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: node.kubernetes.io/nodegroup
+            - key: node.kubernetes.io/nodetype
               operator: In
               values:
                 - app
@@ -465,7 +465,7 @@ nameOverride: foo
 
 ```yaml
 nodeSelector:
-  node.kubernetes.io/nodegroup: foo-node-group
+  node.kubernetes.io/nodetype: foo
 ```
 
 #### ▼ podSecurityContext

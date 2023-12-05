@@ -136,7 +136,7 @@ spec:
               - weight: 100
                 preference:
                   matchExpressions:
-                    - key: node.kubernetes.io/nodegroup
+                    - key: node.kubernetes.io/nodetype
                       operator: In
                       # meshというNodeグループにスケジューリングさせられるようにする。
                       values:
