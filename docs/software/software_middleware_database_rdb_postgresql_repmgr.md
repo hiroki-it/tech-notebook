@@ -19,11 +19,13 @@ description: Repmgr＠PostgreSQLの知見を記録しています。
 
 Repmgrは、repmgr、repmgrd、といったコンポーネントから構成されている。
 
+OSSのPostgreSQLでは使用できず、Enterprised PostgreSQLを使用している必要がある。
+
 <br>
 
 ### repmgr
 
-repmgrは、PostgreSQLのDBをクラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。
+repmgrは、PostgreSQLのDBをクラスタリングし、クラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。
 
 ![repmgr_architecture.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png)
 

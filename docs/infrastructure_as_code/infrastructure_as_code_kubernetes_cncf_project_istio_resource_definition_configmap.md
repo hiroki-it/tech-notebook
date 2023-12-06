@@ -151,11 +151,11 @@ data:
 
 #### ▼ outboundTrafficPolicyとは
 
-メッシュ外への通信の宛先の種類 (PassthroughCluster、BlackHoleCluster) を設定する。
+メッシュ外への通信の宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
 #### ▼ ALLOW_ANY
 
-メッシュ外への通信の宛先を、デフォルトでPassthroughClusterとして扱う。
+メッシュ外への通信の宛先を、デフォルトで`PassthroughCluster`として扱う。
 
 ```yaml
 apiVersion: v1
@@ -174,9 +174,9 @@ data:
 
 #### ▼ ALLOW_ANY
 
-メッシュ外への通信の宛先を、デフォルトでBlackHoleClusterとして扱う。
+メッシュ外への通信の宛先を、デフォルトで`BlackHoleCluster`として扱う。
 
-PassthroughClusterとして扱いたい宛先は、ServiceEntryに設定する。
+`PassthroughCluster`として扱いたい宛先は、ServiceEntryに設定する。
 
 ```yaml
 apiVersion: v1

@@ -219,23 +219,23 @@ KubernetesとIstioには重複する能力がいくつか (例：サービスデ
 
 ### メッシュ外への通信
 
-#### ▼ PassthroughCluster
+#### ▼ `PassthroughCluster`
 
 IPアドレスを指定した送信できる宛先のこと。
 
-Istio `v1.3`以降で、デフォルトで全てのメッシュ外への通信のポリシーが`ALLOW_ANY`となり、PassthroughClusterとして扱うようになった。
+Istio `v1.3`以降で、デフォルトで全てのメッシュ外への通信のポリシーが`ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
 
 メッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。
 
-そのため、メッシュ外への通信はPassthroughClusterに属する。
+そのため、メッシュ外への通信は`PassthroughCluster`に属する。
 
-注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信がBlackHoleClusterになってしまう
+注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信が`BlackHoleCluster`になってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
 
-#### ▼ BlackHoleCluster
+#### ▼ `BlackHoleCluster`
 
 IPアドレスを指定して送信できない宛先のこと。
 

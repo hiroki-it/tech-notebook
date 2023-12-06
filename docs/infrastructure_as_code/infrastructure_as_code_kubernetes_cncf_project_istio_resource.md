@@ -629,12 +629,19 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
+Istio`v1.3`より前は、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
+
+しかし、`v1.3`以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。
+
+ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて`PassthroughCluster`として扱う。
+
 類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
 
 ![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
 
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://jimmysong.io/blog/externalname-and-serviceentry/
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
 
 <br>
 
