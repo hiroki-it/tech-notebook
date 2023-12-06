@@ -7423,9 +7423,9 @@
 <p><br></p>
 <h3 id="outboundtrafficpolicy">outboundTrafficPolicy<a class="headerlink" href="#outboundtrafficpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="outboundtrafficpolicy_1">▼ outboundTrafficPolicyとは<a class="headerlink" href="#outboundtrafficpolicy_1" title="Permanent link">&para;</a></h4>
-<p>メッシュ外への通信の宛先の種類 (PassthroughCluster、BlackHoleCluster) を設定する。</p>
+<p>メッシュ外への通信の宛先の種類 (<code>PassthroughCluster</code>、<code>BlackHoleCluster</code>) を設定する。</p>
 <h4 id="allow_any">▼ ALLOW_ANY<a class="headerlink" href="#allow_any" title="Permanent link">&para;</a></h4>
-<p>メッシュ外への通信の宛先を、デフォルトでPassthroughClusterとして扱う。</p>
+<p>メッシュ外への通信の宛先を、デフォルトで<code>PassthroughCluster</code>として扱う。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7443,8 +7443,8 @@
 </ul>
 </blockquote>
 <h4 id="allow_any_1">▼ ALLOW_ANY<a class="headerlink" href="#allow_any_1" title="Permanent link">&para;</a></h4>
-<p>メッシュ外への通信の宛先を、デフォルトでBlackHoleClusterとして扱う。</p>
-<p>PassthroughClusterとして扱いたい宛先は、ServiceEntryに設定する。</p>
+<p>メッシュ外への通信の宛先を、デフォルトで<code>BlackHoleCluster</code>として扱う。</p>
+<p><code>PassthroughCluster</code>として扱いたい宛先は、ServiceEntryに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -8085,7 +8085,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>

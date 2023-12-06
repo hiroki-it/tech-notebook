@@ -7495,12 +7495,16 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="05-serviceentry">05. ServiceEntry<a class="headerlink" href="#05-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="serviceentry">ServiceEntryとは<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <p>ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。</p>
+<p>Istio<code>v1.3</code>より前は、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
+<p>しかし、<code>v1.3</code>以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
+<p>ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて<code>PassthroughCluster</code>として扱う。</p>
 <p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
 <p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://tech.uzabase.com/entry/2018/11/26/110407">https://tech.uzabase.com/entry/2018/11/26/110407</a></li>
 <li><a href="https://jimmysong.io/blog/externalname-and-serviceentry/">https://jimmysong.io/blog/externalname-and-serviceentry/</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services</a></li>
 </ul>
 </blockquote>
 <p><br></p>

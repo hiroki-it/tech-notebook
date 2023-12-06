@@ -7700,12 +7700,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="_11">メッシュ外への通信<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<h4 id="passthroughcluster">▼ PassthroughCluster<a class="headerlink" href="#passthroughcluster" title="Permanent link">&para;</a></h4>
+<h4 id="passthroughcluster">▼ <code>PassthroughCluster</code><a class="headerlink" href="#passthroughcluster" title="Permanent link">&para;</a></h4>
 <p>IPアドレスを指定した送信できる宛先のこと。</p>
-<p>Istio <code>v1.3</code>以降で、デフォルトで全てのメッシュ外への通信のポリシーが<code>ALLOW_ANY</code>となり、PassthroughClusterとして扱うようになった。</p>
+<p>Istio <code>v1.3</code>以降で、デフォルトで全てのメッシュ外への通信のポリシーが<code>ALLOW_ANY</code>となり、<code>PassthroughCluster</code>として扱うようになった。</p>
 <p>メッシュ外にDBを置く場合、メッシュ内のアプリからDBへ通信ではDBのエンドポイントを指定することになる。</p>
-<p>そのため、メッシュ外への通信はPassthroughClusterに属する。</p>
-<p>注意点として、<code>REGISTRY_ONLY</code>モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信がBlackHoleClusterになってしまう</p>
+<p>そのため、メッシュ外への通信は<code>PassthroughCluster</code>に属する。</p>
+<p>注意点として、<code>REGISTRY_ONLY</code>モードを有効化すると、ServiceEntryで登録された宛先以外へのメッシュ外への全通信が<code>BlackHoleCluster</code>になってしまう</p>
 <blockquote>
 <ul>
 <li><a href="https://istiobyexample.dev/monitoring-egress-traffic/">https://istiobyexample.dev/monitoring-egress-traffic/</a></li>
@@ -7713,7 +7713,7 @@
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services</a></li>
 </ul>
 </blockquote>
-<h4 id="blackholecluster">▼ BlackHoleCluster<a class="headerlink" href="#blackholecluster" title="Permanent link">&para;</a></h4>
+<h4 id="blackholecluster">▼ <code>BlackHoleCluster</code><a class="headerlink" href="#blackholecluster" title="Permanent link">&para;</a></h4>
 <p>IPアドレスを指定して送信できない宛先のこと。</p>
 <p>基本的に、メッシュ外への通信は失敗し、<code>502</code>ステータスになる。</p>
 <blockquote>
@@ -8224,7 +8224,7 @@
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>

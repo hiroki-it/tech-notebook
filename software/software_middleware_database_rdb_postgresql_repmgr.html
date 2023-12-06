@@ -6216,9 +6216,10 @@
 <h2 id="01-repmgr">01. Repmgrの仕組み<a class="headerlink" href="#01-repmgr" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Repmgrは、repmgr、repmgrd、といったコンポーネントから構成されている。</p>
+<p>OSSのPostgreSQLでは使用できず、Enterprised PostgreSQLを使用している必要がある。</p>
 <p><br></p>
 <h3 id="repmgr">repmgr<a class="headerlink" href="#repmgr" title="Permanent link">&para;</a></h3>
-<p>repmgrは、PostgreSQLのDBをクラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。</p>
+<p>repmgrは、PostgreSQLのDBをクラスタリングし、クラスターのインスタンス (プライマリーインスタンス、スタンバイインスタンス) として管理できるようにする。</p>
 <p><img alt="repmgr_architecture.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -6270,7 +6271,7 @@ ID<span class="w"> </span><span class="p">|</span><span class="w"> </span>Name<s
   <small>
     
       最終更新日:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-07-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
       
     
   </small>
