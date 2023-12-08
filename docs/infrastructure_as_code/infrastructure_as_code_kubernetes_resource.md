@@ -751,6 +751,19 @@ kube-proxyが更新したNode上で稼働するiptablesを使用し、またロ�
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
 
+#### ▼ パケットの処理方法
+
+| テーブル名 | 説明                                                   |
+| ---------- | ------------------------------------------------------ |
+| `filter`   | パケットフィルタリングに使用する。                     |
+| `nat`      | DNAT処理に使用する。                                   |
+| `mangle`   | 特定のパケットのヘッダー情報を変更するために使用する。 |
+| `raw`      | パケットがコネクショントラッキング                     |
+| `security` | SELinuxを適用する。                                    |
+
+> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=34
+> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
+
 #### ▼ ClusterIP Service
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)

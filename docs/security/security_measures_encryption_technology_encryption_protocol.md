@@ -162,14 +162,6 @@ SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定�
 
 トランスポート層で、パケットのヘッダー情報の暗号化を担う。
 
-具体的には、HTTPプロトコルで、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。
-
-**＊例＊**
-
-Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。
-
-![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
-
 #### ▼ 相互TLS認証 (mTLS)
 
 トランスポート層で、双方向のピア認証を実施する。
@@ -179,9 +171,25 @@ Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある
 > - https://qiita.com/horit0123/items/8eb45bfcef6b848971a4
 > - https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html
 
+#### ▼ `L5`〜`L7`のプロトコルの暗号化
+
+`L5`〜`L7`のプロトコル (例：HTTP、SMTP、POP3、など) を暗号化する。
+
+`S` (例：SMTPS) や`over TLS/SSL` (例：SMTP over TLS/SSL) をつけて表記する。
+
+HTTPSであれば、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。
+
+**＊例＊**
+
+Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。
+
+![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
+
+> - https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/
+
 <br>
 
-## 05. 【ネットワーク層】ヘッダー情報の暗号化技術
+## 04. 【ネットワーク層】ヘッダー情報の暗号化技術
 
 ### IPsec：Internet Protocol Security
 
