@@ -9158,6 +9158,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="tlscertificate">▼ tls.certificate系<a class="headerlink" href="#tlscertificate" title="Permanent link">&para;</a></h4>
 <p>相互TLSの場合に、使用するSSL証明書を設定する。</p>
 <p>設定しない場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てる。</p>
+<p>Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9616,7 +9617,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30000</span>
 </code></pre></div>
 <h4 id="portprotocol">▼ port.protocol<a class="headerlink" href="#portprotocol" title="Permanent link">&para;</a></h4>
-<p>受信するインバウンド通信のプロトコルを設定する。</p>
+<p>受信する通信のプロトコルを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#Port">https://istio.io/latest/docs/reference/config/networking/gateway/#Port</a></li>
@@ -9725,10 +9726,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="06-peerauthentication">06. PeerAuthentication<a class="headerlink" href="#06-peerauthentication" title="Permanent link">&para;</a></h2>
 <h3 id="specmtls">.spec.mtls<a class="headerlink" href="#specmtls" title="Permanent link">&para;</a></h3>
 <h4 id="mtls">▼ mtls<a class="headerlink" href="#mtls" title="Permanent link">&para;</a></h4>
-<p><code>istio-proxy</code>コンテナ間の通信で相互TLS認証を有効化するか否かを設定する。</p>
-<p>Kubernetesのみで相互TLS認証をセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。</p>
+<p>特定のNamespace内のすべての<code>istio-proxy</code>コンテナ間通信で、相互TLS認証を有効化するか否かを設定する。</p>
+<p>特定のPod間でのみ相互TLSを使用したい場合、DestinationRuleでSSL証明書を設定する。</p>
 <blockquote>
 <ul>
+<li><a href="https://www.mtioutput.com/entry/istio-mtls-onoff">https://www.mtioutput.com/entry/istio-mtls-onoff</a></li>
 <li><a href="https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html">https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html</a></li>
 </ul>
 </blockquote>
@@ -9973,7 +9975,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spechosts_1">.spec.hosts<a class="headerlink" href="#spechosts_1" title="Permanent link">&para;</a></h3>
 <h4 id="hosts_2">▼ hostsとは<a class="headerlink" href="#hosts_2" title="Permanent link">&para;</a></h4>
-<p>Gatewayから受信するインバウンド通信の<code>Host</code>ヘッダー名を設定する。</p>
+<p>Gatewayから受信する通信の<code>Host</code>ヘッダー名を設定する。</p>
 <p>ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (<code>*</code>) を使用して全てのドメインを許可しても良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
@@ -10009,6 +10011,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="gateway">▼ <code>&lt;Gateway名&gt;</code><a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
 <p>Gateway名を設定する。</p>
+<p>Istio IngressGateway / EgressGateway配下のVirtualServiceでのみ使用し、紐付けないVirtualService (Pod間通信に使用するVirtualService) では使用しない。</p>
 <p>VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
@@ -10166,7 +10169,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 </code></pre></div>
 <h4 id="routedestinationport">▼ route.destination.port<a class="headerlink" href="#routedestinationport" title="Permanent link">&para;</a></h4>
-<p>受信するインバウンド通信でルーティング先のポート番号を設定する。</p>
+<p>受信する通信でルーティング先のポート番号を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
@@ -10437,7 +10440,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
   </span>
 
     

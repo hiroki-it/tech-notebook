@@ -5079,6 +5079,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio-egressgateway_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Istio EgressGatewayの使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DestinationRule
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6751,6 +6769,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#istio-egressgateway_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Istio EgressGatewayの使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destinationrule_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      DestinationRule
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -7495,7 +7531,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="05-serviceentry">05. ServiceEntry<a class="headerlink" href="#05-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="serviceentry">ServiceEntryとは<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <p>ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。</p>
-<p>Istio<code>v1.3</code>より前は、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
+<p>Istio<code>v1.3</code>より前は、ConfigMapでデフォルトで<code>REGISTRY_ONLY</code>になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
 <p>しかし、<code>v1.3</code>以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
 <p>ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて<code>PassthroughCluster</code>として扱う。</p>
 <p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
@@ -7505,6 +7541,29 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <li><a href="https://tech.uzabase.com/entry/2018/11/26/110407">https://tech.uzabase.com/entry/2018/11/26/110407</a></li>
 <li><a href="https://jimmysong.io/blog/externalname-and-serviceentry/">https://jimmysong.io/blog/externalname-and-serviceentry/</a></li>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="istio-egressgateway_1">Istio EgressGatewayの使用<a class="headerlink" href="#istio-egressgateway_1" title="Permanent link">&para;</a></h3>
+<p>ServiceEntryには、Istio EgressGatewayも必要である。</p>
+<p>Istio EgressGatewayへの通信にはVirtualServiceも必要になる。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.istioworkshop.io/09-traffic-management/08-egress-gateway/">https://www.istioworkshop.io/09-traffic-management/08-egress-gateway/</a></li>
+<li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic</a></li>
+<li><a href="https://learncloudnative.com/blog/2023-02-10-servicentry-feature">https://learncloudnative.com/blog/2023-02-10-servicentry-feature</a></li>
+<li><a href="https://istiobyexample.dev/external-services/">https://istiobyexample.dev/external-services/</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="destinationrule_1">DestinationRule<a class="headerlink" href="#destinationrule_1" title="Permanent link">&para;</a></h3>
+<p>必須ではないが、ServiceEntryにDestinationRuleを組み合わせられる。</p>
+<p>サービス外のコンポーネントと相互TLSする場合に、DestinationRuleにSSL証明書を設定する。</p>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/concepts/traffic-management/#service-entry-example">https://istio.io/latest/docs/concepts/traffic-management/#service-entry-example</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/service-entry/">https://istio.io/latest/docs/reference/config/networking/service-entry/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -7731,7 +7790,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
   </span>
 
     
