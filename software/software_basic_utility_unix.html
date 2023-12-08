@@ -2657,6 +2657,15 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
+      テーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
       サブコマンド
     </span>
   </a>
@@ -2688,7 +2697,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       オプション
     </span>
@@ -2778,7 +2787,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       シンボリックリンクとは
     </span>
@@ -3015,7 +3024,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       スワッピング方式
     </span>
@@ -3024,7 +3033,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       スワップ領域の作成方法
     </span>
@@ -3408,7 +3417,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       条件
     </span>
@@ -8838,6 +8847,15 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
+      テーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
       サブコマンド
     </span>
   </a>
@@ -8869,7 +8887,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       オプション
     </span>
@@ -8959,7 +8977,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       シンボリックリンクとは
     </span>
@@ -9196,7 +9214,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       スワッピング方式
     </span>
@@ -9205,7 +9223,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       スワップ領域の作成方法
     </span>
@@ -9589,7 +9607,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       条件
     </span>
@@ -11092,7 +11110,51 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <h3 id="iptables_1">iptablesとは<a class="headerlink" href="#iptables_1" title="Permanent link">&para;</a></h3>
 <p>iptablesの設定を取得/変更する。</p>
 <p><br></p>
-<h3 id="_6">サブコマンド<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_6">テーブル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>各パケット処理の実行タイミングを制御する。</p>
+<table>
+<thead>
+<tr>
+<th>テーブル名</th>
+<th>説明</th>
+<th>チェイン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter</code></td>
+<td>パケットフィルタリング (パケットの通過や遮断) を実施する。</td>
+<td><code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+</tr>
+<tr>
+<td><code>nat</code></td>
+<td>DNAT処理する。</td>
+<td><code>POSTROUTING</code>、<code>PREROUTING</code>、<code>OUTPUT</code></td>
+</tr>
+<tr>
+<td><code>mangle</code></td>
+<td>特定のパケットのヘッダー情報を変更する。</td>
+<td><code>POSTROUTING</code>、<code>PREROUTING</code>、<code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td>特定のパケットを処理せずにそのまま通過させる。</td>
+<td><code>PREROUTING</code>、<code>OUTPUT</code></td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>SELinuxを適用する。</td>
+<td><code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_7">サブコマンド<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="-l-list">▼ -L (--list)<a class="headerlink" href="#-l-list" title="Permanent link">&para;</a></h4>
 <p>全てのChainのルールの一覧を取得する。</p>
 <blockquote>
@@ -11142,7 +11204,7 @@ Chain<span class="w"> </span>OUTPUT<span class="w"> </span><span class="o">(</sp
 ...
 </code></pre></div>
 <p><br></p>
-<h3 id="_7">オプション<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_8">オプション<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="-line-number">▼ --line-number<a class="headerlink" href="#-line-number" title="Permanent link">&para;</a></h4>
 <p>Chain内の各ルールを番号付きで取得する。</p>
 <blockquote>
@@ -11188,7 +11250,7 @@ Chain<span class="w"> </span>OUTPUT<span class="w"> </span><span class="o">(</sp
 </code></pre></div>
 <p><br></p>
 <h2 id="ln">ln<a class="headerlink" href="#ln" title="Permanent link">&para;</a></h2>
-<h3 id="_8">シンボリックリンクとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_9">シンボリックリンクとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>ファイルやディレクトリのショートカットのこと。</p>
 <p>シンボリックリンクに対する処理は、リンク先のファイルやディレクトリに転送される。</p>
 <p><br></p>
@@ -11374,11 +11436,11 @@ $<span class="w"> </span>lvextend<span class="w"> </span>-l<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h2 id="mkswapswaponswapoff">mkswap、swapon、swapoff<a class="headerlink" href="#mkswapswaponswapoff" title="Permanent link">&para;</a></h2>
-<h3 id="_9">スワッピング方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">スワッピング方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>物理メモリのアドレス空間管理の方法の一種。</p>
 <p><img alt="スワッピング方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png" /></p>
 <p><br></p>
-<h3 id="_10">スワップ領域の作成方法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">スワップ領域の作成方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># 指定したディレクトリをスワップ領域として使用</span>
 $<span class="w"> </span>mkswap<span class="w"> </span>/swap_volume
 </code></pre></div>
@@ -11652,7 +11714,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_11">条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">条件<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="or">▼ OR条件<a class="headerlink" href="#or" title="Permanent link">&para;</a></h4>
 <p>ブロックを使用し、OR条件を定義する。注意点として、<code>;</code>を使用して、ブロック内の処理の終了を宣言する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
@@ -12027,7 +12089,7 @@ github.com<span class="w"> </span><span class="o">(</span>github.com<span class=
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
   </span>
 
     
