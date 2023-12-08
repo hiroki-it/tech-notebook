@@ -629,7 +629,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ServiceEntryは、コンフィグストレージにサービスメッシュ外部のドメイン名などを登録する。
 
-Istio`v1.3`より前は、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
+Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
 
 しかし、`v1.3`以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。
 
@@ -642,6 +642,31 @@ Istio`v1.3`より前は、ServiceEntryでマイクロサービスを登録しな
 > - https://tech.uzabase.com/entry/2018/11/26/110407
 > - https://jimmysong.io/blog/externalname-and-serviceentry/
 > - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+
+<br>
+
+### Istio EgressGatewayの使用
+
+ServiceEntryには、Istio EgressGatewayも必要である。
+
+Istio EgressGatewayへの通信にはVirtualServiceも必要になる。
+
+> - https://www.istioworkshop.io/09-traffic-management/08-egress-gateway/
+> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
+> - https://learncloudnative.com/blog/2023-02-10-servicentry-feature
+> - https://istiobyexample.dev/external-services/
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
+<br>
+
+### DestinationRule
+
+必須ではないが、ServiceEntryにDestinationRuleを組み合わせられる。
+
+サービス外のコンポーネントと相互TLSする場合に、DestinationRuleにSSL証明書を設定する。
+
+> - https://istio.io/latest/docs/concepts/traffic-management/#service-entry-example
+> - https://istio.io/latest/docs/reference/config/networking/service-entry/
 
 <br>
 

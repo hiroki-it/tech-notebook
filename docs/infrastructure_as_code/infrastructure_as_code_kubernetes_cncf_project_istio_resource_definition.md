@@ -612,6 +612,8 @@ spec:
 
 設定しない場合、Istiodコントロールプレーンは作成したSSL署名書を自動的に割り当てる。
 
+Namespace全体に同じ設定を適用する場合、PeerAuthenticationを使用する。
+
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
@@ -1134,7 +1136,7 @@ spec:
 
 #### ▼ port.protocol
 
-受信するインバウンド通信のプロトコルを設定する。
+受信する通信のプロトコルを設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
 
@@ -1264,10 +1266,11 @@ spec:
 
 #### ▼ mtls
 
-`istio-proxy`コンテナ間の通信で相互TLS認証を有効化するか否かを設定する。
+特定のNamespace内のすべての`istio-proxy`コンテナ間通信で、相互TLS認証を有効化するか否かを設定する。
 
-Kubernetesのみで相互TLS認証をセットアップしようとすると大変であり、Istioを使うとより簡単にセットアップできる。
+特定のPod間でのみ相互TLSを使用したい場合、DestinationRuleでSSL証明書を設定する。
 
+> - https://www.mtioutput.com/entry/istio-mtls-onoff
 > - https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
 
 #### ▼ mode
@@ -1551,7 +1554,7 @@ spec:
 
 #### ▼ hostsとは
 
-Gatewayから受信するインバウンド通信の`Host`ヘッダー名を設定する。
+Gatewayから受信する通信の`Host`ヘッダー名を設定する。
 
 ドメインレジストラのドメインのみを許可しても良いが、 ワイルドカード (`*`) を使用して全てのドメインを許可しても良い。
 
@@ -1600,6 +1603,8 @@ spec:
 #### ▼ `<Gateway名>`
 
 Gateway名を設定する。
+
+Istio IngressGateway / EgressGateway配下のVirtualServiceでのみ使用し、紐付けないVirtualService (Pod間通信に使用するVirtualService) では使用しない。
 
 VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる。
 
@@ -1791,7 +1796,7 @@ spec:
 
 #### ▼ route.destination.port
 
-受信するインバウンド通信でルーティング先のポート番号を設定する。
+受信する通信でルーティング先のポート番号を設定する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 

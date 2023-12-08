@@ -451,7 +451,7 @@ Kubernetes内で管理できるメリットがある。
 
 クラウドプロバイダーの対応状況によっては、Kubernetes内で管理できない可能性がある。
 
-その場合、フロントエンドアプリケーションがAPI Gatewayに通信を送信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
+その場合、フロントエンドアプリケーションがAPI Gatewayに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なるKubernetesで動かす必要がある。
 
 > - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
 
