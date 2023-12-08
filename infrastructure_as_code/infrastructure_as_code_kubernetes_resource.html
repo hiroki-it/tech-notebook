@@ -4329,15 +4329,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ パケットの処理方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#clusterip-service" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ClusterIP Service
@@ -4384,6 +4375,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-04. Serviceの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. Serviceの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      パケットの処理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterip-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClusterIP Serviceの場合
+    </span>
+  </a>
   
 </li>
         
@@ -7832,15 +7856,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      ▼ パケットの処理方法
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#clusterip-service" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ ClusterIP Service
@@ -7887,6 +7902,39 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-04-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      03-04. Serviceの仕組み
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03-04. Serviceの仕組み">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      パケットの処理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clusterip-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ClusterIP Serviceの場合
+    </span>
+  </a>
   
 </li>
         
@@ -9374,43 +9422,6 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <li><a href="https://www.amazon.co.jp/dp/B079TG2M5N/">https://www.amazon.co.jp/dp/B079TG2M5N/</a> (チャプター5)</li>
 </ul>
 </blockquote>
-<h4 id="_11">▼ パケットの処理方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<table>
-<thead>
-<tr>
-<th>テーブル名</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>filter</code></td>
-<td>パケットフィルタリングに使用する。</td>
-</tr>
-<tr>
-<td><code>nat</code></td>
-<td>DNAT処理に使用する。</td>
-</tr>
-<tr>
-<td><code>mangle</code></td>
-<td>特定のパケットのヘッダー情報を変更するために使用する。</td>
-</tr>
-<tr>
-<td><code>raw</code></td>
-<td>パケットがコネクショントラッキング</td>
-</tr>
-<tr>
-<td><code>security</code></td>
-<td>SELinuxを適用する。</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<ul>
-<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=34">https://speakerdeck.com/bells17/kube-proxyru-men?slide=34</a></li>
-<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=36">https://speakerdeck.com/bells17/kube-proxyru-men?slide=36</a></li>
-</ul>
-</blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
 <p><code>L4</code>ロードバランサーとして、Serviceに対する通信を、Cluster-IPを介してPodにルーティングする。</p>
@@ -9560,6 +9571,75 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13739">https://thinkit.co.jp/article/13739</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-04-service">03-04. Serviceの仕組み<a class="headerlink" href="#03-04-service" title="Permanent link">&para;</a></h2>
+<h3 id="_11">パケットの処理方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>Serviceは、パケットの<code>L4</code>に関するヘッダーの情報を見て、<code>L4</code>ロードバランシングを実施する。</p>
+<table>
+<thead>
+<tr>
+<th>テーブル名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>filter</code></td>
+<td>パケットフィルタリングに使用する。</td>
+</tr>
+<tr>
+<td><code>nat</code></td>
+<td>DNAT処理に使用する。</td>
+</tr>
+<tr>
+<td><code>mangle</code></td>
+<td>特定のパケットのヘッダー情報を変更するために使用する。</td>
+</tr>
+<tr>
+<td><code>raw</code></td>
+<td>パケットがコネクショントラッキング</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>SELinuxを適用する。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=34">https://speakerdeck.com/bells17/kube-proxyru-men?slide=34</a></li>
+<li><a href="https://speakerdeck.com/bells17/kube-proxyru-men?slide=36">https://speakerdeck.com/bells17/kube-proxyru-men?slide=36</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="clusterip-service_1">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service_1" title="Permanent link">&para;</a></h3>
+<p>kube-proxyでiptablesを確認できる。</p>
+<p>Serviceは、</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>kube-proxy-wf7qw<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>--<span class="w"> </span>iptables<span class="w"> </span>-nL<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>--line-numbers
+
+Chain<span class="w"> </span>KUBE-SERVICES<span class="w"> </span><span class="o">(</span><span class="m">2</span><span class="w"> </span>references<span class="o">)</span>
+
+num<span class="w">  </span>target<span class="w">                     </span>prot<span class="w"> </span>opt<span class="w"> </span><span class="nb">source</span><span class="w">               </span>destination
+
+...
+
+<span class="m">5</span><span class="w">    </span>KUBE-MARK-MASQ<span class="w">             </span>udp<span class="w">  </span>--<span class="w">  </span>!172.16.10.0/24<span class="w">      </span><span class="m">10</span>.0.0.10<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>cluster<span class="w"> </span>IP<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>dpt:53
+<span class="c1"># Serviceにルーティングするための設定</span>
+<span class="m">6</span><span class="w">    </span>KUBE-SVC-TCOU7JCQXEZGVUNU<span class="w">  </span>udp<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">10</span>.0.0.10<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>cluster<span class="w"> </span>IP<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>dpt:53
+
+...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Chain<span class="w"> </span>KUBE-SVC-TCOU7JCQXEZGVUNU<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+
+num<span class="w">  </span>target<span class="w">                     </span>prot<span class="w"> </span>opt<span class="w"> </span><span class="nb">source</span><span class="w">               </span>destination
+<span class="m">1</span><span class="w">    </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>statistic<span class="w"> </span>mode<span class="w"> </span>random<span class="w"> </span>probability<span class="w"> </span><span class="m">0</span>.50000000000
+<span class="m">2</span><span class="w">    </span>KUBE-SEP-JTVLMQFBDVPXUWUS<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented">https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented</a></li>
 </ul>
 </blockquote>
 <p><br></p>
