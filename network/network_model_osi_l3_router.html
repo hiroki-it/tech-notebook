@@ -3205,7 +3205,7 @@
           <li class="md-nav__item">
   <a href="#dnat" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DNATの場合
+      ▼ DNAT処理の場合
     </span>
   </a>
   
@@ -3214,7 +3214,7 @@
           <li class="md-nav__item">
   <a href="#snat" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SNATの場合
+      ▼ SNAT処理の場合
     </span>
   </a>
   
@@ -6560,7 +6560,7 @@
           <li class="md-nav__item">
   <a href="#dnat" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ DNATの場合
+      ▼ DNAT処理の場合
     </span>
   </a>
   
@@ -6569,7 +6569,7 @@
           <li class="md-nav__item">
   <a href="#snat" class="md-nav__link">
     <span class="md-ellipsis">
-      ▼ SNATの場合
+      ▼ SNAT処理の場合
     </span>
   </a>
   
@@ -6754,7 +6754,7 @@
 </table>
 <p>種類の異なるネットワーク間で、IPアドレスを相互変換する。</p>
 <p><code>1</code>個のIPアドレスに対して、<code>1</code>個の内部IPアドレスを紐付けられる。</p>
-<p>図で言う上側のアウトバウンド通信時の送信元IPアドレスの変換を『SNAT』といい、下側のインバウンド通信時の宛先IPアドレスの変換を『SNAT』という。</p>
+<p>図で言う上側のアウトバウンド通信時の送信元IPアドレスの変換を『SNAT処理』といい、下側のインバウンド通信時の宛先IPアドレスの変換を『DNAT処理』という。</p>
 <p><code>1</code>個の通信で両方が必要である。</p>
 <p><img alt="nat-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png" /></p>
 <blockquote>
@@ -6790,7 +6790,7 @@
 <thead>
 <tr>
 <th style="text-align: center;">送信元プライベートIPアドレス</th>
-<th style="text-align: center;">SNATによる変換</th>
+<th style="text-align: center;">SNAT処理による変換</th>
 <th style="text-align: center;">送信元グローバルIPアドレス</th>
 </tr>
 </thead>
@@ -6841,11 +6841,11 @@
 <h4 id="ipipip">▼ 外部IPアドレス、内部IPアドレス、ターゲットIPアドレス<a class="headerlink" href="#ipipip" title="Permanent link">&para;</a></h4>
 <p>かなり重要。</p>
 <p>NATルーターの文脈で、外部IPアドレス、内部IPアドレス、ターゲットIPアドレスという用語が使用されることがある。</p>
-<p>これは、DNATとSNATで意味合いが異なることに注意する。</p>
+<p>これは、DNAT処理とSNAT処理で意味合いが異なることに注意する。</p>
 <table>
 <thead>
 <tr>
-<th>DNAT/SNAT</th>
+<th>DNAT / SNAT 処理</th>
 <th>外部IPアドレス</th>
 <th>内部IPアドレス</th>
 <th>ターゲットIPアドレス</th>
@@ -6853,13 +6853,13 @@
 </thead>
 <tbody>
 <tr>
-<td>DNATの場合</td>
+<td>DNAT処理の場合</td>
 <td>外部IPアドレスをネットワークに公開し、外部IPアドレスを宛先IPアドレスとしたパケットを受信した場合に、宛先IPアドレスを内部IPアドレスに変換してルーティングする。</td>
 <td>NATルーターを通過した後、パケットの宛先IPアドレスを内部IPアドレスに変換する。</td>
 <td>無し</td>
 </tr>
 <tr>
-<td>SNATの場合</td>
+<td>SNAT処理の場合</td>
 <td>NATルーターを通過した後、パケットの送信元IPアドレスを外部IPアドレスに変換する。NATルーターのIPアドレスを指定してパケットを送信する必要はない。</td>
 <td>NATルーターが受信したパケットのうちで、指定した『送信元IPアドレス』を持つパケットのみルールを適用し、そうでないパケットはそのまま通過させる。</td>
 <td>NATルーターが受信したパケットのうちで、指定した『宛先IPアドレス』を持つパケットのみルールを適用し、そうでないパケットはそのまま通過させる。</td>
@@ -6902,7 +6902,7 @@
 <li><a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592">https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592</a></li>
 </ul>
 </blockquote>
-<h4 id="dnat">▼ DNATの場合<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h4>
+<h4 id="dnat">▼ DNAT処理の場合<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h4>
 <p>プライベートネットワークから出る時に、パケットのヘッダー情報における『送信元』のプライベートIPアドレスをグローバルIPアドレスに変換する。</p>
 <p>ただし、異なるプライベートIPアドレスが同じグローバルIPに変換されてしまうため、これを識別するために、ポート番号を複数の異なるポート番号に変換し、グローバルIPアドレスに付け加える。</p>
 <p><strong>＊例＊</strong></p>
@@ -6911,7 +6911,7 @@
 <tr>
 <th style="text-align: center;">送信元プライベートIPアドレス</th>
 <th style="text-align: center;">変換前ポート番号</th>
-<th style="text-align: center;">DNATによる変換</th>
+<th style="text-align: center;">DNAT処理による変換</th>
 <th style="text-align: center;">送信元グローバルIPアドレス</th>
 <th style="text-align: center;">変換後ポート番号</th>
 </tr>
@@ -6934,7 +6934,7 @@
 </tbody>
 </table>
 <p><img alt="napt変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換.png" /></p>
-<h4 id="snat">▼ SNATの場合<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h4>
+<h4 id="snat">▼ SNAT処理の場合<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h4>
 <p>プライベートネットワークに入る時に、付け加えられたポート番号を元に、パケットのヘッダー情報における『宛先』のグローバルIPアドレスを、異なるプライベートIPアドレスに変換し分ける。</p>
 <p><img alt="napt変換_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換_2.png" /></p>
 <p><br></p>
@@ -7011,7 +7011,7 @@ COMMIT
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
   </span>
 
     

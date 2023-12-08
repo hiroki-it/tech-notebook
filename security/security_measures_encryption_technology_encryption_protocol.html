@@ -3226,6 +3226,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#l5l7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ L5〜L7のプロトコルの暗号化
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3237,13 +3246,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 【ネットワーク層】ヘッダー情報の暗号化技術
+      04. 【ネットワーク層】ヘッダー情報の暗号化技術
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. 【ネットワーク層】ヘッダー情報の暗号化技術">
+    <nav class="md-nav" aria-label="04. 【ネットワーク層】ヘッダー情報の暗号化技術">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6402,6 +6411,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#l5l7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ L5〜L7のプロトコルの暗号化
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6413,13 +6431,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#05" class="md-nav__link">
+  <a href="#04" class="md-nav__link">
     <span class="md-ellipsis">
-      05. 【ネットワーク層】ヘッダー情報の暗号化技術
+      04. 【ネットワーク層】ヘッダー情報の暗号化技術
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. 【ネットワーク層】ヘッダー情報の暗号化技術">
+    <nav class="md-nav" aria-label="04. 【ネットワーク層】ヘッダー情報の暗号化技術">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6691,10 +6709,6 @@
 <p>ハイブリッド暗号方式に基づく暗号化プロトコル。</p>
 <p>SSL/TLSを使用した通信では、通信の受信側にSSL証明書を設定する必要がある。</p>
 <p>トランスポート層で、パケットのヘッダー情報の暗号化を担う。</p>
-<p>具体的には、HTTPプロトコルで、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。</p>
-<p><strong>＊例＊</strong></p>
-<p>Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。</p>
-<p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
 <h4 id="tls-mtls">▼ 相互TLS認証 (mTLS)<a class="headerlink" href="#tls-mtls" title="Permanent link">&para;</a></h4>
 <p>トランスポート層で、双方向のピア認証を実施する。</p>
 <p>通常のSSL/TLSを使用した通信では、通信の受信側のみSSL証明書を設定すればよいが、相互TLS認証では受信側のみでなく送信側にも設定が必要になる。</p>
@@ -6704,8 +6718,20 @@
 <li><a href="https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html">https://docs.aws.amazon.com/app-mesh/latest/userguide/mutual-tls.html</a></li>
 </ul>
 </blockquote>
+<h4 id="l5l7">▼ <code>L5</code>〜<code>L7</code>のプロトコルの暗号化<a class="headerlink" href="#l5l7" title="Permanent link">&para;</a></h4>
+<p><code>L5</code>〜<code>L7</code>のプロトコル (例：HTTP、SMTP、POP3、など) を暗号化する。</p>
+<p><code>S</code> (例：SMTPS) や<code>over TLS/SSL</code> (例：SMTP over TLS/SSL) をつけて表記する。</p>
+<p>HTTPSであれば、GET送信のヘッダ部分、またPOST送信のヘッダ部分とボディ部分を暗号化する。</p>
+<p><strong>＊例＊</strong></p>
+<p>Chromeでは、HTTPSプロトコルの使用時にSSL証明書に不備がある (例：自己署名SSL証明書を使用している) と、以下のような警告が表示される。</p>
+<p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
+<blockquote>
+<ul>
+<li><a href="https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/">https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="05">05. 【ネットワーク層】ヘッダー情報の暗号化技術<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h2 id="04">04. 【ネットワーク層】ヘッダー情報の暗号化技術<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="ipsecinternet-protocol-security">IPsec：Internet Protocol Security<a class="headerlink" href="#ipsecinternet-protocol-security" title="Permanent link">&para;</a></h3>
 <h4 id="ipsec">▼ IPSecとは<a class="headerlink" href="#ipsec" title="Permanent link">&para;</a></h4>
 <p>共通鍵暗号方式に基づく暗号化プロトコル。</p>
@@ -6801,7 +6827,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
   </span>
 
     
