@@ -751,19 +751,6 @@ kube-proxyが更新したNode上で稼働するiptablesを使用し、またロ�
 > - https://www.mtioutput.com/entry/kube-proxy-iptable
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
 
-#### ▼ パケットの処理方法
-
-| テーブル名 | 説明                                                   |
-| ---------- | ------------------------------------------------------ |
-| `filter`   | パケットフィルタリングに使用する。                     |
-| `nat`      | DNAT処理に使用する。                                   |
-| `mangle`   | 特定のパケットのヘッダー情報を変更するために使用する。 |
-| `raw`      | パケットがコネクショントラッキング                     |
-| `security` | SELinuxを適用する。                                    |
-
-> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=34
-> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
-
 #### ▼ ClusterIP Service
 
 ![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
@@ -952,6 +939,61 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 ```
 
 > - https://thinkit.co.jp/article/13739
+
+<br>
+
+## 03-04. Serviceの仕組み
+
+### パケットの処理方法
+
+Serviceは、パケットの`L4`に関するヘッダーの情報を見て、`L4`ロードバランシングを実施する。
+
+| テーブル名 | 説明                                                   |
+| ---------- | ------------------------------------------------------ |
+| `filter`   | パケットフィルタリングに使用する。                     |
+| `nat`      | DNAT処理に使用する。                                   |
+| `mangle`   | 特定のパケットのヘッダー情報を変更するために使用する。 |
+| `raw`      | パケットがコネクショントラッキング                     |
+| `security` | SELinuxを適用する。                                    |
+
+> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=34
+> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
+
+<br>
+
+### ClusterIP Serviceの場合
+
+kube-proxyでiptablesを確認できる。
+
+Serviceは、
+
+```bash
+$ kubectl exec -it kube-proxy-wf7qw -n kube-system -- iptables -nL -t nat --line-numbers
+
+Chain KUBE-SERVICES (2 references)
+
+num  target                     prot opt source               destination
+
+...
+
+5    KUBE-MARK-MASQ             udp  --  !172.16.10.0/24      10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
+# Serviceにルーティングするための設定
+6    KUBE-SVC-TCOU7JCQXEZGVUNU  udp  --  0.0.0.0/0            10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
+
+...
+
+```
+
+```bash
+Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
+
+num  target                     prot opt source               destination
+1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
+2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
+
+```
+
+> - https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented
 
 <br>
 

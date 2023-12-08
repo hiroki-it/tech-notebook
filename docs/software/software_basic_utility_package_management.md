@@ -79,4 +79,28 @@ $ pyenv which python
 
 複数のバージョンのRubyを管理し、切り替えられる。
 
+#### ▼ global
+
+すべてのディレクトリで使用するRubyのバージョンを設定する。
+
+`~/.rbenv/version`ファイルにバージョンを書き込む。
+
+```bash
+$ rbenv global <バージョン>
+```
+
+> - https://qiita.com/Yinaura/items/0b021984bb21ae77816d
+
+#### ▼ loval
+
+実行したディレクトリ配下で使用するRubyのバージョンを設定する。
+
+`./.ruby-version`ファイルにバージョンを書き込む。
+
+```bash
+$ rbenv local <バージョン>
+```
+
+> - https://qiita.com/Yinaura/items/0b021984bb21ae77816d
+
 <br>
