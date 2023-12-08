@@ -1008,6 +1008,8 @@ num  target                     prot opt source               destination
 
      `DNAT`ターゲットは、Podである。
 
+     kube-proxyはDNAT処理を実行し、パケットのService宛のIPアドレスをPodのIPアドレスに変換する。
+
 ```bash
 #
 Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)

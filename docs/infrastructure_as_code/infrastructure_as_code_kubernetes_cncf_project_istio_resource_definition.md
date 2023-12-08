@@ -1260,8 +1260,25 @@ spec:
         mode: MUTUAL
 ```
 
+**＊実装例＊**
+
+クライアントとGatewayの通信間で通常のHTTPSを実施する。
+
+クライアント証明書は不要にである。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
+spec:
+  servers:
+    - tls:
+        mode: SIMPLE
+```
+
 > - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
-> - https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/
 
 #### ▼ tls.privateKey
 
