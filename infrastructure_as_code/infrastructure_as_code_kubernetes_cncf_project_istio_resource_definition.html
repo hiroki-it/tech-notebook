@@ -9755,10 +9755,22 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
 </code></pre></div>
+<p><strong>＊実装例＊</strong></p>
+<p>クライアントとGatewayの通信間で通常のHTTPSを実施する。</p>
+<p>クライアント証明書は不要にである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIMPLE</span>
+</code></pre></div>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode</a></li>
-<li><a href="https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/">https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/</a></li>
 </ul>
 </blockquote>
 <h4 id="tlsprivatekey">▼ tls.privateKey<a class="headerlink" href="#tlsprivatekey" title="Permanent link">&para;</a></h4>

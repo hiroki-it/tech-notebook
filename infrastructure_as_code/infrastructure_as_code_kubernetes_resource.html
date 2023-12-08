@@ -9610,6 +9610,8 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 </code></pre></div>
 <p><code>(3)</code>. <code>KUBE-SEP</code>のターゲットに応じて、異なる<code>DNAT</code>ターゲットを持つ。</p>
 <div class="highlight"><pre><span></span><code> `DNAT`ターゲットは、Podである。
+
+ kube-proxyはDNAT処理を実行し、パケットのService宛のIPアドレスをPodのIPアドレスに変換する。
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1">#</span>
 Chain<span class="w"> </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
