@@ -5481,9 +5481,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tlscacertificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.caCertificates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tlscredentialname" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tls.credentialName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsmode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.mode
     </span>
   </a>
   
@@ -8033,9 +8051,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tlscacertificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.caCertificates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tlscredentialname" class="md-nav__link">
     <span class="md-ellipsis">
       ▼ tls.credentialName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsmode_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ▼ tls.mode
     </span>
   </a>
   
@@ -9666,8 +9702,26 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 </code></pre></div>
+<h4 id="tlscacertificates">▼ tls.caCertificates<a class="headerlink" href="#tlscacertificates" title="Permanent link">&para;</a></h4>
+<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書に対応するCA証明書である必要がある。</p>
+<p><strong>＊実装例＊</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">privateKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/privatekey.pem</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings</a></li>
+</ul>
+</blockquote>
 <h4 id="tlscredentialname">▼ tls.credentialName<a class="headerlink" href="#tlscredentialname" title="Permanent link">&para;</a></h4>
-<p>GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。</p>
+<p>CAを含むSSL証明書を保持するSecretを設定する。</p>
 <p>SSL証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code>キーを設定する。</p>
 <p>Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。</p>
 <blockquote>
@@ -9686,12 +9740,28 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">credentialName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-gateway-certificate-secret</span>
 </code></pre></div>
-<h4 id="tlsprivatekey">▼ tls.privateKey<a class="headerlink" href="#tlsprivatekey" title="Permanent link">&para;</a></h4>
+<h4 id="tlsmode_1">▼ tls.mode<a class="headerlink" href="#tlsmode_1" title="Permanent link">&para;</a></h4>
+<p>Gatewayの宛先との通信の暗号化方式を設定する。</p>
+<p><strong>＊実装例＊</strong></p>
+<p>クライアントとGatewayの通信間で相互TLSを実施する。</p>
+<p>クライアント証明書が必要になる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-system</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">servers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MUTUAL</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings</a></li>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode</a></li>
+<li><a href="https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/">https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/</a></li>
 </ul>
 </blockquote>
+<h4 id="tlsprivatekey">▼ tls.privateKey<a class="headerlink" href="#tlsprivatekey" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -9703,14 +9773,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">privateKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/privatekey.pem</span>
 </code></pre></div>
-<h4 id="tlsservercertificate">▼ tls.serverCertificate<a class="headerlink" href="#tlsservercertificate" title="Permanent link">&para;</a></h4>
-<p>GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。</p>
-<p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings</a></li>
 </ul>
 </blockquote>
+<h4 id="tlsservercertificate">▼ tls.serverCertificate<a class="headerlink" href="#tlsservercertificate" title="Permanent link">&para;</a></h4>
+<p>SSL証明書のファイルを設定する。</p>
+<p><code>.spec.servers.tls.mode</code>キーで相互TLSを設定している場合、クライアント証明書に対応するSSL証明書である必要がある。</p>
+<p>SSL証明書を保持するSecretを指定する場合は、<code>.spec.servers[*].tls.credentialName</code>キーを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
@@ -9722,6 +9793,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">serverCertificate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/certs/server.pem</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings">https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="06-peerauthentication">06. PeerAuthentication<a class="headerlink" href="#06-peerauthentication" title="Permanent link">&para;</a></h2>
 <h3 id="specmtls">.spec.mtls<a class="headerlink" href="#specmtls" title="Permanent link">&para;</a></h3>
@@ -9762,11 +9838,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </tr>
 </tbody>
 </table>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode">https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
@@ -9780,6 +9851,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>相互TLS認証を使用する場合はSSL証明書が必要になり、SSL証明書が無いと以下のようなエラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code>transport<span class="w"> </span>failure<span class="w"> </span>reason:<span class="w"> </span>TLS<span class="w"> </span>error:<span class="w"> </span>*****:SSL<span class="w"> </span>routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode">https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h2 id="07-requestauthentication">07. RequestAuthentication<a class="headerlink" href="#07-requestauthentication" title="Permanent link">&para;</a></h2>
 <h3 id="specjwtrules">.spec.jwtRules<a class="headerlink" href="#specjwtrules" title="Permanent link">&para;</a></h3>
@@ -10153,11 +10229,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="routedestinationhost">▼ route.destination.host<a class="headerlink" href="#routedestinationhost" title="Permanent link">&para;</a></h4>
 <p>受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -10168,13 +10239,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="c1"># Service名でも良い。</span>
 <span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local</span>
 </code></pre></div>
-<h4 id="routedestinationport">▼ route.destination.port<a class="headerlink" href="#routedestinationport" title="Permanent link">&para;</a></h4>
-<p>受信する通信でルーティング先のポート番号を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
 </ul>
 </blockquote>
+<h4 id="routedestinationport">▼ route.destination.port<a class="headerlink" href="#routedestinationport" title="Permanent link">&para;</a></h4>
+<p>受信する通信でルーティング先のポート番号を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -10189,16 +10260,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">port</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
+</ul>
+</blockquote>
 <h4 id="routedestinationsubset">▼ route.destination.subset<a class="headerlink" href="#routedestinationsubset" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
 <p>紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。</p>
 <p>DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
-<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html">https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -10221,14 +10291,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination</a></li>
+<li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html">https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html</a></li>
+</ul>
+</blockquote>
 <h4 id="routeweight">▼ route.weight<a class="headerlink" href="#routeweight" title="Permanent link">&para;</a></h4>
 <p>Serviceの重み付けルーティングの割合を設定する。</p>
 <p><code>.spec.http[*].route[*].destination.subset</code>キーの値は、DestinationRuleで設定した<code>.spec.subsets[*].name</code>キーに合わせる必要がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination</a></li>
-</ul>
-</blockquote>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -10253,6 +10324,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">subset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">          </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination">https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination</a></li>
+</ul>
+</blockquote>
 <h4 id="timeout">▼ timeout<a class="headerlink" href="#timeout" title="Permanent link">&para;</a></h4>
 <p><code>istio-proxy</code>コンテナの宛先にリクエストを送信する時のタイムアウト時間を設定する。</p>
 <p><code>0</code>秒の場合、タイムアウトは無制限になる。</p>

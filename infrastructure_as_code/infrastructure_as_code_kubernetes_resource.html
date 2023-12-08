@@ -9558,6 +9558,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p><br></p>
 <h2 id="03-04-service">03-04. Serviceの仕組み<a class="headerlink" href="#03-04-service" title="Permanent link">&para;</a></h2>
 <h3 id="_11">パケットの処理方法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><img alt="kube-proxy_iptables.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png" /></p>
 <p>Serviceは、パケットの<code>L4</code>に関するヘッダーの情報を見て、Podに<code>L4</code>ロードバランシングする。</p>
 <p>受信したリクエストをパケットとして処理していく流れを見ていく。</p>
 <dl>
