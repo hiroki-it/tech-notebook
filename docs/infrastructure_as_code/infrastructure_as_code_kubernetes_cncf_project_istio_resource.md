@@ -15,19 +15,19 @@ description: リソース＠Istioの知見を記録しています。
 
 ## 01. K8sリソース/IstioカスタムリソースとEnvoy設定値の関係
 
-| K8sリソース / Istioカスタムリソース                            |        リスナー値        |        ルート値        | クラスター値 | エンドポイント値 |
-| -------------------------------------------------------------- | :----------------------: | :--------------------: | :----------: | :--------------: |
-| Kubernetes Service                                             |            ✅            |           ✅           |      ✅      |                  |
-| Kubernetes Endpoints / EndpointSlice                           |                          |                        |              |        ✅        |
-| Istio Gateway                                                  |            ✅            |                        |              |                  |
-| Istio VirtualService                                           | ✅<br>(TCP / HTTPの場合) | ✅<br>(HTTPの場合のみ) |              |                  |
-| Istio DestinationRule                                          |                          |                        |      ✅      |        ✅        |
-| Istio ServiceEntry                                             |                          |                        |      ✅      |        ✅        |
-| Istio PeerAuthentication                                       |            ✅            |                        |      ✅      |                  |
-| Istio RequestAuthentication                                    |            ✅            |                        |              |                  |
-| Istio AuthorizationPolicies                                    |            ✅            |                        |              |                  |
-| Istio EnvoyFilter<br>(Envoyのフィルターを介して各設定値に影響) |            ✅            |           ✅           |      ✅      |        ✅        |
-| Istio Sidecar                                                  |            ✅            |           ✅           |      ✅      |        ✅        |
+|                                                                | リスナー値 |        ルート値        | クラスター値 | エンドポイント値 |
+| -------------------------------------------------------------- | :--------: | :--------------------: | :----------: | :--------------: |
+| Kubernetes Service                                             |     ✅     |           ✅           |      ✅      |                  |
+| Kubernetes Endpoints                                           |            |                        |              |        ✅        |
+| Istio Gateway                                                  |     ✅     |                        |              |                  |
+| Istio VirtualService                                           |     ✅     | ✅<br>(HTTPの場合のみ) |              |                  |
+| Istio DestinationRule                                          |            |                        |      ✅      |        ✅        |
+| Istio ServiceEntry                                             |            |                        |      ✅      |        ✅        |
+| Istio PeerAuthentication                                       |     ✅     |                        |      ✅      |                  |
+| Istio RequestAuthentication                                    |     ✅     |                        |              |                  |
+| Istio AuthorizationPolicies                                    |     ✅     |                        |              |                  |
+| Istio EnvoyFilter<br>(Envoyのフィルターを介して各設定値に影響) |     ✅     |           ✅           |      ✅      |        ✅        |
+| Istio Sidecar                                                  |     ✅     |           ✅           |      ✅      |        ✅        |
 
 > - https://www.slideshare.net/AspenMesh/debugging-your-debugging-tools-what-to-do-when-your-service-mesh-goes-down#19
 > - https://youtu.be/XAKY24b7XjQ?t=1131
