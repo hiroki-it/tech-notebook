@@ -11157,6 +11157,7 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <h2 id="iptables">iptables<a class="headerlink" href="#iptables" title="Permanent link">&para;</a></h2>
 <h3 id="iptables_1">iptablesとは<a class="headerlink" href="#iptables_1" title="Permanent link">&para;</a></h3>
 <p>iptablesの設定を取得/変更する。</p>
+<p>Linux/Ubuntuでのiptablesは、標準的なNAPTルーターかつパケットフィルタリング型ファイアウォールである。</p>
 <p><br></p>
 <h3 id="_6">テーブル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ テーブルとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -11172,12 +11173,12 @@ $<span class="w"> </span>cat<span class="w"> </span>foo.txt<span class="w"> </sp
 <tbody>
 <tr>
 <td><code>filter</code></td>
-<td>パケットフィルタリング (パケットの通過や遮断) を実施する。</td>
+<td>パケットフィルタリング型ファイアウォールとしてパケットを制限する。</td>
 <td><code>INPUT</code>、<code>OUTPUT</code>、<code>FORWARD</code></td>
 </tr>
 <tr>
 <td><code>nat</code></td>
-<td>DNAT処理する。</td>
+<td>NAPTルーターとして、DNAT処理する。</td>
 <td><code>POSTROUTING</code>、<code>PREROUTING</code>、<code>OUTPUT</code></td>
 </tr>
 <tr>
