@@ -20,6 +20,9 @@ theme:
   language: ja
   logo: assets/images/logo_v2.png
   favicon: assets/images/logo_v2.png
+  # テンプレートを読み込む
+  # 部分的にテンプレートを挿入する場合、templates配下にpartialsディレクトリを作成する
+  # custom_dir: docs/assets/templates/
   icon:
     repo: fontawesome/brands/github
   font:
@@ -105,6 +108,12 @@ markdown_extensions:
 
 # 外部プラグイン
 plugins:
+#  - git-committers:
+#      repository: hiroki-it/tech-notebook
+#      branch: main
+#      # トークンはレートリミット回避のためだけに使用し、スコープはない
+#      # そのため、ハードコーディングしてしまっても脆弱性に問題はないとする
+#      token: !ENV ["MKDOCS_GIT_COMMITTERS_APIKEY", "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"]
   - git-revision-date-localized:
       type: iso_date
       timezone: Asia/Tokyo
