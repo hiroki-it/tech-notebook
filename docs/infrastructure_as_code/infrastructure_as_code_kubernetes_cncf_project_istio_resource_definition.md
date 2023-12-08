@@ -1194,9 +1194,29 @@ spec:
         - "*"
 ```
 
+#### ▼ tls.caCertificates
+
+`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書に対応するCA証明書である必要がある。
+
+**＊実装例＊**
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
+spec:
+  servers:
+    - tls:
+        privateKey: /etc/certs/privatekey.pem
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+
 #### ▼ tls.credentialName
 
-GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書を保持するSecretを設定する。
+CAを含むSSL証明書を保持するSecretを設定する。
 
 SSL証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate`キーを設定する。
 
@@ -1218,9 +1238,32 @@ spec:
         credentialName: istio-gateway-certificate-secret
 ```
 
-#### ▼ tls.privateKey
+#### ▼ tls.mode
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+Gatewayの宛先との通信の暗号化方式を設定する。
+
+**＊実装例＊**
+
+クライアントとGatewayの通信間で相互TLSを実施する。
+
+クライアント証明書が必要になる。
+
+```yaml
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: istio-system
+  name: gateway
+spec:
+  servers:
+    - tls:
+        mode: MUTUAL
+```
+
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
+> - https://istiobyexample-ja.github.io/istiobyexample/secure-ingress/
+
+#### ▼ tls.privateKey
 
 **＊実装例＊**
 
@@ -1236,13 +1279,15 @@ spec:
         privateKey: /etc/certs/privatekey.pem
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+
 #### ▼ tls.serverCertificate
 
-GatewayでHTTPSプロトコルのインバウンド通信を受信する場合、SSL証明書のファイルを設定する。
+SSL証明書のファイルを設定する。
+
+`.spec.servers.tls.mode`キーで相互TLSを設定している場合、クライアント証明書に対応するSSL証明書である必要がある。
 
 SSL証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
-
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 **＊実装例＊**
 
@@ -1257,6 +1302,8 @@ spec:
     - tls:
         serverCertificate: /etc/certs/server.pem
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
 
 <br>
 
@@ -1284,8 +1331,6 @@ spec:
 | `PERMISSIVE` | 相互TLS認証の時、プロトコルはHTTPSとHTTPの両方を許可する。         |
 | `STRICT`     | 相互TLS認証の時、プロトコルはHTTPSのみを許可し、HTTPを許可しない。 |
 
-> - https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
-
 **＊実装例＊**
 
 ```yaml
@@ -1304,6 +1349,8 @@ spec:
 ```bash
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
 ```
+
+> - https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
 
 <br>
 
@@ -1779,8 +1826,6 @@ spec:
 
 受信した通信で宛先のServiceのドメイン名 (あるいはService名) を設定する。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-
 **＊実装例＊**
 
 ```yaml
@@ -1794,11 +1839,11 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
 #### ▼ route.destination.port
 
 受信する通信でルーティング先のポート番号を設定する。
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
 
 **＊実装例＊**
 
@@ -1817,6 +1862,8 @@ spec:
               number: 80
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+
 #### ▼ route.destination.subset
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
@@ -1824,9 +1871,6 @@ spec:
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
 DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
 
 **＊実装例＊**
 
@@ -1853,13 +1897,14 @@ spec:
             subset: v2
 ```
 
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
+
 #### ▼ route.weight
 
 Serviceの重み付けルーティングの割合を設定する。
 
 `.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
-
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
 **＊実装例＊**
 
@@ -1887,6 +1932,8 @@ spec:
             subset: v1
           weight: 30
 ```
+
+> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
 
 #### ▼ timeout
 
