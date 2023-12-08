@@ -1126,6 +1126,22 @@ iptablesの設定を取得/変更する。
 
 <br>
 
+### テーブル
+
+各パケット処理の実行タイミングを制御する。
+
+| テーブル名 | 説明                                                       | チェイン                                                  |
+| ---------- | ---------------------------------------------------------- | --------------------------------------------------------- |
+| `filter`   | パケットフィルタリング (パケットの通過や遮断) を実施する。 | `INPUT`、`OUTPUT`、`FORWARD`                              |
+| `nat`      | DNAT処理する。                                             | `POSTROUTING`、`PREROUTING`、`OUTPUT`                     |
+| `mangle`   | 特定のパケットのヘッダー情報を変更する。                   | `POSTROUTING`、`PREROUTING`、`INPUT`、`OUTPUT`、`FORWARD` |
+| `raw`      | 特定のパケットを処理せずにそのまま通過させる。             | `PREROUTING`、`OUTPUT`                                    |
+| `security` | SELinuxを適用する。                                        | `INPUT`、`OUTPUT`、`FORWARD`                              |
+
+> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+
+<br>
+
 ### サブコマンド
 
 #### ▼ -L (--list)

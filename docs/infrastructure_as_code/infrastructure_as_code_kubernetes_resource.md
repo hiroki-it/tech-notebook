@@ -946,32 +946,35 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 ### パケットの処理方法
 
-Serviceは、パケットの`L4`に関するヘッダーの情報を見て、`L4`ロードバランシングを実施する。
+Serviceは、パケットの`L4`に関するヘッダーの情報を見て、Podに`L4`ロードバランシングする。
 
-| テーブル名 | 説明                                                   |
-| ---------- | ------------------------------------------------------ |
-| `filter`   | パケットフィルタリングに使用する。                     |
-| `nat`      | DNAT処理に使用する。                                   |
-| `mangle`   | 特定のパケットのヘッダー情報を変更するために使用する。 |
-| `raw`      | パケットがコネクショントラッキング                     |
-| `security` | SELinuxを適用する。                                    |
+受信したリクエストをパケットとして処理していく流れを見ていく。
 
-> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=34
-> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
+`(1)`
 
-<br>
+: ここでは、ClusterIP Serviceを例に挙げる。
 
-### ClusterIP Serviceの場合
+     `10.0.0.10`というIPアドレスを持つClusterIP Serviceがいるとする。
 
-kube-proxyでiptablesを確認できる。
+```bash
+$ kubectl get svc kube-dns -n kube-system
 
-Serviceは、
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+kube-dns   ClusterIP   10.0.0.10    <none>        53/UDP,53/TCP   12d
+```
+
+`(2)`
+
+: kube-proxyでiptablesを確認すると、受信したリクエストをパケットとして処理していく流れを確認できる。
+
+     `KUBE-SERVICES`ターゲット配下には`KUBE-SVC`ターゲットがいる。
+
+     `KUBE-SVC`ターゲットは、ClusterIP Serviceである。
 
 ```bash
 $ kubectl exec -it kube-proxy-wf7qw -n kube-system -- iptables -nL -t nat --line-numbers
 
 Chain KUBE-SERVICES (2 references)
-
 num  target                     prot opt source               destination
 
 ...
@@ -984,16 +987,41 @@ num  target                     prot opt source               destination
 
 ```
 
+`(2)`
+
+: `KUBE-SVC`ターゲット配下には`KUBE-SEP`ターゲットがいる。
+
+     `statistic mode random probability`に応じて、パケットを`KUBE-SEP`のターゲットいずれかに振り分ける。
+
 ```bash
+# KUBE-SVC
 Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
 
 num  target                     prot opt source               destination
 1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
 2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
+```
 
+`(3)`. `KUBE-SEP`のターゲットに応じて、異なる`DNAT`ターゲットを持つ。
+
+     `DNAT`ターゲットは、Podである。
+
+```bash
+#
+Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
+
+num  target     prot opt  source               destination
+1    KUBE-MARK-MASQ  all  --  172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
+2    DNAT       udp  --   0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
+
+Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
+num  target     prot opt  source               destination
+1    KUBE-MARK-MASQ  all  --  172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
+2    DNAT       udp  --   0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
 ```
 
 > - https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented
+> - https://speakerdeck.com/bells17/kube-proxyru-men?slide=36
 
 <br>
 
