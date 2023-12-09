@@ -9608,22 +9608,30 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <span class="m">1</span><span class="w">    </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>statistic<span class="w"> </span>mode<span class="w"> </span>random<span class="w"> </span>probability<span class="w"> </span><span class="m">0</span>.50000000000
 <span class="m">2</span><span class="w">    </span>KUBE-SEP-JTVLMQFBDVPXUWUS<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
 </code></pre></div>
-<p><code>(3)</code>. <code>KUBE-SEP</code>のターゲットに応じて、異なる<code>DNAT</code>ターゲットを持つ。</p>
+<p><code>(3)</code> <code>KUBE-SEP</code>のターゲットに応じて、異なる<code>DNAT</code>ターゲットを持つ。</p>
 <div class="highlight"><pre><span></span><code> `DNAT`ターゲットは、Podである。
 
- kube-proxyはDNAT処理を実行し、パケットのService宛のIPアドレスをPodのIPアドレスに変換する。
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">#</span>
-Chain<span class="w"> </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+ kube-proxyはDNAT処理を実行し、パケットの宛先IPアドレス (ServiceのIPアドレス) をPodのIPアドレスに変換する。
 
-num<span class="w">  </span>target<span class="w">     </span>prot<span class="w"> </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">               </span>destination
-<span class="m">1</span><span class="w">    </span>KUBE-MARK-MASQ<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">172</span>.16.10.42<span class="w">     </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
-<span class="m">2</span><span class="w">    </span>DNAT<span class="w">       </span>udp<span class="w">  </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>to:172.16.10.42:53
+ ここでは、パケットの宛先IPアドレスを`172.16.10.9`と`172.16.10.42`に変換する。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Chain<span class="w"> </span>KUBE-SEP-K7EZDDI5TWNJA7RX<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
+
+num<span class="w">  </span>target<span class="w">          </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">           </span>destination
+<span class="m">1</span><span class="w">    </span>KUBE-MARK-MASQ<span class="w">  </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">172</span>.16.10.42<span class="w">     </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
+<span class="m">2</span><span class="w">    </span>DNAT<span class="w">            </span>udp<span class="w">   </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">        </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>to:172.16.10.42:53
 
 Chain<span class="w"> </span>KUBE-SEP-JTVLMQFBDVPXUWUS<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>references<span class="o">)</span>
-num<span class="w">  </span>target<span class="w">     </span>prot<span class="w"> </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">               </span>destination
-<span class="m">1</span><span class="w">    </span>KUBE-MARK-MASQ<span class="w">  </span>all<span class="w">  </span>--<span class="w">  </span><span class="m">172</span>.16.10.9<span class="w">      </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
-<span class="m">2</span><span class="w">    </span>DNAT<span class="w">       </span>udp<span class="w">  </span>--<span class="w">   </span><span class="m">0</span>.0.0.0/0<span class="w">            </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>to:172.16.10.9:53
+num<span class="w">  </span>target<span class="w">          </span>prot<span class="w">  </span>opt<span class="w">  </span><span class="nb">source</span><span class="w">           </span>destination
+<span class="m">1</span><span class="w">    </span>KUBE-MARK-MASQ<span class="w">  </span>all<span class="w">   </span>--<span class="w">   </span><span class="m">172</span>.16.10.9<span class="w">      </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/
+<span class="m">2</span><span class="w">    </span>DNAT<span class="w">            </span>udp<span class="w">   </span>--<span class="w">    </span><span class="m">0</span>.0.0.0/0<span class="w">       </span><span class="m">0</span>.0.0.0/0<span class="w">            </span>/*<span class="w"> </span>kube-system/kube-dns:dns<span class="w"> </span>*/<span class="w"> </span>udp<span class="w"> </span>to:172.16.10.9:53
+</code></pre></div>
+<p><code>(4)</code> 宛先のPodのIPアドレスを確認すると、DNAT処理の変換後のIPアドレスと一致している。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-l<span class="w"> </span>k8s-app<span class="o">=</span>kube-dns
+
+NAME<span class="w">                     </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">    </span>IP<span class="w">             </span>NODE<span class="w">                                </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
+coredns-69c47794-6xnlq<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>18h<span class="w">    </span><span class="m">172</span>.16.10.9<span class="w">    </span>aks-nodepool1-19344272-vmss000000<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
+coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>7d9h<span class="w">   </span><span class="m">172</span>.16.10.42<span class="w">   </span>aks-nodepool1-19344272-vmss000001<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </code></pre></div>
 <blockquote>
 <ul>
@@ -10360,7 +10368,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-09</span>
   </span>
 
     
